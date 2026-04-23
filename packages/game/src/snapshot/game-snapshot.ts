@@ -33,6 +33,9 @@ import type {
   ZoneType,
 } from "@mtg-forge-ts/core";
 import {
+  IncompatibleSnapshotVersionError,
+  SnapshotRestoreError,
+  UnknownCardError,
   ZoneType as ZoneTypeEnum,
   deserializeRngState,
   mkEntityId,
@@ -409,7 +412,7 @@ export interface RestoreOptions {
  */
 export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   if (snap.header.schemaVersion !== SNAPSHOT_SCHEMA_VERSION) {
-    throw new Error(
+    throw new IncompatibleSnapshotVersionError(
       `GameSnapshot.restore: schema version ${snap.header.schemaVersion} incompatible with engine (${SNAPSHOT_SCHEMA_VERSION})`,
     );
   }
@@ -418,7 +421,11 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   const lobbyById = new Map(opts.lobbyPlayers.map((lp) => [lp.id, lp] as const));
   const orderedLobbyPlayers: LobbyPlayer[] = snap.state.players.map((sp) => {
     const lp = lobbyById.get(sp.lobbyPlayerId);
-    if (!lp) throw new Error(`GameSnapshot.restore: missing LobbyPlayer for id "${sp.lobbyPlayerId}"`);
+    if (!lp) {
+      throw new SnapshotRestoreError(
+        `GameSnapshot.restore: missing LobbyPlayer for id "${sp.lobbyPlayerId}"`,
+      );
+    }
     return lp;
   });
 
@@ -451,7 +458,7 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     // Seat + teamId + lobbyPlayer are determined at construction — assert they
     // match the snapshot rather than overwriting silently.
     if (sp.seat !== p.seat) {
-      throw new Error(
+      throw new SnapshotRestoreError(
         `GameSnapshot.restore: player[${i}] seat ${sp.seat as unknown as number} !== constructed seat ${
           p.seat as unknown as number
         }`,
@@ -478,7 +485,11 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   for (const sc of snap.state.cards) {
     const paper = opts.paperCards.get(sc.paperCardKey);
     if (!paper) {
-      throw new Error(`GameSnapshot.restore: missing PaperCard for key "${sc.paperCardKey}"`);
+      // WHY: UnknownCardError is the canonical "card identity not resolvable"
+      // signal across the engine (card-db lookups, deck legality, etc.).
+      // Restoring a snapshot whose PaperCard is absent from the supplied
+      // registry is the same class of failure.
+      throw new UnknownCardError(sc.paperCardKey);
     }
     const card = new Card(sc.id, paper, sc.ownerSeat, sc.controllerSeat, sc.zone);
     card.tapped = sc.tapped;

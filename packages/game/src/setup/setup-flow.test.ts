@@ -7,7 +7,14 @@ import type {
   PaperCard,
   PlayerSeat,
 } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  GameStateIntegrityError,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
@@ -244,12 +251,18 @@ describe("setupGame", () => {
     }
   });
 
-  it("excessive mulligans error trips when a controller loops forever", () => {
+  it("excessive mulligans throws GameStateIntegrityError when a controller loops forever", () => {
     const game = mkGame();
     const decks: SetupDecks = {
       0: seedCards(game, mkPlayerSeat(0), 60, 0),
       1: seedCards(game, mkPlayerSeat(1), 60, 60),
     };
-    expect(() => drain(game, decks, () => false)).toThrow(/excessive mulligans/);
+    expect(() => drain(game, decks, () => false)).toThrow(GameStateIntegrityError);
+    const game2 = mkGame();
+    const decks2: SetupDecks = {
+      0: seedCards(game2, mkPlayerSeat(0), 60, 0),
+      1: seedCards(game2, mkPlayerSeat(1), 60, 60),
+    };
+    expect(() => drain(game2, decks2, () => false)).toThrow(/excessive mulligans/);
   });
 });

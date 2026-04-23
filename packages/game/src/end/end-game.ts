@@ -9,6 +9,7 @@
 // tries to conclude an already-terminal game has a bug. Silent double-
 // assignment would hide it.
 import type { PlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { TerminalOutcome } from "../terminal-state.js";
 
@@ -18,7 +19,7 @@ export const endGame = (
   concededSeats: readonly PlayerSeat[] = [],
 ): void => {
   if (game.terminalState) {
-    throw new Error("endGame: game is already in terminal state");
+    throw new GameStateIntegrityError("endGame: game is already in terminal state");
   }
   game.terminalState = {
     endedAt: { turn: game.turn, phase: game.phase },

@@ -10,7 +10,7 @@
 // PlayerController + MatchController share one import path; Match re-exports
 // the type here for backwards compatibility with Task 41's consumer surface.
 import type { Deck, LobbyPlayer, MatchDecisionResponse, PlayerSeat } from "@mtg-forge-ts/core";
-import { mkPlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, mkPlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { MatchController } from "../controller/controller.js";
 import type { Game } from "../game.js";
@@ -57,7 +57,10 @@ export class Match {
 
   constructor(options: MatchOptions) {
     if (options.players.length !== options.decks.length) {
-      throw new Error(
+      // WHY: construction-time structural mismatch — this is a game-state
+      // integrity error, not an InvalidDeckError (which is reserved for
+      // deck-legality failures like CR format-legality).
+      throw new GameStateIntegrityError(
         `Match: player count (${options.players.length}) must match deck count (${options.decks.length})`,
       );
     }
@@ -74,7 +77,9 @@ export class Match {
 
   getScore(seat: PlayerSeat): MatchScore {
     const s = this.scores.get(seat);
-    if (!s) throw new Error(`Match: no score for seat ${seat as unknown as number}`);
+    if (!s) {
+      throw new GameStateIntegrityError(`Match: no score for seat ${seat as unknown as number}`);
+    }
     return s;
   }
 

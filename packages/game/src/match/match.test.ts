@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import type { Deck, LobbyPlayer } from "@mtg-forge-ts/core";
-import { mkPlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { MatchGameResult, MatchOptions } from "./match.js";
 import { Match } from "./match.js";
@@ -125,7 +125,16 @@ describe("Match", () => {
     expect(m.getScore(mkPlayerSeat(1)).concededLastGame).toBe(false);
   });
 
-  it("constructor throws when player count and deck count mismatch", () => {
+  it("constructor throws GameStateIntegrityError when player count and deck count mismatch", () => {
+    expect(
+      () =>
+        new Match({
+          bestOf: 3,
+          players: [alice, bob, charlie],
+          decks: [emptyDeck("Alice"), emptyDeck("Bob")],
+          formatId: "standard",
+        }),
+    ).toThrow(GameStateIntegrityError);
     expect(
       () =>
         new Match({
@@ -137,8 +146,9 @@ describe("Match", () => {
     ).toThrow(/player count .* must match deck count/);
   });
 
-  it("getScore throws for an unknown seat", () => {
+  it("getScore throws GameStateIntegrityError for an unknown seat", () => {
     const m = new Match(mkOptions(1));
+    expect(() => m.getScore(mkPlayerSeat(99))).toThrow(GameStateIntegrityError);
     expect(() => m.getScore(mkPlayerSeat(99))).toThrow(/no score for seat/);
   });
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import type { LobbyPlayer } from "@mtg-forge-ts/core";
-import { PhaseStep, SeededRng, mkPlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, PhaseStep, SeededRng, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
@@ -86,9 +86,12 @@ describe("endGame", () => {
     expect(game.terminalState?.endedAt).toEqual({ turn: 7, phase: PhaseStep.EndStep });
   });
 
-  it("throws on double-assignment", () => {
+  it("throws GameStateIntegrityError on double-assignment", () => {
     const game = mkGame();
     endGame(game, { kind: "draw", reason: "first" });
+    expect(() => endGame(game, { kind: "win", winner: mkPlayerSeat(0), reason: "second" })).toThrow(
+      GameStateIntegrityError,
+    );
     expect(() => endGame(game, { kind: "win", winner: mkPlayerSeat(0), reason: "second" })).toThrow(
       /already in terminal state/,
     );

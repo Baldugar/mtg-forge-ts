@@ -24,6 +24,8 @@ import {
   type DecisionRequest,
   type DecisionResponse,
   type EntityId,
+  GameStateIntegrityError,
+  IllegalDecisionError,
   type PlayerSeat,
   ZoneType,
   mkEvent,
@@ -117,7 +119,7 @@ export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield
       };
       const response: DecisionResponse = yield { kind: "decision", request };
       if (response.kind !== "mulligan") {
-        throw new Error(`setupGame: expected mulligan response, got ${response.kind}`);
+        throw new IllegalDecisionError(`setupGame: expected mulligan response, got ${response.kind}`);
       }
       if (response.keep) {
         yield {
@@ -144,7 +146,7 @@ export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield
       yield* action.drawCards(player.seat, handSize);
       mulligansTaken++;
       if (mulligansTaken > MULLIGAN_MAX) {
-        throw new Error(
+        throw new GameStateIntegrityError(
           `setupGame: excessive mulligans for seat ${player.seat as unknown as number} (>${MULLIGAN_MAX})`,
         );
       }

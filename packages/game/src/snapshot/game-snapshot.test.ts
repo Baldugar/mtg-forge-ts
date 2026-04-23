@@ -3,8 +3,11 @@ import type { LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
 import {
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
+  IncompatibleSnapshotVersionError,
   PhaseStep,
   SeededRng,
+  SnapshotRestoreError,
+  UnknownCardError,
   ZoneType,
   mkEntityId,
   mkPlayerSeat,
@@ -374,14 +377,15 @@ describe("GameSnapshot", () => {
     expect(restored.players[1]?.teamId).toBe(0);
   });
 
-  it("restore throws on schemaVersion mismatch", () => {
+  it("restore throws IncompatibleSnapshotVersionError on schemaVersion mismatch", () => {
     const g = makeGame();
     const snap = snapshot(g);
     const bad = { ...snap, header: { ...snap.header, schemaVersion: 999 } };
+    expect(() => restore(bad, makeRestoreOpts())).toThrow(IncompatibleSnapshotVersionError);
     expect(() => restore(bad, makeRestoreOpts())).toThrow(/schema version/);
   });
 
-  it("restore throws on missing LobbyPlayer id", () => {
+  it("restore throws SnapshotRestoreError on missing LobbyPlayer id", () => {
     const g = makeGame();
     const snap = snapshot(g);
     expect(() =>
@@ -391,10 +395,18 @@ describe("GameSnapshot", () => {
         paperCards,
         rules,
       }),
+    ).toThrow(SnapshotRestoreError);
+    expect(() =>
+      restore(snap, {
+        lobbyPlayers: [alice],
+        rng: new SeededRng(1n),
+        paperCards,
+        rules,
+      }),
     ).toThrow(/missing LobbyPlayer/);
   });
 
-  it("restore throws on missing PaperCard key", () => {
+  it("restore throws UnknownCardError on missing PaperCard key", () => {
     const g = makeGame();
     seedCard(g, paperA, 0, ZoneType.Battlefield);
     const snap = snapshot(g);
@@ -405,7 +417,7 @@ describe("GameSnapshot", () => {
         paperCards: new Map(), // empty
         rules,
       }),
-    ).toThrow(/missing PaperCard/);
+    ).toThrow(UnknownCardError);
   });
 
   it("terminalState round-trips", () => {
