@@ -35,4 +35,16 @@ export const CostPartRegistry = {
     if (!ctor) throw new Error(`Unknown CostPart kind: ${data.kind}`);
     return ctor(data);
   },
+  /** All registered CostPart kinds. Useful for DSL diagnostics and reflection. */
+  list(): string[] {
+    return [...ctors.keys()];
+  },
+  /** True iff the given kind has a registered constructor. */
+  has(kind: string): boolean {
+    return ctors.has(kind);
+  },
+  /** Remove a registration. Returns true iff a mapping was removed. */
+  unregister(kind: string): boolean {
+    return ctors.delete(kind);
+  },
 } as const;

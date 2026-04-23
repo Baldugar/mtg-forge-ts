@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { Cost, CostPart, CostPartRegistry } from "./cost.js";
 
 // Test-local concrete CostPart subclasses. Unique kind prefixes ("test15-")
@@ -31,6 +31,14 @@ beforeAll(() => {
     return new TestCostPayLife(amount);
   });
   CostPartRegistry.register("test15-tap", () => new TestCostTapSelf());
+});
+
+afterAll(() => {
+  // WHY: vitest's module isolation already prevents cross-file pollution today,
+  // but we explicitly clean up the test-only kinds so this file is robust to
+  // any future change (shared registry module, isolate=false, etc.).
+  CostPartRegistry.unregister("test15-life");
+  CostPartRegistry.unregister("test15-tap");
 });
 
 describe("Cost.of", () => {
@@ -94,5 +102,35 @@ describe("CostPartRegistry.hydrate", () => {
     const part = CostPartRegistry.hydrate({ kind: "test15-life", amount: 7 });
     expect(part).toBeInstanceOf(TestCostPayLife);
     expect((part as TestCostPayLife).amount).toBe(7);
+  });
+});
+
+describe("CostPartRegistry list/has/unregister", () => {
+  it("unregister returns false for an unknown kind", () => {
+    expect(CostPartRegistry.unregister("test15-never-registered")).toBe(false);
+  });
+
+  it("register/has/unregister/has cycle behaves correctly", () => {
+    const kind = "test15-cycle";
+    expect(CostPartRegistry.has(kind)).toBe(false);
+    class Tmp extends CostPart {
+      readonly kind = kind;
+      toJSON(): { kind: string } {
+        return { kind: this.kind };
+      }
+    }
+    CostPartRegistry.register(kind, () => new Tmp());
+    expect(CostPartRegistry.has(kind)).toBe(true);
+    expect(CostPartRegistry.list()).toContain(kind);
+    expect(CostPartRegistry.unregister(kind)).toBe(true);
+    expect(CostPartRegistry.has(kind)).toBe(false);
+    // Idempotent: unregister again is a no-op that returns false.
+    expect(CostPartRegistry.unregister(kind)).toBe(false);
+  });
+
+  it("list() includes the two test kinds registered above", () => {
+    const all = CostPartRegistry.list();
+    expect(all).toContain("test15-life");
+    expect(all).toContain("test15-tap");
   });
 });

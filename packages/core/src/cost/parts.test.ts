@@ -9,7 +9,7 @@ import { CounterType } from "../counter-type.js";
 import { ManaCost } from "../mana/cost.js";
 import { ZoneType } from "../zone.js";
 import type { CostPart } from "./cost-part.js";
-import { Cost } from "./cost.js";
+import { Cost, CostPartRegistry } from "./cost.js";
 import "./parts/index.js";
 
 import { CostAddMana } from "./parts/add-mana.js";
@@ -397,5 +397,64 @@ describe("CostPart round-trip — 40 kinds", () => {
     expectInstanceAndKind(got, CostWaterbend, "waterbend");
     expect(got.mana).toBe("1U");
     expect(got.cost.symbols.length).toBe(2);
+  });
+});
+
+describe("CostPartRegistry.list() for all 40 kinds", () => {
+  // WHY: ensures no kind string drifted from its registration, and that the
+  // barrel import pulled every part file. Derived from the roster in Task 16;
+  // if this list changes, parts/index.ts and this array must update together.
+  const ALL_KINDS = [
+    "addMana",
+    "behold",
+    "beholdExile",
+    "blight",
+    "chooseColor",
+    "chooseCreatureType",
+    "collectEvidence",
+    "damage",
+    "discard",
+    "draw",
+    "enlist",
+    "exert",
+    "exile",
+    "exileFromStack",
+    "exiledMoveToGrave",
+    "flipCoin",
+    "forage",
+    "gainControl",
+    "gainLife",
+    "mana",
+    "mill",
+    "payEnergy",
+    "payLife",
+    "payShards",
+    "promiseGift",
+    "putCardToLib",
+    "putCounter",
+    "removeAnyCounter",
+    "removeCounter",
+    "return",
+    "reveal",
+    "revealChosen",
+    "rollDice",
+    "sacrifice",
+    "tap",
+    "tapType",
+    "unattach",
+    "untap",
+    "untapType",
+    "waterbend",
+  ] as const;
+
+  it("contains every expected kind", () => {
+    const registered = new Set(CostPartRegistry.list());
+    for (const kind of ALL_KINDS) {
+      expect(registered.has(kind)).toBe(true);
+    }
+  });
+
+  it("has exactly 40 kinds in the roster", () => {
+    expect(ALL_KINDS.length).toBe(40);
   });
 });
