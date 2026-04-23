@@ -55,6 +55,12 @@ export class PhaseHandler {
 
       this.game.activePlayer = turn.activePlayer;
       yield* this.runTurn(turn);
+      // WHY: if the turn ended mid-step via concede (or SP2 loss SBA),
+      // terminalState is set. Advancing game.turn past the terminal point
+      // would misrepresent the turn counter in GameEnded payloads and any
+      // post-game snapshot — the game ended on the current turn, not the
+      // next one.
+      if (this.game.isTerminal()) return;
       this.game.turn += 1;
     }
   }

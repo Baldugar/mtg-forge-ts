@@ -270,6 +270,10 @@ describe("PhaseHandler.run", () => {
     const seat0 = mkPlayerSeat(0);
     addCardToZone(game, seat0, ZoneType.Library, mkEntityId(700));
     handler.turnQueue.push({ activePlayer: seat0, isExtra: false });
+    // Also queue a second turn so we can verify it is NOT consumed after
+    // the concede terminates the game — the second turn would have
+    // incremented game.turn past the terminal point without the guard.
+    handler.turnQueue.push({ activePlayer: mkPlayerSeat(1), isExtra: false });
 
     const yields: EngineYield[] = [];
     const gen = handler.run();
@@ -293,6 +297,11 @@ describe("PhaseHandler.run", () => {
     expect(kinds).toContain("GameEnded");
     expect(kinds[kinds.length - 1]).toBe("GameEnded");
     expect(kinds).not.toContain("TurnEnded");
+    // Turn counter must NOT have incremented past the concede turn.
+    expect(game.turn).toBe(1);
+    // And only one TurnStarted should have been emitted (the second queued
+    // turn never runs — the loop bails as soon as terminal state is set).
+    expect(kinds.filter((k) => k === "TurnStarted")).toHaveLength(1);
   });
 
   it("phaseSequence is respected: skipping Draw removes its Step events", () => {
