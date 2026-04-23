@@ -292,11 +292,25 @@ const makeZone = (type: ZoneType, ownerSeat: PlayerSeat | null): Zone => {
 // === Top-level snapshot ============================================
 
 /**
+ * Options for snapshot(). `now` supplies the savedAt ISO string — callers
+ * that need a wall-clock stamp pass `() => new Date().toISOString()`;
+ * deterministic tests and replay tooling pass a fixed string. Defaulting
+ * to a constant "sentinel" keeps snapshot() itself pure (the determinism
+ * lint refuses ambient `new Date()` inside packages/game) while giving
+ * hosts an explicit opt-in to wall-clock timestamps.
+ */
+export interface SnapshotOptions {
+  readonly now?: () => string;
+}
+
+const DEFAULT_SAVED_AT = "1970-01-01T00:00:00.000Z";
+
+/**
  * Walk the live Game and produce a JSON-stringifiable GameSnapshot. The
  * returned object contains only plain values — no class instances, no bigint,
  * no Map/Set — so `JSON.stringify(snapshot(game))` never throws.
  */
-export const snapshot = (game: Game): GameSnapshot => {
+export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot => {
   const players: SerializedPlayer[] = game.players.map((p) => ({
     seat: p.seat,
     lobbyPlayerId: p.lobbyPlayer.id,
@@ -315,7 +329,7 @@ export const snapshot = (game: Game): GameSnapshot => {
       forgeSha: game.meta.forgeSha,
       cardDataSyncedAt: game.meta.cardDataSyncedAt,
       crVersion: game.meta.crVersion,
-      savedAt: new Date().toISOString(),
+      savedAt: opts.now ? opts.now() : DEFAULT_SAVED_AT,
       formatId: game.rules.formatId,
       // SP6 populates this with a real format snapshot; null until then.
       formatDefinitionSnapshot: null,
