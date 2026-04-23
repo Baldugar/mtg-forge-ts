@@ -37,8 +37,8 @@ describe("PhaseSequence", () => {
     expect(steps[firstEndOfCombat + 4]).toBe(PhaseStep.FirstStrikeDamage);
     expect(steps[firstEndOfCombat + 5]).toBe(PhaseStep.CombatDamage);
     expect(steps[firstEndOfCombat + 6]).toBe(PhaseStep.EndOfCombat);
-    // PostCombatMain must still follow the second EndOfCombat.
-    expect(steps[firstEndOfCombat + 7]).toBe(PhaseStep.PostCombatMain);
+    // Main2 must still follow the second EndOfCombat.
+    expect(steps[firstEndOfCombat + 7]).toBe(PhaseStep.Main2);
   });
 
   it("injectExtraCombat is a no-op when EndOfCombat is not present", () => {

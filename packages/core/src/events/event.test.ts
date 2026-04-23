@@ -119,7 +119,7 @@ describe("mkEvent — family representatives", () => {
   });
 
   it("builds a Monarch/Ring event (RingLevelChanged)", () => {
-    const e = mkEvent("RingLevelChanged", 5, PhaseStep.PreCombatMain, {
+    const e = mkEvent("RingLevelChanged", 5, PhaseStep.Main1, {
       playerSeat: mkPlayerSeat(0),
       oldLevel: 1,
       newLevel: 2,
@@ -130,7 +130,7 @@ describe("mkEvent — family representatives", () => {
   });
 
   it("builds a Stack event (SpellCast) with optional xValue", () => {
-    const e = mkEvent("SpellCast", 2, PhaseStep.PreCombatMain, {
+    const e = mkEvent("SpellCast", 2, PhaseStep.Main1, {
       stackItemId: mkEntityId(100),
       cardId: mkEntityId(7),
       controllerSeat: mkPlayerSeat(0),
@@ -216,7 +216,7 @@ describe("mkEvent — family representatives", () => {
   });
 
   it("builds a zone-agnostic fallback (CardChangedZone) with all optional fields", () => {
-    const e = mkEvent("CardChangedZone", 1, PhaseStep.PreCombatMain, {
+    const e = mkEvent("CardChangedZone", 1, PhaseStep.Main1, {
       cardId: mkEntityId(5),
       fromZone: ZoneType.Hand,
       toZone: ZoneType.Graveyard,

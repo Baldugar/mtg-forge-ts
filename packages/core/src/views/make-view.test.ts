@@ -47,7 +47,7 @@ describe("makeGameView — hidden-info filtering", () => {
     });
     const data: GameSnapshotData = {
       turn: 1,
-      phase: PhaseStep.PreCombatMain,
+      phase: PhaseStep.Main1,
       activePlayer: seat0,
       cards,
       stack: [],
@@ -69,7 +69,7 @@ describe("makeGameView — hidden-info filtering", () => {
     });
     const data: GameSnapshotData = {
       turn: 1,
-      phase: PhaseStep.PreCombatMain,
+      phase: PhaseStep.Main1,
       activePlayer: seat0,
       cards,
       stack: [],
@@ -121,7 +121,7 @@ describe("makeGameView — hidden-info filtering", () => {
     };
     const data: GameSnapshotData = {
       turn: 2,
-      phase: PhaseStep.PreCombatMain,
+      phase: PhaseStep.Main1,
       activePlayer: seat0,
       cards,
       stack: [],
@@ -148,7 +148,7 @@ describe("makeGameView — hidden-info filtering", () => {
     };
     const data: GameSnapshotData = {
       turn: 1,
-      phase: PhaseStep.PreCombatMain,
+      phase: PhaseStep.Main1,
       activePlayer: seat0,
       cards,
       stack: [],
@@ -173,7 +173,7 @@ describe("makeGameView — hidden-info filtering", () => {
     };
     const data: GameSnapshotData = {
       turn: 1,
-      phase: PhaseStep.PreCombatMain,
+      phase: PhaseStep.Main1,
       activePlayer: seat0,
       cards,
       stack: [],
@@ -239,7 +239,7 @@ describe("makeGameView — hidden-info filtering", () => {
     };
     const data: GameSnapshotData = {
       turn: 1,
-      phase: PhaseStep.PreCombatMain,
+      phase: PhaseStep.Main1,
       activePlayer: seat0,
       cards,
       stack: [mkEntityId(90)],
