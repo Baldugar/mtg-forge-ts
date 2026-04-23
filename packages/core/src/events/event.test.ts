@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { describe, expect, it } from "vitest";
+import { Color } from "../color.js";
 import { mkEntityId, mkPlayerSeat } from "../ids.js";
 import { PhaseStep } from "../phase.js";
 import { ZoneType } from "../zone.js";
@@ -79,12 +80,34 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "GameEnded",
   "CastAborted",
   "ShortcutApplied",
+  // Zone change extensions (5)
+  "Scry",
+  "Surveil",
+  "Shuffle",
+  "CardPlotted",
+  "TokenCreated",
+  // Mana (1)
+  "ManaEnteredPool",
+  // Monarch/Initiative/Ring extensions (3)
+  "DayTimeChanged",
+  "DoorOpened",
+  "SpeedLevelChanged",
+  // Stack extensions (1)
+  "ModeChosen",
+  // Player extensions (2)
+  "PlayerPoisoned",
+  "PlayerRadiated",
+  // Meta extensions (4)
+  "FlipCoin",
+  "RollDie",
+  "SubgameStarted",
+  "SubgameEnded",
 ];
 
 describe("GameEvent enumeration", () => {
-  it("has 63 distinct kinds grouped across 8 families", () => {
-    expect(EXPECTED_KINDS.length).toBe(63);
-    expect(new Set(EXPECTED_KINDS).size).toBe(63);
+  it("has 79 distinct kinds grouped across 8 families (SP1 post-audit)", () => {
+    expect(EXPECTED_KINDS.length).toBe(79);
+    expect(new Set(EXPECTED_KINDS).size).toBe(79);
   });
 });
 
@@ -227,6 +250,112 @@ describe("mkEvent — family representatives", () => {
     expect(e.payload.fromZone).toBe(ZoneType.Hand);
     expect(e.payload.toZone).toBe(ZoneType.Graveyard);
     expect(JSON.parse(JSON.stringify(e))).toEqual(e);
+  });
+});
+
+describe("mkEvent — post-audit extensions", () => {
+  it("builds Scry / Surveil / Shuffle (Zone-change extensions)", () => {
+    const scry = mkEvent("Scry", 1, PhaseStep.Main1, {
+      playerSeat: mkPlayerSeat(0),
+      count: 3,
+    });
+    expect(scry.payload.count).toBe(3);
+    const surv = mkEvent("Surveil", 1, PhaseStep.Main1, {
+      playerSeat: mkPlayerSeat(1),
+      count: 2,
+    });
+    expect(surv.payload.count).toBe(2);
+    const shuf = mkEvent("Shuffle", 1, PhaseStep.Draw, {
+      playerSeat: mkPlayerSeat(0),
+      zoneShuffled: ZoneType.Library,
+    });
+    expect(shuf.payload.zoneShuffled).toBe(ZoneType.Library);
+  });
+
+  it("builds CardPlotted + TokenCreated", () => {
+    const plot = mkEvent("CardPlotted", 4, PhaseStep.Main1, {
+      playerSeat: mkPlayerSeat(0),
+      cardId: mkEntityId(99),
+    });
+    expect(plot.payload.cardId).toBe(mkEntityId(99));
+    const tok = mkEvent("TokenCreated", 4, PhaseStep.Main1, {
+      controllerSeat: mkPlayerSeat(0),
+      tokenCardId: mkEntityId(500),
+      definitionId: "goblin_1_1_red",
+    });
+    expect(tok.payload.definitionId).toBe("goblin_1_1_red");
+  });
+
+  it("builds ManaEnteredPool with optional color + source", () => {
+    const e = mkEvent("ManaEnteredPool", 2, PhaseStep.Main1, {
+      playerSeat: mkPlayerSeat(0),
+      color: Color.Red,
+      sourceId: mkEntityId(10),
+      amount: 1,
+    });
+    expect(e.payload.color).toBe(Color.Red);
+    expect(JSON.parse(JSON.stringify(e))).toEqual(e);
+  });
+
+  it("builds DayTimeChanged / DoorOpened / SpeedLevelChanged", () => {
+    const day = mkEvent("DayTimeChanged", 3, PhaseStep.Upkeep, {
+      oldValue: "day",
+      newValue: "night",
+    });
+    expect(day.payload.newValue).toBe("night");
+    const door = mkEvent("DoorOpened", 3, PhaseStep.Main1, {
+      cardId: mkEntityId(50),
+      doorId: "front",
+    });
+    expect(door.payload.doorId).toBe("front");
+    const sp = mkEvent("SpeedLevelChanged", 3, PhaseStep.EndStep, {
+      playerSeat: mkPlayerSeat(0),
+      oldLevel: 1,
+      newLevel: 2,
+    });
+    expect(sp.payload.newLevel).toBe(2);
+  });
+
+  it("builds ModeChosen on Stack", () => {
+    const e = mkEvent("ModeChosen", 1, PhaseStep.Main1, {
+      sourceId: mkEntityId(77),
+      modeIds: ["a", "c"],
+    });
+    expect(e.payload.modeIds.length).toBe(2);
+  });
+
+  it("builds PlayerPoisoned + PlayerRadiated", () => {
+    const pois = mkEvent("PlayerPoisoned", 2, PhaseStep.CombatDamage, {
+      playerSeat: mkPlayerSeat(1),
+      amount: 2,
+    });
+    expect(pois.payload.amount).toBe(2);
+    const rad = mkEvent("PlayerRadiated", 2, PhaseStep.EndStep, {
+      playerSeat: mkPlayerSeat(1),
+      amount: 1,
+    });
+    expect(rad.payload.amount).toBe(1);
+  });
+
+  it("builds FlipCoin / RollDie / SubgameStarted / SubgameEnded", () => {
+    const coin = mkEvent("FlipCoin", 1, PhaseStep.Main1, {
+      playerSeat: mkPlayerSeat(0),
+      resultHeads: true,
+    });
+    expect(coin.payload.resultHeads).toBe(true);
+    const die = mkEvent("RollDie", 1, PhaseStep.Main1, {
+      playerSeat: mkPlayerSeat(0),
+      sides: 6,
+      result: 4,
+    });
+    expect(die.payload.result).toBe(4);
+    const sub1 = mkEvent("SubgameStarted", 5, PhaseStep.Main1, { parentTurn: 5 });
+    expect(sub1.payload.parentTurn).toBe(5);
+    const sub2 = mkEvent("SubgameEnded", 5, PhaseStep.Main1, {
+      parentTurn: 5,
+      outcome: "win",
+    });
+    expect(sub2.payload.outcome).toBe("win");
   });
 });
 

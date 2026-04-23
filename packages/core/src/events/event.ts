@@ -13,14 +13,19 @@
 // Construction uses `mkEvent` for type-safe payload narrowing; `isEvent`
 // narrows a GameEvent to a specific kind for simple, non-switch consumers.
 
+import type { Color } from "../color.js";
 import type { EntityId, PlayerSeat } from "../ids.js";
 import type { PhaseStep } from "../phase.js";
 import type { ZoneType } from "../zone.js";
 
 /**
- * Full enumeration of engine events — 63 kinds across 8 families, matching
- * SP1 spec §8. Variants are grouped by inline family comments so additions
- * land in the right section.
+ * Full enumeration of engine events — 79 kinds across 8 families. The SP1
+ * spec §8 baseline was 63 kinds; the post-audit expansion adds 16 Forge-
+ * required kinds (Scry/Surveil/Shuffle zone-family, Mana family, day/night
+ * + door/speed updates to Monarch-family, ModeChosen on Stack, Poison/
+ * Radiation on Player, FlipCoin/RollDie/Subgame on Meta, CardPlotted +
+ * TokenCreated on Zone). Variants stay grouped by inline family comments
+ * so additions land in the right section.
  */
 export type GameEvent =
   // === Zone change (10) ===
@@ -628,6 +633,149 @@ export type GameEvent =
       readonly turn: number;
       readonly phase: PhaseStep;
       readonly payload: { readonly description: string; readonly affected: readonly EntityId[] };
+    }
+  // === Zone change extensions (5) ===
+  | {
+      readonly kind: "Scry";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly count: number };
+    }
+  | {
+      readonly kind: "Surveil";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly count: number };
+    }
+  | {
+      readonly kind: "Shuffle";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly zoneShuffled: ZoneType };
+    }
+  | {
+      readonly kind: "CardPlotted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly cardId: EntityId };
+    }
+  | {
+      readonly kind: "TokenCreated";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly controllerSeat: PlayerSeat;
+        readonly tokenCardId: EntityId;
+        readonly definitionId?: string;
+      };
+    }
+  // === Mana (1) ===
+  // WHY: Forge emits both a pre-pool "produced" and post-pool "entered
+  // pool" hook; SP1 collapses to one event ManaEnteredPool so triggers
+  // that care about "whenever mana is added to your pool" get a single
+  // attachment point. SP2 may split if a trigger needs the pre/post
+  // distinction.
+  | {
+      readonly kind: "ManaEnteredPool";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly color: Color | null;
+        readonly sourceId: EntityId | null;
+        readonly amount: number;
+      };
+    }
+  // === Monarch/Initiative/Ring extensions (3) ===
+  | {
+      readonly kind: "DayTimeChanged";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly oldValue: "day" | "night" | "neither";
+        readonly newValue: "day" | "night" | "neither";
+      };
+    }
+  | {
+      readonly kind: "DoorOpened";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly doorId?: string };
+    }
+  | {
+      readonly kind: "SpeedLevelChanged";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly oldLevel: number;
+        readonly newLevel: number;
+      };
+    }
+  // === Stack extensions (1) ===
+  | {
+      readonly kind: "ModeChosen";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly sourceId: EntityId; readonly modeIds: readonly string[] };
+    }
+  // === Player extensions (2) ===
+  | {
+      readonly kind: "PlayerPoisoned";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly amount: number };
+    }
+  | {
+      readonly kind: "PlayerRadiated";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly amount: number };
+    }
+  // === Meta extensions (4) ===
+  | {
+      readonly kind: "FlipCoin";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly resultHeads: boolean };
+    }
+  | {
+      readonly kind: "RollDie";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly sides: number;
+        readonly result: number;
+      };
+    }
+  | {
+      readonly kind: "SubgameStarted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly parentTurn: number };
+    }
+  | {
+      readonly kind: "SubgameEnded";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly parentTurn: number; readonly outcome: string };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
