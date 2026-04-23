@@ -7,6 +7,7 @@
 // significantly.
 import type { CounterType, EntityId, PaperCard, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 import { paperCardKey } from "@mtg-forge-ts/core";
+import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 
 export class Card {
   tapped = false;
@@ -15,9 +16,9 @@ export class Card {
   counters = new Map<CounterType, number>();
   attachedTo: EntityId | null = null;
   attachments: EntityId[] = [];
-  // Typed by SP2's CopiableCharacteristics / FaceDownState. Holding unknown
-  // here avoids leaking SP2 surface into SP1 and keeps the field slots stable.
-  copiedFrom: unknown | null = null;
+  // SP2 Task 3: Layer 1 copy source (CR 707.2). `faceDown` remains `unknown`
+  // until Task 53-54 land the FaceDownState shape.
+  copiedFrom: CopiableCharacteristics | null = null;
   faceDown: unknown | null = null;
 
   constructor(

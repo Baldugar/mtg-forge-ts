@@ -56,6 +56,7 @@ import {
   serializeRngState,
 } from "@mtg-forge-ts/core";
 import { Card } from "../card.js";
+import type { CopiableCharacteristics } from "../copy/copiable-characteristics.js";
 import type { GameFlags } from "../game-flags.js";
 import { createDefaultFlags } from "../game-flags.js";
 import type { GameRules } from "../game-rules.js";
@@ -554,7 +555,11 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     }
     card.attachedTo = sc.attachedTo;
     card.attachments = [...sc.attachments];
-    card.copiedFrom = sc.copiedFrom;
+    // SP2 Task 3: Card.copiedFrom is now CopiableCharacteristics | null, but
+    // snapshot's SerializedCard keeps `unknown` until Task 55 lands structural
+    // (de)serialization for CopiableCharacteristics (sets, ColorSet, ManaCost).
+    // Until then, live snapshots only hold null, so a narrowing cast is safe.
+    card.copiedFrom = sc.copiedFrom as CopiableCharacteristics | null;
     card.faceDown = sc.faceDown;
     game.cards.set(sc.id, card);
   }
