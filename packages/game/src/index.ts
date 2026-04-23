@@ -13,5 +13,6 @@ export * from "./phase/index.js";
 export * from "./player.js";
 export * from "./registries/index.js";
 export * from "./stack/index.js";
+export * from "./target/index.js";
 export * from "./terminal-state.js";
 export * from "./zone/index.js";
