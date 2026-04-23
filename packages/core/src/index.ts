@@ -11,6 +11,7 @@ export * from "./counter-type.js";
 export * from "./mana/index.js";
 export * from "./cost/index.js";
 export * from "./card/index.js";
+export * from "./characteristics/index.js";
 export * from "./deck/index.js";
 export * from "./rng/index.js";
 export * from "./errors.js";
