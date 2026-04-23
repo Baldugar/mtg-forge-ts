@@ -27,6 +27,13 @@ export class Cost {
 const ctors = new Map<string, (data: { kind: string; [k: string]: unknown }) => CostPart>();
 
 export const CostPartRegistry = {
+  /**
+   * Register a CostPart constructor under `kind`. Re-registering under an
+   * existing kind REPLACES the prior constructor — this matches Map.set
+   * semantics and lets test harnesses override production constructors
+   * without a separate override API. Callers that need strict uniqueness
+   * should gate with `has(kind)` first.
+   */
   register(kind: string, ctor: (data: { kind: string; [k: string]: unknown }) => CostPart): void {
     ctors.set(kind, ctor);
   },

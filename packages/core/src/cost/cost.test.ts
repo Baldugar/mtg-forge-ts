@@ -133,4 +133,41 @@ describe("CostPartRegistry list/has/unregister", () => {
     expect(all).toContain("test15-life");
     expect(all).toContain("test15-tap");
   });
+
+  it("re-registering under an existing kind replaces the prior constructor (last-wins)", () => {
+    // WHY: documents the Map.set semantics decision (Reviewer C §3.10).
+    // Test harnesses rely on this to override production constructors
+    // without a dedicated override API; changing to a throw would break
+    // that usage pattern silently.
+    const kind = "test15-overwrite";
+    class First extends CostPart {
+      readonly kind = kind;
+      readonly tag = "first";
+      toJSON(): { kind: string; tag: string } {
+        return { kind: this.kind, tag: this.tag };
+      }
+    }
+    class Second extends CostPart {
+      readonly kind = kind;
+      readonly tag = "second";
+      toJSON(): { kind: string; tag: string } {
+        return { kind: this.kind, tag: this.tag };
+      }
+    }
+    try {
+      CostPartRegistry.register(kind, () => new First());
+      const a = CostPartRegistry.hydrate({ kind });
+      expect(a).toBeInstanceOf(First);
+      // Re-register: last-wins. Prior constructor is silently replaced.
+      CostPartRegistry.register(kind, () => new Second());
+      const b = CostPartRegistry.hydrate({ kind });
+      expect(b).toBeInstanceOf(Second);
+      expect(b).not.toBeInstanceOf(First);
+      // Re-register once more: still last-wins.
+      CostPartRegistry.register(kind, () => new First());
+      expect(CostPartRegistry.hydrate({ kind })).toBeInstanceOf(First);
+    } finally {
+      CostPartRegistry.unregister(kind);
+    }
+  });
 });
