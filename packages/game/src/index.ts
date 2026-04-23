@@ -9,6 +9,7 @@ export * from "./game-meta.js";
 export * from "./game-rules.js";
 export * from "./game.js";
 export * from "./mana/index.js";
+export * from "./phase/index.js";
 export * from "./player.js";
 export * from "./registries/index.js";
 export * from "./stack/index.js";
