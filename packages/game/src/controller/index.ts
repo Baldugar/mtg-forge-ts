@@ -2,3 +2,4 @@
 export * from "./controller.js";
 export * from "./scripted-controller.js";
 export * from "./random-legal-controller.js";
+export * from "./human-controller.js";
