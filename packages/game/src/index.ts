@@ -7,6 +7,7 @@ export * from "./card.js";
 export * from "./combat/index.js";
 export * from "./controller/index.js";
 export * from "./decision-log/index.js";
+export * from "./end/index.js";
 export * from "./game-flags.js";
 export * from "./game-meta.js";
 export * from "./game-rules.js";

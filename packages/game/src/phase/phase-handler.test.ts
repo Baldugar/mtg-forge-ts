@@ -240,7 +240,11 @@ describe("PhaseHandler.run", () => {
     const game = mkGame();
     const handler = new PhaseHandler(game);
     handler.turnQueue.push({ activePlayer: mkPlayerSeat(0), isExtra: false });
-    game.terminalState = { reason: "concede", winners: [mkPlayerSeat(1)], turn: 1 };
+    game.terminalState = {
+      endedAt: { turn: 1, phase: game.phase },
+      outcome: { kind: "win", winner: mkPlayerSeat(1), reason: "concede" },
+      concededSeats: [mkPlayerSeat(0)],
+    };
     const yields = drive(handler);
     expect(yields).toHaveLength(0);
   });

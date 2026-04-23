@@ -89,7 +89,11 @@ describe("Game", () => {
   it("isTerminal returns false initially; true after terminalState set", () => {
     const g = makeGame();
     expect(g.isTerminal()).toBe(false);
-    g.terminalState = { reason: "victory", winners: [mkPlayerSeat(0)], turn: 7 };
+    g.terminalState = {
+      endedAt: { turn: 7, phase: g.phase },
+      outcome: { kind: "win", winner: mkPlayerSeat(0), reason: "victory" },
+      concededSeats: [],
+    };
     expect(g.isTerminal()).toBe(true);
   });
 

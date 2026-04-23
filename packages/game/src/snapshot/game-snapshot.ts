@@ -39,6 +39,7 @@ import { createDefaultFlags } from "../game-flags.js";
 import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
 import type { StackItem } from "../stack/stack-item.js";
+import type { TerminalState } from "../terminal-state.js";
 import type { Zone } from "../zone/zone.js";
 import { Ante } from "../zone/zones/ante.js";
 import { Battlefield } from "../zone/zones/battlefield.js";
@@ -171,11 +172,7 @@ export interface GameSnapshot {
     readonly flags: SerializedGameFlags;
     readonly rngState: SerializedRngState;
     readonly entityIdCounter: number;
-    readonly terminalState: {
-      readonly reason: "victory" | "draw" | "concede" | "timeout";
-      readonly winners: readonly PlayerSeat[];
-      readonly turn: number;
-    } | null;
+    readonly terminalState: TerminalState | null;
   };
 }
 

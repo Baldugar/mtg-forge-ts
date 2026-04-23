@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
+import type { LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
 import {
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
@@ -410,18 +410,15 @@ describe("GameSnapshot", () => {
 
   it("terminalState round-trips", () => {
     const g = makeGame();
-    g.terminalState = {
-      reason: "victory",
-      winners: [mkPlayerSeat(0)],
-      turn: 9,
+    const terminal = {
+      endedAt: { turn: 9, phase: g.phase },
+      outcome: { kind: "win" as const, winner: mkPlayerSeat(0), reason: "victory" },
+      concededSeats: [] as PlayerSeat[],
     };
+    g.terminalState = terminal;
     const snap = snapshot(g);
     const restored = restore(JSON.parse(JSON.stringify(snap)) as typeof snap, makeRestoreOpts());
-    expect(restored.terminalState).toEqual({
-      reason: "victory",
-      winners: [mkPlayerSeat(0)],
-      turn: 9,
-    });
+    expect(restored.terminalState).toEqual(terminal);
     expect(restored.isTerminal()).toBe(true);
   });
 
