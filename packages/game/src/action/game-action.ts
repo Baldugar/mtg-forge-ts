@@ -16,7 +16,7 @@
 // etc.). Generators make the pause-and-resume contract explicit at the
 // type-system level via the EngineYield union.
 import type { CounterType, EntityId, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
-import { GameStateIntegrityError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { StackItem } from "../stack/stack-item.js";
 import type { Zone } from "../zone/zone.js";
@@ -219,6 +219,13 @@ export class GameAction {
     amount: number,
     sourceId?: EntityId,
   ): Generator<EngineYield, void, unknown> {
+    // WHY: counter amounts are always positive integers per MTG rules.
+    // Accepting 0 or negatives silently (the old behavior) let bugs
+    // propagate through to observers and persisted state. Callers that
+    // need "remove N" must use removeCounter.
+    if (!Number.isInteger(amount) || amount <= 0) {
+      throw new IllegalDecisionError(`addCounter: amount must be a positive integer, got ${amount}`);
+    }
     const game = this.game;
     const card = game.cards.get(cardId);
     if (card) {
@@ -242,14 +249,22 @@ export class GameAction {
     amount: number,
     sourceId?: EntityId,
   ): Generator<EngineYield, void, unknown> {
+    if (!Number.isInteger(amount) || amount <= 0) {
+      throw new IllegalDecisionError(`removeCounter: amount must be a positive integer, got ${amount}`);
+    }
     const game = this.game;
     const card = game.cards.get(cardId);
-    if (card) {
-      const current = card.counters.get(counterType) ?? 0;
-      const next = Math.max(0, current - amount);
-      if (next === 0) card.counters.delete(counterType);
-      else card.counters.set(counterType, next);
+    // WHY: Forge no-ops when the targeted counter type isn't present on
+    // the card; that matches CR 122.1 ("you can't remove a counter that
+    // isn't there"). Emitting CounterRemoved anyway would falsely signal
+    // an observable change to trigger/event subscribers.
+    if (!card || !card.counters.has(counterType)) {
+      return;
     }
+    const current = card.counters.get(counterType) ?? 0;
+    const next = Math.max(0, current - amount);
+    if (next === 0) card.counters.delete(counterType);
+    else card.counters.set(counterType, next);
     yield {
       kind: "event",
       event: mkEvent("CounterRemoved", game.turn, game.phase, {

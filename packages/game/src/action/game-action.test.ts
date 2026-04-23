@@ -4,6 +4,7 @@ import {
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
   GameStateIntegrityError,
+  IllegalDecisionError,
   SeededRng,
   ZoneType,
   mkEntityId,
@@ -315,6 +316,56 @@ describe("GameAction.addCounter / removeCounter", () => {
     expect(card.counters.get(CounterType.PlusOnePlusOne)).toBe(1);
     collect(action.removeCounter(id, CounterType.PlusOnePlusOne, 5));
     expect(card.counters.has(CounterType.PlusOnePlusOne)).toBe(false);
+  });
+
+  it("addCounter rejects zero, negative, NaN, and non-integer amounts", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(310);
+    addCardToZone(game, seat0, ZoneType.Battlefield, id);
+    expect(() => collect(action.addCounter(id, CounterType.PlusOnePlusOne, 0))).toThrow(IllegalDecisionError);
+    expect(() => collect(action.addCounter(id, CounterType.PlusOnePlusOne, -1))).toThrow(
+      IllegalDecisionError,
+    );
+    expect(() => collect(action.addCounter(id, CounterType.PlusOnePlusOne, Number.NaN))).toThrow(
+      IllegalDecisionError,
+    );
+    expect(() => collect(action.addCounter(id, CounterType.PlusOnePlusOne, 1.5))).toThrow(
+      IllegalDecisionError,
+    );
+  });
+
+  it("removeCounter rejects zero, negative, NaN, and non-integer amounts", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(311);
+    const card = addCardToZone(game, seat0, ZoneType.Battlefield, id);
+    card.counters.set(CounterType.PlusOnePlusOne, 2);
+    expect(() => collect(action.removeCounter(id, CounterType.PlusOnePlusOne, 0))).toThrow(
+      IllegalDecisionError,
+    );
+    expect(() => collect(action.removeCounter(id, CounterType.PlusOnePlusOne, -3))).toThrow(
+      IllegalDecisionError,
+    );
+    expect(() => collect(action.removeCounter(id, CounterType.PlusOnePlusOne, Number.NaN))).toThrow(
+      IllegalDecisionError,
+    );
+    expect(() => collect(action.removeCounter(id, CounterType.PlusOnePlusOne, 2.5))).toThrow(
+      IllegalDecisionError,
+    );
+  });
+
+  it("removeCounter is a no-op (emits no event) when the counter type is not present", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(312);
+    addCardToZone(game, seat0, ZoneType.Battlefield, id);
+    // No counters on the card at all.
+    const yields = collect(action.removeCounter(id, CounterType.PlusOnePlusOne, 1));
+    expect(yields).toHaveLength(0);
+    // Also no-op when a different counter type exists but not the targeted one.
+    game.cards.get(id)?.counters.set(CounterType.Loyalty, 3);
+    const yields2 = collect(action.removeCounter(id, CounterType.PlusOnePlusOne, 1));
+    expect(yields2).toHaveLength(0);
+    // Sanity: the Loyalty counters weren't touched.
+    expect(game.cards.get(id)?.counters.get(CounterType.Loyalty)).toBe(3);
   });
 });
 
