@@ -9,11 +9,25 @@
 // concedeMatch / acceptDrawOffer) lives in packages/game/src/controller so
 // PlayerController + MatchController share one import path; Match re-exports
 // the type here for backwards compatibility with Task 41's consumer surface.
-import type { Deck, LobbyPlayer, MatchDecisionResponse, PlayerSeat } from "@mtg-forge-ts/core";
+//
+// Match.run() — SP1 post-audit addition. Spec §15 defines Match.run as the
+// generator that loops games until the match is decided. SP1 supports Bo1
+// and Bo3/Bo5 without sideboarding (auto-continue with the same decks
+// between games). The sideboard MatchDecisionRequest yield belongs to SP7
+// (limited / sideboard tooling) and is stubbed in sideboardingFlow().
+import type {
+  DecisionResponse,
+  Deck,
+  LobbyPlayer,
+  MatchDecisionResponse,
+  PlayerSeat,
+} from "@mtg-forge-ts/core";
 import { GameStateIntegrityError, mkPlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
-import type { MatchController } from "../controller/controller.js";
+import type { MatchController, PlayerController } from "../controller/controller.js";
 import type { Game } from "../game.js";
+import { runGame } from "../run-game.js";
+import type { SetupDecks } from "../setup/setup-flow.js";
 
 export type { MatchController };
 
@@ -47,13 +61,51 @@ export interface MatchOptions {
   readonly players: readonly LobbyPlayer[];
   readonly decks: readonly Deck[];
   readonly formatId: string;
+  /**
+   * Optional MatchController for SP7 sideboard / draw-offer / concede-match
+   * handling. SP1 does not require one — Match.run auto-continues between
+   * games. Stored on the Match so future flows can reach it uniformly.
+   */
+  readonly matchController?: MatchController;
 }
+
+/**
+ * Overall match outcome returned by Match.run() when the series is decided.
+ * `winner` is null on a draw (all games ended in draws or tied at the cap);
+ * `reason` records how the match ended so observers can distinguish a
+ * victory from a matchController-concede even when the score looks the same.
+ */
+export interface MatchOutcome {
+  readonly winner: PlayerSeat | null;
+  readonly reason: "victory" | "draw" | "concede";
+  readonly games: readonly MatchGameResult[];
+}
+
+/**
+ * Factory produced by the caller for Match.run. Each call to
+ * `setupGameFactory()` mints the per-game Game instance, the SetupDecks
+ * mapping, and the per-seat PlayerController map. Separating factory from
+ * Match keeps Match ignorant of Game construction (SP4 CardDb + PaperCard
+ * wiring) while still letting run() cycle games.
+ */
+export interface MatchGameSetup {
+  readonly game: Game;
+  readonly decks: SetupDecks;
+  readonly controllers: Map<PlayerSeat, PlayerController>;
+}
+export type MatchGameFactory = (gameIndex: number) => MatchGameSetup;
 
 export class Match {
   readonly options: MatchOptions;
   private readonly scores: Map<PlayerSeat, MatchScore>;
   private readonly games: MatchGameResult[] = [];
   private currentGame: Game | null = null;
+  /**
+   * MatchController — optional reference hoisted from MatchOptions so SP7's
+   * sideboardingFlow and concedeMatch paths can reach it without re-plumbing.
+   * Null when the caller doesn't supply one (the SP1 default).
+   */
+  readonly matchController: MatchController | null;
 
   constructor(options: MatchOptions) {
     if (options.players.length !== options.decks.length) {
@@ -65,6 +117,7 @@ export class Match {
       );
     }
     this.options = options;
+    this.matchController = options.matchController ?? null;
     this.scores = new Map();
     for (let i = 0; i < options.players.length; i++) {
       this.scores.set(mkPlayerSeat(i), {
@@ -136,13 +189,154 @@ export class Match {
   }
 
   /**
-   * Between-games sideboarding generator. SP2 will yield a sideboard
+   * Between-games sideboarding generator. SP7 will yield a sideboard
    * MatchDecisionRequest per seat, collect responses, and mutate the
    * MatchOptions.decks to the newly-chosen configuration. SP1 stubs the flow
    * so consumers can wire the contract now.
    */
   // biome-ignore lint/correctness/useYield: stub throws before any yield
   *sideboardingFlow(): Generator<EngineYield, void, MatchDecisionResponse> {
-    throw new Error("Match.sideboardingFlow: SP2 sideboarding flow required");
+    throw new Error("Match.sideboardingFlow: SP7 sideboarding flow required");
+  }
+
+  /**
+   * Match.run — top-level match generator. Loops until isDecided():
+   *   1. Invoke `setupGameFactory(gameIndex)` to build the next Game + decks
+   *      + per-seat PlayerControllers.
+   *   2. Run the Game to terminal state via runGame(), forwarding every
+   *      engine yield. Decision yields are answered from the seat-keyed
+   *      controller map (matches the integration smoke test's driver shape).
+   *   3. Derive a MatchGameResult from game.terminalState and recordGameResult.
+   *   4. If the match isn't yet decided, loop to game index + 1. SP7 will
+   *      insert a sideboard MatchDecisionRequest yield here; SP1 auto-continues.
+   *
+   * Returns a MatchOutcome describing the final series result.
+   *
+   * SP1 scope: Bo1 and Bo3/Bo5 without sideboarding. Full sideboard decision
+   * yield belongs to SP7 (limited / sideboard tooling).
+   */
+  *run(setupGameFactory: MatchGameFactory): Generator<EngineYield, MatchOutcome, DecisionResponse> {
+    let gameIndex = 0;
+    // WHY: hard cap prevents a malformed factory from producing an unbounded
+    // loop. bestOf is 1/3/5; even with a draw streak the series must decide
+    // by bestOf games. +1 buys a safety margin for concede-as-draw edge cases.
+    const maxGames = this.options.bestOf + 1;
+
+    while (!this.isDecided()) {
+      if (gameIndex >= maxGames) {
+        throw new GameStateIntegrityError(
+          `Match.run: exceeded maxGames (${maxGames}) without reaching a decided state`,
+        );
+      }
+      const { game, decks, controllers } = setupGameFactory(gameIndex);
+      this.setCurrentGame(game);
+
+      // Drive the per-game generator. runGame yields events + decisions; we
+      // forward events upstream unchanged, and answer decisions by routing
+      // each request's playerSeat to the matching PlayerController.
+      const gen = runGame(game, { decks });
+      let step = gen.next();
+      while (!step.done) {
+        const y = step.value;
+        if (y.kind === "event") {
+          yield y;
+          step = gen.next();
+          continue;
+        }
+        // Decision yield — route by playerSeat. Every SP1 DecisionRequest
+        // carries a playerSeat; narrow structurally rather than enumerating
+        // all 44 kinds.
+        const req = y.request;
+        if (!("playerSeat" in req)) {
+          throw new GameStateIntegrityError(
+            `Match.run: unexpected DecisionRequest without playerSeat (kind=${req.kind})`,
+          );
+        }
+        const controller = controllers.get(req.playerSeat);
+        if (!controller) {
+          throw new GameStateIntegrityError(
+            `Match.run: no controller for seat ${req.playerSeat as unknown as number} (game ${gameIndex})`,
+          );
+        }
+        const response = controller.decide(req);
+        step = gen.next(response);
+      }
+
+      // Record the result. Derive winners + reason from terminalState.
+      const result = deriveGameResult(game, gameIndex);
+      const concededByLoser = result.reason === "concede";
+      this.recordGameResult(result, concededByLoser);
+      gameIndex++;
+    }
+
+    this.setCurrentGame(null);
+    return this.computeOverallOutcome();
+  }
+
+  /**
+   * Derive the MatchOutcome from the current score ledger. Called at the end
+   * of run(); SP7 can also invoke directly after a concedeMatch.
+   */
+  computeOverallOutcome(): MatchOutcome {
+    if (!this.isDecided()) {
+      throw new GameStateIntegrityError("Match.computeOverallOutcome: called on an undecided match");
+    }
+    const winsToWin = Math.ceil(this.options.bestOf / 2);
+    let topSeat: PlayerSeat | null = null;
+    let topWins = -1;
+    let tieAtTop = false;
+    for (const [seat, s] of this.scores) {
+      if (s.wins > topWins) {
+        topWins = s.wins;
+        topSeat = seat;
+        tieAtTop = false;
+      } else if (s.wins === topWins) {
+        tieAtTop = true;
+      }
+    }
+    if (topSeat === null || tieAtTop || topWins < winsToWin) {
+      // Tied at the cap or no seat reached majority — match is a draw.
+      return { winner: null, reason: "draw", games: [...this.games] };
+    }
+    // WHY: even on a clean win, surface "concede" if the decisive game ended
+    // via concession. Observers rendering "Alice wins by concede" need this.
+    const lastConcede = this.games.some((g) => g.reason === "concede" && g.winners.includes(topSeat));
+    return {
+      winner: topSeat,
+      reason: lastConcede ? "concede" : "victory",
+      games: [...this.games],
+    };
   }
 }
+
+/**
+ * Map a finished Game's terminalState into a MatchGameResult. Runs once per
+ * game at the end of Match.run's inner loop. Throws if terminalState is
+ * still null — the caller is expected to run the game to completion before
+ * calling this.
+ */
+const deriveGameResult = (game: Game, gameIndex: number): MatchGameResult => {
+  const ts = game.terminalState;
+  if (ts === null) {
+    throw new GameStateIntegrityError(`Match.run: game ${gameIndex} ended without a terminalState`);
+  }
+  // WHY: narrow the discriminated union once into a local binding so each
+  // branch's fields (winner / teamId) are type-resolvable. A ternary chain
+  // that re-dereferences ts.outcome loses the narrowing across arms.
+  let winners: PlayerSeat[];
+  const outcome = ts.outcome;
+  if (outcome.kind === "win") {
+    winners = [outcome.winner];
+  } else if (outcome.kind === "teamWin") {
+    // Team wins: all seats on the winning team count as winners.
+    winners = game.players.filter((p) => p.teamId === outcome.teamId).map((p) => p.seat);
+  } else {
+    // Draw — no winners.
+    winners = [];
+  }
+  // Reason mapping: if any seat conceded this game, surface "concede" so the
+  // Match-level concededLastGame flag is set correctly.
+  const reason: MatchGameResult["reason"] =
+    ts.concededSeats.length > 0 ? "concede" : outcome.kind === "draw" ? "draw" : "victory";
+  return { gameIndex, winners, reason };
+};

@@ -1,8 +1,29 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import type { Deck, LobbyPlayer } from "@mtg-forge-ts/core";
-import { GameStateIntegrityError, mkPlayerSeat } from "@mtg-forge-ts/core";
+import type {
+  DecisionResponse,
+  Deck,
+  EntityId,
+  LobbyPlayer,
+  PaperCard,
+  PlayerSeat,
+} from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  GameStateIntegrityError,
+  SeededRng,
+  ZoneType,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
-import type { MatchGameResult, MatchOptions } from "./match.js";
+import { Card } from "../card.js";
+import type { PlayerController } from "../controller/controller.js";
+import { ScriptedController } from "../controller/scripted-controller.js";
+import type { GameMeta } from "../game-meta.js";
+import type { GameRules } from "../game-rules.js";
+import { Game } from "../game.js";
+import { runMatch } from "../run-match.js";
+import type { SetupDecks } from "../setup/setup-flow.js";
+import type { MatchGameFactory, MatchGameResult, MatchOptions } from "./match.js";
 import { Match } from "./match.js";
 
 const alice: LobbyPlayer = { id: "p-alice", name: "Alice", controllerKind: "human" };
@@ -155,7 +176,7 @@ describe("Match", () => {
   it("sideboardingFlow throws SP2 message", () => {
     const m = new Match(mkOptions(3));
     const gen = m.sideboardingFlow();
-    expect(() => gen.next()).toThrow(/SP2 sideboarding flow required/);
+    expect(() => gen.next()).toThrow(/SP7 sideboarding flow required/);
   });
 
   it("getGames returns the recorded games in order", () => {
@@ -178,5 +199,194 @@ describe("Match", () => {
           formatId: "standard",
         }),
     ).toThrow();
+  });
+
+  it("matchController is stored on the Match and accessible via .matchController", () => {
+    const controller = { decide: () => ({ kind: "concedeMatch", concede: true }) as const };
+    const m = new Match({ ...mkOptions(3), matchController: controller });
+    expect(m.matchController).toBe(controller);
+    const m2 = new Match(mkOptions(3));
+    expect(m2.matchController).toBeNull();
+  });
+
+  it("computeOverallOutcome throws when called on an undecided match", () => {
+    const m = new Match(mkOptions(3));
+    expect(() => m.computeOverallOutcome()).toThrow(GameStateIntegrityError);
+    expect(() => m.computeOverallOutcome()).toThrow(/undecided match/);
+  });
+});
+
+// === Match.run integration tests ==================================
+
+const rules: GameRules = {
+  formatId: "casual",
+  startingLife: 20,
+  startingHandSize: 7,
+  mulliganRule: "london",
+  firstPlayerSkipsDraw: true,
+  ruleOverrides: [],
+  playerCount: { min: 2, max: 2 },
+  poisonCountersToLose: 10,
+  playForAnte: false,
+  manaBurn: false,
+  appliedVariants: [],
+};
+
+const meta: GameMeta = {
+  engineVersion: "0.0.0",
+  forgeSha: "test",
+  cardDataSyncedAt: "2026-04-23T00:00:00Z",
+  crVersion: "2026-03-17",
+  seed: "0x1234",
+};
+
+const stubPaperCard = (name: string): PaperCard => ({
+  name,
+  edition: "TST",
+  collectorNumber: "001",
+  language: "en",
+  foil: false,
+  flags: DEFAULT_PAPER_CARD_FLAGS,
+});
+
+// WHY: Match.run drives runGame, which consumes setupGame + PhaseHandler.
+// This factory mints a fresh Game + seeds 60 stub cards per seat and returns
+// the controllers the caller provides. Mirrors the integration smoke test's
+// seeding strategy so we exercise the same real engine path.
+const makeMatchFactory = (
+  seatControllers: (gameIndex: number) => Map<PlayerSeat, PlayerController>,
+  seedOffset = 0,
+): MatchGameFactory => {
+  return (gameIndex: number) => {
+    const game = new Game({
+      lobbyPlayers: [
+        { id: "p0", name: "P0", controllerKind: "scripted" },
+        { id: "p1", name: "P1", controllerKind: "scripted" },
+      ],
+      rules,
+      meta,
+      rng: new SeededRng(BigInt(0x1234 + seedOffset + gameIndex)),
+    });
+    const decks: Record<number, EntityId[]> = { 0: [], 1: [] };
+    for (let seat = 0; seat < 2; seat++) {
+      const playerSeat = mkPlayerSeat(seat);
+      for (let i = 0; i < 60; i++) {
+        const id = game.newEntityId();
+        game.cards.set(
+          id,
+          new Card(id, stubPaperCard(`Stub ${seat}-${i}`), playerSeat, playerSeat, ZoneType.Library),
+        );
+        const deck = decks[seat];
+        if (!deck) throw new Error("factory: unreachable — deck bucket missing");
+        deck.push(id);
+      }
+    }
+    return {
+      game,
+      decks: decks as unknown as SetupDecks,
+      controllers: seatControllers(gameIndex),
+    };
+  };
+};
+
+describe("Match.run", () => {
+  it("Bo1: active seat concedes on first priority → match decided in 1 game", () => {
+    const match = new Match(mkOptions(1));
+    // Both seats scripted with priority=concede — only the active seat
+    // (chosen by the setup die-roll) gets prompted and concedes.
+    const bothConcede = (): Map<PlayerSeat, PlayerController> => {
+      const map = new Map<PlayerSeat, PlayerController>();
+      for (const seat of [0, 1]) {
+        map.set(
+          mkPlayerSeat(seat),
+          new ScriptedController([
+            { kind: "mulligan", keep: true } as DecisionResponse,
+            { kind: "priority", action: { kind: "concede" } } as DecisionResponse,
+          ]),
+        );
+      }
+      return map;
+    };
+    const factory = makeMatchFactory(() => bothConcede());
+    const gen = runMatch(match, factory);
+    let step = gen.next();
+    let safety = 0;
+    while (!step.done) {
+      safety++;
+      if (safety > 20000) throw new Error("runaway Match.run generator");
+      if (step.value.kind === "decision") {
+        throw new Error("Match.run should consume decisions internally via controllers");
+      }
+      step = gen.next();
+    }
+    const outcome = step.value;
+    expect(outcome.games).toHaveLength(1);
+    expect(outcome.winner).not.toBeNull();
+    expect(outcome.reason).toBe("concede");
+    // Whichever seat won has wins=1; the other has concededLastGame=true.
+    const winner = outcome.winner;
+    if (winner === null) throw new Error("unreachable: winner asserted non-null");
+    expect(match.getScore(winner).wins).toBe(1);
+    const loser = mkPlayerSeat((winner as unknown as number) === 0 ? 1 : 0);
+    expect(match.getScore(loser).concededLastGame).toBe(true);
+  });
+
+  it("Bo3: whichever-seat-has-priority concedes each game → match decided after 2 games", () => {
+    const match = new Match(mkOptions(3));
+    // WHY: SP1 priority loop prompts only the active player each step; we
+    // don't know who the die-roll picked, so script BOTH seats to concede
+    // on first priority. The winner of each game is the non-conceding seat —
+    // which must be the same seat every game (die-roll is deterministic
+    // per-seed, and the conceding seat is always "the one that got priority").
+    // After 2 games, that seat wins the match 2-0.
+    const bothConcede = (): Map<PlayerSeat, PlayerController> => {
+      const map = new Map<PlayerSeat, PlayerController>();
+      for (const seat of [0, 1]) {
+        map.set(
+          mkPlayerSeat(seat),
+          new ScriptedController([
+            { kind: "mulligan", keep: true } as DecisionResponse,
+            { kind: "priority", action: { kind: "concede" } } as DecisionResponse,
+          ]),
+        );
+      }
+      return map;
+    };
+    const factory = makeMatchFactory(() => bothConcede());
+    const gen = runMatch(match, factory);
+    let step = gen.next();
+    let safety = 0;
+    while (!step.done) {
+      safety++;
+      if (safety > 40000) throw new Error("runaway Match.run generator");
+      step = gen.next();
+    }
+    const outcome = step.value;
+    expect(outcome.games).toHaveLength(2);
+    // Winner is whichever seat the die-roll picked as NON-active (inactive
+    // seat never got priority → never conceded). Its wins count is 2.
+    expect(outcome.winner).not.toBeNull();
+    if (outcome.winner === null) throw new Error("unreachable");
+    expect(match.getScore(outcome.winner).wins).toBe(2);
+    expect(match.isDecided()).toBe(true);
+    expect(match.getCurrentGame()).toBeNull();
+  });
+
+  it("run() throws immediately when called on an already-decided match (Bo1 preloaded)", () => {
+    const match = new Match(mkOptions(1));
+    match.recordGameResult(winForSeat(0, 0));
+    // isDecided is already true — run() must not invoke the factory.
+    let factoryCalls = 0;
+    const factory: MatchGameFactory = () => {
+      factoryCalls++;
+      throw new Error("factory should not be called");
+    };
+    const gen = runMatch(match, factory);
+    const step = gen.next();
+    expect(step.done).toBe(true);
+    expect(factoryCalls).toBe(0);
+    const outcome = step.value as Awaited<ReturnType<Match["computeOverallOutcome"]>>;
+    expect(outcome.winner).toBe(mkPlayerSeat(0));
+    expect(outcome.reason).toBe("victory");
   });
 });
