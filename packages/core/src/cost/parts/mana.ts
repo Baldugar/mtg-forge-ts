@@ -2,8 +2,7 @@
 // Port of Forge's CostPartMana: the mana component of any spell or ability
 // cost. The `restriction` param in Forge's string constructor is decomposed
 // here into three discrete booleans plus xMin (derived from "XMin<N>").
-import { ManaCost } from "../../mana/cost.js";
-import type { ManaSymbol } from "../../mana/symbol.js";
+import { ManaCost, type ManaCostJSON } from "../../mana/cost.js";
 import { CostPart, CostPartRegistry } from "../cost.js";
 
 export class CostPartMana extends CostPart {
@@ -19,7 +18,7 @@ export class CostPartMana extends CostPart {
   }
   toJSON(): {
     kind: string;
-    cost: { symbols: ManaSymbol[] };
+    cost: ManaCostJSON;
     xMin: number;
     isExiledCreatureCost: boolean;
     isEnchantedCreatureCost: boolean;

@@ -5,9 +5,11 @@ import { ManaCost } from "./cost.js";
 import { ManaParseError, type ManaSymbol } from "./symbol.js";
 
 describe("ManaCost.parse — basic symbols", () => {
-  it("parses empty string as zero symbols", () => {
+  it("parses empty string as a no-cost (hasNoCost=true, zero symbols)", () => {
     const c = ManaCost.parse("");
     expect(c.symbols).toEqual([]);
+    expect(c.hasNoCost).toBe(true);
+    expect(c.isNoCost()).toBe(true);
   });
 
   it('parses "2WU" as generic 2, White, Blue', () => {
@@ -17,6 +19,7 @@ describe("ManaCost.parse — basic symbols", () => {
       { kind: "colored", color: Color.White },
       { kind: "colored", color: Color.Blue },
     ]);
+    expect(c.hasNoCost).toBe(false);
   });
 
   it('parses "X1B" as variable X, generic 1, Black', () => {
@@ -33,9 +36,12 @@ describe("ManaCost.parse — basic symbols", () => {
     expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "generic", amount: 10 }]);
   });
 
-  it('parses "0" as generic 0', () => {
+  it('parses "0" as generic 0 (distinct from no-cost)', () => {
     const c = ManaCost.parse("0");
     expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "generic", amount: 0 }]);
+    expect(c.hasNoCost).toBe(false);
+    expect(c.isNoCost()).toBe(false);
+    expect(c.isZero()).toBe(true);
   });
 
   it('parses "C" as colorless', () => {
@@ -83,6 +89,26 @@ describe("ManaCost.parse — compound symbols (slash)", () => {
     expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "phyrexian", color: Color.White }]);
   });
 
+  it('parses "C/W" as colorlessHybrid White', () => {
+    const c = ManaCost.parse("C/W");
+    expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "colorlessHybrid", color: Color.White }]);
+  });
+
+  it('parses "C/G" as colorlessHybrid Green', () => {
+    const c = ManaCost.parse("C/G");
+    expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "colorlessHybrid", color: Color.Green }]);
+  });
+
+  it('parses "W/U/P" as hybridPhyrexian White/Blue', () => {
+    const c = ManaCost.parse("W/U/P");
+    expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "hybridPhyrexian", a: Color.White, b: Color.Blue }]);
+  });
+
+  it('parses "B/G/P" as hybridPhyrexian Black/Green', () => {
+    const c = ManaCost.parse("B/G/P");
+    expect(c.symbols).toEqual<ManaSymbol[]>([{ kind: "hybridPhyrexian", a: Color.Black, b: Color.Green }]);
+  });
+
   it("parses mixed compound and simple symbols", () => {
     const c = ManaCost.parse("2W/UB");
     expect(c.symbols).toEqual<ManaSymbol[]>([
@@ -113,6 +139,14 @@ describe("ManaCost.parse — braced form", () => {
     ]);
   });
 
+  it('parses braced colorlessHybrid "{C/W}" and hybridPhyrexian "{W/U/P}"', () => {
+    const c = ManaCost.parse("{C/W}{W/U/P}");
+    expect(c.symbols).toEqual<ManaSymbol[]>([
+      { kind: "colorlessHybrid", color: Color.White },
+      { kind: "hybridPhyrexian", a: Color.White, b: Color.Blue },
+    ]);
+  });
+
   it("rejects a mixed braced/unbraced form", () => {
     expect(() => ManaCost.parse("{W}U")).toThrow(ManaParseError);
     expect(() => ManaCost.parse("W{U}")).toThrow(ManaParseError);
@@ -126,6 +160,79 @@ describe("ManaCost.parse — braced form", () => {
   });
 });
 
+describe("ManaCost.parse — Forge canonical space-separated form", () => {
+  it('parses "2 W U" identically to "2WU"', () => {
+    const spaced = ManaCost.parse("2 W U");
+    const contig = ManaCost.parse("2WU");
+    expect(spaced.symbols).toEqual(contig.symbols);
+    expect(spaced.hasNoCost).toBe(false);
+  });
+
+  it('parses "X W U" identically to "XWU"', () => {
+    const spaced = ManaCost.parse("X W U");
+    expect(spaced.symbols).toEqual<ManaSymbol[]>([
+      { kind: "variable", letter: "X" },
+      { kind: "colored", color: Color.White },
+      { kind: "colored", color: Color.Blue },
+    ]);
+  });
+
+  it('parses "3 G/P" as generic 3 + phyrexian Green', () => {
+    const c = ManaCost.parse("3 G/P");
+    expect(c.symbols).toEqual<ManaSymbol[]>([
+      { kind: "generic", amount: 3 },
+      { kind: "phyrexian", color: Color.Green },
+    ]);
+  });
+
+  it('parses "W/U W/B" as two hybrid shards', () => {
+    const c = ManaCost.parse("W/U W/B");
+    expect(c.symbols).toEqual<ManaSymbol[]>([
+      { kind: "hybrid", a: Color.White, b: Color.Blue },
+      { kind: "hybrid", a: Color.White, b: Color.Black },
+    ]);
+  });
+
+  it('parses "W/U/P B/G/P" as two hybridPhyrexian shards', () => {
+    const c = ManaCost.parse("W/U/P B/G/P");
+    expect(c.symbols).toEqual<ManaSymbol[]>([
+      { kind: "hybridPhyrexian", a: Color.White, b: Color.Blue },
+      { kind: "hybridPhyrexian", a: Color.Black, b: Color.Green },
+    ]);
+  });
+
+  it('parses "{2} {W} {U}" (space-separated + braces)', () => {
+    const c = ManaCost.parse("{2} {W} {U}");
+    expect(c.symbols).toEqual<ManaSymbol[]>([
+      { kind: "generic", amount: 2 },
+      { kind: "colored", color: Color.White },
+      { kind: "colored", color: Color.Blue },
+    ]);
+  });
+
+  it("collapses runs of whitespace (tab/space)", () => {
+    const c = ManaCost.parse("2\tW  U");
+    expect(c.symbols).toEqual<ManaSymbol[]>([
+      { kind: "generic", amount: 2 },
+      { kind: "colored", color: Color.White },
+      { kind: "colored", color: Color.Blue },
+    ]);
+  });
+
+  it("rejects unknown shard token in space-separated form", () => {
+    expect(() => ManaCost.parse("2 Q")).toThrow(ManaParseError);
+  });
+
+  it("rejects truly malformed tokens in space-separated form", () => {
+    // Forge's parseNonGeneric is bit-accumulative and silently ignores '/',
+    // so "W/" actually resolves to White (a lone color bit); matching that
+    // behavior here. But an unknown alpha character MUST be rejected.
+    expect(() => ManaCost.parse("2 Zz")).toThrow(ManaParseError);
+    // An empty braced token is invalid.
+    expect(() => ManaCost.parse("2 {}")).toThrow(ManaParseError);
+  });
+});
+
 describe("ManaCost.parse — whitespace handling", () => {
   it("trims leading and trailing whitespace", () => {
     const c = ManaCost.parse("  2WU  ");
@@ -136,9 +243,20 @@ describe("ManaCost.parse — whitespace handling", () => {
     ]);
   });
 
-  it("rejects interior whitespace", () => {
-    expect(() => ManaCost.parse("2 WU")).toThrow(ManaParseError);
-    expect(() => ManaCost.parse("W U")).toThrow(ManaParseError);
+  it("interior whitespace selects Forge canonical form, not an error", () => {
+    // Historically "2 WU" and "W U" were rejected; we now route them through
+    // the space-separated parser to match Forge's ManaCostParser. In Forge
+    // canonical form, each whitespace-delimited token is exactly one shard —
+    // so "2 WU" is generic 2 + hybrid WU, not 2+W+U. The explicit "2 W U"
+    // form is required to get three separate tokens.
+    expect(ManaCost.parse("2 WU").symbols).toEqual<ManaSymbol[]>([
+      { kind: "generic", amount: 2 },
+      { kind: "hybrid", a: Color.White, b: Color.Blue },
+    ]);
+    expect(ManaCost.parse("W U").symbols).toEqual<ManaSymbol[]>([
+      { kind: "colored", color: Color.White },
+      { kind: "colored", color: Color.Blue },
+    ]);
   });
 });
 
@@ -165,16 +283,22 @@ describe("ManaCost.parse — error cases", () => {
   });
 
   it("rejects invalid hybrid combos (non-color on either side)", () => {
-    // 2/2 is not a valid monoHybrid (right must be a color)
     expect(() => ManaCost.parse("2/2")).toThrow(ManaParseError);
-    // 3/W is not valid — monoHybrid left must be literal 2
     expect(() => ManaCost.parse("3/W")).toThrow(ManaParseError);
-    // W/Q — Q is not a color or P
     expect(() => ManaCost.parse("W/Q")).toThrow(ManaParseError);
-    // P/W — phyrexian form is "<Color>/P", not "P/<Color>"
     expect(() => ManaCost.parse("P/W")).toThrow(ManaParseError);
-    // X/W — X is not valid on left of slash
     expect(() => ManaCost.parse("X/W")).toThrow(ManaParseError);
+  });
+
+  it("echoes the full input when throwing", () => {
+    try {
+      ManaCost.parse("2WQ");
+      expect.fail("should have thrown");
+    } catch (e) {
+      expect(e).toBeInstanceOf(ManaParseError);
+      // The wrapper message always includes the original text.
+      expect((e as Error).message).toContain('"2WQ"');
+    }
   });
 
   it("ManaParseError is an Error subclass", () => {
