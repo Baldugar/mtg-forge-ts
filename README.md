@@ -28,4 +28,4 @@ GPL-3.0-or-later (derivative work of Card-Forge/forge, which uses the same licen
 
 Monetization of consuming apps is unrestricted; distributed derivative works must also be GPL-3.0-or-later.
 
-See `NOTICE` (upcoming) for full attribution.
+Attribution and upstream credits are tracked in `NOTICE`.
