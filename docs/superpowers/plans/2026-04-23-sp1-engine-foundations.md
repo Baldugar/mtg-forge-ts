@@ -504,11 +504,15 @@ describe("branded IDs", () => {
     // compile-time check: the following line would fail typecheck if uncommented.
     // const d2: DecisionId = eid;
   });
-  it("PlayerSeat rejects negative values", () => {
+  it("PlayerSeat rejects negative values and accepts non-negative integers", () => {
+    const seat: PlayerSeat = mkPlayerSeat(0);
+    expect(seat as unknown as number).toBe(0);
     expect(() => mkPlayerSeat(-1)).toThrow();
   });
 });
 ```
+
+The `const seat: PlayerSeat = ...` annotation consumes the imported `type PlayerSeat`, otherwise `noUnusedLocals: true` in `tsconfig.base.json` fails the typecheck. Same pattern applies to future branded-type tests.
 
 - [ ] **Step 2 (run red):** `pnpm -F @mtg-forge-ts/core test` → expect module-not-found.
 
