@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: "*.{ts,tsx,js,jsx,json}"
+      run: pnpm biome check --write {staged_files}
+      stage_fixed: true
+commit-msg:
+  commands:
+    dco:
+      run: |
+        grep -q '^Signed-off-by: ' {1} || { echo 'Commit missing Signed-off-by trailer (use git commit -s)'; exit 1; }
