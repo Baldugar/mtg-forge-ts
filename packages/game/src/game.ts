@@ -18,6 +18,7 @@ import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
 import type { GameMeta } from "./game-meta.js";
 import type { GameRules } from "./game-rules.js";
+import { LayerEngine } from "./layers/layer-engine.js";
 import { Player } from "./player.js";
 import { Stack } from "./stack/stack.js";
 import type { TerminalState } from "./terminal-state.js";
@@ -58,6 +59,7 @@ export class Game {
    * and restore is a no-op when the list is empty.
    */
   continuousEffects: ContinuousEffect[] = [];
+  readonly layerEngine: LayerEngine;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -83,6 +85,7 @@ export class Game {
       exile: new Exile(ZoneType.Exile, null),
       ante: new Ante(ZoneType.Ante, null),
     };
+    this.layerEngine = new LayerEngine(this);
     this.flags = createDefaultFlags();
   }
 
