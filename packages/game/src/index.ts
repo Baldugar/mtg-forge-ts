@@ -10,5 +10,6 @@ export * from "./game.js";
 export * from "./mana/index.js";
 export * from "./player.js";
 export * from "./registries/index.js";
+export * from "./stack/index.js";
 export * from "./terminal-state.js";
 export * from "./zone/index.js";

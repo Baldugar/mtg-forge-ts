@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Top-level Game object: composes lobby participants into Players, owns the
-// shared zones (exile, ante, and later stack), per-Game mutable flags, and
-// the entity-id allocator. Consumers construct with a SeededRng so every
+// shared zones (exile, ante, stack), per-Game mutable flags, and the
+// entity-id allocator. Consumers construct with a SeededRng so every
 // mutation is deterministic.
 //
-// Task 37 will replace `sharedZones.stack: unknown` with a concrete Stack
-// instance. SP4 will replace `attachCardDb` with the real CardDb integration.
+// SP4 will replace `attachCardDb` with the real CardDb integration.
 import type { EntityId, LobbyPlayer, PhaseStep, PlayerSeat, Rng } from "@mtg-forge-ts/core";
 import {
   GameStateIntegrityError,
@@ -19,6 +18,7 @@ import { createDefaultFlags } from "./game-flags.js";
 import type { GameMeta } from "./game-meta.js";
 import type { GameRules } from "./game-rules.js";
 import { Player } from "./player.js";
+import { Stack } from "./stack/stack.js";
 import type { TerminalState } from "./terminal-state.js";
 import { Ante } from "./zone/zones/ante.js";
 import { Exile } from "./zone/zones/exile.js";
@@ -35,9 +35,7 @@ export class Game {
   priorityPlayer: PlayerSeat | null = null;
 
   readonly players: Player[];
-  // `stack` is typed `unknown` pending Task 37's Stack class; Task 37 will
-  // widen the type and populate the slot at construction time.
-  readonly sharedZones: { stack: unknown; exile: Exile; ante: Ante };
+  readonly sharedZones: { stack: Stack; exile: Exile; ante: Ante };
   readonly flags: GameFlags;
   terminalState: TerminalState | null = null;
 
@@ -59,7 +57,7 @@ export class Game {
       (lp, i) => new Player(mkPlayerSeat(i), lp, opts.rules.teamAssignments?.[i] ?? i),
     );
     this.sharedZones = {
-      stack: null,
+      stack: new Stack(),
       exile: new Exile(ZoneType.Exile, null),
       ante: new Ante(ZoneType.Ante, null),
     };

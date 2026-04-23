@@ -53,11 +53,11 @@ describe("Game", () => {
     expect(g.priorityPlayer).toBeNull();
   });
 
-  it("sharedZones contains Exile + Ante; stack is null (Task 37)", () => {
+  it("sharedZones contains Exile + Ante + empty Stack", () => {
     const g = makeGame();
     expect(g.sharedZones.exile.size).toBe(0);
     expect(g.sharedZones.ante.size).toBe(0);
-    expect(g.sharedZones.stack).toBeNull();
+    expect(g.sharedZones.stack.size).toBe(0);
   });
 
   it("flags are initialized to defaults (dayNight 'neither', empty maps/sets)", () => {
