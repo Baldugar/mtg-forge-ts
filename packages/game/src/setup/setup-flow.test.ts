@@ -29,6 +29,8 @@ import { type SetupDecks, setupGame } from "./setup-flow.js";
 
 const alice: LobbyPlayer = { id: "p-alice", name: "Alice", controllerKind: "human" };
 const bob: LobbyPlayer = { id: "p-bob", name: "Bob", controllerKind: "ai" };
+const carol: LobbyPlayer = { id: "p-carol", name: "Carol", controllerKind: "ai" };
+const dave: LobbyPlayer = { id: "p-dave", name: "Dave", controllerKind: "ai" };
 
 const rules: GameRules = {
   formatId: "standard",
@@ -728,6 +730,79 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
     }
     expect(threw).toBeInstanceOf(Error);
     expect((threw as Error).message).toMatch(/not in hand/);
+  });
+
+  it("multi-player (4 seats): every zone populated, one mulligan decision per seat", () => {
+    // WHY: SP1 covers 2p extensively but the setup loop is parameterized on
+    // game.players.length. Lock the 4p path so a regression in the
+    // per-seat loop (e.g., accidental i<2 cap) surfaces immediately.
+    const rules4p: GameRules = { ...rules, playerCount: { min: 2, max: 4 } };
+    const game = new Game({
+      lobbyPlayers: [alice, bob, carol, dave],
+      rules: rules4p,
+      meta,
+      rng: new SeededRng(7n),
+    });
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 30, 0),
+      1: seedCards(game, mkPlayerSeat(1), 30, 30),
+      2: seedCards(game, mkPlayerSeat(2), 30, 60),
+      3: seedCards(game, mkPlayerSeat(3), 30, 90),
+    };
+    const { events, decisions } = drain(game, decks, () => true);
+    // Expect 4 mulligan decisions (one per seat, all keep first hand).
+    expect(decisions).toBe(4);
+    // Expect 28 CardDrawn (4 seats × 7 cards) and 4 MulliganTaken.
+    expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(28);
+    expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(4);
+    for (let i = 0; i < 4; i++) {
+      const player = game.players[i];
+      if (!player) throw new Error(`test: missing player ${i}`);
+      expect(player.zones.get(ZoneType.Library)?.size).toBe(23);
+      expect(player.zones.get(ZoneType.Hand)?.size).toBe(7);
+    }
+  });
+
+  it("startingHandSize=0: no CardDrawn, mulligan still yields once per seat, library keeps all cards", () => {
+    // WHY: drawCards with count=0 is a no-op but the mulligan loop still runs
+    // (the player can still opt to reshuffle). Forge allows this; lock the
+    // behavior for any future rule that lowers the starting hand.
+    const rules0: GameRules = { ...rules, startingHandSize: 0 };
+    const game = new Game({
+      lobbyPlayers: [alice, bob],
+      rules: rules0,
+      meta,
+      rng: new SeededRng(3n),
+    });
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 10, 0),
+      1: seedCards(game, mkPlayerSeat(1), 10, 10),
+    };
+    const { events, decisions } = drain(game, decks, () => true);
+    expect(decisions).toBe(2); // one mulligan decision per seat
+    expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(0);
+    expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(2);
+    for (const p of game.players) {
+      expect(p.zones.get(ZoneType.Hand)?.size).toBe(0);
+      expect(p.zones.get(ZoneType.Library)?.size).toBe(10);
+    }
+  });
+
+  it("library smaller than hand size: drawCards stops at library size without throwing", () => {
+    // WHY: drawCards returns early when the library is empty; test this in
+    // context of setup so a future "throw on deck-out during setup" rule
+    // doesn't silently land.
+    const game = mkGame();
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 5, 0), // library has 5, hand size 7
+      1: seedCards(game, mkPlayerSeat(1), 5, 5),
+    };
+    const { events } = drain(game, decks, () => true);
+    expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(10); // 5 per seat
+    for (const p of game.players) {
+      expect(p.zones.get(ZoneType.Hand)?.size).toBe(5);
+      expect(p.zones.get(ZoneType.Library)?.size).toBe(0);
+    }
   });
 
   it("after bottoming, next drawn card is NOT one of the bottomed (top-of-library invariant)", () => {

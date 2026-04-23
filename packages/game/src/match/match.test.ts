@@ -179,6 +179,23 @@ describe("Match", () => {
     expect(() => gen.next()).toThrow(/SP7 sideboarding flow required/);
   });
 
+  it("Bo1 with a single drawn game: isDecided is true after one game even with no winner", () => {
+    // WHY: a draw with bestOf=1 exhausts games — the "all games played"
+    // branch of isDecided must return true without anyone reaching the
+    // majority-wins threshold. Covers the else-clause in isDecided().
+    const m = new Match(mkOptions(1));
+    const draw: MatchGameResult = { gameIndex: 0, winners: [], reason: "draw" };
+    m.recordGameResult(draw);
+    expect(m.getScore(mkPlayerSeat(0)).wins).toBe(0);
+    expect(m.getScore(mkPlayerSeat(1)).wins).toBe(0);
+    expect(m.isDecided()).toBe(true);
+    // computeOverallOutcome should not throw (match IS decided) and should
+    // return draw with no winner.
+    const outcome = m.computeOverallOutcome();
+    expect(outcome.winner).toBeNull();
+    expect(outcome.reason).toBe("draw");
+  });
+
   it("getGames returns the recorded games in order", () => {
     const m = new Match(mkOptions(3));
     m.recordGameResult(winForSeat(0, 0));

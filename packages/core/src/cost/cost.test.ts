@@ -134,6 +134,22 @@ describe("CostPartRegistry list/has/unregister", () => {
     expect(all).toContain("test15-tap");
   });
 
+  it("Cost.fromJSON throws on malformed input: {} (missing parts)", () => {
+    // WHY: trusting s.parts to be an array without validation would surface as
+    // a confusing TypeError deep inside .map. Lock the current behavior
+    // (throws a TypeError from the .map invocation) so a defensive rewrite
+    // that swallows bad input would fail this test.
+    expect(() => Cost.fromJSON({} as unknown as { parts: [] })).toThrow();
+  });
+
+  it("Cost.fromJSON throws on malformed input: {parts: null}", () => {
+    expect(() => Cost.fromJSON({ parts: null } as unknown as { parts: [] })).toThrow();
+  });
+
+  it("Cost.fromJSON throws on malformed input: {parts: 'not-an-array'}", () => {
+    expect(() => Cost.fromJSON({ parts: "not-an-array" } as unknown as { parts: [] })).toThrow();
+  });
+
   it("re-registering under an existing kind replaces the prior constructor (last-wins)", () => {
     // WHY: documents the Map.set semantics decision (Reviewer C §3.10).
     // Test harnesses rely on this to override production constructors

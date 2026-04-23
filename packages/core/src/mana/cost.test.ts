@@ -624,4 +624,14 @@ describe("ManaCost.parse — untested throw paths (Reviewer C §2)", () => {
     expect(() => ManaCost.parse("W/Q")).toThrow(ManaParseError);
     expect(() => ManaCost.parse("W/Q")).toThrow(/Invalid right side of hybrid/);
   });
+
+  it("rejects a very long all-digit input as unsafe integer (no hang / no OOM)", () => {
+    // WHY: the SafeInteger guard rejects any digit run that overflows 2^53
+    // before it can silently round to a float. A 100_000-digit string stays
+    // in the parser's character loop briefly then throws — we assert the
+    // throw to guarantee the guard fires rather than relying on timeout.
+    const bigNumber = "9".repeat(100_000);
+    expect(() => ManaCost.parse(bigNumber)).toThrow(ManaParseError);
+    expect(() => ManaCost.parse(bigNumber)).toThrow(/not a safe non-negative integer/);
+  });
 });

@@ -107,4 +107,26 @@ describe("DecisionLog", () => {
       expect(arr[i]?.id).toBe(mkDecisionId(i));
     }
   });
+
+  it("append scales to 10_000 entries with monotonic ids + O(1) get()", () => {
+    // WHY: replay-facing log must scale to long games (thousands of decisions
+    // over a match). Lock the array-backed representation's invariants at
+    // scale — if someone swaps in a linked list, get() by DecisionId would
+    // silently become O(n) and replay would get quadratic.
+    const log = new DecisionLog();
+    const N = 10_000;
+    for (let i = 0; i < N; i++) {
+      log.append(priorityRequest(i & 1), priorityResponse());
+    }
+    expect(log.size()).toBe(N);
+    // Spot-check id monotonicity + retrievability at random indices.
+    const checkpoints = [0, 1, 42, 999, 5000, N - 1];
+    for (const i of checkpoints) {
+      const rec = log.get(mkDecisionId(i));
+      expect(rec).toBeDefined();
+      expect(rec?.id).toBe(mkDecisionId(i));
+    }
+    // Out-of-range returns undefined.
+    expect(log.get(mkDecisionId(N))).toBeUndefined();
+  });
 });
