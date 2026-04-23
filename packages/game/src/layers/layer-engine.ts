@@ -13,12 +13,7 @@
 //
 // The layer walk body is a skeleton here; Tasks 3-9 fill it in by reading
 // per-layer effect arrays and applying them in order.
-import {
-  type Characteristics,
-  type EntityId,
-  GameStateIntegrityError,
-  LAYER_ORDER,
-} from "@mtg-forge-ts/core";
+import { type Characteristics, type EntityId, GameStateIntegrityError } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import { deriveBaseCharacteristics } from "./base-characteristics.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
@@ -27,6 +22,18 @@ import { type TextSubstitution, applyLayer3Text } from "./layer3-text.js";
 import { type TypeChangeEffect, applyLayer4Type } from "./layer4-type.js";
 import { type ColorChangeEffect, applyLayer5Color } from "./layer5-color.js";
 import { type AbilityChangeEffect, applyLayer6Ability } from "./layer6-ability.js";
+import {
+  type Layer7aEffect,
+  type Layer7bEffect,
+  type Layer7cEffect,
+  type Layer7dEffect,
+  type Layer7eEffect,
+  applyLayer7a,
+  applyLayer7b,
+  applyLayer7c,
+  applyLayer7d,
+  applyLayer7e,
+} from "./layer7-pt.js";
 
 export interface LayerCacheEntry {
   readonly chars: Characteristics;
@@ -40,6 +47,11 @@ export class LayerEngine {
   readonly typeEffects: TypeChangeEffect[] = [];
   readonly colorEffects: ColorChangeEffect[] = [];
   readonly abilityEffects: AbilityChangeEffect[] = [];
+  readonly pt7a: Layer7aEffect[] = [];
+  readonly pt7b: Layer7bEffect[] = [];
+  readonly pt7c: Layer7cEffect[] = [];
+  readonly pt7d: Layer7dEffect[] = [];
+  readonly pt7e: Layer7eEffect[] = [];
 
   constructor(private readonly game: Game) {}
 
@@ -68,9 +80,11 @@ export class LayerEngine {
     applyLayer4Type(chars, this.typeEffects);
     applyLayer5Color(chars, this.colorEffects);
     applyLayer6Ability(chars, this.abilityEffects);
-    for (const _layer of LAYER_ORDER) {
-      // Tasks 7-9 populate per-layer apply calls here.
-    }
+    applyLayer7a(chars, this.pt7a);
+    applyLayer7b(chars, this.pt7b);
+    applyLayer7c(chars, this.pt7c);
+    applyLayer7d(chars, this.pt7d);
+    applyLayer7e(chars, this.pt7e);
     this.cache.set(id, { chars, epoch: this.epoch });
     return chars;
   }

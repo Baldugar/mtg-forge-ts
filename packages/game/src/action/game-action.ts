@@ -96,6 +96,11 @@ export class GameAction {
       card.zone = toZone;
       if (toSeat !== null) card.controllerSeat = toSeat;
     }
+    // CR 613.1 — zone change alters which continuous effects apply (layered
+    // values are defined only for permanents on the battlefield, etc.);
+    // invalidate the cache so the next characteristics read re-derives from
+    // the new zone.
+    game.layerEngine.bumpEpoch("moveTo");
     yield {
       kind: "event",
       event: mkEvent("CardChangedZone", game.turn, game.phase, {
@@ -120,6 +125,10 @@ export class GameAction {
     // match the original defensive behavior.
     if (!card || card.tapped) return;
     card.tapped = true;
+    // Tapped-state can gate continuous effects (e.g. "as long as CARDNAME is
+    // tapped"). Bump only on actual state transition so idempotent no-op
+    // taps don't churn the cache.
+    this.game.layerEngine.bumpEpoch("tap");
     yield {
       kind: "event",
       event: mkEvent("CardTapped", this.game.turn, this.game.phase, { cardId }),
@@ -130,6 +139,8 @@ export class GameAction {
     const card = this.game.cards.get(cardId);
     if (!card || !card.tapped) return;
     card.tapped = false;
+    // Symmetric with tap: only bump on actual state transition.
+    this.game.layerEngine.bumpEpoch("untap");
     yield {
       kind: "event",
       event: mkEvent("CardUntapped", this.game.turn, this.game.phase, { cardId }),
@@ -239,6 +250,11 @@ export class GameAction {
       const current = card.counters.get(counterType) ?? 0;
       card.counters.set(counterType, current + amount);
     }
+    // Counters feed Layer 7d (P/T) and can gate other continuous effects
+    // (e.g. "as long as CARDNAME has a +1/+1 counter on it"). Always bump
+    // when the mutation ran — amount is validated > 0 above, so any non-
+    // missing card observed a real state change.
+    game.layerEngine.bumpEpoch("counter");
     yield {
       kind: "event",
       event: mkEvent("CounterAdded", game.turn, game.phase, {
@@ -272,6 +288,9 @@ export class GameAction {
     const next = Math.max(0, current - amount);
     if (next === 0) card.counters.delete(counterType);
     else card.counters.set(counterType, next);
+    // Counter change → bump. The early returns above ensure we only reach
+    // here on an observable state mutation; no-op removals do not bump.
+    game.layerEngine.bumpEpoch("counter");
     yield {
       kind: "event",
       event: mkEvent("CounterRemoved", game.turn, game.phase, {
