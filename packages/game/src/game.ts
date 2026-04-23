@@ -74,6 +74,20 @@ export class Game {
     return mkEntityId(this.entityIdCounter++);
   }
 
+  /**
+   * Snapshot-restore only. GameSnapshot rehydrates the private entity-id
+   * allocator so freshly-minted ids after restore don't collide with ids
+   * already baked into the restored card registry. Consumers must not call
+   * this outside the snapshot-restore path — it breaks the append-only
+   * monotonicity guarantee newEntityId relies on for uniqueness.
+   */
+  restoreEntityIdCounter(n: number): void {
+    if (!Number.isInteger(n) || n < 0) {
+      throw new RangeError(`restoreEntityIdCounter: expected non-negative integer, got ${n}`);
+    }
+    this.entityIdCounter = n;
+  }
+
   getPlayer(seat: PlayerSeat): Player {
     const p = this.players[seat as unknown as number];
     if (!p) throw new GameStateIntegrityError(`No player at seat ${seat}`);
