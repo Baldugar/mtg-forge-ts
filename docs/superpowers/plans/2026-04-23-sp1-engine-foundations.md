@@ -802,12 +802,12 @@ export class CostPartRegistry {
 
 ---
 
-### Task 16: Concrete CostPart classes (batch, 30 classes)
+### Task 16: Concrete CostPart classes (batch, 40 classes)
 
 **Files:** `packages/core/src/cost/parts/*.ts` (one per kind), `packages/core/src/cost/parts.test.ts`
 
-Classes to add (each is ~15 lines). **Port exact taxonomy from `forge-game/src/main/java/forge/game/cost/*.java`.** The list below is representative; adjust to match Forge's actual Cost* classes:
-`CostMana`, `CostTap`, `CostUntap`, `CostSacrifice`, `CostDiscard`, `CostExile`, `CostPayLife`, `CostPayEnergy`, `CostPayExperience`, `CostPayTicket`, `CostPayRad`, `CostRemoveCounter`, `CostPutCounter`, `CostReveal`, `CostMill`, `CostReturn`, `CostUnattach`, `CostGainControl`, `CostFlipCoin`, `CostRollDie`, `CostSkipTurn`, `CostExileFromHand`, `CostExileFromGraveyard`, `CostPutIntoLibrary`, `CostReturnToHand`, `CostTapXCreatures`, `CostUntapXCreatures`, `CostExert`, `CostCollectEvidence`, `CostDescend`.
+Classes to add (each is ~15 lines). **Port exact taxonomy from `forge-game/src/main/java/forge/game/cost/*.java`.** The reconciled roster below mirrors Forge's 40 concrete `Cost*` classes (verified against `forge-game` in Round 3; earlier drafts referenced `CostPayTicket`, `CostPayRad`, `CostPayExperience`, `CostSkipTurn`, `CostDescend`, `CostExileFromHand`, `CostExileFromGraveyard`, `CostReturnToHand`, `CostPutIntoLibrary`, `CostTapXCreatures`, `CostUntapXCreatures` — none of which are concrete classes in Forge today):
+`CostAddMana`, `CostBehold`, `CostBeholdExile`, `CostBlight`, `CostChooseColor`, `CostChooseCreatureType`, `CostCollectEvidence`, `CostDamage`, `CostDiscard`, `CostDraw`, `CostEnlist`, `CostExert`, `CostExile`, `CostExileFromStack`, `CostExiledMoveToGrave`, `CostFlipCoin`, `CostForage`, `CostGainControl`, `CostGainLife`, `CostPartMana`, `CostMill`, `CostPayEnergy`, `CostPayLife`, `CostPayShards`, `CostPromiseGift`, `CostPutCardToLib`, `CostPutCounter`, `CostRemoveAnyCounter`, `CostRemoveCounter`, `CostReturn`, `CostReveal`, `CostRevealChosen`, `CostRollDice`, `CostSacrifice`, `CostTap`, `CostTapType`, `CostUnattach`, `CostUntap`, `CostUntapType`, `CostWaterbend`.
 
 Pattern per class:
 
@@ -826,11 +826,11 @@ CostPartRegistry.register("mana", (d) => new CostMana(ManaCost.fromJSON(d.cost a
 
 Integer-typed cost parts (`CostPayLife`, `CostMill`, etc.) carry an `amount: number` (or a string expression to be interpreted in SP3's SVar evaluator — for SP1 just store the string verbatim).
 
-- [ ] **Step 1 (test):** For each of the 30 kinds, instantiate with sample data, call `toJSON()`, hydrate via `Cost.fromJSON`, assert deep equality.
+- [ ] **Step 1 (test):** For each of the 40 kinds, instantiate with sample data, call `toJSON()`, hydrate via `Cost.fromJSON`, assert deep equality.
 
-- [ ] **Step 2-4:** Implement all 30. Export from `packages/core/src/cost/index.ts`.
+- [ ] **Step 2-4:** Implement all 40. Export from `packages/core/src/cost/index.ts`.
 
-- [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add 30 CostPart concrete classes"`
+- [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add 40 CostPart concrete classes"`
 
 ---
 
