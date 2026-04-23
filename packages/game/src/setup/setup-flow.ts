@@ -29,6 +29,7 @@ import {
   type PlayerSeat,
   ZoneType,
   mkEvent,
+  mkPlayerSeat,
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { GameAction } from "../action/game-action.js";
@@ -70,6 +71,18 @@ const MULLIGAN_MAX = 10;
 
 export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield, void, DecisionResponse> {
   const action = new GameAction(game);
+
+  // Step 0: die-roll for starting player if not pre-assigned. Hosts that
+  // want deterministic seat-0 starts pre-set game.startingPlayer before
+  // invoking setupGame. `rng.nextInt` guarantees determinism under a fixed
+  // seed — the "die-roll" in Forge's MatchStart.java is equivalent.
+  if (game.startingPlayer === null) {
+    const rolled = game.rng.nextInt(0, game.players.length);
+    game.startingPlayer = mkPlayerSeat(rolled);
+  }
+  // WHY: activePlayer must track startingPlayer before any turn-based logic
+  // reads it (e.g. first-turn Draw skip check later in phase-handler).
+  game.activePlayer = game.startingPlayer;
 
   // Step 1: populate zones + seed libraries.
   for (const player of game.players) {
@@ -163,12 +176,13 @@ export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield
   }
 
   // Step 5: emit GameStarted so downstream subscribers can latch the seat
-  // roster and first-player selection.
+  // roster and first-player selection. firstPlayer reflects the
+  // die-roll outcome captured in game.startingPlayer at step 0.
   yield {
     kind: "event",
     event: mkEvent("GameStarted", game.turn, game.phase, {
       seats: game.players.map((p) => p.seat),
-      firstPlayer: game.activePlayer,
+      firstPlayer: game.startingPlayer ?? game.activePlayer,
     }),
   };
 }

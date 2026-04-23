@@ -172,10 +172,13 @@ export class PhaseHandler {
       }
     } else if (step === Phase.Draw) {
       // Active player draws one, unless this is turn 1 and rules say the
-      // first player skips their draw (standard 2-player rule).
-      const firstSeat = game.players[0]?.seat;
+      // first player skips their draw (standard 2-player rule). "First
+      // player" is whichever seat won the setup die-roll — game.startingPlayer
+      // — NOT hard-coded to seat 0; otherwise games where seat 1 went first
+      // would have seat 0 incorrectly skip its first Draw.
+      const firstSeat = game.startingPlayer;
       const shouldSkip =
-        game.turn === 1 && game.rules.firstPlayerSkipsDraw && firstSeat !== undefined && active === firstSeat;
+        game.turn === 1 && game.rules.firstPlayerSkipsDraw && firstSeat !== null && active === firstSeat;
       // WHY: the flag is authoritative ("undefined means false" would
       // make snapshot round-trips ambiguous). Write it explicitly on
       // every turn-1 Draw step so every seat has a definitive record.

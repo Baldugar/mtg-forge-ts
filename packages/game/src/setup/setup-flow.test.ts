@@ -189,8 +189,12 @@ describe("setupGame", () => {
     expect(events[events.length - 1]?.kind).toBe("GameStarted");
   });
 
-  it("GameStarted payload lists every seat and the first player", () => {
+  it("GameStarted payload lists every seat and the die-rolled first player", () => {
     const game = mkGame();
+    // Fix 10: host pre-sets startingPlayer to pin first-player to seat 0 for
+    // deterministic assertions (otherwise the setup die-roll picks a seat
+    // off the rng stream).
+    game.startingPlayer = mkPlayerSeat(0);
     const decks: SetupDecks = {
       0: seedCards(game, mkPlayerSeat(0), 60, 0),
       1: seedCards(game, mkPlayerSeat(1), 60, 60),
@@ -202,6 +206,40 @@ describe("setupGame", () => {
       expect(started.payload.seats).toEqual([mkPlayerSeat(0), mkPlayerSeat(1)]);
       expect(started.payload.firstPlayer).toBe(mkPlayerSeat(0));
     }
+  });
+
+  it("setup die-roll resolves startingPlayer deterministically per rng seed", () => {
+    // Same seed -> same die-roll outcome. Different seed should eventually
+    // produce different outcomes (probabilistically; we just assert
+    // both runs pick ONE of {seat 0, seat 1} and are reproducible).
+    const gameA = mkGame(42n);
+    const gameB = mkGame(42n);
+    const decksA: SetupDecks = {
+      0: seedCards(gameA, mkPlayerSeat(0), 20, 0),
+      1: seedCards(gameA, mkPlayerSeat(1), 20, 20),
+    };
+    const decksB: SetupDecks = {
+      0: seedCards(gameB, mkPlayerSeat(0), 20, 0),
+      1: seedCards(gameB, mkPlayerSeat(1), 20, 20),
+    };
+    drain(gameA, decksA, () => true);
+    drain(gameB, decksB, () => true);
+    expect(gameA.startingPlayer).not.toBeNull();
+    expect(gameA.startingPlayer).toBe(gameB.startingPlayer);
+    // activePlayer tracks startingPlayer after setup.
+    expect(gameA.activePlayer).toBe(gameA.startingPlayer);
+  });
+
+  it("host-preset game.startingPlayer survives setup (no die-roll override)", () => {
+    const game = mkGame();
+    game.startingPlayer = mkPlayerSeat(1);
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 20, 0),
+      1: seedCards(game, mkPlayerSeat(1), 20, 20),
+    };
+    drain(game, decks, () => true);
+    expect(game.startingPlayer).toBe(mkPlayerSeat(1));
+    expect(game.activePlayer).toBe(mkPlayerSeat(1));
   });
 
   it("after keep, hand size equals startingHandSize", () => {

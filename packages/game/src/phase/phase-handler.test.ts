@@ -200,6 +200,10 @@ describe("PhaseHandler.run", () => {
     const game = mkGame({ firstPlayerSkipsDraw: true });
     const handler = new PhaseHandler(game);
     const seat0 = mkPlayerSeat(0);
+    // WHY: firstPlayerSkipsDraw now keys off game.startingPlayer (post-audit
+    // Fix 10). Phase-handler tests that bypass setupGame must set it
+    // explicitly so the handler knows who rolled first.
+    game.startingPlayer = seat0;
     addCardToZone(game, seat0, ZoneType.Library, mkEntityId(200));
     handler.turnQueue.push({ activePlayer: seat0, isExtra: false });
     const events = onlyEvents(drive(handler));
@@ -312,6 +316,8 @@ describe("PhaseHandler.run", () => {
     const game = mkGame({ firstPlayerSkipsDraw: true });
     const handler = new PhaseHandler(game);
     const seat0 = mkPlayerSeat(0);
+    // Fix 10: firstPlayerSkipsDraw keys off game.startingPlayer.
+    game.startingPlayer = seat0;
     addCardToZone(game, seat0, ZoneType.Library, mkEntityId(800));
     handler.turnQueue.push({ activePlayer: seat0, isExtra: false });
     drive(handler);

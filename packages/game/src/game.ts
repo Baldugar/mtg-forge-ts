@@ -34,6 +34,14 @@ export class Game {
   phase: PhaseStep = Phase.Untap;
   activePlayer: PlayerSeat = mkPlayerSeat(0);
   priorityPlayer: PlayerSeat | null = null;
+  /**
+   * Resolved at setup time by a die-roll off `rng`. Null until
+   * `setupGame` runs the die-roll step. `firstPlayerSkipsDraw` reads this
+   * (not seat 0) to determine whose first-turn Draw is elided.
+   * Consumers who want deterministic seat-0 starts can assign this field
+   * before invoking setupGame; the generator respects an existing value.
+   */
+  startingPlayer: PlayerSeat | null = null;
 
   readonly players: Player[];
   readonly sharedZones: { stack: Stack; exile: Exile; ante: Ante };

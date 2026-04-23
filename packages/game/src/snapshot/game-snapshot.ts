@@ -186,6 +186,11 @@ export interface GameSnapshot {
     readonly phase: PhaseStep;
     readonly activePlayer: PlayerSeat;
     readonly priorityPlayer: PlayerSeat | null;
+    /**
+     * Seat that won the setup die-roll. Null until setupGame resolves it
+     * (matches Game.startingPlayer's pre-setup state).
+     */
+    readonly startingPlayer: PlayerSeat | null;
     readonly players: readonly SerializedPlayer[];
     readonly cards: readonly SerializedCard[];
     readonly sharedZones: {
@@ -376,6 +381,7 @@ export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot =
       phase: game.phase,
       activePlayer: game.activePlayer,
       priorityPlayer: game.priorityPlayer,
+      startingPlayer: game.startingPlayer,
       players,
       cards,
       sharedZones: {
@@ -479,6 +485,7 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   game.phase = snap.state.phase;
   game.activePlayer = snap.state.activePlayer;
   game.priorityPlayer = snap.state.priorityPlayer;
+  game.startingPlayer = snap.state.startingPlayer;
   game.terminalState = snap.state.terminalState;
 
   // Rehydrate each Player's mutable fields + zones (new Player instances are
