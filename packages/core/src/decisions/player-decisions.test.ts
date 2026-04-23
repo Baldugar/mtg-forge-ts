@@ -16,6 +16,7 @@ import {
 // WHY: every expected kind enumerated here — any accidental rename or deletion
 // in player-decisions.ts trips the exhaustiveness assertion below.
 const EXPECTED_REQUEST_KINDS: readonly DecisionRequestKind[] = [
+  // SP1 baseline (spec §4) — 23 kinds
   "mulligan",
   "openingHandAction",
   "priority",
@@ -39,45 +40,46 @@ const EXPECTED_REQUEST_KINDS: readonly DecisionRequestKind[] = [
   "choosePlayer",
   "chooseZone",
   "chooseAltCost",
+  // SP1 post-audit: generic choosers (13)
+  "chooseNumber",
+  "chooseColor",
+  "chooseColors",
+  "chooseCounterType",
+  "chooseCardsPile",
+  "vote",
+  "confirmAction",
+  "confirmReplacement",
+  "confirmTrigger",
+  "chooseStartingPlayer",
+  "chooseOptionalCosts",
+  "chooseKeywordForPump",
+  "chooseProtectionType",
+  // SP1 post-audit: die / roll modifiers (4)
+  "chooseRollToModify",
+  "chooseRollToReroll",
+  "chooseRollToIgnore",
+  "chooseRollToSwap",
+  // SP1 post-audit: Attractions / Contraptions (3)
+  "chooseSector",
+  "chooseSprocket",
+  "chooseContraptionsToCrank",
+  // SP1 post-audit: London-mulligan bottoming (1)
+  "mulliganBottom",
 ];
 
-const EXPECTED_RESPONSE_KINDS: readonly DecisionResponseKind[] = [
-  "mulligan",
-  "openingHandAction",
-  "priority",
-  "chooseTargets",
-  "chooseModes",
-  "chooseX",
-  "distribute",
-  "choosePayment",
-  "orderTriggers",
-  "orderReplacements",
-  "declareAttackers",
-  "declareBlockers",
-  "orderBlockers",
-  "assignDamage",
-  "chooseCard",
-  "chooseCardOrder",
-  "scry",
-  "surveil",
-  "chooseOption",
-  "declareSplit",
-  "choosePlayer",
-  "chooseZone",
-  "chooseAltCost",
-];
+const EXPECTED_RESPONSE_KINDS: readonly DecisionResponseKind[] = EXPECTED_REQUEST_KINDS;
 
 describe("DecisionRequest enumeration", () => {
-  it("has 23 distinct kinds (spec §4 explicit list)", () => {
-    expect(EXPECTED_REQUEST_KINDS.length).toBe(23);
-    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(23);
+  it("has 44 distinct kinds (SP1 baseline 23 + post-audit 21)", () => {
+    expect(EXPECTED_REQUEST_KINDS.length).toBe(44);
+    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(44);
   });
 });
 
 describe("DecisionResponse enumeration", () => {
-  it("has 23 distinct kinds set-equal to DecisionRequest kinds", () => {
-    expect(EXPECTED_RESPONSE_KINDS.length).toBe(23);
-    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(23);
+  it("has 44 distinct kinds set-equal to DecisionRequest kinds", () => {
+    expect(EXPECTED_RESPONSE_KINDS.length).toBe(44);
+    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(44);
     expect(new Set(EXPECTED_RESPONSE_KINDS)).toEqual(new Set(EXPECTED_REQUEST_KINDS));
   });
 });
@@ -318,5 +320,117 @@ describe("DecisionResponse — compile-time checking", () => {
     // Sanity: a correctly typed response still constructs
     const good: DecisionResponse = { kind: "chooseX", x: 3 };
     expect(good.kind).toBe("chooseX");
+  });
+});
+
+describe("Post-audit extension constructors", () => {
+  it("chooseNumber / chooseColor / chooseColors", () => {
+    const num: DecisionRequest = { kind: "chooseNumber", sourceId: mkEntityId(1), min: 0, max: 10 };
+    expect(isRequest(num, "chooseNumber")).toBe(true);
+    const color: DecisionRequest = {
+      kind: "chooseColor",
+      sourceId: mkEntityId(1),
+      allowColorless: true,
+    };
+    if (isRequest(color, "chooseColor")) expect(color.allowColorless).toBe(true);
+    const colors: DecisionRequest = {
+      kind: "chooseColors",
+      sourceId: mkEntityId(1),
+      min: 1,
+      max: 3,
+      allowColorless: false,
+    };
+    if (isRequest(colors, "chooseColors")) expect(colors.max).toBe(3);
+  });
+
+  it("vote + confirmAction + confirmTrigger", () => {
+    const vote: DecisionRequest = {
+      kind: "vote",
+      sourceId: mkEntityId(1),
+      voterSeat: mkPlayerSeat(0),
+      choices: [
+        { id: "a", description: "choice A" },
+        { id: "b", description: "choice B" },
+      ],
+    };
+    if (isRequest(vote, "vote")) expect(vote.choices.length).toBe(2);
+    const conf: DecisionRequest = {
+      kind: "confirmAction",
+      sourceId: mkEntityId(2),
+      prompt: "Proceed?",
+    };
+    expect(isRequest(conf, "confirmAction")).toBe(true);
+    const trig: DecisionRequest = {
+      kind: "confirmTrigger",
+      triggerId: mkEntityId(3),
+      description: "may add a +1/+1 counter",
+    };
+    expect(isRequest(trig, "confirmTrigger")).toBe(true);
+  });
+
+  it("chooseStartingPlayer + mulliganBottom", () => {
+    const start: DecisionRequest = {
+      kind: "chooseStartingPlayer",
+      playerSeat: mkPlayerSeat(0),
+    };
+    const resp: DecisionResponse = { kind: "chooseStartingPlayer", goFirst: true };
+    if (isResponse(resp, "chooseStartingPlayer")) expect(resp.goFirst).toBe(true);
+    expect(start.kind).toBe("chooseStartingPlayer");
+
+    const bot: DecisionRequest = {
+      kind: "mulliganBottom",
+      playerSeat: mkPlayerSeat(1),
+      hand: [mkEntityId(10), mkEntityId(11)],
+      countToBottom: 2,
+    };
+    const botR: DecisionResponse = {
+      kind: "mulliganBottom",
+      bottomed: [mkEntityId(10), mkEntityId(11)],
+    };
+    if (isRequest(bot, "mulliganBottom")) expect(bot.countToBottom).toBe(2);
+    if (isResponse(botR, "mulliganBottom")) expect(botR.bottomed.length).toBe(2);
+  });
+
+  it("die-roll modifiers (modify/reroll/ignore/swap)", () => {
+    const mod: DecisionRequest = {
+      kind: "chooseRollToModify",
+      rollId: "r1",
+      resultBefore: 3,
+      modifierId: "pithing-needle",
+    };
+    const re: DecisionRequest = { kind: "chooseRollToReroll", rollId: "r1", resultBefore: 3 };
+    const ig: DecisionRequest = {
+      kind: "chooseRollToIgnore",
+      rolls: [
+        { id: "r1", result: 3 },
+        { id: "r2", result: 6 },
+      ],
+    };
+    const sw: DecisionRequest = { kind: "chooseRollToSwap", rollIds: ["r1", "r2"] };
+    expect(mod.kind).toBe("chooseRollToModify");
+    expect(re.kind).toBe("chooseRollToReroll");
+    expect(ig.kind).toBe("chooseRollToIgnore");
+    expect(sw.kind).toBe("chooseRollToSwap");
+  });
+
+  it("Attractions / Contraptions: chooseSector / chooseSprocket / chooseContraptionsToCrank", () => {
+    const sec: DecisionRequest = {
+      kind: "chooseSector",
+      sourceId: mkEntityId(1),
+      sectorIds: ["a", "b", "c"],
+    };
+    const spr: DecisionRequest = {
+      kind: "chooseSprocket",
+      sourceId: mkEntityId(1),
+      sprockets: [1, 2, 3],
+    };
+    const crank: DecisionRequest = {
+      kind: "chooseContraptionsToCrank",
+      sourceId: mkEntityId(1),
+      available: [mkEntityId(10), mkEntityId(11)],
+    };
+    expect(sec.kind).toBe("chooseSector");
+    expect(spr.kind).toBe("chooseSprocket");
+    expect(crank.kind).toBe("chooseContraptionsToCrank");
   });
 });

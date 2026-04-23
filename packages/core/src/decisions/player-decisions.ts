@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // PlayerController decisions — engine-to-consumer request/response pairs.
 //
-// Spec §4 (lines 165-188) enumerates 23 DecisionRequest variants while the
-// header text says "22 decision kinds"; the explicit list is canonical here
-// because downstream casting paths (alt-cost: Flash, Foretell, Evoke, Dash,
-// Madness, etc.) are undeliverable without `chooseAltCost`. The delta is
-// called out in the Task 23 commit body.
+// SP1 baseline (spec §4) enumerated 23 DecisionRequest variants. SP1 post-
+// audit extends to 44 to cover the Forge PlayerController hooks SP2+ card
+// scripts reach for: chooseNumber/Color/Colors/CounterType/CardsPile, vote,
+// confirm{Action,Replacement,Trigger}, chooseStartingPlayer,
+// chooseOptionalCosts, chooseKeywordForPump, chooseProtectionType, die-roll
+// modifiers (modify/reroll/ignore/swap), Attractions (chooseSector) /
+// Contraptions (chooseSprocket, chooseContraptionsToCrank), and London-
+// mulligan bottoming (mulliganBottom, SP2-wired).
 //
 // Each DecisionRequest variant has a sibling DecisionResponse variant with
 // the same `kind`, so pairing is captured by the discriminator rather than
@@ -15,6 +18,7 @@
 // Type guards `isRequest` / `isResponse` narrow without a switch — handy when
 // a controller cares about a single kind (tests, AI skeletons, debug adapters).
 
+import type { Color, ColorSet } from "../color.js";
 import type { Cost } from "../cost/cost.js";
 import type { EntityId, PlayerSeat } from "../ids.js";
 import type { ZoneType } from "../zone.js";
@@ -217,6 +221,126 @@ export type DecisionRequest =
       readonly kind: "chooseAltCost";
       readonly sourceId: EntityId;
       readonly altCosts: readonly AltCostOption[];
+    }
+  // === Post-audit Forge parity: generic choosers ===
+  | {
+      readonly kind: "chooseNumber";
+      readonly sourceId: EntityId;
+      readonly min: number;
+      readonly max: number;
+    }
+  | {
+      readonly kind: "chooseColor";
+      readonly sourceId: EntityId;
+      readonly allowColorless: boolean;
+    }
+  | {
+      readonly kind: "chooseColors";
+      readonly sourceId: EntityId;
+      readonly min: number;
+      readonly max: number;
+      readonly allowColorless: boolean;
+    }
+  | {
+      readonly kind: "chooseCounterType";
+      readonly sourceId: EntityId;
+      // WHY: typed `unknown` now; Task 27 counter-type constraint AST will
+      // replace this once available.
+      readonly restriction?: unknown;
+      readonly min: number;
+      readonly max: number;
+    }
+  | {
+      readonly kind: "chooseCardsPile";
+      readonly sourceId: EntityId;
+      readonly pileA: readonly EntityId[];
+      readonly pileB: readonly EntityId[];
+    }
+  | {
+      // WHY: Council's Dilemma and similar vote effects. voters cast vote
+      // separately via their own request; engine aggregates.
+      readonly kind: "vote";
+      readonly sourceId: EntityId;
+      readonly voterSeat: PlayerSeat;
+      readonly choices: readonly NamedOption[];
+    }
+  | {
+      readonly kind: "confirmAction";
+      readonly sourceId: EntityId;
+      readonly prompt: string;
+    }
+  | {
+      readonly kind: "confirmReplacement";
+      readonly effectId: EntityId;
+      readonly description: string;
+    }
+  | {
+      readonly kind: "confirmTrigger";
+      readonly triggerId: EntityId;
+      readonly description: string;
+    }
+  | {
+      readonly kind: "chooseStartingPlayer";
+      readonly playerSeat: PlayerSeat;
+    }
+  | {
+      readonly kind: "chooseOptionalCosts";
+      readonly sourceId: EntityId;
+      readonly options: readonly NamedOption[];
+    }
+  | {
+      readonly kind: "chooseKeywordForPump";
+      readonly sourceId: EntityId;
+      readonly keywords: readonly string[];
+    }
+  | {
+      readonly kind: "chooseProtectionType";
+      readonly sourceId: EntityId;
+    }
+  // === Post-audit Forge parity: die / roll modifiers ===
+  | {
+      readonly kind: "chooseRollToModify";
+      readonly rollId: string;
+      readonly resultBefore: number;
+      readonly modifierId: string;
+    }
+  | {
+      readonly kind: "chooseRollToReroll";
+      readonly rollId: string;
+      readonly resultBefore: number;
+    }
+  | {
+      readonly kind: "chooseRollToIgnore";
+      readonly rolls: readonly { readonly id: string; readonly result: number }[];
+    }
+  | {
+      readonly kind: "chooseRollToSwap";
+      readonly rollIds: readonly string[];
+    }
+  // === Post-audit Forge parity: Attractions / Contraptions ===
+  | {
+      readonly kind: "chooseSector";
+      readonly sourceId: EntityId;
+      readonly sectorIds: readonly string[];
+    }
+  | {
+      readonly kind: "chooseSprocket";
+      readonly sourceId: EntityId;
+      readonly sprockets: readonly number[];
+    }
+  | {
+      readonly kind: "chooseContraptionsToCrank";
+      readonly sourceId: EntityId;
+      readonly available: readonly EntityId[];
+    }
+  // === Post-audit Forge parity: London-mulligan bottoming ===
+  | {
+      // WHY: SP2 wires this after the mulligan keep/reject step — after N
+      // mulligans taken, the keeping player bottoms N cards from their hand.
+      readonly kind: "mulliganBottom";
+      readonly playerSeat: PlayerSeat;
+      readonly hand: readonly EntityId[];
+      readonly countToBottom: number;
     };
 
 /**
@@ -306,7 +430,42 @@ export type DecisionResponse =
     }
   | { readonly kind: "choosePlayer"; readonly chosen: readonly PlayerSeat[] }
   | { readonly kind: "chooseZone"; readonly chosen: ZoneType }
-  | { readonly kind: "chooseAltCost"; readonly altCostId: string };
+  | { readonly kind: "chooseAltCost"; readonly altCostId: string }
+  // === Post-audit Forge parity responses ===
+  | { readonly kind: "chooseNumber"; readonly chosen: number }
+  | { readonly kind: "chooseColor"; readonly color: Color | null }
+  | { readonly kind: "chooseColors"; readonly colors: ColorSet }
+  | { readonly kind: "chooseCounterType"; readonly counterTypes: readonly string[] }
+  | { readonly kind: "chooseCardsPile"; readonly chosen: "a" | "b" }
+  | { readonly kind: "vote"; readonly voteId: string }
+  | { readonly kind: "confirmAction"; readonly confirmed: boolean }
+  | { readonly kind: "confirmReplacement"; readonly applied: boolean }
+  | { readonly kind: "confirmTrigger"; readonly use: boolean }
+  | { readonly kind: "chooseStartingPlayer"; readonly goFirst: boolean }
+  | { readonly kind: "chooseOptionalCosts"; readonly chosenIds: readonly string[] }
+  | { readonly kind: "chooseKeywordForPump"; readonly keyword: string }
+  | {
+      readonly kind: "chooseProtectionType";
+      readonly protection: "color" | "type" | "player";
+      readonly value: string;
+    }
+  | { readonly kind: "chooseRollToModify"; readonly apply: boolean }
+  | { readonly kind: "chooseRollToReroll"; readonly reroll: boolean }
+  | { readonly kind: "chooseRollToIgnore"; readonly ignoredRollIds: readonly string[] }
+  | {
+      readonly kind: "chooseRollToSwap";
+      readonly swap: readonly [string, string] | null;
+    }
+  | { readonly kind: "chooseSector"; readonly sectorId: string }
+  | { readonly kind: "chooseSprocket"; readonly sprocket: number }
+  | {
+      readonly kind: "chooseContraptionsToCrank";
+      readonly chosen: readonly EntityId[];
+    }
+  | {
+      readonly kind: "mulliganBottom";
+      readonly bottomed: readonly EntityId[];
+    };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];
