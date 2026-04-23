@@ -13,6 +13,7 @@ import {
   mkEntityId,
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
+import type { Card } from "./card.js";
 import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
 import type { GameMeta } from "./game-meta.js";
@@ -37,6 +38,11 @@ export class Game {
   readonly players: Player[];
   readonly sharedZones: { stack: Stack; exile: Exile; ante: Ante };
   readonly flags: GameFlags;
+  // Registry of every live Card in the game, keyed by EntityId. GameAction
+  // mutators (tap, addCounter, moveTo, …) look up cards here to update their
+  // mutable state. Populated by MatchSetup (Task 45) and by token/emblem
+  // factories in SP2; SP1 tests seed it directly.
+  readonly cards = new Map<EntityId, Card>();
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
