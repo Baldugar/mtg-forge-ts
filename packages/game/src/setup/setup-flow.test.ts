@@ -251,6 +251,28 @@ describe("setupGame", () => {
     }
   });
 
+  it("after 1 mulligan, every card's .zone matches its physical zone", () => {
+    const game = mkGame();
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 60, 0),
+      1: seedCards(game, mkPlayerSeat(1), 60, 60),
+    };
+    // First mulligan decision = reject, second = keep. Exercises the reshuffle
+    // branch that had the card.zone desync bug.
+    drain(game, decks, (n) => n >= 1);
+    for (const player of game.players) {
+      const lib = player.zones.get(ZoneType.Library);
+      const hand = player.zones.get(ZoneType.Hand);
+      if (!lib || !hand) throw new Error("test: zones not populated");
+      for (const id of lib.toArray()) {
+        expect(game.cards.get(id)?.zone).toBe(ZoneType.Library);
+      }
+      for (const id of hand.toArray()) {
+        expect(game.cards.get(id)?.zone).toBe(ZoneType.Hand);
+      }
+    }
+  });
+
   it("excessive mulligans throws GameStateIntegrityError when a controller loops forever", () => {
     const game = mkGame();
     const decks: SetupDecks = {

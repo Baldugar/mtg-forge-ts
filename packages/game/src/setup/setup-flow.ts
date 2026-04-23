@@ -138,7 +138,16 @@ export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield
       if (hand && lib) {
         const handCards = hand.toArray();
         hand.clear();
-        for (const id of handCards) lib.add(id);
+        for (const id of handCards) {
+          lib.add(id);
+          // WHY: the Card's .zone field mirrors its Zone-map location. When
+          // we physically move cards from Hand back to Library during a
+          // mulligan reshuffle, the Card records must follow or downstream
+          // consumers (AI, UI, SBA scan) will see Hand cards that no longer
+          // exist in any hand zone.
+          const card = game.cards.get(id);
+          if (card) card.zone = ZoneType.Library;
+        }
         const shuffled = game.rng.shuffle(lib.toArray());
         lib.clear();
         for (const id of shuffled) lib.add(id);
