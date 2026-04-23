@@ -102,12 +102,342 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "RollDie",
   "SubgameStarted",
   "SubgameEnded",
+  // Engine-internal (11) — SP2 §B
+  "EventPrevented",
+  "TriggerQueued",
+  "TriggerResolved",
+  "ReplacementApplied",
+  "StateBasedActionApplied",
+  "StaticAbilityRegistered",
+  "StaticAbilityUnregistered",
+  "ContinuousEffectRegistered",
+  "ContinuousEffectExpired",
+  "CostPaid",
+  "PhaseStepEnded",
 ];
 
+// WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
+// without landing in ALL_KINDS_MAP, this `satisfies` fails. Bidirectional
+// with EXPECTED_KINDS above (listed form) so a missing kind is caught on
+// both sides.
+const ALL_KINDS_MAP = {
+  CardDrawn: true,
+  CardDiscarded: true,
+  CardMilled: true,
+  CardDestroyed: true,
+  CardExiled: true,
+  CardSacrificed: true,
+  CardReturned: true,
+  CardCycled: true,
+  CardForetold: true,
+  CardChangedZone: true,
+  LifeChanged: true,
+  CounterAdded: true,
+  CounterRemoved: true,
+  CardTapped: true,
+  CardUntapped: true,
+  ControlChanged: true,
+  AttachmentChanged: true,
+  PhasedOut: true,
+  PhasedIn: true,
+  Flipped: true,
+  Transformed: true,
+  FaceDownStateChanged: true,
+  BecameMonarch: true,
+  LostMonarch: true,
+  BecameInitiative: true,
+  RingTempted: true,
+  RingLevelChanged: true,
+  SpellCast: true,
+  SpellPutOnStack: true,
+  AbilityActivated: true,
+  AbilityTriggered: true,
+  StackItemResolving: true,
+  StackItemResolved: true,
+  StackItemCountered: true,
+  StackItemCopied: true,
+  CombatStarted: true,
+  AttackersDeclared: true,
+  BlockersDeclared: true,
+  BlockerOrderSet: true,
+  DamageAssigned: true,
+  DamageDealt: true,
+  DamagePrevented: true,
+  AttackerBecomesBlocked: true,
+  CombatEnded: true,
+  CombatCreatureDied: true,
+  TurnStarted: true,
+  TurnEnded: true,
+  PhaseStarted: true,
+  StepStarted: true,
+  StepEnded: true,
+  PlayerLifeChanged: true,
+  PlayerDrew: true,
+  PlayerDiscarded: true,
+  PlayerMilled: true,
+  PlayerLost: true,
+  PlayerWon: true,
+  PlayerConceded: true,
+  CityBlessingGained: true,
+  GameStarted: true,
+  MulliganTaken: true,
+  GameEnded: true,
+  CastAborted: true,
+  ShortcutApplied: true,
+  Scry: true,
+  Surveil: true,
+  Shuffle: true,
+  CardPlotted: true,
+  TokenCreated: true,
+  ManaEnteredPool: true,
+  DayTimeChanged: true,
+  DoorOpened: true,
+  SpeedLevelChanged: true,
+  ModeChosen: true,
+  PlayerPoisoned: true,
+  PlayerRadiated: true,
+  FlipCoin: true,
+  RollDie: true,
+  SubgameStarted: true,
+  SubgameEnded: true,
+  EventPrevented: true,
+  TriggerQueued: true,
+  TriggerResolved: true,
+  ReplacementApplied: true,
+  StateBasedActionApplied: true,
+  StaticAbilityRegistered: true,
+  StaticAbilityUnregistered: true,
+  ContinuousEffectRegistered: true,
+  ContinuousEffectExpired: true,
+  CostPaid: true,
+  PhaseStepEnded: true,
+} as const satisfies Record<GameEventKind, true>;
+
 describe("GameEvent enumeration", () => {
-  it("has 79 distinct kinds grouped across 8 families (SP1 post-audit)", () => {
-    expect(EXPECTED_KINDS.length).toBe(79);
-    expect(new Set(EXPECTED_KINDS).size).toBe(79);
+  it("has 90 distinct kinds grouped across 9 families (SP2 §B lock)", () => {
+    expect(EXPECTED_KINDS.length).toBe(90);
+    expect(new Set(EXPECTED_KINDS).size).toBe(90);
+    // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
+    // compile-time exhaustiveness; this asserts the two lists stay aligned.
+    expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
+  });
+});
+
+describe("Event taxonomy lock — version:1 sweep", () => {
+  // WHY: SP2 §B pins every variant at version:1. Any regression where a
+  // newly-added variant forgets the literal — or is accidentally authored
+  // at v2 — trips this sweep before it reaches the registries.
+  //
+  // Payload fixtures kept minimal: just enough structure to satisfy
+  // mkEvent's payload type for each kind. Values are type-system-only;
+  // semantics are exercised by the family tests above.
+  const seat0 = mkPlayerSeat(0);
+  const seat1 = mkPlayerSeat(1);
+  const id = (n: number) => mkEntityId(n);
+
+  const PAYLOADS: {
+    [K in GameEventKind]: Extract<GameEvent, { kind: K }>["payload"];
+  } = {
+    CardDrawn: { playerSeat: seat0, cardId: id(1) },
+    CardDiscarded: { playerSeat: seat0, cardId: id(1), cause: "discard" },
+    CardMilled: { playerSeat: seat0, cardId: id(1) },
+    CardDestroyed: { cardId: id(1), cause: "sba" },
+    CardExiled: { cardId: id(1), fromZone: ZoneType.Battlefield },
+    CardSacrificed: { cardId: id(1), playerSeat: seat0 },
+    CardReturned: { cardId: id(1), fromZone: ZoneType.Graveyard, toZone: ZoneType.Hand },
+    CardCycled: { cardId: id(1), playerSeat: seat0 },
+    CardForetold: { cardId: id(1), playerSeat: seat0 },
+    CardChangedZone: { cardId: id(1), fromZone: ZoneType.Hand, toZone: ZoneType.Graveyard },
+    LifeChanged: { playerSeat: seat0, oldLife: 20, newLife: 18, delta: -2, cause: "damage" },
+    CounterAdded: { cardId: id(1), counterType: "+1/+1", amount: 1 },
+    CounterRemoved: { cardId: id(1), counterType: "+1/+1", amount: 1 },
+    CardTapped: { cardId: id(1) },
+    CardUntapped: { cardId: id(1) },
+    ControlChanged: { cardId: id(1), oldController: seat0, newController: seat1 },
+    AttachmentChanged: { cardId: id(1) },
+    PhasedOut: { cardId: id(1), direct: true },
+    PhasedIn: { cardId: id(1), direct: true },
+    Flipped: { cardId: id(1) },
+    Transformed: { cardId: id(1), toFace: "back" },
+    FaceDownStateChanged: { cardId: id(1), faceDown: true },
+    BecameMonarch: { playerSeat: seat0 },
+    LostMonarch: { playerSeat: seat0 },
+    BecameInitiative: { playerSeat: seat0 },
+    RingTempted: { playerSeat: seat0, cardId: id(1) },
+    RingLevelChanged: { playerSeat: seat0, oldLevel: 0, newLevel: 1 },
+    SpellCast: { stackItemId: id(1), cardId: id(2), controllerSeat: seat0 },
+    SpellPutOnStack: { stackItemId: id(1), cardId: id(2), controllerSeat: seat0 },
+    AbilityActivated: {
+      stackItemId: id(1),
+      sourceCardId: id(2),
+      controllerSeat: seat0,
+      abilityKind: "activated",
+    },
+    AbilityTriggered: {
+      stackItemId: id(1),
+      sourceCardId: id(2),
+      controllerSeat: seat0,
+      triggerMode: "etb",
+    },
+    StackItemResolving: { stackItemId: id(1) },
+    StackItemResolved: { stackItemId: id(1), fizzled: false },
+    StackItemCountered: { stackItemId: id(1) },
+    StackItemCopied: { originalId: id(1), copyId: id(2), controllerSeat: seat0 },
+    CombatStarted: { attackingSeat: seat0 },
+    AttackersDeclared: { attackingSeat: seat0, attackers: [] },
+    BlockersDeclared: { defendingSeat: seat1, blocks: [] },
+    BlockerOrderSet: { attackerId: id(1), blockerOrder: [] },
+    DamageAssigned: { sourceId: id(1), targetKind: "player", targetId: seat1, amount: 2 },
+    DamageDealt: {
+      sourceId: id(1),
+      targetKind: "player",
+      targetId: seat1,
+      amount: 2,
+      isCombat: true,
+    },
+    DamagePrevented: { sourceId: id(1), targetKind: "player", targetId: seat1, amount: 1 },
+    AttackerBecomesBlocked: { attackerId: id(1) },
+    CombatEnded: { attackingSeat: seat0 },
+    CombatCreatureDied: { cardId: id(1), cause: "damage" },
+    TurnStarted: { activeSeat: seat0 },
+    TurnEnded: { activeSeat: seat0 },
+    PhaseStarted: { activeSeat: seat0, phase: PhaseStep.Main1 },
+    StepStarted: { activeSeat: seat0, step: PhaseStep.Upkeep },
+    StepEnded: { activeSeat: seat0, step: PhaseStep.Upkeep },
+    PlayerLifeChanged: { playerSeat: seat0, oldLife: 20, newLife: 19, delta: -1 },
+    PlayerDrew: { playerSeat: seat0, count: 1 },
+    PlayerDiscarded: { playerSeat: seat0, cardIds: [], cause: "discard" },
+    PlayerMilled: { playerSeat: seat0, count: 3 },
+    PlayerLost: { playerSeat: seat0, reason: "life" },
+    PlayerWon: { playerSeat: seat0 },
+    PlayerConceded: { playerSeat: seat0 },
+    CityBlessingGained: { playerSeat: seat0 },
+    GameStarted: { seats: [seat0, seat1], firstPlayer: seat0 },
+    MulliganTaken: { playerSeat: seat0, handBefore: 7, handAfter: 6, rule: "london" },
+    GameEnded: { winners: [seat0], reason: "victory" },
+    CastAborted: { playerSeat: seat0, cardId: id(1), reason: "illegal targets" },
+    ShortcutApplied: { description: "keep untapping", affected: [] },
+    Scry: { playerSeat: seat0, count: 1 },
+    Surveil: { playerSeat: seat0, count: 1 },
+    Shuffle: { playerSeat: seat0, zoneShuffled: ZoneType.Library },
+    CardPlotted: { playerSeat: seat0, cardId: id(1) },
+    TokenCreated: { controllerSeat: seat0, tokenCardId: id(1) },
+    ManaEnteredPool: { playerSeat: seat0, color: null, sourceId: null, amount: 1 },
+    DayTimeChanged: { oldValue: "day", newValue: "night" },
+    DoorOpened: { cardId: id(1) },
+    SpeedLevelChanged: { playerSeat: seat0, oldLevel: 1, newLevel: 2 },
+    ModeChosen: { sourceId: id(1), modeIds: [] },
+    PlayerPoisoned: { playerSeat: seat0, amount: 1 },
+    PlayerRadiated: { playerSeat: seat0, amount: 1 },
+    FlipCoin: { playerSeat: seat0, resultHeads: true },
+    RollDie: { playerSeat: seat0, sides: 6, result: 4 },
+    SubgameStarted: { parentTurn: 1 },
+    SubgameEnded: { parentTurn: 1, outcome: "win" },
+    // Engine-internal (11) — SP2 §B
+    EventPrevented: { original: { kind: "test" } },
+    TriggerQueued: { triggerId: id(1), sourceCardId: id(2) },
+    TriggerResolved: { triggerId: id(1) },
+    ReplacementApplied: {
+      replacementId: id(1),
+      original: { kind: "before" },
+      replaced: { kind: "after" },
+    },
+    StateBasedActionApplied: { actionCount: 1 },
+    StaticAbilityRegistered: { staticId: id(1), sourceCardId: id(2) },
+    StaticAbilityUnregistered: { staticId: id(1) },
+    ContinuousEffectRegistered: { effectId: id(1) },
+    ContinuousEffectExpired: { effectId: id(1) },
+    CostPaid: { stackItemId: id(1), payerSeat: seat0 },
+    PhaseStepEnded: { step: PhaseStep.EndStep },
+  };
+
+  for (const kind of EXPECTED_KINDS) {
+    it(`mkEvent(${kind}) pins version:1`, () => {
+      const payload = PAYLOADS[kind];
+      const e = mkEvent(kind, 1, PhaseStep.Main1, payload as never);
+      expect(e.version).toBe(1);
+      expect(e.kind).toBe(kind);
+      expect(e.turn).toBe(1);
+      expect(e.phase).toBe(PhaseStep.Main1);
+      // Round-trip JSON — locked schema must stringify cleanly.
+      expect(JSON.parse(JSON.stringify(e))).toEqual(e);
+    });
+  }
+});
+
+describe("mkEvent — SP2 §B engine-internal additions", () => {
+  it("builds EventPrevented with opaque original intent", () => {
+    const e = mkEvent("EventPrevented", 2, PhaseStep.Main1, {
+      original: { kind: "DamageAssigned", sourceId: mkEntityId(1) },
+    });
+    expect(e.kind).toBe("EventPrevented");
+    expect(e.version).toBe(1);
+  });
+
+  it("builds TriggerQueued + TriggerResolved pair", () => {
+    const q = mkEvent("TriggerQueued", 3, PhaseStep.EndStep, {
+      triggerId: mkEntityId(50),
+      sourceCardId: mkEntityId(10),
+    });
+    expect(q.payload.triggerId).toBe(mkEntityId(50));
+    const r = mkEvent("TriggerResolved", 3, PhaseStep.EndStep, {
+      triggerId: mkEntityId(50),
+    });
+    expect(r.payload.triggerId).toBe(mkEntityId(50));
+  });
+
+  it("builds ReplacementApplied with before/after intents", () => {
+    const e = mkEvent("ReplacementApplied", 4, PhaseStep.Main2, {
+      replacementId: mkEntityId(7),
+      original: { kind: "CardDestroyed", cardId: mkEntityId(12) },
+      replaced: { kind: "CardExiled", cardId: mkEntityId(12) },
+    });
+    expect(e.payload.replacementId).toBe(mkEntityId(7));
+  });
+
+  it("builds StateBasedActionApplied with actionCount", () => {
+    const e = mkEvent("StateBasedActionApplied", 1, PhaseStep.CombatDamage, {
+      actionCount: 3,
+    });
+    expect(e.payload.actionCount).toBe(3);
+  });
+
+  it("builds StaticAbilityRegistered + Unregistered bookkeeping", () => {
+    const reg = mkEvent("StaticAbilityRegistered", 1, PhaseStep.Main1, {
+      staticId: mkEntityId(1),
+      sourceCardId: mkEntityId(2),
+    });
+    expect(reg.payload.staticId).toBe(mkEntityId(1));
+    const un = mkEvent("StaticAbilityUnregistered", 1, PhaseStep.Main1, {
+      staticId: mkEntityId(1),
+    });
+    expect(un.payload.staticId).toBe(mkEntityId(1));
+  });
+
+  it("builds ContinuousEffectRegistered + Expired bookkeeping", () => {
+    const reg = mkEvent("ContinuousEffectRegistered", 2, PhaseStep.Main1, {
+      effectId: mkEntityId(30),
+    });
+    expect(reg.payload.effectId).toBe(mkEntityId(30));
+    const exp = mkEvent("ContinuousEffectExpired", 2, PhaseStep.EndStep, {
+      effectId: mkEntityId(30),
+    });
+    expect(exp.payload.effectId).toBe(mkEntityId(30));
+  });
+
+  it("builds CostPaid with stackItem + payer", () => {
+    const e = mkEvent("CostPaid", 2, PhaseStep.Main1, {
+      stackItemId: mkEntityId(5),
+      payerSeat: mkPlayerSeat(0),
+    });
+    expect(e.payload.payerSeat).toBe(mkPlayerSeat(0));
+  });
+
+  it("builds PhaseStepEnded", () => {
+    const e = mkEvent("PhaseStepEnded", 3, PhaseStep.EndStep, {
+      step: PhaseStep.EndStep,
+    });
+    expect(e.payload.step).toBe(PhaseStep.EndStep);
   });
 });
 

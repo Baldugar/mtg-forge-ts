@@ -19,13 +19,21 @@ import type { PhaseStep } from "../phase.js";
 import type { ZoneType } from "../zone.js";
 
 /**
- * Full enumeration of engine events — 79 kinds across 8 families. The SP1
+ * Full enumeration of engine events — 90 kinds across 9 families. The SP1
  * spec §8 baseline was 63 kinds; the post-audit expansion adds 16 Forge-
  * required kinds (Scry/Surveil/Shuffle zone-family, Mana family, day/night
  * + door/speed updates to Monarch-family, ModeChosen on Stack, Poison/
  * Radiation on Player, FlipCoin/RollDie/Subgame on Meta, CardPlotted +
- * TokenCreated on Zone). Variants stay grouped by inline family comments
- * so additions land in the right section.
+ * TokenCreated on Zone). SP2 §B locks the taxonomy at version:1 and adds
+ * 11 Engine-internal kinds (registry bookkeeping, replacement/trigger
+ * pipeline telemetry, SBA applications, cost-paid transitions, step-end
+ * completion) consumed by the upcoming registries (Tasks 16-34). Variants
+ * stay grouped by inline family comments so additions land in the right
+ * section.
+ *
+ * Schema contract: every variant carries `readonly version: 1`. Breaking
+ * payload changes land as new variants (v2) that coexist with v1 until
+ * readers migrate; SP2 does not introduce any v2 kinds.
  */
 export type GameEvent =
   // === Zone change (10) ===
@@ -776,6 +784,104 @@ export type GameEvent =
       readonly turn: number;
       readonly phase: PhaseStep;
       readonly payload: { readonly parentTurn: number; readonly outcome: string };
+    }
+  // === Engine-internal (11) — SP2 §B registry/pipeline telemetry ===
+  // WHY: these kinds feed the Replacement / Trigger / Static / SBA
+  // pipelines (Tasks 16-34). They are not "game events" in the rules
+  // sense, but the registries publish them through the same channel so
+  // the log/replay/subscription stack is the single observation surface.
+  | {
+      readonly kind: "EventPrevented";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      // `original` is the prevented intent. Shape is the MutationIntent
+      // struct owned by Tasks 16-19; kept `unknown` here so event.ts stays
+      // independent of the replacement registry.
+      readonly payload: { readonly original: unknown };
+    }
+  | {
+      readonly kind: "TriggerQueued";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly triggerId: EntityId; readonly sourceCardId: EntityId };
+    }
+  | {
+      readonly kind: "TriggerResolved";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly triggerId: EntityId };
+    }
+  | {
+      readonly kind: "ReplacementApplied";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      // `original`/`replaced` are MutationIntents (pre/post replacement).
+      // Kept `unknown` to keep the event module decoupled from the
+      // replacement-registry struct shapes.
+      readonly payload: {
+        readonly replacementId: EntityId;
+        readonly original: unknown;
+        readonly replaced: unknown;
+      };
+    }
+  | {
+      readonly kind: "StateBasedActionApplied";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      // actionCount = number of SBAs applied in this sweep (may be >1
+      // when multiple SBAs fire simultaneously per CR 704.3).
+      readonly payload: { readonly actionCount: number };
+    }
+  | {
+      readonly kind: "StaticAbilityRegistered";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly staticId: EntityId; readonly sourceCardId: EntityId };
+    }
+  | {
+      readonly kind: "StaticAbilityUnregistered";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly staticId: EntityId };
+    }
+  | {
+      readonly kind: "ContinuousEffectRegistered";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly effectId: EntityId };
+    }
+  | {
+      readonly kind: "ContinuousEffectExpired";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly effectId: EntityId };
+    }
+  | {
+      readonly kind: "CostPaid";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly stackItemId: EntityId; readonly payerSeat: PlayerSeat };
+    }
+  | {
+      readonly kind: "PhaseStepEnded";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      // WHY: complements PhaseStarted / StepStarted / StepEnded with a
+      // coarser "this phase's step sequence is complete" pulse. Orchestrator
+      // uses it to coalesce end-of-step trigger sweeps without duplicating
+      // work across every StepEnded.
+      readonly payload: { readonly step: PhaseStep };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
