@@ -2294,4 +2294,84 @@ Plan complete and saved to `docs/superpowers/plans/2026-04-23-sp1-engine-foundat
 
 **2. Inline Execution** — Execute tasks in this session using executing-plans, batch execution with checkpoints.
 
+---
+
+## Deferred items (audit-tracked)
+
+The following SP1 items are explicitly deferred to later sub-projects based on
+the post-Task-50 4-reviewer audit (Rounds 1-3). Each has a spec/plan note
+explaining why. Future sessions should consult this list before re-flagging
+any of these as "gaps".
+
+### Deferred to SP2 (rules systems)
+
+- **Opening-hand actions** (spec §6.7): Leyline of the Void / Gemstone Caverns
+  reveal step. DecisionRequest kind `openingHandAction` exists in the core
+  decision union; emitter lives in the setup flow extension point. SP2 wires
+  it during replacement-effect work.
+- **Companion declaration** (spec §6.10): requires format-level companion
+  validator and Serum Powder repeated mulligan. SP2 with format rules.
+- **DelayedTrigger class** (master spec §7): deferred — triggers don't fire
+  until SP2.
+- **Combat state in GameSnapshot**: Combat class scaffold exists;
+  `snapshot.state.combat: null` reserved (schemaVersion 5). SP2 wires when
+  CombatHandler.snapshot() lands.
+- **Card.remembered / imprinted state**: `snapshot.state.cardRemembered: {}`
+  reserved. SP2 implements.
+- **ContinuousEffect layer engine**: CR 613 layer system. Type shape +
+  Game.continuousEffects + snapshot round-trip reserved in SP1 (schemaVersion
+  5); engine behavior lands in SP2.
+- **GameAction stubs**: `createToken`, `createEmblem`, `scry`, `surveil`,
+  `proliferate` throw with SP2 message. scry/surveil are simple enough to
+  land early in SP2.
+- **RandomLegalController** for non-priority/non-mulligan kinds: currently
+  throws `IllegalDecisionError`. SP2 adds default legal-option selection for
+  all 44 decision kinds.
+- **GameFlags per-turn tracking**: `countersAddedThisTurn`,
+  `leftBattlefieldThisTurn`, `topLibsCast`, etc. — SP2 adds when triggers
+  that read them land.
+
+### Deferred to SP3 (DSL + effects library)
+
+- **CostPart runtime methods** (`canPay`, `pay`, `undo`): base `CostPart`
+  only has `kind` + `toJSON` per plan Task 15. Runtime in SP3.
+- **ManaPool.canPay / removeForPayment / ManaCostSolver**: stubs throw with
+  SP3 message.
+- **Full mana cost-to-pool matching** with Forge's ManaCostShard semantics.
+- **Distributed undo / cast-abort**: CostPayment.undo + CastPipeline.abort
+  belong to SP3.
+
+### Deferred to SP4 (card database)
+
+- **Game.attachCardDb SHA compatibility check**: stubs throw. SP4 wires.
+- **PaperCard definition resolution**: `PaperCard.definition` loaded from
+  CardDb; SP4 populates.
+
+### Deferred to SP5 (AI)
+
+- **GameCopier** for simulation branches.
+- **FullForgeAiController**.
+
+### Deferred to SP6 (formats)
+
+- **FormatDefinition Forge-alignment**: current FormatDefinition is TS-native;
+  SP6 adds Forge's `formatType` / `formatSubType` enums.
+- **Format-specific deck validation**.
+- **Format rules application in setup** (spec §6.2).
+
+### Deferred to SP7 (limited)
+
+- **Sideboarding flow implementation**: `Match.sideboardingFlow()` throws
+  with an SP7 message. Match.run() auto-continues between games in SP1; SP7
+  inserts the sideboard MatchDecisionRequest yield between games.
+
+### Acknowledged Forge-native deviations (not "ports")
+
+- **ForgeError hierarchy**: engine-native design, not a Forge port (Forge
+  has minimal exceptions).
+- **Rng (xoshiro256**)**: deliberate deviation from Forge's java.util.Random
+  for cross-platform determinism.
+- **CommanderSlot discriminated union**: TS-native design choice improving
+  over Forge's flat Commander DeckSection.
+
 **Which approach?**
