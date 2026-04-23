@@ -112,11 +112,11 @@ const makeRestoreOpts = (rng = new SeededRng(1n)) => ({
 // === Tests ========================================================
 
 describe("GameSnapshot", () => {
-  it("header.schemaVersion is pinned to 1 (SP1)", () => {
+  it("header.schemaVersion is pinned to 2 (SP1 post-audit: library top-first)", () => {
     const g = makeGame();
     const snap = snapshot(g);
     expect(snap.header.schemaVersion).toBe(SNAPSHOT_SCHEMA_VERSION);
-    expect(snap.header.schemaVersion).toBe(1);
+    expect(snap.header.schemaVersion).toBe(2);
   });
 
   it("header captures engine/card-data/rules provenance from GameMeta + GameRules", () => {

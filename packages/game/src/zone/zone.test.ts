@@ -117,4 +117,41 @@ describe("Zone", () => {
     expect(exile.ownerSeat).toBeNull();
     expect(ante.ownerSeat).toBeNull();
   });
+
+  it("addToTop places a card at index 0 (top-of-deck convention)", () => {
+    const z = new Library(ZoneType.Library, mkPlayerSeat(0));
+    const a = mkEntityId(0);
+    const b = mkEntityId(1);
+    const c = mkEntityId(2);
+    z.add(a); // bottom
+    z.addToTop(b);
+    z.addToTop(c);
+    // Final order: [c, b, a] — c is on top, a is on bottom.
+    expect(z.toArray()).toEqual([c, b, a]);
+  });
+
+  it("removeAt pops a card at the given index and returns it", () => {
+    const z = new Library(ZoneType.Library, mkPlayerSeat(0));
+    const a = mkEntityId(0);
+    const b = mkEntityId(1);
+    const c = mkEntityId(2);
+    z.add(a);
+    z.add(b);
+    z.add(c);
+    // Remove top (index 0 = Forge top-of-deck convention).
+    expect(z.removeAt(0)).toBe(a);
+    expect(z.toArray()).toEqual([b, c]);
+    // Remove bottom.
+    expect(z.removeAt(1)).toBe(c);
+    expect(z.toArray()).toEqual([b]);
+  });
+
+  it("removeAt returns undefined for out-of-range index", () => {
+    const z = new Library(ZoneType.Library, mkPlayerSeat(0));
+    expect(z.removeAt(0)).toBeUndefined();
+    z.add(mkEntityId(0));
+    expect(z.removeAt(-1)).toBeUndefined();
+    expect(z.removeAt(5)).toBeUndefined();
+    expect(z.size).toBe(1);
+  });
 });

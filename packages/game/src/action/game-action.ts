@@ -39,14 +39,14 @@ export class GameAction {
     if (!library) throw new GameStateIntegrityError(`Player ${seat} has no Library zone`);
     if (!hand) throw new GameStateIntegrityError(`Player ${seat} has no Hand zone`);
     for (let i = 0; i < count; i++) {
-      const items = library.toArray();
-      const topId = items[items.length - 1];
+      // WHY: Forge/Java convention — index 0 is the TOP of the library.
+      // Draw consumes the front of the list; items.length-1 is the bottom.
+      const topId = library.removeAt(0);
       // WHY: running out of library mid-draw is a state-based loss condition
       // (SP2). For SP1 we simply stop drawing — the caller can detect this
       // via Library.size beforehand. Emitting CardDrawn with no card would
       // violate the event contract.
       if (topId === undefined) return;
-      library.remove(topId);
       hand.add(topId);
       const card = game.cards.get(topId);
       if (card) card.zone = Zt.Hand;
@@ -321,10 +321,10 @@ export class GameAction {
     const library = player.zones.get(Zt.Library);
     if (!library) throw new GameStateIntegrityError(`Player ${seat} has no Library zone`);
     for (let i = 0; i < count; i++) {
-      const items = library.toArray();
-      const topId = items[items.length - 1];
+      // WHY: mill removes from the TOP of the library (index 0), matching
+      // Forge and CR 701.13a ("put the top N cards... into graveyard").
+      const topId = library.removeAt(0);
       if (topId === undefined) return;
-      library.remove(topId);
       const graveyard = player.zones.get(Zt.Graveyard);
       if (!graveyard) {
         throw new GameStateIntegrityError(`Player ${seat} has no Graveyard zone`);

@@ -124,15 +124,32 @@ describe("GameAction.drawCards", () => {
     expect(game.cards.get(id)?.zone).toBe(ZoneType.Hand);
   });
 
-  it("draws multiple cards in LIFO order (top of library first)", () => {
+  it("draws multiple cards in top-to-bottom order (Forge convention: index 0 = top)", () => {
     const { game, action, seat0 } = mkFixture();
-    // Library items are ordered bottom-first; "top" = last element (items[size-1])
-    const bottom = mkEntityId(1);
-    const middle = mkEntityId(2);
+    // Library items are ordered top-first (Forge/CR convention):
+    //   index 0 = TOP of deck (drawn first), items.length-1 = BOTTOM.
+    // addCardToZone uses Zone.add which appends at items.length, so the
+    // first `top` added winds up at index 0 only if the zone starts empty
+    // — but Zone.add appends at the END. Use addToTop to stage a
+    // deterministic order: add in reverse so index 0 ends up as `top`.
     const top = mkEntityId(3);
-    addCardToZone(game, seat0, ZoneType.Library, bottom);
-    addCardToZone(game, seat0, ZoneType.Library, middle);
-    addCardToZone(game, seat0, ZoneType.Library, top);
+    const middle = mkEntityId(2);
+    const bottom = mkEntityId(1);
+    // Add them in deck-order (top first) via addToTop on the library zone.
+    // Each addToTop places at index 0, so the final list is [top, middle, bottom].
+    // We take the library zone and call addToTop directly — addCardToZone
+    // would otherwise push at the end and invert the order.
+    const lib = game.getPlayer(seat0).zones.get(ZoneType.Library);
+    if (!lib) throw new Error("test: missing library");
+    for (const id of [top, middle, bottom]) {
+      const card = new Card(id, samplePaper, seat0, seat0, ZoneType.Library);
+      game.cards.set(id, card);
+    }
+    // Sequence matters: push bottom, middle, top so final order is
+    // [top, middle, bottom] (top ends at index 0).
+    lib.addToTop(bottom);
+    lib.addToTop(middle);
+    lib.addToTop(top);
 
     const yields = collect(action.drawCards(seat0, 2));
     expect(yields).toHaveLength(2);
@@ -400,10 +417,16 @@ describe("GameAction.destroy / exile / sacrifice", () => {
 describe("GameAction.mill / shuffle", () => {
   it("mill moves top-of-library to graveyard and emits CardMilled", () => {
     const { game, action, seat0 } = mkFixture();
+    // Forge convention: index 0 = top. Place `b` on top via addToTop so the
+    // first mill consumes `b` regardless of add ordering.
     const a = mkEntityId(1000);
     const b = mkEntityId(1001);
-    addCardToZone(game, seat0, ZoneType.Library, a);
-    addCardToZone(game, seat0, ZoneType.Library, b); // b is top
+    const lib = game.getPlayer(seat0).zones.get(ZoneType.Library);
+    if (!lib) throw new Error("test: missing library");
+    game.cards.set(a, new Card(a, samplePaper, seat0, seat0, ZoneType.Library));
+    game.cards.set(b, new Card(b, samplePaper, seat0, seat0, ZoneType.Library));
+    lib.add(a); // bottom
+    lib.addToTop(b); // b is now at index 0 (top)
     const yields = collect(action.mill(seat0, 1));
     expect(yields).toHaveLength(1);
     if (yields[0]?.kind !== "event") throw new Error("expected event");
