@@ -57,10 +57,16 @@ describe("CombatHandler", () => {
     handler.declareAttackers([{ attackerId, defender: { kind: "player", seat: mkPlayerSeat(1) } }]);
     expect(handler.state.attackers.size).toBe(1);
     const info = handler.state.attackers.get(attackerId);
-    expect(info).toBeDefined();
-    expect(info?.attackerId).toBe(attackerId);
-    expect(info?.isTapped).toBe(false);
-    expect(info?.defender.kind).toBe("player");
+    // Narrow via throw so each field assertion is type-safe and a missing
+    // entry surfaces as a descriptive failure rather than a chain of
+    // optional-chain undefineds.
+    if (!info) throw new Error("test: expected attacker info but got undefined");
+    expect(info.attackerId).toBe(attackerId);
+    expect(info.isTapped).toBe(false);
+    expect(info.defender.kind).toBe("player");
+    if (info.defender.kind === "player") {
+      expect(info.defender.seat).toBe(mkPlayerSeat(1));
+    }
   });
 
   it("declareBlockers adds blocker entries keyed by blockerId", () => {
@@ -69,8 +75,8 @@ describe("CombatHandler", () => {
     const attackerId = mkEntityId(1);
     handler.declareBlockers([{ blockerId, attackerIds: [attackerId] }]);
     const info = handler.state.blockers.get(blockerId);
-    expect(info).toBeDefined();
-    expect(info?.attackerIds).toEqual([attackerId]);
+    if (!info) throw new Error("test: expected blocker info but got undefined");
+    expect(info.attackerIds).toEqual([attackerId]);
   });
 
   it("declareBlockers copies the attackerIds input (no aliasing)", () => {

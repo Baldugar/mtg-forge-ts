@@ -339,15 +339,18 @@ describe("GameSnapshot", () => {
     const snap = snapshot(g);
     const restored = restore(JSON.parse(JSON.stringify(snap)) as typeof snap, makeRestoreOpts());
     const rc = restored.cards.get(c.id);
-    expect(rc).toBeDefined();
-    expect(rc?.tapped).toBe(true);
-    expect(rc?.phased).toBe(true);
-    expect(rc?.damage).toBe(4);
-    expect(rc?.counters.get(CounterType.PlusOnePlusOne)).toBe(2);
-    expect(rc?.counters.get(CounterType.Loyalty)).toBe(5);
-    expect(rc?.attachedTo).toBe(mkEntityId(999));
-    expect(rc?.attachments).toEqual([mkEntityId(100), mkEntityId(101)]);
-    expect(rc?.paperCard).toBe(paperA);
+    // WHY: narrow via throw rather than toBeDefined() so every downstream
+    // field access is type-safe and the assertion failure surfaces the
+    // missing-card case directly.
+    if (!rc) throw new Error("test: expected restored card but got undefined");
+    expect(rc.tapped).toBe(true);
+    expect(rc.phased).toBe(true);
+    expect(rc.damage).toBe(4);
+    expect(rc.counters.get(CounterType.PlusOnePlusOne)).toBe(2);
+    expect(rc.counters.get(CounterType.Loyalty)).toBe(5);
+    expect(rc.attachedTo).toBe(mkEntityId(999));
+    expect(rc.attachments).toEqual([mkEntityId(100), mkEntityId(101)]);
+    expect(rc.paperCard).toBe(paperA);
   });
 
   it("Player life + counters + zone contents round-trip", () => {

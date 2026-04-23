@@ -20,6 +20,11 @@ import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
+import { Battlefield } from "../zone/zones/battlefield.js";
+import { CommandZone } from "../zone/zones/command-zone.js";
+import { Graveyard } from "../zone/zones/graveyard.js";
+import { Hand } from "../zone/zones/hand.js";
+import { Library } from "../zone/zones/library.js";
 import { type SetupDecks, setupGame } from "./setup-flow.js";
 
 const alice: LobbyPlayer = { id: "p-alice", name: "Alice", controllerKind: "human" };
@@ -123,7 +128,7 @@ const drain = (
 };
 
 describe("setupGame", () => {
-  it("populates per-player zones for both seats", () => {
+  it("populates per-player zones for both seats with the correct concrete subclass + owner + type", () => {
     const game = mkGame();
     const decks: SetupDecks = {
       0: seedCards(game, mkPlayerSeat(0), 60, 0),
@@ -131,11 +136,32 @@ describe("setupGame", () => {
     };
     drain(game, decks, () => true);
     for (const player of game.players) {
-      expect(player.zones.get(ZoneType.Library)).toBeDefined();
-      expect(player.zones.get(ZoneType.Hand)).toBeDefined();
-      expect(player.zones.get(ZoneType.Graveyard)).toBeDefined();
-      expect(player.zones.get(ZoneType.Battlefield)).toBeDefined();
-      expect(player.zones.get(ZoneType.Command)).toBeDefined();
+      const library = player.zones.get(ZoneType.Library);
+      const hand = player.zones.get(ZoneType.Hand);
+      const graveyard = player.zones.get(ZoneType.Graveyard);
+      const battlefield = player.zones.get(ZoneType.Battlefield);
+      const command = player.zones.get(ZoneType.Command);
+      // Structural assertions: class identity + ownerSeat + type enum value.
+      // toBeDefined() only rejects undefined; a wrong subclass (e.g., Hand
+      // where Library was expected) would slip through.
+      expect(library).toBeInstanceOf(Library);
+      expect(library?.type).toBe(ZoneType.Library);
+      expect(library?.ownerSeat).toBe(player.seat);
+      expect(hand).toBeInstanceOf(Hand);
+      expect(hand?.type).toBe(ZoneType.Hand);
+      expect(hand?.ownerSeat).toBe(player.seat);
+      expect(graveyard).toBeInstanceOf(Graveyard);
+      expect(graveyard?.type).toBe(ZoneType.Graveyard);
+      expect(graveyard?.ownerSeat).toBe(player.seat);
+      expect(graveyard?.size).toBe(0);
+      expect(battlefield).toBeInstanceOf(Battlefield);
+      expect(battlefield?.type).toBe(ZoneType.Battlefield);
+      expect(battlefield?.ownerSeat).toBe(player.seat);
+      expect(battlefield?.size).toBe(0);
+      expect(command).toBeInstanceOf(CommandZone);
+      expect(command?.type).toBe(ZoneType.Command);
+      expect(command?.ownerSeat).toBe(player.seat);
+      expect(command?.size).toBe(0);
     }
   });
 

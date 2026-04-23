@@ -313,13 +313,22 @@ describe("isRequest / isResponse — type guards", () => {
 });
 
 describe("DecisionResponse — compile-time checking", () => {
-  it("rejects unknown kinds at the type level", () => {
+  it("rejects unknown kinds at the type level; runtime guard rejects too", () => {
+    // WHY: the @ts-expect-error proves the *compile-time* surface catches
+    // unknown kinds. The runtime `isResponse(bad, "chooseX") === false`
+    // proves the runtime guard doesn't falsely accept either — toBeDefined
+    // was tautological (the literal is always defined) and added no
+    // information.
     // @ts-expect-error wrong kind literal
     const bad: DecisionResponse = { kind: "nope", foo: 1 };
-    expect(bad).toBeDefined();
-    // Sanity: a correctly typed response still constructs
+    expect(isResponse(bad, "chooseX")).toBe(false);
+    expect(isResponse(bad, "mulligan")).toBe(false);
+    // Sanity: a correctly typed response still constructs and narrows.
     const good: DecisionResponse = { kind: "chooseX", x: 3 };
-    expect(good.kind).toBe("chooseX");
+    expect(isResponse(good, "chooseX")).toBe(true);
+    if (isResponse(good, "chooseX")) {
+      expect(good.x).toBe(3);
+    }
   });
 });
 
