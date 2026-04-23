@@ -1,5 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import type { EntityId, GameEvent, LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
+import type {
+  DecisionResponse,
+  EntityId,
+  GameEvent,
+  LobbyPlayer,
+  PaperCard,
+  PlayerSeat,
+} from "@mtg-forge-ts/core";
 import {
   DEFAULT_PAPER_CARD_FLAGS,
   PhaseStep,
@@ -80,14 +87,22 @@ const mkGame = (overrides?: Partial<GameRules>): Game => {
   return g;
 };
 
-// Drive a PhaseHandler generator to completion, collecting yielded events.
+// Drive a PhaseHandler generator to completion, collecting yielded events
+// and decisions. For priority yields we always pass, mirroring the SP1
+// "no-op priority window" contract (concede branches are covered by the
+// integration smoke test).
 const drive = (handler: PhaseHandler): EngineYield[] => {
   const yields: EngineYield[] = [];
   const gen = handler.run();
   let next = gen.next();
   while (!next.done) {
     yields.push(next.value);
-    next = gen.next();
+    if (next.value.kind === "decision" && next.value.request.kind === "priority") {
+      const response: DecisionResponse = { kind: "priority", action: { kind: "pass" } };
+      next = gen.next(response);
+    } else {
+      next = gen.next();
+    }
   }
   return yields;
 };

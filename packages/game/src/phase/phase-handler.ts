@@ -1,24 +1,32 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // PhaseHandler — generator-based turn walker. Consumes the TurnQueue and
 // the PhaseSequence to drive the canonical MTG turn structure, yielding
-// EngineYields (events today, decisions in SP2) at each observable step.
+// EngineYields (events + priority decisions) at each observable step.
 //
 // SP1 emission contract per turn:
 //   TurnStarted
 //   for each PhaseStep in PhaseSequence:
 //     StepStarted
 //     <turn-based actions> (Untap: untap-all; Draw: draw-one)
+//     <priority decision for the active player — SP1-minimal>
 //     StepEnded
 //   TurnEnded
 //
-// SP1 does NOT yield priority decisions — the integration smoke test for
-// Task 49 runs with no spells or activated abilities, so the priority-pass
-// loop is postponed to SP2 along with stack resolution, upkeep triggers,
-// cleanup-phase discard, and combat damage assignment.
-import type { DecisionResponse, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
-import { PhaseStep as Phase, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+// SP1 priority is minimal: only the active player is asked once per step and
+// the legal actions are {pass, concede}. Full priority passing between all
+// seats, stack resolution, upkeep triggers, cleanup-phase discard, and
+// combat damage assignment land in SP2 on top of this scaffold.
+import type { DecisionRequest, DecisionResponse, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
+import {
+  GameStateIntegrityError,
+  IllegalDecisionError,
+  PhaseStep as Phase,
+  ZoneType,
+  mkEvent,
+} from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { GameAction } from "../action/game-action.js";
+import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -80,11 +88,47 @@ export class PhaseHandler {
     };
 
     yield* this.performTurnBasedActions(step, game.activePlayer);
+    if (game.isTerminal()) return;
 
-    // TODO SP2: priority passes + stack-resolution loop between turn-based
-    // actions and step end. SP1 intentionally omits decisions; Task 49's
-    // integration smoke test runs without spell casts or ability
-    // activations.
+    // SP1-minimal priority window. The active player is offered {pass,
+    // concede}. SP2 will expand this to the full APNAP priority pass loop
+    // with spell casts, ability activations, and stack resolution. The
+    // concede branch writes terminal state via endGame and emits
+    // PlayerConceded + GameEnded — the step ends abnormally, so StepEnded
+    // is intentionally NOT emitted on that path.
+    const request: DecisionRequest = {
+      kind: "priority",
+      playerSeat: game.activePlayer,
+      legalActions: [{ kind: "pass" }, { kind: "concede" }],
+    };
+    const response: DecisionResponse = yield { kind: "decision", request };
+    if (response.kind !== "priority") {
+      throw new IllegalDecisionError(`PhaseHandler expected priority response, got ${response.kind}`);
+    }
+    if (response.action.kind === "concede") {
+      const concedingSeat = game.activePlayer;
+      const opponent = game.players.find((p) => p.seat !== concedingSeat);
+      if (!opponent) {
+        throw new GameStateIntegrityError("PhaseHandler: no opponent to win by concession");
+      }
+      const winningSeat = opponent.seat;
+      yield {
+        kind: "event",
+        event: mkEvent("PlayerConceded", game.turn, game.phase, { playerSeat: concedingSeat }),
+      };
+      endGame(game, { kind: "win", winner: winningSeat, reason: "concession" }, [concedingSeat]);
+      yield {
+        kind: "event",
+        event: mkEvent("GameEnded", game.turn, game.phase, {
+          winners: [winningSeat],
+          reason: "concede",
+        }),
+      };
+      return;
+    }
+    // response.action.kind === "pass" — SP1 no-op, step ends cleanly. SP2
+    // loops priority between all seats and resolves the stack before the
+    // step closes.
 
     yield {
       kind: "event",

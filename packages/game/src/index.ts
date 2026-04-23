@@ -18,6 +18,7 @@ export * from "./snapshot/index.js";
 export * from "./phase/index.js";
 export * from "./player.js";
 export * from "./registries/index.js";
+export * from "./run-game.js";
 export * from "./setup/index.js";
 export * from "./stack/index.js";
 export * from "./target/index.js";
