@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { describe, expect, it } from "vitest";
+import { Color, ColorSet } from "../color.js";
 import { DEFAULT_PAPER_CARD_FLAGS, type PaperCard, paperCardKey } from "./paper-card.js";
 import { Rarity } from "./types.js";
 
@@ -22,6 +23,11 @@ describe("PaperCard shape", () => {
     expect(minimal.flags).toEqual(DEFAULT_PAPER_CARD_FLAGS);
   });
 
+  it("DEFAULT_PAPER_CARD_FLAGS carries null markedColors + false noSellValue", () => {
+    expect(DEFAULT_PAPER_CARD_FLAGS.markedColors).toBeNull();
+    expect(DEFAULT_PAPER_CARD_FLAGS.noSellValue).toBe(false);
+  });
+
   it("accepts the Forge-ported optional fields", () => {
     const full: PaperCard = {
       ...minimal,
@@ -30,11 +36,24 @@ describe("PaperCard shape", () => {
       rarity: Rarity.Common,
       scryfallId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
       functionalVariant: "variant-a",
-      flags: { ...DEFAULT_PAPER_CARD_FLAGS, promo: true },
+      flags: { ...DEFAULT_PAPER_CARD_FLAGS, noSellValue: true },
+      promo: true,
+      etched: true,
     };
     expect(full.artist).toBe("Christopher Rush");
     expect(full.rarity).toBe(Rarity.Common);
-    expect(full.flags.promo).toBe(true);
+    expect(full.flags.noSellValue).toBe(true);
+    expect(full.promo).toBe(true);
+    expect(full.etched).toBe(true);
+  });
+
+  it("flags.markedColors accepts a ColorSet for Cryptic Spires-style color choices", () => {
+    const marked = ColorSet.of(Color.White, Color.Blue);
+    const card: PaperCard = {
+      ...minimal,
+      flags: { ...DEFAULT_PAPER_CARD_FLAGS, markedColors: marked },
+    };
+    expect(card.flags.markedColors).toBe(marked);
   });
 });
 
@@ -72,13 +91,15 @@ describe("paperCardKey", () => {
 });
 
 describe("PaperCard JSON round-trip", () => {
-  it("survives JSON.stringify + JSON.parse", () => {
+  it("survives JSON.stringify + JSON.parse with noSellValue + printing flags", () => {
     const full: PaperCard = {
       ...minimal,
       artist: "Christopher Rush",
       artIndex: 2,
       rarity: Rarity.Common,
-      flags: { ...DEFAULT_PAPER_CARD_FLAGS, promo: true, etched: true },
+      flags: { ...DEFAULT_PAPER_CARD_FLAGS, noSellValue: true },
+      promo: true,
+      etched: true,
     };
     const round = JSON.parse(JSON.stringify(full)) as PaperCard;
     expect(round).toEqual(full);

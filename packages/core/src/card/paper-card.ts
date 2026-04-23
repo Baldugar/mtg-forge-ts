@@ -4,28 +4,39 @@
 // Card class). Field reconciliation vs Forge:
 //   - Forge fields: name, edition, collectorNumber, artist, artIndex, foil,
 //     flags (PaperCardFlags), functionalVariant, rarity.
-//   - TS additions: language, scryfallId, definition.
-//   - Forge's `edition` is renamed `set` for TS idiomaticity.
-// Flags are modeled as a plain struct (not an enum) since each flag is an
-// independent boolean; Forge's PaperCardFlags is likewise a struct in Java.
+//   - TS additions: language, scryfallId, definition, plus optional
+//     printing-metadata booleans (promo/etched/borderless/artSeries) that
+//     Forge does not carry on PaperCard itself.
+// PaperCardFlags mirrors Forge verbatim: `markedColors: ColorSet | null`
+// (Cryptic Spires-style user color choice) and `noSellValue: boolean`
+// (cards banned from inventory trade/sell). Other per-printing booleans
+// sit on PaperCard directly so the Forge-named `flags` surface stays clean.
 
+import type { ColorSet } from "../color.js";
 import type { CardDefinition } from "./card-definition.js";
 import type { Rarity } from "./types.js";
 
+/**
+ * Forge's PaperCard.PaperCardFlags, verbatim. New flag fields land here when
+ * Forge adds them; other per-printing metadata belongs on PaperCard directly.
+ */
 export interface PaperCardFlags {
-  readonly promo: boolean;
-  readonly noSell: boolean;
-  readonly etched: boolean;
-  readonly borderless: boolean;
-  readonly artSeries: boolean;
+  /**
+   * Player-marked colors for cards with a choose-your-color mechanic
+   * (e.g. Cryptic Spires, Prismatic Vista variants). null = unmarked.
+   */
+  readonly markedColors: ColorSet | null;
+  /**
+   * "No sell value" — inventory tooling refuses to price / trade / sell.
+   * Forge sets this on promo-only / art-series printings that shouldn't
+   * influence a collection's wealth.
+   */
+  readonly noSellValue: boolean;
 }
 
 export const DEFAULT_PAPER_CARD_FLAGS: PaperCardFlags = {
-  promo: false,
-  noSell: false,
-  etched: false,
-  borderless: false,
-  artSeries: false,
+  markedColors: null,
+  noSellValue: false,
 };
 
 export interface PaperCard {
@@ -41,6 +52,13 @@ export interface PaperCard {
   readonly functionalVariant?: string;
   readonly flags: PaperCardFlags;
   readonly definition?: CardDefinition;
+  // WHY: these printing-metadata flags are TS-invented (Forge carries them
+  // on CardEdition / CardRules, not on PaperCard). Kept on PaperCard as
+  // optional booleans so the Forge-named `flags` field stays Forge-faithful.
+  readonly promo?: boolean;
+  readonly etched?: boolean;
+  readonly borderless?: boolean;
+  readonly artSeries?: boolean;
 }
 
 /**
