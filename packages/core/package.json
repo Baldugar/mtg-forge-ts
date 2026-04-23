@@ -15,6 +15,14 @@
     }
   },
   "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "sideEffects": [
+    "./dist/index.mjs",
+    "./dist/index.cjs",
+    "./dist/cost/parts/*.mjs",
+    "./dist/cost/parts/*.cjs",
+    "./dist/cost/parts/index.mjs",
+    "./dist/cost/parts/index.cjs"
+  ],
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
