@@ -659,7 +659,7 @@ export const isBattlefieldZone = (z: ZoneType): boolean => z === ZoneType.Battle
 
 - [ ] **Step 1 (test):** Asserts 60+ counter types are defined and unique by string value. List names verbatim: PlusOnePlusOne, MinusOneMinusOne, Loyalty, Defense, Stun, Shield, Charge, Age, Level, Time, Lore, Verse, Divinity, Quest, Poison, Energy, Experience, Ticket, Rad, Brick, Crystal, Delay, Despair, Depletion, Dread, Echo, Egg, Everything, Eyeball, Fade, Feather, Filibuster, Flame, Flood, Fungus, Fuse, Gem, Gold, Growth, Hatchling, Hit, Hoofprint, Hour, Hourglass, Hunger, Husk, Incubation, Infection, Influence, Intervention, Isolation, Javelin, Judgment, Ki, Knowledge, Landmark, Lotus, Luck, Manabond, Manifestation, Mannequin, Matrix, Mine, Mining, Mire, Music, Muster, Net, Omen, Ore, Page, Pain, Paralyzation, Phylactery, Pin, Plague, Plot, Point, Polyp, Pressure, Prey, Pupa, Rejection, Reprieve, Rev, Revival, Rope, Rust, Scream, Scroll, Shell, Silver, Sleep, Sleight, Slime, Slumber, Soot, Spite, Spore, Sprout, Storage, Strife, Tide, Tower, Training, Trap, Treasure, Unity, Velocity, Volatile, Winch, Wind, Wish.
 
-- [ ] **Step 2-4:** Define as `enum CounterType { PlusOnePlusOne = "+1/+1", MinusOneMinusOne = "-1/-1", ... }` (string values). Include all above.
+- [ ] **Step 2-4:** Define as `enum CounterType { PlusOnePlusOne = "+1/+1", MinusOneMinusOne = "-1/-1", ... }` (string values). **Note:** the list above is illustrative — port exact names and string values from Forge's `forge-game/src/main/java/forge/game/card/CounterEnumType.java` during implementation. The plan's enumeration is for sizing, not canonical spelling.
 
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add CounterType enum with full Forge counter taxonomy"`
 
@@ -797,7 +797,7 @@ export class CostPartRegistry {
 
 **Files:** `packages/core/src/cost/parts/*.ts` (one per kind), `packages/core/src/cost/parts.test.ts`
 
-Classes to add (each is ~15 lines):
+Classes to add (each is ~15 lines). **Port exact taxonomy from `forge-game/src/main/java/forge/game/cost/*.java`.** The list below is representative; adjust to match Forge's actual Cost* classes:
 `CostMana`, `CostTap`, `CostUntap`, `CostSacrifice`, `CostDiscard`, `CostExile`, `CostPayLife`, `CostPayEnergy`, `CostPayExperience`, `CostPayTicket`, `CostPayRad`, `CostRemoveCounter`, `CostPutCounter`, `CostReveal`, `CostMill`, `CostReturn`, `CostUnattach`, `CostGainControl`, `CostFlipCoin`, `CostRollDie`, `CostSkipTurn`, `CostExileFromHand`, `CostExileFromGraveyard`, `CostPutIntoLibrary`, `CostReturnToHand`, `CostTapXCreatures`, `CostUntapXCreatures`, `CostExert`, `CostCollectEvidence`, `CostDescend`.
 
 Pattern per class:
@@ -836,7 +836,8 @@ Integer-typed cost parts (`CostPayLife`, `CostMill`, etc.) carry an `amount: num
 - [ ] **Step 2-4 (impl):**
 
 ```ts
-export enum Supertype { Basic = "Basic", Legendary = "Legendary", Snow = "Snow", World = "World", Ongoing = "Ongoing", Elite = "Elite", Host = "Host" }
+export enum Supertype { Basic = "Basic", Legendary = "Legendary", Snow = "Snow", World = "World", Ongoing = "Ongoing", Host = "Host" }
+// Port exact list from Forge's Supertype enum; above is known-safe subset.
 export enum CardType { Artifact = "Artifact", Battle = "Battle", Conspiracy = "Conspiracy", Creature = "Creature", Dungeon = "Dungeon", Emblem = "Emblem", Enchantment = "Enchantment", Hero = "Hero", Instant = "Instant", Land = "Land", Phenomenon = "Phenomenon", Plane = "Plane", Planeswalker = "Planeswalker", Scheme = "Scheme", Sorcery = "Sorcery", Tribal = "Tribal", Vanguard = "Vanguard" }
 export enum Rarity { Common = "common", Uncommon = "uncommon", Rare = "rare", Mythic = "mythic", Special = "special", Bonus = "bonus", Token = "token" }
 
@@ -917,12 +918,18 @@ export const paperCardKey = (p: PaperCard): string => `${p.set}:${p.collectorNum
 
 ```ts
 export interface DeckEntry { card: PaperCard; count: number; }
+export type CommanderSlot =
+  | { kind: "none" }
+  | { kind: "single"; commander: PaperCard }
+  | { kind: "partners"; a: PaperCard; b: PaperCard }
+  | { kind: "background"; commander: PaperCard; background: PaperCard }
+  | { kind: "oathbreaker"; planeswalker: PaperCard; signatureSpell: PaperCard };
+
 export interface Deck {
   name: string;
   main: DeckEntry[];
   sideboard: DeckEntry[];
-  commander: PaperCard[];          // 0 / 1 / 2 (partners) / 1+background
-  signatureSpell?: PaperCard;      // Oathbreaker
+  commanderSlot: CommanderSlot;
   planar?: PaperCard[];
   scheme?: PaperCard[];
   conspiracy?: PaperCard[];
@@ -1029,6 +1036,47 @@ export class SeededRng implements Rng {
 
 ## Milestone G — Core: Errors + Events + Decisions
 
+### Task 20b: `GameLog` types (core)
+
+**Files:** `packages/core/src/log/game-log.ts`, tests.
+
+SP1 §2.1 lists `GameLog`, `GameLogEntry`, `GameLogVerbosity` as core data types.
+
+- [ ] **Step 1-4:**
+
+```ts
+// SPDX-License-Identifier: GPL-3.0-or-later
+export enum GameLogVerbosity { Silent = 0, Errors = 1, Public = 2, Private = 3, Debug = 4 }
+
+export interface GameLogEntry {
+  at: { turn: number; phase: string };   // string to avoid core→phase-enum coupling
+  verbosity: GameLogVerbosity;
+  message: string;
+  subject?: EntityId;
+  actor?: PlayerSeat;
+}
+
+export class GameLog {
+  private entries: GameLogEntry[] = [];
+  constructor(public minVerbosity: GameLogVerbosity = GameLogVerbosity.Public) {}
+  append(entry: GameLogEntry): void {
+    if (entry.verbosity <= this.minVerbosity) this.entries.push(entry);
+  }
+  all(): readonly GameLogEntry[] { return this.entries; }
+  filter(v: GameLogVerbosity): GameLogEntry[] { return this.entries.filter(e => e.verbosity <= v); }
+  toJSON() { return { minVerbosity: this.minVerbosity, entries: [...this.entries] }; }
+  static fromJSON(s: ReturnType<GameLog["toJSON"]>): GameLog {
+    const log = new GameLog(s.minVerbosity);
+    for (const e of s.entries) log.entries.push(e);
+    return log;
+  }
+}
+```
+
+- [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add GameLog types"`
+
+---
+
 ### Task 21: Typed error hierarchy
 
 **Files:** `packages/core/src/errors.ts`, `.test.ts`
@@ -1104,7 +1152,35 @@ Include all ~60 from SP1 §8: CardDrawn, CardDiscarded, CardMilled, CardDestroye
 
 - [ ] **Step 1 (test):** Each of the 22 kinds exists; sample shape check for `priority`, `chooseTargets`, `declareAttackers`, `mulligan`.
 
-- [ ] **Step 2-4:** Define discriminated unions for `DecisionRequest` and `DecisionResponse` matching SP1 §4. Each variant carries the exact fields listed there.
+- [ ] **Step 2-4:** Define discriminated unions for `DecisionRequest` and `DecisionResponse` matching SP1 §4. Each variant carries the exact fields listed there. Representative example (do this shape for all 22):
+
+```ts
+export type PriorityAction =
+  | { kind: "castSpell"; cardId: EntityId; zone: ZoneType; altCost?: string; additionalCosts?: string[] }
+  | { kind: "activateAbility"; abilityInstanceId: EntityId }
+  | { kind: "activateManaAbility"; abilityInstanceId: EntityId }
+  | { kind: "pass" }
+  | { kind: "concede" }
+  | { kind: "requestShortcut"; description: string; result: unknown };
+
+export type DecisionRequest =
+  | { kind: "mulligan"; playerSeat: PlayerSeat; currentHand: EntityId[]; mulligansSoFar: number; rule: "london" | "vancouver" | "paris" | "free" }
+  | { kind: "priority"; playerSeat: PlayerSeat; legalActions: PriorityAction[] }
+  | { kind: "chooseTargets"; sourceId: EntityId; restriction: unknown; min: number; max: number; choicesAllowed: EntityId[] }
+  | { kind: "declareAttackers"; playerSeat: PlayerSeat; legalAttackers: EntityId[]; legalDefenders: Array<{ kind: "player"; seat: PlayerSeat } | { kind: "planeswalker"; id: EntityId } | { kind: "battle"; id: EntityId }> }
+  // ... 18 more kinds per SP1 §4
+  ;
+
+export type DecisionResponse =
+  | { kind: "mulligan"; keep: boolean; bottomed?: EntityId[] }
+  | { kind: "priority"; action: PriorityAction }
+  | { kind: "chooseTargets"; targets: EntityId[] }
+  | { kind: "declareAttackers"; attackers: Array<{ attacker: EntityId; defender: { player: PlayerSeat } | { planeswalker: EntityId } | { battle: EntityId } }> }
+  // ... 18 more kinds
+  ;
+```
+
+Include all 22 kinds — enumerate against SP1 §4. The `concede` action in `PriorityAction` is used by the integration smoke test (Task 49).
 
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add PlayerController DecisionRequest/Response (22 kinds)"`
 
@@ -1128,11 +1204,54 @@ Include all ~60 from SP1 §8: CardDrawn, CardDiscarded, CardMilled, CardDestroye
 
 **Files:** `packages/core/src/views/*.ts`, tests.
 
-- [ ] **Step 1 (test):** `GameView.fromGame(stubGame, seat)` returns a view where opponent's hand is a `count` only (no card identities), own hand shows card IDs, library shows count.
+- [ ] **Step 1 (test):** Given a plain-data `GameSnapshotData` input (opponent hand has 3 cards, your hand has 2 cards), `makeGameView(data, seat=0)` returns a view where `view.players[1].hand = { count: 3 }` (opponent — hidden) and `view.players[0].hand = { ids: [id1, id2] }` (own — visible).
 
-- [ ] **Step 2-4:** Define each view as a plain-data interface. `CardView` omits face-down card identity for non-controller viewers. `ZoneView` for hidden zones returns `{ count: number }` for non-viewers.
+- [ ] **Step 2-4:** Views operate on **pure data** (a `GameSnapshotData` shape defined inline here), not live `Game` objects. This avoids forward-referencing the game package. The same data shape is produced later by `GameSnapshot.toJSON()` (Task 42), so views work identically on live state and on restored snapshots.
 
-Because SP1 doesn't have a real `Game` yet, `fromGame` helpers are scaffolded with a stub type. Full wiring in Milestone U when Game exists.
+```ts
+// views/types.ts
+export interface CardView {
+  id: EntityId;
+  name?: string;            // omitted for face-down cards when viewer is not the controller
+  zone: ZoneType;
+  tapped?: boolean;
+  counters?: Record<string, number>;
+}
+
+export type ZoneContentView =
+  | { kind: "visible"; cards: CardView[] }
+  | { kind: "hidden"; count: number }
+  | { kind: "partiallyVisible"; cards: CardView[]; hiddenCount: number };
+
+export interface PlayerView {
+  seat: PlayerSeat;
+  life: number;
+  zones: Record<ZoneType, ZoneContentView>;
+  // ...
+}
+
+export interface GameView {
+  turn: number;
+  phase: PhaseStep;
+  activePlayer: PlayerSeat;
+  players: PlayerView[];
+  stack: CardView[];              // stack items viewed as cards
+  // ...
+}
+
+// views/make-view.ts
+export interface GameSnapshotData {    // local type — matches Task 42's GameSnapshot.state shape
+  turn: number; phase: PhaseStep; activePlayer: PlayerSeat;
+  players: Array<{ seat: PlayerSeat; life: number; zones: Record<ZoneType, EntityId[]> }>;
+  cards: Record<number, { id: EntityId; name: string; zone: ZoneType; tapped: boolean; faceDown: boolean; counters: Record<string, number> }>;
+}
+
+export const makeGameView = (data: GameSnapshotData, viewerSeat: PlayerSeat): GameView => {
+  // Hidden-info filter: hide opponent hand/library contents; hide face-down card identities except for controller.
+};
+```
+
+Full wiring to live `Game` objects happens in Task 35 via a `game.viewFor(seat)` method that constructs a `GameSnapshotData` on the fly and delegates to `makeGameView`.
 
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add GameView/PlayerView/CardView/ZoneView projections"`
 
@@ -1230,7 +1349,7 @@ export const scryfallImageUrl = (p: PaperCard, opts: { face?: ScryfallFace; crop
 };
 ```
 
-Exact URL format TBR against Forge's actual implementation during SP4a vendoring; adjust then if needed.
+**Note:** the `scryfallImageUrl` body above is a placeholder. Port the exact URL construction from Forge's `forge-core/src/main/java/forge/util/ImageUtil.java#getScryfallDownloadUrl` — Scryfall's canonical URLs use the Scryfall UUID, not set+collector-number paths. `PaperCard.scryfallId` must be populated for this builder to work; throw `UnknownCardError` if missing.
 
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(core): add ImageKeys constants and Scryfall URL builders"`
 
@@ -1335,11 +1454,12 @@ export class Hand extends Zone {}
 export class Graveyard extends Zone {}
 export class Battlefield extends Zone {}
 export class Exile extends Zone {}
-export class Stack extends Zone {}
 export class CommandZone extends Zone {}
 export class Ante extends Zone {}
 // …
 ```
+
+**Note:** `Stack` is *not* a subclass of `Zone` — it holds `StackItem` objects rather than `EntityId`s, so the base `Zone.items: EntityId[]` shape doesn't fit. The stack is a separate class defined in Task 37. `ZoneType.Stack` still exists as a marker in the enum for rules that reference "the stack" as a zone (per CR 400.1).
 
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(game): add Zone class hierarchy"`
 
@@ -1468,9 +1588,62 @@ export class Game {
 }
 ```
 
-`GameFlags` and `TerminalState` types added in a small sibling file.
+Also define `GameFlags` + `createDefaultFlags()` + `TerminalState` in sibling files:
 
-- [ ] **Step 5 (commit):** `git commit -s -m "feat(game): add Game class skeleton"`
+```ts
+// game-flags.ts — per SP1 §5
+export interface GameFlags {
+  dayNight: "day" | "night" | "neither";
+  monarch: PlayerSeat | null;
+  initiative: PlayerSeat | null;
+  cityBlessing: Set<PlayerSeat>;
+  ringBearer: Map<PlayerSeat, EntityId | null>;
+  ringLevel: Map<PlayerSeat, 0 | 1 | 2 | 3 | 4>;
+  speedLevel: Map<PlayerSeat, 0 | 1 | 2 | 3 | 4>;
+  currentDungeon: Map<PlayerSeat, { card: EntityId; position: string } | null>;
+  commandersOwnedByPlayer: Map<PlayerSeat, EntityId[]>;
+  commanderCastCount: Map<EntityId, number>;
+  commanderDamage: Map<EntityId, Map<PlayerSeat, number>>;
+  firstTurnDrawSkipped: Map<PlayerSeat, boolean>;
+  mulligansTaken: Map<PlayerSeat, number>;
+  landsPlayedThisTurn: Map<PlayerSeat, number>;
+  spellsCastThisTurn: Map<PlayerSeat, number>;
+  turnsTakenThisTurn: number;
+  skippedPhases: PhaseStep[];
+  activeTeamForTeamPlay: number | null;
+  seatEliminated: Map<PlayerSeat, boolean>;
+  stickers: unknown[];                  // StickerSheet — typed in SP7
+  attractions: Map<PlayerSeat, unknown>;
+}
+
+export const createDefaultFlags = (): GameFlags => ({
+  dayNight: "neither",
+  monarch: null,
+  initiative: null,
+  cityBlessing: new Set(),
+  ringBearer: new Map(),
+  ringLevel: new Map(),
+  speedLevel: new Map(),
+  currentDungeon: new Map(),
+  commandersOwnedByPlayer: new Map(),
+  commanderCastCount: new Map(),
+  commanderDamage: new Map(),
+  firstTurnDrawSkipped: new Map(),
+  mulligansTaken: new Map(),
+  landsPlayedThisTurn: new Map(),
+  spellsCastThisTurn: new Map(),
+  turnsTakenThisTurn: 0,
+  skippedPhases: [],
+  activeTeamForTeamPlay: null,
+  seatEliminated: new Map(),
+  stickers: [],
+  attractions: new Map(),
+});
+```
+
+Also add `Game.attachCardDb(db: unknown): void` stub — throws `new Error("SP4 CardDb integration required")` for now. The real compatibility check lands in SP4.
+
+- [ ] **Step 5 (commit):** `git commit -s -m "feat(game): add Game class skeleton with GameFlags"`
 
 ---
 
@@ -1527,7 +1700,17 @@ export interface StackItem {
   provenance: StackItemProvenance;
 }
 
-// Stack class extends Zone; adds top()/pop()/push(item) operating on StackItem[] rather than EntityId[].
+// Stack is a separate class (NOT a Zone subclass) because it holds StackItem objects, not EntityIds.
+export class Stack {
+  private readonly items: StackItem[] = [];
+  readonly type: ZoneType = ZoneType.Stack;
+  push(item: StackItem): void { this.items.push(item); }
+  pop(): StackItem | undefined { return this.items.pop(); }
+  top(): StackItem | undefined { return this.items[this.items.length - 1]; }
+  get size(): number { return this.items.length; }
+  toArray(): StackItem[] { return [...this.items]; }
+  toJSON() { return { items: [...this.items] }; }
+}
 ```
 
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(game): add Stack class and StackItem type"`
@@ -1582,8 +1765,35 @@ export class GameAction {
     yield { kind: "event", event: mkEvent("CardChangedZone", this.game.turn, this.game.phase, { cardId, fromZone, toZone, cause: opts.cause ?? "move" }) };
   }
 
-  private locate(cardId: EntityId): { fromZone: ZoneType; owner: PlayerSeat | null } { /* walk zones */ }
-  private zoneFor(t: ZoneType, owner: PlayerSeat | null): Zone { /* lookup */ }
+  private locate(cardId: EntityId): { fromZone: ZoneType; owner: PlayerSeat | null } {
+    // Check shared zones first
+    for (const [key, zone] of Object.entries(this.game.sharedZones)) {
+      if ((zone as Zone).contains(cardId)) {
+        return { fromZone: (zone as Zone).type, owner: null };
+      }
+    }
+    // Then per-player zones
+    for (const player of this.game.players) {
+      for (const zone of player.zones.values()) {
+        if (zone.contains(cardId)) {
+          return { fromZone: zone.type, owner: player.seat };
+        }
+      }
+    }
+    throw new GameStateIntegrityError(`Card ${cardId} not found in any zone`);
+  }
+
+  private zoneFor(t: ZoneType, owner: PlayerSeat | null): Zone {
+    if (owner === null) {
+      if (t === ZoneType.Stack) return this.game.sharedZones.stack;
+      if (t === ZoneType.Exile) return this.game.sharedZones.exile;
+      if (t === ZoneType.Ante) return this.game.sharedZones.ante;
+      throw new GameStateIntegrityError(`Zone ${t} requires an owner`);
+    }
+    const zone = this.game.getPlayer(owner).zones.get(t);
+    if (!zone) throw new GameStateIntegrityError(`Player ${owner} has no zone ${t}`);
+    return zone;
+  }
 }
 ```
 
@@ -1645,7 +1855,92 @@ export class PhaseHandler {
 
 - [ ] **Step 1-4:** Minimal shape — `TargetChoices` interface + `TargetSystem` class with `validateAtCast(stub)` / `validateAtResolve(stub)` methods throwing "SP2". Enough for `StackItem.targets` typing.
 
+```ts
+export interface TargetChoices {
+  targets: EntityId[];
+  divisions?: Record<number, number>;   // for "divide X damage" — target index → amount
+}
+
+export class TargetSystem {
+  validateAtCast(_choices: TargetChoices, _sourceId: EntityId): boolean {
+    throw new Error("TargetSystem validation implemented in SP2");
+  }
+  validateAtResolve(_choices: TargetChoices, _sourceId: EntityId): { legal: EntityId[]; illegal: EntityId[] } {
+    throw new Error("TargetSystem validation implemented in SP2");
+  }
+}
+```
+
 - [ ] **Step 5 (commit):** `git commit -s -m "feat(game): scaffold TargetSystem"`
+
+---
+
+### Task 40b: `CombatHandler` + `CombatState` scaffold
+
+**Files:** `packages/game/src/combat/combat-state.ts`, `packages/game/src/combat/combat-handler.ts`, tests.
+
+SP1 §2.1 names `CombatHandler` + `CombatState` as scaffolded in this sub-project (full logic in SP2). Per SP2, `CombatHandler` is the sole mutator of `CombatState` (not `GameAction`), so it deserves its own class even at scaffold stage.
+
+- [ ] **Step 1 (test):** Construct a `CombatState`; call `declareAttackers([])` with empty attackers (no-op); combat state reflects empty attacker map; `toJSON` round-trips.
+
+- [ ] **Step 2-4:**
+
+```ts
+// combat-state.ts
+export interface AttackerInfo {
+  attackerId: EntityId;
+  defender: { kind: "player"; seat: PlayerSeat } | { kind: "planeswalker"; id: EntityId } | { kind: "battle"; id: EntityId };
+  isTapped: boolean;
+}
+
+export interface BlockerInfo {
+  blockerId: EntityId;
+  attackerIds: EntityId[];    // may block multiple in banding / melee
+}
+
+export interface CombatState {
+  attackers: Map<EntityId, AttackerInfo>;
+  blockers: Map<EntityId, BlockerInfo>;
+  blockerOrdering: Map<EntityId, EntityId[]>;   // attackerId → ordered blockers for damage assignment
+  damageAssignments: Map<EntityId, Array<{ targetId: EntityId; amount: number }>>;
+  firstStrikeSplitActive: boolean;
+}
+
+export const createCombatState = (): CombatState => ({
+  attackers: new Map(),
+  blockers: new Map(),
+  blockerOrdering: new Map(),
+  damageAssignments: new Map(),
+  firstStrikeSplitActive: false,
+});
+
+// combat-handler.ts
+export class CombatHandler {
+  constructor(private readonly game: Game, public state: CombatState = createCombatState()) {}
+
+  *declareAttackers(choices: Array<{ attackerId: EntityId; defender: AttackerInfo["defender"] }>): Generator<EngineYield, void, DecisionResponse> {
+    // SP1: record attackers, tap unless vigilance. Full restriction/requirement enforcement in SP2.
+    for (const c of choices) {
+      this.state.attackers.set(c.attackerId, { attackerId: c.attackerId, defender: c.defender, isTapped: false });
+    }
+    yield { kind: "event", event: mkEvent("AttackersDeclared", this.game.turn, this.game.phase, { attackers: choices }) };
+  }
+
+  *declareBlockers(_choices: unknown): Generator<EngineYield, void, DecisionResponse> {
+    throw new Error("Full declareBlockers implementation in SP2");
+    yield { kind: "event", event: {} as never };   // unreachable; satisfies generator typing
+  }
+
+  *dealCombatDamage(): Generator<EngineYield, void, DecisionResponse> {
+    throw new Error("Full combat damage resolution in SP2");
+    yield { kind: "event", event: {} as never };
+  }
+
+  reset(): void { this.state = createCombatState(); }
+}
+```
+
+- [ ] **Step 5 (commit):** `git commit -s -m "feat(game): scaffold CombatHandler and CombatState"`
 
 ---
 
@@ -1820,23 +2115,27 @@ SP2 adds the SBA-driven game-end detection loop.
 
 - [ ] **Step 2-4:** Use biome's `noGlobalObjectCalls` + a grep-based CI check for banned tokens scoped to `packages/game/` and `packages/ai/` (until biome supports full custom rules). Script lives in `tools/lint-rules/check-determinism.ts` and runs in CI after biome.
 
+Install dependency first: `pnpm add -Dw globby tsx` (at repo root, since this is a devtool).
+
 ```ts
 // tools/lint-rules/check-determinism.ts
 import { readFileSync } from "node:fs";
-import { globSync } from "node:fs";
+import { globby } from "globby";
 const BANNED = [/Math\.random\s*\(/, /Date\.now\s*\(/, /new Date\s*\(/, /crypto\.randomUUID\s*\(/];
-const files = globSync(["packages/game/src/**/*.ts", "packages/ai/src/**/*.ts"]);
+const files = await globby(["packages/game/src/**/*.ts", "packages/ai/src/**/*.ts"]);
 let violations = 0;
 for (const f of files) {
   const src = readFileSync(f, "utf8");
   for (const rx of BANNED) {
-    if (rx.test(src)) { console.error(`${f}: ambient randomness/clock use`); violations++; }
+    if (rx.test(src)) { console.error(`${f}: ambient randomness/clock use matches ${rx}`); violations++; }
   }
 }
 process.exit(violations ? 1 : 0);
 ```
 
-Add `pnpm lint:determinism` script that invokes this. Include in `ci.yaml` after `pnpm lint`.
+Add to root `package.json` scripts: `"lint:determinism": "tsx tools/lint-rules/check-determinism.ts"`. Include in `ci.yaml` after `pnpm lint`.
+
+**Why `globby` not `fs.globSync`:** Node's built-in `fs.globSync` is only stable in Node 22. Plan targets Node 20 LTS minimum, so a third-party glob is required.
 
 - [ ] **Step 5 (commit):** `git commit -s -m "ci: forbid ambient randomness and wall-clock in game+ai packages"`
 
@@ -1913,7 +2212,33 @@ describe("scripted no-op game", () => {
 });
 ```
 
-- [ ] **Step 2-4:** Implement `runGame(game, controllers)` as a top-level generator that calls `setupGame` then loops `phaseHandler.runPhase()` until `game.isTerminal()`. Handle the `concede` priority action to set terminal state.
+- [ ] **Step 2:** Create `packages/game/src/run-game.ts`:
+
+```ts
+// SPDX-License-Identifier: GPL-3.0-or-later
+import type { Game } from "./game.js";
+import type { PlayerController, MatchController } from "./controller/controller.js";
+import type { PlayerSeat, DecisionResponse } from "@mtg-forge-ts/core";
+import { setupGame } from "./setup/setup-flow.js";
+import { PhaseHandler } from "./phase/phase-handler.js";
+import { endGame } from "./end/terminal-state.js";
+import type { EngineYield } from "./action/game-action.js";
+
+export function* runGame(
+  game: Game,
+  controllers: Map<PlayerSeat, PlayerController>,
+): Generator<EngineYield, void, DecisionResponse> {
+  yield* setupGame(game, controllers);
+  const phaseHandler = new PhaseHandler(game);
+  while (!game.isTerminal()) {
+    yield* phaseHandler.runPhase();
+  }
+}
+```
+
+- [ ] **Step 3:** Add `export * from "./run-game.js";` to `packages/game/src/index.ts`.
+
+- [ ] **Step 4:** Handle `concede` priority action in `PhaseHandler.runPhase`: when a controller returns `{kind: "priority", action: {kind: "concede"}}`, call `endGame(game, {kind: "win", winner: otherSeat, reason: "concession"})`. Emit `PlayerConceded` and `GameEnded` events.
 
 - [ ] **Step 5 (commit):** `git commit -s -m "test(game): scripted no-op game runs to terminal state"`
 
@@ -1944,7 +2269,7 @@ feat: SP1 engine foundations — monorepo scaffolding, core types (ids, mana, co
 
 After executing, verify:
 
-1. **Spec coverage** — SP1 §18 phases 1a–1t all have tasks: 1a (Task 8), 1b (14–16), 1c (26), 1d (20), 1e (25), 1f (22, 23, 24), 1g (21), 1h (32–35), 1i (38), 1j (39), 1k (37), 1l (36, part of 38), 1m (41), 1n (42), 1o (43, 44), 1p (44), 1q (45), 1r (46), 1s (47), 1t (49).
+1. **Spec coverage** — SP1 §18 phases 1a–1t all have tasks: 1a (Tasks 8–12), 1b (13–19), 1c (26), 1d (20, 20b), 1e (25), 1f (22, 23, 24), 1g (21), 1h (31–35), 1i (38), 1j (39), 1k (37), 1l (36, 38), 1m (41), 1n (42), 1o (43, 44), 1p (44), 1q (45), 1r (46), 1s (47), 1t (49). Plus cross-cutting: CombatHandler scaffold (40b), GameLog (20b), ImageKeys/Scryfall (27), FormatDefinition (28), LobbyPlayer (29), registries (31), TargetSystem (40), re-exports (30, 48), changeset (50).
 2. **Package contracts** — `@mtg-forge-ts/core` builds clean ESM+CJS+DTS; `@mtg-forge-ts/game` imports core cleanly.
 3. **Determinism** — no ambient randomness in `game/` (lint rule enforces).
 4. **Serialization** — every class in stored state has `toJSON`; `GameSnapshot` round-trips.
