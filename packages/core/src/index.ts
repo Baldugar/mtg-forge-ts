@@ -15,6 +15,7 @@ export * from "./deck/index.js";
 export * from "./rng/index.js";
 export * from "./errors.js";
 export * from "./log/index.js";
+export * from "./effects/index.js";
 export * from "./events/index.js";
 export * from "./decisions/index.js";
 export * from "./views/index.js";

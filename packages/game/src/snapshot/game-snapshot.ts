@@ -13,8 +13,8 @@
 // exposing. Keeping snapshot logic here also isolates the schemaVersion
 // contract so a bump doesn't pollute Game's API.
 //
-// schemaVersion: 4 (SP1 post-audit). Bump on breaking format changes
-// (master-spec §11).
+// schemaVersion: 5 (SP1 post-audit, round 3). Bump on breaking format
+// changes (master-spec §11).
 //
 // Migration notes:
 //   schemaVersion 2: library/deck-like zones now emit top-first (index 0 =
@@ -29,8 +29,12 @@
 //     SP2 can populate them without another breaking bump. SP1 emits
 //     combat: null and cardRemembered: {}; restore treats both as no-ops
 //     when unset.
+//   schemaVersion 5: reserve continuousEffects list (CR 613 layer system) so
+//     SP2 can populate without another bump. SP1 emits an empty list;
+//     restore copies whatever is present.
 
 import type {
+  ContinuousEffect,
   CounterType,
   EntityId,
   LobbyPlayer,
@@ -72,7 +76,7 @@ import { Library } from "../zone/zones/library.js";
  * removed, Map key flipped) MUST bump this so restore() can reject or migrate
  * old blobs rather than silently mis-deserialize.
  */
-export const SNAPSHOT_SCHEMA_VERSION = 4 as const;
+export const SNAPSHOT_SCHEMA_VERSION = 5 as const;
 
 /**
  * Serialized Card record. Deliberately parallels Card.toJSON plus a few fields
@@ -214,6 +218,13 @@ export interface GameSnapshot {
      * SP1 emits `{}`; restore is a no-op when empty.
      */
     readonly cardRemembered: Readonly<Record<number, readonly unknown[]>>;
+    /**
+     * CR 613 layer-system effect ledger (schemaVersion 5). SP1 emits an
+     * empty list; SP2 populates and persists the layer engine's state here.
+     * Shape is `ContinuousEffect[]` — `payload: unknown` is JSON-safe so
+     * SP2's per-family payloads round-trip without snapshot code changes.
+     */
+    readonly continuousEffects: readonly ContinuousEffect[];
   };
 }
 
@@ -398,6 +409,10 @@ export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot =
       // schemaVersion again.
       combat: null,
       cardRemembered: {},
+      // WHY: shallow-clone the list so later mutation of game.continuousEffects
+      // does not leak into the emitted snapshot. Payload values are plain
+      // JSON per ContinuousEffect doc; shallow copy is sufficient.
+      continuousEffects: [...game.continuousEffects],
     },
   };
 };
@@ -574,6 +589,13 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   // Restore the private entity-id counter so freshly-minted ids after restore
   // don't collide with ids baked into the restored card registry.
   game.restoreEntityIdCounter(snap.state.entityIdCounter);
+
+  // schemaVersion 5: restore ContinuousEffect ledger. Pre-v5 snapshots have
+  // no such field (undefined after parse); treat as empty so legacy bodies
+  // still resolve — in-memory we always have Game.continuousEffects = [].
+  if (snap.state.continuousEffects !== undefined) {
+    game.continuousEffects = [...snap.state.continuousEffects];
+  }
 
   return game;
 };

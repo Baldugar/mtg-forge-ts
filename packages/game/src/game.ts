@@ -5,7 +5,7 @@
 // mutation is deterministic.
 //
 // SP4 will replace `attachCardDb` with the real CardDb integration.
-import type { EntityId, LobbyPlayer, PhaseStep, PlayerSeat, Rng } from "@mtg-forge-ts/core";
+import type { ContinuousEffect, EntityId, LobbyPlayer, PhaseStep, PlayerSeat, Rng } from "@mtg-forge-ts/core";
 import {
   GameStateIntegrityError,
   PhaseStep as Phase,
@@ -51,6 +51,13 @@ export class Game {
   // mutable state. Populated by MatchSetup (Task 45) and by token/emblem
   // factories in SP2; SP1 tests seed it directly.
   readonly cards = new Map<EntityId, Card>();
+  /**
+   * CR 613 layer-system effect ledger. SP1 reserves the list as an empty
+   * mutable array so SP2's layer engine can append/remove without bumping
+   * the snapshot schemaVersion again. SP1 emits an empty list on snapshot
+   * and restore is a no-op when the list is empty.
+   */
+  continuousEffects: ContinuousEffect[] = [];
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
