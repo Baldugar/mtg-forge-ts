@@ -13,7 +13,7 @@
 // exposing. Keeping snapshot logic here also isolates the schemaVersion
 // contract so a bump doesn't pollute Game's API.
 //
-// schemaVersion: 3 (SP1 post-audit). Bump on breaking format changes
+// schemaVersion: 4 (SP1 post-audit). Bump on breaking format changes
 // (master-spec §11).
 //
 // Migration notes:
@@ -25,6 +25,10 @@
 //     field name (SP4 wire interop). The rename only affects PaperCard
 //     registries supplied to restore(); snapshot payload itself is unchanged
 //     (paperCardKey's string format is stable: edition:collector:lang).
+//   schemaVersion 4: reserve state slots for Combat and Card.remembered so
+//     SP2 can populate them without another breaking bump. SP1 emits
+//     combat: null and cardRemembered: {}; restore treats both as no-ops
+//     when unset.
 
 import type {
   CounterType,
@@ -68,7 +72,7 @@ import { Library } from "../zone/zones/library.js";
  * removed, Map key flipped) MUST bump this so restore() can reject or migrate
  * old blobs rather than silently mis-deserialize.
  */
-export const SNAPSHOT_SCHEMA_VERSION = 3 as const;
+export const SNAPSHOT_SCHEMA_VERSION = 4 as const;
 
 /**
  * Serialized Card record. Deliberately parallels Card.toJSON plus a few fields
@@ -168,6 +172,12 @@ export interface GameSnapshotHeader {
 /**
  * Top-level snapshot shape. Split into `header` (provenance / metadata, cheap
  * to inspect without rehydrating) + `state` (engine state, expensive to walk).
+ *
+ * `combat` and `cardRemembered` are reserved slots (schemaVersion 4): SP2
+ * wires CombatHandler.snapshot()/restore() into `combat`, and "imprint /
+ * remember" effects persist their lists in `cardRemembered` keyed by
+ * entityId. SP1 emits `combat: null, cardRemembered: {}` so SP2 can fill
+ * without bumping the schema again.
  */
 export interface GameSnapshot {
   readonly header: GameSnapshotHeader;
@@ -187,6 +197,18 @@ export interface GameSnapshot {
     readonly rngState: SerializedRngState;
     readonly entityIdCounter: number;
     readonly terminalState: TerminalState | null;
+    /**
+     * Reserved for SP2 CombatHandler.snapshot(). SP1 emits `null`; restore
+     * is a no-op when null. Shape frozen at `unknown` (SP2 replaces with a
+     * typed CombatSnapshot without a further schemaVersion bump because
+     * the slot already exists).
+     */
+    readonly combat: unknown;
+    /**
+     * Reserved for SP2 "imprint / remember" effects. Keyed by EntityId.
+     * SP1 emits `{}`; restore is a no-op when empty.
+     */
+    readonly cardRemembered: Readonly<Record<number, readonly unknown[]>>;
   };
 }
 
@@ -365,6 +387,11 @@ export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot =
       rngState: serializeRngState(game.rng.getState()),
       entityIdCounter: computeNextEntityId(game),
       terminalState: game.terminalState,
+      // WHY: reserved slots filled by SP2. Null/empty in SP1 means "no
+      // state to restore"; schema is stable so SP2 fill doesn't bump
+      // schemaVersion again.
+      combat: null,
+      cardRemembered: {},
     },
   };
 };

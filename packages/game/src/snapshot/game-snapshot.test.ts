@@ -119,11 +119,27 @@ const makeRestoreOpts = (rng = new SeededRng(1n)) => ({
 // === Tests ========================================================
 
 describe("GameSnapshot", () => {
-  it("header.schemaVersion is pinned to 3 (SP1 post-audit: PaperCard edition rename)", () => {
+  it("header.schemaVersion is pinned to 4 (SP1 post-audit: reserve combat + cardRemembered)", () => {
     const g = makeGame();
     const snap = snapshot(g);
     expect(snap.header.schemaVersion).toBe(SNAPSHOT_SCHEMA_VERSION);
-    expect(snap.header.schemaVersion).toBe(3);
+    expect(snap.header.schemaVersion).toBe(4);
+  });
+
+  it("reserved state slots combat + cardRemembered are present with SP1 sentinels", () => {
+    const g = makeGame();
+    const snap = snapshot(g);
+    expect(snap.state.combat).toBeNull();
+    expect(snap.state.cardRemembered).toEqual({});
+  });
+
+  it("restore tolerates null combat + empty cardRemembered (SP1 no-op)", () => {
+    const g = makeGame();
+    const snap = snapshot(g);
+    const restored = restore(JSON.parse(JSON.stringify(snap)) as typeof snap, makeRestoreOpts());
+    const snap2 = snapshot(restored);
+    expect(snap2.state.combat).toBeNull();
+    expect(snap2.state.cardRemembered).toEqual({});
   });
 
   it("header captures engine/card-data/rules provenance from GameMeta + GameRules", () => {
