@@ -38,6 +38,10 @@ const rules: GameRules = {
   firstPlayerSkipsDraw: true,
   ruleOverrides: [],
   playerCount: { min: 2, max: 2 },
+  poisonCountersToLose: 10,
+  playForAnte: false,
+  manaBurn: false,
+  appliedVariants: [],
 };
 
 const meta: GameMeta = {
