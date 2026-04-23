@@ -159,4 +159,21 @@ describe("Game", () => {
     const g = new Game({ lobbyPlayers: [alice, bob], rules: standardRules, meta, rng });
     expect(g.rng).toBe(rng);
   });
+
+  it("applies GameRules.startingLife to every Player (default 20)", () => {
+    const g = makeGame();
+    expect(g.players[0]?.life).toBe(20);
+    expect(g.players[1]?.life).toBe(20);
+  });
+
+  it("applies non-default startingLife (e.g. Commander-style 40) from rules", () => {
+    const g = new Game({
+      lobbyPlayers: [alice, bob],
+      rules: { ...standardRules, startingLife: 40 },
+      meta,
+      rng: new SeededRng(1n),
+    });
+    expect(g.players[0]?.life).toBe(40);
+    expect(g.players[1]?.life).toBe(40);
+  });
 });

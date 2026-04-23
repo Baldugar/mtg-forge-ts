@@ -60,7 +60,8 @@ export class Game {
     this.meta = opts.meta;
     this.rng = opts.rng;
     this.players = opts.lobbyPlayers.map(
-      (lp, i) => new Player(mkPlayerSeat(i), lp, opts.rules.teamAssignments?.[i] ?? i),
+      (lp, i) =>
+        new Player(mkPlayerSeat(i), lp, opts.rules.teamAssignments?.[i] ?? i, opts.rules.startingLife),
     );
     this.sharedZones = {
       stack: new Stack(),

@@ -7,7 +7,10 @@ import type { CounterType, LobbyPlayer, PlayerSeat, ZoneType } from "@mtg-forge-
 import type { Zone } from "./zone/zone.js";
 
 export class Player {
-  life = 20;
+  // WHY: life is initialized from GameRules.startingLife by the Game ctor
+  // (defaults to 20 when Player is constructed standalone, for backwards
+  // compatibility with tests that mint a Player without going through Game).
+  life: number;
   counters = new Map<CounterType, number>();
   // Typed by Task 36 (ManaPool). Holding unknown here keeps the field slot
   // stable so downstream code can reference `player.manaPool` before the
@@ -21,7 +24,10 @@ export class Player {
     readonly seat: PlayerSeat,
     readonly lobbyPlayer: LobbyPlayer,
     public teamId: number,
-  ) {}
+    startingLife = 20,
+  ) {
+    this.life = startingLife;
+  }
 
   toJSON(): {
     seat: PlayerSeat;
