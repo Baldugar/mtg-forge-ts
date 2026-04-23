@@ -297,6 +297,11 @@ export class GameAction {
     if (oldController === undefined) {
       throw new GameStateIntegrityError(`changeControl: card ${cardId} not tracked`);
     }
+    // CR 613.1b — control change invalidates the LayerEngine cache because
+    // layered values scoped by controller (e.g., ability-grant statics) must
+    // re-evaluate. Bump before the event emit so observers reading
+    // characteristics during the event see the post-control-change view.
+    game.layerEngine.bumpEpoch("control-change");
     yield {
       kind: "event",
       event: mkEvent("ControlChanged", game.turn, game.phase, {

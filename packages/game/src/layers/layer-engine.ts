@@ -22,6 +22,7 @@ import {
 import type { Game } from "../game.js";
 import { deriveBaseCharacteristics } from "./base-characteristics.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
+import { applyLayer2Control } from "./layer2-control.js";
 
 export interface LayerCacheEntry {
   readonly chars: Characteristics;
@@ -54,8 +55,9 @@ export class LayerEngine {
     if (!card) throw new GameStateIntegrityError(`LayerEngine: card ${id} not found`);
     const chars = deriveBaseCharacteristics(card);
     applyLayer1Copy(chars, card.copiedFrom);
+    applyLayer2Control();
     for (const _layer of LAYER_ORDER) {
-      // Tasks 4-9 populate per-layer apply calls here.
+      // Tasks 5-9 populate per-layer apply calls here.
     }
     this.cache.set(id, { chars, epoch: this.epoch });
     return chars;
