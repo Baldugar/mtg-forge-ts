@@ -21,7 +21,9 @@ import { ScriptedController } from "../../src/controller/scripted-controller.js"
 import type { GameMeta } from "../../src/game-meta.js";
 import type { GameRules } from "../../src/game-rules.js";
 import { Game } from "../../src/game.js";
+import { PhaseHandler } from "../../src/phase/phase-handler.js";
 import { runGame } from "../../src/run-game.js";
+import { setupGame } from "../../src/setup/setup-flow.js";
 import type { SetupDecks } from "../../src/setup/setup-flow.js";
 
 // SP1 stub: runGame only needs Card instances in game.cards keyed by
@@ -277,6 +279,137 @@ describe("scripted no-op game (integration smoke)", () => {
     // Game still resolves via concession.
     expect(game.isTerminal()).toBe(true);
     expect(game.terminalState?.concededSeats).toEqual([mkPlayerSeat(0)]);
+  });
+
+  it("turn-3 Draw step: seat 0 draws (firstPlayerSkipsDraw only applies to turn 1)", () => {
+    // WHY (Reviewer C §5): complement the Round-3 coverage with a multi-turn
+    // scenario. On seat 0's second turn (turn 3 in a 2-player game where
+    // turns go 0,1,0,1,...), game.turn becomes 3 and the Draw step must
+    // unconditionally draw for seat 0. This proves firstPlayerSkipsDraw is
+    // scoped to game.turn===1, not a per-seat flag that would incorrectly
+    // skip every first-player Draw.
+    const game = new Game({
+      lobbyPlayers: [
+        { id: "p0", name: "P0", controllerKind: "scripted" },
+        { id: "p1", name: "P1", controllerKind: "scripted" },
+      ],
+      rules,
+      meta,
+      rng: new SeededRng(0x1234n),
+    });
+    game.startingPlayer = mkPlayerSeat(0);
+    // Seed libraries: 60 cards per seat so even the long multi-turn scenario
+    // has plenty of cards to draw.
+    const decks: Record<number, EntityId[]> = { 0: [], 1: [] };
+    for (let seat = 0; seat < 2; seat++) {
+      const playerSeat = mkPlayerSeat(seat);
+      for (let i = 0; i < 60; i++) {
+        const id = game.newEntityId();
+        game.cards.set(
+          id,
+          new Card(id, stubPaperCard(`Stub ${seat}-${i}`), playerSeat, playerSeat, ZoneType.Library),
+        );
+        decks[seat]?.push(id);
+      }
+    }
+
+    // Controllers: both keep mulligan; both pass every priority window.
+    // Scripted decks must be long enough for the whole run — each turn has
+    // 12 priority windows (one per PhaseStep) seen only by the active seat
+    // (priority is SP1-minimal, active-only). Three turns × 12 steps = up
+    // to 36 priority windows for the active player (split across seats).
+    const priorityPass: DecisionResponse = { kind: "priority", action: { kind: "pass" } };
+    const mulliganKeep: DecisionResponse = { kind: "mulligan", keep: true };
+    const seat0Script: DecisionResponse[] = [mulliganKeep];
+    for (let i = 0; i < 40; i++) seat0Script.push(priorityPass);
+    const seat1Script: DecisionResponse[] = [mulliganKeep];
+    for (let i = 0; i < 40; i++) seat1Script.push(priorityPass);
+
+    const controllers = new Map<PlayerSeat, PlayerController>([
+      [mkPlayerSeat(0), new ScriptedController(seat0Script)],
+      [mkPlayerSeat(1), new ScriptedController(seat1Script)],
+    ]);
+
+    // Drive setup manually so we can pre-seed the turnQueue with 3 turns:
+    // seat 0 (turn 1, skips draw), seat 1 (turn 2, draws), seat 0 (turn 3,
+    // MUST draw this time).
+    const setupGen = setupGame(game, { decks: decks as unknown as SetupDecks });
+    let step = setupGen.next();
+    while (!step.done) {
+      if (step.value.kind === "decision") {
+        const req = step.value.request;
+        if (!("playerSeat" in req)) throw new Error("unexpected req kind");
+        const c = controllers.get(req.playerSeat);
+        if (!c) throw new Error("no controller");
+        step = setupGen.next(c.decide(req));
+      } else {
+        step = setupGen.next();
+      }
+    }
+
+    const phaseHandler = new PhaseHandler(game);
+    phaseHandler.turnQueue.push({ activePlayer: mkPlayerSeat(0), isExtra: false });
+    phaseHandler.turnQueue.push({ activePlayer: mkPlayerSeat(1), isExtra: false });
+    phaseHandler.turnQueue.push({ activePlayer: mkPlayerSeat(0), isExtra: false });
+
+    const events: GameEvent[] = [];
+    const gen = phaseHandler.run();
+    let safety = 0;
+    let phaseStep = gen.next();
+    while (!phaseStep.done) {
+      safety++;
+      if (safety > 20000) throw new Error("test: runaway generator");
+      if (phaseStep.value.kind === "decision") {
+        const req = phaseStep.value.request;
+        if (!("playerSeat" in req)) throw new Error("unexpected req kind");
+        const c = controllers.get(req.playerSeat);
+        if (!c) throw new Error("no controller");
+        phaseStep = gen.next(c.decide(req));
+      } else {
+        events.push(phaseStep.value.event);
+        phaseStep = gen.next();
+      }
+    }
+
+    // Partition CardDrawn events by the turn they occurred on. The event
+    // payload carries the event's turn + phase; we care about Draw-step
+    // CardDrawn events attributed to seat 0 across turns 1 and 3.
+    const drawEvents = events.filter((e) => e.kind === "CardDrawn");
+    // Sanity: at least three turn boundaries emitted.
+    expect(events.filter((e) => e.kind === "TurnStarted").length).toBe(3);
+
+    // Firstly lock the SP1-scoped firstTurnDrawSkipped ledger. The flag is
+    // written only for the ACTIVE seat during game.turn===1's Draw step.
+    // Since PhaseHandler advances turn after each run, only seat 0 (which
+    // goes first) has an entry. Seat 1's first turn is game.turn===2 per
+    // PhaseHandler's increment, so no entry is written for seat 1. This is
+    // a true reflection of SP1's single-turn-1 scope.
+    expect(game.flags.firstTurnDrawSkipped.get(mkPlayerSeat(0))).toBe(true);
+    expect(game.flags.firstTurnDrawSkipped.has(mkPlayerSeat(1))).toBe(false);
+
+    // Seat 0 draws 7 cards in setup, 0 on turn 1 (skipped), and then AT
+    // LEAST 1 on turn 3 (the draw step we care about). We can't easily
+    // attribute mid-turn events to seats, so we lock the invariant via
+    // hand size progression: after setup, seat 0's hand has 7. After the
+    // three turns, seat 0 has drawn exactly once more (turn 3 draw).
+    // Seat 1 drew once on turn 2, so seat 1's hand grew by 1.
+    const seat0HandSize = game.players[0]?.zones.get(ZoneType.Hand)?.size ?? 0;
+    const seat1HandSize = game.players[1]?.zones.get(ZoneType.Hand)?.size ?? 0;
+    // Starting hand 7 + turn-1 skipped + turn-3 drawn = 8 for seat 0.
+    // Starting hand 7 + turn-2 drawn = 8 for seat 1.
+    expect(seat0HandSize).toBe(8);
+    expect(seat1HandSize).toBe(8);
+    // Post-setup, at least 2 CardDrawn events were emitted across the three
+    // turn sequence (seat 1 on turn 2 + seat 0 on turn 3). The seat-0 turn-1
+    // Draw is skipped, so exactly 2 CardDrawn events emerge from run().
+    expect(drawEvents.length).toBe(2);
+    // One of those draws must have happened on turn 3 — pick them out by
+    // the event's turn stamp so a regression that fails to advance game.turn
+    // surfaces.
+    const turnsDrawn = new Set(drawEvents.map((e) => e.turn));
+    expect(turnsDrawn.has(3)).toBe(true);
+    // And no turn-1 draw was emitted (seat 0 skip respected).
+    expect(turnsDrawn.has(1)).toBe(false);
   });
 
   it("post-setup RNG state is deterministic (seed 0x1234 → locked next-long value)", () => {

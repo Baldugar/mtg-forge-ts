@@ -85,7 +85,7 @@ const arbPhase: fc.Arbitrary<PhaseStepT> = fc.constantFrom(
   PhaseStep.DeclareAttackers,
   PhaseStep.DeclareBlockers,
   PhaseStep.CombatDamage,
-  PhaseStep.EndCombat,
+  PhaseStep.EndOfCombat,
   PhaseStep.Main2,
   PhaseStep.EndStep,
   PhaseStep.Cleanup,

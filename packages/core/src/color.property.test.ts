@@ -13,7 +13,7 @@ import fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import { Color, ColorSet } from "./color.js";
 
-const ALL_COLORS: readonly Color[] = [Color.White, Color.Blue, Color.Black, Color.Red, Color.Green];
+const ALL_COLORS: Color[] = [Color.White, Color.Blue, Color.Black, Color.Red, Color.Green];
 
 // Arbitrary ColorSet built from an arbitrary subset of the five Colors.
 // fc.subarray preserves order; ColorSet.of normalizes via bit-OR anyway, so
