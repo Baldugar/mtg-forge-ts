@@ -276,8 +276,10 @@ function parseOneSymbol(input: string, i: number): { symbol: ManaSymbol; length:
       throw new ManaParseError(`Numeric token has a leading zero: ${JSON.stringify(digits)}`);
     }
     const amount = Number.parseInt(digits, 10);
-    if (!Number.isFinite(amount) || amount < 0) {
-      throw new ManaParseError(`Invalid generic amount: ${digits}`);
+    if (!Number.isSafeInteger(amount) || amount < 0) {
+      // WHY: Number.parseInt returns a non-safe float for digit runs > 2^53, so a
+      // harmless-looking "999999999999999999999" would silently round. Reject it.
+      throw new ManaParseError(`Generic amount is not a safe non-negative integer: ${digits}`);
     }
 
     // monoHybrid ("2/W")
@@ -688,6 +690,10 @@ function parseSpaceSeparated(body: string): ManaSymbol[] {
     const stripped = tok.startsWith("{") && tok.endsWith("}") ? tok.slice(1, -1) : tok;
     if (/^\d+$/.test(stripped)) {
       const amount = Number.parseInt(stripped, 10);
+      if (!Number.isSafeInteger(amount) || amount < 0) {
+        // WHY: guard against digit runs that exceed 2^53 and round to a float.
+        throw new ManaParseError(`Generic amount is not a safe non-negative integer: ${stripped}`);
+      }
       out.push({ kind: "generic", amount });
       continue;
     }
@@ -878,6 +884,11 @@ export class ManaCost {
    * behavior and avoids premature generalization.
    */
   cmc(xValue = 0): ManaValue {
+    if (!Number.isInteger(xValue) || xValue < 0) {
+      // WHY: cmc sums xValue into an integer ManaValue; NaN/negative/non-integer
+      // produce nonsense totals that quietly propagate into downstream rules.
+      throw new RangeError(`cmc xValue must be a non-negative integer, got: ${xValue}`);
+    }
     let total = 0;
     for (const s of this.symbols) {
       switch (s.kind) {

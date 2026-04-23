@@ -74,4 +74,36 @@ describe("ManaProduced serialization", () => {
     expect(roundTripped.isSnow).toBe(false);
     expect(roundTripped.restriction).toBe("none");
   });
+
+  it("fromJSON rejects negative sourceId (validates via mkEntityId)", () => {
+    expect(() =>
+      ManaProduced.fromJSON({
+        color: null,
+        sourceId: -1 as unknown as ReturnType<ManaProduced["toJSON"]>["sourceId"],
+        isSnow: false,
+        restriction: "none",
+      }),
+    ).toThrow(RangeError);
+  });
+
+  it("fromJSON rejects non-integer sourceId", () => {
+    expect(() =>
+      ManaProduced.fromJSON({
+        color: null,
+        sourceId: 1.5 as unknown as ReturnType<ManaProduced["toJSON"]>["sourceId"],
+        isSnow: false,
+        restriction: "none",
+      }),
+    ).toThrow(RangeError);
+  });
+
+  it("fromJSON passes null sourceId through untouched", () => {
+    const r = ManaProduced.fromJSON({
+      color: null,
+      sourceId: null,
+      isSnow: false,
+      restriction: "none",
+    });
+    expect(r.sourceId).toBeNull();
+  });
 });

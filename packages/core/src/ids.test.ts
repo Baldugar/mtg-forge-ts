@@ -26,4 +26,16 @@ describe("branded IDs", () => {
     expect(seat as unknown as number).toBe(0);
     expect(() => mkPlayerSeat(-1)).toThrow();
   });
+  it("EntityId rejects negative, non-integer, and NaN", () => {
+    expect(() => mkEntityId(-1)).toThrow(RangeError);
+    expect(() => mkEntityId(1.5)).toThrow(RangeError);
+    expect(() => mkEntityId(Number.NaN)).toThrow(RangeError);
+    expect(mkEntityId(0) as unknown as number).toBe(0);
+  });
+  it("DecisionId rejects negative, non-integer, and NaN", () => {
+    expect(() => mkDecisionId(-1)).toThrow(RangeError);
+    expect(() => mkDecisionId(1.5)).toThrow(RangeError);
+    expect(() => mkDecisionId(Number.NaN)).toThrow(RangeError);
+    expect(mkDecisionId(0) as unknown as number).toBe(0);
+  });
 });

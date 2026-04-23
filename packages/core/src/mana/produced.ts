@@ -4,7 +4,7 @@
 // analog. The cost-side analog (Forge's ManaCostShard) will live on ManaCost
 // when the Forge-faithful shard kinds are added.
 import type { Color } from "../color.js";
-import type { EntityId } from "../ids.js";
+import { type EntityId, mkEntityId } from "../ids.js";
 
 export type ManaProductionRestriction =
   | "none"
@@ -51,6 +51,9 @@ export class ManaProduced {
   }
 
   static fromJSON(s: ReturnType<ManaProduced["toJSON"]>): ManaProduced {
-    return new ManaProduced(s.color, s.sourceId as EntityId | null, s.isSnow, s.restriction);
+    // WHY: route sourceId through mkEntityId so bad wire data (negative,
+    // non-integer, NaN) throws instead of silently branding a garbage number.
+    const sourceId = s.sourceId === null ? null : mkEntityId(s.sourceId as number);
+    return new ManaProduced(s.color, sourceId, s.isSnow, s.restriction);
   }
 }

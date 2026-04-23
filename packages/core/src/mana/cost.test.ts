@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { Color, ColorSet } from "../color.js";
 import { ManaCost, manaValue } from "./cost.js";
-import type { ManaSymbol } from "./symbol.js";
+import { ManaParseError, type ManaSymbol } from "./symbol.js";
 
 describe("ManaCost.cmc()", () => {
   it("empty cost has cmc 0", () => {
@@ -428,5 +428,45 @@ describe("ManaCost toJSON/fromJSON round-trip", () => {
       { kind: "colorlessHybrid", color: Color.White },
       { kind: "hybridPhyrexian", a: Color.White, b: Color.Blue },
     ]);
+  });
+});
+
+describe("ManaCost input validation", () => {
+  it("rejects generic digit runs that exceed Number.MAX_SAFE_INTEGER (contiguous form)", () => {
+    expect(() => ManaCost.parse("999999999999999999999")).toThrow(ManaParseError);
+  });
+
+  it("rejects generic digit runs that exceed Number.MAX_SAFE_INTEGER (space-separated form)", () => {
+    expect(() => ManaCost.parse("999999999999999999999 W")).toThrow(ManaParseError);
+  });
+
+  it("rejects generic digit runs that exceed Number.MAX_SAFE_INTEGER (braced form)", () => {
+    expect(() => ManaCost.parse("{999999999999999999999}")).toThrow(ManaParseError);
+  });
+
+  it("accepts Number.MAX_SAFE_INTEGER as a safe integer", () => {
+    const c = ManaCost.parse(String(Number.MAX_SAFE_INTEGER));
+    expect(c.cmc()).toBe(Number.MAX_SAFE_INTEGER);
+  });
+
+  it("cmc() rejects negative xValue", () => {
+    const c = ManaCost.parse("X");
+    expect(() => c.cmc(-1)).toThrow(RangeError);
+  });
+
+  it("cmc() rejects NaN xValue", () => {
+    const c = ManaCost.parse("X");
+    expect(() => c.cmc(Number.NaN)).toThrow(RangeError);
+  });
+
+  it("cmc() rejects non-integer xValue", () => {
+    const c = ManaCost.parse("X");
+    expect(() => c.cmc(1.5)).toThrow(RangeError);
+  });
+
+  it("cmc() accepts 0 and positive integers", () => {
+    const c = ManaCost.parse("X");
+    expect(c.cmc(0)).toBe(0);
+    expect(c.cmc(7)).toBe(7);
   });
 });
