@@ -6,3 +6,4 @@ export * from "./layer2-control.js";
 export * from "./layer3-text.js";
 export * from "./layer4-type.js";
 export * from "./layer5-color.js";
+export * from "./layer6-ability.js";
