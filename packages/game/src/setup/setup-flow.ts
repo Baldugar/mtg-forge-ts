@@ -5,15 +5,21 @@
 //   2. seed each library with the caller-supplied EntityId list;
 //   3. shuffle each library deterministically via game.rng;
 //   4. draw the starting hand for every player;
-//   5. iterate the mulligan loop — SP1 supports the London rule only;
+//   5. iterate the mulligan loop — SP1 implements FREE-mulligan semantics
+//      (reshuffle + redraw the full hand size) regardless of the rule value
+//      carried on GameRules.mulliganRule;
 //   6. emit a GameStarted meta event.
 //
-// SP1 deliberately skips London's bottoming sub-step (send N cards to bottom
-// for N mulligans taken) — Task 49's smoke test uses keep-first-hand paths
-// and SP2 will wire the bottoming decision yield without changing this
-// generator's outer contract. Vancouver / Paris / Free mulligan rules also
-// arrive in SP2; hitting one from SP1 throws a structured error pointing at
-// the SP2 gap rather than silently producing a broken game.
+// Mulligan semantics — SP1 / SP2 split:
+//   SP1 implements free-mulligan semantics and emits MulliganTaken events
+//   with rule: "free" so event-stream consumers aren't misled. London
+//   (CR 103.5 — bottom N cards after N mulligans taken) requires a
+//   'mulliganBottom' DecisionRequest kind that is not yet in the union;
+//   when SP2 lands it, this generator will yield the bottoming step here
+//   and relabel events back to "london". Vancouver / Paris follow the
+//   same pattern. Hosts may still set GameRules.mulliganRule to any of
+//   the four literals for forward-compat; SP1 accepts the literal but
+//   runs the free-mulligan path and emits rule: "free" to signal the gap.
 import {
   type DecisionRequest,
   type DecisionResponse,
@@ -93,59 +99,56 @@ export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield
     yield* action.drawCards(player.seat, handSize);
   }
 
-  // Step 4: mulligan loop. SP1 — London rule only.
-  if (game.rules.mulliganRule === "london") {
-    for (const player of game.players) {
-      let mulligansTaken = 0;
-      while (true) {
-        const hand = player.zones.get(ZoneType.Hand);
-        const currentHand: readonly EntityId[] = hand ? hand.toArray() : [];
-        const request: DecisionRequest = {
-          kind: "mulligan",
-          playerSeat: player.seat,
-          currentHand,
-          mulligansSoFar: mulligansTaken,
-          rule: "london",
+  // Step 4: mulligan loop. SP1 runs free-mulligan semantics for every
+  // rule literal (see module docblock). When SP2 adds the bottoming
+  // DecisionRequest kind, re-branch on rule here and emit the bottoming
+  // yield before MulliganTaken.
+  for (const player of game.players) {
+    let mulligansTaken = 0;
+    while (true) {
+      const hand = player.zones.get(ZoneType.Hand);
+      const currentHand: readonly EntityId[] = hand ? hand.toArray() : [];
+      const request: DecisionRequest = {
+        kind: "mulligan",
+        playerSeat: player.seat,
+        currentHand,
+        mulligansSoFar: mulligansTaken,
+        rule: "free",
+      };
+      const response: DecisionResponse = yield { kind: "decision", request };
+      if (response.kind !== "mulligan") {
+        throw new Error(`setupGame: expected mulligan response, got ${response.kind}`);
+      }
+      if (response.keep) {
+        yield {
+          kind: "event",
+          event: mkEvent("MulliganTaken", game.turn, game.phase, {
+            playerSeat: player.seat,
+            handBefore: handSize,
+            handAfter: currentHand.length,
+            rule: "free",
+          }),
         };
-        const response: DecisionResponse = yield { kind: "decision", request };
-        if (response.kind !== "mulligan") {
-          throw new Error(`setupGame: expected mulligan response, got ${response.kind}`);
-        }
-        if (response.keep) {
-          // London bottoming is SP2 work — for now emit the MulliganTaken
-          // event so observers see the terminal state of the loop.
-          yield {
-            kind: "event",
-            event: mkEvent("MulliganTaken", game.turn, game.phase, {
-              playerSeat: player.seat,
-              handBefore: handSize,
-              handAfter: currentHand.length,
-              rule: "london",
-            }),
-          };
-          break;
-        }
-        // Shuffle hand back into library and redraw.
-        const lib = player.zones.get(ZoneType.Library);
-        if (hand && lib) {
-          const handCards = hand.toArray();
-          hand.clear();
-          for (const id of handCards) lib.add(id);
-          const shuffled = game.rng.shuffle(lib.toArray());
-          lib.clear();
-          for (const id of shuffled) lib.add(id);
-        }
-        yield* action.drawCards(player.seat, handSize);
-        mulligansTaken++;
-        if (mulligansTaken > MULLIGAN_MAX) {
-          throw new Error(
-            `setupGame: excessive mulligans for seat ${player.seat as unknown as number} (>${MULLIGAN_MAX})`,
-          );
-        }
+        break;
+      }
+      // Shuffle hand back into library and redraw.
+      const lib = player.zones.get(ZoneType.Library);
+      if (hand && lib) {
+        const handCards = hand.toArray();
+        hand.clear();
+        for (const id of handCards) lib.add(id);
+        const shuffled = game.rng.shuffle(lib.toArray());
+        lib.clear();
+        for (const id of shuffled) lib.add(id);
+      }
+      yield* action.drawCards(player.seat, handSize);
+      mulligansTaken++;
+      if (mulligansTaken > MULLIGAN_MAX) {
+        throw new Error(
+          `setupGame: excessive mulligans for seat ${player.seat as unknown as number} (>${MULLIGAN_MAX})`,
+        );
       }
     }
-  } else {
-    throw new Error(`setupGame: mulligan rule '${game.rules.mulliganRule}' not yet supported in SP1`);
   }
 
   // Step 5: emit GameStarted so downstream subscribers can latch the seat

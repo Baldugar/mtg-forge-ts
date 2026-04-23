@@ -204,7 +204,11 @@ describe("setupGame", () => {
     expect(game.players[1]?.zones.get(ZoneType.Hand)?.size).toBe(7);
   });
 
-  it("non-london rule throws with structured SP2 message", () => {
+  it("runs free-mulligan semantics under any rule literal (SP1 deferral)", () => {
+    // SP1 accepts any of "london" | "vancouver" | "paris" | "free" on
+    // GameRules but runs the free-mulligan flow for all of them and emits
+    // MulliganTaken with rule: "free". SP2 will add the bottoming
+    // DecisionRequest and branch per rule; see setup-flow.ts module docblock.
     const game = new Game({
       lobbyPlayers: [alice, bob],
       rules: { ...rules, mulliganRule: "vancouver" },
@@ -215,8 +219,29 @@ describe("setupGame", () => {
       0: seedCards(game, mkPlayerSeat(0), 10, 0),
       1: seedCards(game, mkPlayerSeat(1), 10, 10),
     };
-    // drain until the throw.
-    expect(() => drain(game, decks, () => true)).toThrow(/vancouver/);
+    const { events } = drain(game, decks, () => true);
+    // Both seats emit a MulliganTaken with rule "free" even though the rule
+    // literal was "vancouver" — SP1 free-mulligan semantics, labeled truthfully.
+    const taken = events.filter((e) => e.kind === "MulliganTaken");
+    expect(taken).toHaveLength(2);
+    for (const evt of taken) {
+      if (evt.kind !== "MulliganTaken") throw new Error("expected MulliganTaken");
+      expect(evt.payload.rule).toBe("free");
+    }
+  });
+
+  it("emits MulliganTaken with rule 'free' even when GameRules.mulliganRule is 'london'", () => {
+    const game = mkGame();
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 60, 0),
+      1: seedCards(game, mkPlayerSeat(1), 60, 60),
+    };
+    const { events } = drain(game, decks, () => true);
+    const taken = events.filter((e) => e.kind === "MulliganTaken");
+    for (const evt of taken) {
+      if (evt.kind !== "MulliganTaken") throw new Error("expected MulliganTaken");
+      expect(evt.payload.rule).toBe("free");
+    }
   });
 
   it("excessive mulligans error trips when a controller loops forever", () => {
