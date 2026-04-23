@@ -155,6 +155,20 @@ describe("mkEvent — family representatives", () => {
     expect(JSON.parse(JSON.stringify(e))).toEqual(e);
   });
 
+  it("builds a Combat event (DamagePrevented) with tagged target and preventor", () => {
+    const e = mkEvent("DamagePrevented", 4, PhaseStep.CombatDamage, {
+      sourceId: mkEntityId(11),
+      targetKind: "creature",
+      targetId: mkEntityId(12),
+      amount: 2,
+      preventorId: mkEntityId(99),
+    });
+    expect(e.kind).toBe("DamagePrevented");
+    expect(e.payload.targetKind).toBe("creature");
+    expect(e.payload.preventorId).toBe(mkEntityId(99));
+    expect(JSON.parse(JSON.stringify(e))).toEqual(e);
+  });
+
   it("builds a Combat event (AttackersDeclared) with nested defender union", () => {
     const e = mkEvent("AttackersDeclared", 2, PhaseStep.DeclareAttackers, {
       attackingSeat: mkPlayerSeat(0),

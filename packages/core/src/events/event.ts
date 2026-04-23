@@ -435,6 +435,9 @@ export type GameEvent =
       readonly phase: PhaseStep;
       readonly payload: {
         readonly sourceId: EntityId;
+        // WHY: matches DamageAssigned/DamageDealt discriminator so subscribers
+        // can route uniformly on target type across all three damage events.
+        readonly targetKind: "creature" | "player" | "planeswalker" | "battle";
         readonly targetId: EntityId | PlayerSeat;
         readonly amount: number;
         readonly preventorId?: EntityId;
