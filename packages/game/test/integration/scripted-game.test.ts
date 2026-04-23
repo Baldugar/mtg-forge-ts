@@ -32,7 +32,7 @@ import type { SetupDecks } from "../../src/setup/setup-flow.js";
 // swaps this for CardDb-backed construction.
 const stubPaperCard = (name: string): PaperCard => ({
   name,
-  set: "TST",
+  edition: "TST",
   collectorNumber: "001",
   language: "en",
   foil: false,

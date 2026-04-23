@@ -17,7 +17,7 @@ import {
 
 const makeCard = (name: string, collectorNumber: string, rarity = Rarity.Common): PaperCard => ({
   name,
-  set: "TST",
+  edition: "TST",
   collectorNumber,
   language: "en",
   foil: false,

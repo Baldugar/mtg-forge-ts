@@ -50,7 +50,7 @@ const meta: GameMeta = {
 
 const paperA: PaperCard = {
   name: "Llanowar Elves",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "236",
   language: "en",
   foil: false,
@@ -59,7 +59,7 @@ const paperA: PaperCard = {
 
 const paperB: PaperCard = {
   name: "Lightning Bolt",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "161",
   language: "en",
   foil: false,
@@ -115,11 +115,11 @@ const makeRestoreOpts = (rng = new SeededRng(1n)) => ({
 // === Tests ========================================================
 
 describe("GameSnapshot", () => {
-  it("header.schemaVersion is pinned to 2 (SP1 post-audit: library top-first)", () => {
+  it("header.schemaVersion is pinned to 3 (SP1 post-audit: PaperCard edition rename)", () => {
     const g = makeGame();
     const snap = snapshot(g);
     expect(snap.header.schemaVersion).toBe(SNAPSHOT_SCHEMA_VERSION);
-    expect(snap.header.schemaVersion).toBe(2);
+    expect(snap.header.schemaVersion).toBe(3);
   });
 
   it("header captures engine/card-data/rules provenance from GameMeta + GameRules", () => {

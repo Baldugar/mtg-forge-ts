@@ -6,7 +6,7 @@ import { Rarity } from "./types.js";
 
 const minimal: PaperCard = {
   name: "Lightning Bolt",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "161",
   language: "en",
   foil: false,
@@ -16,7 +16,7 @@ const minimal: PaperCard = {
 describe("PaperCard shape", () => {
   it("can be constructed with only the mandatory fields", () => {
     expect(minimal.name).toBe("Lightning Bolt");
-    expect(minimal.set).toBe("LEA");
+    expect(minimal.edition).toBe("LEA");
     expect(minimal.collectorNumber).toBe("161");
     expect(minimal.language).toBe("en");
     expect(minimal.foil).toBe(false);

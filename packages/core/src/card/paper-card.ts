@@ -7,6 +7,8 @@
 //   - TS additions: language, scryfallId, definition, plus optional
 //     printing-metadata booleans (promo/etched/borderless/artSeries) that
 //     Forge does not carry on PaperCard itself.
+// The `edition` field matches Forge's literal field name — SP4 wire interop
+// requires the JSON key to be `edition` on both sides of the TS/Java boundary.
 // PaperCardFlags mirrors Forge verbatim: `markedColors: ColorSet | null`
 // (Cryptic Spires-style user color choice) and `noSellValue: boolean`
 // (cards banned from inventory trade/sell). Other per-printing booleans
@@ -41,7 +43,7 @@ export const DEFAULT_PAPER_CARD_FLAGS: PaperCardFlags = {
 
 export interface PaperCard {
   readonly name: string;
-  readonly set: string;
+  readonly edition: string;
   readonly collectorNumber: string;
   readonly language: string;
   readonly artist?: string;
@@ -68,7 +70,7 @@ export interface PaperCard {
  * appended when the relevant flag/index is set to keep the common case short.
  */
 export const paperCardKey = (p: PaperCard): string => {
-  const base = `${p.set}:${p.collectorNumber}:${p.language}`;
+  const base = `${p.edition}:${p.collectorNumber}:${p.language}`;
   const foilPart = p.foil ? ":foil" : "";
   const artPart = p.artIndex != null ? `:a${p.artIndex}` : "";
   return `${base}${foilPart}${artPart}`;

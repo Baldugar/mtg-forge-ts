@@ -15,7 +15,7 @@ import {
 // in fixture cards from the cards package (out of scope for core tests).
 const makeCard = (name: string, collectorNumber: string): PaperCard => ({
   name,
-  set: "TST",
+  edition: "TST",
   collectorNumber,
   language: "en",
   foil: false,

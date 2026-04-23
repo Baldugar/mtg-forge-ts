@@ -51,7 +51,7 @@ export const SPECFACE_G = "$gspec";
  * without the cache directory layer.
  */
 export const imageKeyForCard = (p: PaperCard): string =>
-  `${PREFIX_CARD}${p.name}|${p.set}|${p.collectorNumber}|${p.language}`;
+  `${PREFIX_CARD}${p.name}|${p.edition}|${p.collectorNumber}|${p.language}`;
 
 /** Same as imageKeyForCard but for token entries (Forge: TOKEN_PREFIX + name). */
 export const imageKeyForToken = (tokenName: string): string => `${PREFIX_TOKEN}${tokenName}`;

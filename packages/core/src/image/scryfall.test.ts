@@ -6,7 +6,7 @@ import { SCRYFALL_BASE, scryfallImageUrl, scryfallTokenImageUrl } from "./scryfa
 
 const mk = (overrides: Partial<PaperCard>): PaperCard => ({
   name: "Lightning Bolt",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "161",
   language: "en",
   foil: false,
@@ -38,12 +38,12 @@ describe("scryfallImageUrl — Forge-ported URL construction", () => {
   });
 
   it("strips F prefix on funny-card collector numbers", () => {
-    const url = scryfallImageUrl(mk({ set: "UNF", collectorNumber: "F123" }));
+    const url = scryfallImageUrl(mk({ edition: "UNF", collectorNumber: "F123" }));
     expect(url).toBe(`${SCRYFALL_BASE}/unf/123/en?format=image&version=normal`);
   });
 
   it("applies planechase setcode override for OHOP-prefixed collector numbers", () => {
-    const url = scryfallImageUrl(mk({ set: "HOP", collectorNumber: "OHOP42" }));
+    const url = scryfallImageUrl(mk({ edition: "HOP", collectorNumber: "OHOP42" }));
     expect(url).toBe(`${SCRYFALL_BASE}/ohop/42/en?format=image&version=normal`);
   });
 
@@ -57,8 +57,8 @@ describe("scryfallImageUrl — Forge-ported URL construction", () => {
     expect(url).toContain(encodeURIComponent("A/1"));
   });
 
-  it("throws UnknownCardError when set is missing", () => {
-    const bad = { ...mk({}), set: "" } as PaperCard;
+  it("throws UnknownCardError when edition is missing", () => {
+    const bad = { ...mk({}), edition: "" } as PaperCard;
     expect(() => scryfallImageUrl(bad)).toThrow(UnknownCardError);
   });
 

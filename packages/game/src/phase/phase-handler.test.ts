@@ -51,7 +51,7 @@ const meta: GameMeta = {
 
 const samplePaper: PaperCard = {
   name: "Forest",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "294",
   language: "en",
   foil: false,

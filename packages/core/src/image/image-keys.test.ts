@@ -36,7 +36,7 @@ import {
 
 const bolt: PaperCard = {
   name: "Lightning Bolt",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "161",
   language: "en",
   foil: false,

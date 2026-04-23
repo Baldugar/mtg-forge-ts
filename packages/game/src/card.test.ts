@@ -13,7 +13,7 @@ import { Card } from "./card.js";
 
 const sampleCard: PaperCard = {
   name: "Llanowar Elves",
-  set: "LEA",
+  edition: "LEA",
   collectorNumber: "236",
   language: "en",
   foil: false,

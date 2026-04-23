@@ -55,7 +55,7 @@ const PLANECHASE_OVERRIDES: readonly { readonly prefix: string; readonly code: s
  * UnknownCardError.
  */
 export const scryfallImageUrl = (p: PaperCard, opts: ScryfallUrlOptions = {}): string => {
-  if (!p.set || !p.collectorNumber) {
+  if (!p.edition || !p.collectorNumber) {
     // Scryfall needs SOMETHING to identify the printing. Forge's builder
     // also assumes these are present (NullPointerException otherwise); we
     // raise a typed error so callers can catch-and-recover.
@@ -64,7 +64,7 @@ export const scryfallImageUrl = (p: PaperCard, opts: ScryfallUrlOptions = {}): s
   const face: ScryfallFace = opts.face ?? "front";
   const crop: ScryfallCrop = opts.crop ?? "normal";
   const lang = opts.lang ?? p.language;
-  let editionCode = p.set.toLowerCase();
+  let editionCode = p.edition.toLowerCase();
   let collector = p.collectorNumber;
 
   // Planechase setcode overrides — identical to Forge.

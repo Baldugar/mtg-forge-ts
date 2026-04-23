@@ -13,13 +13,18 @@
 // exposing. Keeping snapshot logic here also isolates the schemaVersion
 // contract so a bump doesn't pollute Game's API.
 //
-// schemaVersion: 2 (SP1). Bump on breaking format changes (master-spec §11).
+// schemaVersion: 3 (SP1 post-audit). Bump on breaking format changes
+// (master-spec §11).
 //
 // Migration notes:
 //   schemaVersion 2: library/deck-like zones now emit top-first (index 0 =
 //     top of deck) matching Forge / CR convention. Version 1 blobs had the
 //     opposite ordering for Library zone items — tooling that loads a v1
 //     snapshot must reverse Library.items before restore.
+//   schemaVersion 3: PaperCard renamed `set` → `edition` to match Forge's
+//     field name (SP4 wire interop). The rename only affects PaperCard
+//     registries supplied to restore(); snapshot payload itself is unchanged
+//     (paperCardKey's string format is stable: edition:collector:lang).
 
 import type {
   CounterType,
@@ -63,7 +68,7 @@ import { Library } from "../zone/zones/library.js";
  * removed, Map key flipped) MUST bump this so restore() can reject or migrate
  * old blobs rather than silently mis-deserialize.
  */
-export const SNAPSHOT_SCHEMA_VERSION = 2 as const;
+export const SNAPSHOT_SCHEMA_VERSION = 3 as const;
 
 /**
  * Serialized Card record. Deliberately parallels Card.toJSON plus a few fields
