@@ -17,7 +17,8 @@
 // Parsing "0" yields hasNoCost=false, one {generic:0} symbol.
 
 import { Color, ColorSet } from "../color.js";
-import { ManaParseError, type ManaSymbol } from "./symbol.js";
+import { ManaParseError } from "../errors.js";
+import type { ManaSymbol } from "./symbol.js";
 
 /** Mana value (Magic's rules-defined "converted mana cost"). */
 export type ManaValue = number;
@@ -759,7 +760,13 @@ export class ManaCost {
       return new ManaCost(parseUnbraced(trimmed), false);
     } catch (e) {
       if (e instanceof ManaParseError) {
-        throw new ManaParseError(`Failed to parse mana cost ${JSON.stringify(text)}: ${e.message}`);
+        // WHY: forward the inner ParseError.location if the inner error had one
+        // (the current symbol-level throwers omit it, but future enrichments
+        // can opt in without changing the wrapper). exactOptionalPropertyTypes
+        // forbids passing `undefined` explicitly, hence the conditional.
+        throw e.location === undefined
+          ? new ManaParseError(`Failed to parse mana cost ${JSON.stringify(text)}: ${e.message}`)
+          : new ManaParseError(`Failed to parse mana cost ${JSON.stringify(text)}: ${e.message}`, e.location);
       }
       throw e;
     }

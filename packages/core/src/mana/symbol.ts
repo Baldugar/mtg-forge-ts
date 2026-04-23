@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Discriminated union for MTG mana-cost symbols (Forge's ManaCostShard ported
-// to TypeScript) plus the error type used by the parser. The corresponding
-// ManaCost class + parse implementation lives in ./cost.ts so consumers can
-// import symbols without pulling in the parser.
+// to TypeScript). The corresponding ManaCost class + parse implementation
+// lives in ./cost.ts so consumers can import symbols without pulling in the
+// parser. ManaParseError is re-exported from ../errors for backwards
+// compatibility with callers that import it from this module.
 
 import type { Color } from "../color.js";
 
@@ -40,17 +41,7 @@ export type ManaSymbol =
   // cannot produce this; it reaches us via the wire-format bridge only.
   | { readonly kind: "coloredX" };
 
-/**
- * Thrown by {@link ManaCost.parse} when the input is not a valid mana-cost
- * string. A proper typed-error hierarchy is introduced in Task 21; this class
- * is a plain Error subclass for now.
- */
-export class ManaParseError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "ManaParseError";
-    // Preserve prototype chain under ES2022 down-level compilation. Using
-    // setPrototypeOf keeps `instanceof ManaParseError` working in all targets.
-    Object.setPrototypeOf(this, new.target.prototype);
-  }
-}
+// WHY re-export: callers (including tests) historically import ManaParseError
+// from "./mana/symbol.js". Re-exporting keeps that import path working while
+// the canonical declaration lives in ../errors.ts as a ParseError subclass.
+export { ManaParseError } from "../errors.js";
