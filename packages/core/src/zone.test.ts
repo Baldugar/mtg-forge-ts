@@ -2,10 +2,12 @@
 import { describe, expect, it } from "vitest";
 import {
   HIDDEN_ZONES,
+  ORDERED_ZONES,
   ZoneType,
   isBattlefieldZone,
   isDeckZone,
   isHiddenZone,
+  isOrderedZone,
   isPartOfCommandZone,
   isPerPlayerZone,
 } from "./zone.js";
@@ -131,6 +133,32 @@ describe("ZoneType", () => {
     expect(isPerPlayerZone(ZoneType.Merged)).toBe(false);
     expect(isPerPlayerZone(ZoneType.Subgame)).toBe(false);
     expect(isPerPlayerZone(ZoneType.None)).toBe(false);
+  });
+
+  it("ORDERED_ZONES matches Forge's EnumSet: Library, SchemeDeck, PlanarDeck, AttractionDeck, ContraptionDeck, Hand, Graveyard, Stack", () => {
+    const forgeOrdered = new Set<ZoneType>([
+      ZoneType.Library,
+      ZoneType.SchemeDeck,
+      ZoneType.PlanarDeck,
+      ZoneType.AttractionDeck,
+      ZoneType.ContraptionDeck,
+      ZoneType.Hand,
+      ZoneType.Graveyard,
+      ZoneType.Stack,
+    ]);
+    for (const z of forgeOrdered) expect(ORDERED_ZONES.has(z)).toBe(true);
+    for (const z of ORDERED_ZONES) expect(forgeOrdered.has(z)).toBe(true);
+    expect(ORDERED_ZONES.size).toBe(8);
+  });
+
+  it("isOrderedZone is backed by ORDERED_ZONES", () => {
+    expect(isOrderedZone(ZoneType.Library)).toBe(true);
+    expect(isOrderedZone(ZoneType.Hand)).toBe(true);
+    expect(isOrderedZone(ZoneType.Graveyard)).toBe(true);
+    expect(isOrderedZone(ZoneType.Stack)).toBe(true);
+    expect(isOrderedZone(ZoneType.Battlefield)).toBe(false);
+    expect(isOrderedZone(ZoneType.Exile)).toBe(false);
+    expect(isOrderedZone(ZoneType.Command)).toBe(false);
   });
 
   it("isBattlefieldZone is true only for Battlefield", () => {

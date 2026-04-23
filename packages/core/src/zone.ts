@@ -79,8 +79,24 @@ const PER_PLAYER: ReadonlySet<ZoneType> = new Set([
   ZoneType.ExtraHand,
 ]);
 
+// Forge: ORDERED_ZONES static EnumSet from ZoneType.java — zones whose card
+// order is observationally significant (library top/bottom, stack position,
+// graveyard sequence for Tarmogoyf-style tallies, hand ordering for UI).
+// Consumers scanning for "should I preserve item order?" check membership.
+export const ORDERED_ZONES: ReadonlySet<ZoneType> = new Set([
+  ZoneType.Library,
+  ZoneType.SchemeDeck,
+  ZoneType.PlanarDeck,
+  ZoneType.AttractionDeck,
+  ZoneType.ContraptionDeck,
+  ZoneType.Hand,
+  ZoneType.Graveyard,
+  ZoneType.Stack,
+]);
+
 export const isHiddenZone = (z: ZoneType): boolean => HIDDEN_ZONES.has(z);
 export const isDeckZone = (z: ZoneType): boolean => DECK_ZONES.has(z);
 export const isPartOfCommandZone = (z: ZoneType): boolean => PART_OF_COMMAND_ZONE.has(z);
 export const isPerPlayerZone = (z: ZoneType): boolean => PER_PLAYER.has(z);
 export const isBattlefieldZone = (z: ZoneType): boolean => z === ZoneType.Battlefield;
+export const isOrderedZone = (z: ZoneType): boolean => ORDERED_ZONES.has(z);
