@@ -71,6 +71,11 @@ export class PhaseHandler {
       yield* this.runStep(step);
       if (game.isTerminal()) break;
     }
+    // WHY: when the game reached terminal state mid-turn (e.g. concede in
+    // a priority window), runStep already emitted GameEnded. Emitting
+    // TurnEnded after that produces a zombie event — subscribers that
+    // finalize on GameEnded would observe a post-terminal turn boundary.
+    if (game.isTerminal()) return;
     yield {
       kind: "event",
       event: mkEvent("TurnEnded", game.turn, game.phase, { activeSeat: turn.activePlayer }),

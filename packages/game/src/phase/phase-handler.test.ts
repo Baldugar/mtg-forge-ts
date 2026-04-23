@@ -264,6 +264,37 @@ describe("PhaseHandler.run", () => {
     expect(yields).toHaveLength(0);
   });
 
+  it("concede during priority: GameEnded is the final event (no TurnEnded after)", () => {
+    const game = mkGame({ firstPlayerSkipsDraw: false });
+    const handler = new PhaseHandler(game);
+    const seat0 = mkPlayerSeat(0);
+    addCardToZone(game, seat0, ZoneType.Library, mkEntityId(700));
+    handler.turnQueue.push({ activePlayer: seat0, isExtra: false });
+
+    const yields: EngineYield[] = [];
+    const gen = handler.run();
+    let next = gen.next();
+    let decisionCount = 0;
+    while (!next.done) {
+      yields.push(next.value);
+      if (next.value.kind === "decision" && next.value.request.kind === "priority") {
+        decisionCount++;
+        // Concede on the very first priority window so the game ends mid-turn.
+        const action = decisionCount === 1 ? { kind: "concede" as const } : { kind: "pass" as const };
+        const response: DecisionResponse = { kind: "priority", action };
+        next = gen.next(response);
+      } else {
+        next = gen.next();
+      }
+    }
+    const events = onlyEvents(yields);
+    const kinds = events.map((e) => e.kind);
+    // GameEnded must be present and must be the LAST event (no zombie TurnEnded).
+    expect(kinds).toContain("GameEnded");
+    expect(kinds[kinds.length - 1]).toBe("GameEnded");
+    expect(kinds).not.toContain("TurnEnded");
+  });
+
   it("phaseSequence is respected: skipping Draw removes its Step events", () => {
     const game = mkGame({ firstPlayerSkipsDraw: false });
     const handler = new PhaseHandler(game);
