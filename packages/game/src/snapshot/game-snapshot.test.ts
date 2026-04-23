@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import type { EntityId, LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
+import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
 import {
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,

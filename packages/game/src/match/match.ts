@@ -5,30 +5,17 @@
 // winner. Games themselves live on the Match via currentGame; SP2's MatchSetup
 // swaps them in/out as games start and end.
 //
-// MatchController here is the match-scoped decide-interface (sideboard /
-// concedeMatch / acceptDrawOffer) — the mirror of PlayerController but at a
-// strictly coarser granularity (runs for a whole best-of-N, not per-game).
-import type {
-  Deck,
-  LobbyPlayer,
-  MatchDecisionRequest,
-  MatchDecisionResponse,
-  PlayerSeat,
-} from "@mtg-forge-ts/core";
+// MatchController (match-scoped decide-interface for sideboard /
+// concedeMatch / acceptDrawOffer) lives in packages/game/src/controller so
+// PlayerController + MatchController share one import path; Match re-exports
+// the type here for backwards compatibility with Task 41's consumer surface.
+import type { Deck, LobbyPlayer, MatchDecisionResponse, PlayerSeat } from "@mtg-forge-ts/core";
 import { mkPlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
+import type { MatchController } from "../controller/controller.js";
 import type { Game } from "../game.js";
 
-/**
- * Match-scoped controller contract. Invoked by SP2's match-flow driver for the
- * three MatchDecisionRequest kinds (sideboard, concedeMatch, acceptDrawOffer).
- * Separate from PlayerController because match-level decisions persist across
- * game resets (sideboard state survives between games; per-game hand/mulligan
- * decisions don't).
- */
-export interface MatchController {
-  decide(req: MatchDecisionRequest): MatchDecisionResponse;
-}
+export type { MatchController };
 
 /**
  * Per-seat running score for a match. `concededLastGame` is per-seat because
