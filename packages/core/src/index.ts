@@ -24,3 +24,4 @@ export * from "./dsl/index.js";
 export * from "./image/index.js";
 export * from "./format/index.js";
 export * from "./lobby-player.js";
+export * from "./abilities/index.js";
