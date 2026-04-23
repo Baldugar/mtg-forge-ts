@@ -229,8 +229,13 @@ export default defineConfig({
   clean: true,
   sourcemap: true,
   target: "node20",
+  outExtension({ format }) {
+    return { js: format === "esm" ? ".mjs" : ".cjs" };
+  },
 });
 ```
+
+**Note for all future packages:** the `outExtension` override is required whenever the `package.json` uses explicit `.mjs` / `.cjs` extensions in its `exports` field. Without it, tsup with `"type": "module"` emits plain `.js` for ESM, and the `exports.import` path points to a non-existent `.mjs` file — breaking module resolution for dual ESM+CJS consumers. Applies to core, game, ai, cards, formats, limited, and engine packages identically.
 
 - [ ] **Step 4:** `packages/core/vitest.config.ts`:
 
