@@ -12,3 +12,4 @@ export * from "./card/index.js";
 export * from "./deck/index.js";
 export * from "./rng/index.js";
 export * from "./errors.js";
+export * from "./log/index.js";
