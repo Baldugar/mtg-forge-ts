@@ -329,4 +329,214 @@ describe("setupGame", () => {
     };
     expect(() => drain(game2, decks2, () => false)).toThrow(/excessive mulligans/);
   });
+
+  it("team assignments from GameRules surface on each Player.teamId", () => {
+    const game = new Game({
+      lobbyPlayers: [alice, bob],
+      rules: { ...rules, teamAssignments: [0, 0] },
+      meta,
+      rng: new SeededRng(1n),
+    });
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 60, 0),
+      1: seedCards(game, mkPlayerSeat(1), 60, 60),
+    };
+    drain(game, decks, () => true);
+    expect(game.players[0]?.teamId).toBe(0);
+    expect(game.players[1]?.teamId).toBe(0);
+  });
+
+  it("team assignments default to seat-equals-team when rules omit teamAssignments", () => {
+    const game = mkGame();
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 60, 0),
+      1: seedCards(game, mkPlayerSeat(1), 60, 60),
+    };
+    drain(game, decks, () => true);
+    expect(game.players[0]?.teamId).toBe(0);
+    expect(game.players[1]?.teamId).toBe(1);
+  });
+});
+
+// === Commander assignment tests (SP1 §6.4 + §6.6) ===================
+
+// Separate drain helper for SetupOptions (new shape).
+const drainOpts = (
+  game: Game,
+  opts: import("./setup-flow.js").SetupOptions,
+  answerKeep: (mulligansSoFar: number, seat: PlayerSeat) => boolean,
+): DrainResult => {
+  const gen = setupGame(game, opts);
+  const events: GameEvent[] = [];
+  let decisions = 0;
+  let step = gen.next();
+  while (!step.done) {
+    const y = step.value;
+    if (y.kind === "event") {
+      events.push(y.event);
+      step = gen.next();
+      continue;
+    }
+    decisions++;
+    if (y.request.kind !== "mulligan") {
+      throw new Error(`drainOpts: unexpected decision kind ${y.request.kind}`);
+    }
+    const keep = answerKeep(y.request.mulligansSoFar, y.request.playerSeat);
+    const resp: DecisionResponse = { kind: "mulligan", keep };
+    step = gen.next(resp);
+  }
+  return { events, decisions };
+};
+
+describe("setupGame — commander assignment", () => {
+  it("single-commander mode: commander card moves from library to command zone", () => {
+    const game = mkGame();
+    const seat0Ids = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const seat1Ids = seedCards(game, mkPlayerSeat(1), 60, 60);
+    // Choose the first card in seat 0's deck list as commander.
+    const commanderId = seat0Ids[0];
+    if (commanderId === undefined) throw new Error("test: expected at least 1 seat-0 card");
+    drainOpts(
+      game,
+      {
+        decks: { 0: seat0Ids, 1: seat1Ids },
+        commanders: {
+          0: { kind: "single", commander: commanderId },
+          1: { kind: "none" },
+        },
+      },
+      () => true,
+    );
+    const cmdZone = game.players[0]?.zones.get(ZoneType.Command);
+    const library = game.players[0]?.zones.get(ZoneType.Library);
+    expect(cmdZone?.toArray()).toContain(commanderId);
+    expect(library?.toArray()).not.toContain(commanderId);
+    // Card.zone also updated.
+    expect(game.cards.get(commanderId)?.zone).toBe(ZoneType.Command);
+  });
+
+  it("partners mode: both commanders end up in the command zone", () => {
+    const game = mkGame();
+    const seat0Ids = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const seat1Ids = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const a = seat0Ids[0];
+    const b = seat0Ids[1];
+    if (a === undefined || b === undefined) throw new Error("test: expected 2 seat-0 cards");
+    drainOpts(
+      game,
+      {
+        decks: { 0: seat0Ids, 1: seat1Ids },
+        commanders: {
+          0: { kind: "partners", a, b },
+          1: { kind: "none" },
+        },
+      },
+      () => true,
+    );
+    const cmdZone = game.players[0]?.zones.get(ZoneType.Command);
+    expect(cmdZone?.toArray()).toEqual(expect.arrayContaining([a, b]));
+    expect(cmdZone?.size).toBe(2);
+  });
+
+  it("background mode: commander + background both end up in command zone", () => {
+    const game = mkGame();
+    const seat0Ids = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const seat1Ids = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const commander = seat0Ids[0];
+    const background = seat0Ids[1];
+    if (commander === undefined || background === undefined) {
+      throw new Error("test: expected 2 cards");
+    }
+    drainOpts(
+      game,
+      {
+        decks: { 0: seat0Ids, 1: seat1Ids },
+        commanders: {
+          0: { kind: "background", commander, background },
+          1: { kind: "none" },
+        },
+      },
+      () => true,
+    );
+    const cmdZone = game.players[0]?.zones.get(ZoneType.Command);
+    expect(cmdZone?.toArray()).toEqual(expect.arrayContaining([commander, background]));
+    expect(cmdZone?.size).toBe(2);
+  });
+
+  it("oathbreaker mode: planeswalker + signature spell both placed in command zone", () => {
+    const game = mkGame();
+    const seat0Ids = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const seat1Ids = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const planeswalker = seat0Ids[0];
+    const signatureSpell = seat0Ids[1];
+    if (planeswalker === undefined || signatureSpell === undefined) {
+      throw new Error("test: expected 2 cards");
+    }
+    drainOpts(
+      game,
+      {
+        decks: { 0: seat0Ids, 1: seat1Ids },
+        commanders: {
+          0: { kind: "oathbreaker", planeswalker, signatureSpell },
+          1: { kind: "none" },
+        },
+      },
+      () => true,
+    );
+    const cmdZone = game.players[0]?.zones.get(ZoneType.Command);
+    expect(cmdZone?.toArray()).toEqual(expect.arrayContaining([planeswalker, signatureSpell]));
+    expect(cmdZone?.size).toBe(2);
+  });
+
+  it("kind=none leaves library intact (no commander removed)", () => {
+    const game = mkGame();
+    const seat0Ids = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const seat1Ids = seedCards(game, mkPlayerSeat(1), 60, 60);
+    drainOpts(
+      game,
+      {
+        decks: { 0: seat0Ids, 1: seat1Ids },
+        commanders: { 0: { kind: "none" }, 1: { kind: "none" } },
+      },
+      () => true,
+    );
+    const cmdZone = game.players[0]?.zones.get(ZoneType.Command);
+    expect(cmdZone?.size).toBe(0);
+  });
+
+  it("commanders removed from library before shuffle — never appear in opening draw", () => {
+    const game = mkGame();
+    const seat0Ids = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const seat1Ids = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const commander = seat0Ids[0];
+    if (commander === undefined) throw new Error("test: expected commander");
+    drainOpts(
+      game,
+      {
+        decks: { 0: seat0Ids, 1: seat1Ids },
+        commanders: {
+          0: { kind: "single", commander },
+          1: { kind: "none" },
+        },
+      },
+      () => true,
+    );
+    // Hand must not contain the commander (it's in command zone).
+    const hand = game.players[0]?.zones.get(ZoneType.Hand);
+    expect(hand?.toArray()).not.toContain(commander);
+    // Library must not contain the commander either.
+    const library = game.players[0]?.zones.get(ZoneType.Library);
+    expect(library?.toArray()).not.toContain(commander);
+  });
+
+  it("legacy positional SetupDecks call shape still works (backward compatible)", () => {
+    const game = mkGame();
+    const decks: SetupDecks = {
+      0: seedCards(game, mkPlayerSeat(0), 60, 0),
+      1: seedCards(game, mkPlayerSeat(1), 60, 60),
+    };
+    // This is the old API. Must still run without error.
+    drain(game, decks, () => true);
+    expect(game.players[0]?.zones.get(ZoneType.Hand)?.size).toBe(7);
+  });
 });

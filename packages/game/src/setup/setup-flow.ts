@@ -51,6 +51,46 @@ export interface SetupDecks {
   readonly [seat: number]: readonly EntityId[];
 }
 
+/**
+ * Per-seat commander cards by mode. SP1 accepts one of:
+ *   - "single": one commander card goes to the command zone
+ *   - "partners": two partner commanders go to the command zone
+ *   - "background": commander + Background enchantment go to the command zone
+ *   - "oathbreaker": planeswalker + signature spell go to the command zone
+ *
+ * EntityIds must already live in the seat's library at call time (the caller
+ * includes them in the SetupDecks entry). setupGame removes them from the
+ * library — before shuffling — and places them in the command zone.
+ *
+ * This is the engine-side mirror of core's CommanderSlot discriminated
+ * union, expressed in EntityId terms (CommanderSlot uses PaperCards).
+ */
+export type CommanderAssignment =
+  | { readonly kind: "none" }
+  | { readonly kind: "single"; readonly commander: EntityId }
+  | { readonly kind: "partners"; readonly a: EntityId; readonly b: EntityId }
+  | {
+      readonly kind: "background";
+      readonly commander: EntityId;
+      readonly background: EntityId;
+    }
+  | {
+      readonly kind: "oathbreaker";
+      readonly planeswalker: EntityId;
+      readonly signatureSpell: EntityId;
+    };
+
+export interface SetupOptions {
+  readonly decks: SetupDecks;
+  /**
+   * Optional per-seat commander assignment. Omit for non-Commander formats.
+   * When present, setupGame removes the named EntityIds from the seat's
+   * library (if present) and places them in the command zone before
+   * shuffling. SP1 §6.4 + §6.6.
+   */
+  readonly commanders?: { readonly [seat: number]: CommanderAssignment };
+}
+
 // Per-player zone set covered by SP1. Sideboard/Ante/etc. populate in SP2 as
 // scenarios require them; keeping the creator local to this module means
 // Game doesn't need a zone-factory dependency outside setup.
@@ -69,7 +109,47 @@ const createPlayerZones = (seat: PlayerSeat): Map<ZoneType, Zone> => {
 // infinite-reshuffle controller would hang the engine otherwise.
 const MULLIGAN_MAX = 10;
 
-export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield, void, DecisionResponse> {
+// Extract the EntityIds a CommanderAssignment names. Kept local to setup
+// because it's the only site that consumes the union into a flat list; any
+// future command-zone mover elsewhere can lift this upwards.
+const commanderIds = (slot: CommanderAssignment): readonly EntityId[] => {
+  switch (slot.kind) {
+    case "none":
+      return [];
+    case "single":
+      return [slot.commander];
+    case "partners":
+      return [slot.a, slot.b];
+    case "background":
+      return [slot.commander, slot.background];
+    case "oathbreaker":
+      return [slot.planeswalker, slot.signatureSpell];
+  }
+};
+
+// Overloads: accept either the legacy `decks` positional arg (Round-1 API)
+// or the richer SetupOptions. SP1 consumers that don't use Commander keep
+// the old call shape; Commander hosts pass SetupOptions.
+export function setupGame(game: Game, decks: SetupDecks): Generator<EngineYield, void, DecisionResponse>;
+export function setupGame(game: Game, opts: SetupOptions): Generator<EngineYield, void, DecisionResponse>;
+export function* setupGame(
+  game: Game,
+  decksOrOpts: SetupDecks | SetupOptions,
+): Generator<EngineYield, void, DecisionResponse> {
+  // Narrow the union: SetupOptions carries a `decks` property; SetupDecks
+  // is a numeric-indexed record whose values are EntityId arrays. If the
+  // incoming object has a `decks` field whose value is itself a record
+  // (i.e. not an array), treat it as SetupOptions. EntityIds are branded
+  // numbers, so SetupDecks[0] is an array of numbers — never `undefined`
+  // for a well-formed deck.
+  const isOptions =
+    typeof decksOrOpts === "object" &&
+    decksOrOpts !== null &&
+    "decks" in decksOrOpts &&
+    !Array.isArray((decksOrOpts as { decks: unknown }).decks);
+  const opts: SetupOptions = isOptions ? (decksOrOpts as SetupOptions) : { decks: decksOrOpts as SetupDecks };
+  const decks = opts.decks;
+  const commanders = opts.commanders;
   const action = new GameAction(game);
 
   // Step 0: die-roll for starting player if not pre-assigned. Hosts that
@@ -96,6 +176,41 @@ export function* setupGame(game: Game, decks: SetupDecks): Generator<EngineYield
     const deck = decks[player.seat as unknown as number];
     if (lib && deck) {
       for (const cardId of deck) lib.add(cardId);
+    }
+  }
+
+  // Step 1b (SP1 §6.3): team assignment is resolved at Game construction
+  // time (Player.teamId, pulled from rules.teamAssignments?.[seat] ?? seat).
+  // Nothing to do here except acknowledge the spec slot — a future override
+  // hook (mid-setup team rewrite, e.g. Archenemy) would live in this step.
+
+  // Step 1c (SP1 §6.4 + §6.6): commander assignment + move-to-command-zone.
+  // For each seat with a non-"none" CommanderAssignment, remove the named
+  // EntityIds from the library (if present) and push them into the command
+  // zone. Must run BEFORE shuffling so commanders never end up in the
+  // library's random ordering.
+  if (commanders !== undefined) {
+    for (const player of game.players) {
+      const slot = commanders[player.seat as unknown as number];
+      if (!slot || slot.kind === "none") continue;
+      const lib = player.zones.get(ZoneType.Library);
+      const cmdZone = player.zones.get(ZoneType.Command);
+      if (!lib || !cmdZone) {
+        throw new GameStateIntegrityError(
+          `setupGame: seat ${player.seat as unknown as number} missing Library or Command zone`,
+        );
+      }
+      const ids = commanderIds(slot);
+      for (const id of ids) {
+        // Remove from library if present; callers include commander ids in
+        // their deck list so the pre-shuffle library contains them.
+        lib.remove(id);
+        cmdZone.add(id);
+        const card = game.cards.get(id);
+        // WHY: keep Card.zone in sync with the physical move so SBA / zone
+        // queries don't see stale Library pointers.
+        if (card) card.zone = ZoneType.Command;
+      }
     }
   }
 

@@ -15,15 +15,20 @@ import type { DecisionResponse } from "@mtg-forge-ts/core";
 import type { EngineYield } from "./action/engine-yield.js";
 import type { Game } from "./game.js";
 import { PhaseHandler } from "./phase/phase-handler.js";
-import type { SetupDecks } from "./setup/setup-flow.js";
+import type { CommanderAssignment, SetupDecks } from "./setup/setup-flow.js";
 import { setupGame } from "./setup/setup-flow.js";
 
 export interface RunGameOptions {
   readonly decks: SetupDecks;
+  /**
+   * Optional per-seat commander assignment. Omit for non-Commander formats.
+   * Passed straight through to setupGame (SP1 §6.4 + §6.6).
+   */
+  readonly commanders?: { readonly [seat: number]: CommanderAssignment };
 }
 
 export function* runGame(game: Game, opts: RunGameOptions): Generator<EngineYield, void, DecisionResponse> {
-  yield* setupGame(game, opts.decks);
+  yield* setupGame(game, { decks: opts.decks, ...(opts.commanders ? { commanders: opts.commanders } : {}) });
   if (game.isTerminal()) return;
 
   const phaseHandler = new PhaseHandler(game);
