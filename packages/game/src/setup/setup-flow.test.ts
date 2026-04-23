@@ -85,9 +85,10 @@ interface DrainResult {
 }
 
 // Fully drain the setup generator, answering every mulligan decision via the
-// supplied lambda. Returns the accumulated events and a decision count so
-// individual tests can assert mulligan-loop behavior without repeating the
-// drive logic.
+// supplied lambda. Handles London's mulliganBottom follow-up by bottoming the
+// first N cards from the request's hand. Returns the accumulated events and a
+// decision count so individual tests can assert mulligan-loop behavior
+// without repeating the drive logic.
 const drain = (
   game: Game,
   decks: SetupDecks,
@@ -104,14 +105,19 @@ const drain = (
       step = gen.next();
       continue;
     }
-    // decision
     decisions++;
-    if (y.request.kind !== "mulligan") {
+    if (y.request.kind === "mulligan") {
+      const keep = answerKeep(y.request.mulligansSoFar, y.request.playerSeat);
+      const resp: DecisionResponse = { kind: "mulligan", keep };
+      step = gen.next(resp);
+    } else if (y.request.kind === "mulliganBottom") {
+      // Default strategy: bottom the first N cards from the given hand.
+      const bottomed = y.request.hand.slice(0, y.request.countToBottom);
+      const resp: DecisionResponse = { kind: "mulliganBottom", bottomed };
+      step = gen.next(resp);
+    } else {
       throw new Error(`drain: unexpected decision kind ${y.request.kind}`);
     }
-    const keep = answerKeep(y.request.mulligansSoFar, y.request.playerSeat);
-    const resp: DecisionResponse = { kind: "mulligan", keep };
-    step = gen.next(resp);
   }
   return { events, decisions };
 };
@@ -181,9 +187,9 @@ describe("setupGame", () => {
       1: seedCards(game, mkPlayerSeat(1), 60, 60),
     };
     // Each seat mulligans once (answers false at mulligansSoFar=0), then keeps.
+    // Under London: 3 decisions per seat (1 reject + 1 keep + 1 bottom) = 6.
     const { events, decisions } = drain(game, decks, (n) => n >= 1);
-    // 2 decisions per seat (1 reject + 1 keep) = 4 total.
-    expect(decisions).toBe(4);
+    expect(decisions).toBe(6);
     expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(7 * 4);
     expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(2);
     expect(events[events.length - 1]?.kind).toBe("GameStarted");
@@ -279,17 +285,18 @@ describe("setupGame", () => {
     }
   });
 
-  it("emits MulliganTaken with rule 'free' even when GameRules.mulliganRule is 'london'", () => {
+  it("emits MulliganTaken with rule 'london' when GameRules.mulliganRule is 'london' and N=0 (no bottoming)", () => {
     const game = mkGame();
     const decks: SetupDecks = {
       0: seedCards(game, mkPlayerSeat(0), 60, 0),
       1: seedCards(game, mkPlayerSeat(1), 60, 60),
     };
+    // keep immediately → 0 mulligans taken → no bottoming yielded, rule="london".
     const { events } = drain(game, decks, () => true);
     const taken = events.filter((e) => e.kind === "MulliganTaken");
     for (const evt of taken) {
       if (evt.kind !== "MulliganTaken") throw new Error("expected MulliganTaken");
-      expect(evt.payload.rule).toBe("free");
+      expect(evt.payload.rule).toBe("london");
     }
   });
 
@@ -360,7 +367,8 @@ describe("setupGame", () => {
 
 // === Commander assignment tests (SP1 §6.4 + §6.6) ===================
 
-// Separate drain helper for SetupOptions (new shape).
+// Separate drain helper for SetupOptions (new shape). Mirrors `drain` including
+// the mulliganBottom handling for London.
 const drainOpts = (
   game: Game,
   opts: import("./setup-flow.js").SetupOptions,
@@ -378,12 +386,17 @@ const drainOpts = (
       continue;
     }
     decisions++;
-    if (y.request.kind !== "mulligan") {
+    if (y.request.kind === "mulligan") {
+      const keep = answerKeep(y.request.mulligansSoFar, y.request.playerSeat);
+      const resp: DecisionResponse = { kind: "mulligan", keep };
+      step = gen.next(resp);
+    } else if (y.request.kind === "mulliganBottom") {
+      const bottomed = y.request.hand.slice(0, y.request.countToBottom);
+      const resp: DecisionResponse = { kind: "mulliganBottom", bottomed };
+      step = gen.next(resp);
+    } else {
       throw new Error(`drainOpts: unexpected decision kind ${y.request.kind}`);
     }
-    const keep = answerKeep(y.request.mulligansSoFar, y.request.playerSeat);
-    const resp: DecisionResponse = { kind: "mulligan", keep };
-    step = gen.next(resp);
   }
   return { events, decisions };
 };
@@ -538,5 +551,191 @@ describe("setupGame — commander assignment", () => {
     // This is the old API. Must still run without error.
     drain(game, decks, () => true);
     expect(game.players[0]?.zones.get(ZoneType.Hand)?.size).toBe(7);
+  });
+});
+
+describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
+  // Helper that drives setup directly and captures both request and response
+  // so individual tests can inspect the mulliganBottom yield shape.
+  const driveLondon = (
+    game: Game,
+    decks: SetupDecks,
+    keepAfter: number,
+    pickBottom: (hand: readonly EntityId[], count: number) => readonly EntityId[],
+  ): { requestsSeen: string[]; bottomedByRound: Map<number, readonly EntityId[]> } => {
+    const gen = setupGame(game, decks);
+    const requestsSeen: string[] = [];
+    const bottomedByRound = new Map<number, readonly EntityId[]>();
+    let round = 0;
+    let step = gen.next();
+    while (!step.done) {
+      const y = step.value;
+      if (y.kind === "event") {
+        step = gen.next();
+        continue;
+      }
+      requestsSeen.push(y.request.kind);
+      if (y.request.kind === "mulligan") {
+        const keep = y.request.mulligansSoFar >= keepAfter;
+        step = gen.next({ kind: "mulligan", keep });
+      } else if (y.request.kind === "mulliganBottom") {
+        const bottomed = pickBottom(y.request.hand, y.request.countToBottom);
+        bottomedByRound.set(round++, bottomed);
+        step = gen.next({ kind: "mulliganBottom", bottomed });
+      } else {
+        throw new Error(`unexpected decision kind ${y.request.kind}`);
+      }
+    }
+    return { requestsSeen, bottomedByRound };
+  };
+
+  it("mulligan once then keep: yields mulliganBottom with countToBottom=1", () => {
+    const game = mkGame(); // mulliganRule: "london" by default
+    const ids0 = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const ids1 = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const { requestsSeen, bottomedByRound } = driveLondon(game, { 0: ids0, 1: ids1 }, 1, (hand, count) =>
+      hand.slice(0, count),
+    );
+    // Expect 2 mulligan requests (reject + keep) + 1 mulliganBottom per seat = 6.
+    const mulliganCount = requestsSeen.filter((k) => k === "mulligan").length;
+    const bottomCount = requestsSeen.filter((k) => k === "mulliganBottom").length;
+    expect(mulliganCount).toBe(4); // 2 per seat
+    expect(bottomCount).toBe(2); // 1 per seat (keeps at N=1)
+    // Each bottomed set has length 1.
+    for (const arr of bottomedByRound.values()) {
+      expect(arr).toHaveLength(1);
+    }
+  });
+
+  it("bottomed card ends up at the bottom of library, not shuffled", () => {
+    const game = mkGame();
+    const ids0 = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const ids1 = seedCards(game, mkPlayerSeat(1), 60, 60);
+    // Track the bottomed card for seat 0 so we can check library bottom.
+    let seat0Bottomed: EntityId | null = null;
+    const gen = setupGame(game, { 0: ids0, 1: ids1 });
+    let step = gen.next();
+    while (!step.done) {
+      const y = step.value;
+      if (y.kind === "event") {
+        step = gen.next();
+        continue;
+      }
+      if (y.request.kind === "mulligan") {
+        const keep = y.request.mulligansSoFar >= 1;
+        step = gen.next({ kind: "mulligan", keep });
+      } else if (y.request.kind === "mulliganBottom") {
+        const chosen = y.request.hand[0];
+        if (chosen === undefined) throw new Error("hand unexpectedly empty");
+        if (y.request.playerSeat === mkPlayerSeat(0)) seat0Bottomed = chosen;
+        step = gen.next({ kind: "mulliganBottom", bottomed: [chosen] });
+      } else {
+        throw new Error(`unexpected decision kind ${y.request.kind}`);
+      }
+    }
+    if (seat0Bottomed === null) throw new Error("expected a bottomed card for seat 0");
+    // After setup, seat 0's library bottom (index size-1) should be the
+    // card we bottomed. Library count after 1 bottom: 60 - 6 in hand = 54.
+    const lib = game.players[0]?.zones.get(ZoneType.Library);
+    expect(lib?.size).toBe(54);
+    expect(lib?.toArray()[lib.size - 1]).toBe(seat0Bottomed);
+  });
+
+  it("throws IllegalDecisionError when bottomed.length !== countToBottom", () => {
+    const game = mkGame();
+    const ids0 = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const ids1 = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const gen = setupGame(game, { 0: ids0, 1: ids1 });
+    // Drive until we hit the mulliganBottom request, then respond with wrong length.
+    let step = gen.next();
+    let threw: unknown = null;
+    try {
+      while (!step.done) {
+        const y = step.value;
+        if (y.kind === "event") {
+          step = gen.next();
+          continue;
+        }
+        if (y.request.kind === "mulligan") {
+          const keep = y.request.mulligansSoFar >= 1;
+          step = gen.next({ kind: "mulligan", keep });
+        } else if (y.request.kind === "mulliganBottom") {
+          // Return wrong length (0 instead of 1).
+          step = gen.next({ kind: "mulliganBottom", bottomed: [] });
+        } else {
+          throw new Error(`unexpected decision kind ${y.request.kind}`);
+        }
+      }
+    } catch (e) {
+      threw = e;
+    }
+    expect(threw).toBeInstanceOf(Error);
+    expect((threw as Error).message).toMatch(/must equal countToBottom/);
+  });
+
+  it("throws IllegalDecisionError when bottomed contains an id not in hand", () => {
+    const game = mkGame();
+    const ids0 = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const ids1 = seedCards(game, mkPlayerSeat(1), 60, 60);
+    const gen = setupGame(game, { 0: ids0, 1: ids1 });
+    let step = gen.next();
+    let threw: unknown = null;
+    try {
+      while (!step.done) {
+        const y = step.value;
+        if (y.kind === "event") {
+          step = gen.next();
+          continue;
+        }
+        if (y.request.kind === "mulligan") {
+          const keep = y.request.mulligansSoFar >= 1;
+          step = gen.next({ kind: "mulligan", keep });
+        } else if (y.request.kind === "mulliganBottom") {
+          // Supply an id that's not in the hand.
+          step = gen.next({ kind: "mulliganBottom", bottomed: [mkEntityId(9999)] });
+        } else {
+          throw new Error(`unexpected decision kind ${y.request.kind}`);
+        }
+      }
+    } catch (e) {
+      threw = e;
+    }
+    expect(threw).toBeInstanceOf(Error);
+    expect((threw as Error).message).toMatch(/not in hand/);
+  });
+
+  it("after bottoming, next drawn card is NOT one of the bottomed (top-of-library invariant)", () => {
+    // Seat 0 keeps after 2 mulligans, bottoms 2 cards. Then inspect that the
+    // library top (index 0) is a different card than what was bottomed.
+    const game = mkGame();
+    const ids0 = seedCards(game, mkPlayerSeat(0), 60, 0);
+    const ids1 = seedCards(game, mkPlayerSeat(1), 60, 60);
+    let seat0Bottomed: readonly EntityId[] = [];
+    const gen = setupGame(game, { 0: ids0, 1: ids1 });
+    let step = gen.next();
+    while (!step.done) {
+      const y = step.value;
+      if (y.kind === "event") {
+        step = gen.next();
+        continue;
+      }
+      if (y.request.kind === "mulligan") {
+        const keep = y.request.mulligansSoFar >= 2;
+        step = gen.next({ kind: "mulligan", keep });
+      } else if (y.request.kind === "mulliganBottom") {
+        const bottomed = y.request.hand.slice(0, y.request.countToBottom);
+        if (y.request.playerSeat === mkPlayerSeat(0)) seat0Bottomed = bottomed;
+        step = gen.next({ kind: "mulliganBottom", bottomed });
+      } else {
+        throw new Error(`unexpected decision kind ${y.request.kind}`);
+      }
+    }
+    const lib = game.players[0]?.zones.get(ZoneType.Library);
+    expect(lib).toBeDefined();
+    if (!lib) return;
+    const top = lib.toArray()[0];
+    const bottomedSet = new Set(seat0Bottomed);
+    expect(top).toBeDefined();
+    if (top !== undefined) expect(bottomedSet.has(top)).toBe(false);
   });
 });

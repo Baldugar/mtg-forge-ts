@@ -10,16 +10,15 @@
 //      carried on GameRules.mulliganRule;
 //   6. emit a GameStarted meta event.
 //
-// Mulligan semantics — SP1 / SP2 split:
-//   SP1 implements free-mulligan semantics and emits MulliganTaken events
-//   with rule: "free" so event-stream consumers aren't misled. London
-//   (CR 103.5 — bottom N cards after N mulligans taken) requires a
-//   'mulliganBottom' DecisionRequest kind that is not yet in the union;
-//   when SP2 lands it, this generator will yield the bottoming step here
-//   and relabel events back to "london". Vancouver / Paris follow the
-//   same pattern. Hosts may still set GameRules.mulliganRule to any of
-//   the four literals for forward-compat; SP1 accepts the literal but
-//   runs the free-mulligan path and emits rule: "free" to signal the gap.
+// Mulligan semantics — SP1 coverage:
+//   SP1 implements London mulligan (CR 103.5 — after N mulligans taken, the
+//   keeping player bottoms N cards from their hand) via the 'mulliganBottom'
+//   DecisionRequest kind. For `rule: "london"`, setup yields a mulliganBottom
+//   request after the player keeps and emits MulliganTaken with rule:"london".
+//   For any other rule literal (free / vancouver / paris), SP1 still runs the
+//   free-mulligan path (reshuffle + redraw up to full hand size) and emits
+//   MulliganTaken with rule:"free"; SP2 will branch those paths to their
+//   respective variant semantics.
 import {
   type DecisionRequest,
   type DecisionResponse,
@@ -229,10 +228,15 @@ export function* setupGame(
     yield* action.drawCards(player.seat, handSize);
   }
 
-  // Step 4: mulligan loop. SP1 runs free-mulligan semantics for every
-  // rule literal (see module docblock). When SP2 adds the bottoming
-  // DecisionRequest kind, re-branch on rule here and emit the bottoming
-  // yield before MulliganTaken.
+  // Step 4: mulligan loop. SP1 branches on rules.mulliganRule:
+  //   - "london": yield mulligan request with rule:"london"; on keep with N
+  //     mulligans taken, yield a second 'mulliganBottom' request for N cards
+  //     and move the chosen cards to the BOTTOM of the library (no reshuffle
+  //     per CR 103.5). Emit MulliganTaken with rule:"london".
+  //   - other rules: free-mulligan semantics (legacy path) — emit
+  //     MulliganTaken with rule:"free".
+  const isLondon = game.rules.mulliganRule === "london";
+  const eventRule = isLondon ? "london" : "free";
   for (const player of game.players) {
     let mulligansTaken = 0;
     while (true) {
@@ -243,20 +247,75 @@ export function* setupGame(
         playerSeat: player.seat,
         currentHand,
         mulligansSoFar: mulligansTaken,
-        rule: "free",
+        rule: eventRule,
       };
       const response: DecisionResponse = yield { kind: "decision", request };
       if (response.kind !== "mulligan") {
         throw new IllegalDecisionError(`setupGame: expected mulligan response, got ${response.kind}`);
       }
       if (response.keep) {
+        // London: after keep with N>0 mulligans, bottom N cards via a
+        // dedicated mulliganBottom DecisionRequest. The bottomed cards move
+        // to the BOTTOM of the library without reshuffling (CR 103.5).
+        if (isLondon && mulligansTaken > 0) {
+          const lib = player.zones.get(ZoneType.Library);
+          if (!hand || !lib) {
+            throw new GameStateIntegrityError(
+              `setupGame: seat ${player.seat as unknown as number} missing Hand or Library for London bottoming`,
+            );
+          }
+          const bottomReq: DecisionRequest = {
+            kind: "mulliganBottom",
+            playerSeat: player.seat,
+            hand: hand.toArray(),
+            countToBottom: mulligansTaken,
+          };
+          const bottomResp: DecisionResponse = yield { kind: "decision", request: bottomReq };
+          if (bottomResp.kind !== "mulliganBottom") {
+            throw new IllegalDecisionError(
+              `setupGame: expected mulliganBottom response, got ${bottomResp.kind}`,
+            );
+          }
+          if (bottomResp.bottomed.length !== mulligansTaken) {
+            throw new IllegalDecisionError(
+              `setupGame: mulliganBottom.bottomed.length (${bottomResp.bottomed.length}) must equal countToBottom (${mulligansTaken})`,
+            );
+          }
+          // Validate every chosen id belongs to the current hand; reject
+          // duplicates so the caller can't bottom the same card twice.
+          const handSet = new Set(hand.toArray());
+          const chosen = new Set<EntityId>();
+          for (const id of bottomResp.bottomed) {
+            if (!handSet.has(id)) {
+              throw new IllegalDecisionError(
+                `setupGame: mulliganBottom id ${id as unknown as number} not in hand for seat ${player.seat as unknown as number}`,
+              );
+            }
+            if (chosen.has(id)) {
+              throw new IllegalDecisionError(
+                `setupGame: mulliganBottom duplicate id ${id as unknown as number}`,
+              );
+            }
+            chosen.add(id);
+          }
+          // Move each chosen card from Hand to the bottom of Library (append
+          // at items.length). Order of response preserved — first element is
+          // lowest-index (outermost-bottom per CR 103.5 phrasing "bottom in
+          // any order" means caller-chosen ordering is honored).
+          for (const id of bottomResp.bottomed) {
+            hand.remove(id);
+            lib.add(id); // defaults to bottom (items.length)
+            const card = game.cards.get(id);
+            if (card) card.zone = ZoneType.Library;
+          }
+        }
         yield {
           kind: "event",
           event: mkEvent("MulliganTaken", game.turn, game.phase, {
             playerSeat: player.seat,
             handBefore: handSize,
-            handAfter: currentHand.length,
-            rule: "free",
+            handAfter: hand ? hand.size : 0,
+            rule: eventRule,
           }),
         };
         break;
@@ -280,6 +339,8 @@ export function* setupGame(
         lib.clear();
         for (const id of shuffled) lib.add(id);
       }
+      // London always redraws to full hand size; bottoming happens after keep.
+      // Free/Vancouver/Paris also redraw to full in SP1 (see module docblock).
       yield* action.drawCards(player.seat, handSize);
       mulligansTaken++;
       if (mulligansTaken > MULLIGAN_MAX) {
