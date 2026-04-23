@@ -265,6 +265,27 @@ describe("GameAction.tap / untap", () => {
     expect(yields[0].event.kind).toBe("CardUntapped");
     expect(game.cards.get(id)?.tapped).toBe(false);
   });
+
+  it("tap is idempotent: calling twice emits one event, state stays tapped", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(22);
+    addCardToZone(game, seat0, ZoneType.Battlefield, id);
+    const first = collect(action.tap(id));
+    const second = collect(action.tap(id));
+    expect(first).toHaveLength(1);
+    expect(second).toHaveLength(0);
+    expect(game.cards.get(id)?.tapped).toBe(true);
+  });
+
+  it("untap is idempotent: untapping an already-untapped card emits nothing", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(23);
+    addCardToZone(game, seat0, ZoneType.Battlefield, id);
+    // Card defaults to tapped=false.
+    const yields = collect(action.untap(id));
+    expect(yields).toHaveLength(0);
+    expect(game.cards.get(id)?.tapped).toBe(false);
+  });
 });
 
 describe("GameAction.damage", () => {

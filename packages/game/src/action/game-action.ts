@@ -113,7 +113,13 @@ export class GameAction {
 
   *tap(cardId: EntityId): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(cardId);
-    if (card) card.tapped = true;
+    // WHY: idempotent on no state change. SP2 trigger handlers listening
+    // on CardTapped would fire on redundant tap() calls if we always
+    // emitted — matching Forge semantics, an already-tapped permanent
+    // doesn't re-trigger. Missing-card case stays a silent no-op to
+    // match the original defensive behavior.
+    if (!card || card.tapped) return;
+    card.tapped = true;
     yield {
       kind: "event",
       event: mkEvent("CardTapped", this.game.turn, this.game.phase, { cardId }),
@@ -122,7 +128,8 @@ export class GameAction {
 
   *untap(cardId: EntityId): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(cardId);
-    if (card) card.tapped = false;
+    if (!card || !card.tapped) return;
+    card.tapped = false;
     yield {
       kind: "event",
       event: mkEvent("CardUntapped", this.game.turn, this.game.phase, { cardId }),
