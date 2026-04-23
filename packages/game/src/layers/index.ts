@@ -5,3 +5,4 @@ export * from "./layer1-copy.js";
 export * from "./layer2-control.js";
 export * from "./layer3-text.js";
 export * from "./layer4-type.js";
+export * from "./layer5-color.js";
