@@ -470,3 +470,158 @@ describe("ManaCost input validation", () => {
     expect(c.cmc(7)).toBe(7);
   });
 });
+
+describe("ManaCost.parse — untested throw paths (Reviewer C §2)", () => {
+  // WHY: lock the canonical error messages at each rejection site so future
+  // refactors can't silently rephrase them (error strings are part of the
+  // engine's debuggable contract — observers grep them in logs).
+
+  it("rejects trailing '/' at end of input", () => {
+    expect(() => ManaCost.parse("W/")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W/")).toThrow(/Incomplete hybrid: trailing '\/'/);
+  });
+
+  it("rejects leading zero in a braced generic", () => {
+    expect(() => ManaCost.parse("{02}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{02}")).toThrow(/leading zero/);
+  });
+
+  it("rejects mono-hybrid with a left side that isn't 2 (unbraced)", () => {
+    expect(() => ManaCost.parse("3/W")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("3/W")).toThrow(/Mono-hybrid left side must be 2/);
+    expect(() => ManaCost.parse("1/W")).toThrow(/Mono-hybrid left side must be 2/);
+  });
+
+  it("rejects mono-hybrid with non-2 left side in braced form", () => {
+    expect(() => ManaCost.parse("{3/W}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{3/W}")).toThrow(/Mono-hybrid left side must be 2/);
+    expect(() => ManaCost.parse("{1/W}")).toThrow(/Mono-hybrid left side must be 2/);
+  });
+
+  it("rejects a variable letter as the left side of a hybrid", () => {
+    expect(() => ManaCost.parse("X/W")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("X/W")).toThrow(/Variable letter cannot be the left side of a hybrid/);
+  });
+
+  it("rejects unknown mana-symbol character inside braces", () => {
+    expect(() => ManaCost.parse("{Q}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{Q}")).toThrow(/Unknown mana-symbol character/);
+  });
+
+  it("rejects interior whitespace within braces", () => {
+    // WHY: whitespace *between* braced tokens selects the space-separated
+    // parser; whitespace INSIDE a brace is invalid in every parse form.
+    // The space-separated parser treats "{W U}" as a single token and routes
+    // it through parseForgeShardToken, which rejects the embedded space.
+    expect(() => ManaCost.parse("{W U}")).toThrow(ManaParseError);
+  });
+
+  it("rejects mixed braced/unbraced form with brace after unbraced", () => {
+    expect(() => ManaCost.parse("W{U}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W{U}")).toThrow(/Mixed braced\/unbraced/);
+  });
+
+  it("rejects mixed braced/unbraced form with unbraced after brace", () => {
+    // "{W}U" — after closing brace we expect '{' or EOF; 'U' is neither.
+    expect(() => ManaCost.parse("{W}U")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{W}U")).toThrow(/Expected '\{' at position/);
+  });
+
+  it("rejects an unclosed '{'", () => {
+    expect(() => ManaCost.parse("{W")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{W")).toThrow(/Unclosed '\{'/);
+  });
+
+  it("rejects empty braces '{}'", () => {
+    expect(() => ManaCost.parse("{}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{}")).toThrow(/Empty braces/);
+  });
+
+  it("rejects nested braces", () => {
+    // parseBraced detects '{' *inside* the inner substring between a pair of
+    // matched braces and rejects with the canonical "Nested '{'" message.
+    expect(() => ManaCost.parse("{{W}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{{W}")).toThrow(/Nested '\{'/);
+  });
+
+  it("rejects trailing characters inside braces", () => {
+    // "{WX}" — parseOneSymbol consumes "W" as colored, then there's leftover "X".
+    expect(() => ManaCost.parse("{WX}")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("{WX}")).toThrow(/Trailing characters inside braces/);
+  });
+
+  it("fromForgeString rejects a duplicate shard (Forge-canonical names accept as separate shards, so test malformed paths)", () => {
+    // WHY: Forge's serialize emits duplicated shards when a cost has two of
+    // the same kind (e.g., {W}{W} → "0\x06WHITE\x06WHITE"). That's valid —
+    // we must NOT reject it. The bad case is an invalid shard name, which
+    // we cover separately.
+    const twoWhite = ManaCost.fromForgeString("0\x06WHITE\x06WHITE");
+    expect(twoWhite.symbols.length).toBe(2);
+  });
+
+  it("fromForgeString rejects an invalid shard token mid-string", () => {
+    expect(() => ManaCost.fromForgeString("2\x06NOTACOLOR\x06WHITE")).toThrow(ManaParseError);
+    expect(() => ManaCost.fromForgeString("2\x06NOTACOLOR\x06WHITE")).toThrow(/unknown shard name/);
+  });
+
+  it("fromForgeString handles the empty string as no-cost", () => {
+    // WHY: fromForgeString("") is tolerated (treated as NO_COST); negative
+    // test is covered above. Assert the positive so we document the
+    // tolerance.
+    const c = ManaCost.fromForgeString("");
+    expect(c.hasNoCost).toBe(true);
+    expect(c.symbols).toEqual([]);
+  });
+
+  it("fromForgeString rejects malformed head (non-numeric)", () => {
+    expect(() => ManaCost.fromForgeString("abc\x06WHITE")).toThrow(ManaParseError);
+    expect(() => ManaCost.fromForgeString("abc\x06WHITE")).toThrow(/expected numeric head/);
+  });
+
+  it("space-separated parser rejects an unknown character in a token", () => {
+    // WHY: parseForgeShardToken hits the 'default' branch when neither digit
+    // nor a known atom letter/slash; assert the canonical message.
+    expect(() => ManaCost.parse("2 W!")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("2 W!")).toThrow(/Unknown character/);
+  });
+
+  it("space-separated parser rejects Y/Z when not standalone within a token", () => {
+    // WHY: contiguous "YW" is accepted (Y = variable, W = colored) — the
+    // rejection path is only reached when Y/Z appear inside a space-separated
+    // token alongside other atoms (e.g., "YZ" as a single token).
+    expect(() => ManaCost.parse("YZ 2")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("YZ 2")).toThrow(/must be a standalone token/);
+  });
+
+  it("space-separated parser rejects a pure-numeric shard token (parseForgeShardToken invariant)", () => {
+    // WHY: "2/2" in space-separated form is rare but reaches
+    // parseForgeShardToken with atoms=ATOM_OR_2_GENERIC|ATOM_GENERIC → reject.
+    expect(() => ManaCost.parse("W 2/2")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W 2/2")).toThrow(/normalizes to generic/);
+  });
+
+  it("space-separated parser rejects an invalid snow token (S combined with other atoms)", () => {
+    expect(() => ManaCost.parse("W SW")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W SW")).toThrow(/Invalid snow token/);
+  });
+
+  it("space-separated parser rejects an invalid phyrexian token (P + colorless)", () => {
+    expect(() => ManaCost.parse("W CP")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W CP")).toThrow(/Invalid phyrexian token/);
+  });
+
+  it("space-separated parser rejects an invalid mono-hybrid token (2 + multiple colors)", () => {
+    expect(() => ManaCost.parse("W 2/WU")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W 2/WU")).toThrow(/Invalid mono-hybrid token/);
+  });
+
+  it("space-separated parser rejects invalid colorless-hybrid (C + multiple colors)", () => {
+    expect(() => ManaCost.parse("W C/WU")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W C/WU")).toThrow(/Invalid colorlessHybrid token/);
+  });
+
+  it("rejects invalid right side of hybrid (non-color, non-P) in unbraced form", () => {
+    expect(() => ManaCost.parse("W/Q")).toThrow(ManaParseError);
+    expect(() => ManaCost.parse("W/Q")).toThrow(/Invalid right side of hybrid/);
+  });
+});
