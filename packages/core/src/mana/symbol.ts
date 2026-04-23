@@ -5,30 +5,16 @@
 
 import type { Color } from "../color.js";
 
-/**
- * A single mana-cost symbol, modeling the MTG mana-symbol grammar.
- *
- * - `generic`      – numeric generic cost ({0}, {1}, {2}, ..., {10}, ...)
- * - `variable`     – X/Y/Z placeholders resolved at cast time
- * - `colored`      – one of the five colors ({W}, {U}, {B}, {R}, {G})
- * - `colorless`    – explicit colorless ({C})
- * - `snow`         – snow mana ({S})
- * - `hybrid`       – two-color hybrid ({W/U}, {U/B}, ...). `a` and `b` follow
- *                    input order verbatim; we do not canonicalize so JSON
- *                    round-trips are exactly identity-preserving.
- * - `monoHybrid`   – two-generic-or-one-color hybrid ({2/W}, {2/U}, ...). The
- *                    left side is always the literal number 2 per MTG rules.
- * - `phyrexian`    – phyrexian mana ({W/P}, {U/P}, ...)
- */
 export type ManaSymbol =
-  | { kind: "generic"; amount: number }
-  | { kind: "variable"; letter: "X" | "Y" | "Z" }
-  | { kind: "colored"; color: Color }
-  | { kind: "colorless" }
-  | { kind: "snow" }
-  | { kind: "hybrid"; a: Color; b: Color }
-  | { kind: "monoHybrid"; generic: 2; color: Color }
-  | { kind: "phyrexian"; color: Color };
+  | { readonly kind: "generic"; readonly amount: number }
+  | { readonly kind: "variable"; readonly letter: "X" | "Y" | "Z" }
+  | { readonly kind: "colored"; readonly color: Color }
+  | { readonly kind: "colorless" }
+  | { readonly kind: "snow" }
+  // Hybrid order preserved verbatim (no canonicalization) so JSON round-trips are identity-preserving.
+  | { readonly kind: "hybrid"; readonly a: Color; readonly b: Color }
+  | { readonly kind: "monoHybrid"; readonly generic: 2; readonly color: Color }
+  | { readonly kind: "phyrexian"; readonly color: Color };
 
 /**
  * Thrown by {@link ManaCost.parse} when the input is not a valid mana-cost

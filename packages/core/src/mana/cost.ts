@@ -36,10 +36,6 @@ function colorFromLetter(ch: string): Color {
   return c;
 }
 
-/**
- * Parse a single symbol from the unbraced stream starting at `i`.
- * Returns the parsed symbol and the number of characters consumed.
- */
 function parseOneSymbol(input: string, i: number): { symbol: ManaSymbol; length: number } {
   const ch = input[i];
   if (ch === undefined) {
@@ -210,15 +206,23 @@ export class ManaCost {
    * whitespace is rejected. Throws {@link ManaParseError} on invalid input.
    */
   static parse(text: string): ManaCost {
-    const trimmed = text.trim();
-    if (trimmed.length === 0) {
-      return new ManaCost([]);
+    try {
+      const trimmed = text.trim();
+      if (trimmed.length === 0) {
+        return new ManaCost([]);
+      }
+      // Reject stray close-braces even in the unbraced branch.
+      if (trimmed.startsWith("{")) {
+        return new ManaCost(parseBraced(trimmed));
+      }
+      return new ManaCost(parseUnbraced(trimmed));
+    } catch (e) {
+      // Rethrow with the offending input included so callers can identify which cost string failed.
+      if (e instanceof ManaParseError) {
+        throw new ManaParseError(`Failed to parse mana cost ${JSON.stringify(text)}: ${e.message}`);
+      }
+      throw e;
     }
-    // Reject stray close-braces even in the unbraced branch.
-    if (trimmed.startsWith("{")) {
-      return new ManaCost(parseBraced(trimmed));
-    }
-    return new ManaCost(parseUnbraced(trimmed));
   }
 
   /**
@@ -249,6 +253,10 @@ export class ManaCost {
         case "monoHybrid":
           total += 2;
           break;
+        default: {
+          const _exhaustive: never = s;
+          throw new Error(`Unhandled ManaSymbol kind: ${(_exhaustive as ManaSymbol).kind}`);
+        }
       }
     }
     return total;
@@ -275,6 +283,10 @@ export class ManaCost {
         case "colorless":
         case "snow":
           break;
+        default: {
+          const _exhaustive: never = s;
+          throw new Error(`Unhandled ManaSymbol kind: ${(_exhaustive as ManaSymbol).kind}`);
+        }
       }
     }
     return colors.length === 0 ? ColorSet.empty() : ColorSet.of(...colors);
