@@ -24,6 +24,7 @@ import { deriveBaseCharacteristics } from "./base-characteristics.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
 import { applyLayer2Control } from "./layer2-control.js";
 import { type TextSubstitution, applyLayer3Text } from "./layer3-text.js";
+import { type TypeChangeEffect, applyLayer4Type } from "./layer4-type.js";
 
 export interface LayerCacheEntry {
   readonly chars: Characteristics;
@@ -34,6 +35,7 @@ export class LayerEngine {
   private epoch = 0;
   private readonly cache = new Map<EntityId, LayerCacheEntry>();
   readonly textSubstitutions: TextSubstitution[] = [];
+  readonly typeEffects: TypeChangeEffect[] = [];
 
   constructor(private readonly game: Game) {}
 
@@ -59,8 +61,9 @@ export class LayerEngine {
     applyLayer1Copy(chars, card.copiedFrom);
     applyLayer2Control();
     applyLayer3Text(chars, this.textSubstitutions);
+    applyLayer4Type(chars, this.typeEffects);
     for (const _layer of LAYER_ORDER) {
-      // Tasks 6-9 populate per-layer apply calls here.
+      // Tasks 7-9 populate per-layer apply calls here.
     }
     this.cache.set(id, { chars, epoch: this.epoch });
     return chars;
