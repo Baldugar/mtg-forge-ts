@@ -5,3 +5,4 @@ export * from "./ids.js";
 export * from "./color.js";
 export * from "./zone.js";
 export * from "./phase.js";
+export * from "./counter-type.js";
