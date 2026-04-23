@@ -154,4 +154,17 @@ describe("Zone", () => {
     expect(z.removeAt(5)).toBeUndefined();
     expect(z.size).toBe(1);
   });
+
+  it("add throws RangeError for an index beyond size (size+1)", () => {
+    // Extra lock around the upper-bound check: size+1 is the first illegal
+    // high index (size itself is legal — appends at the end).
+    const z = new Library(ZoneType.Library, mkPlayerSeat(0));
+    z.add(mkEntityId(0));
+    z.add(mkEntityId(1));
+    // Legal: index equals current size.
+    z.add(mkEntityId(2), 2);
+    // Illegal: one past size.
+    expect(() => z.add(mkEntityId(99), 4)).toThrow(RangeError);
+    expect(() => z.add(mkEntityId(99), 4)).toThrow(/out of range/);
+  });
 });

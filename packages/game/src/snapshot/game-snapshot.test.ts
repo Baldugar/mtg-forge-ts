@@ -494,6 +494,31 @@ describe("GameSnapshot", () => {
     expect(restored.isTerminal()).toBe(true);
   });
 
+  it("restore throws SnapshotRestoreError on player seat mismatch with constructed seat", () => {
+    // WHY: Game's constructor assigns seat by index (0, 1, …). If a snapshot
+    // blob was hand-edited — or produced by a future engine that permitted
+    // sparse seat numbering — the seat-equality assertion at restore is the
+    // defense line. Force the mismatch by rewriting the serialized player
+    // seat to an unexpected value.
+    const g = makeGame();
+    const snap = snapshot(g);
+    const bad = {
+      ...snap,
+      state: {
+        ...snap.state,
+        players: [
+          // Seat 0 rewritten to 7 — constructed seat is still 0.
+          { ...snap.state.players[0], seat: mkPlayerSeat(7) },
+          snap.state.players[1],
+        ] as typeof snap.state.players,
+      },
+    };
+    expect(() => restore(bad as typeof snap, makeRestoreOpts())).toThrow(SnapshotRestoreError);
+    expect(() => restore(bad as typeof snap, makeRestoreOpts())).toThrow(
+      /player\[0\] seat 7 !== constructed seat 0/,
+    );
+  });
+
   it("deep round-trip: stringify → parse → restore → snapshot equals original snapshot state", () => {
     const g = makeGame();
     g.turn = 5;

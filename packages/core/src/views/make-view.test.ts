@@ -233,6 +233,41 @@ describe("makeGameView — hidden-info filtering", () => {
     expect(rt).toEqual(view);
   });
 
+  it("throws when a referenced EntityId is missing from snapshot.cards (player zone)", () => {
+    // WHY: makeGameView.requireCard enforces that every id in a projected zone
+    // has a matching entry in snapshot.cards. Silently substituting an empty
+    // CardView would hide data-corruption bugs at the view layer — we assert
+    // the throw so regressions surface immediately.
+    const data: GameSnapshotData = {
+      turn: 1,
+      phase: PhaseStep.Main1,
+      activePlayer: seat0,
+      cards: {}, // empty — id 123 below has no entry
+      stack: [],
+      players: [
+        // Battlefield is a public zone so requireCard is invoked on project.
+        { seat: seat0, life: 20, zones: { ...emptyZones(), [ZoneType.Battlefield]: [mkEntityId(123)] } },
+        { seat: seat1, life: 20, zones: { ...emptyZones() } },
+      ],
+    };
+    expect(() => makeGameView(data, seat0)).toThrow(/card id 123 missing from snapshot/);
+  });
+
+  it("throws when a stack EntityId is missing from snapshot.cards", () => {
+    const data: GameSnapshotData = {
+      turn: 1,
+      phase: PhaseStep.Main1,
+      activePlayer: seat0,
+      cards: {},
+      stack: [mkEntityId(456)],
+      players: [
+        { seat: seat0, life: 20, zones: { ...emptyZones() } },
+        { seat: seat1, life: 20, zones: { ...emptyZones() } },
+      ],
+    };
+    expect(() => makeGameView(data, seat0)).toThrow(/card id 456 missing from snapshot/);
+  });
+
   it("renders stack as visible CardView list", () => {
     const cards: Record<number, SnapshotCardData> = {
       90: mkCard({ id: 90, name: "Lightning Bolt", zone: ZoneType.Stack }),

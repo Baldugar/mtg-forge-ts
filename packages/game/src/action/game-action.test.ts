@@ -581,3 +581,111 @@ describe("GameAction locate / zoneFor", () => {
     expect(yields[0].event.payload.fromSeat).toBeUndefined();
   });
 });
+
+describe("GameAction throw-path coverage (Reviewer C §2)", () => {
+  // WHY: each throw site in game-action.ts is a contract boundary — callers
+  // rely on these rejections to surface state-integrity bugs. Lock the
+  // specific error class so controller code can pattern-match reliably.
+
+  it("sacrifice rejects a card not owned by any player (not in any zone)", () => {
+    const { action } = mkFixture();
+    // Card is not registered in any zone → locate() throws, which surfaces
+    // before sacrifice's owner-null branch would otherwise fire.
+    expect(() => collect(action.sacrifice(mkEntityId(9001)))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.sacrifice(mkEntityId(9001)))).toThrow(/not found in any zone/);
+  });
+
+  it("moveTo rejects a card tracked in game.cards but not in any zone array", () => {
+    // WHY: consistency check. A card registered in game.cards but absent from
+    // every Zone.items is a state-integrity bug (mid-move state leak, tests
+    // that set up cards without staging them, etc.). locate() must throw.
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(9002);
+    game.cards.set(id, new Card(id, samplePaper, seat0, seat0, ZoneType.Battlefield));
+    // Deliberately do NOT add to any zone.
+    expect(() => collect(action.moveTo(id, ZoneType.Graveyard))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.moveTo(id, ZoneType.Graveyard))).toThrow(/not found in any zone/);
+  });
+
+  it("moveTo to shared zone without owner is allowed (toSeat defaults to null via defaultDestinationSeat)", () => {
+    // WHY: positive counterpart — shared destinations (Exile/Ante) don't
+    // require an owner; the default path wires toSeat=null and zoneFor
+    // returns the shared zone. This locks the branch that flanks the
+    // rejection path below.
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(9003);
+    addCardToZone(game, seat0, ZoneType.Battlefield, id);
+    const yields = collect(action.moveTo(id, ZoneType.Exile));
+    if (yields[0]?.kind !== "event") throw new Error("expected event");
+    if (yields[0].event.kind !== "CardChangedZone") throw new Error("expected CardChangedZone");
+    expect(yields[0].event.payload.toSeat).toBeUndefined();
+  });
+
+  it("moveTo with an unowned source to a per-player zone throws (zoneFor requires owner)", () => {
+    // WHY: moveTo builds toSeat via defaultDestinationSeat(toZone, fromOwner).
+    // If the source is in a shared zone (fromOwner=null) and the destination
+    // is a per-player zone (Graveyard, Hand, …), defaultDestinationSeat
+    // returns null — zoneFor then throws "Zone X requires an owner".
+    const { game, action } = mkFixture();
+    const id = mkEntityId(9004);
+    const card = new Card(id, samplePaper, mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Exile);
+    game.cards.set(id, card);
+    game.sharedZones.exile.add(id);
+    expect(() => collect(action.moveTo(id, ZoneType.Graveyard))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.moveTo(id, ZoneType.Graveyard))).toThrow(/requires an owner/);
+  });
+
+  it("changeControl throws when the card is not tracked in game.cards", () => {
+    // WHY: changeControl reads card.controllerSeat *before* applying the new
+    // value so the event can report oldController. An untracked card makes
+    // that read undefined — throw rather than emit a half-valid event.
+    const { action } = mkFixture();
+    expect(() => collect(action.changeControl(mkEntityId(9005), mkPlayerSeat(1)))).toThrow(
+      GameStateIntegrityError,
+    );
+    expect(() => collect(action.changeControl(mkEntityId(9005), mkPlayerSeat(1)))).toThrow(/not tracked/);
+  });
+
+  it("drawCards throws when the target player has no Library zone", () => {
+    const { game, action, seat0 } = mkFixture();
+    // Drop the library. Hand remains so the throw reflects the library path.
+    game.getPlayer(seat0).zones.delete(ZoneType.Library);
+    expect(() => collect(action.drawCards(seat0, 1))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.drawCards(seat0, 1))).toThrow(/has no Library zone/);
+  });
+
+  it("drawCards throws when the target player has no Hand zone", () => {
+    // WHY: drawCards checks for Hand BEFORE touching the library (lines 39-40).
+    // So even an empty library trips the Hand check here — no need to seed
+    // cards, and the second expect-invocation also throws deterministically.
+    const { game, action, seat0 } = mkFixture();
+    game.getPlayer(seat0).zones.delete(ZoneType.Hand);
+    expect(() => collect(action.drawCards(seat0, 1))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.drawCards(seat0, 1))).toThrow(/has no Hand zone/);
+  });
+
+  it("mill throws when the target player has no Library zone", () => {
+    const { game, action, seat0 } = mkFixture();
+    game.getPlayer(seat0).zones.delete(ZoneType.Library);
+    expect(() => collect(action.mill(seat0, 1))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.mill(seat0, 1))).toThrow(/has no Library zone/);
+  });
+
+  it("mill throws when the target player has no Graveyard zone and library has cards", () => {
+    // WHY: seed two cards so both `expect(...).toThrow(...)` invocations
+    // reach the graveyard-missing check (each call consumes one card).
+    const { game, action, seat0 } = mkFixture();
+    addCardToZone(game, seat0, ZoneType.Library, mkEntityId(9200));
+    addCardToZone(game, seat0, ZoneType.Library, mkEntityId(9201));
+    game.getPlayer(seat0).zones.delete(ZoneType.Graveyard);
+    expect(() => collect(action.mill(seat0, 1))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.mill(seat0, 1))).toThrow(/has no Graveyard zone/);
+  });
+
+  it("shuffle throws when the target player has no Library zone", () => {
+    const { game, action, seat0 } = mkFixture();
+    game.getPlayer(seat0).zones.delete(ZoneType.Library);
+    expect(() => collect(action.shuffle(seat0))).toThrow(GameStateIntegrityError);
+    expect(() => collect(action.shuffle(seat0))).toThrow(/has no Library zone/);
+  });
+});

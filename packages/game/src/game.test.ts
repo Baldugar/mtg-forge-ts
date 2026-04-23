@@ -180,4 +180,36 @@ describe("Game", () => {
     expect(g.players[0]?.life).toBe(40);
     expect(g.players[1]?.life).toBe(40);
   });
+
+  describe("restoreEntityIdCounter validation (Reviewer C §2)", () => {
+    it("accepts 0 (empty game)", () => {
+      const g = makeGame();
+      expect(() => g.restoreEntityIdCounter(0)).not.toThrow();
+      // Next allocation must start at 0.
+      expect(g.newEntityId()).toBe(0);
+    });
+
+    it("accepts a positive integer and resumes allocation from it", () => {
+      const g = makeGame();
+      g.restoreEntityIdCounter(100);
+      expect(g.newEntityId()).toBe(100);
+      expect(g.newEntityId()).toBe(101);
+    });
+
+    it("rejects a negative integer", () => {
+      const g = makeGame();
+      expect(() => g.restoreEntityIdCounter(-1)).toThrow(RangeError);
+      expect(() => g.restoreEntityIdCounter(-1)).toThrow(/non-negative integer/);
+    });
+
+    it("rejects a non-integer (fractional) value", () => {
+      const g = makeGame();
+      expect(() => g.restoreEntityIdCounter(1.5)).toThrow(RangeError);
+    });
+
+    it("rejects NaN", () => {
+      const g = makeGame();
+      expect(() => g.restoreEntityIdCounter(Number.NaN)).toThrow(RangeError);
+    });
+  });
 });
