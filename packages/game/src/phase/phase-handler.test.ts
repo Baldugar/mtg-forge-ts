@@ -304,6 +304,36 @@ describe("PhaseHandler.run", () => {
     expect(kinds.filter((k) => k === "TurnStarted")).toHaveLength(1);
   });
 
+  it("firstTurnDrawSkipped flag records true for first player on turn 1 when firstPlayerSkipsDraw", () => {
+    const game = mkGame({ firstPlayerSkipsDraw: true });
+    const handler = new PhaseHandler(game);
+    const seat0 = mkPlayerSeat(0);
+    addCardToZone(game, seat0, ZoneType.Library, mkEntityId(800));
+    handler.turnQueue.push({ activePlayer: seat0, isExtra: false });
+    drive(handler);
+    expect(game.flags.firstTurnDrawSkipped.get(seat0)).toBe(true);
+  });
+
+  it("firstTurnDrawSkipped flag records false when the first player actually draws on turn 1", () => {
+    const game = mkGame({ firstPlayerSkipsDraw: false });
+    const handler = new PhaseHandler(game);
+    const seat0 = mkPlayerSeat(0);
+    addCardToZone(game, seat0, ZoneType.Library, mkEntityId(801));
+    handler.turnQueue.push({ activePlayer: seat0, isExtra: false });
+    drive(handler);
+    expect(game.flags.firstTurnDrawSkipped.get(seat0)).toBe(false);
+  });
+
+  it("firstTurnDrawSkipped flag records false for the non-first player on turn 1", () => {
+    const game = mkGame({ firstPlayerSkipsDraw: true });
+    const handler = new PhaseHandler(game);
+    const seat1 = mkPlayerSeat(1);
+    addCardToZone(game, seat1, ZoneType.Library, mkEntityId(802));
+    handler.turnQueue.push({ activePlayer: seat1, isExtra: false });
+    drive(handler);
+    expect(game.flags.firstTurnDrawSkipped.get(seat1)).toBe(false);
+  });
+
   it("phaseSequence is respected: skipping Draw removes its Step events", () => {
     const game = mkGame({ firstPlayerSkipsDraw: false });
     const handler = new PhaseHandler(game);

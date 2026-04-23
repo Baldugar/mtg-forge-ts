@@ -176,6 +176,12 @@ export class PhaseHandler {
       const firstSeat = game.players[0]?.seat;
       const shouldSkip =
         game.turn === 1 && game.rules.firstPlayerSkipsDraw && firstSeat !== undefined && active === firstSeat;
+      // WHY: the flag is authoritative ("undefined means false" would
+      // make snapshot round-trips ambiguous). Write it explicitly on
+      // every turn-1 Draw step so every seat has a definitive record.
+      if (game.turn === 1) {
+        game.flags.firstTurnDrawSkipped.set(active, shouldSkip);
+      }
       if (!shouldSkip) {
         yield* this.action.drawCards(active, 1);
       }
