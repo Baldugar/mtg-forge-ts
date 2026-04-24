@@ -22,6 +22,14 @@ export interface StackItemProvenance {
   readonly cascadeOrigin?: EntityId;
   readonly copiedFrom?: EntityId;
   readonly alternativeZoneDestination?: ZoneType;
+  // SP2 Task 35 — captured by CastPipeline on finalize. Consulted by stack
+  // resolvers and triggers (e.g. "when you cast a spell's adventure"):
+  //   faceChosen   — split / DFC / adventure face picked in step 2.
+  //   modesChosen  — modal-spell mode ids selected in step 5.
+  //   xValue       — X value chosen in step 5 (null if card has no X).
+  readonly faceChosen?: "front" | "back" | "L" | "R" | "adventure";
+  readonly modesChosen?: readonly string[];
+  readonly xValue?: number;
 }
 
 /**

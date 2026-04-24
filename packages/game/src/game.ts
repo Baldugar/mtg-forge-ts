@@ -25,6 +25,7 @@ import {
 import type { EngineYield } from "./action/engine-yield.js";
 import { GameAction } from "./action/game-action.js";
 import type { Card } from "./card.js";
+import { CastPipeline } from "./cast/cast-pipeline.js";
 import { ContinuousEffectRegistry } from "./continuous/continuous-effect-registry.js";
 import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
@@ -109,6 +110,7 @@ export class Game {
   readonly staticEffectRegistry: StaticEffectRegistry;
   readonly continuousEffectRegistry: ContinuousEffectRegistry;
   readonly sbaEngine: SbaEngine;
+  readonly castPipeline: CastPipeline;
   readonly delayedTriggerQueue: DelayedTriggerQueue;
   readonly linkedAbilities: LinkedAbilityTable;
   // Shared GameAction — the canonical mutator entry point. Subsystems
@@ -167,6 +169,11 @@ export class Game {
     // static "you don't lose the game" or "indestructible" rule-changers
     // (future work); keeping construction monotonic puts consumers last.
     this.sbaEngine = new SbaEngine(this);
+    // WHY after sbaEngine, before GameAction: CastPipeline is a small
+    // subsystem that only reads Game.cards + Game.targetSystem; it doesn't
+    // depend on GameAction but GameAction doesn't depend on it either.
+    // Placing it here keeps "downstream consumers last" monotonic.
+    this.castPipeline = new CastPipeline(this);
     // WHY last: GameAction takes `this` at construction time but doesn't
     // read any registry state until called. Constructing it here ensures
     // every registry above is available before any mutation routes through.

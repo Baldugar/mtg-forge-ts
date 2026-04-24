@@ -4,6 +4,7 @@ export const GAME_VERSION = "0.0.0";
 export const LINKED_CORE_VERSION = CORE_VERSION;
 export * from "./action/index.js";
 export * from "./card.js";
+export * from "./cast/index.js";
 export * from "./combat/index.js";
 export * from "./continuous/index.js";
 export * from "./controller/index.js";
