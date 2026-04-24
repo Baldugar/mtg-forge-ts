@@ -21,6 +21,7 @@ import type { GameRules } from "./game-rules.js";
 import { LayerEngine } from "./layers/layer-engine.js";
 import { Player } from "./player.js";
 import { Stack } from "./stack/stack.js";
+import { TargetSystem } from "./target/target-system.js";
 import type { TerminalState } from "./terminal-state.js";
 import { Ante } from "./zone/zones/ante.js";
 import { Exile } from "./zone/zones/exile.js";
@@ -60,6 +61,7 @@ export class Game {
    */
   continuousEffects: ContinuousEffect[] = [];
   readonly layerEngine: LayerEngine;
+  readonly targetSystem: TargetSystem;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -86,6 +88,9 @@ export class Game {
       ante: new Ante(ZoneType.Ante, null),
     };
     this.layerEngine = new LayerEngine(this);
+    // WHY: targetSystem must be constructed AFTER layerEngine — enumerate
+    // consults computeCharacteristics for type-gated restrictions.
+    this.targetSystem = new TargetSystem(this);
     this.flags = createDefaultFlags();
   }
 
