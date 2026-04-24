@@ -7,6 +7,7 @@
 // scripting conventions in forge-game's AbilityFactory. Shape is intentionally
 // minimal here (shape-only); SP3 populates the parser that emits these nodes.
 
+import type { KeywordId } from "../card/keyword-id.js";
 import type { ManaSymbol } from "../mana/symbol.js";
 import type { ZoneType } from "../zone.js";
 
@@ -72,7 +73,7 @@ export interface StaticAst {
 }
 
 export interface KeywordAst {
-  readonly keyword: string;
+  readonly keyword: KeywordId;
   readonly params?: Readonly<Record<string, ParamValue>>;
 }
 

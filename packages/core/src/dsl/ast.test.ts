@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import { describe, expect, it } from "vitest";
+import { describe, expect, expectTypeOf, it } from "vitest";
+import type { KeywordId } from "../card/keyword-id.js";
 import { Color } from "../color.js";
 import { ZoneType } from "../zone.js";
 import type {
@@ -104,9 +105,9 @@ describe("DSL AST shapes", () => {
   });
 
   it("KeywordAst — with and without params", () => {
-    const flying: KeywordAst = { keyword: "Flying" };
+    const flying: KeywordAst = { keyword: "flying" };
     const protection: KeywordAst = {
-      keyword: "Protection",
+      keyword: "protection",
       params: { From: { kind: "literal", raw: "red" } },
     };
     expect(roundTrip(flying)).toEqual(flying);
@@ -160,5 +161,12 @@ describe("DSL AST shapes", () => {
       ],
     };
     expect(roundTrip(m)).toEqual(m);
+  });
+});
+
+describe("KeywordAst", () => {
+  it("requires KeywordId, not raw string", () => {
+    const ast: KeywordAst = { keyword: "flying" };
+    expectTypeOf(ast.keyword).toEqualTypeOf<KeywordId>();
   });
 });
