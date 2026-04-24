@@ -2,12 +2,13 @@
 export * from "./context.js";
 export * from "./evaluator.js";
 export * from "./selector-registry.js";
-export * from "./selectors/number.js";
-export * from "./selectors/x-choice.js";
-export * from "./selectors/life-total.js";
-export * from "./selectors/player-count.js";
-export * from "./selectors/count.js";
-export * from "./selectors/sum-aggregates.js";
-export * from "./selectors/targeted.js";
-export * from "./selectors/arithmetic.js";
 export * from "./ability-eval.js";
+// Side-effect imports to register all selectors
+import "./selectors/number.js";
+import "./selectors/x-choice.js";
+import "./selectors/life-total.js";
+import "./selectors/player-count.js";
+import "./selectors/count.js";
+import "./selectors/sum-aggregates.js";
+import "./selectors/targeted.js";
+import "./selectors/arithmetic.js";
