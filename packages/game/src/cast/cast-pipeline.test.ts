@@ -80,7 +80,28 @@ const addCardToZone = (game: Game, seat: PlayerSeat, zone: ZoneType, id: EntityI
   return card;
 };
 
+// SP2 Task 78 (fix 3) — the pipeline now emits a canonical SpellCast event
+// after finalizeStackItem so cast triggers fire. Every successful cast yields
+// that event; tests in this file historically asserted "no yields on a simple
+// cast" to mean "no decisions were required". We filter SpellCast out here so
+// the pre-fix assertions remain meaningful and new tests can still observe
+// the event by draining without this filter (see drainWithSpellCast below).
 const drainGenerator = <Y, R>(gen: Generator<Y, R, unknown>): { yields: Y[]; result: R } => {
+  const yields: Y[] = [];
+  let step = gen.next();
+  while (!step.done) {
+    const v = step.value as { kind?: string; event?: { kind?: string } };
+    const isSpellCast = v.kind === "event" && v.event?.kind === "SpellCast";
+    if (!isSpellCast) yields.push(step.value);
+    step = gen.next();
+  }
+  return { yields, result: step.value };
+};
+
+// Variant of drainGenerator that keeps the SpellCast event — used by the
+// Task 78 fix 3 test that asserts the canonical event fires on a completed
+// cast.
+const drainWithSpellCast = <Y, R>(gen: Generator<Y, R, unknown>): { yields: Y[]; result: R } => {
   const yields: Y[] = [];
   let step = gen.next();
   while (!step.done) {
@@ -88,6 +109,24 @@ const drainGenerator = <Y, R>(gen: Generator<Y, R, unknown>): { yields: Y[]; res
     step = gen.next();
   }
   return { yields, result: step.value };
+};
+
+// SP2 Task 78 (fix 3) — many older tests drive the pipeline by hand
+// (gen.next / gen.next(response)) and expect `done: true` immediately
+// after feeding the last decision response. The pipeline now emits a
+// SpellCast event between finalize and return; this helper consumes any
+// SpellCast yield and returns the next iterator step. When the passed
+// step is already `done` (or doesn't carry a SpellCast), it passes
+// through unchanged.
+const skipSpellCast = <Y, R>(
+  gen: Generator<Y, R, unknown>,
+  step: IteratorResult<Y, R>,
+): IteratorResult<Y, R> => {
+  const v = step.value as { kind?: string; event?: { kind?: string } } | undefined;
+  if (!step.done && v?.kind === "event" && v.event?.kind === "SpellCast") {
+    return gen.next();
+  }
+  return step;
 };
 
 /**
@@ -109,7 +148,12 @@ const drainWithResponses = <Y extends { kind: string }, R>(
   let step = gen.next();
   let respIdx = 0;
   while (!step.done) {
-    yields.push(step.value);
+    // SP2 Task 78 fix 3 — suppress SpellCast from the collected yields so
+    // tests asserting the decision-event sequence aren't disturbed. Callers
+    // that care about the SpellCast event use drainWithSpellCast instead.
+    const v = step.value as { kind: string; event?: { kind?: string } };
+    const isSpellCast = v.kind === "event" && v.event?.kind === "SpellCast";
+    if (!isSpellCast) yields.push(step.value);
     if (step.value.kind === "decision" && respIdx < responses.length) {
       step = gen.next(responses[respIdx]);
       respIdx += 1;
@@ -144,6 +188,44 @@ describe("CastPipeline — Task 35 skeleton", () => {
     expect(item.controllerSeat).toBe(seat0);
     expect(item.kind).toBe("spell");
     expect(item.isCast).toBe(true);
+  });
+
+  // SP2 Task 78 (fix 3) — CastPipeline emits SpellCast after finalizing the
+  // stack item so cast-observing triggers fire. Uses drainWithSpellCast to
+  // preserve the event the default drainGenerator filters.
+  it("emits SpellCast after finalizeStackItem (cast-triggers fire)", () => {
+    const { game, seat0 } = makeGame();
+    const cardId = mkEntityId(110);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    const proposal: CastProposal = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+    };
+    const { yields, result } = drainWithSpellCast(game.castPipeline.run(proposal));
+    const spellCast = yields.find(
+      (y) =>
+        (y as { kind?: string }).kind === "event" &&
+        (y as { event?: { kind?: string } }).event?.kind === "SpellCast",
+    );
+    expect(spellCast).toBeDefined();
+    if (!spellCast || (spellCast as { kind?: string }).kind !== "event") {
+      throw new Error("expected SpellCast event");
+    }
+    const ev = (
+      spellCast as {
+        event: {
+          kind: "SpellCast";
+          payload: { stackItemId: EntityId; cardId: EntityId; controllerSeat: PlayerSeat };
+        };
+      }
+    ).event;
+    expect(ev.kind).toBe("SpellCast");
+    const item = result as StackItem;
+    expect(ev.payload.stackItemId).toBe(item.id);
+    expect(ev.payload.cardId).toBe(cardId);
+    expect(ev.payload.controllerSeat).toBe(seat0);
   });
 
   it("finalizeStackItem mints a fresh EntityId via game.newEntityId()", () => {
@@ -198,8 +280,12 @@ describe("CastPipeline — Task 35 skeleton", () => {
     const first = gen.next();
     expect(first.done).toBe(false);
     expect(first.value).toMatchObject({ kind: "decision" });
-    // Supply the response; pipeline should complete.
-    const finished = gen.next({ kind: "chooseModes", modeIds: ["m1"] });
+    // Supply the response; pipeline now yields SpellCast (fix 3) then
+    // completes on the next step.
+    const afterDecision = gen.next({ kind: "chooseModes", modeIds: ["m1"] });
+    expect(afterDecision.done).toBe(false);
+    expect(afterDecision.value).toMatchObject({ kind: "event", event: { kind: "SpellCast" } });
+    const finished = gen.next();
     expect(finished.done).toBe(true);
     expect(finished.value).not.toBeNull();
   });
@@ -432,7 +518,7 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
           expect(y.request.playerSeat).toBe(seat0);
         }
       }
-      const finished = gen.next({ kind: "chooseFace", face: "L" });
+      const finished = skipSpellCast(gen, gen.next({ kind: "chooseFace", face: "L" }));
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item.provenance.faceChosen).toBe("L");
@@ -569,7 +655,7 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
       if (y.kind === "decision" && y.request.kind === "chooseOptionalCosts") {
         expect(y.request.options.map((o) => o.id)).toEqual(["madness", "kicker"]);
       }
-      const finished = gen.next({ kind: "chooseOptionalCosts", chosenIds: ["madness"] });
+      const finished = skipSpellCast(gen, gen.next({ kind: "chooseOptionalCosts", chosenIds: ["madness"] }));
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item.provenance.additionalCostsPaid).toEqual(["madness"]);
@@ -666,7 +752,7 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
         expect(y.request.min).toBe(1);
         expect(y.request.max).toBe(2);
       }
-      const finished = gen.next({ kind: "chooseModes", modeIds: ["a", "c"] });
+      const finished = skipSpellCast(gen, gen.next({ kind: "chooseModes", modeIds: ["a", "c"] }));
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item.provenance.modesChosen).toEqual(["a", "c"]);
@@ -809,7 +895,7 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
         expect(y.request.min).toBe(0);
         expect(y.request.max).toBe(Number.MAX_SAFE_INTEGER);
       }
-      const finished = gen.next({ kind: "chooseNumber", chosen: 5 });
+      const finished = skipSpellCast(gen, gen.next({ kind: "chooseNumber", chosen: 5 }));
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item.provenance.xValue).toBe(5);
@@ -986,10 +1072,13 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
         expect(y.request.playerSeat).toBe(seat0);
         expect(y.request.sourceId).toBe(cardId);
       }
-      const finished = gen.next({
-        kind: "chooseCastTargets",
-        targets: [{ kind: "card", id: targetId }],
-      });
+      const finished = skipSpellCast(
+        gen,
+        gen.next({
+          kind: "chooseCastTargets",
+          targets: [{ kind: "card", id: targetId }],
+        }),
+      );
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item).not.toBeNull();
@@ -1082,14 +1171,17 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       if (y.kind === "decision" && y.request.kind === "chooseCastTargets") {
         expect(y.request.divideX?.amount).toBe(5);
       }
-      const finished = gen.next({
-        kind: "chooseCastTargets",
-        targets: [
-          { kind: "card", id: aId },
-          { kind: "card", id: bId },
-        ],
-        divisions: { 0: 3, 1: 2 },
-      });
+      const finished = skipSpellCast(
+        gen,
+        gen.next({
+          kind: "chooseCastTargets",
+          targets: [
+            { kind: "card", id: aId },
+            { kind: "card", id: bId },
+          ],
+          divisions: { 0: 3, 1: 2 },
+        }),
+      );
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item).not.toBeNull();
@@ -1159,10 +1251,13 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
         const req = (tgtStep.value as EngineYield & { kind: "decision" }).request;
         expect(req.kind).toBe("chooseCastTargets");
       }
-      const finished = gen.next({
-        kind: "chooseCastTargets",
-        targets: [{ kind: "card", id: creatureId }],
-      });
+      const finished = skipSpellCast(
+        gen,
+        gen.next({
+          kind: "chooseCastTargets",
+          targets: [{ kind: "card", id: creatureId }],
+        }),
+      );
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item.provenance.modesChosen).toEqual(["damage"]);
@@ -1312,7 +1407,7 @@ describe("CastPipeline — Task 38 steps 8-10", () => {
           expect(ev.event.kind).toBe("CostPaid");
         }
       }
-      const third = gen.next();
+      const third = skipSpellCast(gen, gen.next());
       expect(third.done).toBe(true);
       expect(third.value).not.toBeNull();
     });
@@ -1362,7 +1457,7 @@ describe("CastPipeline — Task 38 steps 8-10", () => {
           expect(ev.event.payload.payerSeat).toBe(seat0);
         }
       }
-      const finished = gen.next();
+      const finished = skipSpellCast(gen, gen.next());
       expect(finished.done).toBe(true);
       const item = finished.value as StackItem;
       expect(item).not.toBeNull();

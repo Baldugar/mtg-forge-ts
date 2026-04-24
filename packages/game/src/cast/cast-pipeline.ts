@@ -130,7 +130,23 @@ export class CastPipeline {
       yield* this.stepDetermineTotalCost(ctx);
       yield* this.stepActivateManaAbilities(ctx);
       yield* this.stepPayCosts(ctx);
-      return this.finalizeStackItem(ctx);
+      const item = this.finalizeStackItem(ctx);
+      // SP2 Task 78 (fix 3) — emit the canonical SpellCast event after
+      // finalizing the stack item. Routes through game.emitEvent so cast
+      // triggers ("whenever a player casts a spell", storm count,
+      // cascade gating) observe the event. Prior SP2 shape never emitted
+      // SpellCast — only SpellPutOnStack from GameAction.putOnStack, but
+      // the pipeline doesn't call putOnStack (the caller does), leaving
+      // cast triggers unable to fire.
+      yield this.game.emitEvent(
+        mkEvent("SpellCast", this.game.turn, this.game.phase, {
+          stackItemId: item.id,
+          cardId: ctx.sourceCardId,
+          controllerSeat: ctx.castingPlayer,
+          ...(ctx.xValue !== undefined ? { xValue: ctx.xValue } : {}),
+        }),
+      );
+      return item;
     } catch (err) {
       yield* this.abort(ctx, err);
       return null;
