@@ -25,6 +25,31 @@ export const INTENT_KINDS = {
   ControlChange: "controlChange",
   Attach: "attach",
   Unattach: "unattach",
+  // SP3 expansion — 24 new intent kinds matching Forge ReplacementType
+  Scry: "scry",
+  Proliferate: "proliferate",
+  Cascade: "cascade",
+  ProduceMana: "produceMana",
+  Planeswalk: "planeswalk",
+  SetInMotion: "setInMotion",
+  Learn: "learn",
+  Explore: "explore",
+  GameWin: "gameWin",
+  GameLoss: "gameLoss",
+  DeclareBlocker: "declareBlocker",
+  AssembleContraption: "assembleContraption",
+  AssignDealDamage: "assignDealDamage",
+  Attached: "attached",
+  LifeReduced: "lifeReduced",
+  LoseMana: "loseMana",
+  PayLife: "payLife",
+  PlanarDiceResult: "planarDiceResult",
+  RollDice: "rollDice",
+  RollPlanarDice: "rollPlanarDice",
+  TurnFaceUp: "turnFaceUp",
+  Transform: "transform",
+  BeginPhase: "beginPhase",
+  BeginTurn: "beginTurn",
 } as const;
 
 export type IntentKind = (typeof INTENT_KINDS)[keyof typeof INTENT_KINDS];
@@ -126,6 +151,131 @@ export interface UnattachIntent {
   readonly reason: "sba" | "targetLeft" | "effect";
 }
 
+// SP3 expansion — 24 new intent shapes matching Forge ReplacementType.
+// Additive; existing GameAction paths unchanged. SP3 effect handlers
+// emit the new shapes.
+export interface ScryIntent {
+  readonly kind: "scry";
+  readonly seat: PlayerSeat;
+  readonly amount: number;
+}
+export interface SurveilIntent {
+  readonly kind: "surveil";
+  readonly seat: PlayerSeat;
+  readonly amount: number;
+}
+export interface ProliferateIntent {
+  readonly kind: "proliferate";
+  readonly seat: PlayerSeat;
+}
+export interface CascadeIntent {
+  readonly kind: "cascade";
+  readonly sourceId: EntityId;
+  readonly seat: PlayerSeat;
+  readonly triggerCmc: number;
+}
+export interface ProduceManaIntent {
+  readonly kind: "produceMana";
+  readonly seat: PlayerSeat;
+  readonly sourceId: EntityId;
+  readonly symbols: readonly string[];
+}
+export interface PlaneswalkIntent {
+  readonly kind: "planeswalk";
+  readonly seat: PlayerSeat;
+}
+export interface SetInMotionIntent {
+  readonly kind: "setInMotion";
+  readonly schemeId: EntityId;
+  readonly seat: PlayerSeat;
+}
+export interface LearnIntent {
+  readonly kind: "learn";
+  readonly seat: PlayerSeat;
+}
+export interface ExploreIntent {
+  readonly kind: "explore";
+  readonly cardId: EntityId;
+  readonly seat: PlayerSeat;
+}
+export interface GameWinIntent {
+  readonly kind: "gameWin";
+  readonly seat: PlayerSeat;
+  readonly cause: string;
+}
+export interface GameLossIntent {
+  readonly kind: "gameLoss";
+  readonly seat: PlayerSeat;
+  readonly cause: string;
+}
+export interface DeclareBlockerIntent {
+  readonly kind: "declareBlocker";
+  readonly blockerId: EntityId;
+  readonly attackerIds: readonly EntityId[];
+}
+export interface AssembleContraptionIntent {
+  readonly kind: "assembleContraption";
+  readonly seat: PlayerSeat;
+}
+export interface AssignDealDamageIntent {
+  readonly kind: "assignDealDamage";
+  readonly sourceId: EntityId;
+  readonly assignments: readonly { readonly targetId: EntityId; readonly amount: number }[];
+}
+export interface AttachedIntent {
+  readonly kind: "attached";
+  readonly sourceId: EntityId;
+  readonly targetId: EntityId;
+}
+export interface LifeReducedIntent {
+  readonly kind: "lifeReduced";
+  readonly seat: PlayerSeat;
+  readonly amount: number;
+  readonly sourceId: EntityId | null;
+}
+export interface LoseManaIntent {
+  readonly kind: "loseMana";
+  readonly seat: PlayerSeat;
+  readonly symbols: readonly string[];
+}
+export interface PayLifeIntent {
+  readonly kind: "payLife";
+  readonly seat: PlayerSeat;
+  readonly amount: number;
+}
+export interface PlanarDiceResultIntent {
+  readonly kind: "planarDiceResult";
+  readonly seat: PlayerSeat;
+  readonly face: "chaos" | "planeswalk" | "blank";
+}
+export interface RollDiceIntent {
+  readonly kind: "rollDice";
+  readonly seat: PlayerSeat;
+  readonly sides: number;
+  readonly count: number;
+}
+export interface RollPlanarDiceIntent {
+  readonly kind: "rollPlanarDice";
+  readonly seat: PlayerSeat;
+}
+export interface TurnFaceUpIntent {
+  readonly kind: "turnFaceUp";
+  readonly cardId: EntityId;
+}
+export interface TransformIntent {
+  readonly kind: "transform";
+  readonly cardId: EntityId;
+}
+export interface BeginPhaseIntent {
+  readonly kind: "beginPhase";
+  readonly seat: PlayerSeat;
+  readonly phase: string;
+}
+export interface BeginTurnIntent {
+  readonly kind: "beginTurn";
+  readonly seat: PlayerSeat;
+}
+
 // Union of all known intent shapes (non-exhaustive; GameAction may emit
 // additional kinds — replacements that don't recognize the kind should
 // decline via matches() returning false).
@@ -144,4 +294,29 @@ export type KnownIntent =
   | MillIntent
   | ControlChangeIntent
   | AttachIntent
-  | UnattachIntent;
+  | UnattachIntent
+  | ScryIntent
+  | SurveilIntent
+  | ProliferateIntent
+  | CascadeIntent
+  | ProduceManaIntent
+  | PlaneswalkIntent
+  | SetInMotionIntent
+  | LearnIntent
+  | ExploreIntent
+  | GameWinIntent
+  | GameLossIntent
+  | DeclareBlockerIntent
+  | AssembleContraptionIntent
+  | AssignDealDamageIntent
+  | AttachedIntent
+  | LifeReducedIntent
+  | LoseManaIntent
+  | PayLifeIntent
+  | PlanarDiceResultIntent
+  | RollDiceIntent
+  | RollPlanarDiceIntent
+  | TurnFaceUpIntent
+  | TransformIntent
+  | BeginPhaseIntent
+  | BeginTurnIntent;
