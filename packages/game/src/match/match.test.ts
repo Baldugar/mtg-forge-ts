@@ -317,7 +317,9 @@ describe("Match.run", () => {
         map.set(
           mkPlayerSeat(seat),
           new ScriptedController([
+            { kind: "companionDeclaration", companionId: null } as DecisionResponse,
             { kind: "mulligan", keep: true } as DecisionResponse,
+            { kind: "openingHandAction", chosenActions: [] } as DecisionResponse,
             { kind: "priority", action: { kind: "concede" } } as DecisionResponse,
           ]),
         );
@@ -362,7 +364,9 @@ describe("Match.run", () => {
         map.set(
           mkPlayerSeat(seat),
           new ScriptedController([
+            { kind: "companionDeclaration", companionId: null } as DecisionResponse,
             { kind: "mulligan", keep: true } as DecisionResponse,
+            { kind: "openingHandAction", chosenActions: [] } as DecisionResponse,
             { kind: "priority", action: { kind: "concede" } } as DecisionResponse,
           ]),
         );

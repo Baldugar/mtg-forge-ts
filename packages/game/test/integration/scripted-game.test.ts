@@ -146,11 +146,20 @@ describe("scripted no-op game (integration smoke)", () => {
       [
         mkPlayerSeat(0),
         new ScriptedController([
+          { kind: "companionDeclaration", companionId: null },
           { kind: "mulligan", keep: true },
+          { kind: "openingHandAction", chosenActions: [] },
           { kind: "priority", action: { kind: "concede" } },
         ]),
       ],
-      [mkPlayerSeat(1), new ScriptedController([{ kind: "mulligan", keep: true }])],
+      [
+        mkPlayerSeat(1),
+        new ScriptedController([
+          { kind: "companionDeclaration", companionId: null },
+          { kind: "mulligan", keep: true },
+          { kind: "openingHandAction", chosenActions: [] },
+        ]),
+      ],
     ]);
 
     const events = drive(game, decks, controllers);
@@ -191,12 +200,18 @@ describe("scripted no-op game (integration smoke)", () => {
     const { game, decks } = makeSeededGame(0x1234n, 0);
     // Build a seat 0 script: keep + as many priority=pass as it needs for
     // one full turn. 12 priority windows per turn in the phase sequence.
-    const seat0Script: DecisionResponse[] = [{ kind: "mulligan", keep: true }];
+    const seat0Script: DecisionResponse[] = [
+      { kind: "companionDeclaration", companionId: null },
+      { kind: "mulligan", keep: true },
+      { kind: "openingHandAction", chosenActions: [] },
+    ];
     for (let i = 0; i < 20; i++) {
       seat0Script.push({ kind: "priority", action: { kind: "pass" } });
     }
     const seat1Script: DecisionResponse[] = [
+      { kind: "companionDeclaration", companionId: null },
       { kind: "mulligan", keep: true },
+      { kind: "openingHandAction", chosenActions: [] },
       { kind: "priority", action: { kind: "concede" } },
     ];
     const controllers = new Map<PlayerSeat, PlayerController>([
@@ -242,6 +257,12 @@ describe("scripted no-op game (integration smoke)", () => {
       }
 
       decide(req: DecisionRequest): DecisionResponse {
+        if (req.kind === "companionDeclaration") {
+          return { kind: "companionDeclaration", companionId: null };
+        }
+        if (req.kind === "openingHandAction") {
+          return { kind: "openingHandAction", chosenActions: [] };
+        }
         if (req.kind === "mulligan") {
           const reject = this.step === 0;
           this.step++;
@@ -320,9 +341,11 @@ describe("scripted no-op game (integration smoke)", () => {
     // to 36 priority windows for the active player (split across seats).
     const priorityPass: DecisionResponse = { kind: "priority", action: { kind: "pass" } };
     const mulliganKeep: DecisionResponse = { kind: "mulligan", keep: true };
-    const seat0Script: DecisionResponse[] = [mulliganKeep];
+    const companionDecline: DecisionResponse = { kind: "companionDeclaration", companionId: null };
+    const openingDecline: DecisionResponse = { kind: "openingHandAction", chosenActions: [] };
+    const seat0Script: DecisionResponse[] = [companionDecline, mulliganKeep, openingDecline];
     for (let i = 0; i < 40; i++) seat0Script.push(priorityPass);
-    const seat1Script: DecisionResponse[] = [mulliganKeep];
+    const seat1Script: DecisionResponse[] = [companionDecline, mulliganKeep, openingDecline];
     for (let i = 0; i < 40; i++) seat1Script.push(priorityPass);
 
     const controllers = new Map<PlayerSeat, PlayerController>([
@@ -418,22 +441,21 @@ describe("scripted no-op game (integration smoke)", () => {
     // RNG draws change, this value must be re-locked *with a note* and
     // the determinism rationale for the change recorded.
     const { game, decks } = makeSeededGame(0x1234n, 0);
+    const standardSeat0 = (): DecisionResponse[] => [
+      { kind: "companionDeclaration", companionId: null },
+      { kind: "mulligan", keep: true },
+      { kind: "openingHandAction", chosenActions: [] },
+      { kind: "priority", action: { kind: "concede" } },
+    ];
+    const standardSeat1 = (): DecisionResponse[] => [
+      { kind: "companionDeclaration", companionId: null },
+      { kind: "mulligan", keep: true },
+      { kind: "openingHandAction", chosenActions: [] },
+    ];
     const controllers = new Map<PlayerSeat, PlayerController>([
-      [mkPlayerSeat(0), new ScriptedController([{ kind: "mulligan", keep: true }])],
-      [mkPlayerSeat(1), new ScriptedController([{ kind: "mulligan", keep: true }])],
+      [mkPlayerSeat(0), new ScriptedController(standardSeat0())],
+      [mkPlayerSeat(1), new ScriptedController(standardSeat1())],
     ]);
-    // Drive setup only — stop before the phase handler runs to isolate the
-    // RNG consumption to setup. `runGame` doesn't expose a setup-only path,
-    // so we use the setupGame generator directly.
-    // (Imported via dynamic re-export? Simpler: use runGame with a concede
-    // on first priority so we finish fast.)
-    controllers.set(
-      mkPlayerSeat(0),
-      new ScriptedController([
-        { kind: "mulligan", keep: true },
-        { kind: "priority", action: { kind: "concede" } },
-      ]),
-    );
     drive(game, decks, controllers);
 
     // After setup + a single priority window, the RNG state is reproducible.
@@ -441,14 +463,8 @@ describe("scripted no-op game (integration smoke)", () => {
     // compare the next RNG value.
     const twin = makeSeededGame(0x1234n, 0);
     const twinControllers = new Map<PlayerSeat, PlayerController>([
-      [
-        mkPlayerSeat(0),
-        new ScriptedController([
-          { kind: "mulligan", keep: true },
-          { kind: "priority", action: { kind: "concede" } },
-        ]),
-      ],
-      [mkPlayerSeat(1), new ScriptedController([{ kind: "mulligan", keep: true }])],
+      [mkPlayerSeat(0), new ScriptedController(standardSeat0())],
+      [mkPlayerSeat(1), new ScriptedController(standardSeat1())],
     ]);
     drive(twin.game, twin.decks, twinControllers);
 

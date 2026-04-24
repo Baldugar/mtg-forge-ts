@@ -222,6 +222,41 @@ export function* setupGame(
     for (const id of shuffled) lib.add(id);
   }
 
+  // Step 2b (SP2 Milestone W Task 72) — CR 702.139 companion declaration.
+  // Before any draw/mulligan, each seat may declare a companion from their
+  // sideboard. SP2 scope emits the decision and records the declaration on
+  // Game.companions; enforcement of the companion's deckbuilding condition
+  // lives in SP6 (formats). `sideboardCardIds` defaults to an empty list
+  // since SP2 has no sideboard zone yet — consumers wanting richer
+  // companion support pre-seed a Sideboard zone and extend this call to
+  // read from it. An `undefined` zone means no legal companion options,
+  // so the controller's only legal answer is `companionId: null`.
+  for (const player of game.players) {
+    const sideboard = player.zones.get(ZoneType.Sideboard);
+    const sideboardIds: readonly EntityId[] = sideboard ? sideboard.toArray() : [];
+    const req: DecisionRequest = {
+      kind: "companionDeclaration",
+      playerSeat: player.seat,
+      sideboardCardIds: sideboardIds,
+    };
+    const resp: DecisionResponse = yield { kind: "decision", request: req };
+    if (resp.kind !== "companionDeclaration") {
+      throw new IllegalDecisionError(`setupGame: expected companionDeclaration, got ${resp.kind}`);
+    }
+    // Validate the chosen id is in the enumerated sideboard; null is the
+    // "decline" sentinel. An empty sideboard forces null.
+    if (resp.companionId !== null) {
+      if (!sideboardIds.includes(resp.companionId)) {
+        throw new IllegalDecisionError(
+          `setupGame: companion id ${resp.companionId as unknown as number} not in seat ${
+            player.seat as unknown as number
+          }'s sideboard`,
+        );
+      }
+    }
+    game.companions.set(player.seat, resp.companionId);
+  }
+
   // Step 3: draw starting hands.
   const handSize = game.rules.startingHandSize;
   for (const player of game.players) {
@@ -348,6 +383,36 @@ export function* setupGame(
           `setupGame: excessive mulligans for seat ${player.seat as unknown as number} (>${MULLIGAN_MAX})`,
         );
       }
+    }
+  }
+
+  // Step 4b (SP2 Milestone W Task 72) — CR 103.5 opening-hand actions.
+  // After mulligans settle and before the first turn begins, each seat is
+  // offered an openingHandAction decision. Cards in hand with opening-hand
+  // abilities (Leyline of the Void, Gemstone Caverns, Chancellor cycle,
+  // etc.) populate `availableActions`; the controller picks zero or more
+  // to activate. SP2 scope emits the decision but does not enumerate
+  // abilities — `availableActions` is empty until SP3's ability registry
+  // surfaces CardDefinition.openingHandActions. Recording the chosen-
+  // action ids on Game.flags lands in SP3 once the action-processing
+  // pipeline exists.
+  for (const player of game.players) {
+    const openingReq: DecisionRequest = {
+      kind: "openingHandAction",
+      playerSeat: player.seat,
+      availableActions: [],
+    };
+    const openingResp: DecisionResponse = yield { kind: "decision", request: openingReq };
+    if (openingResp.kind !== "openingHandAction") {
+      throw new IllegalDecisionError(`setupGame: expected openingHandAction, got ${openingResp.kind}`);
+    }
+    // SP2 accepts only empty responses (no actions enumerated yet). SP3
+    // validates chosen ids against availableActions and routes each to
+    // its ability handler.
+    if (openingResp.chosenActions.length > 0) {
+      throw new IllegalDecisionError(
+        `setupGame: SP2 opening-hand actions must be empty (received ${openingResp.chosenActions.length})`,
+      );
     }
   }
 

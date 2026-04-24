@@ -166,6 +166,17 @@ export class Game {
    */
   readonly ringGrantLedger: RingGrantLedger;
   terminalState: TerminalState | null = null;
+  /**
+   * SP2 Milestone W Task 72 — CR 702.139 companion declaration. Populated
+   * by setupGame's pre-mulligan companion step when the seat declares a
+   * companion, left as `null` otherwise. Keyed by seat; the value is the
+   * EntityId of the declared companion card (which remains in the
+   * sideboard slot until its one-time "pay 3 generic" activation puts it
+   * into the caster's hand — handled in SP3's priority loop). SP2 scope:
+   * record the declaration; defer condition validation and the
+   * sideboard-to-hand activation to SP6 (formats).
+   */
+  readonly companions = new Map<PlayerSeat, EntityId | null>();
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
     if (opts.lobbyPlayers.length < opts.rules.playerCount.min) {

@@ -122,6 +122,14 @@ const drain = (
       const bottomed = y.request.hand.slice(0, y.request.countToBottom);
       const resp: DecisionResponse = { kind: "mulliganBottom", bottomed };
       step = gen.next(resp);
+    } else if (y.request.kind === "companionDeclaration") {
+      // Task 72 — default: decline companion (null).
+      const resp: DecisionResponse = { kind: "companionDeclaration", companionId: null };
+      step = gen.next(resp);
+    } else if (y.request.kind === "openingHandAction") {
+      // Task 72 — default: no opening-hand action.
+      const resp: DecisionResponse = { kind: "openingHandAction", chosenActions: [] };
+      step = gen.next(resp);
     } else {
       throw new Error(`drain: unexpected decision kind ${y.request.kind}`);
     }
@@ -174,7 +182,8 @@ describe("setupGame", () => {
       1: seedCards(game, mkPlayerSeat(1), 60, 60),
     };
     const { events, decisions } = drain(game, decks, () => true);
-    expect(decisions).toBe(2);
+    // 2 mulligan keeps + 2 companion declarations + 2 opening-hand actions (Task 72).
+    expect(decisions).toBe(6);
     expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(14);
     expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(2);
     const last = events[events.length - 1];
@@ -216,8 +225,9 @@ describe("setupGame", () => {
     };
     // Each seat mulligans once (answers false at mulligansSoFar=0), then keeps.
     // Under London: 3 decisions per seat (1 reject + 1 keep + 1 bottom) = 6.
+    // Plus Task 72: companion declaration + opening-hand action per seat = 4.
     const { events, decisions } = drain(game, decks, (n) => n >= 1);
-    expect(decisions).toBe(6);
+    expect(decisions).toBe(10);
     expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(7 * 4);
     expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(2);
     expect(events[events.length - 1]?.kind).toBe("GameStarted");
@@ -422,6 +432,10 @@ const drainOpts = (
       const bottomed = y.request.hand.slice(0, y.request.countToBottom);
       const resp: DecisionResponse = { kind: "mulliganBottom", bottomed };
       step = gen.next(resp);
+    } else if (y.request.kind === "companionDeclaration") {
+      step = gen.next({ kind: "companionDeclaration", companionId: null });
+    } else if (y.request.kind === "openingHandAction") {
+      step = gen.next({ kind: "openingHandAction", chosenActions: [] });
     } else {
       throw new Error(`drainOpts: unexpected decision kind ${y.request.kind}`);
     }
@@ -610,6 +624,10 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
         const bottomed = pickBottom(y.request.hand, y.request.countToBottom);
         bottomedByRound.set(round++, bottomed);
         step = gen.next({ kind: "mulliganBottom", bottomed });
+      } else if (y.request.kind === "companionDeclaration") {
+        step = gen.next({ kind: "companionDeclaration", companionId: null });
+      } else if (y.request.kind === "openingHandAction") {
+        step = gen.next({ kind: "openingHandAction", chosenActions: [] });
       } else {
         throw new Error(`unexpected decision kind ${y.request.kind}`);
       }
@@ -657,6 +675,10 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
         if (chosen === undefined) throw new Error("hand unexpectedly empty");
         if (y.request.playerSeat === mkPlayerSeat(0)) seat0Bottomed = chosen;
         step = gen.next({ kind: "mulliganBottom", bottomed: [chosen] });
+      } else if (y.request.kind === "companionDeclaration") {
+        step = gen.next({ kind: "companionDeclaration", companionId: null });
+      } else if (y.request.kind === "openingHandAction") {
+        step = gen.next({ kind: "openingHandAction", chosenActions: [] });
       } else {
         throw new Error(`unexpected decision kind ${y.request.kind}`);
       }
@@ -690,6 +712,10 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
         } else if (y.request.kind === "mulliganBottom") {
           // Return wrong length (0 instead of 1).
           step = gen.next({ kind: "mulliganBottom", bottomed: [] });
+        } else if (y.request.kind === "companionDeclaration") {
+          step = gen.next({ kind: "companionDeclaration", companionId: null });
+        } else if (y.request.kind === "openingHandAction") {
+          step = gen.next({ kind: "openingHandAction", chosenActions: [] });
         } else {
           throw new Error(`unexpected decision kind ${y.request.kind}`);
         }
@@ -721,6 +747,10 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
         } else if (y.request.kind === "mulliganBottom") {
           // Supply an id that's not in the hand.
           step = gen.next({ kind: "mulliganBottom", bottomed: [mkEntityId(9999)] });
+        } else if (y.request.kind === "companionDeclaration") {
+          step = gen.next({ kind: "companionDeclaration", companionId: null });
+        } else if (y.request.kind === "openingHandAction") {
+          step = gen.next({ kind: "openingHandAction", chosenActions: [] });
         } else {
           throw new Error(`unexpected decision kind ${y.request.kind}`);
         }
@@ -750,8 +780,9 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
       3: seedCards(game, mkPlayerSeat(3), 30, 90),
     };
     const { events, decisions } = drain(game, decks, () => true);
-    // Expect 4 mulligan decisions (one per seat, all keep first hand).
-    expect(decisions).toBe(4);
+    // Expect 4 mulligan decisions (one per seat, all keep first hand)
+    // + 4 companion declarations + 4 opening-hand actions (Task 72) = 12.
+    expect(decisions).toBe(12);
     // Expect 28 CardDrawn (4 seats × 7 cards) and 4 MulliganTaken.
     expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(28);
     expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(4);
@@ -779,7 +810,8 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
       1: seedCards(game, mkPlayerSeat(1), 10, 10),
     };
     const { events, decisions } = drain(game, decks, () => true);
-    expect(decisions).toBe(2); // one mulligan decision per seat
+    // 2 mulligan + 2 companion + 2 opening-hand (Task 72) = 6.
+    expect(decisions).toBe(6);
     expect(events.filter((e) => e.kind === "CardDrawn").length).toBe(0);
     expect(events.filter((e) => e.kind === "MulliganTaken").length).toBe(2);
     for (const p of game.players) {
@@ -827,6 +859,10 @@ describe("setupGame — London mulligan bottoming (CR 103.5)", () => {
         const bottomed = y.request.hand.slice(0, y.request.countToBottom);
         if (y.request.playerSeat === mkPlayerSeat(0)) seat0Bottomed = bottomed;
         step = gen.next({ kind: "mulliganBottom", bottomed });
+      } else if (y.request.kind === "companionDeclaration") {
+        step = gen.next({ kind: "companionDeclaration", companionId: null });
+      } else if (y.request.kind === "openingHandAction") {
+        step = gen.next({ kind: "openingHandAction", chosenActions: [] });
       } else {
         throw new Error(`unexpected decision kind ${y.request.kind}`);
       }
