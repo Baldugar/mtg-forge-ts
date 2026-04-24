@@ -1,0 +1,44 @@
+{
+  "name": "@mtg-forge-ts/cards",
+  "version": "0.0.0",
+  "description": "Forge card DSL parser and structural validator for mtg-forge-ts.",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baldugar/mtg-forge-ts.git",
+    "directory": "packages/cards"
+  },
+  "homepage": "https://github.com/Baldugar/mtg-forge-ts#readme",
+  "bugs": {
+    "url": "https://github.com/Baldugar/mtg-forge-ts/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@mtg-forge-ts/core": "workspace:*"
+  },
+  "devDependencies": {
+    "fast-check": "^3.22.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
