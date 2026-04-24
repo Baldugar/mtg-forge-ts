@@ -43,6 +43,8 @@ import { damageProtected } from "../combat/keywords/protection.js";
 import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
 import type { Game } from "../game.js";
 import { type LoopShortcutResult, requestShortcut as loopRequestShortcut } from "../loop/loop-shortcut.js";
+import { flip as flipOp } from "../multiface/flip.js";
+import { transform as transformOp } from "../multiface/transform.js";
 import * as phasing from "../phasing/phasing-ops.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
 import type {
@@ -409,6 +411,28 @@ export class GameAction {
    */
   *turnFaceUp(cardId: EntityId): Generator<EngineYield, void, unknown> {
     yield* turnFaceUpOp(this.game, cardId);
+  }
+
+  // === Multi-face toggles (SP2 Milestone Q Task 59) ===
+
+  /**
+   * CR 709 — flip a Kamigawa-style flip card in place. Toggles
+   * Card.face between "default" and "flipped", bumps the layer epoch,
+   * emits `Flipped`. SP2 trusts the caller that the flip trigger/
+   * ability has fired; SP3 wires the trigger→flip routing.
+   */
+  *flip(cardId: EntityId): Generator<EngineYield, void, unknown> {
+    yield* flipOp(this.game, cardId);
+  }
+
+  /**
+   * CR 711 — transform a transform-DFC in place. Toggles Card.face
+   * between "front" and "back", bumps the layer epoch, emits
+   * `Transformed` with the new face. MDFCs do NOT transform — the
+   * helper rejects MDFCs via isTransformDfc.
+   */
+  *transform(cardId: EntityId): Generator<EngineYield, void, unknown> {
+    yield* transformOp(this.game, cardId);
   }
 
   // === Destroy / exile / sacrifice — event + zone change via moveTo ===

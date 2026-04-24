@@ -4,4 +4,7 @@
 // mutate / host+augment modules. Each face-kind lives in its own file
 // keyed by the FaceKind union in face-kind.ts.
 export * from "./face-kind.js";
+export * from "./flip.js";
+export * from "./modal-dfc.js";
 export * from "./split.js";
+export * from "./transform.js";
