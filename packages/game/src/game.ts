@@ -34,6 +34,7 @@ import { ReplacementRegistry } from "./replacements/replacement-registry.js";
 import { Stack } from "./stack/stack.js";
 import { TargetSystem } from "./target/target-system.js";
 import type { TerminalState } from "./terminal-state.js";
+import { DelayedTriggerQueue } from "./triggers/delayed-trigger-queue.js";
 import { TriggerRegistry } from "./triggers/trigger-registry.js";
 import { Ante } from "./zone/zones/ante.js";
 import { Exile } from "./zone/zones/exile.js";
@@ -100,6 +101,7 @@ export class Game {
   readonly targetSystem: TargetSystem;
   readonly replacementRegistry: ReplacementRegistry;
   readonly triggerRegistry: TriggerRegistry;
+  readonly delayedTriggerQueue: DelayedTriggerQueue;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -130,10 +132,13 @@ export class Game {
     // consults computeCharacteristics for type-gated restrictions.
     this.targetSystem = new TargetSystem(this);
     this.replacementRegistry = new ReplacementRegistry();
-    // WHY: trigger registry last so it can capture `this` — it reads
-    // Game.turn / Game.phase / Game.cards at registration time (no forward
-    // references).
+    // WHY: trigger + delayed-trigger registries last so they can capture
+    // `this` — the trigger registry reads Game.turn / Game.phase /
+    // Game.cards at registration time (no forward references). The
+    // delayed-trigger queue is stateless over Game, but kept alongside
+    // for discoverability.
     this.triggerRegistry = new TriggerRegistry(this);
+    this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.flags = createDefaultFlags();
   }
 
@@ -170,12 +175,15 @@ export class Game {
   }
 
   /**
-   * Canonical single-pipe event emission (SP2 Task 20).
+   * Canonical single-pipe event emission (SP2 Tasks 20 + 23).
    *
-   * Every call funnels a GameEvent to TriggerRegistry.onEvent (CR 603
-   * trigger collection) and returns the EngineYield the caller yields
-   * to the driver for replay/log subscribers to observe. Task 23 adds
-   * DelayedTriggerQueue to the same pipe.
+   * Every call funnels a GameEvent to:
+   *   1. TriggerRegistry.onEvent     — CR 603 trigger collection
+   *   2. DelayedTriggerQueue.onEvent — CR 603.7 delayed trigger matching
+   *      (forwards matches back into the TriggerRegistry via
+   *      onEventForcedByDelayed; one-shot entries get removed)
+   * and returns the EngineYield the caller yields to the driver for
+   * replay/log subscribers to observe.
    *
    * Engine-internal kinds (ReplacementApplied, EventPrevented, trigger-
    * pipeline telemetry, SBA bookkeeping, cost-paid, phase-step-ended)
@@ -189,7 +197,13 @@ export class Game {
    */
   emitEvent(event: GameEvent): EngineYield {
     if (!ENGINE_INTERNAL_EVENT_KINDS.has(event.kind)) {
+      // Order matters: TriggerRegistry first (primary consumer for
+      // registered triggers), then DelayedTriggerQueue (its matches
+      // funnel back into the same registry's pending via
+      // onEventForcedByDelayed). Both are synchronous; neither throws
+      // under a well-formed event.
       this.triggerRegistry.onEvent(event);
+      this.delayedTriggerQueue.onEvent(event, this.triggerRegistry);
     }
     return { kind: "event", event };
   }
