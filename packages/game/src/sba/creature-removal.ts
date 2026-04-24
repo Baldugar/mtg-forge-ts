@@ -18,11 +18,13 @@
 // derives a real P/T once SP3 wires PaperCard.definition. Until then, base
 // toughness remains null; a null toughness yields no SBA.
 //
-// Indestructible check on CR 704.5g is TODO: until SP3 exposes keyword
-// abilities as queryable flags via the layer engine, we don't short-circuit
-// the lethal-damage SBA for indestructible creatures. Regeneration runs via
-// the GameAction.destroy replacement pipeline as today.
+// Indestructible short-circuit (audit I-2) — CR 702.12b: indestructible
+// permanents can't be destroyed. 704.5g (lethal damage) and 702.2b
+// (deathtouch) are both destruction-based, so skip them for indestructible
+// creatures. 704.5f (toughness ≤ 0) is NOT a destruction — it's a "goes to
+// the graveyard" rule, which applies to indestructible creatures too.
 import { CardType, CounterType, ZoneType } from "@mtg-forge-ts/core";
+import { hasKeyword } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
 import type { SbaAction } from "./sba-action.js";
 
@@ -37,21 +39,27 @@ export const collectCreatureRemoval = (game: Game, out: SbaAction[]): void => {
       if (typeof toughness === "number") {
         if (toughness <= 0) {
           // 704.5f supersedes 704.5g for the same creature in the same check.
+          // Indestructible does NOT save a 0-toughness creature — CR 704.5f
+          // is a put-into-graveyard rule, not a destruction. Audit I-2.
           out.push({ kind: "creatureZeroToughness", cardId: id });
           continue;
         }
+        // Indestructible creatures ignore both the lethal-damage SBA
+        // (CR 704.5g) and the deathtouch-damage SBA (CR 702.2b) because
+        // both route through destruction (CR 702.12b).
+        const indestructible = hasKeyword(game, id, "indestructible");
         if (card.damage >= toughness) {
-          // TODO (SP3 keyword surface): skip for indestructible creatures.
-          out.push({ kind: "creatureLethalDamage", cardId: id });
+          if (!indestructible) {
+            out.push({ kind: "creatureLethalDamage", cardId: id });
+          }
           continue;
         }
         // SP2 Task 78 (fix 2) — CR 702.2b: a creature dealt any nonzero
         // damage by a source with deathtouch is destroyed by SBA even
         // when damage < toughness. `damagedByDeathtouch` is set by
         // GameAction.damage when the source has the deathtouch keyword
-        // and cleared on zone-change off the battlefield. SP3 layers the
-        // full keyword registry + indestructible short-circuit.
-        if (card.damagedByDeathtouch === true && card.damage > 0) {
+        // and cleared on zone-change off the battlefield.
+        if (card.damagedByDeathtouch === true && card.damage > 0 && !indestructible) {
           out.push({ kind: "creatureLethalDamage", cardId: id });
         }
       }

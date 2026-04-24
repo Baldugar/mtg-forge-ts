@@ -279,4 +279,47 @@ describe("creature-removal — CR 704.5f/g/i/s", () => {
     runSweep(game);
     expect(card.zone).toBe(ZoneType.Battlefield);
   });
+
+  // Audit I-2 regression — CR 702.12b: indestructible permanents can't be
+  // destroyed. Both the lethal-damage SBA (704.5g) and the deathtouch SBA
+  // (702.2b) route through destruction, so both are skipped; the zero-
+  // toughness SBA (704.5f) is NOT a destruction and still fires.
+  it("indestructible 2/2 with 5 damage → no creatureLethalDamage; survives", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const id = mkEntityId(1);
+    const card = addCard(game, seat, ZoneType.Battlefield, id);
+    setTypeAndPT(game, CardType.Creature, 2, 2);
+    card.damage = 5;
+    if (!card.keywords) card.keywords = new Set();
+    card.keywords.add("indestructible");
+    runSweep(game);
+    expect(card.zone).toBe(ZoneType.Battlefield);
+  });
+
+  it("indestructible 2/2 damaged by deathtouch → not destroyed", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const id = mkEntityId(1);
+    const card = addCard(game, seat, ZoneType.Battlefield, id);
+    setTypeAndPT(game, CardType.Creature, 2, 2);
+    card.damage = 1;
+    card.damagedByDeathtouch = true;
+    if (!card.keywords) card.keywords = new Set();
+    card.keywords.add("indestructible");
+    runSweep(game);
+    expect(card.zone).toBe(ZoneType.Battlefield);
+  });
+
+  it("indestructible creature with toughness 0 → still goes to graveyard (CR 704.5f)", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const id = mkEntityId(1);
+    const card = addCard(game, seat, ZoneType.Battlefield, id);
+    setTypeAndPT(game, CardType.Creature, 1, 0);
+    if (!card.keywords) card.keywords = new Set();
+    card.keywords.add("indestructible");
+    runSweep(game);
+    expect(card.zone).toBe(ZoneType.Graveyard);
+  });
 });
