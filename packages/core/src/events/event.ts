@@ -273,6 +273,21 @@ export type GameEvent =
       readonly phase: PhaseStep;
       readonly payload: { readonly cardId: EntityId; readonly faceDown: boolean };
     }
+  | {
+      // SP2 Task 54 (CR 701.34 / 702.37 / 702.146 / 702.168 / 702.170) —
+      // turn-face-up primitive emits this alongside toggling the FaceDownState
+      // to { kind: "none" }. `previousKind` is the face-down kind right before
+      // the flip, so triggers like "when CARDNAME is turned face-up" can
+      // branch on morph/manifest/foretell/disguise/cloak if needed.
+      readonly kind: "CardTurnedFaceUp";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly previousKind: "morph" | "manifest" | "foretell" | "disguise" | "cloak";
+      };
+    }
   // === Monarch/Initiative/Ring (5) ===
   | {
       readonly kind: "BecameMonarch";

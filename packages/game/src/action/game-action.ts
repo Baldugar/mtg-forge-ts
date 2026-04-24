@@ -36,6 +36,7 @@ import {
   mkEvent,
 } from "@mtg-forge-ts/core";
 import { damageProtected } from "../combat/keywords/protection.js";
+import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
 import type { Game } from "../game.js";
 import * as phasing from "../phasing/phasing-ops.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
@@ -382,6 +383,20 @@ export class GameAction {
 
   *phaseIn(cardId: EntityId, opts?: { readonly direct?: boolean }): Generator<EngineYield, void, unknown> {
     yield* phasing.phaseIn(this.game, cardId, opts);
+  }
+
+  // === Face-down turn-face-up (SP2 Task 54) ===
+
+  /**
+   * CR 701.34 — turn a face-down permanent face up. SP2 trusts the caller
+   * that any applicable cost (morph / disguise / actual mana cost for
+   * manifest/cloak / foretell-trigger gating) has been paid; SP3's cost
+   * pipeline adds the pre-flip validation. Emits CardTurnedFaceUp on
+   * success; throws GameStateIntegrityError if the card is missing or
+   * already face-up.
+   */
+  *turnFaceUp(cardId: EntityId): Generator<EngineYield, void, unknown> {
+    yield* turnFaceUpOp(this.game, cardId);
   }
 
   // === Destroy / exile / sacrifice — event + zone change via moveTo ===
