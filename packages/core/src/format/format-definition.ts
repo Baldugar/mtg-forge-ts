@@ -51,7 +51,7 @@ export interface BanlistHistory {
   readonly entries: readonly BanlistEntry[];
 }
 
-export type MulliganRule = "london" | "vancouver" | "paris" | "free";
+export type MulliganRule = "london" | "vancouver" | "paris" | "original" | "houston" | "free";
 
 export type CommanderSlotKind = "single" | "partners" | "background" | "oathbreaker" | "pauperCommander";
 

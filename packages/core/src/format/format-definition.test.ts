@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { describe, expect, it } from "vitest";
 import { Rarity } from "../card/types.js";
-import type { FormatDefinition, FormatDefinitionSnapshot } from "./format-definition.js";
+import type { FormatDefinition, FormatDefinitionSnapshot, MulliganRule } from "./format-definition.js";
 
 const mkModern = (): FormatDefinition => ({
   id: "modern",
@@ -142,5 +142,12 @@ describe("FormatDefinition — shape + JSON round-trip", () => {
     };
     const rt = JSON.parse(JSON.stringify(f)) as FormatDefinition;
     expect(rt).toEqual(f);
+  });
+});
+
+describe("MulliganRule", () => {
+  it("accepts all five WOTC rules plus the TS-native 'free' rule", () => {
+    const rules: MulliganRule[] = ["london", "vancouver", "paris", "original", "houston", "free"];
+    expect(rules).toHaveLength(6);
   });
 });
