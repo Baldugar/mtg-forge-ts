@@ -24,6 +24,7 @@ import {
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "./action/engine-yield.js";
 import { GameAction } from "./action/game-action.js";
+import { AuraAbilityGrantLedger } from "./attachment/aura-ability-grant.js";
 import type { Card } from "./card.js";
 import { CastPipeline } from "./cast/cast-pipeline.js";
 import { ContinuousEffectRegistry } from "./continuous/continuous-effect-registry.js";
@@ -119,6 +120,11 @@ export class Game {
   // their own GameAction too; the shared instance is for engine-internal
   // consumers that don't have their own handle.
   readonly action: GameAction;
+  // SP2 Milestone K Task 43 — per-attachment Layer 6 grant bookkeeping.
+  // GameAction.attach/unattach drive this; Layer 6 scoping via
+  // AbilityChangeEffect.targetCardId does the filtering. See
+  // attachment/aura-ability-grant.ts for details.
+  readonly auraGrantLedger: AuraAbilityGrantLedger;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -178,6 +184,10 @@ export class Game {
     // read any registry state until called. Constructing it here ensures
     // every registry above is available before any mutation routes through.
     this.action = new GameAction(this);
+    // Ledger of per-attachment Layer 6 grant records. Stateless w.r.t
+    // other registries — just a keyed bookkeeping surface consumed by
+    // GameAction.attach/unattach hooks.
+    this.auraGrantLedger = new AuraAbilityGrantLedger();
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();

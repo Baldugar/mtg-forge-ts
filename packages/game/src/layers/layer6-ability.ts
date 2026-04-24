@@ -11,6 +11,16 @@
 // timestamp leaves only the added refs — matching Forge's loseAllAbilities
 // precedence in StaticAbilityContinuous.
 //
+// SP2 Milestone K Task 43 — `targetCardId` scopes an effect to a single
+// card. An undefined `targetCardId` means "apply to every card" (the SP2
+// default, matching how continuous-category statics act on every matching
+// permanent today). A concrete EntityId means "only apply when computing
+// THIS card's characteristics" — the shape used by per-attachment
+// ability grants (Auras attaching Flying to the enchanted creature,
+// Equipment granting keywords to the equipped creature). Without this
+// scoping a shared Layer 6 effect array would grant the ability to
+// every card in the game.
+//
 // Forge reference: StaticAbilityContinuous (addAbility / removeAbility /
 // loseAllAbilities branches).
 import type { ActiveAbilityRef, Characteristics, EntityId } from "@mtg-forge-ts/core";
@@ -22,22 +32,36 @@ export type AbilityChangeEffect =
       readonly grantedBy: EntityId;
       readonly origin: ActiveAbilityRef["origin"];
       readonly timestamp: number;
+      readonly targetCardId?: EntityId;
     }
   | {
       readonly kind: "removeAll";
       readonly grantedBy: EntityId;
       readonly timestamp: number;
+      readonly targetCardId?: EntityId;
     }
   | {
       readonly kind: "loseAll";
       readonly timestamp: number;
+      readonly targetCardId?: EntityId;
     };
 
+/**
+ * Apply Layer 6 ability changes to `target`.
+ *
+ * `targetCardId` is the entity id of the card being computed. Effects
+ * whose `targetCardId` is undefined apply to every card (SP2 default);
+ * effects with a concrete id apply only when that id matches. The
+ * second argument is optional to preserve the pre-Task-43 call site
+ * in tests that compose with the applier directly without a Game.
+ */
 export const applyLayer6Ability = (
   target: Characteristics,
+  targetCardId: EntityId | null,
   effects: readonly AbilityChangeEffect[],
 ): void => {
-  const ordered = [...effects].sort((a, b) => a.timestamp - b.timestamp);
+  const scoped = effects.filter((e) => e.targetCardId === undefined || e.targetCardId === targetCardId);
+  const ordered = [...scoped].sort((a, b) => a.timestamp - b.timestamp);
   for (const e of ordered) {
     switch (e.kind) {
       case "add":

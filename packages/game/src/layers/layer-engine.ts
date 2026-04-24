@@ -110,7 +110,7 @@ export class LayerEngine {
     applyLayer3Text(chars, this.textSubstitutions);
     applyLayer4Type(chars, this.typeEffects);
     applyLayer5Color(chars, this.colorEffects);
-    applyLayer6Ability(chars, this.abilityEffects);
+    applyLayer6Ability(chars, id, this.abilityEffects);
     applyLayer7a(chars, this.pt7a);
     applyLayer7b(chars, this.pt7b);
     applyLayer7c(chars, this.pt7c);

@@ -655,9 +655,11 @@ export class GameAction {
         if (!target.attachments.includes(final.sourceId)) {
           target.attachments = [...target.attachments, final.sourceId];
         }
+        // Task 43 — register per-attachment Layer 6 grants BEFORE the
+        // epoch bump so checkEpoch sees the post-attach layer state.
+        this.game.auraGrantLedger.onAttach(this.game, final.sourceId, final.targetId);
         // CR 613.1 — attachment change alters which continuous effects
         // apply (Aura's granted abilities, Equipment-conditioned statics).
-        // Layer 6 grant ledger (Task 43) hooks after this mutation.
         this.game.layerEngine.bumpEpoch("attach");
       },
       (final) =>
@@ -694,6 +696,9 @@ export class GameAction {
           target.attachments = target.attachments.filter((x) => x !== final.sourceId);
         }
         s.attachedTo = null;
+        // Task 43 — remove any per-attachment Layer 6 grants BEFORE
+        // the bump so the cache repopulates without the stale effects.
+        this.game.auraGrantLedger.onUnattach(this.game, final.sourceId);
         this.game.layerEngine.bumpEpoch("unattach");
       },
       (final) =>
