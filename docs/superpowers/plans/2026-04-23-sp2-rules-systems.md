@@ -2094,6 +2094,45 @@ Items intentionally out of SP2 scope and carried forward:
 
 Minor known-deviation notes carried over:
 
-- Combat damage to creatures and life-change-to-player are currently fused in `GameAction.damage` via an inline branch; SP3's replacement-based prevention + combat-damage-assignment pipeline will split these back out.
-- SBA sweep on `Card.damagedByDeathtouch` does not yet consult indestructible (explicit TODO in creature-removal.ts awaiting the SP3 keyword registry).
 - Priority orchestration advances only the active player per window; non-active-seat rotation between pushes lands in the SP3 driver loop (Milestone S continuation).
+
+### Snapshot v6 Option A — explicit scope
+
+SP2 Milestone X (Task 75) shipped GameSnapshot v6 under Option A: durable rules-subsystem **data** round-trips, but callable closures / predicate functions do not. The following state is NOT round-tripped today — callers restoring a snapshot must rehydrate from card definitions / cast provenance:
+
+- `ReplacementRegistry` live entries (`apply` / `matches` closures)
+- `TriggerRegistry` matchers (`matches` / `captureLki` / `interveningIf` closures) — the pending-trigger entries round-trip, but the backing `TriggeredAbility` does not
+- `StaticEffectRegistry` entries (each static carries an `apply` closure)
+- `DelayedTriggerQueue` live entries (`matches` closure + any delayed-trigger-specific hooks)
+- `StackItem.resolver` — the per-item resolver function; resolve path reads it off a parallel rehydration shim in tests
+- `Card.intrinsicStatics` — per-card static-ability arrays seeded at card construction
+- `Combat` state slot (`attackers` / `blockers` / `blockerOrdering` / `damageAssignments` / `firstStrikeSplitActive`)
+- `ConditionAst` evaluators that reference captured closures
+- Per-turn `topLibsCast` population — cast-pipeline does not yet populate this ledger
+
+SP3 ships Option B: an `AbilityRegistry` keyed by stable ability ids. Serialized snapshots will carry id references; rehydration looks the closure up in the registry. That pathway is NOT available in SP2 because the ability DSL hasn't landed.
+
+### Deferred to SP3+
+
+Items intentionally out of SP2 scope and carried forward:
+
+- **Mana cost solver + CostPart runtime** (`canPay` / `pay` / `undo`) — CastPipeline step 8-10 still stub receipts; SP3's `ManaCostSolver` lands the real resolution.
+- **Full ability DSL + ~423 concrete ability handlers** — SP3's primary scope. SP2 hand-stamped resolvers on triggers in tests; real cards cannot yet cast through the pipeline end-to-end until the DSL lands.
+- **Keyword registry** — SP2 uses `Card.keywords: Set<string>` ad-hoc for deathtouch / first-strike / trample / indestructible (audit remediation Round 1 added the indestructible short-circuit via this set). SP3 replaces with layered keyword grants sourced off Characteristics.
+- **Card.definition-driven characteristics derivation** — SP2 uses `DEFAULT_PAPER_CARD_FLAGS` + hand-populated layer effects in tests; SP4's CardDb hydration drives real P/T / types / mana cost off PaperCard.definition.
+- **GameCopier for AI simulation** — SP5.
+- **Format-specific rules** — SP6.
+- **Sideboard / mulligan variants** — SP7.
+
+Behavioral gaps carried forward (discovered during implementation + audit):
+
+- **Day/Night + Daybound/Nightbound** — CR 726 daytime tracking, keyword-driven transforms. No day flag on Game today.
+- **Shadow keyword** — CR 702.27 evasion; needs block-restriction integration (symmetric to flying but with its own pairing rule).
+- **TurnBasedAction framework** — explicit per-step scheduler that fires untap / upkeep / draw / begin-combat / etc. as first-class actions, not hardcoded in the phase handler.
+- **Banding multi-attacker block check** — attacker-side banding (CR 702.22h) where a single banded attacker can be blocked across multiple attackers' damage distribution.
+- **Team-combat damage routing** — damage to a player on a shared-life team (2HG) should deduct the team's shared life, not the player's individual life slot.
+- **`choosePlayer` with min > 0 fallback** — ensure callers with required-count get a valid fallback seat when all candidates are filtered out (today throws).
+- **`chooseDungeon` + `chooseManaReplacement` decision kinds** — event-taxonomy slots exist; decision handlers do not.
+- **Missing events**: `LandPlayed`, `ClassLevelGained`, `DoorChanged`, `PlayerCounters`, `CombatUpdate`. Emit sites need wiring in GameAction / phase handler / CombatHandler.
+- **`topLibsCast` population** — cast-pipeline has no call site; adds to provenance but never actually appends to the ledger.
+- **4-reviewer final SP2 audit** — shipped Round 1; a possible Round 2 (forge-parity + remaining Important items) is tracked as SP3 kickoff work.
