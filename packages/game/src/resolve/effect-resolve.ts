@@ -44,7 +44,6 @@ const popStackItemById = (game: Game, itemId: EntityId): void => {
     // was never pushed / already popped by an earlier path).
     return;
   }
-  // biome-ignore lint/suspicious/noExplicitAny: private drain for the rebuild
   (stack as unknown as { items: StackItem[] }).items.length = 0;
   for (const it of retained) stack.push(it);
 };

@@ -362,9 +362,8 @@ describe("runPriorityWindow (SP2 Task 40, CR 117.1)", () => {
     const seat0 = mkPlayerSeat(0);
     const c0 = addCard(game, 410, seat0, ZoneType.Battlefield);
     const resolver = {
-      // biome-ignore lint/correctness/useYield: no-yield resolver is fine
       *resolve(_g: unknown): Generator<unknown, void, unknown> {
-        /* no-op body */
+        yield; // yield once so biome's useYield is satisfied
       },
     };
     const t0 = {
