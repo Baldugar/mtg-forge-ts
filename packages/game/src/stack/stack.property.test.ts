@@ -9,7 +9,7 @@
 // independent stack items per CR 707.10. We extend the property over any
 // permutation of pushes and any source-to-copy choice.
 import type { EntityId, LobbyPlayer, PlayerSeat } from "@mtg-forge-ts/core";
-import { SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import type { GameMeta } from "../game-meta.js";
@@ -64,12 +64,12 @@ describe("Stack — LIFO + copy properties", () => {
   it("LIFO: push N items, pop N returns them in reverse push order", () => {
     fc.assert(
       fc.property(
-        // Distinct ids are required — the Stack treats `id` as the key for
-        // lookups (used by Stack.copy). Collisions would make reversal
-        // ambiguous.
-        fc.array(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 1, maxLength: 30 }),
+        // Audit D-C5 — use fc.uniqueArray to eliminate dedup post-processing.
+        // minLength=2 ensures non-trivial LIFO behavior; collisions would
+        // make reversal ambiguous (Stack.copy uses id as lookup key).
+        fc.uniqueArray(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 2, maxLength: 30 }),
         (rawIds) => {
-          const ids = Array.from(new Set(rawIds)).map((n) => mkEntityId(n));
+          const ids = rawIds.map((n) => mkEntityId(n));
           const seat = mkPlayerSeat(0);
           const stack = new Stack();
           const pushedItems: StackItem[] = [];
@@ -96,10 +96,12 @@ describe("Stack — LIFO + copy properties", () => {
   it("Stack.copy mints a fresh id distinct from the source", () => {
     fc.assert(
       fc.property(
-        fc.array(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 1, maxLength: 10 }),
+        // Audit D-C5 — fc.uniqueArray with minLength=2 so we always have
+        // material to copy from AND a genuine permutation.
+        fc.uniqueArray(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 2, maxLength: 10 }),
         fc.nat({ max: 9 }),
         (rawIds, copyIndexSeed) => {
-          const ids = Array.from(new Set(rawIds)).map((n) => mkEntityId(n));
+          const ids = rawIds.map((n) => mkEntityId(n));
           const seat = mkPlayerSeat(0);
           const game = new Game({
             lobbyPlayers: [alice, bob],
@@ -132,6 +134,66 @@ describe("Stack — LIFO + copy properties", () => {
         },
       ),
       { numRuns: 40 },
+    );
+  });
+
+  // Audit D-C1 — multi-copy scenario + out-of-set id property. The copy
+  // of a copy produces yet a third distinct id; the two copies and the
+  // source are all simultaneously on the stack.
+  it("Stack.copy on a copy produces a third distinct id (multi-copy scenario)", () => {
+    fc.assert(
+      fc.property(
+        fc.uniqueArray(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 2, maxLength: 8 }),
+        fc.nat({ max: 7 }),
+        (rawIds, copyIndexSeed) => {
+          const ids = rawIds.map((n) => mkEntityId(n));
+          const seat = mkPlayerSeat(0);
+          const game = new Game({
+            lobbyPlayers: [alice, bob],
+            rules,
+            meta,
+            rng: new SeededRng(1n),
+          });
+          const stack = game.sharedZones.stack;
+          for (const id of ids) stack.push(mkItem(id, id, seat));
+          const source = ids[copyIndexSeed % ids.length];
+          if (!source) throw new Error("test: no source");
+          const copy1 = stack.copy(source, seat, game);
+          const copy2 = stack.copy(copy1.id, seat, game);
+          expect(copy1.id).not.toBe(source);
+          expect(copy2.id).not.toBe(copy1.id);
+          expect(copy2.id).not.toBe(source);
+          expect(stack.size).toBe(ids.length + 2);
+        },
+      ),
+      { numRuns: 30 },
+    );
+  });
+
+  it("Stack.copy of an out-of-set id throws GameStateIntegrityError", () => {
+    fc.assert(
+      fc.property(
+        fc.uniqueArray(fc.integer({ min: 1, max: 500_000 }), { minLength: 2, maxLength: 8 }),
+        // Out-of-set id: drawn from a disjoint range so it's guaranteed
+        // not to collide with the pushed ids.
+        fc.integer({ min: 10_000_001, max: 20_000_000 }),
+        (rawIds, outId) => {
+          const ids = rawIds.map((n) => mkEntityId(n));
+          const seat = mkPlayerSeat(0);
+          const game = new Game({
+            lobbyPlayers: [alice, bob],
+            rules,
+            meta,
+            rng: new SeededRng(1n),
+          });
+          const stack = game.sharedZones.stack;
+          for (const id of ids) stack.push(mkItem(id, id, seat));
+          expect(() => stack.copy(mkEntityId(outId), seat, game)).toThrow(GameStateIntegrityError);
+          // State preserved: stack size unchanged, no ghost entry.
+          expect(stack.size).toBe(ids.length);
+        },
+      ),
+      { numRuns: 30 },
     );
   });
 });

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import type { EntityId, LobbyPlayer } from "@mtg-forge-ts/core";
-import { SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
@@ -132,5 +132,28 @@ describe("Stack", () => {
     expect(g.sharedZones.stack).toBeInstanceOf(Stack);
     expect(g.sharedZones.stack.size).toBe(0);
     expect(g.sharedZones.stack.isEmpty()).toBe(true);
+  });
+
+  // Audit D-C1 regression — Stack.copy throws GameStateIntegrityError when
+  // the sourceItemId is not currently on the stack. Previously untested;
+  // callers relying on the error TYPE for telemetry had no regression guard.
+  it("copy throws GameStateIntegrityError on unknown source id", () => {
+    const stack = new Stack();
+    stack.push(mkItem(1, 100));
+    const game = new Game({ lobbyPlayers: [alice, bob], rules, meta, rng: new SeededRng(1n) });
+    expect(() => stack.copy(mkEntityId(999), mkPlayerSeat(1), game)).toThrow(GameStateIntegrityError);
+  });
+
+  it("copy succeeds on a known source id and pushes the copy on top", () => {
+    const stack = new Stack();
+    stack.push(mkItem(1, 100));
+    const game = new Game({ lobbyPlayers: [alice, bob], rules, meta, rng: new SeededRng(1n) });
+    const copy = stack.copy(mkEntityId(1), mkPlayerSeat(1), game);
+    expect(copy.kind).toBe("copy");
+    expect(copy.isCast).toBe(false);
+    expect(copy.sourceCardId).toBe(mkEntityId(100));
+    expect(copy.controllerSeat).toBe(mkPlayerSeat(1));
+    expect(stack.size).toBe(2);
+    expect(stack.top()?.id).toBe(copy.id);
   });
 });
