@@ -9,3 +9,4 @@ export * from "./selectors/player-count.js";
 export * from "./selectors/count.js";
 export * from "./selectors/sum-aggregates.js";
 export * from "./selectors/targeted.js";
+export * from "./selectors/arithmetic.js";
