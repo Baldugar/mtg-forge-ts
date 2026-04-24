@@ -136,6 +136,7 @@ const mkReplacement = (
   matches,
   apply: (i) => apply(i),
   isSelfReplacement: false,
+  layer: "other",
 });
 
 const eventsOfKind = (ys: EngineYield[], kind: string): EngineYield[] =>

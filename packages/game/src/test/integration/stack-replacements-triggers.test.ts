@@ -221,6 +221,7 @@ const mkPreventNextDamageToSeat = (
       return null;
     },
     isSelfReplacement: false,
+    layer: "other",
   };
   return repl;
 };

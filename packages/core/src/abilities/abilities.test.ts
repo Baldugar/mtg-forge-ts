@@ -38,6 +38,7 @@ describe("Ability interfaces (SP2 §B)", () => {
       matches: () => true,
       apply: () => null,
       isSelfReplacement: true,
+      layer: "other",
     };
     expect(r.isSelfReplacement).toBe(true);
   });

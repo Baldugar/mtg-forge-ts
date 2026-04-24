@@ -84,6 +84,7 @@ const mkReplacement = (opts: ReplOpts): ReplacementAbility => ({
   matches: opts.matchesFn ?? (() => true),
   apply: (i) => (opts.applyFn ?? ((x) => x))(i),
   isSelfReplacement: false,
+  layer: "other",
 });
 
 const damage = (amount: number): MutationIntent =>

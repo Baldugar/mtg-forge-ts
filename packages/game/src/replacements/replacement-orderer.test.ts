@@ -71,6 +71,7 @@ const mkReplacement = (id: number, sourceCardId: number): ReplacementAbility => 
   matches: () => true,
   apply: (intent) => intent,
   isSelfReplacement: false,
+  layer: "other",
 });
 
 const damageToPlayer = (seat: PlayerSeat): MutationIntent =>

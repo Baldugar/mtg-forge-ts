@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // CR 614 — replacement effect shape. Tasks 16-19 implement the registry.
 import type { AbilityBase } from "./active-ability.js";
+import type { ReplacementLayer } from "./replacement-layer.js";
 
 // Replacement effects act on "mutation intents" — the abstract description
 // of what GameAction is about to do, before it applies. Each registered
@@ -17,4 +18,8 @@ export interface ReplacementAbility extends AbilityBase {
   // for permanent-entering events. Set by the registrar at register time
   // when the effect text is specified by the permanent itself.
   readonly isSelfReplacement: boolean;
+  // CR 616.1 — layer bucket for multi-replacement ordering. Defaults to
+  // "other" for replacements that pre-date this field; SP3 card ports
+  // classify explicitly.
+  readonly layer: ReplacementLayer;
 }

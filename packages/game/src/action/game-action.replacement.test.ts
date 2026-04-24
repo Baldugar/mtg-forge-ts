@@ -143,6 +143,7 @@ const mkReplacement = (
   matches,
   apply: (i) => apply(i),
   isSelfReplacement: false,
+  layer: "other",
 });
 
 // Filter helper.

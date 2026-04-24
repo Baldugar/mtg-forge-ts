@@ -86,6 +86,7 @@ const mkReplacement = (id: number, sourceCardId: number): ReplacementAbility => 
   matches: () => true,
   apply: (i) => i, // non-mutating pass-through
   isSelfReplacement: false,
+  layer: "other",
 });
 
 const damage = (amount: number): MutationIntent =>

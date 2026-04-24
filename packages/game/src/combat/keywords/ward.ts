@@ -57,5 +57,6 @@ export const createWardReplacement = (opts: WardReplacementOptions): Replacement
     // ETB. False here keeps the apply-loop's self-replacement prefix
     // from mistakenly prioritizing ward.
     isSelfReplacement: false,
+    layer: "other",
   };
 };

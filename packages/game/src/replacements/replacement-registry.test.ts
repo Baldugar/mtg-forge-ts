@@ -20,6 +20,7 @@ const mkReplacement = (opts: {
   matches: opts.matchesFn ?? (() => true),
   apply: (intent) => intent,
   isSelfReplacement: opts.isSelfReplacement ?? false,
+  layer: "other",
 });
 
 describe("ReplacementRegistry (CR 614 scaffold)", () => {
