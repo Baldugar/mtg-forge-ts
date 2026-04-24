@@ -325,6 +325,12 @@ export class GameAction {
         // token-ceases-to-exist SBA). Reset at turn end by PhaseHandler.
         if (fromZone === Zt.Battlefield && final.toZone !== Zt.Battlefield) {
           game.flags.leftBattlefieldThisTurn.add(final.cardId);
+          // SP2 Task 78 (fix 2) — clear the deathtouch-damage flag when
+          // the creature leaves the battlefield. CR 702.2b is about
+          // damage "on" the creature; once it leaves, the flag is no
+          // longer meaningful and must reset so its next battlefield
+          // entry doesn't inherit stale state.
+          if (card) card.damagedByDeathtouch = false;
         }
       },
       (final) =>
@@ -592,7 +598,18 @@ export class GameAction {
         if (final.amount <= 0) return;
         if (final.targetKind === "creature" && typeof final.targetId === "number") {
           const card = game.cards.get(final.targetId as EntityId);
-          if (card) card.damage += final.amount;
+          if (card) {
+            card.damage += final.amount;
+            // SP2 Task 78 (fix 2) — CR 702.2b deathtouch: tag the target
+            // when the damage source has the deathtouch keyword so the
+            // SBA creature-removal collector can destroy it on the next
+            // sweep even if damage < toughness. SP3 wires the full
+            // keyword registry (indestructible check, layered grants).
+            const sourceCard = game.cards.get(final.sourceId);
+            if (sourceCard && sourceCard.keywords?.has("deathtouch") === true) {
+              card.damagedByDeathtouch = true;
+            }
+          }
         } else if (final.targetKind === "player" && typeof final.targetId === "number") {
           // SP2 Task 78 (fix 1) — Player.life deduction. Previously this
           // branch was missing entirely; damage to a player emitted

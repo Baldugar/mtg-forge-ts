@@ -43,6 +43,16 @@ export const collectCreatureRemoval = (game: Game, out: SbaAction[]): void => {
         if (card.damage >= toughness) {
           // TODO (SP3 keyword surface): skip for indestructible creatures.
           out.push({ kind: "creatureLethalDamage", cardId: id });
+          continue;
+        }
+        // SP2 Task 78 (fix 2) — CR 702.2b: a creature dealt any nonzero
+        // damage by a source with deathtouch is destroyed by SBA even
+        // when damage < toughness. `damagedByDeathtouch` is set by
+        // GameAction.damage when the source has the deathtouch keyword
+        // and cleared on zone-change off the battlefield. SP3 layers the
+        // full keyword registry + indestructible short-circuit.
+        if (card.damagedByDeathtouch === true && card.damage > 0) {
+          out.push({ kind: "creatureLethalDamage", cardId: id });
         }
       }
     }

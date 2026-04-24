@@ -252,4 +252,31 @@ describe("creature-removal — CR 704.5f/g/i/s", () => {
     runSweep(game);
     expect(card.zone).toBe(ZoneType.Graveyard);
   });
+
+  // SP2 Task 78 (fix 2) — CR 702.2b deathtouch: any nonzero damage from a
+  // deathtouch source destroys the creature via SBA. Flag set by
+  // GameAction.damage and read here.
+  it("creature with any damage from a deathtouch source is destroyed (CR 702.2b)", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const id = mkEntityId(1);
+    const card = addCard(game, seat, ZoneType.Battlefield, id);
+    setTypeAndPT(game, CardType.Creature, 5, 5);
+    card.damage = 1; // 1 damage << 5 toughness, but …
+    card.damagedByDeathtouch = true;
+    runSweep(game);
+    expect(card.zone).toBe(ZoneType.Graveyard);
+  });
+
+  it("creature with damagedByDeathtouch but zero damage is NOT destroyed", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const id = mkEntityId(1);
+    const card = addCard(game, seat, ZoneType.Battlefield, id);
+    setTypeAndPT(game, CardType.Creature, 5, 5);
+    card.damage = 0;
+    card.damagedByDeathtouch = true;
+    runSweep(game);
+    expect(card.zone).toBe(ZoneType.Battlefield);
+  });
 });

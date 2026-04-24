@@ -316,6 +316,44 @@ describe("GameAction.damage", () => {
     expect(game.cards.get(target)?.damage).toBe(4);
   });
 
+  // SP2 Task 78 (fix 2) — CR 702.2b deathtouch: a creature dealt any nonzero
+  // damage by a deathtouch source is tagged via Card.damagedByDeathtouch so
+  // the SBA creature-removal collector can destroy it even when damage
+  // < toughness.
+  it("tags target Card.damagedByDeathtouch when source has the keyword", () => {
+    const { game, action, seat0 } = mkFixture();
+    const source = mkEntityId(160);
+    const target = mkEntityId(161);
+    const src = addCardToZone(game, seat0, ZoneType.Battlefield, source);
+    src.keywords = new Set(["deathtouch"]);
+    const tgt = addCardToZone(game, seat0, ZoneType.Battlefield, target);
+    collect(action.damage(source, "creature", target, 1, true));
+    expect(tgt.damagedByDeathtouch).toBe(true);
+  });
+
+  it("does NOT tag damagedByDeathtouch when source has no deathtouch keyword", () => {
+    const { game, action, seat0 } = mkFixture();
+    const source = mkEntityId(170);
+    const target = mkEntityId(171);
+    addCardToZone(game, seat0, ZoneType.Battlefield, source);
+    const tgt = addCardToZone(game, seat0, ZoneType.Battlefield, target);
+    collect(action.damage(source, "creature", target, 1, true));
+    expect(tgt.damagedByDeathtouch).toBe(false);
+  });
+
+  it("clears Card.damagedByDeathtouch when the creature leaves the battlefield", () => {
+    const { game, action, seat0 } = mkFixture();
+    const source = mkEntityId(180);
+    const target = mkEntityId(181);
+    const src = addCardToZone(game, seat0, ZoneType.Battlefield, source);
+    src.keywords = new Set(["deathtouch"]);
+    const tgt = addCardToZone(game, seat0, ZoneType.Battlefield, target);
+    collect(action.damage(source, "creature", target, 1, true));
+    expect(tgt.damagedByDeathtouch).toBe(true);
+    collect(action.moveTo(target, ZoneType.Graveyard));
+    expect(tgt.damagedByDeathtouch).toBe(false);
+  });
+
   // SP2 Task 78 (fix 1) — damage to a player deducts Player.life and
   // emits a companion LifeChanged event alongside the canonical DamageDealt.
   it("deducts Player.life and emits LifeChanged when target is a player", () => {

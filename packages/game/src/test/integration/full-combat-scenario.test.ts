@@ -340,14 +340,11 @@ describe("SP2 Milestone X — full combat scenario integration (Task 76)", () =>
     expect(b1Card.zone).toBe(ZoneType.Battlefield);
     // B2 took 2 damage, toughness 2 → destroyed (exact lethal).
     expect(b2Card.zone).toBe(ZoneType.Graveyard);
-    // B3 took 1 damage, toughness 4 → survives under the current SBA
-    // implementation. The spec calls for B3 to die because the damage came
-    // from a deathtouch source (CR 702.2b), but SP2's creature-removal SBA
-    // does not yet consult the damage source for deathtouch (SP3 keyword
-    // surface — see creature-removal.ts TODO). Track the deviation here so
-    // Task 78 (property tests + audit) can pick up the follow-up.
-    expect(b3Card.zone).toBe(ZoneType.Battlefield);
-    expect(b3Card.damage).toBe(1);
+    // SP2 Task 78 (fix 2) — B3 took 1 damage from A3 (deathtouch source);
+    // CR 702.2b destroys it via SBA even though damage < toughness. The
+    // creature-removal collector now reads Card.damagedByDeathtouch (set
+    // by GameAction.damage when source has the deathtouch keyword).
+    expect(b3Card.zone).toBe(ZoneType.Graveyard);
   });
 
   it("damage-assignment validator enforces correct lethals in defaultAssignment", () => {

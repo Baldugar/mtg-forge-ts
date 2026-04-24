@@ -22,6 +22,14 @@ export class Card {
   tapped = false;
   phased = false;
   damage = 0;
+  // SP2 Task 78 (fix 2) — CR 702.2b deathtouch: a creature dealt ANY
+  // nonzero damage by a source with deathtouch is destroyed by SBA
+  // regardless of damage < toughness. GameAction.damage sets this to
+  // true when the damaging source has the deathtouch keyword; moveTo
+  // clears it when the creature leaves the battlefield so its next
+  // battlefield entry starts fresh. SP3's keyword registry will turn
+  // this into a layered keyword read driven off Characteristics.
+  damagedByDeathtouch = false;
   counters = new Map<CounterType, number>();
   attachedTo: EntityId | null = null;
   attachments: EntityId[] = [];
