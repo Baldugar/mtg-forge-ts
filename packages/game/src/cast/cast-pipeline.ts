@@ -20,6 +20,7 @@ import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@m
 import { IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
+import type { FaceKind } from "../multiface/face-kind.js";
 import type { StackItem, StackItemProvenance } from "../stack/stack-item.js";
 import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
@@ -33,15 +34,21 @@ import { createCastContext } from "./cast-context.js";
  * written and tested independently.
  *
  * faces:
- *   undefined / length ≤ 1 → single-face card; step 2 auto-passes.
- *   length  > 1            → multi-face card; step 2 yields `chooseFace`.
+ *   undefined                → single-face card; step 2 auto-passes.
+ *   Record with ≥2 keys      → multi-face card. For split (L/R) and
+ *                              modal-DFC (front/back with isModalDfc)
+ *                              step 2 yields `chooseFace`. Transform
+ *                              DFCs (front/back without the MDFC flag)
+ *                              skip the decision — the default front
+ *                              face is cast and later transform() flips.
  * optionalCosts:
  *   undefined / empty      → no alt-or-additional cost; step 4 auto-passes.
  *   length  > 0            → step 4 yields `chooseOptionalCosts` with the
  *                            provided NamedOptions.
  */
 interface CastSurfacePaperCard {
-  readonly faces?: readonly string[];
+  readonly faces?: Readonly<Record<string, { readonly name: string }>>;
+  readonly isModalDfc?: boolean;
   readonly optionalCosts?: readonly NamedOption[];
   /**
    * Modal-spell options. When present with a non-empty list, step 5 yields
@@ -178,37 +185,81 @@ export class CastPipeline {
   }
 
   /**
-   * CR 601.2b — choose a face for Split / Modal DFC / Transform DFC /
-   * Adventure cards. SP2 reads face data off the PaperCard; until SP3/
-   * Milestone Q lands the full multi-face shape, cards with no `faces`
-   * surface on the paper-card payload auto-pass. When a multi-face card
-   * is cast, yield a `chooseFace` decision and validate the response is
-   * in the offered set.
+   * CR 601.2b — choose a face for Split / Modal DFC / Adventure cards.
+   * SP2 reads face data off the PaperCard.faces Record (Task 58).
+   *
+   * Decision yielded for:
+   *   • Split cards (faces has both "L" and "R") — CR 708; pick a half.
+   *   • Modal DFCs (front/back faces + `isModalDfc: true`) — CR 712.6.
+   *   • Adventure cards (faces has "adventure") — CR 715; pick creature
+   *     or adventure half.
+   *
+   * No decision for:
+   *   • Single-face cards (faces undefined or ≤ 1 entry).
+   *   • Transform DFCs (front/back only, no MDFC flag) — the cast puts
+   *     the default (front) face on the stack; later transform() flips.
+   *   • Flip cards (faces has "flipped") — cast enters untransformed;
+   *     flip() toggles when the ability resolves.
+   *
+   * On success the chosen face id is written to ctx.faceChosen AND
+   * mirrored onto Card.face so layer derivation (base-characteristics)
+   * picks the right face once the stack push lands.
    */
   protected *stepChooseFace(ctx: CastContext): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(ctx.sourceCardId);
     if (!card) return;
     const paper = card.paperCard as CastSurfacePaperCard;
-    if (!paper.faces || paper.faces.length <= 1) return;
+    const faces = paper.faces;
+    if (faces === undefined) return;
+    const faceKeys = Object.keys(faces);
+    if (faceKeys.length <= 1) return;
+    // Decide whether this card actually needs the decision. Split cards,
+    // MDFCs, and adventure cards do; transform DFCs + flip cards don't.
+    const hasL = "L" in faces;
+    const hasR = "R" in faces;
+    const isSplit = hasL && hasR;
+    const hasFront = "front" in faces;
+    const hasBack = "back" in faces;
+    const isModalDfc = paper.isModalDfc === true && hasFront && hasBack;
+    const hasAdventure = "adventure" in faces;
+    if (!isSplit && !isModalDfc && !hasAdventure) {
+      // Transform DFC / flip card — cast enters on the default face.
+      return;
+    }
+    const options: readonly string[] = isSplit
+      ? ["L", "R"]
+      : isModalDfc
+        ? ["front", "back"]
+        : // Adventure: creature half is the default "front"; adventure id
+          // is the instant/sorcery side.
+          hasFront
+          ? ["front", "adventure"]
+          : ["adventure"];
     const response = (yield {
       kind: "decision",
       request: {
         kind: "chooseFace",
         playerSeat: ctx.castingPlayer,
         cardId: ctx.sourceCardId,
-        options: paper.faces,
+        options,
       },
     }) as { readonly kind: "chooseFace"; readonly face: string };
-    if (!paper.faces.includes(response.face)) {
-      throw new IllegalDecisionError(`chooseFace: ${response.face} not in ${JSON.stringify(paper.faces)}`, [
-        ...paper.faces,
+    if (!options.includes(response.face)) {
+      throw new IllegalDecisionError(`chooseFace: ${response.face} not in ${JSON.stringify(options)}`, [
+        ...options,
       ]);
     }
     // WHY cast: faceChosen is the narrow string-literal union on
-    // StackItemProvenance; paper.faces is a generic string[] (the
-    // PaperCard layer is print-format-agnostic). Cards outside the
-    // canonical face-id set are validated above by set membership.
+    // StackItemProvenance; the structural `options` list is a generic
+    // string[]. Cards outside the canonical face-id set are validated
+    // above by membership.
     ctx.faceChosen = response.face as StackItemProvenance["faceChosen"];
+    // Mirror onto Card.face so deriveBaseCharacteristics (and every
+    // layer-dependent read that runs between here and the stack push)
+    // sees the chosen face. finalizeStackItem builds the StackItem
+    // with the provenance; Card.face on the source persists until the
+    // stack item resolves.
+    card.face = response.face as FaceKind;
   }
 
   /**

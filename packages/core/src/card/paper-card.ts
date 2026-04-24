@@ -16,6 +16,7 @@
 
 import type { ColorSet } from "../color.js";
 import type { CardDefinition } from "./card-definition.js";
+import type { FaceDefinition } from "./face-definition.js";
 import type { Rarity } from "./types.js";
 
 /**
@@ -54,6 +55,20 @@ export interface PaperCard {
   readonly functionalVariant?: string;
   readonly flags: PaperCardFlags;
   readonly definition?: CardDefinition;
+  // SP2 Task 58 (Milestone Q) — multi-face cards. Keys are face slot
+  // identifiers ("L"/"R" for split, "front"/"back" for DFCs/flip/MDFC,
+  // "adventure" for adventure cards, "flipped" for Kamigawa flip,
+  // "melded" for meld). Absence → single-face card. SP4's CardDb ingest
+  // populates this from per-printing data; SP2 tests construct it
+  // synthetically. The Card runtime holds a `face: FaceKind` selecting
+  // which face currently applies; deriveBaseCharacteristics reads this
+  // map to pick the right face's name.
+  readonly faces?: Readonly<Record<string, FaceDefinition>>;
+  // SP2 Task 59 — modal-DFC discriminator. Transform DFCs and modal DFCs
+  // share the `faces: { front, back }` shape; only the MDFC flag lets us
+  // distinguish at cast time (MDFC yields chooseFace, transform DFCs
+  // don't — the cast picks the default face, later transform() flips).
+  readonly isModalDfc?: boolean;
   // WHY: these printing-metadata flags are TS-invented (Forge carries them
   // on CardEdition / CardRules, not on PaperCard). Kept on PaperCard as
   // optional booleans so the Forge-named `flags` field stays Forge-faithful.

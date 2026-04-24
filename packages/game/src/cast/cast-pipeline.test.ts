@@ -402,10 +402,10 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
 
     it("yields chooseFace on a multi-face card and writes the chosen face into provenance", () => {
       const { game, seat0 } = makeGame();
-      const paper: PaperCard & { faces: readonly string[] } = {
+      const paper: PaperCard = {
         ...samplePaper,
         name: "Fire // Ice",
-        faces: ["L", "R"] as const,
+        faces: { L: { name: "Fire" }, R: { name: "Ice" } },
       };
       const cardId = mkEntityId(611);
       const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
@@ -440,10 +440,14 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
 
     it("returns null when the chosen face is not in the offered options", () => {
       const { game, seat0 } = makeGame();
-      const paper: PaperCard & { faces: readonly string[] } = {
+      // Use a modal DFC (isModalDfc flag) — transform DFCs skip the
+      // chooseFace decision, so the invalid-response branch only fires
+      // on MDFCs or splits.
+      const paper: PaperCard = {
         ...samplePaper,
-        name: "Delver of Secrets",
-        faces: ["front", "back"] as const,
+        name: "Ondu Inversion // Ondu Skyruins",
+        faces: { front: { name: "Ondu Inversion" }, back: { name: "Ondu Skyruins" } },
+        isModalDfc: true,
       };
       const cardId = mkEntityId(612);
       const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
@@ -1541,9 +1545,10 @@ describe("CastPipeline — Task 39 abort + rollback", () => {
   it("abort after a controller response — throwing inside a decision-handler still aborts cleanly", () => {
     // Force a throw after the chooseFace decision is consumed.
     const { game, seat0 } = makeGame();
-    const paper: PaperCard & { faces: readonly string[] } = {
+    const paper: PaperCard = {
       ...samplePaper,
-      faces: ["front", "back"] as const,
+      faces: { front: { name: "Front" }, back: { name: "Back" } },
+      isModalDfc: true,
     };
     const cardId = mkEntityId(903);
     const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);

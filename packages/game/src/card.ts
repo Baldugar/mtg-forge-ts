@@ -16,6 +16,7 @@ import type {
 } from "@mtg-forge-ts/core";
 import { paperCardKey } from "@mtg-forge-ts/core";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
+import type { FaceKind } from "./multiface/face-kind.js";
 
 export class Card {
   tapped = false;
@@ -74,6 +75,31 @@ export class Card {
   // snapshot/restore round-trip these verbatim.
   remembered: EntityId[] = [];
   imprinted: EntityId[] = [];
+  // SP2 Milestone Q (Tasks 58-61) — active face selector for multi-face
+  // cards. "default" means single-face or "no multi-face selection made
+  // yet" (split cards off-stack use combinedSplitCharacteristics); other
+  // FaceKind values select one face from PaperCard.faces. deriveBase-
+  // Characteristics (layer engine input) honors this; multi-face
+  // primitives (flip/transform/modal-DFC cast/adventure/meld) toggle it.
+  face: FaceKind = "default";
+  // SP2 Task 61 — mutate & host+augment merged-creature state.
+  //   mutatedPile: top-to-bottom order (index 0 is the topmost defining
+  //     entity). When non-empty, the permanent inhabits this card's
+  //     slot but derives its defining face from whatever sits on top;
+  //     SP3's full mutate rules populate keyword/ability unions.
+  //   mutatedInto: reciprocal back-pointer set on the non-primary cards
+  //     in a mutated pile — they no longer exist independently on the
+  //     battlefield.
+  //   isAugment: marks the augment-side of a host+augment (Unstable,
+  //     CR 702.150) combination. Tracked so SBAs + unattach can restore
+  //     the augment's face when the host leaves.
+  //   meldedFrom: source ids of a melded permanent, captured by the
+  //     meld primitive so snapshot/un-meld paths can re-materialize the
+  //     two originals.
+  mutatedPile?: readonly EntityId[];
+  mutatedInto?: EntityId;
+  isAugment?: boolean;
+  meldedFrom?: readonly EntityId[];
 
   constructor(
     readonly id: EntityId,

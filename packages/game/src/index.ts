@@ -22,6 +22,7 @@ export * from "./layers/index.js";
 export * from "./loop/index.js";
 export * from "./mana/index.js";
 export * from "./match/index.js";
+export * from "./multiface/index.js";
 export * from "./phasing/index.js";
 export * from "./snapshot/index.js";
 export * from "./phase/index.js";
