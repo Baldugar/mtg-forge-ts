@@ -151,4 +151,59 @@ describe("SbaEngine — fixpoint property", () => {
       { numRuns: 30 },
     );
   });
+
+  // Audit D-C4 — second property: collector that emits EXACTLY ONE action
+  // per round (strictly reducing) should produce `batches.length ===
+  // uniqueIds.length`. Exercises the strictly-reducing path where each
+  // round dissolves one card, not all flagged at once.
+  it("one-action-per-round collector produces batches.length === uniqueIds.length", () => {
+    fc.assert(
+      fc.property(
+        fc.uniqueArray(fc.integer({ min: 1, max: 10_000 }), { minLength: 1, maxLength: 12 }),
+        (uniqueIds) => {
+          const game = mkGame();
+          const paper = {
+            name: "P",
+            edition: "LEA",
+            collectorNumber: "1",
+            language: "en",
+            foil: false,
+            flags: DEFAULT_PAPER_CARD_FLAGS,
+          } as const;
+          const seat0 = game.players[0]?.seat;
+          if (seat0 === undefined) throw new Error("test: missing seat");
+          const orderedIds: EntityId[] = [];
+          for (const rawId of uniqueIds) {
+            const id = mkEntityId(rawId);
+            const card = new Card(id, paper, seat0, seat0, ZoneType.Battlefield);
+            card.isToken = true;
+            game.cards.set(id, card);
+            orderedIds.push(id);
+          }
+          const engine = new (class extends SbaEngine {
+            protected override collectApplicable(): SbaAction[] {
+              // Return at most one applicable per round.
+              for (const id of orderedIds) {
+                if (game.cards.has(id)) {
+                  return [{ kind: "tokenCeaseExistence", cardId: id }];
+                }
+              }
+              return [];
+            }
+          })(game);
+          const gen = engine.sweep();
+          let step = gen.next();
+          while (!step.done) step = gen.next();
+          const batches = step.value;
+          // Strictly-reducing path: one card removed per round.
+          expect(batches.length).toBe(orderedIds.length);
+          // All cards gone.
+          for (const id of orderedIds) {
+            expect(game.cards.has(id)).toBe(false);
+          }
+        },
+      ),
+      { numRuns: 40 },
+    );
+  });
 });

@@ -376,8 +376,12 @@ describe("GameAction.damage", () => {
     expect(lifeChanged.event.payload.newLife).toBe(17);
     expect(lifeChanged.event.payload.delta).toBe(-3);
     expect(lifeChanged.event.payload.cause).toBe("damage");
-    // Reference seat0/target so lint doesn't flag unused.
-    expect(seat0).toBeDefined();
+    // Audit D-C3 — seat0 and target were referenced via vacuous
+    // toBeDefined/toBeNull assertions to silence the linter. Drop those;
+    // the binding is now used intentionally: assert seat0 is distinct
+    // from seat1 (sanity for the two-player fixture) and target is the
+    // non-existent card we deliberately did not add.
+    expect(seat0).not.toBe(seat1);
     expect(target).toBeNull();
   });
 });

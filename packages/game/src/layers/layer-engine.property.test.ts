@@ -11,7 +11,15 @@
 //   After bumpEpoch(reason), the NEXT computeCharacteristics call for any id
 //   must NOT return a cached reference captured before the bump.
 import type { EntityId, LobbyPlayer } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId } from "@mtg-forge-ts/core";
+import {
+  CardType,
+  ColorSet,
+  DEFAULT_PAPER_CARD_FLAGS,
+  Layer,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+} from "@mtg-forge-ts/core";
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import { Card } from "../card.js";
@@ -53,6 +61,10 @@ const paper = {
   flags: DEFAULT_PAPER_CARD_FLAGS,
 } as const;
 
+// Audit D-C4 — seed non-trivial layer effects before asserting idempotency.
+// Prior shape tested the empty-effect case, which trivially idempotent any
+// implementation satisfies. Seeded effects exercise the layer walk + cache
+// interaction.
 const mkGameWithCards = (cardIds: readonly EntityId[]): Game => {
   const game = new Game({ lobbyPlayers: [alice, bob], rules, meta, rng: new SeededRng(1n) });
   const seat = game.players[0]?.seat;
@@ -61,6 +73,32 @@ const mkGameWithCards = (cardIds: readonly EntityId[]): Game => {
     const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
     game.cards.set(id, card);
   }
+  // Seed layer-4/5/7b effects so each characteristics read exercises the
+  // real walk (not just base derivation + empty effect list).
+  game.layerEngine.typeEffects.push({
+    kind: "add",
+    cardType: CardType.Creature,
+    isCda: false,
+    timestamp: 1,
+    sourceAbilityId: null,
+  });
+  game.layerEngine.colorEffects.push({
+    kind: "set",
+    colors: ColorSet.empty(),
+    isCda: false,
+    timestamp: 1,
+    sourceAbilityId: null,
+  });
+  game.layerEngine.pt7b.push({
+    kind: "set",
+    power: 3,
+    toughness: 3,
+    timestamp: 1,
+    sourceAbilityId: null,
+  });
+  // Reference the Layer symbol so the import is load-bearing.
+  void Layer.L7b_SetPT;
+  game.layerEngine.bumpEpoch("test-seed");
   return game;
 };
 

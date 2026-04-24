@@ -116,29 +116,35 @@ const runWithOrderResponder = (
   return step.value;
 };
 
+// Shared deterministic rotation helper — used by both the primary property
+// and the prevention-variant. Audit D-C4: prior code duplicated the rotate
+// inline in only one property; the prevention test used identity (`(l) => l`)
+// which never exercised the ordering dimension.
+const rotateBy =
+  (seed: number) =>
+  (list: readonly EntityId[]): readonly EntityId[] => {
+    if (list.length === 0) return list;
+    const k = seed % list.length;
+    return [...list.slice(k), ...list.slice(0, k)];
+  };
+
 describe("applyReplacementLoop — one-apply property (CR 614.5)", () => {
   it("each replacement id appears at most once in appliedIds regardless of input permutation", () => {
     fc.assert(
       fc.property(
-        // Between 1 and 8 replacements.
-        fc.array(fc.integer({ min: 1, max: 1000 }), { minLength: 1, maxLength: 8 }),
-        // Permutation seed to drive the ordering decision.
+        // Audit D-C4 — fc.uniqueArray drops the dedup post-processing; the
+        // short-circuit `return` when the dedup shrank the set is gone as a
+        // side effect (all generated inputs are now genuinely unique).
+        fc.uniqueArray(fc.integer({ min: 1, max: 1000 }), { minLength: 1, maxLength: 8 }),
         fc.nat({ max: 1_000_000 }),
-        (rawIds, permSeed) => {
-          const ids = Array.from(new Set(rawIds));
+        (ids, permSeed) => {
           const game = mkGame();
           for (const id of ids) {
             const cardId = id + 10_000;
             registerCard(game, cardId);
             game.replacementRegistry.register(mkReplacement(id, cardId));
           }
-          // Simple deterministic permutation from the seed (rotate).
-          const reorder = (list: readonly EntityId[]): readonly EntityId[] => {
-            if (list.length === 0) return list;
-            const k = permSeed % list.length;
-            return [...list.slice(k), ...list.slice(0, k)];
-          };
-          const result = runWithOrderResponder(applyReplacementLoop(damage(3), game), reorder);
+          const result = runWithOrderResponder(applyReplacementLoop(damage(3), game), rotateBy(permSeed));
           expect(result.status).toBe("applied");
           // One-apply invariant: unique ids.
           const set = new Set(result.appliedIds);
@@ -155,15 +161,14 @@ describe("applyReplacementLoop — one-apply property (CR 614.5)", () => {
   it("prevention short-circuits the loop — appliedIds still contain no duplicates", () => {
     fc.assert(
       fc.property(
-        fc.array(fc.integer({ min: 1, max: 1000 }), { minLength: 2, maxLength: 8 }),
+        fc.uniqueArray(fc.integer({ min: 1, max: 1000 }), { minLength: 2, maxLength: 8 }),
         fc.nat({ max: 100 }),
-        (rawIds, whichPrevents) => {
-          const ids = Array.from(new Set(rawIds));
-          if (ids.length < 2) return; // need at least two for a non-trivial prevent test
+        fc.nat({ max: 1_000_000 }),
+        (ids, whichPrevents, permSeed) => {
           const game = mkGame();
           // Pick one id to be the "preventer" that returns null on apply.
           const preventerId = ids[whichPrevents % ids.length];
-          if (preventerId === undefined) return;
+          if (preventerId === undefined) throw new Error("test: empty ids");
           for (const id of ids) {
             const cardId = id + 10_000;
             registerCard(game, cardId);
@@ -173,7 +178,9 @@ describe("applyReplacementLoop — one-apply property (CR 614.5)", () => {
                 : mkReplacement(id, cardId);
             game.replacementRegistry.register(r);
           }
-          const result = runWithOrderResponder(applyReplacementLoop(damage(3), game), (l) => l);
+          // Audit D-C4 — exercise the ordering dimension with the same
+          // rotate helper the primary property uses.
+          const result = runWithOrderResponder(applyReplacementLoop(damage(3), game), rotateBy(permSeed));
           // One-apply invariant still holds even when prevention short-
           // circuits mid-batch: no id appears twice.
           const set = new Set(result.appliedIds);
