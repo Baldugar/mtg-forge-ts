@@ -1,6 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import type { DecisionRequest, EntityId, LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  IllegalDecisionError,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { EngineYield } from "../action/engine-yield.js";
 import { Card } from "../card.js";
@@ -1731,5 +1738,385 @@ describe("CastPipeline — Task 39 abort + rollback", () => {
       expect(y.event.turn).toBe(5);
       expect(y.event.phase).toBe(game.phase);
     }
+  });
+});
+
+// Audit D-C2 regression — explicit coverage that each IllegalDecisionError
+// throw-site in cast-pipeline.ts actually throws IllegalDecisionError (not
+// a generic Error). We expose a test-only subclass that re-throws out of
+// run() so consumers can assert on the error type; the production run()
+// catches and routes to abort().
+class UncaughtCastPipeline extends CastPipeline {
+  // Direct access to the protected steps for black-box testing.
+  public driveStep(
+    step: (
+      ctx: Parameters<CastPipeline["run"]>[0] extends infer _P ? unknown : never,
+    ) => Generator<EngineYield, void, unknown>,
+    ctx: unknown,
+    responses: readonly unknown[],
+  ): { readonly error?: unknown } {
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const gen = (step as any).call(this, ctx) as Generator<EngineYield, void, unknown>;
+    try {
+      let res = gen.next();
+      let idx = 0;
+      while (!res.done) {
+        const r = responses[idx];
+        idx += 1;
+        res = gen.next(r);
+      }
+      return {};
+    } catch (err) {
+      return { error: err };
+    }
+  }
+}
+
+describe("CastPipeline — IllegalDecisionError coverage (audit D-C2)", () => {
+  // stepPropose — 3 throw-sites: missing card, wrong zone, wrong seat.
+  it("stepPropose throws IllegalDecisionError when card not in Game.cards", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    // Use the protected step via any-cast for test-only direct access.
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepPropose.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: mkEntityId(999),
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, []);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  it("stepPropose throws IllegalDecisionError when card in wrong zone", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1000);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepPropose.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Graveyard, // claim wrong zone
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, []);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  it("stepPropose throws IllegalDecisionError when wrong seat casts from Hand", () => {
+    const { game, seat0, seat1 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1001);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepPropose.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat1, // not owner
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, []);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  // stepChooseFace — 1 throw-site: unknown face.
+  it("stepChooseFace throws IllegalDecisionError on unknown face id", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1100);
+    const splitPaper: PaperCard = {
+      ...samplePaper,
+      // biome-ignore lint/suspicious/noExplicitAny: test shim
+      faces: { L: {}, R: {} } as any,
+    } as PaperCard;
+    const card = new Card(cardId, splitPaper, seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseFace.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseFace", face: "bogus" }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  // stepChooseAltCosts — 1 throw-site: unknown alt-cost id.
+  it("stepChooseAltCosts throws IllegalDecisionError on unknown optional-cost id", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1200);
+    const paperWithOpts: PaperCard = {
+      ...samplePaper,
+      // biome-ignore lint/suspicious/noExplicitAny: test shim
+      optionalCosts: [{ id: "flashback", label: "Flashback" }] as any,
+    } as PaperCard;
+    const card = new Card(cardId, paperWithOpts, seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseAltCosts.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseOptionalCosts", chosenIds: ["bogus"] }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  // stepChooseModes — multiple throw-sites: count out-of-range, unknown mode id,
+  // duplicate mode id, invalid X.
+  const mkModalPaper = (): PaperCard =>
+    ({
+      ...samplePaper,
+      // biome-ignore lint/suspicious/noExplicitAny: test shim
+      modes: { min: 1, max: 2, options: [{ id: "a" }, { id: "b" }, { id: "c" }] } as any,
+    }) as PaperCard;
+
+  it("stepChooseModes throws IllegalDecisionError on count < min", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1300);
+    const card = new Card(cardId, mkModalPaper(), seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseModes.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseModes", modeIds: [] }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  it("stepChooseModes throws IllegalDecisionError on count > max", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1301);
+    const card = new Card(cardId, mkModalPaper(), seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseModes.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseModes", modeIds: ["a", "b", "c"] }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  it("stepChooseModes throws IllegalDecisionError on unknown mode id", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1302);
+    const card = new Card(cardId, mkModalPaper(), seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseModes.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseModes", modeIds: ["zzz"] }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  it("stepChooseModes throws IllegalDecisionError on duplicate mode id", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1303);
+    const card = new Card(cardId, mkModalPaper(), seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseModes.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseModes", modeIds: ["a", "a"] }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  // X announcement — negative / non-integer.
+  const mkXPaper = (): PaperCard =>
+    ({
+      ...samplePaper,
+      // biome-ignore lint/suspicious/noExplicitAny: test shim
+      hasX: true as any,
+    }) as PaperCard;
+
+  it("stepChooseModes throws IllegalDecisionError on negative X", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1400);
+    const card = new Card(cardId, mkXPaper(), seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseModes.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseNumber", chosen: -5 }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  it("stepChooseModes throws IllegalDecisionError on non-integer X", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1401);
+    const card = new Card(cardId, mkXPaper(), seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("no hand");
+    hand.add(cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepChooseModes.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+    };
+    const { error } = pipeline.driveStep(step, ctx, [{ kind: "chooseNumber", chosen: 2.5 }]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  // stepDistributeX — no amount available.
+  it("stepDistributeX throws IllegalDecisionError when no X announced and no fixed amount", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1500);
+    const paper: PaperCard = {
+      ...samplePaper,
+      // biome-ignore lint/suspicious/noExplicitAny: test shim
+      distributesX: true as any,
+    } as PaperCard;
+    const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepDistributeX.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+      xValue: undefined,
+    };
+    const { error } = pipeline.driveStep(step, ctx, []);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
+  });
+
+  // stepActivateManaAbilities — response.done !== true.
+  it("stepActivateManaAbilities throws IllegalDecisionError when response.done is not true", () => {
+    const { game, seat0 } = makeGame();
+    const pipeline = new UncaughtCastPipeline(game);
+    const cardId = mkEntityId(1600);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    // biome-ignore lint/suspicious/noExplicitAny: test shim
+    const step = (pipeline as any).stepActivateManaAbilities.bind(pipeline);
+    const ctx = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+      altCostUsed: null,
+      additionalCostsPaid: [],
+      modesChosen: [],
+      paidAlready: [],
+      totalCost: { base: { generic: 3 } },
+    };
+    const { error } = pipeline.driveStep(step, ctx, [
+      // biome-ignore lint/suspicious/noExplicitAny: test shim
+      { kind: "activateManaAbilities", done: false } as any,
+    ]);
+    expect(error).toBeInstanceOf(IllegalDecisionError);
   });
 });
