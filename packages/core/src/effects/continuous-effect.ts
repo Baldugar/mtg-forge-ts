@@ -1,35 +1,82 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// ContinuousEffect — SP2-populated shape placeholder. Master spec §2 lists
-// `continuousEffects: ContinuousEffect[]` as part of the Game state model.
-// SP1 reserves the interface so Game.continuousEffects and GameSnapshot can
-// carry the list through schema bumps without requiring another breaking
-// version bump once SP2 (CR 613 layer system) lands.
+// ContinuousEffect — time-limited layered effect (CR 611). Created when a
+// resolving spell or ability applies a continuous modification to game
+// state ("target creature gets +2/+0 until end of turn", "creatures you
+// control have flying until end of your next turn", emblems, etc.).
 //
-// SP1 stores whatever SP2 produces, round-trips through snapshot losslessly,
-// and exposes no behavior. SP2 fills in the discriminated `kind`, the
-// `payload` structure per-family, and adds the layer-application engine
-// that consumes these records.
+// SP2 Milestone H (Task 33) replaces SP1's opaque placeholder with the
+// fine-grained shape the ContinuousEffectRegistry + duration evaluator
+// consume. The payload remains an opaque `unknown` because the per-layer
+// effect shapes (Layer7cEffect, TypeChangeEffect, …) live in the game
+// package — keeping them out of core preserves the core→game layering.
 //
-// Why a bare interface with `unknown` payload? The layer system's effect
-// library is large (flavor-text, characteristic-setting, power/toughness
-// swap, …). Shipping a typed union now would lock SP2 into names and
-// shapes it should be free to discover. The `kind` string is opaque in
-// SP1; restore accepts any value and SP2's consumers narrow as needed.
-import type { EntityId } from "../ids.js";
+// Snapshot compat: Game.continuousEffects still exposes this type as the
+// array element (GameSnapshot.state.continuousEffects). The v5 schema
+// reserved the slot; swapping the record shape from {sourceId, layer:number,
+// sublayer, kind:string, payload} to {sourceCardId, layer:Layer enum,
+// timestamp, duration, payload} is an in-SP2 change observable on restore.
+// Milestone X will bump schemaVersion to 6 once the full SP2 write-path
+// lands; for SP2 Milestone H round-trip tests use the new shape directly.
+//
+// Field-by-field rationale:
+//   id — engine-assigned unique id so unregister() + dependency tracking
+//     can reference it.
+//   sourceCardId — permanent / emblem / spell that produced this effect.
+//     Null for engine-minted effects (start-of-game emblems, test fixtures).
+//   timestamp — creation ordinal used by the layer engine for same-layer
+//     ordering (CR 613.7a). Lowest first.
+//   layer — fine-grained Layer enum value (Layer.L7c_PTModify, Layer.L4_Type,
+//     …) routed by the registry into the matching LayerEngine array.
+//   duration — discriminated union consumed by duration-evaluator.ts (SP2
+//     Task 33) to decide expiry on each phase/turn/step/zone-change event.
+//   payload — layer-specific effect record (Layer7cEffect etc.); `unknown`
+//     in core because those shapes are game-package internals. The registry
+//     narrows per-kind at register time.
+import type { EntityId, PlayerSeat } from "../ids.js";
+import type { PhaseStep } from "../phase.js";
+import type { ConditionAst } from "./condition-ast.js";
+import type { Layer } from "./layer.js";
+
+export type EffectDuration =
+  // CR 514.3 — cleanup step of the current turn wipes these.
+  | { readonly kind: "untilEndOfTurn" }
+  // CR 611 — delayed "until end of your next turn" from planeswalker +1s
+  // etc. `forSeat` identifies whose next turn triggers expiry;
+  // `registeredAtTurn` lets the evaluator tell "forSeat's CURRENT turn's
+  // end" (no-op) from "forSeat's NEXT turn's end" (expire).
+  | {
+      readonly kind: "untilEndOfYourNextTurn";
+      readonly forSeat: PlayerSeat;
+      readonly registeredAtTurn: number;
+    }
+  // CR 611.2 — "until X leaves the battlefield" (Oblivion Ring-style).
+  | { readonly kind: "untilXLeavesBattlefield"; readonly xId: EntityId }
+  // CR 611.2 — state-dependent effects that persist as long as a condition
+  // holds. Re-checked on every epoch bump via registry.checkEpoch().
+  | { readonly kind: "asLongAs"; readonly condition: ConditionAst }
+  // Emblems + intrinsic statics minted as effects. Never expires.
+  | { readonly kind: "permanent" }
+  // CR 611 — "until end of combat". Expires on CombatEnded event.
+  | { readonly kind: "untilCombatEnds" }
+  // CR 611 — "until end of next [step]" (e.g., "until end of next upkeep").
+  // `step` identifies which step's PhaseStepEnded triggers expiry.
+  | { readonly kind: "untilEndOfNextStep"; readonly step: PhaseStep };
 
 export interface ContinuousEffect {
   /** Engine-assigned unique id so dependencies / removal can reference it. */
   readonly id: EntityId;
-  /** Source permanent / emblem generating the effect. */
-  readonly sourceId: EntityId;
-  /** CR 613 layer (1-7). SP2 validates the range; SP1 stores verbatim. */
-  readonly layer: number;
-  /** Sub-layer for Layer 6 dependency + Layer 7 a/b/c/d sub-ordering. */
-  readonly sublayer: number;
-  /** Creation-time ordinal for same-layer ordering (lowest first). */
+  /** Source permanent / emblem / spell generating the effect; null for
+   *  engine-minted effects (no card origin). */
+  readonly sourceCardId: EntityId | null;
+  /** Creation-time ordinal for same-layer ordering (CR 613.7a, lowest first). */
   readonly timestamp: number;
-  /** Effect family identifier populated by SP2 (e.g. "typeChange", "ptSwap"). */
-  readonly kind: string;
-  /** Family-specific parameters. SP2 defines the per-kind shapes. */
+  /** CR 613 layer (fine-grained enum, including Layer 7a-e sub-ordering). */
+  readonly layer: Layer;
+  /** Expiry policy — evaluated by duration-evaluator.ts on boundary events
+   *  and epoch bumps. */
+  readonly duration: EffectDuration;
+  /** Layer-specific payload (Layer7cEffect, TypeChangeEffect, …). The
+   *  registry narrows per-kind at register time; held as `unknown` here so
+   *  core stays independent of game-package effect shapes. */
   readonly payload: unknown;
 }

@@ -4,6 +4,7 @@ import {
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
   IncompatibleSnapshotVersionError,
+  Layer,
   PhaseStep,
   SeededRng,
   SnapshotRestoreError,
@@ -149,37 +150,40 @@ describe("GameSnapshot", () => {
     expect(g.continuousEffects).toEqual([]);
   });
 
-  it("continuousEffects round-trip: pre-seeded stub effects survive snapshot+restore", () => {
+  it("continuousEffects round-trip: pre-seeded effects survive snapshot+restore", () => {
     const g = makeGame();
-    // WHY: SP1 ships the type shape only; seed two stub effects with the
-    // minimum ContinuousEffect fields plus opaque kind/payload to prove the
-    // ledger round-trips losslessly. SP2 replaces the stubs with real
-    // CR 613 layer records.
+    // WHY: SP2 Milestone H promoted ContinuousEffect from an opaque
+    // placeholder to the {layer: Layer enum, duration, payload} shape the
+    // ContinuousEffectRegistry produces. Seed two representative effects
+    // (untilEndOfTurn PT modifier + permanent type-add) to prove the
+    // ledger still round-trips losslessly through JSON.
     g.continuousEffects.push({
       id: mkEntityId(500),
-      sourceId: mkEntityId(501),
-      layer: 7,
-      sublayer: 2,
+      sourceCardId: mkEntityId(501),
+      layer: Layer.L7c_PTModify,
       timestamp: 1,
-      kind: "pt-set",
-      payload: { power: 2, toughness: 2 },
+      duration: { kind: "untilEndOfTurn" },
+      payload: { kind: "pt-modify", effect: { power: 2, toughness: 2 } },
     });
     g.continuousEffects.push({
       id: mkEntityId(502),
-      sourceId: mkEntityId(503),
-      layer: 4,
-      sublayer: 0,
+      sourceCardId: mkEntityId(503),
+      layer: Layer.L4_Type,
       timestamp: 2,
-      kind: "type-add",
-      payload: { types: ["Creature"] },
+      duration: { kind: "permanent" },
+      payload: { kind: "type-add", types: ["Creature"] },
     });
     const snap = snapshot(g);
     const restored = restore(JSON.parse(JSON.stringify(snap)) as typeof snap, makeRestoreOpts());
     expect(restored.continuousEffects).toHaveLength(2);
-    expect(restored.continuousEffects[0]?.kind).toBe("pt-set");
-    expect(restored.continuousEffects[0]?.layer).toBe(7);
-    expect(restored.continuousEffects[1]?.kind).toBe("type-add");
-    expect(restored.continuousEffects[1]?.payload).toEqual({ types: ["Creature"] });
+    expect(restored.continuousEffects[0]?.layer).toBe(Layer.L7c_PTModify);
+    expect(restored.continuousEffects[0]?.duration.kind).toBe("untilEndOfTurn");
+    expect(restored.continuousEffects[1]?.layer).toBe(Layer.L4_Type);
+    expect(restored.continuousEffects[1]?.duration.kind).toBe("permanent");
+    expect(restored.continuousEffects[1]?.payload).toEqual({
+      kind: "type-add",
+      types: ["Creature"],
+    });
   });
 
   it("header captures engine/card-data/rules provenance from GameMeta + GameRules", () => {

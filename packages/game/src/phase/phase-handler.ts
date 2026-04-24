@@ -67,10 +67,10 @@ export class PhaseHandler {
 
   *runTurn(turn: Turn): Generator<EngineYield, void, DecisionResponse> {
     const game = this.game;
-    yield {
-      kind: "event",
-      event: mkEvent("TurnStarted", game.turn, game.phase, { activeSeat: turn.activePlayer }),
-    };
+    // SP2 Milestone H (Task 33) — route turn-boundary events through
+    // game.emitEvent so ContinuousEffectRegistry.onEvent sees them and
+    // can expire untilEndOfTurn / untilEndOfYourNextTurn effects.
+    yield game.emitEvent(mkEvent("TurnStarted", game.turn, game.phase, { activeSeat: turn.activePlayer }));
     const steps = this.phaseSequence.getSteps();
     for (const step of steps) {
       game.phase = step;
@@ -82,10 +82,7 @@ export class PhaseHandler {
     // TurnEnded after that produces a zombie event — subscribers that
     // finalize on GameEnded would observe a post-terminal turn boundary.
     if (game.isTerminal()) return;
-    yield {
-      kind: "event",
-      event: mkEvent("TurnEnded", game.turn, game.phase, { activeSeat: turn.activePlayer }),
-    };
+    yield game.emitEvent(mkEvent("TurnEnded", game.turn, game.phase, { activeSeat: turn.activePlayer }));
   }
 
   *runStep(step: PhaseStep): Generator<EngineYield, void, DecisionResponse> {

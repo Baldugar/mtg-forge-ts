@@ -25,6 +25,7 @@ import {
 import type { EngineYield } from "./action/engine-yield.js";
 import { GameAction } from "./action/game-action.js";
 import type { Card } from "./card.js";
+import { ContinuousEffectRegistry } from "./continuous/continuous-effect-registry.js";
 import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
 import type { GameMeta } from "./game-meta.js";
@@ -106,6 +107,7 @@ export class Game {
   readonly replacementRegistry: ReplacementRegistry;
   readonly triggerRegistry: TriggerRegistry;
   readonly staticEffectRegistry: StaticEffectRegistry;
+  readonly continuousEffectRegistry: ContinuousEffectRegistry;
   readonly sbaEngine: SbaEngine;
   readonly delayedTriggerQueue: DelayedTriggerQueue;
   readonly linkedAbilities: LinkedAbilityTable;
@@ -156,6 +158,11 @@ export class Game {
     // keeping ordering monotonic ("downstream registries last") makes
     // the construction order self-documenting.
     this.staticEffectRegistry = new StaticEffectRegistry(this);
+    // WHY after staticEffectRegistry: the continuous-effect registry (SP2
+    // Milestone H) shares the same layer-dispatch helper and does not
+    // depend on any static-registry state. Construction order is kept
+    // monotonic (downstream registries last) for discoverability.
+    this.continuousEffectRegistry = new ContinuousEffectRegistry(this);
     // WHY after staticEffectRegistry: SBA collectors may eventually query
     // static "you don't lose the game" or "indestructible" rule-changers
     // (future work); keeping construction monotonic puts consumers last.
@@ -231,6 +238,13 @@ export class Game {
       // under a well-formed event.
       this.triggerRegistry.onEvent(event);
       this.delayedTriggerQueue.onEvent(event, this.triggerRegistry);
+      // SP2 Milestone H (Task 33) — continuous-effect duration evaluator.
+      // Routed on the canonical event feed so TurnEnded / CombatEnded /
+      // PhaseStepEnded / CardChangedZone all get a chance to expire time-
+      // limited effects. Expirations queue into the registry's drain
+      // buffer; the priority orchestrator (Milestone J) yields one
+      // ContinuousEffectExpired event per drained entry.
+      this.continuousEffectRegistry.onEvent(event);
     }
     return { kind: "event", event };
   }
