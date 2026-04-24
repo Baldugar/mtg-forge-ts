@@ -2,3 +2,5 @@
 export * from "./validate-card.js";
 export * from "./mana-cost-validator.js";
 export * from "./zone-validator.js";
+export * from "./svar-selector-kinds.js";
+export * from "./svar-selector-validator.js";
