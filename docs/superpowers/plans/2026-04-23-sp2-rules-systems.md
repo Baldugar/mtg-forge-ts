@@ -2055,3 +2055,45 @@ The plan's X78 audit may surface additional deferrals per reviewer — record in
 **Execution:** `superpowers:subagent-driven-development` — fresh subagent per task + two-stage review, per user's standing "autonomous mode" directive. Ultrathink on every subagent; strict per-task review on logic-heavy tasks (Tasks 9, 17, 18, 19, 22, 26, 29, 32, 35–39, 40, 46–50, 55, 57, 67, 75). Mechanical similar-shape groups eligible for batched dispatch (per-layer tasks 3–8; per-SBA groups within tasks 30–32; per-keyword groups within 49–50; per-multi-face-kind 58–61; per-deferred-item 69–74).
 
 At milestone boundaries, the executor runs the full gate and **only advances** when all checks pass. Post-Task-78 audit mirrors SP1's 4-reviewer ultrathink pattern.
+
+---
+
+## SP2 implementation complete
+
+**Date landed:** 2026-04-23. **Branch:** `sp1-engine-foundations`. Final gate all green:
+
+- `pnpm -r typecheck` — pass (core + game)
+- `pnpm -r test` — 626 core + 1174 game = **1800 tests** passing, 0 skipped / todo
+- `pnpm -r build` — dist outputs generated for core + game
+- `pnpm biome check .` — clean (0 errors, 0 unused-suppression warnings)
+
+### Milestone X (Tasks 75-78) summary
+
+- Task 75: GameSnapshot v6 — SP2-scoped rules-subsystem state (triggers, replacements, continuous effects, ledgers) survive the snapshot round-trip.
+- Task 76: full-combat-scenario integration — FS + trample + deathtouch damage pipeline end-to-end.
+- Task 77: stack+replacements+triggers integration — prevention replacement consumed, cast trigger drew a card, second bolt lands.
+- Task 78: property tests (SBA termination, layer idempotency, stack LIFO, replacement one-apply) + remediation of 5 audit findings from Tasks 76-77:
+  1. `GameAction.damage` now deducts `Player.life` on player-target damage and emits a companion `LifeChanged` event.
+  2. CR 702.2b deathtouch: any nonzero damage from a deathtouch source tags the target (`Card.damagedByDeathtouch`) so the SBA creature-removal collector destroys it even when damage < toughness. Flag clears on leave-battlefield.
+  3. `CastPipeline.run` emits the canonical `SpellCast` event via `game.emitEvent` after `finalizeStackItem` so cast triggers fire.
+  4. `runPriorityWindow` now copies a `resolver` (duck-typed off the source `TriggeredAbility`) onto pushed triggered stack items so Task 67's resolver can drive the body; also carries `event` onto the StackItem for resolve-time intervening-if re-check.
+  5. `resolveStackItem` pops the resolved slot itself (id-based `popStackItemById` helper); callers no longer need manual `stack.pop()` calls.
+
+### Deferred to SP3+
+
+Items intentionally out of SP2 scope and carried forward:
+
+- **Mana cost solver + CostPart runtime** (`canPay` / `pay` / `undo`) — CastPipeline step 8-10 still stub receipts; SP3's `ManaCostSolver` lands the real resolution.
+- **Full ability DSL + ~423 concrete ability handlers** — SP3's primary scope. SP2 hand-stamped resolvers on triggers in tests; real cards cannot yet cast through the pipeline end-to-end until the DSL lands.
+- **Keyword registry** — SP2 uses `Card.keywords: Set<string>` ad-hoc for deathtouch / first-strike / trample. SP3 replaces with layered keyword grants sourced off Characteristics (also unblocks indestructible short-circuit in creature-removal SBA).
+- **Card.definition-driven characteristics derivation** — SP2 uses `DEFAULT_PAPER_CARD_FLAGS` + hand-populated layer effects in tests; SP4's CardDb hydration drives real P/T / types / mana cost off PaperCard.definition.
+- **GameCopier for AI simulation** — SP5.
+- **Format-specific rules** — SP6.
+- **Sideboard / mulligan variants** — SP7.
+- **4-reviewer final SP2 audit** — the X78 plan calls for a dedicated reviewer pass (backend correctness / Forge parity / spec gaps / test quality). Intentionally deferred to a fresh session with clean context so reviewers can exercise full scrutiny. Track as first task of SP3 kickoff.
+
+Minor known-deviation notes carried over:
+
+- Combat damage to creatures and life-change-to-player are currently fused in `GameAction.damage` via an inline branch; SP3's replacement-based prevention + combat-damage-assignment pipeline will split these back out.
+- SBA sweep on `Card.damagedByDeathtouch` does not yet consult indestructible (explicit TODO in creature-removal.ts awaiting the SP3 keyword registry).
+- Priority orchestration advances only the active player per window; non-active-seat rotation between pushes lands in the SP3 driver loop (Milestone S continuation).
