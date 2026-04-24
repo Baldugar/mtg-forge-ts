@@ -120,11 +120,11 @@ const makeRestoreOpts = (rng = new SeededRng(1n)) => ({
 // === Tests ========================================================
 
 describe("GameSnapshot", () => {
-  it("header.schemaVersion is pinned to 5 (SP1 post-audit round 3: reserve continuousEffects)", () => {
+  it("header.schemaVersion is pinned to 6 (SP2 Milestone X: rules-subsystem state)", () => {
     const g = makeGame();
     const snap = snapshot(g);
     expect(snap.header.schemaVersion).toBe(SNAPSHOT_SCHEMA_VERSION);
-    expect(snap.header.schemaVersion).toBe(5);
+    expect(snap.header.schemaVersion).toBe(6);
   });
 
   it("reserved state slots combat + cardRemembered + continuousEffects are present with SP1 sentinels", () => {

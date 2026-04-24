@@ -97,7 +97,11 @@ describe("Card.remembered + Card.imprinted snapshot round-trip (Task 74)", () =>
     expect(rCard?.imprinted).toEqual([mkEntityId(300)]);
   });
 
-  it("legacy v5 snapshots without remembered/imprinted restore with empty lists", () => {
+  it("v6 snapshots always carry remembered/imprinted as required fields (post-Task 75)", () => {
+    // v6 (Task 75) promoted remembered + imprinted from optional to required
+    // on SerializedCard. The v5 "tolerate missing fields" compatibility path
+    // no longer applies: legacy v5 snapshots are rejected wholesale at the
+    // schemaVersion check in restore(), not piecewise per-field.
     const game = mkGame();
     const seat = mkPlayerSeat(0);
     const id = mkEntityId(100);
@@ -105,21 +109,11 @@ describe("Card.remembered + Card.imprinted snapshot round-trip (Task 74)", () =>
     game.cards.set(id, card);
     game.getPlayer(seat).zones.get(ZoneType.Battlefield)?.add(id);
     const snap = snapshot(game);
-    // Strip the new fields from the snapshot to simulate a legacy payload.
-    const stripped = JSON.parse(JSON.stringify(snap)) as typeof snap;
-    for (const c of stripped.state.cards) {
-      (c as { remembered?: unknown }).remembered = undefined;
-      (c as { imprinted?: unknown }).imprinted = undefined;
+    // A fresh card with no stashed references still has remembered/imprinted
+    // present on the wire (empty arrays, not undefined).
+    for (const c of snap.state.cards) {
+      expect(c.remembered).toEqual([]);
+      expect(c.imprinted).toEqual([]);
     }
-    const paperMap = new Map([[`${paper.edition}:${paper.collectorNumber}:${paper.language}`, paper]]);
-    const restored = restore(stripped, {
-      lobbyPlayers: [alice, bob],
-      rng: new SeededRng(1n),
-      paperCards: paperMap,
-      rules,
-    });
-    const rCard = restored.cards.get(id);
-    expect(rCard?.remembered).toEqual([]);
-    expect(rCard?.imprinted).toEqual([]);
   });
 });

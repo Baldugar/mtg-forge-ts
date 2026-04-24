@@ -138,6 +138,20 @@ export class TriggerRegistry {
     return [...this.pending];
   }
 
+  /**
+   * Snapshot-restore hook (SP2 Milestone X, Task 75). Re-installs a pending
+   * entry captured by an earlier snapshot without re-running matches /
+   * suppression / interveningIf / captureLki. Every field is carried
+   * verbatim because the snapshot already witnessed the matching pass.
+   *
+   * Must not be called from live gameplay — bypassing the matching pipeline
+   * would let arbitrary PendingTrigger entries enter the queue without
+   * source validation. The snapshot module is the only expected caller.
+   */
+  pushRestoredPending(pt: PendingTrigger): void {
+    this.pending.push(pt);
+  }
+
   getTrigger(id: EntityId): TriggeredAbility | undefined {
     return this.byId.get(id);
   }

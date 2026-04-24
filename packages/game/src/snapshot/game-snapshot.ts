@@ -13,8 +13,8 @@
 // exposing. Keeping snapshot logic here also isolates the schemaVersion
 // contract so a bump doesn't pollute Game's API.
 //
-// schemaVersion: 5 (SP1 post-audit, round 3). Bump on breaking format
-// changes (master-spec §11).
+// schemaVersion: 6 (SP2 Milestone X — rules-subsystem state captured).
+// Bump on breaking format changes (master-spec §11).
 //
 // Migration notes:
 //   schemaVersion 2: library/deck-like zones now emit top-first (index 0 =
@@ -32,22 +32,72 @@
 //   schemaVersion 5: reserve continuousEffects list (CR 613 layer system) so
 //     SP2 can populate without another bump. SP1 emits an empty list;
 //     restore copies whatever is present.
+//   schemaVersion 6 (SP2 Milestone X Task 75): rules-subsystem state
+//     captured. The SP1-reserved optional fields (Card.remembered /
+//     imprinted, GameFlags.countersAddedThisTurn / leftBattlefieldThisTurn /
+//     topLibsCast) are promoted to REQUIRED. Card gains serialization for
+//     face, mutatedPile/mutatedInto/isAugment/meldedFrom, isToken/isEmblem,
+//     sagaFinalChapterResolved/bestowed/isCommander, keywords (Set→array),
+//     copiedFrom (structured CopiableCharacteristics), faceDown (tagged
+//     union). Game gains ringState (Map), teamLife (Map|null),
+//     pendingControlReverts, companions (Map), controlChangeLedger entries,
+//     layer-engine effect arrays (textSubstitutions, typeEffects,
+//     colorEffects, abilityEffects, pt7a-7e), and the pending-trigger queue.
+//     v5 → v6 is NOT auto-migrated — restore() throws
+//     IncompatibleSnapshotVersionError on v5 input. Fresh snapshots on v6
+//     only.
+//
+// === DEFERRED (SP3 AbilityRegistry scope) ================================
+// The following state is NOT serialized because it holds LIVE ability
+// objects with function-valued methods (matches / apply / describe /
+// captureLki / interveningIf / resolver.resolve) that are not JSON-safe:
+//   - ReplacementRegistry entries (ReplacementAbility.matches + apply)
+//   - TriggerRegistry entries (TriggeredAbility.matches + captureLki +
+//     interveningIf). The pending PendingTrigger queue IS serialized
+//     (plain JSON-safe records); only the live matchers are skipped.
+//   - StaticEffectRegistry entries (StaticAbility.describe + supports)
+//   - DelayedTriggerQueue entries (DelayedTrigger.matches)
+//   - Suppression filters (cost-mod / static-gated predicates)
+//   - StackItem.resolver (resolver.resolve is a generator function)
+//   - Card.intrinsicStatics (StaticAbility.describe)
+//   - ConditionAst evaluators inside asLongAs durations (evaluated lazily
+//     via condition-ast.ts, but held by reference in ContinuousEffect
+//     payloads for certain effect families)
+//
+// This is Option A from the task brief: SP2 snapshots capture game state at
+// priority windows — mid-resolution states (with live generators on stack
+// items) are NOT supported for round-trip. SP3 (or later) will land Option
+// B: a real AbilityRegistry that maps ability id → live object, so snapshot
+// serializes only ids + metadata and rehydrate goes through registry lookup.
+//
+// The serializable Layer 6 abilityEffects array IS captured verbatim — it
+// holds only EntityId + timestamp metadata, no function refs — so Ring
+// grants / aura grants recomputed via RingGrantLedger.applyFor /
+// AuraAbilityGrantLedger.onAttach stay live after restore (callers rebuild
+// those ledgers from ringState + card attachments + intrinsicStatics).
 
 import type {
+  CardType,
   ContinuousEffect,
   CounterType,
+  EffectDuration,
   EntityId,
   FaceDownState,
+  GameEvent,
+  LastKnownInfo,
   LobbyPlayer,
   PaperCard,
   PhaseStep,
   PlayerSeat,
   Rng,
   SerializedRngState,
+  Supertype,
   ZoneType,
 } from "@mtg-forge-ts/core";
 import {
+  ColorSet,
   IncompatibleSnapshotVersionError,
+  ManaCost,
   SnapshotRestoreError,
   UnknownCardError,
   ZoneType as ZoneTypeEnum,
@@ -62,6 +112,19 @@ import type { GameFlags } from "../game-flags.js";
 import { createDefaultFlags } from "../game-flags.js";
 import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
+import type { TextSubstitution } from "../layers/layer3-text.js";
+import type { TypeChangeEffect } from "../layers/layer4-type.js";
+import type { ColorChangeEffect } from "../layers/layer5-color.js";
+import type { AbilityChangeEffect } from "../layers/layer6-ability.js";
+import type {
+  Layer7aEffect,
+  Layer7bEffect,
+  Layer7cEffect,
+  Layer7dEffect,
+  Layer7eEffect,
+} from "../layers/layer7-pt.js";
+import type { FaceKind } from "../multiface/face-kind.js";
+import type { RingState } from "../ring/ring-state.js";
 import type { StackItem } from "../stack/stack-item.js";
 import type { TerminalState } from "../terminal-state.js";
 import type { Zone } from "../zone/zone.js";
@@ -74,15 +137,276 @@ import { Hand } from "../zone/zones/hand.js";
 import { Library } from "../zone/zones/library.js";
 
 /**
- * SP1 snapshot format version. Breaking format changes (field rename, shape
- * removed, Map key flipped) MUST bump this so restore() can reject or migrate
+ * Snapshot format version. v6 is the SP2-end shape; see the migration-notes
+ * block above for the v1→v6 history. Breaking format changes (field rename,
+ * shape removed, Map key flipped) MUST bump this so restore() can reject
  * old blobs rather than silently mis-deserialize.
  */
-export const SNAPSHOT_SCHEMA_VERSION = 5 as const;
+export const SNAPSHOT_SCHEMA_VERSION = 6 as const;
+
+// === CopiableCharacteristics serialization ===========================
 
 /**
- * Serialized Card record. Deliberately parallels Card.toJSON plus a few fields
- * Card.toJSON omits (copiedFrom, faceDown) — snapshot must preserve every live
+ * Wire shape for CopiableCharacteristics. ManaCost / ColorSet use their own
+ * toJSON / fromJSON pairs; Sets flatten to sorted arrays (sorted so two
+ * equivalent sets always serialize identically — important for deep-equal
+ * round-trip tests).
+ */
+export interface SerializedCopiableCharacteristics {
+  readonly name: string;
+  readonly manaCost: ReturnType<ManaCost["toJSON"]>;
+  readonly colorIndicator: number | null;
+  readonly supertypes: readonly string[];
+  readonly types: readonly string[];
+  readonly subtypes: readonly string[];
+  readonly colors: number;
+  readonly rulesText: string;
+  readonly power: number | null;
+  readonly toughness: number | null;
+  readonly loyalty: number | null;
+  readonly defense: number | null;
+}
+
+const serializeCopiable = (cc: CopiableCharacteristics): SerializedCopiableCharacteristics => ({
+  name: cc.name,
+  manaCost: cc.manaCost.toJSON(),
+  colorIndicator: cc.colorIndicator === null ? null : cc.colorIndicator.toJSON(),
+  supertypes: [...cc.supertypes].sort(),
+  types: [...cc.types].sort(),
+  subtypes: [...cc.subtypes].sort(),
+  colors: cc.colors.toJSON(),
+  rulesText: cc.rulesText,
+  power: cc.power,
+  toughness: cc.toughness,
+  loyalty: cc.loyalty,
+  defense: cc.defense,
+});
+
+const deserializeCopiable = (s: SerializedCopiableCharacteristics): CopiableCharacteristics => ({
+  name: s.name,
+  manaCost: ManaCost.fromJSON(s.manaCost),
+  colorIndicator: s.colorIndicator === null ? null : ColorSet.fromJSON(s.colorIndicator),
+  // WHY: cast Set<string> to the branded Supertype / CardType unions. The
+  // strings came from a live CopiableCharacteristics round-trip, so their
+  // values are guaranteed to be valid enum members — the cast restores the
+  // static branding without revalidating at runtime.
+  supertypes: new Set(s.supertypes as readonly Supertype[]),
+  types: new Set(s.types as readonly CardType[]),
+  subtypes: new Set(s.subtypes),
+  colors: ColorSet.fromJSON(s.colors),
+  rulesText: s.rulesText,
+  power: s.power,
+  toughness: s.toughness,
+  loyalty: s.loyalty,
+  defense: s.defense,
+});
+
+// === FaceDownState serialization =====================================
+
+/**
+ * FaceDownState wire shape. Only the `morph` kind carries a non-JSON-safe
+ * ManaCost; the rest are plain value records. We funnel morph's cost
+ * through ManaCost.toJSON / fromJSON to keep it structural.
+ */
+export type SerializedFaceDownState =
+  | { readonly kind: "none" }
+  | { readonly kind: "morph"; readonly cost: ReturnType<ManaCost["toJSON"]> }
+  | { readonly kind: "manifest" }
+  | { readonly kind: "foretell"; readonly castableFrom: "exile" }
+  | { readonly kind: "disguise"; readonly wardAmount: number }
+  | { readonly kind: "cloak" };
+
+const serializeFaceDown = (f: FaceDownState): SerializedFaceDownState => {
+  switch (f.kind) {
+    case "none":
+      return { kind: "none" };
+    case "morph":
+      return { kind: "morph", cost: f.cost.toJSON() };
+    case "manifest":
+      return { kind: "manifest" };
+    case "foretell":
+      return { kind: "foretell", castableFrom: f.castableFrom };
+    case "disguise":
+      return { kind: "disguise", wardAmount: f.wardAmount };
+    case "cloak":
+      return { kind: "cloak" };
+    default: {
+      const _: never = f;
+      throw new Error(`serializeFaceDown: unreachable ${JSON.stringify(_)}`);
+    }
+  }
+};
+
+const deserializeFaceDown = (s: SerializedFaceDownState): FaceDownState => {
+  switch (s.kind) {
+    case "none":
+      return { kind: "none" };
+    case "morph":
+      return { kind: "morph", cost: ManaCost.fromJSON(s.cost) };
+    case "manifest":
+      return { kind: "manifest" };
+    case "foretell":
+      return { kind: "foretell", castableFrom: s.castableFrom };
+    case "disguise":
+      return { kind: "disguise", wardAmount: s.wardAmount };
+    case "cloak":
+      return { kind: "cloak" };
+    default: {
+      const _: never = s;
+      throw new Error(`deserializeFaceDown: unreachable ${JSON.stringify(_)}`);
+    }
+  }
+};
+
+// === Layer effect serialization ======================================
+
+/**
+ * LayerEngine effect arrays are JSON-safe except for Layer 4's "becomes"
+ * kind (ReadonlySet<CardType>) and Layer 5's ColorSet instances. Both
+ * convert via dedicated helpers.
+ */
+export type SerializedTypeChangeEffect =
+  | {
+      readonly kind: "add";
+      readonly cardType: string;
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
+    }
+  | {
+      readonly kind: "remove";
+      readonly cardType: string;
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
+    }
+  | {
+      readonly kind: "becomes";
+      readonly types: readonly string[];
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
+    };
+
+const serializeTypeEffect = (e: TypeChangeEffect): SerializedTypeChangeEffect => {
+  switch (e.kind) {
+    case "add":
+      return {
+        kind: "add",
+        cardType: e.cardType,
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    case "remove":
+      return {
+        kind: "remove",
+        cardType: e.cardType,
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    case "becomes":
+      return {
+        kind: "becomes",
+        types: [...e.types].sort(),
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    default: {
+      const _: never = e;
+      throw new Error(`serializeTypeEffect: unreachable ${JSON.stringify(_)}`);
+    }
+  }
+};
+
+const deserializeTypeEffect = (s: SerializedTypeChangeEffect): TypeChangeEffect => {
+  switch (s.kind) {
+    case "add":
+      return {
+        kind: "add",
+        cardType: s.cardType as CardType,
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    case "remove":
+      return {
+        kind: "remove",
+        cardType: s.cardType as CardType,
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    case "becomes":
+      return {
+        kind: "becomes",
+        types: new Set(s.types as readonly CardType[]),
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    default: {
+      const _: never = s;
+      throw new Error(`deserializeTypeEffect: unreachable ${JSON.stringify(_)}`);
+    }
+  }
+};
+
+export interface SerializedColorChangeEffect {
+  readonly kind: "set" | "add" | "remove";
+  readonly colors: number;
+  readonly isCda: boolean;
+  readonly timestamp: number;
+  readonly sourceAbilityId: EntityId | null;
+}
+
+const serializeColorEffect = (e: ColorChangeEffect): SerializedColorChangeEffect => ({
+  kind: e.kind,
+  colors: e.colors.toJSON(),
+  isCda: e.isCda,
+  timestamp: e.timestamp,
+  sourceAbilityId: e.sourceAbilityId,
+});
+
+const deserializeColorEffect = (s: SerializedColorChangeEffect): ColorChangeEffect => ({
+  kind: s.kind,
+  colors: ColorSet.fromJSON(s.colors),
+  isCda: s.isCda,
+  timestamp: s.timestamp,
+  sourceAbilityId: s.sourceAbilityId,
+});
+
+/**
+ * LayerEngine state — the per-sublayer effect arrays. Serialized losslessly
+ * (Layer 3 / 6 / 7a-e are pure data; 4 / 5 use the helpers above).
+ */
+export interface SerializedLayerEngineState {
+  readonly textSubstitutions: readonly TextSubstitution[];
+  readonly typeEffects: readonly SerializedTypeChangeEffect[];
+  readonly colorEffects: readonly SerializedColorChangeEffect[];
+  readonly abilityEffects: readonly AbilityChangeEffect[];
+  readonly pt7a: readonly Layer7aEffect[];
+  readonly pt7b: readonly Layer7bEffect[];
+  readonly pt7c: readonly Layer7cEffect[];
+  readonly pt7d: readonly Layer7dEffect[];
+  readonly pt7e: readonly Layer7eEffect[];
+}
+
+// === ControlChangeLedger serialization ===============================
+
+export interface SerializedControlChangeEntry {
+  readonly cardId: EntityId;
+  readonly priorController: PlayerSeat;
+  readonly duration: EffectDuration;
+  readonly registeredAtTurn: number;
+}
+
+/**
+ * Serialized Card record. Deliberately parallels Card.toJSON plus every
+ * field Card.toJSON omits (copiedFrom, faceDown, face, mutate pile, token /
+ * emblem flags, SBA flags, keywords) — snapshot must preserve every live
  * field while Card.toJSON can stay a lightweight log preview.
  */
 export interface SerializedCard {
@@ -97,16 +421,31 @@ export interface SerializedCard {
   readonly counters: Record<string, number>;
   readonly attachedTo: EntityId | null;
   readonly attachments: readonly EntityId[];
-  // WHY: copiedFrom + faceDown are SP2-typed (`unknown`) but snapshot must
-  // carry whatever the engine stored so restore is lossless.
-  readonly copiedFrom: unknown;
-  readonly faceDown: unknown;
-  // SP2 Milestone W Task 74 — remembered / imprinted EntityId lists.
-  // Optional on the serialized record so v5 snapshots written before this
-  // task restore cleanly with empty lists. v6 (Task 75) bumps schemaVersion
-  // and makes these required.
-  readonly remembered?: readonly EntityId[];
-  readonly imprinted?: readonly EntityId[];
+  // SP2 Task 3 — Layer 1 copy source. Null when not copying.
+  readonly copiedFrom: SerializedCopiableCharacteristics | null;
+  // SP2 Task 53 — CR 708 face-down state. Always a valid FaceDownState
+  // (`{ kind: "none" }` for face-up); never null.
+  readonly faceDown: SerializedFaceDownState;
+  // SP2 Milestone W Task 74 — v6 promotes these to required (were
+  // optional in v5 for compat).
+  readonly remembered: readonly EntityId[];
+  readonly imprinted: readonly EntityId[];
+  // SP2 Milestone Q — active face selector. "default" for single-face.
+  readonly face: FaceKind;
+  // SP2 Task 31 — token / emblem identity flags (SBA-consulted).
+  readonly isToken: boolean;
+  readonly isEmblem: boolean;
+  // SP2 Task 32 — SBA support flags.
+  readonly sagaFinalChapterResolved: boolean;
+  readonly bestowed: boolean;
+  readonly isCommander: boolean;
+  // SP2 Tasks 46-48 — keyword set (undefined → empty array wire-side).
+  readonly keywords: readonly string[];
+  // SP2 Task 61 — mutate + host/augment + meld state.
+  readonly mutatedPile: readonly EntityId[] | null;
+  readonly mutatedInto: EntityId | null;
+  readonly isAugment: boolean;
+  readonly meldedFrom: readonly EntityId[] | null;
 }
 
 /**
@@ -135,6 +474,8 @@ export interface SerializedPlayer {
 /**
  * GameFlags persisted shape. Maps/Sets serialize to arrays-of-entries so the
  * blob is JSON-stringifiable (JSON.stringify of a Map emits `{}`, losing data).
+ * v6 promotes countersAddedThisTurn / leftBattlefieldThisTurn / topLibsCast
+ * to REQUIRED (they were optional in v5 for back-compat during Milestone W).
  */
 export interface SerializedGameFlags {
   readonly dayNight: "day" | "night" | "neither";
@@ -161,14 +502,94 @@ export interface SerializedGameFlags {
   readonly seatEliminated: readonly (readonly [PlayerSeat, boolean])[];
   readonly stickers: readonly unknown[];
   readonly attractions: readonly (readonly [PlayerSeat, unknown])[];
-  // SP2 Milestone W Task 74 — per-turn tracking. v5 schema was already in
-  // flight when these landed; SP2 emits them as optional extensions so
-  // older v5 snapshots without the keys restore cleanly (both reset each
-  // turn anyway, so empty is the natural starting value).
-  readonly countersAddedThisTurn?: readonly (readonly [EntityId, number])[];
-  readonly leftBattlefieldThisTurn?: readonly EntityId[];
-  readonly topLibsCast?: readonly EntityId[];
+  // v6: required (were optional in v5). Empty-array / empty-pair value is
+  // valid and means "nothing tracked this turn yet".
+  readonly countersAddedThisTurn: readonly (readonly [EntityId, number])[];
+  readonly leftBattlefieldThisTurn: readonly EntityId[];
+  readonly topLibsCast: readonly EntityId[];
 }
+
+/**
+ * PendingTrigger serialization. Mirrors the in-memory shape exactly —
+ * every field is JSON-safe (GameEvent + LastKnownInfo are plain records,
+ * no function refs).
+ */
+export interface SerializedPendingTrigger {
+  readonly id: EntityId;
+  readonly triggerId: EntityId;
+  readonly sourceCardId: EntityId;
+  readonly event: GameEvent;
+  readonly lki: LastKnownInfo | null;
+  readonly sourceControllerAtFire: PlayerSeat;
+  readonly firedAtTurn: number;
+  readonly firedAtPhase: PhaseStep;
+}
+
+/**
+ * StackItem wire shape. The `resolver` slot is DROPPED on serialize (it's
+ * a live generator fn — see DEFERRED block at top of file); restore sets
+ * it to `null`. `event` + `triggerId` + `lki` are JSON-safe and round-
+ * trip verbatim.
+ */
+export interface SerializedStackItem {
+  readonly id: EntityId;
+  readonly sourceCardId: EntityId;
+  readonly controllerSeat: PlayerSeat;
+  readonly kind: "spell" | "activatedAbility" | "triggeredAbility" | "copy";
+  readonly isCast: boolean;
+  readonly targets: unknown;
+  readonly modes: readonly unknown[];
+  readonly xValue: number | null;
+  readonly costPaid: unknown;
+  readonly provenance: StackItem["provenance"];
+  readonly triggerId?: EntityId;
+  readonly lki?: LastKnownInfo | null;
+  readonly event?: GameEvent;
+  // resolver is DEFERRED — never serialized.
+}
+
+const serializeStackItem = (item: StackItem): SerializedStackItem => {
+  const base: SerializedStackItem = {
+    id: item.id,
+    sourceCardId: item.sourceCardId,
+    controllerSeat: item.controllerSeat,
+    kind: item.kind,
+    isCast: item.isCast,
+    targets: item.targets,
+    modes: [...item.modes],
+    xValue: item.xValue,
+    costPaid: item.costPaid,
+    provenance: item.provenance,
+  };
+  // Only attach optional slots when present — keeps the wire shape
+  // compact and preserves pre-SP2 test expectations that round-trip
+  // a trigger-less stack item produces the SAME object.
+  const out: SerializedStackItem = {
+    ...base,
+    ...(item.triggerId !== undefined ? { triggerId: item.triggerId } : {}),
+    ...(item.lki !== undefined ? { lki: item.lki } : {}),
+    ...(item.event !== undefined ? { event: item.event } : {}),
+  };
+  return out;
+};
+
+const deserializeStackItem = (s: SerializedStackItem): StackItem => ({
+  id: s.id,
+  sourceCardId: s.sourceCardId,
+  controllerSeat: s.controllerSeat,
+  kind: s.kind,
+  isCast: s.isCast,
+  targets: s.targets,
+  modes: [...s.modes],
+  xValue: s.xValue,
+  costPaid: s.costPaid,
+  provenance: s.provenance,
+  // resolver intentionally omitted — DEFERRED (mid-resolution snapshot is
+  // out of scope; see top-of-file block).
+  ...(s.triggerId !== undefined ? { triggerId: s.triggerId } : {}),
+  ...(s.lki !== undefined ? { lki: s.lki } : {}),
+  ...(s.event !== undefined ? { event: s.event } : {}),
+});
 
 /**
  * Engine + card-data provenance + save-time metadata. `forgeSha`,
@@ -191,12 +612,6 @@ export interface GameSnapshotHeader {
 /**
  * Top-level snapshot shape. Split into `header` (provenance / metadata, cheap
  * to inspect without rehydrating) + `state` (engine state, expensive to walk).
- *
- * `combat` and `cardRemembered` are reserved slots (schemaVersion 4): SP2
- * wires CombatHandler.snapshot()/restore() into `combat`, and "imprint /
- * remember" effects persist their lists in `cardRemembered` keyed by
- * entityId. SP1 emits `combat: null, cardRemembered: {}` so SP2 can fill
- * without bumping the schema again.
  */
 export interface GameSnapshot {
   readonly header: GameSnapshotHeader;
@@ -213,7 +628,7 @@ export interface GameSnapshot {
     readonly players: readonly SerializedPlayer[];
     readonly cards: readonly SerializedCard[];
     readonly sharedZones: {
-      readonly stack: { readonly items: readonly StackItem[] };
+      readonly stack: { readonly items: readonly SerializedStackItem[] };
       readonly exile: SerializedZone;
       readonly ante: SerializedZone;
     };
@@ -222,24 +637,45 @@ export interface GameSnapshot {
     readonly entityIdCounter: number;
     readonly terminalState: TerminalState | null;
     /**
-     * Reserved for SP2 CombatHandler.snapshot(). SP1 emits `null`; restore
-     * is a no-op when null. Shape frozen at `unknown` (SP2 replaces with a
-     * typed CombatSnapshot without a further schemaVersion bump because
-     * the slot already exists).
+     * Reserved for SP2 CombatHandler.snapshot(). SP2 scope does not yet
+     * pickle combat state across priority windows (CombatHandler is minted
+     * on each combat run from Game state, so "restore returns at the same
+     * combat state" requires re-running from DeclareAttackers).
      */
     readonly combat: unknown;
     /**
-     * Reserved for SP2 "imprint / remember" effects. Keyed by EntityId.
-     * SP1 emits `{}`; restore is a no-op when empty.
+     * Reserved pre-v6 slot; kept in the wire shape for back-compat of
+     * consumer tooling that peeked at it. Always `{}` on v6 — remember /
+     * imprinted state lives on each SerializedCard.
      */
     readonly cardRemembered: Readonly<Record<number, readonly unknown[]>>;
     /**
-     * CR 613 layer-system effect ledger (schemaVersion 5). SP1 emits an
-     * empty list; SP2 populates and persists the layer engine's state here.
-     * Shape is `ContinuousEffect[]` — `payload: unknown` is JSON-safe so
-     * SP2's per-family payloads round-trip without snapshot code changes.
+     * CR 613 layer-system continuous-effect ledger. Populated by the
+     * continuous-effect registry; the payload field on each entry is a
+     * discriminated union (ContinuousPayload) that is JSON-safe.
      */
     readonly continuousEffects: readonly ContinuousEffect[];
+    // === v6 additions ====================================================
+    /** CR 701.52 per-player Ring state. Sparse — untempted seats omitted. */
+    readonly ringState: readonly (readonly [PlayerSeat, RingState])[];
+    /** CR 810 Two-Headed Giant shared life pool, or null when not 2HG. */
+    readonly teamLife: readonly (readonly [number, number])[] | null;
+    /** Task 45 — cards with control reverts queued for the next priority sweep. */
+    readonly pendingControlReverts: readonly EntityId[];
+    /** Task 72 — CR 702.139 companion declarations per seat. */
+    readonly companions: readonly (readonly [PlayerSeat, EntityId | null])[];
+    /** Task 45 — time-bounded control-change ledger entries. */
+    readonly controlChangeLedger: readonly SerializedControlChangeEntry[];
+    /** LayerEngine per-sublayer effect arrays. */
+    readonly layerEngine: SerializedLayerEngineState;
+    /** TriggerRegistry's pending-queue snapshot (fired, not yet drained). */
+    readonly pendingTriggers: readonly SerializedPendingTrigger[];
+    /**
+     * DelayedTriggerQueue size — a simple telemetry slot. Full delayed
+     * triggers require SP3 AbilityRegistry (DelayedTrigger.matches is a
+     * live function).
+     */
+    readonly delayedTriggerCount: number;
   };
 }
 
@@ -303,18 +739,10 @@ const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
   for (const [seat, b] of s.seatEliminated) f.seatEliminated.set(seat, b);
   f.stickers = [...s.stickers];
   for (const [seat, a] of s.attractions) f.attractions.set(seat, a);
-  // Task 74 — optional on v5 for backward compatibility; v6 makes them
-  // required. Missing field => empty map/set (engine resets at turn end
-  // anyway, so empty is a valid starting state).
-  if (s.countersAddedThisTurn !== undefined) {
-    for (const [id, n] of s.countersAddedThisTurn) f.countersAddedThisTurn.set(id, n);
-  }
-  if (s.leftBattlefieldThisTurn !== undefined) {
-    for (const id of s.leftBattlefieldThisTurn) f.leftBattlefieldThisTurn.add(id);
-  }
-  if (s.topLibsCast !== undefined) {
-    for (const id of s.topLibsCast) f.topLibsCast.add(id);
-  }
+  // v6: required.
+  for (const [id, n] of s.countersAddedThisTurn) f.countersAddedThisTurn.set(id, n);
+  for (const id of s.leftBattlefieldThisTurn) f.leftBattlefieldThisTurn.add(id);
+  for (const id of s.topLibsCast) f.topLibsCast.add(id);
   return f;
 };
 
@@ -332,10 +760,21 @@ const cardToSnapshot = (c: Card): SerializedCard => ({
   counters: Object.fromEntries(c.counters),
   attachedTo: c.attachedTo,
   attachments: [...c.attachments],
-  copiedFrom: c.copiedFrom,
-  faceDown: c.faceDown,
+  copiedFrom: c.copiedFrom === null ? null : serializeCopiable(c.copiedFrom),
+  faceDown: serializeFaceDown(c.faceDown),
   remembered: [...c.remembered],
   imprinted: [...c.imprinted],
+  face: c.face,
+  isToken: c.isToken,
+  isEmblem: c.isEmblem,
+  sagaFinalChapterResolved: c.sagaFinalChapterResolved,
+  bestowed: c.bestowed,
+  isCommander: c.isCommander,
+  keywords: c.keywords === undefined ? [] : [...c.keywords].sort(),
+  mutatedPile: c.mutatedPile === undefined ? null : [...c.mutatedPile],
+  mutatedInto: c.mutatedInto === undefined ? null : c.mutatedInto,
+  isAugment: c.isAugment === true,
+  meldedFrom: c.meldedFrom === undefined ? null : [...c.meldedFrom],
 });
 
 // === Zone snapshot helpers =========================================
@@ -373,6 +812,75 @@ const makeZone = (type: ZoneType, ownerSeat: PlayerSeat | null): Zone => {
   }
 };
 
+// === LayerEngine state serialization ===============================
+
+const layerEngineToJSON = (game: Game): SerializedLayerEngineState => ({
+  // Text substitutions are pure data (from/to strings + timestamps).
+  textSubstitutions: [...game.layerEngine.textSubstitutions],
+  typeEffects: game.layerEngine.typeEffects.map(serializeTypeEffect),
+  colorEffects: game.layerEngine.colorEffects.map(serializeColorEffect),
+  // AbilityChangeEffect is already pure data (EntityIds + discriminated kinds).
+  abilityEffects: [...game.layerEngine.abilityEffects],
+  pt7a: [...game.layerEngine.pt7a],
+  pt7b: [...game.layerEngine.pt7b],
+  pt7c: [...game.layerEngine.pt7c],
+  pt7d: [...game.layerEngine.pt7d],
+  pt7e: [...game.layerEngine.pt7e],
+});
+
+const restoreLayerEngine = (game: Game, s: SerializedLayerEngineState): void => {
+  // WHY push-then-splice not assign: the LayerEngine's arrays are
+  // `readonly` fields (mutable contents, immutable binding). We mutate in
+  // place, clearing first, to preserve the field reference.
+  game.layerEngine.textSubstitutions.length = 0;
+  for (const e of s.textSubstitutions) game.layerEngine.textSubstitutions.push(e);
+  game.layerEngine.typeEffects.length = 0;
+  for (const e of s.typeEffects) game.layerEngine.typeEffects.push(deserializeTypeEffect(e));
+  game.layerEngine.colorEffects.length = 0;
+  for (const e of s.colorEffects) game.layerEngine.colorEffects.push(deserializeColorEffect(e));
+  game.layerEngine.abilityEffects.length = 0;
+  for (const e of s.abilityEffects) game.layerEngine.abilityEffects.push(e);
+  game.layerEngine.pt7a.length = 0;
+  for (const e of s.pt7a) game.layerEngine.pt7a.push(e);
+  game.layerEngine.pt7b.length = 0;
+  for (const e of s.pt7b) game.layerEngine.pt7b.push(e);
+  game.layerEngine.pt7c.length = 0;
+  for (const e of s.pt7c) game.layerEngine.pt7c.push(e);
+  game.layerEngine.pt7d.length = 0;
+  for (const e of s.pt7d) game.layerEngine.pt7d.push(e);
+  game.layerEngine.pt7e.length = 0;
+  for (const e of s.pt7e) game.layerEngine.pt7e.push(e);
+  // Every layer-engine state change invalidates the cached characteristics;
+  // bump so computeCharacteristics re-derives from the restored arrays.
+  game.layerEngine.bumpEpoch("snapshot-restore");
+};
+
+// === ControlChangeLedger serialization =============================
+
+const controlChangeLedgerToJSON = (game: Game): readonly SerializedControlChangeEntry[] => {
+  const out: SerializedControlChangeEntry[] = [];
+  // ControlChangeLedger exposes only `get(cardId)` publicly. We iterate
+  // Game.cards and consult the ledger — since entries are keyed by cardId,
+  // this captures every recorded entry without a private-field peek.
+  for (const cardId of game.cards.keys()) {
+    const entry = game.controlChangeLedger.get(cardId);
+    if (!entry) continue;
+    out.push({
+      cardId,
+      priorController: entry.priorController,
+      duration: entry.duration,
+      registeredAtTurn: entry.registeredAtTurn,
+    });
+  }
+  return out;
+};
+
+const restoreControlChangeLedger = (game: Game, entries: readonly SerializedControlChangeEntry[]): void => {
+  for (const e of entries) {
+    game.controlChangeLedger.record(e.cardId, e.priorController, e.duration, e.registeredAtTurn);
+  }
+};
+
 // === Top-level snapshot ============================================
 
 /**
@@ -393,6 +901,13 @@ const DEFAULT_SAVED_AT = "1970-01-01T00:00:00.000Z";
  * Walk the live Game and produce a JSON-stringifiable GameSnapshot. The
  * returned object contains only plain values — no class instances, no bigint,
  * no Map/Set — so `JSON.stringify(snapshot(game))` never throws.
+ *
+ * DEFERRED state (see top-of-file block): live ability objects
+ * (ReplacementRegistry / TriggerRegistry / StaticEffectRegistry entries,
+ * DelayedTriggerQueue entries, StackItem.resolver, Card.intrinsicStatics)
+ * are NOT captured. SP2 snapshots are intended for priority-window
+ * serialization, not mid-resolution state. SP3's AbilityRegistry will
+ * unlock full fidelity.
  */
 export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot => {
   const players: SerializedPlayer[] = game.players.map((p) => ({
@@ -405,6 +920,17 @@ export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot =
   }));
 
   const cards: SerializedCard[] = [...game.cards.values()].map(cardToSnapshot);
+
+  const pendingTriggers: SerializedPendingTrigger[] = game.triggerRegistry.peekPending().map((pt) => ({
+    id: pt.id,
+    triggerId: pt.triggerId,
+    sourceCardId: pt.sourceCardId,
+    event: pt.event,
+    lki: pt.lki,
+    sourceControllerAtFire: pt.sourceControllerAtFire,
+    firedAtTurn: pt.firedAtTurn,
+    firedAtPhase: pt.firedAtPhase,
+  }));
 
   return {
     header: {
@@ -428,7 +954,7 @@ export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot =
       players,
       cards,
       sharedZones: {
-        stack: { items: [...game.sharedZones.stack.toArray()] },
+        stack: { items: [...game.sharedZones.stack.toArray()].map(serializeStackItem) },
         exile: zoneToSnapshot(game.sharedZones.exile),
         ante: zoneToSnapshot(game.sharedZones.ante),
       },
@@ -436,15 +962,28 @@ export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot =
       rngState: serializeRngState(game.rng.getState()),
       entityIdCounter: computeNextEntityId(game),
       terminalState: game.terminalState,
-      // WHY: reserved slots filled by SP2. Null/empty in SP1 means "no
-      // state to restore"; schema is stable so SP2 fill doesn't bump
-      // schemaVersion again.
+      // v6: combat stays reserved (CombatHandler is minted per combat run,
+      // no cross-priority-window state to persist).
       combat: null,
+      // v6: cardRemembered slot is fully replaced by per-card remembered
+      // arrays. Kept as {} for back-compat of tooling that peeked here.
       cardRemembered: {},
-      // WHY: shallow-clone the list so later mutation of game.continuousEffects
+      // Shallow-clone the list so later mutation of game.continuousEffects
       // does not leak into the emitted snapshot. Payload values are plain
       // JSON per ContinuousEffect doc; shallow copy is sufficient.
       continuousEffects: [...game.continuousEffects],
+      // === v6 additions ===
+      ringState: [...game.ringState.entries()].map(([seat, state]) => [seat, state] as const),
+      teamLife:
+        game.teamLife === null
+          ? null
+          : [...game.teamLife.entries()].map(([teamId, life]) => [teamId, life] as const),
+      pendingControlReverts: [...game.pendingControlReverts],
+      companions: [...game.companions.entries()].map(([seat, cardIdOrNull]) => [seat, cardIdOrNull] as const),
+      controlChangeLedger: controlChangeLedgerToJSON(game),
+      layerEngine: layerEngineToJSON(game),
+      pendingTriggers,
+      delayedTriggerCount: game.delayedTriggerQueue.size(),
     },
   };
 };
@@ -490,15 +1029,22 @@ export interface RestoreOptions {
  * Game produces the same output as the next call on the original would have).
  *
  * Fails loudly on:
- *   - schemaVersion mismatch (future breaking changes)
+ *   - schemaVersion mismatch (v5 is NOT auto-migrated; see migration block
+ *     at top-of-file)
  *   - LobbyPlayer id not in opts.lobbyPlayers
  *   - paperCardKey not in opts.paperCards
  *   - snapshot's engine meta missing / malformed
  */
 export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   if (snap.header.schemaVersion !== SNAPSHOT_SCHEMA_VERSION) {
+    // WHY not auto-migrate: v5 → v6 adds many required fields (Card.face,
+    // mutate pile, keywords, Ring state, control-change ledger entries)
+    // that have no safe default for arbitrary game positions. Loading a
+    // v5 blob into a v6 engine would silently lose state. The CLI /
+    // replay tooling can run a purpose-built migrator when needed; the
+    // runtime stays strict.
     throw new IncompatibleSnapshotVersionError(
-      `GameSnapshot.restore: schema version ${snap.header.schemaVersion} incompatible with engine (${SNAPSHOT_SCHEMA_VERSION})`,
+      `GameSnapshot.restore: schema version ${snap.header.schemaVersion} incompatible with engine (${SNAPSHOT_SCHEMA_VERSION}); v5 → v6 auto-migration is not supported`,
     );
   }
 
@@ -586,20 +1132,25 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     }
     card.attachedTo = sc.attachedTo;
     card.attachments = [...sc.attachments];
-    // SP2 Task 3: Card.copiedFrom is now CopiableCharacteristics | null, but
-    // snapshot's SerializedCard keeps `unknown` until Task 55 lands structural
-    // (de)serialization for CopiableCharacteristics (sets, ColorSet, ManaCost).
-    // Until then, live snapshots only hold null, so a narrowing cast is safe.
-    card.copiedFrom = sc.copiedFrom as CopiableCharacteristics | null;
-    // SP2 Task 53: Card.faceDown is now FaceDownState, but snapshot's
-    // SerializedCard still types it as `unknown` so pre-Task-53 snapshots
-    // (which wrote `null`) can round-trip. Coerce null → FACE_UP; trust
-    // anything else as a well-formed FaceDownState.
-    card.faceDown = (sc.faceDown ?? { kind: "none" }) as FaceDownState;
-    // Task 74 — remembered + imprinted are optional in v5 (future-proof
-    // slot introduced mid-schema). Missing => empty list.
-    if (sc.remembered !== undefined) card.remembered = [...sc.remembered];
-    if (sc.imprinted !== undefined) card.imprinted = [...sc.imprinted];
+    card.copiedFrom = sc.copiedFrom === null ? null : deserializeCopiable(sc.copiedFrom);
+    card.faceDown = deserializeFaceDown(sc.faceDown);
+    card.remembered = [...sc.remembered];
+    card.imprinted = [...sc.imprinted];
+    card.face = sc.face;
+    card.isToken = sc.isToken;
+    card.isEmblem = sc.isEmblem;
+    card.sagaFinalChapterResolved = sc.sagaFinalChapterResolved;
+    card.bestowed = sc.bestowed;
+    card.isCommander = sc.isCommander;
+    // keywords: empty array on wire → leave undefined on live card to keep
+    // the common-case zero-alloc behavior documented in card.ts.
+    if (sc.keywords.length > 0) card.keywords = new Set(sc.keywords);
+    // mutate / host+augment / meld — wire form uses `null` sentinels.
+    // intrinsicStatics is DEFERRED — SP3's CardDb integration reattaches.
+    if (sc.mutatedPile !== null) card.mutatedPile = [...sc.mutatedPile];
+    if (sc.mutatedInto !== null) card.mutatedInto = sc.mutatedInto;
+    if (sc.isAugment) card.isAugment = true;
+    if (sc.meldedFrom !== null) card.meldedFrom = [...sc.meldedFrom];
     game.cards.set(sc.id, card);
   }
 
@@ -619,7 +1170,7 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   // Stack doesn't expose a clear(); since restore always runs on a freshly
   // constructed Game the stack is already empty.
   for (const item of snap.state.sharedZones.stack.items) {
-    game.sharedZones.stack.push(item);
+    game.sharedZones.stack.push(deserializeStackItem(item));
   }
 
   // Flags (Maps/Sets rehydrated via flagsFromJSON — we overwrite via Object
@@ -634,12 +1185,51 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   // don't collide with ids baked into the restored card registry.
   game.restoreEntityIdCounter(snap.state.entityIdCounter);
 
-  // schemaVersion 5: restore ContinuousEffect ledger. Pre-v5 snapshots have
-  // no such field (undefined after parse); treat as empty so legacy bodies
-  // still resolve — in-memory we always have Game.continuousEffects = [].
-  if (snap.state.continuousEffects !== undefined) {
-    game.continuousEffects = [...snap.state.continuousEffects];
+  // Continuous-effect ledger — shallow-copy the list back onto the Game.
+  game.continuousEffects = [...snap.state.continuousEffects];
+
+  // === v6 additions ===
+  // ringState: sparse per-seat Ring state.
+  for (const [seat, state] of snap.state.ringState) {
+    game.ringState.set(seat, state);
   }
+  // teamLife: the Game constructor only mints this for 2HG; reconcile the
+  // snapshot state back onto the field directly.
+  if (snap.state.teamLife === null) {
+    game.teamLife = null;
+  } else {
+    const pool = new Map<number, number>();
+    for (const [teamId, life] of snap.state.teamLife) pool.set(teamId, life);
+    game.teamLife = pool;
+  }
+  for (const id of snap.state.pendingControlReverts) {
+    game.pendingControlReverts.push(id);
+  }
+  for (const [seat, companionIdOrNull] of snap.state.companions) {
+    game.companions.set(seat, companionIdOrNull);
+  }
+  restoreControlChangeLedger(game, snap.state.controlChangeLedger);
+  restoreLayerEngine(game, snap.state.layerEngine);
+  // Pending triggers are re-pushed via the registry's delayed-trigger
+  // forcing path — it re-captures the same PendingTrigger shape without
+  // re-running matches().
+  for (const pt of snap.state.pendingTriggers) {
+    game.triggerRegistry.pushRestoredPending({
+      id: pt.id,
+      triggerId: pt.triggerId,
+      sourceCardId: pt.sourceCardId,
+      event: pt.event,
+      lki: pt.lki,
+      sourceControllerAtFire: pt.sourceControllerAtFire,
+      firedAtTurn: pt.firedAtTurn,
+      firedAtPhase: pt.firedAtPhase,
+    });
+  }
+  // delayedTriggerCount is informational-only on restore — the queue is
+  // DEFERRED (DelayedTrigger.matches is a live fn). A future consistency
+  // check could assert game.delayedTriggerQueue.size() === snap.state
+  // .delayedTriggerCount once SP3 lands full rehydration; today the
+  // restored queue is empty.
 
   return game;
 };
