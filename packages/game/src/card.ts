@@ -55,6 +55,14 @@ export class Card {
   sagaFinalChapterResolved = false;
   bestowed = false;
   isCommander = false;
+  // SP2 Tasks 46-48 (combat damage, first-strike split) — placeholder keyword
+  // set used by CombatHandler to gate trample, deathtouch, first_strike,
+  // double_strike behaviors from tests. Populated ad-hoc in Milestone M tests
+  // via `card.keywords = new Set(["trample"])`. SP3's keyword registry (CR
+  // 702) replaces this with layered keyword grants sourced from PaperCard
+  // definition + Layer 6 ability additions. Kept optional (undefined) so the
+  // common case allocates no Set; readers must tolerate undefined.
+  keywords?: Set<string> = undefined;
 
   constructor(
     readonly id: EntityId,
