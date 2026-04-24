@@ -191,7 +191,7 @@ describe("CombatHandler.dealDamage (SP2 Task 46)", () => {
     expect(damageEvents(yields)).toHaveLength(0);
   });
 
-  it("blocked 3/3 attacker with one 2/2 blocker — default assigns 3 to blocker", () => {
+  it("blocked 3/3 attacker with one 2/2 blocker — default assigns lethal=2 (overage discarded per CR 702.17c)", () => {
     const fx = mkFixture();
     const attacker = mkEntityId(1);
     const blocker = mkEntityId(10);
@@ -207,12 +207,12 @@ describe("CombatHandler.dealDamage (SP2 Task 46)", () => {
 
     const yields = drain(fx.handler.dealDamage(false));
     const dmg = damageEvents(yields);
-    // Attacker deals 3 to blocker; blocker deals 2 to attacker.
+    // Audit I-4 — non-trample overage is discarded, not dumped on blocker.
     const attackerDeals = dmg.filter((d) => d.sourceId === attacker);
     expect(attackerDeals).toHaveLength(1);
     expect(attackerDeals[0]?.targetKind).toBe("creature");
     expect(attackerDeals[0]?.targetId).toBe(blocker);
-    expect(attackerDeals[0]?.amount).toBe(3);
+    expect(attackerDeals[0]?.amount).toBe(2);
   });
 
   it("blocker deals its power back to the first attacker it blocks", () => {

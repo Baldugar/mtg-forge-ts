@@ -87,10 +87,13 @@ const defenderKeyFor = (d: DefenderTarget): string => {
 
 /**
  * Validate a proposed assignment. Returns true iff:
- *   1. sum(amounts) === power (all damage is assigned);
- *   2. every amount is a non-negative integer;
- *   3. without trample, no damage may be assigned to the defender;
- *   4. for each blocker index i, cumulative damage to blockers[0..i] is
+ *   1. every amount is a non-negative integer;
+ *   2. sum(amounts) <= power (no phantom damage);
+ *   3. with trample, sum(amounts) MUST equal power (excess goes to defender);
+ *      without trample, sum(amounts) MAY be less than power — the overage
+ *      after all blockers have lethal is simply discarded (CR 702.17c);
+ *   4. without trample, no damage may be assigned to the defender;
+ *   5. for each blocker index i, cumulative damage to blockers[0..i] is
  *      at least min(cumulative-lethal[0..i], power).
  *
  * When `power <= 0` the only valid assignment is the empty one.
@@ -112,12 +115,15 @@ export const validateAssignment = (
     byTarget.set(key, (byTarget.get(key) ?? 0) + a.amount);
     totalAssigned += a.amount;
   }
-  if (totalAssigned !== power) return false;
+  if (totalAssigned > power) return false;
 
   const trample = hasKeyword(game, attackerId, "trample");
   const defKey = defenderKeyFor(defender);
   const defenderAmount = byTarget.get(defKey) ?? 0;
   if (!trample && defenderAmount > 0) return false;
+  // With trample, the excess after lethal must spill to the defender —
+  // so the total MUST equal power.
+  if (trample && totalAssigned !== power) return false;
 
   let cumAssignedToBlockers = 0;
   let cumLethal = 0;
@@ -139,9 +145,13 @@ export const validateAssignment = (
 
 /**
  * Produce a legal assignment: minimum lethal to each blocker in order,
- * then overage to defender (with trample) or onto the last blocker
- * (without). Dumping excess on the last blocker after lethal has been
- * satisfied to all preceding blockers is always legal per CR 702.17c.
+ * then overage to defender (with trample) or discarded (without trample,
+ * CR 702.17c / 702.19b).
+ *
+ * The prior implementation dumped non-trample overage on the last blocker;
+ * the CR doesn't require or permit that — a non-trample attacker's damage
+ * beyond the minimum lethal to every blocker is simply not assigned.
+ * Audit I-4.
  */
 export const defaultAssignment = (
   game: Game,
@@ -160,26 +170,10 @@ export const defaultAssignment = (
     out.push({ targetKind: "creature", targetId: blockerId, amount: assign });
     remaining -= assign;
   }
-  if (remaining > 0) {
-    if (hasKeyword(game, attackerId, "trample")) {
-      out.push(defenderAssignment(defender, remaining));
-    } else {
-      // Non-trample overage: dump onto the last blocker. Validator accepts
-      // this — the lethal-before-spill rule is already satisfied and the
-      // total assigned to blockers equals power (no defender spill).
-      const lastIdx = out.length - 1;
-      if (lastIdx >= 0) {
-        const last = out[lastIdx];
-        if (last !== undefined) {
-          out[lastIdx] = { ...last, amount: last.amount + remaining };
-        }
-      }
-      // If there were no blockers at all, `out` is empty — the caller
-      // (CombatHandler.dealDamage) handles the unblocked path separately
-      // and never invokes defaultAssignment in that branch, so this case
-      // is unreachable in production paths.
-    }
+  if (remaining > 0 && hasKeyword(game, attackerId, "trample")) {
+    out.push(defenderAssignment(defender, remaining));
   }
+  // Non-trample: overage is discarded. No-op.
   return out;
 };
 

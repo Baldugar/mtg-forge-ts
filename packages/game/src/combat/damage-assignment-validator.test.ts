@@ -159,7 +159,7 @@ describe("defaultAssignment (CR 702.17c + 702.19 + 702.2)", () => {
     expect(defaultAssignment(fx.game, attacker, [], 0, playerDefender(mkPlayerSeat(1)))).toEqual([]);
   });
 
-  it("3/3 attacker vs 2/2 blocker (no trample) → {b: 3}", () => {
+  it("3/3 attacker vs 2/2 blocker (no trample) → {b: 2} (overage discarded per CR 702.17c)", () => {
     const fx = mkFixture();
     const attacker = mkEntityId(1);
     const blocker = mkEntityId(10);
@@ -167,8 +167,9 @@ describe("defaultAssignment (CR 702.17c + 702.19 + 702.2)", () => {
     fx.addCard(mkPlayerSeat(1), blocker);
     fx.setStats(blocker, 2, 2);
     const got = defaultAssignment(fx.game, attacker, [blocker], 3, playerDefender(mkPlayerSeat(1)));
-    // lethal=2 to blocker; overage=1 dumped on last blocker → {b, 3}.
-    expect(got).toEqual([{ targetKind: "creature", targetId: blocker, amount: 3 }]);
+    // lethal=2 to blocker; remaining 1 is NOT dumped on last blocker per
+    // audit I-4 — it's discarded.
+    expect(got).toEqual([{ targetKind: "creature", targetId: blocker, amount: 2 }]);
   });
 
   it("3/3 trampler vs 2/2 blocker → {b: 2, player: 1}", () => {
@@ -210,7 +211,10 @@ describe("defaultAssignment (CR 702.17c + 702.19 + 702.2)", () => {
     expect(got).toEqual([{ targetKind: "creature", targetId: blocker, amount: 1 }]);
   });
 
-  it("5/5 attacker vs 1/1 + 2/2 blockers no trample → {b1: 1, b2: 4}", () => {
+  // Audit I-4 — non-trample overage is discarded per CR 702.17c (was
+  // previously dumped on the last blocker, which is not required or
+  // permitted by the CR).
+  it("5/5 attacker vs 1/1 + 2/2 blockers no trample → {b1: 1, b2: 2} (overage discarded)", () => {
     const fx = mkFixture();
     const attacker = mkEntityId(1);
     const b1 = mkEntityId(10);
@@ -221,11 +225,24 @@ describe("defaultAssignment (CR 702.17c + 702.19 + 702.2)", () => {
     fx.setStats(b1, 1, 1);
     fx.setStats(b2, 2, 2);
     const got = defaultAssignment(fx.game, attacker, [b1, b2], 5, playerDefender(mkPlayerSeat(1)));
-    // lethal: 1+2=3. Remaining 2 dumped on last blocker.
+    // lethal: 1+2=3. Remaining 2 is discarded (no trample, no dump-on-last).
     expect(got).toEqual([
       { targetKind: "creature", targetId: b1, amount: 1 },
-      { targetKind: "creature", targetId: b2, amount: 4 },
+      { targetKind: "creature", targetId: b2, amount: 2 },
     ]);
+  });
+
+  // Audit I-4 regression — 5/5 non-trample vs single 1/1 blocker yields
+  // {b1: 1}; the other 4 power is discarded per CR 702.17c.
+  it("5/5 non-trample vs 1/1 single blocker → {b1: 1}, overage of 4 discarded", () => {
+    const fx = mkFixture();
+    const attacker = mkEntityId(1);
+    const blocker = mkEntityId(10);
+    fx.addCard(mkPlayerSeat(0), attacker);
+    fx.addCard(mkPlayerSeat(1), blocker);
+    fx.setStats(blocker, 1, 1);
+    const got = defaultAssignment(fx.game, attacker, [blocker], 5, playerDefender(mkPlayerSeat(1)));
+    expect(got).toEqual([{ targetKind: "creature", targetId: blocker, amount: 1 }]);
   });
 
   it("5/5 trampler vs 1/1 + 2/2 blockers → {b1: 1, b2: 2, player: 2}", () => {
@@ -353,9 +370,28 @@ describe("validateAssignment (CR 702.17c + 702.19 + 702.2)", () => {
     );
   });
 
-  it("sum != power → illegal", () => {
+  it("sum > power → illegal (phantom damage)", () => {
     const fx = mkFx();
-    const proposed: CombatDamageAssignment[] = [{ targetKind: "creature", targetId: b1, amount: 3 }];
+    const proposed: CombatDamageAssignment[] = [{ targetKind: "creature", targetId: b1, amount: 6 }];
+    expect(validateAssignment(fx.game, attacker, [b1], 5, playerDefender(defenderSeat), proposed)).toBe(
+      false,
+    );
+  });
+
+  // Audit I-4 — sum < power is now legal for non-trample: the overage
+  // after lethal-to-each-blocker is discarded per CR 702.17c.
+  it("non-trample sum < power with all blockers lethally assigned → legal (overage discarded)", () => {
+    const fx = mkFx();
+    // 5/5 attacker vs single 1/1: assigning {b1: 1} is legal, overage=4 discarded.
+    const proposed: CombatDamageAssignment[] = [{ targetKind: "creature", targetId: b1, amount: 1 }];
+    expect(validateAssignment(fx.game, attacker, [b1], 5, playerDefender(defenderSeat), proposed)).toBe(true);
+  });
+
+  it("trample sum < power → illegal (trample must spill remainder to defender)", () => {
+    const fx = mkFx();
+    fx.addKeyword(attacker, "trample");
+    // 5/5 trampler vs 1/1: lethal=1 assigned, remaining 4 MUST go to defender.
+    const proposed: CombatDamageAssignment[] = [{ targetKind: "creature", targetId: b1, amount: 1 }];
     expect(validateAssignment(fx.game, attacker, [b1], 5, playerDefender(defenderSeat), proposed)).toBe(
       false,
     );

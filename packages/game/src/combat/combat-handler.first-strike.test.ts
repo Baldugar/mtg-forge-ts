@@ -245,7 +245,7 @@ describe("CombatHandler first-strike split (SP2 Task 48)", () => {
     expect(attackerDealt[0]?.targetId).toBe(blocker);
   });
 
-  it("DS attacker vs 2/2 regular blocker: DS deals 2+2=4 total across both steps", () => {
+  it("DS attacker vs 2/2 regular blocker: both steps fire; second step assigns minimum lethal (overage discarded, CR 702.17c)", () => {
     const fx = mkFixture();
     const attacker = mkEntityId(1);
     const blocker = mkEntityId(10);
@@ -264,9 +264,12 @@ describe("CombatHandler first-strike split (SP2 Task 48)", () => {
     const dmg = damageEvents(yields);
     const attackerDealt = dmg.filter((d) => d.sourceId === attacker);
     // DS attacker deals in FS step AND regular step — 2 events.
+    // Audit I-4 — FS step assigns 2 (lethal). After that the blocker has
+    // 2 damage marked, so minimum lethal in the regular step is
+    // max(1, 2 - 2) = 1; the remaining 1 power is discarded per CR 702.17c.
     expect(attackerDealt).toHaveLength(2);
     expect(attackerDealt[0]?.amount).toBe(2);
-    expect(attackerDealt[1]?.amount).toBe(2);
+    expect(attackerDealt[1]?.amount).toBe(1);
   });
 
   it("FS attacker + DS blocker both participate in FS step", () => {
