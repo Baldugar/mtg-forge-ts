@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import { Color, ColorSet, emptyCharacteristics } from "@mtg-forge-ts/core";
+import { Color, ColorSet, emptyCharacteristics, mkEntityId } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { applyLayer5Color } from "./layer5-color.js";
 
@@ -58,5 +58,35 @@ describe("Layer 5 — Color-changing effects (CR 613.1e + CR 604.3)", () => {
       { kind: "remove", colors: ColorSet.of(Color.Red), isCda: false, timestamp: 2, sourceAbilityId: null },
     ]);
     expect(c.colors.equals(ColorSet.empty())).toBe(true);
+  });
+
+  // Audit A-002 regression — CR 613.8 dependency ordering. A ("set Red")
+  // depends on B ("add Blue"). By timestamp alone, A (ts=1) would apply
+  // before B (ts=2), ending with {Red, Blue}. With dependsOn honored, B
+  // applies first (add Blue to empty), then A ("set Red") overwrites —
+  // final: {Red} only.
+  it("respects dependsOn over timestamp (CR 613.8)", () => {
+    const c = emptyCharacteristics();
+    const aId = mkEntityId(100);
+    const bId = mkEntityId(200);
+    applyLayer5Color(c, [
+      {
+        kind: "set",
+        colors: ColorSet.of(Color.Red),
+        isCda: false,
+        timestamp: 1,
+        sourceAbilityId: aId,
+        dependsOn: [String(bId)],
+      },
+      {
+        kind: "add",
+        colors: ColorSet.of(Color.Blue),
+        isCda: false,
+        timestamp: 2,
+        sourceAbilityId: bId,
+      },
+    ]);
+    expect(c.colors.equals(ColorSet.of(Color.Red))).toBe(true);
+    expect(c.colors.has(Color.Blue)).toBe(false);
   });
 });

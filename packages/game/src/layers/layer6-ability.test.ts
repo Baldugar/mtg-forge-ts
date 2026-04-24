@@ -57,4 +57,32 @@ describe("Layer 6 — Ability add/remove (CR 613.1f)", () => {
     applyLayer6Ability(c, null, []);
     expect(c.abilities).toHaveLength(1);
   });
+
+  // Audit A-002 regression — CR 613.8 dependency ordering.
+  // A: loseAll (timestamp 2), depends on B.
+  // B: add ability X (timestamp 1).
+  // With pure timestamp: B runs first (add X), then A runs (loseAll → empty).
+  // With dependsOn honored: B MUST run before A anyway (already the case),
+  // so use the inverted scenario: A has timestamp 1, B has timestamp 2.
+  // Without the resolver: A loseAll runs first (wipes nothing), B adds X → X remains.
+  // With the resolver: A depends on B, so B runs first (adds X), then A
+  // runs (loseAll → removes X). Final: no abilities.
+  it("respects dependsOn over timestamp (CR 613.8)", () => {
+    const c = emptyCharacteristics();
+    const bGrantedBy = mkEntityId(200);
+    const bAbility = mkEntityId(201);
+    applyLayer6Ability(c, null, [
+      // A: loseAll ts=1 — depends on B's add running first.
+      { kind: "loseAll", timestamp: 1, dependsOn: [`add:${bGrantedBy}:${bAbility}`] },
+      // B: add ts=2.
+      {
+        kind: "add",
+        abilityId: bAbility,
+        grantedBy: bGrantedBy,
+        origin: "layer6",
+        timestamp: 2,
+      },
+    ]);
+    expect(c.abilities).toHaveLength(0);
+  });
 });

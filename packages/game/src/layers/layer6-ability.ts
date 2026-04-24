@@ -24,6 +24,7 @@
 // Forge reference: StaticAbilityContinuous (addAbility / removeAbility /
 // loseAllAbilities branches).
 import type { ActiveAbilityRef, Characteristics, EntityId } from "@mtg-forge-ts/core";
+import { type DepNode, resolveDependencyOrder } from "./dependency-resolver.js";
 
 export type AbilityChangeEffect =
   | {
@@ -33,17 +34,20 @@ export type AbilityChangeEffect =
       readonly origin: ActiveAbilityRef["origin"];
       readonly timestamp: number;
       readonly targetCardId?: EntityId;
+      readonly dependsOn?: readonly string[];
     }
   | {
       readonly kind: "removeAll";
       readonly grantedBy: EntityId;
       readonly timestamp: number;
       readonly targetCardId?: EntityId;
+      readonly dependsOn?: readonly string[];
     }
   | {
       readonly kind: "loseAll";
       readonly timestamp: number;
       readonly targetCardId?: EntityId;
+      readonly dependsOn?: readonly string[];
     };
 
 /**
@@ -55,13 +59,41 @@ export type AbilityChangeEffect =
  * second argument is optional to preserve the pre-Task-43 call site
  * in tests that compose with the applier directly without a Game.
  */
+// Layer 6 has no CDA partition (CR 604.3 doesn't carve out layer 6). The
+// dependency resolver runs across all scoped effects, with timestamp
+// fall-through for effects without explicit dependsOn.
+const layer6NodeId = (e: AbilityChangeEffect, idx: number): string => {
+  switch (e.kind) {
+    case "add":
+      // Adds share grantedBy across the same source ability; we disambiguate
+      // by appending abilityId so each granted ref is a distinct node.
+      return `add:${e.grantedBy}:${e.abilityId}`;
+    case "removeAll":
+      return `removeAll:${e.grantedBy}:${idx}`;
+    case "loseAll":
+      return `loseAll:${idx}`;
+    default: {
+      const _: never = e;
+      throw new Error(`layer6NodeId: unreachable ${JSON.stringify(_)}`);
+    }
+  }
+};
+
 export const applyLayer6Ability = (
   target: Characteristics,
   targetCardId: EntityId | null,
   effects: readonly AbilityChangeEffect[],
 ): void => {
   const scoped = effects.filter((e) => e.targetCardId === undefined || e.targetCardId === targetCardId);
-  const ordered = [...scoped].sort((a, b) => a.timestamp - b.timestamp);
+  const nodes: DepNode<AbilityChangeEffect>[] = scoped.map((e, i) => ({
+    id: layer6NodeId(e, i),
+    timestamp: e.timestamp,
+    dependsOn: e.dependsOn ?? [],
+    raw: e,
+  }));
+  const ordered: AbilityChangeEffect[] = resolveDependencyOrder(nodes).map(
+    (n) => n.raw as AbilityChangeEffect,
+  );
   for (const e of ordered) {
     switch (e.kind) {
       case "add":

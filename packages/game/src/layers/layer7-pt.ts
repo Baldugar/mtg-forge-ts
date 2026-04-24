@@ -5,11 +5,14 @@
 //   7c: modify P/T ("+2/+0 until end of turn").
 //   7d: counters (+1/+1, -1/-1, and P/T-adjusting counters).
 //   7e: switch P/T.
-// Within each sublayer, effects apply in timestamp order.
+// Within each sublayer, effects resolve in dependency-then-timestamp order
+// (CR 613.8) via resolveDependencyOrder. SP2 effects without explicit
+// dependsOn degenerate to stable timestamp ordering.
 //
 // Forge reference: StaticAbilityContinuous (setPT / addPT); Card#getNetPower
 // and Card#getNetToughness consolidate counter-driven +N/+N.
 import type { Characteristics, EntityId } from "@mtg-forge-ts/core";
+import { type DepNode, resolveDependencyOrder } from "./dependency-resolver.js";
 
 export interface Layer7aEffect {
   readonly kind: "cdaSet";
@@ -17,6 +20,7 @@ export interface Layer7aEffect {
   readonly toughness: number;
   readonly timestamp: number;
   readonly sourceAbilityId: EntityId | null;
+  readonly dependsOn?: readonly string[];
 }
 
 export interface Layer7bEffect {
@@ -25,6 +29,7 @@ export interface Layer7bEffect {
   readonly toughness: number;
   readonly timestamp: number;
   readonly sourceAbilityId: EntityId | null;
+  readonly dependsOn?: readonly string[];
 }
 
 export interface Layer7cEffect {
@@ -33,6 +38,7 @@ export interface Layer7cEffect {
   readonly toughnessDelta: number;
   readonly timestamp: number;
   readonly sourceAbilityId: EntityId | null;
+  readonly dependsOn?: readonly string[];
 }
 
 export type Layer7dEffect =
@@ -41,12 +47,14 @@ export type Layer7dEffect =
       readonly count: number;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+      readonly dependsOn?: readonly string[];
     }
   | {
       readonly kind: "minusOneMinusOne";
       readonly count: number;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+      readonly dependsOn?: readonly string[];
     }
   | {
       readonly kind: "ptCounter";
@@ -55,16 +63,37 @@ export type Layer7dEffect =
       readonly count: number;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+      readonly dependsOn?: readonly string[];
     };
 
 export interface Layer7eEffect {
   readonly kind: "switch";
   readonly timestamp: number;
   readonly sourceAbilityId: EntityId | null;
+  readonly dependsOn?: readonly string[];
 }
 
+const nodeId = (e: { readonly sourceAbilityId: EntityId | null }, idx: number): string =>
+  e.sourceAbilityId !== null ? String(e.sourceAbilityId) : `__anon_${idx}`;
+
+const toDepNodes = <
+  T extends {
+    readonly timestamp: number;
+    readonly sourceAbilityId: EntityId | null;
+    readonly dependsOn?: readonly string[];
+  },
+>(
+  effects: readonly T[],
+): DepNode<T>[] =>
+  effects.map((e, i) => ({
+    id: nodeId(e, i),
+    timestamp: e.timestamp,
+    dependsOn: e.dependsOn ?? [],
+    raw: e,
+  }));
+
 export const applyLayer7a = (c: Characteristics, effects: readonly Layer7aEffect[]): void => {
-  const ordered = [...effects].sort((a, b) => a.timestamp - b.timestamp);
+  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7aEffect);
   for (const e of ordered) {
     c.power = e.power;
     c.toughness = e.toughness;
@@ -72,7 +101,7 @@ export const applyLayer7a = (c: Characteristics, effects: readonly Layer7aEffect
 };
 
 export const applyLayer7b = (c: Characteristics, effects: readonly Layer7bEffect[]): void => {
-  const ordered = [...effects].sort((a, b) => a.timestamp - b.timestamp);
+  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7bEffect);
   for (const e of ordered) {
     c.power = e.power;
     c.toughness = e.toughness;
@@ -80,7 +109,7 @@ export const applyLayer7b = (c: Characteristics, effects: readonly Layer7bEffect
 };
 
 export const applyLayer7c = (c: Characteristics, effects: readonly Layer7cEffect[]): void => {
-  const ordered = [...effects].sort((a, b) => a.timestamp - b.timestamp);
+  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7cEffect);
   for (const e of ordered) {
     c.power = (c.power ?? 0) + e.powerDelta;
     c.toughness = (c.toughness ?? 0) + e.toughnessDelta;
@@ -88,7 +117,7 @@ export const applyLayer7c = (c: Characteristics, effects: readonly Layer7cEffect
 };
 
 export const applyLayer7d = (c: Characteristics, effects: readonly Layer7dEffect[]): void => {
-  const ordered = [...effects].sort((a, b) => a.timestamp - b.timestamp);
+  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7dEffect);
   for (const e of ordered) {
     switch (e.kind) {
       case "plusOnePlusOne":
@@ -112,7 +141,7 @@ export const applyLayer7d = (c: Characteristics, effects: readonly Layer7dEffect
 };
 
 export const applyLayer7e = (c: Characteristics, effects: readonly Layer7eEffect[]): void => {
-  const ordered = [...effects].sort((a, b) => a.timestamp - b.timestamp);
+  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7eEffect);
   for (const _ of ordered) {
     const p = c.power;
     c.power = c.toughness;

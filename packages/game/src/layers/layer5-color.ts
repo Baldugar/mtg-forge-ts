@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // CR 613.1e — Layer 5 color-changing effects. Within the layer, CDAs
 // (characteristic-defining abilities, CR 604.3) apply first; non-CDA
-// effects apply after, each partition sorted by timestamp.
+// effects apply after. Within each partition, effects resolve in
+// dependency-then-timestamp order (CR 613.8).
 //
 // Kinds:
 //   - "set":    replace the color set entirely.
@@ -15,6 +16,7 @@
 // Forge reference: StaticAbilityContinuous (setColor / addColor).
 import type { Characteristics, EntityId } from "@mtg-forge-ts/core";
 import { ColorSet } from "@mtg-forge-ts/core";
+import { type DepNode, resolveDependencyOrder } from "./dependency-resolver.js";
 
 export type ColorChangeEffect =
   | {
@@ -23,6 +25,7 @@ export type ColorChangeEffect =
       readonly isCda: boolean;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+      readonly dependsOn?: readonly string[];
     }
   | {
       readonly kind: "add";
@@ -30,6 +33,7 @@ export type ColorChangeEffect =
       readonly isCda: boolean;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+      readonly dependsOn?: readonly string[];
     }
   | {
       readonly kind: "remove";
@@ -37,14 +41,38 @@ export type ColorChangeEffect =
       readonly isCda: boolean;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+      readonly dependsOn?: readonly string[];
     };
 
 const subtract = (a: ColorSet, b: ColorSet): ColorSet => ColorSet.fromJSON(a.toJSON() & ~b.toJSON());
 
+const nodeId = (e: { readonly sourceAbilityId: EntityId | null }, idx: number): string =>
+  e.sourceAbilityId !== null ? String(e.sourceAbilityId) : `__anon_${idx}`;
+
+const toDepNodes = <
+  T extends {
+    readonly timestamp: number;
+    readonly sourceAbilityId: EntityId | null;
+    readonly dependsOn?: readonly string[];
+  },
+>(
+  effects: readonly T[],
+): DepNode<T>[] =>
+  effects.map((e, i) => ({
+    id: nodeId(e, i),
+    timestamp: e.timestamp,
+    dependsOn: e.dependsOn ?? [],
+    raw: e,
+  }));
+
 export const applyLayer5Color = (target: Characteristics, effects: readonly ColorChangeEffect[]): void => {
-  const cdas = effects.filter((e) => e.isCda).sort((a, b) => a.timestamp - b.timestamp);
-  const normals = effects.filter((e) => !e.isCda).sort((a, b) => a.timestamp - b.timestamp);
-  for (const e of [...cdas, ...normals]) {
+  const cdas = toDepNodes(effects.filter((e) => e.isCda));
+  const normals = toDepNodes(effects.filter((e) => !e.isCda));
+  const ordered: ColorChangeEffect[] = [
+    ...resolveDependencyOrder(cdas).map((n) => n.raw as ColorChangeEffect),
+    ...resolveDependencyOrder(normals).map((n) => n.raw as ColorChangeEffect),
+  ];
+  for (const e of ordered) {
     switch (e.kind) {
       case "set":
         target.colors = e.colors;
