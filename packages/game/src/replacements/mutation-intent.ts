@@ -68,6 +68,42 @@ export interface RemoveCounterIntent {
   readonly amount: number;
   readonly sourceId: EntityId | null;
 }
+export interface TapIntent {
+  readonly kind: "tap";
+  readonly cardId: EntityId;
+}
+export interface UntapIntent {
+  readonly kind: "untap";
+  readonly cardId: EntityId;
+}
+export interface DestroyIntent {
+  readonly kind: "destroy";
+  readonly cardId: EntityId;
+  readonly sourceId: EntityId | null;
+  readonly cause: "damage" | "sba" | "effect";
+}
+export interface ExileIntent {
+  readonly kind: "exile";
+  readonly cardId: EntityId;
+  readonly sourceId: EntityId | null;
+}
+export interface SacrificeIntent {
+  readonly kind: "sacrifice";
+  readonly cardId: EntityId;
+  readonly playerSeat: PlayerSeat;
+  readonly sourceId: EntityId | null;
+}
+export interface MillIntent {
+  readonly kind: "mill";
+  readonly seat: PlayerSeat;
+  readonly count: number;
+}
+export interface ControlChangeIntent {
+  readonly kind: "controlChange";
+  readonly cardId: EntityId;
+  readonly newController: PlayerSeat;
+  readonly sourceId: EntityId | null;
+}
 
 // Union of all known intent shapes (non-exhaustive; GameAction may emit
 // additional kinds — replacements that don't recognize the kind should
@@ -78,4 +114,11 @@ export type KnownIntent =
   | DrawCardsIntent
   | MoveToIntent
   | AddCounterIntent
-  | RemoveCounterIntent;
+  | RemoveCounterIntent
+  | TapIntent
+  | UntapIntent
+  | DestroyIntent
+  | ExileIntent
+  | SacrificeIntent
+  | MillIntent
+  | ControlChangeIntent;

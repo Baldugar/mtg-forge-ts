@@ -58,6 +58,16 @@ export abstract class Zone {
     return removed;
   }
 
+  // WHY: GameAction.drawCards / mill need to know the card id BEFORE the
+  // draw/mill intent is routed through replacements (so the canonical
+  // CardDrawn/CardMilled event payload can reference it) without mutating
+  // the zone. Returns undefined for an out-of-range index — mirrors
+  // removeAt's defensive empty-zone shape.
+  peekAt(index: number): EntityId | undefined {
+    if (index < 0 || index >= this.items.length) return undefined;
+    return this.items[index];
+  }
+
   contains(cardId: EntityId): boolean {
     return this.items.includes(cardId);
   }

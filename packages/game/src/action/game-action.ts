@@ -1,29 +1,152 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // GameAction — generator-based mutation API over Game state. Every mutating
 // operation is a generator function that:
-//   1. mutates the relevant state (card zones, player life, counters, etc.),
-//   2. yields an EngineYield per observable effect (events today, decisions
-//      once SP2 adds triggered/replacement processing + driver loop).
+//   1. builds a typed MutationIntent describing the pending mutation,
+//   2. routes through applyReplacementLoop (CR 614) via applyWithReplacements,
+//   3. emits ReplacementApplied per replacement id that fired, then either
+//      EventPrevented (on prevention) or the canonical GameEvent + actual
+//      state mutation (on apply, using the possibly-mutated final intent).
 //
-// SP1 scope: emit the canonical GameEvent for each operation and update the
-// minimum model state required by the event payload. SP2 layers
-// replacement-effect routing, trigger harvesting, and state-based-action
-// checking on top of these generators without changing their signatures.
+// SP1 shape emitted the canonical event and mutated state directly. SP2
+// Task 19 layers replacement routing on top without changing the public
+// generator signatures. Triggers (Milestone E) observe the canonical events
+// downstream of this routing. State-based-actions (Milestone G) run outside
+// GameAction.
+//
 // SP3 fills in costs (the `_cost` / `costPaid` slots currently `unknown`).
 //
 // Why generators: the driver needs to pause mid-mutation to ask controllers
 // for decisions (choose order of replacements, scry order, blocker orders,
 // etc.). Generators make the pause-and-resume contract explicit at the
 // type-system level via the EngineYield union.
-import type { CounterType, EntityId, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type {
+  CounterType,
+  EntityId,
+  GameEvent,
+  MutationIntent,
+  PlayerSeat,
+  ZoneType,
+} from "@mtg-forge-ts/core";
 import { GameStateIntegrityError, IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { applyReplacementLoop } from "../replacements/apply-loop.js";
+import type {
+  AddCounterIntent,
+  ControlChangeIntent,
+  DamageIntent,
+  DestroyIntent,
+  DrawCardsIntent,
+  ExileIntent,
+  LifeChangeIntent,
+  MillIntent,
+  MoveToIntent,
+  RemoveCounterIntent,
+  SacrificeIntent,
+  TapIntent,
+  UntapIntent,
+} from "../replacements/mutation-intent.js";
 import type { StackItem } from "../stack/stack-item.js";
 import type { Zone } from "../zone/zone.js";
 import type { EngineYield } from "./engine-yield.js";
 
+// Local union of every intent kind GameAction routes. Kept here (not in
+// mutation-intent.ts) because applyWithReplacements is the only consumer
+// that needs the narrowed generic bound.
+type RoutedIntent =
+  | DamageIntent
+  | LifeChangeIntent
+  | DrawCardsIntent
+  | MoveToIntent
+  | AddCounterIntent
+  | RemoveCounterIntent
+  | TapIntent
+  | UntapIntent
+  | DestroyIntent
+  | ExileIntent
+  | SacrificeIntent
+  | MillIntent
+  | ControlChangeIntent;
+
 export class GameAction {
   constructor(private readonly game: Game) {}
+
+  // === Replacement-routing helper (SP2 Task 19) ===
+
+  /**
+   * Route a single mutation intent through the replacement apply-loop and
+   * emit the appropriate engine events around the actual state mutation.
+   *
+   * Control flow:
+   *   1. yield* applyReplacementLoop(intent, game) — pauses for CR 616
+   *      ordering decisions if more than one replacement is applicable.
+   *   2. For each id in appliedIds, emit ReplacementApplied (carries the
+   *      original + replaced intent so observers see the pre/post pair).
+   *   3. If status === "prevented": emit EventPrevented with the original
+   *      intent and return { prevented: true }. Skip mutation + canonical
+   *      event.
+   *   4. If status === "applied": invoke onApplied(final) so the caller
+   *      performs the real state mutation based on the (possibly mutated)
+   *      final intent, then emit the canonical event derived from final.
+   *
+   * WHY one helper: every mutator pays the same choreography — gather,
+   * order, apply, emit. Factoring it here keeps the per-mutator code
+   * focused on (a) building the intent and (b) the onApplied callback.
+   *
+   * Per reviewer C1: we never short-circuit the yield* even when the
+   * registry is empty. The apply-loop itself handles the empty case in a
+   * single Map iteration and returns status:"applied" with the input
+   * intent. Keeping the call uniform guarantees consistent event emission.
+   *
+   * Per reviewer C2: event emission lives here, not inside apply-loop.
+   * apply-loop stays pure — it only yields orderReplacements decisions.
+   */
+  private *applyWithReplacements<I extends RoutedIntent>(
+    intent: I,
+    onApplied: (final: I) => void,
+    buildCanonicalEvent: (final: I) => GameEvent,
+  ): Generator<EngineYield, { readonly prevented: boolean }, unknown> {
+    const game = this.game;
+    // WHY cast through unknown: MutationIntent is declared in core as
+    // `Readonly<Record<string, unknown>> & { kind: string }` — an index-
+    // signatured shape — and our concrete intent types (DamageIntent,
+    // MoveToIntent, …) omit the string index signature. Structural
+    // compatibility flows one way: concrete → generic requires a widening
+    // cast. The runtime shape is identical.
+    const result = yield* applyReplacementLoop(intent as unknown as MutationIntent, game);
+    // Emit ReplacementApplied per fired replacement, in apply order. On
+    // prevent, `replaced` is null (the last replacement returned null);
+    // on apply, `replaced` is the final intent after the full chain.
+    // WHY not per-step snapshots: SP2 event payload is {original, replaced}
+    // for the whole chain (Task 12 payload shape). Per-step intermediate
+    // states are SP3 if anyone ever needs them.
+    const replaced = result.status === "applied" ? result.final : null;
+    for (const rid of result.appliedIds) {
+      yield {
+        kind: "event",
+        event: mkEvent("ReplacementApplied", game.turn, game.phase, {
+          replacementId: rid,
+          original: intent,
+          replaced,
+        }),
+      };
+    }
+    if (result.status === "prevented") {
+      yield {
+        kind: "event",
+        event: mkEvent("EventPrevented", game.turn, game.phase, { original: intent }),
+      };
+      return { prevented: true };
+    }
+    if (result.status !== "applied") {
+      // Exhaustiveness guard — ApplyResult is a two-variant union.
+      const _never: never = result;
+      throw new Error(`GameAction.applyWithReplacements: unexpected status ${String(_never)}`);
+    }
+    const final = result.final as I;
+    onApplied(final);
+    yield { kind: "event", event: buildCanonicalEvent(final) };
+    return { prevented: false };
+  }
 
   // === Draw + life + zone movement (SP1 implemented) ===
 
@@ -38,22 +161,43 @@ export class GameAction {
     const hand = player.zones.get(Zt.Hand);
     if (!library) throw new GameStateIntegrityError(`Player ${seat} has no Library zone`);
     if (!hand) throw new GameStateIntegrityError(`Player ${seat} has no Hand zone`);
+    // WHY per-card intents: CR 121.3 treats each individual card draw as the
+    // event a replacement can intercept ("if you would draw a card, instead
+    // …"). A batched draw must expose N separate replacement points. SP2
+    // keeps this simple by looping in the mutator; triggers (Milestone E)
+    // collapse the batch back into a single summary as needed.
     for (let i = 0; i < count; i++) {
       // WHY: Forge/Java convention — index 0 is the TOP of the library.
       // Draw consumes the front of the list; items.length-1 is the bottom.
-      const topId = library.removeAt(0);
+      const topId = library.peekAt(0);
       // WHY: running out of library mid-draw is a state-based loss condition
       // (SP2). For SP1 we simply stop drawing — the caller can detect this
       // via Library.size beforehand. Emitting CardDrawn with no card would
       // violate the event contract.
       if (topId === undefined) return;
-      hand.add(topId);
-      const card = game.cards.get(topId);
-      if (card) card.zone = Zt.Hand;
-      yield {
-        kind: "event",
-        event: mkEvent("CardDrawn", game.turn, game.phase, { playerSeat: seat, cardId: topId }),
-      };
+      const intent: DrawCardsIntent = { kind: "drawCards", seat, count: 1 };
+      yield* this.applyWithReplacements<DrawCardsIntent>(
+        intent,
+        (_final) => {
+          // WHY no cardId on the intent: a draw replacement (e.g. "if you
+          // would draw a card, instead …") operates on the draw, not the
+          // specific card. SP3 can introduce richer draw intents if needed.
+          // We re-read the top here because a replacement may have mutated
+          // library state (e.g. scry-on-draw) before the actual draw fires.
+          // Per current SP2 scope, replacements don't mutate the library,
+          // but the read is cheap and defensive.
+          const removed = library.removeAt(0);
+          if (removed === undefined) return;
+          hand.add(removed);
+          const card = game.cards.get(removed);
+          if (card) card.zone = Zt.Hand;
+        },
+        (_final) =>
+          mkEvent("CardDrawn", game.turn, game.phase, {
+            playerSeat: seat,
+            cardId: topId,
+          }),
+      );
     }
   }
 
@@ -64,19 +208,32 @@ export class GameAction {
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const player = game.getPlayer(seat);
-    const oldLife = player.life;
-    const newLife = oldLife + delta;
-    player.life = newLife;
-    yield {
-      kind: "event",
-      event: mkEvent("LifeChanged", game.turn, game.phase, {
-        playerSeat: seat,
-        oldLife,
-        newLife,
-        delta,
-        cause: opts?.cause ?? "effect",
-      }),
+    const intent: LifeChangeIntent = {
+      kind: "lifeChange",
+      seat,
+      delta,
+      cause: opts?.cause ?? "effect",
     };
+    yield* this.applyWithReplacements<LifeChangeIntent>(
+      intent,
+      (final) => {
+        player.life = player.life + final.delta;
+      },
+      (final) => {
+        // oldLife/newLife derived at emit-time from the final (possibly
+        // replaced) delta against the CURRENT player.life. Because
+        // onApplied already ran, player.life reflects the post-apply value.
+        const newLife = player.life;
+        const oldLife = newLife - final.delta;
+        return mkEvent("LifeChanged", game.turn, game.phase, {
+          playerSeat: final.seat,
+          oldLife,
+          newLife,
+          delta: final.delta,
+          cause: final.cause,
+        });
+      },
+    );
   }
 
   *moveTo(
@@ -86,65 +243,90 @@ export class GameAction {
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const { fromZone, owner } = this.locate(cardId);
-    const from = this.zoneFor(fromZone, owner);
     const toSeat = opts?.toSeat ?? this.defaultDestinationSeat(toZone, owner);
-    const to = this.zoneFor(toZone, toSeat);
-    from.remove(cardId);
-    to.add(cardId);
-    const card = game.cards.get(cardId);
-    if (card) {
-      card.zone = toZone;
-      if (toSeat !== null) card.controllerSeat = toSeat;
-    }
-    // CR 613.1 — zone change alters which continuous effects apply (layered
-    // values are defined only for permanents on the battlefield, etc.);
-    // invalidate the cache so the next characteristics read re-derives from
-    // the new zone.
-    game.layerEngine.bumpEpoch("moveTo");
-    yield {
-      kind: "event",
-      event: mkEvent("CardChangedZone", game.turn, game.phase, {
-        cardId,
-        fromZone,
-        toZone,
-        ...(owner !== null ? { fromSeat: owner } : {}),
-        ...(toSeat !== null ? { toSeat } : {}),
-        ...(opts?.cause !== undefined ? { cause: opts.cause } : {}),
-      }),
+    const intent: MoveToIntent = {
+      kind: "moveTo",
+      cardId,
+      toZone,
+      toSeat,
+      cause: opts?.cause ?? "effect",
     };
+    yield* this.applyWithReplacements<MoveToIntent>(
+      intent,
+      (final) => {
+        // Re-resolve from/to on final because a replacement may have
+        // rewritten the target zone (e.g. "if this card would go to the
+        // graveyard, exile it instead"). `fromZone/owner` were captured
+        // before the loop and are correct (replacements cannot rewrite the
+        // source zone — the card is where it is).
+        const from = this.zoneFor(fromZone, owner);
+        const to = this.zoneFor(final.toZone, final.toSeat);
+        from.remove(final.cardId);
+        to.add(final.cardId);
+        const card = game.cards.get(final.cardId);
+        if (card) {
+          card.zone = final.toZone;
+          if (final.toSeat !== null) card.controllerSeat = final.toSeat;
+        }
+        // CR 613.1 — zone change alters which continuous effects apply
+        // (layered values are defined only for permanents on the battlefield,
+        // etc.); invalidate the cache so the next characteristics read
+        // re-derives from the new zone. Inside onApplied so prevented moves
+        // don't churn the cache.
+        game.layerEngine.bumpEpoch("moveTo");
+      },
+      (final) =>
+        mkEvent("CardChangedZone", game.turn, game.phase, {
+          cardId: final.cardId,
+          fromZone,
+          toZone: final.toZone,
+          ...(owner !== null ? { fromSeat: owner } : {}),
+          ...(final.toSeat !== null ? { toSeat: final.toSeat } : {}),
+          ...(opts?.cause !== undefined ? { cause: opts.cause } : {}),
+        }),
+    );
   }
 
-  // === Tap/untap (SP1 event-only, SP2 expands with intervening-if etc) ===
+  // === Tap/untap ===
 
   *tap(cardId: EntityId): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(cardId);
-    // WHY: idempotent on no state change. SP2 trigger handlers listening
-    // on CardTapped would fire on redundant tap() calls if we always
-    // emitted — matching Forge semantics, an already-tapped permanent
-    // doesn't re-trigger. Missing-card case stays a silent no-op to
-    // match the original defensive behavior.
+    // WHY pre-check before building intent: idempotent no-op on a missing
+    // card or already-tapped permanent — no replacement chain for
+    // non-events. SP2 trigger handlers listening on CardTapped do not fire
+    // on redundant tap() calls per Forge semantics; skipping the intent
+    // also skips replacement gather, matching reality.
     if (!card || card.tapped) return;
-    card.tapped = true;
-    // Tapped-state can gate continuous effects (e.g. "as long as CARDNAME is
-    // tapped"). Bump only on actual state transition so idempotent no-op
-    // taps don't churn the cache.
-    this.game.layerEngine.bumpEpoch("tap");
-    yield {
-      kind: "event",
-      event: mkEvent("CardTapped", this.game.turn, this.game.phase, { cardId }),
-    };
+    const intent: TapIntent = { kind: "tap", cardId };
+    yield* this.applyWithReplacements<TapIntent>(
+      intent,
+      (final) => {
+        const c = this.game.cards.get(final.cardId);
+        if (!c) return;
+        c.tapped = true;
+        // Tapped-state can gate continuous effects (e.g. "as long as
+        // CARDNAME is tapped"). Bump only inside onApplied so prevention
+        // doesn't churn the cache.
+        this.game.layerEngine.bumpEpoch("tap");
+      },
+      (final) => mkEvent("CardTapped", this.game.turn, this.game.phase, { cardId: final.cardId }),
+    );
   }
 
   *untap(cardId: EntityId): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(cardId);
     if (!card || !card.tapped) return;
-    card.tapped = false;
-    // Symmetric with tap: only bump on actual state transition.
-    this.game.layerEngine.bumpEpoch("untap");
-    yield {
-      kind: "event",
-      event: mkEvent("CardUntapped", this.game.turn, this.game.phase, { cardId }),
-    };
+    const intent: UntapIntent = { kind: "untap", cardId };
+    yield* this.applyWithReplacements<UntapIntent>(
+      intent,
+      (final) => {
+        const c = this.game.cards.get(final.cardId);
+        if (!c) return;
+        c.tapped = false;
+        this.game.layerEngine.bumpEpoch("untap");
+      },
+      (final) => mkEvent("CardUntapped", this.game.turn, this.game.phase, { cardId: final.cardId }),
+    );
   }
 
   // === Destroy / exile / sacrifice — event + zone change via moveTo ===
@@ -153,29 +335,55 @@ export class GameAction {
     cardId: EntityId,
     opts?: { readonly sourceId?: EntityId; readonly cause?: "damage" | "sba" | "effect" },
   ): Generator<EngineYield, void, unknown> {
-    const game = this.game;
-    yield {
-      kind: "event",
-      event: mkEvent("CardDestroyed", game.turn, game.phase, {
-        cardId,
-        ...(opts?.sourceId !== undefined ? { sourceId: opts.sourceId } : {}),
-        cause: opts?.cause ?? "effect",
-      }),
+    // Two-step flow: the destroy-intent fires first (regeneration-class
+    // replacements intercept here), then a separate moveTo-intent to
+    // Graveyard fires (zone-change replacements intercept there). If
+    // destroy is prevented, we do NOT proceed to moveTo.
+    const intent: DestroyIntent = {
+      kind: "destroy",
+      cardId,
+      sourceId: opts?.sourceId ?? null,
+      cause: opts?.cause ?? "effect",
     };
+    const outcome = yield* this.applyWithReplacements<DestroyIntent>(
+      intent,
+      (_final) => {
+        // Destroy itself is a pure event + follow-up zone move. The zone
+        // move happens after (outside) applyWithReplacements so it
+        // participates in its own replacement chain.
+      },
+      (final) =>
+        mkEvent("CardDestroyed", this.game.turn, this.game.phase, {
+          cardId: final.cardId,
+          ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+          cause: final.cause,
+        }),
+    );
+    if (outcome.prevented) return;
     yield* this.moveTo(cardId, Zt.Graveyard);
   }
 
   *exile(cardId: EntityId, opts?: { readonly sourceId?: EntityId }): Generator<EngineYield, void, unknown> {
-    const game = this.game;
     const { fromZone } = this.locate(cardId);
-    yield {
-      kind: "event",
-      event: mkEvent("CardExiled", game.turn, game.phase, {
-        cardId,
-        fromZone,
-        ...(opts?.sourceId !== undefined ? { sourceId: opts.sourceId } : {}),
-      }),
+    const intent: ExileIntent = {
+      kind: "exile",
+      cardId,
+      sourceId: opts?.sourceId ?? null,
     };
+    const outcome = yield* this.applyWithReplacements<ExileIntent>(
+      intent,
+      (_final) => {
+        // Follow-up moveTo performs the zone change (and its own
+        // replacement chain).
+      },
+      (final) =>
+        mkEvent("CardExiled", this.game.turn, this.game.phase, {
+          cardId: final.cardId,
+          fromZone,
+          ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+        }),
+    );
+    if (outcome.prevented) return;
     yield* this.moveTo(cardId, Zt.Exile);
   }
 
@@ -183,23 +391,33 @@ export class GameAction {
     cardId: EntityId,
     opts?: { readonly sourceId?: EntityId },
   ): Generator<EngineYield, void, unknown> {
-    const game = this.game;
     const { owner } = this.locate(cardId);
     if (owner === null) {
       throw new GameStateIntegrityError(`Cannot sacrifice ${cardId} — not owned by any player`);
     }
-    yield {
-      kind: "event",
-      event: mkEvent("CardSacrificed", game.turn, game.phase, {
-        cardId,
-        playerSeat: owner,
-        ...(opts?.sourceId !== undefined ? { sourceId: opts.sourceId } : {}),
-      }),
+    const intent: SacrificeIntent = {
+      kind: "sacrifice",
+      cardId,
+      playerSeat: owner,
+      sourceId: opts?.sourceId ?? null,
     };
+    const outcome = yield* this.applyWithReplacements<SacrificeIntent>(
+      intent,
+      (_final) => {
+        // Follow-up moveTo performs the zone change.
+      },
+      (final) =>
+        mkEvent("CardSacrificed", this.game.turn, this.game.phase, {
+          cardId: final.cardId,
+          playerSeat: final.playerSeat,
+          ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+        }),
+    );
+    if (outcome.prevented) return;
     yield* this.moveTo(cardId, Zt.Graveyard);
   }
 
-  // === Damage (SP1 event emission only) ===
+  // === Damage ===
 
   *damage(
     sourceId: EntityId,
@@ -209,24 +427,35 @@ export class GameAction {
     isCombat: boolean,
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
-    // WHY: damage to a creature updates Card.damage; damage to a player
-    // updates Player.life via a follow-up LifeChanged. SP1 keeps this
-    // minimal — the damage marker is applied; life deduction is a
-    // state-based-action step that SP2 will emit.
-    if (targetKind === "creature" && typeof targetId === "number") {
-      const card = game.cards.get(targetId as EntityId);
-      if (card) card.damage += amount;
-    }
-    yield {
-      kind: "event",
-      event: mkEvent("DamageDealt", game.turn, game.phase, {
-        sourceId,
-        targetKind,
-        targetId,
-        amount,
-        isCombat,
-      }),
+    const intent: DamageIntent = {
+      kind: "damage",
+      sourceId,
+      targetKind,
+      targetId,
+      amount,
+      isCombat,
     };
+    yield* this.applyWithReplacements<DamageIntent>(
+      intent,
+      (final) => {
+        // WHY: damage to a creature updates Card.damage; damage to a player
+        // updates Player.life via a follow-up LifeChanged. SP1 keeps this
+        // minimal — the damage marker is applied; life deduction is a
+        // state-based-action step that Milestone G will emit.
+        if (final.targetKind === "creature" && typeof final.targetId === "number") {
+          const card = game.cards.get(final.targetId as EntityId);
+          if (card) card.damage += final.amount;
+        }
+      },
+      (final) =>
+        mkEvent("DamageDealt", game.turn, game.phase, {
+          sourceId: final.sourceId,
+          targetKind: final.targetKind,
+          targetId: final.targetId,
+          amount: final.amount,
+          isCombat: final.isCombat,
+        }),
+    );
   }
 
   // === Counters ===
@@ -245,25 +474,34 @@ export class GameAction {
       throw new IllegalDecisionError(`addCounter: amount must be a positive integer, got ${amount}`);
     }
     const game = this.game;
-    const card = game.cards.get(cardId);
-    if (card) {
-      const current = card.counters.get(counterType) ?? 0;
-      card.counters.set(counterType, current + amount);
-    }
-    // Counters feed Layer 7d (P/T) and can gate other continuous effects
-    // (e.g. "as long as CARDNAME has a +1/+1 counter on it"). Always bump
-    // when the mutation ran — amount is validated > 0 above, so any non-
-    // missing card observed a real state change.
-    game.layerEngine.bumpEpoch("counter");
-    yield {
-      kind: "event",
-      event: mkEvent("CounterAdded", game.turn, game.phase, {
-        cardId,
-        counterType,
-        amount,
-        ...(sourceId !== undefined ? { sourceId } : {}),
-      }),
+    const intent: AddCounterIntent = {
+      kind: "addCounter",
+      cardId,
+      counterType,
+      amount,
+      sourceId: sourceId ?? null,
     };
+    yield* this.applyWithReplacements<AddCounterIntent>(
+      intent,
+      (final) => {
+        const card = game.cards.get(final.cardId);
+        if (card) {
+          const current = card.counters.get(final.counterType) ?? 0;
+          card.counters.set(final.counterType, current + final.amount);
+        }
+        // Counters feed Layer 7d (P/T) and can gate other continuous
+        // effects (e.g. "as long as CARDNAME has a +1/+1 counter on it").
+        // Epoch bump lives inside onApplied so preventions don't churn.
+        game.layerEngine.bumpEpoch("counter");
+      },
+      (final) =>
+        mkEvent("CounterAdded", game.turn, game.phase, {
+          cardId: final.cardId,
+          counterType: final.counterType,
+          amount: final.amount,
+          ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+        }),
+    );
   }
 
   *removeCounter(
@@ -280,26 +518,39 @@ export class GameAction {
     // WHY: Forge no-ops when the targeted counter type isn't present on
     // the card; that matches CR 122.1 ("you can't remove a counter that
     // isn't there"). Emitting CounterRemoved anyway would falsely signal
-    // an observable change to trigger/event subscribers.
+    // an observable change to trigger/event subscribers. Pre-check before
+    // building the intent — no replacement chain for non-events.
     if (!card || !card.counters.has(counterType)) {
       return;
     }
-    const current = card.counters.get(counterType) ?? 0;
-    const next = Math.max(0, current - amount);
-    if (next === 0) card.counters.delete(counterType);
-    else card.counters.set(counterType, next);
-    // Counter change → bump. The early returns above ensure we only reach
-    // here on an observable state mutation; no-op removals do not bump.
-    game.layerEngine.bumpEpoch("counter");
-    yield {
-      kind: "event",
-      event: mkEvent("CounterRemoved", game.turn, game.phase, {
-        cardId,
-        counterType,
-        amount,
-        ...(sourceId !== undefined ? { sourceId } : {}),
-      }),
+    const intent: RemoveCounterIntent = {
+      kind: "removeCounter",
+      cardId,
+      counterType,
+      amount,
+      sourceId: sourceId ?? null,
     };
+    yield* this.applyWithReplacements<RemoveCounterIntent>(
+      intent,
+      (final) => {
+        const c = game.cards.get(final.cardId);
+        if (!c || !c.counters.has(final.counterType)) return;
+        const current = c.counters.get(final.counterType) ?? 0;
+        const next = Math.max(0, current - final.amount);
+        if (next === 0) c.counters.delete(final.counterType);
+        else c.counters.set(final.counterType, next);
+        // Counter change → bump. The pre-check above plus this guard
+        // ensure we only reach state-mutation on an observable change.
+        game.layerEngine.bumpEpoch("counter");
+      },
+      (final) =>
+        mkEvent("CounterRemoved", game.turn, game.phase, {
+          cardId: final.cardId,
+          counterType: final.counterType,
+          amount: final.amount,
+          ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+        }),
+    );
   }
 
   // === Control change ===
@@ -312,30 +563,47 @@ export class GameAction {
     const game = this.game;
     const card = game.cards.get(cardId);
     const oldController = card?.controllerSeat;
-    if (card) card.controllerSeat = newController;
     if (oldController === undefined) {
       throw new GameStateIntegrityError(`changeControl: card ${cardId} not tracked`);
     }
-    // CR 613.1b — control change invalidates the LayerEngine cache because
-    // layered values scoped by controller (e.g., ability-grant statics) must
-    // re-evaluate. Bump before the event emit so observers reading
-    // characteristics during the event see the post-control-change view.
-    game.layerEngine.bumpEpoch("control-change");
-    yield {
-      kind: "event",
-      event: mkEvent("ControlChanged", game.turn, game.phase, {
-        cardId,
-        oldController,
-        newController,
-        ...(sourceId !== undefined ? { sourceId } : {}),
-      }),
+    const intent: ControlChangeIntent = {
+      kind: "controlChange",
+      cardId,
+      newController,
+      sourceId: sourceId ?? null,
     };
+    yield* this.applyWithReplacements<ControlChangeIntent>(
+      intent,
+      (final) => {
+        const c = game.cards.get(final.cardId);
+        if (c) c.controllerSeat = final.newController;
+        // CR 613.1b — control change invalidates the LayerEngine cache
+        // because layered values scoped by controller (e.g., ability-grant
+        // statics) must re-evaluate. Bump before the event emit so
+        // observers reading characteristics during the event see the
+        // post-control-change view.
+        game.layerEngine.bumpEpoch("control-change");
+      },
+      (final) =>
+        mkEvent("ControlChanged", game.turn, game.phase, {
+          cardId: final.cardId,
+          oldController,
+          newController: final.newController,
+          ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+        }),
+    );
   }
 
   // === Stack push ===
 
   *putOnStack(item: StackItem): Generator<EngineYield, void, unknown> {
     const game = this.game;
+    // WHY no replacement routing: CR 614 replacement effects apply to
+    // "events" — game-state mutations — not to stack bookkeeping. Stack
+    // placement of a spell/ability happens as part of the cast process
+    // (CR 601), which has its own intercept points (cast restrictions,
+    // counterspells). Re-intercepting stack push through the replacement
+    // chain would double-dip.
     game.sharedZones.stack.push(item);
     if (item.kind === "spell" || item.kind === "copy") {
       yield {
@@ -366,28 +634,40 @@ export class GameAction {
     const player = game.getPlayer(seat);
     const library = player.zones.get(Zt.Library);
     if (!library) throw new GameStateIntegrityError(`Player ${seat} has no Library zone`);
+    const graveyard = player.zones.get(Zt.Graveyard);
+    if (!graveyard) {
+      throw new GameStateIntegrityError(`Player ${seat} has no Graveyard zone`);
+    }
+    // Per-card intents so each mill card is an individual replacement
+    // event (mirror of per-card drawCards — "if you would mill a card,
+    // instead …" is a per-card hook).
     for (let i = 0; i < count; i++) {
-      // WHY: mill removes from the TOP of the library (index 0), matching
-      // Forge and CR 701.13a ("put the top N cards... into graveyard").
-      const topId = library.removeAt(0);
+      const topId = library.peekAt(0);
       if (topId === undefined) return;
-      const graveyard = player.zones.get(Zt.Graveyard);
-      if (!graveyard) {
-        throw new GameStateIntegrityError(`Player ${seat} has no Graveyard zone`);
-      }
-      graveyard.add(topId);
-      const card = game.cards.get(topId);
-      if (card) card.zone = Zt.Graveyard;
-      yield {
-        kind: "event",
-        event: mkEvent("CardMilled", game.turn, game.phase, { playerSeat: seat, cardId: topId }),
-      };
+      const intent: MillIntent = { kind: "mill", seat, count: 1 };
+      yield* this.applyWithReplacements<MillIntent>(
+        intent,
+        (_final) => {
+          const removed = library.removeAt(0);
+          if (removed === undefined) return;
+          graveyard.add(removed);
+          const card = game.cards.get(removed);
+          if (card) card.zone = Zt.Graveyard;
+        },
+        (_final) =>
+          mkEvent("CardMilled", game.turn, game.phase, {
+            playerSeat: seat,
+            cardId: topId,
+          }),
+      );
     }
   }
 
   // WHY: SP1 shuffle emits no event (no LibraryShuffled in the canonical
   // event set); the generator shape is preserved so PhaseHandler can drive
-  // it uniformly via yield*.
+  // it uniformly via yield*. Shuffle is also NOT a replacement target: CR
+  // 701.20 defines shuffling as a substep of other events, not an event
+  // itself, so there's no intercept point here.
   // biome-ignore lint/correctness/useYield: emits no event kind
   *shuffle(seat: PlayerSeat): Generator<EngineYield, void, unknown> {
     const game = this.game;
