@@ -9,6 +9,13 @@
 // (CR 613.8) via resolveDependencyOrder. SP2 effects without explicit
 // dependsOn degenerate to stable timestamp ordering.
 //
+// CR 613.4b — a P/T-modifying effect has no effect on a permanent that is
+// not a creature. Sublayers 7c/7d/7e short-circuit when the current
+// characteristics have null power/toughness (non-creature); sublayers 7a
+// (CDA set) and 7b (becomes) are how a non-creature gets a P/T in the
+// first place, so they do NOT gate on null. For 7e (switch), a one-side-
+// null case would mint an asymmetric result — skip entirely.
+//
 // Forge reference: StaticAbilityContinuous (setPT / addPT); Card#getNetPower
 // and Card#getNetToughness consolidate counter-driven +N/+N.
 import type { Characteristics, EntityId } from "@mtg-forge-ts/core";
@@ -111,26 +118,30 @@ export const applyLayer7b = (c: Characteristics, effects: readonly Layer7bEffect
 export const applyLayer7c = (c: Characteristics, effects: readonly Layer7cEffect[]): void => {
   const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7cEffect);
   for (const e of ordered) {
-    c.power = (c.power ?? 0) + e.powerDelta;
-    c.toughness = (c.toughness ?? 0) + e.toughnessDelta;
+    // CR 613.4b — don't confer a P/T on a non-creature.
+    if (c.power === null || c.toughness === null) continue;
+    c.power = c.power + e.powerDelta;
+    c.toughness = c.toughness + e.toughnessDelta;
   }
 };
 
 export const applyLayer7d = (c: Characteristics, effects: readonly Layer7dEffect[]): void => {
   const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7dEffect);
   for (const e of ordered) {
+    // CR 613.4b — don't confer a P/T on a non-creature.
+    if (c.power === null || c.toughness === null) continue;
     switch (e.kind) {
       case "plusOnePlusOne":
-        c.power = (c.power ?? 0) + e.count;
-        c.toughness = (c.toughness ?? 0) + e.count;
+        c.power = c.power + e.count;
+        c.toughness = c.toughness + e.count;
         break;
       case "minusOneMinusOne":
-        c.power = (c.power ?? 0) - e.count;
-        c.toughness = (c.toughness ?? 0) - e.count;
+        c.power = c.power - e.count;
+        c.toughness = c.toughness - e.count;
         break;
       case "ptCounter":
-        c.power = (c.power ?? 0) + e.powerPer * e.count;
-        c.toughness = (c.toughness ?? 0) + e.toughnessPer * e.count;
+        c.power = c.power + e.powerPer * e.count;
+        c.toughness = c.toughness + e.toughnessPer * e.count;
         break;
       default: {
         const _: never = e;
@@ -143,6 +154,9 @@ export const applyLayer7d = (c: Characteristics, effects: readonly Layer7dEffect
 export const applyLayer7e = (c: Characteristics, effects: readonly Layer7eEffect[]): void => {
   const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7eEffect);
   for (const _ of ordered) {
+    // CR 613.4b — skip switch on non-creatures (would mint a half-null swap
+    // if only one side were null).
+    if (c.power === null || c.toughness === null) continue;
     const p = c.power;
     c.power = c.toughness;
     c.toughness = p;

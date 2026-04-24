@@ -35,13 +35,16 @@ describe("Layer 7c — modify P/T", () => {
     expect(c.toughness).toBe(1);
   });
 
-  it("modify from null baseline treats null as 0", () => {
+  // Audit A-003 regression — CR 613.4b: P/T-modifying effects have no
+  // effect on non-creatures. The prior implementation coerced null to 0 via
+  // `(c.power ?? 0) + delta` and left the card with a synthetic P/T.
+  it("CR 613.4b — skips when power/toughness are null (non-creature)", () => {
     const c = emptyCharacteristics();
     applyLayer7c(c, [
       { kind: "modify", powerDelta: 2, toughnessDelta: 3, timestamp: 1, sourceAbilityId: null },
     ]);
-    expect(c.power).toBe(2);
-    expect(c.toughness).toBe(3);
+    expect(c.power).toBeNull();
+    expect(c.toughness).toBeNull();
   });
 });
 
@@ -98,9 +101,35 @@ describe("Layer 7e — switch P/T", () => {
     expect(c.toughness).toBe(5);
   });
 
-  it("switch with null power/toughness yields null/null (pair swap still works)", () => {
+  // Audit A-003 regression — CR 613.4b: switch is a no-op on non-creatures.
+  it("CR 613.4b — skips when power/toughness are null (non-creature)", () => {
     const c = emptyCharacteristics();
     applyLayer7e(c, [{ kind: "switch", timestamp: 1, sourceAbilityId: null }]);
+    expect(c.power).toBeNull();
+    expect(c.toughness).toBeNull();
+  });
+
+  it("CR 613.4b — does not generate a half-null swap when only one side is null", () => {
+    const c = emptyCharacteristics();
+    c.power = 3;
+    // toughness stays null — simulating a degenerate state.
+    applyLayer7e(c, [{ kind: "switch", timestamp: 1, sourceAbilityId: null }]);
+    expect(c.power).toBe(3);
+    expect(c.toughness).toBeNull();
+  });
+});
+
+describe("Layer 7d — CR 613.4b null-gate", () => {
+  it("+1/+1 counter skipped on non-creature (null P/T)", () => {
+    const c = emptyCharacteristics();
+    applyLayer7d(c, [{ kind: "plusOnePlusOne", count: 2, timestamp: 1, sourceAbilityId: null }]);
+    expect(c.power).toBeNull();
+    expect(c.toughness).toBeNull();
+  });
+
+  it("-1/-1 counter skipped on non-creature (null P/T)", () => {
+    const c = emptyCharacteristics();
+    applyLayer7d(c, [{ kind: "minusOneMinusOne", count: 1, timestamp: 1, sourceAbilityId: null }]);
     expect(c.power).toBeNull();
     expect(c.toughness).toBeNull();
   });
