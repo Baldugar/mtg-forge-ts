@@ -2,3 +2,4 @@
 export * from "./context.js";
 export * from "./evaluator.js";
 export * from "./selector-registry.js";
+export * from "./selectors/number.js";
