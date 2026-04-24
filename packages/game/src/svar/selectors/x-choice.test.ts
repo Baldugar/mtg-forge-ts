@@ -8,7 +8,7 @@ import "./x-choice.js";
 const mkCtx = (xValue?: number): SvarContext => ({
   game: {} as unknown as Game,
   svars: new Map(),
-  xValue,
+  ...(xValue !== undefined ? { xValue } : {}),
 });
 
 describe("X and XChoice selectors", () => {

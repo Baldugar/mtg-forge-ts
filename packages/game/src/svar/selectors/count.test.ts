@@ -8,7 +8,7 @@ import "./count.js";
 const mkCtx = (xValue?: number): SvarContext => ({
   game: {} as unknown as Game,
   svars: new Map(),
-  xValue,
+  ...(xValue !== undefined ? { xValue } : {}),
 });
 
 describe("Count$ selector", () => {

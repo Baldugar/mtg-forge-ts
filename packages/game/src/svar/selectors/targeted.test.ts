@@ -9,7 +9,7 @@ import "./targeted.js";
 const mkCtx = (targets?: readonly EntityId[]): SvarContext => ({
   game: {} as unknown as Game,
   svars: new Map(),
-  targets,
+  ...(targets !== undefined ? { targets } : {}),
 });
 
 describe("Targeted$ selector", () => {
