@@ -136,6 +136,20 @@ export class Game {
   // reverting ControlChanged events flow through the main pipeline
   // (triggers see them, replacements can intercept).
   readonly pendingControlReverts: EntityId[] = [];
+  /**
+   * SP2 Milestone M Task 51 — team-combat (Two-Headed Giant) shared life
+   * pool. Populated by the Game constructor when
+   * `rules.appliedVariants.includes("TwoHeadedGiant")`; left `null`
+   * otherwise so the normal per-player life model is untouched.
+   *
+   * Shape: teamId → current shared life. Starting life equals
+   * `rules.startingLife` for 2HG (two 20-life teams by default; rules
+   * that override startingLife flow through unchanged — Forge mirrors
+   * this). Damage-routing integration (player damage → team life) is
+   * deferred to SP6/formats per master-spec §10.teams; SP2 only
+   * establishes the state slot and a `getTeamLifeFor(seat)` helper.
+   */
+  teamLife: Map<number, number> | null = null;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -206,6 +220,18 @@ export class Game {
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();
+    // Task 51 — 2HG team-life pool. We populate per-team starting life only
+    // when the variant is applied. Each distinct teamId seen in players
+    // gets `startingLife` (2HG default is 30 per team, but we respect
+    // rules.startingLife so formats can override). Full damage-routing
+    // integration (player damage → shared pool) is deferred to SP6/formats.
+    if (opts.rules.appliedVariants.includes("TwoHeadedGiant")) {
+      const pool = new Map<number, number>();
+      for (const p of this.players) {
+        if (!pool.has(p.teamId)) pool.set(p.teamId, opts.rules.startingLife);
+      }
+      this.teamLife = pool;
+    }
   }
 
   newEntityId(): EntityId {
@@ -230,6 +256,19 @@ export class Game {
     const p = this.players[seat as unknown as number];
     if (!p) throw new GameStateIntegrityError(`No player at seat ${seat}`);
     return p;
+  }
+
+  /**
+   * Task 51 — return the team-life pool value for the team containing
+   * `seat`, or `null` when team-combat (Two-Headed Giant) is NOT in
+   * force. Callers in SP6/format-specific damage-routing will consult
+   * this to decide whether a player's life change should instead mutate
+   * the shared pool.
+   */
+  getTeamLifeFor(seat: PlayerSeat): number | null {
+    if (!this.teamLife) return null;
+    const player = this.getPlayer(seat);
+    return this.teamLife.get(player.teamId) ?? null;
   }
 
   isTerminal(): boolean {
