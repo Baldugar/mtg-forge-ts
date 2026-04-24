@@ -36,10 +36,16 @@ const makeGame = (): Game =>
     rng: new SeededRng(42n),
   });
 
-function driveGenerator<T>(gen: Generator<unknown, T, unknown>): T {
+/**
+ * Drive a generator to completion, optionally supplying responses to yields.
+ * `responses` is a queue: each time the generator yields, if a response is
+ * available it is sent back via .next(response); otherwise undefined is sent.
+ */
+function driveGenerator<T>(gen: Generator<unknown, T, unknown>, responses: unknown[] = []): T {
   let result = gen.next();
   while (!result.done) {
-    result = gen.next();
+    const resp = responses.shift();
+    result = gen.next(resp);
   }
   return result.value;
 }
@@ -293,5 +299,91 @@ describe("CostMana", () => {
 
     driveGenerator(CostMana.pay(ctx));
     expect(pool.size()).toBe(0);
+  });
+
+  // ---- X-cost tests (T49) ------------------------------------------------
+
+  it("canPay returns true for X cost 'X' with empty pool (X=0 trivially payable)", () => {
+    const game = makeGame();
+    const seat = mkPlayerSeat(0);
+    const player = game.getPlayer(seat);
+    const pool = new ManaPool();
+    player.manaPool = pool;
+    const ctx: CostPaymentContext = {
+      game,
+      payerSeat: seat,
+      sourceCardId: mkEntityId(1),
+      raw: "X",
+    };
+    // X=0 is always payable
+    expect(CostMana.canPay(ctx)).toBe(true);
+  });
+
+  it("pay for 'X' cost yields chooseX decision with correct maxX", () => {
+    // Pool has 3 mana; X cost has no other pips → maxX = 3.
+    const game = makeGame();
+    const seat = mkPlayerSeat(0);
+    const player = game.getPlayer(seat);
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) }));
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) }));
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) }));
+    player.manaPool = pool;
+
+    const ctx: CostPaymentContext = {
+      game,
+      payerSeat: seat,
+      sourceCardId: mkEntityId(1),
+      raw: "X",
+    };
+
+    // Drive the generator; capture yields.
+    const yields: unknown[] = [];
+    const gen = CostMana.pay(ctx);
+    let step = gen.next();
+    // First yield should be the chooseX decision.
+    expect(step.done).toBe(false);
+    yields.push(step.value);
+
+    const yielded = step.value as { kind: string; request: { kind: string; maxX: number } };
+    expect(yielded.kind).toBe("decision");
+    expect(yielded.request.kind).toBe("chooseX");
+    expect(yielded.request.maxX).toBe(3);
+
+    // Send back x=0 (choose X=0, simplest case).
+    step = gen.next({ kind: "chooseX", x: 0 });
+    // With X=0, no pips to pay — generator should complete.
+    while (!step.done) {
+      step = gen.next();
+    }
+    // X=0 with no other pips: pool untouched.
+    expect(pool.size()).toBe(3);
+  });
+
+  it("pay for 'XR' with X=3 from pool [R, G, G, G, G] drains 4 entries", () => {
+    const game = makeGame();
+    const seat = mkPlayerSeat(0);
+    const player = game.getPlayer(seat);
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colored(Color.Red, { sourceId: mkEntityId(99) }));
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) }));
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) }));
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) }));
+    pool.add(ManaProduced.colored(Color.Green, { sourceId: mkEntityId(99) })); // extra
+    player.manaPool = pool;
+
+    const ctx: CostPaymentContext = {
+      game,
+      payerSeat: seat,
+      sourceCardId: mkEntityId(1),
+      raw: "XR",
+    };
+
+    // Respond to chooseX with x=3. Pool has 5 entries; maxX = 5 - 1(R) = 4.
+    const receipt = driveGenerator(CostMana.pay(ctx), [{ kind: "chooseX", x: 3 }]);
+    expect(receipt.handlerKey).toBe("Mana");
+    // 1 R (colored pip) + 3 generic (X=3) = 4 consumed, 1 extra G remains.
+    expect(pool.size()).toBe(1);
+    expect((receipt.payload as { xValue: number }).xValue).toBe(3);
   });
 });

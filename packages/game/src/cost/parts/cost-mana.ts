@@ -1,17 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// CostMana — payment of a mana cost (e.g. "R", "2 G", "X"). M5 replaces the
-// M4 total-shard-count stub with the real color-aware solver from
-// packages/game/src/mana/solver/.
+// CostMana — payment of a mana cost (e.g. "R", "2 G", "X"). M5 implements
+// the real color-aware solver. If the cost has variable (X) pips, the payer
+// is prompted with a "chooseX" decision before payment proceeds.
 //
-// canPay: delegates to solveManaPayment — returns true iff a plan exists.
-// pay:    solves, applies the plan (pool mutation + life payment), returns a
-//         receipt carrying the pre-payment pool snapshot for undo.
-// undo:   restores the pool snapshot + refunds life (via changeLife).
+// canPay: delegates to solveManaPayment with xValue=0 (conservative check —
+//         X costs can always be paid for X=0).
+// pay:    if cost has X pips, yields chooseX decision to get the bound value;
+//         then solves and applies the plan.
+// undo:   restores pool snapshot + refunds phyrexian life.
 import { ManaCost } from "@mtg-forge-ts/core";
 import type { ManaProduced } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { ManaPool } from "../../mana/mana-pool.js";
 import { applyPaymentPlan } from "../../mana/solver/apply-plan.js";
+import { chooseX, computeMaxX } from "../../mana/solver/choose-x.js";
 import { solveManaPayment } from "../../mana/solver/solver.js";
 import { costPartRegistry } from "./cost-part-registry.js";
 import type { CostPart, CostPartReceipt, CostPaymentContext } from "./cost-part.js";
@@ -29,7 +31,7 @@ interface ManaCostReceipt {
   prePaymentSnapshot: ManaProduced[];
   /** Life paid via phyrexian pips (for undo refund). */
   lifePaid: number;
-  /** Bound X value if the cost had X pips. */
+  /** Bound X value (0 if cost had no X pips). */
   xValue: number;
 }
 
@@ -39,19 +41,31 @@ export const CostMana: CostPart = {
   canPay(ctx: CostPaymentContext): boolean {
     const cost = ManaCost.parse(ctx.raw);
     const pool = getPool(ctx);
-    return solveManaPayment(cost, pool) !== null;
+    // Conservative check: X=0 means we only verify non-X pips are payable.
+    // A player can always choose X=0, so if non-X pips are satisfiable the
+    // cost can be paid (even if X=0 is a degenerate choice for some cards).
+    return solveManaPayment(cost, pool, { xValue: 0 }) !== null;
   },
 
   *pay(ctx: CostPaymentContext): Generator<EngineYield, CostPartReceipt, unknown> {
     const cost = ManaCost.parse(ctx.raw);
     const pool = getPool(ctx);
 
-    // Capture snapshot BEFORE solving so undo can restore the exact pre-pay state.
+    // --- X binding ---------------------------------------------------
+    let xValue = 0;
+    if (cost.countX() > 0) {
+      const maxBound = computeMaxX(cost, pool);
+      xValue = yield* chooseX(ctx.sourceCardId, maxBound);
+    }
+
+    // Capture snapshot BEFORE applying so undo can restore the exact pre-pay state.
     const prePaymentSnapshot: ManaProduced[] = pool.snapshot();
 
-    const plan = solveManaPayment(cost, pool);
+    const plan = solveManaPayment(cost, pool, { xValue });
     if (plan === null) {
-      throw new Error(`CostMana.pay: insufficient mana — cannot pay "${ctx.raw}" from current pool`);
+      throw new Error(
+        `CostMana.pay: insufficient mana — cannot pay "${ctx.raw}" (xValue=${xValue}) from current pool`,
+      );
     }
 
     // Apply the plan: drain pool entries and pay life for phyrexian pips.
@@ -60,7 +74,7 @@ export const CostMana: CostPart = {
     const receipt: ManaCostReceipt = {
       prePaymentSnapshot,
       lifePaid: plan.lifePaid,
-      xValue: plan.xValue ?? 0,
+      xValue: plan.xValue ?? xValue,
     };
 
     return {
@@ -75,9 +89,7 @@ export const CostMana: CostPart = {
     const pool = getPool(ctx);
     pool.restore(prePaymentSnapshot);
 
-    // Refund life paid for phyrexian pips by running changeLife synchronously
-    // (drive the generator to completion — changeLife yields events but has
-    // no decision points that require external input).
+    // Refund life paid for phyrexian pips by driving changeLife synchronously.
     if (lifePaid > 0) {
       const gen = ctx.game.action.changeLife(ctx.payerSeat, lifePaid, { cause: "phyrexianRefund" });
       let step = gen.next();
