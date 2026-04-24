@@ -31,6 +31,7 @@ import type { GameRules } from "./game-rules.js";
 import { LayerEngine } from "./layers/layer-engine.js";
 import { Player } from "./player.js";
 import { ReplacementRegistry } from "./replacements/replacement-registry.js";
+import { SbaEngine } from "./sba/sba-engine.js";
 import { Stack } from "./stack/stack.js";
 import { StaticEffectRegistry } from "./statics/static-effect-registry.js";
 import { TargetSystem } from "./target/target-system.js";
@@ -104,6 +105,7 @@ export class Game {
   readonly replacementRegistry: ReplacementRegistry;
   readonly triggerRegistry: TriggerRegistry;
   readonly staticEffectRegistry: StaticEffectRegistry;
+  readonly sbaEngine: SbaEngine;
   readonly delayedTriggerQueue: DelayedTriggerQueue;
   readonly linkedAbilities: LinkedAbilityTable;
   terminalState: TerminalState | null = null;
@@ -147,6 +149,10 @@ export class Game {
     // keeping ordering monotonic ("downstream registries last") makes
     // the construction order self-documenting.
     this.staticEffectRegistry = new StaticEffectRegistry(this);
+    // WHY after staticEffectRegistry: SBA collectors may eventually query
+    // static "you don't lose the game" or "indestructible" rule-changers
+    // (future work); keeping construction monotonic puts consumers last.
+    this.sbaEngine = new SbaEngine(this);
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();

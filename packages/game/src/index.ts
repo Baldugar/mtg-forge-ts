@@ -23,6 +23,7 @@ export * from "./registries/index.js";
 export * from "./replacements/index.js";
 export * from "./run-game.js";
 export * from "./run-match.js";
+export * from "./sba/index.js";
 export * from "./setup/index.js";
 export * from "./stack/index.js";
 export * from "./statics/index.js";
