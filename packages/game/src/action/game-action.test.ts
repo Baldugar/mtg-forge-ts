@@ -315,6 +315,33 @@ describe("GameAction.damage", () => {
     collect(action.damage(source, "creature", target, 4, false));
     expect(game.cards.get(target)?.damage).toBe(4);
   });
+
+  // SP2 Task 78 (fix 1) — damage to a player deducts Player.life and
+  // emits a companion LifeChanged event alongside the canonical DamageDealt.
+  it("deducts Player.life and emits LifeChanged when target is a player", () => {
+    const { game, action, seat0, seat1 } = mkFixture();
+    const source = mkEntityId(150);
+    const target = game.cards.get(mkEntityId(151)) ?? null;
+    // No card needed for player-target damage; seat1 is the target.
+    const player = game.getPlayer(seat1);
+    expect(player.life).toBe(20);
+    const yields = collect(action.damage(source, "player", seat1, 3, false));
+    expect(player.life).toBe(17);
+    const damageDealt = yields.find((y) => y.kind === "event" && y.event.kind === "DamageDealt");
+    expect(damageDealt).toBeDefined();
+    const lifeChanged = yields.find((y) => y.kind === "event" && y.event.kind === "LifeChanged");
+    if (!lifeChanged || lifeChanged.kind !== "event" || lifeChanged.event.kind !== "LifeChanged") {
+      throw new Error("expected LifeChanged event");
+    }
+    expect(lifeChanged.event.payload.playerSeat).toBe(seat1);
+    expect(lifeChanged.event.payload.oldLife).toBe(20);
+    expect(lifeChanged.event.payload.newLife).toBe(17);
+    expect(lifeChanged.event.payload.delta).toBe(-3);
+    expect(lifeChanged.event.payload.cause).toBe("damage");
+    // Reference seat0/target so lint doesn't flag unused.
+    expect(seat0).toBeDefined();
+    expect(target).toBeNull();
+  });
 });
 
 describe("GameAction.addCounter / removeCounter", () => {

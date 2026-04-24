@@ -316,20 +316,16 @@ describe("SP2 Milestone X — full combat scenario integration (Task 76)", () =>
     expect(b3Card.damage).toBe(1); // from A3 (deathtouch-assigned min-lethal)
 
     // --- Assertions on seat B damage-to-player event -------------------
-    // SP2's GameAction.damage(player) emits DamageDealt but does NOT inline-
-    // deduct Player.life — life change from player-damage is driven by a
-    // follow-up `changeLife` call (SP3 combat-damage-to-life-loss wiring;
-    // see game-action.ts damage onApplied — only creature/battle branches).
-    // So the DamageDealt event carrying seat B as targetId IS the integration
-    // point, and seatB.life is unchanged.
+    // SP2 Task 78 (fix 1) — damage(player) now deducts Player.life inline
+    // and emits a companion LifeChanged alongside DamageDealt. Prior SP2
+    // shape deferred life change to SP3's combat-damage-to-life-loss wiring.
     const playerDmg = dmg.filter((d) => d.targetKind === "player");
     expect(playerDmg).toHaveLength(1);
     expect(playerDmg[0]?.targetId).toBe(seatB);
     expect(playerDmg[0]?.amount).toBe(3);
     expect(playerDmg[0]?.isCombat).toBe(true);
-    // Player.life itself unchanged under the current inline-apply contract.
-    // Flagged as a follow-up for SP3 — see report.
-    expect(game.getPlayer(seatB).life).toBe(seatBLifeBefore);
+    // Player.life reflects the 3 damage taken by seat B (fix 1).
+    expect(game.getPlayer(seatB).life).toBe(seatBLifeBefore - 3);
 
     // --- Post-combat SBA sweep: destroy creatures with damage ≥ toughness
     drainSbaSweep(game);
