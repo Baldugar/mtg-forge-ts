@@ -24,6 +24,9 @@ export const collectLegendWorld = (game: Game, out: SbaAction[]): void => {
   const byControllerName = new Map<PlayerSeat, Map<string, EntityId[]>>();
   for (const [id, card] of game.cards) {
     if (card.zone !== ZoneType.Battlefield) continue;
+    // CR 702.26e — phased-out permanents are treated as though they don't
+    // exist for most rules, including the legend rule. Audit A-007.
+    if (card.phased === true) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     if (!chars.supertypes.has(Supertype.Legendary)) continue;
     // Unnamed legendaries (vanishingly rare but valid in test setup) are
@@ -47,6 +50,8 @@ export const collectLegendWorld = (game: Game, out: SbaAction[]): void => {
   const worldIds: Array<{ id: EntityId; timestamp: number }> = [];
   for (const [id, card] of game.cards) {
     if (card.zone !== ZoneType.Battlefield) continue;
+    // CR 702.26e — phased-out permanents are invisible to the world rule.
+    if (card.phased === true) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     if (!chars.supertypes.has(Supertype.World)) continue;
     // EntityId is branded on a number — coerce via unknown. Larger ids

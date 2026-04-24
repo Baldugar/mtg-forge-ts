@@ -199,4 +199,36 @@ describe("legend-world — CR 704.5j/k", () => {
       /not among candidates/,
     );
   });
+
+  // Audit A-007 regression — CR 702.26e: phased-out permanents are
+  // invisible to most effects, including the legend rule. Two legendaries
+  // same name / same controller with one phased out → no batch.
+  it("skips phased-out permanents for the legend rule (CR 702.26e)", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const id1 = mkEntityId(1);
+    const id2 = mkEntityId(2);
+    const c1 = addCardNamed(game, seat, ZoneType.Battlefield, id1, "Jace");
+    const c2 = addCardNamed(game, seat, ZoneType.Battlefield, id2, "Jace");
+    markSupertype(game, id1, Supertype.Legendary);
+    markSupertype(game, id2, Supertype.Legendary);
+    c2.phased = true; // phase c2 out — only c1 is visible to the legend rule.
+    runSweep(game); // no decisions expected
+    expect(c1.zone).toBe(ZoneType.Battlefield);
+    expect(c2.zone).toBe(ZoneType.Battlefield);
+  });
+
+  it("skips phased-out permanents for the world rule (CR 702.26e)", () => {
+    const game = mkGame();
+    const id1 = mkEntityId(1);
+    const id2 = mkEntityId(5);
+    const c1 = addCardNamed(game, mkPlayerSeat(0), ZoneType.Battlefield, id1, "World A");
+    const c2 = addCardNamed(game, mkPlayerSeat(1), ZoneType.Battlefield, id2, "World B");
+    markSupertype(game, id1, Supertype.World);
+    markSupertype(game, id2, Supertype.World);
+    c2.phased = true; // only c1 visible — not enough for world rule.
+    runSweep(game);
+    expect(c1.zone).toBe(ZoneType.Battlefield);
+    expect(c2.zone).toBe(ZoneType.Battlefield);
+  });
 });
