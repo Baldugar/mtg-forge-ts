@@ -5,3 +5,7 @@ import "./draw.js";
 import "./destroy.js";
 import "./gain-life.js";
 import "./lose-life.js";
+import "./exile.js";
+import "./return-to-hand.js";
+import "./change-zone.js";
+import "./sacrifice.js";
