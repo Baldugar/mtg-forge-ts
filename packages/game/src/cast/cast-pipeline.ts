@@ -20,8 +20,13 @@ import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@m
 import { IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../ability/spell-ability.js";
 import type { EngineYield } from "../action/engine-yield.js";
+import type { CostPartReceipt, CostPaymentContext } from "../cost/parts/cost-part.js";
+import { parseCostString, payCost, undoCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
 import type { FaceKind } from "../multiface/face-kind.js";
+// Side-effect import: registers CostMana, CostTap, CostPayLife, CostSacrifice
+// in costPartRegistry so payCost can dispatch to them.
+import "../cost/parts/index.js";
 import type { StackItem, StackItemProvenance, StackItemResolver } from "../stack/stack-item.js";
 import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
@@ -105,14 +110,18 @@ export interface CastProposal {
 
 /**
  * SP2 cost-payment receipt. Stored on `ctx.paidAlready` in step 10; the
- * abort path (Task 39) drops the list LIFO. SP3's CostPayment will carry
- * an `undo(game)` hook each entry exposes for real mana-pool / tap-state
- * unwinding.
+ * abort path (Task 39) LIFO-undoes each entry via `undoCost`. Each entry
+ * carries an optional `receipt` field (SP3 Part C Task 60) with the
+ * CostPartReceipt that `undoCost` needs to reverse the real mana payment.
+ * SP2 synthetic fixtures that pre-date real payment leave `receipt`
+ * undefined; abort silently skips those entries.
  */
 export interface CostPayment {
   readonly sourceCardId: EntityId;
   readonly totalCost: unknown;
   readonly paidAt: number;
+  /** SP3 Part C T60: the concrete receipt produced by payCost, used by abort to undo. */
+  readonly receipt?: CostPartReceipt;
 }
 
 export class CastPipeline {
@@ -524,10 +533,15 @@ export class CastPipeline {
   protected *stepDetermineTotalCost(ctx: CastContext): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(ctx.sourceCardId);
     if (!card) return;
-    // WHY probed structurally: PaperCard carries ManaCost on its definition
-    // slot (SP3 lands the full CardDefinition); until then, the cast surface
-    // exposes manaCost on the paper record directly.
-    const baseCost = (card.paperCard as { manaCost?: unknown }).manaCost ?? null;
+    // WHY probed structurally: PaperCard may carry manaCost directly (SP2
+    // synthetic fixtures) OR through its CardDefinition (SP3 real cards).
+    // Check both: prefer direct `paperCard.manaCost` (SP2 fixtures), then
+    // fall back to `paperCard.definition.manaCost` (SP3 real definitions).
+    const paperAny = card.paperCard as { manaCost?: unknown };
+    const baseCost =
+      paperAny.manaCost !== undefined
+        ? (paperAny.manaCost ?? null)
+        : (card.paperCard.definition?.manaCost ?? null);
     const costMods = this.game.staticEffectRegistry.byCategory("costModification");
     ctx.totalCost = {
       base: baseCost,
@@ -572,42 +586,77 @@ export class CastPipeline {
   }
 
   /**
-   * CR 601.2h — pay the total cost. Without the SP3 ManaCostSolver +
-   * mana pool, SP2 records a CostPayment stub on ctx.paidAlready so
-   * abort() (Task 39) can unwind. The real mana pool deduction and
-   * tap-mana-ability side effects land with SP3; at that point, each
-   * entry on paidAlready carries an `undo(game)` the abort path calls.
+   * CR 601.2h — pay the total cost. SP3 Part C Task 60 replaces the SP2
+   * receipt-only stub with a real CostPlan + payCost call that drains
+   * the caster's mana pool (and runs tap/life costs).
    *
-   * Emits a `CostPaid` event for telemetry / replay. The stackItemId on
-   * the payload is the SOURCE card id because the StackItem itself is
-   * minted later in finalizeStackItem; consumers reading CostPaid match
-   * against sourceCardId, not the yet-to-be-created stack id. SP3 swaps
-   * this for the post-finalize emission order once the cost solver is
-   * live.
+   * The real-payment path is gated on `totalCost.base.raw` being a
+   * non-empty string that `parseCostString` can handle (whitespace-/
+   * comma-separated mana symbols, "T", "N life", "Sac X"). Cards whose
+   * manaCost is null or missing auto-pass (free casts, SP2 synthetic
+   * test cards). The raw cost is extracted from ManaCostAst.raw which
+   * the real parser populates for every card with a ManaCost: line.
+   *
+   * Emits a `CostPaid` event for telemetry / replay on success.
    */
   protected *stepPayCosts(ctx: CastContext): Generator<EngineYield, void, unknown> {
-    const totalCost = ctx.totalCost as { base?: unknown } | null | undefined;
-    // WHY skip: SP2's payment is a receipt-only stub. For cards without a
-    // base mana cost (the samplePaper fixture used across SP2 tests, free
-    // cast-from-command-zone effects), recording a null-cost payment is
-    // noise — consumers reading CostPaid would see ghost events on every
-    // cast. SP3's real cost solver always runs and emits the event with a
-    // concrete cost payload.
+    const totalCost = ctx.totalCost as { base?: { raw?: string } | null } | null | undefined;
     if (totalCost == null || totalCost.base == null) {
+      return; // free cast or no cost recorded — skip payment
+    }
+    const rawCost = totalCost.base.raw;
+    if (!rawCost) {
+      return; // base present but no raw string (SP2 placeholder) — skip
+    }
+
+    // SP3 Part C Task 60: real cost payment via payCost orchestrator.
+    const costCtx: CostPaymentContext = {
+      game: this.game,
+      payerSeat: ctx.castingPlayer,
+      sourceCardId: ctx.sourceCardId,
+      raw: rawCost,
+    };
+    let plan: ReturnType<typeof parseCostString>;
+    try {
+      plan = parseCostString(rawCost);
+    } catch {
+      // Unparseable cost string (e.g. Forge brace-notation from SP2 synthetic
+      // fixtures like "{1}{R}"). Fall back to the SP2 stub behaviour: record a
+      // receipt without actually draining the pool. This preserves backwards
+      // compat for all existing cast-pipeline tests that use non-real raw strings.
+      ctx.paidAlready.push({
+        sourceCardId: ctx.sourceCardId,
+        totalCost: ctx.totalCost,
+        paidAt: this.game.turn,
+      });
+      yield {
+        kind: "event",
+        event: mkEvent("CostPaid", this.game.turn, this.game.phase, {
+          stackItemId: ctx.sourceCardId,
+          payerSeat: ctx.castingPlayer,
+        }),
+      };
       return;
     }
-    const payment: CostPayment = {
-      sourceCardId: ctx.sourceCardId,
-      totalCost: ctx.totalCost,
-      paidAt: this.game.turn,
-    };
-    ctx.paidAlready.push(payment);
+
+    // Drive real payment. payCost throws if mana is insufficient; run()
+    // catches and routes to abort(). abort() will LIFO-undo via undoCost.
+    const receipts = yield* payCost(plan, costCtx);
+    for (const receipt of receipts) {
+      ctx.paidAlready.push({
+        sourceCardId: ctx.sourceCardId,
+        totalCost: ctx.totalCost,
+        paidAt: this.game.turn,
+        receipt,
+      });
+    }
+
     yield {
       kind: "event",
       event: mkEvent("CostPaid", this.game.turn, this.game.phase, {
-        // WHY sourceCardId here: the live StackItem id is assigned in
-        // finalizeStackItem; consumers match against the source card until
-        // the v2 event adds both ids.
+        // WHY sourceCardId: the live StackItem id is assigned in
+        // finalizeStackItem; consumers match against source card until
+        // the v2 event schema adds both ids.
         stackItemId: ctx.sourceCardId,
         payerSeat: ctx.castingPlayer,
       }),
@@ -719,10 +768,21 @@ export class CastPipeline {
    */
   protected *abort(ctx: CastContext, err: unknown): Generator<EngineYield, void, unknown> {
     const reason = err instanceof Error ? err.message : String(err);
-    // 1. Drop partial cost receipts. Done LIFO so SP3 can swap in undo()
-    //    without changing the ordering guarantee.
-    while (ctx.paidAlready.length > 0) {
-      ctx.paidAlready.pop();
+    // 1. LIFO-undo partial cost receipts. SP3 Part C Task 60: entries with
+    //    a real CostPartReceipt (produced by payCost) are undone via undoCost;
+    //    SP2 stub entries (receipt absent) are just dropped.
+    const paymentsLIFO = [...ctx.paidAlready].reverse() as CostPayment[];
+    ctx.paidAlready.length = 0;
+    for (const payment of paymentsLIFO) {
+      if (payment.receipt) {
+        const costCtx: CostPaymentContext = {
+          game: this.game,
+          payerSeat: ctx.castingPlayer,
+          sourceCardId: ctx.sourceCardId,
+          raw: payment.receipt.raw,
+        };
+        undoCost([payment.receipt], costCtx);
+      }
     }
     // 2. Emit the abort event.
     yield {
