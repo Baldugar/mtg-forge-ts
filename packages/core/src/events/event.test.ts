@@ -28,6 +28,8 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "CardUntapped",
   "ControlChanged",
   "AttachmentChanged",
+  "CardAttached",
+  "CardUnattached",
   "PhasedOut",
   "PhasedIn",
   "Flipped",
@@ -138,6 +140,8 @@ const ALL_KINDS_MAP = {
   CardUntapped: true,
   ControlChanged: true,
   AttachmentChanged: true,
+  CardAttached: true,
+  CardUnattached: true,
   PhasedOut: true,
   PhasedIn: true,
   Flipped: true,
@@ -214,9 +218,9 @@ const ALL_KINDS_MAP = {
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 90 distinct kinds grouped across 9 families (SP2 §B lock)", () => {
-    expect(EXPECTED_KINDS.length).toBe(90);
-    expect(new Set(EXPECTED_KINDS).size).toBe(90);
+  it("has 92 distinct kinds grouped across 9 families (SP2 §B lock)", () => {
+    expect(EXPECTED_KINDS.length).toBe(92);
+    expect(new Set(EXPECTED_KINDS).size).toBe(92);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -255,6 +259,8 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     CardUntapped: { cardId: id(1) },
     ControlChanged: { cardId: id(1), oldController: seat0, newController: seat1 },
     AttachmentChanged: { cardId: id(1) },
+    CardAttached: { sourceId: id(1), targetId: id(2), cause: "cast" },
+    CardUnattached: { sourceId: id(1), reason: "effect" },
     PhasedOut: { cardId: id(1), direct: true },
     PhasedIn: { cardId: id(1), direct: true },
     Flipped: { cardId: id(1) },

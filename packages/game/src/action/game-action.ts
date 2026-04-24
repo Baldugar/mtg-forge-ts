@@ -32,6 +32,7 @@ import type { Game } from "../game.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
 import type {
   AddCounterIntent,
+  AttachIntent,
   ControlChangeIntent,
   DamageIntent,
   DestroyIntent,
@@ -43,6 +44,7 @@ import type {
   RemoveCounterIntent,
   SacrificeIntent,
   TapIntent,
+  UnattachIntent,
   UntapIntent,
 } from "../replacements/mutation-intent.js";
 import type { StackItem } from "../stack/stack-item.js";
@@ -66,7 +68,9 @@ type RoutedIntent =
   | ExileIntent
   | SacrificeIntent
   | MillIntent
-  | ControlChangeIntent;
+  | ControlChangeIntent
+  | AttachIntent
+  | UnattachIntent;
 
 export class GameAction {
   constructor(private readonly game: Game) {}
@@ -604,6 +608,98 @@ export class GameAction {
           oldController,
           newController: final.newController,
           ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
+        }),
+    );
+  }
+
+  // === Attach / unattach (SP2 Task 42) ===
+
+  /**
+   * Attach a source object (Aura, Equipment, Fortification) to a target
+   * object. Maintains the symmetric attachedTo/attachments invariant:
+   *   source.attachedTo === targetId
+   *   target.attachments.includes(sourceId)
+   *
+   * If the source was already attached to a DIFFERENT target, we detach
+   * from the prior target first — Forge's equip-to-another-creature path
+   * (CR 702.6c implicit detachment before re-attachment).
+   *
+   * Emits CardAttached on success; replacement chain may prevent or
+   * redirect (swap targetId via matches/apply returning a new intent).
+   */
+  *attach(
+    sourceId: EntityId,
+    targetId: EntityId,
+    cause: "cast" | "static" | "sba" | "activated",
+  ): Generator<EngineYield, void, unknown> {
+    const intent: AttachIntent = { kind: "attach", sourceId, targetId, cause };
+    yield* this.applyWithReplacements<AttachIntent>(
+      intent,
+      (final) => {
+        const source = this.game.cards.get(final.sourceId);
+        const target = this.game.cards.get(final.targetId);
+        if (!source || !target) {
+          throw new GameStateIntegrityError(
+            `attach: card missing (source=${final.sourceId}, target=${final.targetId})`,
+          );
+        }
+        // Detach from prior target if re-attaching. Identity re-attach is
+        // a no-op for the `attachments` side but still drives the event.
+        if (source.attachedTo !== null && source.attachedTo !== final.targetId) {
+          const prev = this.game.cards.get(source.attachedTo);
+          if (prev) {
+            prev.attachments = prev.attachments.filter((x) => x !== final.sourceId);
+          }
+        }
+        source.attachedTo = final.targetId;
+        if (!target.attachments.includes(final.sourceId)) {
+          target.attachments = [...target.attachments, final.sourceId];
+        }
+        // CR 613.1 — attachment change alters which continuous effects
+        // apply (Aura's granted abilities, Equipment-conditioned statics).
+        // Layer 6 grant ledger (Task 43) hooks after this mutation.
+        this.game.layerEngine.bumpEpoch("attach");
+      },
+      (final) =>
+        mkEvent("CardAttached", this.game.turn, this.game.phase, {
+          sourceId: final.sourceId,
+          targetId: final.targetId,
+          cause: final.cause,
+        }),
+    );
+  }
+
+  /**
+   * Unattach a source from its current target. No-op (no event, no
+   * state change) when the source is not attached — mirrors the
+   * tap/untap convention to avoid spurious trigger fan-out.
+   */
+  *unattach(
+    sourceId: EntityId,
+    reason: "sba" | "targetLeft" | "effect" = "effect",
+  ): Generator<EngineYield, void, unknown> {
+    const source = this.game.cards.get(sourceId);
+    // Pre-check: no intent, no replacement chain, no event.
+    if (!source || source.attachedTo === null) return;
+    const intent: UnattachIntent = { kind: "unattach", sourceId, reason };
+    yield* this.applyWithReplacements<UnattachIntent>(
+      intent,
+      (final) => {
+        const s = this.game.cards.get(final.sourceId);
+        if (!s) return;
+        const prev = s.attachedTo;
+        if (prev === null) return;
+        const target = this.game.cards.get(prev);
+        if (target) {
+          target.attachments = target.attachments.filter((x) => x !== final.sourceId);
+        }
+        s.attachedTo = null;
+        this.game.layerEngine.bumpEpoch("unattach");
+      },
+      (final) =>
+        mkEvent("CardUnattached", this.game.turn, this.game.phase, {
+          sourceId: final.sourceId,
+          reason: final.reason,
         }),
     );
   }

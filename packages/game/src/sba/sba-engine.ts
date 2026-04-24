@@ -155,7 +155,7 @@ export class SbaEngine {
         return;
       case "equipmentUnattach":
       case "fortificationUnattach":
-        this.applyUnattach(action.cardId);
+        yield* this.game.action.unattach(action.cardId, "sba");
         return;
       case "countersPairwiseCancel":
         this.applyCountersPairwiseCancel(action);
@@ -371,19 +371,6 @@ export class SbaEngine {
     if (!card) return;
     card.bestowed = false;
     this.game.layerEngine.bumpEpoch("bestow-revert");
-  }
-
-  private applyUnattach(cardId: EntityId): void {
-    const card = this.game.cards.get(cardId);
-    if (!card) return;
-    const attachedTo = card.attachedTo;
-    if (attachedTo === null) return;
-    const target = this.game.cards.get(attachedTo);
-    if (target) {
-      target.attachments = target.attachments.filter((x) => x !== cardId);
-    }
-    card.attachedTo = null;
-    this.game.layerEngine.bumpEpoch("unattach-sba");
   }
 
   // Zone-agnostic removal used by token cease-existence. Walks every

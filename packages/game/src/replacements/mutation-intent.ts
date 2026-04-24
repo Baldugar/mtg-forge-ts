@@ -23,6 +23,8 @@ export const INTENT_KINDS = {
   Sacrifice: "sacrifice",
   Mill: "mill",
   ControlChange: "controlChange",
+  Attach: "attach",
+  Unattach: "unattach",
 } as const;
 
 export type IntentKind = (typeof INTENT_KINDS)[keyof typeof INTENT_KINDS];
@@ -104,6 +106,25 @@ export interface ControlChangeIntent {
   readonly newController: PlayerSeat;
   readonly sourceId: EntityId | null;
 }
+// SP2 Milestone K Task 42 — Aura/Equipment/Fortification attach/unattach.
+// `cause` tracks provenance so observers can distinguish cast-time
+// attachment ("equipped as you cast it", enchant resolution) from static-
+// granted re-attachment and SBA-driven unattachment. UnattachIntent's
+// `reason` mirrors the same provenance split: sba covers CR 704.5o/p/q
+// equipment/fortification unattach, targetLeft covers
+// untilXLeavesBattlefield-style forced detachment, effect covers
+// scripted unequip activated abilities.
+export interface AttachIntent {
+  readonly kind: "attach";
+  readonly sourceId: EntityId;
+  readonly targetId: EntityId;
+  readonly cause: "cast" | "static" | "sba" | "activated";
+}
+export interface UnattachIntent {
+  readonly kind: "unattach";
+  readonly sourceId: EntityId;
+  readonly reason: "sba" | "targetLeft" | "effect";
+}
 
 // Union of all known intent shapes (non-exhaustive; GameAction may emit
 // additional kinds — replacements that don't recognize the kind should
@@ -121,4 +142,6 @@ export type KnownIntent =
   | ExileIntent
   | SacrificeIntent
   | MillIntent
-  | ControlChangeIntent;
+  | ControlChangeIntent
+  | AttachIntent
+  | UnattachIntent;

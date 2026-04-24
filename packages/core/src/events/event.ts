@@ -211,6 +211,34 @@ export type GameEvent =
       };
     }
   | {
+      readonly kind: "CardAttached";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      // SP2 Milestone K Task 42 — GameAction.attach emits this on a
+      // successful attachment. `cause` tracks the provenance path so
+      // triggers ("whenever an Aura you control becomes attached")
+      // can distinguish cast-time attachments from static/SBA-driven
+      // ones. `AttachmentChanged` remains the generic "attachment
+      // relationship changed" event; CardAttached/CardUnattached are
+      // the directional pair mirroring the attach/unattach mutators.
+      readonly payload: {
+        readonly sourceId: EntityId;
+        readonly targetId: EntityId;
+        readonly cause: "cast" | "static" | "sba" | "activated";
+      };
+    }
+  | {
+      readonly kind: "CardUnattached";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly sourceId: EntityId;
+        readonly reason: "sba" | "targetLeft" | "effect";
+      };
+    }
+  | {
       readonly kind: "PhasedOut";
       readonly version: 1;
       readonly turn: number;
