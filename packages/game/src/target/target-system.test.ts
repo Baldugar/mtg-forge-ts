@@ -13,6 +13,7 @@ import {
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
+import { GameAction } from "../action/game-action.js";
 import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
@@ -119,6 +120,12 @@ const addCard = (
   z.add(cid);
   g.layerEngine.bumpEpoch("test: seed card");
   return cid;
+};
+
+const drain = (gen: Generator<unknown, void, unknown>): void => {
+  for (const _ of gen) {
+    // no-op
+  }
 };
 
 // ---------------------------------------------------------------------------
@@ -498,5 +505,111 @@ describe("TargetSystem.validateAtCast", () => {
     };
     const choices: TargetChoices = { targets: [] };
     expect(g.targetSystem.validateAtCast(choices, mkCtx(mkEntityId(999)), restriction)).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// validateAtResolve — Task 14
+// Covers mutations between cast and resolve that shift eligibility per
+// CR 608.2b. The partition returned by validateAtResolve feeds the stack-
+// item resolver, which fizzles the effect when legal.length === 0 and
+// recomputes per-target effects otherwise.
+// ---------------------------------------------------------------------------
+
+describe("TargetSystem.validateAtResolve — mutations between cast and resolve", () => {
+  const mkCtx = (): EnumerationContext => ({
+    sourceId: mkEntityId(9999),
+    sourceControllerSeat: mkPlayerSeat(0),
+  });
+
+  const bfCreatureRestriction: TargetRestriction = {
+    controllerScope: "any",
+    permitZones: new Set([ZoneType.Battlefield]),
+    permitTypes: new Set(),
+    forbidTypes: new Set(),
+    minTargets: 1,
+    maxTargets: 2,
+    mayTargetPlayers: false,
+  };
+
+  it("zone change makes target illegal (Battlefield -> Graveyard)", () => {
+    const g = mkGame();
+    const id = addCard(g, 200, mkPlayerSeat(0), ZoneType.Battlefield);
+    const choices: TargetChoices = { targets: [cardTarget(id)] };
+    expect(g.targetSystem.validateAtCast(choices, mkCtx(), bfCreatureRestriction)).toBe(true);
+    const action = new GameAction(g);
+    drain(action.moveTo(id, ZoneType.Graveyard));
+    const { legal, illegal } = g.targetSystem.validateAtResolve(choices, mkCtx(), bfCreatureRestriction);
+    expect(legal).toHaveLength(0);
+    expect(illegal).toHaveLength(1);
+    expect(illegal[0]).toEqual(cardTarget(id));
+  });
+
+  it("type change via Layer 4 remove strips Creature type at resolve", () => {
+    const g = mkGame();
+    const id = addCard(g, 201, mkPlayerSeat(0), ZoneType.Battlefield, [CardType.Creature]);
+    const typedRestriction: TargetRestriction = {
+      ...bfCreatureRestriction,
+      permitTypes: new Set([CardType.Creature]),
+    };
+    const choices: TargetChoices = { targets: [cardTarget(id)] };
+    expect(g.targetSystem.validateAtCast(choices, mkCtx(), typedRestriction)).toBe(true);
+    // WHY: use a global Layer-4 remove — harmless here because this test
+    // has only one card. A more targeted per-card remove is out of SP2
+    // scope (TypeChangeEffect has no sourceCardId filter yet).
+    g.layerEngine.typeEffects.push({
+      kind: "remove",
+      cardType: CardType.Creature,
+      isCda: false,
+      timestamp: 10000,
+      sourceAbilityId: null,
+    });
+    g.layerEngine.bumpEpoch("test: remove creature");
+    const { legal, illegal } = g.targetSystem.validateAtResolve(choices, mkCtx(), typedRestriction);
+    expect(legal).toHaveLength(0);
+    expect(illegal).toHaveLength(1);
+  });
+
+  it("controller change flips 'opponent' target to illegal at resolve", () => {
+    const g = mkGame();
+    // Source is seat 0; target belongs to seat 1 (legal at cast).
+    const id = addCard(g, 202, mkPlayerSeat(1), ZoneType.Battlefield);
+    const oppRestriction: TargetRestriction = { ...bfCreatureRestriction, controllerScope: "opponent" };
+    const choices: TargetChoices = { targets: [cardTarget(id)] };
+    expect(g.targetSystem.validateAtCast(choices, mkCtx(), oppRestriction)).toBe(true);
+    const action = new GameAction(g);
+    drain(action.changeControl(id, mkPlayerSeat(0)));
+    const { legal, illegal } = g.targetSystem.validateAtResolve(choices, mkCtx(), oppRestriction);
+    expect(legal).toHaveLength(0);
+    expect(illegal).toHaveLength(1);
+  });
+
+  it("all targets fizzle produces legal.length === 0 (caller fizzles spell)", () => {
+    const g = mkGame();
+    const a = addCard(g, 210, mkPlayerSeat(0), ZoneType.Battlefield);
+    const b = addCard(g, 211, mkPlayerSeat(0), ZoneType.Battlefield);
+    const r: TargetRestriction = { ...bfCreatureRestriction, minTargets: 2, maxTargets: 2 };
+    const choices: TargetChoices = { targets: [cardTarget(a), cardTarget(b)] };
+    expect(g.targetSystem.validateAtCast(choices, mkCtx(), r)).toBe(true);
+    const action = new GameAction(g);
+    drain(action.moveTo(a, ZoneType.Graveyard));
+    drain(action.moveTo(b, ZoneType.Exile));
+    const { legal, illegal } = g.targetSystem.validateAtResolve(choices, mkCtx(), r);
+    expect(legal).toHaveLength(0);
+    expect(illegal).toHaveLength(2);
+  });
+
+  it("partial fizzle: one of two targets becomes illegal", () => {
+    const g = mkGame();
+    const a = addCard(g, 220, mkPlayerSeat(0), ZoneType.Battlefield);
+    const b = addCard(g, 221, mkPlayerSeat(0), ZoneType.Battlefield);
+    const r: TargetRestriction = { ...bfCreatureRestriction, minTargets: 2, maxTargets: 2 };
+    const choices: TargetChoices = { targets: [cardTarget(a), cardTarget(b)] };
+    expect(g.targetSystem.validateAtCast(choices, mkCtx(), r)).toBe(true);
+    const action = new GameAction(g);
+    drain(action.moveTo(a, ZoneType.Graveyard));
+    const { legal, illegal } = g.targetSystem.validateAtResolve(choices, mkCtx(), r);
+    expect(legal).toEqual([cardTarget(b)]);
+    expect(illegal).toEqual([cardTarget(a)]);
   });
 });
