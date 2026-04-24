@@ -13,7 +13,7 @@
 //
 // `runCombatDamage()` drives the full split when any combatant has FS or DS;
 // otherwise it falls through to a single dealDamage(false) call.
-import type { EntityId } from "@mtg-forge-ts/core";
+import { type EntityId, IllegalDecisionError } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
@@ -26,6 +26,7 @@ import {
   isPhasedOut,
 } from "./damage-assignment-helpers.js";
 import { type CombatDamageAssignment, defaultAssignment } from "./damage-assignment-validator.js";
+import { validateBlockDeclarations } from "./keywords/block-restrictions.js";
 
 export class CombatHandler {
   readonly state: CombatState = createCombatState();
@@ -47,6 +48,14 @@ export class CombatHandler {
   }
 
   declareBlockers(decls: readonly { blockerId: EntityId; attackerIds: readonly EntityId[] }[]): void {
+    // Audit I-13 — validate block restrictions (flying, reach, menace,
+    // landwalk, protection, etc.) before storing declarations. Illegal
+    // blocks throw IllegalDecisionError with the per-declaration reason.
+    const illegal = validateBlockDeclarations(this.game, decls);
+    if (illegal.length > 0) {
+      const reasons = illegal.map((r) => r.reason ?? "unknown block restriction").join("; ");
+      throw new IllegalDecisionError(`declareBlockers: ${reasons}`);
+    }
     for (const d of decls) {
       const info: BlockerInfo = { blockerId: d.blockerId, attackerIds: [...d.attackerIds] };
       this.state.blockers.set(d.blockerId, info);

@@ -1,7 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import type { LobbyPlayer } from "@mtg-forge-ts/core";
-import { SeededRng, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  IllegalDecisionError,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
+import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
@@ -134,5 +142,65 @@ describe("CombatHandler", () => {
     expect(handler.state.blockerOrdering.size).toBe(0);
     expect(handler.state.damageAssignments.size).toBe(0);
     expect(handler.state.firstStrikeSplitActive).toBe(false);
+  });
+});
+
+// Audit I-13 regression — declareBlockers validates block restrictions via
+// validateBlockDeclarations and throws IllegalDecisionError on violations.
+describe("CombatHandler.declareBlockers — block-restriction validation (audit I-13)", () => {
+  const paper: PaperCard = {
+    name: "T",
+    edition: "LEA",
+    collectorNumber: "001",
+    language: "en",
+    foil: false,
+    flags: DEFAULT_PAPER_CARD_FLAGS,
+  };
+
+  const addCardWithKeywords = (game: Game, id: number, seat: number, kws: readonly string[]): void => {
+    const cid = mkEntityId(id);
+    const card = new Card(cid, paper, mkPlayerSeat(seat), mkPlayerSeat(seat), ZoneType.Battlefield);
+    card.keywords = new Set(kws);
+    game.cards.set(cid, card);
+  };
+
+  it("non-flying blocker declaring against a flying attacker throws IllegalDecisionError", () => {
+    const game = mkGame();
+    addCardWithKeywords(game, 1, 0, ["flying"]);
+    addCardWithKeywords(game, 10, 1, []);
+    const handler = new CombatHandler(game);
+    handler.declareAttackers([
+      { attackerId: mkEntityId(1), defender: { kind: "player", seat: mkPlayerSeat(0) } },
+    ]);
+    expect(() =>
+      handler.declareBlockers([{ blockerId: mkEntityId(10), attackerIds: [mkEntityId(1)] }]),
+    ).toThrow(IllegalDecisionError);
+  });
+
+  it("flying blocker against a flying attacker succeeds", () => {
+    const game = mkGame();
+    addCardWithKeywords(game, 2, 0, ["flying"]);
+    addCardWithKeywords(game, 20, 1, ["flying"]);
+    const handler = new CombatHandler(game);
+    handler.declareAttackers([
+      { attackerId: mkEntityId(2), defender: { kind: "player", seat: mkPlayerSeat(0) } },
+    ]);
+    expect(() =>
+      handler.declareBlockers([{ blockerId: mkEntityId(20), attackerIds: [mkEntityId(2)] }]),
+    ).not.toThrow();
+    expect(handler.state.blockers.size).toBe(1);
+  });
+
+  it("reach blocker against flying attacker succeeds", () => {
+    const game = mkGame();
+    addCardWithKeywords(game, 3, 0, ["flying"]);
+    addCardWithKeywords(game, 30, 1, ["reach"]);
+    const handler = new CombatHandler(game);
+    handler.declareAttackers([
+      { attackerId: mkEntityId(3), defender: { kind: "player", seat: mkPlayerSeat(0) } },
+    ]);
+    expect(() =>
+      handler.declareBlockers([{ blockerId: mkEntityId(30), attackerIds: [mkEntityId(3)] }]),
+    ).not.toThrow();
   });
 });
