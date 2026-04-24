@@ -2,21 +2,34 @@
 // CombatHandler — the SOLE mutator of CombatState per the master spec's
 // three-mutators architecture (GameAction / CombatHandler / subsystem-internal).
 // GameAction must not touch CombatState directly. SP1 exposed the mutation
-// surface; SP2 Task 46 adds dealDamage(isFirstStrikeStep) — a generator that
-// walks attackers + blockers and emits damage events through GameAction.damage
-// (which routes through the replacement chain). Tasks 47 and 48 extend this
-// with full lethal+trample+deathtouch assignment validation and the
-// first-strike / double-strike step split (CR 702.7 / 702.4).
+// surface; SP2 Task 46 added dealDamage(isFirstStrikeStep); Task 47 layered
+// in lethal+trample+deathtouch validation (damage-assignment-validator.ts);
+// Task 48 adds the first-strike / double-strike step split per CR 702.7 /
+// 702.4:
+//   - FS step: only creatures with first_strike or double_strike deal damage.
+//   - Regular step: creatures without first_strike (first hit) PLUS creatures
+//     with double_strike (second hit). First-strike-only creatures that
+//     already dealt in the FS step do not deal again.
+//
+// `runCombatDamage()` drives the full split when any combatant has FS or DS;
+// otherwise it falls through to a single dealDamage(false) call.
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
-import { attackerPower, defenderId, defenderKind } from "./damage-assignment-helpers.js";
+import { attackerPower, defenderId, defenderKind, hasKeyword } from "./damage-assignment-helpers.js";
 import { type CombatDamageAssignment, defaultAssignment } from "./damage-assignment-validator.js";
 
 export class CombatHandler {
   readonly state: CombatState = createCombatState();
+
+  // CR 702.4 / 702.7 — creatures that dealt damage in the first-strike step.
+  // The regular step suppresses first-strike-only creatures that already
+  // dealt (invariant holds trivially when nothing strips FS mid-combat, but
+  // we track it so a SP3 layered FS-removal effect between the two steps
+  // cannot cause a FS-only creature to double-hit).
+  private readonly dealtFirstStrike = new Set<EntityId>();
 
   constructor(private readonly game: Game) {}
 
@@ -52,6 +65,7 @@ export class CombatHandler {
     this.state.blockerOrdering.clear();
     this.state.damageAssignments.clear();
     this.state.firstStrikeSplitActive = false;
+    this.dealtFirstStrike.clear();
   }
 
   /**
@@ -60,18 +74,16 @@ export class CombatHandler {
    * routes through the replacement chain and mutates Card.damage /
    * Player.life downstream (and fires DamageDealt triggers).
    *
-   * Task 46 scope (this commit):
    *   - Unblocked attacker: whole power to declared defender.
    *   - Blocked attacker with caller-declared damageAssignments: emit those.
-   *   - Blocked attacker without caller-declared assignments: simple
-   *     defaults (all power to the first ordered blocker). Task 47 replaces
-   *     this with the lethal+trample+deathtouch validator-backed default.
+   *   - Blocked attacker without: `defaultAssignment` (Task 47).
    *   - Blocker: deals power to the first attacker it blocks. Banding /
    *     multi-attacker blocker damage ordering is deferred to SP3 Task 51.
    *
-   * `isFirstStrikeStep` is accepted for the step split but Task 46 treats
-   * all creatures as non-first-strike (emits no damage in FS step). Task
-   * 48 replaces isActiveInStep with real keyword-aware logic.
+   * Step participation is decided by `isActiveInStep`. Prefer calling
+   * `runCombatDamage()` at the combat-damage step boundary rather than
+   * invoking this directly — runCombatDamage conditionally runs the FS
+   * step and maintains the firstStrikeSplitActive flag.
    */
   *dealDamage(isFirstStrikeStep: boolean): Generator<EngineYield, void, unknown> {
     for (const [attackerId, info] of this.state.attackers) {
@@ -96,6 +108,7 @@ export class CombatHandler {
           yield* this.game.action.damage(attackerId, a.targetKind, a.targetId, a.amount, true);
         }
       }
+      if (isFirstStrikeStep) this.dealtFirstStrike.add(attackerId);
     }
 
     for (const [blockerId, info] of this.state.blockers) {
@@ -105,15 +118,60 @@ export class CombatHandler {
       const primaryAttacker = info.attackerIds[0];
       if (primaryAttacker === undefined) continue;
       yield* this.game.action.damage(blockerId, "creature", primaryAttacker, power, true);
+      if (isFirstStrikeStep) this.dealtFirstStrike.add(blockerId);
     }
   }
 
   /**
-   * Task 46 default: no creature is "active" in the first-strike step
-   * (returns false); in the regular step, everyone is active. Task 48
-   * replaces this with first_strike / double_strike keyword-aware logic.
+   * Drive the full combat damage step with the CR 702.7 / 702.4 split. If
+   * any attacker or blocker has first_strike or double_strike, run a FS
+   * step (firstStrikeSplitActive=true) followed by the regular step;
+   * otherwise skip the FS step entirely and run only the regular step.
    */
-  private isActiveInStep(_creatureId: EntityId, isFirstStrikeStep: boolean): boolean {
-    return !isFirstStrikeStep;
+  *runCombatDamage(): Generator<EngineYield, void, unknown> {
+    const needsFSStep =
+      [...this.state.attackers.keys()].some((id) => this.hasFSorDS(id)) ||
+      [...this.state.blockers.keys()].some((id) => this.hasFSorDS(id));
+    if (needsFSStep) {
+      this.setFirstStrikeSplit(true);
+      yield* this.dealDamage(true);
+      this.setFirstStrikeSplit(false);
+    }
+    yield* this.dealDamage(false);
+  }
+
+  private hasFSorDS(creatureId: EntityId): boolean {
+    return (
+      hasKeyword(this.game, creatureId, "first_strike") || hasKeyword(this.game, creatureId, "double_strike")
+    );
+  }
+
+  /**
+   * CR 702.7 / 702.4 step participation.
+   *   - FS step: only creatures with first_strike or double_strike
+   *     participate.
+   *   - Regular step: double-strikers (second hit) and non-first-strike
+   *     creatures (first hit) both participate. First-strike-only
+   *     creatures that already dealt their FS-step damage do not double-
+   *     hit (suppressed via dealtFirstStrike).
+   *
+   * Edge case: if someone calls dealDamage(false) directly without a
+   * prior FS step, a first_strike-only creature falls through to the
+   * regular step — best-effort, matches Forge's defensive behavior.
+   */
+  private isActiveInStep(creatureId: EntityId, isFirstStrikeStep: boolean): boolean {
+    const hasFS = hasKeyword(this.game, creatureId, "first_strike");
+    const hasDS = hasKeyword(this.game, creatureId, "double_strike");
+    if (isFirstStrikeStep) {
+      return hasFS || hasDS;
+    }
+    if (hasDS) return true;
+    if (hasFS) {
+      // First-strike only. Skip if already dealt in FS step; otherwise
+      // fall through (caller used dealDamage(false) without a prior FS
+      // pass).
+      return !this.dealtFirstStrike.has(creatureId);
+    }
+    return true;
   }
 }
