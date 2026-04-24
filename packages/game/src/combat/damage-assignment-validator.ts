@@ -197,3 +197,48 @@ const defenderAssignment = (defender: DefenderTarget, amount: number): CombatDam
     }
   }
 };
+
+/**
+ * CR 702.22 — Banding validation for a blocker that's blocking MULTIPLE
+ * attackers. A single banding blocker may divide its damage across every
+ * attacker it's blocking (CR 702.22h). Without banding, a blocker can
+ * only legally block one attacker in the first place; a multi-attacker
+ * block without banding is an illegal block declaration (callers surface
+ * this upstream — this validator assumes the block legality check has
+ * already accepted the declaration).
+ *
+ * Returns true iff:
+ *   - single attacker: the proposed assignment is exactly one entry with
+ *     all `power` to that attacker (no partial withholding allowed for a
+ *     non-banding multi-block).
+ *   - multiple attackers: blocker has banding; every proposed-assignment
+ *     attacker is in the declared attacker list; amounts are non-negative
+ *     integers summing to power. Unlike attacker-side validation, there
+ *     is NO lethal-before-spill ordering constraint for a banding
+ *     blocker — the blocker's controller distributes freely.
+ */
+export const validateBlockerDamageDistribution = (
+  game: Game,
+  blockerId: EntityId,
+  attackerIds: readonly EntityId[],
+  power: number,
+  proposed: readonly { readonly attackerId: EntityId; readonly amount: number }[],
+): boolean => {
+  if (power <= 0) return proposed.length === 0;
+  if (attackerIds.length <= 1) {
+    if (proposed.length !== 1) return false;
+    if (proposed[0]?.attackerId !== attackerIds[0]) return false;
+    if (proposed[0]?.amount !== power) return false;
+    return true;
+  }
+  // Multiple attackers → blocker must have banding.
+  if (!hasKeyword(game, blockerId, "banding")) return false;
+  const attackerSet = new Set(attackerIds);
+  let total = 0;
+  for (const p of proposed) {
+    if (!Number.isInteger(p.amount) || p.amount < 0) return false;
+    if (!attackerSet.has(p.attackerId)) return false;
+    total += p.amount;
+  }
+  return total === power;
+};

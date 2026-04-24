@@ -27,6 +27,7 @@ import {
   defaultAssignment,
   minimumLethalTo,
   validateAssignment,
+  validateBlockerDamageDistribution,
 } from "./damage-assignment-validator.js";
 
 const alice: LobbyPlayer = { id: "p-alice", name: "Alice", controllerKind: "human" };
@@ -389,5 +390,116 @@ describe("validateAssignment (CR 702.17c + 702.19 + 702.2)", () => {
     expect(validateAssignment(fx.game, attacker, [b1, b2], 5, playerDefender(defenderSeat), proposed)).toBe(
       true,
     );
+  });
+});
+
+describe("validateBlockerDamageDistribution (CR 702.22 — banding)", () => {
+  const mkFx = () => {
+    const game = new Game({ lobbyPlayers: [alice, bob], rules, meta, rng: new SeededRng(1n) });
+    seedZones(game);
+    const perCardStats = new Map<EntityId, { power: number; toughness: number }>();
+    const orig = game.layerEngine.computeCharacteristics.bind(game.layerEngine);
+    game.layerEngine.computeCharacteristics = (id: EntityId): Characteristics => {
+      const s = perCardStats.get(id);
+      if (s === undefined) return orig(id);
+      const chars = emptyCharacteristics();
+      chars.power = s.power;
+      chars.toughness = s.toughness;
+      return chars;
+    };
+    const blocker = mkEntityId(100);
+    const a1 = mkEntityId(1);
+    const a2 = mkEntityId(2);
+    const a3 = mkEntityId(3);
+    const seatA = mkPlayerSeat(0);
+    const seatB = mkPlayerSeat(1);
+    for (const id of [blocker]) {
+      game.cards.set(id, new Card(id, paper, seatB, seatB, ZoneType.Battlefield));
+    }
+    for (const id of [a1, a2, a3]) {
+      game.cards.set(id, new Card(id, paper, seatA, seatA, ZoneType.Battlefield));
+    }
+    perCardStats.set(blocker, { power: 4, toughness: 4 });
+    return {
+      game,
+      blocker,
+      a1,
+      a2,
+      a3,
+      addKeyword: (id: EntityId, kw: string) => {
+        const card = game.cards.get(id);
+        if (!card) throw new Error("fx");
+        if (!card.keywords) card.keywords = new Set();
+        card.keywords.add(kw);
+      },
+    };
+  };
+
+  it("single attacker: must assign all damage to that attacker", () => {
+    const fx = mkFx();
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1], 4, [{ attackerId: fx.a1, amount: 4 }]),
+    ).toBe(true);
+  });
+
+  it("single attacker with wrong amount: invalid", () => {
+    const fx = mkFx();
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1], 4, [{ attackerId: fx.a1, amount: 3 }]),
+    ).toBe(false);
+  });
+
+  it("multi-attacker without banding: invalid", () => {
+    const fx = mkFx();
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1, fx.a2], 4, [
+        { attackerId: fx.a1, amount: 2 },
+        { attackerId: fx.a2, amount: 2 },
+      ]),
+    ).toBe(false);
+  });
+
+  it("multi-attacker with banding, sums to power: valid", () => {
+    const fx = mkFx();
+    fx.addKeyword(fx.blocker, "banding");
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1, fx.a2], 4, [
+        { attackerId: fx.a1, amount: 3 },
+        { attackerId: fx.a2, amount: 1 },
+      ]),
+    ).toBe(true);
+  });
+
+  it("banding blocker, sum != power: invalid", () => {
+    const fx = mkFx();
+    fx.addKeyword(fx.blocker, "banding");
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1, fx.a2], 4, [
+        { attackerId: fx.a1, amount: 3 },
+        { attackerId: fx.a2, amount: 2 },
+      ]),
+    ).toBe(false);
+  });
+
+  it("banding blocker assigning to a non-blocked attacker: invalid", () => {
+    const fx = mkFx();
+    fx.addKeyword(fx.blocker, "banding");
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1, fx.a2], 4, [
+        { attackerId: fx.a1, amount: 2 },
+        { attackerId: fx.a3, amount: 2 },
+      ]),
+    ).toBe(false);
+  });
+
+  it("negative amount: invalid", () => {
+    const fx = mkFx();
+    fx.addKeyword(fx.blocker, "banding");
+    expect(
+      validateBlockerDamageDistribution(fx.game, fx.blocker, [fx.a1, fx.a2], 4, [
+        { attackerId: fx.a1, amount: 5 },
+        { attackerId: fx.a2, amount: -1 },
+      ]),
+    ).toBe(false);
   });
 });
