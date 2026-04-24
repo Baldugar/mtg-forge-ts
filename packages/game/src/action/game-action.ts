@@ -21,6 +21,7 @@
 // type-system level via the EngineYield union.
 import type {
   CounterType,
+  EffectDuration,
   EntityId,
   GameEvent,
   MutationIntent,
@@ -573,10 +574,29 @@ export class GameAction {
 
   // === Control change ===
 
+  /**
+   * Change a card's controller.
+   *
+   * `sourceId` — for tagging the source ability (optional; propagates
+   *   into the ControlChanged event payload).
+   * `until` — SP2 Task 45: when set, the control change reverts
+   *   automatically when the duration triggers (turn end, combat end,
+   *   etc.). Implemented via ControlChangeLedger, driven from
+   *   Game.emitEvent.
+   *
+   * Both forms remain compatible: the legacy positional `sourceId`
+   * argument continues to work; when callers want a duration they pass
+   * `{ sourceId, until }`.
+   */
   *changeControl(
     cardId: EntityId,
     newController: PlayerSeat,
-    sourceId?: EntityId,
+    opts?:
+      | EntityId
+      | {
+          readonly sourceId?: EntityId;
+          readonly until?: EffectDuration;
+        },
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const card = game.cards.get(cardId);
@@ -584,17 +604,28 @@ export class GameAction {
     if (oldController === undefined) {
       throw new GameStateIntegrityError(`changeControl: card ${cardId} not tracked`);
     }
+    const normalized =
+      typeof opts === "object" && opts !== null ? opts : opts !== undefined ? { sourceId: opts } : {};
     const intent: ControlChangeIntent = {
       kind: "controlChange",
       cardId,
       newController,
-      sourceId: sourceId ?? null,
+      sourceId: normalized.sourceId ?? null,
     };
     yield* this.applyWithReplacements<ControlChangeIntent>(
       intent,
       (final) => {
         const c = game.cards.get(final.cardId);
         if (c) c.controllerSeat = final.newController;
+        // Task 45 — record time-bounded control changes BEFORE the
+        // event emits so the ledger is authoritative by the time the
+        // canonical event lands (observers reading the ledger see the
+        // post-apply state). A permanent-duration control change is
+        // recorded too, but `expiredOn` never fires for it — the
+        // ledger entry is inert until an explicit forget().
+        if (normalized.until !== undefined) {
+          game.controlChangeLedger.record(final.cardId, oldController, normalized.until, game.turn);
+        }
         // CR 613.1b — control change invalidates the LayerEngine cache
         // because layered values scoped by controller (e.g., ability-grant
         // statics) must re-evaluate. Bump before the event emit so
@@ -610,6 +641,35 @@ export class GameAction {
           ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
         }),
     );
+  }
+
+  /**
+   * SP2 Task 45 — drain the pendingControlReverts queue Game.emitEvent
+   * built from the control-change ledger. Called by the priority
+   * orchestrator after draining triggers so the reverting
+   * ControlChanged events land in the canonical event feed (and thus
+   * fire triggers themselves, recursively).
+   *
+   * WHY a drain queue instead of evaluating per-event inline: the
+   * reversion is itself a changeControl that emits a ControlChanged
+   * event, which a trigger could further respond to (e.g. "whenever a
+   * creature's controller changes"). Inline reversion inside
+   * Game.emitEvent (a non-generator) would crash — this indirection
+   * keeps the reversion on the generator pipeline.
+   */
+  *drainPendingControlReverts(): Generator<EngineYield, void, unknown> {
+    const ledger = this.game.controlChangeLedger;
+    const pending = this.game.pendingControlReverts;
+    while (pending.length > 0) {
+      const cardId = pending.shift();
+      if (cardId === undefined) break;
+      const entry = ledger.get(cardId);
+      if (!entry) continue;
+      // Forget BEFORE reverting so the ledger doesn't re-trigger on its
+      // own reversion's canonical ControlChanged event.
+      ledger.forget(cardId);
+      yield* this.changeControl(cardId, entry.priorController);
+    }
   }
 
   // === Attach / unattach (SP2 Task 42) ===

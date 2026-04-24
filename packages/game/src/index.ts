@@ -5,6 +5,7 @@ export const LINKED_CORE_VERSION = CORE_VERSION;
 export * from "./action/index.js";
 export * from "./attachment/index.js";
 export * from "./card.js";
+export * from "./control-change/index.js";
 export * from "./cast/index.js";
 export * from "./combat/index.js";
 export * from "./continuous/index.js";

@@ -9,6 +9,7 @@
 import { CounterType, IllegalDecisionError, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { DecisionRequest, DecisionResponse, EntityId, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
+import { removePlayerFromGame } from "../end/leave-game.js";
 import type { Game } from "../game.js";
 import type { TerminalState } from "../terminal-state.js";
 import { collectAttachmentLegality } from "./attachment-legality.js";
@@ -219,6 +220,15 @@ export class SbaEngine {
         reason,
       }),
     );
+    // CR 800.4 — in multiplayer games (≥3 seats) the leaving player's
+    // objects leave the game and other players gain control of objects
+    // they own. Skipping the cleanup in 2-player matches is safe: the
+    // match-end flow sets terminalState before any further SBA sweep,
+    // and no non-leaver owner can reclaim control (only the one
+    // remaining player IS the non-leaver owner).
+    if (this.game.players.length > 2) {
+      yield* removePlayerFromGame(this.game, seat);
+    }
   }
 
   // SP2 interim terminal-state bookkeeping. Task 68 (Milestone V) enriches

@@ -28,6 +28,7 @@ import { AuraAbilityGrantLedger } from "./attachment/aura-ability-grant.js";
 import type { Card } from "./card.js";
 import { CastPipeline } from "./cast/cast-pipeline.js";
 import { ContinuousEffectRegistry } from "./continuous/continuous-effect-registry.js";
+import { ControlChangeLedger } from "./control-change/control-change-ledger.js";
 import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
 import type { GameMeta } from "./game-meta.js";
@@ -125,6 +126,16 @@ export class Game {
   // AbilityChangeEffect.targetCardId does the filtering. See
   // attachment/aura-ability-grant.ts for details.
   readonly auraGrantLedger: AuraAbilityGrantLedger;
+  // SP2 Milestone L Task 45 — time-bounded control change bookkeeping.
+  // GameAction.changeControl writes entries on opts.until; Game.emitEvent
+  // queries expiredOn() to decide which entries to revert.
+  readonly controlChangeLedger: ControlChangeLedger;
+  // SP2 Milestone L Task 45 — cards whose control change expired on the
+  // most recent canonical event. The priority orchestrator drains this
+  // list after each event via GameAction.expireControlChanges so the
+  // reverting ControlChanged events flow through the main pipeline
+  // (triggers see them, replacements can intercept).
+  readonly pendingControlReverts: EntityId[] = [];
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -188,6 +199,10 @@ export class Game {
     // other registries — just a keyed bookkeeping surface consumed by
     // GameAction.attach/unattach hooks.
     this.auraGrantLedger = new AuraAbilityGrantLedger();
+    // Task 45 — time-bounded control change ledger. Written by
+    // GameAction.changeControl when opts.until is present; read by
+    // Game.emitEvent on each canonical event to detect expirations.
+    this.controlChangeLedger = new ControlChangeLedger();
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();
@@ -262,6 +277,18 @@ export class Game {
       // buffer; the priority orchestrator (Milestone J) yields one
       // ContinuousEffectExpired event per drained entry.
       this.continuousEffectRegistry.onEvent(event);
+      // SP2 Milestone L Task 45 — time-bounded control changes. The
+      // ledger identifies which cards need their control reverted; we
+      // queue the ids here and GameAction.expireControlChanges drains
+      // them (pumped by the priority orchestrator after draining the
+      // trigger queue). Inline reversion would be tempting but would
+      // recurse into emitEvent inside a non-generator method — the
+      // resulting ControlChanged events would fire triggers outside
+      // the orchestrator's ordering pass.
+      const expired = this.controlChangeLedger.expiredOn(event);
+      for (const id of expired) {
+        if (!this.pendingControlReverts.includes(id)) this.pendingControlReverts.push(id);
+      }
     }
     return { kind: "event", event };
   }
