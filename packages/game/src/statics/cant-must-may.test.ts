@@ -50,6 +50,7 @@ const mkStatic = (opts: {
   timestamp: 1,
   controllerSeatAtReg: mkPlayerSeat(0),
   category: opts.category ?? "cantMustMay",
+  mode: "Continuous",
   describe: () => opts.payload,
 });
 

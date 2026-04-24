@@ -79,6 +79,7 @@ const mkContinuousStatic = (opts: {
     timestamp: 1,
     controllerSeatAtReg: mkPlayerSeat(0),
     category: opts.category ?? "continuous",
+    mode: "Continuous",
     describe: () => payload,
   };
 };
@@ -219,6 +220,7 @@ describe("contributeToLayers / removeFromLayers (SP2 Task 26)", () => {
       timestamp: 1,
       controllerSeatAtReg: mkPlayerSeat(0),
       category: "costModification",
+      mode: "ReduceCost",
       describe: () => ({ somePayload: true }),
     };
     game.staticEffectRegistry.register(s);

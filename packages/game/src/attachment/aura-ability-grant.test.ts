@@ -114,6 +114,7 @@ const mkAuraGrant = (opts: {
     timestamp: opts.timestamp ?? 1,
     controllerSeatAtReg: mkPlayerSeat(0),
     category: "abilityGranting",
+    mode: "Continuous",
     describe: () => payload,
   };
 };

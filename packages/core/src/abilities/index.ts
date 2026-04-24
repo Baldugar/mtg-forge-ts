@@ -5,5 +5,6 @@ export * from "./replacement-ability.js";
 export * from "./replacement-layer.js";
 export * from "./replacement-type.js";
 export * from "./static-ability.js";
+export * from "./static-ability-mode.js";
 export * from "./activated-ability.js";
 export * from "./delayed-trigger.js";

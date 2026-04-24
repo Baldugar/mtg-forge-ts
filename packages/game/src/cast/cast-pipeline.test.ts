@@ -1385,6 +1385,7 @@ describe("CastPipeline — Task 38 steps 8-10", () => {
         timestamp: 1,
         controllerSeatAtReg: seat0,
         category: "costModification",
+        mode: "ReduceCost",
         describe: () => ({ raw: "mod" }),
       });
 

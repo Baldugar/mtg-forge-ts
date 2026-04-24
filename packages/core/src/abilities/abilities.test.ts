@@ -52,6 +52,7 @@ describe("Ability interfaces (SP2 §B)", () => {
       timestamp: 1,
       controllerSeatAtReg: null,
       category: "continuous",
+      mode: "Continuous",
       describe: () => ({ shape: "test" }),
     };
     expect(s.category).toBe("continuous");

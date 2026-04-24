@@ -49,6 +49,7 @@ const mkStatic = (opts: {
   timestamp: 1,
   controllerSeatAtReg: mkPlayerSeat(0),
   category: opts.category ?? "costModification",
+  mode: "ReduceCost",
   describe: () => opts.payload,
 });
 

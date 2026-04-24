@@ -71,6 +71,7 @@ const mkAbilityStatic = (opts: {
     timestamp: 1,
     controllerSeatAtReg: mkPlayerSeat(0),
     category: opts.category ?? "abilityGranting",
+    mode: "Continuous",
     describe: () => payload,
   };
 };

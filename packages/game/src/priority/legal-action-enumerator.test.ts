@@ -150,6 +150,7 @@ const registerCantCast = (game: Game, staticId: number, cardId: EntityId): void 
     timestamp: 1,
     controllerSeatAtReg: mkPlayerSeat(0),
     category: "cantMustMay",
+    mode: "CantBeCast",
     describe: () => restriction,
   };
   game.staticEffectRegistry.register(ability);

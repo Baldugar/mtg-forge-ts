@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // CR 604 — static ability shape. Tasks 25-28 implement the registry.
 import type { AbilityBase } from "./active-ability.js";
+import type { StaticAbilityMode } from "./static-ability-mode.js";
+
+export type { StaticAbilityMode };
 
 export type StaticAbilityCategory =
   | "continuous" // contributes to LayerEngine
@@ -15,6 +18,7 @@ export type StaticAbilityCategory =
 export interface StaticAbility extends AbilityBase {
   readonly kind: "static";
   readonly category: StaticAbilityCategory;
+  readonly mode: StaticAbilityMode;
   // Payload: concrete layer-effect struct, cost-mod descriptor, cant-must-may
   // restriction, etc. Interpretation depends on `category`. SP3 defines the
   // full category-payload matrix; SP2 keeps it `unknown` so the core type
