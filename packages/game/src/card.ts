@@ -6,15 +6,18 @@
 // CardDb. Embedding the full PaperCard in every Card would bloat snapshots
 // significantly.
 import type {
+  AbilityAst,
   CounterType,
   EntityId,
   FaceDownState,
   PaperCard,
   PlayerSeat,
+  SVarAst,
   StaticAbility,
   ZoneType,
 } from "@mtg-forge-ts/core";
 import { paperCardKey } from "@mtg-forge-ts/core";
+import { SpellAbility } from "./ability/spell-ability.js";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 import type { FaceKind } from "./multiface/face-kind.js";
 
@@ -83,6 +86,13 @@ export class Card {
   // snapshot/restore round-trip these verbatim.
   remembered: EntityId[] = [];
   imprinted: EntityId[] = [];
+  // SP3 Part C Task 58 — live SpellAbility instances bound to this card.
+  // Populated by activateAbilitiesFromDefinition(), called by the engine
+  // when the card enters a zone where abilities are active (hand for
+  // castable spells, battlefield for activated abilities). Empty until
+  // activated.
+  spellAbilities: SpellAbility[] = [];
+
   // SP2 Milestone Q (Tasks 58-61) — active face selector for multi-face
   // cards. "default" means single-face or "no multi-face selection made
   // yet" (split cards off-stack use combinedSplitCharacteristics); other
@@ -116,6 +126,25 @@ export class Card {
     public controllerSeat: PlayerSeat,
     public zone: ZoneType,
   ) {}
+
+  /**
+   * SP3 Part C Task 58 — walks the PaperCard's CardDefinition.abilities and
+   * constructs live SpellAbility instances bound to this card's id,
+   * controller seat, and svars map. Called by the cast pipeline when the
+   * card enters a zone where abilities are active. Idempotent — safe to
+   * call multiple times; later calls replace the existing list.
+   *
+   * PaperCards without a definition (tokens, emblems) have no abilities;
+   * calling this on them is a no-op.
+   */
+  activateAbilitiesFromDefinition(): void {
+    const def = this.paperCard.definition;
+    if (!def) return;
+    const svars = def.svars as ReadonlyMap<string, SVarAst>;
+    this.spellAbilities = (def.abilities as readonly AbilityAst[]).map(
+      (ast) => new SpellAbility(ast, this.id, this.controllerSeat, svars, []),
+    );
+  }
 
   toJSON(): {
     id: EntityId;
