@@ -65,21 +65,25 @@ const EXPECTED_REQUEST_KINDS: readonly DecisionRequestKind[] = [
   "chooseContraptionsToCrank",
   // SP1 post-audit: London-mulligan bottoming (1)
   "mulliganBottom",
+  // SP2 Task 32 — legend-rule SBA (CR 704.5j)
+  "chooseLegendKeeper",
+  // SP2 Task 36 — CastPipeline step 2 (multi-face cards)
+  "chooseFace",
 ];
 
 const EXPECTED_RESPONSE_KINDS: readonly DecisionResponseKind[] = EXPECTED_REQUEST_KINDS;
 
 describe("DecisionRequest enumeration", () => {
-  it("has 44 distinct kinds (SP1 baseline 23 + post-audit 21)", () => {
-    expect(EXPECTED_REQUEST_KINDS.length).toBe(44);
-    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(44);
+  it("has 46 distinct kinds (SP1 baseline 23 + post-audit 21 + SP2 additions 2)", () => {
+    expect(EXPECTED_REQUEST_KINDS.length).toBe(46);
+    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(46);
   });
 });
 
 describe("DecisionResponse enumeration", () => {
-  it("has 44 distinct kinds set-equal to DecisionRequest kinds", () => {
-    expect(EXPECTED_RESPONSE_KINDS.length).toBe(44);
-    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(44);
+  it("has 46 distinct kinds set-equal to DecisionRequest kinds", () => {
+    expect(EXPECTED_RESPONSE_KINDS.length).toBe(46);
+    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(46);
     expect(new Set(EXPECTED_RESPONSE_KINDS)).toEqual(new Set(EXPECTED_REQUEST_KINDS));
   });
 });

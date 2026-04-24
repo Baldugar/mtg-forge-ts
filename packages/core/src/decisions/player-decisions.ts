@@ -349,6 +349,19 @@ export type DecisionRequest =
       readonly kind: "chooseLegendKeeper";
       readonly playerSeat: PlayerSeat;
       readonly candidateIds: readonly EntityId[];
+    }
+  | {
+      // SP2 Task 36 — CastPipeline step 2 (ChooseFace). Modal DFC, Transform
+      // DFC (first-cast decides face), and Adventure cards yield this so the
+      // casting player picks which face they're casting. Distinct from
+      // `declareSplit`, which handles Split/Fuse spells (both faces can be
+      // cast at once). `options` carries the short face ids the card uses
+      // ("front"/"back"/"L"/"R"/"adventure"); the engine validates the
+      // chosen face is in the option set.
+      readonly kind: "chooseFace";
+      readonly playerSeat: PlayerSeat;
+      readonly cardId: EntityId;
+      readonly options: readonly string[];
     };
 
 /**
@@ -474,7 +487,8 @@ export type DecisionResponse =
       readonly kind: "mulliganBottom";
       readonly bottomed: readonly EntityId[];
     }
-  | { readonly kind: "chooseLegendKeeper"; readonly keeperId: EntityId };
+  | { readonly kind: "chooseLegendKeeper"; readonly keeperId: EntityId }
+  | { readonly kind: "chooseFace"; readonly face: string };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];
