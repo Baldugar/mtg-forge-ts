@@ -5,7 +5,16 @@
 // mutation is deterministic.
 //
 // SP4 will replace `attachCardDb` with the real CardDb integration.
-import type { ContinuousEffect, EntityId, LobbyPlayer, PhaseStep, PlayerSeat, Rng } from "@mtg-forge-ts/core";
+import type {
+  ContinuousEffect,
+  EntityId,
+  GameEvent,
+  GameEventKind,
+  LobbyPlayer,
+  PhaseStep,
+  PlayerSeat,
+  Rng,
+} from "@mtg-forge-ts/core";
 import {
   GameStateIntegrityError,
   PhaseStep as Phase,
@@ -13,6 +22,7 @@ import {
   mkEntityId,
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
+import type { EngineYield } from "./action/engine-yield.js";
 import type { Card } from "./card.js";
 import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
@@ -24,8 +34,33 @@ import { ReplacementRegistry } from "./replacements/replacement-registry.js";
 import { Stack } from "./stack/stack.js";
 import { TargetSystem } from "./target/target-system.js";
 import type { TerminalState } from "./terminal-state.js";
+import { TriggerRegistry } from "./triggers/trigger-registry.js";
 import { Ante } from "./zone/zones/ante.js";
 import { Exile } from "./zone/zones/exile.js";
+
+// WHY: event kinds that are engine-internal bookkeeping — registry
+// telemetry, replacement pipeline intermediates, SBA bookkeeping, cost-
+// paid markers. These are emitted for observability but must NOT feed the
+// trigger or delayed-trigger queues: if they did, a "when a trigger
+// resolves" hook would re-fire the trigger indefinitely, and replacement
+// pipeline markers would mint phantom triggers that no card writes.
+//
+// Canonical events (CardDrawn, DamageDealt, StackItemResolved, etc.) DO
+// route to triggers. The allowlist is implicit — if the kind is NOT in
+// this deny set, it flows through.
+const ENGINE_INTERNAL_EVENT_KINDS: ReadonlySet<GameEventKind> = new Set<GameEventKind>([
+  "ReplacementApplied",
+  "EventPrevented",
+  "TriggerQueued",
+  "TriggerResolved",
+  "StateBasedActionApplied",
+  "StaticAbilityRegistered",
+  "StaticAbilityUnregistered",
+  "ContinuousEffectRegistered",
+  "ContinuousEffectExpired",
+  "CostPaid",
+  "PhaseStepEnded",
+]);
 
 export class Game {
   readonly meta: GameMeta;
@@ -64,6 +99,7 @@ export class Game {
   readonly layerEngine: LayerEngine;
   readonly targetSystem: TargetSystem;
   readonly replacementRegistry: ReplacementRegistry;
+  readonly triggerRegistry: TriggerRegistry;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -94,6 +130,10 @@ export class Game {
     // consults computeCharacteristics for type-gated restrictions.
     this.targetSystem = new TargetSystem(this);
     this.replacementRegistry = new ReplacementRegistry();
+    // WHY: trigger registry last so it can capture `this` — it reads
+    // Game.turn / Game.phase / Game.cards at registration time (no forward
+    // references).
+    this.triggerRegistry = new TriggerRegistry(this);
     this.flags = createDefaultFlags();
   }
 
@@ -127,5 +167,30 @@ export class Game {
 
   attachCardDb(_db: unknown): void {
     throw new Error("Game.attachCardDb: SP4 CardDb integration required");
+  }
+
+  /**
+   * Canonical single-pipe event emission (SP2 Task 20).
+   *
+   * Every call funnels a GameEvent to TriggerRegistry.onEvent (CR 603
+   * trigger collection) and returns the EngineYield the caller yields
+   * to the driver for replay/log subscribers to observe. Task 23 adds
+   * DelayedTriggerQueue to the same pipe.
+   *
+   * Engine-internal kinds (ReplacementApplied, EventPrevented, trigger-
+   * pipeline telemetry, SBA bookkeeping, cost-paid, phase-step-ended)
+   * are observability-only — they do NOT fire triggers. Routing them
+   * would create self-reference loops (a "when a trigger resolves"
+   * hook would re-fire itself) or mint phantom triggers.
+   *
+   * GameAction callers should prefer `yield game.emitEvent(mkEvent(...))`
+   * over building `{ kind: "event", event }` directly so this single
+   * choke point stays authoritative.
+   */
+  emitEvent(event: GameEvent): EngineYield {
+    if (!ENGINE_INTERNAL_EVENT_KINDS.has(event.kind)) {
+      this.triggerRegistry.onEvent(event);
+    }
+    return { kind: "event", event };
   }
 }

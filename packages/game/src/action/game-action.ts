@@ -120,6 +120,11 @@ export class GameAction {
     // for the whole chain (Task 12 payload shape). Per-step intermediate
     // states are SP3 if anyone ever needs them.
     const replaced = result.status === "applied" ? result.final : null;
+    // WHY direct yield for ReplacementApplied/EventPrevented: engine-internal
+    // events observability-only; they must NOT route into trigger/delayed-
+    // trigger registries. Game.emitEvent filters them regardless, but
+    // skipping the funnel keeps the intent explicit and avoids the wasted
+    // ENGINE_INTERNAL_EVENT_KINDS lookup on the hot replacement path.
     for (const rid of result.appliedIds) {
       yield {
         kind: "event",
@@ -144,7 +149,8 @@ export class GameAction {
     }
     const final = result.final as I;
     onApplied(final);
-    yield { kind: "event", event: buildCanonicalEvent(final) };
+    // Canonical event — route through Game.emitEvent so triggers see it.
+    yield game.emitEvent(buildCanonicalEvent(final));
     return { prevented: false };
   }
 
@@ -606,24 +612,22 @@ export class GameAction {
     // chain would double-dip.
     game.sharedZones.stack.push(item);
     if (item.kind === "spell" || item.kind === "copy") {
-      yield {
-        kind: "event",
-        event: mkEvent("SpellPutOnStack", game.turn, game.phase, {
+      yield game.emitEvent(
+        mkEvent("SpellPutOnStack", game.turn, game.phase, {
           stackItemId: item.id,
           cardId: item.sourceCardId,
           controllerSeat: item.controllerSeat,
         }),
-      };
+      );
     } else {
-      yield {
-        kind: "event",
-        event: mkEvent("AbilityActivated", game.turn, game.phase, {
+      yield game.emitEvent(
+        mkEvent("AbilityActivated", game.turn, game.phase, {
           stackItemId: item.id,
           sourceCardId: item.sourceCardId,
           controllerSeat: item.controllerSeat,
           abilityKind: "activated",
         }),
-      };
+      );
     }
   }
 

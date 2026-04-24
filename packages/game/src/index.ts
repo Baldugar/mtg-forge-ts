@@ -27,4 +27,5 @@ export * from "./setup/index.js";
 export * from "./stack/index.js";
 export * from "./target/index.js";
 export * from "./terminal-state.js";
+export * from "./triggers/index.js";
 export * from "./zone/index.js";
