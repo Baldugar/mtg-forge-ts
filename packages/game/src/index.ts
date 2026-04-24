@@ -29,6 +29,7 @@ export * from "./player.js";
 export * from "./priority/index.js";
 export * from "./registries/index.js";
 export * from "./replacements/index.js";
+export * from "./resolve/index.js";
 export * from "./ring/index.js";
 export * from "./run-game.js";
 export * from "./run-match.js";

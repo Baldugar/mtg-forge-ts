@@ -7,7 +7,7 @@
 // SP1 scope: shape + provenance definition only. Targeting (SP2 Task 40),
 // cost-paid payloads (SP3), and copy/cascade propagation (SP2) each refine
 // the typed slots that currently read `unknown`.
-import type { EntityId, LastKnownInfo, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type { EntityId, GameEvent, LastKnownInfo, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 
 /**
  * StackItemProvenance — metadata that records HOW a spell/ability reached the
@@ -60,4 +60,31 @@ export interface StackItem {
   // at fire time. Undefined on spell / activated / copy items.
   readonly triggerId?: EntityId;
   readonly lki?: LastKnownInfo | null;
+  // SP2 Task 67 — the GameEvent that fired this trigger (triggeredAbility
+  // items only). Resolve-time intervening-if re-check needs the original
+  // event; capturing it here keeps the check self-contained instead of
+  // forcing a lookup against a separately-stored trigger context map.
+  readonly event?: GameEvent;
+  // SP2 Task 67 — resolve-time body. When present, resolveStackItem drives
+  // the resolver's generator (forwarding decisions + events to the caller)
+  // before emitting StackItemResolved. SP2 doesn't yet populate this field
+  // from CastPipeline / trigger push (SP3 wires the real resolvers); tests
+  // use it directly. `unknown` in the generator type keeps this file free
+  // of core/game circular imports — the concrete yield shape is EngineYield
+  // from action/engine-yield.js, narrowed by the resolver impl.
+  readonly resolver?: StackItemResolver | null;
+}
+
+/**
+ * SP2 Task 67 — a resolve-time body attached to a StackItem. When the stack
+ * item resolves, `resolve(game)` runs first (yielding decisions / events as
+ * needed); then resolveStackItem emits StackItemResolved and handles the
+ * source-card zone change.
+ *
+ * Typed with `unknown` for yield/return to avoid a core→game circular
+ * import. The runtime shape is EngineYield; resolveStackItem re-narrows
+ * through an explicit cast.
+ */
+export interface StackItemResolver {
+  resolve(game: unknown): Generator<unknown, void, unknown>;
 }
