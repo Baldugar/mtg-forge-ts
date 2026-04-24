@@ -11,7 +11,7 @@
 // Return contract: triggers in stack-push order. That is the reverse of
 // the APNAP-flat order, so that pushing them in-order results in the
 // "first triggered in combined order" sitting atop the LIFO stack.
-import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import { type EntityId, GameStateIntegrityError, type PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { PendingTrigger } from "./pending-trigger.js";
 
@@ -82,6 +82,19 @@ export function* apnapOrder(
       seen.add(id);
       flat.push(t);
     }
+  }
+  // APNAP invariant — every incoming trigger must land somewhere in the
+  // flat order. Losing triggers silently (seat not in turnOrder, or
+  // activeSeat absent from `seats`) would drop player decisions on the
+  // floor. Throw instead so callers see the inconsistency. Audit A-005.
+  if (flat.length !== pending.length) {
+    const placed = new Set(flat.map((t) => t.id));
+    const orphans = pending.filter((p) => !placed.has(p.id));
+    throw new GameStateIntegrityError(
+      `apnapOrder: ${orphans.length} trigger(s) had a sourceControllerAtFire not present in seats; ` +
+        `orphan ids=${JSON.stringify(orphans.map((o) => o.id))} seats=${JSON.stringify(seats)} ` +
+        `activeSeat=${activeSeat}`,
+    );
   }
   // Stack is LIFO — reverse so pushing in returned order lands "first
   // triggered in combined order" on top (pushed last).

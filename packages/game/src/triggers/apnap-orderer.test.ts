@@ -3,7 +3,7 @@
 // manually so tests don't need a full driver loop. Decisions yielded
 // mid-generator are answered via gen.next(response).
 import type { EntityId, GameEvent, PlayerSeat } from "@mtg-forge-ts/core";
-import { PhaseStep, mkEntityId, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core";
+import { GameStateIntegrityError, PhaseStep, mkEntityId, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { EngineYield } from "../action/engine-yield.js";
 import { apnapOrder } from "./apnap-orderer.js";
@@ -191,5 +191,23 @@ describe("apnapOrder (CR 603.3b)", () => {
         expect(ids).toEqual([mkEntityId(100), mkEntityId(101)]);
       }
     }
+  });
+
+  // Audit A-005 regression — orphan pending trigger (controller not in seats)
+  // must throw GameStateIntegrityError rather than silently drop.
+  it("throws GameStateIntegrityError when sourceControllerAtFire is not in seats", () => {
+    // controllerSeat=2 is not present in the seats [0, 1] array.
+    const orphan = mkPending({ id: 999, triggerId: 9, sourceCardId: 10, controllerSeat: 2 });
+    const gen = apnapOrder([orphan], mkPlayerSeat(0), [mkPlayerSeat(0), mkPlayerSeat(1)]);
+    expect(() => driveAll(gen, () => undefined)).toThrow(GameStateIntegrityError);
+  });
+
+  it("throws GameStateIntegrityError when activeSeat is not in seats", () => {
+    const p = mkPending({ id: 100, triggerId: 1, sourceCardId: 10, controllerSeat: 0 });
+    // activeSeat=9 is not present — rotation falls back to seats order, but
+    // if EVERY pending's controller WERE in seats the flat count would match.
+    // Here we combine both conditions to exercise the orphan branch.
+    const gen = apnapOrder([p], mkPlayerSeat(9), [mkPlayerSeat(5), mkPlayerSeat(6)]);
+    expect(() => driveAll(gen, () => undefined)).toThrow(GameStateIntegrityError);
   });
 });
