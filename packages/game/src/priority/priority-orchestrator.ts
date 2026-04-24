@@ -30,7 +30,7 @@ import type { DecisionRequest, DecisionResponse, PriorityAction } from "@mtg-for
 import { IllegalDecisionError, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
-import type { StackItem } from "../stack/stack-item.js";
+import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
 import { apnapOrder } from "../triggers/apnap-orderer.js";
 import { enumerateLegalActions } from "./legal-action-enumerator.js";
 
@@ -79,6 +79,17 @@ export function* runPriorityWindow(game: Game): Generator<EngineYield, PriorityR
       const seats = game.players.map((p) => p.seat);
       const ordered = yield* apnapOrder(pending, game.activePlayer, seats);
       for (const pt of ordered) {
+        // SP2 Task 78 (fix 4) — attach a default resolver to the pushed
+        // stack item so resolveStackItem can drive the trigger's body.
+        // Resolver comes from the TriggeredAbility itself (if it defined
+        // one at registration time) — TriggeredAbility's shape in core
+        // doesn't carry a resolver field, but the game-level trigger
+        // factories often stamp one on via a structural extension.
+        // Duck-typed read here keeps core free of the game-side
+        // StackItemResolver type (no core->game circular import).
+        const trigger = game.triggerRegistry.getTrigger(pt.triggerId);
+        const triggerResolver =
+          (trigger as { readonly resolver?: StackItemResolver | null } | undefined)?.resolver ?? null;
         const stackItem: StackItem = {
           id: game.newEntityId(),
           sourceCardId: pt.sourceCardId,
@@ -110,6 +121,12 @@ export function* runPriorityWindow(game: Game): Generator<EngineYield, PriorityR
           },
           triggerId: pt.triggerId,
           lki: pt.lki,
+          // SP2 Task 78 (fix 4): stack-top resolver; resolveStackItem
+          // (Task 67) drives this when the item resolves. `null` when
+          // the trigger didn't specify one — SP3's full ability DSL
+          // populates default resolvers.
+          event: pt.event,
+          resolver: triggerResolver,
         };
         game.sharedZones.stack.push(stackItem);
         yield {

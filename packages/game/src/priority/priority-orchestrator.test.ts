@@ -353,6 +353,49 @@ describe("runPriorityWindow (SP2 Task 40, CR 117.1)", () => {
     expect(first?.lki).toBeTruthy();
   });
 
+  // SP2 Task 78 (fix 4) — pushed triggered stack items now carry a resolver
+  // pulled off the TriggeredAbility (duck-typed read; TriggeredAbility's core
+  // shape doesn't expose a resolver slot, but game-side factories can stamp
+  // one on). This lets Task 67's resolveStackItem actually drive the body.
+  it("attaches trigger.resolver to pushed triggered stack items (fix 4)", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const c0 = addCard(game, 410, seat0, ZoneType.Battlefield);
+    const resolver = {
+      // biome-ignore lint/correctness/useYield: no-yield resolver is fine
+      *resolve(_g: unknown): Generator<unknown, void, unknown> {
+        /* no-op body */
+      },
+    };
+    const t0 = {
+      ...mkTriggered({ id: 411, sourceCardId: c0.id, controllerSeat: seat0 }),
+      resolver,
+    } as unknown as TriggeredAbility;
+    game.triggerRegistry.register(t0);
+    game.triggerRegistry.onEvent(mkLifeEvent());
+
+    drive(game, (y) => (y.kind === "decision" ? passResponse() : undefined));
+    const items = game.sharedZones.stack.toArray();
+    expect(items).toHaveLength(1);
+    const first = items[0];
+    expect(first?.kind).toBe("triggeredAbility");
+    expect(first?.resolver).toBe(resolver);
+  });
+
+  it("falls back to null resolver when trigger has none", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const c0 = addCard(game, 420, seat0, ZoneType.Battlefield);
+    const t0 = mkTriggered({ id: 421, sourceCardId: c0.id, controllerSeat: seat0 });
+    game.triggerRegistry.register(t0);
+    game.triggerRegistry.onEvent(mkLifeEvent());
+
+    drive(game, (y) => (y.kind === "decision" ? passResponse() : undefined));
+    const items = game.sharedZones.stack.toArray();
+    expect(items).toHaveLength(1);
+    expect(items[0]?.resolver).toBeNull();
+  });
+
   it("priority decision carries legalActions", () => {
     const game = mkGame();
     let captured: EntityId | null = null;
