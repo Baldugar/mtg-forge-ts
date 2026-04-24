@@ -23,6 +23,7 @@ import {
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "./action/engine-yield.js";
+import { GameAction } from "./action/game-action.js";
 import type { Card } from "./card.js";
 import type { GameFlags } from "./game-flags.js";
 import { createDefaultFlags } from "./game-flags.js";
@@ -108,6 +109,12 @@ export class Game {
   readonly sbaEngine: SbaEngine;
   readonly delayedTriggerQueue: DelayedTriggerQueue;
   readonly linkedAbilities: LinkedAbilityTable;
+  // Shared GameAction — the canonical mutator entry point. Subsystems
+  // (SbaEngine, combat, resolution) route all state changes through here
+  // so the replacement pipeline sees every mutation. Tests may construct
+  // their own GameAction too; the shared instance is for engine-internal
+  // consumers that don't have their own handle.
+  readonly action: GameAction;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -153,6 +160,10 @@ export class Game {
     // static "you don't lose the game" or "indestructible" rule-changers
     // (future work); keeping construction monotonic puts consumers last.
     this.sbaEngine = new SbaEngine(this);
+    // WHY last: GameAction takes `this` at construction time but doesn't
+    // read any registry state until called. Constructing it here ensures
+    // every registry above is available before any mutation routes through.
+    this.action = new GameAction(this);
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();

@@ -19,6 +19,13 @@ export class Player {
   // Populated by MatchSetup (Task 45); key by ZoneType lets consumers look up
   // a player's library/hand/graveyard/battlefield uniformly.
   zones = new Map<ZoneType, Zone>();
+  // SP2 Milestone G (Task 30): CR 704.5b — set when the player was required
+  // to draw from an empty library since the last SBA check. The SBA engine
+  // reads this flag to produce a `playerLosesEmptyDraw` action, then clears
+  // it when the loss is recorded so the same empty-draw doesn't fire twice.
+  // SP2's draw mutator will set this when library.size === 0 at draw time
+  // (Milestone L plumbs in the full draw→empty→lose pipeline).
+  failedDrawFromEmptyLibrary = false;
 
   constructor(
     readonly seat: PlayerSeat,

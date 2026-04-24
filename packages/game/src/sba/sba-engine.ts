@@ -3,16 +3,20 @@
 // SBA, applies all of them simultaneously (CR 704.3), records the batch,
 // re-checks, loops to fixpoint. Returns the list of batches applied.
 //
-// Task 29 provides the skeleton + fixpoint loop; Tasks 30-32 populate
-// `collectApplicable` + apply-dispatch per kind.
-//
 // Integration: Task 40's runPriorityWindow will call
 //   const batches = yield* this.game.sbaEngine.sweep();
 // and drain trigger queue after each batch.
-import { mkEvent } from "@mtg-forge-ts/core";
+import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import type { PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
+import type { TerminalState } from "../terminal-state.js";
+import { collectCreatureRemoval } from "./creature-removal.js";
+import { collectLossConditions } from "./loss-conditions.js";
 import type { SbaAction } from "./sba-action.js";
+
+// The PlayerLost event's reason taxonomy is fixed (CR 104.3 / event.ts).
+type LossReason = "life" | "decked" | "poison" | "concede" | "effect";
 
 export class SbaEngine {
   // WHY bound: MTG rules guarantee that SBA sweeps terminate (every SBA
@@ -60,11 +64,11 @@ export class SbaEngine {
     return out;
   }
 
-  protected collectLossConditions(_out: SbaAction[]): void {
-    /* Task 30 */
+  protected collectLossConditions(out: SbaAction[]): void {
+    collectLossConditions(this.game, out);
   }
-  protected collectCreatureRemoval(_out: SbaAction[]): void {
-    /* Task 30 */
+  protected collectCreatureRemoval(out: SbaAction[]): void {
+    collectCreatureRemoval(this.game, out);
   }
   protected collectLegendWorld(_out: SbaAction[]): void {
     /* Task 31 */
@@ -102,11 +106,114 @@ export class SbaEngine {
   }
 
   protected *apply(action: SbaAction): Generator<EngineYield, void, unknown> {
-    // Task 29 skeleton — Tasks 30-32 replace with an exhaustive switch
-    // + `const _: never = action` guard. The void-read keeps the
-    // parameter referenced so biome/ts don't flag it as unused.
-    void action;
-    return;
-    // biome-ignore lint/correctness/useYield: placeholder body; Task 30-32 add yields
+    switch (action.kind) {
+      case "playerLosesLifeZero":
+      case "playerLosesPoison":
+      case "playerLosesEmptyDraw":
+        yield* this.applyPlayerLoss(action);
+        return;
+      case "creatureZeroToughness":
+        yield* this.game.action.moveTo(action.cardId, ZoneType.Graveyard);
+        return;
+      case "creatureLethalDamage":
+        yield* this.game.action.destroy(action.cardId, { cause: "sba" });
+        return;
+      case "planeswalkerZeroLoyalty":
+        yield* this.game.action.moveTo(action.cardId, ZoneType.Graveyard);
+        return;
+      case "battleZeroDefense":
+        yield* this.game.action.exile(action.cardId);
+        return;
+      // Tasks 31-32 add more cases.
+      default: {
+        // Interim: ignore unimplemented kinds. Task 32 converts this into
+        // an exhaustiveness guard with all kinds handled.
+        return;
+      }
+    }
+  }
+
+  private *applyPlayerLoss(
+    action: Extract<
+      SbaAction,
+      { kind: "playerLosesLifeZero" | "playerLosesPoison" | "playerLosesEmptyDraw" }
+    >,
+  ): Generator<EngineYield, void, unknown> {
+    const reasonMap: Record<typeof action.kind, LossReason> = {
+      playerLosesLifeZero: "life",
+      playerLosesPoison: "poison",
+      playerLosesEmptyDraw: "decked",
+    };
+    const reason = reasonMap[action.kind];
+    const seat = action.seat;
+    // Clear the failed-draw flag so the SBA doesn't re-fire on the next
+    // sweep. Life / poison are the condition themselves; clearing them is
+    // not meaningful (the player remains below zero).
+    if (action.kind === "playerLosesEmptyDraw") {
+      this.game.getPlayer(seat).failedDrawFromEmptyLibrary = false;
+    }
+    // Mark the player as lost BEFORE emitting so a same-sweep double-loss
+    // (simultaneous life=0 + poison>=10) doesn't emit twice; the second
+    // check in collectLossConditions sees the player as already lost.
+    this.markPlayerLost(seat, reason);
+    yield this.game.emitEvent(
+      mkEvent("PlayerLost", this.game.turn, this.game.phase, {
+        playerSeat: seat,
+        reason,
+      }),
+    );
+  }
+
+  // SP2 interim terminal-state bookkeeping. Task 68 (Milestone V) enriches
+  // this with proper loss-reason taxonomy + win/draw adjudication. Here we
+  // track lost seats in concededSeats (the only roster field TerminalState
+  // carries), and flip the outcome once only one seat remains.
+  private markPlayerLost(seat: PlayerSeat, reason: LossReason): void {
+    const current = this.game.terminalState;
+    const existing = current?.concededSeats ?? [];
+    if (existing.includes(seat)) return;
+
+    const lost = [...existing, seat];
+    const livingSeats = this.game.players.filter((p) => !lost.includes(p.seat)).map((p) => p.seat);
+
+    const endedAt: { turn: number; phase: PhaseStep } = {
+      turn: this.game.turn,
+      phase: this.game.phase,
+    };
+
+    let next: TerminalState;
+    if (livingSeats.length === 1) {
+      const winner = livingSeats[0];
+      if (winner === undefined) {
+        next = {
+          endedAt,
+          outcome: { kind: "draw", reason },
+          concededSeats: lost,
+        };
+      } else {
+        next = {
+          endedAt,
+          outcome: { kind: "win", winner, reason },
+          concededSeats: lost,
+        };
+      }
+    } else if (livingSeats.length === 0) {
+      next = {
+        endedAt,
+        outcome: { kind: "draw", reason },
+        concededSeats: lost,
+      };
+    } else {
+      // Multi-player: still in progress; bundle the running losses without
+      // a concluding outcome so observers can see them.
+      next = {
+        endedAt,
+        // Placeholder outcome until the last seat falls. `concededSeats`
+        // is the authoritative roster.
+        outcome: { kind: "draw", reason },
+        concededSeats: lost,
+      };
+    }
+    this.game.terminalState = next;
   }
 }
