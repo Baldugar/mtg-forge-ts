@@ -42,3 +42,4 @@ export * from "./target/index.js";
 export * from "./terminal-state.js";
 export * from "./triggers/index.js";
 export * from "./zone/index.js";
+export * from "./svar/index.js";
