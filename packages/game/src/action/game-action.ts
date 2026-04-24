@@ -28,7 +28,14 @@ import type {
   PlayerSeat,
   ZoneType,
 } from "@mtg-forge-ts/core";
-import { GameStateIntegrityError, IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
+import {
+  CounterType as CT,
+  GameStateIntegrityError,
+  IllegalDecisionError,
+  ZoneType as Zt,
+  mkEvent,
+} from "@mtg-forge-ts/core";
+import { damageProtected } from "../combat/keywords/protection.js";
 import type { Game } from "../game.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
 import type {
@@ -446,12 +453,29 @@ export class GameAction {
     isCombat: boolean,
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
+    // CR 702.16b — protection damage prevention (Task 49). If the target
+    // card has protection from the source, pre-zero the intent amount so
+    // the replacement chain still sees a typed damage intent (for
+    // observability / other replacements that may want to re-raise it)
+    // but Card.damage / battle counters / life change by zero. SP3 will
+    // replace this inline short-circuit with a proper Layer-6-derived
+    // "if this would deal damage to X with protection, prevent" replace-
+    // ment registered at keyword-grant time.
+    let effectiveAmount = amount;
+    if (
+      effectiveAmount > 0 &&
+      (targetKind === "creature" || targetKind === "planeswalker" || targetKind === "battle") &&
+      typeof targetId === "number" &&
+      damageProtected(game, sourceId, targetId as EntityId)
+    ) {
+      effectiveAmount = 0;
+    }
     const intent: DamageIntent = {
       kind: "damage",
       sourceId,
       targetKind,
       targetId,
-      amount,
+      amount: effectiveAmount,
       isCombat,
     };
     yield* this.applyWithReplacements<DamageIntent>(
@@ -461,9 +485,24 @@ export class GameAction {
         // updates Player.life via a follow-up LifeChanged. SP1 keeps this
         // minimal — the damage marker is applied; life deduction is a
         // state-based-action step that Milestone G will emit.
+        if (final.amount <= 0) return;
         if (final.targetKind === "creature" && typeof final.targetId === "number") {
           const card = game.cards.get(final.targetId as EntityId);
           if (card) card.damage += final.amount;
+        } else if (final.targetKind === "battle" && typeof final.targetId === "number") {
+          // Task 51 — damage to a battle decrements its defense counters
+          // (CR 310.5). Direct counter mutation (not routed through
+          // removeCounter) to avoid double-eventing: combat damage emits
+          // DamageDealt; the SBA sweep (Task 30) handles the "0 defense
+          // → exile" transition via its own canonical events.
+          const battle = game.cards.get(final.targetId as EntityId);
+          if (battle) {
+            const cur = battle.counters.get(CT.Defense) ?? 0;
+            const next = Math.max(0, cur - final.amount);
+            if (next === 0) battle.counters.delete(CT.Defense);
+            else battle.counters.set(CT.Defense, next);
+            game.layerEngine.bumpEpoch("battle-damage");
+          }
         }
       },
       (final) =>
