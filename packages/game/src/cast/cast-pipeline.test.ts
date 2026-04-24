@@ -568,3 +568,568 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
     });
   });
 });
+
+describe("CastPipeline — Task 37 steps 5-7", () => {
+  describe("stepChooseModes", () => {
+    it("auto-passes when the paper card publishes no modes and no X", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(700);
+      addCardToZone(game, seat0, ZoneType.Hand, cardId);
+      const { yields, result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      expect(yields).toEqual([]);
+      expect((result as StackItem).provenance.modesChosen).toBeUndefined();
+      expect((result as StackItem).provenance.xValue).toBeUndefined();
+    });
+
+    it("yields chooseModes for a modal spell and stores the picks in provenance", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & {
+        modes: {
+          readonly options: readonly { readonly id: string; readonly description: string }[];
+          readonly min: number;
+          readonly max: number;
+        };
+      } = {
+        ...samplePaper,
+        name: "Charm of Three",
+        modes: {
+          options: [
+            { id: "a", description: "Draw a card" },
+            { id: "b", description: "Target creature gets +1/+1" },
+            { id: "c", description: "Deal 2 damage" },
+          ],
+          min: 1,
+          max: 2,
+        },
+      };
+      const cardId = mkEntityId(701);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      const first = gen.next();
+      expect(first.done).toBe(false);
+      const y = first.value as EngineYield;
+      expect(y.kind).toBe("decision");
+      if (y.kind === "decision" && y.request.kind === "chooseModes") {
+        expect(y.request.modes.map((m) => m.id)).toEqual(["a", "b", "c"]);
+        expect(y.request.min).toBe(1);
+        expect(y.request.max).toBe(2);
+      }
+      const finished = gen.next({ kind: "chooseModes", modeIds: ["a", "c"] });
+      expect(finished.done).toBe(true);
+      const item = finished.value as StackItem;
+      expect(item.provenance.modesChosen).toEqual(["a", "c"]);
+    });
+
+    it("returns null when count is outside [min, max]", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & {
+        modes: {
+          readonly options: readonly { readonly id: string; readonly description: string }[];
+          readonly min: number;
+          readonly max: number;
+        };
+      } = {
+        ...samplePaper,
+        modes: {
+          options: [
+            { id: "a", description: "A" },
+            { id: "b", description: "B" },
+          ],
+          min: 1,
+          max: 1,
+        },
+      };
+      const cardId = mkEntityId(702);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      gen.next();
+      const finished = gen.next({ kind: "chooseModes", modeIds: ["a", "b"] });
+      expect(finished.done).toBe(true);
+      expect(finished.value).toBeNull();
+    });
+
+    it("returns null when a chosen id is unknown", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & {
+        modes: {
+          readonly options: readonly { readonly id: string; readonly description: string }[];
+          readonly min: number;
+          readonly max: number;
+        };
+      } = {
+        ...samplePaper,
+        modes: {
+          options: [{ id: "a", description: "A" }],
+          min: 1,
+          max: 1,
+        },
+      };
+      const cardId = mkEntityId(703);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      gen.next();
+      const finished = gen.next({ kind: "chooseModes", modeIds: ["bogus"] });
+      expect(finished.done).toBe(true);
+      expect(finished.value).toBeNull();
+    });
+
+    it("returns null when a mode id is picked twice (CR 700.2)", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & {
+        modes: {
+          readonly options: readonly { readonly id: string; readonly description: string }[];
+          readonly min: number;
+          readonly max: number;
+        };
+      } = {
+        ...samplePaper,
+        modes: {
+          options: [
+            { id: "a", description: "A" },
+            { id: "b", description: "B" },
+          ],
+          min: 2,
+          max: 2,
+        },
+      };
+      const cardId = mkEntityId(704);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      gen.next();
+      const finished = gen.next({ kind: "chooseModes", modeIds: ["a", "a"] });
+      expect(finished.done).toBe(true);
+      expect(finished.value).toBeNull();
+    });
+  });
+
+  describe("stepChooseModes — X announcement", () => {
+    it("yields chooseNumber for an X spell and stores xValue in provenance", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & { hasX: true } = {
+        ...samplePaper,
+        name: "Fireball",
+        hasX: true,
+      };
+      const cardId = mkEntityId(710);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      const first = gen.next();
+      expect(first.done).toBe(false);
+      const y = first.value as EngineYield;
+      expect(y.kind).toBe("decision");
+      if (y.kind === "decision" && y.request.kind === "chooseNumber") {
+        expect(y.request.min).toBe(0);
+        expect(y.request.max).toBe(Number.MAX_SAFE_INTEGER);
+      }
+      const finished = gen.next({ kind: "chooseNumber", chosen: 5 });
+      expect(finished.done).toBe(true);
+      const item = finished.value as StackItem;
+      expect(item.provenance.xValue).toBe(5);
+    });
+
+    it("returns null when X value is negative", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & { hasX: true } = { ...samplePaper, hasX: true };
+      const cardId = mkEntityId(711);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      gen.next();
+      const finished = gen.next({ kind: "chooseNumber", chosen: -1 });
+      expect(finished.done).toBe(true);
+      expect(finished.value).toBeNull();
+    });
+
+    it("returns null when X value is not an integer", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & { hasX: true } = { ...samplePaper, hasX: true };
+      const cardId = mkEntityId(712);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      gen.next();
+      const finished = gen.next({ kind: "chooseNumber", chosen: 1.5 });
+      expect(finished.done).toBe(true);
+      expect(finished.value).toBeNull();
+    });
+  });
+
+  describe("stepDistributeX", () => {
+    it("non-distribute spell leaves ctx.distributions undefined on the StackItem targets", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(720);
+      addCardToZone(game, seat0, ZoneType.Hand, cardId);
+      const { result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      expect(result).not.toBeNull();
+    });
+
+    it("distribute spell with no X announced and no fixed amount aborts to null", () => {
+      const { game, seat0 } = makeGame();
+      const paper: PaperCard & { distributesX: true } = { ...samplePaper, distributesX: true };
+      const cardId = mkEntityId(721);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const { result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      expect(result).toBeNull();
+    });
+
+    it("distribute spell with fixed distributeAmount stamps xValue for step 7", () => {
+      const { game, seat0 } = makeGame();
+      // Spell has no targetRestriction — so step 7 auto-passes and xValue is
+      // simply stamped, letting provenance.xValue carry the distribution total.
+      const paper: PaperCard & { distributesX: true; distributeAmount: number } = {
+        ...samplePaper,
+        distributesX: true,
+        distributeAmount: 3,
+      };
+      const cardId = mkEntityId(722);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const { result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      const item = result as StackItem;
+      expect(item).not.toBeNull();
+      expect(item.provenance.xValue).toBe(3);
+    });
+  });
+
+  describe("stepChooseTargets", () => {
+    it("auto-passes when the paper card has no targetRestriction", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(730);
+      addCardToZone(game, seat0, ZoneType.Hand, cardId);
+      const { yields, result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      expect(yields).toEqual([]);
+      const item = result as StackItem;
+      expect(item).not.toBeNull();
+      expect(item.targets).toBeNull();
+    });
+
+    it("yields chooseCastTargets with the enumerated eligible set", () => {
+      const { game, seat0 } = makeGame();
+      // Seed a battlefield creature to serve as the target.
+      const targetId = mkEntityId(780);
+      addCardToZone(game, seat0, ZoneType.Battlefield, targetId);
+      // Spell card in hand with a target restriction admitting battlefield
+      // cards controlled by the caster.
+      const restriction = {
+        controllerScope: "any",
+        permitZones: new Set([ZoneType.Battlefield]),
+        permitTypes: new Set(),
+        forbidTypes: new Set(),
+        minTargets: 1,
+        maxTargets: 1,
+        mayTargetPlayers: false,
+      } as const;
+      const paper: PaperCard & { targetRestriction: typeof restriction } = {
+        ...samplePaper,
+        name: "Murder",
+        targetRestriction: restriction,
+      };
+      const cardId = mkEntityId(731);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      const first = gen.next();
+      expect(first.done).toBe(false);
+      const y = first.value as EngineYield;
+      expect(y.kind).toBe("decision");
+      if (y.kind === "decision" && y.request.kind === "chooseCastTargets") {
+        expect(y.request.min).toBe(1);
+        expect(y.request.max).toBe(1);
+        expect(y.request.legalTargets).toHaveLength(1); // only the battlefield card
+        expect(y.request.playerSeat).toBe(seat0);
+        expect(y.request.sourceId).toBe(cardId);
+      }
+      const finished = gen.next({
+        kind: "chooseCastTargets",
+        targets: [{ kind: "card", id: targetId }],
+      });
+      expect(finished.done).toBe(true);
+      const item = finished.value as StackItem;
+      expect(item).not.toBeNull();
+      expect(item.targets).toEqual([{ kind: "card", id: targetId }]);
+    });
+
+    it("returns null when the chosen target is not in the eligible set", () => {
+      const { game, seat0, seat1 } = makeGame();
+      // Target we want only allows seat0's cards on battlefield.
+      addCardToZone(game, seat0, ZoneType.Battlefield, mkEntityId(791));
+      // seat1 controls a battlefield card — ineligible under scope "you".
+      const notEligibleId = mkEntityId(792);
+      const otherCard = new Card(notEligibleId, samplePaper, seat1, seat1, ZoneType.Battlefield);
+      game.cards.set(notEligibleId, otherCard);
+      const bfB = game.getPlayer(seat1).zones.get(ZoneType.Battlefield);
+      if (!bfB) throw new Error("test: missing battlefield");
+      bfB.add(notEligibleId);
+
+      const restriction = {
+        controllerScope: "you",
+        permitZones: new Set([ZoneType.Battlefield]),
+        permitTypes: new Set(),
+        forbidTypes: new Set(),
+        minTargets: 1,
+        maxTargets: 1,
+        mayTargetPlayers: false,
+      } as const;
+      const paper: PaperCard & { targetRestriction: typeof restriction } = {
+        ...samplePaper,
+        targetRestriction: restriction,
+      };
+      const cardId = mkEntityId(732);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      gen.next();
+      const finished = gen.next({
+        kind: "chooseCastTargets",
+        targets: [{ kind: "card", id: notEligibleId }],
+      });
+      expect(finished.done).toBe(true);
+      expect(finished.value).toBeNull();
+    });
+
+    it("passes divisions through to ctx when restriction has divideX", () => {
+      const { game, seat0 } = makeGame();
+      const aId = mkEntityId(740);
+      const bId = mkEntityId(741);
+      addCardToZone(game, seat0, ZoneType.Battlefield, aId);
+      addCardToZone(game, seat0, ZoneType.Battlefield, bId);
+      const restriction = {
+        controllerScope: "any",
+        permitZones: new Set([ZoneType.Battlefield]),
+        permitTypes: new Set(),
+        forbidTypes: new Set(),
+        minTargets: 2,
+        maxTargets: 2,
+        divideX: { amount: 5 },
+        mayTargetPlayers: false,
+      } as const;
+      const paper: PaperCard & { targetRestriction: typeof restriction } = {
+        ...samplePaper,
+        name: "Savage Twister",
+        targetRestriction: restriction,
+      };
+      const cardId = mkEntityId(733);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      const first = gen.next();
+      const y = first.value as EngineYield;
+      if (y.kind === "decision" && y.request.kind === "chooseCastTargets") {
+        expect(y.request.divideX?.amount).toBe(5);
+      }
+      const finished = gen.next({
+        kind: "chooseCastTargets",
+        targets: [
+          { kind: "card", id: aId },
+          { kind: "card", id: bId },
+        ],
+        divisions: { 0: 3, 1: 2 },
+      });
+      expect(finished.done).toBe(true);
+      const item = finished.value as StackItem;
+      expect(item).not.toBeNull();
+      expect(item.targets).toHaveLength(2);
+    });
+
+    it("integration: modal spell with X and targets completes end-to-end", () => {
+      const { game, seat0 } = makeGame();
+      const creatureId = mkEntityId(750);
+      addCardToZone(game, seat0, ZoneType.Battlefield, creatureId);
+      const restriction = {
+        controllerScope: "any",
+        permitZones: new Set([ZoneType.Battlefield]),
+        permitTypes: new Set(),
+        forbidTypes: new Set(),
+        minTargets: 1,
+        maxTargets: 1,
+        mayTargetPlayers: false,
+      } as const;
+      type PaperShape = PaperCard & {
+        readonly modes: {
+          readonly options: readonly { readonly id: string; readonly description: string }[];
+          readonly min: number;
+          readonly max: number;
+        };
+        readonly hasX: true;
+        readonly targetRestriction: typeof restriction;
+      };
+      const paper: PaperShape = {
+        ...samplePaper,
+        name: "Charmed Fireball",
+        modes: {
+          options: [
+            { id: "damage", description: "Deal X damage to target" },
+            { id: "pump", description: "Pump target" },
+          ],
+          min: 1,
+          max: 1,
+        },
+        hasX: true,
+        targetRestriction: restriction,
+      };
+      const cardId = mkEntityId(751);
+      const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      // 1st yield: chooseModes
+      const modeStep = gen.next();
+      expect((modeStep.value as EngineYield).kind).toBe("decision");
+      // 2nd yield: chooseNumber (X)
+      const xStep = gen.next({ kind: "chooseModes", modeIds: ["damage"] });
+      if ((xStep.value as EngineYield).kind === "decision") {
+        const req = (xStep.value as EngineYield & { kind: "decision" }).request;
+        expect(req.kind).toBe("chooseNumber");
+      }
+      // 3rd yield: chooseCastTargets
+      const tgtStep = gen.next({ kind: "chooseNumber", chosen: 4 });
+      if ((tgtStep.value as EngineYield).kind === "decision") {
+        const req = (tgtStep.value as EngineYield & { kind: "decision" }).request;
+        expect(req.kind).toBe("chooseCastTargets");
+      }
+      const finished = gen.next({
+        kind: "chooseCastTargets",
+        targets: [{ kind: "card", id: creatureId }],
+      });
+      expect(finished.done).toBe(true);
+      const item = finished.value as StackItem;
+      expect(item.provenance.modesChosen).toEqual(["damage"]);
+      expect(item.provenance.xValue).toBe(4);
+      expect(item.targets).toEqual([{ kind: "card", id: creatureId }]);
+    });
+  });
+});

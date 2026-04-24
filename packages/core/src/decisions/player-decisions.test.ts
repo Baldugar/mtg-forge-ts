@@ -69,21 +69,25 @@ const EXPECTED_REQUEST_KINDS: readonly DecisionRequestKind[] = [
   "chooseLegendKeeper",
   // SP2 Task 36 — CastPipeline step 2 (multi-face cards)
   "chooseFace",
+  // SP2 Task 37 — CastPipeline step 7 (TargetRef-aware cast targets)
+  "chooseCastTargets",
+  // SP2 Task 38 — CastPipeline step 9 (mana-ability activation window)
+  "activateManaAbilities",
 ];
 
 const EXPECTED_RESPONSE_KINDS: readonly DecisionResponseKind[] = EXPECTED_REQUEST_KINDS;
 
 describe("DecisionRequest enumeration", () => {
-  it("has 46 distinct kinds (SP1 baseline 23 + post-audit 21 + SP2 additions 2)", () => {
-    expect(EXPECTED_REQUEST_KINDS.length).toBe(46);
-    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(46);
+  it("has 48 distinct kinds (SP1 baseline 23 + post-audit 21 + SP2 additions 4)", () => {
+    expect(EXPECTED_REQUEST_KINDS.length).toBe(48);
+    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(48);
   });
 });
 
 describe("DecisionResponse enumeration", () => {
-  it("has 46 distinct kinds set-equal to DecisionRequest kinds", () => {
-    expect(EXPECTED_RESPONSE_KINDS.length).toBe(46);
-    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(46);
+  it("has 48 distinct kinds set-equal to DecisionRequest kinds", () => {
+    expect(EXPECTED_RESPONSE_KINDS.length).toBe(48);
+    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(48);
     expect(new Set(EXPECTED_RESPONSE_KINDS)).toEqual(new Set(EXPECTED_REQUEST_KINDS));
   });
 });
@@ -424,6 +428,43 @@ describe("Post-audit extension constructors", () => {
     expect(re.kind).toBe("chooseRollToReroll");
     expect(ig.kind).toBe("chooseRollToIgnore");
     expect(sw.kind).toBe("chooseRollToSwap");
+  });
+
+  it("chooseCastTargets + activateManaAbilities — SP2 Milestone I additions", () => {
+    const req: DecisionRequest = {
+      kind: "chooseCastTargets",
+      playerSeat: mkPlayerSeat(0),
+      sourceId: mkEntityId(50),
+      legalTargets: [{ kind: "card", id: mkEntityId(100) }],
+      min: 1,
+      max: 1,
+      divideX: { amount: 3 },
+    };
+    if (isRequest(req, "chooseCastTargets")) {
+      expect(req.legalTargets.length).toBe(1);
+      expect(req.divideX?.amount).toBe(3);
+    }
+    const resp: DecisionResponse = {
+      kind: "chooseCastTargets",
+      targets: [{ kind: "card", id: mkEntityId(100) }],
+      divisions: { 0: 3 },
+    };
+    if (isResponse(resp, "chooseCastTargets")) {
+      expect(resp.targets.length).toBe(1);
+      expect(resp.divisions?.[0]).toBe(3);
+    }
+    const manaReq: DecisionRequest = {
+      kind: "activateManaAbilities",
+      playerSeat: mkPlayerSeat(1),
+      forStackItem: mkEntityId(99),
+    };
+    const manaResp: DecisionResponse = { kind: "activateManaAbilities", done: true };
+    if (isRequest(manaReq, "activateManaAbilities")) {
+      expect(manaReq.forStackItem).toBe(mkEntityId(99));
+    }
+    if (isResponse(manaResp, "activateManaAbilities")) {
+      expect(manaResp.done).toBe(true);
+    }
   });
 
   it("Attractions / Contraptions: chooseSector / chooseSprocket / chooseContraptionsToCrank", () => {

@@ -16,11 +16,12 @@
 // WHY protected step methods + single orchestrating run(): tests (and future
 // specialized cast paths — cascade, storm copies, flashback) subclass and
 // override individual steps without reimplementing the dispatch.
-import type { EntityId, NamedOption, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 import { IllegalDecisionError, ZoneType as Zt } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { StackItem, StackItemProvenance } from "../stack/stack-item.js";
+import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
 import { createCastContext } from "./cast-context.js";
 
@@ -42,6 +43,49 @@ import { createCastContext } from "./cast-context.js";
 interface CastSurfacePaperCard {
   readonly faces?: readonly string[];
   readonly optionalCosts?: readonly NamedOption[];
+  /**
+   * Modal-spell options. When present with a non-empty list, step 5 yields
+   * `chooseModes` and the casting player picks between `min` and `max`
+   * distinct ids. CR 700.2 forbids picking the same mode twice unless the
+   * card says "any number"; SP2 enforces strict uniqueness — a future
+   * `allowDuplicate` flag on the modes record can relax it for cards that
+   * genuinely admit repeats (Fiery Confluence, "any number" Charms).
+   */
+  readonly modes?: {
+    readonly options: readonly ModeOption[];
+    readonly min: number;
+    readonly max: number;
+  };
+  /**
+   * True when the spell's cost contains an `X` variable (Fireball, Banefire,
+   * Finale of Promise). Step 5 yields a second decision — `chooseNumber` —
+   * after the modal pick, letting the caster announce X. SP3's
+   * ManaCostSolver caps the `max` against the caster's actual mana pool;
+   * SP2 accepts any non-negative integer and defers mana-affordability
+   * gating to the cost resolver.
+   */
+  readonly hasX?: boolean;
+  /**
+   * True when the spell divides an amount among its chosen targets
+   * ("X damage divided among any number of target creatures", "distribute
+   * X +1/+1 counters"). The actual target-indexed split is collected by
+   * step 7 (ChooseTargets) so divisions are keyed against the same target
+   * list; step 6 only verifies there's an amount to distribute.
+   */
+  readonly distributesX?: boolean;
+  /**
+   * Fallback distribution amount for distributesX spells that don't use
+   * the X mechanic (e.g. "Distribute 3 +1/+1 counters among target
+   * creatures"). When present and `xValue` is undefined at step 6, the
+   * pipeline stamps this into `ctx.xValue` so step 7 has an amount.
+   */
+  readonly distributeAmount?: number;
+  /**
+   * Target restriction rule. Absent → spell has no targets (step 7 auto-
+   * passes). Present → step 7 enumerates the eligible set via
+   * TargetSystem and yields `chooseCastTargets`.
+   */
+  readonly targetRestriction?: TargetRestriction;
 }
 
 export interface CastProposal {
@@ -214,19 +258,173 @@ export class CastPipeline {
     ctx.additionalCostsPaid = [...response.chosenIds];
   }
 
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 37
-  protected *stepChooseModes(_ctx: CastContext): Generator<EngineYield, void, unknown> {
-    return;
+  /**
+   * CR 601.2b — modal spells: "choose one/two/three" / announcement of X.
+   *
+   * 5a. Modal pick: if the paper card publishes a `modes` record with a
+   *     non-empty option list, yield `chooseModes` and validate the reply
+   *     (count in [min,max], every id is offered, no duplicates per
+   *     CR 700.2). Records the picks in `ctx.modesChosen`.
+   *
+   * 5b. X announcement: if the spell has `hasX`, yield `chooseNumber` and
+   *     accept any non-negative integer. Mana affordability is SP3's
+   *     ManaCostSolver — SP2 only gates on "non-negative integer".
+   *
+   * Cards without either feature auto-pass this step.
+   */
+  protected *stepChooseModes(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    const paper = card.paperCard as CastSurfacePaperCard;
+
+    // 5a: modal pick.
+    if (paper.modes && paper.modes.options.length > 0) {
+      const modes = paper.modes;
+      const response = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseModes",
+          sourceId: ctx.sourceCardId,
+          modes: modes.options,
+          min: modes.min,
+          max: modes.max,
+        },
+      }) as { readonly kind: "chooseModes"; readonly modeIds: readonly string[] };
+      if (response.modeIds.length < modes.min || response.modeIds.length > modes.max) {
+        throw new IllegalDecisionError(
+          `chooseModes: count ${response.modeIds.length} not in [${modes.min}, ${modes.max}]`,
+          modes.options.map((o) => o.id),
+        );
+      }
+      const validIds = new Set(modes.options.map((o) => o.id));
+      const seen = new Set<string>();
+      for (const m of response.modeIds) {
+        if (!validIds.has(m)) {
+          throw new IllegalDecisionError(
+            `chooseModes: unknown id ${m}`,
+            modes.options.map((o) => o.id),
+          );
+        }
+        // CR 700.2 — no duplicates unless the card says "any number".
+        if (seen.has(m)) {
+          throw new IllegalDecisionError(
+            `chooseModes: duplicate id ${m}`,
+            modes.options.map((o) => o.id),
+          );
+        }
+        seen.add(m);
+      }
+      ctx.modesChosen = [...response.modeIds];
+    }
+
+    // 5b: X announcement.
+    if (paper.hasX === true) {
+      const response = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseNumber",
+          sourceId: ctx.sourceCardId,
+          min: 0,
+          // WHY MAX_SAFE_INTEGER: SP3's ManaCostSolver is the authority on
+          // the caster's affordable max — SP2 just validates the shape.
+          // Using MAX_SAFE_INTEGER avoids any off-by-one surprises on the
+          // boundary where a card like Rolling Thunder accepts X up to the
+          // caster's pool.
+          max: Number.MAX_SAFE_INTEGER,
+        },
+      }) as { readonly kind: "chooseNumber"; readonly chosen: number };
+      if (!Number.isInteger(response.chosen) || response.chosen < 0) {
+        throw new IllegalDecisionError(`chooseNumber (xValue): invalid ${response.chosen}`);
+      }
+      ctx.xValue = response.chosen;
+    }
   }
 
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 37
-  protected *stepDistributeX(_ctx: CastContext): Generator<EngineYield, void, unknown> {
-    return;
+  /**
+   * CR 601.2d — "divide X damage among any number of targets" / "put X +1/+1
+   * counters distributed among target creatures". The actual target-indexed
+   * division is collected by step 7 (ChooseTargets) because divisions are
+   * keyed against the same target list; step 6 only:
+   *   - returns early if the card doesn't distribute,
+   *   - when the card distributes without an announced X, falls back to a
+   *     fixed `distributeAmount` and stamps it into ctx.xValue so step 7
+   *     has a concrete total to divide,
+   *   - initializes ctx.distributions to the empty record so step 7 sees
+   *     "distribution required" rather than "undefined distributions".
+   */
+  // biome-ignore lint/correctness/useYield: step defers all decisions to step 7
+  protected *stepDistributeX(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    const paper = card.paperCard as CastSurfacePaperCard;
+    if (paper.distributesX !== true) return;
+    if (ctx.xValue === undefined) {
+      const fixedAmount = paper.distributeAmount;
+      if (fixedAmount === undefined) {
+        throw new IllegalDecisionError(
+          "distributeX: no amount to distribute (no X announced, no fixed amount)",
+        );
+      }
+      ctx.xValue = fixedAmount;
+    }
+    // Signal to step 7 that divisions are required; the actual map is
+    // filled from the chooseCastTargets response.
+    ctx.distributions = {};
   }
 
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 37
-  protected *stepChooseTargets(_ctx: CastContext): Generator<EngineYield, void, unknown> {
-    return;
+  /**
+   * CR 601.2c — choose the spell's targets. The card publishes a
+   * TargetRestriction (set of zone/type/controller filters + count bounds);
+   * TargetSystem enumerates the eligible set, the engine yields a
+   * `chooseCastTargets` decision, and the response is re-validated against
+   * the same TargetSystem contract (CR 601.2c "legal targets at cast").
+   *
+   * When the restriction carries `divideX`, the response must include
+   * a `divisions` map whose sum matches `divideX.amount`; validateAtCast
+   * enforces that rule.
+   */
+  protected *stepChooseTargets(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    const paper = card.paperCard as CastSurfacePaperCard;
+    if (!paper.targetRestriction) return;
+    const restriction = paper.targetRestriction;
+    const enumerationCtx = {
+      sourceId: ctx.sourceCardId,
+      sourceControllerSeat: ctx.castingPlayer,
+    };
+    const eligible = this.game.targetSystem.enumerate(enumerationCtx, restriction);
+    const response = (yield {
+      kind: "decision",
+      request: {
+        kind: "chooseCastTargets",
+        playerSeat: ctx.castingPlayer,
+        sourceId: ctx.sourceCardId,
+        // WHY typed through unknown: TargetRef lives in ../target/restriction;
+        // decisions core-package can't reach that without a cycle. Consumers
+        // narrow via TargetRef on the game side.
+        legalTargets: eligible as readonly unknown[],
+        min: restriction.minTargets,
+        max: restriction.maxTargets,
+        ...(restriction.divideX !== undefined ? { divideX: restriction.divideX } : {}),
+      },
+    }) as {
+      readonly kind: "chooseCastTargets";
+      readonly targets: readonly unknown[];
+      readonly divisions?: Readonly<Record<number, number>>;
+    };
+    const chosenTargets = response.targets as readonly TargetRef[];
+    const choices: TargetChoices =
+      response.divisions !== undefined
+        ? { targets: chosenTargets, divisions: { ...response.divisions } }
+        : { targets: chosenTargets };
+    if (!this.game.targetSystem.validateAtCast(choices, enumerationCtx, restriction)) {
+      throw new IllegalDecisionError(`chooseCastTargets: invalid selection for card ${ctx.sourceCardId}`);
+    }
+    ctx.targets = choices.targets;
+    if (choices.divisions !== undefined) {
+      ctx.distributions = { ...choices.divisions };
+    }
   }
 
   // biome-ignore lint/correctness/useYield: stub — populated by Task 38

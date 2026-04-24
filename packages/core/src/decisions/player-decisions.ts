@@ -362,6 +362,35 @@ export type DecisionRequest =
       readonly playerSeat: PlayerSeat;
       readonly cardId: EntityId;
       readonly options: readonly string[];
+    }
+  | {
+      // SP2 Task 37 — CastPipeline step 7 (ChooseTargets). Distinct from
+      // the generic `chooseTargets` (which predates the TargetRef union and
+      // carries EntityId[]-only targets) because SP2 targeting admits
+      // players AND cards under one ref shape. `legalTargets` is typed
+      // `readonly unknown[]` to avoid a core→game circular import —
+      // consumers narrow via ../../packages/game/src/target/restriction.ts
+      // TargetRef. `divideX` is set iff the ability divides X among its
+      // targets; the response's `divisions` map (target-index → amount)
+      // then has to sum to divideX.amount (TargetSystem validates).
+      readonly kind: "chooseCastTargets";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+      readonly legalTargets: readonly unknown[];
+      readonly min: number;
+      readonly max: number;
+      readonly divideX?: { readonly amount: number };
+    }
+  | {
+      // SP2 Task 38 — CastPipeline step 9 (ActivateManaAbilities). Between
+      // cost determination (step 8) and payment (step 10), CR 601.2g lets
+      // the caster activate any legal mana ability. SP2 collapses this to a
+      // single binary decision — "done activating mana abilities, proceed
+      // to pay"; SP3's priority orchestrator (Milestone J) swaps this for
+      // the full per-activation mini-priority window.
+      readonly kind: "activateManaAbilities";
+      readonly playerSeat: PlayerSeat;
+      readonly forStackItem: EntityId;
     };
 
 /**
@@ -488,7 +517,13 @@ export type DecisionResponse =
       readonly bottomed: readonly EntityId[];
     }
   | { readonly kind: "chooseLegendKeeper"; readonly keeperId: EntityId }
-  | { readonly kind: "chooseFace"; readonly face: string };
+  | { readonly kind: "chooseFace"; readonly face: string }
+  | {
+      readonly kind: "chooseCastTargets";
+      readonly targets: readonly unknown[];
+      readonly divisions?: Readonly<Record<number, number>>;
+    }
+  | { readonly kind: "activateManaAbilities"; readonly done: true };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];
