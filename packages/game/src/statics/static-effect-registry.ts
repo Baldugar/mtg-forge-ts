@@ -16,6 +16,7 @@
 //             through the replacement registry via ReplacementGenLedger
 import type { EntityId, StaticAbility, StaticAbilityCategory } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { contributeToLayers, removeFromLayers } from "./layer-contributors.js";
 
 export class StaticEffectRegistry {
   private readonly byId = new Map<EntityId, StaticAbility>();
@@ -33,11 +34,18 @@ export class StaticEffectRegistry {
     const list = this.bySourceCard.get(s.sourceCardId) ?? [];
     if (!list.includes(s.id)) list.push(s.id);
     this.bySourceCard.set(s.sourceCardId, list);
+    // Task 26 — route continuous/abilityGranting statics into LayerEngine.
+    // Category-gated inside contributeToLayers; a no-op for other kinds.
+    contributeToLayers(this.game, s);
   }
 
   unregister(id: EntityId): void {
     const s = this.byId.get(id);
     if (!s) return;
+    // Task 26 — unwind LayerEngine contribution BEFORE dropping the id-map
+    // entry so the contributor helper can still rely on the static
+    // reference (`s` is captured here).
+    removeFromLayers(this.game, s);
     this.byId.delete(id);
     const list = this.bySourceCard.get(s.sourceCardId) ?? [];
     const next = list.filter((x) => x !== id);
