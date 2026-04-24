@@ -90,6 +90,36 @@ const drainGenerator = <Y, R>(gen: Generator<Y, R, unknown>): { yields: Y[]; res
   return { yields, result: step.value };
 };
 
+/**
+ * Drive the generator forward one response at a time, collecting every
+ * yield (decisions + events) until the generator returns. Responses are
+ * fed in order — if the generator yields an event between decisions, that
+ * event is collected and `.next()` is called without a value (events take
+ * no response). Stops at the first `done` and returns the final value.
+ *
+ * Use this for tests that want to assert the final return value AND the
+ * full yield sequence, without being surprised by events the pipeline
+ * emits between player decisions (CastAborted, CostPaid, etc.).
+ */
+const drainWithResponses = <Y extends { kind: string }, R>(
+  gen: Generator<Y, R, unknown>,
+  responses: readonly unknown[],
+): { yields: Y[]; result: R } => {
+  const yields: Y[] = [];
+  let step = gen.next();
+  let respIdx = 0;
+  while (!step.done) {
+    yields.push(step.value);
+    if (step.value.kind === "decision" && respIdx < responses.length) {
+      step = gen.next(responses[respIdx]);
+      respIdx += 1;
+    } else {
+      step = gen.next();
+    }
+  }
+  return { yields, result: step.value };
+};
+
 describe("CastPipeline — Task 35 skeleton", () => {
   it("wires onto Game.castPipeline after sbaEngine", () => {
     const { game } = makeGame();
@@ -193,7 +223,9 @@ describe("CastPipeline — Task 35 skeleton", () => {
         asSpecialAction: false,
       }),
     );
-    expect(yields).toEqual([]);
+    // SP2 Task 39 — abort() yields a CastAborted event on its way out.
+    expect(yields).toHaveLength(1);
+    expect(yields[0]).toMatchObject({ kind: "event", event: { kind: "CastAborted" } });
     expect(result).toBeNull();
   });
 
@@ -420,16 +452,16 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
 
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseFace", face: "bogus" });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseFace", face: "bogus" }],
+      );
+      expect(result).toBeNull();
     });
   });
 
@@ -555,16 +587,16 @@ describe("CastPipeline — Task 36 steps 1-4", () => {
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
 
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseOptionalCosts", chosenIds: ["bogus"] });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseOptionalCosts", chosenIds: ["bogus"] }],
+      );
+      expect(result).toBeNull();
     });
   });
 });
@@ -661,16 +693,16 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseModes", modeIds: ["a", "b"] });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseModes", modeIds: ["a", "b"] }],
+      );
+      expect(result).toBeNull();
     });
 
     it("returns null when a chosen id is unknown", () => {
@@ -695,16 +727,16 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseModes", modeIds: ["bogus"] });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseModes", modeIds: ["bogus"] }],
+      );
+      expect(result).toBeNull();
     });
 
     it("returns null when a mode id is picked twice (CR 700.2)", () => {
@@ -732,16 +764,16 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseModes", modeIds: ["a", "a"] });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseModes", modeIds: ["a", "a"] }],
+      );
+      expect(result).toBeNull();
     });
   });
 
@@ -788,16 +820,16 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseNumber", chosen: -1 });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseNumber", chosen: -1 }],
+      );
+      expect(result).toBeNull();
     });
 
     it("returns null when X value is not an integer", () => {
@@ -809,16 +841,16 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({ kind: "chooseNumber", chosen: 1.5 });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [{ kind: "chooseNumber", chosen: 1.5 }],
+      );
+      expect(result).toBeNull();
     });
   });
 
@@ -991,19 +1023,21 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
       const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
       if (!hand) throw new Error("test: missing hand");
       hand.add(cardId);
-      const gen = game.castPipeline.run({
-        castingPlayer: seat0,
-        sourceCardId: cardId,
-        originZone: ZoneType.Hand,
-        asSpecialAction: false,
-      });
-      gen.next();
-      const finished = gen.next({
-        kind: "chooseCastTargets",
-        targets: [{ kind: "card", id: notEligibleId }],
-      });
-      expect(finished.done).toBe(true);
-      expect(finished.value).toBeNull();
+      const { result } = drainWithResponses(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+        [
+          {
+            kind: "chooseCastTargets",
+            targets: [{ kind: "card", id: notEligibleId }],
+          },
+        ],
+      );
+      expect(result).toBeNull();
     });
 
     it("passes divisions through to ctx when restriction has divideX", () => {
@@ -1386,5 +1420,183 @@ describe("CastPipeline — Task 38 steps 8-10", () => {
       const item = result as StackItem;
       expect(item.provenance.alternativeZoneDestination).toBe(ZoneType.Exile);
     });
+  });
+});
+
+describe("CastPipeline — Task 39 abort + rollback", () => {
+  it("emits a CastAborted event with the thrown error's message", () => {
+    class ThrowingPipeline extends CastPipeline {
+      // biome-ignore lint/correctness/useYield: error branch before any yield
+      protected override *stepPropose(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+        throw new Error("unplayable from hand");
+      }
+    }
+    const { game, seat0 } = makeGame();
+    const pipeline = new ThrowingPipeline(game);
+    const cardId = mkEntityId(900);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    const { yields, result } = drainGenerator(
+      pipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      }),
+    );
+    expect(result).toBeNull();
+    expect(yields).toHaveLength(1);
+    const y = yields[0] as EngineYield;
+    expect(y.kind).toBe("event");
+    if (y.kind === "event" && y.event.kind === "CastAborted") {
+      expect(y.event.payload.cardId).toBe(cardId);
+      expect(y.event.payload.playerSeat).toBe(seat0);
+      expect(y.event.payload.reason).toBe("unplayable from hand");
+    }
+  });
+
+  it("preserves a non-Error thrown value as its String(x) reason", () => {
+    class WeirdThrowPipeline extends CastPipeline {
+      // biome-ignore lint/correctness/useYield: error branch before any yield
+      protected override *stepPropose(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+        throw { not: "an error" };
+      }
+    }
+    const { game, seat0 } = makeGame();
+    const pipeline = new WeirdThrowPipeline(game);
+    const cardId = mkEntityId(901);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    const { yields, result } = drainGenerator(
+      pipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      }),
+    );
+    expect(result).toBeNull();
+    const y = yields[0] as EngineYield;
+    if (y.kind === "event" && y.event.kind === "CastAborted") {
+      expect(y.event.payload.reason).toBe("[object Object]");
+    }
+  });
+
+  it("abort from step 1 (propose) emits no prior events — only CastAborted", () => {
+    const { game, seat0 } = makeGame();
+    // No card registered → stepPropose throws.
+    const { yields, result } = drainGenerator(
+      game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: mkEntityId(9999),
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      }),
+    );
+    expect(result).toBeNull();
+    expect(yields).toHaveLength(1);
+    const y = yields[0] as EngineYield;
+    expect(y.kind).toBe("event");
+    if (y.kind === "event") {
+      expect(y.event.kind).toBe("CastAborted");
+    }
+  });
+
+  it("abort after payments dropped — paidAlready cleared on the ctx snapshot", () => {
+    // Inject a pipeline subclass whose step 10 adds a payment then step
+    // finalization throws; abort() must drop the receipt.
+    class ForcedAbortPipeline extends CastPipeline {
+      capturedCtx: CastContext | undefined;
+      // biome-ignore lint/correctness/useYield: side-effect-only override
+      protected override *stepPayCosts(ctx: CastContext): Generator<EngineYield, void, unknown> {
+        ctx.paidAlready.push({ fake: "receipt" });
+      }
+      protected override finalizeStackItem(ctx: CastContext): StackItem {
+        this.capturedCtx = ctx;
+        throw new Error("finalize-blowup");
+      }
+    }
+    const { game, seat0 } = makeGame();
+    const pipeline = new ForcedAbortPipeline(game);
+    const cardId = mkEntityId(902);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    const { yields, result } = drainGenerator(
+      pipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      }),
+    );
+    expect(result).toBeNull();
+    // Yields: CastAborted from abort().
+    expect(yields).toHaveLength(1);
+    const last = yields[0] as EngineYield;
+    expect(last.kind).toBe("event");
+    if (last.kind === "event") {
+      expect(last.event.kind).toBe("CastAborted");
+    }
+    // Verify paidAlready was populated then dropped by abort.
+    expect(pipeline.capturedCtx?.paidAlready).toEqual([]);
+  });
+
+  it("abort after a controller response — throwing inside a decision-handler still aborts cleanly", () => {
+    // Force a throw after the chooseFace decision is consumed.
+    const { game, seat0 } = makeGame();
+    const paper: PaperCard & { faces: readonly string[] } = {
+      ...samplePaper,
+      faces: ["front", "back"] as const,
+    };
+    const cardId = mkEntityId(903);
+    const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("test: missing hand");
+    hand.add(cardId);
+    const gen = game.castPipeline.run({
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+    });
+    // first yield: chooseFace decision
+    gen.next();
+    // Respond with an illegal face — step throws, abort engages, next yield
+    // is the CastAborted event, then done with null.
+    const second = gen.next({ kind: "chooseFace", face: "nope" });
+    expect(second.done).toBe(false);
+    const ev = second.value as EngineYield;
+    expect(ev.kind).toBe("event");
+    if (ev.kind === "event") {
+      expect(ev.event.kind).toBe("CastAborted");
+    }
+    const third = gen.next();
+    expect(third.done).toBe(true);
+    expect(third.value).toBeNull();
+  });
+
+  it("abort event carries the correct turn and phase from the Game", () => {
+    class ThrowingPipeline extends CastPipeline {
+      // biome-ignore lint/correctness/useYield: error branch before any yield
+      protected override *stepPropose(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+        throw new Error("pin-turn-and-phase");
+      }
+    }
+    const { game, seat0 } = makeGame();
+    game.turn = 5;
+    const pipeline = new ThrowingPipeline(game);
+    const cardId = mkEntityId(904);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    const { yields } = drainGenerator(
+      pipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      }),
+    );
+    const y = yields[0] as EngineYield;
+    if (y.kind === "event" && y.event.kind === "CastAborted") {
+      expect(y.event.turn).toBe(5);
+      expect(y.event.phase).toBe(game.phase);
+    }
   });
 });

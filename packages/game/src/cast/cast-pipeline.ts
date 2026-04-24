@@ -590,12 +590,43 @@ export class CastPipeline {
   }
 
   /**
-   * Task 39 populates — reverses the partial side-effects accumulated in
-   * ctx.paidAlready (refund mana, untap/re-tap lands, etc.). Task 35 stub
-   * does nothing; caller still returns null from run().
+   * SP2 §9.abort — cast aborted mid-pipeline. Reverses the partial
+   * side-effects accumulated across steps 1-10. Invoked by run()'s catch
+   * block; run() then returns null (caller interprets that as
+   * IllegalCast).
+   *
+   * Order of operations:
+   *   1. LIFO-drop the `paidAlready` receipts (SP3's CostPayment will
+   *      expose an `undo(game)` we'll call here — in SP2 the payments are
+   *      opaque stubs the mana pool never actually saw, so dropping them
+   *      is sufficient for replay determinism).
+   *   2. Emit `CastAborted` so observers (GameLog, AI feature extractor,
+   *      replay checker) can see the cast concluded unsuccessfully and
+   *      why. The event payload is `{ cardId, playerSeat, reason }` per
+   *      Milestone B's event taxonomy.
+   *   3. run() returns null unconditionally — the caller never sees a
+   *      partially-constructed StackItem.
+   *
+   * Reason extraction mirrors TriggerRegistry.abort + ReplacementRegistry
+   * conventions: Error → Error.message, else String(err) — preserves
+   * stack-trace context for thrown Errors without leaking internal
+   * Error constructor names.
    */
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 39
-  protected *abort(_ctx: CastContext, _err: unknown): Generator<EngineYield, void, unknown> {
-    return;
+  protected *abort(ctx: CastContext, err: unknown): Generator<EngineYield, void, unknown> {
+    const reason = err instanceof Error ? err.message : String(err);
+    // 1. Drop partial cost receipts. Done LIFO so SP3 can swap in undo()
+    //    without changing the ordering guarantee.
+    while (ctx.paidAlready.length > 0) {
+      ctx.paidAlready.pop();
+    }
+    // 2. Emit the abort event.
+    yield {
+      kind: "event",
+      event: mkEvent("CastAborted", this.game.turn, this.game.phase, {
+        cardId: ctx.sourceCardId,
+        playerSeat: ctx.castingPlayer,
+        reason,
+      }),
+    };
   }
 }
