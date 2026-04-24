@@ -17,6 +17,7 @@ import { type Characteristics, type EntityId, GameStateIntegrityError } from "@m
 import type { Game } from "../game.js";
 import { deriveBaseCharacteristics } from "./base-characteristics.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
+import { applyFaceDownOverride } from "./layer1-face-down.js";
 import { applyLayer2Control } from "./layer2-control.js";
 import { type TextSubstitution, applyLayer3Text } from "./layer3-text.js";
 import { type TypeChangeEffect, applyLayer4Type } from "./layer4-type.js";
@@ -106,6 +107,10 @@ export class LayerEngine {
     if (!card) throw new GameStateIntegrityError(`LayerEngine: card ${id} not found`);
     const chars = deriveBaseCharacteristics(card);
     applyLayer1Copy(chars, card.copiedFrom);
+    // CR 707.11 — face-down override applies AFTER copy effects: copying a
+    // face-down card produces a face-down copy, but the face-down override
+    // wins over the copiable values regardless of what was copied.
+    applyFaceDownOverride(chars, card.faceDown);
     applyLayer2Control();
     applyLayer3Text(chars, this.textSubstitutions);
     applyLayer4Type(chars, this.typeEffects);

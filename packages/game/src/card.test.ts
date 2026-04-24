@@ -37,7 +37,7 @@ describe("Card", () => {
     expect(c.attachedTo).toBeNull();
     expect(c.attachments).toEqual([]);
     expect(c.copiedFrom).toBeNull();
-    expect(c.faceDown).toBeNull();
+    expect(c.faceDown).toEqual({ kind: "none" });
   });
 
   it("counters Map is usable with CounterType keys", () => {

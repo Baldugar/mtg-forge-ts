@@ -8,6 +8,7 @@
 import type {
   CounterType,
   EntityId,
+  FaceDownState,
   PaperCard,
   PlayerSeat,
   StaticAbility,
@@ -23,10 +24,12 @@ export class Card {
   counters = new Map<CounterType, number>();
   attachedTo: EntityId | null = null;
   attachments: EntityId[] = [];
-  // SP2 Task 3: Layer 1 copy source (CR 707.2). `faceDown` remains `unknown`
-  // until Task 53-54 land the FaceDownState shape.
+  // SP2 Task 3: Layer 1 copy source (CR 707.2).
   copiedFrom: CopiableCharacteristics | null = null;
-  faceDown: unknown | null = null;
+  // SP2 Task 53 (CR 708.2). `{ kind: "none" }` = face-up; the five face-
+  // down kinds (morph/manifest/foretell/disguise/cloak) each carry their
+  // own bookkeeping needed by the turn-face-up primitive (Task 54).
+  faceDown: FaceDownState = { kind: "none" };
   // SP2 Task 25: intrinsic static abilities derived from card text. SP3
   // replaces hand-population with PaperCard.definition-driven derivation.
   // `undefined` means "not yet populated"; treated identically to an

@@ -37,6 +37,7 @@ import type {
   ContinuousEffect,
   CounterType,
   EntityId,
+  FaceDownState,
   LobbyPlayer,
   PaperCard,
   PhaseStep,
@@ -560,7 +561,11 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     // (de)serialization for CopiableCharacteristics (sets, ColorSet, ManaCost).
     // Until then, live snapshots only hold null, so a narrowing cast is safe.
     card.copiedFrom = sc.copiedFrom as CopiableCharacteristics | null;
-    card.faceDown = sc.faceDown;
+    // SP2 Task 53: Card.faceDown is now FaceDownState, but snapshot's
+    // SerializedCard still types it as `unknown` so pre-Task-53 snapshots
+    // (which wrote `null`) can round-trip. Coerce null → FACE_UP; trust
+    // anything else as a well-formed FaceDownState.
+    card.faceDown = (sc.faceDown ?? { kind: "none" }) as FaceDownState;
     game.cards.set(sc.id, card);
   }
 

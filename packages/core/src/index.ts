@@ -26,3 +26,4 @@ export * from "./format/index.js";
 export * from "./lobby-player.js";
 export * from "./abilities/index.js";
 export * from "./lki/index.js";
+export * from "./face-down/index.js";
