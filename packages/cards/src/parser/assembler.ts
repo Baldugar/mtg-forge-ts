@@ -31,6 +31,7 @@ import { type LexedLine, lex } from "./lexer.js";
 import { parseManaCostLine } from "./mana-cost-line.js";
 import { parseDefenseLine, parseLoyaltyLine, parsePtLine } from "./pt-loyalty-defense.js";
 import { parseReplacementLine } from "./replacement-line.js";
+import { resolveReferences } from "./resolver.js";
 import {
   parseAiHintLine,
   parseDeckHasLine,
@@ -212,7 +213,7 @@ export const parseCard = (source: string, file: string): CardDefinition => {
   const firstSection = sections[0];
   if (!firstSection) throw new Error(`${file}: empty card file`);
   const primary = parseSection(firstSection);
-  if (sections.length === 1) return primary;
-  const faces = sections.slice(1).map(parseSection);
-  return { ...primary, faces };
+  const result = sections.length === 1 ? primary : { ...primary, faces: sections.slice(1).map(parseSection) };
+  resolveReferences(result);
+  return result;
 };
