@@ -1133,3 +1133,258 @@ describe("CastPipeline — Task 37 steps 5-7", () => {
     });
   });
 });
+
+describe("CastPipeline — Task 38 steps 8-10", () => {
+  // Paper-card fixture with a (placeholder) mana cost — non-null enough to
+  // exercise the cost-gate on steps 9 and 10. SP3 replaces with a real
+  // ManaCost instance.
+  const paidPaper: PaperCard & { manaCost: unknown } = {
+    ...samplePaper,
+    name: "Paid Spell",
+    manaCost: { raw: "{1}{R}" },
+  };
+
+  describe("stepDetermineTotalCost", () => {
+    it("records base / modIds / additionalCostIds / altCostUsed / xValue", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(800);
+      const card = new Card(cardId, paidPaper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      // Subclass overrides stepActivateManaAbilities to return immediately
+      // so we can drive the generator with drainGenerator and inspect
+      // ctx.totalCost via captureCtx.
+      class InspectingPipeline extends CastPipeline {
+        capturedCtx: CastContext | undefined;
+        // biome-ignore lint/correctness/useYield: inspection only
+        protected override *stepActivateManaAbilities(
+          ctx: CastContext,
+        ): Generator<EngineYield, void, unknown> {
+          // Snapshot *after* stepDetermineTotalCost has run.
+          this.capturedCtx = ctx;
+        }
+        // biome-ignore lint/correctness/useYield: inspection only
+        protected override *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+          return;
+        }
+      }
+      const pipe = new InspectingPipeline(game);
+      drainGenerator(
+        pipe.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      expect(pipe.capturedCtx).toBeDefined();
+      const tc = pipe.capturedCtx?.totalCost as {
+        base: unknown;
+        modIds: readonly EntityId[];
+        additionalCostIds: readonly string[];
+        altCostUsed: string | null;
+        xValue: number | undefined;
+      };
+      expect(tc.base).toEqual({ raw: "{1}{R}" });
+      expect(tc.modIds).toEqual([]);
+      expect(tc.additionalCostIds).toEqual([]);
+      expect(tc.altCostUsed).toBeNull();
+      expect(tc.xValue).toBeUndefined();
+    });
+
+    it("picks up cost-modification statics via registry.byCategory", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(801);
+      const card = new Card(cardId, paidPaper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      // Register a dummy cost-mod static ability on seat0's side.
+      const modId = mkEntityId(5000);
+      game.staticEffectRegistry.register({
+        id: modId,
+        kind: "static",
+        sourceCardId: cardId,
+        activeInZones: new Set([ZoneType.Battlefield]),
+        timestamp: 1,
+        controllerSeatAtReg: seat0,
+        category: "costModification",
+        describe: () => ({ raw: "mod" }),
+      });
+
+      class InspectingPipeline extends CastPipeline {
+        capturedCtx: CastContext | undefined;
+        // biome-ignore lint/correctness/useYield: inspection only
+        protected override *stepActivateManaAbilities(
+          ctx: CastContext,
+        ): Generator<EngineYield, void, unknown> {
+          this.capturedCtx = ctx;
+        }
+        // biome-ignore lint/correctness/useYield: inspection only
+        protected override *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+          return;
+        }
+      }
+      const pipe = new InspectingPipeline(game);
+      drainGenerator(
+        pipe.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      const tc = pipe.capturedCtx?.totalCost as { modIds: readonly EntityId[] };
+      expect(tc.modIds).toContain(modId);
+    });
+  });
+
+  describe("stepActivateManaAbilities", () => {
+    it("yields activateManaAbilities for a paid card and accepts {done:true}", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(810);
+      const card = new Card(cardId, paidPaper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      const first = gen.next();
+      expect(first.done).toBe(false);
+      const y = first.value as EngineYield;
+      expect(y.kind).toBe("decision");
+      if (y.kind === "decision" && y.request.kind === "activateManaAbilities") {
+        expect(y.request.playerSeat).toBe(seat0);
+        expect(y.request.forStackItem).toBe(cardId);
+      }
+      // The next yield is the CostPaid event.
+      const second = gen.next({ kind: "activateManaAbilities", done: true });
+      if (!second.done) {
+        const ev = second.value as EngineYield;
+        expect(ev.kind).toBe("event");
+        if (ev.kind === "event") {
+          expect(ev.event.kind).toBe("CostPaid");
+        }
+      }
+      const third = gen.next();
+      expect(third.done).toBe(true);
+      expect(third.value).not.toBeNull();
+    });
+
+    it("skips the decision when the card has no base mana cost", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(811);
+      addCardToZone(game, seat0, ZoneType.Hand, cardId);
+      const { yields, result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      expect(yields).toEqual([]);
+      expect(result).not.toBeNull();
+    });
+  });
+
+  describe("stepPayCosts", () => {
+    it("emits CostPaid event and records a CostPayment on ctx.paidAlready", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(820);
+      const card = new Card(cardId, paidPaper, seat0, seat0, ZoneType.Hand);
+      game.cards.set(cardId, card);
+      const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+      if (!hand) throw new Error("test: missing hand");
+      hand.add(cardId);
+      const gen = game.castPipeline.run({
+        castingPlayer: seat0,
+        sourceCardId: cardId,
+        originZone: ZoneType.Hand,
+        asSpecialAction: false,
+      });
+      const activationYield = gen.next();
+      expect((activationYield.value as EngineYield).kind).toBe("decision");
+      const paidYield = gen.next({ kind: "activateManaAbilities", done: true });
+      expect(paidYield.done).toBe(false);
+      const ev = paidYield.value as EngineYield;
+      expect(ev.kind).toBe("event");
+      if (ev.kind === "event") {
+        expect(ev.event.kind).toBe("CostPaid");
+        if (ev.event.kind === "CostPaid") {
+          expect(ev.event.payload.stackItemId).toBe(cardId);
+          expect(ev.event.payload.payerSeat).toBe(seat0);
+        }
+      }
+      const finished = gen.next();
+      expect(finished.done).toBe(true);
+      const item = finished.value as StackItem;
+      expect(item).not.toBeNull();
+      // costPaid on the StackItem is the paidAlready list with one entry.
+      const costPaid = item.costPaid as readonly unknown[];
+      expect(costPaid.length).toBe(1);
+    });
+  });
+
+  describe("finalizeStackItem provenance", () => {
+    it("carries originZone, altCostUsed (null by default), additionalCostsPaid (empty)", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(830);
+      addCardToZone(game, seat0, ZoneType.Hand, cardId);
+      const { result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      const item = result as StackItem;
+      expect(item.provenance.originZone).toBe(ZoneType.Hand);
+      expect(item.provenance.altCostUsed).toBeNull();
+      expect(item.provenance.additionalCostsPaid).toEqual([]);
+    });
+
+    it("omits faceChosen / modesChosen / xValue when not set", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(831);
+      addCardToZone(game, seat0, ZoneType.Hand, cardId);
+      const { result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        }),
+      );
+      const item = result as StackItem;
+      expect(item.provenance.faceChosen).toBeUndefined();
+      expect(item.provenance.modesChosen).toBeUndefined();
+      expect(item.provenance.xValue).toBeUndefined();
+    });
+
+    it("includes alternativeZoneDestination when origin is Graveyard", () => {
+      const { game, seat0 } = makeGame();
+      const cardId = mkEntityId(832);
+      addCardToZone(game, seat0, ZoneType.Graveyard, cardId);
+      const { result } = drainGenerator(
+        game.castPipeline.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Graveyard,
+          asSpecialAction: false,
+        }),
+      );
+      const item = result as StackItem;
+      expect(item.provenance.alternativeZoneDestination).toBe(ZoneType.Exile);
+    });
+  });
+});

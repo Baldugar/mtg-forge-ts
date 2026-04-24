@@ -17,7 +17,7 @@
 // specialized cast paths — cascade, storm copies, flashback) subclass and
 // override individual steps without reimplementing the dispatch.
 import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
-import { IllegalDecisionError, ZoneType as Zt } from "@mtg-forge-ts/core";
+import { IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { StackItem, StackItemProvenance } from "../stack/stack-item.js";
@@ -93,6 +93,18 @@ export interface CastProposal {
   readonly sourceCardId: EntityId;
   readonly originZone: ZoneType;
   readonly asSpecialAction: boolean;
+}
+
+/**
+ * SP2 cost-payment receipt. Stored on `ctx.paidAlready` in step 10; the
+ * abort path (Task 39) drops the list LIFO. SP3's CostPayment will carry
+ * an `undo(game)` hook each entry exposes for real mana-pool / tap-state
+ * unwinding.
+ */
+export interface CostPayment {
+  readonly sourceCardId: EntityId;
+  readonly totalCost: unknown;
+  readonly paidAt: number;
 }
 
 export class CastPipeline {
@@ -427,28 +439,121 @@ export class CastPipeline {
     }
   }
 
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 38
-  protected *stepDetermineTotalCost(_ctx: CastContext): Generator<EngineYield, void, unknown> {
-    return;
-  }
-
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 38
-  protected *stepActivateManaAbilities(_ctx: CastContext): Generator<EngineYield, void, unknown> {
-    return;
-  }
-
-  // biome-ignore lint/correctness/useYield: stub — populated by Task 38
-  protected *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
-    return;
+  /**
+   * CR 601.2f — determine the total cost. Start with the card's base mana
+   * cost (SP3's ManaCost — typed through `unknown` here until SP3 lands
+   * the full AST), add every cost-modifying static (Milestone F's
+   * `byCategory("costModification")`), and thread the additional costs
+   * announced in step 4 + the alt-cost id + the X announcement.
+   *
+   * SP2 records the raw inputs as an opaque object on ctx.totalCost; SP3's
+   * ManaCostSolver (Milestone J) consumes the record and produces the
+   * resolved PaidCost that step 10 actually deducts. No decision is
+   * yielded — the cost is derived, not player-selected.
+   */
+  protected *stepDetermineTotalCost(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    // WHY probed structurally: PaperCard carries ManaCost on its definition
+    // slot (SP3 lands the full CardDefinition); until then, the cast surface
+    // exposes manaCost on the paper record directly.
+    const baseCost = (card.paperCard as { manaCost?: unknown }).manaCost ?? null;
+    const costMods = this.game.staticEffectRegistry.byCategory("costModification");
+    ctx.totalCost = {
+      base: baseCost,
+      modIds: costMods.map((s) => s.id),
+      additionalCostIds: [...ctx.additionalCostsPaid],
+      altCostUsed: ctx.altCostUsed,
+      xValue: ctx.xValue,
+    };
   }
 
   /**
-   * Task 38 fills out the full StackItem shape (costPaid, modes, xValue).
-   * Task 35 returns the minimal StackItem the type requires so the skeleton
-   * is runnable in tests. The provenance record carries the SP2-complete
-   * subset (originZone + alt/additional cost markers + face/mode/x fields)
-   * — cascade/copy fields are populated by the cascade + copy subsystems
-   * (Tasks 37+, SP2 Milestone P).
+   * CR 601.2g — between cost determination and payment, the active player
+   * gets a window to activate legal mana abilities. A proper orchestrator
+   * emits per-activation priority bundles; SP2 collapses the window to a
+   * single `activateManaAbilities` decision the caster acks when done
+   * producing mana. Milestone J (priority orchestrator) replaces this with
+   * the full per-activation loop.
+   *
+   * Skipped when the total cost has no base mana cost — there's nothing
+   * for a mana ability to pay for, so the window would be a no-op and
+   * yielding a decision would add controller round-trips for cards that
+   * can't use them (tokens in SP2 tests, free-cast cards). SP3's real
+   * cost solver will gate this more precisely (an X=0 cast with no mana
+   * symbols still technically opens the window but collapses trivially).
+   */
+  protected *stepActivateManaAbilities(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const totalCost = ctx.totalCost as { base?: unknown } | null | undefined;
+    if (totalCost == null || totalCost.base == null) {
+      return;
+    }
+    const response = (yield {
+      kind: "decision",
+      request: {
+        kind: "activateManaAbilities",
+        playerSeat: ctx.castingPlayer,
+        forStackItem: ctx.sourceCardId,
+      },
+    }) as { readonly kind: "activateManaAbilities"; readonly done: true };
+    if (response.done !== true) {
+      throw new IllegalDecisionError("activateManaAbilities: response.done must be true");
+    }
+  }
+
+  /**
+   * CR 601.2h — pay the total cost. Without the SP3 ManaCostSolver +
+   * mana pool, SP2 records a CostPayment stub on ctx.paidAlready so
+   * abort() (Task 39) can unwind. The real mana pool deduction and
+   * tap-mana-ability side effects land with SP3; at that point, each
+   * entry on paidAlready carries an `undo(game)` the abort path calls.
+   *
+   * Emits a `CostPaid` event for telemetry / replay. The stackItemId on
+   * the payload is the SOURCE card id because the StackItem itself is
+   * minted later in finalizeStackItem; consumers reading CostPaid match
+   * against sourceCardId, not the yet-to-be-created stack id. SP3 swaps
+   * this for the post-finalize emission order once the cost solver is
+   * live.
+   */
+  protected *stepPayCosts(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const totalCost = ctx.totalCost as { base?: unknown } | null | undefined;
+    // WHY skip: SP2's payment is a receipt-only stub. For cards without a
+    // base mana cost (the samplePaper fixture used across SP2 tests, free
+    // cast-from-command-zone effects), recording a null-cost payment is
+    // noise — consumers reading CostPaid would see ghost events on every
+    // cast. SP3's real cost solver always runs and emits the event with a
+    // concrete cost payload.
+    if (totalCost == null || totalCost.base == null) {
+      return;
+    }
+    const payment: CostPayment = {
+      sourceCardId: ctx.sourceCardId,
+      totalCost: ctx.totalCost,
+      paidAt: this.game.turn,
+    };
+    ctx.paidAlready.push(payment);
+    yield {
+      kind: "event",
+      event: mkEvent("CostPaid", this.game.turn, this.game.phase, {
+        // WHY sourceCardId here: the live StackItem id is assigned in
+        // finalizeStackItem; consumers match against the source card until
+        // the v2 event adds both ids.
+        stackItemId: ctx.sourceCardId,
+        payerSeat: ctx.castingPlayer,
+      }),
+    };
+  }
+
+  /**
+   * Build the finalized StackItem from the accumulated CastContext. The
+   * provenance record carries the SP2-complete subset (originZone +
+   * alt/additional cost markers + face/mode/x fields); cascade/copy
+   * provenance lands with Milestone P.
+   *
+   * costPaid carries the entire paidAlready list — SP2 stubs it as a
+   * list of CostPayment records; SP3's PaidCost (produced by the
+   * ManaCostSolver) replaces the stub once the cost engine is live.
+   * Consumers in SP2 should treat costPaid as opaque.
    */
   protected finalizeStackItem(ctx: CastContext): StackItem {
     const id = this.game.newEntityId();
@@ -475,9 +580,11 @@ export class CastPipeline {
       targets: ctx.targets ?? null,
       modes: [...ctx.modesChosen],
       xValue: ctx.xValue ?? null,
-      // WHY null: costPaid is SP3's PaidCost record; Task 38 replaces with
-      // the real payload.
-      costPaid: null,
+      // WHY the list: SP2 stamps each step-10 payment receipt here so
+      // SP3's resolver can introspect what was actually paid. Empty list
+      // means "cost payment not recorded" — callers should not infer the
+      // spell was free.
+      costPaid: [...ctx.paidAlready],
       provenance,
     };
   }
