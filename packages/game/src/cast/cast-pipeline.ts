@@ -18,10 +18,11 @@
 // override individual steps without reimplementing the dispatch.
 import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 import { IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
+import { SpellAbility } from "../ability/spell-ability.js";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { FaceKind } from "../multiface/face-kind.js";
-import type { StackItem, StackItemProvenance } from "../stack/stack-item.js";
+import type { StackItem, StackItemProvenance, StackItemResolver } from "../stack/stack-item.js";
 import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
 import { createCastContext } from "./cast-context.js";
@@ -623,6 +624,11 @@ export class CastPipeline {
    * list of CostPayment records; SP3's PaidCost (produced by the
    * ManaCostSolver) replaces the stub once the cost engine is live.
    * Consumers in SP2 should treat costPaid as opaque.
+   *
+   * SP3 Part C Task 59 — build a real resolver from the source card's
+   * first SpellAbility. Cards whose spellAbilities list is empty (SP2
+   * synthetic test cards that never called activateAbilitiesFromDefinition)
+   * fall back to resolver: null, preserving all existing SP2 tests.
    */
   protected finalizeStackItem(ctx: CastContext): StackItem {
     const id = this.game.newEntityId();
@@ -637,6 +643,35 @@ export class CastPipeline {
       ...(ctx.modesChosen.length > 0 ? { modesChosen: [...ctx.modesChosen] } : {}),
       ...(ctx.xValue !== undefined ? { xValue: ctx.xValue } : {}),
     };
+
+    // SP3 Part C Task 59 — wire a real resolver from the card's SpellAbility.
+    // Spells have a single A: ability (the castable one); activated abilities
+    // go through a different pipeline (SP3 Part D+).
+    let resolver: StackItemResolver | null = null;
+    const sourceCard = this.game.cards.get(ctx.sourceCardId);
+    const saTemplate = sourceCard?.spellAbilities[0] ?? null;
+    if (saTemplate !== null) {
+      // Convert ctx.targets (TargetRef[] | undefined) to EntityId[].
+      // TargetRef is a discriminated union: { kind: "card"; id: EntityId }
+      // or { kind: "player"; seat: PlayerSeat }. DealDamageEffect routes
+      // by checking game.cards.get(id) — absent → player. PlayerSeat is
+      // branded as a number, same underlying type as EntityId, so casting
+      // through unknown is safe at runtime.
+      const rawTargets = (ctx.targets as readonly TargetRef[] | undefined) ?? [];
+      const targets: EntityId[] = rawTargets.map((ref) =>
+        ref.kind === "card" ? ref.id : (ref.seat as unknown as EntityId),
+      );
+      const boundSa = new SpellAbility(
+        saTemplate.ast,
+        saTemplate.sourceCardId,
+        saTemplate.controllerSeat,
+        saTemplate.svars,
+        targets,
+        ctx.xValue,
+      );
+      resolver = boundSa.makeResolver();
+    }
+
     return {
       id,
       sourceCardId: ctx.sourceCardId,
@@ -654,6 +689,7 @@ export class CastPipeline {
       // means "cost payment not recorded" — callers should not infer the
       // spell was free.
       costPaid: [...ctx.paidAlready],
+      resolver,
       provenance,
     };
   }
