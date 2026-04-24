@@ -32,6 +32,13 @@ export class Card {
   // `undefined` means "not yet populated"; treated identically to an
   // empty list by getIntrinsicStatics.
   intrinsicStatics?: readonly StaticAbility[] = undefined;
+  // SP2 Task 31: token/emblem identity flags consumed by the SBA engine
+  // (CR 704.5d — tokens in non-battlefield zones cease to exist). Token/
+  // emblem factories (MoveToIntent + createToken/createEmblem, SP2
+  // Milestone L) set these to true at construction time; for regular
+  // cards they remain false.
+  isToken = false;
+  isEmblem = false;
 
   constructor(
     readonly id: EntityId,

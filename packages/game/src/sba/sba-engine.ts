@@ -6,14 +6,17 @@
 // Integration: Task 40's runPriorityWindow will call
 //   const batches = yield* this.game.sbaEngine.sweep();
 // and drain trigger queue after each batch.
-import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
-import type { PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
+import { IllegalDecisionError, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import type { DecisionRequest, DecisionResponse, EntityId, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { TerminalState } from "../terminal-state.js";
+import { collectAttachmentLegality } from "./attachment-legality.js";
 import { collectCreatureRemoval } from "./creature-removal.js";
+import { collectLegendWorld } from "./legend-world.js";
 import { collectLossConditions } from "./loss-conditions.js";
 import type { SbaAction } from "./sba-action.js";
+import { collectPhasedOwnerLeaves, collectTokenAndCopy } from "./token-copy-phased.js";
 
 // The PlayerLost event's reason taxonomy is fixed (CR 104.3 / event.ts).
 type LossReason = "life" | "decked" | "poison" | "concede" | "effect";
@@ -70,17 +73,17 @@ export class SbaEngine {
   protected collectCreatureRemoval(out: SbaAction[]): void {
     collectCreatureRemoval(this.game, out);
   }
-  protected collectLegendWorld(_out: SbaAction[]): void {
-    /* Task 31 */
+  protected collectLegendWorld(out: SbaAction[]): void {
+    collectLegendWorld(this.game, out);
   }
-  protected collectTokenAndCopy(_out: SbaAction[]): void {
-    /* Task 31 */
+  protected collectTokenAndCopy(out: SbaAction[]): void {
+    collectTokenAndCopy(this.game, out);
   }
-  protected collectPhasedOwnerLeaves(_out: SbaAction[]): void {
-    /* Task 31 */
+  protected collectPhasedOwnerLeaves(out: SbaAction[]): void {
+    collectPhasedOwnerLeaves(this.game, out);
   }
-  protected collectAttachmentLegality(_out: SbaAction[]): void {
-    /* Task 31 */
+  protected collectAttachmentLegality(out: SbaAction[]): void {
+    collectAttachmentLegality(this.game, out);
   }
   protected collectCounterCancel(_out: SbaAction[]): void {
     /* Task 32 */
@@ -124,7 +127,34 @@ export class SbaEngine {
       case "battleZeroDefense":
         yield* this.game.action.exile(action.cardId);
         return;
-      // Tasks 31-32 add more cases.
+      case "legendRule":
+        yield* this.applyLegendRule(action);
+        return;
+      case "worldRule":
+        yield* this.applyWorldRule(action);
+        return;
+      case "tokenCeaseExistence":
+        this.applyTokenCease(action.cardId);
+        return;
+      case "copyRevert": {
+        const card = this.game.cards.get(action.cardId);
+        if (card) {
+          card.copiedFrom = null;
+          this.game.layerEngine.bumpEpoch("copy-revert");
+        }
+        return;
+      }
+      case "phasedOutOwnerLeaves":
+        // Milestone L placeholder (CR 702.26c). Nothing to do in SP2.
+        return;
+      case "auraUnattachedInvalid":
+        yield* this.game.action.moveTo(action.cardId, ZoneType.Graveyard);
+        return;
+      case "equipmentUnattach":
+      case "fortificationUnattach":
+        this.applyUnattach(action.cardId);
+        return;
+      // Task 32 adds more cases.
       default: {
         // Interim: ignore unimplemented kinds. Task 32 converts this into
         // an exhaustiveness guard with all kinds handled.
@@ -215,5 +245,114 @@ export class SbaEngine {
       };
     }
     this.game.terminalState = next;
+  }
+
+  // === Task 31 helpers ===
+
+  // Legend rule — controller chooses the keeper; all other candidates go
+  // to their owners' graveyards. We consult the decision contract even
+  // when only two candidates exist (no automatic heuristic), because
+  // controllers may want to log the choice for replays.
+  private *applyLegendRule(
+    action: Extract<SbaAction, { kind: "legendRule" }>,
+  ): Generator<EngineYield, void, unknown> {
+    // Stale candidates (moved off the battlefield between SBA collection
+    // and this apply step) are filtered out defensively; if fewer than
+    // two remain, the rule no longer applies.
+    const live = action.candidateIds.filter((id) => {
+      const c = this.game.cards.get(id);
+      return c !== undefined && c.zone === ZoneType.Battlefield;
+    });
+    if (live.length < 2) return;
+    const request: DecisionRequest = {
+      kind: "chooseLegendKeeper",
+      playerSeat: action.controllerSeat,
+      candidateIds: live,
+    };
+    const response = (yield { kind: "decision", request }) as DecisionResponse;
+    if (response.kind !== "chooseLegendKeeper") {
+      throw new IllegalDecisionError(
+        `SbaEngine.applyLegendRule: expected chooseLegendKeeper, got ${response.kind}`,
+      );
+    }
+    if (!live.includes(response.keeperId)) {
+      throw new IllegalDecisionError(
+        `SbaEngine.applyLegendRule: keeperId ${response.keeperId} not among candidates`,
+      );
+    }
+    for (const id of live) {
+      if (id === response.keeperId) continue;
+      yield* this.game.action.moveTo(id, ZoneType.Graveyard);
+    }
+  }
+
+  // World rule — non-keepers go to their owners' graveyards. The keeper
+  // selection already happened at collect time (most recent timestamp);
+  // cardIds here is the non-keeper set.
+  private *applyWorldRule(
+    action: Extract<SbaAction, { kind: "worldRule" }>,
+  ): Generator<EngineYield, void, unknown> {
+    for (const id of action.cardIds) {
+      const card = this.game.cards.get(id);
+      if (!card || card.zone !== ZoneType.Battlefield) continue;
+      yield* this.game.action.moveTo(id, ZoneType.Graveyard);
+    }
+  }
+
+  // Token cease-existence: remove from whatever zone it sits in + drop
+  // from the registry so layer computations don't re-surface it.
+  // We don't emit an event here — the SBA wrapper's StateBasedActionApplied
+  // covers the observability; Milestone L's token factory pipeline will
+  // add a canonical TokenVanished event later if needed.
+  private applyTokenCease(cardId: EntityId): void {
+    const card = this.game.cards.get(cardId);
+    if (!card) return;
+    // Remove from the zone it's in. Zones are owner-keyed except for
+    // shared (exile/ante/stack); tokens are typically cleaned up from
+    // exile/graveyard/hand, all of which are addressable via the owner.
+    this.removeFromCurrentZone(cardId);
+    this.game.cards.delete(cardId);
+    this.game.layerEngine.bumpEpoch("token-cease");
+  }
+
+  private applyUnattach(cardId: EntityId): void {
+    const card = this.game.cards.get(cardId);
+    if (!card) return;
+    const attachedTo = card.attachedTo;
+    if (attachedTo === null) return;
+    const target = this.game.cards.get(attachedTo);
+    if (target) {
+      target.attachments = target.attachments.filter((x) => x !== cardId);
+    }
+    card.attachedTo = null;
+    this.game.layerEngine.bumpEpoch("unattach-sba");
+  }
+
+  // Zone-agnostic removal used by token cease-existence. Walks every
+  // zone the card could be in (owner-scoped + shared) and removes on
+  // first hit.
+  private removeFromCurrentZone(cardId: EntityId): void {
+    const game = this.game;
+    // Owner-scoped zones first.
+    for (const player of game.players) {
+      for (const zone of player.zones.values()) {
+        if (zone.contains(cardId)) {
+          zone.remove(cardId);
+          return;
+        }
+      }
+    }
+    // Shared zones.
+    if (game.sharedZones.exile.contains(cardId)) {
+      game.sharedZones.exile.remove(cardId);
+      return;
+    }
+    if (game.sharedZones.ante.contains(cardId)) {
+      game.sharedZones.ante.remove(cardId);
+      return;
+    }
+    // Stack is rich StackItem, not simple card-id membership; SP2 tokens
+    // don't live on the stack as of this task — skip silently if not
+    // found anywhere.
   }
 }

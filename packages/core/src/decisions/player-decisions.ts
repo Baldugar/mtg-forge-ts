@@ -341,6 +341,14 @@ export type DecisionRequest =
       readonly playerSeat: PlayerSeat;
       readonly hand: readonly EntityId[];
       readonly countToBottom: number;
+    }
+  | {
+      // CR 704.5j — when two or more legendary permanents with the same
+      // name share a controller, that controller chooses which one stays;
+      // the rest go to their owners' graveyards.
+      readonly kind: "chooseLegendKeeper";
+      readonly playerSeat: PlayerSeat;
+      readonly candidateIds: readonly EntityId[];
     };
 
 /**
@@ -465,7 +473,8 @@ export type DecisionResponse =
   | {
       readonly kind: "mulliganBottom";
       readonly bottomed: readonly EntityId[];
-    };
+    }
+  | { readonly kind: "chooseLegendKeeper"; readonly keeperId: EntityId };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];
