@@ -382,4 +382,36 @@ describe("TriggerRegistry (CR 603 scaffold)", () => {
     g.triggerRegistry.onEventForcedByDelayed(delayed, lifeChangedEvent());
     expect(g.triggerRegistry.drain()).toHaveLength(0);
   });
+
+  // Audit A-006 regression — phased-out source's dies-trigger must still
+  // fire on the zone-change event that takes it off the battlefield. The
+  // earlier gate (`sourceCard?.phased === true` unconditional) silently
+  // dropped dies triggers whose source was phased-out when lethal damage
+  // was assessed.
+  it("phased-out source still fires dies/leaves triggers on zone change", () => {
+    const g = mkGame();
+    const cid = addCard(g, 10);
+    const card = g.cards.get(cid);
+    if (card) card.phased = true;
+    g.triggerRegistry.register(mkTrigger({ id: 1, sourceCardId: 10 }));
+    // Zone change: Battlefield → Graveyard — dies trigger event.
+    const diesEvent = mkEvent("CardChangedZone", 1, PhaseStep.Main1, {
+      cardId: cid,
+      fromZone: ZoneType.Battlefield,
+      toZone: ZoneType.Graveyard,
+    });
+    g.triggerRegistry.onEvent(diesEvent);
+    expect(g.triggerRegistry.drain()).toHaveLength(1);
+  });
+
+  it("phased-out source does NOT fire on a non-zone-change event", () => {
+    const g = mkGame();
+    const cid = addCard(g, 10);
+    const card = g.cards.get(cid);
+    if (card) card.phased = true;
+    g.triggerRegistry.register(mkTrigger({ id: 1, sourceCardId: 10 }));
+    // LifeChanged while source is phased-out — must not fire.
+    g.triggerRegistry.onEvent(lifeChangedEvent());
+    expect(g.triggerRegistry.drain()).toHaveLength(0);
+  });
 });

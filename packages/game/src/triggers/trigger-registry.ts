@@ -28,6 +28,7 @@ import type {
   PlayerSeat,
   TriggeredAbility,
 } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { PendingTrigger } from "./pending-trigger.js";
 
@@ -80,11 +81,20 @@ export class TriggerRegistry {
   onEvent(event: GameEvent): void {
     for (const t of this.byId.values()) {
       if (!t.matches(event)) continue;
-      // CR 702.26e — phased-out sources don't trigger. Check before the
-      // suppression filter (cheaper lookup and semantically a harder rule:
-      // a phased source has no abilities to observe events at all).
+      // CR 702.26e — phased-out sources don't observe most events. But
+      // leaves/dies triggers read LKI and fire on the zone-change event
+      // that takes the permanent off the battlefield (CR 603.10). Testing
+      // `phased === true` when the card just zoned out would silently drop
+      // valid dies triggers whose source was phased-out when lethal damage
+      // was assessed. Audit A-006.
+      //
+      // Gate: apply the phased-out suppression only to events that are NOT
+      // a zone-change leaving the battlefield. Dies / leaves proceed using
+      // the trigger's own captureLki.
       const sourceCard = this.game.cards.get(t.sourceCardId);
-      if (sourceCard?.phased === true) continue;
+      const isLeavingBattlefield =
+        event.kind === "CardChangedZone" && event.payload.fromZone === ZoneType.Battlefield;
+      if (sourceCard?.phased === true && !isLeavingBattlefield) continue;
       if (this.isSuppressed(t, event)) continue;
       if (t.interveningIf && !t.interveningIf(event, this.game)) continue;
       const lki = t.captureLki ? (t.captureLki(event, this.game) as LastKnownInfo | null) : null;
