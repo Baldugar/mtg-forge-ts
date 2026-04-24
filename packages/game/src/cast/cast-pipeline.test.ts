@@ -228,6 +228,39 @@ describe("CastPipeline — Task 35 skeleton", () => {
     expect(ev.payload.controllerSeat).toBe(seat0);
   });
 
+  // Audit I-7 regression — the stack item must be on the stack at the
+  // moment SpellCast fires, so cast-observing triggers that read the
+  // stack (storm count, cascade gating, "target a spell on the stack")
+  // see the new item.
+  it("stack contains the new item when SpellCast fires (audit I-7)", () => {
+    const { game, seat0 } = makeGame();
+    const cardId = mkEntityId(115);
+    addCardToZone(game, seat0, ZoneType.Hand, cardId);
+    const proposal: CastProposal = {
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+    };
+    let stackSizeAtSpellCast = -1;
+    const gen = game.castPipeline.run(proposal);
+    let step = gen.next();
+    while (!step.done) {
+      const y = step.value as { kind?: string; event?: { kind?: string } };
+      if (y.kind === "event" && y.event?.kind === "SpellCast") {
+        stackSizeAtSpellCast = game.sharedZones.stack.size;
+      }
+      step = gen.next();
+    }
+    expect(stackSizeAtSpellCast).toBe(1);
+    // And the stack item's id matches the returned item.
+    const result = step.value as StackItem | null;
+    expect(result).not.toBeNull();
+    if (result) {
+      expect(game.sharedZones.stack.peek(0)?.id).toBe(result.id);
+    }
+  });
+
   it("finalizeStackItem mints a fresh EntityId via game.newEntityId()", () => {
     const { game, seat0 } = makeGame();
     const cardId = mkEntityId(200);
