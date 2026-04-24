@@ -7,7 +7,7 @@
 // SP1 scope: shape + provenance definition only. Targeting (SP2 Task 40),
 // cost-paid payloads (SP3), and copy/cascade propagation (SP2) each refine
 // the typed slots that currently read `unknown`.
-import type { EntityId, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type { EntityId, LastKnownInfo, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 
 /**
  * StackItemProvenance — metadata that records HOW a spell/ability reached the
@@ -53,4 +53,11 @@ export interface StackItem {
   // spent for this cast) is SP3's output; unknown here matches that bound.
   readonly costPaid: unknown;
   readonly provenance: StackItemProvenance;
+  // SP2 Task 40 — triggered-ability-only metadata. The priority orchestrator
+  // drains fired triggers from the registry and pushes one StackItem per
+  // trigger; these optional slots let Task 67 (resolve-time decisions) walk
+  // back to the originating TriggeredAbility and the LKI snapshot captured
+  // at fire time. Undefined on spell / activated / copy items.
+  readonly triggerId?: EntityId;
+  readonly lki?: LastKnownInfo | null;
 }

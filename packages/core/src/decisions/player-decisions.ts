@@ -50,6 +50,11 @@ export type PriorityAction =
     }
   | { readonly kind: "activateAbility"; readonly abilityInstanceId: EntityId }
   | { readonly kind: "activateManaAbility"; readonly abilityInstanceId: EntityId }
+  // SP2 Task 41 — special action (CR 116.2a). "Playing a land" is a special
+  // action, not casting a spell; the legal-action enumerator surfaces one
+  // entry per land in hand during the active player's main phase when the
+  // stack is empty and the land-per-turn limit has not been reached.
+  | { readonly kind: "playLand"; readonly cardId: EntityId }
   | { readonly kind: "pass" }
   | { readonly kind: "concede" }
   | { readonly kind: "requestShortcut"; readonly description: string; readonly result: unknown };

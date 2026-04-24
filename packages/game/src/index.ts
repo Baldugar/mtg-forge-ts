@@ -21,6 +21,7 @@ export * from "./match/index.js";
 export * from "./snapshot/index.js";
 export * from "./phase/index.js";
 export * from "./player.js";
+export * from "./priority/index.js";
 export * from "./registries/index.js";
 export * from "./replacements/index.js";
 export * from "./run-game.js";
