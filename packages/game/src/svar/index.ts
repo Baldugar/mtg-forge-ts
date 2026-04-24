@@ -7,3 +7,4 @@ export * from "./selectors/x-choice.js";
 export * from "./selectors/life-total.js";
 export * from "./selectors/player-count.js";
 export * from "./selectors/count.js";
+export * from "./selectors/sum-aggregates.js";
