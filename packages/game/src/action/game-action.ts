@@ -575,26 +575,17 @@ export class GameAction {
       amount: effectiveAmount,
       isCombat,
     };
-    // Captured outside onApplied so the post-apply LifeChanged emit has the
-    // pre/post life totals without re-deriving. Populated only for
-    // player-target damage that actually deducts life.
-    let lifeChangeSnapshot: {
-      readonly seat: PlayerSeat;
-      readonly oldLife: number;
-      readonly newLife: number;
-      readonly delta: number;
-    } | null = null;
+    // Captured outside onApplied so we can route the player life change
+    // through changeLife (which runs the replacement pipeline on the
+    // LifeChange intent) AFTER the DamageDealt event has been emitted.
+    // Audit I-1.
+    let playerLifeRequest: { readonly seat: PlayerSeat; readonly amount: number } | null = null;
     yield* this.applyWithReplacements<DamageIntent>(
       intent,
       (final) => {
-        // WHY: damage to a creature updates Card.damage; damage to a player
-        // updates Player.life here (SP2 Task 78 fix — previously a TODO left
-        // over from SP1 that deferred player life to SBAs). SP3 replaces the
-        // inline deduction with full combat-damage assignment + prevention
-        // replacements; for now we deduct here so lethal damage to a player
-        // reflects immediately and the Player.life-watching SBAs
-        // (playerLosesLifeZero, commander damage, etc.) see the correct
-        // value on the next sweep.
+        // WHY: damage to a creature updates Card.damage; damage to a
+        // player is deferred to a chained changeLife call below so the
+        // LifeChange replacement pipeline observes it (audit I-1).
         if (final.amount <= 0) return;
         if (final.targetKind === "creature" && typeof final.targetId === "number") {
           const card = game.cards.get(final.targetId as EntityId);
@@ -603,29 +594,19 @@ export class GameAction {
             // SP2 Task 78 (fix 2) — CR 702.2b deathtouch: tag the target
             // when the damage source has the deathtouch keyword so the
             // SBA creature-removal collector can destroy it on the next
-            // sweep even if damage < toughness. SP3 wires the full
-            // keyword registry (indestructible check, layered grants).
+            // sweep even if damage < toughness.
             const sourceCard = game.cards.get(final.sourceId);
             if (sourceCard && sourceCard.keywords?.has("deathtouch") === true) {
               card.damagedByDeathtouch = true;
             }
           }
         } else if (final.targetKind === "player" && typeof final.targetId === "number") {
-          // SP2 Task 78 (fix 1) — Player.life deduction. Previously this
-          // branch was missing entirely; damage to a player emitted
-          // DamageDealt without changing life totals, so
-          // playerLosesLifeZero SBAs never fired from combat or direct
-          // damage.
-          const targetSeat = final.targetId as PlayerSeat;
-          const player = game.getPlayer(targetSeat);
-          const oldLife = player.life;
-          const newLife = oldLife - final.amount;
-          player.life = newLife;
-          lifeChangeSnapshot = {
-            seat: targetSeat,
-            oldLife,
-            newLife,
-            delta: -final.amount,
+          // Stash the amount + seat; actually route through changeLife
+          // (below, after the DamageDealt event is emitted) so prevention
+          // replacements registered on lifeChange observe and can intercept.
+          playerLifeRequest = {
+            seat: final.targetId as PlayerSeat,
+            amount: final.amount,
           };
         } else if (final.targetKind === "battle" && typeof final.targetId === "number") {
           // Task 51 — damage to a battle decrements its defense counters
@@ -652,28 +633,16 @@ export class GameAction {
           isCombat: final.isCombat,
         }),
     );
-    // SP2 Task 78 (fix 1) — emit a companion LifeChanged event so observers
-    // subscribed on life change (SBA loss-conditions listener, UI, replay
-    // log) see the deduction as a canonical event alongside the DamageDealt.
-    // We emit AFTER applyWithReplacements finishes so the DamageDealt event
-    // precedes LifeChanged in the event stream (matches the causal order:
-    // damage is dealt, then life is lost as a consequence).
-    if (lifeChangeSnapshot !== null) {
-      const snap = lifeChangeSnapshot as {
-        readonly seat: PlayerSeat;
-        readonly oldLife: number;
-        readonly newLife: number;
-        readonly delta: number;
-      };
-      yield game.emitEvent(
-        mkEvent("LifeChanged", game.turn, game.phase, {
-          playerSeat: snap.seat,
-          oldLife: snap.oldLife,
-          newLife: snap.newLife,
-          delta: snap.delta,
-          cause: "damage",
-        }),
-      );
+    // Audit I-1 — route damage-to-player life deduction through the full
+    // replacement pipeline so prevention replacements (e.g., "if you would
+    // lose life from damage, prevent it") actually fire. Previously the
+    // inline Player.life mutation bypassed applyWithReplacements on the
+    // LifeChange intent. We call changeLife AFTER DamageDealt is emitted
+    // so the causal ordering in the event stream stays (damage dealt →
+    // life changes as a consequence).
+    if (playerLifeRequest !== null) {
+      const req = playerLifeRequest as { readonly seat: PlayerSeat; readonly amount: number };
+      yield* this.changeLife(req.seat, -req.amount, { cause: "damage" });
     }
   }
 

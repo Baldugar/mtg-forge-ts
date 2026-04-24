@@ -407,3 +407,49 @@ describe("GameAction — ReplacementApplied payload shape", () => {
     expect(game.cards.get(id)?.tapped).toBe(false);
   });
 });
+
+// Audit I-1 regression — damage to a player must route the life deduction
+// through the LifeChange replacement pipeline. Prior inline Player.life
+// mutation bypassed applyWithReplacements on the lifeChange intent, so
+// prevention replacements registered on lifeChange never fired.
+describe("GameAction.damage → player life change routing (audit I-1)", () => {
+  it("replacement on lifeChange with cause=damage prevents life loss", () => {
+    const { action, game, seat1 } = mkFixture();
+    const source = mkEntityId(800);
+    const player = game.getPlayer(seat1);
+    expect(player.life).toBe(20);
+    // Prevention replacement: null out any lifeChange with cause=damage.
+    game.replacementRegistry.register(
+      mkReplacement(
+        1,
+        999,
+        (i) => {
+          if (i.kind === "lifeChange" && (i as unknown as { cause: string }).cause === "damage") {
+            return null; // prevent
+          }
+          return i;
+        },
+        (i) => i.kind === "lifeChange",
+      ),
+    );
+    const ys = runAll(action.damage(source, "player", seat1, 3, false));
+    // DamageDealt still fires (damage was dealt); life-change prevention
+    // kicks in AFTER damage is dealt, so LifeChanged does not.
+    expect(eventsOfKind(ys, "DamageDealt")).toHaveLength(1);
+    expect(eventsOfKind(ys, "LifeChanged")).toHaveLength(0);
+    expect(eventsOfKind(ys, "EventPrevented")).toHaveLength(1);
+    // Life unchanged — the replacement nulled the lifeChange intent.
+    expect(player.life).toBe(20);
+  });
+
+  it("no replacement → life drops normally and LifeChanged fires", () => {
+    const { action, game, seat1 } = mkFixture();
+    const source = mkEntityId(801);
+    const player = game.getPlayer(seat1);
+    expect(player.life).toBe(20);
+    const ys = runAll(action.damage(source, "player", seat1, 3, false));
+    expect(player.life).toBe(17);
+    expect(eventsOfKind(ys, "DamageDealt")).toHaveLength(1);
+    expect(eventsOfKind(ys, "LifeChanged")).toHaveLength(1);
+  });
+});
