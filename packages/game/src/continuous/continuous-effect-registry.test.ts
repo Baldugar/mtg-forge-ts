@@ -164,6 +164,23 @@ describe("ContinuousEffectRegistry (SP2 Task 33)", () => {
     expect(game.continuousEffectRegistry.drainExpired()).toHaveLength(1);
   });
 
+  // Audit A-001 regression — PhaseStepEnded must flow into the registry so
+  // `untilEndOfNextStep` effects expire. Earlier the kind was on the
+  // engine-internal denylist in Game.emitEvent; this test locks the wiring.
+  it("Game.emitEvent(PhaseStepEnded) expires untilEndOfNextStep effects", () => {
+    const game = mkGame();
+    const e = mkPtModifyEffect(1, {
+      kind: "untilEndOfNextStep",
+      step: PhaseStep.EndOfCombat,
+    });
+    game.continuousEffectRegistry.register(e);
+    game.emitEvent(mkEvent("PhaseStepEnded", 1, PhaseStep.EndOfCombat, { step: PhaseStep.EndOfCombat }));
+    expect(game.continuousEffectRegistry.size()).toBe(0);
+    const drained = game.continuousEffectRegistry.drainExpired();
+    expect(drained).toHaveLength(1);
+    expect(drained[0]?.id).toBe(e.id);
+  });
+
   it("multiple effects expire independently per their duration", () => {
     const game = mkGame();
     const turnE = mkPtModifyEffect(1, { kind: "untilEndOfTurn" });

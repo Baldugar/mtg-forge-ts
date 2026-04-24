@@ -70,7 +70,11 @@ const ENGINE_INTERNAL_EVENT_KINDS: ReadonlySet<GameEventKind> = new Set<GameEven
   "ContinuousEffectRegistered",
   "ContinuousEffectExpired",
   "CostPaid",
-  "PhaseStepEnded",
+  // WHY: PhaseStepEnded is NOT engine-internal — both ContinuousEffectRegistry
+  // and ControlChangeLedger key expiry off this event (see
+  // duration-evaluator.ts#untilEndOfNextStep and control-change-ledger.ts).
+  // Gating it out silently swallowed expirations for untilEndOfNextStep and
+  // time-bounded control changes. Audit A-001.
 ]);
 
 export class Game {
