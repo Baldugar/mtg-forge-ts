@@ -95,9 +95,12 @@ export class ContinuousEffectRegistry {
   }
 
   /**
-   * Epoch-bump expiry check. Task 34 wires this into LayerEngine.bumpEpoch
-   * so asLongAs effects re-check after any state change that could
-   * invalidate their condition.
+   * Epoch-bump expiry check. Wired into LayerEngine.bumpEpoch so asLongAs
+   * effects re-evaluate their condition after any state change that
+   * could invalidate it (Layer 4 type change, tap/untap, life change,
+   * etc.). Re-entrancy is guarded inside bumpEpoch — an asLongAs
+   * expiring here calls unregister, which bumps the epoch again, but
+   * the guard short-circuits that nested bump's re-check.
    */
   checkEpoch(): void {
     this.expireMatching({ kind: "epochBump" });

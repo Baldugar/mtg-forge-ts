@@ -15,22 +15,24 @@
 //                            fromZone === Battlefield.
 //   - untilCombatEnds         CombatEnded event.
 //   - untilEndOfNextStep      PhaseStepEnded event matching the target step.
-//   - asLongAs                condition AST evaluates to false (Task 34
-//                             wires evalCondition; Task 33 ships the
-//                             stub — condition is "always", never expires).
+//   - asLongAs                condition AST evaluates to false
+//                             (re-checked on every event feed + on epoch
+//                             bumps so state changes surfaced by the layer
+//                             engine immediately invalidate the effect).
 //
 // ExpiryContext carries either the GameEvent that may cause expiry, or a
 // synthetic "epochBump" marker used by the registry when the layer engine
-// re-evaluates (re-checking asLongAs after a board change, Task 34).
+// re-evaluates (re-checking asLongAs after a board change).
 import type { ContinuousEffect, GameEvent } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { evalCondition } from "./condition-evaluator.js";
 
 export type ExpiryContext =
   | { readonly kind: "event"; readonly event: GameEvent }
   | { readonly kind: "epochBump" };
 
-export const isExpired = (effect: ContinuousEffect, ctx: ExpiryContext, _game: Game): boolean => {
+export const isExpired = (effect: ContinuousEffect, ctx: ExpiryContext, game: Game): boolean => {
   const d = effect.duration;
   switch (d.kind) {
     case "permanent":
@@ -59,11 +61,11 @@ export const isExpired = (effect: ContinuousEffect, ctx: ExpiryContext, _game: G
       return ctx.event.payload.step === d.step;
     }
     case "asLongAs":
-      // Task 33 stub: condition is always "always" (see condition-ast.ts),
-      // so the effect never expires. Task 34 replaces this stub with a
-      // call to evalCondition(d.condition, game) and wires re-evaluation
-      // on epoch bumps.
-      return false;
+      // CR 611.2 — "as long as X" expires when X becomes false. The
+      // registry re-checks on every event AND on epoch bumps, so state
+      // changes surfaced by the layer engine (e.g., losing a type via
+      // Layer 4) immediately expire the effect.
+      return !evalCondition(d.condition, game);
     default: {
       const _: never = d;
       throw new Error(`isExpired: unreachable ${JSON.stringify(_)}`);

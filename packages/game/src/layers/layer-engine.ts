@@ -43,6 +43,15 @@ export interface LayerCacheEntry {
 export class LayerEngine {
   private epoch = 0;
   private readonly cache = new Map<EntityId, LayerCacheEntry>();
+  // Re-entrancy guard for bumpEpoch. SP2 Milestone H Task 34 wires
+  // ContinuousEffectRegistry.checkEpoch() into bumpEpoch so asLongAs
+  // effects re-evaluate after any layer-engine state change. checkEpoch
+  // may call unregister(), which calls bumpEpoch() again — without this
+  // flag the two would alternate forever on a single mutation. The nested
+  // bump still invalidates the cache (counter ++ + clear), but skips the
+  // asLongAs re-check since the outer bump will re-enter it once control
+  // returns to the top-level call.
+  private bumping = false;
   readonly textSubstitutions: TextSubstitution[] = [];
   readonly typeEffects: TypeChangeEffect[] = [];
   readonly colorEffects: ColorChangeEffect[] = [];
@@ -62,6 +71,28 @@ export class LayerEngine {
   bumpEpoch(_reason: string): void {
     this.epoch++;
     this.cache.clear();
+    // SP2 Milestone H Task 34 — asLongAs continuous effects re-check
+    // their condition after any state change that could invalidate it.
+    // Routed through ContinuousEffectRegistry.checkEpoch so the registry
+    // (not the layer engine) owns the iteration + drain-buffer plumbing.
+    //
+    // Guarded for re-entrancy: checkEpoch → unregister → bumpEpoch would
+    // otherwise loop. The nested call still clears the cache (so consumers
+    // reading during the outer bump see fresh characteristics), but we
+    // skip the re-check until control returns to the outer frame.
+    if (this.bumping) return;
+    // Defensive: continuousEffectRegistry is constructed AFTER layerEngine
+    // in Game's ctor. If anything bumps the epoch mid-construction before
+    // the registry exists (no known caller does today, but future wiring
+    // might), skip the re-check rather than crash — subsequent bumps will
+    // pick up asLongAs effects as soon as the registry is live.
+    if (!this.game.continuousEffectRegistry) return;
+    this.bumping = true;
+    try {
+      this.game.continuousEffectRegistry.checkEpoch();
+    } finally {
+      this.bumping = false;
+    }
   }
 
   getCached(id: EntityId): LayerCacheEntry | undefined {
