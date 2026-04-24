@@ -11,7 +11,7 @@ import type { DecisionRequest, DecisionResponse, EntityId, PhaseStep, PlayerSeat
 import type { EngineYield } from "../action/engine-yield.js";
 import { removePlayerFromGame } from "../end/leave-game.js";
 import type { Game } from "../game.js";
-import type { TerminalState } from "../terminal-state.js";
+import type { PlayerLoss, LossReason as TerminalLossReason, TerminalState } from "../terminal-state.js";
 import { collectAttachmentLegality } from "./attachment-legality.js";
 import { collectBestow, collectCommander } from "./bestow-commander.js";
 import { collectCounterCancel } from "./counter-cancel.js";
@@ -24,6 +24,30 @@ import { collectPhasedOwnerLeaves, collectTokenAndCopy } from "./token-copy-phas
 
 // The PlayerLost event's reason taxonomy is fixed (CR 104.3 / event.ts).
 type LossReason = "life" | "decked" | "poison" | "concede" | "effect";
+
+// Map the narrow PlayerLost event reason to the richer TerminalState
+// LossReason. Task 68 taxonomy: CR 104.3 a-d + draw + commanderDamage +
+// antePaid + effect catch-all. SBAs only surface a subset here — other
+// LossReasons (commanderDamage, antePaid, gameDrawn) are written by
+// their specific pipelines (not the SBA engine).
+const sbaReasonToTerminalReason = (r: LossReason): TerminalLossReason => {
+  switch (r) {
+    case "life":
+      return "lifeLoss";
+    case "poison":
+      return "poisonLoss";
+    case "decked":
+      return "libraryLoss";
+    case "concede":
+      return "concede";
+    case "effect":
+      return "effect";
+    default: {
+      const _: never = r;
+      throw new Error(`sbaReasonToTerminalReason: unreachable ${JSON.stringify(_)}`);
+    }
+  }
+};
 
 export class SbaEngine {
   // WHY bound: MTG rules guarantee that SBA sweeps terminate (every SBA
@@ -231,17 +255,19 @@ export class SbaEngine {
     }
   }
 
-  // SP2 interim terminal-state bookkeeping. Task 68 (Milestone V) enriches
-  // this with proper loss-reason taxonomy + win/draw adjudication. Here we
-  // track lost seats in concededSeats (the only roster field TerminalState
-  // carries), and flip the outcome once only one seat remains.
+  // SP2 Task 68 — terminal-state bookkeeping with rich loss-reason
+  // taxonomy. In addition to the legacy `concededSeats` roster, we now
+  // populate `losses: PlayerLoss[]` with each player's specific LossReason
+  // (lifeLoss / poisonLoss / libraryLoss / concede / …).
   private markPlayerLost(seat: PlayerSeat, reason: LossReason): void {
     const current = this.game.terminalState;
-    const existing = current?.concededSeats ?? [];
-    if (existing.includes(seat)) return;
+    const existingLosses = current?.losses ?? [];
+    if (existingLosses.some((l) => l.seat === seat)) return;
 
-    const lost = [...existing, seat];
-    const livingSeats = this.game.players.filter((p) => !lost.includes(p.seat)).map((p) => p.seat);
+    const terminalReason = sbaReasonToTerminalReason(reason);
+    const losses: PlayerLoss[] = [...existingLosses, { seat, reason: terminalReason }];
+    const lostSeats = losses.map((l) => l.seat);
+    const livingSeats = this.game.players.filter((p) => !lostSeats.includes(p.seat)).map((p) => p.seat);
 
     const endedAt: { turn: number; phase: PhaseStep } = {
       turn: this.game.turn,
@@ -255,30 +281,34 @@ export class SbaEngine {
         next = {
           endedAt,
           outcome: { kind: "draw", reason },
-          concededSeats: lost,
+          concededSeats: lostSeats,
+          losses,
         };
       } else {
         next = {
           endedAt,
           outcome: { kind: "win", winner, reason },
-          concededSeats: lost,
+          concededSeats: lostSeats,
+          losses,
         };
       }
     } else if (livingSeats.length === 0) {
       next = {
         endedAt,
         outcome: { kind: "draw", reason },
-        concededSeats: lost,
+        concededSeats: lostSeats,
+        losses,
       };
     } else {
       // Multi-player: still in progress; bundle the running losses without
       // a concluding outcome so observers can see them.
       next = {
         endedAt,
-        // Placeholder outcome until the last seat falls. `concededSeats`
-        // is the authoritative roster.
+        // Placeholder outcome until the last seat falls. `concededSeats` +
+        // `losses` are the authoritative rosters.
         outcome: { kind: "draw", reason },
-        concededSeats: lost,
+        concededSeats: lostSeats,
+        losses,
       };
     }
     this.game.terminalState = next;
