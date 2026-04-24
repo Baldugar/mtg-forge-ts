@@ -37,6 +37,7 @@ import {
 } from "@mtg-forge-ts/core";
 import { damageProtected } from "../combat/keywords/protection.js";
 import type { Game } from "../game.js";
+import * as phasing from "../phasing/phasing-ops.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
 import type {
   AddCounterIntent,
@@ -286,6 +287,15 @@ export class GameAction {
         if (card) {
           card.zone = final.toZone;
           if (final.toSeat !== null) card.controllerSeat = final.toSeat;
+          // CR 702.26 — a phased-out permanent that changes zones phases
+          // in as part of the move; the phased flag is meaningful only on
+          // the battlefield. Flip silently without emitting PhasedIn — the
+          // CardChangedZone event already signals the broader transition
+          // and SP2 subscribers don't need a separate PhasedIn to interpret
+          // it. SP3 revisits if a trigger specifically needs the pair.
+          if (card.phased && final.toZone !== Zt.Battlefield) {
+            card.phased = false;
+          }
         }
         // Milestone F Task 25 — activate/deactivate intrinsic static
         // abilities whose activeInZones includes the new zone. Runs
@@ -353,6 +363,25 @@ export class GameAction {
       },
       (final) => mkEvent("CardUntapped", this.game.turn, this.game.phase, { cardId: final.cardId }),
     );
+  }
+
+  // === Phasing (SP2 Task 52) ===
+
+  /**
+   * CR 702.26 — phase a permanent out (directly). Callers are typically the
+   * phasing-keyword turn-based action driver (`processPhasingOnUntap`); for
+   * ad-hoc "phase X out" effects (Teferi's Veil, Vanishing, etc.) the
+   * `direct: true` flag surfaces in the PhasedOut event payload so triggers
+   * and replacement effects can distinguish. SP2 doesn't yet route phasing
+   * through the replacement chain — SP3 will add MutationIntent kinds for
+   * phase-in/out once the keyword registry lands.
+   */
+  *phaseOut(cardId: EntityId, opts?: { readonly direct?: boolean }): Generator<EngineYield, void, unknown> {
+    yield* phasing.phaseOut(this.game, cardId, opts);
+  }
+
+  *phaseIn(cardId: EntityId, opts?: { readonly direct?: boolean }): Generator<EngineYield, void, unknown> {
+    yield* phasing.phaseIn(this.game, cardId, opts);
   }
 
   // === Destroy / exile / sacrifice — event + zone change via moveTo ===

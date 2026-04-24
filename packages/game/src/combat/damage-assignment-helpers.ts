@@ -73,3 +73,15 @@ export const hasKeyword = (game: Game, cardId: EntityId, keyword: string): boole
   if (!card) return false;
   return card.keywords?.has(keyword) ?? false;
 };
+
+/**
+ * CR 702.26e — phased-out lookup. Phased-out permanents stay on the
+ * battlefield for engine-internal tracking but are invisible to targeting,
+ * triggers, and combat. SP2 Task 52 (phasing) reads `card.phased` directly
+ * off the live Card; this wrapper exists so downstream filters in
+ * target-system / trigger-registry / combat-handler get one import point.
+ */
+export const isPhasedOut = (game: Game, cardId: EntityId): boolean => {
+  const card = game.cards.get(cardId);
+  return card?.phased === true;
+};

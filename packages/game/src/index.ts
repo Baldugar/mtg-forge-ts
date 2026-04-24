@@ -20,6 +20,7 @@ export * from "./game.js";
 export * from "./layers/index.js";
 export * from "./mana/index.js";
 export * from "./match/index.js";
+export * from "./phasing/index.js";
 export * from "./snapshot/index.js";
 export * from "./phase/index.js";
 export * from "./player.js";

@@ -80,6 +80,11 @@ export class TriggerRegistry {
   onEvent(event: GameEvent): void {
     for (const t of this.byId.values()) {
       if (!t.matches(event)) continue;
+      // CR 702.26e — phased-out sources don't trigger. Check before the
+      // suppression filter (cheaper lookup and semantically a harder rule:
+      // a phased source has no abilities to observe events at all).
+      const sourceCard = this.game.cards.get(t.sourceCardId);
+      if (sourceCard?.phased === true) continue;
       if (this.isSuppressed(t, event)) continue;
       if (t.interveningIf && !t.interveningIf(event, this.game)) continue;
       const lki = t.captureLki ? (t.captureLki(event, this.game) as LastKnownInfo | null) : null;

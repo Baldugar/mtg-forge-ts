@@ -44,6 +44,12 @@ export const enumerateEligibleTargets = (
   for (const card of game.cards.values()) {
     if (r.forbidSelfSource === true && card.id === ctx.sourceId) continue;
     if (!r.permitZones.has(card.zone)) continue;
+    // CR 702.26e — phased-out permanents are invisible to most effects,
+    // including targeting. Filter before the zone/controller checks so we
+    // never surface a phased card to eligibility. SP3 will add a rare
+    // "mayTargetPhased" restriction flag if any card in the data set turns
+    // out to ignore phasing (none in the current Forge catalog).
+    if (card.phased === true) continue;
     if (!matchesControllerScope(ctx.sourceControllerSeat, card.controllerSeat, r.controllerScope)) {
       continue;
     }

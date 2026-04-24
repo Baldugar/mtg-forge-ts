@@ -28,6 +28,7 @@ import type { EngineYield } from "../action/engine-yield.js";
 import { GameAction } from "../action/game-action.js";
 import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
+import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
 
@@ -153,6 +154,13 @@ export class PhaseHandler {
   ): Generator<EngineYield, void, DecisionResponse> {
     const game = this.game;
     if (step === Phase.Untap) {
+      // CR 702.26d — phasing turn-based action runs at the START of the
+      // untap step, before untap. Permanents the active player controls
+      // toggle phased state; phased-out permanents coming back in this
+      // step do NOT untap this turn (CR 702.26d second sentence), which
+      // the untap loop below honors implicitly since phased-in permanents
+      // that were phased out last turn carry their tapped state unchanged.
+      yield* processPhasingOnUntap(game, active);
       // Untap all permanents the active player controls. SP1 simplification:
       // iterate the active player's battlefield; control-change effects
       // mean SP2 will need to scan all battlefields for controllerSeat
@@ -162,6 +170,8 @@ export class PhaseHandler {
       if (bf) {
         for (const cardId of bf.toArray()) {
           const card = game.cards.get(cardId);
+          // CR 702.26e — phased-out permanents don't untap.
+          if (card?.phased === true) continue;
           if (card?.tapped) {
             yield* this.action.untap(cardId);
           }

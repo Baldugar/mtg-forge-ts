@@ -18,7 +18,13 @@ import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
-import { attackerPower, defenderId, defenderKind, hasKeyword } from "./damage-assignment-helpers.js";
+import {
+  attackerPower,
+  defenderId,
+  defenderKind,
+  hasKeyword,
+  isPhasedOut,
+} from "./damage-assignment-helpers.js";
 import { type CombatDamageAssignment, defaultAssignment } from "./damage-assignment-validator.js";
 
 export class CombatHandler {
@@ -88,6 +94,12 @@ export class CombatHandler {
   *dealDamage(isFirstStrikeStep: boolean): Generator<EngineYield, void, unknown> {
     for (const [attackerId, info] of this.state.attackers) {
       if (!this.isActiveInStep(attackerId, isFirstStrikeStep)) continue;
+      // CR 702.26e — phased-out creatures deal and receive no damage
+      // during combat. The declaration lists (attackers/blockers) may still
+      // hold the id if a prior step phased the creature out mid-combat;
+      // silently skip rather than blow away state so un-phasing restores
+      // the combat role cleanly.
+      if (isPhasedOut(this.game, attackerId)) continue;
       const power = attackerPower(this.game, attackerId);
       if (power <= 0) continue;
       const blockers = this.state.blockerOrdering.get(attackerId) ?? [];
@@ -113,6 +125,8 @@ export class CombatHandler {
 
     for (const [blockerId, info] of this.state.blockers) {
       if (!this.isActiveInStep(blockerId, isFirstStrikeStep)) continue;
+      // CR 702.26e — phased-out blockers don't deal damage either.
+      if (isPhasedOut(this.game, blockerId)) continue;
       const power = attackerPower(this.game, blockerId);
       if (power <= 0) continue;
       const primaryAttacker = info.attackerIds[0];
