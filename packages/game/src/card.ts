@@ -39,6 +39,22 @@ export class Card {
   // cards they remain false.
   isToken = false;
   isEmblem = false;
+  // SP2 Task 32: SBA support flags. Saga's final chapter resolution and
+  // bestow/commander identity are all SP3-scripted triggers/effects that
+  // surface as simple booleans on the live card. The SBA engine reads
+  // these; nothing in SP2 sets them today (those trigger handlers land
+  // when the full rules DSL comes online).
+  //
+  // sagaFinalChapterResolved: set by the Saga chapter-trigger handler
+  //   when the final chapter ability has resolved (CR 704.5v).
+  // bestowed: set by the bestow-cast pipeline when the card came down
+  //   paying the bestow cost; cleared when the aura leaves the battlefield
+  //   and reverts to a creature (CR 702.103).
+  // isCommander: set once at commander designation (CR 903.3); stable for
+  //   the life of the game.
+  sagaFinalChapterResolved = false;
+  bestowed = false;
+  isCommander = false;
 
   constructor(
     readonly id: EntityId,

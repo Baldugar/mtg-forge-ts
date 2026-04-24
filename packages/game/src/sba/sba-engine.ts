@@ -6,15 +6,18 @@
 // Integration: Task 40's runPriorityWindow will call
 //   const batches = yield* this.game.sbaEngine.sweep();
 // and drain trigger queue after each batch.
-import { IllegalDecisionError, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import { CounterType, IllegalDecisionError, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { DecisionRequest, DecisionResponse, EntityId, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { TerminalState } from "../terminal-state.js";
 import { collectAttachmentLegality } from "./attachment-legality.js";
+import { collectBestow, collectCommander } from "./bestow-commander.js";
+import { collectCounterCancel } from "./counter-cancel.js";
 import { collectCreatureRemoval } from "./creature-removal.js";
 import { collectLegendWorld } from "./legend-world.js";
 import { collectLossConditions } from "./loss-conditions.js";
+import { collectSagaAndClass } from "./saga-class.js";
 import type { SbaAction } from "./sba-action.js";
 import { collectPhasedOwnerLeaves, collectTokenAndCopy } from "./token-copy-phased.js";
 
@@ -85,17 +88,17 @@ export class SbaEngine {
   protected collectAttachmentLegality(out: SbaAction[]): void {
     collectAttachmentLegality(this.game, out);
   }
-  protected collectCounterCancel(_out: SbaAction[]): void {
-    /* Task 32 */
+  protected collectCounterCancel(out: SbaAction[]): void {
+    collectCounterCancel(this.game, out);
   }
-  protected collectSagaAndClass(_out: SbaAction[]): void {
-    /* Task 32 */
+  protected collectSagaAndClass(out: SbaAction[]): void {
+    collectSagaAndClass(this.game, out);
   }
-  protected collectBestow(_out: SbaAction[]): void {
-    /* Task 32 */
+  protected collectBestow(out: SbaAction[]): void {
+    collectBestow(this.game, out);
   }
-  protected collectCommander(_out: SbaAction[]): void {
-    /* Task 32 */
+  protected collectCommander(out: SbaAction[]): void {
+    collectCommander(this.game, out);
   }
 
   *applyBatch(actions: readonly SbaAction[]): Generator<EngineYield, void, unknown> {
@@ -154,11 +157,35 @@ export class SbaEngine {
       case "fortificationUnattach":
         this.applyUnattach(action.cardId);
         return;
-      // Task 32 adds more cases.
-      default: {
-        // Interim: ignore unimplemented kinds. Task 32 converts this into
-        // an exhaustiveness guard with all kinds handled.
+      case "countersPairwiseCancel":
+        this.applyCountersPairwiseCancel(action);
         return;
+      case "sagaSacrificed":
+        yield* this.game.action.sacrifice(action.cardId);
+        return;
+      case "classGainLevel":
+        yield* this.game.action.addCounter(action.cardId, CounterType.Level, 1);
+        return;
+      case "bestowAuraReverts":
+        this.applyBestowAuraReverts(action.cardId);
+        return;
+      case "commanderToCommandZone": {
+        // WHY explicit toSeat: the card may be in a shared zone (exile,
+        // ante) where locate() returns owner:null; defaultDestinationSeat
+        // then resolves to null for Command, which isn't a valid shared
+        // zone destination. Command is per-player, keyed by the card's
+        // ownerSeat — read that directly.
+        const card = this.game.cards.get(action.cardId);
+        if (card) {
+          yield* this.game.action.moveTo(action.cardId, ZoneType.Command, {
+            toSeat: card.ownerSeat,
+          });
+        }
+        return;
+      }
+      default: {
+        const _: never = action;
+        throw new Error(`SbaEngine.apply: unreachable ${JSON.stringify(_)}`);
       }
     }
   }
@@ -313,6 +340,37 @@ export class SbaEngine {
     this.removeFromCurrentZone(cardId);
     this.game.cards.delete(cardId);
     this.game.layerEngine.bumpEpoch("token-cease");
+  }
+
+  // CR 704.5r — pairwise cancel. We subtract min(plus, minus) from each
+  // counter type directly (bypassing GameAction.removeCounter's two-event
+  // pipeline) because the cancel is a single simultaneous action per
+  // 704.3; emitting two CounterRemoved events would misrepresent the
+  // timing of any trigger that watches counter removal. Future work: if
+  // trigger parity with Forge demands the split events, route through
+  // GameAction with a "reason: sba-cancel" tag.
+  private applyCountersPairwiseCancel(action: Extract<SbaAction, { kind: "countersPairwiseCancel" }>): void {
+    const card = this.game.cards.get(action.cardId);
+    if (!card) return;
+    const cancel = Math.min(action.plusCount, action.minusCount);
+    if (cancel <= 0) return;
+    const plusRemaining = action.plusCount - cancel;
+    const minusRemaining = action.minusCount - cancel;
+    if (plusRemaining === 0) card.counters.delete(CounterType.PlusOnePlusOne);
+    else card.counters.set(CounterType.PlusOnePlusOne, plusRemaining);
+    if (minusRemaining === 0) card.counters.delete(CounterType.MinusOneMinusOne);
+    else card.counters.set(CounterType.MinusOneMinusOne, minusRemaining);
+    this.game.layerEngine.bumpEpoch("counter-cancel");
+  }
+
+  // CR 702.103 — bestow reverts when the aura leaves the battlefield; the
+  // card resumes its creature identity. SP2 clears the flag only; SP3's
+  // bestow pipeline wires the full face-swap / characteristic restore.
+  private applyBestowAuraReverts(cardId: EntityId): void {
+    const card = this.game.cards.get(cardId);
+    if (!card) return;
+    card.bestowed = false;
+    this.game.layerEngine.bumpEpoch("bestow-revert");
   }
 
   private applyUnattach(cardId: EntityId): void {
