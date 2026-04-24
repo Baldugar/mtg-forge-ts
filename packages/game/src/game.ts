@@ -32,6 +32,7 @@ import { LayerEngine } from "./layers/layer-engine.js";
 import { Player } from "./player.js";
 import { ReplacementRegistry } from "./replacements/replacement-registry.js";
 import { Stack } from "./stack/stack.js";
+import { StaticEffectRegistry } from "./statics/static-effect-registry.js";
 import { TargetSystem } from "./target/target-system.js";
 import type { TerminalState } from "./terminal-state.js";
 import { DelayedTriggerQueue } from "./triggers/delayed-trigger-queue.js";
@@ -102,6 +103,7 @@ export class Game {
   readonly targetSystem: TargetSystem;
   readonly replacementRegistry: ReplacementRegistry;
   readonly triggerRegistry: TriggerRegistry;
+  readonly staticEffectRegistry: StaticEffectRegistry;
   readonly delayedTriggerQueue: DelayedTriggerQueue;
   readonly linkedAbilities: LinkedAbilityTable;
   terminalState: TerminalState | null = null;
@@ -140,6 +142,11 @@ export class Game {
     // delayed-trigger queue is stateless over Game, but kept alongside
     // for discoverability.
     this.triggerRegistry = new TriggerRegistry(this);
+    // WHY after triggerRegistry: the static registry's layer/replacement
+    // contributors (Tasks 26/28) do not depend on trigger state, but
+    // keeping ordering monotonic ("downstream registries last") makes
+    // the construction order self-documenting.
+    this.staticEffectRegistry = new StaticEffectRegistry(this);
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();

@@ -46,6 +46,7 @@ import type {
   UntapIntent,
 } from "../replacements/mutation-intent.js";
 import type { StackItem } from "../stack/stack-item.js";
+import { onZoneChange } from "../statics/zone-activation.js";
 import type { Zone } from "../zone/zone.js";
 import type { EngineYield } from "./engine-yield.js";
 
@@ -274,6 +275,13 @@ export class GameAction {
           card.zone = final.toZone;
           if (final.toSeat !== null) card.controllerSeat = final.toSeat;
         }
+        // Milestone F Task 25 — activate/deactivate intrinsic static
+        // abilities whose activeInZones includes the new zone. Runs
+        // BEFORE the epoch bump so the registry list reflects the new
+        // state when the cache clears. onZoneChange also bumps the epoch
+        // internally on a transition, which is idempotent with the
+        // general moveTo bump below.
+        onZoneChange(game, final.cardId, fromZone, final.toZone);
         // CR 613.1 — zone change alters which continuous effects apply
         // (layered values are defined only for permanents on the battlefield,
         // etc.); invalidate the cache so the next characteristics read

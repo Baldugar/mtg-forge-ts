@@ -5,7 +5,14 @@
 // GameSnapshot (Task 42) rehydrates Cards by looking PaperCards up in a
 // CardDb. Embedding the full PaperCard in every Card would bloat snapshots
 // significantly.
-import type { CounterType, EntityId, PaperCard, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type {
+  CounterType,
+  EntityId,
+  PaperCard,
+  PlayerSeat,
+  StaticAbility,
+  ZoneType,
+} from "@mtg-forge-ts/core";
 import { paperCardKey } from "@mtg-forge-ts/core";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 
@@ -20,6 +27,11 @@ export class Card {
   // until Task 53-54 land the FaceDownState shape.
   copiedFrom: CopiableCharacteristics | null = null;
   faceDown: unknown | null = null;
+  // SP2 Task 25: intrinsic static abilities derived from card text. SP3
+  // replaces hand-population with PaperCard.definition-driven derivation.
+  // `undefined` means "not yet populated"; treated identically to an
+  // empty list by getIntrinsicStatics.
+  intrinsicStatics?: readonly StaticAbility[] = undefined;
 
   constructor(
     readonly id: EntityId,

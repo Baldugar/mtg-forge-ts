@@ -25,6 +25,7 @@ export * from "./run-game.js";
 export * from "./run-match.js";
 export * from "./setup/index.js";
 export * from "./stack/index.js";
+export * from "./statics/index.js";
 export * from "./target/index.js";
 export * from "./terminal-state.js";
 export * from "./triggers/index.js";
