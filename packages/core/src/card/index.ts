@@ -2,4 +2,5 @@
 export * from "./types.js";
 export * from "./card-definition.js";
 export * from "./face-definition.js";
+export * from "./keyword-id.js";
 export * from "./paper-card.js";
