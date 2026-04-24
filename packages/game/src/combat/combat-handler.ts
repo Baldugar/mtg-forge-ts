@@ -7,18 +7,13 @@
 // (which routes through the replacement chain). Tasks 47 and 48 extend this
 // with full lethal+trample+deathtouch assignment validation and the
 // first-strike / double-strike step split (CR 702.7 / 702.4).
-import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import { attackerPower, defenderId, defenderKind } from "./damage-assignment-helpers.js";
-
-interface DamageOut {
-  readonly targetKind: "creature" | "player" | "planeswalker" | "battle";
-  readonly targetId: EntityId | PlayerSeat;
-  readonly amount: number;
-}
+import { type CombatDamageAssignment, defaultAssignment } from "./damage-assignment-validator.js";
 
 export class CombatHandler {
   readonly state: CombatState = createCombatState();
@@ -89,14 +84,14 @@ export class CombatHandler {
         yield* this.game.action.damage(attackerId, defenderKind(d), defenderId(d), power, true);
       } else {
         const preDeclared = this.state.damageAssignments.get(attackerId);
-        const outs: readonly DamageOut[] =
+        const outs: readonly CombatDamageAssignment[] =
           preDeclared && preDeclared.length > 0
             ? preDeclared.map((a) => ({
                 targetKind: "creature" as const,
                 targetId: a.targetId,
                 amount: a.amount,
               }))
-            : this.defaultAssignment(blockers, power);
+            : defaultAssignment(this.game, attackerId, blockers, power, info.defender);
         for (const a of outs) {
           yield* this.game.action.damage(attackerId, a.targetKind, a.targetId, a.amount, true);
         }
@@ -111,19 +106,6 @@ export class CombatHandler {
       if (primaryAttacker === undefined) continue;
       yield* this.game.action.damage(blockerId, "creature", primaryAttacker, power, true);
     }
-  }
-
-  /**
-   * Task 46 stand-in for Task 47's validator-backed default. Assigns all
-   * power to the first ordered blocker — legal under CR 702.17c so long
-   * as the first blocker's lethal is at most `power` (which is trivially
-   * true when assigning all of power to it). Task 47 overwrites with the
-   * full lethal+trample+deathtouch logic.
-   */
-  private defaultAssignment(blockers: readonly EntityId[], power: number): readonly DamageOut[] {
-    const first = blockers[0];
-    if (first === undefined) return [];
-    return [{ targetKind: "creature", targetId: first, amount: power }];
   }
 
   /**
