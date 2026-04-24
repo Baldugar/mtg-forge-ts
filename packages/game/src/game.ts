@@ -247,7 +247,7 @@ export class Game {
     // GameAction.changeControl when opts.until is present; read by
     // Game.emitEvent on each canonical event to detect expirations.
     this.controlChangeLedger = new ControlChangeLedger();
-    this.delayedTriggerQueue = new DelayedTriggerQueue();
+    this.delayedTriggerQueue = new DelayedTriggerQueue(this);
     this.linkedAbilities = new LinkedAbilityTable();
     // Task 62 — Ring-grant ledger is stateless over other registries; a
     // fresh per-Game instance is all we need. tempt() populates it on

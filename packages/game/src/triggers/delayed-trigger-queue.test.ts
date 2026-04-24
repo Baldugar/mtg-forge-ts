@@ -2,9 +2,18 @@
 // DelayedTriggerQueue tests — CR 603.7 (SP2 Task 23). The queue observes
 // events via Game.emitEvent's pipe and forwards matching delayed
 // triggers to the TriggerRegistry via onEventForcedByDelayed.
-import type { DelayedTrigger, GameEvent, LobbyPlayer } from "@mtg-forge-ts/core";
-import { PhaseStep, SeededRng, ZoneType, mkEntityId, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core";
+import type { DelayedTrigger, GameEvent, LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  PhaseStep,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkEvent,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
+import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
@@ -175,5 +184,30 @@ describe("DelayedTriggerQueue (CR 603.7)", () => {
     g.emitEvent(ev);
     expect(g.delayedTriggerQueue.size()).toBe(1);
     expect(g.triggerRegistry.drain()).toHaveLength(0);
+  });
+
+  // Audit I-15 regression — CR 702.26e: phased-out sources don't observe
+  // most events. DelayedTriggerQueue.onEvent forwarded to the registry
+  // without a phased gate, so a delayed trigger whose source was phased
+  // out fired on a non-zone-change event (e.g., LifeChanged).
+  it("phased-out source does NOT fire on non-zone-change events", () => {
+    const g = mkGame();
+    const cid = mkEntityId(10);
+    const paper: PaperCard = {
+      name: "Test",
+      edition: "LEA",
+      collectorNumber: "1",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+    };
+    const card = new Card(cid, paper, mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    card.phased = true;
+    g.cards.set(cid, card);
+    g.delayedTriggerQueue.add(mkDelayed({ id: 1, sourceCardId: 10, oneShot: true }));
+    g.delayedTriggerQueue.onEvent(lifeChangedEvent(), g.triggerRegistry);
+    expect(g.triggerRegistry.drain()).toHaveLength(0);
+    // One-shot preserved — it should fire later when source un-phases.
+    expect(g.delayedTriggerQueue.size()).toBe(1);
   });
 });

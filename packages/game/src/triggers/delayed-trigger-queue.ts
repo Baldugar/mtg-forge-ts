@@ -10,10 +10,18 @@
 // TriggerRegistry's pending via onEventForcedByDelayed (which still
 // honors intervening-if + captureLki + suppression).
 import type { DelayedTrigger, GameEvent } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
+import type { Game } from "../game.js";
 import type { TriggerRegistry } from "./trigger-registry.js";
 
 export class DelayedTriggerQueue {
   private readonly queue: DelayedTrigger[] = [];
+
+  // Game reference lets us honor CR 702.26e — phased-out sources don't
+  // trigger on most events. Optional for snapshot restore paths that
+  // construct the queue without a live Game; when absent the phased gate
+  // simply doesn't fire (matches the pre-audit behavior).
+  constructor(private readonly game?: Game) {}
 
   add(d: DelayedTrigger): void {
     this.queue.push(d);
@@ -44,10 +52,24 @@ export class DelayedTriggerQueue {
    * pending.
    */
   onEvent(event: GameEvent, sink: TriggerRegistry): void {
+    // CR 702.26e — phased-out sources don't observe most events; apply
+    // the same non-zone-change gate as TriggerRegistry.onEvent. Audit I-15.
+    const isLeavingBattlefield =
+      event.kind === "CardChangedZone" && event.payload.fromZone === ZoneType.Battlefield;
     for (let i = this.queue.length - 1; i >= 0; i--) {
       const d = this.queue[i];
       if (!d) continue;
       if (!d.matches(event)) continue;
+      if (this.game && !isLeavingBattlefield) {
+        const sourceCard = this.game.cards.get(d.sourceCardId);
+        if (sourceCard?.phased === true) {
+          // Source phased-out and event isn't a leave-battlefield — skip
+          // fire. Do NOT remove a one-shot trigger here: it should fire
+          // when its source is no longer phased-out if the triggering
+          // condition recurs.
+          continue;
+        }
+      }
       sink.onEventForcedByDelayed(d, event);
       if (d.oneShot) this.queue.splice(i, 1);
     }
