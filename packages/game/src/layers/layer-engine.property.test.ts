@@ -97,7 +97,7 @@ const mkGameWithCards = (cardIds: readonly EntityId[]): Game => {
     sourceAbilityId: null,
   });
   // Reference the Layer symbol so the import is load-bearing.
-  void Layer.L7b_SetPT;
+  void Layer.L7b_PTSet;
   game.layerEngine.bumpEpoch("test-seed");
   return game;
 };

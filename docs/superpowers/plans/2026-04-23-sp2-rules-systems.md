@@ -2136,3 +2136,51 @@ Behavioral gaps carried forward (discovered during implementation + audit):
 - **Missing events**: `LandPlayed`, `ClassLevelGained`, `DoorChanged`, `PlayerCounters`, `CombatUpdate`. Emit sites need wiring in GameAction / phase handler / CombatHandler.
 - **`topLibsCast` population** — cast-pipeline has no call site; adds to provenance but never actually appends to the ledger.
 - **4-reviewer final SP2 audit** — shipped Round 1; a possible Round 2 (forge-parity + remaining Important items) is tracked as SP3 kickoff work.
+
+## SP2 Audit Remediation — Round 1
+
+Date: 2026-04-23. Remediated findings from the 4-reviewer SP2 audit (backend correctness / Forge parity / spec gaps / test quality).
+
+### Findings fixed
+
+Critical backend-correctness:
+- **A-001** — `PhaseStepEnded` removed from `ENGINE_INTERNAL_EVENT_KINDS`; `untilEndOfNextStep` continuous effects and time-bounded control changes now expire.
+- **A-002** — Dependency resolver (CR 613.8) wired into Layer 4/5/6/7a/7b/7c/7d/7e appliers; effects gain optional `dependsOn` field.
+- **A-003** — Layer 7c/7d/7e guard `null` power/toughness per CR 613.4b; non-creatures no longer get P/T modified.
+- **A-005** — `apnapOrder` throws `GameStateIntegrityError` on orphan triggers (sourceControllerAtFire absent from seats) rather than silently dropping.
+- **A-006** — Phased-out trigger gate in `TriggerRegistry.onEvent` scoped to non-zone-change events so dies / leaves triggers still fire.
+- **A-007** — `collectLegendWorld` skips phased-out permanents per CR 702.26e.
+
+Critical test-quality:
+- **D-C1** — Added unit + property tests for `Stack.copy` unknown-source throw.
+- **D-C2** — 13 new explicit `IllegalDecisionError` regression tests for CastPipeline throw-sites via `UncaughtCastPipeline` shim.
+- **D-C3** — Removed vacuous `toBeDefined(); toBeNull()` linter-silencer in `game-action.test.ts`.
+- **D-C4** — Tightened `apply-loop.property.test.ts` (`fc.uniqueArray`, dropped short-circuits, shared rotate helper exercises ordering in BOTH primary + prevention properties); seeded non-trivial layer effects in `layer-engine.property.test.ts`; added strictly-reducing-per-round property in `sba-engine.property.test.ts`.
+- **D-C5** — `stack.property.test.ts` swapped to `fc.uniqueArray` with `minLength=2`; added multi-copy scenario.
+
+Important behavior:
+- **I-1** — Combat damage-to-player life deduction routed through `changeLife` (LifeChange replacement pipeline) instead of inline `player.life -= amount`.
+- **I-2** — Creature-removal SBA respects indestructible: lethal-damage and deathtouch-damage branches skip when the keyword is present; 0-toughness SBA (CR 704.5f) still fires per CR spec.
+- **I-4** — Non-trample combat overage discarded per CR 702.17c (removed "dump on last blocker" branch); validator relaxed to accept `totalAssigned <= power` for non-trample and enforces `===` for trample.
+- **I-7** — `CastPipeline.run` pushes the stack item BEFORE emitting `SpellCast` so cast-observing triggers read the stack with the new item present.
+- **I-13** — `CombatHandler.declareBlockers` runs `validateBlockDeclarations` and throws `IllegalDecisionError` on restriction violations (flying, reach, menace, landwalk, protection, etc.).
+- **I-15** — `DelayedTriggerQueue.onEvent` applies the same non-zone-change phased-source gate as `TriggerRegistry.onEvent`; preserves one-shot delayed triggers when skipped.
+
+Documentation:
+- **C-C1 + I-6** — Snapshot v6 Option A scope documented; deferred-to-SP3 list expanded with Day/Night, Shadow, TurnBasedAction framework, banding multi-attacker, team-combat damage routing, choosePlayer/chooseDungeon/chooseManaReplacement, missing events, topLibsCast population; memory file typo fixed (93 → 94 event kinds).
+
+### Deferred to a possible Round 2 or SP3 kickoff
+
+Forge roster expansions (intentionally out of SP2 scope — these are data-surface deltas that require SP3's ability DSL to consume):
+- **B-C1** — MulliganRule expansions
+- **B-C2** — ReplacementLayer expansions
+- **B-C3** — MutationIntent 39-kinds (vs. SP2's 13)
+- **B-C4** — StaticAbilityMode 82-modes (vs. SP2's coarse categories)
+- **B-C5** — RestrictionKind 22+ (vs. SP2's minimal set)
+
+Important-but-narrower behavior gaps carried into SP3:
+- **A-004** — CastPipeline face-leak (faceChosen state not cleared across rejected-and-retried casts).
+- CDA cross-layer interaction (CR 604.3) — SP2 partitions per layer; some cross-layer CDA cases may require multi-layer coordination.
+- Commander-to-command as a replacement effect (CR 903.9) — currently direct `moveTo` in SP2.
+- APNAP fallback when active player is eliminated mid-round.
+- Face-down + copy interaction corners (CR 707.11 + 708 + 712 interactions when a face-down permanent is copied).
