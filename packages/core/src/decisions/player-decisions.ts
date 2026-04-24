@@ -398,6 +398,29 @@ export type DecisionRequest =
       readonly forStackItem: EntityId;
     }
   | {
+      // SP2 Milestone W Task 70 — CR 701.25 proliferate. The engine
+      // enumerates every permanent with at least one counter plus every
+      // player with at least one player-counter; the controller picks
+      // which targets to bump. `counterChoices` is keyed by `c:<id>` for
+      // cards and `p:<seat>` for players. When a target carries multiple
+      // counter kinds, the controller chooses which kind to add; for
+      // single-kind targets the engine falls back to the sole kind if
+      // the entry is omitted.
+      readonly kind: "chooseProliferateTargets";
+      readonly playerSeat: PlayerSeat;
+      readonly eligibleCards: readonly EntityId[];
+      readonly eligiblePlayers: readonly PlayerSeat[];
+    }
+  | {
+      // SP2 Milestone W Task 72 — CR 702.139 companion declaration at
+      // game start. The player may name a companion PaperCard from their
+      // sideboard; SP2 scope records the choice but defers companion-
+      // condition validation (that's SP6 format enforcement).
+      readonly kind: "companionDeclaration";
+      readonly playerSeat: PlayerSeat;
+      readonly sideboardCardIds: readonly EntityId[];
+    }
+  | {
       // SP2 Task 62 (CR 701.52 / The Ring tempts you) — each temptation the
       // tempted player chooses a creature they control to become (or remain)
       // their Ring-bearer. `candidateIds` enumerates every creature on the
@@ -543,7 +566,20 @@ export type DecisionResponse =
       readonly divisions?: Readonly<Record<number, number>>;
     }
   | { readonly kind: "activateManaAbilities"; readonly done: true }
-  | { readonly kind: "chooseRingBearer"; readonly bearerId: EntityId | null };
+  | { readonly kind: "chooseRingBearer"; readonly bearerId: EntityId | null }
+  | {
+      readonly kind: "chooseProliferateTargets";
+      readonly chosenCards: readonly EntityId[];
+      readonly chosenPlayers: readonly PlayerSeat[];
+      // WHY: Record keyed by `c:<entityId>` / `p:<seat>` — a plain Record
+      // avoids a nested union and keeps the response JSON-friendly.
+      readonly counterChoices: Readonly<Record<string, string>>;
+    }
+  | {
+      readonly kind: "companionDeclaration";
+      // null = decline; a concrete id must be in request.sideboardCardIds.
+      readonly companionId: EntityId | null;
+    };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];

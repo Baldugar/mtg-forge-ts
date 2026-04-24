@@ -527,34 +527,6 @@ describe("GameAction.mill / shuffle", () => {
   });
 });
 
-describe("GameAction SP2/SP3 stubs", () => {
-  it("createToken throws with SP2 message when .next() is called", () => {
-    const { action } = mkFixture();
-    const gen = action.createToken({});
-    expect(() => gen.next()).toThrow(/SP2/);
-  });
-
-  it("createEmblem throws with SP2 message", () => {
-    const { action } = mkFixture();
-    expect(() => action.createEmblem({}).next()).toThrow(/SP2/);
-  });
-
-  it("scry throws with SP2 driver message", () => {
-    const { action, seat0 } = mkFixture();
-    expect(() => action.scry(seat0, 1).next()).toThrow(/SP2 driver/);
-  });
-
-  it("surveil throws with SP2 driver message", () => {
-    const { action, seat0 } = mkFixture();
-    expect(() => action.surveil(seat0, 1).next()).toThrow(/SP2 driver/);
-  });
-
-  it("proliferate throws with SP2 message", () => {
-    const { action, seat0 } = mkFixture();
-    expect(() => action.proliferate(seat0).next()).toThrow(/SP2/);
-  });
-});
-
 describe("GameAction locate / zoneFor", () => {
   it("locate finds a card in a per-player zone and reports its owner", () => {
     const { game, action, seat0 } = mkFixture();

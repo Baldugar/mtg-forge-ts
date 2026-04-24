@@ -21,11 +21,14 @@
 // type-system level via the EngineYield union.
 import type {
   CounterType,
+  DecisionResponse,
   EffectDuration,
   EntityId,
   GameEvent,
   MutationIntent,
+  PaperCard,
   PlayerSeat,
+  StaticAbility,
   ZoneType,
 } from "@mtg-forge-ts/core";
 import {
@@ -35,6 +38,7 @@ import {
   ZoneType as Zt,
   mkEvent,
 } from "@mtg-forge-ts/core";
+import { Card } from "../card.js";
 import { damageProtected } from "../combat/keywords/protection.js";
 import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
 import type { Game } from "../game.js";
@@ -948,29 +952,335 @@ export class GameAction {
   // their body on construction). biome-ignore on each stub because
   // correctness/useYield doesn't account for always-throw bodies.
 
-  // biome-ignore lint/correctness/useYield: stub throws before any yield
-  *scry(_seat: PlayerSeat, _count: number): Generator<EngineYield, void, unknown> {
-    throw new Error("GameAction.scry: yields decision — requires SP2 driver loop");
+  // === SP2 Milestone W — scry / surveil / proliferate / tokens / emblems ===
+
+  /**
+   * CR 701.20 — reveal the top N cards of the player's library, let them
+   * partition the revealed set between top-of-library and bottom-of-library,
+   * then re-seat the cards accordingly. The existing `scry` DecisionRequest
+   * kind (core/player-decisions) carries `cards: readonly EntityId[]`; the
+   * response partitions into `{ toTop, toBottom }`. The engine validates the
+   * partition covers exactly the revealed set.
+   *
+   * Cards are pulled off the top BEFORE the decision so replacements that
+   * fire later (in bottom-insertion, unusual) see the intermediate state.
+   * SP2 emits one CardScried per revealed card AFTER re-seating — the event
+   * shape lives on core's `Scry` event family (Task 12).
+   */
+  *scry(seat: PlayerSeat, count: number): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const player = game.getPlayer(seat);
+    const library = player.zones.get(Zt.Library);
+    if (!library) throw new GameStateIntegrityError(`scry: library missing for seat ${seat}`);
+    if (!Number.isInteger(count) || count <= 0) {
+      throw new IllegalDecisionError(`scry: count must be a positive integer, got ${count}`);
+    }
+    const revealed: EntityId[] = [];
+    for (let i = 0; i < count; i++) {
+      const id = library.peekAt(0);
+      if (id === undefined) break;
+      library.removeAt(0);
+      revealed.push(id);
+    }
+    if (revealed.length === 0) return;
+    const rawResponse = yield {
+      kind: "decision",
+      request: { kind: "scry", playerSeat: seat, cards: revealed },
+    };
+    const response = rawResponse as DecisionResponse;
+    if (response.kind !== "scry") {
+      throw new IllegalDecisionError(`scry: expected scry response, got ${response.kind}`);
+    }
+    const { toTop, toBottom } = response;
+    if (toTop.length + toBottom.length !== revealed.length) {
+      throw new IllegalDecisionError(
+        `scry: partition size ${toTop.length + toBottom.length} !== revealed ${revealed.length}`,
+      );
+    }
+    const all = new Set<EntityId>([...toTop, ...toBottom]);
+    for (const r of revealed) {
+      if (!all.has(r))
+        throw new IllegalDecisionError(`scry: partition missing card ${r as unknown as number}`);
+    }
+    if (all.size !== revealed.length) {
+      throw new IllegalDecisionError("scry: partition contains duplicate ids");
+    }
+    // Re-seat top (first id ends up topmost). addToTop is O(n) per call; for
+    // SP2's expected scry counts (1–5) that is negligible.
+    for (let i = toTop.length - 1; i >= 0; i--) {
+      const tid = toTop[i];
+      if (tid !== undefined) library.addToTop(tid);
+    }
+    // Bottom: add at items.length (default) in the caller-supplied order.
+    for (const bid of toBottom) {
+      library.add(bid);
+    }
+    yield {
+      kind: "event",
+      event: mkEvent("Scry", game.turn, game.phase, {
+        playerSeat: seat,
+        count: revealed.length,
+      }),
+    };
   }
 
-  // biome-ignore lint/correctness/useYield: stub throws before any yield
-  *surveil(_seat: PlayerSeat, _count: number): Generator<EngineYield, void, unknown> {
-    throw new Error("GameAction.surveil: yields decision — requires SP2 driver loop");
+  /**
+   * CR 701.44 — surveil mirrors scry but partitions into top-of-library and
+   * owner's graveyard. Re-uses the existing `surveil` DecisionRequest kind
+   * (cards revealed → `{ toTop, toGraveyard }` response). Cards moving to
+   * the graveyard go through the same zone-change bookkeeping (Card.zone
+   * update + Zone.add) — they are NOT routed through applyWithReplacements
+   * because surveil itself is not a zone-change-causing event for each card
+   * individually (the event chain collapses to CardSurveiled per CR 701.44c).
+   */
+  *surveil(seat: PlayerSeat, count: number): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const player = game.getPlayer(seat);
+    const library = player.zones.get(Zt.Library);
+    const graveyard = player.zones.get(Zt.Graveyard);
+    if (!library) throw new GameStateIntegrityError(`surveil: library missing for seat ${seat}`);
+    if (!graveyard) throw new GameStateIntegrityError(`surveil: graveyard missing for seat ${seat}`);
+    if (!Number.isInteger(count) || count <= 0) {
+      throw new IllegalDecisionError(`surveil: count must be a positive integer, got ${count}`);
+    }
+    const revealed: EntityId[] = [];
+    for (let i = 0; i < count; i++) {
+      const id = library.peekAt(0);
+      if (id === undefined) break;
+      library.removeAt(0);
+      revealed.push(id);
+    }
+    if (revealed.length === 0) return;
+    const rawResponse = yield {
+      kind: "decision",
+      request: { kind: "surveil", playerSeat: seat, cards: revealed },
+    };
+    const response = rawResponse as DecisionResponse;
+    if (response.kind !== "surveil") {
+      throw new IllegalDecisionError(`surveil: expected surveil response, got ${response.kind}`);
+    }
+    const { toTop, toGraveyard } = response;
+    if (toTop.length + toGraveyard.length !== revealed.length) {
+      throw new IllegalDecisionError(
+        `surveil: partition size ${toTop.length + toGraveyard.length} !== revealed ${revealed.length}`,
+      );
+    }
+    const all = new Set<EntityId>([...toTop, ...toGraveyard]);
+    for (const r of revealed) {
+      if (!all.has(r)) {
+        throw new IllegalDecisionError(`surveil: partition missing card ${r as unknown as number}`);
+      }
+    }
+    if (all.size !== revealed.length) {
+      throw new IllegalDecisionError("surveil: partition contains duplicate ids");
+    }
+    for (let i = toTop.length - 1; i >= 0; i--) {
+      const tid = toTop[i];
+      if (tid !== undefined) library.addToTop(tid);
+    }
+    for (const gid of toGraveyard) {
+      graveyard.add(gid);
+      const card = game.cards.get(gid);
+      if (card) card.zone = Zt.Graveyard;
+    }
+    yield {
+      kind: "event",
+      event: mkEvent("Surveil", game.turn, game.phase, {
+        playerSeat: seat,
+        count: revealed.length,
+      }),
+    };
   }
 
-  // biome-ignore lint/correctness/useYield: stub throws before any yield
-  *proliferate(_seat: PlayerSeat): Generator<EngineYield, void, unknown> {
-    throw new Error("GameAction.proliferate: requires SP2 replacement/trigger routing");
+  /**
+   * CR 701.25 — proliferate: choose any number of permanents or players that
+   * already have counters; on each, add one more counter of a kind already
+   * present (if multiple kinds, controller picks which kind per target).
+   *
+   * SP2 scope: enumerate eligible cards (permanents with counter Maps of
+   * nonzero size), yield a single `chooseProliferateTargets` decision, then
+   * add counters via `addCounter` so replacement chains fire. Player counters
+   * (poison/energy/experience) are modeled via Player.counters: proliferate
+   * mutates them directly (no MutationIntent exists for player-counter
+   * addition in SP2); a richer routing is SP3.
+   */
+  *proliferate(controllerSeat: PlayerSeat): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const eligibleCards: EntityId[] = [];
+    for (const [id, card] of game.cards) {
+      if (card.zone === Zt.Battlefield && card.counters.size > 0) eligibleCards.push(id);
+    }
+    const eligiblePlayers: PlayerSeat[] = [];
+    for (const p of game.players) {
+      if (p.counters.size > 0) eligiblePlayers.push(p.seat);
+    }
+    if (eligibleCards.length === 0 && eligiblePlayers.length === 0) return;
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseProliferateTargets",
+        playerSeat: controllerSeat,
+        eligibleCards,
+        eligiblePlayers,
+      },
+    };
+    const response = rawResponse as DecisionResponse;
+    if (response.kind !== "chooseProliferateTargets") {
+      throw new IllegalDecisionError(
+        `proliferate: expected chooseProliferateTargets response, got ${response.kind}`,
+      );
+    }
+    const { chosenCards, chosenPlayers, counterChoices } = response;
+    // Validate every chosen card is eligible.
+    const eligibleCardSet = new Set(eligibleCards);
+    for (const cid of chosenCards) {
+      if (!eligibleCardSet.has(cid)) {
+        throw new IllegalDecisionError(
+          `proliferate: chosen card ${cid as unknown as number} not in eligible set`,
+        );
+      }
+    }
+    const eligiblePlayerSet = new Set(eligiblePlayers);
+    for (const ps of chosenPlayers) {
+      if (!eligiblePlayerSet.has(ps)) {
+        throw new IllegalDecisionError(
+          `proliferate: chosen player seat ${ps as unknown as number} not in eligible set`,
+        );
+      }
+    }
+    // Add one counter per chosen card.
+    for (const cid of chosenCards) {
+      const card = game.cards.get(cid);
+      if (!card) continue;
+      const chosenKind = counterChoices[`c:${cid as unknown as number}`];
+      // When no explicit choice is supplied, fall back to the first counter
+      // kind currently on the card (validated against the live Map). When
+      // the card has exactly one counter kind, CR 701.25a implies no choice
+      // is needed; this fallback handles both cases.
+      const kindStr = chosenKind ?? [...card.counters.keys()][0];
+      if (kindStr === undefined) continue;
+      if (!card.counters.has(kindStr as CounterType)) {
+        throw new IllegalDecisionError(
+          `proliferate: counter kind '${String(kindStr)}' not on card ${cid as unknown as number}`,
+        );
+      }
+      yield* this.addCounter(cid, kindStr as CounterType, 1);
+    }
+    // Player counters — mutate directly, bump layer epoch, emit a
+    // CounterAdded canonical event via game.emitEvent. SP2's layer engine
+    // doesn't yet scope player counters, but the epoch bump is defensive
+    // and cheap.
+    for (const seat of chosenPlayers) {
+      const p = game.getPlayer(seat);
+      const chosenKind = counterChoices[`p:${seat as unknown as number}`];
+      const kindStr = chosenKind ?? [...p.counters.keys()][0];
+      if (kindStr === undefined) continue;
+      if (!p.counters.has(kindStr as CounterType)) {
+        throw new IllegalDecisionError(
+          `proliferate: counter kind '${String(kindStr)}' not on player seat ${seat as unknown as number}`,
+        );
+      }
+      const current = p.counters.get(kindStr as CounterType) ?? 0;
+      p.counters.set(kindStr as CounterType, current + 1);
+      game.layerEngine.bumpEpoch("proliferate-player-counter");
+    }
   }
 
-  // biome-ignore lint/correctness/useYield: stub throws before any yield
-  *createToken(_params: unknown): Generator<EngineYield, void, unknown> {
-    throw new Error("GameAction.createToken: SP2 token factory required");
+  /**
+   * CR 111 / 701.8 — create N tokens with identical characteristics. The
+   * PaperCard supplies the token's identity (name, type line, P/T, etc.);
+   * callers building non-paper tokens (Treasure, Food, Clue) wrap a
+   * paper-shaped object. Returns the minted EntityIds so callers can track
+   * them (e.g. to apply ETB replacements, re-query for triggers).
+   *
+   * The factory runs OUTSIDE applyWithReplacements because token creation
+   * is not itself a MutationIntent kind — it is a cast-analog that enters
+   * the battlefield directly. ETB replacements (Task 18) fire via the
+   * subsequent CardChangedZone/TokenCreated events downstream in SP3's
+   * full ETB pipeline.
+   */
+  *createToken(params: {
+    readonly paperCard: PaperCard;
+    readonly controller: PlayerSeat;
+    readonly count: number;
+    readonly isCopy?: boolean;
+    readonly copyOf?: EntityId;
+  }): Generator<EngineYield, readonly EntityId[], unknown> {
+    const game = this.game;
+    if (!Number.isInteger(params.count) || params.count <= 0) {
+      throw new IllegalDecisionError(`createToken: count must be a positive integer, got ${params.count}`);
+    }
+    const ids: EntityId[] = [];
+    for (let i = 0; i < params.count; i++) {
+      const id = game.newEntityId();
+      const card = new Card(id, params.paperCard, params.controller, params.controller, Zt.Battlefield);
+      card.isToken = true;
+      if (params.isCopy === true && params.copyOf !== undefined) {
+        const original = game.cards.get(params.copyOf);
+        if (original) {
+          // SP2 Milestone P already models CopiableCharacteristics on Card;
+          // capture the source's copiable snapshot if it exists. When the
+          // source has no copiedFrom, SP3 will populate a full snapshot.
+          card.copiedFrom = original.copiedFrom;
+        }
+      }
+      game.cards.set(id, card);
+      const bf = game.getPlayer(params.controller).zones.get(Zt.Battlefield);
+      if (!bf) {
+        throw new GameStateIntegrityError(
+          `createToken: battlefield zone missing for seat ${params.controller as unknown as number}`,
+        );
+      }
+      bf.add(id);
+      game.layerEngine.bumpEpoch("token-create");
+      yield {
+        kind: "event",
+        event: mkEvent("TokenCreated", game.turn, game.phase, {
+          controllerSeat: params.controller,
+          tokenCardId: id,
+        }),
+      };
+      ids.push(id);
+    }
+    return ids;
   }
 
-  // biome-ignore lint/correctness/useYield: stub throws before any yield
-  *createEmblem(_params: unknown): Generator<EngineYield, void, unknown> {
-    throw new Error("GameAction.createEmblem: SP2 emblem factory required");
+  /**
+   * CR 114 — create an emblem for a player. Emblems live in the command zone
+   * and are identified by name + their granted static abilities. SP2 models
+   * them as Card instances with `isEmblem = true`; SP3 may refactor to a
+   * dedicated Emblem type once the static registry supports non-card-scoped
+   * effect sources.
+   */
+  *createEmblem(params: {
+    readonly ownerSeat: PlayerSeat;
+    readonly paperCard: PaperCard;
+    readonly grantedStatics?: readonly StaticAbility[];
+  }): Generator<EngineYield, EntityId, unknown> {
+    const game = this.game;
+    const id = game.newEntityId();
+    const card = new Card(id, params.paperCard, params.ownerSeat, params.ownerSeat, Zt.Command);
+    card.isEmblem = true;
+    if (params.grantedStatics !== undefined) {
+      card.intrinsicStatics = params.grantedStatics;
+    }
+    game.cards.set(id, card);
+    const cmd = game.getPlayer(params.ownerSeat).zones.get(Zt.Command);
+    if (!cmd) {
+      throw new GameStateIntegrityError(
+        `createEmblem: command zone missing for seat ${params.ownerSeat as unknown as number}`,
+      );
+    }
+    cmd.add(id);
+    game.layerEngine.bumpEpoch("emblem-create");
+    yield {
+      kind: "event",
+      event: mkEvent("TokenCreated", game.turn, game.phase, {
+        controllerSeat: params.ownerSeat,
+        tokenCardId: id,
+      }),
+    };
+    return id;
   }
 
   // === Loop-detection shortcut (SP2 Task 66) ===

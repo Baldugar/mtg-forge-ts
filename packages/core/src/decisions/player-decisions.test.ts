@@ -73,21 +73,27 @@ const EXPECTED_REQUEST_KINDS: readonly DecisionRequestKind[] = [
   "chooseCastTargets",
   // SP2 Task 38 — CastPipeline step 9 (mana-ability activation window)
   "activateManaAbilities",
+  // SP2 Task 62 — The Ring bearer declaration
+  "chooseRingBearer",
+  // SP2 Milestone W Task 70 — proliferate target selection
+  "chooseProliferateTargets",
+  // SP2 Milestone W Task 72 — companion declaration (CR 702.139)
+  "companionDeclaration",
 ];
 
 const EXPECTED_RESPONSE_KINDS: readonly DecisionResponseKind[] = EXPECTED_REQUEST_KINDS;
 
 describe("DecisionRequest enumeration", () => {
-  it("has 48 distinct kinds (SP1 baseline 23 + post-audit 21 + SP2 additions 4)", () => {
-    expect(EXPECTED_REQUEST_KINDS.length).toBe(48);
-    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(48);
+  it("has 51 distinct kinds (SP1 baseline 23 + post-audit 21 + SP2 Milestones I+R+W 7)", () => {
+    expect(EXPECTED_REQUEST_KINDS.length).toBe(51);
+    expect(new Set(EXPECTED_REQUEST_KINDS).size).toBe(51);
   });
 });
 
 describe("DecisionResponse enumeration", () => {
-  it("has 48 distinct kinds set-equal to DecisionRequest kinds", () => {
-    expect(EXPECTED_RESPONSE_KINDS.length).toBe(48);
-    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(48);
+  it("has 51 distinct kinds set-equal to DecisionRequest kinds", () => {
+    expect(EXPECTED_RESPONSE_KINDS.length).toBe(51);
+    expect(new Set(EXPECTED_RESPONSE_KINDS).size).toBe(51);
     expect(new Set(EXPECTED_RESPONSE_KINDS)).toEqual(new Set(EXPECTED_REQUEST_KINDS));
   });
 });
