@@ -20,6 +20,35 @@ import type { Game } from "../game.js";
 import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
 import { interveningIfStillTrue } from "../triggers/intervening-if.js";
 
+// SP2 Task 78 (fix 5) — helper: pop the stack slot for `itemId`. Stack.pop()
+// is unconditional (top-only), but the Stack may contain other items above
+// the resolving one (ordinary spells/abilities added in-between by copies,
+// cascade, etc.). We walk the items backwards to find the one with the
+// matching id and remove it. For a CR-correct resolver this will always be
+// the top item, but the id-based lookup makes the helper resilient to
+// out-of-order drain paths SP3 may introduce.
+const popStackItemById = (game: Game, itemId: EntityId): void => {
+  const stack = game.sharedZones.stack;
+  const arr = stack.toArray();
+  // Happy path: the top matches.
+  const top = stack.top();
+  if (top?.id === itemId) {
+    stack.pop();
+    return;
+  }
+  // Fallback: rebuild the stack without the target id. Reuse push() so any
+  // future Stack invariants (if added) are honored.
+  const retained = arr.filter((it) => it.id !== itemId);
+  if (retained.length === arr.length) {
+    // Not on the stack — silent no-op (reached only when the stack item
+    // was never pushed / already popped by an earlier path).
+    return;
+  }
+  // biome-ignore lint/suspicious/noExplicitAny: private drain for the rebuild
+  (stack as unknown as { items: StackItem[] }).items.length = 0;
+  for (const it of retained) stack.push(it);
+};
+
 export function* resolveStackItem(game: Game, item: StackItem): Generator<EngineYield, void, unknown> {
   // CR 603.4 — intervening-if re-check for triggered abilities. Without
   // the stored event we can't evaluate; in that case we let the resolver
@@ -32,7 +61,10 @@ export function* resolveStackItem(game: Game, item: StackItem): Generator<Engine
       const trigger: TriggeredAbility | undefined = game.triggerRegistry.getTrigger(triggerId as EntityId);
       if (trigger && !interveningIfStillTrue(trigger, storedEvent as GameEvent, game)) {
         // Fizzle — no resolver, no zone-change. Still emits resolved event
-        // so the stack-drain driver can pop the slot.
+        // so the stack-drain driver can pop the slot. SP2 Task 78 (fix 5):
+        // pop the stack here too so the engine doesn't see a zombie fizzled
+        // slot that every subsequent resolve attempt would misinterpret.
+        popStackItemById(game, item.id);
         yield game.emitEvent(
           mkEvent("StackItemResolved", game.turn, game.phase, {
             stackItemId: item.id,
@@ -63,6 +95,13 @@ export function* resolveStackItem(game: Game, item: StackItem): Generator<Engine
     }
   }
 
+  // SP2 Task 78 (fix 5): pop the resolved item off the stack BEFORE the
+  // StackItemResolved event emits so triggers observing StackItemResolved
+  // (and any downstream zone-change moveTo for the source card below) see
+  // the post-resolution stack state. Previously resolveStackItem left the
+  // resolved item on the stack, letting a subsequent resolve re-target it
+  // and corrupt priority orchestration.
+  popStackItemById(game, item.id);
   yield game.emitEvent(
     mkEvent("StackItemResolved", game.turn, game.phase, {
       stackItemId: item.id,

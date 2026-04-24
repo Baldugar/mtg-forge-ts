@@ -392,6 +392,78 @@ describe("resolveStackItem (SP2 Task 67)", () => {
     expect(resolverRan).toBe(true);
   });
 
+  // SP2 Task 78 (fix 5) — resolveStackItem pops the stack after resolution
+  // so the engine doesn't see a zombie resolved slot.
+  it("pops the stack after a non-fizzled resolution", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const source = mkEntityId(50);
+    addCard(game, seat, ZoneType.Battlefield, source);
+    const item = mkStackItem({
+      id: mkEntityId(800),
+      kind: "activatedAbility",
+      sourceCardId: source,
+    });
+    game.sharedZones.stack.push(item);
+    expect(game.sharedZones.stack.size).toBe(1);
+    drive(resolveStackItem(game, item));
+    expect(game.sharedZones.stack.size).toBe(0);
+  });
+
+  it("pops the stack after a fizzled triggered resolution (intervening-if false)", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const source = mkEntityId(51);
+    addCard(game, seat, ZoneType.Battlefield, source);
+    const trigger: TriggeredAbility = {
+      id: mkEntityId(900),
+      kind: "triggered",
+      sourceCardId: source,
+      activeInZones: new Set([ZoneType.Battlefield]),
+      timestamp: 1,
+      controllerSeatAtReg: seat,
+      matches: () => true,
+      interveningIf: () => false,
+      isDelayed: false,
+    };
+    game.triggerRegistry.register(trigger);
+    const firingEvent: GameEvent = mkEvent("LifeChanged", 1, PhaseStep.Main1, {
+      playerSeat: seat,
+      oldLife: 20,
+      newLife: 18,
+      delta: -2,
+      cause: "effect",
+    });
+    const item = mkStackItem({
+      id: mkEntityId(801),
+      kind: "triggeredAbility",
+      sourceCardId: source,
+      triggerId: trigger.id,
+      event: firingEvent,
+    });
+    game.sharedZones.stack.push(item);
+    expect(game.sharedZones.stack.size).toBe(1);
+    drive(resolveStackItem(game, item));
+    expect(game.sharedZones.stack.size).toBe(0);
+  });
+
+  it("pops the stack after a spell resolution (source card also moves)", () => {
+    const game = mkGame();
+    const seat = mkPlayerSeat(0);
+    const source = mkEntityId(52);
+    addCard(game, seat, ZoneType.Hand, source);
+    const item = mkStackItem({
+      id: mkEntityId(802),
+      kind: "spell",
+      sourceCardId: source,
+    });
+    game.sharedZones.stack.push(item);
+    expect(game.sharedZones.stack.size).toBe(1);
+    drive(resolveStackItem(game, item));
+    expect(game.sharedZones.stack.size).toBe(0);
+    expect(game.cards.get(source)?.zone).toBe(ZoneType.Graveyard);
+  });
+
   it("item with no resolver at all still emits StackItemResolved and handles zone change", () => {
     const game = mkGame();
     const seat = mkPlayerSeat(0);

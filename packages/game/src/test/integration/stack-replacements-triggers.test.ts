@@ -369,9 +369,10 @@ describe("SP2 Milestone X — stack + replacements + triggers end-to-end (Task 7
     // ---------- Resolve the draw trigger ---------------------------------
     const handBefore = game.getPlayer(seatA).zones.get(ZoneType.Hand)?.size ?? 0;
     const drawResolveYields = drain(resolveStackItem(game, topWithResolver));
-    // Pop the triggered-ability slot (resolveStackItem does not auto-pop).
-    const popped = game.sharedZones.stack.pop();
-    expect(popped?.id).toBe(topWithResolver.id);
+    // SP2 Task 78 (fix 5) — resolveStackItem now pops the slot itself, so
+    // the stack should already be empty of the triggered-ability item.
+    expect(game.sharedZones.stack.size).toBe(1); // only bolt1 remains
+    expect(game.sharedZones.stack.top()?.id).not.toBe(topWithResolver.id);
 
     // Trigger resolution drew one card for seat A.
     const drew = eventsOfKind(drawResolveYields, "CardDrawn");
@@ -386,11 +387,9 @@ describe("SP2 Milestone X — stack + replacements + triggers end-to-end (Task 7
     const seatBLifeBefore = game.getPlayer(seatB).life;
 
     const bolt1ResolveYields = drain(resolveStackItem(game, bolt1Stack));
-    // Pop + source-movement is handled inside resolveStackItem for spells —
-    // the spell card moves to graveyard, but the StackItem itself must
-    // still be popped by the caller (the resolver does not re-pop the
-    // stack top).
-    game.sharedZones.stack.pop();
+    // SP2 Task 78 (fix 5) — resolveStackItem auto-pops; the stack should
+    // be empty after resolving the last item.
+    expect(game.sharedZones.stack.size).toBe(0);
 
     // Assertions on replacement + prevention event sequence.
     expect(eventsOfKind(bolt1ResolveYields, "ReplacementApplied")).toHaveLength(1);
@@ -447,15 +446,13 @@ describe("SP2 Milestone X — stack + replacements + triggers end-to-end (Task 7
 
     const handBefore2 = game.getPlayer(seatA).zones.get(ZoneType.Hand)?.size ?? 0;
     drain(resolveStackItem(game, top2WithResolver));
-    game.sharedZones.stack.pop();
+    // SP2 Task 78 (fix 5) — resolveStackItem auto-pops; no manual pop needed.
     expect(game.getPlayer(seatA).zones.get(ZoneType.Hand)?.size).toBe(handBefore2 + 1);
 
     // Bolt2 resolves with no prevention (replacement was consumed). The
-    // DamageDealt event fires; Player.life is not inline-updated (see SP2
-    // note in full-combat-scenario.test.ts — life change on player damage
-    // is SP3 wiring).
+    // DamageDealt event fires AND (SP2 Task 78 fix 1) Player.life is
+    // inline-deducted so a companion LifeChanged is part of the stream.
     const bolt2ResolveYields = drain(resolveStackItem(game, bolt2Stack));
-    game.sharedZones.stack.pop();
     const damageDealt = eventsOfKind(bolt2ResolveYields, "DamageDealt");
     expect(damageDealt).toHaveLength(1);
     if (damageDealt[0]?.kind !== "event") throw new Error("DamageDealt event expected");
