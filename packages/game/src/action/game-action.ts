@@ -44,6 +44,7 @@ import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
 import type { Game } from "../game.js";
 import { type LoopShortcutResult, requestShortcut as loopRequestShortcut } from "../loop/loop-shortcut.js";
 import { flip as flipOp } from "../multiface/flip.js";
+import { meld as meldOp } from "../multiface/meld.js";
 import { transform as transformOp } from "../multiface/transform.js";
 import * as phasing from "../phasing/phasing-ops.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
@@ -433,6 +434,16 @@ export class GameAction {
    */
   *transform(cardId: EntityId): Generator<EngineYield, void, unknown> {
     yield* transformOp(this.game, cardId);
+  }
+
+  /**
+   * CR 701.37 — meld two cards sharing a controller into a single
+   * "melded" permanent. Exiles both originals, mints a new Card on
+   * the battlefield with `face: "melded"`, emits `Melded`. Returns the
+   * minted permanent's id so callers can track it.
+   */
+  *meld(cardIdA: EntityId, cardIdB: EntityId): Generator<EngineYield, EntityId, unknown> {
+    return yield* meldOp(this.game, cardIdA, cardIdB);
   }
 
   // === Destroy / exile / sacrifice — event + zone change via moveTo ===

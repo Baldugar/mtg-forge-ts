@@ -36,6 +36,7 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "Transformed",
   "FaceDownStateChanged",
   "CardTurnedFaceUp",
+  "Melded",
   // Monarch/Initiative/Ring (5)
   "BecameMonarch",
   "LostMonarch",
@@ -149,6 +150,7 @@ const ALL_KINDS_MAP = {
   Transformed: true,
   FaceDownStateChanged: true,
   CardTurnedFaceUp: true,
+  Melded: true,
   BecameMonarch: true,
   LostMonarch: true,
   BecameInitiative: true,
@@ -220,9 +222,9 @@ const ALL_KINDS_MAP = {
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 93 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp)", () => {
-    expect(EXPECTED_KINDS.length).toBe(93);
-    expect(new Set(EXPECTED_KINDS).size).toBe(93);
+  it("has 94 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp + Task 60 Melded)", () => {
+    expect(EXPECTED_KINDS.length).toBe(94);
+    expect(new Set(EXPECTED_KINDS).size).toBe(94);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -267,6 +269,7 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     PhasedIn: { cardId: id(1), direct: true },
     Flipped: { cardId: id(1) },
     Transformed: { cardId: id(1), toFace: "back" },
+    Melded: { meldedId: id(1), sourceIds: [id(2), id(3)] },
     FaceDownStateChanged: { cardId: id(1), faceDown: true },
     CardTurnedFaceUp: { cardId: id(1), previousKind: "morph" },
     BecameMonarch: { playerSeat: seat0 },

@@ -288,6 +288,20 @@ export type GameEvent =
         readonly previousKind: "morph" | "manifest" | "foretell" | "disguise" | "cloak";
       };
     }
+  | {
+      // SP2 Task 60 (CR 701.37) — meld primitive emits this when two named
+      // cards combine into one "melded" permanent. `meldedId` is the minted
+      // id of the new permanent; `sourceIds` carries the two originals so
+      // re-materialization / LKI lookups can reach them.
+      readonly kind: "Melded";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly meldedId: EntityId;
+        readonly sourceIds: readonly EntityId[];
+      };
+    }
   // === Monarch/Initiative/Ring (5) ===
   | {
       readonly kind: "BecameMonarch";
