@@ -38,6 +38,7 @@ import {
 import { damageProtected } from "../combat/keywords/protection.js";
 import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
 import type { Game } from "../game.js";
+import { type LoopShortcutResult, requestShortcut as loopRequestShortcut } from "../loop/loop-shortcut.js";
 import * as phasing from "../phasing/phasing-ops.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
 import type {
@@ -970,6 +971,17 @@ export class GameAction {
   // biome-ignore lint/correctness/useYield: stub throws before any yield
   *createEmblem(_params: unknown): Generator<EngineYield, void, unknown> {
     throw new Error("GameAction.createEmblem: SP2 emblem factory required");
+  }
+
+  // === Loop-detection shortcut (SP2 Task 66) ===
+
+  /**
+   * CR 725 — consumer-requested loop shortcut. Validates the descriptor,
+   * emits ShortcutApplied, and (in SP2) trusts the consumer's finalState.
+   * SP5 layers the apply-path on top.
+   */
+  *requestShortcut(description: string, result: LoopShortcutResult): Generator<EngineYield, void, unknown> {
+    yield* loopRequestShortcut(this.game, description, result);
   }
 
   // === Helpers ===

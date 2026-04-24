@@ -19,6 +19,7 @@ export * from "./game-meta.js";
 export * from "./game-rules.js";
 export * from "./game.js";
 export * from "./layers/index.js";
+export * from "./loop/index.js";
 export * from "./mana/index.js";
 export * from "./match/index.js";
 export * from "./phasing/index.js";
