@@ -24,7 +24,7 @@ import { Hand } from "../zone/zones/hand.js";
 import { Library } from "../zone/zones/library.js";
 import type { EnumerationContext } from "./enumeration.js";
 import type { TargetChoices, TargetRestriction } from "./restriction.js";
-import { cardTarget } from "./restriction.js";
+import { cardTarget, playerTarget, refEquals } from "./restriction.js";
 
 const alice: LobbyPlayer = { id: "P0", name: "P0", controllerKind: "human" };
 const bob: LobbyPlayer = { id: "P1", name: "P1", controllerKind: "human" };
@@ -611,5 +611,83 @@ describe("TargetSystem.validateAtResolve — mutations between cast and resolve"
     const { legal, illegal } = g.targetSystem.validateAtResolve(choices, mkCtx(), r);
     expect(legal).toEqual([cardTarget(b)]);
     expect(illegal).toEqual([cardTarget(a)]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// redirect — Task 15
+// Replacement effects ("damage that would be dealt to you is dealt to X
+// instead") rewrite the targets-list on an in-flight stack item. redirect
+// preserves `divisions` verbatim so per-target damage amounts follow the
+// slot, not the ref — matching Forge's TargetChoices.replaceTarget
+// behavior in forge.game.spellability.TargetChoices.
+// ---------------------------------------------------------------------------
+
+describe("TargetSystem.redirect", () => {
+  it("simple card -> card redirect replaces the single target", () => {
+    const g = mkGame();
+    const a = mkEntityId(300);
+    const b = mkEntityId(301);
+    const choices: TargetChoices = { targets: [cardTarget(a)] };
+    const out = g.targetSystem.redirect(choices, cardTarget(a), cardTarget(b));
+    expect(out.targets).toEqual([cardTarget(b)]);
+  });
+
+  it("player -> card redirect (e.g., damage-to-you replaced with damage-to-X)", () => {
+    const g = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const x = mkEntityId(310);
+    const choices: TargetChoices = { targets: [playerTarget(seat0)] };
+    const out = g.targetSystem.redirect(choices, playerTarget(seat0), cardTarget(x));
+    expect(out.targets).toEqual([cardTarget(x)]);
+  });
+
+  it("multi-target choice: only the matching target is replaced, order preserved", () => {
+    const g = mkGame();
+    const a = mkEntityId(320);
+    const b = mkEntityId(321);
+    const c = mkEntityId(322);
+    const d = mkEntityId(323);
+    const choices: TargetChoices = { targets: [cardTarget(a), cardTarget(b), cardTarget(c)] };
+    const out = g.targetSystem.redirect(choices, cardTarget(b), cardTarget(d));
+    expect(out.targets).toEqual([cardTarget(a), cardTarget(d), cardTarget(c)]);
+  });
+
+  it("divisions are preserved across redirect (damage assignment follows the slot)", () => {
+    const g = mkGame();
+    const a = mkEntityId(330);
+    const b = mkEntityId(331);
+    const c = mkEntityId(332);
+    const choices: TargetChoices = {
+      targets: [cardTarget(a), cardTarget(b)],
+      divisions: { 0: 2, 1: 1 },
+    };
+    const out = g.targetSystem.redirect(choices, cardTarget(a), cardTarget(c));
+    expect(out.targets).toEqual([cardTarget(c), cardTarget(b)]);
+    expect(out.divisions).toEqual({ 0: 2, 1: 1 });
+  });
+
+  it("redirecting a target not present is a structural no-op", () => {
+    const g = mkGame();
+    const a = mkEntityId(340);
+    const b = mkEntityId(341);
+    const c = mkEntityId(342);
+    const choices: TargetChoices = { targets: [cardTarget(a)] };
+    const out = g.targetSystem.redirect(choices, cardTarget(b), cardTarget(c));
+    expect(out.targets).toHaveLength(1);
+    const first = out.targets[0];
+    if (first === undefined) throw new Error("expected at least one target");
+    expect(refEquals(first, cardTarget(a))).toBe(true);
+  });
+
+  it("idempotent: redirect X -> X yields equivalent targets", () => {
+    const g = mkGame();
+    const a = mkEntityId(350);
+    const choices: TargetChoices = { targets: [cardTarget(a)] };
+    const out = g.targetSystem.redirect(choices, cardTarget(a), cardTarget(a));
+    expect(out.targets).toHaveLength(1);
+    const first = out.targets[0];
+    if (first === undefined) throw new Error("expected at least one target");
+    expect(refEquals(first, cardTarget(a))).toBe(true);
   });
 });
