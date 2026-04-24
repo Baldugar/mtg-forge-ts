@@ -20,6 +20,7 @@ import type { GameMeta } from "./game-meta.js";
 import type { GameRules } from "./game-rules.js";
 import { LayerEngine } from "./layers/layer-engine.js";
 import { Player } from "./player.js";
+import { ReplacementRegistry } from "./replacements/replacement-registry.js";
 import { Stack } from "./stack/stack.js";
 import { TargetSystem } from "./target/target-system.js";
 import type { TerminalState } from "./terminal-state.js";
@@ -62,6 +63,7 @@ export class Game {
   continuousEffects: ContinuousEffect[] = [];
   readonly layerEngine: LayerEngine;
   readonly targetSystem: TargetSystem;
+  readonly replacementRegistry: ReplacementRegistry;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -91,6 +93,7 @@ export class Game {
     // WHY: targetSystem must be constructed AFTER layerEngine — enumerate
     // consults computeCharacteristics for type-gated restrictions.
     this.targetSystem = new TargetSystem(this);
+    this.replacementRegistry = new ReplacementRegistry();
     this.flags = createDefaultFlags();
   }
 
