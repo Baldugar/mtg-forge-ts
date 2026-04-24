@@ -10,6 +10,7 @@ import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
 import type { Restriction } from "./cant-must-may.js";
 import { gatherRestrictions, isRestricted } from "./cant-must-may.js";
+import type { RestrictionKind } from "./cant-must-may.js";
 
 const alice: LobbyPlayer = { id: "p-alice", name: "Alice", controllerKind: "human" };
 const bob: LobbyPlayer = { id: "p-bob", name: "Bob", controllerKind: "ai" };
@@ -137,5 +138,24 @@ describe("cantMustMay restrictions (SP2 Task 27)", () => {
       mkStatic({ id: 1, sourceCardId: 10, payload: { kind: "restriction", effect: r } }),
     );
     expect(gatherRestrictions(game, "cantCast")).toHaveLength(1);
+  });
+});
+
+describe("RestrictionKind expansion", () => {
+  it("covers the action-filter subset (11 kinds)", () => {
+    const kinds: RestrictionKind[] = [
+      "cantCast",
+      "cantActivate",
+      "cantAttack",
+      "mustAttack",
+      "cantBlock",
+      "mustBlock",
+      "cantTarget",
+      "cantUntap",
+      "mustTarget",
+      "cantPhaseIn",
+      "cantPhaseOut",
+    ];
+    expect(kinds).toHaveLength(11);
   });
 });

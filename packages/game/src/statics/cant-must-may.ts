@@ -12,6 +12,12 @@
 // cost-mod contributor:
 //   - the bare Restriction object, or
 //   - a tagged envelope `{ kind: "restriction", effect: Restriction }`.
+//
+// Architectural note: RestrictionKind is the action-filter subset
+// consulted by the decision validator. Forge's full Cant* taxonomy
+// lives in StaticAbilityMode (packages/core); mutation-interception
+// kinds (CantDraw, CantSacrifice, CantBeCopied, etc.) are
+// replacement-generating statics, NOT action filters.
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 
@@ -23,7 +29,10 @@ export type RestrictionKind =
   | "cantBlock"
   | "mustBlock"
   | "cantTarget"
-  | "cantUntap";
+  | "cantUntap"
+  | "mustTarget"
+  | "cantPhaseIn"
+  | "cantPhaseOut";
 
 export interface Restriction {
   readonly sourceStaticId: EntityId;
