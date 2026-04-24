@@ -101,6 +101,12 @@ export interface SerializedCard {
   // carry whatever the engine stored so restore is lossless.
   readonly copiedFrom: unknown;
   readonly faceDown: unknown;
+  // SP2 Milestone W Task 74 — remembered / imprinted EntityId lists.
+  // Optional on the serialized record so v5 snapshots written before this
+  // task restore cleanly with empty lists. v6 (Task 75) bumps schemaVersion
+  // and makes these required.
+  readonly remembered?: readonly EntityId[];
+  readonly imprinted?: readonly EntityId[];
 }
 
 /**
@@ -155,6 +161,13 @@ export interface SerializedGameFlags {
   readonly seatEliminated: readonly (readonly [PlayerSeat, boolean])[];
   readonly stickers: readonly unknown[];
   readonly attractions: readonly (readonly [PlayerSeat, unknown])[];
+  // SP2 Milestone W Task 74 — per-turn tracking. v5 schema was already in
+  // flight when these landed; SP2 emits them as optional extensions so
+  // older v5 snapshots without the keys restore cleanly (both reset each
+  // turn anyway, so empty is the natural starting value).
+  readonly countersAddedThisTurn?: readonly (readonly [EntityId, number])[];
+  readonly leftBattlefieldThisTurn?: readonly EntityId[];
+  readonly topLibsCast?: readonly EntityId[];
 }
 
 /**
@@ -256,6 +269,9 @@ const flagsToJSON = (f: GameFlags): SerializedGameFlags => ({
   seatEliminated: [...f.seatEliminated.entries()].map(([s, b]) => [s, b] as const),
   stickers: [...f.stickers],
   attractions: [...f.attractions.entries()].map(([s, a]) => [s, a] as const),
+  countersAddedThisTurn: [...f.countersAddedThisTurn.entries()].map(([e, n]) => [e, n] as const),
+  leftBattlefieldThisTurn: [...f.leftBattlefieldThisTurn],
+  topLibsCast: [...f.topLibsCast],
 });
 
 const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
@@ -287,6 +303,18 @@ const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
   for (const [seat, b] of s.seatEliminated) f.seatEliminated.set(seat, b);
   f.stickers = [...s.stickers];
   for (const [seat, a] of s.attractions) f.attractions.set(seat, a);
+  // Task 74 — optional on v5 for backward compatibility; v6 makes them
+  // required. Missing field => empty map/set (engine resets at turn end
+  // anyway, so empty is a valid starting state).
+  if (s.countersAddedThisTurn !== undefined) {
+    for (const [id, n] of s.countersAddedThisTurn) f.countersAddedThisTurn.set(id, n);
+  }
+  if (s.leftBattlefieldThisTurn !== undefined) {
+    for (const id of s.leftBattlefieldThisTurn) f.leftBattlefieldThisTurn.add(id);
+  }
+  if (s.topLibsCast !== undefined) {
+    for (const id of s.topLibsCast) f.topLibsCast.add(id);
+  }
   return f;
 };
 
@@ -306,6 +334,8 @@ const cardToSnapshot = (c: Card): SerializedCard => ({
   attachments: [...c.attachments],
   copiedFrom: c.copiedFrom,
   faceDown: c.faceDown,
+  remembered: [...c.remembered],
+  imprinted: [...c.imprinted],
 });
 
 // === Zone snapshot helpers =========================================
@@ -566,6 +596,10 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     // (which wrote `null`) can round-trip. Coerce null → FACE_UP; trust
     // anything else as a well-formed FaceDownState.
     card.faceDown = (sc.faceDown ?? { kind: "none" }) as FaceDownState;
+    // Task 74 — remembered + imprinted are optional in v5 (future-proof
+    // slot introduced mid-schema). Missing => empty list.
+    if (sc.remembered !== undefined) card.remembered = [...sc.remembered];
+    if (sc.imprinted !== undefined) card.imprinted = [...sc.imprinted];
     game.cards.set(sc.id, card);
   }
 

@@ -316,6 +316,13 @@ export class GameAction {
         // re-derives from the new zone. Inside onApplied so prevented moves
         // don't churn the cache.
         game.layerEngine.bumpEpoch("moveTo");
+        // Task 74 — per-turn tracking. Card left the battlefield this turn
+        // when `fromZone === Battlefield` and the destination is anything
+        // else (including the battlefield → null controller edge case in
+        // token-ceases-to-exist SBA). Reset at turn end by PhaseHandler.
+        if (fromZone === Zt.Battlefield && final.toZone !== Zt.Battlefield) {
+          game.flags.leftBattlefieldThisTurn.add(final.cardId);
+        }
       },
       (final) =>
         mkEvent("CardChangedZone", game.turn, game.phase, {
@@ -600,6 +607,10 @@ export class GameAction {
         // effects (e.g. "as long as CARDNAME has a +1/+1 counter on it").
         // Epoch bump lives inside onApplied so preventions don't churn.
         game.layerEngine.bumpEpoch("counter");
+        // Task 74 — per-turn tracking. Only count against the final amount
+        // (after replacement rewrites), mirroring what actually landed.
+        const prior = game.flags.countersAddedThisTurn.get(final.cardId) ?? 0;
+        game.flags.countersAddedThisTurn.set(final.cardId, prior + final.amount);
       },
       (final) =>
         mkEvent("CounterAdded", game.turn, game.phase, {

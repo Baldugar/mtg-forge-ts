@@ -30,6 +30,21 @@ export interface GameFlags {
   // keeps the shape stable.
   stickers: unknown[];
   attractions: Map<PlayerSeat, unknown>;
+  // SP2 Milestone W Task 74 — per-turn tracking backing the "this turn"
+  // predicates used by triggers and static effects. Reset to defaults at
+  // the end of each turn by PhaseHandler.
+  // `countersAddedThisTurn` maps cardId → total counters added across the
+  // turn (any kind; triggers like Proliferate-synergy "whenever a counter
+  // is put on X" care about the count, not the kind).
+  // `leftBattlefieldThisTurn` is the set of cards whose last zone change
+  // this turn moved them OFF the battlefield; backs "dies this turn" and
+  // "this creature left the battlefield" checks.
+  // `topLibsCast` is the set of cards whose most recent cast originated
+  // from the TOP of the library (cascade, impulse-from-library, cascading
+  // miracles). Cleared at turn end; Bolas's Citadel-style triggers read it.
+  countersAddedThisTurn: Map<EntityId, number>;
+  leftBattlefieldThisTurn: Set<EntityId>;
+  topLibsCast: Set<EntityId>;
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -54,4 +69,7 @@ export const createDefaultFlags = (): GameFlags => ({
   seatEliminated: new Map(),
   stickers: [],
   attractions: new Map(),
+  countersAddedThisTurn: new Map(),
+  leftBattlefieldThisTurn: new Set(),
+  topLibsCast: new Set(),
 });

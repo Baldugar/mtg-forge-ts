@@ -84,6 +84,13 @@ export class PhaseHandler {
     // finalize on GameEnded would observe a post-terminal turn boundary.
     if (game.isTerminal()) return;
     yield game.emitEvent(mkEvent("TurnEnded", game.turn, game.phase, { activeSeat: turn.activePlayer }));
+    // Task 74 — reset per-turn tracking maps/sets AFTER TurnEnded emits
+    // so triggers observing TurnEnded still see the turn's data. SP3's
+    // cleanup-step implementation will move these resets into the proper
+    // CR 514.1 cleanup-step position.
+    game.flags.countersAddedThisTurn.clear();
+    game.flags.leftBattlefieldThisTurn.clear();
+    game.flags.topLibsCast.clear();
   }
 
   *runStep(step: PhaseStep): Generator<EngineYield, void, DecisionResponse> {

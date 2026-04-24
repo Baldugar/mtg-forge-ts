@@ -66,6 +66,14 @@ export class Card {
   // definition + Layer 6 ability additions. Kept optional (undefined) so the
   // common case allocates no Set; readers must tolerate undefined.
   keywords?: Set<string> = undefined;
+  // SP2 Milestone W Task 74 — "remembered" + "imprinted" card-local slots.
+  // Forge uses these for cards that stash ability-scoped references: e.g.
+  // Panharmonicon-style ETB mirrors (remembered), Duplicant / Isochron
+  // Scepter imprint slots. The stored values are EntityIds of live Card
+  // instances; effects resolving later look them up via Game.cards.
+  // snapshot/restore round-trip these verbatim.
+  remembered: EntityId[] = [];
+  imprinted: EntityId[] = [];
 
   constructor(
     readonly id: EntityId,
@@ -87,6 +95,8 @@ export class Card {
     counters: Record<string, number>;
     attachedTo: EntityId | null;
     attachments: EntityId[];
+    remembered: EntityId[];
+    imprinted: EntityId[];
   } {
     return {
       id: this.id,
@@ -100,6 +110,8 @@ export class Card {
       counters: Object.fromEntries(this.counters),
       attachedTo: this.attachedTo,
       attachments: [...this.attachments],
+      remembered: [...this.remembered],
+      imprinted: [...this.imprinted],
     };
   }
 }
