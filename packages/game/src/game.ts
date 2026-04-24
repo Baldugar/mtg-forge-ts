@@ -36,6 +36,8 @@ import type { GameRules } from "./game-rules.js";
 import { LayerEngine } from "./layers/layer-engine.js";
 import { Player } from "./player.js";
 import { ReplacementRegistry } from "./replacements/replacement-registry.js";
+import { RingGrantLedger } from "./ring/level-grants.js";
+import type { RingState } from "./ring/ring-state.js";
 import { SbaEngine } from "./sba/sba-engine.js";
 import { Stack } from "./stack/stack.js";
 import { StaticEffectRegistry } from "./statics/static-effect-registry.js";
@@ -150,6 +152,19 @@ export class Game {
    * establishes the state slot and a `getTeamLifeFor(seat)` helper.
    */
   teamLife: Map<number, number> | null = null;
+  /**
+   * SP2 Milestone R Task 62 — CR 701.52 per-player Ring state. Keyed by
+   * PlayerSeat and kept sparse: players who have never been tempted have
+   * no entry (semantically equal to `{ bearer: null, level: 0 }`).
+   */
+  readonly ringState = new Map<PlayerSeat, RingState>();
+  /**
+   * SP2 Milestone R Task 63 — Ring level ability-grant ledger. Owns the
+   * Layer 6 contributions for each seat's bearer; re-applied on every
+   * tempt() so bearer swaps and level-ups stay consistent with
+   * computeCharacteristics.
+   */
+  readonly ringGrantLedger: RingGrantLedger;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -219,6 +234,10 @@ export class Game {
     this.controlChangeLedger = new ControlChangeLedger();
     this.delayedTriggerQueue = new DelayedTriggerQueue();
     this.linkedAbilities = new LinkedAbilityTable();
+    // Task 62 — Ring-grant ledger is stateless over other registries; a
+    // fresh per-Game instance is all we need. tempt() populates it on
+    // first temptation.
+    this.ringGrantLedger = new RingGrantLedger();
     this.flags = createDefaultFlags();
     // Task 51 — 2HG team-life pool. We populate per-team starting life only
     // when the variant is applied. Each distinct teamId seen in players

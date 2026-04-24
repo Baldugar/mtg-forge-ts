@@ -396,6 +396,20 @@ export type DecisionRequest =
       readonly kind: "activateManaAbilities";
       readonly playerSeat: PlayerSeat;
       readonly forStackItem: EntityId;
+    }
+  | {
+      // SP2 Task 62 (CR 701.52 / The Ring tempts you) — each temptation the
+      // tempted player chooses a creature they control to become (or remain)
+      // their Ring-bearer. `candidateIds` enumerates every creature on the
+      // battlefield the player controls; `currentBearer` is the prior
+      // bearer (or null if none). A response with `bearerId: null` means
+      // "keep the current bearer if still valid"; a concrete id MUST be in
+      // `candidateIds`. The engine validates at response time and throws
+      // IllegalDecisionError on a bad pick.
+      readonly kind: "chooseRingBearer";
+      readonly playerSeat: PlayerSeat;
+      readonly candidateIds: readonly EntityId[];
+      readonly currentBearer: EntityId | null;
     };
 
 /**
@@ -528,7 +542,8 @@ export type DecisionResponse =
       readonly targets: readonly unknown[];
       readonly divisions?: Readonly<Record<number, number>>;
     }
-  | { readonly kind: "activateManaAbilities"; readonly done: true };
+  | { readonly kind: "activateManaAbilities"; readonly done: true }
+  | { readonly kind: "chooseRingBearer"; readonly bearerId: EntityId | null };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];
