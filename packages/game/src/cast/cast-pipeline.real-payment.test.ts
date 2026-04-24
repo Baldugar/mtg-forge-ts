@@ -127,7 +127,6 @@ const drainCast = (
  * verify that abort() undoes a previously-successful stepPayCosts.
  */
 class AbortAfterPayPipeline extends CastPipeline {
-  // biome-ignore lint/correctness/useYield: override always throws, no yields needed
   protected override *stepPayCosts(
     ctx: CastContext,
   ): Generator<import("../action/engine-yield.js").EngineYield, void, unknown> {
