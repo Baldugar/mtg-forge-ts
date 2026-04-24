@@ -6,13 +6,22 @@ import { parseCard } from "@mtg-forge-ts/cards";
 // without spellAbilities (SP2 synthetic fixtures) continue to get
 // resolver: null so existing tests are unaffected.
 import type { EntityId, LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  Color,
+  DEFAULT_PAPER_CARD_FLAGS,
+  ManaProduced,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { SpellAbility } from "../ability/spell-ability.js";
 import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
 import { Game } from "../game.js";
+import { ManaPool } from "../mana/mana-pool.js";
 import { resolveStackItem } from "../resolve/effect-resolve.js";
 import type { StackItem } from "../stack/stack-item.js";
 import { Battlefield } from "../zone/zones/battlefield.js";
@@ -23,6 +32,8 @@ import type { CastProposal } from "./cast-pipeline.js";
 
 // Self-register effects: DealDamageEffect → effectRegistry
 import "../ability/effects/index.js";
+// Register cost parts into costPartRegistry (needed for real mana payment)
+import "../cost/parts/index.js";
 // SVar selectors (needed for evaluateParamNumber inside DealDamageEffect)
 import "../svar/selectors/number.js";
 
@@ -81,7 +92,9 @@ const addCardToHand = (game: Game, paper: PaperCard, seat: PlayerSeat, id: Entit
 
 /**
  * Drain a generator while auto-skipping SpellCast events and feeding
- * decision responses in order.
+ * decision responses in order. Auto-responds to activateManaAbilities with
+ * done:true so tests that seed a real mana pool don't need to provide a
+ * manual response for the mana-window decision.
  */
 const drainWithResponses = <R>(
   gen: Generator<{ kind: string }, R, unknown>,
@@ -90,9 +103,10 @@ const drainWithResponses = <R>(
   let idx = 0;
   let step = gen.next();
   while (!step.done) {
-    const y = step.value as { kind: string; event?: { kind?: string } };
-    const isSpellCast = y.kind === "event" && y.event?.kind === "SpellCast";
-    if (y.kind === "decision" && !isSpellCast && idx < responses.length) {
+    const y = step.value as { kind: string; event?: { kind?: string }; request?: { kind?: string } };
+    if (y.kind === "decision" && y.request?.kind === "activateManaAbilities") {
+      step = gen.next({ kind: "activateManaAbilities", done: true });
+    } else if (y.kind === "decision" && idx < responses.length) {
       step = gen.next(responses[idx]);
       idx++;
     } else {
@@ -164,6 +178,11 @@ describe("Task 59 — CastPipeline.finalizeStackItem resolver wiring", () => {
     const card = addCardToHand(game, boltPaper, seat0, cardId);
     card.activateAbilitiesFromDefinition();
 
+    // Seed 1 R so the real stepPayCosts can pay the ManaCost:R.
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colored(Color.Red));
+    game.getPlayer(seat0).manaPool = pool;
+
     const proposal: CastProposal = {
       castingPlayer: seat0,
       sourceCardId: cardId,
@@ -197,6 +216,11 @@ describe("Task 59 — CastPipeline.finalizeStackItem resolver wiring", () => {
     };
     const card = addCardToHand(game, boltPaper, seat0, cardId);
     card.activateAbilitiesFromDefinition();
+
+    // Seed 1 R so the real stepPayCosts can pay the ManaCost:R.
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colored(Color.Red));
+    game.getPlayer(seat0).manaPool = pool;
 
     const proposal: CastProposal = {
       castingPlayer: seat0,
