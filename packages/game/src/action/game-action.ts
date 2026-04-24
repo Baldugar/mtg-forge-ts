@@ -254,7 +254,7 @@ export class GameAction {
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const { fromZone, owner } = this.locate(cardId);
-    const toSeat = opts?.toSeat ?? this.defaultDestinationSeat(toZone, owner);
+    const toSeat = opts?.toSeat ?? this.defaultDestinationSeat(toZone, owner, cardId);
     const intent: MoveToIntent = {
       kind: "moveTo",
       cardId,
@@ -873,12 +873,32 @@ export class GameAction {
     return zone;
   }
 
-  private defaultDestinationSeat(toZone: ZoneType, fromOwner: PlayerSeat | null): PlayerSeat | null {
-    // WHY: shared zones (Exile, Ante, Stack) are unowned. Per-player zone
-    // destinations default to the source card's current owner, matching the
-    // most common "return to hand", "put into graveyard" effects. Effects
-    // that move a card to another player's zone pass an explicit toSeat.
+  private defaultDestinationSeat(
+    toZone: ZoneType,
+    fromOwner: PlayerSeat | null,
+    cardId?: EntityId,
+  ): PlayerSeat | null {
+    // CR 400.7 — when a card changes zones to a zone owned by a specific
+    // player (Hand, Graveyard, Library, Command, Sideboard, Planar...),
+    // that zone is the OWNER's, not the controller's. Destroying a
+    // creature an opponent stole from you puts the card in YOUR
+    // graveyard, not theirs. Battlefield is the exception — there, the
+    // entering controller (which may be opts.toSeat from a cast) is
+    // authoritative.
+    //
+    // WHY shared zones (Exile, Ante, Stack) return null: they have no
+    // per-player partitioning; the Zone instance is game-scoped.
     if (toZone === Zt.Exile || toZone === Zt.Ante || toZone === Zt.Stack) return null;
+    if (cardId !== undefined) {
+      const card = this.game.cards.get(cardId);
+      if (card) {
+        if (toZone === Zt.Battlefield) return card.controllerSeat;
+        return card.ownerSeat;
+      }
+    }
+    // Fallback: if the card record isn't resolvable (shouldn't happen on
+    // an in-flight moveTo), keep the old behavior of routing to the
+    // source-zone owner. Avoids crashes on exotic SBA synthesis paths.
     return fromOwner;
   }
 }

@@ -621,18 +621,20 @@ describe("GameAction throw-path coverage (Reviewer C §2)", () => {
     expect(yields[0].event.payload.toSeat).toBeUndefined();
   });
 
-  it("moveTo with an unowned source to a per-player zone throws (zoneFor requires owner)", () => {
-    // WHY: moveTo builds toSeat via defaultDestinationSeat(toZone, fromOwner).
-    // If the source is in a shared zone (fromOwner=null) and the destination
-    // is a per-player zone (Graveyard, Hand, …), defaultDestinationSeat
-    // returns null — zoneFor then throws "Zone X requires an owner".
+  it("moveTo from a shared zone to a per-player zone routes to the card's ownerSeat (CR 400.7)", () => {
+    // SP2 Task 44 — defaultDestinationSeat consults the card record for
+    // the owner even when the source zone is shared (fromOwner=null).
+    // Prior to Task 44 this path threw "Zone X requires an owner"; with
+    // the CR 400.7 fix the card record's ownerSeat authoritatively wins.
     const { game, action } = mkFixture();
     const id = mkEntityId(9004);
-    const card = new Card(id, samplePaper, mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Exile);
+    const owner = mkPlayerSeat(0);
+    const card = new Card(id, samplePaper, owner, owner, ZoneType.Exile);
     game.cards.set(id, card);
     game.sharedZones.exile.add(id);
-    expect(() => collect(action.moveTo(id, ZoneType.Graveyard))).toThrow(GameStateIntegrityError);
-    expect(() => collect(action.moveTo(id, ZoneType.Graveyard))).toThrow(/requires an owner/);
+    collect(action.moveTo(id, ZoneType.Graveyard));
+    expect(game.getPlayer(owner).zones.get(ZoneType.Graveyard)?.contains(id)).toBe(true);
+    expect(game.sharedZones.exile.contains(id)).toBe(false);
   });
 
   it("changeControl throws when the card is not tracked in game.cards", () => {
