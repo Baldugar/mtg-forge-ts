@@ -17,10 +17,20 @@
 import type { EntityId, StaticAbility, StaticAbilityCategory } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import { contributeToLayers, removeFromLayers } from "./layer-contributors.js";
+import {
+  ReplacementGenLedger,
+  registerDerivedReplacements,
+  unregisterDerivedReplacements,
+} from "./replacement-generating.js";
 
 export class StaticEffectRegistry {
   private readonly byId = new Map<EntityId, StaticAbility>();
   private readonly bySourceCard = new Map<EntityId, EntityId[]>();
+  // Task 28 — side-index: static id → derived replacement ids. Populated
+  // in register() for replacementGenerating statics; drained in
+  // unregister(). Keeping the ledger private to the registry means the
+  // bidirectional lifecycle is not observable from outside.
+  private readonly replacementLedger = new ReplacementGenLedger();
 
   constructor(private readonly game: Game) {}
 
@@ -37,6 +47,10 @@ export class StaticEffectRegistry {
     // Task 26 — route continuous/abilityGranting statics into LayerEngine.
     // Category-gated inside contributeToLayers; a no-op for other kinds.
     contributeToLayers(this.game, s);
+    // Task 28 — for replacementGenerating statics, register the derived
+    // ReplacementAbility entries into ReplacementRegistry and remember
+    // their ids via the ledger so unregister() can drop them later.
+    registerDerivedReplacements(this.game, s, this.replacementLedger);
   }
 
   unregister(id: EntityId): void {
@@ -46,6 +60,10 @@ export class StaticEffectRegistry {
     // entry so the contributor helper can still rely on the static
     // reference (`s` is captured here).
     removeFromLayers(this.game, s);
+    // Task 28 — drop any derived replacement-registry entries. Safe to
+    // call unconditionally; the ledger is a no-op for non-replacement-
+    // generating statics (no entry to pop).
+    unregisterDerivedReplacements(this.game, s.id, this.replacementLedger);
     this.byId.delete(id);
     const list = this.bySourceCard.get(s.sourceCardId) ?? [];
     const next = list.filter((x) => x !== id);
