@@ -35,6 +35,7 @@ import { Stack } from "./stack/stack.js";
 import { TargetSystem } from "./target/target-system.js";
 import type { TerminalState } from "./terminal-state.js";
 import { DelayedTriggerQueue } from "./triggers/delayed-trigger-queue.js";
+import { LinkedAbilityTable } from "./triggers/linked-abilities.js";
 import { TriggerRegistry } from "./triggers/trigger-registry.js";
 import { Ante } from "./zone/zones/ante.js";
 import { Exile } from "./zone/zones/exile.js";
@@ -102,6 +103,7 @@ export class Game {
   readonly replacementRegistry: ReplacementRegistry;
   readonly triggerRegistry: TriggerRegistry;
   readonly delayedTriggerQueue: DelayedTriggerQueue;
+  readonly linkedAbilities: LinkedAbilityTable;
   terminalState: TerminalState | null = null;
 
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
@@ -139,6 +141,7 @@ export class Game {
     // for discoverability.
     this.triggerRegistry = new TriggerRegistry(this);
     this.delayedTriggerQueue = new DelayedTriggerQueue();
+    this.linkedAbilities = new LinkedAbilityTable();
     this.flags = createDefaultFlags();
   }
 
