@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // StaticEffectRegistry tests — CR 604 scaffold (SP2 Task 25).
 import type { LobbyPlayer, StaticAbility, StaticAbilityCategory } from "@mtg-forge-ts/core";
-import { SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import { SeededRng, ZoneType, mkEntityId, mkPlayerSeat, staticAbilityModeCategory } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { GameMeta } from "../game-meta.js";
 import type { GameRules } from "../game-rules.js";
@@ -142,5 +142,49 @@ describe("StaticEffectRegistry (CR 604 scaffold)", () => {
     expect(game.staticEffectRegistry.all()).toEqual([]);
     expect(game.staticEffectRegistry.byCategory("continuous")).toEqual([]);
     expect(game.staticEffectRegistry.byCard(mkEntityId(1))).toEqual([]);
+  });
+});
+
+describe("StaticEffectRegistry.byMode (Task 9a)", () => {
+  it("byMode returns only statics matching the requested mode", () => {
+    const game = makeGame();
+    // sA: cantMustMay / mode=Continuous (mkStatic default)
+    const sA = mkStatic({ id: 1, sourceCardId: 10, category: "cantMustMay" });
+    // sB: ruleChanging / mode=Panharmonicon — avoid "continuous" category
+    // so contributeToLayers does not try to dispatch a null describe() payload.
+    const sB: StaticAbility = {
+      ...mkStatic({ id: 2, sourceCardId: 11, category: "ruleChanging" }),
+      mode: "Panharmonicon",
+    };
+    game.staticEffectRegistry.register(sA);
+    game.staticEffectRegistry.register(sB);
+    // sA has mode: "Continuous" (from mkStatic default)
+    expect(game.staticEffectRegistry.byMode("Continuous")).toHaveLength(1);
+    expect(game.staticEffectRegistry.byMode("Panharmonicon")).toHaveLength(1);
+    expect(game.staticEffectRegistry.byMode("CantAttack")).toHaveLength(0);
+  });
+
+  it("byMode(m) results are a subset of byCategory(category(m))", () => {
+    const game = makeGame();
+    const sA = mkStatic({ id: 1, sourceCardId: 10, category: "cantMustMay" });
+    const sA2: StaticAbility = { ...sA, mode: "CantAttack" };
+    const sB = mkStatic({ id: 2, sourceCardId: 11, category: "cantMustMay" });
+    const sB2: StaticAbility = { ...sB, mode: "CantBlock" };
+    game.staticEffectRegistry.register(sA2);
+    game.staticEffectRegistry.register(sB2);
+
+    const byModeResult = game.staticEffectRegistry.byMode("CantAttack");
+    const byCategoryResult = game.staticEffectRegistry.byCategory(staticAbilityModeCategory("CantAttack"));
+    // byMode subset of byCategory
+    for (const s of byModeResult) {
+      expect(byCategoryResult).toContain(s);
+    }
+    expect(byModeResult).toHaveLength(1);
+    expect(byCategoryResult).toHaveLength(2);
+  });
+
+  it("byMode returns empty array when no statics with that mode are registered", () => {
+    const game = makeGame();
+    expect(game.staticEffectRegistry.byMode("IgnoreLegendRule")).toHaveLength(0);
   });
 });

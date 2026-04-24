@@ -6,6 +6,7 @@ import type {
   MutationIntent,
   PlayerSeat,
   ReplacementAbility,
+  ReplacementLayer,
 } from "@mtg-forge-ts/core";
 import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
 import type { PaperCard } from "@mtg-forge-ts/core";
@@ -61,7 +62,11 @@ const mkGame = (): Game => {
   });
 };
 
-const mkReplacement = (id: number, sourceCardId: number): ReplacementAbility => ({
+const mkReplacement = (
+  id: number,
+  sourceCardId: number,
+  layer: ReplacementLayer = "other",
+): ReplacementAbility => ({
   id: mkEntityId(id),
   kind: "replacement",
   sourceCardId: mkEntityId(sourceCardId),
@@ -71,7 +76,7 @@ const mkReplacement = (id: number, sourceCardId: number): ReplacementAbility => 
   matches: () => true,
   apply: (intent) => intent,
   isSelfReplacement: false,
-  layer: "other",
+  layer,
 });
 
 const damageToPlayer = (seat: PlayerSeat): MutationIntent =>
@@ -282,5 +287,68 @@ describe("orderReplacements (CR 616 chooser)", () => {
     const final = gen.next({ order: [mkEntityId(3), mkEntityId(1), mkEntityId(2)] });
     expect(final.done).toBe(true);
     expect(final.value).toEqual([mkEntityId(3), mkEntityId(1), mkEntityId(2)]);
+  });
+});
+
+describe("orderReplacements — CR 616.1 layer partition (Task 9b)", () => {
+  it("cantHappen replacement ordered before other replacement regardless of registration order", () => {
+    const game = mkGame();
+    // Register in reverse canonical order: "other" first, "cantHappen" second.
+    const rOther = mkReplacement(1, 10, "other");
+    const rCant = mkReplacement(2, 11, "cantHappen");
+    // Each bucket has size 1 → no decision yielded; canonical layer order prevails.
+    const gen = orderReplacements([rOther, rCant], damageUnscoped(), game);
+    const first = gen.next();
+    expect(first.done).toBe(true);
+    expect(first.value).toEqual([mkEntityId(2), mkEntityId(1)]); // cantHappen before other
+  });
+
+  it("within-bucket order decided by affected-player tiebreak when bucket size > 1", () => {
+    const game = mkGame();
+    // Two 'other'-layer replacements: same bucket, player must choose.
+    const r1 = mkReplacement(1, 10, "other");
+    const r2 = mkReplacement(2, 11, "other");
+    const gen = orderReplacements([r1, r2], lifeChange(mkPlayerSeat(0)), game);
+    const first = gen.next();
+    // Expect a decision to be yielded for the single non-trivial bucket.
+    expect(first.done).toBe(false);
+    if (first.done) throw new Error("expected decision yield");
+    const y = first.value as EngineYield;
+    expect(y.kind).toBe("decision");
+    if (y.kind !== "decision") throw new Error("expected decision");
+    expect(y.request.kind).toBe("orderReplacements");
+    if (y.request.kind !== "orderReplacements") throw new Error("wrong kind");
+    expect(y.request.playerSeat).toBe(mkPlayerSeat(0));
+    expect(y.request.replacementIds).toEqual([mkEntityId(1), mkEntityId(2)]);
+
+    const done = gen.next({ order: [mkEntityId(2), mkEntityId(1)] });
+    expect(done.done).toBe(true);
+    expect(done.value).toEqual([mkEntityId(2), mkEntityId(1)]);
+  });
+
+  it("multi-layer: cantHappen bucket (size 1) + other bucket (size 2) → one decision for other bucket", () => {
+    const game = mkGame();
+    game.activePlayer = mkPlayerSeat(0);
+    const rCant = mkReplacement(1, 10, "cantHappen");
+    const rOther1 = mkReplacement(2, 11, "other");
+    const rOther2 = mkReplacement(3, 12, "other");
+    const gen = orderReplacements([rOther1, rOther2, rCant], damageUnscoped(), game);
+    // First yield: decision for the "other" bucket (2 items)
+    const first = gen.next();
+    expect(first.done).toBe(false);
+    if (first.done) throw new Error("expected decision yield");
+    const y = first.value as EngineYield;
+    expect(y.kind).toBe("decision");
+    if (y.kind !== "decision") throw new Error("expected decision");
+    if (y.request.kind !== "orderReplacements") throw new Error("wrong kind");
+    // The "other" bucket contains rOther1 and rOther2
+    expect(y.request.replacementIds).toContain(mkEntityId(2));
+    expect(y.request.replacementIds).toContain(mkEntityId(3));
+    expect(y.request.replacementIds).not.toContain(mkEntityId(1));
+
+    const done = gen.next({ order: [mkEntityId(3), mkEntityId(2)] });
+    expect(done.done).toBe(true);
+    // cantHappen (id=1) comes first in canonical layer order, then the player-chosen order
+    expect(done.value).toEqual([mkEntityId(1), mkEntityId(3), mkEntityId(2)]);
   });
 });

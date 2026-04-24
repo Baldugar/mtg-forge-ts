@@ -14,7 +14,7 @@
 //   Task 27 — costMod + cantMustMay categories gathered via byCategory
 //   Task 28 — register/unregister also route replacement-generating statics
 //             through the replacement registry via ReplacementGenLedger
-import type { EntityId, StaticAbility, StaticAbilityCategory } from "@mtg-forge-ts/core";
+import type { EntityId, StaticAbility, StaticAbilityCategory, StaticAbilityMode } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import { contributeToLayers, removeFromLayers } from "./layer-contributors.js";
 import {
@@ -84,6 +84,14 @@ export class StaticEffectRegistry {
 
   byCategory(c: StaticAbilityCategory): readonly StaticAbility[] {
     return [...this.byId.values()].filter((s) => s.category === c);
+  }
+
+  byMode(mode: StaticAbilityMode): readonly StaticAbility[] {
+    const out: StaticAbility[] = [];
+    for (const s of this.byId.values()) {
+      if (s.mode === mode) out.push(s);
+    }
+    return out;
   }
 
   byCard(cardId: EntityId): readonly StaticAbility[] {

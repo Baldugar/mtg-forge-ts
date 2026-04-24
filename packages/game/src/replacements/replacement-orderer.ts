@@ -6,11 +6,19 @@
 //   (c) else active player
 //
 // The orderer is a generator: it yields at most one `orderReplacements`
-// decision (when applicable.length > 1) and returns the ordered EntityIds.
+// decision per layer bucket (CR 616.1). Replacements are first partitioned
+// into 5 layer buckets (cantHappen → control → copy → transform → other)
+// and within each non-trivial bucket the affected-player/controller/AP
+// tiebreak chooses the order. Single-element buckets are appended without
+// yielding a decision. If all replacements share layer "other" (the SP2-era
+// default), behaviour is identical to the pre-partition implementation —
+// no regression.
+//
 // Callers (apply-loop in Task 18, GameAction.applyWithReplacements in
 // Task 19) apply the list in order, calling apply() on each until the
 // intent is mutated, prevented, or no replacements remain.
 import type { EntityId, MutationIntent, PlayerSeat, ReplacementAbility } from "@mtg-forge-ts/core";
+import { REPLACEMENT_LAYERS } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 
@@ -71,9 +79,49 @@ const isValidOrder = (order: readonly EntityId[], applicable: readonly Replaceme
 };
 
 /**
- * Order a batch of replacements per CR 616. Yields at most one decision
- * (only when there are 2+ applicable replacements). For 0 or 1 the return
- * value is direct and no decision is yielded.
+ * Order a single layer bucket per CR 616 tiebreak. Yields at most one
+ * decision (only when bucket.length > 1). Returns the ordered EntityIds.
+ */
+function* orderBucket(
+  bucket: readonly ReplacementAbility[],
+  intent: MutationIntent,
+  game: Game,
+): Generator<EngineYield, readonly EntityId[], unknown> {
+  if (bucket.length === 0) return [];
+  if (bucket.length === 1) {
+    const only = bucket[0];
+    return only ? [only.id] : [];
+  }
+  const orderer = chooseOrderer(intent, game);
+  const response = (yield {
+    kind: "decision",
+    request: {
+      kind: "orderReplacements",
+      playerSeat: orderer,
+      replacementIds: bucket.map((r) => r.id),
+    },
+  }) as { order: readonly EntityId[] } | undefined;
+  if (!response || !Array.isArray(response.order) || !isValidOrder(response.order, bucket)) {
+    throw new Error(
+      `orderReplacements: invalid response ${JSON.stringify(
+        response,
+      )} — must be a permutation of ${JSON.stringify(bucket.map((r) => r.id))}`,
+    );
+  }
+  return response.order;
+}
+
+/**
+ * Order a batch of replacements per CR 616.1. First partitions applicable[]
+ * into 5 layer buckets (cantHappen → control → copy → transform → other)
+ * in canonical order, then for each non-empty bucket yields at most one
+ * decision (when the bucket has 2+ replacements) using the
+ * affected-player/controller/AP tiebreak. Single-element buckets are
+ * appended directly without yielding a decision.
+ *
+ * Backward-compat: if all applicable are layer "other" (the SP2-era
+ * default), exactly one decision is yielded when applicable.length > 1 —
+ * identical to the pre-partition behaviour.
  */
 export function* orderReplacements(
   applicable: readonly ReplacementAbility[],
@@ -85,21 +133,21 @@ export function* orderReplacements(
     const only = applicable[0];
     return only ? [only.id] : [];
   }
-  const orderer = chooseOrderer(intent, game);
-  const response = (yield {
-    kind: "decision",
-    request: {
-      kind: "orderReplacements",
-      playerSeat: orderer,
-      replacementIds: applicable.map((r) => r.id),
-    },
-  }) as { order: readonly EntityId[] } | undefined;
-  if (!response || !Array.isArray(response.order) || !isValidOrder(response.order, applicable)) {
-    throw new Error(
-      `orderReplacements: invalid response ${JSON.stringify(
-        response,
-      )} — must be a permutation of ${JSON.stringify(applicable.map((r) => r.id))}`,
-    );
+
+  // Partition into buckets keyed by layer, in canonical order.
+  // All 5 layer keys are pre-populated so every lookup is defined.
+  const bucketMap = new Map<string, ReplacementAbility[]>(REPLACEMENT_LAYERS.map((layer) => [layer, []]));
+  for (const r of applicable) {
+    const b = bucketMap.get(r.layer);
+    if (b) b.push(r);
   }
-  return response.order;
+
+  const result: EntityId[] = [];
+  for (const layer of REPLACEMENT_LAYERS) {
+    const bucket = bucketMap.get(layer) ?? [];
+    if (bucket.length === 0) continue;
+    const ordered = yield* orderBucket(bucket, intent, game);
+    for (const id of ordered) result.push(id);
+  }
+  return result;
 }
