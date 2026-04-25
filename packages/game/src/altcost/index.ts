@@ -2,3 +2,4 @@
 // Side-effect barrel: importing this module registers all AltCost handlers
 // into the altCostRegistry singleton.
 export * from "./flashback.js";
+export * from "./madness.js";
