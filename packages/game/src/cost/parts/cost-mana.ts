@@ -12,9 +12,11 @@ import { ManaCost } from "@mtg-forge-ts/core";
 import type { ManaProduced } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { ManaPool } from "../../mana/mana-pool.js";
+import { applyCostMods } from "../../mana/solver/apply-cost-mods.js";
 import { applyPaymentPlan } from "../../mana/solver/apply-plan.js";
 import { chooseX, computeMaxX } from "../../mana/solver/choose-x.js";
 import { solveManaPayment } from "../../mana/solver/solver.js";
+import { gatherCostModsFor } from "../../statics/cost-mod-contributor.js";
 import { costPartRegistry } from "./cost-part-registry.js";
 import type { CostPart, CostPartReceipt, CostPaymentContext } from "./cost-part.js";
 
@@ -25,6 +27,27 @@ function getPool(ctx: CostPaymentContext): ManaPool {
   // for tests that seed the pool before calling CostMana.
   return player.manaPool as ManaPool;
 }
+
+// Wave 6 — fold cost-modification statics (Jet Medallion, Sphere of
+// Resistance, etc.) into the raw mana cost before solving. The "item" we
+// hand the filter is the cost-determination context: source card +
+// controller + a "spell" kind tag (CostMana sits in the cast pipeline; if
+// we ever invoke it from activation paths we'll either flip the tag or
+// expose it via CostPaymentContext).
+const adjustedCost = (
+  rawCost: import("@mtg-forge-ts/core").ManaCost,
+  ctx: CostPaymentContext,
+): import("@mtg-forge-ts/core").ManaCost => {
+  const card = ctx.game.cards.get(ctx.sourceCardId);
+  const item = {
+    sourceCardId: ctx.sourceCardId,
+    controllerSeat: ctx.payerSeat,
+    card,
+    kind: "spell" as const,
+  };
+  const mods = gatherCostModsFor(ctx.game, item);
+  return applyCostMods(rawCost, mods);
+};
 
 interface ManaCostReceipt {
   /** Pre-payment pool snapshot (for undo). */
@@ -39,7 +62,7 @@ export const CostMana: CostPart = {
   handlerKey: "Mana",
 
   canPay(ctx: CostPaymentContext): boolean {
-    const cost = ManaCost.parse(ctx.raw);
+    const cost = adjustedCost(ManaCost.parse(ctx.raw), ctx);
     const pool = getPool(ctx);
     // Conservative check: X=0 means we only verify non-X pips are payable.
     // A player can always choose X=0, so if non-X pips are satisfiable the
@@ -48,7 +71,7 @@ export const CostMana: CostPart = {
   },
 
   *pay(ctx: CostPaymentContext): Generator<EngineYield, CostPartReceipt, unknown> {
-    const cost = ManaCost.parse(ctx.raw);
+    const cost = adjustedCost(ManaCost.parse(ctx.raw), ctx);
     const pool = getPool(ctx);
 
     // --- X binding ---------------------------------------------------

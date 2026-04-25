@@ -18,17 +18,21 @@ import type {
   ReplacementAst,
   SVarAst,
   StaticAbility,
+  StaticAst,
   TriggerAst,
   TriggeredAbility,
   ZoneType,
 } from "@mtg-forge-ts/core";
-import { paperCardKey } from "@mtg-forge-ts/core";
+import { isStaticAbilityMode, paperCardKey } from "@mtg-forge-ts/core";
 import { SpellAbility } from "./ability/spell-ability.js";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 import type { Game } from "./game.js";
 import { keywordHandlerRegistry } from "./keyword/keyword-handler-registry.js";
 import type { FaceKind } from "./multiface/face-kind.js";
 import { replacementHandlerRegistry } from "./replacement/index.js";
+// Wave 6 — side-effect import: registers ReduceCost / RaiseCost handlers.
+import "./static/handlers/index.js";
+import { staticHandlerRegistry } from "./static/static-handler.js";
 import { triggerHandlerRegistry } from "./trigger/index.js";
 
 export class Card {
@@ -273,6 +277,38 @@ export class Card {
         controllerSeat: this.controllerSeat,
       });
     }
+  }
+
+  /**
+   * Wave 6 — walks the PaperCard's CardDefinition.statics and constructs live
+   * StaticAbility instances via the staticHandlerRegistry. The produced list
+   * is stored in `intrinsicStatics`, which the zone-activation discipline
+   * (onZoneChange) inspects on every zone transition to register/unregister
+   * with game.staticEffectRegistry.
+   *
+   * Static modes not yet handled by the registry are silently skipped; SP3
+   * later waves cover the remaining 80 modes incrementally. Idempotent —
+   * later calls replace the existing list.
+   */
+  activateStaticsFromDefinition(game: Game): void {
+    const def = this.paperCard.definition;
+    if (!def) return;
+    const built: StaticAbility[] = [];
+    for (const ast of def.statics as readonly StaticAst[]) {
+      if (!isStaticAbilityMode(ast.mode)) continue; // unknown mode — skip
+      const Cls = staticHandlerRegistry.lookup(ast.mode);
+      if (!Cls) continue; // silently skip unhandled modes
+      const handler = new Cls();
+      const staticId = game.newEntityId();
+      const built1 = handler.build(ast, {
+        game,
+        sourceCardId: this.id,
+        controllerSeat: this.controllerSeat,
+        staticId,
+      });
+      built.push(built1);
+    }
+    this.intrinsicStatics = built;
   }
 
   toJSON(): {
