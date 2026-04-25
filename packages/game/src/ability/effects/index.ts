@@ -13,3 +13,7 @@ import "./tap.js";
 import "./untap.js";
 import "./mill.js";
 import "./scry.js";
+import "./put-counter.js";
+import "./remove-counter.js";
+import "./discard.js";
+import "./token.js";
