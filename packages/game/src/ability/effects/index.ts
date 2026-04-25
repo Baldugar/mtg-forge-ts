@@ -9,3 +9,7 @@ import "./exile.js";
 import "./return-to-hand.js";
 import "./change-zone.js";
 import "./sacrifice.js";
+import "./tap.js";
+import "./untap.js";
+import "./mill.js";
+import "./scry.js";
