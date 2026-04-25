@@ -63,4 +63,26 @@ describe("TriggerHandler bootstrap (index.ts)", () => {
       expect(triggerHandlerRegistry.has("TurnFaceUp")).toBe(true);
     });
   });
+
+  describe("Wave 8b handlers", () => {
+    it("registers ChangesZoneAll", () => {
+      expect(triggerHandlerRegistry.has("ChangesZoneAll")).toBe(true);
+    });
+
+    it("registers Sacrificed", () => {
+      expect(triggerHandlerRegistry.has("Sacrificed")).toBe(true);
+    });
+
+    it("registers Discarded", () => {
+      expect(triggerHandlerRegistry.has("Discarded")).toBe(true);
+    });
+
+    it("registers LifeGained", () => {
+      expect(triggerHandlerRegistry.has("LifeGained")).toBe(true);
+    });
+
+    it("registers BecomesTarget", () => {
+      expect(triggerHandlerRegistry.has("BecomesTarget")).toBe(true);
+    });
+  });
 });

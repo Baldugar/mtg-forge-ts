@@ -14,3 +14,9 @@ export * from "./blocks-trigger.js";
 export * from "./attacker-blocked-trigger.js";
 export * from "./attacker-blocked-by-creature-trigger.js";
 export * from "./turn-face-up-trigger.js";
+// Wave 8b triggers
+export * from "./changes-zone-all-trigger.js";
+export * from "./sacrificed-trigger.js";
+export * from "./discarded-trigger.js";
+export * from "./life-gained-trigger.js";
+export * from "./becomes-target-trigger.js";
