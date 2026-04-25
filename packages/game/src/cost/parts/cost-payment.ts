@@ -23,6 +23,9 @@ import type { CostPartReceipt, CostPaymentContext } from "./cost-part.js";
 const MANA_SYMBOL_RE = /^[0-9XYZWUBRGCS/\s]+$/;
 const LIFE_RE = /^(\d+)\s+life$/i;
 const SAC_RE = /^sac\s+(.+)$/i;
+// Matches "Discard" (bare) or "Discard CARDNAME" / "Discard <self>" — MVP:
+// self-discard only (source card). Type-targeted discard is Part D.
+const DISCARD_RE = /^discard(?:\s+(?:cardname|self|this\s+card))?$/i;
 
 export interface CostPlan {
   readonly parts: readonly { readonly handlerKey: string; readonly raw: string }[];
@@ -58,6 +61,10 @@ export const parseCostString = (raw: string): CostPlan => {
     }
     if (SAC_RE.test(seg)) {
       parts.push({ handlerKey: "Sacrifice", raw: seg });
+      continue;
+    }
+    if (DISCARD_RE.test(seg)) {
+      parts.push({ handlerKey: "Discard", raw: seg });
       continue;
     }
     if (MANA_SYMBOL_RE.test(seg)) {
