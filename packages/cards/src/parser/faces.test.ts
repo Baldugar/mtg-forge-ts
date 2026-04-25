@@ -3,14 +3,17 @@ import { describe, expect, it } from "vitest";
 import { parseCard } from "./assembler.js";
 
 describe("parseCard — multi-face", () => {
-  it("parses a DFC (Delver of Secrets // Insectile Aberration)", () => {
+  it("parses a DFC (Delver of Secrets // Insectile Aberration) using bare ALTERNATE", () => {
+    // Forge DFC format: AlternateMode:DoubleFaced is metadata on the front face;
+    // bare ALTERNATE is the actual multi-face separator.
     const source = `${[
       "Name:Delver of Secrets",
       "ManaCost:U",
       "Types:Creature Human Wizard",
       "PT:1/1",
-      "Oracle:At the beginning of your upkeep...",
       "AlternateMode:DoubleFaced",
+      "Oracle:At the beginning of your upkeep...",
+      "ALTERNATE",
       "Name:Insectile Aberration",
       "Types:Creature Human Insect",
       "PT:3/2",
@@ -24,14 +27,15 @@ describe("parseCard — multi-face", () => {
     expect(card.faces?.[0]?.keywords).toHaveLength(1);
   });
 
-  it("parses a split card (Fire // Ice)", () => {
+  it("parses a split card (Fire // Ice) using bare ALTERNATE", () => {
     const source = `${[
       "Name:Fire",
       "ManaCost:1 R",
       "Types:Instant",
       "A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | ValidTgts$ Any",
-      "Oracle:Fire deals 2 damage divided as you choose among one or two targets.",
       "AlternateMode:Split",
+      "Oracle:Fire deals 2 damage divided as you choose among one or two targets.",
+      "ALTERNATE",
       "Name:Ice",
       "ManaCost:1 U",
       "Types:Instant",

@@ -70,11 +70,14 @@ describe("lex", () => {
     expect(out[1]?.lineNumber).toBe(2);
   });
 
-  it("bare ALTERNATE mid-file splits faces the same as AlternateMode: line", () => {
-    // Mixed: one face uses AlternateMode:DoubleFaced, another uses bare ALTERNATE.
+  it("bare ALTERNATE and AlternateMode:X produce two distinct AlternateMode entries", () => {
+    // In Forge DFC files: AlternateMode:DoubleFaced is metadata (non-empty content),
+    // bare ALTERNATE is the face separator (empty content). Both lex as AlternateMode.
     const out = lex("Name:Front\nAlternateMode:DoubleFaced\nName:Mid\nALTERNATE\nName:Back\n");
     expect(out).toHaveLength(5);
     expect(out[1]?.prefix).toBe("AlternateMode");
+    expect(out[1]?.content).toBe("DoubleFaced"); // metadata — non-empty
     expect(out[3]?.prefix).toBe("AlternateMode");
+    expect(out[3]?.content).toBe(""); // face separator — empty (from bare ALTERNATE)
   });
 });

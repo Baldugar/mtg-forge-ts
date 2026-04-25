@@ -198,7 +198,11 @@ export const parseCard = (source: string, file: string): CardDefinition => {
   const allLines = lex(source);
   const sections: LexedLine[][] = [[]];
   for (const line of allLines) {
-    if (line.prefix === "AlternateMode") {
+    // Bare "ALTERNATE" is lexed as AlternateMode with empty content and is
+    // the actual multi-face separator. AlternateMode:DoubleFaced / :Split /
+    // :Specialize etc. with non-empty content are card-level metadata and go
+    // into the current section (dispatch handles them as no-ops).
+    if (line.prefix === "AlternateMode" && line.content === "") {
       sections.push([]);
     } else {
       const current = sections[sections.length - 1];
