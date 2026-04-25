@@ -106,6 +106,8 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "RollDie",
   "SubgameStarted",
   "SubgameEnded",
+  // Reveal (1) — Wave 4
+  "CardsRevealed",
   // Engine-internal (11) — SP2 §B
   "EventPrevented",
   "TriggerQueued",
@@ -208,6 +210,7 @@ const ALL_KINDS_MAP = {
   RollDie: true,
   SubgameStarted: true,
   SubgameEnded: true,
+  CardsRevealed: true,
   EventPrevented: true,
   TriggerQueued: true,
   TriggerResolved: true,
@@ -222,9 +225,9 @@ const ALL_KINDS_MAP = {
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 94 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp + Task 60 Melded)", () => {
-    expect(EXPECTED_KINDS.length).toBe(94);
-    expect(new Set(EXPECTED_KINDS).size).toBe(94);
+  it("has 95 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp + Task 60 Melded + Wave 4 CardsRevealed)", () => {
+    expect(EXPECTED_KINDS.length).toBe(95);
+    expect(new Set(EXPECTED_KINDS).size).toBe(95);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -345,6 +348,13 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     RollDie: { playerSeat: seat0, sides: 6, result: 4 },
     SubgameStarted: { parentTurn: 1 },
     SubgameEnded: { parentTurn: 1, outcome: "win" },
+    // Reveal (1) — Wave 4
+    CardsRevealed: {
+      revealedBy: seat0,
+      revealedTo: "all" as const,
+      cardIds: [id(1)],
+      fromZone: ZoneType.Library,
+    },
     // Engine-internal (11) — SP2 §B
     EventPrevented: { original: { kind: "test" } },
     TriggerQueued: { triggerId: id(1), sourceCardId: id(2) },
@@ -698,6 +708,37 @@ describe("mkEvent — post-audit extensions", () => {
       outcome: "win",
     });
     expect(sub2.payload.outcome).toBe("win");
+  });
+});
+
+describe("mkEvent — Wave 4 CardsRevealed", () => {
+  it("builds CardsRevealed with revealedTo='all' (library peek)", () => {
+    const e = mkEvent("CardsRevealed", 1, PhaseStep.Main1, {
+      revealedBy: mkPlayerSeat(0),
+      revealedTo: "all",
+      cardIds: [mkEntityId(1), mkEntityId(2)],
+      fromZone: ZoneType.Library,
+    });
+    expect(e.kind).toBe("CardsRevealed");
+    expect(e.version).toBe(1);
+    expect(e.payload.revealedTo).toBe("all");
+    expect(e.payload.cardIds).toHaveLength(2);
+    expect(e.payload.fromZone).toBe(ZoneType.Library);
+    expect(JSON.parse(JSON.stringify(e))).toEqual(e);
+  });
+
+  it("builds CardsRevealed with revealedTo=[seat] (hand reveal to opponents)", () => {
+    const e = mkEvent("CardsRevealed", 2, PhaseStep.Main2, {
+      revealedBy: mkPlayerSeat(1),
+      revealedTo: [mkPlayerSeat(0)],
+      cardIds: [mkEntityId(10), mkEntityId(11), mkEntityId(12)],
+      fromZone: ZoneType.Hand,
+    });
+    expect(e.payload.revealedBy).toBe(mkPlayerSeat(1));
+    expect(Array.isArray(e.payload.revealedTo)).toBe(true);
+    expect((e.payload.revealedTo as number[]).length).toBe(1);
+    expect(e.payload.fromZone).toBe(ZoneType.Hand);
+    expect(JSON.parse(JSON.stringify(e))).toEqual(e);
   });
 });
 

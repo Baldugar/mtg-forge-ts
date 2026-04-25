@@ -842,6 +842,19 @@ export type GameEvent =
       readonly phase: PhaseStep;
       readonly payload: { readonly parentTurn: number; readonly outcome: string };
     }
+  // === Reveal (1) — Wave 4 PeekAndReveal / RevealHand ===
+  | {
+      readonly kind: "CardsRevealed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly revealedBy: PlayerSeat;
+        readonly revealedTo: PlayerSeat[] | "all";
+        readonly cardIds: readonly EntityId[];
+        readonly fromZone: ZoneType;
+      };
+    }
   // === Engine-internal (11) — SP2 §B registry/pipeline telemetry ===
   // WHY: these kinds feed the Replacement / Trigger / Static / SBA
   // pipelines (Tasks 16-34). They are not "game events" in the rules
