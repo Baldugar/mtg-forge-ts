@@ -4,5 +4,6 @@ export type { KeywordActivationContext } from "./keyword-handler.js";
 export { KeywordHandler } from "./keyword-handler.js";
 export type { KeywordHandlerCtor } from "./keyword-handler-registry.js";
 export { keywordHandlerRegistry } from "./keyword-handler-registry.js";
-// Side-effect: populate keywordHandlerRegistry with all built-in handlers.
-import "./handlers/index.js";
+// Re-export all concrete keyword handler classes — this ensures the bundler
+// includes the module-level register() calls that populate keywordHandlerRegistry.
+export * from "./handlers/index.js";

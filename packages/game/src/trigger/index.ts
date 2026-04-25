@@ -7,5 +7,6 @@ export type { TriggerBuildContext } from "./trigger-handler.js";
 export { TriggerHandler } from "./trigger-handler.js";
 export type { TriggerHandlerCtor } from "./trigger-handler-registry.js";
 export { triggerHandlerRegistry } from "./trigger-handler-registry.js";
-// Side-effect: populate triggerHandlerRegistry with all built-in handlers.
-import "./handlers/index.js";
+// Re-export all concrete trigger handler classes — this ensures the bundler
+// includes the module-level register() calls that populate triggerHandlerRegistry.
+export * from "./handlers/index.js";

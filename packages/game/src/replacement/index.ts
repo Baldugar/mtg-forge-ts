@@ -7,5 +7,6 @@ export type { ReplacementBuildContext } from "./replacement-handler.js";
 export { ReplacementHandler } from "./replacement-handler.js";
 export type { ReplacementHandlerCtor } from "./replacement-handler-registry.js";
 export { replacementHandlerRegistry } from "./replacement-handler-registry.js";
-// Side-effect: populate replacementHandlerRegistry with all built-in handlers.
-import "./handlers/index.js";
+// Re-export all concrete replacement handler classes — this ensures the bundler
+// includes the module-level register() calls that populate replacementHandlerRegistry.
+export * from "./handlers/index.js";
