@@ -1,6 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import type { LobbyPlayer, ManaCostAst, PaperCard } from "@mtg-forge-ts/core";
+import {
+  CardType,
+  DEFAULT_PAPER_CARD_FLAGS,
+  SeededRng,
+  Supertype,
+  TypeLine,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { Card } from "../card.js";
 import type { GameMeta } from "../game-meta.js";
@@ -101,5 +110,128 @@ describe("LayerEngine skeleton", () => {
     const cid = addCard(g, 103);
     const chars = g.layerEngine.computeCharacteristics(cid);
     expect(chars.name).toBe("Grizzly Bears");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Task 1: deriveBaseCharacteristics reads PaperCard.definition
+// ---------------------------------------------------------------------------
+describe("deriveBaseCharacteristics — reads PaperCard.definition", () => {
+  const mkCreaturePaper = (): PaperCard => ({
+    name: "Grizzly Bears",
+    edition: "LEA",
+    collectorNumber: "195",
+    language: "en",
+    foil: false,
+    flags: DEFAULT_PAPER_CARD_FLAGS,
+    definition: {
+      name: "Grizzly Bears",
+      oracle: "",
+      types: TypeLine.parse("Creature — Bear"),
+      manaCost: { raw: "1G", symbols: [] } satisfies ManaCostAst,
+      pt: { power: "2", toughness: "2" },
+      colors: undefined,
+      abilities: [],
+      triggers: [],
+      replacements: [],
+      statics: [],
+      keywords: [],
+      svars: new Map(),
+    },
+  });
+
+  it("types are populated from definition.types", () => {
+    const g = mkGame();
+    const cid = mkEntityId(200);
+    const card = new Card(cid, mkCreaturePaper(), mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    g.cards.set(cid, card);
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.types.has(CardType.Creature)).toBe(true);
+  });
+
+  it("subtypes are populated from definition.types", () => {
+    const g = mkGame();
+    const cid = mkEntityId(201);
+    const card = new Card(cid, mkCreaturePaper(), mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    g.cards.set(cid, card);
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.subtypes.has("Bear")).toBe(true);
+  });
+
+  it("power and toughness are populated from definition.pt", () => {
+    const g = mkGame();
+    const cid = mkEntityId(202);
+    const card = new Card(cid, mkCreaturePaper(), mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    g.cards.set(cid, card);
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.power).toBe(2);
+    expect(chars.toughness).toBe(2);
+  });
+
+  it("manaCost is populated from definition.manaCost", () => {
+    const g = mkGame();
+    const cid = mkEntityId(203);
+    const card = new Card(cid, mkCreaturePaper(), mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    g.cards.set(cid, card);
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.manaCost.cmc()).toBe(2); // 1G = CMC 2
+  });
+
+  it("supertypes are populated from definition.types", () => {
+    const g = mkGame();
+    const cid = mkEntityId(204);
+    const legendaryCreaturePaper: PaperCard = {
+      name: "Rith, the Awakener",
+      edition: "INV",
+      collectorNumber: "206",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: {
+        name: "Rith, the Awakener",
+        oracle: "",
+        types: TypeLine.parse("Legendary Creature — Dragon"),
+        manaCost: { raw: "3RGW", symbols: [] } satisfies ManaCostAst,
+        pt: { power: "6", toughness: "6" },
+        colors: undefined,
+        abilities: [],
+        triggers: [],
+        replacements: [],
+        statics: [],
+        keywords: [],
+        svars: new Map(),
+      },
+    };
+    const card = new Card(
+      cid,
+      legendaryCreaturePaper,
+      mkPlayerSeat(0),
+      mkPlayerSeat(0),
+      ZoneType.Battlefield,
+    );
+    g.cards.set(cid, card);
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.supertypes.has(Supertype.Legendary)).toBe(true);
+    expect(chars.types.has(CardType.Creature)).toBe(true);
+    expect(chars.subtypes.has("Dragon")).toBe(true);
+  });
+
+  it("card without definition gets empty characteristics (graceful fallback)", () => {
+    const g = mkGame();
+    const cid = mkEntityId(205);
+    const noDefPaper: PaperCard = {
+      name: "Token",
+      edition: "LEA",
+      collectorNumber: "999",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+    };
+    const card = new Card(cid, noDefPaper, mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    g.cards.set(cid, card);
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.types.size).toBe(0);
+    expect(chars.power).toBeNull();
+    expect(chars.toughness).toBeNull();
   });
 });

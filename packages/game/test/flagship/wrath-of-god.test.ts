@@ -8,7 +8,6 @@
 import { parseCard } from "@mtg-forge-ts/cards";
 import type { EntityId, LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
 import {
-  CardType,
   Color,
   DEFAULT_PAPER_CARD_FLAGS,
   ManaProduced,
@@ -69,6 +68,14 @@ const wrathSrc = `${[
   "Types:Sorcery",
   "A:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures. They can't be regenerated.",
   "Oracle:Destroy all creatures. They can't be regenerated.",
+].join("\n")}\n`;
+
+const grizzlyBearsSrc = `${[
+  "Name:Grizzly Bears",
+  "ManaCost:1 G",
+  "Types:Creature Bear",
+  "PT:2/2",
+  "Oracle:2/2",
 ].join("\n")}\n`;
 
 const makeGame = () => {
@@ -140,21 +147,6 @@ const drainResolver = (gen: Generator<unknown, void, unknown>): string[] => {
   return events;
 };
 
-// deriveBaseCharacteristics (SP4 gap): does NOT read CardType from PaperCard.definition.
-// DestroyAllEffect and ChangesZoneAllTrigger both call
-// game.layerEngine.computeCharacteristics() and check chars.types.has(CardType.Creature).
-// Without Layer4 seeding, no card appears as a Creature. The workaround (same pattern
-// as destroy-all.test.ts) is to push a global "add Creature" Layer4 effect before cast.
-const seedCreatureType = (game: Game): void => {
-  game.layerEngine.typeEffects.push({
-    kind: "add",
-    cardType: CardType.Creature,
-    isCda: false,
-    timestamp: 0,
-    sourceAbilityId: null,
-  });
-};
-
 describe("Flagship: Wrath of God end-to-end integration", () => {
   it("destroys all creatures — both cards move to graveyard, life unchanged", () => {
     const game = makeGame();
@@ -176,8 +168,9 @@ describe("Flagship: Wrath of God end-to-end integration", () => {
       definition: wrathDef,
     };
 
-    // 2. Build a minimal Grizzly Bears PaperCard (no definition needed; Creature type
-    //    is injected via Layer4 seeding — same pattern as destroy-all.test.ts).
+    // 2. Parse Grizzly Bears so deriveBaseCharacteristics reads Creature type
+    //    from PaperCard.definition directly (no Layer4 seeding needed).
+    const bearDef = parseCard(grizzlyBearsSrc, "grizzly_bears.txt");
     const bearPaper: PaperCard = {
       name: "Grizzly Bears",
       edition: "LEA",
@@ -185,6 +178,7 @@ describe("Flagship: Wrath of God end-to-end integration", () => {
       language: "en",
       foil: false,
       flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: bearDef,
     };
 
     // 3. Add Wrath to seat0's hand
@@ -196,11 +190,6 @@ describe("Flagship: Wrath of God end-to-end integration", () => {
     const bear2 = addCardToBattlefield(game, bearPaper, seat1, bear2Id);
     expect(bear1.zone).toBe(ZoneType.Battlefield);
     expect(bear2.zone).toBe(ZoneType.Battlefield);
-
-    // SP4 gap workaround: deriveBaseCharacteristics does not read CardType from
-    // PaperCard.definition. Seed a global Layer4 "add Creature" effect so that
-    // DestroyAllEffect.collectMatching() sees all cards as Creatures.
-    seedCreatureType(game);
 
     // 5. Seed 4 mana: 2 colorless + 2 white (Wrath costs 2WW)
     const pool = new ManaPool();

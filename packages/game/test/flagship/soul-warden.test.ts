@@ -25,7 +25,6 @@
 import { parseCard } from "@mtg-forge-ts/cards";
 import type { EntityId, LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
 import {
-  CardType,
   Color,
   DEFAULT_PAPER_CARD_FLAGS,
   ManaProduced,
@@ -155,22 +154,6 @@ const drainResolver = (gen: Generator<unknown, void, unknown>): string[] => {
   return events;
 };
 
-// SP4 gap workaround: deriveBaseCharacteristics does NOT read CardType from
-// PaperCard.definition. ChangesZoneAllTrigger.matches() calls
-// game.layerEngine.computeCharacteristics() to check chars.types.has(CardType.Creature).
-// Without Layer4 seeding, Soul Warden's own ETB event is not recognised as a Creature
-// entering and the trigger never fires. Seed a global "add Creature" Layer4 effect
-// (same pattern as destroy-all.test.ts unit tests) before casting.
-const seedCreatureType = (game: Game): void => {
-  game.layerEngine.typeEffects.push({
-    kind: "add",
-    cardType: CardType.Creature,
-    isCda: false,
-    timestamp: 0,
-    sourceAbilityId: null,
-  });
-};
-
 /**
  * Drain the trigger registry into a stack item (mirrors Mulldrifter pattern).
  * Returns the first pending triggered ability as a StackItem, or null if none.
@@ -241,12 +224,9 @@ describe("Flagship: Soul Warden end-to-end integration", () => {
     const taWithResolver = ta as unknown as { resolver?: StackItemResolver | null };
     expect(taWithResolver.resolver).not.toBeNull();
 
-    // 3. Seed Layer4 Creature type (SP4 workaround — see comment above).
-    //    Must be seeded before resolveStackItem fires CardChangedZone, so that
-    //    ChangesZoneAllTrigger.matches() sees Soul Warden as a Creature.
-    seedCreatureType(game);
-
-    // 4. Seed 1 white mana (Soul Warden costs W)
+    // 3. Seed 1 white mana (Soul Warden costs W)
+    // deriveBaseCharacteristics now reads Creature type from PaperCard.definition,
+    // so no Layer4 seeding is needed.
     const pool = new ManaPool();
     pool.add(ManaProduced.colored(Color.White));
     game.getPlayer(seat0).manaPool = pool;
@@ -345,9 +325,6 @@ describe("Flagship: Soul Warden end-to-end integration", () => {
     const soulWardenCard = addCardToHand(game, soulWardenPaper, seat0, soulWardenId);
     soulWardenCard.activateAbilitiesFromDefinition();
     soulWardenCard.activateTriggersFromDefinition(game);
-
-    // SP4 gap workaround: seed Layer4 Creature type before resolve.
-    seedCreatureType(game);
 
     const pool = new ManaPool();
     pool.add(ManaProduced.colored(Color.White));

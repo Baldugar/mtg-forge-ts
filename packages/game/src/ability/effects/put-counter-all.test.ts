@@ -3,10 +3,10 @@
 import "./put-counter-all.js";
 import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
 import {
-  CardType,
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
   SeededRng,
+  TypeLine,
   ZoneType,
   mkEntityId,
   mkPlayerSeat,
@@ -51,6 +51,19 @@ const paper: PaperCard = {
   language: "en",
   foil: false,
   flags: DEFAULT_PAPER_CARD_FLAGS,
+  definition: {
+    name: "Grizzly Bears",
+    oracle: "",
+    types: TypeLine.parse("Creature — Bear"),
+    manaCost: { raw: "1G", symbols: [] },
+    pt: { power: "2", toughness: "2" },
+    abilities: [],
+    triggers: [],
+    replacements: [],
+    statics: [],
+    keywords: [],
+    svars: new Map(),
+  },
 };
 
 const mkGame = () => {
@@ -62,17 +75,6 @@ const mkGame = () => {
     player.zones.set(ZoneType.Battlefield, new Battlefield(ZoneType.Battlefield, player.seat));
   }
   return game;
-};
-
-/** Make all cards in game appear as Creatures via Layer 4 global effect. */
-const seedCreatureType = (game: Game): void => {
-  game.layerEngine.typeEffects.push({
-    kind: "add",
-    cardType: CardType.Creature,
-    isCda: false,
-    timestamp: 0,
-    sourceAbilityId: null,
-  });
 };
 
 const drainGen = (gen: Generator<unknown, void, unknown>): void => {
@@ -113,8 +115,6 @@ describe("PutCounterAllEffect", () => {
     game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(c2);
     game.getPlayer(seat1).zones.get(ZoneType.Battlefield)?.add(foe);
 
-    seedCreatureType(game);
-
     const sa = new SpellAbility(mkAst("Creature.YouCtrl", "P1P1", 1), sourceId, seat0, new Map(), []);
     drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
 
@@ -141,8 +141,6 @@ describe("PutCounterAllEffect", () => {
     game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(c1);
     game.getPlayer(seat1).zones.get(ZoneType.Battlefield)?.add(c2);
 
-    seedCreatureType(game);
-
     const sa = new SpellAbility(mkAst("Creature", "M1M1", 1), sourceId, seat0, new Map(), []);
     drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
 
@@ -161,8 +159,6 @@ describe("PutCounterAllEffect", () => {
 
     game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(sourceId);
     game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(c1);
-
-    seedCreatureType(game);
 
     const sa = new SpellAbility(mkAst("Creature.YouCtrl", "P1P1", 2), sourceId, seat0, new Map(), []);
     drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);

@@ -4,9 +4,9 @@ import "../../svar/selectors/number.js";
 import "./damage-all.js";
 import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
 import {
-  CardType,
   DEFAULT_PAPER_CARD_FLAGS,
   SeededRng,
+  TypeLine,
   ZoneType,
   mkEntityId,
   mkPlayerSeat,
@@ -51,6 +51,19 @@ const paper: PaperCard = {
   language: "en",
   foil: false,
   flags: DEFAULT_PAPER_CARD_FLAGS,
+  definition: {
+    name: "Grizzly Bears",
+    oracle: "",
+    types: TypeLine.parse("Creature — Bear"),
+    manaCost: { raw: "1G", symbols: [] },
+    pt: { power: "2", toughness: "2" },
+    abilities: [],
+    triggers: [],
+    replacements: [],
+    statics: [],
+    keywords: [],
+    svars: new Map(),
+  },
 };
 
 const mkGame = () => {
@@ -62,17 +75,6 @@ const mkGame = () => {
     player.zones.set(ZoneType.Battlefield, new Battlefield(ZoneType.Battlefield, player.seat));
   }
   return game;
-};
-
-/** Seed a global Layer 4 "add Creature" type effect. */
-const seedCreatureType = (game: Game): void => {
-  game.layerEngine.typeEffects.push({
-    kind: "add",
-    cardType: CardType.Creature,
-    isCda: false,
-    timestamp: 0,
-    sourceAbilityId: null,
-  });
 };
 
 const drainGen = (gen: Generator<unknown, void, unknown>): void => {
@@ -97,8 +99,6 @@ describe("DamageAllEffect", () => {
     game.cards.set(c1, card1);
     game.cards.set(c2, card2);
     game.cards.set(c3, card3);
-
-    seedCreatureType(game);
 
     const sa = new SpellAbility(
       {
@@ -139,8 +139,6 @@ describe("DamageAllEffect", () => {
     const foeCard = new Card(foe, paper, seat1, seat1, ZoneType.Battlefield);
     game.cards.set(ally, allyCard);
     game.cards.set(foe, foeCard);
-
-    seedCreatureType(game);
 
     const sa = new SpellAbility(
       {

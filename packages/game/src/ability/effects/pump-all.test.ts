@@ -9,17 +9,17 @@
 // is deferred to SP4 — the current MVP tests verify filter COUNTS, not per-card
 // isolation, which is correct given the architecture.
 //
-// Layer-seeding note: deriveBaseCharacteristics (SP2) does not yet read
-// PaperCard.definition.types or .pt. Tests seed typeEffects and pt7b manually,
-// mirroring the pattern in pump.test.ts.
+// Layer-seeding note: deriveBaseCharacteristics now reads PaperCard.definition.
+// plainPaper includes a Creature definition so Creature type filter works;
+// seedBasePT seeds Layer 7b for tests that set a specific base P/T via the layer.
 import "../../svar/selectors/number.js";
 import "./pump-all.js";
 import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
 import {
-  CardType,
   DEFAULT_PAPER_CARD_FLAGS,
   Layer,
   SeededRng,
+  TypeLine,
   ZoneType,
   mkEntityId,
   mkPlayerSeat,
@@ -67,6 +67,19 @@ const plainPaper: PaperCard = {
   language: "en",
   foil: false,
   flags: DEFAULT_PAPER_CARD_FLAGS,
+  definition: {
+    name: "Grizzly Bears",
+    oracle: "",
+    types: TypeLine.parse("Creature — Bear"),
+    manaCost: { raw: "1G", symbols: [] },
+    pt: { power: "2", toughness: "2" },
+    abilities: [],
+    triggers: [],
+    replacements: [],
+    statics: [],
+    keywords: [],
+    svars: new Map(),
+  },
 };
 
 const mkGame = (): Game => {
@@ -78,19 +91,6 @@ const mkGame = (): Game => {
     player.zones.set(ZoneType.Battlefield, new Battlefield(ZoneType.Battlefield, player.seat));
   }
   return game;
-};
-
-/** Seed a global Layer 4 "add Creature" so all cards appear as Creature.
- *  Necessary because deriveBaseCharacteristics (SP2) does not read
- *  PaperCard.definition.types — that is deferred to SP4. */
-const seedCreatureType = (game: Game): void => {
-  game.layerEngine.typeEffects.push({
-    kind: "add",
-    cardType: CardType.Creature,
-    isCda: false,
-    timestamp: 0,
-    sourceAbilityId: null,
-  });
 };
 
 /** Seed a global Layer 7b base P/T. */
@@ -125,8 +125,6 @@ describe("PumpAllEffect", () => {
     game.cards.set(ally2Id, new Card(ally2Id, plainPaper, seat0, seat0, ZoneType.Battlefield));
     game.cards.set(foeId, new Card(foeId, plainPaper, seat1, seat1, ZoneType.Battlefield));
 
-    // Make all cards appear as Creatures (SP2 layer-seeding workaround).
-    seedCreatureType(game);
     seedBasePT(game, 2, 2);
 
     expect(game.continuousEffectRegistry.size()).toBe(0);
@@ -173,7 +171,6 @@ describe("PumpAllEffect", () => {
     game.cards.set(allyId, new Card(allyId, plainPaper, seat0, seat0, ZoneType.Battlefield));
     game.cards.set(foeId, new Card(foeId, plainPaper, seat1, seat1, ZoneType.Battlefield));
 
-    seedCreatureType(game);
     seedBasePT(game, 1, 1);
 
     const sa = new SpellAbility(
@@ -213,7 +210,6 @@ describe("PumpAllEffect", () => {
     game.cards.set(sourceId, new Card(sourceId, plainPaper, seat0, seat0, ZoneType.Battlefield));
     game.cards.set(allyId, new Card(allyId, plainPaper, seat0, seat0, ZoneType.Battlefield));
 
-    seedCreatureType(game);
     seedBasePT(game, 2, 2);
 
     const sa = new SpellAbility(
@@ -251,8 +247,8 @@ describe("PumpAllEffect", () => {
     game.cards.set(sourceId, new Card(sourceId, plainPaper, seat0, seat0, ZoneType.Battlefield));
     game.cards.set(creatureId, new Card(creatureId, plainPaper, seat0, seat0, ZoneType.Battlefield));
 
-    seedCreatureType(game);
-    // Base P/T: 2/2 (applies to all cards including source).
+    // Base P/T: 2/2 via Layer 7b (overrides definition's base for this test;
+    // definition also sets 2/2 so the net result is the same).
     seedBasePT(game, 2, 2);
 
     const sa = new SpellAbility(

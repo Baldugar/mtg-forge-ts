@@ -19,14 +19,11 @@
 //   - ChangesZoneAllTrigger.matches() fires for OTHER cards' ETBs
 //   - Two-step ETB chain works end-to-end
 //
-// SP4 gap workaround (same as soul-warden.test.ts): deriveBaseCharacteristics
-// does not yet read CardType from PaperCard.definition. We seed a global
-// Layer4 "add Creature" effect before any casting so computeCharacteristics
-// returns a Creature type for both Soul Warden and Grizzly Bears.
+// Both Soul Warden and Grizzly Bears carry a PaperCard.definition whose
+// types include Creature; deriveBaseCharacteristics reads these directly.
 import { parseCard } from "@mtg-forge-ts/cards";
 import type { EntityId, LobbyPlayer, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
 import {
-  CardType,
   Color,
   DEFAULT_PAPER_CARD_FLAGS,
   ManaProduced,
@@ -161,19 +158,6 @@ const drainResolver = (gen: Generator<unknown, void, unknown>): string[] => {
   return events;
 };
 
-// SP4 gap workaround: seed a global Layer4 "add Creature" effect so that
-// computeCharacteristics returns Creature type for any card. Both Soul Warden
-// and Grizzly Bears are creatures; the trigger filter checks this type.
-const seedCreatureType = (game: Game): void => {
-  game.layerEngine.typeEffects.push({
-    kind: "add",
-    cardType: CardType.Creature,
-    isCda: false,
-    timestamp: 0,
-    sourceAbilityId: null,
-  });
-};
-
 /**
  * Drain the trigger registry into a stack item and resolve it.
  * Returns the life gain events that occurred.
@@ -242,11 +226,9 @@ describe("Flagship: Soul Warden + Bears chained ETB — trigger fires for both c
       definition: bearDef,
     };
 
-    // 2. Seed Layer4 Creature type BEFORE any ETB events fire
-    //    (SP4 gap workaround — see comment above seedCreatureType)
-    seedCreatureType(game);
-
-    // 3. Add Soul Warden to hand; activate abilities AND triggers
+    // 2. Add Soul Warden to hand; activate abilities AND triggers
+    // deriveBaseCharacteristics now reads Creature type from PaperCard.definition,
+    // so no Layer4 seeding is needed.
     const swCard = addCardToHand(game, swPaper, seat0, soulWardenId);
     swCard.activateAbilitiesFromDefinition();
     swCard.activateTriggersFromDefinition(game);
@@ -260,7 +242,7 @@ describe("Flagship: Soul Warden + Bears chained ETB — trigger fires for both c
 
     // ── Phase 1: Cast + resolve Soul Warden ─────────────────────────────
 
-    // 4. Seed 1W to cast Soul Warden
+    // 3. Seed 1W to cast Soul Warden
     const pool1 = new ManaPool();
     pool1.add(ManaProduced.colored(Color.White));
     game.getPlayer(seat0).manaPool = pool1;
