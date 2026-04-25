@@ -13,3 +13,7 @@ export * from "./draw-replacement.js";
 export * from "./untap-replacement.js";
 export * from "./gain-life-replacement.js";
 export * from "./life-reduced-replacement.js";
+// Wave 10 replacements
+export * from "./turn-face-up-replacement.js";
+export * from "./game-win-replacement.js";
+export * from "./game-loss-replacement.js";
