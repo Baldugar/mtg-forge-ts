@@ -40,4 +40,30 @@ describe("parseKeywordLine", () => {
   it("rejects unknown keyword", () => {
     expect(() => parseKeywordLine(first(lex("K:Notakeyword\n")))).toThrow(/unknown keyword/);
   });
+
+  // Tolerable parser-extension keywords — etbCounter, ETBReplacement, Chapter.
+  // These map to opaque KeywordIds so the parser does not throw on cards that
+  // carry them; full semantics are deferred to future waves.
+
+  it("parses 'K:etbCounter:1+1+1' — ETB counter placement shorthand", () => {
+    const out = parseKeywordLine(first(lex("K:etbCounter:1+1+1\n")));
+    expect(out.keyword).toBe("etb_counter");
+    expect(out.params?.detail).toEqual({ kind: "literal", raw: "1+1+1" });
+  });
+
+  it("parses 'K:etbCounter' without param", () => {
+    const out = parseKeywordLine(first(lex("K:etbCounter\n")));
+    expect(out.keyword).toBe("etb_counter");
+  });
+
+  it("parses 'K:ETBReplacement' — ETB replacement shorthand", () => {
+    const out = parseKeywordLine(first(lex("K:ETBReplacement\n")));
+    expect(out.keyword).toBe("etb_replacement");
+  });
+
+  it("parses 'K:Chapter:1' — Saga chapter keyword", () => {
+    const out = parseKeywordLine(first(lex("K:Chapter:1\n")));
+    expect(out.keyword).toBe("chapter");
+    expect(out.params?.detail).toEqual({ kind: "literal", raw: "1" });
+  });
 });
