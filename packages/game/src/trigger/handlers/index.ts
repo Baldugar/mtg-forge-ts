@@ -26,3 +26,9 @@ export * from "./chaos-ensues-trigger.js";
 export * from "./set-in-motion-trigger.js";
 export * from "./taps-trigger.js";
 export * from "./transformed-trigger.js";
+// Wave 10 triggers
+export * from "./counter-added-once-trigger.js";
+export * from "./ability-cast-trigger.js";
+export * from "./cycled-trigger.js";
+export * from "./always-trigger.js";
+export * from "./drawn-trigger.js";

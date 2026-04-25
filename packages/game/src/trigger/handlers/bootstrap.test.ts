@@ -111,4 +111,26 @@ describe("TriggerHandler bootstrap (index.ts)", () => {
       expect(triggerHandlerRegistry.has("Transformed")).toBe(true);
     });
   });
+
+  describe("Wave 10 handlers", () => {
+    it("registers CounterAddedOnce", () => {
+      expect(triggerHandlerRegistry.has("CounterAddedOnce")).toBe(true);
+    });
+
+    it("registers AbilityCast", () => {
+      expect(triggerHandlerRegistry.has("AbilityCast")).toBe(true);
+    });
+
+    it("registers Cycled", () => {
+      expect(triggerHandlerRegistry.has("Cycled")).toBe(true);
+    });
+
+    it("registers Always", () => {
+      expect(triggerHandlerRegistry.has("Always")).toBe(true);
+    });
+
+    it("registers Drawn", () => {
+      expect(triggerHandlerRegistry.has("Drawn")).toBe(true);
+    });
+  });
 });
