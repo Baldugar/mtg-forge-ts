@@ -288,32 +288,10 @@ describe("DiscardEffect", () => {
 });
 
 // ────────────────────────────────────────────────────────────────────────────
-// TokenEffect (stub)
+// TokenEffect (now fully implemented — Part D Wave 3 unstub)
 // ────────────────────────────────────────────────────────────────────────────
 
-describe("TokenEffect (stub — deferred to Part D2)", () => {
-  it("throws a deferred error when resolved", () => {
-    const game = mkGame();
-    const seat0 = mkPlayerSeat(0);
-    const sourceId = mkEntityId(10);
-    game.cards.set(sourceId, new Card(sourceId, paper, seat0, seat0, ZoneType.Battlefield));
-
-    const sa = new SpellAbility(
-      {
-        kind: "spell",
-        effect: { handlerKey: "Token", params: {} },
-        cost: { raw: "2 G" },
-      },
-      sourceId,
-      seat0,
-      new Map(),
-    );
-
-    expect(() => drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>)).toThrow(
-      /deferred to Part D2/,
-    );
-  });
-
+describe("TokenEffect (SP3 Part D Wave 3)", () => {
   it("is registered in the effectRegistry under handlerKey 'Token'", () => {
     // The import at the top of this file registers TokenEffect.
     // SpellAbility.makeResolver will find it (no "no registered effect" error).
@@ -329,9 +307,34 @@ describe("TokenEffect (stub — deferred to Part D2)", () => {
       new Map(),
     );
 
-    // Throws the deferred error, NOT the "no registered effect" error.
+    // Resolves successfully (creates a 0/0 colorless Token) — no longer a stub.
+    expect(() =>
+      drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>),
+    ).not.toThrow();
+  });
+
+  it("throws a clear deferred error when TokenScript$ is present", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = mkEntityId(10);
+    game.cards.set(sourceId, new Card(sourceId, paper, seat0, seat0, ZoneType.Battlefield));
+
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "Token",
+          params: { TokenScript: { kind: "literal", raw: "w_1_1_soldier" } },
+        },
+        cost: { raw: "" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
+    );
+
     expect(() => drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>)).toThrow(
-      "TokenEffect: deferred to Part D2",
+      /TokenScript\$.*SP4/i,
     );
   });
 });
