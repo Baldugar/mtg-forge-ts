@@ -13,22 +13,21 @@ const parseZoneList = (raw: string): readonly ZoneType[] => {
   return tokens.map((t) => t.toLowerCase() as ZoneType);
 };
 
-export const parseStaticLine = (line: LexedLine): StaticAst => {
+// Parse a single S: line into one or more StaticAst nodes.
+// If Mode$ contains a comma-separated list (e.g. "CantAttack,CantBlock"),
+// one StaticAst is produced per mode, each sharing the same params and zones.
+export const parseStaticLine = (line: LexedLine): readonly StaticAst[] => {
   if (line.prefix !== "S") {
     throw new Error(`parseStaticLine: expected prefix 'S', got '${line.prefix}' at line ${line.lineNumber}`);
   }
-  let mode: string | null = null;
+  let rawMode: string | null = null;
   let activeInZones: readonly ZoneType[] = ["battlefield" as ZoneType];
   const params: Record<string, ParamValue> = {};
 
   for (const tok of line.tokens) {
     for (const [k, v] of tok) {
       if (k === "Mode") {
-        const canonical = staticAbilityModeFromName(v);
-        if (canonical === null) {
-          throw new Error(`unknown StaticAbilityMode '${v}' at line ${line.lineNumber}`);
-        }
-        mode = canonical;
+        rawMode = v;
       } else if (k === "EffectZone") {
         activeInZones = parseZoneList(v);
       } else if (k === "Description") {
@@ -39,9 +38,20 @@ export const parseStaticLine = (line: LexedLine): StaticAst => {
     }
   }
 
-  if (mode === null) {
+  if (rawMode === null) {
     throw new Error(`parseStaticLine: missing Mode$ at line ${line.lineNumber}`);
   }
 
-  return { mode, params, activeInZones };
+  // Support comma-separated Mode$ values (e.g. "CantAttack,CantBlock").
+  // Each mode produces a separate StaticAst sharing the same params/zones.
+  const modeTokens = rawMode.split(",").map((m) => m.trim());
+  const results: StaticAst[] = [];
+  for (const modeToken of modeTokens) {
+    const canonical = staticAbilityModeFromName(modeToken);
+    if (canonical === null) {
+      throw new Error(`unknown StaticAbilityMode '${modeToken}' at line ${line.lineNumber}`);
+    }
+    results.push({ mode: canonical, params, activeInZones });
+  }
+  return results;
 };

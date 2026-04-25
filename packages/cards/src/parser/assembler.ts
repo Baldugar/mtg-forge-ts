@@ -127,7 +127,7 @@ const dispatch = (line: LexedLine, st: AssemblerState): void => {
       st.replacements.push(parseReplacementLine(line));
       break;
     case "S":
-      st.statics.push(parseStaticLine(line));
+      st.statics.push(...parseStaticLine(line));
       break;
     case "K":
       st.keywords.push(parseKeywordLine(line));

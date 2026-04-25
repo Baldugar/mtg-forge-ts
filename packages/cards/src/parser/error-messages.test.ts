@@ -3,9 +3,10 @@ import { describe, expect, it } from "vitest";
 import { parseCard } from "./assembler.js";
 
 describe("error messages include source location or card context", () => {
-  it("reports line number for unknown keyword", () => {
+  it("tolerates unknown keyword as freeform (no throw)", () => {
+    // Since unknown keywords fall back to 'freeform', they no longer throw.
     const source = `${["Name:Bogus", "Types:Creature Human", "K:NotARealKeyword"].join("\n")}\n`;
-    expect(() => parseCard(source, "bogus.txt")).toThrow(/line 3/);
+    expect(() => parseCard(source, "bogus.txt")).not.toThrow();
   });
 
   it("reports line number for unknown StaticAbilityMode", () => {
