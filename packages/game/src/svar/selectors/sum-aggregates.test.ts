@@ -2,7 +2,6 @@
 // SumPower / SumToughness / SumCMC selector tests.
 import type { LobbyPlayer, ManaCostAst, PaperCard } from "@mtg-forge-ts/core";
 import {
-  CardType,
   DEFAULT_PAPER_CARD_FLAGS,
   SeededRng,
   TypeLine,
