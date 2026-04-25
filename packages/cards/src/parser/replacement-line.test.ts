@@ -42,4 +42,31 @@ describe("parseReplacementLine", () => {
     const out = parseReplacementLine(first(lex("R:Event$ moved | ReplaceWith$ DBX\n")));
     expect(out.eventKind).toBe("Moved");
   });
+
+  it("accepts Layer$ CantHappen without ReplaceWith$ — prevention-style", () => {
+    const out = parseReplacementLine(
+      first(
+        lex(
+          "R:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\n",
+        ),
+      ),
+    );
+    expect(out.eventKind).toBe("Counter");
+    expect(out.effect.handlerKey).toBe("Prevent");
+    expect(out.params.Layer).toEqual({ kind: "literal", raw: "CantHappen" });
+  });
+
+  it("accepts Prevent$ True without ReplaceWith$ — prevention-style", () => {
+    const out = parseReplacementLine(
+      first(lex("R:Event$ DamageDone | Prevent$ True | Description$ Prevent all damage.\n")),
+    );
+    expect(out.eventKind).toBe("DamageDone");
+    expect(out.effect.handlerKey).toBe("Prevent");
+  });
+
+  it("rejects replacement without ReplaceWith$ when not prevention-style", () => {
+    expect(() => parseReplacementLine(first(lex("R:Event$ Moved | ValidCard$ Card.Self\n")))).toThrow(
+      /missing ReplaceWith/,
+    );
+  });
 });

@@ -37,14 +37,27 @@ export const parseReplacementLine = (line: LexedLine): ReplacementAst => {
   if (eventKind === null) {
     throw new Error(`parseReplacementLine: missing Event$ at line ${line.lineNumber}`);
   }
-  if (replaceWith === null) {
+
+  // Prevention-style replacements (e.g. "This spell can't be countered",
+  // "prevent N damage") use Layer$ CantHappen or Prevent$ True instead of
+  // providing a ReplaceWith$ SVar. Treat these as optional and synthesise a
+  // "Prevent" handlerKey so the resolver does not attempt a DB lookup.
+  const layerParam = params.Layer;
+  const preventParam = params.Prevent;
+  const layerRaw = layerParam?.kind === "literal" ? layerParam.raw : undefined;
+  const preventRaw = preventParam?.kind === "literal" ? preventParam.raw : undefined;
+  const isPreventStyle = layerRaw === "CantHappen" || preventRaw === "True";
+
+  if (replaceWith === null && !isPreventStyle) {
     throw new Error(`parseReplacementLine: missing ReplaceWith$ at line ${line.lineNumber}`);
   }
+
+  const handlerKey = replaceWith ?? "Prevent";
 
   return {
     eventKind,
     params,
-    effect: { handlerKey: replaceWith, params: {} },
+    effect: { handlerKey, params: {} },
     ...(isSelf ? { isSelf: true } : {}),
   };
 };
