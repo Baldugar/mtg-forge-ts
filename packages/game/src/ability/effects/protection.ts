@@ -23,7 +23,6 @@ import type { SpellAbility } from "../spell-ability.js";
 export class ProtectionEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Protection";
 
-  // biome-ignore lint/correctness/useYield: stub — protection grant deferred to SP3
   override *resolve(_sa: SpellAbility, _game: Game): Generator<EngineYield, void, unknown> {
     // STUB: protection-from-color continuous effect not yet implemented.
     // Registered so the DSL validator counts Protection as a known key.

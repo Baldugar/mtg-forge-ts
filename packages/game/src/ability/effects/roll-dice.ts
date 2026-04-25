@@ -22,7 +22,6 @@ import type { SpellAbility } from "../spell-ability.js";
 export class RollDiceEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RollDice";
 
-  // biome-ignore lint/correctness/useYield: stub — dice roll + sub-ability dispatch deferred
   override *resolve(_sa: SpellAbility, _game: Game): Generator<EngineYield, void, unknown> {
     // STUB: dice roll is deterministic (always 1) and ResultSubAbility is not
     // dispatched. Registered so DSL validator counts RollDice as a known key.
