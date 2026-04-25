@@ -44,3 +44,9 @@ export * from "./copy-permanent.js";
 export * from "./set-state.js";
 export * from "./put-counter-all.js";
 export * from "./choose-source.js";
+// Wave 8b effects
+export * from "./animate-all.js";
+export * from "./choose-color.js";
+export * from "./play.js";
+export * from "./repeat-each.js";
+export * from "./peek-and-reveal.js";

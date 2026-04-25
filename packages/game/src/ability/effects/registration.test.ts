@@ -118,4 +118,25 @@ describe("Effect suite self-register bootstrap", () => {
   it("ChooseSource is registered", () => {
     expect(effectRegistry.has("ChooseSource")).toBe(true);
   });
+
+  // Wave 8b effects
+  it("AnimateAll is registered", () => {
+    expect(effectRegistry.has("AnimateAll")).toBe(true);
+  });
+
+  it("ChooseColor is registered", () => {
+    expect(effectRegistry.has("ChooseColor")).toBe(true);
+  });
+
+  it("Play is registered", () => {
+    expect(effectRegistry.has("Play")).toBe(true);
+  });
+
+  it("RepeatEach is registered", () => {
+    expect(effectRegistry.has("RepeatEach")).toBe(true);
+  });
+
+  it("PeekAndReveal is registered", () => {
+    expect(effectRegistry.has("PeekAndReveal")).toBe(true);
+  });
 });
