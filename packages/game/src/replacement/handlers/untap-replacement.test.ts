@@ -21,7 +21,7 @@ const mkCtx = (): ReplacementBuildContext => ({
 });
 
 const mkAst = (validCard = "Card.Self", layer?: string, prevent?: string): ReplacementAst => ({
-  event: "Untap",
+  eventKind: "Untap",
   params: {
     ValidCard: { kind: "literal", raw: validCard },
     ...(layer ? { Layer: { kind: "literal", raw: layer } } : {}),

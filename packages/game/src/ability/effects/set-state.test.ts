@@ -2,7 +2,14 @@
 // SetStateEffect tests — DFC transform, flip, turnFaceUp dispatch.
 import "./set-state.js";
 import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  ManaCost,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it, vi } from "vitest";
 import { Card } from "../../card.js";
 import type { GameMeta } from "../../game-meta.js";
@@ -154,7 +161,7 @@ describe("SetStateEffect", () => {
     const sourceId = mkEntityId(10);
 
     const card = new Card(sourceId, plainPaper, seat0, seat0, ZoneType.Battlefield);
-    card.faceDown = { kind: "morph" };
+    card.faceDown = { kind: "morph", cost: ManaCost.parse("3") };
     game.cards.set(sourceId, card);
     game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(sourceId);
 
