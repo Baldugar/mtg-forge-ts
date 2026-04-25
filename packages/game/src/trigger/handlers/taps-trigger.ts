@@ -116,10 +116,18 @@ triggerHandlerRegistry.register(TapsTrigger);
 // ---------------------------------------------------------------------------
 // TapTrigger — Forge also uses the singular "Tap" mode in some card texts.
 // Both modes map to the same handler logic (CardTapped event check).
+// Implemented as a separate class (not a subclass) to satisfy the TypeScript
+// static-side constraint: the base class "mode" literal "Taps" is not
+// assignable to "Tap" on a subclass static override.
 // ---------------------------------------------------------------------------
 
-export class TapTrigger extends TapsTrigger {
+export class TapTrigger extends TriggerHandler {
   static override readonly mode = "Tap";
+
+  override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
+    // Delegate to TapsTrigger — identical logic, different registry key.
+    return new TapsTrigger().build(ast, ctx);
+  }
 }
 
 triggerHandlerRegistry.register(TapTrigger);
