@@ -50,3 +50,8 @@ export * from "./choose-color.js";
 export * from "./play.js";
 export * from "./repeat-each.js";
 export * from "./peek-and-reveal.js";
+// Wave 9 effects
+export * from "./protection.js";
+export * from "./roll-dice.js";
+export * from "./untap-all.js";
+export * from "./tap-all.js";
