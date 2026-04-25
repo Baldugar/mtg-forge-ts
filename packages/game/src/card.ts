@@ -14,12 +14,16 @@ import type {
   PlayerSeat,
   SVarAst,
   StaticAbility,
+  TriggerAst,
+  TriggeredAbility,
   ZoneType,
 } from "@mtg-forge-ts/core";
 import { paperCardKey } from "@mtg-forge-ts/core";
 import { SpellAbility } from "./ability/spell-ability.js";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
+import type { Game } from "./game.js";
 import type { FaceKind } from "./multiface/face-kind.js";
+import { triggerHandlerRegistry } from "./trigger/index.js";
 
 export class Card {
   tapped = false;
@@ -92,6 +96,11 @@ export class Card {
   // castable spells, battlefield for activated abilities). Empty until
   // activated.
   spellAbilities: SpellAbility[] = [];
+  // SP3 Part E Task 4 — live TriggeredAbility instances built from the
+  // card's parsed TriggerAst nodes. Populated by
+  // activateTriggersFromDefinition(game); registered with game.triggerRegistry
+  // by the same call so TriggerRegistry.onEvent sees them immediately.
+  triggeredAbilities: TriggeredAbility[] = [];
 
   // SP2 Milestone Q (Tasks 58-61) — active face selector for multi-face
   // cards. "default" means single-face or "no multi-face selection made
@@ -144,6 +153,39 @@ export class Card {
     this.spellAbilities = (def.abilities as readonly AbilityAst[]).map(
       (ast) => new SpellAbility(ast, this.id, this.controllerSeat, svars, []),
     );
+  }
+
+  /**
+   * SP3 Part E Task 4 — walks the PaperCard's CardDefinition.triggers and
+   * constructs live TriggeredAbility instances via the triggerHandlerRegistry.
+   * Each produced trigger is immediately registered with game.triggerRegistry
+   * so TriggerRegistry.onEvent fires correctly from the next event forward.
+   *
+   * Trigger modes not yet handled by the registry are silently skipped; they
+   * will be covered in Part E2 and later waves.
+   *
+   * Idempotent — safe to call multiple times; later calls replace the
+   * existing list (old registrations must be unregistered by the caller
+   * before re-calling if duplication is a concern).
+   */
+  activateTriggersFromDefinition(game: Game): void {
+    const def = this.paperCard.definition;
+    if (!def) return;
+    this.triggeredAbilities = [];
+    for (const triggerAst of def.triggers as readonly TriggerAst[]) {
+      const Cls = triggerHandlerRegistry.lookup(triggerAst.mode);
+      if (!Cls) continue; // silently skip unknown modes
+      const handler = new Cls();
+      const triggerId = game.newEntityId();
+      const ta = handler.build(triggerAst, {
+        game,
+        sourceCardId: this.id,
+        controllerSeat: this.controllerSeat,
+        triggerId,
+      });
+      this.triggeredAbilities.push(ta);
+      game.triggerRegistry.register(ta);
+    }
   }
 
   toJSON(): {
