@@ -20,14 +20,18 @@
 //   6. Push via game.action.putOnStack — which emits AbilityActivated.
 //   7. Return the StackItem id.
 //
-// MVP scope: no-target activated abilities (Llanowar Elves {T}: Add {G}).
-// Targeted activated abilities (e.g. equip) are SP3+.
+// Wave 8 — target selection (CR 602.1b). When the activated ability
+// publishes a ValidTgts$ filter on its effect, choose targets BEFORE
+// paying costs (announce → choose targets → pay costs → on stack).
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
-import { mkEvent } from "@mtg-forge-ts/core";
+import { IllegalDecisionError, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
+import { parseValidTgts } from "../cast/valid-targets.js";
 import { parseCostString, payCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
 import type { StackItem, StackItemProvenance } from "../stack/stack-item.js";
+import type { TargetChoices, TargetRef } from "../target/restriction.js";
+import { SpellAbility } from "./spell-ability.js";
 
 /**
  * Activate the ability at `abilityIndex` on `cardId`. Validates the
@@ -76,6 +80,64 @@ export function* activateAbility(
     );
   }
 
+  // 3b. Wave 8 — target selection (CR 602.1b: choose modes/targets BEFORE
+  //     paying costs). If the ability's effect carries a ValidTgts$ param,
+  //     parse it into a TargetRestriction, enumerate eligible targets via
+  //     game.targetSystem, yield chooseCastTargets, validate the response.
+  //
+  // Targets are stored as TargetRef[] (card | player). For binding into the
+  // SpellAbility constructor we map them to EntityId[] (PlayerSeat is a
+  // branded number, same underlying type as EntityId — same coercion the
+  // cast pipeline uses).
+  const validTgtsParam = sa.ast.effect.params.ValidTgts;
+  let chosenTargets: readonly TargetRef[] = [];
+  if (validTgtsParam && validTgtsParam.kind === "literal" && validTgtsParam.raw) {
+    const restriction = parseValidTgts(validTgtsParam.raw);
+    const enumerationCtx = {
+      sourceId: cardId,
+      sourceControllerSeat: controllerSeat,
+    };
+    const eligible = game.targetSystem.enumerate(enumerationCtx, restriction);
+    const response = (yield {
+      kind: "decision",
+      request: {
+        kind: "chooseCastTargets",
+        playerSeat: controllerSeat,
+        sourceId: cardId,
+        legalTargets: eligible as readonly unknown[],
+        min: restriction.minTargets,
+        max: restriction.maxTargets,
+        ...(restriction.divideX !== undefined ? { divideX: restriction.divideX } : {}),
+      },
+    }) as {
+      readonly kind: "chooseCastTargets";
+      readonly targets: readonly unknown[];
+      readonly divisions?: Readonly<Record<number, number>>;
+    };
+    chosenTargets = response.targets as readonly TargetRef[];
+    const choices: TargetChoices =
+      response.divisions !== undefined
+        ? { targets: chosenTargets, divisions: { ...response.divisions } }
+        : { targets: chosenTargets };
+    if (!game.targetSystem.validateAtCast(choices, enumerationCtx, restriction)) {
+      throw new IllegalDecisionError(
+        `activateAbility: invalid target selection for card ${cardId} ability ${abilityIndex}`,
+      );
+    }
+    // Emit CardTargeted for each card-typed target so BecomesTargetTrigger fires.
+    for (const ref of chosenTargets) {
+      if (ref.kind === "card") {
+        yield game.emitEvent(
+          mkEvent("CardTargeted", game.turn, game.phase, {
+            targetId: ref.id,
+            sourceCardId: cardId,
+            targetingSeat: controllerSeat,
+          }),
+        );
+      }
+    }
+  }
+
   // 3. Parse the cost.
   const costRaw = sa.ast.cost.raw;
   const plan = parseCostString(costRaw);
@@ -109,18 +171,44 @@ export function* activateAbility(
     altCostUsed: null,
     additionalCostsPaid: [],
   };
+
+  // Wave 8 — build a target-bound resolver when targets were chosen. Mirror
+  // the cast-pipeline finalizeStackItem pattern: when chosenTargets is
+  // non-empty, construct a fresh SpellAbility with the bound EntityIds and
+  // use its resolver. Otherwise fall through to the unbound template's
+  // resolver. PlayerSeat is a branded number, same underlying as EntityId,
+  // so casting through unknown is safe at runtime (the same coercion the
+  // cast pipeline performs in finalizeStackItem).
+  let resolver = sa.makeResolver();
+  if (chosenTargets.length > 0) {
+    const targetIds: EntityId[] = chosenTargets.map((ref) =>
+      ref.kind === "card" ? ref.id : (ref.seat as unknown as EntityId),
+    );
+    const boundSa = new SpellAbility(
+      sa.ast,
+      sa.sourceCardId,
+      sa.controllerSeat,
+      sa.svars,
+      targetIds,
+      sa.xValue,
+      sa.activeInZones,
+      sa.tags,
+    );
+    resolver = boundSa.makeResolver();
+  }
+
   const stackItem: StackItem = {
     id: itemId,
     sourceCardId: cardId,
     controllerSeat,
     kind: "activatedAbility",
     isCast: false,
-    targets: null,
+    targets: chosenTargets.length > 0 ? chosenTargets : null,
     modes: [],
     xValue: null,
     costPaid: receipts,
     provenance,
-    resolver: sa.makeResolver(),
+    resolver,
   };
 
   // 6. Push to stack (emits AbilityActivated).
