@@ -168,6 +168,13 @@ const dispatch = (line: LexedLine, st: AssemblerState): void => {
     case "HandLifeModifier":
       // Commander-specific metadata; noop for parser.
       break;
+    case "Variant":
+    case "Draft":
+    case "Schemes":
+      // Wave 7: tolerated metadata prefixes. These carry adventure/draft/scheme
+      // side-data that the engine does not yet act on at parse time. Silently
+      // ignore so corpus cards with these lines parse cleanly.
+      break;
     default:
       throw new Error(`unknown prefix '${line.prefix}' at line ${line.lineNumber}`);
   }
