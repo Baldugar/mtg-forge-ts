@@ -1,44 +1,53 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// ChooseTypeEffect — handles Forge's `SP$ ChooseType` effect line.
-// Ask the controller to choose a creature subtype (or card type) and remember
-// the chosen value for downstream effects.
+// ChooseTypeEffect — ask the controller to choose a creature subtype (or card
+// type) and remember the chosen value for downstream effects.
 //
 // Forge DSL:
 //   SP$ ChooseType | RememberChosen$ True | Type$ Creature
 //   SP$ ChooseType | RememberChosen$ True | Type$ Creature
 //     | TypeDesc$ creature type
 //
-// MVP STATUS: STUB — deterministically picks "Human" (the most common Changeling
-// subtype) and stores it in card.remembered as a placeholder BigInt sentinel
-// (same pattern as ChooseColor). A real interactive `chooseType` decision kind
-// is deferred to SP3.
-//
-// Registered so the semantic validator stops flagging ChooseType as an unknown
-// handler key.
-//
-// TODO(SP3): add a `chooseType` decision kind to core and yield an interactive
-// decision request here; store the result in a dedicated card.chosenType field.
+// Yields a `chooseType` decision request (Wave 4) and stores the result in
+// card.chosenTypes[]. Falls back to "Goblin" (common creature subtype used
+// in Changeling-adjacent tests) if no decision response is provided.
+import type { DecisionResponse } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
+import { evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
+
+const FALLBACK_TYPE = "Goblin";
 
 export class ChooseTypeEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChooseType";
 
-  // Non-generator: deterministic type choice stored synchronously.
-  override resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    const source = game.cards.get(sa.sourceCardId);
-    if (source) {
-      // Store deterministic sentinel — a real chosen-type string lands in SP3.
-      // We push 0n so RememberChosen$ True has an entry to work with downstream.
-      source.remembered.push(0n as never);
+  override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    const typeKind = hasParam(sa, "Type") ? evaluateParamRaw(sa, "Type") : "Creature";
+
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseType",
+        sourceId: sa.sourceCardId,
+        typeKind,
+      },
+    };
+
+    const response = rawResponse as DecisionResponse | undefined;
+    let chosen: string;
+    if (response && response.kind === "chooseType") {
+      chosen = response.type;
+    } else {
+      // Non-interactive path — default to Goblin.
+      chosen = FALLBACK_TYPE;
     }
 
-    return (function* (): Generator<EngineYield, void, unknown> {
-      /* no engine events for deterministic type choice */
-    })();
+    const source = game.cards.get(sa.sourceCardId);
+    if (source) {
+      source.chosenTypes.push(chosen);
+    }
   }
 }
 

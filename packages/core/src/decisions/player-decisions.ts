@@ -433,6 +433,17 @@ export type DecisionRequest =
       readonly playerSeat: PlayerSeat;
       readonly candidateIds: readonly EntityId[];
       readonly currentBearer: EntityId | null;
+    }
+  | {
+      // Wave 4 — ChooseTypeEffect (CR 205.3) asks the controller to name a
+      // card type or subtype. `typeKind` is a hint for UI rendering ("Creature"
+      // means pick a creature subtype; "Artifact" means any permanent type).
+      // The response carries the chosen type name as a free-form string; the
+      // engine stores it on card.chosenTypes without validating against an
+      // exhaustive list (that belongs in format enforcement, not the engine).
+      readonly kind: "chooseType";
+      readonly sourceId: EntityId;
+      readonly typeKind: string;
     };
 
 /**
@@ -567,6 +578,11 @@ export type DecisionResponse =
     }
   | { readonly kind: "activateManaAbilities"; readonly done: true }
   | { readonly kind: "chooseRingBearer"; readonly bearerId: EntityId | null }
+  | {
+      // Wave 4 — response for chooseType request.
+      readonly kind: "chooseType";
+      readonly type: string;
+    }
   | {
       readonly kind: "chooseProliferateTargets";
       readonly chosenCards: readonly EntityId[];
