@@ -10,6 +10,7 @@ import type {
   CounterType,
   EntityId,
   FaceDownState,
+  KeywordAst,
   PaperCard,
   PlayerSeat,
   ReplacementAbility,
@@ -24,6 +25,7 @@ import { paperCardKey } from "@mtg-forge-ts/core";
 import { SpellAbility } from "./ability/spell-ability.js";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 import type { Game } from "./game.js";
+import { keywordHandlerRegistry } from "./keyword/keyword-handler-registry.js";
 import type { FaceKind } from "./multiface/face-kind.js";
 import { replacementHandlerRegistry } from "./replacement/index.js";
 import { triggerHandlerRegistry } from "./trigger/index.js";
@@ -226,6 +228,35 @@ export class Card {
       });
       this.replacementAbilities.push(ra);
       game.replacementRegistry.register(ra);
+    }
+  }
+
+  /**
+   * SP3 Part G Task 3 — walks the PaperCard's CardDefinition.keywords and
+   * activates each one via the keywordHandlerRegistry. The resulting keyword
+   * ids are stored in Card.keywords (a Set<string> of lowercase_snake_case
+   * KeywordId values) so that combat helpers (hasKeyword) and SBAs can read
+   * them without additional indirection.
+   *
+   * Always resets the Set before re-activating (idempotent). Cards without a
+   * definition (tokens, emblems) are a no-op.
+   */
+  activateKeywordsFromDefinition(game: Game): void {
+    const def = this.paperCard.definition;
+    if (!def) return;
+    // Reset to a fresh set — intrinsic keywords come exclusively from the
+    // definition; layer-granted keywords are added on top by the layer engine.
+    if (!this.keywords) this.keywords = new Set();
+    else this.keywords.clear();
+    for (const ast of def.keywords as readonly KeywordAst[]) {
+      const Cls = keywordHandlerRegistry.lookup(ast.keyword);
+      if (!Cls) continue; // silently skip unhandled keyword shapes
+      const handler = new Cls();
+      handler.activate(ast, {
+        game,
+        sourceCardId: this.id,
+        controllerSeat: this.controllerSeat,
+      });
     }
   }
 

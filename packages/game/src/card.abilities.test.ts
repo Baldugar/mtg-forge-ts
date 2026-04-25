@@ -23,6 +23,9 @@ import "./svar/selectors/number.js";
 import "./trigger/index.js";
 // Ensure replacement handlers are registered for activateReplacementsFromDefinition.
 import "./replacement/index.js";
+// Ensure keyword handlers (FlagKeywordHandler) are registered for
+// activateKeywordsFromDefinition.
+import "./keyword/index.js";
 
 const boltSrc = `${[
   "Name:Lightning Bolt",
@@ -164,15 +167,16 @@ const mkGame = (): Game =>
     rng: new SeededRng(0xdeadbeefn),
   });
 
-// Mulldrifter-like ETB draw trigger
+// Mulldrifter-like ETB draw trigger (K:Flying added for Part G Task 3 tests)
 const mulldrifterSrc = `${[
   "Name:Mulldrifter",
   "ManaCost:4 U",
   "Types:Creature - Elemental",
   "PT:2/2",
+  "K:Flying",
   "T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.",
   "SVar:TrigDraw:AB$ Draw | Cost$ 0 | NumCards$ 2",
-  "Oracle:When Mulldrifter enters, draw two cards.",
+  "Oracle:Flying. When Mulldrifter enters, draw two cards.",
 ].join("\n")}\n`;
 
 describe("Card.activateTriggersFromDefinition", () => {
@@ -421,5 +425,145 @@ describe("Card.activateReplacementsFromDefinition", () => {
     // Should not throw
     card.activateReplacementsFromDefinition(game);
     expect(card.replacementAbilities).toHaveLength(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Task 3 (Part G) — Card.activateKeywordsFromDefinition
+// ---------------------------------------------------------------------------
+
+// A card with two flag keywords: Flying + Vigilance.
+const flyingVigilanceSrc = `${[
+  "Name:Serra Angel",
+  "ManaCost:3 W W",
+  "Types:Creature - Angel",
+  "PT:4/4",
+  "K:Flying",
+  "K:Vigilance",
+  "Oracle:Flying, vigilance.",
+].join("\n")}\n`;
+
+describe("Card.activateKeywordsFromDefinition", () => {
+  it("populates card.keywords with Flying and Vigilance from definition", () => {
+    const def = parseCard(flyingVigilanceSrc, "serra-angel.txt");
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "LEA",
+      collectorNumber: "027",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const game = mkGame();
+    const id = mkEntityId(60);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+    game.cards.set(id, card);
+
+    expect(card.keywords).toBeUndefined();
+
+    card.activateKeywordsFromDefinition(game);
+
+    expect(card.keywords).toBeDefined();
+    expect(card.keywords?.has("flying")).toBe(true);
+    expect(card.keywords?.has("vigilance")).toBe(true);
+    expect(card.keywords?.size).toBe(2);
+  });
+
+  it("Mulldrifter (K:Flying) → card.keywords has 'flying' after activation", () => {
+    const def = parseCard(mulldrifterSrc, "mulldrifter.txt");
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "LRW",
+      collectorNumber: "056",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const game = mkGame();
+    const id = mkEntityId(61);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+    game.cards.set(id, card);
+
+    card.activateKeywordsFromDefinition(game);
+
+    expect(card.keywords?.has("flying")).toBe(true);
+  });
+
+  it("is idempotent — calling twice yields the same keyword set", () => {
+    const def = parseCard(flyingVigilanceSrc, "serra-angel.txt");
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "LEA",
+      collectorNumber: "027",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const game = mkGame();
+    const id = mkEntityId(62);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+    game.cards.set(id, card);
+
+    card.activateKeywordsFromDefinition(game);
+    card.activateKeywordsFromDefinition(game);
+
+    expect(card.keywords?.has("flying")).toBe(true);
+    expect(card.keywords?.has("vigilance")).toBe(true);
+    expect(card.keywords?.size).toBe(2);
+  });
+
+  it("is a no-op when PaperCard has no definition (token-like cards)", () => {
+    const tokenPaper: PaperCard = {
+      name: "Elf Token",
+      edition: "TST",
+      collectorNumber: "T001",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+    };
+    const game = mkGame();
+    const id = mkEntityId(63);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, tokenPaper, seat, seat, ZoneType.Battlefield);
+    game.cards.set(id, card);
+
+    card.activateKeywordsFromDefinition(game);
+
+    expect(card.keywords).toBeUndefined();
+  });
+
+  it("clears previously set keywords on re-activation (reset semantics)", () => {
+    const def = parseCard(flyingVigilanceSrc, "serra-angel.txt");
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "LEA",
+      collectorNumber: "027",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const game = mkGame();
+    const id = mkEntityId(64);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+    game.cards.set(id, card);
+
+    // Manually inject an extra keyword that isn't in the definition
+    card.keywords = new Set(["trample"]);
+
+    card.activateKeywordsFromDefinition(game);
+
+    // After activation, only the definition-sourced keywords should be present
+    expect(card.keywords?.has("flying")).toBe(true);
+    expect(card.keywords?.has("vigilance")).toBe(true);
+    // "trample" was not in the definition — should be gone after reset
+    expect(card.keywords?.has("trample")).toBe(false);
   });
 });
