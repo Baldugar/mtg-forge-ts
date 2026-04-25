@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Verify that importing the effects bootstrap index registers all 5 flagship effects.
+// Verify that importing the effects bootstrap index registers all effects.
 import "./index.js";
 import { describe, expect, it } from "vitest";
 import { effectRegistry } from "../effect-registry.js";
@@ -23,5 +23,22 @@ describe("Effect suite self-register bootstrap", () => {
 
   it("LoseLife is registered", () => {
     expect(effectRegistry.has("LoseLife")).toBe(true);
+  });
+
+  // Part D Wave 2 effects
+  it("Pump is registered", () => {
+    expect(effectRegistry.has("Pump")).toBe(true);
+  });
+
+  it("Counter is registered", () => {
+    expect(effectRegistry.has("Counter")).toBe(true);
+  });
+
+  it("Attach is registered", () => {
+    expect(effectRegistry.has("Attach")).toBe(true);
+  });
+
+  it("Fight is registered", () => {
+    expect(effectRegistry.has("Fight")).toBe(true);
   });
 });

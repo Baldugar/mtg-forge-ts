@@ -17,3 +17,7 @@ import "./put-counter.js";
 import "./remove-counter.js";
 import "./discard.js";
 import "./token.js";
+import "./pump.js";
+import "./counter-spell.js";
+import "./attach.js";
+import "./fight.js";
