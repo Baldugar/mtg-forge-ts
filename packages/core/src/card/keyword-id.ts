@@ -214,6 +214,10 @@ const META: readonly KeywordMeta[] = [
   { id: "wither", displayName: "Wither", multipleRedundant: true },
   { id: "mayflashcost", displayName: "MayFlashCost", multipleRedundant: false },
   { id: "mayflashsac", displayName: "MayFlashSac", multipleRedundant: false },
+  // Opening-hand / opening-deck "may" effects (Chancellor cycle, Leyline cycle, etc.).
+  // Full semantics deferred to future waves; tolerated as canonical ids here.
+  { id: "may_effect_from_opening_hand", displayName: "MayEffectFromOpeningHand", multipleRedundant: false },
+  { id: "may_effect_from_opening_deck", displayName: "MayEffectFromOpeningDeck", multipleRedundant: false },
   // Synthetic keyword — catches any keyword text the parser does not
   // recognise canonically.  Full semantics are deferred to future waves.
   { id: "freeform", displayName: "Freeform", multipleRedundant: false },

@@ -88,4 +88,16 @@ describe("parseKeywordLine", () => {
     expect(out.keyword).toBe("chapter");
     expect(out.params?.detail).toEqual({ kind: "literal", raw: "1" });
   });
+
+  it("parses 'K:MayEffectFromOpeningHand:RevealCard' as canonical id", () => {
+    const out = parseKeywordLine(first(lex("K:MayEffectFromOpeningHand:RevealCard\n")));
+    expect(out.keyword).toBe("may_effect_from_opening_hand");
+    expect(out.params?.detail).toEqual({ kind: "literal", raw: "RevealCard" });
+  });
+
+  it("parses 'K:MayEffectFromOpeningDeck:DBReveal' as canonical id", () => {
+    const out = parseKeywordLine(first(lex("K:MayEffectFromOpeningDeck:DBReveal\n")));
+    expect(out.keyword).toBe("may_effect_from_opening_deck");
+    expect(out.params?.detail).toEqual({ kind: "literal", raw: "DBReveal" });
+  });
 });
