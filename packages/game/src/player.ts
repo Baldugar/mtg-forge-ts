@@ -26,6 +26,10 @@ export class Player {
   // SP2's draw mutator will set this when library.size === 0 at draw time
   // (Milestone L plumbs in the full draw→empty→lose pipeline).
   failedDrawFromEmptyLibrary = false;
+  // Damage prevention shield — set by PreventDamageEffect. Consumption
+  // (intercepting incoming damage through the replacement-ability pipeline)
+  // is deferred to SP3/F2. The field is typed as `number` (0 = no shield).
+  damagePreventionShield = 0;
 
   constructor(
     readonly seat: PlayerSeat,
