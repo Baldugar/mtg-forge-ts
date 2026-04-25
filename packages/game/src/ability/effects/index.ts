@@ -31,3 +31,7 @@ export * from "./destroy-all.js";
 export * from "./damage-all.js";
 export * from "./regenerate.js";
 export * from "./change-zone-all.js";
+// Part D Wave 5 — modal dispatcher, meta-wrapper, and library lookup
+export * from "./charm.js";
+export * from "./effect.js";
+export * from "./dig.js";

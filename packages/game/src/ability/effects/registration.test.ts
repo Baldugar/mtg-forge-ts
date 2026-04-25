@@ -75,4 +75,17 @@ describe("Effect suite self-register bootstrap", () => {
   it("ChangeZoneAll is registered", () => {
     expect(effectRegistry.has("ChangeZoneAll")).toBe(true);
   });
+
+  // Part D Wave 5 effects
+  it("Charm is registered", () => {
+    expect(effectRegistry.has("Charm")).toBe(true);
+  });
+
+  it("Effect is registered", () => {
+    expect(effectRegistry.has("Effect")).toBe(true);
+  });
+
+  it("Dig is registered", () => {
+    expect(effectRegistry.has("Dig")).toBe(true);
+  });
 });
