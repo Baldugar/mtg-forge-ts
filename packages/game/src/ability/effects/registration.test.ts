@@ -88,4 +88,21 @@ describe("Effect suite self-register bootstrap", () => {
   it("Dig is registered", () => {
     expect(effectRegistry.has("Dig")).toBe(true);
   });
+
+  // Wave 6 effects
+  it("GainControl is registered", () => {
+    expect(effectRegistry.has("GainControl")).toBe(true);
+  });
+
+  it("PreventDamage is registered", () => {
+    expect(effectRegistry.has("PreventDamage")).toBe(true);
+  });
+
+  it("ChooseCard is registered", () => {
+    expect(effectRegistry.has("ChooseCard")).toBe(true);
+  });
+
+  it("CopyPermanent is registered", () => {
+    expect(effectRegistry.has("CopyPermanent")).toBe(true);
+  });
 });

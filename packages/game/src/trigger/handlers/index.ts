@@ -7,3 +7,6 @@ export * from "./changes-zone-trigger.js";
 export * from "./dealt-damage-trigger.js";
 export * from "./phase-trigger.js";
 export * from "./spell-cast-trigger.js";
+// Wave 6 triggers
+export * from "./attackers-declared-trigger.js";
+export * from "./blocks-trigger.js";

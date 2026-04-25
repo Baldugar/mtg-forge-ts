@@ -35,3 +35,8 @@ export * from "./change-zone-all.js";
 export * from "./charm.js";
 export * from "./effect.js";
 export * from "./dig.js";
+// Wave 6 — control, prevention, card selection, copy
+export * from "./gain-control.js";
+export * from "./prevent-damage.js";
+export * from "./choose-card.js";
+export * from "./copy-permanent.js";

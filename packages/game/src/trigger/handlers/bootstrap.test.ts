@@ -39,4 +39,14 @@ describe("TriggerHandler bootstrap (index.ts)", () => {
       expect(triggerHandlerRegistry.has("DamageDone")).toBe(true);
     });
   });
+
+  describe("Wave 6 handlers", () => {
+    it("registers AttackersDeclared", () => {
+      expect(triggerHandlerRegistry.has("AttackersDeclared")).toBe(true);
+    });
+
+    it("registers Blocks", () => {
+      expect(triggerHandlerRegistry.has("Blocks")).toBe(true);
+    });
+  });
 });
