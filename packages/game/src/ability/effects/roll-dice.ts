@@ -1,31 +1,74 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // RollDiceEffect — handles Forge's `SP$ RollDice` effect line.
-// Rolls N dice with M sides and passes the result to a ResultSubAbility.
+// Rolls N dice with M sides using game.rng (deterministic, seed-controlled).
+// Emits a RollDie event per die rolled, then dispatches ResultSubAbility$ if
+// present with xValue set to the total.
 //
 // Forge DSL:
 //   SP$ RollDice | NumSides$ 6 | NumDice$ 1 | ResultSubAbility$ DBCheck
 //   SP$ RollDice | NumSides$ 20 | NumDice$ 1 | ResultSubAbility$ DBResult
-//
-// MVP STATUS: STUB — deterministic roll (always yields 1 per die). The
-// ResultSubAbility SVar dispatch is not wired. Registered so the semantic
-// validator no longer flags RollDice as an unknown effect key.
-//
-// TODO(SP3): use game.rng.rollDice(sides) when the RNG surface is added.
-// Wire ResultSubAbility via the SVar pipeline (same pattern as Charm/Effect).
-// The total result should be stored in xValue so condition-checks can use it.
+import { mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { evaluateSVarAsAbility } from "../../svar/ability-eval.js";
+import type { SvarContext } from "../../svar/context.js";
 import { effectRegistry } from "../effect-registry.js";
+import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
-import type { SpellAbility } from "../spell-ability.js";
+import { SpellAbility } from "../spell-ability.js";
 
 export class RollDiceEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RollDice";
 
-  override *resolve(_sa: SpellAbility, _game: Game): Generator<EngineYield, void, unknown> {
-    // STUB: dice roll is deterministic (always 1) and ResultSubAbility is not
-    // dispatched. Registered so DSL validator counts RollDice as a known key.
-    // Wave N+1 adds game.rng.rollDice(sides) and SVar sub-ability dispatch.
+  override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    const sides = hasParam(sa, "NumSides") ? evaluateParamNumber(sa, "NumSides", game) : 6;
+    const num = hasParam(sa, "NumDice") ? evaluateParamNumber(sa, "NumDice", game) : 1;
+
+    let total = 0;
+    for (let i = 0; i < num; i++) {
+      // nextInt(1, sides + 1) → uniform integer in [1, sides].
+      const result = game.rng.nextInt(1, sides + 1);
+      total += result;
+      yield game.emitEvent(
+        mkEvent("RollDie", game.turn, game.phase, {
+          playerSeat: sa.controllerSeat,
+          sides,
+          result,
+        }),
+      );
+    }
+
+    // Dispatch ResultSubAbility$ (if present) with xValue = total.
+    if (!hasParam(sa, "ResultSubAbility")) return;
+    const subName = evaluateParamRaw(sa, "ResultSubAbility");
+
+    const ctx: SvarContext = {
+      game,
+      sourceCardId: sa.sourceCardId,
+      svars: sa.svars,
+      controller: sa.controllerSeat,
+      targets: sa.targets,
+      xValue: total,
+    };
+
+    let ability: ReturnType<typeof evaluateSVarAsAbility>;
+    try {
+      ability = evaluateSVarAsAbility(subName, ctx);
+    } catch {
+      // SVar not found or not an ability — safe no-op.
+      return;
+    }
+
+    const cls = effectRegistry.lookup(ability.handlerKey);
+    if (!cls) return;
+
+    const subAst = {
+      kind: "spell" as const,
+      effect: ability,
+      cost: { raw: "" },
+    };
+    const subSa = new SpellAbility(subAst, sa.sourceCardId, sa.controllerSeat, sa.svars, sa.targets, total);
+    yield* cls.prototype.resolve.call(new cls(), subSa, game);
   }
 }
 

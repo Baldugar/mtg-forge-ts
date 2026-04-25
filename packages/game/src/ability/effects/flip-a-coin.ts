@@ -1,18 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // FlipACoinEffect — handles Forge's `SP$ FlipACoin` effect line.
-// Flips a coin and resolves HeadsSubAbility$ or TailsSubAbility$ depending
-// on the result.
+// Flips a coin using game.rng and resolves HeadsSubAbility$ or TailsSubAbility$
+// depending on the result. Emits a FlipCoin event with the outcome.
 //
 // Forge DSL:
 //   SP$ FlipACoin | HeadsSubAbility$ DBHeads | TailsSubAbility$ DBTails
 //   SP$ FlipACoin | HeadsSubAbility$ DBWin | TailsSubAbility$ DBLose
-//
-// MVP STATUS: deterministic "heads" (always picks HeadsSubAbility$). The RNG
-// flip is deferred to SP3 when game.rng.flipCoin() lands. Registered so the
-// semantic validator stops flagging FlipACoin as an unknown handler key.
-//
-// TODO(SP3): call game.rng.flipCoin() (or yield a flipCoin decision) and
-// pick HeadsSubAbility$ vs TailsSubAbility$ based on the result.
+import { mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { evaluateSVarAsAbility } from "../../svar/ability-eval.js";
@@ -26,14 +20,27 @@ export class FlipACoinEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "FlipACoin";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    // MVP: always heads. Pick HeadsSubAbility$ if present, else TailsSubAbility$.
-    const branchKey = hasParam(sa, "HeadsSubAbility")
-      ? evaluateParamRaw(sa, "HeadsSubAbility")
-      : hasParam(sa, "TailsSubAbility")
-        ? evaluateParamRaw(sa, "TailsSubAbility")
+    // Flip: 0 → tails, 1 → heads (nextInt(0,2) is uniform over {0,1}).
+    const isHeads = game.rng.nextInt(0, 2) === 1;
+
+    yield game.emitEvent(
+      mkEvent("FlipCoin", game.turn, game.phase, {
+        playerSeat: sa.controllerSeat,
+        resultHeads: isHeads,
+      }),
+    );
+
+    // Pick the appropriate branch key.
+    const branchParamKey = isHeads ? "HeadsSubAbility" : "TailsSubAbility";
+    const fallbackParamKey = isHeads ? "TailsSubAbility" : "HeadsSubAbility";
+
+    const subName = hasParam(sa, branchParamKey)
+      ? evaluateParamRaw(sa, branchParamKey)
+      : hasParam(sa, fallbackParamKey)
+        ? evaluateParamRaw(sa, fallbackParamKey)
         : null;
 
-    if (branchKey === null) return;
+    if (subName === null) return;
 
     const ctx: SvarContext = {
       game,
@@ -46,7 +53,7 @@ export class FlipACoinEffect extends SpellAbilityEffect {
 
     let ability: ReturnType<typeof evaluateSVarAsAbility>;
     try {
-      ability = evaluateSVarAsAbility(branchKey, ctx);
+      ability = evaluateSVarAsAbility(subName, ctx);
     } catch {
       return;
     }

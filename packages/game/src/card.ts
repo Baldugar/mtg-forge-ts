@@ -7,6 +7,7 @@
 // significantly.
 import type {
   AbilityAst,
+  Color,
   CounterType,
   EntityId,
   FaceDownState,
@@ -101,6 +102,10 @@ export class Card {
   // snapshot/restore round-trip these verbatim.
   remembered: EntityId[] = [];
   imprinted: EntityId[] = [];
+  // Wave 3 — ChooseColorEffect stores chosen colors here. Each entry is a
+  // Color enum value (or null for colorless) pushed when ChooseColor resolves.
+  // Downstream effects that depend on the chosen color look up index 0.
+  chosenColors: (Color | null)[] = [];
   // SP3 Part C Task 58 — live SpellAbility instances bound to this card.
   // Populated by activateAbilitiesFromDefinition(), called by the engine
   // when the card enters a zone where abilities are active (hand for

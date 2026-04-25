@@ -1,53 +1,51 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // ChooseColorEffect — ask the controller to pick a color; store the chosen
-// color on the source card for later use by other effects.
+// color on the source card's `chosenColors` array for later use by other effects.
 //
 // Forge DSL:
 //   SP$ ChooseColor | Defined$ You | RememberChosen$ True
 //
-// MVP implementation: no interactive `chooseColor` decision kind exists in
-// core/decisions yet. We deterministically pick "White" and store the
-// chosen color as a synthetic EntityId (0n) placeholder in card.remembered.
-// The `chosenColors` field is added to Card in SP3 when interactive decisions
-// land; until then, the remembered list carries a sentinel.
-//
-// TODO(Wave 9): add a `chooseColor` decision kind to core and yield an
-// interactive decision request here, storing the real chosen color string.
-//
-// The handler is registered so the semantic validator stops flagging
-// "ChooseColor" as an unknown handler key.
+// Yields a `chooseColor` decision request (already in core) and stores the
+// result in card.chosenColors[]. Falls back to Color.White (0x1) if no
+// decision response is supplied (non-interactive/test path).
+import type { Color, DecisionResponse } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
-/** Default deterministic color selection until interactive decisions land. */
-const DEFAULT_COLOR = "White";
+// Numeric enum value matching Color.White (= 1); avoids importing the enum
+// at the fallback site but keeps the intent legible.
+const FALLBACK_COLOR: Color = 1 as Color;
 
 export class ChooseColorEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChooseColor";
 
-  // Non-generator: deterministic color choice stored synchronously.
-  override resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    const source = game.cards.get(sa.sourceCardId);
-    // Store the chosen color as a synthetic marker in remembered.
-    // We encode it as a BigInt EntityId-typed sentinel so the list doesn't
-    // need a separate type. Real color storage (card.chosenColors: string[])
-    // is deferred to SP3.
-    if (source) {
-      // Store as 0n sentinel — downstream effects that consume chosen colors
-      // must be updated when proper chosenColors support lands.
-      // For now this ensures RememberChosen$ True has an entry to work with.
-      source.remembered.push(0n as never);
+  override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseColor",
+        sourceId: sa.sourceCardId,
+        allowColorless: false,
+      },
+    };
+
+    const response = rawResponse as DecisionResponse | undefined;
+    let chosen: Color | null;
+    if (response && response.kind === "chooseColor") {
+      chosen = response.color;
+    } else {
+      // Non-interactive path — default to White.
+      chosen = FALLBACK_COLOR;
     }
 
-    // Suppress unused-variable lint — DEFAULT_COLOR documents intent.
-    void DEFAULT_COLOR;
-
-    return (function* (): Generator<EngineYield, void, unknown> {
-      /* no engine events emitted for deterministic color choice */
-    })();
+    // Store on the source card's chosenColors slot.
+    const source = game.cards.get(sa.sourceCardId);
+    if (source) {
+      source.chosenColors.push(chosen);
+    }
   }
 }
 
