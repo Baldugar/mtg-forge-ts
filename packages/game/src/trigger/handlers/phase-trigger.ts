@@ -15,12 +15,31 @@
 // BeginCombat, EndStep, Cleanup, etc.). Matching is case-sensitive against
 // the PhaseStep enum value.
 //
-// Resolver stubbed — Part E2 wires Execute$ → SVar → SpellAbility.
-import type { GameEvent, PhaseStep, PlayerSeat, TriggerAst, TriggeredAbility } from "@mtg-forge-ts/core";
+// Part E2: Execute$ SVar is resolved at resolve-time to a SpellAbility whose
+// makeResolver() drives the trigger body.
+import type {
+  AbilityAst,
+  GameEvent,
+  PhaseStep,
+  PlayerSeat,
+  SVarAst,
+  TriggerAst,
+  TriggeredAbility,
+} from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
+import { SpellAbility } from "../../ability/spell-ability.js";
+import type { Game } from "../../game.js";
+import type { StackItemResolver } from "../../stack/stack-item.js";
 import { triggerHandlerRegistry } from "../trigger-handler-registry.js";
 import type { TriggerBuildContext } from "../trigger-handler.js";
 import { TriggerHandler } from "../trigger-handler.js";
+
+// TriggeredAbility extended with the resolver the priority orchestrator
+// duck-types. Core does not carry StackItemResolver so we extend locally
+// and cast to TriggeredAbility on return.
+type TriggeredAbilityWithResolver = TriggeredAbility & {
+  readonly resolver: StackItemResolver | null;
+};
 
 // ---------------------------------------------------------------------------
 // Internal helpers
@@ -58,7 +77,10 @@ export class PhaseTrigger extends TriggerHandler {
     const { sourceCardId, controllerSeat, triggerId } = ctx;
     const targetPhase = normalizePhase(phaseRaw);
 
-    const ta: TriggeredAbility = {
+    // Execute$ value is the SVar name this trigger resolves to.
+    const executeKey = ast.effect.handlerKey;
+
+    const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
       kind: "triggered",
       sourceCardId,
@@ -83,9 +105,43 @@ export class PhaseTrigger extends TriggerHandler {
         // "Each" — any player
         return true;
       },
+
+      // Part E2 — resolver: look up the Execute$ SVar at resolve-time,
+      // wrap its EffectInvocation in a SpellAbility, and drive it.
+      resolver: {
+        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
+          const game = gameUnknown as Game;
+          const sourceCard = game.cards.get(sourceCardId);
+          if (!sourceCard) return;
+          const def = sourceCard.paperCard.definition;
+          if (!def) return;
+          const svars = def.svars as ReadonlyMap<string, SVarAst>;
+          const sv = svars.get(executeKey);
+          if (!sv) {
+            throw new Error(
+              `PhaseTrigger: Execute$ SVar '${executeKey}' not found on ${sourceCard.paperCard.name ?? "?"}`,
+            );
+          }
+          if (sv.kind !== "ability" || !sv.ability) {
+            throw new Error(
+              `PhaseTrigger: Execute$ '${executeKey}' is not an ability SVar on ${sourceCard.paperCard.name ?? "?"}`,
+            );
+          }
+          // Wrap the ability EffectInvocation in a minimal AbilityAst and
+          // drive it via SpellAbility.makeResolver() → effectRegistry.
+          const fakeAst: AbilityAst = {
+            kind: "spell",
+            effect: sv.ability,
+            cost: { raw: "" },
+          };
+          const sa = new SpellAbility(fakeAst, sourceCardId, controllerSeat, svars, []);
+          const innerResolver = sa.makeResolver();
+          yield* innerResolver.resolve(game);
+        },
+      },
     };
 
-    return ta;
+    return ta as unknown as TriggeredAbility;
   }
 }
 
