@@ -214,6 +214,9 @@ const META: readonly KeywordMeta[] = [
   { id: "wither", displayName: "Wither", multipleRedundant: true },
   { id: "mayflashcost", displayName: "MayFlashCost", multipleRedundant: false },
   { id: "mayflashsac", displayName: "MayFlashSac", multipleRedundant: false },
+  // Synthetic keyword — catches any keyword text the parser does not
+  // recognise canonically.  Full semantics are deferred to future waves.
+  { id: "freeform", displayName: "Freeform", multipleRedundant: false },
 ] as const satisfies readonly KeywordMeta[];
 
 export const KEYWORD_IDS = META.map((m) => m.id) as readonly KeywordMeta["id"][];

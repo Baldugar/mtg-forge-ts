@@ -104,7 +104,11 @@ const TYPE_KEYWORDS: ReadonlySet<string> = new Set([
   "typecycling",
 ]);
 
-const resolveKeywordId = (raw: string, lineNumber: number): KeywordId => {
+// Matches "Protection from <something>" — maps to the canonical "protection"
+// keyword id with the qualifier stored in params.from.
+const PROTECTION_FROM_RE = /^protection from (.+)$/i;
+
+const resolveKeywordId = (raw: string): KeywordId => {
   // Try direct display name lookup (handles "Flying", "First Strike", "Jump-start", etc.)
   const byDisplay = keywordIdFromDisplayName(raw);
   if (byDisplay !== null) return byDisplay;
@@ -112,7 +116,8 @@ const resolveKeywordId = (raw: string, lineNumber: number): KeywordId => {
   const normalized = raw.replace(/_/g, " ");
   const byNorm = keywordIdFromDisplayName(normalized);
   if (byNorm !== null) return byNorm;
-  throw new Error(`unknown keyword '${raw}' at line ${lineNumber}`);
+  // Fall back to freeform — unknown keywords are tolerated as opaque text.
+  return "freeform" as KeywordId;
 };
 
 export const parseKeywordLine = (line: LexedLine): KeywordAst => {
@@ -120,15 +125,33 @@ export const parseKeywordLine = (line: LexedLine): KeywordAst => {
     throw new Error(`parseKeywordLine: expected prefix 'K', got '${line.prefix}' at line ${line.lineNumber}`);
   }
   const raw = line.content;
+
+  // Special-case: "Protection from <X>" — map to canonical "protection" keyword.
+  const protectionMatch = PROTECTION_FROM_RE.exec(raw);
+  if (protectionMatch) {
+    return {
+      keyword: "protection" as KeywordId,
+      params: { from: { kind: "literal", raw: protectionMatch[1] ?? "" } },
+    };
+  }
+
   const colonIdx = raw.indexOf(":");
   if (colonIdx < 0) {
     // No colon — simple keyword with no param
-    const keyword = resolveKeywordId(raw, line.lineNumber);
+    const keyword = resolveKeywordId(raw);
+    if (keyword === ("freeform" as KeywordId)) {
+      return { keyword, params: { text: { kind: "literal", raw } } };
+    }
     return { keyword };
   }
   const head = raw.slice(0, colonIdx).trim();
   const tail = raw.slice(colonIdx + 1).trim();
-  const keyword = resolveKeywordId(head, line.lineNumber);
+  const keyword = resolveKeywordId(head);
+
+  if (keyword === ("freeform" as KeywordId)) {
+    // Freeform keyword — store the full raw text.
+    return { keyword, params: { text: { kind: "literal", raw } } };
+  }
 
   const paramValue: ParamValue = { kind: "literal", raw: tail };
   let paramKey: string;

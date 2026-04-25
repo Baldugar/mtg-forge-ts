@@ -37,8 +37,30 @@ describe("parseKeywordLine", () => {
     expect(out.keyword).toBe("jump_start");
   });
 
-  it("rejects unknown keyword", () => {
-    expect(() => parseKeywordLine(first(lex("K:Notakeyword\n")))).toThrow(/unknown keyword/);
+  it("tolerates unknown keywords as freeform (no throw)", () => {
+    const out = parseKeywordLine(first(lex("K:Notakeyword\n")));
+    expect(out.keyword).toBe("freeform");
+    expect(out.params?.text).toEqual({ kind: "literal", raw: "Notakeyword" });
+  });
+
+  it("tolerates long freeform rule text as freeform keyword", () => {
+    const out = parseKeywordLine(
+      first(lex("K:You may choose not to untap CARDNAME during your untap step.\n")),
+    );
+    expect(out.keyword).toBe("freeform");
+    expect((out.params?.text as { kind: string; raw: string } | undefined)?.raw).toMatch(/untap step/);
+  });
+
+  it("parses 'K:Protection from black' as canonical protection keyword", () => {
+    const out = parseKeywordLine(first(lex("K:Protection from black\n")));
+    expect(out.keyword).toBe("protection");
+    expect(out.params?.from).toEqual({ kind: "literal", raw: "black" });
+  });
+
+  it("parses 'K:Protection from white and from black' as protection keyword", () => {
+    const out = parseKeywordLine(first(lex("K:Protection from white and from black\n")));
+    expect(out.keyword).toBe("protection");
+    expect((out.params?.from as { kind: string; raw: string } | undefined)?.raw).toBe("white and from black");
   });
 
   // Tolerable parser-extension keywords — etbCounter, ETBReplacement, Chapter.
