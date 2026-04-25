@@ -213,4 +213,60 @@ describe("ContinuousEffectRegistry (SP2 Task 33)", () => {
     expect(game.continuousEffectRegistry.size()).toBe(1);
     expect(game.layerEngine.pt7c).toHaveLength(1);
   });
+
+  // Wave 9 — cleanup hook ensures out-of-layer-engine mutations (e.g. direct
+  // card.keywords additions for Protection) are reversed when the effect ends.
+  describe("registerCleanup (Wave 9)", () => {
+    it("invokes the cleanup hook on natural expiry via TurnEnded", () => {
+      const game = mkGame();
+      const e = mkPtModifyEffect(50, { kind: "untilEndOfTurn" });
+      game.continuousEffectRegistry.register(e);
+      let cleanupRan = 0;
+      game.continuousEffectRegistry.registerCleanup(e.id, () => {
+        cleanupRan++;
+      });
+      const turnEnded = mkEvent("TurnEnded", 1, PhaseStep.Cleanup, { activeSeat: mkPlayerSeat(0) });
+      game.continuousEffectRegistry.onEvent(turnEnded);
+      expect(cleanupRan).toBe(1);
+      expect(game.continuousEffectRegistry.size()).toBe(0);
+    });
+
+    it("invokes the cleanup hook on explicit unregister", () => {
+      const game = mkGame();
+      const e = mkPtModifyEffect(60, { kind: "permanent" });
+      game.continuousEffectRegistry.register(e);
+      let cleanupSawGame: Game | undefined;
+      game.continuousEffectRegistry.registerCleanup(e.id, (g) => {
+        cleanupSawGame = g;
+      });
+      game.continuousEffectRegistry.unregister(e.id);
+      expect(cleanupSawGame).toBe(game);
+    });
+
+    it("does not invoke the hook twice across two unregisters", () => {
+      const game = mkGame();
+      const e = mkPtModifyEffect(70, { kind: "permanent" });
+      game.continuousEffectRegistry.register(e);
+      let cleanupRan = 0;
+      game.continuousEffectRegistry.registerCleanup(e.id, () => {
+        cleanupRan++;
+      });
+      game.continuousEffectRegistry.unregister(e.id);
+      game.continuousEffectRegistry.unregister(e.id);
+      expect(cleanupRan).toBe(1);
+    });
+
+    it("registerCleanup before register also fires when the effect later expires", () => {
+      const game = mkGame();
+      const e = mkPtModifyEffect(80, { kind: "untilEndOfTurn" });
+      let cleanupRan = 0;
+      game.continuousEffectRegistry.registerCleanup(e.id, () => {
+        cleanupRan++;
+      });
+      game.continuousEffectRegistry.register(e);
+      const turnEnded = mkEvent("TurnEnded", 1, PhaseStep.Cleanup, { activeSeat: mkPlayerSeat(0) });
+      game.continuousEffectRegistry.onEvent(turnEnded);
+      expect(cleanupRan).toBe(1);
+    });
+  });
 });

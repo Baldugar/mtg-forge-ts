@@ -42,6 +42,14 @@ export class ContinuousEffectRegistry {
   // ContinuousEffectExpired event per entry; between drains, the buffer
   // accumulates events fired by back-to-back mutations.
   private readonly expiredBuffer: ContinuousEffect[] = [];
+  // Side-map of cleanup callbacks indexed by effect id. Effects that mutate
+  // game state outside the layer engine (e.g. ProtectionEffect adding a
+  // string to card.keywords directly) register a cleanup function here
+  // alongside register(); unregister() invokes it just before dropping the
+  // effect. Kept off the ContinuousEffect shape so the core type stays
+  // serializable (snapshot/restore is byId+payload only; cleanup callbacks
+  // are recreated by re-registering effects on restore).
+  private readonly cleanupHooks = new Map<EntityId, (game: Game) => void>();
 
   constructor(private readonly game: Game) {}
 
@@ -58,9 +66,31 @@ export class ContinuousEffectRegistry {
     this.game.layerEngine.bumpEpoch("continuous-effect-register");
   }
 
+  /**
+   * Register a cleanup callback to fire when the effect with `effectId`
+   * unregisters (whether due to natural expiry or explicit unregister).
+   * Safe to call before or after register(); the side-map keys on id.
+   * Replacing an existing hook for the same id silently overwrites.
+   */
+  registerCleanup(effectId: EntityId, fn: (game: Game) => void): void {
+    this.cleanupHooks.set(effectId, fn);
+  }
+
   unregister(id: EntityId): void {
     const effect = this.byId.get(id);
     if (!effect) return;
+    // Fire the cleanup hook BEFORE we drop the effect, so the hook can still
+    // see it via byId / game.continuousEffects if it needs to. The hook is
+    // expected to undo any out-of-layer-engine mutations (e.g. removing a
+    // keyword string from card.keywords for ProtectionEffect).
+    const hook = this.cleanupHooks.get(id);
+    if (hook) {
+      try {
+        hook(this.game);
+      } finally {
+        this.cleanupHooks.delete(id);
+      }
+    }
     this.byId.delete(id);
     const idx = this.game.continuousEffects.findIndex((e) => e.id === id);
     if (idx >= 0) this.game.continuousEffects.splice(idx, 1);

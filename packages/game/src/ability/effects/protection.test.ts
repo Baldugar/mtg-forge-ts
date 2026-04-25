@@ -3,7 +3,15 @@
 // Verifies that ProtectionEffect grants protection:<tag> keyword to the target.
 import "./protection.js";
 import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  PhaseStep,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkEvent,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import type { EngineYield } from "../../action/engine-yield.js";
 import { Card } from "../../card.js";
@@ -136,6 +144,46 @@ describe("ProtectionEffect — keyword grant (Wave 3)", () => {
     const lastEffect = effects[effects.length - 1];
     if (!lastEffect) throw new Error("Expected at least one ContinuousEffect");
     expect(lastEffect.duration.kind).toBe("untilEndOfTurn");
+  });
+
+  it("removes the keyword from card.keywords when the effect expires at EOT (Wave 9)", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = mkEntityId(1);
+    const targetId = mkEntityId(10);
+
+    game.cards.set(sourceId, new Card(sourceId, paper, seat0, seat0, ZoneType.Battlefield));
+    const target = new Card(targetId, paper, seat0, seat0, ZoneType.Battlefield);
+    game.cards.set(targetId, target);
+
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "Protection",
+          params: {
+            Gains: { kind: "literal", raw: "blue" },
+            Until: { kind: "literal", raw: "EOT" },
+          },
+        },
+        cost: { raw: "" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
+      [targetId],
+    );
+
+    drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+    expect(target.keywords?.has("protection:blue")).toBe(true);
+
+    // Fire the EOT event — the registry expires the effect, the cleanup hook
+    // runs and removes the protection:blue keyword from the target.
+    const turnEnded = mkEvent("TurnEnded", 1, PhaseStep.Cleanup, { activeSeat: seat0 });
+    game.continuousEffectRegistry.onEvent(turnEnded);
+
+    expect(target.keywords?.has("protection:blue")).toBe(false);
+    expect(game.continuousEffectRegistry.size()).toBe(0);
   });
 
   it("no-op when Gains$ is absent", () => {
