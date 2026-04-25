@@ -20,3 +20,9 @@ export * from "./sacrificed-trigger.js";
 export * from "./discarded-trigger.js";
 export * from "./life-gained-trigger.js";
 export * from "./becomes-target-trigger.js";
+// Wave 9 triggers
+export * from "./damage-done-once-trigger.js";
+export * from "./chaos-ensues-trigger.js";
+export * from "./set-in-motion-trigger.js";
+export * from "./taps-trigger.js";
+export * from "./transformed-trigger.js";

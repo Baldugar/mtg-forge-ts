@@ -85,4 +85,30 @@ describe("TriggerHandler bootstrap (index.ts)", () => {
       expect(triggerHandlerRegistry.has("BecomesTarget")).toBe(true);
     });
   });
+
+  describe("Wave 9 handlers", () => {
+    it("registers DamageDoneOnce", () => {
+      expect(triggerHandlerRegistry.has("DamageDoneOnce")).toBe(true);
+    });
+
+    it("registers ChaosEnsues", () => {
+      expect(triggerHandlerRegistry.has("ChaosEnsues")).toBe(true);
+    });
+
+    it("registers SetInMotion", () => {
+      expect(triggerHandlerRegistry.has("SetInMotion")).toBe(true);
+    });
+
+    it("registers Taps", () => {
+      expect(triggerHandlerRegistry.has("Taps")).toBe(true);
+    });
+
+    it("registers Tap (singular alias)", () => {
+      expect(triggerHandlerRegistry.has("Tap")).toBe(true);
+    });
+
+    it("registers Transformed", () => {
+      expect(triggerHandlerRegistry.has("Transformed")).toBe(true);
+    });
+  });
 });
