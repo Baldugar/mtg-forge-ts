@@ -200,7 +200,7 @@ describe("ChangeZoneEffect", () => {
         effect: {
           handlerKey: "ChangeZone",
           params: {
-            Destination$: { kind: "literal", raw: "Graveyard" },
+            Destination: { kind: "literal", raw: "Graveyard" },
           },
         },
         cost: { raw: "1 B" },

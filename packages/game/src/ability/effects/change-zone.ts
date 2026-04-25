@@ -25,7 +25,7 @@ function parseZone(raw: string): ZoneType | undefined {
 export class ChangeZoneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChangeZone";
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    const destRaw = hasParam(sa, "Destination$") ? evaluateParamRaw(sa, "Destination$") : undefined;
+    const destRaw = hasParam(sa, "Destination") ? evaluateParamRaw(sa, "Destination") : undefined;
     const destZone = destRaw !== undefined ? parseZone(destRaw) : undefined;
     if (destZone === undefined) {
       // Cannot proceed without a parseable destination — no-op for safety.
