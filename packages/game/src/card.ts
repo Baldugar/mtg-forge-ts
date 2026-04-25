@@ -12,6 +12,8 @@ import type {
   FaceDownState,
   PaperCard,
   PlayerSeat,
+  ReplacementAbility,
+  ReplacementAst,
   SVarAst,
   StaticAbility,
   TriggerAst,
@@ -23,6 +25,7 @@ import { SpellAbility } from "./ability/spell-ability.js";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 import type { Game } from "./game.js";
 import type { FaceKind } from "./multiface/face-kind.js";
+import { replacementHandlerRegistry } from "./replacement/index.js";
 import { triggerHandlerRegistry } from "./trigger/index.js";
 
 export class Card {
@@ -101,6 +104,11 @@ export class Card {
   // activateTriggersFromDefinition(game); registered with game.triggerRegistry
   // by the same call so TriggerRegistry.onEvent sees them immediately.
   triggeredAbilities: TriggeredAbility[] = [];
+  // SP3 Part F Task 4 — live ReplacementAbility instances built from the
+  // card's parsed ReplacementAst nodes. Populated by
+  // activateReplacementsFromDefinition(game); registered with
+  // game.replacementRegistry by the same call so the apply-loop sees them.
+  replacementAbilities: ReplacementAbility[] = [];
 
   // SP2 Milestone Q (Tasks 58-61) — active face selector for multi-face
   // cards. "default" means single-face or "no multi-face selection made
@@ -185,6 +193,39 @@ export class Card {
       });
       this.triggeredAbilities.push(ta);
       game.triggerRegistry.register(ta);
+    }
+  }
+
+  /**
+   * SP3 Part F Task 4 — walks the PaperCard's CardDefinition.replacements and
+   * constructs live ReplacementAbility instances via the
+   * replacementHandlerRegistry. Each produced replacement is immediately
+   * registered with game.replacementRegistry so the apply-loop sees it.
+   *
+   * eventKind values not yet handled by the registry are silently skipped;
+   * they will be covered in Part F2 and later waves.
+   *
+   * Idempotent — safe to call multiple times; later calls replace the
+   * existing list (old registrations must be unregistered by the caller
+   * before re-calling if duplication is a concern).
+   */
+  activateReplacementsFromDefinition(game: Game): void {
+    const def = this.paperCard.definition;
+    if (!def) return;
+    this.replacementAbilities = [];
+    for (const replacementAst of def.replacements as readonly ReplacementAst[]) {
+      const Cls = replacementHandlerRegistry.lookup(replacementAst.eventKind);
+      if (!Cls) continue; // silently skip unknown eventKinds
+      const handler = new Cls();
+      const replacementId = game.newEntityId();
+      const ra = handler.build(replacementAst, {
+        game,
+        sourceCardId: this.id,
+        controllerSeat: this.controllerSeat,
+        replacementId,
+      });
+      this.replacementAbilities.push(ra);
+      game.replacementRegistry.register(ra);
     }
   }
 

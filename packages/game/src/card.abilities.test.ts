@@ -21,6 +21,8 @@ import { Game } from "./game.js";
 import "./svar/selectors/number.js";
 // Ensure trigger handlers are registered for activateTriggersFromDefinition.
 import "./trigger/index.js";
+// Ensure replacement handlers are registered for activateReplacementsFromDefinition.
+import "./replacement/index.js";
 
 const boltSrc = `${[
   "Name:Lightning Bolt",
@@ -289,5 +291,135 @@ describe("Card.activateTriggersFromDefinition", () => {
     // Should not throw
     card.activateTriggersFromDefinition(game);
     expect(card.triggeredAbilities).toHaveLength(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Task 4 (Part F) — Card.activateReplacementsFromDefinition
+// ---------------------------------------------------------------------------
+
+// A simple "if this would die, exile it instead" card — uses the Moved
+// replacement handler registered by the replacement framework bootstrap.
+// ReplaceWith$ must reference an SVar (resolver rule for replacements);
+// we declare a stub SVar for DBExile to satisfy validation.
+const exileOnDieSrc = `${[
+  "Name:Exile On Die",
+  "ManaCost:1",
+  "Types:Creature",
+  "PT:1/1",
+  "R:Event$ Moved | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ DBExile | Description$ If this would die, exile it instead.",
+  "SVar:DBExile:AB$ Exile | Cost$ 0 | Defined$ ReplacedCard",
+  "Oracle:If this would die, exile it instead.",
+].join("\n")}\n`;
+
+describe("Card.activateReplacementsFromDefinition", () => {
+  it("populates replacementAbilities from a Moved replacement definition", () => {
+    const def = parseCard(exileOnDieSrc, "exile-on-die.txt");
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "TST",
+      collectorNumber: "001",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const game = mkGame();
+    const id = mkEntityId(50);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+
+    expect(card.replacementAbilities).toHaveLength(0);
+
+    card.activateReplacementsFromDefinition(game);
+
+    expect(card.replacementAbilities).toHaveLength(1);
+    const ra = card.replacementAbilities[0];
+    expect(ra).toBeDefined();
+    expect(ra?.kind).toBe("replacement");
+    expect(ra?.sourceCardId).toBe(id);
+    expect(ra?.controllerSeatAtReg).toBe(seat);
+    expect(ra?.isSelfReplacement).toBe(false); // Self$ not set in this card
+    expect(ra?.layer).toBe("other");
+  });
+
+  it("registers the replacement with game.replacementRegistry", () => {
+    const def = parseCard(exileOnDieSrc, "exile-on-die.txt");
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "TST",
+      collectorNumber: "001",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const game = mkGame();
+    const id = mkEntityId(51);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+
+    // Registry should be empty before activation
+    expect(game.replacementRegistry.size()).toBe(0);
+
+    card.activateReplacementsFromDefinition(game);
+
+    expect(game.replacementRegistry.size()).toBe(1);
+    const regs = game.replacementRegistry.byCard(id);
+    expect(regs).toHaveLength(1);
+    expect(regs[0]?.sourceCardId).toBe(id);
+  });
+
+  it("is a no-op when PaperCard has no definition", () => {
+    const tokenPaper: PaperCard = {
+      name: "Elf Token",
+      edition: "TST",
+      collectorNumber: "T001",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+    };
+    const game = mkGame();
+    const id = mkEntityId(52);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, tokenPaper, seat, seat, ZoneType.Battlefield);
+    card.activateReplacementsFromDefinition(game);
+    expect(card.replacementAbilities).toHaveLength(0);
+  });
+
+  it("silently skips replacement eventKinds not yet registered", () => {
+    // Build a card with a manual replacement AST for an unknown eventKind
+    // by using a definition without an R: line but patching the replacements.
+    const blankSrc = `${["Name:Blank Card", "ManaCost:1", "Types:Creature", "PT:1/1", "Oracle:Blank."].join(
+      "\n",
+    )}\n`;
+    const def = parseCard(blankSrc, "blank.txt");
+    // Inject a fake replacement AST with an unknown eventKind
+    const patchedDef = {
+      ...def,
+      replacements: [
+        {
+          eventKind: "UnknownEvent",
+          params: {},
+          effect: { handlerKey: "DBX", params: {} },
+        },
+      ],
+    };
+    const paper: PaperCard = {
+      name: def.name,
+      edition: "TST",
+      collectorNumber: "002",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: patchedDef as never,
+    };
+    const game = mkGame();
+    const id = mkEntityId(53);
+    const seat = mkPlayerSeat(0);
+    const card = new Card(id, paper, seat, seat, ZoneType.Battlefield);
+    // Should not throw
+    card.activateReplacementsFromDefinition(game);
+    expect(card.replacementAbilities).toHaveLength(0);
   });
 });
