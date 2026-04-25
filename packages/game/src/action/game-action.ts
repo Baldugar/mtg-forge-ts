@@ -38,6 +38,7 @@ import {
   ZoneType as Zt,
   mkEvent,
 } from "@mtg-forge-ts/core";
+import { activateAbility as activateAbilityImpl } from "../ability/activate.js";
 import { Card } from "../card.js";
 import { damageProtected } from "../combat/keywords/protection.js";
 import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
@@ -940,6 +941,25 @@ export class GameAction {
           reason: final.reason,
         }),
     );
+  }
+
+  // === Activated ability ===
+
+  /**
+   * Activate ability `abilityIndex` on `cardId` on behalf of
+   * `controllerSeat`. Validates zone + controller, pays the cost, builds
+   * and pushes a StackItem of kind "activatedAbility", and returns the
+   * new StackItem's id. See ability/activate.ts for the full contract.
+   *
+   * MVP: no-target activated abilities only (Llanowar Elves, etc.).
+   * Targeted activated abilities (equip, etc.) are deferred to SP3+.
+   */
+  *activateAbility(
+    cardId: EntityId,
+    abilityIndex: number,
+    controllerSeat: PlayerSeat,
+  ): Generator<EngineYield, EntityId, unknown> {
+    return yield* activateAbilityImpl(this.game, cardId, abilityIndex, controllerSeat);
   }
 
   // === Stack push ===

@@ -3,26 +3,13 @@
 // Tests mana ability (AB$ Mana | Cost$ T | Produced$ G): tap Llanowar Elves
 // → adds G to controller's mana pool.
 //
-// INFRASTRUCTURE GAP — There is no `game.action.activateAbility()` generator
-// in SP2. The dedicated activated-ability pipeline is deferred to E3. However,
-// the individual components needed to activate a mana ability ARE present:
-//   - parseCostString / payCost — can pay the {T} cost
-//   - SpellAbility.makeResolver() + ManaEffect — can add G to pool
-//   - resolveStackItem with kind="activatedAbility" — drives the resolver
-//
-// This test wires those components inline (no new engine code needed) to prove
-// the full data path works. The gap is specifically that there is no
-// high-level orchestrator (`activateAbility`) that combines them. We document
-// that gap explicitly in the skip-commentary and implement the inline path.
-//
 // Test structure:
 //   Phase A: Cast Llanowar Elves → resolve to Battlefield (ETB, no trigger).
-//   Phase B: Activate the mana ability inline:
-//     1. Identify the AB$ ability (first SpellAbility with handlerKey "Mana").
-//     2. Pay {T} cost via payCost → card becomes tapped.
-//     3. Build a StackItem of kind "activatedAbility" with ManaEffect resolver.
-//     4. Resolve via resolveStackItem → G added to pool.
-//     5. Assert: card tapped, pool has 1 G.
+//   Phase B: Activate the mana ability via game.action.activateAbility():
+//     1. Activate ability index 0 — orchestrator pays {T} cost (card taps)
+//        and pushes the activated ability onto the stack.
+//     2. Resolve via resolveStackItem → G added to pool.
+//     3. Assert: card tapped, pool has 1 G, stack empty.
 //
 // SCOPING NOTE: AB$ lines are parsed as SpellAbilities by
 // activateAbilitiesFromDefinition (the parser doesn't distinguish SP vs AB
@@ -42,7 +29,6 @@ import {
 import { describe, expect, it } from "vitest";
 import { Card } from "../../src/card.js";
 import type { CastProposal } from "../../src/cast/cast-pipeline.js";
-import { parseCostString, payCost } from "../../src/cost/parts/cost-payment.js";
 import type { GameMeta } from "../../src/game-meta.js";
 import type { GameRules } from "../../src/game-rules.js";
 import { Game } from "../../src/game.js";
@@ -217,22 +203,7 @@ describe("Flagship: Llanowar Elves end-to-end integration", () => {
     expect(elvesCard.tapped).toBe(false);
   });
 
-  it("Phase B: tap ability inline — {T}: Add {G} puts G in mana pool, card becomes tapped", () => {
-    // INFRASTRUCTURE NOTE: This test wires the activation flow INLINE because
-    // game.action.activateAbility() does not exist in SP2. The pipeline gap
-    // (dedicated ActivatedAbilityPipeline) is documented here:
-    //   GAP E3: Need game.action.activateAbility(cardId, abilityIndex) which:
-    //     1. Identifies the AB$ ability SpellAbility on the card.
-    //     2. Validates active zone and timing (sorcery-speed vs. instant-speed).
-    //     3. Calls parseCostString(sa.ast.cost.raw) + payCost().
-    //     4. Pushes a StackItem of kind="activatedAbility" with sa.makeResolver().
-    //     5. (For mana abilities: resolves immediately, no stack.)
-    //   Missing infrastructure: no ActivatedAbilityPipeline class, no
-    //   game.action.activateAbility method.
-    //
-    // The inline wiring below proves all the required components are functional;
-    // only the orchestrator glue is missing.
-
+  it("Phase B: {T}: Add {G} via canonical activateAbility — card taps, pool gains 1 G", () => {
     const game = makeGame();
     const seat0 = mkPlayerSeat(0);
     const elvesId = mkEntityId(16000);
@@ -248,7 +219,7 @@ describe("Flagship: Llanowar Elves end-to-end integration", () => {
       definition: def,
     };
 
-    // Place Llanowar Elves directly on battlefield (skip casting for this test)
+    // Place Llanowar Elves directly on battlefield (skip casting for this test).
     const elvesCard = new Card(elvesId, elvesPaper, seat0, seat0, ZoneType.Battlefield);
     game.cards.set(elvesId, elvesCard);
     const bf = game.getPlayer(seat0).zones.get(ZoneType.Battlefield);
@@ -256,92 +227,58 @@ describe("Flagship: Llanowar Elves end-to-end integration", () => {
     bf.add(elvesId);
     elvesCard.activateAbilitiesFromDefinition();
 
-    // Verify the AB$ Mana ability
+    // Verify the AB$ Mana ability was parsed.
     expect(elvesCard.spellAbilities).toHaveLength(1);
-    const manaAbility = elvesCard.spellAbilities[0];
-    if (!manaAbility) throw new Error("test: no mana ability");
-    expect(manaAbility.handlerKey).toBe("Mana");
+    expect(elvesCard.spellAbilities[0]?.handlerKey).toBe("Mana");
 
-    // Pool starts empty
+    // Pool starts empty.
     const pool = new ManaPool();
     game.getPlayer(seat0).manaPool = pool;
     expect(pool.size()).toBe(0);
     expect(elvesCard.tapped).toBe(false);
 
-    // INLINE ACTIVATION FLOW (what ActivatedAbilityPipeline would do):
-
-    // Step 1: Parse the cost "T" from the ability
-    const costPlan = parseCostString(manaAbility.ast.cost.raw); // "T"
-    expect(costPlan.parts).toHaveLength(1);
-    expect(costPlan.parts[0]?.handlerKey).toBe("Tap");
-
-    // Step 2: Pay the cost — drives game.action.tap(elvesId) which emits CardTapped
-    const costCtx = {
-      game,
-      payerSeat: seat0,
-      sourceCardId: elvesId,
-      raw: manaAbility.ast.cost.raw,
-    };
-    const costEvents: string[] = [];
-    const payGen = payCost(costPlan, costCtx) as Generator<
+    // Activate ability index 0 via the canonical orchestrator.
+    const activateEvents: string[] = [];
+    const activateGen = game.action.activateAbility(elvesId, 0, seat0) as Generator<
       { kind: string; event?: { kind?: string } },
       unknown,
       unknown
     >;
-    let payStep = payGen.next();
-    while (!payStep.done) {
-      const y = payStep.value;
-      if (y.kind === "event" && y.event?.kind) {
-        costEvents.push(y.event.kind);
-      }
-      payStep = payGen.next();
+    let activateStep = activateGen.next();
+    while (!activateStep.done) {
+      const y = activateStep.value;
+      if (y.kind === "event" && y.event?.kind) activateEvents.push(y.event.kind);
+      activateStep = activateGen.next();
     }
 
-    // Card should now be tapped
+    // Cost paid: card is now tapped. AbilityActivated event fired.
     expect(elvesCard.tapped).toBe(true);
-    expect(costEvents).toContain("CardTapped");
+    expect(activateEvents).toContain("CardTapped");
+    expect(activateEvents).toContain("AbilityActivated");
 
-    // Step 3: Build an activatedAbility StackItem with ManaEffect resolver
-    const resolver = manaAbility.makeResolver();
-    const stackItem: StackItem = {
-      id: game.newEntityId(),
-      sourceCardId: elvesId,
-      controllerSeat: seat0,
-      kind: "activatedAbility",
-      isCast: false,
-      targets: null,
-      modes: [],
-      xValue: null,
-      costPaid: null,
-      provenance: {
-        originZone: ZoneType.Battlefield,
-        altCostUsed: null,
-        additionalCostsPaid: [],
-      },
-      resolver,
-    };
-    game.sharedZones.stack.push(stackItem);
+    // Stack has the activated ability item.
+    expect(game.sharedZones.stack.size).toBe(1);
 
-    // Step 4: Resolve the activated ability stack item
+    // Resolve the ability (drives ManaEffect — adds G to pool).
+    const stackItem = game.sharedZones.stack.top();
+    if (!stackItem) throw new Error("test: stack is empty after activateAbility");
     const resolveEvents = drainResolver(
       resolveStackItem(game, stackItem) as Generator<unknown, void, unknown>,
     );
 
     expect(resolveEvents).toContain("StackItemResolved");
 
-    // Step 5: Mana pool should now have 1 G
+    // Pool has exactly 1 G.
     expect(pool.size()).toBe(1);
-    // Verify it's green
-    pool.add(ManaProduced.colored(Color.White)); // add a white to distinguish
+    // Verify green by adding a white and confirming total = 2.
+    pool.add(ManaProduced.colored(Color.White));
     expect(pool.size()).toBe(2);
-    // The first mana in pool was green (added by ManaEffect)
-    // We verify by checking the pool after resolution had exactly 1 unit before we added white
 
-    // Card is still on the battlefield (activated abilities don't move source)
+    // Card remains on battlefield, tapped.
     expect(elvesCard.zone).toBe(ZoneType.Battlefield);
-    // Card remains tapped
     expect(elvesCard.tapped).toBe(true);
-    // Stack is empty
+
+    // Stack is now empty.
     expect(game.sharedZones.stack.size).toBe(0);
   });
 });
