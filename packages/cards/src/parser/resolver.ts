@@ -16,21 +16,21 @@ import type {
 
 // Walk a single EffectInvocation, checking:
 //  1. Any param with kind "svarRef" must resolve to a known SVar.
-//  2. Any handlerKey that starts with "DB" is a DSL SVar reference — must
-//     exist in svars (DB-prefix convention from Forge's AbilityFactory).
-//  3. SubAbility chain is walked recursively.
+//  2. Only handlerKeys that start with "DB" are DSL SVar references — they
+//     MUST exist in svars (DB-prefix convention from Forge's AbilityFactory).
+//  3. The synthetic "Prevent" handlerKey (emitted for prevention-style
+//     replacements that have no ReplaceWith$ SVar) does NOT start with "DB"
+//     and is never checked against svars.
+//  4. SubAbility chain is walked recursively.
 const walkInvocation = (
   where: string,
   invocation: EffectInvocation,
   svars: ReadonlyMap<string, SVarAst>,
-  handlerIsSvarRef: boolean,
 ): void => {
-  // Handler-key check (only when this invocation's key is an SVar ref).
-  if (handlerIsSvarRef && !svars.has(invocation.handlerKey)) {
-    throw new Error(`${where}: unresolved reference '${invocation.handlerKey}'`);
-  }
-  // DB-prefixed handler keys are always SVar refs (even without the outer flag).
-  if (!handlerIsSvarRef && invocation.handlerKey.startsWith("DB") && !svars.has(invocation.handlerKey)) {
+  // Handler-key check: ONLY DB-prefixed keys are SVar references.
+  // Native handler identifiers (SP$, AB$, etc.) and synthetic sentinels
+  // like "Prevent" are never backed by a SVar: line.
+  if (invocation.handlerKey.startsWith("DB") && !svars.has(invocation.handlerKey)) {
     throw new Error(`${where}: unresolved reference '${invocation.handlerKey}'`);
   }
 
@@ -42,8 +42,7 @@ const walkInvocation = (
   }
 
   if (invocation.subAbility) {
-    // SubAbility handlerKey follows DB-prefix convention.
-    walkInvocation(`${where}.subAbility`, invocation.subAbility, svars, false);
+    walkInvocation(`${where}.subAbility`, invocation.subAbility, svars);
   }
 };
 
@@ -52,17 +51,17 @@ export const resolveReferences = (card: CardDefinition): void => {
 
   // Abilities: SP$/AB$ handlerKeys are native handlers; DB$ are SVar refs.
   (card.abilities as readonly AbilityAst[]).forEach((a, i) => {
-    walkInvocation(`${card.name}.abilities[${i}]`, a.effect, svars, false);
+    walkInvocation(`${card.name}.abilities[${i}]`, a.effect, svars);
   });
 
-  // Triggers: Execute$ value is always an SVar reference.
+  // Triggers: Execute$ value is an SVar name (DB-prefixed ones are checked).
   (card.triggers as readonly TriggerAst[]).forEach((t, i) => {
-    walkInvocation(`${card.name}.triggers[${i}]`, t.effect, svars, true);
+    walkInvocation(`${card.name}.triggers[${i}]`, t.effect, svars);
   });
 
-  // Replacements: ReplaceWith$ value is always an SVar reference.
+  // Replacements: ReplaceWith$ is an SVar name, or "Prevent" (synthetic sentinel).
   (card.replacements as readonly ReplacementAst[]).forEach((r, i) => {
-    walkInvocation(`${card.name}.replacements[${i}]`, r.effect, svars, true);
+    walkInvocation(`${card.name}.replacements[${i}]`, r.effect, svars);
   });
 
   // Statics: params only (no invocation handlerKey to resolve).

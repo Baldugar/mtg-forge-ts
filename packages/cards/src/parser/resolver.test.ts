@@ -36,6 +36,18 @@ describe("intra-card reference resolution", () => {
     expect(() => parseCard(source, "broken.txt")).toThrow(/DBMissingTrig/);
   });
 
+  it("does NOT throw for synthetic 'Prevent' handlerKey on prevention-style replacement", () => {
+    // R:Event$ DamageDone | Layer$ CantHappen | ... produces handlerKey "Prevent"
+    // which is a synthetic sentinel and must not be validated against svars.
+    const source = `${[
+      "Name:Abrupt Decay",
+      "ManaCost:B G",
+      "Types:Instant",
+      "R:Event$ DamageDone | Layer$ CantHappen | ValidCard$ Card.Self",
+    ].join("\n")}\n`;
+    expect(() => parseCard(source, "abrupt_decay.txt")).not.toThrow();
+  });
+
   it("throws when param svarRef (X) is used without the SVar defined", () => {
     const source = `${[
       "Name:Broken",
