@@ -23,7 +23,6 @@
 // MVP scope: no-target activated abilities (Llanowar Elves {T}: Add {G}).
 // Targeted activated abilities (e.g. equip) are SP3+.
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
-import { ZoneType } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { parseCostString, payCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
@@ -46,15 +45,10 @@ export function* activateAbility(
   abilityIndex: number,
   controllerSeat: PlayerSeat,
 ): Generator<EngineYield, EntityId, unknown> {
-  // 1. Validate card exists and is on the battlefield.
+  // 1. Validate card exists.
   const card = game.cards.get(cardId);
   if (!card) {
     throw new Error(`activateAbility: card ${cardId} not found in game.cards`);
-  }
-  if (card.zone !== ZoneType.Battlefield) {
-    throw new Error(
-      `activateAbility: card ${cardId} is in zone ${card.zone}, not Battlefield — activated abilities require the battlefield zone`,
-    );
   }
   if (card.controllerSeat !== controllerSeat) {
     throw new Error(
@@ -67,6 +61,17 @@ export function* activateAbility(
   if (!sa) {
     throw new Error(
       `activateAbility: ability index ${abilityIndex} out of range (card ${cardId} has ${card.spellAbilities.length} abilities)`,
+    );
+  }
+
+  // 3a. Validate zone: the ability must be active in the card's current zone.
+  //   Default battlefield-activated abilities (e.g. Llanowar Elves {T}: Add {G})
+  //   carry activeInZones = {Battlefield}. Cycling-synthesized abilities carry
+  //   activeInZones = {Hand}. Any future keyword can override as needed.
+  if (!sa.activeInZones.has(card.zone)) {
+    throw new Error(
+      `activateAbility: ability ${abilityIndex} on card ${cardId} is not active in zone ${card.zone} ` +
+        `(active in: ${[...sa.activeInZones].join(", ")})`,
     );
   }
 
@@ -85,8 +90,10 @@ export function* activateAbility(
 
   // 5. Build the StackItem.
   const itemId = game.newEntityId();
+  // originZone reflects where the card actually was when the ability was
+  // activated — Battlefield for normal AB$ abilities, Hand for Cycling, etc.
   const provenance: StackItemProvenance = {
-    originZone: ZoneType.Battlefield,
+    originZone: card.zone,
     altCostUsed: null,
     additionalCostsPaid: [],
   };

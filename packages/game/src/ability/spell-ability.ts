@@ -2,12 +2,24 @@
 // SpellAbility — runtime binding of a parsed AbilityAst to a specific source
 // card, controller, targets, and optional X value. This is the abstraction the
 // CastPipeline creates and the effect registry resolves against.
-import type { AbilityAst, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
+import type { AbilityAst, EntityId, PlayerSeat, SVarAst, ZoneType } from "@mtg-forge-ts/core";
+import { ZoneType as ZoneTypeEnum } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { StackItemResolver } from "../stack/stack-item.js";
 import { effectRegistry } from "./effect-registry.js";
 
+/** Default zones in which a regular AB$ (battlefield) ability is active. */
+const DEFAULT_ACTIVE_IN_ZONES: ReadonlySet<ZoneType> = new Set([ZoneTypeEnum.Battlefield]);
+
 export class SpellAbility {
+  /**
+   * Zones from which this ability may be activated. Battlefield-activated
+   * abilities (mana abilities, equip, etc.) use the default `{Battlefield}`.
+   * Abilities synthesized by keyword handlers (e.g. Cycling) set this to
+   * `{Hand}` so activateAbility knows they fire from a different zone.
+   */
+  public readonly activeInZones: ReadonlySet<ZoneType>;
+
   constructor(
     public readonly ast: AbilityAst,
     public readonly sourceCardId: EntityId,
@@ -15,7 +27,10 @@ export class SpellAbility {
     public readonly svars: ReadonlyMap<string, SVarAst>,
     public targets: readonly EntityId[] = [],
     public xValue?: number,
-  ) {}
+    activeInZones?: ReadonlySet<ZoneType>,
+  ) {
+    this.activeInZones = activeInZones ?? DEFAULT_ACTIVE_IN_ZONES;
+  }
 
   get handlerKey(): string {
     return this.ast.effect.handlerKey;
