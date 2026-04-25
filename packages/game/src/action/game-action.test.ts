@@ -246,6 +246,48 @@ describe("GameAction.moveTo", () => {
       GameStateIntegrityError,
     );
   });
+
+  it("moveTo with cause='discard' emits CardChangedZone then CardDiscarded", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(8);
+    addCardToZone(game, seat0, ZoneType.Hand, id);
+
+    const yields = collect(action.moveTo(id, ZoneType.Graveyard, { cause: "discard" }));
+    // Two events: CardChangedZone + CardDiscarded
+    expect(yields).toHaveLength(2);
+    if (yields[0]?.kind !== "event") throw new Error("expected event 0");
+    if (yields[1]?.kind !== "event") throw new Error("expected event 1");
+    expect(yields[0].event.kind).toBe("CardChangedZone");
+    expect(yields[1].event.kind).toBe("CardDiscarded");
+    if (yields[1].event.kind !== "CardDiscarded") throw new Error("expected CardDiscarded");
+    expect(yields[1].event.payload.cardId).toBe(id);
+    expect(yields[1].event.payload.playerSeat).toBe(seat0);
+    expect(yields[1].event.payload.cause).toBe("discard");
+  });
+
+  it("moveTo with cause='handSize' emits CardChangedZone then CardDiscarded", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(9);
+    addCardToZone(game, seat0, ZoneType.Hand, id);
+
+    const yields = collect(action.moveTo(id, ZoneType.Graveyard, { cause: "handSize" }));
+    expect(yields).toHaveLength(2);
+    if (yields[1]?.kind !== "event") throw new Error("expected event 1");
+    expect(yields[1].event.kind).toBe("CardDiscarded");
+    if (yields[1].event.kind !== "CardDiscarded") throw new Error("expected CardDiscarded");
+    expect(yields[1].event.payload.cause).toBe("handSize");
+  });
+
+  it("moveTo with cause='effect' does NOT emit CardDiscarded", () => {
+    const { game, action, seat0 } = mkFixture();
+    const id = mkEntityId(10);
+    addCardToZone(game, seat0, ZoneType.Hand, id);
+
+    const yields = collect(action.moveTo(id, ZoneType.Graveyard, { cause: "effect" }));
+    // Only CardChangedZone, no CardDiscarded
+    expect(yields).toHaveLength(1);
+    expect(yields[0]?.kind === "event" && yields[0].event.kind).toBe("CardChangedZone");
+  });
 });
 
 describe("GameAction.tap / untap", () => {

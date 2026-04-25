@@ -855,6 +855,22 @@ export type GameEvent =
         readonly fromZone: ZoneType;
       };
     }
+  // === Targeting (1) — Wave 5 BecomesTarget trigger ===
+  | {
+      // Emitted for each card-typed target after stepChooseTargets resolves.
+      // `targetingSeat` is the casting/activating player. `sourceCardId` is
+      // the spell/ability doing the targeting. Only card targets emit this
+      // event; player targets are not cards and don't trigger BecomesTarget.
+      readonly kind: "CardTargeted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly targetId: EntityId;
+        readonly sourceCardId: EntityId;
+        readonly targetingSeat: PlayerSeat;
+      };
+    }
   // === Engine-internal (11) — SP2 §B registry/pipeline telemetry ===
   // WHY: these kinds feed the Replacement / Trigger / Static / SBA
   // pipelines (Tasks 16-34). They are not "game events" in the rules

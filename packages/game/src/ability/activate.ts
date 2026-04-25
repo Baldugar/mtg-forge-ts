@@ -23,6 +23,7 @@
 // MVP scope: no-target activated abilities (Llanowar Elves {T}: Add {G}).
 // Targeted activated abilities (e.g. equip) are SP3+.
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import { mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { parseCostString, payCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
@@ -87,6 +88,17 @@ export function* activateAbility(
     raw: costRaw,
   };
   const receipts = yield* payCost(plan, costCtx);
+
+  // 4a. Wave 5 — if the ability is tagged "cycling", emit CardCycled now that
+  //     costs have been paid (the card was discarded as part of the cost).
+  if (sa.tags.has("cycling")) {
+    yield game.emitEvent(
+      mkEvent("CardCycled", game.turn, game.phase, {
+        cardId,
+        playerSeat: controllerSeat,
+      }),
+    );
+  }
 
   // 5. Build the StackItem.
   const itemId = game.newEntityId();

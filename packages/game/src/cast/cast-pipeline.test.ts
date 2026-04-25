@@ -125,15 +125,24 @@ const drainWithSpellCast = <Y, R>(gen: Generator<Y, R, unknown>): { yields: Y[];
 // SpellCast yield and returns the next iterator step. When the passed
 // step is already `done` (or doesn't carry a SpellCast), it passes
 // through unchanged.
+// Drain all trailing event yields (SpellCast, CardTargeted, etc.) from the
+// generator until it returns (done) or yields a decision. Wave 5 added
+// CardTargeted emissions inside stepChooseTargets, so a single `skipSpellCast`
+// invocation must now advance past multiple events to reach done.
 const skipSpellCast = <Y, R>(
   gen: Generator<Y, R, unknown>,
   step: IteratorResult<Y, R>,
 ): IteratorResult<Y, R> => {
-  const v = step.value as { kind?: string; event?: { kind?: string } } | undefined;
-  if (!step.done && v?.kind === "event" && v.event?.kind === "SpellCast") {
-    return gen.next();
+  let current = step;
+  while (!current.done) {
+    const v = current.value as { kind?: string } | undefined;
+    if (v?.kind === "event") {
+      current = gen.next();
+    } else {
+      break;
+    }
   }
-  return step;
+  return current;
 };
 
 /**

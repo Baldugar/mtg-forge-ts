@@ -20,6 +20,14 @@ export class SpellAbility {
    */
   public readonly activeInZones: ReadonlySet<ZoneType>;
 
+  /**
+   * Semantic tags applied by keyword handlers or synthesizing code to carry
+   * provenance metadata through the activation pipeline. Used by
+   * activateAbility to emit ability-specific events (e.g. "cycling" → emits
+   * CardCycled after costs are paid).
+   */
+  public readonly tags: ReadonlySet<string>;
+
   constructor(
     public readonly ast: AbilityAst,
     public readonly sourceCardId: EntityId,
@@ -28,8 +36,10 @@ export class SpellAbility {
     public targets: readonly EntityId[] = [],
     public xValue?: number,
     activeInZones?: ReadonlySet<ZoneType>,
+    tags?: ReadonlySet<string>,
   ) {
     this.activeInZones = activeInZones ?? DEFAULT_ACTIVE_IN_ZONES;
+    this.tags = tags ?? new Set();
   }
 
   get handlerKey(): string {

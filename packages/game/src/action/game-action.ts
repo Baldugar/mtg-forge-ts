@@ -281,7 +281,7 @@ export class GameAction {
       toSeat,
       cause: opts?.cause ?? "effect",
     };
-    yield* this.applyWithReplacements<MoveToIntent>(
+    const moveOutcome = yield* this.applyWithReplacements<MoveToIntent>(
       intent,
       (final) => {
         // Re-resolve from/to on final because a replacement may have
@@ -344,6 +344,22 @@ export class GameAction {
           ...(opts?.cause !== undefined ? { cause: opts.cause } : {}),
         }),
     );
+    // Wave 5 — emit CardDiscarded when cause is "discard" or "handSize" so
+    // DiscardedTrigger (T:Mode$ Discarded) fires correctly. owner is the
+    // player whose hand the card came from; if owner is null (e.g. tokens
+    // on the battlefield) there is no meaningful playerSeat and we skip.
+    if (!moveOutcome.prevented && owner !== null) {
+      const discardCause = opts?.cause;
+      if (discardCause === "discard" || discardCause === "handSize") {
+        yield game.emitEvent(
+          mkEvent("CardDiscarded", game.turn, game.phase, {
+            cardId,
+            playerSeat: owner,
+            cause: discardCause,
+          }),
+        );
+      }
+    }
   }
 
   // === Tap/untap ===

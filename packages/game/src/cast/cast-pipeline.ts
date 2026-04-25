@@ -24,6 +24,7 @@ import type { CostPartReceipt, CostPaymentContext } from "../cost/parts/cost-par
 import { parseCostString, payCost, undoCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
 import type { FaceKind } from "../multiface/face-kind.js";
+import { altCostRegistry } from "../registries/alt-cost-registry.js";
 // Side-effect import: registers CostMana, CostTap, CostPayLife, CostSacrifice
 // in costPartRegistry so payCost can dispatch to them.
 import "../cost/parts/index.js";
@@ -107,6 +108,13 @@ export interface CastProposal {
   readonly sourceCardId: EntityId;
   readonly originZone: ZoneType;
   readonly asSpecialAction: boolean;
+  /**
+   * Wave 5 — select an alternative cast cost by key (e.g. "Flashback").
+   * When present, stepChooseAltCosts looks the key up in altCostRegistry
+   * and calls modifyCastContext to replace the mana cost + set provenance.
+   * Existing proposals that omit this field are unaffected.
+   */
+  readonly altCostKey?: string;
 }
 
 /**
@@ -129,7 +137,15 @@ export class CastPipeline {
   constructor(protected readonly game: Game) {}
 
   *run(proposal: CastProposal): Generator<EngineYield, StackItem | null, unknown> {
-    const ctx = createCastContext(proposal);
+    const ctx = createCastContext({
+      castingPlayer: proposal.castingPlayer,
+      sourceCardId: proposal.sourceCardId,
+      originZone: proposal.originZone,
+      asSpecialAction: proposal.asSpecialAction,
+      // WHY spread: exactOptionalPropertyTypes requires we omit the key
+      // entirely when the value is undefined rather than passing `undefined`.
+      ...(proposal.altCostKey !== undefined ? { altCostKey: proposal.altCostKey } : {}),
+    });
     try {
       yield* this.stepPropose(ctx);
       yield* this.stepChooseFace(ctx);
@@ -322,6 +338,10 @@ export class CastPipeline {
    * CR 601.2b (continued) — announce alternative + additional costs
    * (kicker, buyback, multikicker, overload, madness discount, etc.).
    *
+   * Wave 5: if ctx.altCostUsed was pre-filled from CastProposal.altCostKey,
+   * look it up in altCostRegistry and call modifyCastContext immediately
+   * (no decision yield). This handles Flashback and future alt-cost keywords.
+   *
    * SP2 surface: PaperCard.optionalCosts carries the menu. Each id is a
    * short string the card rules reference; step 8 (DetermineTotalCost)
    * consumes the chosen ids to compute the cost.
@@ -329,6 +349,27 @@ export class CastPipeline {
   protected *stepChooseAltCosts(ctx: CastContext): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(ctx.sourceCardId);
     if (!card) return;
+
+    // Wave 5 — alt-cost registry path. If the proposal nominated an alt cost
+    // key, apply it without a decision yield. modifyCastContext writes
+    // ctx.altCostUsed, ctx.totalCost.base, and ctx.alternativeZoneDestination.
+    if (ctx.altCostUsed !== null) {
+      const altCost = altCostRegistry.lookup(ctx.altCostUsed);
+      if (altCost) {
+        // Provide a SpellAbility handle for modifyCastContext. Cards without
+        // a parsed SpellAbility (SP2 test stubs) fall back to a noop sentinel.
+        const noopAst = {
+          kind: "spell" as const,
+          effect: { handlerKey: "noop", params: {} },
+          cost: { raw: "" },
+        };
+        const sa =
+          card.spellAbilities[0] ?? new SpellAbility(noopAst, card.id, ctx.castingPlayer, new Map(), []);
+        altCost.modifyCastContext(ctx, sa, this.game);
+        return;
+      }
+    }
+
     const paper = card.paperCard as CastSurfacePaperCard;
     if (!paper.optionalCosts || paper.optionalCosts.length === 0) return;
     const response = (yield {
@@ -529,6 +570,21 @@ export class CastPipeline {
     if (choices.divisions !== undefined) {
       ctx.distributions = { ...choices.divisions };
     }
+
+    // Wave 5 — emit CardTargeted for each card-typed target so
+    // BecomesTargetTrigger (T:Mode$ BecomesTarget) fires correctly.
+    // Player targets do not generate a CardTargeted event (they are not cards).
+    for (const ref of chosenTargets) {
+      if (ref.kind === "card") {
+        yield this.game.emitEvent(
+          mkEvent("CardTargeted", this.game.turn, this.game.phase, {
+            targetId: ref.id,
+            sourceCardId: ctx.sourceCardId,
+            targetingSeat: ctx.castingPlayer,
+          }),
+        );
+      }
+    }
   }
 
   /**
@@ -546,15 +602,27 @@ export class CastPipeline {
   protected *stepDetermineTotalCost(ctx: CastContext): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(ctx.sourceCardId);
     if (!card) return;
-    // WHY probed structurally: PaperCard may carry manaCost directly (SP2
-    // synthetic fixtures) OR through its CardDefinition (SP3 real cards).
-    // Check both: prefer direct `paperCard.manaCost` (SP2 fixtures), then
-    // fall back to `paperCard.definition.manaCost` (SP3 real definitions).
-    const paperAny = card.paperCard as { manaCost?: unknown };
-    const baseCost =
-      paperAny.manaCost !== undefined
-        ? (paperAny.manaCost ?? null)
-        : (card.paperCard.definition?.manaCost ?? null);
+
+    // Wave 5 — if an alt cost was applied in stepChooseAltCosts (e.g. Flashback),
+    // ctx.totalCost.base was already set by modifyCastContext. Preserve it here
+    // instead of overwriting with the card's normal mana cost. The altCostUsed
+    // marker is the authoritative signal.
+    let baseCost: unknown;
+    const priorBase = (ctx.totalCost as { base?: unknown } | null | undefined)?.base;
+    if (ctx.altCostUsed !== null && priorBase !== undefined) {
+      baseCost = priorBase;
+    } else {
+      // WHY probed structurally: PaperCard may carry manaCost directly (SP2
+      // synthetic fixtures) OR through its CardDefinition (SP3 real cards).
+      // Check both: prefer direct `paperCard.manaCost` (SP2 fixtures), then
+      // fall back to `paperCard.definition.manaCost` (SP3 real definitions).
+      const paperAny = card.paperCard as { manaCost?: unknown };
+      baseCost =
+        paperAny.manaCost !== undefined
+          ? (paperAny.manaCost ?? null)
+          : (card.paperCard.definition?.manaCost ?? null);
+    }
+
     const costMods = this.game.staticEffectRegistry.byCategory("costModification");
     ctx.totalCost = {
       base: baseCost,

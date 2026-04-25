@@ -108,6 +108,8 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "SubgameEnded",
   // Reveal (1) — Wave 4
   "CardsRevealed",
+  // Targeting (1) — Wave 5
+  "CardTargeted",
   // Engine-internal (11) — SP2 §B
   "EventPrevented",
   "TriggerQueued",
@@ -211,6 +213,7 @@ const ALL_KINDS_MAP = {
   SubgameStarted: true,
   SubgameEnded: true,
   CardsRevealed: true,
+  CardTargeted: true,
   EventPrevented: true,
   TriggerQueued: true,
   TriggerResolved: true,
@@ -225,9 +228,9 @@ const ALL_KINDS_MAP = {
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 95 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp + Task 60 Melded + Wave 4 CardsRevealed)", () => {
-    expect(EXPECTED_KINDS.length).toBe(95);
-    expect(new Set(EXPECTED_KINDS).size).toBe(95);
+  it("has 96 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp + Task 60 Melded + Wave 4 CardsRevealed + Wave 5 CardTargeted)", () => {
+    expect(EXPECTED_KINDS.length).toBe(96);
+    expect(new Set(EXPECTED_KINDS).size).toBe(96);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -355,6 +358,8 @@ describe("Event taxonomy lock — version:1 sweep", () => {
       cardIds: [id(1)],
       fromZone: ZoneType.Library,
     },
+    // Targeting (1) — Wave 5
+    CardTargeted: { targetId: id(1), sourceCardId: id(2), targetingSeat: seat0 },
     // Engine-internal (11) — SP2 §B
     EventPrevented: { original: { kind: "test" } },
     TriggerQueued: { triggerId: id(1), sourceCardId: id(2) },

@@ -53,7 +53,8 @@ export class CyclingKeywordHandler extends KeywordHandler {
       rulesText: `Cycling {${cyclingMana}} — discard this card, draw a card.`,
     };
 
-    // 4. Synthesize a SpellAbility active in Hand only.
+    // 4. Synthesize a SpellAbility active in Hand only, tagged as "cycling"
+    //    so activateAbility emits CardCycled after costs are paid.
     const def = card.paperCard.definition;
     const svars =
       (def?.svars as ReadonlyMap<string, import("@mtg-forge-ts/core").SVarAst>) ??
@@ -66,6 +67,7 @@ export class CyclingKeywordHandler extends KeywordHandler {
       [],
       undefined,
       new Set([ZoneType.Hand]),
+      new Set(["cycling"]),
     );
 
     card.spellAbilities.push(sa);

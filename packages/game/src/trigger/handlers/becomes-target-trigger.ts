@@ -6,13 +6,22 @@
 // Forge pattern:
 //   T:Mode$ BecomesTarget | ValidCard$ Card.Self | ValidSource$ Spell.OpponentCtrl | Execute$ TrigDestroy
 //
-// MVP STATUS: STUB — no "BecomesTarget" or "Targeted" event kind exists in the
-// current event taxonomy. matches() always returns false. The handler is
-// registered so the semantic validator stops flagging "BecomesTarget" as unknown.
+// Wave 5: matches on the `CardTargeted` game event (added to taxonomy in Wave 5).
+// ValidCard$ filtering: Card.Self → only fires when the source card itself is targeted.
+// ValidSource$ filtering: MVP supports Spell.OpponentCtrl, Spell.YouCtrl, Spell
+//   (any spell). Player targeting does not emit CardTargeted, so no player-sourced
+//   targeting fires this trigger.
 //
-// TODO(Wave 9): add a "CardTargeted" event kind to core/src/events/event.ts and
-// emit it from the targeting selection path; then wire the matches() logic here.
-import type { AbilityAst, GameEvent, SVarAst, TriggerAst, TriggeredAbility } from "@mtg-forge-ts/core";
+// CardTargeted event payload: { targetId, sourceCardId, targetingSeat }
+import type {
+  AbilityAst,
+  EntityId,
+  GameEvent,
+  PlayerSeat,
+  SVarAst,
+  TriggerAst,
+  TriggeredAbility,
+} from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
@@ -40,11 +49,10 @@ export class BecomesTargetTrigger extends TriggerHandler {
   static override readonly mode = "BecomesTarget";
 
   override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
+    const validCard = getParamRaw(ast, "ValidCard") ?? "Card.Self";
+    const validSource = getParamRaw(ast, "ValidSource") ?? "Spell";
     const { sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = ast.effect.handlerKey;
-    // Params are intentionally read but not yet used — suppress unused-var warning.
-    void getParamRaw(ast, "ValidCard");
-    void getParamRaw(ast, "ValidSource");
 
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
@@ -55,9 +63,30 @@ export class BecomesTargetTrigger extends TriggerHandler {
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,
 
-      // TODO(Wave 9): implement once "CardTargeted" event exists in core.
-      matches(_event: GameEvent): boolean {
-        return false;
+      matches(event: GameEvent): boolean {
+        if (event.kind !== "CardTargeted") return false;
+        const { targetId, targetingSeat } = event.payload as {
+          targetId: EntityId;
+          sourceCardId: EntityId;
+          targetingSeat: PlayerSeat;
+        };
+
+        // ValidCard$ — which card must be targeted.
+        if (validCard === "Card.Self") {
+          if (targetId !== sourceCardId) return false;
+        }
+        // "Card" matches any targeted card — no additional filter needed.
+
+        // ValidSource$ — who must be doing the targeting.
+        const lowerSource = validSource.toLowerCase();
+        if (lowerSource === "spell.opponentctrl") {
+          if (targetingSeat === controllerSeat) return false;
+        } else if (lowerSource === "spell.youctrl") {
+          if (targetingSeat !== controllerSeat) return false;
+        }
+        // "Spell" / absent → any source is fine.
+
+        return true;
       },
 
       resolver: {
