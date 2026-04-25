@@ -9,3 +9,7 @@ export * from "./counter-replacement.js";
 export * from "./create-token-replacement.js";
 export * from "./add-counter-replacement.js";
 export * from "./draw-replacement.js";
+// Wave 9 replacements
+export * from "./untap-replacement.js";
+export * from "./gain-life-replacement.js";
+export * from "./life-reduced-replacement.js";
