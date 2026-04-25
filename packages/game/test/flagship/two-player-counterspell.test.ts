@@ -124,6 +124,10 @@ const drainCast = (
       step = gen.next();
     } else if (y.kind === "decision" && y.request?.kind === "activateManaAbilities") {
       step = gen.next({ kind: "activateManaAbilities", done: true });
+    } else if (y.kind === "decision" && y.request?.kind === "chooseCastTargets") {
+      const req = y.request as { legalTargets?: readonly unknown[] };
+      const first = req.legalTargets?.[0];
+      step = gen.next({ kind: "chooseCastTargets", targets: first !== undefined ? [first] : [] });
     } else {
       step = gen.next();
     }

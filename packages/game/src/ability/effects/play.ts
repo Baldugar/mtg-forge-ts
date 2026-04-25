@@ -34,7 +34,6 @@ import type { SpellAbility } from "../spell-ability.js";
  * no mana is deducted.
  */
 class FreeCastPipeline extends CastPipeline {
-  // biome-ignore lint/correctness/useYield: override simply sets cost to null without yielding
   protected override *stepDetermineTotalCost(ctx: CastContext): Generator<EngineYield, void, unknown> {
     const costMods = this.game.staticEffectRegistry.byCategory("costModification");
     ctx.totalCost = {

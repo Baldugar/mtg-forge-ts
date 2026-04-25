@@ -62,12 +62,12 @@ export class PreventDamageEffect extends SpellAbilityEffect {
       matches(intent: MutationIntent): boolean {
         if (shield <= 0) return false;
         if (intent.kind !== "damage") return false;
-        const di = intent as DamageIntent;
+        const di = intent as unknown as DamageIntent;
         if (di.targetKind !== "player") return false;
         return (di.targetId as unknown as number) === (seat as unknown as number);
       },
       apply(intent: MutationIntent, _gameArg: unknown): MutationIntent | null {
-        const di = intent as DamageIntent;
+        const di = intent as unknown as DamageIntent;
         const reduction = Math.min(shield, di.amount);
         shield -= reduction;
         // Keep legacy field in sync with closure-tracked shield.

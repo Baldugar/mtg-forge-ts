@@ -31,6 +31,7 @@ import type { StackItem, StackItemProvenance, StackItemResolver } from "../stack
 import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
 import { createCastContext } from "./cast-context.js";
+import { parseValidTgts } from "./valid-targets.js";
 
 /**
  * Cast-surface metadata SP2 reads off the PaperCard definition slot. The
@@ -478,8 +479,20 @@ export class CastPipeline {
     const card = this.game.cards.get(ctx.sourceCardId);
     if (!card) return;
     const paper = card.paperCard as CastSurfacePaperCard;
-    if (!paper.targetRestriction) return;
-    const restriction = paper.targetRestriction;
+
+    // Derive restriction: prefer paper.targetRestriction (explicit, set by
+    // test fixtures or future SP3 data layer). Fall back to parsing ValidTgts$
+    // from the card's first SpellAbility (Wave 4 runtime enforcement). When
+    // neither is present, the spell has no targets — skip step 7.
+    let restriction: TargetRestriction | undefined = paper.targetRestriction;
+    if (!restriction && card.spellAbilities.length > 0) {
+      const sa = card.spellAbilities[0];
+      const validTgtsParam = sa?.ast.effect.params.ValidTgts;
+      if (validTgtsParam && validTgtsParam.kind === "literal" && validTgtsParam.raw) {
+        restriction = parseValidTgts(validTgtsParam.raw);
+      }
+    }
+    if (!restriction) return;
     const enumerationCtx = {
       sourceId: ctx.sourceCardId,
       sourceControllerSeat: ctx.castingPlayer,

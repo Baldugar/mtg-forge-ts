@@ -211,6 +211,9 @@ export class RandomLegalController implements PlayerController {
         };
       case "companionDeclaration":
         return { kind: "companionDeclaration", companionId: null };
+      // Wave 4 — ChooseTypeEffect
+      case "chooseType":
+        return { kind: "chooseType", type: "Goblin" };
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(

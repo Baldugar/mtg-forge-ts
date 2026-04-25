@@ -106,6 +106,10 @@ const drainWithResponses = <R>(
     const y = step.value as { kind: string; event?: { kind?: string }; request?: { kind?: string } };
     if (y.kind === "decision" && y.request?.kind === "activateManaAbilities") {
       step = gen.next({ kind: "activateManaAbilities", done: true });
+    } else if (y.kind === "decision" && y.request?.kind === "chooseCastTargets") {
+      const req = y.request as { legalTargets?: readonly unknown[] };
+      const first = req.legalTargets?.[0];
+      step = gen.next({ kind: "chooseCastTargets", targets: first !== undefined ? [first] : [] });
     } else if (y.kind === "decision" && idx < responses.length) {
       step = gen.next(responses[idx]);
       idx++;

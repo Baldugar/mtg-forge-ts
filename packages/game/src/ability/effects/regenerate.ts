@@ -55,7 +55,7 @@ export class RegenerateEffect extends SpellAbilityEffect {
         matches(intent: MutationIntent): boolean {
           if (shield <= 0) return false;
           if (intent.kind !== "destroy") return false;
-          const di = intent as DestroyIntent;
+          const di = intent as unknown as DestroyIntent;
           return di.cardId === targetId;
         },
         apply(_intent: MutationIntent, _gameArg: unknown): MutationIntent | null {
