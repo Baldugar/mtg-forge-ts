@@ -17,7 +17,7 @@
 // context so effects like "deal 1 damage to each creature" can target the
 // right subject. Current MVP runs the sub-ability once per match but the
 // sub-ability's Defined$ context is not yet overridden per-iteration.
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { AbilityAst, EntityId, SVarAst } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -63,6 +63,9 @@ export class RepeatEachEffect extends SpellAbilityEffect {
       const qualifier = tokens[1] ?? "";
 
       for (const [id, card] of game.cards) {
+        // Zone guard: RepeatCards$ iterates battlefield permanents by default
+        // (same semantics as DestroyAll / PumpAll — CR 700.7).
+        if (card.zone !== ZoneType.Battlefield) continue;
         const chars = game.layerEngine.computeCharacteristics(id);
         if (baseType !== "permanent" && baseType !== "card") {
           if (baseType === "creature" && !chars.types.has(CardType.Creature)) continue;

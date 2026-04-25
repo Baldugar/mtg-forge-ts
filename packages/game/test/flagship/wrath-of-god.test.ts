@@ -234,13 +234,11 @@ describe("Flagship: Wrath of God end-to-end integration", () => {
       resolveStackItem(game, stackItem as StackItem) as Generator<unknown, void, unknown>,
     );
 
-    // At least 2 CardDestroyed events (the two bears). The Layer4 global Creature
-    // seed also causes the Wrath sorcery itself (still in game.cards) to be
-    // collected by collectMatching — a known artefact of the SP4 gap in
-    // deriveBaseCharacteristics (no zone filter in collectMatching). The bears'
-    // zone transitions are the canonical assertions below.
+    // Exactly 2 CardDestroyed events — one per creature on the battlefield.
+    // The zone filter fix ensures DestroyAllEffect only sees battlefield cards,
+    // so the Wrath sorcery itself (zone=Hand while resolving) is excluded.
     const destroyedEvents = resolveEvents.filter((e) => e === "CardDestroyed");
-    expect(destroyedEvents.length).toBeGreaterThanOrEqual(2);
+    expect(destroyedEvents.length).toBe(2);
     expect(resolveEvents).toContain("StackItemResolved");
 
     // Both bears in graveyard

@@ -14,7 +14,7 @@
 // The chosen EntityIds are appended to `source.remembered` when
 // `RememberChosen$ True` is present (or absent — remember is the default for
 // ChooseCard effects in Forge).
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -32,6 +32,9 @@ function collectMatching(game: Game, sa: SpellAbility, filterRaw: string): Entit
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: ChooseCard picks from battlefield permanents (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     // Base-type filter ("card" = any permanent).

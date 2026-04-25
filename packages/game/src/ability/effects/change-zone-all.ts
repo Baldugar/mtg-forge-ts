@@ -36,8 +36,9 @@ function parseZone(raw: string): ZoneType | undefined {
   return ZONE_MAP[raw];
 }
 
-/** Collect all card ids in the origin zone matching the ValidCards$ filter. */
-function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
+/** Collect all card ids in the origin zone matching the ValidCards$ filter.
+ *  The origin zone is read from Origin$ param (default: Battlefield). */
+function collectMatching(sa: SpellAbility, game: Game, originZone: ZoneType): EntityId[] {
   const filterRaw = hasParam(sa, "ValidCards") ? evaluateParamRaw(sa, "ValidCards") : "Creature";
   const tokens = filterRaw.split(".").map((t) => t.trim().toLowerCase());
   const baseType = tokens[0] ?? "creature";
@@ -45,6 +46,9 @@ function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: only collect from the specified origin zone (CR 700.7).
+    if (card.zone !== originZone) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     if (baseType !== "permanent") {
@@ -75,8 +79,12 @@ export class ChangeZoneAllEffect extends SpellAbilityEffect {
     // Library moves require shuffle — deferred to SP3+.
     if (destZone === ZoneType.Library) return;
 
+    // Determine origin zone from Origin$ param (default: Battlefield).
+    const originRaw = hasParam(sa, "Origin") ? evaluateParamRaw(sa, "Origin") : "Battlefield";
+    const originZone = parseZone(originRaw) ?? ZoneType.Battlefield;
+
     // Collect targets before any moves (simultaneous semantics, CR 700.7).
-    const targets = collectMatching(sa, game);
+    const targets = collectMatching(sa, game, originZone);
 
     for (const cardId of targets) {
       const card = game.cards.get(cardId);

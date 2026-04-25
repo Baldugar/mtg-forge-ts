@@ -165,6 +165,50 @@ describe("DestroyAllEffect", () => {
     expect(game.cards.get(foe)?.zone).toBe(ZoneType.Battlefield);
   });
 
+  it("zone-filter regression: creature in graveyard is NOT destroyed by DestroyAll", () => {
+    // Regression test for bug where collectMatching iterated game.cards
+    // (all zones) instead of filtering to Battlefield only.
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = mkEntityId(1);
+    const bfCreature = mkEntityId(10);
+    const gyCreature = mkEntityId(11);
+
+    // Source card (the wipe spell) is on the battlefield.
+    game.cards.set(sourceId, new Card(sourceId, paper, seat0, seat0, ZoneType.Battlefield));
+    // One creature on the battlefield (should be destroyed).
+    game.cards.set(bfCreature, new Card(bfCreature, paper, seat0, seat0, ZoneType.Battlefield));
+    // One creature already in the graveyard (must NOT be destroyed/moved again).
+    game.cards.set(gyCreature, new Card(gyCreature, paper, seat0, seat0, ZoneType.Graveyard));
+
+    game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(sourceId);
+    game.getPlayer(seat0).zones.get(ZoneType.Battlefield)?.add(bfCreature);
+    game.getPlayer(seat0).zones.get(ZoneType.Graveyard)?.add(gyCreature);
+
+    seedCreatureType(game);
+
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "DestroyAll",
+          params: { ValidCards: { kind: "literal", raw: "Creature" } },
+        },
+        cost: { raw: "2 W W" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
+    );
+
+    drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+
+    // Battlefield creature destroyed (moved to graveyard).
+    expect(game.cards.get(bfCreature)?.zone).toBe(ZoneType.Graveyard);
+    // Graveyard creature untouched — still in graveyard, not moved.
+    expect(game.cards.get(gyCreature)?.zone).toBe(ZoneType.Graveyard);
+  });
+
   it("no-op when no matching creatures exist", () => {
     const game = mkGame();
     const seat0 = mkPlayerSeat(0);

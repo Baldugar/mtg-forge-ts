@@ -12,7 +12,7 @@
 // The semantic difference (choosing a damage *source* vs. a target card) is
 // a rules layer concern tracked separately. Interactive chooseSource decision
 // deferred to SP3.
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -30,6 +30,11 @@ function collectMatching(game: Game, sa: SpellAbility, filterRaw: string): Entit
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: ChooseSource picks from battlefield permanents (CR 700.7).
+    // "spell" baseType is special — on-stack objects; we still default to
+    // battlefield for MVP since stack searching is not yet modelled.
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     // Base-type filter ("card" = any permanent).

@@ -19,7 +19,7 @@
 //
 // Cards are collected first, then damage is dealt to all simultaneously
 // per CR 700.7; SBAs afterwards clean up creatures with lethal damage.
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -28,7 +28,7 @@ import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-par
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
-/** Collect all card ids matching the ValidCards$ filter. */
+/** Collect all card ids on the battlefield matching the ValidCards$ filter. */
 function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
   const filterRaw = hasParam(sa, "ValidCards") ? evaluateParamRaw(sa, "ValidCards") : "Creature";
   const tokens = filterRaw.split(".").map((t) => t.trim().toLowerCase());
@@ -37,6 +37,9 @@ function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: DamageAll targets battlefield permanents only (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     if (baseType !== "permanent") {

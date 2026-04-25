@@ -19,7 +19,7 @@
 //   Permanent.OpponentCtrl — all permanents NOT controlled by sa.controllerSeat
 //
 // Cards are collected first, then tapped (simultaneous semantics).
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -36,6 +36,9 @@ function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: TapAll targets battlefield permanents only (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     if (baseType !== "permanent") {

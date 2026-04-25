@@ -20,7 +20,7 @@
 // scanned; game.action.destroy is called on each match. Cards are collected
 // first, then destroyed (all-at-once simultaneous-destroy semantics per CR
 // 700.7), preventing one destruction from triggering before another resolves.
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -38,6 +38,9 @@ function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: DestroyAll operates on battlefield permanents only (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     // Use layerEngine for type-awareness (animate effects, etc.)
     const chars = game.layerEngine.computeCharacteristics(id);
 

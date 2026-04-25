@@ -16,7 +16,7 @@
 // Per-card effects: one Layer7c ContinuousEffect per matching card (same
 // pattern as PumpEffect). Each carries the same timestamp so stacking with
 // other simultaneous pumps is dependency-safe.
-import { CardType, type ContinuousEffect, Layer } from "@mtg-forge-ts/core";
+import { CardType, type ContinuousEffect, Layer, ZoneType } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import type { Layer7cEffect } from "../../layers/layer7-pt.js";
@@ -25,7 +25,7 @@ import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-par
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
-/** Parse ValidCards$ filter tokens and return matching card ids. */
+/** Parse ValidCards$ filter tokens and return matching card ids on the battlefield. */
 const filterMatchingCards = (
   sa: SpellAbility,
   game: Game,
@@ -38,6 +38,9 @@ const filterMatchingCards = (
 
   const matchingIds: import("@mtg-forge-ts/core").EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: PumpAll targets battlefield permanents only (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     // Type check via LayerEngine (accounts for animate effects, etc.).
     const chars = game.layerEngine.computeCharacteristics(id);
 

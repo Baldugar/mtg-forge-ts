@@ -15,7 +15,7 @@
 //   Layer 4 (type): add CardType.Creature.
 //   Layer 7b (PT set): set base P/T.
 // Duration: untilEndOfTurn (default) or permanent.
-import { CardType, type ContinuousEffect, Layer } from "@mtg-forge-ts/core";
+import { CardType, type ContinuousEffect, Layer, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -35,6 +35,9 @@ function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: AnimateAll targets battlefield permanents only (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     if (baseType !== "permanent" && baseType !== "card") {

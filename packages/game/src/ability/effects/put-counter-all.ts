@@ -22,7 +22,7 @@
 //
 // Counters are collected first, then added — consistent with simultaneous-
 // apply semantics (all modifications happen before any triggers fire).
-import { CardType, CounterType } from "@mtg-forge-ts/core";
+import { CardType, CounterType, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -56,6 +56,9 @@ function collectMatching(sa: SpellAbility, game: Game): EntityId[] {
 
   const matched: EntityId[] = [];
   for (const [id, card] of game.cards) {
+    // Zone guard: PutCounterAll targets battlefield permanents only (CR 700.7).
+    if (card.zone !== ZoneType.Battlefield) continue;
+
     const chars = game.layerEngine.computeCharacteristics(id);
 
     // Base-type filter.
