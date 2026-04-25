@@ -139,4 +139,25 @@ describe("Effect suite self-register bootstrap", () => {
   it("PeekAndReveal is registered", () => {
     expect(effectRegistry.has("PeekAndReveal")).toBe(true);
   });
+
+  // Wave 10 effects
+  it("RevealHand is registered", () => {
+    expect(effectRegistry.has("RevealHand")).toBe(true);
+  });
+
+  it("ChooseType is registered", () => {
+    expect(effectRegistry.has("ChooseType")).toBe(true);
+  });
+
+  it("Branch is registered", () => {
+    expect(effectRegistry.has("Branch")).toBe(true);
+  });
+
+  it("FlipACoin is registered", () => {
+    expect(effectRegistry.has("FlipACoin")).toBe(true);
+  });
+
+  it("Surveil is registered", () => {
+    expect(effectRegistry.has("Surveil")).toBe(true);
+  });
 });

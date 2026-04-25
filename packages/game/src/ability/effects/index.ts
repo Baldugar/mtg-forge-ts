@@ -55,3 +55,9 @@ export * from "./protection.js";
 export * from "./roll-dice.js";
 export * from "./untap-all.js";
 export * from "./tap-all.js";
+// Wave 10 effects
+export * from "./reveal-hand.js";
+export * from "./choose-type.js";
+export * from "./branch.js";
+export * from "./flip-a-coin.js";
+export * from "./surveil.js";
