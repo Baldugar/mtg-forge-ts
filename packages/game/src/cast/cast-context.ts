@@ -48,6 +48,8 @@ export const createCastContext = (params: {
   sourceCardId: EntityId;
   originZone: ZoneType;
   asSpecialAction: boolean;
+  /** Wave 5: pre-selected alt cost key from CastProposal (e.g. "Flashback"). */
+  altCostKey?: string;
 }): CastContext => ({
   castingPlayer: params.castingPlayer,
   sourceCardId: params.sourceCardId,
@@ -55,7 +57,9 @@ export const createCastContext = (params: {
   asSpecialAction: params.asSpecialAction,
   faceChosen: undefined,
   alternativeZoneDestination: undefined,
-  altCostUsed: null,
+  // Wave 5: if the proposal pre-selected an alt cost, mark it immediately
+  // so stepChooseAltCosts can apply it without a decision yield.
+  altCostUsed: params.altCostKey ?? null,
   additionalCostsPaid: [],
   modesChosen: [],
   xValue: undefined,
