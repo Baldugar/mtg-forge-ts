@@ -47,7 +47,9 @@ const creatureSource = (extras = ""): string =>
   `Name:Test Creature\nManaCost:1 G\nTypes:Creature Human\nPT:2/2\n${extras}\nOracle:Test.\n`;
 
 const mdfcSource = (face2extras = ""): string =>
-  `Name:Test Front\nManaCost:1 U\nTypes:Sorcery\nOracle:Front.\nAlternateMode:Transform\nName:Test Back\nTypes:Creature Human\nPT:2/2\n${face2extras}\nOracle:Back.\n`;
+  // Forge DFC format: AlternateMode:X is metadata on the front face; bare
+  // ALTERNATE (lexed as AlternateMode with empty content) is the face separator.
+  `Name:Test Front\nManaCost:1 U\nTypes:Sorcery\nAlternateMode:Transform\nOracle:Front.\nALTERNATE\nName:Test Back\nTypes:Creature Human\nPT:2/2\n${face2extras}\nOracle:Back.\n`;
 
 // ── Tests ─────────────────────────────────────────────────────────────────────
 
