@@ -52,4 +52,29 @@ describe("lex", () => {
   it("rejects lines without a prefix colon", () => {
     expect(() => lex("NoColonHere\n")).toThrow(/line 1: missing prefix colon/);
   });
+
+  it("treats bare ALTERNATE as a synthetic AlternateMode entry", () => {
+    const out = lex("Name:A\nALTERNATE\nName:B\n");
+    expect(out).toHaveLength(3);
+    expect(out[0]?.prefix).toBe("Name");
+    expect(out[0]?.content).toBe("A");
+    expect(out[1]?.prefix).toBe("AlternateMode");
+    expect(out[1]?.content).toBe("");
+    expect(out[1]?.tokens).toEqual([]);
+    expect(out[2]?.prefix).toBe("Name");
+    expect(out[2]?.content).toBe("B");
+  });
+
+  it("bare ALTERNATE preserves 1-indexed lineNumber", () => {
+    const out = lex("Name:A\nALTERNATE\nName:B\n");
+    expect(out[1]?.lineNumber).toBe(2);
+  });
+
+  it("bare ALTERNATE mid-file splits faces the same as AlternateMode: line", () => {
+    // Mixed: one face uses AlternateMode:DoubleFaced, another uses bare ALTERNATE.
+    const out = lex("Name:Front\nAlternateMode:DoubleFaced\nName:Mid\nALTERNATE\nName:Back\n");
+    expect(out).toHaveLength(5);
+    expect(out[1]?.prefix).toBe("AlternateMode");
+    expect(out[3]?.prefix).toBe("AlternateMode");
+  });
 });

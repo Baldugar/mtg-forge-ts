@@ -25,6 +25,13 @@ export const lex = (source: string): readonly LexedLine[] => {
     const lineNumber = i + 1;
     const trimmed = raw.trim();
     if (trimmed === "" || trimmed.startsWith("#")) continue;
+    // Forge uses bare "ALTERNATE" (no colon) as a multi-face separator in many
+    // DFC card files, equivalent to an AlternateMode: line. Treat it as a
+    // synthetic AlternateMode entry so the assembler's face-split logic fires.
+    if (trimmed === "ALTERNATE") {
+      out.push({ lineNumber, prefix: "AlternateMode", content: "", tokens: [] });
+      continue;
+    }
     const colonIdx = raw.indexOf(":");
     if (colonIdx < 0) {
       throw new Error(`lex: line ${lineNumber}: missing prefix colon`);

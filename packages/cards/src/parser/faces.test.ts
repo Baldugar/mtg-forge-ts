@@ -43,6 +43,28 @@ describe("parseCard — multi-face", () => {
     expect(card.faces?.[0]?.name).toBe("Ice");
   });
 
+  it("parses a DFC using bare ALTERNATE separator", () => {
+    const source = `${[
+      "Name:Aberrant Researcher",
+      "ManaCost:3 U",
+      "Types:Creature Human Insect",
+      "PT:3/2",
+      "K:Flying",
+      "Oracle:Flying",
+      "ALTERNATE",
+      "Name:Perfected Form",
+      "ManaCost:no cost",
+      "Colors:blue",
+      "Types:Creature Insect Horror",
+      "PT:5/4",
+      "Oracle:",
+    ].join("\n")}\n`;
+    const card = parseCard(source, "aberrant_researcher.txt");
+    expect(card.name).toBe("Aberrant Researcher");
+    expect(card.faces).toHaveLength(1);
+    expect(card.faces?.[0]?.name).toBe("Perfected Form");
+  });
+
   it("single-face card has no faces[]", () => {
     const source =
       "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any\nOracle:x\n";
