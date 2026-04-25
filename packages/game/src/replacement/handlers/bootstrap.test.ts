@@ -20,7 +20,7 @@ describe("ReplacementHandler bootstrap registrations", () => {
     expect(replacementHandlerRegistry.has("DamageDone")).toBe(true);
   });
 
-  it("exactly 2 handlers are registered (Moved + DamageDone)", () => {
+  it("at-least-2 handlers are registered (Moved + DamageDone) — Wave 8b adds 4 more", () => {
     // Ensure we don't have ghost registrations from other test files that
     // may have also imported the index. Since the registry is a module-level
     // singleton (not cleared between tests), this count reflects all
