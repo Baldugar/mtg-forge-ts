@@ -105,4 +105,17 @@ describe("Effect suite self-register bootstrap", () => {
   it("CopyPermanent is registered", () => {
     expect(effectRegistry.has("CopyPermanent")).toBe(true);
   });
+
+  // Wave 7 effects
+  it("SetState is registered", () => {
+    expect(effectRegistry.has("SetState")).toBe(true);
+  });
+
+  it("PutCounterAll is registered", () => {
+    expect(effectRegistry.has("PutCounterAll")).toBe(true);
+  });
+
+  it("ChooseSource is registered", () => {
+    expect(effectRegistry.has("ChooseSource")).toBe(true);
+  });
 });

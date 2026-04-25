@@ -49,4 +49,18 @@ describe("TriggerHandler bootstrap (index.ts)", () => {
       expect(triggerHandlerRegistry.has("Blocks")).toBe(true);
     });
   });
+
+  describe("Wave 7 handlers", () => {
+    it("registers AttackerBlocked", () => {
+      expect(triggerHandlerRegistry.has("AttackerBlocked")).toBe(true);
+    });
+
+    it("registers AttackerBlockedByCreature", () => {
+      expect(triggerHandlerRegistry.has("AttackerBlockedByCreature")).toBe(true);
+    });
+
+    it("registers TurnFaceUp", () => {
+      expect(triggerHandlerRegistry.has("TurnFaceUp")).toBe(true);
+    });
+  });
 });

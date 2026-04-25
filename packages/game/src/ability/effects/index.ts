@@ -40,3 +40,7 @@ export * from "./gain-control.js";
 export * from "./prevent-damage.js";
 export * from "./choose-card.js";
 export * from "./copy-permanent.js";
+// Wave 7 — SetState (DFC transform!), PutCounterAll, ChooseSource
+export * from "./set-state.js";
+export * from "./put-counter-all.js";
+export * from "./choose-source.js";

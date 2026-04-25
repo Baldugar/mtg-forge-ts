@@ -10,3 +10,7 @@ export * from "./spell-cast-trigger.js";
 // Wave 6 triggers
 export * from "./attackers-declared-trigger.js";
 export * from "./blocks-trigger.js";
+// Wave 7 triggers
+export * from "./attacker-blocked-trigger.js";
+export * from "./attacker-blocked-by-creature-trigger.js";
+export * from "./turn-face-up-trigger.js";
