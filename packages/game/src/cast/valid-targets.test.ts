@@ -9,7 +9,6 @@ import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
 import {
   CardType,
   DEFAULT_PAPER_CARD_FLAGS,
-  IllegalDecisionError,
   SeededRng,
   ZoneType,
   mkEntityId,
