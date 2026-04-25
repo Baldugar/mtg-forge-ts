@@ -21,3 +21,5 @@ import "./pump.js";
 import "./counter-spell.js";
 import "./attach.js";
 import "./fight.js";
+import "./animate.js";
+import "./pump-all.js";

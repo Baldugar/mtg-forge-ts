@@ -41,4 +41,17 @@ describe("Effect suite self-register bootstrap", () => {
   it("Fight is registered", () => {
     expect(effectRegistry.has("Fight")).toBe(true);
   });
+
+  // Part D Wave 3 effects
+  it("Token is registered", () => {
+    expect(effectRegistry.has("Token")).toBe(true);
+  });
+
+  it("Animate is registered", () => {
+    expect(effectRegistry.has("Animate")).toBe(true);
+  });
+
+  it("PumpAll is registered", () => {
+    expect(effectRegistry.has("PumpAll")).toBe(true);
+  });
 });
