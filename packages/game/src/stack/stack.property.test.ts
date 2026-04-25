@@ -97,8 +97,9 @@ describe("Stack — LIFO + copy properties", () => {
     fc.assert(
       fc.property(
         // Audit D-C5 — fc.uniqueArray with minLength=2 so we always have
-        // material to copy from AND a genuine permutation.
-        fc.uniqueArray(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 2, maxLength: 10 }),
+        // material to copy from AND a genuine permutation. High-range ids
+        // disjoint from Game.newEntityId's counter to avoid mint collisions.
+        fc.uniqueArray(fc.integer({ min: 10_000_001, max: 20_000_000 }), { minLength: 2, maxLength: 10 }),
         fc.nat({ max: 9 }),
         (rawIds, copyIndexSeed) => {
           const ids = rawIds.map((n) => mkEntityId(n));
@@ -143,7 +144,13 @@ describe("Stack — LIFO + copy properties", () => {
   it("Stack.copy on a copy produces a third distinct id (multi-copy scenario)", () => {
     fc.assert(
       fc.property(
-        fc.uniqueArray(fc.integer({ min: 1, max: 1_000_000 }), { minLength: 2, maxLength: 8 }),
+        // High-range ids (10M+) so they don't collide with Game.newEntityId's
+        // counter (which starts at 1). In production, all ids come from
+        // newEntityId, so this collision can't happen; the property test
+        // bypasses that by pushing synthetic ids, so we choose a range
+        // disjoint from the counter's expected output for the duration of
+        // the run (Stack.copy will allocate ~2-3 ids from newEntityId).
+        fc.uniqueArray(fc.integer({ min: 10_000_001, max: 20_000_000 }), { minLength: 2, maxLength: 8 }),
         fc.nat({ max: 7 }),
         (rawIds, copyIndexSeed) => {
           const ids = rawIds.map((n) => mkEntityId(n));
