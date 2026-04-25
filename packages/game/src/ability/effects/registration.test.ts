@@ -54,4 +54,25 @@ describe("Effect suite self-register bootstrap", () => {
   it("PumpAll is registered", () => {
     expect(effectRegistry.has("PumpAll")).toBe(true);
   });
+
+  // Part D Wave 4 effects
+  it("Mana is registered", () => {
+    expect(effectRegistry.has("Mana")).toBe(true);
+  });
+
+  it("DestroyAll is registered", () => {
+    expect(effectRegistry.has("DestroyAll")).toBe(true);
+  });
+
+  it("DamageAll is registered", () => {
+    expect(effectRegistry.has("DamageAll")).toBe(true);
+  });
+
+  it("Regenerate is registered", () => {
+    expect(effectRegistry.has("Regenerate")).toBe(true);
+  });
+
+  it("ChangeZoneAll is registered", () => {
+    expect(effectRegistry.has("ChangeZoneAll")).toBe(true);
+  });
 });

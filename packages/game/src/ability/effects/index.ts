@@ -25,3 +25,9 @@ export * from "./attach.js";
 export * from "./fight.js";
 export * from "./animate.js";
 export * from "./pump-all.js";
+// Part D Wave 4 — 5 high-impact effects from corpus scan
+export * from "./mana.js";
+export * from "./destroy-all.js";
+export * from "./damage-all.js";
+export * from "./regenerate.js";
+export * from "./change-zone-all.js";
