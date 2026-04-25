@@ -87,6 +87,12 @@ export class Card {
   // definition + Layer 6 ability additions. Kept optional (undefined) so the
   // common case allocates no Set; readers must tolerate undefined.
   keywords?: Set<string> = undefined;
+  // Part D Wave 4 — RegenerateEffect (CR 701.15). Each point represents one
+  // pending regeneration shield. The first time the creature would be
+  // destroyed, the shield is consumed (tap, remove damage, remove from combat)
+  // instead. Consumption logic is a ReplacementAbility wired in F2; this slot
+  // is the MVP contract that RegenerateEffect sets and tests verify.
+  regenerationShields = 0;
   // SP2 Milestone W Task 74 — "remembered" + "imprinted" card-local slots.
   // Forge uses these for cards that stash ability-scoped references: e.g.
   // Panharmonicon-style ETB mirrors (remembered), Duplicant / Isochron
