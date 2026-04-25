@@ -74,6 +74,19 @@ export class Stack {
   }
 
   /**
+   * CR 701.5 — remove a specific stack item by id (counter/fizzle). Returns
+   * the removed item, or undefined if the item is not currently on the stack.
+   * Unlike pop() this removes from an arbitrary position, preserving the
+   * LIFO order of remaining items.
+   */
+  removeById(id: EntityId): StackItem | undefined {
+    const i = this.items.findIndex((it) => it.id === id);
+    if (i < 0) return undefined;
+    const [removed] = this.items.splice(i, 1);
+    return removed;
+  }
+
+  /**
    * CR 707.10 — create a copy of an existing stack item and push it onto
    * the stack. The copy inherits the source's `sourceCardId`, `modes`,
    * `targets`, `xValue`, `costPaid`, and `provenance` but gets a fresh
