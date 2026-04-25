@@ -41,6 +41,7 @@ export * from "./statics/index.js";
 export * from "./target/index.js";
 export * from "./terminal-state.js";
 export * from "./triggers/index.js";
+export * from "./trigger/index.js";
 export * from "./zone/index.js";
 export * from "./svar/index.js";
 export * from "./cost/parts/index.js";
