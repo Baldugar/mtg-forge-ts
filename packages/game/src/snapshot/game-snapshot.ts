@@ -13,7 +13,7 @@
 // exposing. Keeping snapshot logic here also isolates the schemaVersion
 // contract so a bump doesn't pollute Game's API.
 //
-// schemaVersion: 6 (SP2 Milestone X — rules-subsystem state captured).
+// schemaVersion: 7 (SP3 Wave 43 — transient Card slots round-tripped).
 // Bump on breaking format changes (master-spec §11).
 //
 // Migration notes:
@@ -46,6 +46,26 @@
 //     v5 → v6 is NOT auto-migrated — restore() throws
 //     IncompatibleSnapshotVersionError on v5 input. Fresh snapshots on v6
 //     only.
+//   schemaVersion 7 (SP3 Wave 43): the 35+ transient Card slots accumulated
+//     across Waves 23-42 are now round-tripped. v6 snapshots emit them as
+//     undefined / 0 / [] defaults at restore-time; v7 captures the live
+//     values so mid-turn snapshots survive a snapshot/restore cycle.
+//     New Card-side slots: crewedUntilEot, saddledUntilEot, stationedUntilEot,
+//     championedTarget, championedBy, echoOwedCost, ageCounters,
+//     suspendedCounters, hasteFromSuspend, phasedOut, goaded, removedFromCombat,
+//     mustBlockTargetId, chosenColors, chosenTypes, chosenPlayers, chosenNumber,
+//     chosenDirection, namedCard, textChanges, disturbed, plotted/plottedOnTurn,
+//     renowned, riotChoseHaste, reboundUntilUpkeep, pairedWith, hideawayCard,
+//     hideawayHost, manaSpentColors, manaSpentTotal, protectorSeat (Wave 34),
+//     battleDefeated (Wave 34), dredgeAmount (Wave 40), tokenOverrides (Wave
+//     33), companionCondition (Wave 39), sweepReturnedType, sweepReturnedCount
+//     (Wave 39), striveExtraCost (Wave 38), regenerationShields,
+//     damagedByDeathtouch.
+//     New game-flags slot promoted to required:
+//     permanentsLeftBfThisTurn (Wave 32 Revolt counter; was optional in v6
+//     for back-compat).
+//     v6 → v7 is NOT auto-migrated — restore() throws
+//     IncompatibleSnapshotVersionError on v6 input.
 //
 // === DEFERRED (SP3 AbilityRegistry scope) ================================
 // The following state is NOT serialized because it holds LIVE ability
@@ -78,6 +98,7 @@
 
 import type {
   CardType,
+  Color,
   ContinuousEffect,
   CounterType,
   EffectDuration,
@@ -137,12 +158,12 @@ import { Hand } from "../zone/zones/hand.js";
 import { Library } from "../zone/zones/library.js";
 
 /**
- * Snapshot format version. v6 is the SP2-end shape; see the migration-notes
- * block above for the v1→v6 history. Breaking format changes (field rename,
- * shape removed, Map key flipped) MUST bump this so restore() can reject
- * old blobs rather than silently mis-deserialize.
+ * Snapshot format version. v7 is the SP3 Wave 43 shape; see the migration-
+ * notes block above for the v1→v7 history. Breaking format changes (field
+ * rename, shape removed, Map key flipped) MUST bump this so restore() can
+ * reject old blobs rather than silently mis-deserialize.
  */
-export const SNAPSHOT_SCHEMA_VERSION = 6 as const;
+export const SNAPSHOT_SCHEMA_VERSION = 7 as const;
 
 // === CopiableCharacteristics serialization ===========================
 
@@ -450,6 +471,62 @@ export interface SerializedCard {
   // snapshots written before the field landed; restore defaults to 0
   // when absent. Game.cardTimestampCounter advances past max(timestamps).
   readonly timestamp?: number;
+  // === v7 transient-slot additions (Waves 23-42) ====================
+  // All optional on the wire so a v7 blob with mostly-default cards stays
+  // compact. Restore treats `undefined` as "leave the field at its
+  // constructor default" (which itself is undefined / 0 / [] depending on
+  // slot shape — see card.ts).
+  readonly damagedByDeathtouch?: boolean;
+  readonly regenerationShields?: number;
+  readonly chosenColors?: readonly (Color | null)[];
+  readonly chosenTypes?: readonly string[];
+  readonly chosenPlayers?: readonly PlayerSeat[];
+  readonly chosenNumber?: number | null;
+  readonly chosenDirection?: "Left" | "Right" | null;
+  readonly namedCard?: string | null;
+  readonly phasedOut?: boolean;
+  readonly mustBlockTargetId?: EntityId | null;
+  readonly goaded?: boolean;
+  readonly removedFromCombat?: boolean;
+  readonly textChanges?: readonly {
+    readonly kind: "color" | "type";
+    readonly from: string;
+    readonly to: string;
+  }[];
+  readonly plotted?: boolean;
+  readonly plottedOnTurn?: number;
+  readonly crewedUntilEot?: boolean;
+  readonly saddledUntilEot?: boolean;
+  readonly stationedUntilEot?: boolean;
+  readonly suspendedCounters?: number;
+  readonly hasteFromSuspend?: boolean;
+  readonly championedTarget?: EntityId;
+  readonly championedBy?: EntityId;
+  readonly echoOwedCost?: string;
+  readonly ageCounters?: number;
+  readonly renowned?: boolean;
+  readonly disturbed?: boolean;
+  readonly dredgeAmount?: number;
+  readonly protectorSeat?: PlayerSeat;
+  readonly battleDefeated?: boolean;
+  readonly pairedWith?: EntityId;
+  readonly hideawayCard?: EntityId;
+  readonly hideawayHost?: EntityId;
+  readonly manaSpentColors?: readonly Color[];
+  readonly manaSpentTotal?: number;
+  readonly striveExtraCost?: string;
+  readonly sweepReturnedType?: string;
+  readonly sweepReturnedCount?: number;
+  readonly companionCondition?: string;
+  readonly riotChoseHaste?: boolean;
+  readonly reboundUntilUpkeep?: number;
+  readonly tokenOverrides?: {
+    readonly colors?: number;
+    readonly addedTypes?: readonly string[];
+    readonly clearManaCost?: boolean;
+    readonly setPower?: number;
+    readonly setToughness?: number;
+  };
 }
 
 /**
@@ -512,9 +589,9 @@ export interface SerializedGameFlags {
   readonly leftBattlefieldThisTurn: readonly EntityId[];
   readonly topLibsCast: readonly EntityId[];
   // Wave 32 — per-controller "permanents you controlled left BF this turn"
-  // counter (Revolt). Optional for v6 back-compat; absent → empty Map. Wave
-  // 43 schema-v7 bump can promote to required when the schema rolls.
-  readonly permanentsLeftBfThisTurn?: readonly (readonly [PlayerSeat, number])[];
+  // counter (Revolt). Promoted to REQUIRED in v7 (was optional during v6
+  // back-compat). Empty array is the no-state-tracked default.
+  readonly permanentsLeftBfThisTurn: readonly (readonly [PlayerSeat, number])[];
 }
 
 /**
@@ -752,44 +829,113 @@ const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
   for (const [id, n] of s.countersAddedThisTurn) f.countersAddedThisTurn.set(id, n);
   for (const id of s.leftBattlefieldThisTurn) f.leftBattlefieldThisTurn.add(id);
   for (const id of s.topLibsCast) f.topLibsCast.add(id);
-  // Wave 32 — optional in v6; missing slot restores as empty Map.
-  if (s.permanentsLeftBfThisTurn) {
-    for (const [seat, n] of s.permanentsLeftBfThisTurn) f.permanentsLeftBfThisTurn.set(seat, n);
-  }
+  // Wave 32 — required in v7.
+  for (const [seat, n] of s.permanentsLeftBfThisTurn) f.permanentsLeftBfThisTurn.set(seat, n);
   return f;
 };
 
 // === Card serialization ============================================
 
-const cardToSnapshot = (c: Card): SerializedCard => ({
-  id: c.id,
-  paperCardKey: paperCardKey(c.paperCard),
-  ownerSeat: c.ownerSeat,
-  controllerSeat: c.controllerSeat,
-  zone: c.zone,
-  tapped: c.tapped,
-  phased: c.phased,
-  damage: c.damage,
-  counters: Object.fromEntries(c.counters),
-  attachedTo: c.attachedTo,
-  attachments: [...c.attachments],
-  copiedFrom: c.copiedFrom === null ? null : serializeCopiable(c.copiedFrom),
-  faceDown: serializeFaceDown(c.faceDown),
-  remembered: [...c.remembered],
-  imprinted: [...c.imprinted],
-  face: c.face,
-  isToken: c.isToken,
-  isEmblem: c.isEmblem,
-  sagaFinalChapterResolved: c.sagaFinalChapterResolved,
-  bestowed: c.bestowed,
-  isCommander: c.isCommander,
-  keywords: c.keywords === undefined ? [] : [...c.keywords].sort(),
-  mutatedPile: c.mutatedPile === undefined ? null : [...c.mutatedPile],
-  mutatedInto: c.mutatedInto === undefined ? null : c.mutatedInto,
-  isAugment: c.isAugment === true,
-  meldedFrom: c.meldedFrom === undefined ? null : [...c.meldedFrom],
-  timestamp: c.timestamp,
-});
+const cardToSnapshot = (c: Card): SerializedCard => {
+  // === v7 transient-slot pickle ====================================
+  // Each optional slot is omitted from the wire blob when at its default
+  // value (undefined / false / 0 / empty array). This keeps the common-
+  // case wire shape compact: a freshly-summoned 1/1 with no transient
+  // state writes the same handful of fields it did under v6.
+  // exactOptionalPropertyTypes: build a partial overlay and spread it in
+  // (rather than `key: value | undefined`) so the optional slots stay
+  // structurally optional, not "value-or-undefined". The overlay drops
+  // SerializedCard's readonly modifier so we can populate field-by-field.
+  const transient: { -readonly [K in keyof SerializedCard]?: SerializedCard[K] } = {};
+  if (c.damagedByDeathtouch) transient.damagedByDeathtouch = true;
+  if (c.regenerationShields !== 0) transient.regenerationShields = c.regenerationShields;
+  if (c.chosenColors.length > 0) transient.chosenColors = [...c.chosenColors];
+  if (c.chosenTypes.length > 0) transient.chosenTypes = [...c.chosenTypes];
+  if (c.chosenPlayers.length > 0) transient.chosenPlayers = [...c.chosenPlayers];
+  if (c.chosenNumber !== null) transient.chosenNumber = c.chosenNumber;
+  if (c.chosenDirection !== null) transient.chosenDirection = c.chosenDirection;
+  if (c.namedCard !== null) transient.namedCard = c.namedCard;
+  if (c.phasedOut) transient.phasedOut = true;
+  if (c.mustBlockTargetId !== null) transient.mustBlockTargetId = c.mustBlockTargetId;
+  if (c.goaded) transient.goaded = true;
+  if (c.removedFromCombat) transient.removedFromCombat = true;
+  if (c.textChanges.length > 0) {
+    transient.textChanges = c.textChanges.map((t) => ({ kind: t.kind, from: t.from, to: t.to }));
+  }
+  if (c.plotted !== undefined) transient.plotted = c.plotted;
+  if (c.plottedOnTurn !== undefined) transient.plottedOnTurn = c.plottedOnTurn;
+  if (c.crewedUntilEot !== undefined) transient.crewedUntilEot = c.crewedUntilEot;
+  if (c.saddledUntilEot !== undefined) transient.saddledUntilEot = c.saddledUntilEot;
+  if (c.stationedUntilEot !== undefined) transient.stationedUntilEot = c.stationedUntilEot;
+  if (c.suspendedCounters !== undefined) transient.suspendedCounters = c.suspendedCounters;
+  if (c.hasteFromSuspend !== undefined) transient.hasteFromSuspend = c.hasteFromSuspend;
+  if (c.championedTarget !== undefined) transient.championedTarget = c.championedTarget;
+  if (c.championedBy !== undefined) transient.championedBy = c.championedBy;
+  if (c.echoOwedCost !== undefined) transient.echoOwedCost = c.echoOwedCost;
+  if (c.ageCounters !== undefined) transient.ageCounters = c.ageCounters;
+  if (c.renowned !== undefined) transient.renowned = c.renowned;
+  if (c.disturbed !== undefined) transient.disturbed = c.disturbed;
+  if (c.dredgeAmount !== undefined) transient.dredgeAmount = c.dredgeAmount;
+  if (c.protectorSeat !== undefined) transient.protectorSeat = c.protectorSeat;
+  if (c.battleDefeated !== undefined) transient.battleDefeated = c.battleDefeated;
+  if (c.pairedWith !== undefined) transient.pairedWith = c.pairedWith;
+  if (c.hideawayCard !== undefined) transient.hideawayCard = c.hideawayCard;
+  if (c.hideawayHost !== undefined) transient.hideawayHost = c.hideawayHost;
+  if (c.manaSpentColors !== undefined) transient.manaSpentColors = [...c.manaSpentColors].sort();
+  if (c.manaSpentTotal !== undefined) transient.manaSpentTotal = c.manaSpentTotal;
+  if (c.striveExtraCost !== undefined) transient.striveExtraCost = c.striveExtraCost;
+  if (c.sweepReturnedType !== undefined) transient.sweepReturnedType = c.sweepReturnedType;
+  if (c.sweepReturnedCount !== undefined) transient.sweepReturnedCount = c.sweepReturnedCount;
+  if (c.companionCondition !== undefined) transient.companionCondition = c.companionCondition;
+  if (c.riotChoseHaste !== undefined) transient.riotChoseHaste = c.riotChoseHaste;
+  if (c.reboundUntilUpkeep !== undefined) transient.reboundUntilUpkeep = c.reboundUntilUpkeep;
+  if (c.tokenOverrides !== undefined) {
+    const o = c.tokenOverrides;
+    const w: {
+      colors?: number;
+      addedTypes?: readonly string[];
+      clearManaCost?: boolean;
+      setPower?: number;
+      setToughness?: number;
+    } = {};
+    if (o.colors !== undefined) w.colors = o.colors.toJSON();
+    if (o.addedTypes !== undefined) w.addedTypes = [...o.addedTypes];
+    if (o.clearManaCost !== undefined) w.clearManaCost = o.clearManaCost;
+    if (o.setPower !== undefined) w.setPower = o.setPower;
+    if (o.setToughness !== undefined) w.setToughness = o.setToughness;
+    transient.tokenOverrides = w;
+  }
+  return {
+    id: c.id,
+    paperCardKey: paperCardKey(c.paperCard),
+    ownerSeat: c.ownerSeat,
+    controllerSeat: c.controllerSeat,
+    zone: c.zone,
+    tapped: c.tapped,
+    phased: c.phased,
+    damage: c.damage,
+    counters: Object.fromEntries(c.counters),
+    attachedTo: c.attachedTo,
+    attachments: [...c.attachments],
+    copiedFrom: c.copiedFrom === null ? null : serializeCopiable(c.copiedFrom),
+    faceDown: serializeFaceDown(c.faceDown),
+    remembered: [...c.remembered],
+    imprinted: [...c.imprinted],
+    face: c.face,
+    isToken: c.isToken,
+    isEmblem: c.isEmblem,
+    sagaFinalChapterResolved: c.sagaFinalChapterResolved,
+    bestowed: c.bestowed,
+    isCommander: c.isCommander,
+    keywords: c.keywords === undefined ? [] : [...c.keywords].sort(),
+    mutatedPile: c.mutatedPile === undefined ? null : [...c.mutatedPile],
+    mutatedInto: c.mutatedInto === undefined ? null : c.mutatedInto,
+    isAugment: c.isAugment === true,
+    meldedFrom: c.meldedFrom === undefined ? null : [...c.meldedFrom],
+    timestamp: c.timestamp,
+    ...transient,
+  };
+};
 
 // === Zone snapshot helpers =========================================
 
@@ -1051,14 +1197,15 @@ export interface RestoreOptions {
  */
 export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
   if (snap.header.schemaVersion !== SNAPSHOT_SCHEMA_VERSION) {
-    // WHY not auto-migrate: v5 → v6 adds many required fields (Card.face,
-    // mutate pile, keywords, Ring state, control-change ledger entries)
-    // that have no safe default for arbitrary game positions. Loading a
-    // v5 blob into a v6 engine would silently lose state. The CLI /
-    // replay tooling can run a purpose-built migrator when needed; the
-    // runtime stays strict.
+    // WHY not auto-migrate: each schema bump (v5 → v6, v6 → v7) adds
+    // required fields (Card.face / mutate pile / keywords for v6;
+    // 35+ transient Card slots for v7) that have no safe default for
+    // arbitrary mid-turn game positions. Loading an older blob into the
+    // current engine would silently lose state. The CLI / replay tooling
+    // can run purpose-built migrators when needed; the runtime stays
+    // strict.
     throw new IncompatibleSnapshotVersionError(
-      `GameSnapshot.restore: schema version ${snap.header.schemaVersion} incompatible with engine (${SNAPSHOT_SCHEMA_VERSION}); v5 → v6 auto-migration is not supported`,
+      `GameSnapshot.restore: schema version ${snap.header.schemaVersion} incompatible with engine (${SNAPSHOT_SCHEMA_VERSION}); v6 → v7 auto-migration is not supported`,
     );
   }
 
@@ -1169,6 +1316,68 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     // the field default to 0; advanceTimestampPast below bumps the
     // counter past max so subsequent newCardTimestamp calls don't collide.
     if (sc.timestamp !== undefined) card.timestamp = sc.timestamp;
+    // === v7 transient-slot rehydrate ====================================
+    // Each slot is omitted from the wire when at its default; restore
+    // only writes when present so the live Card defaults stay intact for
+    // the common case.
+    if (sc.damagedByDeathtouch !== undefined) card.damagedByDeathtouch = sc.damagedByDeathtouch;
+    if (sc.regenerationShields !== undefined) card.regenerationShields = sc.regenerationShields;
+    if (sc.chosenColors !== undefined) card.chosenColors = [...sc.chosenColors];
+    if (sc.chosenTypes !== undefined) card.chosenTypes = [...sc.chosenTypes];
+    if (sc.chosenPlayers !== undefined) card.chosenPlayers = [...sc.chosenPlayers];
+    if (sc.chosenNumber !== undefined) card.chosenNumber = sc.chosenNumber;
+    if (sc.chosenDirection !== undefined) card.chosenDirection = sc.chosenDirection;
+    if (sc.namedCard !== undefined) card.namedCard = sc.namedCard;
+    if (sc.phasedOut !== undefined) card.phasedOut = sc.phasedOut;
+    if (sc.mustBlockTargetId !== undefined) card.mustBlockTargetId = sc.mustBlockTargetId;
+    if (sc.goaded !== undefined) card.goaded = sc.goaded;
+    if (sc.removedFromCombat !== undefined) card.removedFromCombat = sc.removedFromCombat;
+    if (sc.textChanges !== undefined) {
+      card.textChanges = sc.textChanges.map((t) => ({ kind: t.kind, from: t.from, to: t.to }));
+    }
+    if (sc.plotted !== undefined) card.plotted = sc.plotted;
+    if (sc.plottedOnTurn !== undefined) card.plottedOnTurn = sc.plottedOnTurn;
+    if (sc.crewedUntilEot !== undefined) card.crewedUntilEot = sc.crewedUntilEot;
+    if (sc.saddledUntilEot !== undefined) card.saddledUntilEot = sc.saddledUntilEot;
+    if (sc.stationedUntilEot !== undefined) card.stationedUntilEot = sc.stationedUntilEot;
+    if (sc.suspendedCounters !== undefined) card.suspendedCounters = sc.suspendedCounters;
+    if (sc.hasteFromSuspend !== undefined) card.hasteFromSuspend = sc.hasteFromSuspend;
+    if (sc.championedTarget !== undefined) card.championedTarget = sc.championedTarget;
+    if (sc.championedBy !== undefined) card.championedBy = sc.championedBy;
+    if (sc.echoOwedCost !== undefined) card.echoOwedCost = sc.echoOwedCost;
+    if (sc.ageCounters !== undefined) card.ageCounters = sc.ageCounters;
+    if (sc.renowned !== undefined) card.renowned = sc.renowned;
+    if (sc.disturbed !== undefined) card.disturbed = sc.disturbed;
+    if (sc.dredgeAmount !== undefined) card.dredgeAmount = sc.dredgeAmount;
+    if (sc.protectorSeat !== undefined) card.protectorSeat = sc.protectorSeat;
+    if (sc.battleDefeated !== undefined) card.battleDefeated = sc.battleDefeated;
+    if (sc.pairedWith !== undefined) card.pairedWith = sc.pairedWith;
+    if (sc.hideawayCard !== undefined) card.hideawayCard = sc.hideawayCard;
+    if (sc.hideawayHost !== undefined) card.hideawayHost = sc.hideawayHost;
+    if (sc.manaSpentColors !== undefined) card.manaSpentColors = new Set(sc.manaSpentColors);
+    if (sc.manaSpentTotal !== undefined) card.manaSpentTotal = sc.manaSpentTotal;
+    if (sc.striveExtraCost !== undefined) card.striveExtraCost = sc.striveExtraCost;
+    if (sc.sweepReturnedType !== undefined) card.sweepReturnedType = sc.sweepReturnedType;
+    if (sc.sweepReturnedCount !== undefined) card.sweepReturnedCount = sc.sweepReturnedCount;
+    if (sc.companionCondition !== undefined) card.companionCondition = sc.companionCondition;
+    if (sc.riotChoseHaste !== undefined) card.riotChoseHaste = sc.riotChoseHaste;
+    if (sc.reboundUntilUpkeep !== undefined) card.reboundUntilUpkeep = sc.reboundUntilUpkeep;
+    if (sc.tokenOverrides !== undefined) {
+      const o = sc.tokenOverrides;
+      const w: {
+        colors?: ColorSet;
+        addedTypes?: readonly string[];
+        clearManaCost?: boolean;
+        setPower?: number;
+        setToughness?: number;
+      } = {};
+      if (o.colors !== undefined) w.colors = ColorSet.fromJSON(o.colors);
+      if (o.addedTypes !== undefined) w.addedTypes = [...o.addedTypes];
+      if (o.clearManaCost !== undefined) w.clearManaCost = o.clearManaCost;
+      if (o.setPower !== undefined) w.setPower = o.setPower;
+      if (o.setToughness !== undefined) w.setToughness = o.setToughness;
+      card.tokenOverrides = w;
+    }
     game.cards.set(sc.id, card);
   }
   // Audit I-14 — bump cardTimestampCounter past the highest restored

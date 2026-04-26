@@ -316,6 +316,29 @@ export class Card {
   // colorless. Used by Lavinia, Kor of the Hammer-style "<Type> matters"
   // and by post-cast amount resolvers on the source card.
   manaSpentTotal: number | undefined = undefined;
+  // Wave 38 — Strive (CR 702.106a): per-extra-target surcharge cost string
+  // stamped by StriveKeywordHandler.activate. Read by the cast pipeline
+  // when computing total cost. Cleared by handler.deactivate.
+  striveExtraCost: string | undefined = undefined;
+  // Wave 39 — Sweep (CR Saviors of Kamigawa cycle). `sweepReturnedType` is
+  // the land subtype the spell asks the controller to return; `sweepReturnedCount`
+  // is the count of lands actually returned this resolution (read by SVar
+  // Count$Sweep). Stamped by SweepKeywordHandler.activate; cleared on deactivate.
+  sweepReturnedType: string | undefined = undefined;
+  sweepReturnedCount: number | undefined = undefined;
+  // Wave 39 — Companion (CR 702.139). Holds the Forge `Valid$` predicate
+  // string the deckbuilder must satisfy. Stamped on activate; cleared on
+  // deactivate.
+  companionCondition: string | undefined = undefined;
+  // Riot (Ravnica Allegiance, CR 702.135). When the controller chooses
+  // "haste" on the Riot triggered ability, this flag captures the choice
+  // (so tests/replay can distinguish from the +1/+1 counter branch).
+  riotChoseHaste: boolean | undefined = undefined;
+  // Rebound (Rise of the Eldrazi, CR 702.87). When a rebound spell resolves
+  // from the hand, the cast trigger stamps this slot with `game.turn + 1`;
+  // the upkeep trigger reads it to detect when the free-cast window is open.
+  // Cleared by the upkeep resolver before invoking FreeCastPipeline.
+  reboundUntilUpkeep: number | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

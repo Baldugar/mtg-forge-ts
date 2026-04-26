@@ -120,11 +120,11 @@ const makeRestoreOpts = (rng = new SeededRng(1n)) => ({
 // === Tests ========================================================
 
 describe("GameSnapshot", () => {
-  it("header.schemaVersion is pinned to 6 (SP2 Milestone X: rules-subsystem state)", () => {
+  it("header.schemaVersion is pinned to 7 (SP3 Wave 43: transient Card slots round-tripped)", () => {
     const g = makeGame();
     const snap = snapshot(g);
     expect(snap.header.schemaVersion).toBe(SNAPSHOT_SCHEMA_VERSION);
-    expect(snap.header.schemaVersion).toBe(6);
+    expect(snap.header.schemaVersion).toBe(7);
   });
 
   it("reserved state slots combat + cardRemembered + continuousEffects are present with SP1 sentinels", () => {

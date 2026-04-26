@@ -120,23 +120,24 @@ const roundTrip = (g: Game, gameRules: GameRules = rules): Game => {
 // === Tests ========================================================
 
 describe("GameSnapshot v6 (SP2 Milestone X Task 75)", () => {
-  it("basic v6 round-trip of an empty game (no cards, no registrations)", () => {
+  it("basic v6/v7 round-trip of an empty game (no cards, no registrations)", () => {
     const g = makeGame();
     const snap1 = snapshot(g);
     const restored = roundTrip(g);
     const snap2 = snapshot(restored);
     expect(snap2.state).toEqual(snap1.state);
-    expect(snap2.header.schemaVersion).toBe(6);
+    expect(snap2.header.schemaVersion).toBe(7);
   });
 
-  it("rejects v5 input with a clear version-mismatch error (no auto-migration)", () => {
+  it("rejects v6 input with a clear version-mismatch error (no auto-migration)", () => {
     const g = makeGame();
     const snap = snapshot(g);
-    // Force the header to advertise v5 — restore must reject wholesale
-    // rather than attempt a partial field-by-field fallback.
-    const v5 = { ...snap, header: { ...snap.header, schemaVersion: 5 } };
-    expect(() => restore(v5, makeRestoreOpts())).toThrow(IncompatibleSnapshotVersionError);
-    expect(() => restore(v5, makeRestoreOpts())).toThrow(/5.*6|auto-migration is not supported/);
+    // Force the header to advertise v6 — restore must reject wholesale
+    // rather than attempt a partial field-by-field fallback. Mirrors the
+    // v5 rejection pattern.
+    const v6 = { ...snap, header: { ...snap.header, schemaVersion: 6 } };
+    expect(() => restore(v6, makeRestoreOpts())).toThrow(IncompatibleSnapshotVersionError);
+    expect(() => restore(v6, makeRestoreOpts())).toThrow(/6.*7|auto-migration is not supported/);
   });
 
   it("Card.face + mutatedPile + mutatedInto + isAugment + meldedFrom round-trip", () => {
