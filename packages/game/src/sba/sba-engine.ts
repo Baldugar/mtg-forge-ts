@@ -313,11 +313,25 @@ export class SbaEngine {
   // (lifeLoss / poisonLoss / libraryLoss / concede / …).
   private markPlayerLost(seat: PlayerSeat, reason: LossReason): void {
     const current = this.game.terminalState;
-    const existingLosses = current?.losses ?? [];
+    // Audit I-12 — running losses must be reconstructible across multiple
+    // SBA sweeps even when terminalState was not written (3+ player match
+    // mid-game). Walk all players' hasLost flags + their previously-recorded
+    // SBA loss reason. We persist running losses on Game.runningLosses
+    // (added below) so the first seat to lose in a 3-player match can be
+    // re-recorded when the second seat falls.
+    const existingLosses = this.game.runningLosses ?? current?.losses ?? [];
     if (existingLosses.some((l) => l.seat === seat)) return;
+    // Audit I-12 — set per-seat hasLost flag immediately. This is the
+    // authoritative liveness signal in 3+ player matches where terminalState
+    // remains null until the last seat falls.
+    const losingPlayer = this.game.getPlayer(seat);
+    losingPlayer.hasLost = true;
 
     const terminalReason = sbaReasonToTerminalReason(reason);
     const losses: PlayerLoss[] = [...existingLosses, { seat, reason: terminalReason }];
+    // Persist running losses so subsequent markPlayerLost calls can rebuild
+    // the full roster even before terminalState is finalized.
+    this.game.runningLosses = losses;
     const lostSeats = losses.map((l) => l.seat);
     const livingSeats = this.game.players.filter((p) => !lostSeats.includes(p.seat)).map((p) => p.seat);
 
@@ -352,16 +366,16 @@ export class SbaEngine {
         losses,
       };
     } else {
-      // Multi-player: still in progress; bundle the running losses without
-      // a concluding outcome so observers can see them.
-      next = {
-        endedAt,
-        // Placeholder outcome until the last seat falls. `concededSeats` +
-        // `losses` are the authoritative rosters.
-        outcome: { kind: "draw", reason },
-        concededSeats: lostSeats,
-        losses,
-      };
+      // Audit I-12 — multi-player game (3+ seats) with one player lost but
+      // 2+ players still living. The game is NOT terminal: setting
+      // terminalState would make Game.isTerminal() return true and end the
+      // match prematurely. Per CR 800.4, an eliminated player's seat is
+      // recorded but the match continues until ≤1 player remains. SP2
+      // tracks running losses on a separate `losses` field; the rest of
+      // the engine consults that, NOT terminalState, for per-seat status.
+      // (Tests verifying terminalState in 2-player games are unaffected
+      // — those land in the livingSeats === 1 branch above.)
+      return;
     }
     this.game.terminalState = next;
   }

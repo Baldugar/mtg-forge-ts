@@ -30,6 +30,12 @@ export class Player {
   // (intercepting incoming damage through the replacement-ability pipeline)
   // is deferred to SP3/F2. The field is typed as `number` (0 = no shield).
   damagePreventionShield = 0;
+  // Audit I-12 — per-seat loss flag, set by SbaEngine.markPlayerLost when
+  // the player has lost. Distinct from Game.terminalState.concededSeats:
+  // in 3+ player matches terminalState is only set when ≤1 player remains,
+  // but per-seat liveness must still be tracked so loss-conditions skips
+  // already-lost seats and the priority pipeline excludes them. CR 800.4.
+  hasLost = false;
 
   constructor(
     readonly seat: PlayerSeat,

@@ -82,6 +82,10 @@ export class Game {
   readonly rules: GameRules;
   readonly rng: Rng;
   private entityIdCounter = 0;
+  // Audit I-14 — CR 613.7 monotonic timestamp counter for Card creation
+  // order. Distinct from entityIdCounter so snapshot restore can rehydrate
+  // cards with their original timestamp without colliding with id allocation.
+  private cardTimestampCounter = 1;
 
   turn = 1;
   phase: PhaseStep = Phase.Untap;
@@ -170,6 +174,11 @@ export class Game {
    */
   readonly ringGrantLedger: RingGrantLedger;
   terminalState: TerminalState | null = null;
+  // Audit I-12 — multi-player match running-loss roster. Tracks players who
+  // have lost in 3+ player matches before terminalState is written (which
+  // happens only when ≤1 player remains). SbaEngine.markPlayerLost reads/
+  // writes this to preserve loss order + reasons across multiple sweeps.
+  runningLosses: import("./terminal-state.js").PlayerLoss[] | undefined = undefined;
   /**
    * SP2 Milestone W Task 72 — CR 702.139 companion declaration. Populated
    * by setupGame's pre-mulligan companion step when the seat declares a
@@ -270,6 +279,24 @@ export class Game {
 
   newEntityId(): EntityId {
     return mkEntityId(this.entityIdCounter++);
+  }
+
+  /**
+   * Audit I-14 — CR 613.7 timestamp allocator. Card factories (cast pipeline
+   * push, createToken, createEmblem, snapshot restore) call this at Card
+   * construction so the layer engine has a stable creation-order tiebreak
+   * for continuous-effect dependency resolution.
+   */
+  newCardTimestamp(): number {
+    return this.cardTimestampCounter++;
+  }
+
+  /** Snapshot-restore-only timestamp counter rehydration. */
+  restoreCardTimestampCounter(n: number): void {
+    if (!Number.isInteger(n) || n < 1) {
+      throw new RangeError(`restoreCardTimestampCounter: expected positive integer, got ${n}`);
+    }
+    this.cardTimestampCounter = n;
   }
 
   /**

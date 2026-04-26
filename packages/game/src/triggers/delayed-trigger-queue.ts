@@ -60,6 +60,26 @@ export class DelayedTriggerQueue {
       const d = this.queue[i];
       if (!d) continue;
       if (!d.matches(event)) continue;
+      // Audit I-8 — CR 603.10c suppression: when the delayed trigger is
+      // explicitly tagged as host-leaving-suppressed (e.g. "at end of turn,
+      // sacrifice CARDX" — if the source card has left the battlefield,
+      // the trigger can't fire because it has no live host to act on),
+      // gate on the source's continued battlefield presence.
+      // The flag is set by trigger-creating effects that need this
+      // semantics; default false preserves prior behavior for delayed
+      // triggers that should fire regardless (CR 603.7c general case).
+      const suppressOnHostLeave =
+        (d as unknown as { suppressOnHostLeave?: boolean }).suppressOnHostLeave === true;
+      if (suppressOnHostLeave && this.game) {
+        const sourceCard = this.game.cards.get(d.sourceCardId);
+        if (!sourceCard || sourceCard.zone !== ZoneType.Battlefield) {
+          // Source has left the battlefield (or no longer exists). Drop the
+          // one-shot; persistent triggers stay so they can fire if the host
+          // somehow re-enters.
+          if (d.oneShot) this.queue.splice(i, 1);
+          continue;
+        }
+      }
       if (this.game && !isLeavingBattlefield) {
         const sourceCard = this.game.cards.get(d.sourceCardId);
         if (sourceCard?.phased === true) {

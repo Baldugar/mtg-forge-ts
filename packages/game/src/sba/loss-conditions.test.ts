@@ -190,4 +190,56 @@ describe("loss-conditions — player loss SBAs (CR 704.5a/b/c)", () => {
     const ys = runSweep(game);
     expect(countEvents(ys, "PlayerLost")).toBe(0);
   });
+
+  // Audit I-12 — 3-player game: when one player loses, the match is NOT
+  // terminal. Per CR 800.4 the game continues until ≤1 player remains.
+  it("I-12 — 3-player match: one loss does NOT set terminalState; per-seat hasLost flagged", () => {
+    const charlie: LobbyPlayer = { id: "p-charlie", name: "Charlie", controllerKind: "ai" };
+    const game = new Game({
+      lobbyPlayers: [alice, bob, charlie],
+      rules: {
+        ...rules,
+        playerCount: { min: 3, max: 3 },
+      },
+      meta,
+      rng: new SeededRng(1n),
+    });
+    seedZones(game);
+    game.getPlayer(mkPlayerSeat(0)).life = 0;
+    const ys = runSweep(game);
+    expect(countEvents(ys, "PlayerLost")).toBe(1);
+    // Per-seat flag: Alice is marked lost.
+    expect(game.getPlayer(mkPlayerSeat(0)).hasLost).toBe(true);
+    expect(game.getPlayer(mkPlayerSeat(1)).hasLost).toBe(false);
+    expect(game.getPlayer(mkPlayerSeat(2)).hasLost).toBe(false);
+    // CRITICAL: terminalState must NOT be set with 2 living seats remaining.
+    expect(game.terminalState).toBeNull();
+    expect(game.isTerminal()).toBe(false);
+  });
+
+  it("I-12 — 3-player match: when 2 players lose, terminalState set with last survivor winner", () => {
+    const charlie: LobbyPlayer = { id: "p-charlie", name: "Charlie", controllerKind: "ai" };
+    const game = new Game({
+      lobbyPlayers: [alice, bob, charlie],
+      rules: {
+        ...rules,
+        playerCount: { min: 3, max: 3 },
+      },
+      meta,
+      rng: new SeededRng(1n),
+    });
+    seedZones(game);
+    game.getPlayer(mkPlayerSeat(0)).life = 0;
+    runSweep(game);
+    // Alice has lost but game is still running.
+    expect(game.terminalState).toBeNull();
+    // Now Bob loses too — only Charlie remains.
+    game.getPlayer(mkPlayerSeat(1)).life = 0;
+    runSweep(game);
+    expect(game.terminalState).not.toBeNull();
+    expect(game.terminalState?.outcome.kind).toBe("win");
+    if (game.terminalState?.outcome.kind === "win") {
+      expect(game.terminalState.outcome.winner).toBe(mkPlayerSeat(2));
+    }
+  });
 });

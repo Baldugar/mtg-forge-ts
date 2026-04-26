@@ -203,7 +203,11 @@ describe("removePlayerFromGame (CR 800.4, SP2 Task 45)", () => {
     // All of the leaver's cards are out of the registry.
     expect(game.cards.has(mkEntityId(40))).toBe(false);
     expect(game.cards.has(mkEntityId(41))).toBe(false);
-    // Terminal state reflects the loss; two players remain in play.
-    expect(game.terminalState?.concededSeats).toContain(loserSeat);
+    // Audit I-12 — in a 3-player match with 2 players still alive,
+    // terminalState is NOT set (the game continues per CR 800.4). Loss is
+    // tracked on Game.runningLosses + Player.hasLost instead.
+    expect(game.terminalState).toBeNull();
+    expect(game.getPlayer(loserSeat).hasLost).toBe(true);
+    expect(game.runningLosses?.some((l) => l.seat === loserSeat)).toBe(true);
   });
 });

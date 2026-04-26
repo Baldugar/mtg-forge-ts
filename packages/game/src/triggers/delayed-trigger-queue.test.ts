@@ -186,6 +186,36 @@ describe("DelayedTriggerQueue (CR 603.7)", () => {
     expect(g.triggerRegistry.drain()).toHaveLength(0);
   });
 
+  // Audit I-8 regression — when a delayed trigger is tagged as host-leaving-
+  // suppressed (CR 603.10c semantics: e.g. "at end of turn, sacrifice this
+  // creature"), the trigger should NOT fire if the host has left the
+  // battlefield. Plain delayed triggers without the flag continue to fire
+  // per CR 603.7c (general case) — see the existing tests above.
+  it("I-8 — host-leaving-suppressed trigger drops when source no longer on battlefield", () => {
+    const g = mkGame();
+    const cid = mkEntityId(10);
+    const paper: PaperCard = {
+      name: "Test",
+      edition: "LEA",
+      collectorNumber: "1",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+    };
+    // Source card EXISTS but has been moved to graveyard (left battlefield).
+    const card = new Card(cid, paper, mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Graveyard);
+    g.cards.set(cid, card);
+    const delayed = {
+      ...mkDelayed({ id: 1, sourceCardId: 10, oneShot: true }),
+      suppressOnHostLeave: true,
+    } as DelayedTrigger;
+    g.delayedTriggerQueue.add(delayed);
+    g.delayedTriggerQueue.onEvent(lifeChangedEvent(), g.triggerRegistry);
+    expect(g.triggerRegistry.drain()).toHaveLength(0);
+    // One-shot dropped because the host left the battlefield.
+    expect(g.delayedTriggerQueue.size()).toBe(0);
+  });
+
   // Audit I-15 regression — CR 702.26e: phased-out sources don't observe
   // most events. DelayedTriggerQueue.onEvent forwarded to the registry
   // without a phased gate, so a delayed trigger whose source was phased

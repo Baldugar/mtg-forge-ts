@@ -54,11 +54,14 @@ export const collectLossConditions = (
 };
 
 const hasLost = (game: Game, seat: PlayerSeat): boolean => {
+  // Audit I-12 — per-seat hasLost flag is the authoritative liveness
+  // signal. In 2-player matches terminalState is set on the first loss;
+  // in 3+ player matches terminalState is null until the last seat falls,
+  // but per-seat hasLost is set as soon as the loss is recorded.
+  const player = game.players.find((p) => p.seat === seat);
+  if (player?.hasLost === true) return true;
   const t = game.terminalState;
   if (t === null) return false;
-  // concededSeats is the SP1-era losses-list proxy; any future loss-taxonomy
-  // enrichment (Task 68) will put the full roster here. For SP2, the engine
-  // overwrites terminalState each SBA sweep so the concededSeats array is
-  // the cumulative set of lost-or-conceded players.
+  // Fallback for snapshot-restored games or pre-flag terminal states.
   return t.concededSeats.includes(seat);
 };
