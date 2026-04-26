@@ -61,7 +61,11 @@ describe("ReduceCostHandler (Wave 6)", () => {
     expect(built.mode).toBe("ReduceCost");
     expect(built.activeInZones.has(ZoneType.Battlefield)).toBe(true);
     const effect = built.describe() as CostModEffect;
-    expect(effect.delta.generic).toBe(-1);
+    // Wave 11: delta.generic is now a function (lazy resolution). Invoke it
+    // to obtain the numeric delta — the literal "1" resolves to -1.
+    expect(typeof effect.delta.generic).toBe("function");
+    const fn = effect.delta.generic as (item: unknown, game: import("../../game.js").Game) => number;
+    expect(fn({}, game)).toBe(-1);
     expect(effect.sourceStaticId).toBe(mkEntityId(2));
   });
 
@@ -82,22 +86,25 @@ describe("ReduceCostHandler (Wave 6)", () => {
     expect(built.activeInZones.has(ZoneType.Battlefield)).toBe(true);
   });
 
-  it("throws on a non-numeric Amount$ (deferred SVar/Count expressions)", () => {
+  it("Wave 11 — accepts non-numeric Amount$ (SVar/Count exprs); resolves at apply time", () => {
     const game = makeGame();
     const handler = new ReduceCostHandler();
     const ast: StaticAst = {
       mode: "ReduceCost",
-      params: { Amount: lit("X") },
+      params: { Amount: { kind: "svarRef", name: "X" } },
       activeInZones: [ZoneType.Battlefield],
     };
-    expect(() =>
-      handler.build(ast, {
-        game,
-        sourceCardId: mkEntityId(1),
-        controllerSeat: mkPlayerSeat(0),
-        staticId: mkEntityId(2),
-      }),
-    ).toThrow(/non-numeric Amount/);
+    // Should NOT throw at build time — even when no SVar table exists, the
+    // resolver swallows evaluation errors at apply time and returns 0.
+    const built = handler.build(ast, {
+      game,
+      sourceCardId: mkEntityId(1),
+      controllerSeat: mkPlayerSeat(0),
+      staticId: mkEntityId(2),
+    });
+    const effect = built.describe() as CostModEffect;
+    // Dynamic delta — function form. With no resolvable X, returns 0 (cost-mod inert).
+    expect(typeof effect.delta.generic).toBe("function");
   });
 });
 
@@ -123,6 +130,8 @@ describe("RaiseCostHandler (Wave 6)", () => {
     expect(built.mode).toBe("RaiseCost");
     expect(built.category).toBe("costModification");
     const effect = built.describe() as CostModEffect;
-    expect(effect.delta.generic).toBe(2);
+    expect(typeof effect.delta.generic).toBe("function");
+    const fn = effect.delta.generic as (item: unknown, game: import("../../game.js").Game) => number;
+    expect(fn({}, game)).toBe(2);
   });
 });

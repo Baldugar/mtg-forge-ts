@@ -142,12 +142,17 @@ export function* activateAbility(
   const costRaw = sa.ast.cost.raw;
   const plan = parseCostString(costRaw);
 
-  // 4. Pay the cost.
+  // 4. Pay the cost. Wave 11 — thread kind="ability" + the card's current
+  // zone so cost-mod statics gated on Type$ Ability / AffectedZone$ fire
+  // correctly (e.g. Gloom: activated abilities of white enchantments cost
+  // {3} more — only matches when the source is on the battlefield).
   const costCtx = {
     game,
     payerSeat: controllerSeat,
     sourceCardId: cardId,
     raw: costRaw,
+    kind: "ability" as const,
+    sourceZone: card.zone,
   };
   const receipts = yield* payCost(plan, costCtx);
 

@@ -707,11 +707,17 @@ export class CastPipeline {
     }
 
     // SP3 Part C Task 60: real cost payment via payCost orchestrator.
+    // Wave 11 — thread kind="spell" + the card's origin zone (Hand for
+    // normal casts, Graveyard for Flashback, etc.) so cost-mod statics
+    // gated on Type$/AffectedZone$ can fire correctly.
+    const sourceCardForZone = this.game.cards.get(ctx.sourceCardId);
     const costCtx: CostPaymentContext = {
       game: this.game,
       payerSeat: ctx.castingPlayer,
       sourceCardId: ctx.sourceCardId,
       raw: rawCost,
+      kind: "spell",
+      ...(sourceCardForZone !== undefined ? { sourceZone: sourceCardForZone.zone } : {}),
     };
     let plan: ReturnType<typeof parseCostString>;
     try {

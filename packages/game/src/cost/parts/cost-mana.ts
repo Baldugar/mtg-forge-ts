@@ -28,25 +28,43 @@ function getPool(ctx: CostPaymentContext): ManaPool {
   return player.manaPool as ManaPool;
 }
 
-// Wave 6 — fold cost-modification statics (Jet Medallion, Sphere of
-// Resistance, etc.) into the raw mana cost before solving. The "item" we
-// hand the filter is the cost-determination context: source card +
-// controller + a "spell" kind tag (CostMana sits in the cast pipeline; if
-// we ever invoke it from activation paths we'll either flip the tag or
-// expose it via CostPaymentContext).
-const adjustedCost = (
-  rawCost: import("@mtg-forge-ts/core").ManaCost,
-  ctx: CostPaymentContext,
-): import("@mtg-forge-ts/core").ManaCost => {
+import type { SpellCostModItem } from "../../static/cost-mod-filter.js";
+// Wave 6 baseline + Wave 11 completeness — fold cost-modification statics
+// (Jet Medallion, Sphere of Resistance, Trinisphere, Alabaster Leech, etc.)
+// into the raw mana cost before solving. The "item" we hand the filter is
+// the cost-determination context: source card + controller + kind +
+// sourceZone. Wave 11 threads `kind` (spell vs ability) and `sourceZone`
+// through from CostPaymentContext so AffectedZone$ and Type$ filters work.
+//
+// Returns both the adjusted cost AND the matching mods, so the caller can
+// invoke markUsed callbacks after a successful payment (OnlyFirstSpell$).
+import type { CostModEffect } from "../../statics/cost-mod-contributor.js";
+
+const buildCostModItem = (ctx: CostPaymentContext): SpellCostModItem => {
   const card = ctx.game.cards.get(ctx.sourceCardId);
-  const item = {
+  const kind = ctx.kind ?? "spell";
+  const sourceZone = ctx.sourceZone ?? card?.zone;
+  return {
     sourceCardId: ctx.sourceCardId,
     controllerSeat: ctx.payerSeat,
     card,
-    kind: "spell" as const,
+    kind,
+    ...(sourceZone !== undefined ? { sourceZone } : {}),
   };
+};
+
+const adjustedCost = (
+  rawCost: import("@mtg-forge-ts/core").ManaCost,
+  ctx: CostPaymentContext,
+): {
+  cost: import("@mtg-forge-ts/core").ManaCost;
+  mods: readonly CostModEffect[];
+  item: SpellCostModItem;
+} => {
+  const item = buildCostModItem(ctx);
   const mods = gatherCostModsFor(ctx.game, item);
-  return applyCostMods(rawCost, mods);
+  const cost = applyCostMods(rawCost, mods, { item, game: ctx.game });
+  return { cost, mods, item };
 };
 
 interface ManaCostReceipt {
@@ -62,7 +80,7 @@ export const CostMana: CostPart = {
   handlerKey: "Mana",
 
   canPay(ctx: CostPaymentContext): boolean {
-    const cost = adjustedCost(ManaCost.parse(ctx.raw), ctx);
+    const { cost } = adjustedCost(ManaCost.parse(ctx.raw), ctx);
     const pool = getPool(ctx);
     // Conservative check: X=0 means we only verify non-X pips are payable.
     // A player can always choose X=0, so if non-X pips are satisfiable the
@@ -71,7 +89,7 @@ export const CostMana: CostPart = {
   },
 
   *pay(ctx: CostPaymentContext): Generator<EngineYield, CostPartReceipt, unknown> {
-    const cost = adjustedCost(ManaCost.parse(ctx.raw), ctx);
+    const { cost, mods, item } = adjustedCost(ManaCost.parse(ctx.raw), ctx);
     const pool = getPool(ctx);
 
     // --- X binding ---------------------------------------------------
@@ -93,6 +111,13 @@ export const CostMana: CostPart = {
 
     // Apply the plan: drain pool entries and pay life for phyrexian pips.
     yield* applyPaymentPlan(plan, pool, ctx.game, ctx.payerSeat);
+
+    // Wave 11 — fire markUsed on every consumed mod (OnlyFirstSpell$ guard).
+    // Marking ALL matched mods is sound: non-OnlyFirstSpell mods have no
+    // markUsed callback, so this is a no-op for them.
+    for (const m of mods) {
+      if (m.markUsed !== undefined) m.markUsed(ctx.game, item);
+    }
 
     const receipt: ManaCostReceipt = {
       prePaymentSnapshot,

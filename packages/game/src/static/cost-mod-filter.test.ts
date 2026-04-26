@@ -219,4 +219,43 @@ describe("buildCostModFilter (Wave 6)", () => {
     const filter = buildCostModFilter({ ValidCard: lit("Card.Black") }, aliceSeat, staticSourceId);
     expect(filter(mkItem(mkCard(noColorsField)), game)).toBe(true);
   });
+
+  // ---- Wave 11: AffectedZone$ filter (Gap 3) -----------------------------
+
+  it("AffectedZone$ Battlefield matches a battlefield-zoned item", () => {
+    const filter = buildCostModFilter(
+      { AffectedZone: lit("Battlefield"), Type: lit("Ability") },
+      aliceSeat,
+      staticSourceId,
+    );
+    const item: SpellCostModItem = {
+      sourceCardId: mkEntityId(50),
+      controllerSeat: aliceSeat,
+      card: mkCard(blackCreaturePaper),
+      kind: "ability",
+      sourceZone: ZoneType.Battlefield,
+    };
+    expect(filter(item, game)).toBe(true);
+  });
+
+  it("AffectedZone$ Battlefield rejects an item from Hand", () => {
+    const filter = buildCostModFilter(
+      { AffectedZone: lit("Battlefield"), Type: lit("Ability") },
+      aliceSeat,
+      staticSourceId,
+    );
+    const item: SpellCostModItem = {
+      sourceCardId: mkEntityId(50),
+      controllerSeat: aliceSeat,
+      card: mkCard(blackCreaturePaper),
+      kind: "ability",
+      sourceZone: ZoneType.Hand,
+    };
+    expect(filter(item, game)).toBe(false);
+  });
+
+  it("AffectedZone$ rejects when sourceZone is missing", () => {
+    const filter = buildCostModFilter({ AffectedZone: lit("Battlefield") }, aliceSeat, staticSourceId);
+    expect(filter(mkItem(mkCard(blackCreaturePaper)), game)).toBe(false);
+  });
 });

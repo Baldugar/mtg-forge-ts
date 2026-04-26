@@ -18,7 +18,7 @@
 //
 // Unknown bases or qualifiers cause the filter to reject conservatively so
 // we never silently match cards the printed text excludes.
-import { Color, type EntityId, type ParamValue, type PlayerSeat } from "@mtg-forge-ts/core";
+import { Color, type EntityId, type ParamValue, type PlayerSeat, type ZoneType } from "@mtg-forge-ts/core";
 import type { Card } from "../card.js";
 import type { Game } from "../game.js";
 
@@ -27,6 +27,14 @@ export interface SpellCostModItem {
   readonly controllerSeat: PlayerSeat;
   readonly card: Card | undefined;
   readonly kind: "spell" | "ability";
+  /**
+   * Wave 11 — the zone the source card is in when this cost is being paid.
+   * Used by the `AffectedZone$` filter. For spells being cast, this is the
+   * origin zone (Hand for normal casts, Graveyard for Flashback, etc.).
+   * For activated abilities it's the zone the ability is being activated
+   * from (Battlefield for {T}-cost permanent abilities; Hand for Cycling).
+   */
+  readonly sourceZone?: ZoneType;
 }
 
 const isLiteralRaw = (p: ParamValue | undefined): string | undefined =>
@@ -49,6 +57,7 @@ export const buildCostModFilter = (
   const validCardRaw = isLiteralRaw(staticParams.ValidCard);
   const typeRaw = isLiteralRaw(staticParams.Type);
   const activatorRaw = isLiteralRaw(staticParams.Activator);
+  const affectedZoneRaw = isLiteralRaw(staticParams.AffectedZone);
 
   return (rawItem: unknown, game: Game): boolean => {
     if (rawItem === null || typeof rawItem !== "object") return false;
@@ -67,6 +76,16 @@ export const buildCostModFilter = (
       item.controllerSeat === sourceControllerSeat
     ) {
       return false;
+    }
+
+    // AffectedZone$ — gate on the zone the source card is in when paying.
+    // Forge's tokens are PascalCase enum names ("Battlefield", "Hand", …).
+    // When the param is present and the item carries a sourceZone, both
+    // must agree (case-insensitive for resilience against parser drift).
+    if (affectedZoneRaw !== undefined) {
+      const itemZone = item.sourceZone;
+      if (itemZone === undefined) return false;
+      if (itemZone.toLowerCase() !== affectedZoneRaw.toLowerCase()) return false;
     }
 
     // ValidCard$ — comma-OR of dot-AND alternatives.
