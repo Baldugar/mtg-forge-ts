@@ -842,6 +842,33 @@ export type GameEvent =
       readonly phase: PhaseStep;
       readonly payload: { readonly parentTurn: number; readonly outcome: string };
     }
+  // === Planechase / Archenemy (2) — Batch D2 ===
+  // WHY: niche-but-required format events. ChaosEnsues triggers (T:Mode$
+  // ChaosEnsues) match PlanarDieRolled with face === "chaos"; SetInMotion
+  // triggers (T:Mode$ SetInMotion) match SchemeSetInMotion. Both events are
+  // stub-emitted by tests today; SP4's Planechase/Archenemy machinery will
+  // emit them through a dedicated game.action.rollPlanarDice / setInMotion
+  // mutator pair when those formats land.
+  | {
+      readonly kind: "PlanarDieRolled";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly rollingSeat: PlayerSeat;
+        readonly result: "chaos" | "planeswalk" | "blank";
+      };
+    }
+  | {
+      readonly kind: "SchemeSetInMotion";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly schemeCardId: EntityId;
+        readonly archenemySeat: PlayerSeat;
+      };
+    }
   // === Reveal (1) — Wave 4 PeekAndReveal / RevealHand ===
   | {
       readonly kind: "CardsRevealed";
