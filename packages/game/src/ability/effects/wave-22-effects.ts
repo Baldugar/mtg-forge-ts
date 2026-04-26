@@ -10,12 +10,13 @@
 //   SwitchBlock, ProtectionAll, Meld, GainControlVariant, UnlockDoor, Clash,
 //   ChooseSector, ExchangeControlVariant, GainOwnership, Unattach,
 //   ActivateAbility, TakeInitiative, VillainousChoice, RollPlanarDice.
-import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import type { AbilityAst, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
+import { SpellAbility } from "../spell-ability.js";
 import type { SpellAbility as SpellAbilityType } from "../spell-ability.js";
 
 // Helpers ---------------------------------------------------------------------
@@ -506,3 +507,111 @@ export class RollPlanarDiceEffect extends SpellAbilityEffect {
   }
 }
 effectRegistry.register(RollPlanarDiceEffect);
+
+// 21. ImmediateTrigger --------------------------------------------------------
+// Forge `SP$ ImmediateTrigger` — fires the SubAbility immediately as if it
+// were a triggered ability. MVP: resolve SubAbility$ inline.
+export class ImmediateTriggerEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "ImmediateTrigger";
+
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const subParam = sa.ast.effect.params.SubAbility;
+    if (!subParam || subParam.kind !== "literal") return;
+    const subKey = subParam.raw;
+    if (!subKey) return;
+    const def = game.cards.get(sa.sourceCardId)?.paperCard.definition;
+    const svars = (def?.svars ?? new Map()) as ReadonlyMap<string, SVarAst>;
+    const sv = svars.get(subKey);
+    if (!sv || sv.kind !== "ability" || !sv.ability) return;
+    const fakeAst: AbilityAst = { kind: "spell", effect: sv.ability, cost: { raw: "" } };
+    const sub = new SpellAbility(fakeAst, sa.sourceCardId, sa.controllerSeat, svars, sa.targets);
+    yield* sub.makeResolver().resolve(game) as Generator<EngineYield, void, unknown>;
+  }
+}
+effectRegistry.register(ImmediateTriggerEffect);
+
+// 22. RestartGame -------------------------------------------------------------
+// Forge `SP$ RestartGame` (Karn Liberated -14) — restart the game.
+export class RestartGameEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "RestartGame";
+
+  // biome-ignore lint/correctness/useYield: stub
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    void sa;
+    void game;
+    // TODO(advanced): wipe state, re-shuffle libraries, reset life, advance turn 0.
+  }
+}
+effectRegistry.register(RestartGameEffect);
+
+// 23. Endure ------------------------------------------------------------------
+// Bloomburrow `SP$ Endure` — keep creature OR create a Spirit token of same P/T.
+export class EndureEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "Endure";
+
+  // biome-ignore lint/correctness/useYield: stub
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    void sa;
+    void game;
+    // TODO(advanced): yield chooseEndureOption; on token branch synthesize Spirit token.
+  }
+}
+effectRegistry.register(EndureEffect);
+
+// 24. Learn -------------------------------------------------------------------
+// Strixhaven `SP$ Learn` — reveal a Lesson from sideboard OR discard-to-draw.
+export class LearnEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "Learn";
+
+  // biome-ignore lint/correctness/useYield: stub
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    void sa;
+    void game;
+    // TODO(advanced): yield chooseLearnOption; resolve sideboard tutor or discard-to-draw.
+  }
+}
+effectRegistry.register(LearnEffect);
+
+// 25. ReorderZone -------------------------------------------------------------
+// Forge `SP$ ReorderZone` — let a player reorder cards in a zone (most often
+// library top after Scry/Surveil).
+export class ReorderZoneEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "ReorderZone";
+
+  // biome-ignore lint/correctness/useYield: stub
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    void sa;
+    void game;
+    // TODO(advanced): yield reorderZone decision and apply to the zone.
+  }
+}
+effectRegistry.register(ReorderZoneEffect);
+
+// 26. OpenAttraction ----------------------------------------------------------
+// Unfinity `SP$ OpenAttraction` — put an Attraction onto the battlefield.
+export class OpenAttractionEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "OpenAttraction";
+
+  // biome-ignore lint/correctness/useYield: stub
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    void sa;
+    void game;
+    // TODO(advanced): pull from the Attraction deck side-zone (data layer SP4).
+  }
+}
+effectRegistry.register(OpenAttractionEffect);
+
+// 27. MultiplePiles -----------------------------------------------------------
+// Forge `SP$ MultiplePiles` — divide cards into N piles, opponent picks.
+// Generalization of TwoPiles.
+export class MultiplePilesEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "MultiplePiles";
+
+  // biome-ignore lint/correctness/useYield: stub
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    void sa;
+    void game;
+    // TODO(advanced): yield distribution decisions for N piles.
+  }
+}
+effectRegistry.register(MultiplePilesEffect);
