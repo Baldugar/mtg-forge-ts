@@ -342,7 +342,7 @@ describe("EffectEffect — delayed-trigger host", () => {
 
     const cmd = game.getPlayer(seat0).zones.get(ZoneType.Command);
     expect(cmd?.size).toBe(1);
-    const hostId = [...(cmd?.items ?? [])][0];
+    const hostId = (cmd?.toArray() ?? [])[0];
     expect(hostId).toBeDefined();
     if (!hostId) return;
     const host = game.cards.get(hostId);

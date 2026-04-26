@@ -4,11 +4,12 @@
 // rejection of non-gameLoss intents, AND the Exquisite Archangel
 // flagship: ReplaceWith$ ExileSetLife exiles the source and resets the
 // controller's life to game.rules.startingLife.
-import type { GameRules, LobbyPlayer, MutationIntent, ReplacementAst, SVarAst } from "@mtg-forge-ts/core";
+import type { LobbyPlayer, MutationIntent, ReplacementAst, SVarAst } from "@mtg-forge-ts/core";
 import { CardType, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { afterEach, describe, expect, it } from "vitest";
 import { Card } from "../../card.js";
 import type { GameMeta } from "../../game-meta.js";
+import type { GameRules } from "../../game-rules.js";
 import { Game } from "../../game.js";
 import { Battlefield } from "../../zone/zones/battlefield.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";

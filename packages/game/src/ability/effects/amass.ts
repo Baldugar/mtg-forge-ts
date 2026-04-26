@@ -17,8 +17,16 @@
 //
 // TODO(advanced): when controller has multiple Armies, Forge prompts for a
 // chosen Army; MVP picks the first by iteration order.
-import { CardType, Color, ColorSet, DEFAULT_PAPER_CARD_FLAGS, TypeLine, ZoneType } from "@mtg-forge-ts/core";
-import type { CardDefinition, CounterType, EntityId, PaperCard, Supertype } from "@mtg-forge-ts/core";
+import {
+  CardType,
+  Color,
+  ColorSet,
+  CounterType,
+  DEFAULT_PAPER_CARD_FLAGS,
+  TypeLine,
+  ZoneType,
+} from "@mtg-forge-ts/core";
+import type { CardDefinition, EntityId, PaperCard, Supertype } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -88,7 +96,7 @@ export class AmassEffect extends SpellAbilityEffect {
     }
     if (armyId === null) return;
 
-    yield* game.action.addCounter(armyId, "P1P1" as CounterType, num, sa.sourceCardId);
+    yield* game.action.addCounter(armyId, CounterType.PlusOnePlusOne, num, sa.sourceCardId);
 
     if (hasParam(sa, "RememberAmass") && evaluateParamRaw(sa, "RememberAmass") === "True") {
       const source = game.cards.get(sa.sourceCardId);

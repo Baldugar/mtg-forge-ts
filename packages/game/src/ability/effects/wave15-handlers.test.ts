@@ -25,7 +25,14 @@ import "./assemble-contraption.js";
 // Sub-ability dependency for GenericChoice + Repeat tests.
 import "./gain-life.js";
 import type { LobbyPlayer, PaperCard, SVarAst } from "@mtg-forge-ts/core";
-import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  CounterType,
+  DEFAULT_PAPER_CARD_FLAGS,
+  SeededRng,
+  ZoneType,
+  mkEntityId,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { Card } from "../../card.js";
 import type { GameMeta } from "../../game-meta.js";
@@ -434,7 +441,7 @@ describe("MoveCounterEffect", () => {
     const toId = mkEntityId(12);
     game.cards.set(sourceId, new Card(sourceId, paper, seat0, seat0, ZoneType.Battlefield));
     const fromCard = new Card(fromId, paper, seat0, seat0, ZoneType.Battlefield);
-    fromCard.counters.set("P1P1", 3);
+    fromCard.counters.set(CounterType.PlusOnePlusOne, 3);
     const toCard = new Card(toId, paper, seat0, seat0, ZoneType.Battlefield);
     game.cards.set(fromId, fromCard);
     game.cards.set(toId, toCard);
@@ -443,7 +450,7 @@ describe("MoveCounterEffect", () => {
     const sa = mkSa(
       "MoveCounter",
       {
-        CounterType: { kind: "literal", raw: "P1P1" },
+        CounterType: { kind: "literal", raw: CounterType.PlusOnePlusOne },
         CounterNum: { kind: "literal", raw: "2" },
       },
       sourceId,
@@ -451,8 +458,8 @@ describe("MoveCounterEffect", () => {
       [fromId, toId],
     );
     drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
-    expect(fromCard.counters.get("P1P1")).toBe(1);
-    expect(toCard.counters.get("P1P1")).toBe(2);
+    expect(fromCard.counters.get(CounterType.PlusOnePlusOne)).toBe(1);
+    expect(toCard.counters.get(CounterType.PlusOnePlusOne)).toBe(2);
   });
 });
 
@@ -487,7 +494,8 @@ describe("AmassEffect", () => {
     let foundCounters = 0;
     for (const id of bf?.toArray() ?? []) {
       const c = game.cards.get(id);
-      if (c && (c.counters.get("P1P1") ?? 0) > 0) foundCounters = c.counters.get("P1P1") ?? 0;
+      if (c && (c.counters.get(CounterType.PlusOnePlusOne) ?? 0) > 0)
+        foundCounters = c.counters.get(CounterType.PlusOnePlusOne) ?? 0;
     }
     expect(foundCounters).toBe(2);
   });
