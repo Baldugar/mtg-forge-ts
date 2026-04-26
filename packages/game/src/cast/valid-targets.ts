@@ -240,7 +240,7 @@ const applyQualifier = (r: TargetRestriction, qualifier: string): TargetRestrict
   if (qualifier === "YouCtrl") {
     return { ...r, controllerScope: "you" };
   }
-  if (qualifier === "OppCtrl" || qualifier === "OpponentCtrl") {
+  if (qualifier === "OppCtrl" || qualifier === "OpponentCtrl" || qualifier === "YouDontCtrl") {
     return { ...r, controllerScope: "opponent" };
   }
   // Type forbid qualifiers.

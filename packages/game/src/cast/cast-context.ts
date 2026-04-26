@@ -41,6 +41,19 @@ export interface CastContext {
   // Ordered list of per-cost payment receipts. Step 9 (ActivateManaAbilities)
   // and step 10 (PayCosts) append; abort (Task 39) unwinds in reverse.
   paidAlready: unknown[];
+  // Wave 10 — Overload: when true, the cast is overloaded (CR 702.96).
+  // stepChooseTargets skips target selection (the spell is targetless;
+  // targets are enumerated at resolve time by tag-aware effect handlers),
+  // and finalizeStackItem plumbs the "overloaded" tag onto the bound
+  // SpellAbility so resolvers branch on it.
+  overloaded: boolean;
+  // Wave 10 — Bestow: when true, the cast was paid via the bestow alt-cost
+  // (CR 702.103). stepChooseTargets uses a synthesized "Creature" target
+  // restriction (the spell becomes an Aura with enchant creature) and
+  // finalizeStackItem plumbs the "bestowed" tag so the spell's resolver
+  // attaches the source card to the chosen creature instead of merely
+  // putting it on the battlefield as a stand-alone permanent.
+  bestowed: boolean;
 }
 
 export const createCastContext = (params: {
@@ -67,4 +80,6 @@ export const createCastContext = (params: {
   targets: undefined,
   totalCost: undefined,
   paidAlready: [],
+  overloaded: false,
+  bestowed: false,
 });

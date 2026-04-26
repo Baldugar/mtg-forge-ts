@@ -521,16 +521,32 @@ export class CastPipeline {
     if (!card) return;
     const paper = card.paperCard as CastSurfacePaperCard;
 
-    // Derive restriction: prefer paper.targetRestriction (explicit, set by
-    // test fixtures or future SP3 data layer). Fall back to parsing ValidTgts$
-    // from the card's first SpellAbility (Wave 4 runtime enforcement). When
-    // neither is present, the spell has no targets — skip step 7.
-    let restriction: TargetRestriction | undefined = paper.targetRestriction;
-    if (!restriction && card.spellAbilities.length > 0) {
-      const sa = card.spellAbilities[0];
-      const validTgtsParam = sa?.ast.effect.params.ValidTgts;
-      if (validTgtsParam && validTgtsParam.kind === "literal" && validTgtsParam.raw) {
-        restriction = parseValidTgts(validTgtsParam.raw);
+    // Wave 10 — Overload: an overloaded spell is targetless (CR 702.96).
+    // The ValidTgts$ filter is consulted at resolve time by effect handlers
+    // (Tap / Destroy / DealDamage check sa.tags.has("overloaded") and
+    // enumerate matching cards instead of iterating sa.targets).
+    if (ctx.overloaded) return;
+
+    // Wave 10 — Bestow: a bestowed creature spell becomes an Aura with
+    // "enchant creature" (CR 702.103). The base card has no ValidTgts$ on
+    // its SpellAbility (it's a creature spell), so we synthesize a
+    // "any creature on the battlefield" restriction here and let the rest
+    // of the step run normally.
+    let restriction: TargetRestriction | undefined;
+    if (ctx.bestowed) {
+      restriction = parseValidTgts("Creature");
+    } else {
+      // Derive restriction: prefer paper.targetRestriction (explicit, set by
+      // test fixtures or future SP3 data layer). Fall back to parsing ValidTgts$
+      // from the card's first SpellAbility (Wave 4 runtime enforcement). When
+      // neither is present, the spell has no targets — skip step 7.
+      restriction = paper.targetRestriction;
+      if (!restriction && card.spellAbilities.length > 0) {
+        const sa = card.spellAbilities[0];
+        const validTgtsParam = sa?.ast.effect.params.ValidTgts;
+        if (validTgtsParam && validTgtsParam.kind === "literal" && validTgtsParam.raw) {
+          restriction = parseValidTgts(validTgtsParam.raw);
+        }
       }
     }
     if (!restriction) return;
@@ -791,6 +807,16 @@ export class CastPipeline {
       const targets: EntityId[] = rawTargets.map((ref) =>
         ref.kind === "card" ? ref.id : (ref.seat as unknown as EntityId),
       );
+      // Wave 10 — propagate alt-cost-driven tags (Overload, Bestow) onto the
+      // bound SpellAbility so resolve-time effect handlers can branch.
+      // Without this, ctx.overloaded / ctx.bestowed would be lost when the
+      // bound SA is constructed. Empty tag set is the SP2 default; we only
+      // attach when at least one alt-cost flag is set so identity-equality
+      // tests on `tags` for non-altcost spells aren't perturbed.
+      const altTags: string[] = [];
+      if (ctx.overloaded) altTags.push("overloaded");
+      if (ctx.bestowed) altTags.push("bestowed");
+      const tags = altTags.length > 0 ? new Set(altTags) : undefined;
       const boundSa = new SpellAbility(
         saTemplate.ast,
         saTemplate.sourceCardId,
@@ -798,6 +824,8 @@ export class CastPipeline {
         saTemplate.svars,
         targets,
         ctx.xValue,
+        undefined,
+        tags,
       );
       resolver = boundSa.makeResolver();
     }
