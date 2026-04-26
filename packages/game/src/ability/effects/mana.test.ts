@@ -185,6 +185,38 @@ describe("ManaEffect", () => {
     expect((pool.toArray()[0] as ManaProduced).color).toBeNull();
   });
 
+  it("Restriction$ NonCreatureNonActivated — Powerstone-style {C} carries the restriction tag (Wave 29)", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = mkEntityId(10);
+    game.cards.set(sourceId, new Card(sourceId, paper, seat0, seat0, ZoneType.Battlefield));
+
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "Mana",
+          params: {
+            Produced: { kind: "literal", raw: "C" },
+            Restriction: { kind: "literal", raw: "NonCreatureNonActivated" },
+          },
+        },
+        cost: { raw: "T" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
+    );
+
+    drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+
+    const pool = game.getPlayer(seat0).manaPool as ManaPool;
+    expect(pool.size()).toBe(1);
+    const atom = pool.toArray()[0] as ManaProduced;
+    expect(atom.color).toBeNull();
+    expect(atom.restriction).toBe("nonCreatureNonActivated");
+  });
+
   it("Produced$ W — adds one white mana", () => {
     const game = mkGame();
     const seat0 = mkPlayerSeat(0);

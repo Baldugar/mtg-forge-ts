@@ -176,12 +176,24 @@ const bloodDrawAbility = (): AbilityAst => ({
   cost: { raw: "1, T, Sacrifice CARDNAME" },
 });
 
-/** Powerstone: `{T}: Add {C}.` (spend-restriction pending — see entry comment). */
+/**
+ * Powerstone: `{T}: Add {C}.` Wave 29 stamps a `Restriction$
+ * NonCreatureNonActivated` flag on the produced atom so the data-layer
+ * carries the spend constraint (CR 107.4d / Brothers' War). The
+ * cost-mana solver still treats restricted atoms as fully fungible at
+ * payment time — that solver-side filter is tracked as a TODO; the data
+ * round-trips correctly through snapshots so once the filter lands no
+ * card-data change is required.
+ */
 const powerstoneManaAbility = (): AbilityAst => ({
   kind: "activated",
   effect: {
     handlerKey: "Mana",
-    params: { Produced: lit("C"), Amount: lit("1") },
+    params: {
+      Produced: lit("C"),
+      Amount: lit("1"),
+      Restriction: lit("NonCreatureNonActivated"),
+    },
   },
   cost: { raw: "T" },
 });
@@ -600,11 +612,15 @@ const entries: readonly TokenEntry[] = [
     manaCost: null,
     keywords: [],
     abilities: [powerstoneManaAbility()],
-    // TODO(spend-restriction): {C} mana from a Powerstone can't be spent on
-    // creature spells / activated abilities of creature sources (CR
-    // 107.4d). The cost-payment solver does not yet honour ManaProduced
-    // restrictions on activated abilities, so MVP emits unrestricted {C}.
-    // Track via Wave 18 when the solver gains restriction-aware filtering.
+    // Wave 29 — Powerstone's mana now carries the
+    // `nonCreatureNonActivated` ManaProduced.restriction tag at the
+    // data layer (powerstoneManaAbility passes
+    // `Restriction$ NonCreatureNonActivated` to the Mana effect; the
+    // ManaEffect resolver attaches the tag to each ManaProduced atom).
+    // Solver-side enforcement is still a TODO — CostMana.pay treats
+    // restricted atoms as fungible — but the data round-trips correctly
+    // through snapshots, and a future cost-mana filter can switch on
+    // ctx.kind / source-type without any token-data change.
     oracle: "{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.",
   },
 ];

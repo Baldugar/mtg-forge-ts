@@ -11,7 +11,15 @@ export type ManaProductionRestriction =
   | "creatureSpells"
   | "onlyThisTurn"
   | "mustSpendOrLoseLife"
-  | "artifactSpells";
+  | "artifactSpells"
+  // Wave 29 — Powerstone token (CR 107.4d / Brothers' War). The {C} mana
+  // produced "can't be spent to cast a nonartifact spell." Captured here
+  // as a positive form ("only artifact spells / activated abilities of
+  // artifact sources, plus generic costs"); the solver-side filter is
+  // wired progressively (TODO in cost-mana solver). This restriction
+  // is the data-layer half — token-database tags Powerstone's mana
+  // ability with it so the field round-trips through snapshots.
+  | "nonCreatureNonActivated";
 
 export class ManaProduced {
   constructor(
@@ -28,12 +36,17 @@ export class ManaProduced {
     return new ManaProduced(c, opts.sourceId ?? null, false, opts.restriction ?? "none");
   }
 
-  static colorless(opts: { sourceId?: EntityId } = {}): ManaProduced {
-    return new ManaProduced(null, opts.sourceId ?? null, false, "none");
+  static colorless(
+    opts: { sourceId?: EntityId; restriction?: ManaProductionRestriction } = {},
+  ): ManaProduced {
+    return new ManaProduced(null, opts.sourceId ?? null, false, opts.restriction ?? "none");
   }
 
-  static snow(c: Color | null, opts: { sourceId?: EntityId } = {}): ManaProduced {
-    return new ManaProduced(c, opts.sourceId ?? null, true, "none");
+  static snow(
+    c: Color | null,
+    opts: { sourceId?: EntityId; restriction?: ManaProductionRestriction } = {},
+  ): ManaProduced {
+    return new ManaProduced(c, opts.sourceId ?? null, true, opts.restriction ?? "none");
   }
 
   toJSON(): {

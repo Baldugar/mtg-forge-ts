@@ -15,38 +15,65 @@
 // Combo / Any variants are documented as MVP (pick first / colorless).
 // Full player-choice wiring requires the decision subsystem (SP3+).
 import { Color, ManaProduced } from "@mtg-forge-ts/core";
+import type { ManaProductionRestriction } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import type { ManaPool } from "../../mana/mana-pool.js";
 import { effectRegistry } from "../effect-registry.js";
-import { evaluateParamRaw } from "../evaluate-param.js";
+import { evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
+
+/**
+ * Map the `Restriction$ <Tag>` param value to a ManaProductionRestriction.
+ * Returns "none" for unknown tags (defensive — we never want to silently
+ * change pool semantics on a typo).
+ */
+const parseRestriction = (raw: string | undefined): ManaProductionRestriction => {
+  switch (raw) {
+    case "CreatureSpells":
+      return "creatureSpells";
+    case "OnlyThisTurn":
+      return "onlyThisTurn";
+    case "MustSpendOrLoseLife":
+      return "mustSpendOrLoseLife";
+    case "ArtifactSpells":
+      return "artifactSpells";
+    case "NonCreatureNonActivated":
+      return "nonCreatureNonActivated";
+    default:
+      return "none";
+  }
+};
 
 /** Map a single mana-symbol string to a ManaProduced atom. */
 function parseProducedSymbol(
   sym: string,
   sourceId: import("@mtg-forge-ts/core").EntityId | null,
+  restriction: ManaProductionRestriction,
 ): ManaProduced {
-  // exactOptionalPropertyTypes: only spread sourceId when non-null.
+  // exactOptionalPropertyTypes: only spread sourceId when non-null and
+  // restriction when non-default.
   const srcOpt = sourceId !== null ? { sourceId } : {};
+  const restOpt = restriction !== "none" ? { restriction } : {};
+  const opts = { ...srcOpt, ...restOpt };
   switch (sym.toUpperCase()) {
     case "W":
-      return ManaProduced.colored(Color.White, srcOpt);
+      return ManaProduced.colored(Color.White, opts);
     case "U":
-      return ManaProduced.colored(Color.Blue, srcOpt);
+      return ManaProduced.colored(Color.Blue, opts);
     case "B":
-      return ManaProduced.colored(Color.Black, srcOpt);
+      return ManaProduced.colored(Color.Black, opts);
     case "R":
-      return ManaProduced.colored(Color.Red, srcOpt);
+      return ManaProduced.colored(Color.Red, opts);
     case "G":
-      return ManaProduced.colored(Color.Green, srcOpt);
+      return ManaProduced.colored(Color.Green, opts);
     case "C":
-      return ManaProduced.colorless(srcOpt);
+      return ManaProduced.colorless(opts);
     default: {
       // Numeric digit → that many colorless atoms (add them via caller loop).
       // Here we always return one colorless atom; caller handles multi-digit.
-      return ManaProduced.colorless(srcOpt);
+      return ManaProduced.colorless(opts);
     }
   }
 }
@@ -59,10 +86,22 @@ export class ManaEffect extends SpellAbilityEffect {
     const player = game.getPlayer(sa.controllerSeat);
     const pool = player.manaPool as ManaPool;
     const src = sa.sourceCardId;
+    // Wave 29 — `Restriction$ <Tag>` (Powerstone, Cabal Coffers, etc.)
+    // attaches a ManaProductionRestriction to every atom produced by
+    // this ability. Tags read by parseRestriction; "none" preserves
+    // pre-Wave-29 unrestricted behaviour for any ability without a
+    // Restriction$ param.
+    const restriction = parseRestriction(
+      hasParam(sa, "Restriction") ? evaluateParamRaw(sa, "Restriction") : undefined,
+    );
+    const colorlessOpts: { sourceId?: typeof src; restriction?: ManaProductionRestriction } = {
+      sourceId: src,
+    };
+    if (restriction !== "none") colorlessOpts.restriction = restriction;
 
     // "Any" → MVP: add one colorless. Full decision support deferred to SP3.
     if (produced === "Any") {
-      pool.add(ManaProduced.colorless({ sourceId: src }));
+      pool.add(ManaProduced.colorless(colorlessOpts));
       return;
     }
 
@@ -73,7 +112,7 @@ export class ManaEffect extends SpellAbilityEffect {
         .split(/\s+/)
         .filter((s) => s !== "");
       const choice = opts[0] ?? "C";
-      pool.add(parseProducedSymbol(choice, src));
+      pool.add(parseProducedSymbol(choice, src, restriction));
       return;
     }
 
@@ -84,10 +123,10 @@ export class ManaEffect extends SpellAbilityEffect {
       if (!Number.isNaN(n) && n > 0) {
         // Numeric generic mana → n colorless atoms.
         for (let i = 0; i < n; i++) {
-          pool.add(ManaProduced.colorless({ sourceId: src }));
+          pool.add(ManaProduced.colorless(colorlessOpts));
         }
       } else {
-        pool.add(parseProducedSymbol(sym, src));
+        pool.add(parseProducedSymbol(sym, src, restriction));
       }
     }
   }
