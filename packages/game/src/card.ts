@@ -247,6 +247,18 @@ export class Card {
   isAugment?: boolean;
   meldedFrom?: readonly EntityId[];
 
+  // Wave 34 — Battle card type. `protectorSeat` is the opponent chosen on
+  // ETB (CR 310.x) to defend the Battle (a Siege subtype Battle); the
+  // attack-target enumeration filters out attackers whose controller IS
+  // the protector. `battleDefeated` is stamped to true by the SBA path
+  // when Defense reaches 0 and the battle is exiled — paired with the
+  // canonical BattleDefeated event so triggers / replay can reconstruct
+  // the defeat moment without scanning zone-change events.
+  // Slots are `T | undefined = undefined` so biome's no-delete rule is
+  // satisfied (handlers can null them out without delete) and
+  // exactOptionalPropertyTypes is honoured.
+  protectorSeat: PlayerSeat | undefined = undefined;
+  battleDefeated: boolean | undefined = undefined;
   // Wave 33 — token-spawn overrides for Embalm / Eternalize (CR 702.131 /
   // 702.139). When a graveyard-recursion keyword spawns a token copy of the
   // source card, the token enters with characteristic overrides applied:

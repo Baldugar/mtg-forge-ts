@@ -161,9 +161,27 @@ export class SbaEngine {
       case "planeswalkerZeroLoyalty":
         yield* this.game.action.moveTo(action.cardId, ZoneType.Graveyard);
         return;
-      case "battleZeroDefense":
+      case "battleZeroDefense": {
+        // Wave 34 — CR 704.5s. Stamp battleDefeated, exile the battle, then
+        // emit BattleDefeated so triggers / replay observe the canonical
+        // defeat moment. Forge's "When defeated, exile and cast transformed"
+        // back-face cast is wired via the keyword-handler / back-face cast
+        // pipeline; the boolean + event give that pipeline the hook it
+        // needs. TODO(advanced): full multi-face support (cast back face
+        // free) lands when AlternateMode:DoubleFaced is fully plumbed.
+        const card = this.game.cards.get(action.cardId);
+        if (card) card.battleDefeated = true;
         yield* this.game.action.exile(action.cardId);
+        const defeatedBySeat = card?.protectorSeat;
+        yield {
+          kind: "event",
+          event: mkEvent("BattleDefeated", this.game.turn, this.game.phase, {
+            cardId: action.cardId,
+            ...(defeatedBySeat !== undefined ? { defeatedBySeat } : {}),
+          }),
+        };
         return;
+      }
       case "legendRule":
         yield* this.applyLegendRule(action);
         return;

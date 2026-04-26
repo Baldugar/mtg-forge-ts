@@ -33,6 +33,7 @@ import type {
 } from "@mtg-forge-ts/core";
 import {
   CounterType as CT,
+  CardType,
   GameStateIntegrityError,
   IllegalDecisionError,
   ZoneType as Zt,
@@ -495,6 +496,84 @@ export class GameAction {
             cause: discardCause,
           }),
         );
+      }
+    }
+    // Wave 34 — Battle / Planeswalker ETB stamping. When a permanent enters
+    // the battlefield, stamp the printed Loyalty / Defense as counters from
+    // PaperCard.definition. This is the engine-side ETB hook that mirrors
+    // Forge's CardFactoryUtil setup-phase loyalty/defense stamping for
+    // Planeswalkers and Battles. After Defense is stamped on a Battle, yield
+    // a protector-seat decision so the controller picks an opponent to
+    // defend the Battle (CR 310.x — Siege subtype). Single-opponent games
+    // auto-pick (no decision yielded) for determinism.
+    if (!moveOutcome.prevented && fromZone !== Zt.Battlefield) {
+      const card = game.cards.get(cardId);
+      if (card && card.zone === Zt.Battlefield) {
+        yield* this.applyEtbStamping(card);
+      }
+    }
+  }
+
+  // Wave 34 — ETB stamping for Loyalty / Defense counters and Battle
+  // protector-seat choice. Extracted from `moveTo` so the call site stays
+  // shallow and the logic is unit-testable.
+  private *applyEtbStamping(card: Card): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const def = card.paperCard.definition;
+    if (!def) return;
+    const types = def.types;
+    const isPlaneswalker = types?.has?.(CardType.Planeswalker) === true;
+    const isBattle = types?.has?.(CardType.Battle) === true;
+    // Stamp Loyalty counters for Planeswalkers (CR 306.5b — printed
+    // loyalty becomes the starting loyalty counters on ETB).
+    if (isPlaneswalker && def.loyalty !== undefined) {
+      const n = Number.parseInt(def.loyalty, 10);
+      if (Number.isFinite(n) && n > 0 && (card.counters.get(CT.Loyalty) ?? 0) === 0) {
+        yield* this.addCounter(card.id, CT.Loyalty, n);
+      }
+    }
+    // Stamp Defense counters for Battles (CR 310.7 — printed defense
+    // becomes the starting Defense counters on ETB).
+    if (isBattle && def.defense !== undefined) {
+      const n = Number.parseInt(def.defense, 10);
+      if (Number.isFinite(n) && n > 0 && (card.counters.get(CT.Defense) ?? 0) === 0) {
+        yield* this.addCounter(card.id, CT.Defense, n);
+      }
+    }
+    // Battle Siege — choose a protector. Auto-pick when there is exactly
+    // one opponent (deterministic, no decision yield needed). Multi-
+    // opponent games yield a `choosePlayer` decision restricted to the
+    // controller's opponents.
+    if (isBattle && card.protectorSeat === undefined) {
+      const opponents = game.players.filter((p) => p.seat !== card.controllerSeat).map((p) => p.seat);
+      if (opponents.length === 1) {
+        const only = opponents[0];
+        if (only !== undefined) card.protectorSeat = only;
+      } else if (opponents.length > 1) {
+        const rawResponse = yield {
+          kind: "decision",
+          request: {
+            kind: "choosePlayer",
+            sourceId: card.id,
+            restriction: "Player.Opponent",
+            min: 1,
+            max: 1,
+          },
+        };
+        const response = rawResponse as DecisionResponse | undefined;
+        if (response && response.kind === "choosePlayer" && response.chosen.length > 0) {
+          const chosen = response.chosen[0];
+          if (chosen !== undefined && opponents.includes(chosen)) {
+            card.protectorSeat = chosen;
+          } else {
+            // Fallback: first opponent (controller-deterministic).
+            const fallback = opponents[0];
+            if (fallback !== undefined) card.protectorSeat = fallback;
+          }
+        } else {
+          const fallback = opponents[0];
+          if (fallback !== undefined) card.protectorSeat = fallback;
+        }
       }
     }
   }

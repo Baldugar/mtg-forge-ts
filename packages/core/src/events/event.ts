@@ -1687,6 +1687,23 @@ export type GameEvent =
       readonly turn: number;
       readonly phase: PhaseStep;
       readonly payload: { readonly playerSeat: PlayerSeat };
+    }
+  // === Wave 34 — Battle card type ===
+  | {
+      // CR 704.5s / 310.x — fires when a Battle is defeated (its Defense
+      // counters reach 0 and SBA exiles it). Distinct from CardExiled in
+      // that this is the canonical "Battle defeated" pulse triggers
+      // observe (Forge T:Mode$ ChangesZone | Origin$ Battlefield |
+      // Destination$ Exile | ValidCard$ Card.Battle plus the cast-
+      // transformed back-face hookup).
+      readonly kind: "BattleDefeated";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly defeatedBySeat?: PlayerSeat;
+      };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
