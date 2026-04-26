@@ -22,7 +22,9 @@ import type { CostPartReceipt, CostPaymentContext } from "./cost-part.js";
 // C (colorless), S (snow), / (hybrid separator), and spaces.
 const MANA_SYMBOL_RE = /^[0-9XYZWUBRGCS/\s]+$/;
 const LIFE_RE = /^(\d+)\s+life$/i;
-const SAC_RE = /^sac\s+(.+)$/i;
+// Matches either "Sac <filter>" or "Sacrifice <filter>" (case-insensitive).
+// Wave 17b — Forge writes both forms; we recognise both as the Sacrifice cost.
+const SAC_RE = /^sac(?:rifice)?\s+(.+)$/i;
 // Matches "Discard" (bare) or "Discard CARDNAME" / "Discard <self>" — MVP:
 // self-discard only (source card). Type-targeted discard is Part D.
 const DISCARD_RE = /^discard(?:\s+(?:cardname|self|this\s+card))?$/i;

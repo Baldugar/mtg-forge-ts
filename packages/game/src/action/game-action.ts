@@ -1454,6 +1454,12 @@ export class GameAction {
         }
       }
       game.cards.set(id, card);
+      // Wave 17b — populate spellAbilities from the token's CardDefinition
+      // so artifact tokens (Treasure / Food / Clue / Blood / Powerstone)
+      // have their activated abilities reachable via activateAbility().
+      // No-op for cosmetic creature tokens whose `definition.abilities`
+      // is empty.
+      card.activateAbilitiesFromDefinition();
       const bf = game.getPlayer(params.controller).zones.get(Zt.Battlefield);
       if (!bf) {
         throw new GameStateIntegrityError(

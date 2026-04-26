@@ -25,15 +25,15 @@
 //
 // Scope MVP:
 //   - Pure cosmetic shape (name / types / PT / colors / keywords).
-//   - Activated abilities on the artifact tokens are stubbed as `[]` for
-//     this batch: Wave 1 of TokenScript$ resolution focuses on getting the
-//     shape correct so cards that read "create a Treasure token" no longer
-//     fail validation. The activated ability text is kept in the entry's
-//     `oracle` so UIs can display it; engine wiring of the abilities is
-//     deferred to a follow-up wave once `parseCard` is reachable from
-//     here without circular dependency concerns.
+//   - Wave 17b — the artifact-token quartet (Treasure / Food / Clue / Blood)
+//     plus Powerstone now carry hand-rolled activated AbilityAst entries
+//     so the tokens can actually be activated once they enter play. We
+//     emit AbilityAst directly (rather than running `parseCard` here) to
+//     keep this database a pure deterministic value with no parser
+//     dependency.
 import { CardType, Color, ColorSet, TypeLine, keywordIdFromDisplayName } from "@mtg-forge-ts/core";
 import type {
+  AbilityAst,
   ColorSet as ColorSetType,
   KeywordAst,
   Supertype,
@@ -63,11 +63,12 @@ export interface TokenEntry {
   /** Static keywords printed on the token (Flying, Vigilance, Decayed, …). */
   readonly keywords: readonly KeywordAst[];
   /**
-   * Activated / triggered abilities. MVP: empty for shape-only tokens;
-   * artifact tokens that need Mana / Draw / GainLife abilities will be
-   * wired in a follow-up wave once the parser is reachable here.
+   * Activated / triggered abilities. Wave 17b — artifact tokens carry
+   * hand-rolled `AbilityAst` entries; pure cosmetic creature tokens leave
+   * this empty. The runtime `Card.activateAbilitiesFromDefinition()` walks
+   * this list to construct live SpellAbility instances at token-creation.
    */
-  readonly abilities: readonly unknown[];
+  readonly abilities: readonly AbilityAst[];
   /** Printed reminder text (UI display only). */
   readonly oracle: string;
 }
@@ -114,6 +115,76 @@ const U = Color.Blue;
 const B = Color.Black;
 const R = Color.Red;
 const G = Color.Green;
+
+// ---------------------------------------------------------------------------
+// Activated-ability builders for the artifact-token quartet (Wave 17b)
+// ---------------------------------------------------------------------------
+//
+// Hand-rolled AbilityAst entries that mirror Forge's `tokenscripts/` source.
+// We emit the AST directly rather than reaching for `parseCard`: the cards
+// package is the parser package, so calling parseCard from inside its own
+// data layer would create a circular initialisation. Each builder produces
+// the same shape the parser would emit for the corresponding `A:` line.
+
+const lit = (raw: string): { kind: "literal"; raw: string } => ({ kind: "literal", raw });
+
+/** Treasure: `{T}, Sacrifice this token: Add one mana of any color.` */
+const treasureSacAbility = (): AbilityAst => ({
+  kind: "activated",
+  effect: {
+    handlerKey: "Mana",
+    params: { Produced: lit("Any"), Amount: lit("1") },
+  },
+  cost: { raw: "T, Sacrifice CARDNAME" },
+});
+
+/** Food: `{2}, {T}, Sacrifice this token: You gain 3 life.` */
+const foodSacAbility = (): AbilityAst => ({
+  kind: "activated",
+  effect: {
+    handlerKey: "GainLife",
+    params: { LifeAmount: lit("3"), Defined: lit("You") },
+  },
+  cost: { raw: "2, T, Sacrifice CARDNAME" },
+});
+
+/** Clue: `{2}, Sacrifice this token: Draw a card.` */
+const clueDrawAbility = (): AbilityAst => ({
+  kind: "activated",
+  effect: {
+    handlerKey: "Draw",
+    params: { NumCards: lit("1"), Defined: lit("You") },
+  },
+  cost: { raw: "2, Sacrifice CARDNAME" },
+});
+
+/**
+ * Blood: `{1}, {T}, Discard a card, Sacrifice this token: Draw a card.`
+ *
+ * MVP: the cost-payment grammar only models self-discard ("Discard
+ * CARDNAME"), not "Discard a card" target-selection. We omit the discard
+ * segment from the cost so the ability is activatable; oracle text on the
+ * entry preserves the full printed text. Wave 18 wires the discard-target
+ * decision yield and restores the canonical cost.
+ */
+const bloodDrawAbility = (): AbilityAst => ({
+  kind: "activated",
+  effect: {
+    handlerKey: "Draw",
+    params: { NumCards: lit("1"), Defined: lit("You") },
+  },
+  cost: { raw: "1, T, Sacrifice CARDNAME" },
+});
+
+/** Powerstone: `{T}: Add {C}.` (spend-restriction pending — see entry comment). */
+const powerstoneManaAbility = (): AbilityAst => ({
+  kind: "activated",
+  effect: {
+    handlerKey: "Mana",
+    params: { Produced: lit("C"), Amount: lit("1") },
+  },
+  cost: { raw: "T" },
+});
 
 // ---------------------------------------------------------------------------
 // Entries
@@ -476,7 +547,7 @@ const entries: readonly TokenEntry[] = [
   },
 
   // --- non-creature artifact tokens (Treasure / Food / Clue / Blood / Powerstone) ---
-  // Activated abilities are intentionally empty for MVP — see file header.
+  // Activated abilities are hand-rolled AbilityAst entries (Wave 17b).
   {
     id: "c_a_treasure_sac",
     name: "Treasure Token",
@@ -484,7 +555,7 @@ const entries: readonly TokenEntry[] = [
     colors: ColorSet.empty(),
     manaCost: null,
     keywords: [],
-    abilities: [],
+    abilities: [treasureSacAbility()],
     oracle: "{T}, Sacrifice this token: Add one mana of any color.",
   },
   {
@@ -494,7 +565,7 @@ const entries: readonly TokenEntry[] = [
     colors: ColorSet.empty(),
     manaCost: null,
     keywords: [],
-    abilities: [],
+    abilities: [foodSacAbility()],
     oracle: "{2}, {T}, Sacrifice this token: You gain 3 life.",
   },
   {
@@ -504,7 +575,7 @@ const entries: readonly TokenEntry[] = [
     colors: ColorSet.empty(),
     manaCost: null,
     keywords: [],
-    abilities: [],
+    abilities: [clueDrawAbility()],
     oracle: "{2}, Sacrifice this token: Draw a card.",
   },
   {
@@ -514,7 +585,11 @@ const entries: readonly TokenEntry[] = [
     colors: ColorSet.empty(),
     manaCost: null,
     keywords: [],
-    abilities: [],
+    abilities: [bloodDrawAbility()],
+    // Forge's printed Blood text includes a "Discard a card" cost segment;
+    // the engine's Discard cost-part currently only models self-discard,
+    // so MVP omits the discard segment from the activatable cost. The
+    // oracle line below preserves the full printed text for UI display.
     oracle: "{1}, {T}, Discard a card, Sacrifice this token: Draw a card.",
   },
   {
@@ -524,7 +599,12 @@ const entries: readonly TokenEntry[] = [
     colors: ColorSet.empty(),
     manaCost: null,
     keywords: [],
-    abilities: [],
+    abilities: [powerstoneManaAbility()],
+    // TODO(spend-restriction): {C} mana from a Powerstone can't be spent on
+    // creature spells / activated abilities of creature sources (CR
+    // 107.4d). The cost-payment solver does not yet honour ManaProduced
+    // restrictions on activated abilities, so MVP emits unrestricted {C}.
+    // Track via Wave 18 when the solver gains restriction-aware filtering.
     oracle: "{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.",
   },
 ];
