@@ -28,3 +28,5 @@ export * from "./mill-replacement.js";
 export * from "./destroy-replacement.js";
 // Wave 19 — final corpus unknown replacement (BeginPhase)
 export * from "./begin-phase-replacement.js";
+// Wave 20 — long-tail corpus replacements (13 handlers)
+export * from "./wave-20-replacements.js";

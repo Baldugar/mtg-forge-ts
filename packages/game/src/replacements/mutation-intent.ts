@@ -50,6 +50,8 @@ export const INTENT_KINDS = {
   Transform: "transform",
   BeginPhase: "beginPhase",
   BeginTurn: "beginTurn",
+  // SP3 Wave 20 — long-tail replacement intents matching Forge ReplacementType.
+  CopySpell: "copySpell",
 } as const;
 
 export type IntentKind = (typeof INTENT_KINDS)[keyof typeof INTENT_KINDS];
@@ -275,6 +277,15 @@ export interface BeginTurnIntent {
   readonly kind: "beginTurn";
   readonly seat: PlayerSeat;
 }
+// SP3 Wave 20 — Forge "CopySpell" replacement target. Fires when a spell
+// on the stack would be copied; the replacement may modify the copy
+// behaviour (Twincast-style "instead, copy twice", or "instead, do not
+// copy") and applies before the actual copy is materialized.
+export interface CopySpellIntent {
+  readonly kind: "copySpell";
+  readonly originalStackItemId: EntityId;
+  readonly seat: PlayerSeat;
+}
 
 // Union of all known intent shapes (non-exhaustive; GameAction may emit
 // additional kinds — replacements that don't recognize the kind should
@@ -319,4 +330,5 @@ export type KnownIntent =
   | TurnFaceUpIntent
   | TransformIntent
   | BeginPhaseIntent
-  | BeginTurnIntent;
+  | BeginTurnIntent
+  | CopySpellIntent;
