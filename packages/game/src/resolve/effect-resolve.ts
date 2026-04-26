@@ -14,7 +14,17 @@
 // If the condition is now false, the trigger fizzles without running its
 // body; still pops the stack slot and emits StackItemResolved(fizzled=true).
 import type { EntityId, GameEvent, TriggeredAbility } from "@mtg-forge-ts/core";
-import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import { CARD_TYPE_IS_PERMANENT, type CardType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+
+// Wave 10 — set of CardTypes that classify as permanents (CR 110.4). Used
+// in the spell-resolution path to route permanent spells to Battlefield
+// (CR 608.3a) and non-permanent spells to Graveyard (CR 608.2g) when
+// provenance.alternativeZoneDestination doesn't already pin a destination.
+const PERMANENT_TYPES: ReadonlySet<CardType> = new Set(
+  (Object.entries(CARD_TYPE_IS_PERMANENT) as readonly [CardType, boolean][])
+    .filter(([, isPerm]) => isPerm)
+    .map(([t]) => t),
+);
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
@@ -118,7 +128,61 @@ export function* resolveStackItem(game: Game, item: StackItem): Generator<Engine
       // card to move.
       return;
     case "spell": {
-      const destination = item.provenance.alternativeZoneDestination ?? ZoneType.Graveyard;
+      // Wave 10 — Bestow (CR 702.103). A bestowed creature spell becomes
+      // an Aura with enchant creature; on resolution it enters the
+      // battlefield attached to the chosen target rather than as a stand-
+      // alone creature. We detect a bestow-cast via provenance, set the
+      // `bestowed` flag, move the source to its controller's battlefield,
+      // then attach it to the target.
+      if (item.provenance.altCostUsed === "Bestow") {
+        const source = game.cards.get(item.sourceCardId);
+        if (source) {
+          source.bestowed = true;
+          // Bump epoch BEFORE moveTo so the layer cache reflects the new
+          // bestowed flag when zone-activation registers the source's
+          // intrinsic statics (Boon Satyr's +4/+2 to enchanted creature).
+          game.layerEngine.bumpEpoch("bestow-set");
+        }
+        yield* game.action.moveTo(item.sourceCardId, ZoneType.Battlefield);
+        // Attach to chosen target. item.targets is the TargetChoices-shaped
+        // record; we lift the first card-typed entry. If targets are
+        // missing or a player ref slipped in, the bestow attempt fizzles
+        // softly — the card is on the battlefield as a bestow-flagged
+        // permanent without a valid target, and the SBA pipeline (Wave 10
+        // bestowAuraDetach path) will collapse it back to creature form.
+        const targets = item.targets as
+          | readonly { readonly kind: string; readonly id?: EntityId }[]
+          | null
+          | undefined;
+        const firstCardTarget = Array.isArray(targets)
+          ? targets.find((t): t is { readonly kind: "card"; readonly id: EntityId } => t.kind === "card")
+          : undefined;
+        if (firstCardTarget) {
+          yield* game.action.attach(item.sourceCardId, firstCardTarget.id, "cast");
+        }
+        return;
+      }
+      // For permanent spells, the source enters the battlefield on
+      // resolution (CR 608.3a). For non-permanent spells (instant/sorcery)
+      // it goes to its owner's graveyard (CR 608.2g). The provenance
+      // override (alternativeZoneDestination) wins when set — flashback
+      // sends to Exile, foretell may set Battlefield/Graveyard explicitly,
+      // etc. — and we only fall through to the default-from-types path
+      // when no override is recorded.
+      const source = game.cards.get(item.sourceCardId);
+      const def = source?.paperCard.definition;
+      let isPermanent = false;
+      if (def) {
+        for (const t of def.types.types) {
+          if (PERMANENT_TYPES.has(t)) {
+            isPermanent = true;
+            break;
+          }
+        }
+      }
+      const destination =
+        item.provenance.alternativeZoneDestination ??
+        (isPermanent ? ZoneType.Battlefield : ZoneType.Graveyard);
       yield* game.action.moveTo(item.sourceCardId, destination);
       return;
     }

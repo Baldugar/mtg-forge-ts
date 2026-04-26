@@ -120,9 +120,8 @@ describe("AbilityCastTrigger", () => {
       const ta = handler.build(mkAst("Card"), mkCtx());
       const zoneChange = mkEvent("CardChangedZone", 1, PhaseStep.Main1, {
         cardId: SOURCE_ID,
-        from: 0 as never,
-        to: 1 as never,
-        ownerSeat: CONTROLLER,
+        fromZone: 0 as never,
+        toZone: 1 as never,
       });
       expect(ta.matches(zoneChange)).toBe(false);
     });
