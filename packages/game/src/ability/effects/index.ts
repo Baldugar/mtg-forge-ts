@@ -101,3 +101,6 @@ export * from "./plot.js";
 // keyword handlers; registered as handlerKey "Crew" / "Saddle".
 export * from "./crew.js";
 export * from "./saddle.js";
+// Wave 26 — Suspend special-action resolver (Time Spiral / CR 702.61).
+// Synthesized by SuspendKeywordHandler; registered as handlerKey "Suspend".
+export * from "./suspend.js";

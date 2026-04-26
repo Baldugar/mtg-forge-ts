@@ -251,6 +251,10 @@ export class CastPipeline {
           ...(ctx.xValue !== undefined ? { xValue: ctx.xValue } : {}),
         }),
       );
+      // Wave 26 — Conspire (CR 702.78). Resolved after the spell is on the
+      // stack so Stack.copy can clone the live StackItem; if the caster taps
+      // two creatures sharing a color with the spell, push a copy alongside.
+      yield* this.stepChooseConspireTapAndCopy(ctx, item);
       return item;
     } catch (err) {
       yield* this.abort(ctx, err);
@@ -820,6 +824,102 @@ export class CastPipeline {
     }
 
     ctx.convokeImproviseTaps = [...response.tapIds];
+  }
+
+  /**
+   * Wave 26 — Conspire (CR 702.78, Shadowmoor). Runs AFTER the spell is on
+   * the stack (so Stack.copy can clone the live StackItem). If the source
+   * card carries the conspire keyword and at least two untapped creatures
+   * sharing a color with the spell are available, yield a chooseConspireTap
+   * decision. If the caster taps two such creatures, push a copy of the
+   * spell onto the stack via Stack.copy.
+   *
+   * MVP scope:
+   *   - "Sharing a color" is approximated via the spell's color set
+   *     (chars.colors) intersected with each creature's color set. If the
+   *     spell is colorless, no creatures qualify.
+   *   - Tap responses are validated for length (must be 0 or 2) and
+   *     membership (each id MUST be in `eligible`).
+   *   - The copy is pushed with the same controller as the original; CR
+   *     702.78b allows the caster to choose new targets — for MVP the copy
+   *     inherits the original's targets verbatim (Stack.copy default).
+   *
+   * Skipped when the card lacks "conspire" or fewer than 2 eligible
+   * creatures exist.
+   */
+  protected *stepChooseConspireTapAndCopy(
+    ctx: CastContext,
+    item: StackItem,
+  ): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    if (card.keywords?.has("conspire") !== true) return;
+
+    const sourceChars = this.game.layerEngine.computeCharacteristics(ctx.sourceCardId);
+    // Conspire requires a colored spell — colorless spells have no color to
+    // share with creatures and cannot trigger the copy.
+    if (sourceChars.colors.size === 0) return;
+
+    // Enumerate eligible: untapped creatures the caster controls that share
+    // at least one color with the source spell.
+    const eligible: EntityId[] = [];
+    for (const [id, c] of this.game.cards) {
+      if (c.controllerSeat !== ctx.castingPlayer) continue;
+      if (c.zone !== Zt.Battlefield) continue;
+      if (c.tapped) continue;
+      if (id === ctx.sourceCardId) continue;
+      const chars = this.game.layerEngine.computeCharacteristics(id);
+      if (!chars.types.has(CardType.Creature)) continue;
+      if (chars.colors.intersect(sourceChars.colors).size === 0) continue;
+      eligible.push(id);
+    }
+    if (eligible.length < 2) return;
+
+    const response = (yield {
+      kind: "decision",
+      request: {
+        kind: "chooseConspireTap",
+        playerSeat: ctx.castingPlayer,
+        sourceCardId: ctx.sourceCardId,
+        eligible,
+      },
+    }) as { readonly kind: "chooseConspireTap"; readonly tapIds: readonly EntityId[] };
+
+    if (response.tapIds.length === 0) return;
+    if (response.tapIds.length !== 2) {
+      throw new IllegalDecisionError(
+        `chooseConspireTap: must tap exactly 2 creatures (got ${response.tapIds.length})`,
+      );
+    }
+    const eligibleSet = new Set(eligible);
+    const seen = new Set<EntityId>();
+    for (const tid of response.tapIds) {
+      if (!eligibleSet.has(tid)) {
+        throw new IllegalDecisionError(`chooseConspireTap: ${tid} not eligible`);
+      }
+      if (seen.has(tid)) {
+        throw new IllegalDecisionError(`chooseConspireTap: duplicate id ${tid}`);
+      }
+      seen.add(tid);
+    }
+
+    // Tap each chosen creature and emit CardTapped for parity with the
+    // crew-saddle taps + ManaAbility taps elsewhere in the engine.
+    for (const tid of response.tapIds) {
+      const c = this.game.cards.get(tid);
+      if (!c) continue;
+      c.tapped = true;
+      yield this.game.emitEvent(
+        mkEvent("CardTapped", this.game.turn, this.game.phase, {
+          cardId: tid,
+          sourceId: ctx.sourceCardId,
+        }),
+      );
+    }
+
+    // Push a copy of the live stack item alongside the original. CR 707.10:
+    // copies don't fire SpellCast triggers (Stack.copy stamps isCast=false).
+    this.game.sharedZones.stack.copy(item.id, ctx.castingPlayer, this.game);
   }
 
   /**

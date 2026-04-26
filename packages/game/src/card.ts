@@ -158,6 +158,28 @@ export class Card {
   // change types.
   crewedUntilEot?: boolean;
   saddledUntilEot?: boolean;
+  // Wave 26 — Suspend (CR 702.61). When the suspend special-action exiles
+  // the card from hand, `suspendedCounters` is stamped to N (the time-counter
+  // count) and `hasteFromSuspend` is set when the eventual free-cast resolves
+  // (the spell gains haste until you let go of it). The upkeep tick decrement
+  // and free-cast routing live in altcost/suspend.ts + a tick helper.
+  suspendedCounters?: number;
+  hasteFromSuspend?: boolean;
+  // Wave 26 — Champion (CR 702.71). When a championing creature ETBs, it
+  // exiles a chosen target until it leaves; LTB returns the exiled target.
+  // `championedTarget` (set on the championer) and `championedBy` (back-
+  // pointer set on the exiled card) form the link.
+  championedTarget?: EntityId;
+  championedBy?: EntityId;
+  // Wave 26 — Echo (CR 702.30). On entry the echo cost is stamped; the
+  // upkeep trigger consults this and, if unpaid, sacrifices the card.
+  // `echoOwedCost` is the literal mana-cost string from K:Echo:<cost>.
+  echoOwedCost?: string;
+  // Wave 26 — Cumulative Upkeep (CR 702.24). Each own-upkeep adds 1 age
+  // counter, and the controller pays cost × age counters or sacrifices.
+  // Stored as a plain number rather than the counters Map so SBAs don't
+  // pick it up under the wrong CounterType.
+  ageCounters?: number;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

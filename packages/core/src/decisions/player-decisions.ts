@@ -500,6 +500,19 @@ export type DecisionRequest =
       readonly sourceCardId: EntityId;
       readonly requiredPower: number;
       readonly eligible: readonly EntityId[];
+    }
+  | {
+      // Wave 26 — Conspire (CR 702.78, Shadowmoor). As a player casts a
+      // spell with conspire, they may tap two untapped creatures sharing a
+      // color with the spell. If they do, the spell is copied. The cast
+      // pipeline yields this decision after cost is determined; `eligible`
+      // is the subset of untapped controlled creatures sharing at least one
+      // color with the source spell. The responder returns either zero or
+      // exactly two ids (any other count is rejected as illegal).
+      readonly kind: "chooseConspireTap";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceCardId: EntityId;
+      readonly eligible: readonly EntityId[];
     };
 
 /**
@@ -671,6 +684,12 @@ export type DecisionResponse =
   // crewing/saddling.
   | {
       readonly kind: "chooseCrewSaddleCreatures";
+      readonly tapIds: readonly EntityId[];
+    }
+  // Wave 26 — Conspire: which two untapped creatures to tap. Empty array
+  // declines; any non-empty array MUST have length 2 (engine enforces).
+  | {
+      readonly kind: "chooseConspireTap";
       readonly tapIds: readonly EntityId[];
     };
 

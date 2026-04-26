@@ -7,3 +7,4 @@ export * from "./foretell.js";
 export * from "./madness.js";
 export * from "./overload.js";
 export * from "./plot.js";
+export * from "./suspend.js";

@@ -230,6 +230,9 @@ export class RandomLegalController implements PlayerController {
       // synthesized activated ability fizzles cleanly when tapIds is empty.
       case "chooseCrewSaddleCreatures":
         return { kind: "chooseCrewSaddleCreatures", tapIds: [] };
+      // Wave 26 — Conspire: random-legal declines (no taps → no copy).
+      case "chooseConspireTap":
+        return { kind: "chooseConspireTap", tapIds: [] };
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(
