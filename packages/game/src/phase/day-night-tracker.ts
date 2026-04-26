@@ -45,6 +45,11 @@ export const noteSpellCast = (game: Game, seat: PlayerSeat, sourceCardId: number
   if (chars.types.has(CardType.Land)) return;
   const prior = game.flags.spellsCastThisTurn.get(seat) ?? 0;
   game.flags.spellsCastThisTurn.set(seat, prior + 1);
+  // Wave 51 — Count$YouCastThisGame tracker. Per-game counter, never reset
+  // until the next game. Mirrors spellsCastThisTurn but never zeroed by
+  // noteTurnEnd / phase-handler.
+  const totalPrior = game.flags.spellsCastThisGame.get(seat) ?? 0;
+  game.flags.spellsCastThisGame.set(seat, totalPrior + 1);
 };
 
 /**

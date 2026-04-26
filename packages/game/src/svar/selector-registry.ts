@@ -14,6 +14,10 @@ class SelectorRegistry {
   lookup(kind: string): SelectorFn | undefined {
     return this.byKind.get(kind);
   }
+
+  has(kind: string): boolean {
+    return this.byKind.has(kind);
+  }
 }
 
 export const selectorRegistry = new SelectorRegistry();

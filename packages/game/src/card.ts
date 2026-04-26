@@ -342,6 +342,32 @@ export class Card {
   // for multikicker. Both slots are read by Wave 51's Count$Kicked SVar.
   wasKicked: boolean | undefined = undefined;
   kickerCount: number | undefined = undefined;
+  // Wave 51 — alt-cost / on-cast condition flags consumed by SVar
+  // conditional ternaries (Count$<Flag>.<else>.<then>). Each slot is
+  // stamped by the corresponding cost handler when payment succeeds and
+  // is read by the Wave 51 conditional-ternary dispatcher.
+  //
+  //   foretold        : true once the card has been cast via the foretell
+  //                     alt-cost (set by foretell-altcost.ts on confirm).
+  //   bargainPaid     : true if the controller satisfied Bargain (sac an
+  //                     artifact, enchantment, or token) at cast time.
+  //   surgePaid       : true if the surge alt-cost was paid (another spell
+  //                     was cast this turn before this one).
+  //   adamantColor    : the color spent ≥3 of when Adamant fired; undefined
+  //                     if Adamant did not trigger.
+  //   madnessCast     : true if the card was cast via the Madness alt-cost.
+  //   spectacleCast   : true if cast via Spectacle.
+  //   freerunningCast : true if cast via Freerunning.
+  //
+  // Slots are typed `T | undefined = undefined` so handlers can clear via
+  // `= undefined` (biome no-delete + exactOptionalPropertyTypes).
+  foretold: boolean | undefined = undefined;
+  bargainPaid: boolean | undefined = undefined;
+  surgePaid: boolean | undefined = undefined;
+  adamantColor: Color | undefined = undefined;
+  madnessCast: boolean | undefined = undefined;
+  spectacleCast: boolean | undefined = undefined;
+  freerunningCast: boolean | undefined = undefined;
   // Wave 49 — Ward (CR 702.21d): cost string stamped by
   // WardKeywordHandler. Read by the ward trigger's resolver when a
   // CardTargeted event names this card and the targeting source is

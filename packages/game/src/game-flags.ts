@@ -78,6 +78,30 @@ export interface GameFlags {
   // turn was just completed so the upkeep logic knows whose count to read.
   lastTurnSpellsCast: Map<PlayerSeat, number>;
   lastTurnActiveSeat: PlayerSeat | null;
+  // Wave 51 — per-turn / per-game stat trackers backing the matching SVar
+  // selectors (Count$YouDrewThisTurn, Count$LifeYouLostThisTurn, etc.).
+  // All maps are reset on TurnEnded by phase-handler. They are NOT
+  // serialized — restoring mid-turn from a snapshot resets them to empty,
+  // which is acceptable because their consumers (SVar evaluators) re-read
+  // live counts and snapshot tests don't span turns.
+  cardsDrawnThisTurn: Map<PlayerSeat, number>;
+  lifeGainedThisTurn: Map<PlayerSeat, number>;
+  lifeLostThisTurn: Map<PlayerSeat, number>;
+  cardsEnteredThisTurn: Map<PlayerSeat, number>;
+  lastTurnCardsEntered: Map<PlayerSeat, number>;
+  attackersDeclaredThisTurn: Map<PlayerSeat, number>;
+  surveiledThisTurn: Map<PlayerSeat, number>;
+  flippedCoinsThisTurn: Map<PlayerSeat, number>;
+  rolledDiceThisTurn: Map<PlayerSeat, number[]>;
+  countersRemovedThisTurn: number;
+  leftGraveyardThisTurn: Set<EntityId>;
+  // Wave 51 — global "a creature died this turn" counter for Morbid. Forge
+  // tracks this globally (any creature dying anywhere on the battlefield).
+  // Reset on TurnEnded.
+  creaturesDiedThisTurn: number;
+  // Wave 51 — per-game spell cast counter (Count$YouCastThisGame). Never
+  // resets across turns; only reset on game start.
+  spellsCastThisGame: Map<PlayerSeat, number>;
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -111,4 +135,18 @@ export const createDefaultFlags = (): GameFlags => ({
   lastTurnSpellsCast: new Map(),
   lastTurnActiveSeat: null,
   undercityRoom: 0,
+  // Wave 51 — per-turn / per-game stat trackers.
+  cardsDrawnThisTurn: new Map(),
+  lifeGainedThisTurn: new Map(),
+  lifeLostThisTurn: new Map(),
+  cardsEnteredThisTurn: new Map(),
+  lastTurnCardsEntered: new Map(),
+  attackersDeclaredThisTurn: new Map(),
+  surveiledThisTurn: new Map(),
+  flippedCoinsThisTurn: new Map(),
+  rolledDiceThisTurn: new Map(),
+  countersRemovedThisTurn: 0,
+  leftGraveyardThisTurn: new Set(),
+  creaturesDiedThisTurn: 0,
+  spellsCastThisGame: new Map(),
 });

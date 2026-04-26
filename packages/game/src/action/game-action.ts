@@ -272,6 +272,11 @@ export class GameAction {
           hand.add(removed);
           const card = game.cards.get(removed);
           if (card) card.zone = Zt.Hand;
+          // Wave 51 — Count$YouDrewThisTurn tracker. Increment on actual
+          // draw (not on a replaced/intercepted draw — onApplied only fires
+          // when the canonical draw goes through).
+          const prior = game.flags.cardsDrawnThisTurn.get(seat) ?? 0;
+          game.flags.cardsDrawnThisTurn.set(seat, prior + 1);
         },
         (_final) =>
           mkEvent("CardDrawn", game.turn, game.phase, {
@@ -299,6 +304,18 @@ export class GameAction {
       intent,
       (final) => {
         player.life = player.life + final.delta;
+        // Wave 51 — Count$LifeYouGainedThisTurn / LifeYouLostThisTurn /
+        // LifeOppsLostThisTurn trackers. Increment per-controller maps based
+        // on the (possibly replaced) delta. Damage-cause life loss IS counted
+        // as life lost (CR 119.3 — damage causes loss of life), matching
+        // Forge's accounting.
+        if (final.delta > 0) {
+          const prior = game.flags.lifeGainedThisTurn.get(final.seat) ?? 0;
+          game.flags.lifeGainedThisTurn.set(final.seat, prior + final.delta);
+        } else if (final.delta < 0) {
+          const prior = game.flags.lifeLostThisTurn.get(final.seat) ?? 0;
+          game.flags.lifeLostThisTurn.set(final.seat, prior + -final.delta);
+        }
       },
       (final) => {
         // oldLife/newLife derived at emit-time from the final (possibly
@@ -496,6 +513,32 @@ export class GameAction {
         // when `fromZone === Battlefield` and the destination is anything
         // else (including the battlefield → null controller edge case in
         // token-ceases-to-exist SBA). Reset at turn end by PhaseHandler.
+        // Wave 51 — Count$ThisTurnEntered tracker. Battlefield ETB
+        // increments the per-controller "cards entered the battlefield this
+        // turn" counter (controller of record at the moment of entry).
+        if (fromZone !== Zt.Battlefield && final.toZone === Zt.Battlefield) {
+          const seatForEntry = final.toSeat;
+          if (seatForEntry !== null) {
+            const prior = game.flags.cardsEnteredThisTurn.get(seatForEntry) ?? 0;
+            game.flags.cardsEnteredThisTurn.set(seatForEntry, prior + 1);
+          }
+        }
+        // Wave 51 — Count$LeftGraveyardThisTurn tracker. Any departure FROM
+        // a graveyard is recorded; reset on TurnEnded.
+        if (fromZone === Zt.Graveyard && final.toZone !== Zt.Graveyard) {
+          game.flags.leftGraveyardThisTurn.add(final.cardId);
+        }
+        // Wave 51 — Morbid (creaturesDiedThisTurn). A "death" is a creature
+        // moving from Battlefield → Graveyard (CR 700.4). Count global,
+        // matching Forge.
+        if (
+          fromZone === Zt.Battlefield &&
+          final.toZone === Zt.Graveyard &&
+          card &&
+          card.paperCard.definition?.types?.has(CardType.Creature) === true
+        ) {
+          game.flags.creaturesDiedThisTurn += 1;
+        }
         if (fromZone === Zt.Battlefield && final.toZone !== Zt.Battlefield) {
           game.flags.leftBattlefieldThisTurn.add(final.cardId);
           // SP2 Task 78 (fix 2) — clear the deathtouch-damage flag when
@@ -1034,6 +1077,10 @@ export class GameAction {
         const next = Math.max(0, current - final.amount);
         if (next === 0) c.counters.delete(final.counterType);
         else c.counters.set(final.counterType, next);
+        // Wave 51 — Count$CountersRemovedThisTurn tracker. Increment by the
+        // ACTUAL removed amount (current - next), capped by what was on the
+        // card. Reset on TurnEnded.
+        game.flags.countersRemovedThisTurn += current - next;
         // Counter change → bump. The pre-check above plus this guard
         // ensure we only reach state-mutation on an observable change.
         game.layerEngine.bumpEpoch("counter");
@@ -1490,6 +1537,11 @@ export class GameAction {
       const card = game.cards.get(gid);
       if (card) card.zone = Zt.Graveyard;
     }
+    // Wave 51 — Count$YouSurveilThisTurn tracker. Increment by the actual
+    // number of cards examined (not just those moved to graveyard); reset
+    // on TurnEnded.
+    const priorSurveiled = game.flags.surveiledThisTurn.get(seat) ?? 0;
+    game.flags.surveiledThisTurn.set(seat, priorSurveiled + revealed.length);
     yield {
       kind: "event",
       event: mkEvent("Surveil", game.turn, game.phase, {

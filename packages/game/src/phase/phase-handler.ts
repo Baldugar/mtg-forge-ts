@@ -97,6 +97,24 @@ export class PhaseHandler {
     // Wave 32 — Revolt's per-controller counter resets each turn alongside
     // the existing per-turn tracking (CR-style "this turn" predicates).
     game.flags.permanentsLeftBfThisTurn.clear();
+    // Wave 51 — per-turn stat trackers reset alongside the rest. Snapshot
+    // cardsEnteredThisTurn → lastTurnCardsEntered FIRST so the next turn's
+    // Count$LastTurnEntered selector reads the just-finished turn's value.
+    game.flags.lastTurnCardsEntered.clear();
+    for (const [seat, n] of game.flags.cardsEnteredThisTurn) {
+      game.flags.lastTurnCardsEntered.set(seat, n);
+    }
+    game.flags.cardsDrawnThisTurn.clear();
+    game.flags.lifeGainedThisTurn.clear();
+    game.flags.lifeLostThisTurn.clear();
+    game.flags.cardsEnteredThisTurn.clear();
+    game.flags.attackersDeclaredThisTurn.clear();
+    game.flags.surveiledThisTurn.clear();
+    game.flags.flippedCoinsThisTurn.clear();
+    game.flags.rolledDiceThisTurn.clear();
+    game.flags.countersRemovedThisTurn = 0;
+    game.flags.leftGraveyardThisTurn.clear();
+    game.flags.creaturesDiedThisTurn = 0;
     // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
     // spell-cast counts into lastTurnSpellsCast + record whose turn just
     // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the

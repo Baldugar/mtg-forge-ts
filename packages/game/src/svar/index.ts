@@ -15,3 +15,6 @@ import "./selectors/arithmetic.js";
 import "./selectors/domain.js";
 import "./selectors/common-counts.js";
 import "./selectors/wave42-selectors.js";
+import "./selectors/conditions.js";
+import "./selectors/card-state.js";
+import "./selectors/turn-stats.js";

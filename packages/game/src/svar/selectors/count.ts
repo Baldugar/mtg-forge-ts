@@ -50,10 +50,22 @@ const splitArgHead = (arg: string): string => {
   let i = 0;
   for (; i < arg.length; i++) {
     const ch = arg.charCodeAt(i);
-    // 0x2E = '.', 0x20 = ' '
-    if (ch === 0x2e || ch === 0x20) break;
+    // 0x2E = '.', 0x20 = ' ', 0x5F = '_' (Wave 51 — YouRolledThisTurn_<face>
+    // and similar suffix-bearing identifiers split on underscore).
+    if (ch === 0x2e || ch === 0x20 || ch === 0x5f) break;
   }
   return arg.slice(0, i);
+};
+
+// Wave 51 — conditional-ternary callback. Imported lazily via a setter so
+// count.ts has no compile-time dependency on selectors/conditions.ts (the
+// reverse import would create a cycle: conditions.ts imports countArgRegistry
+// from this module). conditions.ts calls registerTernaryHandler at module
+// load to wire itself in. Returns `undefined` when the form doesn't match.
+type TernaryHandler = (arg: string, ctx: SvarContext) => number | undefined;
+let ternaryHandler: TernaryHandler | undefined = undefined;
+export const registerTernaryHandler = (fn: TernaryHandler): void => {
+  ternaryHandler = fn;
 };
 
 selectorRegistry.register("Count", (ast, ctx) => {
@@ -61,6 +73,15 @@ selectorRegistry.register("Count", (ast, ctx) => {
   if (arg === "xPaid") return ctx.xValue ?? 0;
   const n = Number(arg);
   if (!Number.isNaN(n)) return n;
+  // Wave 51 — Forge conditional ternary `Count$<Flag>.<else>.<then>`. Try
+  // BEFORE the per-arg registry so flag names whose registry entries don't
+  // exist (Threshold, Hellbent, etc.) reach the conditions evaluator.
+  // Direct arg-registry hits (e.g. "Devotion.Black", "Mountains") still
+  // win because the regex requires TWO `.<int>` segments.
+  if (ternaryHandler !== undefined) {
+    const tern = ternaryHandler(arg, ctx);
+    if (tern !== undefined) return tern;
+  }
   const fn = countArgRegistry.lookup(arg);
   if (fn) return fn(ast, ctx);
   // Wave 42 — compound-arg fallback. Dispatch by family head so handlers
