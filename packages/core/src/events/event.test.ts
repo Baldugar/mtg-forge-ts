@@ -191,6 +191,13 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "SpellAbilityCopied",
   "GiftPromised",
   "CreatureDevoured",
+  // Wave 22 — final corpus long-tail trigger events (6)
+  "CardChampioned",
+  "CardStationed",
+  "AttractionVisited",
+  "CardTrained",
+  "CardsUntappedAll",
+  "PrizeClaimed",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -363,12 +370,19 @@ const ALL_KINDS_MAP = {
   SpellAbilityCopied: true,
   GiftPromised: true,
   CreatureDevoured: true,
+  // Wave 22 — final corpus long-tail trigger events (6)
+  CardChampioned: true,
+  CardStationed: true,
+  AttractionVisited: true,
+  CardTrained: true,
+  CardsUntappedAll: true,
+  PrizeClaimed: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 159 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18)", () => {
-    expect(EXPECTED_KINDS.length).toBe(159);
-    expect(new Set(EXPECTED_KINDS).size).toBe(159);
+  it("has 165 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6)", () => {
+    expect(EXPECTED_KINDS.length).toBe(165);
+    expect(new Set(EXPECTED_KINDS).size).toBe(165);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -583,6 +597,13 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     SpellAbilityCopied: { originalStackItemId: id(1), copyStackItemId: id(2) },
     GiftPromised: { fromSeat: seat0, toSeat: seat1 },
     CreatureDevoured: { devourerId: id(1), devouredIds: [id(2)] },
+    // Wave 22 payloads
+    CardChampioned: { championerId: id(1), championedId: id(2) },
+    CardStationed: { vehicleId: id(1), stationerIds: [id(2)] },
+    AttractionVisited: { attractionId: id(1), playerSeat: seat0 },
+    CardTrained: { cardId: id(1) },
+    CardsUntappedAll: { cardIds: [id(1), id(2)] },
+    PrizeClaimed: { playerSeat: seat0 },
   };
 
   for (const kind of EXPECTED_KINDS) {

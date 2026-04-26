@@ -1630,6 +1630,63 @@ export type GameEvent =
       readonly turn: number;
       readonly phase: PhaseStep;
       readonly payload: { readonly devourerId: EntityId; readonly devouredIds: readonly EntityId[] };
+    }
+  // === Wave 22 — final corpus long-tail trigger events ===
+  // WHY: each kind backs one of the 14 Wave 22 trigger handlers. As with
+  // Waves 16/18/19/20/21, tests synth-emit them today; engine-side emission is
+  // wired on a per-mechanic basis as the corresponding action lands.
+  | {
+      // Lorwyn-block "Champion" — fires when a creature is championed (exiled
+      // by the Champion ability of another creature).
+      readonly kind: "CardChampioned";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly championerId: EntityId; readonly championedId: EntityId };
+    }
+  | {
+      // Aetherdrift — fires when a creature is stationed onto a Vehicle/Spacecraft.
+      readonly kind: "CardStationed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly vehicleId: EntityId; readonly stationerIds: readonly EntityId[] };
+    }
+  | {
+      // Unfinity — fires when a player visits an Attraction (it untaps in their
+      // mainphase and is "open").
+      readonly kind: "AttractionVisited";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly attractionId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Bloomburrow — fires when a creature trains (powers up by attacking
+      // alongside another creature with greater power).
+      readonly kind: "CardTrained";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId };
+    }
+  | {
+      // Forge T:Mode$ UntapAll — fires once per "untap all" batch (Forge's
+      // group untap event, e.g. some untap-step custom replacements).
+      readonly kind: "CardsUntappedAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardIds: readonly EntityId[] };
+    }
+  | {
+      // Unfinity — fires when a player claims a prize (from an Attraction
+      // visit or carnival mechanic).
+      readonly kind: "PrizeClaimed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
