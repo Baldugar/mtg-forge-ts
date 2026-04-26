@@ -187,6 +187,15 @@ describe("GameAction.changeLife", () => {
     expect(y.event.payload.oldLife).toBe(20);
     expect(y.event.payload.newLife).toBe(18);
     expect(y.event.payload.delta).toBe(-2);
+    // Wave 16b — changeLife now also emits a LifeLost event when delta < 0
+    // (consumed by Wave 19 LifeLostTrigger). The original assertion checked
+    // that the next step is done; we now drain one more event before done.
+    const nextLifeLost = gen.next();
+    expect(nextLifeLost.done).toBe(false);
+    const lifeLost = nextLifeLost.value;
+    if (!lifeLost || lifeLost.kind !== "event") throw new Error("expected event");
+    if (lifeLost.event.kind !== "LifeLost") throw new Error("expected LifeLost");
+    expect(lifeLost.event.payload.amount).toBe(2);
     expect(gen.next().done).toBe(true);
     expect(player.life).toBe(18);
   });

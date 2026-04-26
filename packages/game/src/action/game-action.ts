@@ -268,6 +268,20 @@ export class GameAction {
         });
       },
     );
+    // Wave 16b — LifeLost trigger event (CR 119.3). Mirrors the LifeChanged
+    // emit when delta is negative; consumed by Wave 19's LifeLostTrigger
+    // ("whenever you lose life"). We intentionally fire AFTER applyWith-
+    // Replacements so prevention/replacement (Worship-style) can suppress
+    // the loss before LifeLost is observed. Decoupled from LifeChanged so
+    // triggers that only care about loss can subscribe directly.
+    if (intent.delta < 0) {
+      yield this.game.emitEvent(
+        mkEvent("LifeLost", game.turn, game.phase, {
+          playerSeat: seat,
+          amount: -intent.delta,
+        }),
+      );
+    }
   }
 
   // === Game-win / game-loss (Batch D2) ===
