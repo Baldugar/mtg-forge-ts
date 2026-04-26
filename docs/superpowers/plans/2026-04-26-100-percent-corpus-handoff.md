@@ -6,13 +6,13 @@
 
 - Repo: `F:\BACKUP\Programacion\mtg-forge-ts`
 - Branch: `sp1-engine-foundations` (local only; never pushed)
-- HEAD: post-`649ea45` (Wave 27c — Monarch tracker)
-- ~270 commits since `dbe90e6` (end of SP2 Round 1 remediation)
-- ~3300+ tests passing (game ~2452 + cards 127 + core 720 + dsl-validator 12)
+- HEAD: post-`cbc6184` (Wave 30+ — Mentor/Renown event-kind fix)
+- ~290 commits since `dbe90e6` (end of SP2 Round 1 remediation)
+- ~3362 tests passing (game 2503 + cards 127 + core 720 + dsl-validator 12)
 - **Cap-5000 corpus**: 100.0% (5000/5000 cards parse clean)
 - **Full 32,300-card corpus**: 100.0% (32300/32300 cards parse clean)
-- **Functional keyword catalogue** (in addition to all 250+ effect / 80+ trigger / 25+ replacement handlers):
-  Cycling, Flashback, Madness, Foretell, Bestow, Overload, Cascade, Plot, Specialize, Convoke, Improvise, Crew, Saddle, Mutate, Suspend, Conspire, Champion, Echo, Cumulative Upkeep, Day/Night transitions, Initiative + dungeon-advance hook, Monarch + end-step draw + combat-transfer.
+- **Functional keyword catalogue (32 mechanics)** in addition to all 250+ effect / 100+ trigger / 25+ replacement handlers:
+  Cycling, Flashback, Madness, Foretell, Bestow, Overload, Cascade, Plot, Specialize, Convoke (with color-pip), Improvise, Crew, Saddle, Mutate, Suspend, Conspire, Champion, Echo (full payment), Cumulative Upkeep, Day/Night auto-transitions, Initiative + combat-transfer, Monarch + end-step draw + combat-transfer, Evolve, Station, VisitAttraction, Forage, Adapt, Renown, Mentor, Disturb, Daybound/Nightbound auto-flip, Storm, Ninjutsu, Graft, Modular, Living Weapon, Riot, Rebound.
 
 ## What was accomplished (Waves 6-22b)
 
