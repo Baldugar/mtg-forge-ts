@@ -41,6 +41,7 @@ import {
 } from "@mtg-forge-ts/core";
 import { activateAbility as activateAbilityImpl } from "../ability/activate.js";
 import { Card } from "../card.js";
+import { hasKeyword as cardHasKeyword } from "../combat/damage-assignment-helpers.js";
 import { damageProtected } from "../combat/keywords/protection.js";
 import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
 import type { Game } from "../game.js";
@@ -820,10 +821,25 @@ export class GameAction {
         // player is deferred to a chained changeLife call below so the
         // LifeChange replacement pipeline observes it (audit I-1).
         if (final.amount <= 0) return;
+        // Wave 36 — Wither (CR 702.79) / Infect (CR 702.90) redirection.
+        // Wither: damage to creatures is dealt as -1/-1 counters instead.
+        // Infect: same for creatures + damage to players is dealt as
+        // poison counters instead. The DamageDealt event still fires
+        // (downstream triggers observing damage observe normally); only
+        // the application step is redirected.
+        const witherSource = cardHasKeyword(game, final.sourceId, "wither");
+        const infectSource = cardHasKeyword(game, final.sourceId, "infect");
+        const redirectCreatureToCounters = witherSource || infectSource;
         if (final.targetKind === "creature" && typeof final.targetId === "number") {
           const card = game.cards.get(final.targetId as EntityId);
           if (card) {
-            card.damage += final.amount;
+            if (redirectCreatureToCounters) {
+              const cur = card.counters.get(CT.MinusOneMinusOne) ?? 0;
+              card.counters.set(CT.MinusOneMinusOne, cur + final.amount);
+              game.layerEngine.bumpEpoch("wither-infect-damage");
+            } else {
+              card.damage += final.amount;
+            }
             // SP2 Task 78 (fix 2) — CR 702.2b deathtouch: tag the target
             // when the damage source has the deathtouch keyword so the
             // SBA creature-removal collector can destroy it on the next
@@ -834,13 +850,22 @@ export class GameAction {
             }
           }
         } else if (final.targetKind === "player" && typeof final.targetId === "number") {
-          // Stash the amount + seat; actually route through changeLife
-          // (below, after the DamageDealt event is emitted) so prevention
-          // replacements registered on lifeChange observe and can intercept.
-          playerLifeRequest = {
-            seat: final.targetId as PlayerSeat,
-            amount: final.amount,
-          };
+          if (infectSource) {
+            // CR 702.90b — Infect to players: poison counters instead of life.
+            const player = game.players.find((p) => p.seat === (final.targetId as PlayerSeat));
+            if (player) {
+              const cur = player.counters.get(CT.Poison) ?? 0;
+              player.counters.set(CT.Poison, cur + final.amount);
+            }
+          } else {
+            // Stash the amount + seat; actually route through changeLife
+            // (below, after the DamageDealt event is emitted) so prevention
+            // replacements registered on lifeChange observe and can intercept.
+            playerLifeRequest = {
+              seat: final.targetId as PlayerSeat,
+              amount: final.amount,
+            };
+          }
         } else if (final.targetKind === "battle" && typeof final.targetId === "number") {
           // Task 51 — damage to a battle decrements its defense counters
           // (CR 310.5). Direct counter mutation (not routed through
