@@ -19,3 +19,10 @@ export * from "./game-win-replacement.js";
 export * from "./game-loss-replacement.js";
 // Batch D2 replacements
 export * from "./remove-counter-replacement.js";
+// Wave 17 replacements — corpus unknown event kinds
+export * from "./draw-cards-replacement.js";
+export * from "./pay-life-replacement.js";
+export * from "./cascade-replacement.js";
+export * from "./roll-dice-replacement.js";
+export * from "./mill-replacement.js";
+export * from "./destroy-replacement.js";
