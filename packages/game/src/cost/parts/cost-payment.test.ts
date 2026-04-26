@@ -214,8 +214,10 @@ describe("parseCostString", () => {
     expect(plan.parts[0]).toMatchObject({ handlerKey: "Sacrifice", raw: "Sac Creature" });
   });
 
-  it("throws for Q (CostUntap deferred)", () => {
-    expect(() => parseCostString("Q")).toThrow(/deferred to Part D/);
+  it("parses Q as Untap (Wave 46)", () => {
+    const plan = parseCostString("Q");
+    expect(plan.parts).toHaveLength(1);
+    expect(plan.parts[0]).toMatchObject({ handlerKey: "Untap", raw: "Q" });
   });
 
   it("throws for unrecognized cost segment", () => {
