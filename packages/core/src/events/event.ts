@@ -1276,6 +1276,185 @@ export type GameEvent =
         readonly sacrificedCardId: EntityId;
         readonly playerSeat: PlayerSeat;
       };
+    }
+  // === Wave 20 — corpus-unknown trigger events (long-tail) ===
+  // WHY: each kind backs one of the 20 Wave 20 trigger handlers. As with
+  // Waves 16/18/19, tests synth-emit them today; engine-side emission is
+  // wired on a per-mechanic basis as the corresponding action lands.
+  | {
+      // March of the Machine — fires when a creature specializes (transforms
+      // into one of five colored variants).
+      readonly kind: "CardSpecialized";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly color: "W" | "U" | "B" | "R" | "G";
+      };
+    }
+  | {
+      // Fires after a proliferate sweep resolves. Distinct from CounterAdded
+      // events emitted per-counter; this is the once-per-proliferation pulse.
+      readonly kind: "Proliferated";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Fires when a spell on the stack is copied (Pyromancer's Goggles,
+      // Twincast, etc.). Distinct from StackItemCopied: SpellCopied is the
+      // canonical Forge T:Mode$ SpellCopy event matching Forge's emit.
+      readonly kind: "SpellCopied";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly originalStackItemId: EntityId;
+        readonly copyStackItemId: EntityId;
+        readonly controllerSeat: PlayerSeat;
+      };
+    }
+  | {
+      // Mirage / Lorwyn / Modern Horizons — fires when two players clash.
+      readonly kind: "CardClashed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly winner: PlayerSeat | null;
+      };
+    }
+  | {
+      // Ixalan Explore — fires when a creature explores.
+      readonly kind: "CardExplored";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly playerSeat: PlayerSeat;
+        readonly resultPutIntoHand: boolean;
+      };
+    }
+  | {
+      // Fires once at the start of a brand-new game (after seating, before
+      // first turn). Subgame variant uses a separate SubgameStarted kind.
+      readonly kind: "NewGameStarted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly seats: readonly PlayerSeat[] };
+    }
+  | {
+      // Kaladesh Vehicle — fires when a Vehicle becomes crewed (state change
+      // event distinct from the Crewed action event).
+      readonly kind: "CardBecameCrewed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly vehicleId: EntityId; readonly crewIds: readonly EntityId[] };
+    }
+  | {
+      // Planechase — fires when a player planeswalks AWAY FROM a plane
+      // (companion to PlaneswalkedTo).
+      readonly kind: "PlaneswalkedFrom";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly planeCardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Fires when a player's library is shuffled (CR 701.20).
+      readonly kind: "LibraryShuffled";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Adventures into the Forgotten Realms — fires when a dungeon is
+      // completed (the player passes the last room).
+      readonly kind: "DungeonCompleted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly dungeonCardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Strixhaven Magecraft / Ravnica Conspire — fires when a player casts
+      // their first non-creature spell of the turn or otherwise meets a
+      // copy-spell trigger condition. Used by SpellCopy-style triggers that
+      // need an explicit emit (Wave 20 — Specializes/SpellCopy share the
+      // SpellCopied path).
+      readonly kind: "VotePerformed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly choice: string;
+      };
+    }
+  | {
+      // Plus / Theros — fires when a card seeks (random search) one or more
+      // cards. Matches Forge T:Mode$ SeekAll.
+      readonly kind: "CardSeekedAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly cardIds: readonly EntityId[] };
+    }
+  | {
+      // Forge T:Mode$ MilledAll — fires once per mill batch (group of cards
+      // milled simultaneously). Distinct from per-card CardMilled.
+      readonly kind: "CardMilledAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly cardIds: readonly EntityId[] };
+    }
+  | {
+      // Forge T:Mode$ TokenCreated alias — distinct from the existing
+      // TokenCreated kind in that this is a card-source-tracking trigger
+      // event (the source card that created the token, not just the
+      // controller of the token). Used by Wave 20 TokenCreated handler.
+      readonly kind: "CardCreatedToken";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly creatorCardId: EntityId;
+        readonly tokenCardId: EntityId;
+        readonly controllerSeat: PlayerSeat;
+      };
+    }
+  | {
+      // Ixalan Discover (Lost Caverns of Ixalan) — fires when a card is
+      // discovered (cascade-like reveal-and-cast).
+      readonly kind: "CardDiscovered";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly discoveredCardId: EntityId;
+        readonly value: number;
+      };
+    }
+  | {
+      // Forge T:Mode$ LifeLostAll — fires once per life-loss batch (a single
+      // event causes life loss across multiple players simultaneously).
+      readonly kind: "PlayerLifeLostAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeats: readonly PlayerSeat[];
+        readonly amounts: readonly number[];
+      };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */

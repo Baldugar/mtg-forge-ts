@@ -56,3 +56,5 @@ export * from "./ring-tempts-you-trigger.js";
 export * from "./wave-18-triggers.js";
 // Wave 19 — final corpus unknown triggers (20 handlers)
 export * from "./wave-19-triggers.js";
+// Wave 20 — corpus long-tail triggers (20 handlers)
+export * from "./wave-20-triggers.js";
