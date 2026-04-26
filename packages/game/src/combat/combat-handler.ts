@@ -13,9 +13,11 @@
 //
 // `runCombatDamage()` drives the full split when any combatant has FS or DS;
 // otherwise it falls through to a single dealDamage(false) call.
-import { type EntityId, IllegalDecisionError } from "@mtg-forge-ts/core";
+import { type EntityId, IllegalDecisionError, type PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
+import { onCombatDamageToPlayer as onCombatDamageInitiative } from "../dnd/initiative-tracker.js";
 import type { Game } from "../game.js";
+import { onCombatDamageToPlayer as onCombatDamageMonarch } from "../monarch/monarch-tracker.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -114,7 +116,19 @@ export class CombatHandler {
       const blockers = this.state.blockerOrdering.get(attackerId) ?? [];
       if (blockers.length === 0) {
         const d = info.defender;
-        yield* this.game.action.damage(attackerId, defenderKind(d), defenderId(d), power, true);
+        const dKind = defenderKind(d);
+        const dId = defenderId(d);
+        yield* this.game.action.damage(attackerId, dKind, dId, power, true);
+        // Wave 27 — Initiative + Monarch combat-damage transfer (CR 506.4 /
+        // 716 / 906). When an attacker deals damage to a player, check if
+        // that player is the current monarch / initiative-holder; if so
+        // transfer to the attacker's controller. Per CR 506.4 the transfer
+        // happens AFTER damage resolves, so we run it post-yield. Triggers
+        // observing BecameMonarch / BecameInitiative will see the new state
+        // when they resolve.
+        if (dKind === "player") {
+          yield* this.applyCombatTransfers(attackerId, dId as PlayerSeat, power);
+        }
       } else {
         const preDeclared = this.state.damageAssignments.get(attackerId);
         const outs: readonly CombatDamageAssignment[] =
@@ -161,6 +175,25 @@ export class CombatHandler {
       this.setFirstStrikeSplit(false);
     }
     yield* this.dealDamage(false);
+  }
+
+  /**
+   * Wave 27 — yield Initiative + Monarch transfer events when an attacker
+   * dealt combat damage to a player. The trackers' helpers compute the
+   * transfer + mutate game.flags; we just emit the resulting events
+   * through the canonical pipeline so triggers see them.
+   */
+  private *applyCombatTransfers(
+    sourceId: EntityId,
+    targetSeat: PlayerSeat,
+    amount: number,
+  ): Generator<EngineYield, void, unknown> {
+    for (const evt of onCombatDamageInitiative(this.game, sourceId, targetSeat, amount)) {
+      yield this.game.emitEvent(evt);
+    }
+    for (const evt of onCombatDamageMonarch(this.game, sourceId, targetSeat, amount)) {
+      yield this.game.emitEvent(evt);
+    }
   }
 
   private hasFSorDS(creatureId: EntityId): boolean {
