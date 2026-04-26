@@ -203,6 +203,47 @@ export class GameAction {
     // keeps this simple by looping in the mutator; triggers (Milestone E)
     // collapse the batch back into a single summary as needed.
     for (let i = 0; i < count; i++) {
+      // Wave 40 — Dredge (CR 702.52): before each per-card draw, check for
+      // dredgeable cards in the player's graveyard. Each dredgeable card
+      // requires its dredge amount of cards in the library to be milled,
+      // and returns itself to hand instead of the draw.
+      const graveyardZone = player.zones.get(Zt.Graveyard);
+      if (graveyardZone) {
+        const eligibleDredge: EntityId[] = [];
+        for (const cardId of graveyardZone.toArray()) {
+          const c = game.cards.get(cardId);
+          if (!c) continue;
+          const n = c.dredgeAmount;
+          if (n === undefined || n <= 0) continue;
+          if (library.size < n) continue;
+          eligibleDredge.push(cardId);
+        }
+        if (eligibleDredge.length > 0) {
+          const decision = yield {
+            kind: "decision",
+            request: {
+              kind: "chooseCard",
+              playerSeat: seat,
+              pool: eligibleDredge,
+              restriction: { keyword: "dredge" },
+              min: 0,
+              max: 1,
+            },
+          } as EngineYield;
+          const r = decision as { kind: string; chosen?: readonly EntityId[] };
+          const chosen =
+            r.kind === "chooseCard" && r.chosen && r.chosen.length === 1 ? r.chosen[0] : undefined;
+          if (chosen !== undefined) {
+            const dredgeCard = game.cards.get(chosen);
+            const N = dredgeCard?.dredgeAmount ?? 0;
+            if (N > 0 && library.size >= N) {
+              yield* this.mill(seat, N);
+              yield* this.moveTo(chosen, Zt.Hand, { toSeat: seat, cause: "dredge" });
+              continue;
+            }
+          }
+        }
+      }
       // WHY: Forge/Java convention — index 0 is the TOP of the library.
       // Draw consumes the front of the list; items.length-1 is the bottom.
       const topId = library.peekAt(0);

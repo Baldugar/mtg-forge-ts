@@ -199,6 +199,11 @@ export class Card {
   // as the Disturb back face. The Disturb alt-cost flips the face on
   // resolution.
   disturbed: boolean | undefined = undefined;
+  // Wave 40 — Dredge (CR 702.52). When K:Dredge:N stamps the card, this
+  // slot stores N. The drawCards mutator reads this on each per-card
+  // draw to offer the dredge alternative: mill N + return-to-hand
+  // instead of drawing.
+  dredgeAmount: number | undefined = undefined;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

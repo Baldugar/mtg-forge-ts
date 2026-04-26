@@ -102,4 +102,10 @@ export * from "./tempting-offer-keyword.js";
 export * from "./ripple-keyword.js";
 export * from "./sweep-keyword.js";
 export * from "./companion-keyword.js";
+// Wave 40 — Dredge (CR 702.52). Replacement effect that fires while the
+// card is in the graveyard: instead of drawing, the player may mill N
+// cards and return self to hand. Implemented inline in
+// game-action.drawCards (decision-yielding can't fit the synchronous
+// ReplacementAbility shape); the keyword handler stamps the slot.
+export * from "./dredge-keyword.js";
 export * from "./flag-keyword.js";
