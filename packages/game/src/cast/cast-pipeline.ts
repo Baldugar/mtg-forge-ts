@@ -145,6 +145,55 @@ export interface CastProposal {
  * accepted set (letters, digits, X/Y/Z, /, whitespace, S, C) so it passes
  * the cost-payment parser unchanged.
  */
+/**
+ * Wave 30 — Convoke colored-pip helper. Removes one colored pip of the
+ * given color from `raw`, returning the rewritten string. Returns null
+ * when no such colored pip is present (caller falls back to generic).
+ *
+ * Examples:
+ *   dropColoredPip("1 G", Green)    → "1"
+ *   dropColoredPip("1 G", Red)      → null
+ *   dropColoredPip("G G", Green)    → "G"
+ */
+const dropColoredPip = (raw: string, color: Color): string | null => {
+  const parsed = ManaCost.parse(raw);
+  let generic = 0;
+  const others: string[] = [];
+  let dropped = false;
+  for (const s of parsed.symbols) {
+    if (s.kind === "colored" && !dropped && s.color === color) {
+      dropped = true;
+      continue;
+    }
+    switch (s.kind) {
+      case "generic":
+        generic += s.amount;
+        break;
+      case "colored": {
+        const letter = colorToLetter(s.color);
+        if (letter) others.push(letter);
+        break;
+      }
+      case "variable":
+        others.push(s.letter);
+        break;
+      case "colorless":
+        others.push("C");
+        break;
+      case "snow":
+        others.push("S");
+        break;
+      default:
+        others.push(new ManaCost([s], false).toForgeString().trim());
+        break;
+    }
+  }
+  if (!dropped) return null;
+  if (others.length === 0) return String(generic);
+  if (generic === 0) return others.join(" ");
+  return `${generic} ${others.join(" ")}`;
+};
+
 const reduceGeneric = (raw: string, n: number): string => {
   if (n <= 0) return raw;
   const parsed = ManaCost.parse(raw);
@@ -858,7 +907,11 @@ export class CastPipeline {
         sourceCardId: ctx.sourceCardId,
         eligible,
       },
-    }) as { readonly kind: "chooseConvokeImproviseTap"; readonly tapIds: readonly EntityId[] };
+    }) as {
+      readonly kind: "chooseConvokeImproviseTap";
+      readonly tapIds: readonly EntityId[];
+      readonly colorAssignments?: Readonly<Record<number, Color>>;
+    };
 
     if (response.tapIds.length === 0) return;
 
@@ -884,13 +937,40 @@ export class CastPipeline {
     // nothing to reduce — silently skip the cost mutation but still record
     // the taps so step PayCosts taps the helpers (parity with Forge: a
     // free cast still consumes the helpers if the player offered them).
+    //
+    // Wave 30 — colored-pip path. For each tap with a `colorAssignments`
+    // entry whose color is present in the spell's color identity AND
+    // matches a remaining colored pip in the cost, drop one such colored
+    // pip; otherwise fall back to a generic {1} reduction. Improvise
+    // (artifact) taps always go through the generic path — CR 702.51
+    // restricts the colored substitution to Convoke.
     const totalCost = ctx.totalCost as { base?: { raw?: string } | null } | null | undefined;
     const base = totalCost?.base;
     if (base != null && typeof base.raw === "string" && base.raw !== "") {
-      const reduced = reduceGeneric(base.raw, response.tapIds.length);
+      const eligibleByCardId = new Map(eligible.map((e) => [e.cardId, e.mode] as const));
+      const colorAssignments = response.colorAssignments;
+      let runningRaw = base.raw;
+      let genericFallback = 0;
+      for (const tid of response.tapIds) {
+        const mode = eligibleByCardId.get(tid);
+        const wantedColor = colorAssignments?.[tid as unknown as number];
+        if (mode === "convoke" && wantedColor !== undefined) {
+          const dropped = dropColoredPip(runningRaw, wantedColor);
+          if (dropped !== null) {
+            runningRaw = dropped;
+            continue;
+          }
+        }
+        // Generic fallback (improvise OR no color assigned OR color not
+        // present in remaining cost).
+        genericFallback += 1;
+      }
+      if (genericFallback > 0) {
+        runningRaw = reduceGeneric(runningRaw, genericFallback);
+      }
       // Mutate raw in place — the totalCost object is a fresh literal
       // produced by stepDetermineTotalCost so this is safe.
-      (base as { raw: string }).raw = reduced;
+      (base as { raw: string }).raw = runningRaw;
     }
 
     ctx.convokeImproviseTaps = [...response.tapIds];

@@ -233,6 +233,99 @@ describe("Flagship: Convoke (Wave 23)", () => {
     expect(game.sharedZones.stack.size).toBe(1);
   });
 
+  it("Wave 30 — colored-pip substitution: tapping a green Bear pays {G}, not {1}", () => {
+    const game = makeGame();
+    const seat0 = mkPlayerSeat(0);
+    const knightId = mkEntityId(23300);
+    const bear1Id = mkEntityId(23301);
+    const bear2Id = mkEntityId(23302);
+
+    const knightDef = parseCard(convokeKnightSrc, "convoke_knight.txt");
+    const knightPaper: PaperCard = {
+      name: "Convoke Knight",
+      edition: "TEST",
+      collectorNumber: "1",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: knightDef,
+    };
+    const knightCard = addCardToHand(game, knightPaper, seat0, knightId);
+    knightCard.activateAbilitiesFromDefinition();
+    knightCard.activateKeywordsFromDefinition(game);
+
+    const bearDef = parseCard(grizzlyBearsSrc, "grizzly_bears.txt");
+    const bearPaper: PaperCard = {
+      name: "Grizzly Bears",
+      edition: "LEA",
+      collectorNumber: "195",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: bearDef,
+    };
+    const bear1 = addCardToBattlefield(game, bearPaper, seat0, bear1Id);
+    const bear2 = addCardToBattlefield(game, bearPaper, seat0, bear2Id);
+
+    // Pool has only {2} colorless; convoke must supply BOTH the {G}
+    // (via Bear1's color assignment) AND one generic {1} (Bear2 fallback).
+    // Cost {3}{G} − {G} colored − {1} generic = {2} → paid by pool.
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colorless());
+    pool.add(ManaProduced.colorless());
+    game.getPlayer(seat0).manaPool = pool;
+
+    // Custom drainer that returns a colorAssignments map.
+    const events: string[] = [];
+    let stackItem: StackItem | null = null;
+    const gen = game.castPipeline.run({
+      castingPlayer: seat0,
+      sourceCardId: knightId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+    }) as Generator<{ kind: string }, StackItem | null, unknown>;
+    let step = gen.next();
+    while (!step.done) {
+      const y = step.value as {
+        kind: string;
+        event?: { kind?: string };
+        request?: ConvokeDecisionRequest;
+      };
+      if (y.kind === "event" && y.event?.kind) {
+        events.push(y.event.kind);
+        step = gen.next();
+      } else if (y.kind === "decision" && y.request?.kind === "activateManaAbilities") {
+        step = gen.next({ kind: "activateManaAbilities", done: true });
+      } else if (y.kind === "decision" && y.request?.kind === "chooseConvokeImproviseTap") {
+        // Assign green to bear1 → pays {G}; bear2 unassigned → falls
+        // back to {1} generic.
+        const colorAssignments: Record<number, Color> = {
+          [bear1Id as unknown as number]: Color.Green,
+        };
+        step = gen.next({
+          kind: "chooseConvokeImproviseTap",
+          tapIds: [bear1Id, bear2Id],
+          colorAssignments,
+        });
+      } else if (y.kind === "decision" && y.request?.kind === "chooseCastTargets") {
+        step = gen.next({ kind: "chooseCastTargets", targets: [] });
+      } else {
+        step = gen.next();
+      }
+    }
+    stackItem = step.value;
+
+    expect(stackItem).not.toBeNull();
+    expect(events).toContain("CostPaid");
+    expect(events).toContain("SpellCast");
+    // Both bears tapped.
+    expect(bear1.tapped).toBe(true);
+    expect(bear2.tapped).toBe(true);
+    // Pool fully drained — both colorless were consumed for the {2}
+    // remaining generic after the {G} was paid by Bear1's color.
+    expect(pool.size()).toBe(0);
+  });
+
   it("Declining to convoke (tapIds empty) leaves the cost intact", () => {
     const game = makeGame();
     const seat0 = mkPlayerSeat(0);

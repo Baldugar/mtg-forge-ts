@@ -703,6 +703,14 @@ export type DecisionResponse =
   | {
       readonly kind: "chooseConvokeImproviseTap";
       readonly tapIds: readonly EntityId[];
+      // Wave 30 — optional per-creature colored-pip assignment. Each entry
+      // maps a tapped creature's id to one Color value. When present, the
+      // cast pipeline first attempts to subtract a matching colored pip
+      // from the base cost; if no such pip exists, it falls back to the
+      // {1} generic reduction (legacy SP3 behaviour). Improvise (artifact)
+      // taps must omit this slot — only Convoke supports the colored
+      // substitution per CR 702.51.
+      readonly colorAssignments?: Readonly<Record<number, Color>>;
     }
   // Wave 24 — Crew / Saddle: which untapped creatures the controller taps to
   // satisfy the keyword's power threshold. Each id MUST be in the request's
