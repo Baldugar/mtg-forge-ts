@@ -84,3 +84,5 @@ export * from "./mana-reflected.js";
 export * from "./assemble-contraption.js";
 // Wave 18 — corpus unknown effects (20 handlers)
 export * from "./wave-18-effects.js";
+// Wave 19 — final corpus unknown effects (15 handlers)
+export * from "./wave-19-effects.js";

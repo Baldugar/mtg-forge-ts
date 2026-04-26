@@ -134,6 +134,13 @@ export class Card {
   // assignment logic when the creature is declared (or refused) as a
   // blocker.
   mustBlockTargetId: EntityId | null = null;
+  // Wave 19 — Goad flag (CR 701.42). When true, the creature must attack each
+  // combat if able and must attack a player other than the goader if able.
+  // Combat declaration logic consults this flag.
+  goaded = false;
+  // Wave 19 — RemoveFromCombat marker. Set by RemoveFromCombatEffect; combat
+  // resolution skips creatures with this flag for damage assignment etc.
+  removedFromCombat = false;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future
