@@ -73,6 +73,7 @@ const AMOUNT_KEYWORDS: ReadonlySet<string> = new Set([
   "bushido",
   "casualty",
   "crew",
+  "devour",
   "dredge",
   "fabricate",
   "fading",

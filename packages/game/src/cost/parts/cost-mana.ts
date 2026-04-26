@@ -160,6 +160,18 @@ export const CostMana: CostPart = {
       const col = c.symbol.color;
       byColor.set(col, (byColor.get(col) ?? 0) + 1);
     }
+    // Wave 37 — Sunburst (CR 702.43): stamp the set of chromatic colors
+    // spent on the source card so SunburstKeywordHandler's ETB trigger
+    // can read them. Colorless (null) is intentionally NOT added because
+    // Sunburst counts colors of mana, not generic mana spend.
+    const sourceCard = ctx.game.cards.get(ctx.sourceCardId);
+    if (sourceCard) {
+      const colorSet = sourceCard.manaSpentColors ?? new Set<Color>();
+      for (const col of byColor.keys()) {
+        if (col !== null) colorSet.add(col);
+      }
+      sourceCard.manaSpentColors = colorSet;
+    }
     for (const [col, amount] of byColor) {
       yield ctx.game.emitEvent(
         mkEvent("ManaSpent", ctx.game.turn, ctx.game.phase, {

@@ -281,6 +281,29 @@ export class Card {
         readonly setToughness?: number;
       }
     | undefined = undefined;
+  // Wave 37 — Soulbond (CR 702.94). When a Soulbond creature ETBs, it may
+  // pair with another unpaired creature its controller controls; both cards
+  // get `pairedWith` stamped to the other's id. The pairing is cleared by
+  // a watch trigger on either creature leaving the battlefield or changing
+  // controllers. Slot is `T | undefined = undefined` so handlers can clear
+  // via `= undefined` (biome no-delete rule + exactOptionalPropertyTypes).
+  pairedWith: EntityId | undefined = undefined;
+  // Wave 37 — Hideaway (CR 702.74). When a Hideaway permanent ETBs, the
+  // controller looks at the top N cards of their library, exiles one face
+  // down, and shuffles the rest to the bottom. `hideawayCard` (set on the
+  // Hideaway permanent) points at the chosen exiled card; `hideawayHost`
+  // (set on the exiled card) is the back-pointer. The conditional free-cast
+  // ability is card-specific — see TODO(advanced) in hideaway-keyword.
+  hideawayCard: EntityId | undefined = undefined;
+  hideawayHost: EntityId | undefined = undefined;
+  // Wave 37 — Sunburst (CR 702.43). Set of mana colors actually spent to
+  // cast this card. Populated by CostMana.pay BEFORE emitting ManaSpent;
+  // SunburstKeywordHandler reads this on ETB and stamps either P1P1
+  // counters (creatures) or Charge counters (non-creatures) equal to the
+  // set's size. Includes only chromatic colors (Color enum values); the
+  // colorless atom is never added (a colorless mana spend leaves the slot
+  // unchanged when no chromatic mana was also paid).
+  manaSpentColors: Set<Color> | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

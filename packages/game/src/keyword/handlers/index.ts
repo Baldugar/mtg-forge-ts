@@ -60,4 +60,15 @@ export * from "./eternalize-keyword.js";
 // processPhasingOnUntap.
 export * from "./vanishing-keyword.js";
 export * from "./fading-keyword.js";
+// Wave 37 — Devour / Soulshift / Soulbond / Splice / Hideaway / Sunburst.
+// Six small mechanics, mostly ETB triggers (Devour, Soulbond, Hideaway,
+// Sunburst) + a death trigger (Soulshift) + a hand-side AltCost stamp
+// (Splice). Splice and Hideaway carry TODO(advanced) tails for the
+// in-flight spell-graft / conditional free-cast paths.
+export * from "./devour-keyword.js";
+export * from "./soulshift-keyword.js";
+export * from "./soulbond-keyword.js";
+export * from "./splice-keyword.js";
+export * from "./hideaway-keyword.js";
+export * from "./sunburst-keyword.js";
 export * from "./flag-keyword.js";
