@@ -57,6 +57,8 @@ import type {
   DestroyIntent,
   DrawCardsIntent,
   ExileIntent,
+  GameLossIntent,
+  GameWinIntent,
   LifeChangeIntent,
   MillIntent,
   MoveToIntent,
@@ -89,7 +91,9 @@ type RoutedIntent =
   | MillIntent
   | ControlChangeIntent
   | AttachIntent
-  | UnattachIntent;
+  | UnattachIntent
+  | GameLossIntent
+  | GameWinIntent;
 
 export class GameAction {
   constructor(private readonly game: Game) {}
@@ -263,6 +267,76 @@ export class GameAction {
           cause: final.cause,
         });
       },
+    );
+  }
+
+  // === Game-win / game-loss (Batch D2) ===
+  //
+  // CR 104.2 / CR 104.3 — players win or lose in well-defined ways. The
+  // SBA engine collects loss conditions (CR 704.5a/b/c — life=0, decked,
+  // poison) and routes them through gameLoss(). Effect-driven losses
+  // ("target player loses the game") also call this mutator. Both paths
+  // first run through the replacement chain so cards like Platinum Angel
+  // (R:Event$ GameLoss | Layer$ CantHappen) can prevent the loss before
+  // PlayerLost is emitted.
+  //
+  // The mutator emits the canonical event (PlayerLost / PlayerWon) on
+  // apply; on prevention the SBA engine sees a `prevented: true` outcome
+  // and skips the terminal-state bookkeeping, so the player stays in the
+  // game. The event flows through emitEvent so triggers see it; SBA
+  // bookkeeping (markPlayerLost) is the caller's responsibility to keep
+  // the engine state machine in sync — the mutator does not write
+  // game.terminalState directly.
+
+  *gameLoss(
+    seat: PlayerSeat,
+    opts?: { readonly cause?: string; readonly reason?: "life" | "decked" | "poison" | "concede" | "effect" },
+  ): Generator<EngineYield, { readonly prevented: boolean }, unknown> {
+    const game = this.game;
+    const intent: GameLossIntent = {
+      kind: "gameLoss",
+      seat,
+      cause: opts?.cause ?? "effect",
+    };
+    const reason = opts?.reason ?? "effect";
+    return yield* this.applyWithReplacements<GameLossIntent>(
+      intent,
+      (_final) => {
+        // No direct state mutation here — the SBA engine writes
+        // terminalState via markPlayerLost when the canonical PlayerLost
+        // event is observed. Effect-driven losers (target player loses
+        // the game) likewise rely on the SBA sweep that runs after the
+        // event for terminal-state convergence.
+      },
+      (final) =>
+        mkEvent("PlayerLost", game.turn, game.phase, {
+          playerSeat: final.seat,
+          reason,
+        }),
+    );
+  }
+
+  *gameWin(
+    seat: PlayerSeat,
+    opts?: { readonly cause?: string },
+  ): Generator<EngineYield, { readonly prevented: boolean }, unknown> {
+    const game = this.game;
+    const intent: GameWinIntent = {
+      kind: "gameWin",
+      seat,
+      cause: opts?.cause ?? "effect",
+    };
+    return yield* this.applyWithReplacements<GameWinIntent>(
+      intent,
+      (_final) => {
+        // Win is a terminal-state transition; the canonical PlayerWon
+        // event is enough for observers. SBA / match-end bookkeeping
+        // runs on the next sweep.
+      },
+      (final) =>
+        mkEvent("PlayerWon", game.turn, game.phase, {
+          playerSeat: final.seat,
+        }),
     );
   }
 

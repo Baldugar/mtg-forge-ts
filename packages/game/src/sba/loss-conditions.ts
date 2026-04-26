@@ -18,12 +18,25 @@ import type { PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { SbaAction } from "./sba-action.js";
 
-export const collectLossConditions = (game: Game, out: SbaAction[]): void => {
+export const collectLossConditions = (
+  game: Game,
+  out: SbaAction[],
+  // Batch D2 — seats whose loss-condition SBA was prevented by a
+  // replacement effect (e.g. Platinum Angel) earlier in the same sweep.
+  // Skipping these seats stops the SBA loop from hot-spinning on a
+  // perpetually-prevented loss; the per-sweep set is reset at the
+  // start of the next sweep so removal of the Angel allows the loss to
+  // proceed at the next priority pass.
+  preventedThisSweep: ReadonlySet<PlayerSeat> = new Set(),
+): void => {
   for (const p of game.players) {
     // Skip players already marked as lost — CR 704.6 — once a player has
     // lost, no further SBAs target them. A concurrent loss for an already-
     // dead player would re-enter the apply pipeline.
     if (hasLost(game, p.seat)) continue;
+    // Skip players whose loss-condition was prevented earlier in THIS
+    // sweep (Platinum Angel etc.).
+    if (preventedThisSweep.has(p.seat)) continue;
 
     if (p.life <= 0) {
       out.push({ kind: "playerLosesLifeZero", seat: p.seat });

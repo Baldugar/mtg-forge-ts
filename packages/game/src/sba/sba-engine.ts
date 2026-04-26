@@ -58,7 +58,16 @@ export class SbaEngine {
 
   constructor(protected readonly game: Game) {}
 
+  // Per-sweep cache of player seats whose loss-condition SBA was prevented
+  // by a replacement effect (e.g. Platinum Angel). The sweep loop skips
+  // re-collecting loss SBAs for these seats so the loop terminates instead
+  // of hot-spinning on a perpetually-prevented loss. Cleared at the start
+  // of every sweep so a freshly removed Platinum Angel allows the loss to
+  // proceed on the next priority pass.
+  private readonly lossPrevented = new Set<PlayerSeat>();
+
   *sweep(): Generator<EngineYield, readonly (readonly SbaAction[])[], unknown> {
+    this.lossPrevented.clear();
     const batches: (readonly SbaAction[])[] = [];
     for (let iter = 0; iter < SbaEngine.MAX_ITERATIONS; iter++) {
       const actions = this.collectApplicable();
@@ -96,7 +105,7 @@ export class SbaEngine {
   }
 
   protected collectLossConditions(out: SbaAction[]): void {
-    collectLossConditions(this.game, out);
+    collectLossConditions(this.game, out, this.lossPrevented);
   }
   protected collectCreatureRemoval(out: SbaAction[]): void {
     collectCreatureRemoval(this.game, out);
@@ -237,16 +246,56 @@ export class SbaEngine {
     if (action.kind === "playerLosesEmptyDraw") {
       this.game.getPlayer(seat).failedDrawFromEmptyLibrary = false;
     }
+    // Batch D2 — route through the gameLoss mutator so cards like
+    // Platinum Angel (R:Event$ GameLoss | Layer$ CantHappen) can prevent
+    // the loss. The mutator returns { prevented: true } if any
+    // replacement returned null. On prevention we DO NOT mark the player
+    // lost or emit PlayerLost. The SBA loop will re-collect the same loss
+    // condition next sweep — the replacement keeps preventing as long as
+    // it stays active (Platinum Angel on the battlefield), so the loop
+    // naturally converges as the SBA collector returns the same actions
+    // and the engine's MAX_ITERATIONS guard prevents runaway. The caller
+    // (sweep()) treats no-progress as fixpoint via collectApplicable's
+    // emptiness check — but a perpetually preventing replacement keeps
+    // re-emitting the same action set, hence the engine bumps iterations.
+    // Therefore: bump-and-cap behavior is acceptable for Platinum-Angel-
+    // class effects (they're rare, the cap is high, and the engine
+    // surfaces a hard error if something genuinely loops). To break the
+    // loop on prevention we additionally clear life / poison flags here:
+    // the cleanest cure for "0 life + Platinum Angel" is for the next
+    // life-change to push above zero; the SBA collector returns the loss
+    // again only if life drops back to <=0. Marking life as cleared isn't
+    // possible (we don't have a healing source); instead we rely on
+    // sweep() short-circuiting via the prevented-but-still-applicable
+    // path. As an MVP, mark the player lost ONLY on apply (not prevent)
+    // to avoid the spurious terminalState write — this keeps Platinum
+    // Angel's "you can't lose" semantics intact.
+    const lossOutcome = yield* this.game.action.gameLoss(seat, { reason });
+    if (lossOutcome.prevented) {
+      // Mark this seat as prevented for the rest of this sweep so the
+      // loss collector skips it on subsequent iterations and the SBA
+      // loop reaches fixpoint instead of hot-spinning.
+      this.lossPrevented.add(seat);
+      // Loss prevented: clear the per-sweep flag for empty-library so
+      // the next pass also sees a transient "failedDraw" only if the
+      // player draws again. Life / poison conditions remain; the
+      // replacement stays active so the next collector pass also
+      // prevents them. The engine's MAX_ITERATIONS guard catches a
+      // genuine runaway. To avoid hot-spinning the loop on
+      // perpetually-prevented loss conditions, we patch the player's
+      // failedDrawFromEmptyLibrary flag (already done above) and rely on
+      // the player's continued protection.
+      // CR 614.6 — replacement effects don't repeatedly fire for the
+      // same event in the same SBA pass: once prevented, we move on
+      // without marking the player lost. Subsequent sweeps may re-
+      // collect the same condition; that is correct — the prevention
+      // continues to apply.
+      return;
+    }
     // Mark the player as lost BEFORE emitting so a same-sweep double-loss
     // (simultaneous life=0 + poison>=10) doesn't emit twice; the second
     // check in collectLossConditions sees the player as already lost.
     this.markPlayerLost(seat, reason);
-    yield this.game.emitEvent(
-      mkEvent("PlayerLost", this.game.turn, this.game.phase, {
-        playerSeat: seat,
-        reason,
-      }),
-    );
     // CR 800.4 — in multiplayer games (≥3 seats) the leaving player's
     // objects leave the game and other players gain control of objects
     // they own. Skipping the cleanup in 2-player matches is safe: the
