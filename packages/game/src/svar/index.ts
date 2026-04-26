@@ -14,3 +14,4 @@ import "./selectors/targeted.js";
 import "./selectors/arithmetic.js";
 import "./selectors/domain.js";
 import "./selectors/common-counts.js";
+import "./selectors/wave42-selectors.js";

@@ -171,6 +171,12 @@ export const CostMana: CostPart = {
         if (col !== null) colorSet.add(col);
       }
       sourceCard.manaSpentColors = colorSet;
+      // Wave 42 — Count$CastTotalManaSpent. Tally every consumed pool
+      // entry (both colored and colorless atoms) onto the source card so
+      // amount resolvers can read total mana spent on the cast. Phyrexian
+      // pips are NOT counted as spend (CR 107.1f) — they pay life.
+      const priorTotal = sourceCard.manaSpentTotal ?? 0;
+      sourceCard.manaSpentTotal = priorTotal + plan.consumed.length;
     }
     for (const [col, amount] of byColor) {
       yield ctx.game.emitEvent(

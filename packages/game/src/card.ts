@@ -309,6 +309,13 @@ export class Card {
   // colorless atom is never added (a colorless mana spend leaves the slot
   // unchanged when no chromatic mana was also paid).
   manaSpentColors: Set<Color> | undefined = undefined;
+  // Wave 42 — Count$CastTotalManaSpent. Total count of mana symbols (any
+  // color, including generic/colorless) actually spent to cast this card.
+  // Populated by CostMana.pay alongside `manaSpentColors`. Distinct from
+  // `manaSpentColors.size` because the latter dedupes by color and excludes
+  // colorless. Used by Lavinia, Kor of the Hammer-style "<Type> matters"
+  // and by post-cast amount resolvers on the source card.
+  manaSpentTotal: number | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

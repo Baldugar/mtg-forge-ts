@@ -32,8 +32,8 @@ describe("Count$ selector", () => {
       evaluateExpression(
         {
           kind: "Count",
-          raw: "Count$Valid.Creature.YouCtrl",
-          args: [{ kind: "literal", raw: "Valid.Creature.YouCtrl" }],
+          raw: "Count$NoSuchSelectorXYZ",
+          args: [{ kind: "literal", raw: "NoSuchSelectorXYZ" }],
         },
         mkCtx(),
       ),
