@@ -22,9 +22,11 @@
 //        - on resolve: bump ageCounters, yield confirmAction "pay
 //          (cost × counters) OR sacrifice".
 //
-// MVP scope: as with Echo, the resolver does not invoke the full mana-
-// payment pipeline; it just stamps the engine event PayCumulativeUpkeep on
-// success or sacrifices on decline.
+// Wave 29 — full mana-payment loop wired in (mirror of Echo). The cost is
+// scaled by age counters: a base cost of "1 R" with 3 age counters yields
+// a payment of "3 3 R" (3× generic added) — Forge multiplies the base
+// cost by the counter total. Multiplication is implemented by repeating
+// the base cost segments N times into the comma-joined plan input.
 import type {
   GameEvent,
   KeywordAst,
@@ -34,11 +36,27 @@ import type {
   TriggeredAbility,
 } from "@mtg-forge-ts/core";
 import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import type { CostPaymentContext } from "../../cost/parts/cost-part.js";
+import { parseCostString, payCost } from "../../cost/parts/cost-payment.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
+
+/**
+ * Build a CostPlan input string from a base cost token (e.g. "1 R") and
+ * a multiplier N. The cost-payment parser supports comma-separated
+ * segments — repeating the segment N times means each base segment is
+ * paid N times, which is the correct semantics for cumulative upkeep
+ * (CR 702.24a: "pay [cost] for each age counter").
+ */
+const scaleCostByCounters = (baseCost: string, n: number): string => {
+  if (n <= 0) return "";
+  const trimmed = baseCost.trim();
+  if (trimmed === "") return "";
+  return Array.from({ length: n }, () => trimmed).join(", ");
+};
 
 type TriggeredAbilityWithResolver = TriggeredAbility & {
   readonly resolver: StackItemResolver | null;
@@ -105,12 +123,38 @@ export class CumulativeUpkeepKeywordHandler extends KeywordHandler {
           const willPay = r.kind === "confirmAction" && r.confirmed === true;
 
           if (willPay) {
-            yield g.emitEvent(
-              mkEvent("PayCumulativeUpkeep", g.turn, g.phase, {
-                cardId: sourceCardId,
-                playerSeat: controllerSeat,
-              }),
-            );
+            // Wave 29 — full mana-payment loop. Scale the base cost by
+            // the current age counter total, parse, pay. On solver
+            // failure (throws inside CostMana.pay) we fall through to
+            // sacrifice so the player still receives the canonical
+            // CR 702.24 outcome ("if you don't, sacrifice it").
+            let paid = false;
+            const scaled = scaleCostByCounters(cuCostRaw, total);
+            try {
+              const plan = parseCostString(scaled);
+              const ctx: CostPaymentContext = {
+                game: g,
+                payerSeat: controllerSeat,
+                sourceCardId,
+                raw: scaled,
+                kind: "ability",
+                sourceZone: ZoneType.Battlefield,
+              };
+              yield* payCost(plan, ctx);
+              paid = true;
+            } catch {
+              paid = false;
+            }
+            if (paid) {
+              yield g.emitEvent(
+                mkEvent("PayCumulativeUpkeep", g.turn, g.phase, {
+                  cardId: sourceCardId,
+                  playerSeat: controllerSeat,
+                }),
+              );
+            } else {
+              yield* g.action.sacrifice(sourceCardId, { sourceId: sourceCardId });
+            }
           } else {
             yield* g.action.sacrifice(sourceCardId, { sourceId: sourceCardId });
           }

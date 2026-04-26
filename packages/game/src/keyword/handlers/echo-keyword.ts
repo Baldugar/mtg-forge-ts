@@ -20,17 +20,23 @@
 //      game.triggerRegistry, that fires on the controller's upkeep when
 //      `echoOwedCost` is set.
 //
-// MVP scope:
-//   - Resolution emits a `confirmAction` decision: pay the echo cost OR
-//     sacrifice the permanent. The full mana-cost-payment flow is wired
-//     into Echo in a follow-up; for Wave 26 the trigger fires and stamps
-//     the engine event PayCumulativeUpkeep on success or sacrifices on
-//     failure (using game.action.sacrifice).
-//   - The "came under your control since last upkeep" check: this MVP
-//     simply consults `echoOwedCost` (set on ETB; cleared on the FIRST
-//     upkeep after a successful payment). This means Echo fires each
-//     upkeep until paid or the card leaves play — close enough to the
-//     correct semantics for permanents that ETB and stay put.
+// Wave 29 — full mana-payment loop wired in. Resolution flow:
+//   1. yield confirmAction: pay or sacrifice.
+//   2. on confirm-pay: parseCostString(echoOwedCost) → CostPlan; yield*
+//      payCost. If the mana solver returns null (insufficient), payCost
+//      throws; we catch and fall through to the sacrifice arm so a
+//      mis-confirmed pay (e.g. AI agent without mana available) doesn't
+//      corrupt the game state.
+//   3. on success: clear card.echoOwedCost; emit PayCumulativeUpkeep
+//      (PayEcho-specific event remains TODO until the event registry
+//      gains a kind for it).
+//   4. on confirm-sacrifice: clear echoOwedCost and game.action.sacrifice.
+//
+// The "came under your control since last upkeep" check: this MVP
+// simply consults `echoOwedCost` (set on ETB; cleared on the FIRST
+// upkeep after a successful payment). This means Echo fires each
+// upkeep until paid or the card leaves play — close enough to the
+// correct semantics for permanents that ETB and stay put.
 import type {
   GameEvent,
   KeywordAst,
@@ -40,6 +46,8 @@ import type {
   TriggeredAbility,
 } from "@mtg-forge-ts/core";
 import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import type { CostPaymentContext } from "../../cost/parts/cost-part.js";
+import { parseCostString, payCost } from "../../cost/parts/cost-payment.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -113,15 +121,40 @@ export class EchoKeywordHandler extends KeywordHandler {
           const willPay = r.kind === "confirmAction" && r.confirmed === true;
 
           if (willPay) {
-            // MVP: fold the cost-payment into a PayCumulativeUpkeep event.
-            // (PayEcho-style engine event already wired through wave-22.)
-            c.echoOwedCost = undefined;
-            yield g.emitEvent(
-              mkEvent("PayCumulativeUpkeep", g.turn, g.phase, {
-                cardId: sourceCardId,
-                playerSeat: controllerSeat,
-              }),
-            );
+            // Wave 29 — full mana-payment loop. parseCostString returns a
+            // CostPlan; payCost yields through the cost-payment infra
+            // (mana solver, X bind, ManaSpent emits, …). On payment
+            // failure (insufficient mana) the solver throws inside
+            // CostMana.pay; we treat that as a fall-through to the
+            // sacrifice arm so a mis-confirmed pay can't strand state.
+            let paid = false;
+            try {
+              const plan = parseCostString(cost);
+              const ctx: CostPaymentContext = {
+                game: g,
+                payerSeat: controllerSeat,
+                sourceCardId,
+                raw: cost,
+                kind: "ability",
+                sourceZone: ZoneType.Battlefield,
+              };
+              yield* payCost(plan, ctx);
+              paid = true;
+            } catch {
+              paid = false;
+            }
+            if (paid) {
+              c.echoOwedCost = undefined;
+              yield g.emitEvent(
+                mkEvent("PayCumulativeUpkeep", g.turn, g.phase, {
+                  cardId: sourceCardId,
+                  playerSeat: controllerSeat,
+                }),
+              );
+            } else {
+              c.echoOwedCost = undefined;
+              yield* g.action.sacrifice(sourceCardId, { sourceId: sourceCardId });
+            }
           } else {
             // Sacrifice the permanent. Clear the owed cost so re-entry under
             // control later re-stamps freshly.
