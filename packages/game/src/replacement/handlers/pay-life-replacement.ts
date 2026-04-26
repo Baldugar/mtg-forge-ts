@@ -12,12 +12,18 @@
 //     | Description$ If you would pay life, lose that much energy instead.
 //
 // Wave 17 MVP support mirrors GameLossReplacement: ValidPlayer$ filtering,
-// Layer$ CantHappen / Prevent$ True both prevent the payment, ReplaceWith$
-// SVar dispatch deferred to Wave 18.
+// Layer$ CantHappen / Prevent$ True both prevent the payment.
+//
+// Wave 17b — ReplaceWith$ <SVar> resolves an ability on the source card and
+// treats the canonical payment as replaced (returns null). Synchronous
+// execution of the substituted ability (lose energy / poison instead of
+// life) is plumbed in Wave 18.
 import type { MutationIntent, PlayerSeat, ReplacementAbility, ReplacementAst } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -33,7 +39,7 @@ export class PayLifeReplacement extends ReplacementHandler {
     const validPlayerRaw = getParamRaw(ast, "ValidPlayer") ?? "Player";
     const layerParam = getParamRaw(ast, "Layer");
     const preventParam = getParamRaw(ast, "Prevent");
-    void getParamRaw(ast, "ReplaceWith");
+    const replaceWithKey = getParamRaw(ast, "ReplaceWith");
     const { sourceCardId, controllerSeat, replacementId } = ctx;
 
     return {
@@ -56,10 +62,13 @@ export class PayLifeReplacement extends ReplacementHandler {
         return false;
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
-        // ReplaceWith$ deferred to Wave 18 (energy/poison substitution).
-        void sourceCardId;
+        if (replaceWithKey !== undefined) {
+          const game = gameUnknown as Game;
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
+          if (ability !== null) return null;
+        }
         return intent;
       },
     };

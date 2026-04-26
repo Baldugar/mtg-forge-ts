@@ -48,6 +48,7 @@ import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -59,20 +60,8 @@ const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
 const literalRaw = (p: ParamValue | undefined): string | undefined =>
   p && p.kind === "literal" ? p.raw : undefined;
 
-/**
- * Walk the source card's SVar map for `key`, returning the parsed ability
- * EffectInvocation if present, or null.
- */
-const lookupAbilitySVar = (game: Game, sourceCardId: EntityId, key: string): EffectInvocation | null => {
-  const card = game.cards.get(sourceCardId);
-  const def = card?.paperCard?.definition;
-  if (!def) return null;
-  const svars = def.svars as ReadonlyMap<string, SVarAst> | undefined;
-  if (!svars) return null;
-  const sv = svars.get(key);
-  if (!sv || sv.kind !== "ability" || !sv.ability) return null;
-  return sv.ability;
-};
+// Wave 17b — SVar lookup extracted to `replace-with-svar.ts` so the six new
+// replacement handlers can share the same helper.
 
 /**
  * Resolve the Exquisite Archangel canonical SVar pattern. On recognition
@@ -207,7 +196,7 @@ export class GameLossReplacement extends ReplacementHandler {
         // inconsistent state.
         if (replaceWithKey !== undefined) {
           const game = gameUnknown as Game;
-          const ability = lookupAbilitySVar(game, sourceCardId, replaceWithKey);
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
           if (ability && tryRunReplaceWith(game, sourceCardId, controllerSeat, ability)) {
             return null;
           }

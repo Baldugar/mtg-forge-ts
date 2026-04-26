@@ -15,12 +15,15 @@
 //   ValidPlayer$ You / Opponent / Each / Player — seat filter on the milled
 //                                                 player.
 //   Layer$ CantHappen / Prevent$ True           — prevent the mill.
-//   ReplaceWith$ <SVar>                          — recorded; SVar dispatch
-//     deferred to Wave 18.
+//   ReplaceWith$ <SVar>                          — Wave 17b: lookup +
+//     prevent-canonical when the SVar resolves on the source card. Wave
+//     18 wires the actual exile-instead-of-mill execution.
 import type { MutationIntent, PlayerSeat, ReplacementAbility, ReplacementAst } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -36,7 +39,7 @@ export class MillReplacement extends ReplacementHandler {
     const validPlayerRaw = getParamRaw(ast, "ValidPlayer") ?? "Player";
     const layerParam = getParamRaw(ast, "Layer");
     const preventParam = getParamRaw(ast, "Prevent");
-    void getParamRaw(ast, "ReplaceWith");
+    const replaceWithKey = getParamRaw(ast, "ReplaceWith");
     const { sourceCardId, controllerSeat, replacementId } = ctx;
 
     return {
@@ -59,9 +62,13 @@ export class MillReplacement extends ReplacementHandler {
         return false;
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
-        void sourceCardId;
+        if (replaceWithKey !== undefined) {
+          const game = gameUnknown as Game;
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
+          if (ability !== null) return null;
+        }
         return intent;
       },
     };

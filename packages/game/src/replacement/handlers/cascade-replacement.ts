@@ -13,9 +13,10 @@
 //   ValidPlayer$ You / Opponent / Each / Player — seat filter on the
 //                                                 cascading player.
 //   Layer$ CantHappen / Prevent$ True           — block the cascade.
-//   ReplaceWith$ <SVar>                          — recorded; SVar dispatch
-//     is delegated to Wave 18 (cascade is resolved through a dedicated
-//     CascadeTrigger; the alt-resolve path is a separate plumbing change).
+//   ReplaceWith$ <SVar>                          — Wave 17b: lookup +
+//     prevent-canonical when the SVar resolves to an ability on the
+//     source card. The actual alternate cascade (cascade twice) is
+//     plumbed in Wave 18 once cascade has a synchronous SVar entry point.
 import type {
   EntityId,
   MutationIntent,
@@ -23,9 +24,11 @@ import type {
   ReplacementAbility,
   ReplacementAst,
 } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -41,7 +44,7 @@ export class CascadeReplacement extends ReplacementHandler {
     const validPlayerRaw = getParamRaw(ast, "ValidPlayer") ?? "Player";
     const layerParam = getParamRaw(ast, "Layer");
     const preventParam = getParamRaw(ast, "Prevent");
-    void getParamRaw(ast, "ReplaceWith");
+    const replaceWithKey = getParamRaw(ast, "ReplaceWith");
     const { sourceCardId, controllerSeat, replacementId } = ctx;
 
     return {
@@ -66,8 +69,13 @@ export class CascadeReplacement extends ReplacementHandler {
         return false;
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
+        if (replaceWithKey !== undefined) {
+          const game = gameUnknown as Game;
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
+          if (ability !== null) return null;
+        }
         return intent;
       },
     };

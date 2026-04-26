@@ -21,8 +21,10 @@
 //   Layer$ CantHappen / Prevent$ True           — block the destruction.
 //   ReplaceWith$ DBExile                         — return an `exile` intent
 //                                                 in place of `destroy`.
-//   ReplaceWith$ <SVar> (other shapes)          — recorded; SVar dispatch
-//     deferred to Wave 18.
+//   ReplaceWith$ <SVar> (other shapes)          — Wave 17b: lookup the
+//     SVar via the shared helper. When an ability SVar is found, treat
+//     the canonical destroy as replaced (return null). Wave 18 will
+//     execute the alternative ability synchronously.
 import type {
   EntityId,
   MutationIntent,
@@ -34,6 +36,7 @@ import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -106,7 +109,7 @@ export class DestroyReplacement extends ReplacementHandler {
         return matchesValidCardLite(validCardRaw, di.cardId, sourceCardId, controllerSeat, game);
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
         // ReplaceWith$ DBExile — turn the destroy into an exile intent.
         if (replaceWithKey === "DBExile") {
@@ -117,7 +120,15 @@ export class DestroyReplacement extends ReplacementHandler {
             sourceId: di.sourceId ?? sourceCardId,
           } as unknown as MutationIntent;
         }
-        // Other ReplaceWith$ shapes deferred to Wave 18.
+        // Other ReplaceWith$ <SVar> shapes — Wave 17b: when the SVar
+        // dereferences to an ability on the source card, treat the
+        // canonical destroy as replaced (return null). Wave 18 wires
+        // synchronous execution of the alternative.
+        if (replaceWithKey !== undefined && replaceWithKey !== ast.effect.handlerKey) {
+          const game = gameUnknown as Game;
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
+          if (ability !== null) return null;
+        }
         return intent;
       },
     };
