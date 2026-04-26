@@ -1102,6 +1102,63 @@ export type GameEvent =
       // uses it to coalesce end-of-step trigger sweeps without duplicating
       // work across every StepEnded.
       readonly payload: { readonly step: PhaseStep };
+    }
+  // === Wave 18 — corpus-unknown trigger events ===
+  | {
+      // Mentor mechanic (Ravnica Allegiance). A creature with Mentor places
+      // a +1/+1 counter on a smaller-power attacker.
+      readonly kind: "Mentored";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly mentorCardId: EntityId;
+        readonly mentoredCardId: EntityId;
+        readonly playerSeat: PlayerSeat;
+      };
+    }
+  | {
+      // Fires when a player searches their library for cards (CR 701.19).
+      readonly kind: "SearchedLibrary";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly searchedSeat: PlayerSeat };
+    }
+  | {
+      // Lorwyn-block "elemental synergy" trigger (rare, paired with
+      // Earthbend/Airbend mechanics).
+      readonly kind: "ElementalBend";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Fires when a player pays cumulative upkeep (CR 702.24).
+      readonly kind: "PayCumulativeUpkeep";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Amonkhet "Exert" — fires when a creature is exerted (declared as
+      // attacker without untapping next turn).
+      readonly kind: "Exerted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // "Enlist" — Streets of New Capenna mechanic. Fires when a creature is
+      // enlisted to attack alongside another.
+      readonly kind: "Enlisted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly enlisterCardId: EntityId };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */

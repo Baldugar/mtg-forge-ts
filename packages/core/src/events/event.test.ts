@@ -122,6 +122,26 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "ContinuousEffectExpired",
   "CostPaid",
   "PhaseStepEnded",
+  // Wave 16 — combat / mana / planar / scheme / mutate / monstrous (12)
+  "AttackerUnblocked",
+  "CardBecameMonstrous",
+  "CardCranked",
+  "CardMutated",
+  "CrimeCommitted",
+  "LandPlayed",
+  "ManaSpent",
+  "ManaTapped",
+  "PlanarDieRolled",
+  "PlaneswalkedTo",
+  "PlayerCounterAdded",
+  "SchemeSetInMotion",
+  // Wave 18 — corpus-unknown trigger event extensions (6)
+  "Mentored",
+  "SearchedLibrary",
+  "ElementalBend",
+  "PayCumulativeUpkeep",
+  "Exerted",
+  "Enlisted",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -225,12 +245,32 @@ const ALL_KINDS_MAP = {
   ContinuousEffectExpired: true,
   CostPaid: true,
   PhaseStepEnded: true,
+  // Wave 16 — corpus-unknown trigger event extensions (pre-Wave-18)
+  AttackerUnblocked: true,
+  CardBecameMonstrous: true,
+  CardCranked: true,
+  CardMutated: true,
+  CrimeCommitted: true,
+  LandPlayed: true,
+  ManaSpent: true,
+  ManaTapped: true,
+  PlanarDieRolled: true,
+  PlaneswalkedTo: true,
+  PlayerCounterAdded: true,
+  SchemeSetInMotion: true,
+  // Wave 18 — additional corpus-unknown trigger events (6)
+  Mentored: true,
+  SearchedLibrary: true,
+  ElementalBend: true,
+  PayCumulativeUpkeep: true,
+  Exerted: true,
+  Enlisted: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 96 distinct kinds grouped across 9 families (SP2 §B + Task 54 CardTurnedFaceUp + Task 60 Melded + Wave 4 CardsRevealed + Wave 5 CardTargeted)", () => {
-    expect(EXPECTED_KINDS.length).toBe(96);
-    expect(new Set(EXPECTED_KINDS).size).toBe(96);
+  it("has 114 distinct kinds grouped across 9 families (Wave 16 + 12, Wave 18 + 6)", () => {
+    expect(EXPECTED_KINDS.length).toBe(114);
+    expect(new Set(EXPECTED_KINDS).size).toBe(114);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -376,6 +416,26 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     ContinuousEffectExpired: { effectId: id(1) },
     CostPaid: { stackItemId: id(1), payerSeat: seat0 },
     PhaseStepEnded: { step: PhaseStep.EndStep },
+    // Wave 16 missing payloads
+    AttackerUnblocked: { attackerId: id(1), attackingSeat: seat0 },
+    CardBecameMonstrous: { cardId: id(1), controllerSeat: seat0 },
+    CardCranked: { cardId: id(1), controllerSeat: seat0 },
+    CardMutated: { mutatorId: id(1), hostId: id(2), controllerSeat: seat0 },
+    CrimeCommitted: { playerSeat: seat0, sourceCardId: id(1) },
+    LandPlayed: { cardId: id(1), playerSeat: seat0 },
+    ManaSpent: { playerSeat: seat0, color: null, amount: 1 },
+    ManaTapped: { cardId: id(1), playerSeat: seat0, produced: "G" },
+    PlanarDieRolled: { rollingSeat: seat0, result: "chaos" },
+    PlaneswalkedTo: { planeCardId: id(1), playerSeat: seat0 },
+    PlayerCounterAdded: { playerSeat: seat0, counterType: "poison", amount: 1 },
+    SchemeSetInMotion: { schemeCardId: id(1), archenemySeat: seat0 },
+    // Wave 18 payloads
+    Mentored: { mentorCardId: id(1), mentoredCardId: id(2), playerSeat: seat0 },
+    SearchedLibrary: { playerSeat: seat0, searchedSeat: seat0 },
+    ElementalBend: { cardId: id(1), playerSeat: seat0 },
+    PayCumulativeUpkeep: { cardId: id(1), playerSeat: seat0 },
+    Exerted: { cardId: id(1), playerSeat: seat0 },
+    Enlisted: { cardId: id(1), enlisterCardId: id(2) },
   };
 
   for (const kind of EXPECTED_KINDS) {
