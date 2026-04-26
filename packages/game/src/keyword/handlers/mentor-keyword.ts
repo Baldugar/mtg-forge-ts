@@ -61,12 +61,11 @@ export class MentorKeywordHandler extends KeywordHandler {
 
       matches(event: GameEvent): boolean {
         // CR 702.133a — "whenever this creature attacks". The engine
-        // emits AttackerDeclared (per-attacker) when the attacker set
-        // resolves. Match only events whose sourceId / attackerId is
-        // self.
-        if (event.kind !== "AttackerDeclared") return false;
-        const p = event.payload as { attackerId?: EntityId };
-        return p.attackerId === sourceCardId;
+        // emits AttackersDeclared (batch) with the attacker list. Match
+        // when self is in the batch.
+        if (event.kind !== "AttackersDeclared") return false;
+        const p = event.payload as { attackerIds?: readonly EntityId[] };
+        return p.attackerIds?.includes(sourceCardId) ?? false;
       },
 
       resolver: {

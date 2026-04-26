@@ -64,13 +64,18 @@ export class RenownKeywordHandler extends KeywordHandler {
       isDelayed: false,
 
       matches(event: GameEvent): boolean {
-        // CR 702.111a — combat damage dealt to a player.
-        if (event.kind !== "CombatDamageDealt") return false;
-        const p = event.payload as { sourceId?: EntityId; targetSeat?: number; targetCardId?: EntityId };
+        // CR 702.111a — combat damage dealt to a player. The engine emits
+        // DamageDealt with isCombat=true and targetKind="player" for the
+        // CR 702.111 trigger condition.
+        if (event.kind !== "DamageDealt") return false;
+        const p = event.payload as {
+          sourceId?: EntityId;
+          targetKind?: "creature" | "player" | "planeswalker" | "battle";
+          isCombat?: boolean;
+        };
         if (p.sourceId !== sourceCardId) return false;
-        // Player target only (skip creature/planeswalker/battle hits).
-        if (p.targetSeat === undefined) return false;
-        if (p.targetCardId !== undefined) return false;
+        if (p.isCombat !== true) return false;
+        if (p.targetKind !== "player") return false;
         // Don't fire if already renowned.
         const c = game.cards.get(sourceCardId);
         if (!c) return false;
