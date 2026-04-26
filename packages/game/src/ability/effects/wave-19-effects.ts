@@ -167,7 +167,6 @@ const otherSeat = (seat: PlayerSeat, game: Game): PlayerSeat => {
 export class ChangeTargetsEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChangeTargets";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     if (sa.targets.length === 0) return;
     const stackItemId = sa.targets[0];
@@ -191,7 +190,6 @@ effectRegistry.register(ChangeTargetsEffect);
 export class PermanentNoncreatureEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "PermanentNoncreature";
 
-  // biome-ignore lint/correctness/useYield: trivial — no engine yield
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     // The Forge form is used for cards whose ability resolves "as if cast" the
     // top spell; the runtime effect simply places the source onto the
