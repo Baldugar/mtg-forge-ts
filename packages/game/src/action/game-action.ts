@@ -380,6 +380,38 @@ export class GameAction {
           if (card.phased && final.toZone !== Zt.Battlefield) {
             card.phased = false;
           }
+          // Wave 14b — CR 122.6: a permanent leaving the battlefield
+          // becomes a new object with no counters. Skullbriar / Me, the
+          // Immortal carry an `S:Mode$ CountersRemain` static which
+          // generates a replacement intercepting a synthetic
+          // `clearCountersOnZoneChange` mutation; consult the registry
+          // here so the replacement can match. If unmatched, clear the
+          // counters; if matched (CountersRemain returned null), keep
+          // them. Hand and Library destinations always clear (per CR
+          // exception in CountersRemain text — counters disappear when
+          // moving to an unseen zone). Synthetic intent is NOT routed
+          // through applyReplacementLoop (no event yields) — the apply
+          // is local and synchronous since we're already inside the
+          // canonical moveTo's onApplied callback.
+          if (fromZone === Zt.Battlefield && final.toZone !== Zt.Battlefield && card.counters.size > 0) {
+            const clearIntent = {
+              kind: "clearCountersOnZoneChange",
+              cardId: final.cardId,
+              toZone: final.toZone,
+            } as const;
+            const applicable = game.replacementRegistry.gatherApplicable(clearIntent, new Set());
+            let replaced = false;
+            for (const r of applicable) {
+              const next = r.apply(clearIntent, game);
+              if (next === null) {
+                replaced = true;
+                break;
+              }
+            }
+            if (!replaced) {
+              card.counters.clear();
+            }
+          }
         }
         // Milestone F Task 25 — activate/deactivate intrinsic static
         // abilities whose activeInZones includes the new zone. Runs

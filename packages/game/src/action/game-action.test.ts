@@ -288,6 +288,123 @@ describe("GameAction.moveTo", () => {
     expect(yields).toHaveLength(1);
     expect(yields[0]?.kind === "event" && yields[0].event.kind).toBe("CardChangedZone");
   });
+
+  // ---------------------------------------------------------------------------
+  // Wave 14b — counters auto-clear on zone change (CR 122.6) + CountersRemain
+  // ---------------------------------------------------------------------------
+
+  describe("counters on zone change (Wave 14b)", () => {
+    it("clears counters when a permanent leaves the battlefield (no CountersRemain)", () => {
+      const { game, action, seat0 } = mkFixture();
+      const id = mkEntityId(50);
+      const card = addCardToZone(game, seat0, ZoneType.Battlefield, id);
+      card.counters.set(CounterType.PlusOnePlusOne, 3);
+
+      collect(action.moveTo(id, ZoneType.Graveyard));
+
+      const moved = game.cards.get(id);
+      expect(moved?.zone).toBe(ZoneType.Graveyard);
+      // Per CR 122.6 the post-move object has no counters.
+      expect(moved?.counters.size).toBe(0);
+    });
+
+    it("preserves counters across zone changes when a CountersRemain replacement is registered (Skullbriar)", () => {
+      const { game, action, seat0 } = mkFixture();
+      const id = mkEntityId(51);
+      const card = addCardToZone(game, seat0, ZoneType.Battlefield, id);
+      card.counters.set(CounterType.PlusOnePlusOne, 4);
+
+      // Register Skullbriar's CountersRemain replacement directly. Mirrors
+      // the shape the CountersRemainStaticHandler produces when the static
+      // is wired by ParserA — minus the lifecycle plumbing we don't need
+      // for this unit test.
+      const replId = mkEntityId(8001);
+      game.replacementRegistry.register({
+        id: replId,
+        kind: "replacement",
+        sourceCardId: id,
+        activeInZones: new Set(["all" as ZoneType]),
+        timestamp: 0,
+        controllerSeatAtReg: seat0,
+        isSelfReplacement: false,
+        layer: "cantHappen",
+        matches(intent) {
+          if ((intent as { kind?: string }).kind !== "clearCountersOnZoneChange") return false;
+          return (intent as { cardId?: EntityId }).cardId === id;
+        },
+        apply(_intent, _g) {
+          return null; // prevent the auto-clear → counters carry over
+        },
+      });
+
+      collect(action.moveTo(id, ZoneType.Graveyard));
+
+      const moved = game.cards.get(id);
+      expect(moved?.zone).toBe(ZoneType.Graveyard);
+      // Skullbriar carries its counters across the move.
+      expect(moved?.counters.get(CounterType.PlusOnePlusOne)).toBe(4);
+    });
+
+    it("clears counters when moving from battlefield to Hand even with a CountersRemain handler that excludes Hand", () => {
+      // Sanity: the CountersRemain replacement registered with a
+      // toZone-aware matches() refuses to fire for Hand/Library. Since
+      // matches() returns false the synthetic intent is unmatched and the
+      // canonical clear runs.
+      const { game, action, seat0 } = mkFixture();
+      const id = mkEntityId(52);
+      const card = addCardToZone(game, seat0, ZoneType.Battlefield, id);
+      card.counters.set(CounterType.PlusOnePlusOne, 2);
+
+      const replId = mkEntityId(8002);
+      game.replacementRegistry.register({
+        id: replId,
+        kind: "replacement",
+        sourceCardId: id,
+        activeInZones: new Set(["all" as ZoneType]),
+        timestamp: 0,
+        controllerSeatAtReg: seat0,
+        isSelfReplacement: false,
+        layer: "cantHappen",
+        matches(intent) {
+          if ((intent as { kind?: string }).kind !== "clearCountersOnZoneChange") return false;
+          if ((intent as { cardId?: EntityId }).cardId !== id) return false;
+          // CountersRemain text excludes Hand/Library — this matches() mirrors
+          // CountersRemainStaticHandler.
+          const tz = (intent as { toZone?: string }).toZone;
+          return tz !== "Hand" && tz !== "Library";
+        },
+        apply() {
+          return null;
+        },
+      });
+
+      collect(action.moveTo(id, ZoneType.Hand));
+
+      const moved = game.cards.get(id);
+      expect(moved?.zone).toBe(ZoneType.Hand);
+      // Hand destination falls outside CountersRemain's matches() → cleared.
+      expect(moved?.counters.size).toBe(0);
+    });
+
+    it("does NOT touch counters for moves that don't leave the battlefield", () => {
+      // Hand → Graveyard never had counters; control change inside the
+      // battlefield (modeled here as a redundant moveTo to Battlefield) keeps
+      // them. We assert the simpler hand-side: a non-battlefield-departure
+      // doesn't accidentally invoke the clear path.
+      const { game, action, seat0 } = mkFixture();
+      const id = mkEntityId(53);
+      const card = addCardToZone(game, seat0, ZoneType.Hand, id);
+      card.counters.set(CounterType.PlusOnePlusOne, 1);
+
+      collect(action.moveTo(id, ZoneType.Graveyard));
+
+      const moved = game.cards.get(id);
+      // Hand→Graveyard isn't gated by CR 122.6 (counters only live on
+      // permanents on the battlefield); the auto-clear branch is scoped to
+      // fromZone === Battlefield, so this stub counter survives untouched.
+      expect(moved?.counters.get(CounterType.PlusOnePlusOne)).toBe(1);
+    });
+  });
 });
 
 describe("GameAction.tap / untap", () => {
