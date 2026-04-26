@@ -261,7 +261,7 @@ describe("Flagship: Plot — Bloomburrow end-to-end", () => {
     // --- Cast for free via Plot alt-cost ---
     // Empty pool — proves the cast pays NO mana.
     game.getPlayer(seat0).manaPool = new ManaPool();
-    expect(game.getPlayer(seat0).manaPool.size()).toBe(0);
+    expect((game.getPlayer(seat0).manaPool as ManaPool).size()).toBe(0);
 
     const proposal: CastProposal = {
       castingPlayer: seat0,
@@ -278,7 +278,7 @@ describe("Flagship: Plot — Bloomburrow end-to-end", () => {
     expect(castStackItem).not.toBeNull();
     expect(castEvents).toContain("SpellCast");
     // Pool still empty — no mana paid for the cast.
-    expect(game.getPlayer(seat0).manaPool.size()).toBe(0);
+    expect((game.getPlayer(seat0).manaPool as ManaPool).size()).toBe(0);
 
     const si = castStackItem as StackItem;
     expect(si.provenance.altCostUsed).toBe("Plot");

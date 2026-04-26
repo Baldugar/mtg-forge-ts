@@ -21,7 +21,13 @@ import "./draw.js";
 import "./token.js";
 import { tokenDatabase } from "@mtg-forge-ts/cards";
 import type { EntityId, LobbyPlayer } from "@mtg-forge-ts/core";
-import { type ManaProduced, SeededRng, ZoneType, mkPlayerSeat } from "@mtg-forge-ts/core";
+import {
+  DEFAULT_PAPER_CARD_FLAGS,
+  type ManaProduced,
+  SeededRng,
+  ZoneType,
+  mkPlayerSeat,
+} from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { activateAbility } from "../../ability/activate.js";
 import type { GameMeta } from "../../game-meta.js";
@@ -95,13 +101,13 @@ describe("TokenScript$ activated abilities (Wave 17b)", () => {
           collectorNumber: "0",
           language: "en",
           foil: false,
-          flags: { isStarter: false, isReprint: false, isTimeshifted: false, isPromotional: false },
+          flags: DEFAULT_PAPER_CARD_FLAGS,
           definition: {
             name: treasureEntry?.name ?? "Treasure Token",
             oracle: treasureEntry?.oracle ?? "",
             types: treasureEntry?.types ?? (undefined as never),
             manaCost: treasureEntry?.manaCost ?? null,
-            colors: treasureEntry?.colors,
+            ...(treasureEntry?.colors !== undefined ? { colors: treasureEntry.colors } : {}),
             abilities: treasureEntry?.abilities ?? [],
             triggers: [],
             replacements: [],
