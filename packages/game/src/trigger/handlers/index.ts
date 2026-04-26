@@ -54,3 +54,5 @@ export * from "./become-monstrous-trigger.js";
 export * from "./ring-tempts-you-trigger.js";
 // Wave 18 — corpus unknown triggers (12 handlers)
 export * from "./wave-18-triggers.js";
+// Wave 19 — final corpus unknown triggers (20 handlers)
+export * from "./wave-19-triggers.js";

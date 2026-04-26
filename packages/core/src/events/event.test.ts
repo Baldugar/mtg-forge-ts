@@ -142,6 +142,16 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "PayCumulativeUpkeep",
   "Exerted",
   "Enlisted",
+  // Wave 19 — final corpus-unknown trigger event extensions (9)
+  "DiscardedAll",
+  "ManaAdded",
+  "ExcessDamage",
+  "LifeLost",
+  "Abandoned",
+  "DamageDealtAll",
+  "Saddled",
+  "Crewed",
+  "CaseSolved",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -265,12 +275,22 @@ const ALL_KINDS_MAP = {
   PayCumulativeUpkeep: true,
   Exerted: true,
   Enlisted: true,
+  // Wave 19 — final corpus-unknown trigger events (9)
+  DiscardedAll: true,
+  ManaAdded: true,
+  ExcessDamage: true,
+  LifeLost: true,
+  Abandoned: true,
+  DamageDealtAll: true,
+  Saddled: true,
+  Crewed: true,
+  CaseSolved: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 114 distinct kinds grouped across 9 families (Wave 16 + 12, Wave 18 + 6)", () => {
-    expect(EXPECTED_KINDS.length).toBe(114);
-    expect(new Set(EXPECTED_KINDS).size).toBe(114);
+  it("has 123 distinct kinds grouped across 9 families (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9)", () => {
+    expect(EXPECTED_KINDS.length).toBe(123);
+    expect(new Set(EXPECTED_KINDS).size).toBe(123);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -436,6 +456,16 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     PayCumulativeUpkeep: { cardId: id(1), playerSeat: seat0 },
     Exerted: { cardId: id(1), playerSeat: seat0 },
     Enlisted: { cardId: id(1), enlisterCardId: id(2) },
+    // Wave 19 payloads
+    DiscardedAll: { playerSeat: seat0, cardIds: [id(1), id(2)] },
+    ManaAdded: { playerSeat: seat0, amount: 1, color: null },
+    ExcessDamage: { sourceId: id(1), targetKind: "creature", targetId: id(2), amount: 3 },
+    LifeLost: { playerSeat: seat0, amount: 2 },
+    Abandoned: { schemeCardId: id(1), archenemySeat: seat0 },
+    DamageDealtAll: { sourceId: id(1), targetIds: [id(2), id(3)], amount: 1 },
+    Saddled: { mountId: id(1), riderIds: [id(2)] },
+    Crewed: { vehicleId: id(1), crewIds: [id(2), id(3)] },
+    CaseSolved: { cardId: id(1), playerSeat: seat0 },
   };
 
   for (const kind of EXPECTED_KINDS) {

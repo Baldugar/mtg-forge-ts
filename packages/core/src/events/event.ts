@@ -1159,6 +1159,97 @@ export type GameEvent =
       readonly turn: number;
       readonly phase: PhaseStep;
       readonly payload: { readonly cardId: EntityId; readonly enlisterCardId: EntityId };
+    }
+  // === Wave 19 — final corpus-unknown trigger events ===
+  | {
+      // Fires once per discard set (group of cards discarded simultaneously).
+      readonly kind: "DiscardedAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly cardIds: readonly EntityId[];
+      };
+    }
+  | {
+      // Fires when mana is added to a player's pool (post-pool variant of
+      // ManaTapped — companion to ManaEnteredPool but for trigger semantics).
+      readonly kind: "ManaAdded";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly amount: number;
+        readonly color: Color | null;
+      };
+    }
+  | {
+      // Fires when excess damage is dealt (CR 120.4) — damage beyond the target's
+      // remaining toughness or life total.
+      readonly kind: "ExcessDamage";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly sourceId: EntityId;
+        readonly targetKind: "creature" | "player" | "planeswalker" | "battle";
+        readonly targetId: EntityId | PlayerSeat;
+        readonly amount: number;
+      };
+    }
+  | {
+      // Fires when a player loses life (LifeChanged variant for delta < 0).
+      readonly kind: "LifeLost";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly amount: number };
+    }
+  | {
+      // Fires when an Archenemy scheme is abandoned (ongoing scheme rotated out).
+      readonly kind: "Abandoned";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly schemeCardId: EntityId; readonly archenemySeat: PlayerSeat };
+    }
+  | {
+      // Fires when a single source deals damage to multiple targets simultaneously.
+      readonly kind: "DamageDealtAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly sourceId: EntityId;
+        readonly targetIds: readonly EntityId[];
+        readonly amount: number;
+      };
+    }
+  | {
+      // Outlaws of Thunder Junction — fires when a Mount is saddled.
+      readonly kind: "Saddled";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly mountId: EntityId; readonly riderIds: readonly EntityId[] };
+    }
+  | {
+      // Kaladesh Vehicles — fires when a Vehicle is crewed.
+      readonly kind: "Crewed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly vehicleId: EntityId; readonly crewIds: readonly EntityId[] };
+    }
+  | {
+      // Murders at Karlov Manor — fires when a Case is solved.
+      readonly kind: "CaseSolved";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
