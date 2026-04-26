@@ -42,4 +42,9 @@ export * from "./modular-keyword.js";
 export * from "./living-weapon-keyword.js";
 export * from "./riot-keyword.js";
 export * from "./rebound-keyword.js";
+// Wave 31 — Persist / Undying. Death-trigger handlers (Battlefield →
+// Graveyard); on resolve, conditionally return the dying card with a
+// counter (M1M1 for Persist, P1P1 for Undying).
+export * from "./persist-keyword.js";
+export * from "./undying-keyword.js";
 export * from "./flag-keyword.js";
