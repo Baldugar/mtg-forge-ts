@@ -10,6 +10,18 @@ describe("Layer 7a — CDA set P/T (CR 613.1g)", () => {
     expect(c.power).toBe(3);
     expect(c.toughness).toBe(3);
   });
+
+  // Audit I-5 — NaN-safe defaulting. A CDA built from an unparsed `*`/`X`
+  // P/T placeholder may evaluate to NaN; without the safePt gate every
+  // downstream layer-7 arithmetic step propagates NaN.
+  it("I-5 — NaN power/toughness coerce to 0 (CR 107.1b)", () => {
+    const c = emptyCharacteristics();
+    applyLayer7a(c, [
+      { kind: "cdaSet", power: Number.NaN, toughness: Number.NaN, timestamp: 1, sourceAbilityId: null },
+    ]);
+    expect(c.power).toBe(0);
+    expect(c.toughness).toBe(0);
+  });
 });
 
 describe("Layer 7b — set P/T", () => {

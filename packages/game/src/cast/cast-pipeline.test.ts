@@ -1751,6 +1751,63 @@ describe("CastPipeline — Task 39 abort + rollback", () => {
   });
 });
 
+// Audit A-004 — face-leak: stepChooseFace mirrors faceChosen onto Card.face
+// so layer derivation observes the chosen face during the cast. If the cast
+// aborts AFTER the face was set, abort() must clear Card.face so a retry on
+// a different face starts from the default (no stale leakage between casts).
+describe("CastPipeline — A-004 face-leak abort cleanup", () => {
+  it("abort clears Card.face after a face was chosen so the retry starts clean", () => {
+    const { game, seat0 } = makeGame();
+    const paper: PaperCard = {
+      ...samplePaper,
+      faces: { L: { name: "Fire" }, R: { name: "Ice" } },
+    };
+    const cardId = mkEntityId(1100);
+    const card = new Card(cardId, paper, seat0, seat0, ZoneType.Hand);
+    game.cards.set(cardId, card);
+    const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+    if (!hand) throw new Error("test: missing hand");
+    hand.add(cardId);
+
+    // First cast attempt: pick "L", then force a downstream throw via an
+    // invalid optional-cost id so abort() runs after Card.face was mirrored.
+    // We do this by responding to chooseFace with a valid pick and then
+    // letting the pipeline fail later. Easiest path: use an UncaughtCastPipeline-
+    // style throw by feeding an unknown chooseOptionalCosts response. Cards
+    // without optionalCosts skip step 4, so let's directly arrange: pick L
+    // and then let stepDetermineTotalCost throw (we can't easily without
+    // a subclass). Use a subclass that throws after stepChooseFace.
+    class ThrowAfterFace extends CastPipeline {
+      // biome-ignore lint/correctness/useYield: error branch before yield
+      protected override *stepChooseZoneOverride(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+        throw new Error("force-abort-after-face");
+      }
+    }
+    const pipeline = new ThrowAfterFace(game);
+    const gen = pipeline.run({
+      castingPlayer: seat0,
+      sourceCardId: cardId,
+      originZone: ZoneType.Hand,
+      asSpecialAction: false,
+    });
+    // 1st yield: chooseFace decision
+    gen.next();
+    // Respond with "L" — stepChooseFace mirrors onto card.face, then
+    // stepChooseZoneOverride throws → abort engages.
+    const second = gen.next({ kind: "chooseFace", face: "L" });
+    expect(second.done).toBe(false);
+    const ev = second.value as EngineYield;
+    expect(ev.kind).toBe("event");
+    if (ev.kind === "event") expect(ev.event.kind).toBe("CastAborted");
+    const third = gen.next();
+    expect(third.done).toBe(true);
+    expect(third.value).toBeNull();
+    // Audit A-004 — Card.face must be cleared so the next cast attempt
+    // doesn't see "L" as a stale default.
+    expect(card.face).toBeUndefined();
+  });
+});
+
 // Audit D-C2 regression — explicit coverage that each IllegalDecisionError
 // throw-site in cast-pipeline.ts actually throws IllegalDecisionError (not
 // a generic Error). We expose a test-only subclass that re-throws out of

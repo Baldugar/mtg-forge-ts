@@ -56,7 +56,15 @@ export function* apnapOrder(
     if (group.length === 0) continue;
     if (group.length === 1) {
       const only = group[0];
-      if (only) flat.push(only);
+      // Audit I-6 — group.length === 1 but group[0] undefined is a corrupted-
+      // queue invariant violation. Silently `continue`-ing drops the trigger
+      // on the floor; throw so the priority orchestrator sees the bug.
+      if (!only) {
+        throw new GameStateIntegrityError(
+          `apnapOrder: group length is 1 but group[0] undefined for seat ${seat} — corrupted pending queue`,
+        );
+      }
+      flat.push(only);
       continue;
     }
     const response = (yield {

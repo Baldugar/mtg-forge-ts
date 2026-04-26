@@ -899,6 +899,23 @@ export class CastPipeline {
         undoCost([payment.receipt], costCtx);
       }
     }
+    // Audit A-004 — clear face-chosen leak. stepChooseFace mirrors the pick
+    // onto Card.face so layer derivation sees the chosen face during the
+    // cast. If the cast aborts, the source card is still in its origin zone
+    // (the cast didn't push the spell onto the stack), and a subsequent
+    // re-attempt's stepChooseFace will set Card.face fresh — but only if
+    // it actually runs. A cast that aborts BEFORE stepChooseFace (e.g. in
+    // stepPropose) on a multi-face card whose previous attempt set Card.face
+    // would inherit the stale pick. Reset Card.face to undefined (the
+    // pre-cast default) so each cast attempt starts on a clean slate.
+    if (ctx.faceChosen !== undefined) {
+      const card = this.game.cards.get(ctx.sourceCardId);
+      if (card) {
+        // WHY undefined: Card.face uses undefined to mean "default front face".
+        card.face = undefined;
+      }
+      ctx.faceChosen = undefined;
+    }
     // 2. Emit the abort event.
     yield {
       kind: "event",

@@ -113,19 +113,27 @@ const toDepNodes = <
     raw: e,
   }));
 
+// Audit I-5 — coerce a possibly-NaN/null computed P/T into a safe integer.
+// CR 107.1b — values that fail to compute (unparsed `*`, missing X) default
+// to 0. Without this gate, a CDA effect built from an unparsed Card_pt$ value
+// can write NaN into Characteristics, where every later arithmetic step
+// (counter add, switch) propagates NaN. Returning 0 keeps the SBA-creature-
+// removal pipeline (toughness ≤ 0 → die) interpretable.
+const safePt = (n: number): number => (Number.isFinite(n) ? n : 0);
+
 export const applyLayer7a = (c: Characteristics, effects: readonly Layer7aEffect[]): void => {
   const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7aEffect);
   for (const e of ordered) {
-    c.power = e.power;
-    c.toughness = e.toughness;
+    c.power = safePt(e.power);
+    c.toughness = safePt(e.toughness);
   }
 };
 
 export const applyLayer7b = (c: Characteristics, effects: readonly Layer7bEffect[]): void => {
   const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7bEffect);
   for (const e of ordered) {
-    c.power = e.power;
-    c.toughness = e.toughness;
+    c.power = safePt(e.power);
+    c.toughness = safePt(e.toughness);
   }
 };
 

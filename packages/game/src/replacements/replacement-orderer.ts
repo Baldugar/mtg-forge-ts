@@ -90,7 +90,17 @@ function* orderBucket(
   if (bucket.length === 0) return [];
   if (bucket.length === 1) {
     const only = bucket[0];
-    return only ? [only.id] : [];
+    // Audit I-6 — silently returning [] when bucket[0] was somehow undefined
+    // (a TS-impossible-but-runtime-defensive case via Array.length manipulation
+    // or a sparse array) hides a state-corruption bug. Throw instead so the
+    // SBA-engine / apply-loop sees the inconsistency rather than dropping
+    // the replacement on the floor.
+    if (!only) {
+      throw new Error(
+        "orderBucket: bucket length is 1 but bucket[0] is undefined — corrupted applicable list",
+      );
+    }
+    return [only.id];
   }
   const orderer = chooseOrderer(intent, game);
   const response = (yield {
