@@ -178,6 +178,11 @@ const matchesAlternative = (
       if (card && cardHasType(card, negated)) return false;
       continue;
     }
+    // Wave 11 — fall through to a card-type / subtype check so qualifiers
+    // like ".Dragon", ".Bear", ".Wizard" work (Forge subtypes appear after
+    // the base in Card.Dragon, Creature.Wizard, etc.). cardHasType already
+    // checks both supertypes/types AND subtypes via hasSubtype.
+    if (card && cardHasType(card, q)) continue;
     // Unrecognised qualifier — conservative reject.
     return false;
   }
