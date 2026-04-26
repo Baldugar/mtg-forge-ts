@@ -484,6 +484,22 @@ export type DecisionRequest =
         readonly cardId: EntityId;
         readonly mode: "convoke" | "improvise";
       }[];
+    }
+  | {
+      // Wave 24 — Crew (CR 702.121) and Saddle (CR 702.165). Once the
+      // synthetic Crew/Saddle activated ability resolves off the stack, the
+      // controller must tap any number of UNTAPPED creatures they control
+      // whose total power is at least `requiredPower`. The engine exposes
+      // every untapped controlled creature in `eligible`; the responder
+      // returns a subset whose summed power passes the gate. The Vehicle
+      // (Crew) or Mount (Saddle) being activated is identified by
+      // `sourceCardId`; `mode` distinguishes which keyword fired.
+      readonly kind: "chooseCrewSaddleCreatures";
+      readonly mode: "crew" | "saddle";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceCardId: EntityId;
+      readonly requiredPower: number;
+      readonly eligible: readonly EntityId[];
     };
 
 /**
@@ -646,6 +662,15 @@ export type DecisionResponse =
   // engine taps each id and reduces the spell's generic cost by 1 per tap.
   | {
       readonly kind: "chooseConvokeImproviseTap";
+      readonly tapIds: readonly EntityId[];
+    }
+  // Wave 24 — Crew / Saddle: which untapped creatures the controller taps to
+  // satisfy the keyword's power threshold. Each id MUST be in the request's
+  // `eligible` list; duplicates rejected by the engine. Empty array signals
+  // "take no action" — the activated ability's effect aborts without
+  // crewing/saddling.
+  | {
+      readonly kind: "chooseCrewSaddleCreatures";
       readonly tapIds: readonly EntityId[];
     };
 

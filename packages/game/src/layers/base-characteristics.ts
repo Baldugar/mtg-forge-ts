@@ -133,5 +133,16 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     base.toughness = null;
   }
 
+  // Wave 24 — Crew (CR 702.121). A Vehicle is normally an artifact only;
+  // crewing turns it into an artifact creature until end of turn. The
+  // CrewEffect stamps `card.crewedUntilEot = true` and registers an
+  // untilEndOfTurn ContinuousEffect whose cleanup hook clears the flag at
+  // expiry. We add CardType.Creature here at the base layer so the layer
+  // engine sees a creature throughout. The Vehicle keeps its other types
+  // (Artifact + Vehicle subtype) — we only ADD Creature, never remove.
+  if (card.crewedUntilEot === true) {
+    base.types.add(CARDTYPE_CREATURE);
+  }
+
   return base;
 };

@@ -96,3 +96,8 @@ export * from "./specialize.js";
 // SP3 — Plot keyword resolver (Bloomburrow / CR 718). Synthesized by
 // PlotKeywordHandler; registered as handlerKey "Plot".
 export * from "./plot.js";
+// Wave 24 — Crew (Kaladesh / CR 702.121) and Saddle (Outlaws of Thunder
+// Junction / CR 702.165) keyword resolvers. Synthesized by their respective
+// keyword handlers; registered as handlerKey "Crew" / "Saddle".
+export * from "./crew.js";
+export * from "./saddle.js";

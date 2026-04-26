@@ -221,6 +221,15 @@ export class RandomLegalController implements PlayerController {
       }
       case "nameCard":
         return { kind: "nameCard", cardName: "Forest" };
+      // Wave 23 — Convoke / Improvise: random-legal declines (no taps).
+      // Picking a random subset is legal but adds nondeterminism without
+      // satisfying any specific test scenario.
+      case "chooseConvokeImproviseTap":
+        return { kind: "chooseConvokeImproviseTap", tapIds: [] };
+      // Wave 24 — Crew / Saddle: random-legal declines (no taps). The
+      // synthesized activated ability fizzles cleanly when tapIds is empty.
+      case "chooseCrewSaddleCreatures":
+        return { kind: "chooseCrewSaddleCreatures", tapIds: [] };
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(

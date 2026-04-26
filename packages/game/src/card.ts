@@ -148,6 +148,16 @@ export class Card {
   // path can verify "a later turn" (game.turn !== plottedOnTurn).
   plotted?: boolean;
   plottedOnTurn?: number;
+  // Wave 24 — Crew (Kaladesh / CR 702.121) and Saddle (Outlaws of Thunder
+  // Junction / CR 702.165) transient flags. Set by Crew/Saddle effects when
+  // the activated ability resolves; cleared by the EOT cleanup hook on the
+  // accompanying ContinuousEffect's expiry. While `crewedUntilEot === true`
+  // the Vehicle gains the Creature type via deriveBaseCharacteristics (mirror
+  // of the `bestowed` flag pattern). Mounts are already creatures, so
+  // `saddledUntilEot` is read by triggers (BecomesSaddled) but does not
+  // change types.
+  crewedUntilEot?: boolean;
+  saddledUntilEot?: boolean;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

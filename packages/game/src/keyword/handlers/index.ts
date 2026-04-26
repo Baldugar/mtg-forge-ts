@@ -10,8 +10,10 @@
 // actually irrelevant at runtime, but listing specifics first is cleaner.
 export * from "./cascade-keyword.js";
 export * from "./convoke-keyword.js";
+export * from "./crew-keyword.js";
 export * from "./cycling-keyword.js";
 export * from "./improvise-keyword.js";
+export * from "./saddle-keyword.js";
 export * from "./specialize-keyword.js";
 export * from "./plot-keyword.js";
 export * from "./flag-keyword.js";
