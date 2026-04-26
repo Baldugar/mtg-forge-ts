@@ -6,7 +6,7 @@
 // StateBasedActionApplied, etc.) — without that filter, Always-mode
 // triggers create infinite recursion.
 import type { TriggerAst } from "@mtg-forge-ts/core";
-import { PhaseStep, mkEntityId, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core";
+import { CardType, PhaseStep, ZoneType, mkEntityId, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { afterEach, describe, expect, it } from "vitest";
 import { triggerHandlerRegistry } from "../trigger-handler-registry.js";
 import type { TriggerBuildContext } from "../trigger-handler.js";
@@ -159,5 +159,92 @@ describe("AlwaysTrigger (Batch D2)", () => {
         }),
       ),
     ).toBe(false);
+  });
+
+  // -------------------------------------------------------------------------
+  // Wave 14b — IsPresent$ predicate gating
+  // -------------------------------------------------------------------------
+
+  describe("IsPresent$ predicate (Wave 14b)", () => {
+    const LAND_ID = mkEntityId(200);
+    const OPP = mkPlayerSeat(1);
+
+    const mkLand = (controllerSeat: ReturnType<typeof mkPlayerSeat>) =>
+      ({
+        id: LAND_ID,
+        zone: ZoneType.Battlefield,
+        controllerSeat,
+        tapped: false,
+        paperCard: {
+          definition: {
+            types: {
+              has: (t: string) => t === CardType.Land,
+              hasSubtype: () => false,
+            },
+          },
+          name: "Forest",
+        },
+      }) as never;
+
+    const mkPresentAst = (raw: string): TriggerAst => ({
+      mode: "Always",
+      params: { IsPresent: { kind: "literal", raw } },
+      effect: { handlerKey: "TrigSac", params: {} },
+    });
+
+    const mkGameWithCards = (cards: Map<number, unknown>): { cards: Map<number, unknown> } => ({ cards });
+
+    it("matches when ≥1 Land.YouCtrl is on the controller's battlefield", () => {
+      const Cls = triggerHandlerRegistry.lookup("Always");
+      if (!Cls) return;
+      const cards = new Map<number, unknown>([[LAND_ID as number, mkLand(CONTROLLER)]]);
+      const game = mkGameWithCards(cards);
+      const ta = new Cls().build(mkPresentAst("Land.YouCtrl"), {
+        game: game as never,
+        sourceCardId: SOURCE_ID,
+        controllerSeat: CONTROLLER,
+        triggerId: TRIGGER_ID,
+      });
+      const event = mkEvent("CardTapped", 1, PhaseStep.Main1, { cardId: mkEntityId(99) });
+      expect(ta.matches(event)).toBe(true);
+    });
+
+    it("does NOT match when no Land.YouCtrl is on the battlefield", () => {
+      const Cls = triggerHandlerRegistry.lookup("Always");
+      if (!Cls) return;
+      const cards = new Map<number, unknown>(); // empty battlefield
+      const game = mkGameWithCards(cards);
+      const ta = new Cls().build(mkPresentAst("Land.YouCtrl"), {
+        game: game as never,
+        sourceCardId: SOURCE_ID,
+        controllerSeat: CONTROLLER,
+        triggerId: TRIGGER_ID,
+      });
+      const event = mkEvent("CardTapped", 1, PhaseStep.Main1, { cardId: mkEntityId(99) });
+      expect(ta.matches(event)).toBe(false);
+    });
+
+    it("does NOT match when the only Land is opponent-controlled (Land.YouCtrl)", () => {
+      const Cls = triggerHandlerRegistry.lookup("Always");
+      if (!Cls) return;
+      const cards = new Map<number, unknown>([[LAND_ID as number, mkLand(OPP)]]);
+      const game = mkGameWithCards(cards);
+      const ta = new Cls().build(mkPresentAst("Land.YouCtrl"), {
+        game: game as never,
+        sourceCardId: SOURCE_ID,
+        controllerSeat: CONTROLLER,
+        triggerId: TRIGGER_ID,
+      });
+      const event = mkEvent("CardTapped", 1, PhaseStep.Main1, { cardId: mkEntityId(99) });
+      expect(ta.matches(event)).toBe(false);
+    });
+
+    it("absent IsPresent$ keeps the legacy match-all behaviour", () => {
+      const Cls = triggerHandlerRegistry.lookup("Always");
+      if (!Cls) return;
+      const ta = new Cls().build(mkAst(), mkCtx());
+      const event = mkEvent("CardTapped", 1, PhaseStep.Main1, { cardId: mkEntityId(99) });
+      expect(ta.matches(event)).toBe(true);
+    });
   });
 });
