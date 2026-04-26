@@ -37,6 +37,15 @@
 // upkeep after a successful payment). This means Echo fires each
 // upkeep until paid or the card leaves play — close enough to the
 // correct semantics for permanents that ETB and stay put.
+//
+// Wave 41 — control-since-tracking upgrade. The match predicate
+// gates on `card.controllerSeat` (the LIVE controller) rather than
+// `controllerSeatAtReg` (the closure capture from the original ETB).
+// This means a creature that changes controllers — Mind Control,
+// Threaten, etc. — fires Echo on the new controller's NEXT upkeep,
+// matching CR 702.30b. The owed cost slot is shared (set when the
+// permanent first ETBs and persisted across control changes); the
+// fix is purely in the trigger predicate.
 import type {
   GameEvent,
   KeywordAst,
@@ -93,9 +102,14 @@ export class EchoKeywordHandler extends KeywordHandler {
           activeSeat: PlayerSeat;
         };
         if (step !== ("Upkeep" as PhaseStep)) return false;
-        if (activeSeat !== controllerSeat) return false;
         const c = game.cards.get(sourceCardId);
         if (!c) return false;
+        // Wave 41 — gate on the LIVE controller (CR 702.30b: "if this
+        // permanent came under your control since the beginning of your
+        // last upkeep"). controllerSeatAtReg captured the original
+        // controller; if the card has since changed hands (Mind Control,
+        // Threaten), Echo should fire on the NEW controller's upkeep.
+        if (activeSeat !== c.controllerSeat) return false;
         return c.echoOwedCost !== undefined;
       },
 
@@ -120,6 +134,11 @@ export class EchoKeywordHandler extends KeywordHandler {
           const r = decision as { kind: string; confirmed?: boolean };
           const willPay = r.kind === "confirmAction" && r.confirmed === true;
 
+          // Wave 41 — pay/emit using the LIVE controller (post-control-
+          // change), matching the upkeep gate above. controllerSeatAtReg
+          // is preserved on the trigger record for replay forensics but
+          // the active payer is whoever currently controls the card.
+          const livePayer = c.controllerSeat;
           if (willPay) {
             // Wave 29 — full mana-payment loop. parseCostString returns a
             // CostPlan; payCost yields through the cost-payment infra
@@ -132,7 +151,7 @@ export class EchoKeywordHandler extends KeywordHandler {
               const plan = parseCostString(cost);
               const ctx: CostPaymentContext = {
                 game: g,
-                payerSeat: controllerSeat,
+                payerSeat: livePayer,
                 sourceCardId,
                 raw: cost,
                 kind: "ability",
@@ -148,7 +167,7 @@ export class EchoKeywordHandler extends KeywordHandler {
               yield g.emitEvent(
                 mkEvent("PayCumulativeUpkeep", g.turn, g.phase, {
                   cardId: sourceCardId,
-                  playerSeat: controllerSeat,
+                  playerSeat: livePayer,
                 }),
               );
             } else {

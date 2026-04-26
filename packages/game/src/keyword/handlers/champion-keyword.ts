@@ -24,7 +24,7 @@
 //        - On resolve: if championedTarget is set and that card is in Exile
 //          with championedBy === self, return it to its owner's battlefield.
 import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
-import { CardType, ZoneType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -135,6 +135,17 @@ export class ChampionKeywordHandler extends KeywordHandler {
           self.championedTarget = chosen;
           const target = g.cards.get(chosen);
           if (target) target.championedBy = sourceCardId;
+          // Wave 41 — emit CardChampioned so ChampionedTrigger (Wave 22)
+          // fires. The exile mutation above already publishes
+          // CardExiled / CardChangedZone; this event names the mechanic
+          // explicitly so triggers can match the championer/championed
+          // pair without re-deriving from zone-change history.
+          yield g.emitEvent(
+            mkEvent("CardChampioned", g.turn, g.phase, {
+              championerId: sourceCardId,
+              championedId: chosen,
+            }),
+          );
         },
       },
     };

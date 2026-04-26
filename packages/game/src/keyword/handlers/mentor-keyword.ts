@@ -19,7 +19,7 @@
 // no-ops (matches Forge: target is "may", but if eligible set is empty
 // the ability fizzles silently).
 import type { EntityId, GameEvent, KeywordAst, TriggeredAbility } from "@mtg-forge-ts/core";
-import { CardType, CounterType, ZoneType } from "@mtg-forge-ts/core";
+import { CardType, CounterType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -104,6 +104,17 @@ export class MentorKeywordHandler extends KeywordHandler {
           const target = eligible[0];
           if (target === undefined) return;
           yield* g.action.addCounter(target, CounterType.PlusOnePlusOne, 1, sourceCardId);
+          // Wave 41 — emit Mentored so MentoredTrigger (Wave 18) fires.
+          // The handler resolution above stamps the +1/+1 counter; the
+          // event publishes the action so subscribers see the linkage
+          // between mentor/mentored and the controller seat.
+          yield g.emitEvent(
+            mkEvent("Mentored", g.turn, g.phase, {
+              mentorCardId: sourceCardId,
+              mentoredCardId: target,
+              playerSeat: controllerSeat,
+            }),
+          );
         },
       },
     };

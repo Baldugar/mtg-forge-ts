@@ -839,8 +839,41 @@ export class CastPipeline {
     }
 
     const costMods = this.game.staticEffectRegistry.byCategory("costModification");
+
+    // Wave 41 — Strive surcharge (CR 702.106a): "this spell costs [cost]
+    // more to cast for each target beyond the first." StriveKeywordHandler
+    // stamps `card.striveExtraCost` on the source card; if the spell has
+    // multiple targets selected in step 7, we splice the extra-cost string
+    // (n-1) times into the base raw so payCost charges the full amount.
+    // The extra-cost string is treated as a `parseCostString`-compatible
+    // fragment (e.g. "1 W" or "2"); we append (n-1) copies separated by
+    // whitespace and let `reduceGeneric`-style aggregation in the parser
+    // collapse generic shards. Cards without strive or with ≤1 target
+    // pass through untouched.
+    let striveAdjusted = baseCost;
+    const striveExtra = (card as unknown as { striveExtraCost?: string }).striveExtraCost;
+    if (
+      striveExtra !== undefined &&
+      striveExtra.trim().length > 0 &&
+      ctx.targets !== undefined &&
+      ctx.targets.length > 1
+    ) {
+      const extras = ctx.targets.length - 1;
+      const surcharge = Array.from({ length: extras }, () => striveExtra.trim()).join(" ");
+      const baseMaybe = striveAdjusted as { raw?: string } | null | undefined;
+      if (baseMaybe != null && typeof baseMaybe.raw === "string") {
+        striveAdjusted = { ...baseMaybe, raw: `${baseMaybe.raw} ${surcharge}`.trim() };
+      } else {
+        // No raw form — synthesize a minimal cost record so the surcharge
+        // still appears for downstream solvers. Cards in this branch have
+        // a null/missing manaCost which would normally be a free spell;
+        // strive bumps it to the surcharge.
+        striveAdjusted = { raw: surcharge };
+      }
+    }
+
     ctx.totalCost = {
-      base: baseCost,
+      base: striveAdjusted,
       modIds: costMods.map((s) => s.id),
       additionalCostIds: [...ctx.additionalCostsPaid],
       altCostUsed: ctx.altCostUsed,
