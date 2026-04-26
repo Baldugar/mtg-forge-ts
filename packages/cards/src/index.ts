@@ -16,3 +16,4 @@ export * from "./parser/type-line.js";
 export * from "./parser/assembler.js";
 export * from "./parser/resolver.js";
 export * from "./validator/index.js";
+export * from "./tokens/index.js";
