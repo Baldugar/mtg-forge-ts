@@ -90,3 +90,6 @@ export * from "./wave-19-effects.js";
 export * from "./wave-21-effects.js";
 // Wave 22 — final corpus long-tail effects (20 handlers)
 export * from "./wave-22-effects.js";
+// SP3 — Specialize keyword resolver (March of the Machine, 47 cards).
+// Synthesized by SpecializeKeywordHandler; registered as handlerKey "Specialize".
+export * from "./specialize.js";

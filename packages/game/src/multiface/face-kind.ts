@@ -15,7 +15,26 @@
 //                  in-place rotation flags different characteristics).
 //   "melded"    — the merged permanent produced by the meld mechanic
 //                  (CR 701.37).
+//   "W"/"U"/"B"/"R"/"G" — March of the Machine "Specialize" face slots
+//                  (CR 702.155). When a creature with K:Specialize is
+//                  on the battlefield, paying the specialize cost lets
+//                  its controller pick a color and replace the active
+//                  face with that color's variant. The five color-keyed
+//                  faces live in PaperCard.faces under these slot ids.
 //
-// The union is closed — all multi-face kinds SP2 models live here; SP4 can
-// extend it when the PaperCard.definition layer adds new face families.
-export type FaceKind = "default" | "L" | "R" | "front" | "back" | "adventure" | "flipped" | "melded";
+// The union is closed — all multi-face kinds SP2/SP3 models live here; SP4
+// can extend it when the PaperCard.definition layer adds new face families.
+export type FaceKind =
+  | "default"
+  | "L"
+  | "R"
+  | "front"
+  | "back"
+  | "adventure"
+  | "flipped"
+  | "melded"
+  | "W"
+  | "U"
+  | "B"
+  | "R"
+  | "G";
