@@ -10,9 +10,9 @@
 // eligible for the Suspend AltCost (altcost/suspend.ts) on the controller's
 // next priority window.
 //
-// This helper is NOT yet wired into PhaseHandler.performTurnBasedActions —
-// once Upkeep step gets a turn-based action slot in SP4, callers can invoke
-// this from there. Tests invoke it directly.
+// Wave 29 — wired into PhaseHandler.performTurnBasedActions's Upkeep
+// branch. The PhaseHandler invokes this on every upkeep step; tests
+// retain direct-invocation access for unit-level scenarios.
 import type { PlayerSeat } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";

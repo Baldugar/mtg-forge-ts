@@ -29,6 +29,7 @@ import { GameAction } from "../action/game-action.js";
 import { onUpkeepAdvanceInitiativeDungeon } from "../dnd/initiative-tracker.js";
 import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
+import { tickSuspendedCards } from "../keyword/suspend-tick.js";
 import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
@@ -203,6 +204,13 @@ export class PhaseHandler {
       // hook fires when the active player is the initiative-holder; full
       // dungeon-room advance lands once the Dungeon data structure exists.
       onUpkeepAdvanceInitiativeDungeon(game, active);
+      // Wave 29 — CR 702.61b suspend tick. At the start of each player's
+      // upkeep, decrement one time counter from each suspended card that
+      // player owns. Cards whose counter reaches 0 are eligible for the
+      // Suspend AltCost on the controller's next priority window
+      // (altcost/suspend.ts). MVP: explicit cast — no auto-cast offer
+      // is yielded here; the player invokes the alt-cost manually.
+      tickSuspendedCards(game, active);
     }
     if (step === Phase.EndStep) {
       // Wave 27 — Monarch end-step draw (CR 716.4a). At the BEGINNING of
