@@ -143,7 +143,7 @@ describe("cantMustMay restrictions (SP2 Task 27)", () => {
 });
 
 describe("RestrictionKind expansion", () => {
-  it("covers the action-filter subset (11 kinds)", () => {
+  it("covers the action-filter subset (15 kinds — Wave 50 added cantBlockBy / canAttackDefender / castWithFlash / minMaxBlocker)", () => {
     const kinds: RestrictionKind[] = [
       "cantCast",
       "cantActivate",
@@ -156,7 +156,11 @@ describe("RestrictionKind expansion", () => {
       "mustTarget",
       "cantPhaseIn",
       "cantPhaseOut",
+      "cantBlockBy",
+      "canAttackDefender",
+      "castWithFlash",
+      "minMaxBlocker",
     ];
-    expect(kinds).toHaveLength(11);
+    expect(kinds).toHaveLength(15);
   });
 });

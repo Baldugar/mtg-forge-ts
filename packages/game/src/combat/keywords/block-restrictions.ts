@@ -18,6 +18,7 @@
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { CardType, Color } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
+import { isBlockingRestricted } from "../../statics/cant-must-may-extras.js";
 import { attackerPower, hasKeyword } from "../damage-assignment-helpers.js";
 import { hasProtectionFrom } from "./protection.js";
 
@@ -83,6 +84,14 @@ export const isBlockLegal = (
   attacker: EntityId,
   allBlocksOnAttacker: readonly EntityId[],
 ): BlockLegalityResult => {
+  // Wave 50 — static-driven block restrictions (CantBlock + CantBlockBy).
+  // Walks the cantMustMay registry. Rejected when (a) the blocker matches
+  // any CantBlock subject filter, or (b) an active CantBlockBy matches
+  // both the attacker (subject) and the blocker (auxFilter).
+  if (isBlockingRestricted(game, attacker, blocker)) {
+    return { legal: false, reason: "static block restriction" };
+  }
+
   // Flying (CR 702.9): attacker with flying can only be blocked by a
   // creature with flying or reach.
   if (hasKeyword(game, attacker, "flying")) {

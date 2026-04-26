@@ -32,12 +32,42 @@ export type RestrictionKind =
   | "cantUntap"
   | "mustTarget"
   | "cantPhaseIn"
-  | "cantPhaseOut";
+  | "cantPhaseOut"
+  // Wave 50 — Forge cant/must/may family expansion. Subject conventions:
+  //   cantBlockBy:  subject = ATTACKER id (filters on the attacker; the
+  //                 paired blocker id is supplied via auxFilter / second arg).
+  //   canAttackDefender / castWithFlash: positive overrides — subject is the
+  //                 candidate id (creature or spell card). isAllowed walks
+  //                 statics of the matching kind and returns true on first hit.
+  //   minMaxBlocker: subject = ATTACKER id; resolution carries the {min,max}
+  //                 block-count tuple via the static's describe() payload
+  //                 itself (not a generic boolean filter).
+  | "cantBlockBy"
+  | "canAttackDefender"
+  | "castWithFlash"
+  | "minMaxBlocker"
+  // OptionalCost is canonical-mapped to cantMustMay (see static-ability-mode
+  // category map). Modeled as a restriction so it flows through the same
+  // gatherRestrictions sweep; its payload field carries the cost string.
+  | "optionalCost";
 
 export interface Restriction {
   readonly sourceStaticId: EntityId;
   readonly kind: RestrictionKind;
   readonly subjectFilter: (subjectId: EntityId | PlayerSeat, game: Game) => boolean;
+  /**
+   * Optional second filter for two-subject restrictions (cantBlockBy:
+   * filters the blocker; minMaxBlocker: unused; the others ignore it).
+   * Wave 50 — keeps the Restriction shape backwards-compatible while
+   * letting cantBlockBy carry attacker→blocker pairing without a custom
+   * carrier type.
+   */
+  readonly auxFilter?: (auxId: EntityId | PlayerSeat, game: Game) => boolean;
+  /**
+   * Optional payload — minMaxBlocker stamps {min,max} here. `unknown` to
+   * keep the Restriction interface universal; consumers cast.
+   */
+  readonly payload?: unknown;
 }
 
 interface RestrictionEnvelope {

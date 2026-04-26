@@ -22,9 +22,10 @@
 // Restrictions are consulted via isRestricted() (the cant-must-may facility
 // from Task 28). Format restrictions + alternative casting zones (flashback,
 // escape, adventure-from-exile, etc.) land in SP3's cast-surface expansion.
-import type { PlayerSeat, PriorityAction } from "@mtg-forge-ts/core";
+import type { EntityId, PlayerSeat, PriorityAction } from "@mtg-forge-ts/core";
 import { CardType, PhaseStep, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { shouldGrantFlash } from "../statics/cant-must-may-extras.js";
 import { isRestricted } from "../statics/cant-must-may.js";
 
 /**
@@ -72,8 +73,13 @@ const canCastAtCurrentTiming = (
   game: Game,
   chars: { readonly types: ReadonlySet<CardType> },
   seat: PlayerSeat,
+  cardId: EntityId,
 ): boolean => {
   if (chars.types.has(CardType.Instant)) return true;
+  // Wave 50 — CastWithFlash static override (Vedalken Orrery, Leyline of
+  // Anticipation). The static positively grants flash-timing for spells
+  // matching ValidCard$/Caster$, so the sorcery-speed gate is bypassed.
+  if (shouldGrantFlash(game, cardId, seat)) return true;
   // SP3 adds flash-keyword detection; SP2 treats every non-instant as
   // sorcery-speed and additionally gates on active-player-main-empty-stack.
   if (game.activePlayer !== seat) return false;
@@ -107,7 +113,7 @@ export const enumerateLegalActions = (game: Game, seat: PlayerSeat): readonly Pr
         }
         continue;
       }
-      if (!canCastAtCurrentTiming(game, chars, seat)) continue;
+      if (!canCastAtCurrentTiming(game, chars, seat, cardId)) continue;
       if (isRestricted(game, "cantCast", cardId)) continue;
       out.push({ kind: "castSpell", cardId, zone: ZoneType.Hand });
     }
