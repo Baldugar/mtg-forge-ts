@@ -141,6 +141,13 @@ export class Card {
   // Wave 19 — RemoveFromCombat marker. Set by RemoveFromCombatEffect; combat
   // resolution skips creatures with this flag for damage assignment etc.
   removedFromCombat = false;
+  // Plot (Bloomburrow / CR 718) — when a card is plotted via the plot keyword,
+  // it is exiled face-up from hand and may be cast for free on a LATER turn.
+  // `plotted` is true while the card sits in exile under the plot mechanic;
+  // `plottedOnTurn` records the turn the plot action was taken so the alt-cost
+  // path can verify "a later turn" (game.turn !== plottedOnTurn).
+  plotted?: boolean;
+  plottedOnTurn?: number;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

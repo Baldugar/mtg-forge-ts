@@ -6,3 +6,4 @@ export * from "./flashback.js";
 export * from "./foretell.js";
 export * from "./madness.js";
 export * from "./overload.js";
+export * from "./plot.js";

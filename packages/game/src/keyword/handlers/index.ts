@@ -11,4 +11,5 @@
 export * from "./cascade-keyword.js";
 export * from "./cycling-keyword.js";
 export * from "./specialize-keyword.js";
+export * from "./plot-keyword.js";
 export * from "./flag-keyword.js";

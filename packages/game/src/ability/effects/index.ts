@@ -93,3 +93,6 @@ export * from "./wave-22-effects.js";
 // SP3 — Specialize keyword resolver (March of the Machine, 47 cards).
 // Synthesized by SpecializeKeywordHandler; registered as handlerKey "Specialize".
 export * from "./specialize.js";
+// SP3 — Plot keyword resolver (Bloomburrow / CR 718). Synthesized by
+// PlotKeywordHandler; registered as handlerKey "Plot".
+export * from "./plot.js";
