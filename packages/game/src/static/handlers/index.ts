@@ -9,3 +9,5 @@ export * from "./continuous.js";
 export * from "./reduce-cost.js";
 export * from "./raise-cost.js";
 export * from "./set-cost.js";
+// Batch D2 static handlers
+export * from "./counters-remain.js";

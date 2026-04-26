@@ -17,3 +17,5 @@ export * from "./life-reduced-replacement.js";
 export * from "./turn-face-up-replacement.js";
 export * from "./game-win-replacement.js";
 export * from "./game-loss-replacement.js";
+// Batch D2 replacements
+export * from "./remove-counter-replacement.js";
