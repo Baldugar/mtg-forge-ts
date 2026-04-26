@@ -10,6 +10,15 @@
 // counter-and-exile / counter-to-hand redirects) intercept.
 //
 // Forge DSL: SP$ Counter | ValidTgts$ Spell
+//
+// Wave 53 broadens the MVP:
+//   - DestinationZone$ <Zone>     — override the post-counter destination
+//                                    (default: owner's graveyard, CR 701.5b).
+//                                    Lapse of Certainty exiles; Hindering
+//                                    Light bounces to hand; Spelljack
+//                                    re-stages.
+//   - LibraryPosition$ <N>        — when DestinationZone$ Library, sign:
+//                                    -1 (default for "bottom"); 0 = top.
 import type { EntityId, MutationIntent, ZoneType as ZoneTypeT } from "@mtg-forge-ts/core";
 import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
@@ -17,8 +26,17 @@ import type { Game } from "../../game.js";
 import { applyReplacementLoop } from "../../replacements/apply-loop.js";
 import type { CounteredIntent } from "../../replacements/mutation-intent.js";
 import { effectRegistry } from "../effect-registry.js";
+import { evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
+
+const ZONE_BY_NAME: Readonly<Record<string, ZoneTypeT>> = {
+  Battlefield: ZoneType.Battlefield,
+  Graveyard: ZoneType.Graveyard,
+  Exile: ZoneType.Exile,
+  Hand: ZoneType.Hand,
+  Library: ZoneType.Library,
+};
 
 export class CounterSpellEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Counter";
@@ -69,10 +87,18 @@ export class CounterSpellEffect extends SpellAbilityEffect {
       // Replacement apply path may have rewritten the destination zone
       // (counter-and-exile / counter-to-hand). Default destination is
       // the owner's graveyard per CR 701.5b.
+      //
+      // Wave 53 — DestinationZone$ explicitly overrides the default. The
+      // replacement-loop's destination still wins over the param when both
+      // are present (replacement-driven counter-and-exile beats a
+      // hard-coded DestinationZone$).
       const finalIntent = replResult.final as unknown as CounteredIntent & {
         readonly destination?: ZoneTypeT;
       };
-      const destination: ZoneTypeT = finalIntent.destination ?? ZoneType.Graveyard;
+      const destFromParam: ZoneTypeT | undefined = hasParam(sa, "DestinationZone")
+        ? ZONE_BY_NAME[evaluateParamRaw(sa, "DestinationZone").trim()]
+        : undefined;
+      const destination: ZoneTypeT = finalIntent.destination ?? destFromParam ?? ZoneType.Graveyard;
 
       // Now physically remove the stack item.
       game.sharedZones.stack.removeById(targetId);
@@ -96,6 +122,19 @@ export class CounterSpellEffect extends SpellAbilityEffect {
             toSeat: sourceCard.ownerSeat,
             cause: "countered",
           });
+          // Wave 53 — LibraryPosition$ relocates the card on the library
+          // post-move. The default for moveTo→Library is bottom; if 0 is
+          // requested, lift the card and re-add to top.
+          if (destination === ZoneType.Library && hasParam(sa, "LibraryPosition")) {
+            const pos = evaluateParamRaw(sa, "LibraryPosition").trim();
+            if (pos === "0") {
+              const ownerLib = game.getPlayer(sourceCard.ownerSeat).zones.get(ZoneType.Library);
+              if (ownerLib) {
+                ownerLib.remove(item.sourceCardId);
+                ownerLib.addToTop(item.sourceCardId);
+              }
+            }
+          }
         }
       }
     }

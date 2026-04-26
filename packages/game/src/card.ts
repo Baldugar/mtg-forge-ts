@@ -85,6 +85,11 @@ export class Card {
   sagaFinalChapterResolved = false;
   bestowed = false;
   isCommander = false;
+  // Wave 53 — ChangeZone `Attacking$ True` stamps this flag at battlefield
+  // entry so the active combat phase treats the new permanent as an
+  // attacker (CR 506.4). The combat integration is wave-54+ work; this slot
+  // is the forward-compatible contract for stamping the intent at ETB.
+  enteredAttacking = false;
   // SP2 Tasks 46-48 (combat damage, first-strike split) — placeholder keyword
   // set used by CombatHandler to gate trample, deathtouch, first_strike,
   // double_strike behaviors from tests. Populated ad-hoc in Milestone M tests

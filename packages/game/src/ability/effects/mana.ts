@@ -20,7 +20,7 @@ import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import type { ManaPool } from "../../mana/mana-pool.js";
 import { effectRegistry } from "../effect-registry.js";
-import { evaluateParamRaw, hasParam } from "../evaluate-param.js";
+import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
@@ -86,6 +86,9 @@ export class ManaEffect extends SpellAbilityEffect {
     const player = game.getPlayer(sa.controllerSeat);
     const pool = player.manaPool as ManaPool;
     const src = sa.sourceCardId;
+    // Wave 53 — Amount$ multiplies Produced$ by N (Mana Reflection-style
+    // doublers script `Amount$ X` against Count$Devotion etc.). Default 1.
+    const amount = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
     // Wave 29 — `Restriction$ <Tag>` (Powerstone, Cabal Coffers, etc.)
     // attaches a ManaProductionRestriction to every atom produced by
     // this ability. Tags read by parseRestriction; "none" preserves
@@ -101,7 +104,7 @@ export class ManaEffect extends SpellAbilityEffect {
 
     // "Any" → MVP: add one colorless. Full decision support deferred to SP3.
     if (produced === "Any") {
-      pool.add(ManaProduced.colorless(colorlessOpts));
+      for (let m = 0; m < amount; m++) pool.add(ManaProduced.colorless(colorlessOpts));
       return;
     }
 
@@ -112,21 +115,23 @@ export class ManaEffect extends SpellAbilityEffect {
         .split(/\s+/)
         .filter((s) => s !== "");
       const choice = opts[0] ?? "C";
-      pool.add(parseProducedSymbol(choice, src, restriction));
+      for (let m = 0; m < amount; m++) pool.add(parseProducedSymbol(choice, src, restriction));
       return;
     }
 
     // Standard: space-separated symbols. "G" → 1 green. "G G" → 2 green.
     // Numeric tokens like "1" produce that many colorless atoms.
-    for (const sym of produced.split(/\s+/).filter((s) => s !== "")) {
-      const n = Number(sym);
-      if (!Number.isNaN(n) && n > 0) {
-        // Numeric generic mana → n colorless atoms.
-        for (let i = 0; i < n; i++) {
-          pool.add(ManaProduced.colorless(colorlessOpts));
+    for (let m = 0; m < amount; m++) {
+      for (const sym of produced.split(/\s+/).filter((s) => s !== "")) {
+        const n = Number(sym);
+        if (!Number.isNaN(n) && n > 0) {
+          // Numeric generic mana → n colorless atoms.
+          for (let i = 0; i < n; i++) {
+            pool.add(ManaProduced.colorless(colorlessOpts));
+          }
+        } else {
+          pool.add(parseProducedSymbol(sym, src, restriction));
         }
-      } else {
-        pool.add(parseProducedSymbol(sym, src, restriction));
       }
     }
   }

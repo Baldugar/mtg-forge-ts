@@ -24,7 +24,7 @@ import {
   TypeLine,
   keywordIdFromDisplayName,
 } from "@mtg-forge-ts/core";
-import type { CardDefinition, PaperCard, Supertype } from "@mtg-forge-ts/core";
+import type { CardDefinition, CounterType, PaperCard, Supertype } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -195,13 +195,30 @@ const paperCardFromEntry = (entry: TokenEntry): PaperCard => {
 // TokenEffect
 // ---------------------------------------------------------------------------
 
+/**
+ * Parse a `WithCounters$` payload of the form `<Type>:<N>` (or just `<Type>`,
+ * which defaults to N=1). Returns null if unparsable.
+ */
+const parseWithCounters = (raw: string): { ct: CounterType; n: number } | null => {
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
+  const [head, tail] = trimmed.split(":");
+  if (!head) return null;
+  const n = tail !== undefined ? Number(tail) : 1;
+  if (!Number.isFinite(n) || n <= 0) return null;
+  return { ct: head as CounterType, n };
+};
+
+const isTrue = (raw: string | undefined): boolean => raw !== undefined && raw.trim().toLowerCase() === "true";
+
 export class TokenEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Token";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     const count = hasParam(sa, "TokenAmount") ? evaluateParamNumber(sa, "TokenAmount", game) : 1;
 
-    // ---- TokenScript$ form: look up predefined entry in the token database. ----
+    // ---- Build the PaperCard (TokenScript$ vs inline form) -------------
+    let paperCard: PaperCard;
     if (hasParam(sa, "TokenScript")) {
       const id = evaluateParamRaw(sa, "TokenScript").trim();
       const entry = tokenDatabase.get(id);
@@ -210,37 +227,63 @@ export class TokenEffect extends SpellAbilityEffect {
           `TokenEffect: unknown TokenScript$ "${id}" — not present in the predefined token database`,
         );
       }
-      const paperCard = paperCardFromEntry(entry);
-      yield* game.action.createToken({
-        paperCard,
-        controller: sa.controllerSeat,
-        count,
+      paperCard = paperCardFromEntry(entry);
+    } else {
+      const power = hasParam(sa, "TokenPower") ? evaluateParamRaw(sa, "TokenPower") : "0";
+      const toughness = hasParam(sa, "TokenToughness") ? evaluateParamRaw(sa, "TokenToughness") : "0";
+      const name = hasParam(sa, "TokenName") ? evaluateParamRaw(sa, "TokenName") : "Token";
+      const typesRaw = hasParam(sa, "TokenTypes") ? evaluateParamRaw(sa, "TokenTypes") : "Creature";
+      const colorsRaw = hasParam(sa, "TokenColors") ? evaluateParamRaw(sa, "TokenColors") : "";
+      const keywordsRaw = hasParam(sa, "TokenKeywords") ? evaluateParamRaw(sa, "TokenKeywords") : "";
+      paperCard = synthesizeTokenPaperCard({
+        name,
+        power,
+        toughness,
+        typesRaw,
+        colorsRaw,
+        keywordsRaw,
       });
-      return;
     }
 
-    // ---- Inline form: synthesise a PaperCard from raw DSL params. ----
-    const power = hasParam(sa, "TokenPower") ? evaluateParamRaw(sa, "TokenPower") : "0";
-    const toughness = hasParam(sa, "TokenToughness") ? evaluateParamRaw(sa, "TokenToughness") : "0";
-    const name = hasParam(sa, "TokenName") ? evaluateParamRaw(sa, "TokenName") : "Token";
-    const typesRaw = hasParam(sa, "TokenTypes") ? evaluateParamRaw(sa, "TokenTypes") : "Creature";
-    const colorsRaw = hasParam(sa, "TokenColors") ? evaluateParamRaw(sa, "TokenColors") : "";
-    const keywordsRaw = hasParam(sa, "TokenKeywords") ? evaluateParamRaw(sa, "TokenKeywords") : "";
+    // ---- Create the tokens. We capture the returned ids so post-create
+    //      modifiers (Tapped$, Attacking$, WithCounters$, RememberTokens$)
+    //      can be applied. -----------------------------------------------
+    const enterTapped = isTrue(hasParam(sa, "Tapped") ? evaluateParamRaw(sa, "Tapped") : undefined);
+    const enterAttacking = isTrue(hasParam(sa, "Attacking") ? evaluateParamRaw(sa, "Attacking") : undefined);
+    const withCounters = hasParam(sa, "WithCounters")
+      ? parseWithCounters(evaluateParamRaw(sa, "WithCounters"))
+      : null;
+    const rememberTokens = isTrue(
+      hasParam(sa, "RememberTokens") ? evaluateParamRaw(sa, "RememberTokens") : undefined,
+    );
 
-    const paperCard = synthesizeTokenPaperCard({
-      name,
-      power,
-      toughness,
-      typesRaw,
-      colorsRaw,
-      keywordsRaw,
-    });
-
-    yield* game.action.createToken({
+    const ids = yield* game.action.createToken({
       paperCard,
       controller: sa.controllerSeat,
       count,
     });
+
+    if (ids.length === 0) return;
+
+    // Apply post-create modifiers.
+    for (const id of ids) {
+      const tok = game.cards.get(id);
+      if (tok === undefined) continue;
+      if (enterTapped) tok.tapped = true;
+      if (enterAttacking) tok.enteredAttacking = true;
+      if (withCounters !== null) {
+        yield* game.action.addCounter(id, withCounters.ct, withCounters.n, sa.sourceCardId);
+      }
+    }
+
+    if (rememberTokens) {
+      const src = game.cards.get(sa.sourceCardId);
+      if (src) {
+        for (const id of ids) {
+          if (!src.remembered.includes(id)) src.remembered.push(id);
+        }
+      }
+    }
   }
 }
 
