@@ -94,13 +94,22 @@ export interface ManaPaymentPlan {
  *
  * The pool is NOT mutated — the plan records which indices to remove and the
  * caller applies it via applyPaymentPlan.
+ *
+ * Wave 30 — `entryFilter` lets the caller veto specific pool entries before
+ * the greedy match attempts them. Powerstone-style mana with a
+ * `nonCreatureNonActivated` restriction is filtered out for casts of
+ * creature spells / activated abilities of creatures via this hook.
  */
 export const solveManaPayment = (
   cost: ManaCost,
   pool: ManaPool,
-  options?: { readonly xValue?: number },
+  options?: {
+    readonly xValue?: number;
+    readonly entryFilter?: (entry: ManaProduced) => boolean;
+  },
 ): ManaPaymentPlan | null => {
   const xValue = options?.xValue ?? 0;
+  const entryFilter = options?.entryFilter;
 
   // Build an ordered pip list from the cost with X bound.
   const tracker = new ManaCostBeingPaid(cost.symbols, xValue);
@@ -123,6 +132,7 @@ export const solveManaPayment = (
       if (!available[i]) continue;
       const entry = poolEntries[i];
       if (entry === undefined) continue;
+      if (entryFilter !== undefined && !entryFilter(entry)) continue;
       if (pipSatisfiedBy(pip, entry)) {
         consumed.push({ symbol: entry, poolIndex: i });
         available[i] = false;

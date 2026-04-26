@@ -386,4 +386,112 @@ describe("CostMana", () => {
     expect(pool.size()).toBe(1);
     expect((receipt.payload as { xValue: number }).xValue).toBe(3);
   });
+
+  // -------------------------------------------------------------------
+  // Wave 30 — Powerstone solver-side restriction (closes Wave 29D partial).
+  // -------------------------------------------------------------------
+  it("Powerstone {C} cannot pay for a creature spell's generic pip", async () => {
+    const game = makeGame();
+    const seat = mkPlayerSeat(0);
+    const player = game.getPlayer(seat);
+    const pool = new ManaPool();
+    // Powerstone {C} (restricted) + Forest's {G} (unrestricted).
+    pool.add(ManaProduced.colorless({ restriction: "nonCreatureNonActivated" }));
+    pool.add(ManaProduced.colored(Color.Green));
+    player.manaPool = pool;
+
+    // Synthesize a creature card so buildEntryFilter sees CardType.Creature.
+    const { Card } = await import("../../card.js");
+    const { CardType, DEFAULT_PAPER_CARD_FLAGS, TypeLine, ColorSet, ZoneType } = await import(
+      "@mtg-forge-ts/core"
+    );
+    const types = new TypeLine([], [CardType.Creature], ["Bear"]);
+    const def = {
+      name: "Bear",
+      oracle: "",
+      types,
+      manaCost: { raw: "1G" },
+      pt: { power: "2", toughness: "2" },
+      colors: ColorSet.of(Color.Green),
+      abilities: [],
+      triggers: [],
+      replacements: [],
+      statics: [],
+      keywords: [],
+      svars: new Map(),
+    };
+    const paper = {
+      name: "Bear",
+      edition: "TST",
+      collectorNumber: "1",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const cardId = mkEntityId(50);
+    game.cards.set(cardId, new Card(cardId, paper, seat, seat, ZoneType.Hand));
+
+    const ctx: CostPaymentContext = {
+      game,
+      payerSeat: seat,
+      sourceCardId: cardId,
+      raw: "1 G",
+      kind: "spell",
+    };
+    // Cost is {1}{G}. Pool has Powerstone {C} + Forest {G}. The {1} pip
+    // must NOT be paid by Powerstone {C} (creature spell restriction).
+    // {G} is paid by Forest. {1} cannot be paid: solver returns null.
+    expect(CostMana.canPay(ctx)).toBe(false);
+  });
+
+  it("Powerstone {C} CAN pay a non-creature spell's generic pip", async () => {
+    const game = makeGame();
+    const seat = mkPlayerSeat(0);
+    const player = game.getPlayer(seat);
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colorless({ restriction: "nonCreatureNonActivated" }));
+    pool.add(ManaProduced.colored(Color.Green));
+    player.manaPool = pool;
+
+    const { Card } = await import("../../card.js");
+    const { CardType, DEFAULT_PAPER_CARD_FLAGS, TypeLine, ColorSet, ZoneType } = await import(
+      "@mtg-forge-ts/core"
+    );
+    const types = new TypeLine([], [CardType.Sorcery], []);
+    const def = {
+      name: "Sorcery",
+      oracle: "",
+      types,
+      manaCost: { raw: "1G" },
+      colors: ColorSet.of(Color.Green),
+      abilities: [],
+      triggers: [],
+      replacements: [],
+      statics: [],
+      keywords: [],
+      svars: new Map(),
+    };
+    const paper = {
+      name: "Sorcery",
+      edition: "TST",
+      collectorNumber: "2",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition: def,
+    };
+    const cardId = mkEntityId(51);
+    game.cards.set(cardId, new Card(cardId, paper, seat, seat, ZoneType.Hand));
+
+    const ctx: CostPaymentContext = {
+      game,
+      payerSeat: seat,
+      sourceCardId: cardId,
+      raw: "1 G",
+      kind: "spell",
+    };
+    // Non-creature: Powerstone {C} legal for {1}. Should succeed.
+    expect(CostMana.canPay(ctx)).toBe(true);
+  });
 });

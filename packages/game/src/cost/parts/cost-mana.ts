@@ -8,7 +8,7 @@
 // pay:    if cost has X pips, yields chooseX decision to get the bound value;
 //         then solves and applies the plan.
 // undo:   restores pool snapshot + refunds phyrexian life.
-import { ManaCost, mkEvent } from "@mtg-forge-ts/core";
+import { CardType, ManaCost, mkEvent } from "@mtg-forge-ts/core";
 import type { Color, ManaProduced } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { ManaPool } from "../../mana/mana-pool.js";
@@ -67,6 +67,33 @@ const adjustedCost = (
   return { cost, mods, item };
 };
 
+/**
+ * Wave 30 — solver-side filter for `nonCreatureNonActivated` mana
+ * (Powerstone). The atom is unspendable when:
+ *   • ctx.kind === "spell" AND the source card is a Creature spell, OR
+ *   • ctx.kind === "ability" AND the activating source is a creature.
+ * Returns a closure suitable for `solveManaPayment`'s `entryFilter`.
+ */
+const buildEntryFilter = (ctx: CostPaymentContext): ((entry: ManaProduced) => boolean) | undefined => {
+  const card = ctx.game.cards.get(ctx.sourceCardId);
+  if (!card) return undefined;
+  const def = card.paperCard.definition;
+  const types = def?.types;
+  // For spell-casts the printed type matters (the card isn't on the
+  // battlefield yet so layered animation hasn't applied). For activated
+  // abilities the live characteristics are read because animate-creature
+  // effects are in play.
+  let isCreature = false;
+  if (ctx.kind === "ability") {
+    const chars = ctx.game.layerEngine.computeCharacteristics(card.id);
+    isCreature = chars.types.has(CardType.Creature);
+  } else {
+    isCreature = types?.has(CardType.Creature) === true;
+  }
+  if (!isCreature) return undefined;
+  return (entry: ManaProduced) => entry.restriction !== "nonCreatureNonActivated";
+};
+
 interface ManaCostReceipt {
   /** Pre-payment pool snapshot (for undo). */
   prePaymentSnapshot: ManaProduced[];
@@ -82,15 +109,22 @@ export const CostMana: CostPart = {
   canPay(ctx: CostPaymentContext): boolean {
     const { cost } = adjustedCost(ManaCost.parse(ctx.raw), ctx);
     const pool = getPool(ctx);
+    const entryFilter = buildEntryFilter(ctx);
     // Conservative check: X=0 means we only verify non-X pips are payable.
     // A player can always choose X=0, so if non-X pips are satisfiable the
     // cost can be paid (even if X=0 is a degenerate choice for some cards).
-    return solveManaPayment(cost, pool, { xValue: 0 }) !== null;
+    return (
+      solveManaPayment(cost, pool, {
+        xValue: 0,
+        ...(entryFilter !== undefined ? { entryFilter } : {}),
+      }) !== null
+    );
   },
 
   *pay(ctx: CostPaymentContext): Generator<EngineYield, CostPartReceipt, unknown> {
     const { cost, mods, item } = adjustedCost(ManaCost.parse(ctx.raw), ctx);
     const pool = getPool(ctx);
+    const entryFilter = buildEntryFilter(ctx);
 
     // --- X binding ---------------------------------------------------
     let xValue = 0;
@@ -102,7 +136,10 @@ export const CostMana: CostPart = {
     // Capture snapshot BEFORE applying so undo can restore the exact pre-pay state.
     const prePaymentSnapshot: ManaProduced[] = pool.snapshot();
 
-    const plan = solveManaPayment(cost, pool, { xValue });
+    const plan = solveManaPayment(cost, pool, {
+      xValue,
+      ...(entryFilter !== undefined ? { entryFilter } : {}),
+    });
     if (plan === null) {
       throw new Error(
         `CostMana.pay: insufficient mana — cannot pay "${ctx.raw}" (xValue=${xValue}) from current pool`,
