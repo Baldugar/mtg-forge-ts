@@ -86,3 +86,5 @@ export * from "./assemble-contraption.js";
 export * from "./wave-18-effects.js";
 // Wave 19 — final corpus unknown effects (15 handlers)
 export * from "./wave-19-effects.js";
+// Wave 21 — corpus long-tail effects (20 handlers)
+export * from "./wave-21-effects.js";
