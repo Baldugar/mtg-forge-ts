@@ -28,6 +28,7 @@ import { altCostRegistry } from "../registries/alt-cost-registry.js";
 // Side-effect import: registers CostMana, CostTap, CostPayLife, CostSacrifice
 // in costPartRegistry so payCost can dispatch to them.
 import "../cost/parts/index.js";
+import { noteSpellCast } from "../phase/day-night-tracker.js";
 import type { StackItem, StackItemProvenance, StackItemResolver } from "../stack/stack-item.js";
 import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
@@ -251,6 +252,10 @@ export class CastPipeline {
           ...(ctx.xValue !== undefined ? { xValue: ctx.xValue } : {}),
         }),
       );
+      // Wave 27 — Day/Night CR 726.4 spell-count tracking. Increment the
+      // casting seat's non-land spell counter post-finalize so abort paths
+      // (which throw before this point and route to abort()) don't count.
+      noteSpellCast(this.game, ctx.castingPlayer, ctx.sourceCardId);
       // Wave 26 — Conspire (CR 702.78). Resolved after the spell is on the
       // stack so Stack.copy can clone the live StackItem; if the caster taps
       // two creatures sharing a color with the spell, push a copy alongside.

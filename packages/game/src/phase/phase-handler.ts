@@ -29,6 +29,7 @@ import { GameAction } from "../action/game-action.js";
 import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
 import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
+import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
 
@@ -91,6 +92,14 @@ export class PhaseHandler {
     game.flags.countersAddedThisTurn.clear();
     game.flags.leftBattlefieldThisTurn.clear();
     game.flags.topLibsCast.clear();
+    // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
+    // spell-cast counts into lastTurnSpellsCast + record whose turn just
+    // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the
+    // previous turn's player cast 0 non-land spells, it becomes night",
+    // and the symmetric night→day rule). Snapshot must happen AFTER the
+    // counter resets above are computed but BEFORE the next turn begins;
+    // here is the precise window.
+    noteTurnEnd(game, turn.activePlayer);
     // Wave 15 — drain pending extra turns queued by AddTurnEffect during
     // this turn. CR 500.7: each takes effect before the next scheduled
     // turn. Multiple extra turns are pushed in registration order; we
@@ -174,6 +183,22 @@ export class PhaseHandler {
     active: PlayerSeat,
   ): Generator<EngineYield, void, DecisionResponse> {
     const game = this.game;
+    if (step === Phase.Upkeep) {
+      // Wave 27 — Day/Night CR 726.4. At the start of each upkeep, if the
+      // state is day or night, check the previous turn's controller's non-
+      // land spell count and flip if the rule fires. No-op while dayNight
+      // is "neither" (state is dormant until a triggering card seeds it).
+      const transition = tryUpkeepTransition(game);
+      if (transition !== null) {
+        yield game.emitEvent({
+          kind: "DayTimeChanged",
+          version: 1,
+          turn: game.turn,
+          phase: game.phase,
+          payload: { oldValue: transition.oldValue, newValue: transition.newValue },
+        });
+      }
+    }
     if (step === Phase.Untap) {
       // CR 702.26d — phasing turn-based action runs at the START of the
       // untap step, before untap. Permanents the active player controls

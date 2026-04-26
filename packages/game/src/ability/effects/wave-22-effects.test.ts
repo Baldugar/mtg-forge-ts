@@ -146,7 +146,7 @@ describe("DayTimeEffect", () => {
     seedSourceCard(game);
     const sa = mkSa("DayTime", { Value: { kind: "literal", raw: "night" } });
     const yields = drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
-    expect((game as unknown as { dayTime?: string }).dayTime).toBe("night");
+    expect(game.flags.dayNight).toBe("night");
     expect(yields.some((y) => (y as { event?: { kind: string } }).event?.kind === "DayTimeChanged")).toBe(
       true,
     );

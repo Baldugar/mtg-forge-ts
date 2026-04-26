@@ -59,23 +59,25 @@ export class DayTimeEffect extends SpellAbilityEffect {
     const requested = hasParam(sa, "Value") ? evaluateParamRaw(sa, "Value") : "day";
     const newValue: "day" | "night" | "neither" =
       requested === "night" ? "night" : requested === "neither" ? "neither" : "day";
-    const old =
-      ((game as { dayTime?: "day" | "night" | "neither" }).dayTime as
-        | "day"
-        | "night"
-        | "neither"
-        | undefined) ?? "neither";
-    (game as { dayTime?: "day" | "night" | "neither" }).dayTime = newValue;
-    yield {
-      kind: "event",
-      event: {
-        kind: "DayTimeChanged",
-        version: 1,
-        turn: game.turn,
-        phase: game.phase,
-        payload: { oldValue: old, newValue },
-      },
-    };
+    // Wave 27 — canonical day/night state lives at game.flags.dayNight
+    // (snapshot-backed). Earlier waves stashed a duck-typed `dayTime` slot
+    // on Game; the auto-transition tracker reads/writes the flag, so this
+    // handler must too — otherwise the manual SP$ DayTime path would be
+    // invisible to CR 726.4's upkeep checks.
+    const old = game.flags.dayNight;
+    game.flags.dayNight = newValue;
+    if (old !== newValue) {
+      yield {
+        kind: "event",
+        event: {
+          kind: "DayTimeChanged",
+          version: 1,
+          turn: game.turn,
+          phase: game.phase,
+          payload: { oldValue: old, newValue },
+        },
+      };
+    }
     // TODO(advanced): trigger transform-on-day/night daybound/nightbound permanents.
   }
 }

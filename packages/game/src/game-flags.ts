@@ -55,6 +55,13 @@ export interface GameFlags {
   // this. PhaseHandler reads it when computing the next active player.
   // "forward" = clockwise / seat ascending, "reverse" = counter-clockwise.
   turnOrder: "forward" | "reverse";
+  // Wave 27 — Day/Night auto-transition support (CR 726.4). Snapshot of the
+  // previous turn's `spellsCastThisTurn` taken at TurnEnded so the upkeep
+  // transition logic on the FOLLOWING turn can read "the previous turn's
+  // controller cast N non-land spells". `lastTurnActiveSeat` records whose
+  // turn was just completed so the upkeep logic knows whose count to read.
+  lastTurnSpellsCast: Map<PlayerSeat, number>;
+  lastTurnActiveSeat: PlayerSeat | null;
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -84,4 +91,6 @@ export const createDefaultFlags = (): GameFlags => ({
   topLibsCast: new Set(),
   pendingExtraTurns: [],
   turnOrder: "forward",
+  lastTurnSpellsCast: new Map(),
+  lastTurnActiveSeat: null,
 });
