@@ -842,6 +842,22 @@ export type GameEvent =
       readonly phase: PhaseStep;
       readonly payload: { readonly parentTurn: number; readonly outcome: string };
     }
+  | {
+      // Wave 44 — Shahrazad. Fired by SubgameEffect once the deterministic
+      // subgame resolver picks a winner/loser. `lifeLost` is the parent-game
+      // life delta the loser absorbs (half their life, rounded up). The full
+      // nested-game loop with autonomous AI play remains out of scope; this
+      // event is the single observable pulse the parent game gets.
+      readonly kind: "SubgameResolved";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly winnerSeat: PlayerSeat;
+        readonly loserSeat: PlayerSeat;
+        readonly lifeLost: number;
+      };
+    }
   // === Planechase / Archenemy (2) — Batch D2 ===
   // WHY: niche-but-required format events. ChaosEnsues triggers (T:Mode$
   // ChaosEnsues) match PlanarDieRolled with face === "chaos"; SetInMotion

@@ -10,7 +10,7 @@
 //   ManifestDread, AssignGroup, ExchangeLife, Incubate, TwoPiles, SkipPhase,
 //   EachDamage, ControlPlayer, LosesGame, Subgame, ExchangeLifeVariant,
 //   RingTemptsYou, AlterAttribute, BidLife.
-import { CardType, CounterType, ZoneType } from "@mtg-forge-ts/core";
+import { CardType, CounterType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type {
   AbilityAst,
   CardDefinition,
@@ -376,18 +376,84 @@ export class LosesGameEffect extends SpellAbilityEffect {
 effectRegistry.register(LosesGameEffect);
 
 // 16. Subgame -----------------------------------------------------------------
-// Forge `SP$ Subgame` (Shahrazad) — start a subgame; loser of the subgame
-// loses N life (or the spell's specific consequence). MVP: stash flag.
+// Forge `SP$ Subgame` (Shahrazad) — start a subgame; the loser of the subgame
+// loses half their life rounded up. Single-card target in the entire Forge
+// corpus.
+//
+// MVP simplification: a faithful Shahrazad implementation needs to spawn a
+// nested Game with a copy of each player's lobby + library and run a complete
+// game loop with autonomous play (priority, AI, mulligans, an entire match-
+// in-a-match). That is far out of scope for the SP1/SP2 engine slice. Instead
+// we resolve the subgame deterministically from the parent state:
+//
+//   score(p) = p.life * 2 + sum(power of creatures p controls) + p.library.size
+//
+// The higher-scoring player wins; the active player breaks ties. The loser
+// loses half their life rounded up via game.action.changeLife (so the LifeLost
+// / LifeChanged pipeline still fires). A single SubgameResolved event captures
+// the outcome.
+//
+// TODO(advanced): instantiate a child Game with the same lobby + a copy of
+// each player's library; emit SubgameStarted/SubgameEnded; route the subgame
+// through the priority orchestrator; apply the loser consequence based on the
+// nested game's actual winner.
 export class SubgameEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Subgame";
 
-  // biome-ignore lint/correctness/useYield: stub
-  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    const source = game.cards.get(sa.sourceCardId);
-    if (source) source.remembered.push(sa.sourceCardId);
-    // TODO(advanced): instantiate a child Game with the same lobby + a copy
-    // of each player's library; emit SubgameStarted/SubgameEnded; apply
-    // subgame loser consequence to the parent game.
+  override *resolve(_sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    if (game.players.length < 2) return;
+
+    // Compute deterministic score for each player.
+    const scoreOf = (seat: PlayerSeat): number => {
+      const player = game.getPlayer(seat);
+      const life = player.life;
+      const librarySize = player.zones.get(ZoneType.Library)?.size ?? 0;
+      let powerTotal = 0;
+      const battlefield = player.zones.get(ZoneType.Battlefield);
+      if (battlefield) {
+        for (const id of battlefield.toArray()) {
+          const chars = game.layerEngine.computeCharacteristics(id);
+          powerTotal += chars.power ?? 0;
+        }
+      }
+      return life * 2 + powerTotal + librarySize;
+    };
+
+    const [a, b] = game.players;
+    if (!a || !b) return;
+    const seatA = a.seat;
+    const seatB = b.seat;
+    const scoreA = scoreOf(seatA);
+    const scoreB = scoreOf(seatB);
+
+    let winnerSeat: PlayerSeat;
+    let loserSeat: PlayerSeat;
+    if (scoreA > scoreB) {
+      winnerSeat = seatA;
+      loserSeat = seatB;
+    } else if (scoreB > scoreA) {
+      winnerSeat = seatB;
+      loserSeat = seatA;
+    } else {
+      // Tie — active player wins.
+      winnerSeat = game.activePlayer;
+      loserSeat = winnerSeat === seatA ? seatB : seatA;
+    }
+
+    const loser = game.getPlayer(loserSeat);
+    const lifeLost = Math.ceil(loser.life / 2);
+
+    if (lifeLost > 0) {
+      yield* game.action.changeLife(loserSeat, -lifeLost, { cause: "subgame" });
+    }
+
+    yield game.emitEvent(
+      mkEvent("SubgameResolved", game.turn, game.phase, {
+        winnerSeat,
+        loserSeat,
+        lifeLost,
+      }),
+    );
   }
 }
 effectRegistry.register(SubgameEffect);

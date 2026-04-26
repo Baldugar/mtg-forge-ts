@@ -106,6 +106,7 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "RollDie",
   "SubgameStarted",
   "SubgameEnded",
+  "SubgameResolved",
   // Reveal (1) — Wave 4
   "CardsRevealed",
   // Targeting (1) — Wave 5
@@ -290,6 +291,7 @@ const ALL_KINDS_MAP = {
   RollDie: true,
   SubgameStarted: true,
   SubgameEnded: true,
+  SubgameResolved: true,
   CardsRevealed: true,
   CardTargeted: true,
   EventPrevented: true,
@@ -384,9 +386,9 @@ const ALL_KINDS_MAP = {
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 166 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1)", () => {
-    expect(EXPECTED_KINDS.length).toBe(166);
-    expect(new Set(EXPECTED_KINDS).size).toBe(166);
+  it("has 167 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1)", () => {
+    expect(EXPECTED_KINDS.length).toBe(167);
+    expect(new Set(EXPECTED_KINDS).size).toBe(167);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -507,6 +509,7 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     RollDie: { playerSeat: seat0, sides: 6, result: 4 },
     SubgameStarted: { parentTurn: 1 },
     SubgameEnded: { parentTurn: 1, outcome: "win" },
+    SubgameResolved: { winnerSeat: seat0, loserSeat: seat1, lifeLost: 10 },
     // Reveal (1) — Wave 4
     CardsRevealed: {
       revealedBy: seat0,
