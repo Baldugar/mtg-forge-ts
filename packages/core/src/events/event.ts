@@ -882,6 +882,113 @@ export type GameEvent =
         readonly fromZone: ZoneType;
       };
     }
+  // === Wave 16 — corpus unknown triggers (10 new kinds) ===
+  // WHY: each kind feeds one of the 20 Wave 16 trigger handlers. Tests
+  // synth-emit them today; engine-side emission is wired card-by-card by
+  // the corresponding mechanic landing parts (Mutate, Contraptions,
+  // Planechase entry, Monstrous, Crime, Land-played watcher, etc.).
+  | {
+      // Unstable Crank! — fires when a contraption is "cranked" (assembled).
+      readonly kind: "CardCranked";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly controllerSeat: PlayerSeat };
+    }
+  | {
+      // Planechase — fires when a player enters / planeswalks to a plane.
+      readonly kind: "PlaneswalkedTo";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly planeCardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Ikoria Mutate — fires when a card mutates onto another.
+      readonly kind: "CardMutated";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly mutatorId: EntityId;
+        readonly hostId: EntityId;
+        readonly controllerSeat: PlayerSeat;
+      };
+    }
+  | {
+      // Fires when a card taps to add mana (Mana Reflection, Vorinclex, etc.).
+      // Distinct from ManaEnteredPool: the cause must be a tap-for-mana.
+      readonly kind: "ManaTapped";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly playerSeat: PlayerSeat;
+        readonly produced: string;
+      };
+    }
+  | {
+      // Fires when mana of a specific kind is spent (e.g. ManaExpend triggers).
+      readonly kind: "ManaSpent";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly color: Color | null;
+        readonly amount: number;
+      };
+    }
+  | {
+      // Fires when a player plays a land for turn (Lotus Cobra, etc.).
+      readonly kind: "LandPlayed";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Fires when an attacker remains unblocked after blockers are declared.
+      readonly kind: "AttackerUnblocked";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly attackerId: EntityId; readonly attackingSeat: PlayerSeat };
+    }
+  | {
+      // Fires when counters are added to a player (poison, energy, experience…).
+      readonly kind: "PlayerCounterAdded";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly counterType: string;
+        readonly amount: number;
+      };
+    }
+  | {
+      // Murders at Karlov Manor — fires when a player commits a crime.
+      readonly kind: "CrimeCommitted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly sourceCardId: EntityId;
+        readonly victimSeat?: PlayerSeat;
+        readonly victimCardId?: EntityId;
+      };
+    }
+  | {
+      // Theros — fires when a card becomes monstrous.
+      readonly kind: "CardBecameMonstrous";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly controllerSeat: PlayerSeat };
+    }
   // === Targeting (1) — Wave 5 BecomesTarget trigger ===
   | {
       // Emitted for each card-typed target after stepChooseTargets resolves.
