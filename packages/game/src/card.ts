@@ -169,12 +169,15 @@ export class Card {
   // exiles a chosen target until it leaves; LTB returns the exiled target.
   // `championedTarget` (set on the championer) and `championedBy` (back-
   // pointer set on the exiled card) form the link.
-  championedTarget?: EntityId;
-  championedBy?: EntityId;
+  // Explicit `T | undefined` (rather than `?: T`) so handlers can clear the
+  // slot via `= undefined` without delete (which biome's no-delete rule
+  // forbids) AND without violating exactOptionalPropertyTypes.
+  championedTarget: EntityId | undefined = undefined;
+  championedBy: EntityId | undefined = undefined;
   // Wave 26 — Echo (CR 702.30). On entry the echo cost is stamped; the
   // upkeep trigger consults this and, if unpaid, sacrifices the card.
   // `echoOwedCost` is the literal mana-cost string from K:Echo:<cost>.
-  echoOwedCost?: string;
+  echoOwedCost: string | undefined = undefined;
   // Wave 26 — Cumulative Upkeep (CR 702.24). Each own-upkeep adds 1 age
   // counter, and the controller pays cost × age counters or sacrifices.
   // Stored as a plain number rather than the counters Map so SBAs don't
