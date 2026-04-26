@@ -5,7 +5,7 @@ import {
   type ZoneType,
   staticAbilityModeFromName,
 } from "@mtg-forge-ts/core";
-import { classifyParamValue } from "./ability-line.js";
+import { SVAR_BINDING_PARAMS, classifyParamValue } from "./ability-line.js";
 import type { LexedLine } from "./lexer.js";
 
 const parseZoneList = (raw: string): readonly ZoneType[] => {
@@ -32,6 +32,8 @@ export const parseStaticLine = (line: LexedLine): readonly StaticAst[] => {
         activeInZones = parseZoneList(v);
       } else if (k === "Description") {
         // skip — description text is not captured in the AST
+      } else if (SVAR_BINDING_PARAMS.has(k)) {
+        params[k] = { kind: "literal", raw: v };
       } else {
         params[k] = classifyParamValue(v);
       }

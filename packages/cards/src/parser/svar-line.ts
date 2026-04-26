@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import type { EffectInvocation, ParamValue, SVarAst, SVarExpressionAst } from "@mtg-forge-ts/core";
-import { classifyParamValue } from "./ability-line.js";
+import { SVAR_BINDING_PARAMS, classifyParamValue } from "./ability-line.js";
 import type { LexedLine } from "./lexer.js";
 
 export const parseSVarLine = (line: LexedLine): { readonly name: string; readonly ast: SVarAst } => {
@@ -23,7 +23,11 @@ export const parseSVarLine = (line: LexedLine): { readonly name: string; readonl
     for (const tok of line.tokens) {
       for (const [k, v] of tok) {
         if (k.includes(":")) continue; // spurious "name:DB"-type token from segment 0
-        params[k] = classifyParamValue(v);
+        if (SVAR_BINDING_PARAMS.has(k)) {
+          params[k] = { kind: "literal", raw: v };
+        } else {
+          params[k] = classifyParamValue(v);
+        }
       }
     }
     const ability: EffectInvocation = { handlerKey, params };

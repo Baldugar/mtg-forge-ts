@@ -175,6 +175,12 @@ const dispatch = (line: LexedLine, st: AssemblerState): void => {
       // side-data that the engine does not yet act on at parse time. Silently
       // ignore so corpus cards with these lines parse cleanly.
       break;
+    case "MeldPair":
+      // MeldPair:<other card name> — Eldritch Moon meld mechanic specifier.
+      // Records the other half of the meld pair. The full meld behaviour
+      // requires AlternateMode:Meld which the assembler already supports;
+      // here we just tolerate the metadata line.
+      break;
     default:
       throw new Error(`unknown prefix '${line.prefix}' at line ${line.lineNumber}`);
   }

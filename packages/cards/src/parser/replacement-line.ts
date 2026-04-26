@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { type ParamValue, type ReplacementAst, replacementTypeFromName } from "@mtg-forge-ts/core";
-import { classifyParamValue } from "./ability-line.js";
+import { SVAR_BINDING_PARAMS, classifyParamValue } from "./ability-line.js";
 import type { LexedLine } from "./lexer.js";
 
 export const parseReplacementLine = (line: LexedLine): ReplacementAst => {
@@ -28,6 +28,8 @@ export const parseReplacementLine = (line: LexedLine): ReplacementAst => {
         isSelf = v.toLowerCase() === "true";
       } else if (k === "Description") {
         // skip — description text is not captured in the AST
+      } else if (SVAR_BINDING_PARAMS.has(k)) {
+        params[k] = { kind: "literal", raw: v };
       } else {
         params[k] = classifyParamValue(v);
       }
@@ -39,14 +41,17 @@ export const parseReplacementLine = (line: LexedLine): ReplacementAst => {
   }
 
   // Prevention-style replacements (e.g. "This spell can't be countered",
-  // "prevent N damage") use Layer$ CantHappen or Prevent$ True instead of
-  // providing a ReplaceWith$ SVar. Treat these as optional and synthesise a
-  // "Prevent" handlerKey so the resolver does not attempt a DB lookup.
+  // "prevent N damage", "skip your draw step") use Layer$ CantHappen,
+  // Prevent$ True, or Skip$ True instead of providing a ReplaceWith$ SVar.
+  // Treat these as optional and synthesise a "Prevent" handlerKey so the
+  // resolver does not attempt a DB lookup.
   const layerParam = params.Layer;
   const preventParam = params.Prevent;
+  const skipParam = params.Skip;
   const layerRaw = layerParam?.kind === "literal" ? layerParam.raw : undefined;
   const preventRaw = preventParam?.kind === "literal" ? preventParam.raw : undefined;
-  const isPreventStyle = layerRaw === "CantHappen" || preventRaw === "True";
+  const skipRaw = skipParam?.kind === "literal" ? skipParam.raw : undefined;
+  const isPreventStyle = layerRaw === "CantHappen" || preventRaw === "True" || skipRaw === "True";
 
   if (replaceWith === null && !isPreventStyle) {
     throw new Error(`parseReplacementLine: missing ReplaceWith$ at line ${line.lineNumber}`);

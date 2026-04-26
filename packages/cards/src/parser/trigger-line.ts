@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import type { ParamValue, TriggerAst } from "@mtg-forge-ts/core";
-import { classifyParamValue } from "./ability-line.js";
+import { SVAR_BINDING_PARAMS, classifyParamValue } from "./ability-line.js";
 import type { LexedLine } from "./lexer.js";
 
 export const parseTriggerLine = (line: LexedLine): TriggerAst => {
@@ -19,6 +19,8 @@ export const parseTriggerLine = (line: LexedLine): TriggerAst => {
         executeKey = v;
       } else if (k === "TriggerDescription") {
         // skip — description text is not captured in the AST
+      } else if (SVAR_BINDING_PARAMS.has(k)) {
+        params[k] = { kind: "literal", raw: v };
       } else {
         params[k] = classifyParamValue(v);
       }

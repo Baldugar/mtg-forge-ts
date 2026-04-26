@@ -32,6 +32,15 @@ export const lex = (source: string): readonly LexedLine[] => {
       out.push({ lineNumber, prefix: "AlternateMode", content: "", tokens: [] });
       continue;
     }
+    // SPECIALIZE:<COLOR> is the March of the Machine "Specialize" mechanic
+    // separator. Each face after the primary follows a SPECIALIZE:<W|U|B|R|G>
+    // line. We treat it as a synthetic AlternateMode separator (the per-face
+    // color tag is recorded as content for downstream consumers; the
+    // assembler ignores AlternateMode lines with non-empty content).
+    if (trimmed.startsWith("SPECIALIZE:")) {
+      out.push({ lineNumber, prefix: "AlternateMode", content: "", tokens: [] });
+      continue;
+    }
     const colonIdx = raw.indexOf(":");
     if (colonIdx < 0) {
       throw new Error(`lex: line ${lineNumber}: missing prefix colon`);
