@@ -716,6 +716,41 @@ export class CastPipeline {
         );
       }
     }
+
+    // Wave 16b — CrimeCommitted (Murders at Karlov Manor / CR 113.13). A spell
+    // commits a crime when ANY of its targets is a permanent, spell, ability,
+    // or player NOT controlled by the casting player. Emit one event per cast
+    // so CommitCrimeTrigger fires once even if the spell targets multiple
+    // opponent objects. We pick the first opponent target as the canonical
+    // victim for the payload; multi-target crimes are still semantically a
+    // single crime.
+    let crimeVictimSeat: PlayerSeat | undefined;
+    let crimeVictimCardId: EntityId | undefined;
+    for (const ref of chosenTargets) {
+      if (ref.kind === "card") {
+        const targetCard = this.game.cards.get(ref.id);
+        if (targetCard && targetCard.controllerSeat !== ctx.castingPlayer) {
+          crimeVictimSeat = targetCard.controllerSeat;
+          crimeVictimCardId = ref.id;
+          break;
+        }
+      } else if (ref.kind === "player") {
+        if (ref.seat !== ctx.castingPlayer) {
+          crimeVictimSeat = ref.seat;
+          break;
+        }
+      }
+    }
+    if (crimeVictimSeat !== undefined) {
+      yield this.game.emitEvent(
+        mkEvent("CrimeCommitted", this.game.turn, this.game.phase, {
+          playerSeat: ctx.castingPlayer,
+          sourceCardId: ctx.sourceCardId,
+          ...(crimeVictimSeat !== undefined ? { victimSeat: crimeVictimSeat } : {}),
+          ...(crimeVictimCardId !== undefined ? { victimCardId: crimeVictimCardId } : {}),
+        }),
+      );
+    }
   }
 
   /**

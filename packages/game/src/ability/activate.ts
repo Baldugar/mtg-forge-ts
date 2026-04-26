@@ -136,6 +136,37 @@ export function* activateAbility(
         );
       }
     }
+
+    // Wave 16b — CrimeCommitted (CR 113.13). Activated abilities that target
+    // an opponent-controlled object/player commit a crime (e.g. Murders at
+    // Karlov Manor activated abilities). Mirror the cast-pipeline emit.
+    let crimeVictimSeat: PlayerSeat | undefined;
+    let crimeVictimCardId: EntityId | undefined;
+    for (const ref of chosenTargets) {
+      if (ref.kind === "card") {
+        const targetCard = game.cards.get(ref.id);
+        if (targetCard && targetCard.controllerSeat !== controllerSeat) {
+          crimeVictimSeat = targetCard.controllerSeat;
+          crimeVictimCardId = ref.id;
+          break;
+        }
+      } else if (ref.kind === "player") {
+        if (ref.seat !== controllerSeat) {
+          crimeVictimSeat = ref.seat;
+          break;
+        }
+      }
+    }
+    if (crimeVictimSeat !== undefined) {
+      yield game.emitEvent(
+        mkEvent("CrimeCommitted", game.turn, game.phase, {
+          playerSeat: controllerSeat,
+          sourceCardId: cardId,
+          ...(crimeVictimSeat !== undefined ? { victimSeat: crimeVictimSeat } : {}),
+          ...(crimeVictimCardId !== undefined ? { victimCardId: crimeVictimCardId } : {}),
+        }),
+      );
+    }
   }
 
   // 3. Parse the cost.
