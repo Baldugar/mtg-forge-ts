@@ -24,7 +24,15 @@ export type LayerPayload =
   | { readonly kind: "ability"; readonly effect: AbilityChangeEffect }
   | { readonly kind: "pt-set"; readonly effect: Layer7bEffect }
   | { readonly kind: "pt-modify"; readonly effect: Layer7cEffect }
-  | { readonly kind: "pt-counter"; readonly effect: Layer7dEffect };
+  | { readonly kind: "pt-counter"; readonly effect: Layer7dEffect }
+  // SP3 Batch D — cleanup-only payload. EffectEffect (delayed-trigger host)
+  // registers a continuous effect whose sole purpose is to drive a cleanup
+  // hook at duration expiry (tearing down the host card + its synthesized
+  // triggers/replacements/statics). The payload itself is inert: it does
+  // not flow into any LayerEngine array. Adding it here keeps the
+  // discriminated-union check exhaustive across pushLayerPayload /
+  // removeLayerPayload without introducing a side channel.
+  | { readonly kind: "noop" };
 
 export const pushLayerPayload = (game: Game, payload: LayerPayload): void => {
   switch (payload.kind) {
@@ -48,6 +56,11 @@ export const pushLayerPayload = (game: Game, payload: LayerPayload): void => {
       break;
     case "pt-counter":
       game.layerEngine.pt7d.push(payload.effect);
+      break;
+    case "noop":
+      // No layer state to mutate — this payload exists only so the
+      // continuous-effect-registry can host a cleanup hook against a
+      // duration. See LayerPayload's "noop" doc-comment.
       break;
     default: {
       const _: never = payload;
@@ -83,6 +96,9 @@ export const removeLayerPayload = (game: Game, payload: LayerPayload): void => {
       break;
     case "pt-counter":
       spliceOut(game.layerEngine.pt7d, payload.effect);
+      break;
+    case "noop":
+      // Mirrors the noop branch in pushLayerPayload — nothing to splice.
       break;
     default: {
       const _: never = payload;

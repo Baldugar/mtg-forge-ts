@@ -78,10 +78,17 @@ export interface KeywordAst {
 }
 
 export interface SVarAst {
-  readonly kind: "value" | "ability";
+  readonly kind: "value" | "ability" | "trigger" | "replacement" | "static";
   readonly raw: string;
   readonly expression?: SVarExpressionAst;
   readonly ability?: EffectInvocation;
+  // EffectEffect (SP3 Batch D) reads these when synthesizing a delayed-
+  // trigger host: the SVars referenced from `Triggers$` / `ReplacementEffects$`
+  // / `StaticAbilities$` carry a trigger / replacement / static AST inline.
+  // The parser populates the matching field based on `kind`.
+  readonly trigger?: TriggerAst;
+  readonly replacement?: ReplacementAst;
+  readonly static?: StaticAst;
 }
 
 /** SP3 populates the detailed parsed form; SP1 keeps the raw text only. */
