@@ -107,6 +107,10 @@ export * from "./station.js";
 // Wave 28 — VisitAttraction (Unfinity). Emits AttractionVisited so
 // VisitAttractionTrigger (Wave 22) fires.
 export * from "./visit-attraction.js";
+// Wave 28 — Forage (Bloomburrow). Standalone effect emit — the matching
+// cost-part lives in cost/parts/cost-forage.ts and emits the same event
+// when paid.
+export * from "./forage.js";
 // Wave 26 — Suspend special-action resolver (Time Spiral / CR 702.61).
 // Synthesized by SuspendKeywordHandler; registered as handlerKey "Suspend".
 export * from "./suspend.js";

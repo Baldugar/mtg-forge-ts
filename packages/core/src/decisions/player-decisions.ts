@@ -526,6 +526,20 @@ export type DecisionRequest =
       readonly playerSeat: PlayerSeat;
       readonly mutatorCardId: EntityId;
       readonly hostCardId: EntityId;
+    }
+  | {
+      // Wave 28 — Forage (Bloomburrow). As an additional cost / activated
+      // cost, the player must choose either to exile three cards from their
+      // graveyard OR to sacrifice a Food token they control. `eligibleGyIds`
+      // is every card in the player's graveyard at canPay time; `eligibleFoodIds`
+      // is every Food the player controls. The responder returns either:
+      //   { mode: "exileGy", cardIds: 3 distinct ids drawn from eligibleGyIds }
+      //   { mode: "sacFood", foodId: one id drawn from eligibleFoodIds }
+      readonly kind: "chooseForageMode";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceCardId: EntityId;
+      readonly eligibleGyIds: readonly EntityId[];
+      readonly eligibleFoodIds: readonly EntityId[];
     };
 
 /**
@@ -709,6 +723,19 @@ export type DecisionResponse =
   | {
       readonly kind: "chooseMutateOrder";
       readonly placement: "top" | "bottom";
+    }
+  // Wave 28 — Forage: pick the additional-cost mode. exileGy mode requires
+  // exactly 3 distinct ids drawn from request.eligibleGyIds; sacFood mode
+  // requires one id drawn from request.eligibleFoodIds.
+  | {
+      readonly kind: "chooseForageMode";
+      readonly mode: "exileGy";
+      readonly cardIds: readonly EntityId[];
+    }
+  | {
+      readonly kind: "chooseForageMode";
+      readonly mode: "sacFood";
+      readonly foodId: EntityId;
     };
 
 /** All request discriminator values. */

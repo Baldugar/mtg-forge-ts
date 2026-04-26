@@ -6,4 +6,5 @@ export * from "./cost-tap.js";
 export * from "./cost-pay-life.js";
 export * from "./cost-sacrifice.js";
 export * from "./cost-discard.js";
+export * from "./cost-forage.js";
 export * from "./cost-payment.js";

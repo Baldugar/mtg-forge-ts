@@ -236,6 +236,26 @@ export class RandomLegalController implements PlayerController {
       // Wave 25 — Mutate: random-legal places the new card on top.
       case "chooseMutateOrder":
         return { kind: "chooseMutateOrder", placement: "top" };
+      // Wave 28 — Forage. Prefer sacFood when a Food is available (single
+      // permanent cost vs. losing 3 graveyard cards); else exile the first
+      // 3 graveyard ids; else throw — caller should have gated on canPay.
+      case "chooseForageMode": {
+        if (req.eligibleFoodIds.length > 0) {
+          const foodId = req.eligibleFoodIds[0];
+          if (foodId === undefined) {
+            throw new IllegalDecisionError("RandomLegalController: chooseForageMode missing food id");
+          }
+          return { kind: "chooseForageMode", mode: "sacFood", foodId };
+        }
+        if (req.eligibleGyIds.length >= 3) {
+          return {
+            kind: "chooseForageMode",
+            mode: "exileGy",
+            cardIds: req.eligibleGyIds.slice(0, 3),
+          };
+        }
+        throw new IllegalDecisionError("RandomLegalController: chooseForageMode with no legal mode");
+      }
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(

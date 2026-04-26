@@ -96,6 +96,7 @@ const META: readonly KeywordMeta[] = [
   { id: "flashback", displayName: "Flashback", multipleRedundant: false },
   { id: "flying", displayName: "Flying", multipleRedundant: true },
   { id: "for_mirrodin", displayName: "For Mirrodin", multipleRedundant: false },
+  { id: "forage", displayName: "Forage", multipleRedundant: false },
   { id: "foretell", displayName: "Foretell", multipleRedundant: false },
   { id: "fortify", displayName: "Fortify", multipleRedundant: false },
   { id: "freerunning", displayName: "Freerunning", multipleRedundant: false },
