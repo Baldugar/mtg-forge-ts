@@ -345,6 +345,16 @@ function parseOneSymbol(input: string, i: number): { symbol: ManaSymbol; length:
       }
       throw new ManaParseError(`Invalid right side of hybrid at position ${i + 2}: ${JSON.stringify(right)}`);
     }
+    // Forge unbraced phyrexian shorthand: "WP", "UP", "BP", "RP", "GP" (no slash).
+    // Forge accepts these as valid input alongside the canonical "W/P" form.
+    // The two-color hybrid-phyrexian shorthand ("WUP") is intentionally not
+    // handled here — Forge writes those as W/U/P or in space-separated form.
+    if (input[i + 1] === "P") {
+      return {
+        symbol: { kind: "phyrexian", color: colorFromLetter(ch) },
+        length: 2,
+      };
+    }
     return {
       symbol: { kind: "colored", color: colorFromLetter(ch) },
       length: 1,

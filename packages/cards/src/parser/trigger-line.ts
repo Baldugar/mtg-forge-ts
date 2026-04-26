@@ -30,13 +30,17 @@ export const parseTriggerLine = (line: LexedLine): TriggerAst => {
   if (mode === null) {
     throw new Error(`parseTriggerLine: missing Mode$ at line ${line.lineNumber}`);
   }
-  if (executeKey === null) {
-    throw new Error(`parseTriggerLine: missing Execute$ at line ${line.lineNumber}`);
-  }
+  // Forge allows trigger lines with no Execute$ — these are watcher-only
+  // triggers used by static effects (Stalwart Realmwarden's ChangesZone +
+  // ForgetOnCast$ pattern) that don't push a stack item but mutate cards
+  // tracked by the host static. We emit a sentinel handlerKey "NoOp" that
+  // the trigger-handler-registry maps to a no-op resolver; the static or
+  // accompanying trigger-watcher handles the real semantics.
+  const handlerKey = executeKey ?? "NoOp";
 
   return {
     mode,
     params,
-    effect: { handlerKey: executeKey, params: {} },
+    effect: { handlerKey, params: {} },
   };
 };

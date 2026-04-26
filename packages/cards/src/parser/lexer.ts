@@ -41,6 +41,15 @@ export const lex = (source: string): readonly LexedLine[] => {
       out.push({ lineNumber, prefix: "AlternateMode", content: "", tokens: [] });
       continue;
     }
+    // Forge data-only metadata lines that the engine does not consume.
+    // - SETCOLORID:<n> — Cryptic Spires-style "as you create your deck,
+    //   circle two colors" deck-customization marker.
+    // - Lights:<n n n> — Ferris Wheel-style Attractions sticker payload.
+    // These never participate in parser/assembler logic; we accept them as
+    // a tolerated no-op so cards using them parse cleanly.
+    if (trimmed.startsWith("SETCOLORID:") || trimmed.startsWith("Lights:")) {
+      continue;
+    }
     const colonIdx = raw.indexOf(":");
     if (colonIdx < 0) {
       throw new Error(`lex: line ${lineNumber}: missing prefix colon`);

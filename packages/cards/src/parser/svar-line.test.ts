@@ -32,7 +32,12 @@ describe("parseSVarLine", () => {
     expect(out.ast.raw).toBe("5");
   });
 
-  it("rejects lines without colon separator", () => {
-    expect(() => parseSVarLine(first(lex("SVar:just-a-name\n")))).toThrow(/missing ':' separator/);
+  it("accepts colon-less SVar lines as empty-value AI hints (e.g. 'SVar:PlayMain1')", () => {
+    // Forge AI-hint SVars like SVar:PlayMain1 carry no value; we accept them
+    // as empty-value SVars rather than rejecting (Wave 20 corpus parity).
+    const out = parseSVarLine(first(lex("SVar:PlayMain1\n")));
+    expect(out.name).toBe("PlayMain1");
+    expect(out.ast.kind).toBe("value");
+    expect(out.ast.raw).toBe("");
   });
 });

@@ -8,8 +8,15 @@ export const parseSVarLine = (line: LexedLine): { readonly name: string; readonl
     throw new Error(`parseSVarLine: expected prefix 'SVar', got '${line.prefix}' at line ${line.lineNumber}`);
   }
   const firstColon = line.content.indexOf(":");
+  // Forge writes "SVar:PlayMain1" with no value as an AI-hint flag (no
+  // body). Treat a colon-less SVar line as an empty-value SVar so it round-
+  // trips losslessly without a parse error.
   if (firstColon < 0) {
-    throw new Error(`parseSVarLine: missing ':' separator at line ${line.lineNumber}`);
+    const name = line.content.trim();
+    if (name === "") {
+      throw new Error(`parseSVarLine: missing ':' separator at line ${line.lineNumber}`);
+    }
+    return { name, ast: { kind: "value", raw: "" } };
   }
   const name = line.content.slice(0, firstColon).trim();
   const head = line.content.slice(firstColon + 1).trim();

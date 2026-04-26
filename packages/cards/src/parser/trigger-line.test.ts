@@ -30,9 +30,12 @@ describe("parseTriggerLine", () => {
     );
   });
 
-  it("rejects triggers without Execute$", () => {
-    expect(() => parseTriggerLine(first(lex("T:Mode$ ChangesZone | ValidCard$ Card.Self\n")))).toThrow(
-      /missing Execute/,
-    );
+  it("accepts triggers without Execute$ as watcher-only triggers (NoOp handlerKey)", () => {
+    // Forge allows trigger lines with no Execute$ — used by static effects
+    // that rely on ForgetOnCast$/RememberFlags$ only (Stalwart Realmwarden
+    // pattern). We synthesize a "NoOp" handlerKey rather than rejecting.
+    const out = parseTriggerLine(first(lex("T:Mode$ ChangesZone | ValidCard$ Card.Self\n")));
+    expect(out.mode).toBe("ChangesZone");
+    expect(out.effect.handlerKey).toBe("NoOp");
   });
 });

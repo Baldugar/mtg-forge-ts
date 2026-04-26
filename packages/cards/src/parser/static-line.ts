@@ -8,6 +8,30 @@ import {
 import { SVAR_BINDING_PARAMS, classifyParamValue } from "./ability-line.js";
 import type { LexedLine } from "./lexer.js";
 
+// Static-line specific param keys whose values are SVar binding NAMES rather
+// than references. These pass-through verbatim and the resolver does not
+// flag them. They cover the Forge "Add*" / "Cost$ X with XAlternative$ ..."
+// idioms used by Continuous statics (Kentaro, the Smiling Cat — Cost$ X with
+// XAlternative$ ; Lobe Lobber — AddAbility$ / AddSVar$).
+const STATIC_BINDING_PARAMS: ReadonlySet<string> = new Set<string>([
+  "AddAbility",
+  "AddSVar",
+  "AddTrigger",
+  "AddReplacement",
+  "AddStaticAbility",
+  "AddIntrinsicKeyword",
+  "AddKeyword",
+  "AddHiddenKeyword",
+  "RemoveAbility",
+  "RemoveTrigger",
+  "RemoveReplacement",
+  "RemoveStaticAbility",
+  "RemoveIntrinsicKeyword",
+  "RemoveKeyword",
+  "Cost",
+  "XAlternative",
+]);
+
 const parseZoneList = (raw: string): readonly ZoneType[] => {
   const tokens = raw.split(/[,\s]+/).filter((s) => s !== "");
   return tokens.map((t) => t.toLowerCase() as ZoneType);
@@ -32,7 +56,7 @@ export const parseStaticLine = (line: LexedLine): readonly StaticAst[] => {
         activeInZones = parseZoneList(v);
       } else if (k === "Description") {
         // skip — description text is not captured in the AST
-      } else if (SVAR_BINDING_PARAMS.has(k)) {
+      } else if (SVAR_BINDING_PARAMS.has(k) || STATIC_BINDING_PARAMS.has(k)) {
         params[k] = { kind: "literal", raw: v };
       } else {
         params[k] = classifyParamValue(v);
