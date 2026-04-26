@@ -194,6 +194,9 @@ export class SbaEngine {
       case "bestowAuraReverts":
         this.applyBestowAuraReverts(action.cardId);
         return;
+      case "bestowAuraDetach":
+        this.applyBestowAuraDetach(action.cardId);
+        return;
       case "commanderToCommandZone": {
         // WHY explicit toSeat: the card may be in a shared zone (exile,
         // ante) where locate() returns owner:null; defaultDestinationSeat
@@ -411,6 +414,28 @@ export class SbaEngine {
     if (!card) return;
     card.bestowed = false;
     this.game.layerEngine.bumpEpoch("bestow-revert");
+  }
+
+  // CR 702.103 — bestowed Aura on the battlefield whose target left.
+  // Clear both `bestowed` and `attachedTo`; the card stays on the
+  // battlefield. deriveBaseCharacteristics's bestow flip is gated on
+  // `bestowed && attachedTo !== null`; once we clear them, the next
+  // computeCharacteristics returns the printed Creature form.
+  private applyBestowAuraDetach(cardId: EntityId): void {
+    const card = this.game.cards.get(cardId);
+    if (!card) return;
+    // Clear the back-pointer on whatever target the aura WAS pointing at,
+    // even if that target is no longer on the battlefield. This keeps the
+    // attachments[] list of any lingering target free of stale ids.
+    if (card.attachedTo !== null) {
+      const prev = this.game.cards.get(card.attachedTo);
+      if (prev) {
+        prev.attachments = prev.attachments.filter((x) => x !== cardId);
+      }
+      card.attachedTo = null;
+    }
+    card.bestowed = false;
+    this.game.layerEngine.bumpEpoch("bestow-detach");
   }
 
   // Zone-agnostic removal used by token cease-existence. Walks every

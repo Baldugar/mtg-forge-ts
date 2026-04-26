@@ -46,6 +46,20 @@ export interface Layer7cEffect {
   readonly timestamp: number;
   readonly sourceAbilityId: EntityId | null;
   readonly dependsOn?: readonly string[];
+  /**
+   * Wave 10 — Bestow's "Affected$ Card.EnchantedBy" static needs to apply
+   * its P/T modifier to the enchanted creature only, not every card. When
+   * `targetCardIdFn` is set, applyLayer7c calls the function to compute
+   * the current target card id; the effect is applied only when the
+   * function returns the id of the card being computed. When undefined,
+   * the effect is global (the SP2 default — applied to every card).
+   *
+   * Function-shape (rather than a static EntityId) because Auras can be
+   * re-attached during their lifetime — the target id changes as the
+   * Aura re-attaches. Caching the static id on register would silently
+   * leak the original target.
+   */
+  readonly targetCardIdFn?: () => EntityId | null;
 }
 
 export type Layer7dEffect =
@@ -115,8 +129,19 @@ export const applyLayer7b = (c: Characteristics, effects: readonly Layer7bEffect
   }
 };
 
-export const applyLayer7c = (c: Characteristics, effects: readonly Layer7cEffect[]): void => {
-  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7cEffect);
+export const applyLayer7c = (
+  c: Characteristics,
+  effects: readonly Layer7cEffect[],
+  targetCardId?: EntityId | null,
+): void => {
+  const scoped =
+    targetCardId === undefined
+      ? effects
+      : effects.filter((e) => {
+          if (e.targetCardIdFn === undefined) return true; // global
+          return e.targetCardIdFn() === targetCardId;
+        });
+  const ordered = resolveDependencyOrder(toDepNodes(scoped)).map((n) => n.raw as Layer7cEffect);
   for (const e of ordered) {
     // CR 613.4b — don't confer a P/T on a non-creature.
     if (c.power === null || c.toughness === null) continue;

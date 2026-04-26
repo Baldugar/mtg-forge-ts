@@ -52,5 +52,9 @@ export type SbaAction =
   | { readonly kind: "classGainLevel"; readonly cardId: EntityId }
   // CR 702.103 — bestowed aura in non-battlefield reverts to creature form
   | { readonly kind: "bestowAuraReverts"; readonly cardId: EntityId }
+  // CR 702.103 — bestowed aura on the battlefield whose target is gone:
+  // it stops being an Aura and becomes a creature again on the battlefield
+  // (NOT moved to the graveyard). Clears `bestowed` + `attachedTo`.
+  | { readonly kind: "bestowAuraDetach"; readonly cardId: EntityId }
   // CR 903.9 — commander in graveyard/exile goes to command zone if owner elects
   | { readonly kind: "commanderToCommandZone"; readonly cardId: EntityId };

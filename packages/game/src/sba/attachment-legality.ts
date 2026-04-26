@@ -34,8 +34,18 @@ export const collectAttachmentLegality = (game: Game, out: SbaAction[]): void =>
     if (isAura) {
       // Aura attached to nothing, or to a card no longer on the
       // battlefield, is illegal → graveyard.
+      // EXCEPTION (CR 702.103): a bestowed Aura that becomes unattached
+      // does NOT go to the graveyard. Instead it stops being an Aura and
+      // becomes a creature again. We push a dedicated SBA action that
+      // clears `bestowed` and `attachedTo` while leaving the card on the
+      // battlefield. The deriveBaseCharacteristics flip then reverts the
+      // type-set to its printed creature form on the next epoch.
       if (attachedTo === null || !target || target.zone !== ZoneType.Battlefield) {
-        out.push({ kind: "auraUnattachedInvalid", cardId: id });
+        if (card.bestowed) {
+          out.push({ kind: "bestowAuraDetach", cardId: id });
+        } else {
+          out.push({ kind: "auraUnattachedInvalid", cardId: id });
+        }
         continue;
       }
       // SP3 TODO: check the aura's enchant-target restriction against the

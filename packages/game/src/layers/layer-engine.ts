@@ -118,7 +118,7 @@ export class LayerEngine {
     applyLayer6Ability(chars, id, this.abilityEffects);
     applyLayer7a(chars, this.pt7a);
     applyLayer7b(chars, this.pt7b);
-    applyLayer7c(chars, this.pt7c);
+    applyLayer7c(chars, this.pt7c, id);
     applyLayer7d(chars, this.pt7d);
     applyLayer7e(chars, this.pt7e);
     this.cache.set(id, { chars, epoch: this.epoch });

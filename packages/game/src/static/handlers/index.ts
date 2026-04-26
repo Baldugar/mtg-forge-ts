@@ -7,5 +7,6 @@
 // exactly X" (replacing the entire mana cost), which differs structurally
 // from RaiseCost/ReduceCost's additive delta and needs richer plumbing
 // through the cost solver.
+export * from "./continuous.js";
 export * from "./reduce-cost.js";
 export * from "./raise-cost.js";

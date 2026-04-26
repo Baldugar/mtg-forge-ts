@@ -19,9 +19,13 @@
 // name per CR 708.4a; all other "default" cases (single-face cards, DFCs
 // before any chooseFace selection, etc.) fall through to paperCard.name.
 import type { ManaCostAst } from "@mtg-forge-ts/core";
-import { type Characteristics, ManaCost, emptyCharacteristics } from "@mtg-forge-ts/core";
+import { CardType, type Characteristics, ManaCost, emptyCharacteristics } from "@mtg-forge-ts/core";
 import type { Card } from "../card.js";
 import { combinedSplitCharacteristics, isSplitCard } from "../multiface/split.js";
+
+// Wave 10 — Bestow type-flip (see end of deriveBaseCharacteristics). Hoist
+// the enum value to a module-local constant for readability.
+const CARDTYPE_CREATURE = CardType.Creature;
 
 /**
  * Parse a P/T string ("2", "*", "1+*", "X") into a number or null.
@@ -96,6 +100,33 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     if (def.colors !== undefined) {
       base.colors = def.colors;
     }
+  }
+
+  // Wave 10 — Bestow (CR 702.103). A bestowed permanent is an Aura, not a
+  // creature, while attached. We flip the base type-set BEFORE Layer 4 so
+  // any subsequent type-changing effects (animate, etc.) compose normally.
+  // Conditions:
+  //   - card.bestowed === true (set by the bestow alt-cost cast pipeline),
+  //   - card.attachedTo !== null (still attached to a target),
+  //   - the card has CardType.Creature in its base types (defensive check).
+  // When all three hold, remove Creature from the type set, add Aura as a
+  // subtype, and clear power/toughness (an Aura has no P/T).
+  // When attachedTo === null, the card reverts to its printed creature
+  // form — the bestowed flag stays true so this branch can re-fire if it's
+  // re-attached, but the SBA pipeline clears `bestowed` once the card
+  // leaves the battlefield (CR 702.103, applyBestowAuraReverts in sba/).
+  if (card.bestowed && card.attachedTo !== null) {
+    // Lazy import shouldn't be needed — CardType is already used above. We
+    // need the enum reference: fetch it via the constructor name from the
+    // base.types Set's element type. We can't `import { CardType }` at the
+    // top because base-characteristics.ts is layer-engine-internal — the
+    // enum is exported from @mtg-forge-ts/core; importing it is fine.
+    base.types.delete(CARDTYPE_CREATURE);
+    base.subtypes.add("Aura");
+    // Aura has no P/T; clear the printed creature P/T so layer 7 doesn't
+    // operate on stale numbers.
+    base.power = null;
+    base.toughness = null;
   }
 
   return base;
