@@ -611,3 +611,136 @@ export class CaseSolvedTrigger extends TriggerHandler {
   }
 }
 triggerHandlerRegistry.register(CaseSolvedTrigger);
+
+// 21. FlippedCoin -------------------------------------------------------------
+// Forge T:Mode$ FlippedCoin — fires after a coin flip resolves. Matches the
+// engine's FlipCoin event regardless of result; ValidPlayer$ optional gates
+// who flipped. Cards: Mana Clash, Goblin Bookie, etc.
+export class FlippedCoinTrigger extends TriggerHandler {
+  static override readonly mode = "FlippedCoin";
+
+  override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
+    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const executeKey = ast.effect.handlerKey;
+    const validPlayer = ast.params.ValidPlayer?.kind === "literal" ? ast.params.ValidPlayer.raw : "Each";
+    const ta: TriggeredAbilityWithResolver = {
+      id: triggerId,
+      kind: "triggered",
+      sourceCardId,
+      activeInZones: battlefieldZones(),
+      timestamp: 0,
+      controllerSeatAtReg: controllerSeat,
+      isDelayed: false,
+      matches(event: GameEvent): boolean {
+        if (event.kind !== "FlipCoin") return false;
+        const p = event.payload as { playerSeat: PlayerSeat };
+        if (validPlayer === "You" && p.playerSeat !== controllerSeat) return false;
+        if (
+          (validPlayer === "Opponent" || validPlayer === "Player.Opponent") &&
+          p.playerSeat === controllerSeat
+        )
+          return false;
+        return true;
+      },
+      resolver: makeSvarResolver(sourceCardId, controllerSeat, executeKey, "FlippedCoinTrigger"),
+    };
+    return ta as unknown as TriggeredAbility;
+  }
+}
+triggerHandlerRegistry.register(FlippedCoinTrigger);
+
+// 22. Destroyed ---------------------------------------------------------------
+// Forge T:Mode$ Destroyed — fires when a card is destroyed (not just any
+// graveyard entry; specifically a destroy mutation). Matches CardDestroyed
+// event. Cards: cards with "when ~ is destroyed" wording.
+export class DestroyedTrigger extends TriggerHandler {
+  static override readonly mode = "Destroyed";
+
+  override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
+    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const executeKey = ast.effect.handlerKey;
+    const validCard = ast.params.ValidCard?.kind === "literal" ? ast.params.ValidCard.raw : "Card.Self";
+    const ta: TriggeredAbilityWithResolver = {
+      id: triggerId,
+      kind: "triggered",
+      sourceCardId,
+      activeInZones: battlefieldZones(),
+      timestamp: 0,
+      controllerSeatAtReg: controllerSeat,
+      isDelayed: false,
+      matches(event: GameEvent): boolean {
+        if (event.kind !== "CardDestroyed") return false;
+        const p = event.payload as { cardId: EntityId };
+        if (validCard === "Card.Self") return p.cardId === sourceCardId;
+        return true; // permissive for non-Self filters; advanced ValidCard$ deferred
+      },
+      resolver: makeSvarResolver(sourceCardId, controllerSeat, executeKey, "DestroyedTrigger"),
+    };
+    return ta as unknown as TriggeredAbility;
+  }
+}
+triggerHandlerRegistry.register(DestroyedTrigger);
+
+// 23. ChangesController -------------------------------------------------------
+// Forge T:Mode$ ChangesController — fires when a card changes controller
+// (Mind Control, Threaten, etc.). Matches CardControllerChanged event added
+// alongside this handler.
+export class ChangesControllerTrigger extends TriggerHandler {
+  static override readonly mode = "ChangesController";
+
+  override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
+    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const executeKey = ast.effect.handlerKey;
+    const validCard = ast.params.ValidCard?.kind === "literal" ? ast.params.ValidCard.raw : "Card.Self";
+    const ta: TriggeredAbilityWithResolver = {
+      id: triggerId,
+      kind: "triggered",
+      sourceCardId,
+      activeInZones: battlefieldZones(),
+      timestamp: 0,
+      controllerSeatAtReg: controllerSeat,
+      isDelayed: false,
+      matches(event: GameEvent): boolean {
+        if (event.kind !== "CardControllerChanged") return false;
+        const p = event.payload as { cardId: EntityId };
+        if (validCard === "Card.Self") return p.cardId === sourceCardId;
+        return true;
+      },
+      resolver: makeSvarResolver(sourceCardId, controllerSeat, executeKey, "ChangesControllerTrigger"),
+    };
+    return ta as unknown as TriggeredAbility;
+  }
+}
+triggerHandlerRegistry.register(ChangesControllerTrigger);
+
+// 24. Exploited ---------------------------------------------------------------
+// Khans-of-Tarkir Mardu Exploit mechanic — when an exploit creature ETBs you
+// may sacrifice another creature; the exploit trigger then fires. Matches
+// CardExploited event added alongside this handler.
+export class ExploitedTrigger extends TriggerHandler {
+  static override readonly mode = "Exploited";
+
+  override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
+    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const executeKey = ast.effect.handlerKey;
+    const validCard = ast.params.ValidCard?.kind === "literal" ? ast.params.ValidCard.raw : "Card.Self";
+    const ta: TriggeredAbilityWithResolver = {
+      id: triggerId,
+      kind: "triggered",
+      sourceCardId,
+      activeInZones: battlefieldZones(),
+      timestamp: 0,
+      controllerSeatAtReg: controllerSeat,
+      isDelayed: false,
+      matches(event: GameEvent): boolean {
+        if (event.kind !== "CardExploited") return false;
+        const p = event.payload as { exploiterCardId: EntityId };
+        if (validCard === "Card.Self") return p.exploiterCardId === sourceCardId;
+        return true;
+      },
+      resolver: makeSvarResolver(sourceCardId, controllerSeat, executeKey, "ExploitedTrigger"),
+    };
+    return ta as unknown as TriggeredAbility;
+  }
+}
+triggerHandlerRegistry.register(ExploitedTrigger);

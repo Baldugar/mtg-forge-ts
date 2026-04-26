@@ -1250,6 +1250,32 @@ export type GameEvent =
       readonly turn: number;
       readonly phase: PhaseStep;
       readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // CR 702.140 — fires when a card changes controller (Mind Control,
+      // Threaten, Aether Vial onto an opponent's battlefield, etc.).
+      readonly kind: "CardControllerChanged";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly fromSeat: PlayerSeat;
+        readonly toSeat: PlayerSeat;
+      };
+    }
+  | {
+      // Khans-of-Tarkir Mardu Exploit — fires when an exploit creature's
+      // controller sacrifices another creature in response to its ETB.
+      readonly kind: "CardExploited";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly exploiterCardId: EntityId;
+        readonly sacrificedCardId: EntityId;
+        readonly playerSeat: PlayerSeat;
+      };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
