@@ -114,6 +114,10 @@ const TWO_PARAM_KEYWORDS: ReadonlyMap<string, readonly [string, string]> = new M
   // Suspend N — <cost>: N time counters at exile time, mana cost paid at
   // suspend time. CR 702.61.
   ["suspend", ["amount", "cost"]],
+  // Wave 29 — Adapt N — <cost>: activated ability that adds N +1/+1 counters
+  // if this creature has none. K:Adapt:N:<cost> stores `amount` (N) +
+  // `cost` (mana). CR 702.139.
+  ["adapt", ["amount", "cost"]],
 ]);
 
 // Matches "Protection from <something>" — maps to the canonical "protection"

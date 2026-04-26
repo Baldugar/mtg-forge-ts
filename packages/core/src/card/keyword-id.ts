@@ -12,6 +12,7 @@ interface KeywordMeta {
 
 const META: readonly KeywordMeta[] = [
   { id: "absorb", displayName: "Absorb", multipleRedundant: false },
+  { id: "adapt", displayName: "Adapt", multipleRedundant: false },
   { id: "affinity", displayName: "Affinity", multipleRedundant: false },
   { id: "afflict", displayName: "Afflict", multipleRedundant: false },
   { id: "afterlife", displayName: "Afterlife", multipleRedundant: false },

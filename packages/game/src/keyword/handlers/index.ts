@@ -24,4 +24,11 @@ export * from "./cumulative-upkeep-keyword.js";
 export * from "./mutate-keyword.js";
 export * from "./evolve-keyword.js";
 export * from "./station-keyword.js";
+// Wave 29 — Adapt / Renown / Mentor (Daybound, Nightbound, Disturb are
+// flag/altcost shaped; Daybound and Nightbound fall through to FlagKeyword
+// and are auto-flipped from day-night-tracker, while Disturb is registered
+// as an AltCost rather than a keyword handler).
+export * from "./adapt-keyword.js";
+export * from "./renown-keyword.js";
+export * from "./mentor-keyword.js";
 export * from "./flag-keyword.js";

@@ -114,3 +114,5 @@ export * from "./forage.js";
 // Wave 26 — Suspend special-action resolver (Time Spiral / CR 702.61).
 // Synthesized by SuspendKeywordHandler; registered as handlerKey "Suspend".
 export * from "./suspend.js";
+// Wave 29 — Adapt activated-ability resolver (CR 702.139).
+export * from "./adapt.js";

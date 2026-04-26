@@ -189,6 +189,15 @@ export class Card {
   // Stored as a plain number rather than the counters Map so SBAs don't
   // pick it up under the wrong CounterType.
   ageCounters?: number;
+  // Wave 29 — Renown (CR 702.111). Stamped to true when the renown
+  // trigger fires; the trigger's matches() reads this slot and refuses
+  // to re-fire on already-renowned creatures.
+  renowned: boolean | undefined = undefined;
+  // Wave 29 — Disturb (CR 702.156). Set on the synthesized graveyard-
+  // cast SpellAbility's resolution path so the card knows it's resolving
+  // as the Disturb back face. The Disturb alt-cost flips the face on
+  // resolution.
+  disturbed: boolean | undefined = undefined;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

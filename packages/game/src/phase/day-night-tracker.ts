@@ -26,7 +26,7 @@
 // at upkeep start, and cast-pipeline.ts calls noteSpellCast when a non-land
 // spell finalizes onto the stack.
 import type { PlayerSeat } from "@mtg-forge-ts/core";
-import { CardType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 
 /**
@@ -70,6 +70,13 @@ export const noteTurnEnd = (game: Game, activeSeat: PlayerSeat): void => {
  *
  * Pitfall: this is a no-op while dayNight === "neither" — the rule only
  * applies once the state has been seeded by a triggering card (CR 726.3).
+ *
+ * Wave 29 — when a transition fires, scan battlefield permanents whose
+ * keywords include `daybound` (day→night flips them to back face) or
+ * `nightbound` (night→day flips them to back face) and toggle their
+ * `card.face` slot. The layer engine consumes the new face on its next
+ * computeCharacteristics call (the face flag is read in
+ * deriveBaseCharacteristics).
  */
 export const tryUpkeepTransition = (
   game: Game,
@@ -87,5 +94,23 @@ export const tryUpkeepTransition = (
   else if (cur === "day" && prevSpellCount === 0) next = "night";
   if (next === cur) return null;
   game.flags.dayNight = next;
+  // Wave 29 — autoFlip daybound/nightbound permanents to mirror the
+  // Day/Night state. Daybound front-face creatures should sit on the
+  // battlefield while it's day; on day→night they flip to their back
+  // (nightbound) face. Symmetric for nightbound on night→day.
+  const flipFront = next === "night" ? "daybound" : next === "day" ? "nightbound" : null;
+  if (flipFront !== null) {
+    for (const [_id, card] of game.cards) {
+      if (card.zone !== ZoneType.Battlefield) continue;
+      const kws = card.keywords;
+      if (!kws || !kws.has(flipFront)) continue;
+      // MVP face-flip: any non-default face stamp signals "back face"
+      // to the layer engine. Forge's full transform machinery (CR 712)
+      // tracks both faces; the smoke MVP simply marks the card so
+      // tests / future layer logic can observe the auto-transition.
+      card.face = card.face === "default" ? "back" : "default";
+    }
+    game.layerEngine.bumpEpoch("dayNight-autoFlip");
+  }
   return { oldValue: cur, newValue: next };
 };
