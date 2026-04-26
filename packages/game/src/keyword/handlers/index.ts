@@ -53,4 +53,11 @@ export * from "./undying-keyword.js";
 // tokenOverrides slot consumed by deriveBaseCharacteristics.
 export * from "./embalm-keyword.js";
 export * from "./eternalize-keyword.js";
+// Wave 35 — Vanishing / Fading. Countdown-on-upkeep mechanics; ETB stamps
+// Time/Fade counters, upkeep trigger removes one and sacrifices on
+// last-removed (Vanishing) or can't-remove (Fading). K:Phasing already
+// works via FlagKeywordHandler since the phasing pipeline is wired in
+// processPhasingOnUntap.
+export * from "./vanishing-keyword.js";
+export * from "./fading-keyword.js";
 export * from "./flag-keyword.js";
