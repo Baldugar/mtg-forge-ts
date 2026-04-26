@@ -114,6 +114,18 @@ export class Card {
   // card types). Each string is pushed when ChooseType resolves; downstream
   // effects (e.g. "if you named X") look up index 0.
   chosenTypes: string[] = [];
+  // Wave 15 — ChoosePlayerEffect stores chosen player seats here. Mirrors
+  // chosenColors / chosenTypes in shape; downstream effects look up index 0.
+  chosenPlayers: PlayerSeat[] = [];
+  // Wave 15 — NameCardEffect stores the named card name here. Forge cards
+  // like Cabal Therapy / Pithing Needle read this to gate their effect.
+  // Single-slot (only one card name can be named at a time per source).
+  namedCard: string | null = null;
+  // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
+  // the affected card so layered char derivation can re-apply at compute
+  // time. MVP: opaque records — Layer 1 application is deferred to a future
+  // wave; the slot is wired so callers can introspect/test.
+  textChanges: { kind: "color" | "type"; from: string; to: string }[] = [];
   // SP3 Part C Task 58 — live SpellAbility instances bound to this card.
   // Populated by activateAbilitiesFromDefinition(), called by the engine
   // when the card enters a zone where abilities are active (hand for

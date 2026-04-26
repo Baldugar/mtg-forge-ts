@@ -91,6 +91,20 @@ export class PhaseHandler {
     game.flags.countersAddedThisTurn.clear();
     game.flags.leftBattlefieldThisTurn.clear();
     game.flags.topLibsCast.clear();
+    // Wave 15 — drain pending extra turns queued by AddTurnEffect during
+    // this turn. CR 500.7: each takes effect before the next scheduled
+    // turn. Multiple extra turns are pushed in registration order; we
+    // unshift in reverse so the FIRST queued extra turn is the FIRST to
+    // fire (turn-queue.pushExtra does a single unshift).
+    if (game.flags.pendingExtraTurns.length > 0) {
+      const pending = [...game.flags.pendingExtraTurns];
+      game.flags.pendingExtraTurns.length = 0;
+      for (let i = pending.length - 1; i >= 0; i--) {
+        const seat = pending[i];
+        if (seat === undefined) continue;
+        this.turnQueue.pushExtra({ activePlayer: seat, isExtra: true });
+      }
+    }
   }
 
   *runStep(step: PhaseStep): Generator<EngineYield, void, DecisionResponse> {

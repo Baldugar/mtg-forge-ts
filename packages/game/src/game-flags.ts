@@ -45,6 +45,12 @@ export interface GameFlags {
   countersAddedThisTurn: Map<EntityId, number>;
   leftBattlefieldThisTurn: Set<EntityId>;
   topLibsCast: Set<EntityId>;
+  // Wave 15 — AddTurnEffect queues extra turns here. PhaseHandler drains
+  // the queue at end of turn and pushes one isExtra=true Turn to the front
+  // of its TurnQueue per entry (CR 500.7: extra turns fire BEFORE the next
+  // scheduled turn). The slot lives on Game.flags rather than directly on
+  // PhaseHandler because effect handlers reach the Game (not the handler).
+  pendingExtraTurns: PlayerSeat[];
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -72,4 +78,5 @@ export const createDefaultFlags = (): GameFlags => ({
   countersAddedThisTurn: new Map(),
   leftBattlefieldThisTurn: new Set(),
   topLibsCast: new Set(),
+  pendingExtraTurns: [],
 });

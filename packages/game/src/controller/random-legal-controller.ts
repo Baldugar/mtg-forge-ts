@@ -214,6 +214,13 @@ export class RandomLegalController implements PlayerController {
       // Wave 4 — ChooseTypeEffect
       case "chooseType":
         return { kind: "chooseType", type: "Goblin" };
+      // Wave 15 — GenericChoiceEffect / NameCardEffect
+      case "chooseGenericOption": {
+        const first = req.options[0];
+        return { kind: "chooseGenericOption", optionId: first ? first.id : "" };
+      }
+      case "nameCard":
+        return { kind: "nameCard", cardName: "Forest" };
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(

@@ -444,6 +444,28 @@ export type DecisionRequest =
       readonly kind: "chooseType";
       readonly sourceId: EntityId;
       readonly typeKind: string;
+    }
+  | {
+      // Wave 15 — GenericChoiceEffect: pick one of N labeled SVar names.
+      // Distinct from `chooseOption` (which lacks an explicit player seat
+      // and is sourced from CharmEffect modes). Used by Forge's
+      // SP$ GenericChoice | Choices$ A,B,C — each option is an SVar to
+      // resolve when chosen.
+      readonly kind: "chooseGenericOption";
+      readonly sourceId: EntityId;
+      readonly playerSeat: PlayerSeat;
+      readonly options: readonly NamedOption[];
+    }
+  | {
+      // Wave 15 — NameCardEffect: ask the player to name a card. Free-form
+      // string response — restriction filter is informational, the engine
+      // does not validate against the card pool (format-layer concern).
+      readonly kind: "nameCard";
+      readonly sourceId: EntityId;
+      readonly playerSeat: PlayerSeat;
+      // Forge-style filter description (e.g. "creature", "nonland"); UI
+      // hint only. Engine accepts whatever string is returned.
+      readonly restriction: string;
     };
 
 /**
@@ -595,7 +617,11 @@ export type DecisionResponse =
       readonly kind: "companionDeclaration";
       // null = decline; a concrete id must be in request.sideboardCardIds.
       readonly companionId: EntityId | null;
-    };
+    }
+  // Wave 15 — generic choice from labeled SVar list.
+  | { readonly kind: "chooseGenericOption"; readonly optionId: string }
+  // Wave 15 — name a card.
+  | { readonly kind: "nameCard"; readonly cardName: string };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];
