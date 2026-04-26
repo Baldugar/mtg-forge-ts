@@ -121,6 +121,19 @@ export class Card {
   // like Cabal Therapy / Pithing Needle read this to gate their effect.
   // Single-slot (only one card name can be named at a time per source).
   namedCard: string | null = null;
+  // Wave 18 — ChooseNumberEffect stores the chosen number here. Forge cards
+  // like Spike Hatcher and many counter-related effects read this slot.
+  chosenNumber: number | null = null;
+  // Wave 18 — ChooseDirectionEffect stores the chosen direction. "Left" or
+  // "Right" relative to the chooser. Multiplayer-relevant.
+  chosenDirection: "Left" | "Right" | null = null;
+  // Wave 18 — Phases-out flag. When true, the card is treated as off the
+  // battlefield (CR 702.26). Cleared on the controller's untap step.
+  phasedOut = false;
+  // Wave 18 — MustBlock target. Set by MustBlockEffect; consulted by combat
+  // assignment logic when the creature is declared (or refused) as a
+  // blocker.
+  mustBlockTargetId: EntityId | null = null;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

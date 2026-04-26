@@ -51,6 +51,10 @@ export interface GameFlags {
   // scheduled turn). The slot lives on Game.flags rather than directly on
   // PhaseHandler because effect handlers reach the Game (not the handler).
   pendingExtraTurns: PlayerSeat[];
+  // Wave 18 — turn order direction. Forge's `SP$ ReverseTurnOrder` toggles
+  // this. PhaseHandler reads it when computing the next active player.
+  // "forward" = clockwise / seat ascending, "reverse" = counter-clockwise.
+  turnOrder: "forward" | "reverse";
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -79,4 +83,5 @@ export const createDefaultFlags = (): GameFlags => ({
   leftBattlefieldThisTurn: new Set(),
   topLibsCast: new Set(),
   pendingExtraTurns: [],
+  turnOrder: "forward",
 });
