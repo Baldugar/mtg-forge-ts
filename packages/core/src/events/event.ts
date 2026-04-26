@@ -1455,6 +1455,181 @@ export type GameEvent =
         readonly playerSeats: readonly PlayerSeat[];
         readonly amounts: readonly number[];
       };
+    }
+  // === Wave 21 — corpus long-tail trigger events ===
+  // WHY: each kind backs one of the 20 Wave 21 trigger handlers. As with
+  // Waves 16/18/19/20, tests synth-emit them today; engine-side emission is
+  // wired on a per-mechanic basis as the corresponding action lands.
+  | {
+      // Investigate (CR 701.30) — fires when a Clue token is created via the
+      // Investigate keyword/effect.
+      readonly kind: "CardInvestigated";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly clueTokenId: EntityId };
+    }
+  | {
+      // Phasing (CR 702.26) — fires when a permanent phases out.
+      readonly kind: "CardPhasedOut";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId };
+    }
+  | {
+      // Murders at Karlov Manor — fires when a player collects evidence (exiles
+      // cards from their graveyard with total mana value at least N).
+      readonly kind: "EvidenceCollected";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly amount: number;
+        readonly cardIds: readonly EntityId[];
+      };
+    }
+  | {
+      // Once-per-turn variant of CardMilled — fires once per turn for the
+      // first mill batch.
+      readonly kind: "CardMilledOnce";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly cardIds: readonly EntityId[] };
+    }
+  | {
+      // Fires when an ability finishes resolving (CR 116.5 — last point at
+      // which "when X resolves" triggers fire).
+      readonly kind: "AbilityResolved";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly stackItemId: EntityId; readonly controllerSeat: PlayerSeat };
+    }
+  | {
+      // Fires when a counter of a specific kind is added to any object on the
+      // battlefield (Forge T:Mode$ CounterTypeAddedAll watches a single kind).
+      readonly kind: "CounterTypeAddedAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly counterType: string;
+        readonly amount: number;
+      };
+    }
+  | {
+      // Lorwyn Renown — fires when a creature becomes Renowned.
+      readonly kind: "CardBecameRenowned";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId };
+    }
+  | {
+      // Magic Origins / Innistrad transform — fires when a creature evolves
+      // (CR 702.100). Distinct from CardSpecialized.
+      readonly kind: "CardEvolved";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId };
+    }
+  | {
+      // Strixhaven / Wilds of Eldraine — fires when one or more cards are
+      // conjured (created out of nowhere, not tokens).
+      readonly kind: "CardConjuredAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly cardIds: readonly EntityId[] };
+    }
+  | {
+      // Bloomburrow Forage — fires when a player forages (exiles 3 cards from
+      // their graveyard or sacrifices a Food).
+      readonly kind: "CardForage";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Once-per-turn variant of AttackerUnblocked.
+      readonly kind: "AttackerUnblockedOnce";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly attackerId: EntityId };
+    }
+  | {
+      // Forge T:Mode$ TapAll — fires once per "tap all" batch (e.g. Wrath
+      // variants that tap rather than destroy).
+      readonly kind: "CardsTappedAll";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardIds: readonly EntityId[] };
+    }
+  | {
+      // Foretell (CR 702.146) — fires when a card is foretold (exiled face-down
+      // for the foretell cost). Distinct from the existing CardForetold which
+      // fires on the cast-from-foretell-zone path; this one fires on the
+      // exile-on-foretell path.
+      readonly kind: "CardForetoldExiled";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly playerSeat: PlayerSeat };
+    }
+  | {
+      // Fight (CR 701.13) — fires when two creatures fight.
+      readonly kind: "FightFought";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly aId: EntityId; readonly bId: EntityId };
+    }
+  | {
+      // Fires when a player pays life as part of a cost or effect.
+      readonly kind: "LifePaid";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly playerSeat: PlayerSeat; readonly amount: number };
+    }
+  | {
+      // Fires when a spell or ability copy is created (Forge T:Mode$
+      // SpellAbilityCopy — superset of SpellCopied that also fires on
+      // ability-on-stack copies).
+      readonly kind: "SpellAbilityCopied";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly originalStackItemId: EntityId;
+        readonly copyStackItemId: EntityId;
+      };
+    }
+  | {
+      // Wilds of Eldraine — fires when a "gift" is promised (player chooses to
+      // gift an opponent something on cast).
+      readonly kind: "GiftPromised";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly fromSeat: PlayerSeat; readonly toSeat: PlayerSeat };
+    }
+  | {
+      // Devour (CR 702.81) — fires when a creature with Devour eats other
+      // creatures as it enters.
+      readonly kind: "CreatureDevoured";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly devourerId: EntityId; readonly devouredIds: readonly EntityId[] };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */

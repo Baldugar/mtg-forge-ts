@@ -58,3 +58,5 @@ export * from "./wave-18-triggers.js";
 export * from "./wave-19-triggers.js";
 // Wave 20 — corpus long-tail triggers (20 handlers)
 export * from "./wave-20-triggers.js";
+// Wave 21 — corpus long-tail triggers (20 handlers)
+export * from "./wave-21-triggers.js";

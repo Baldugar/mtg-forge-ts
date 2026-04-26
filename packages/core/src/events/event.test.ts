@@ -152,6 +152,45 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "Saddled",
   "Crewed",
   "CaseSolved",
+  // Wave 19b — late additions
+  "CardControllerChanged",
+  "CardExploited",
+  // Wave 20 — corpus long-tail trigger events (17)
+  "CardSpecialized",
+  "Proliferated",
+  "SpellCopied",
+  "CardClashed",
+  "CardExplored",
+  "NewGameStarted",
+  "CardBecameCrewed",
+  "PlaneswalkedFrom",
+  "LibraryShuffled",
+  "DungeonCompleted",
+  "VotePerformed",
+  "CardSeekedAll",
+  "CardMilledAll",
+  "CardCreatedToken",
+  "CardDiscovered",
+  "PlayerLifeLostAll",
+  // Wave 21 — corpus long-tail trigger events (19)
+  "CardInvestigated",
+  "CardPhasedOut",
+  "EvidenceCollected",
+  "CardMilledOnce",
+  "AbilityResolved",
+  "CounterTypeAddedAll",
+  "CardBecameRenowned",
+  "CardEvolved",
+  "CardConjuredAll",
+  "CardForage",
+  "AttackerUnblockedOnce",
+  "CardsTappedAll",
+  "CardForetoldExiled",
+  "FightFought",
+  "LifePaid",
+  "SpellAbilityCopied",
+  "GiftPromised",
+  "CreatureDevoured",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -285,12 +324,51 @@ const ALL_KINDS_MAP = {
   Saddled: true,
   Crewed: true,
   CaseSolved: true,
+  // Wave 19b — late additions (2)
+  CardControllerChanged: true,
+  CardExploited: true,
+  // Wave 20 — corpus long-tail trigger events (16)
+  CardSpecialized: true,
+  Proliferated: true,
+  SpellCopied: true,
+  CardClashed: true,
+  CardExplored: true,
+  NewGameStarted: true,
+  CardBecameCrewed: true,
+  PlaneswalkedFrom: true,
+  LibraryShuffled: true,
+  DungeonCompleted: true,
+  VotePerformed: true,
+  CardSeekedAll: true,
+  CardMilledAll: true,
+  CardCreatedToken: true,
+  CardDiscovered: true,
+  PlayerLifeLostAll: true,
+  // Wave 21 — corpus long-tail trigger events (18)
+  CardInvestigated: true,
+  CardPhasedOut: true,
+  EvidenceCollected: true,
+  CardMilledOnce: true,
+  AbilityResolved: true,
+  CounterTypeAddedAll: true,
+  CardBecameRenowned: true,
+  CardEvolved: true,
+  CardConjuredAll: true,
+  CardForage: true,
+  AttackerUnblockedOnce: true,
+  CardsTappedAll: true,
+  CardForetoldExiled: true,
+  FightFought: true,
+  LifePaid: true,
+  SpellAbilityCopied: true,
+  GiftPromised: true,
+  CreatureDevoured: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 123 distinct kinds grouped across 9 families (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9)", () => {
-    expect(EXPECTED_KINDS.length).toBe(123);
-    expect(new Set(EXPECTED_KINDS).size).toBe(123);
+  it("has 159 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18)", () => {
+    expect(EXPECTED_KINDS.length).toBe(159);
+    expect(new Set(EXPECTED_KINDS).size).toBe(159);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -466,6 +544,45 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     Saddled: { mountId: id(1), riderIds: [id(2)] },
     Crewed: { vehicleId: id(1), crewIds: [id(2), id(3)] },
     CaseSolved: { cardId: id(1), playerSeat: seat0 },
+    // Wave 19b late additions
+    CardControllerChanged: { cardId: id(1), fromSeat: seat0, toSeat: seat1 },
+    CardExploited: { exploiterCardId: id(1), sacrificedCardId: id(2), playerSeat: seat0 },
+    // Wave 20 payloads
+    CardSpecialized: { cardId: id(1), color: "W" },
+    Proliferated: { playerSeat: seat0 },
+    SpellCopied: { originalStackItemId: id(1), copyStackItemId: id(2), controllerSeat: seat0 },
+    CardClashed: { playerSeat: seat0, winner: seat0 },
+    CardExplored: { cardId: id(1), playerSeat: seat0, resultPutIntoHand: true },
+    NewGameStarted: { seats: [seat0, seat1] },
+    CardBecameCrewed: { vehicleId: id(1), crewIds: [id(2)] },
+    PlaneswalkedFrom: { planeCardId: id(1), playerSeat: seat0 },
+    LibraryShuffled: { playerSeat: seat0 },
+    DungeonCompleted: { dungeonCardId: id(1), playerSeat: seat0 },
+    VotePerformed: { playerSeat: seat0, choice: "yes" },
+    CardSeekedAll: { playerSeat: seat0, cardIds: [id(1)] },
+    CardMilledAll: { playerSeat: seat0, cardIds: [id(1)] },
+    CardCreatedToken: { creatorCardId: id(1), tokenCardId: id(2), controllerSeat: seat0 },
+    CardDiscovered: { playerSeat: seat0, discoveredCardId: id(1), value: 3 },
+    PlayerLifeLostAll: { playerSeats: [seat0, seat1], amounts: [1, 2] },
+    // Wave 21 payloads
+    CardInvestigated: { playerSeat: seat0, clueTokenId: id(1) },
+    CardPhasedOut: { cardId: id(1) },
+    EvidenceCollected: { playerSeat: seat0, amount: 3, cardIds: [id(1)] },
+    CardMilledOnce: { playerSeat: seat0, cardIds: [id(1)] },
+    AbilityResolved: { stackItemId: id(1), controllerSeat: seat0 },
+    CounterTypeAddedAll: { cardId: id(1), counterType: "+1/+1", amount: 1 },
+    CardBecameRenowned: { cardId: id(1) },
+    CardEvolved: { cardId: id(1) },
+    CardConjuredAll: { playerSeat: seat0, cardIds: [id(1)] },
+    CardForage: { playerSeat: seat0 },
+    AttackerUnblockedOnce: { attackerId: id(1) },
+    CardsTappedAll: { cardIds: [id(1), id(2)] },
+    CardForetoldExiled: { cardId: id(1), playerSeat: seat0 },
+    FightFought: { aId: id(1), bId: id(2) },
+    LifePaid: { playerSeat: seat0, amount: 2 },
+    SpellAbilityCopied: { originalStackItemId: id(1), copyStackItemId: id(2) },
+    GiftPromised: { fromSeat: seat0, toSeat: seat1 },
+    CreatureDevoured: { devourerId: id(1), devouredIds: [id(2)] },
   };
 
   for (const kind of EXPECTED_KINDS) {
