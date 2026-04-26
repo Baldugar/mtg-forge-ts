@@ -52,3 +52,5 @@ export * from "./commit-crime-trigger.js";
 export * from "./counter-removed-trigger.js";
 export * from "./become-monstrous-trigger.js";
 export * from "./ring-tempts-you-trigger.js";
+// Wave 18 — corpus unknown triggers (12 handlers)
+export * from "./wave-18-triggers.js";
