@@ -1,18 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // DamageDoneOnceTrigger — handles Forge's `T:Mode$ DamageDoneOnce` trigger line.
-// Forge fires this only on the FIRST damage event per turn/instance scope.
 //
-// MVP simplification: matches() behaves identically to DealtDamageTrigger
-// (Mode$ DamageDone). The "fires only once" state-tracking is deferred —
-// registered here so the semantic validator no longer flags DamageDoneOnce
-// as an unknown mode. Wave N+1 adds a per-turn seen-set guard.
+// Wave 12B — once-per-turn fire guard.
+// Real Forge fires "DamageDoneOnce" once per damage MAP (one trigger per
+// step, even when many simultaneous hits). Our event model emits one
+// DamageDealt event per assignment, so without a guard the trigger would
+// fire repeatedly. The Wave 12 directive specifies once-per-turn semantics
+// — we implement exactly that: the trigger matches once per `game.turn`
+// then suppresses subsequent matches until the turn advances.
 //
 // Forge pattern:
 //   T:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player
 //     | Execute$ TrigOnce | TriggerDescription$ The first time this deals damage each turn, ...
 //
 // Supported ValidSource$: Card.Self, Card.
-// Supported ValidTarget$: Player, Creature, Any.
+// Supported ValidTarget$: Player, Creature, Any, You, Opponent.
 // CombatDamage$: True / False / absent.
 import type {
   AbilityAst,
@@ -54,8 +56,19 @@ export class DamageDoneOnceTrigger extends TriggerHandler {
     const validSourceRaw = getParamRaw(ast, "ValidSource") ?? "Card.Self";
     const validTargetRaw = getParamRaw(ast, "ValidTarget") ?? "Any";
     const combatDamageRaw = getParamRaw(ast, "CombatDamage");
-    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const { game: ctxGame, sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = ast.effect.handlerKey;
+
+    // Wave 12B — once-per-turn guard. Closure-private fired-state. Reads
+    // `game.turn` from the live game ref captured at build time. Tests that
+    // pass a stub `{} as never` will see undefined turn and skip the guard
+    // (the trigger then matches every event, the legacy MVP behavior).
+    let lastFiredOnTurn: number | undefined;
+    const currentTurn = (): number | undefined => {
+      const g = ctxGame as { turn?: unknown } | undefined;
+      const t = g?.turn;
+      return typeof t === "number" ? t : undefined;
+    };
 
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
@@ -66,8 +79,10 @@ export class DamageDoneOnceTrigger extends TriggerHandler {
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,
 
-      // NOTE(stub): "once per turn" tracking omitted — deferred to Wave N+1.
-      // Matches DamageDealt identically to DealtDamageTrigger for now.
+      // Once-per-turn matching: when the basic predicate is satisfied AND
+      // the trigger has already fired this turn, return false. On a true
+      // return, mark the current turn as "fired" so subsequent matching
+      // events in the same turn are suppressed until `game.turn` advances.
       matches(event: GameEvent): boolean {
         if (event.kind !== "DamageDealt") return false;
         const { sourceId, targetKind, targetId, isCombat } = event.payload as {
@@ -89,13 +104,23 @@ export class DamageDoneOnceTrigger extends TriggerHandler {
           return false;
         }
 
-        if (validTargetRaw === "Any") return true;
-        if (validTargetRaw === "Player") return targetKind === "player";
-        if (validTargetRaw === "Creature") return targetKind === "creature";
-        if (validTargetRaw === "You") return targetKind === "player" && targetId === controllerSeat;
-        if (validTargetRaw === "Opponent") return targetKind === "player" && targetId !== controllerSeat;
+        let predicateOk = false;
+        if (validTargetRaw === "Any") predicateOk = true;
+        else if (validTargetRaw === "Player") predicateOk = targetKind === "player";
+        else if (validTargetRaw === "Creature") predicateOk = targetKind === "creature";
+        else if (validTargetRaw === "You")
+          predicateOk = targetKind === "player" && targetId === controllerSeat;
+        else if (validTargetRaw === "Opponent")
+          predicateOk = targetKind === "player" && targetId !== controllerSeat;
+        if (!predicateOk) return false;
 
-        return false;
+        // Once-per-turn gate.
+        const turn = currentTurn();
+        if (turn !== undefined) {
+          if (lastFiredOnTurn === turn) return false;
+          lastFiredOnTurn = turn;
+        }
+        return true;
       },
 
       resolver: {

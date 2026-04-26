@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // CounterAddedOnceTrigger — handles Forge's `T:Mode$ CounterAddedOnce` trigger
-// line. Like CounterAdded but fires only once per scope (Forge tracks a "has
-// fired" flag per turn/phase to prevent re-fires in the same step).
+// line. Like CounterAdded but fires only once per scope.
 //
-// MVP STATUS: matches on the `CounterAdded` game event, same as a full
-// CounterAdded trigger. The "fires only once" deduplication guard is deferred
-// — registered here so the semantic validator no longer flags
-// CounterAddedOnce as an unknown mode key.
+// Wave 12B — once-per-turn fire guard. The Wave 12 directive specifies
+// once-per-turn semantics; the trigger matches on the first qualifying
+// CounterAdded event each turn and suppresses subsequent matches until
+// `game.turn` advances.
 //
 // Forge pattern:
 //   T:Mode$ CounterAddedOnce | ValidCard$ Card.Self | Execute$ TrigEffect
@@ -51,8 +50,16 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
   override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
     const validCard = getParamRaw(ast, "ValidCard") ?? "Card.Self";
     const counterType = getParamRaw(ast, "CounterType"); // optional filter
-    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const { game: ctxGame, sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = ast.effect.handlerKey;
+
+    // Wave 12B — once-per-turn guard (closure-private fired-state).
+    let lastFiredOnTurn: number | undefined;
+    const currentTurn = (): number | undefined => {
+      const g = ctxGame as { turn?: unknown } | undefined;
+      const t = g?.turn;
+      return typeof t === "number" ? t : undefined;
+    };
 
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
@@ -63,8 +70,6 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,
 
-      // NOTE(stub): "fires once" deduplication omitted — deferred to Wave N+1.
-      // Matches CounterAdded identically to a full CounterAdded trigger for now.
       matches(event: GameEvent): boolean {
         if (event.kind !== "CounterAdded") return false;
         const { cardId, counterType: evCounterType } = event.payload as {
@@ -76,15 +81,26 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
         // Optional counter type filter.
         if (counterType !== undefined && evCounterType !== counterType) return false;
 
-        if (validCard === "Card.Self") return cardId === sourceCardId;
-        if (validCard === "Card") return true;
-
-        // Dotted qualifiers (e.g. Card.YouCtrl) — fallback to Self match.
-        const lower = validCard.toLowerCase();
-        if (lower.startsWith("card.self") || lower.startsWith("permanent.self")) {
-          return cardId === sourceCardId;
+        // Predicate gate.
+        let predicateOk = false;
+        if (validCard === "Card.Self") predicateOk = cardId === sourceCardId;
+        else if (validCard === "Card") predicateOk = true;
+        else {
+          // Dotted qualifiers (e.g. Card.YouCtrl) — fallback to Self match.
+          const lower = validCard.toLowerCase();
+          if (lower.startsWith("card.self") || lower.startsWith("permanent.self")) {
+            predicateOk = cardId === sourceCardId;
+          }
         }
-        return false;
+        if (!predicateOk) return false;
+
+        // Once-per-turn gate.
+        const turn = currentTurn();
+        if (turn !== undefined) {
+          if (lastFiredOnTurn === turn) return false;
+          lastFiredOnTurn = turn;
+        }
+        return true;
       },
 
       resolver: {
