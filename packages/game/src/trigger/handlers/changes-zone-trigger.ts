@@ -6,9 +6,26 @@
 // Forge pattern:
 //   T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
 //
-// ValidCard$ MVP support:
+// ValidCard$ support:
 //   Card.Self  — only the source card triggers (ETB/LTB self-trigger).
 //   Card       — any card moving between zones triggers (global watcher).
+//   <Filter>   — comma-OR of plus/dot-joined alternatives (Wave 32). E.g.
+//                Card.Self,Enchantment.Other+YouCtrl   (Constellation)
+//                Creature.YouCtrl                      (generic)
+//
+// Wave 32 — Constellation (Theros: Beyond Death, ~20 cards):
+//   T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield
+//     | ValidCard$ Card.Self,Enchantment.Other+YouCtrl
+//     | Execute$ TrigDraw
+//   The comma-OR ValidCard$ + the `Other` + `YouCtrl` qualifiers cover
+//   "this enchantment OR another enchantment you control".
+//
+// Wave 32 — Revolt$ True (Aether Revolt, ~15 cards):
+//   T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield
+//     | ValidCard$ Card.Self | Execute$ TrigDestroy | Revolt$ True
+//   When Revolt$ True is set, matches() additionally requires that a
+//   permanent left the battlefield under controllerSeatAtReg's control
+//   this turn (game.flags.permanentsLeftBfThisTurn).
 //
 // Part E2: Execute$ SVar is resolved at resolve-time to a SpellAbility whose
 // makeResolver() drives the trigger body. Resolver is stamped on the returned
@@ -25,6 +42,7 @@ import { ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
+import { cardMatchesFilter } from "../card-filter.js";
 import { triggerHandlerRegistry } from "../trigger-handler-registry.js";
 import type { TriggerBuildContext } from "../trigger-handler.js";
 import { TriggerHandler } from "../trigger-handler.js";
@@ -68,7 +86,8 @@ export class ChangesZoneTrigger extends TriggerHandler {
     const originRaw = getParamRaw(ast, "Origin") ?? "Any";
     const destRaw = getParamRaw(ast, "Destination") ?? "Any";
     const validRaw = getParamRaw(ast, "ValidCard") ?? "Card";
-    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const revoltGate = getParamRaw(ast, "Revolt") === "True";
+    const { sourceCardId, controllerSeat, triggerId, game } = ctx;
     const originZone = normalizeZone(originRaw);
     const destZone = normalizeZone(destRaw);
 
@@ -101,12 +120,33 @@ export class ChangesZoneTrigger extends TriggerHandler {
         // Check Destination$ param. destZone is a ZoneType string value or "Any".
         if (destZone !== "Any" && toZone !== (destZone as ZoneType)) return false;
 
-        // Check ValidCard$ param
-        if (validRaw === "Card.Self") return cardId === sourceCardId;
-        if (validRaw === "Card") return true;
+        // Check ValidCard$ param. Fast paths first (Card.Self, Card)
+        // avoid touching game.cards. The general path delegates to the
+        // shared cardMatchesFilter helper (comma-OR / plus-AND grammar).
+        let validCardOk = false;
+        if (validRaw === "Card.Self") {
+          validCardOk = cardId === sourceCardId;
+        } else if (validRaw === "Card") {
+          validCardOk = true;
+        } else {
+          const card = game.cards.get(cardId);
+          if (!card) return false;
+          validCardOk = cardMatchesFilter(card, validRaw, {
+            controllerSeat,
+            sourceCardId,
+          });
+        }
+        if (!validCardOk) return false;
 
-        // Other ValidCard$ filters (Creature, Player's, etc.) deferred to Part E2.
-        return false;
+        // Revolt$ True — Aether Revolt (CR-style "a permanent you
+        // controlled left the battlefield this turn"). Per-seat counter
+        // populated by game-action.ts moveTo + reset by phase-handler.
+        if (revoltGate) {
+          const n = game.flags.permanentsLeftBfThisTurn.get(controllerSeat) ?? 0;
+          if (n <= 0) return false;
+        }
+
+        return true;
       },
 
       // Part E2 — resolver: look up the Execute$ SVar at resolve-time,

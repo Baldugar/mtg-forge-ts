@@ -45,6 +45,13 @@ export interface GameFlags {
   countersAddedThisTurn: Map<EntityId, number>;
   leftBattlefieldThisTurn: Set<EntityId>;
   topLibsCast: Set<EntityId>;
+  // Wave 32 — per-controller counter of "permanents that left the
+  // battlefield under your control this turn", powering Revolt (CR-
+  // style "a permanent you controlled left the battlefield this turn").
+  // Incremented by game-action.ts moveTo on Battlefield→anywhere
+  // transitions, keyed by the card's controllerSeat captured BEFORE
+  // the move applies. Reset to empty at TurnEnded by phase-handler.
+  permanentsLeftBfThisTurn: Map<PlayerSeat, number>;
   // Wave 15 — AddTurnEffect queues extra turns here. PhaseHandler drains
   // the queue at end of turn and pushes one isExtra=true Turn to the front
   // of its TurnQueue per entry (CR 500.7: extra turns fire BEFORE the next
@@ -89,6 +96,7 @@ export const createDefaultFlags = (): GameFlags => ({
   countersAddedThisTurn: new Map(),
   leftBattlefieldThisTurn: new Set(),
   topLibsCast: new Set(),
+  permanentsLeftBfThisTurn: new Map(),
   pendingExtraTurns: [],
   turnOrder: "forward",
   lastTurnSpellsCast: new Map(),

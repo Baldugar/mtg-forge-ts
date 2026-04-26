@@ -511,6 +511,10 @@ export interface SerializedGameFlags {
   readonly countersAddedThisTurn: readonly (readonly [EntityId, number])[];
   readonly leftBattlefieldThisTurn: readonly EntityId[];
   readonly topLibsCast: readonly EntityId[];
+  // Wave 32 — per-controller "permanents you controlled left BF this turn"
+  // counter (Revolt). Optional for v6 back-compat; absent → empty Map. Wave
+  // 43 schema-v7 bump can promote to required when the schema rolls.
+  readonly permanentsLeftBfThisTurn?: readonly (readonly [PlayerSeat, number])[];
 }
 
 /**
@@ -712,6 +716,7 @@ const flagsToJSON = (f: GameFlags): SerializedGameFlags => ({
   countersAddedThisTurn: [...f.countersAddedThisTurn.entries()].map(([e, n]) => [e, n] as const),
   leftBattlefieldThisTurn: [...f.leftBattlefieldThisTurn],
   topLibsCast: [...f.topLibsCast],
+  permanentsLeftBfThisTurn: [...f.permanentsLeftBfThisTurn.entries()].map(([s, n]) => [s, n] as const),
 });
 
 const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
@@ -747,6 +752,10 @@ const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
   for (const [id, n] of s.countersAddedThisTurn) f.countersAddedThisTurn.set(id, n);
   for (const id of s.leftBattlefieldThisTurn) f.leftBattlefieldThisTurn.add(id);
   for (const id of s.topLibsCast) f.topLibsCast.add(id);
+  // Wave 32 — optional in v6; missing slot restores as empty Map.
+  if (s.permanentsLeftBfThisTurn) {
+    for (const [seat, n] of s.permanentsLeftBfThisTurn) f.permanentsLeftBfThisTurn.set(seat, n);
+  }
   return f;
 };
 

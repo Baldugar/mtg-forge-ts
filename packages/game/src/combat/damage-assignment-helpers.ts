@@ -64,14 +64,18 @@ export const creatureToughness = (game: Game, creatureId: EntityId): number => {
 };
 
 /**
- * Keyword lookup — SP2 placeholder consulting Card.keywords directly. SP3's
- * keyword registry will expose these through Characteristics; at that point
- * this helper becomes a thin adapter over `chars.keywords.has(keyword)`.
+ * Keyword lookup — consults Card.keywords (intrinsic + activate-keyword-
+ * registered) AND Layer 6 keyword grants (Wave 32 — Continuous statics
+ * with AddKeyword$, e.g. Threshold). The two sources are unioned so
+ * intrinsic Vigilance + a Threshold grant both resolve true even when
+ * one is absent.
  */
 export const hasKeyword = (game: Game, cardId: EntityId, keyword: string): boolean => {
   const card = game.cards.get(cardId);
   if (!card) return false;
-  return card.keywords?.has(keyword) ?? false;
+  if (card.keywords?.has(keyword)) return true;
+  // Wave 32 — Layer 6 keyword grants (Threshold, Wither/Infect roadmap).
+  return game.layerEngine.effectiveGrantedKeywords(cardId).has(keyword);
 };
 
 /**

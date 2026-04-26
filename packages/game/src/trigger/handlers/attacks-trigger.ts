@@ -6,16 +6,16 @@
 // Forge pattern:
 //   T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, it gets +1/+1 until end of turn.
 //
-// ValidCard$ MVP support:
-//   Card.Self    — only fires when the source card itself attacks.
-//   Card         — fires when any creature attacks (global watcher).
-//   Card.YouCtrl — fires when any creature the controller controls attacks
-//                  (identified by attackingSeat === controllerSeat).
+// Wave 32 — Battalion (Gatecrash, ~10 cards):
+//   T:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield
+//     | IsPresent$ Creature.attacking+Other | PresentCompare$ GE2
+//     | Execute$ TrigPump
+//   The IsPresent$ filter walks the AttackersDeclared batch (with `Other`
+//   excluding self) and PresentCompare$ gates firing on the count.
 //
-// Note: AttackersDeclared is a batch event containing ALL attackers declared
-// in one step. We match if ANY attacker in the batch satisfies ValidCard$.
-// For Card.Self and Card.YouCtrl, the seat-level check (attackingSeat) is
-// sufficient for the common case; Card.Self also verifies the specific card id.
+// ValidCard$ now supports comma-OR alternatives + plus-joined qualifiers,
+// the `Other` qualifier, and the `Revolt$ True` flag (per-controller
+// permanentsLeftBfThisTurn gate).
 //
 // Part E2: resolver is stamped on the returned TriggeredAbility so the
 // priority orchestrator can drive the trigger body via the SVar pipeline.
@@ -32,6 +32,7 @@ import { ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
+import { cardMatchesFilter, evalPresentCompare } from "../card-filter.js";
 import { triggerHandlerRegistry } from "../trigger-handler-registry.js";
 import type { TriggerBuildContext } from "../trigger-handler.js";
 import { TriggerHandler } from "../trigger-handler.js";
@@ -65,7 +66,10 @@ export class AttacksTrigger extends TriggerHandler {
 
   override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
     const validRaw = getParamRaw(ast, "ValidCard") ?? "Card.Self";
-    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const isPresentRaw = getParamRaw(ast, "IsPresent");
+    const presentCompareRaw = getParamRaw(ast, "PresentCompare") ?? "GE1";
+    const revoltGate = getParamRaw(ast, "Revolt") === "True";
+    const { sourceCardId, controllerSeat, triggerId, game } = ctx;
 
     // Execute$ value — the SVar name this trigger resolves to (e.g. "TrigPump").
     const executeKey = ast.effect.handlerKey;
@@ -89,25 +93,69 @@ export class AttacksTrigger extends TriggerHandler {
 
         if (attackers.length === 0) return false;
 
-        // ValidCard$ Card.Self — the source card itself must be in the attackers list.
+        // Resolve attackers to the live Card set for filter evaluation +
+        // "attacking" qualifier scoping.
+        const attackingIds = new Set<EntityId>(attackers.map((a) => a.attackerId));
+
+        // ValidCard$ — comma-OR over alternatives. The MVP fast paths
+        // (Card.Self / Card / Card.YouCtrl) remain inline so we don't
+        // touch game.cards when not necessary.
+        let validCardOk = false;
         if (validRaw === "Card.Self") {
-          return attackers.some((a) => a.attackerId === sourceCardId);
+          validCardOk = attackingIds.has(sourceCardId);
+        } else if (validRaw === "Card") {
+          validCardOk = attackingIds.size > 0;
+        } else if (validRaw === "Card.YouCtrl") {
+          validCardOk = attackingSeat === controllerSeat;
+        } else {
+          // Comma-OR / plus-AND filter: at least one attacker must satisfy.
+          for (const id of attackingIds) {
+            const card = game.cards.get(id);
+            if (!card) continue;
+            if (
+              cardMatchesFilter(card, validRaw, {
+                controllerSeat,
+                sourceCardId,
+                attackingIds,
+              })
+            ) {
+              validCardOk = true;
+              break;
+            }
+          }
+        }
+        if (!validCardOk) return false;
+
+        // IsPresent$ + PresentCompare$ — Battalion-style attacker-count gate.
+        // Counts attackers in the current declaration matching the filter
+        // (commonly Creature.attacking+Other to demand "≥N OTHER attackers").
+        if (isPresentRaw !== undefined) {
+          let count = 0;
+          for (const id of attackingIds) {
+            const card = game.cards.get(id);
+            if (!card) continue;
+            if (
+              cardMatchesFilter(card, isPresentRaw, {
+                controllerSeat,
+                sourceCardId,
+                attackingIds,
+              })
+            ) {
+              count++;
+            }
+          }
+          if (!evalPresentCompare(count, presentCompareRaw)) return false;
         }
 
-        // ValidCard$ Card — any attacker fires this trigger.
-        if (validRaw === "Card") {
-          return attackers.length > 0;
+        // Revolt$ True — per CR, "a permanent you controlled left the
+        // battlefield this turn". Read the per-seat counter populated by
+        // game-action.ts moveTo and reset by phase-handler at turn end.
+        if (revoltGate) {
+          const n = game.flags.permanentsLeftBfThisTurn.get(controllerSeat) ?? 0;
+          if (n <= 0) return false;
         }
 
-        // ValidCard$ Card.YouCtrl — any creature controlled by this trigger's
-        // controller attacks. In MTG, all attackers belong to the active player,
-        // so we check attackingSeat === controllerSeat.
-        if (validRaw === "Card.YouCtrl") {
-          return attackingSeat === controllerSeat;
-        }
-
-        // Other ValidCard$ filters deferred to future parts.
-        return false;
+        return true;
       },
 
       // Part E2 — resolver: look up the Execute$ SVar at resolve-time,

@@ -382,6 +382,11 @@ export class GameAction {
         from.remove(final.cardId);
         to.add(final.cardId);
         const card = game.cards.get(final.cardId);
+        // Wave 32 — capture the pre-move controller for Revolt's per-seat
+        // counter. Must be read BEFORE the controllerSeat overwrite below
+        // (final.toSeat may differ from the original controller, e.g. token
+        // ceasing-to-exist returns the card to its owner).
+        const controllerAtMoveOut: PlayerSeat | null = card ? card.controllerSeat : null;
         if (card) {
           card.zone = final.toZone;
           if (final.toSeat !== null) card.controllerSeat = final.toSeat;
@@ -452,6 +457,18 @@ export class GameAction {
           // longer meaningful and must reset so its next battlefield
           // entry doesn't inherit stale state.
           if (card) card.damagedByDeathtouch = false;
+          // Wave 32 — Revolt support. Bump the per-controller "permanents
+          // you controlled left BF this turn" counter, keyed by the
+          // controllerSeat AT THE MOMENT THE PERMANENT LEFT (i.e. the
+          // value already overwritten on `card` above is fine here, but
+          // we trust the pre-move owner instead — `card.controllerSeat`
+          // post-move equals the new zone's owner, which is wrong for
+          // Revolt). The original controller is `controllerAtMoveOut`,
+          // captured before line 387's possible overwrite.
+          if (controllerAtMoveOut !== null) {
+            const prev = game.flags.permanentsLeftBfThisTurn.get(controllerAtMoveOut) ?? 0;
+            game.flags.permanentsLeftBfThisTurn.set(controllerAtMoveOut, prev + 1);
+          }
         }
       },
       (final) =>

@@ -94,6 +94,9 @@ export class PhaseHandler {
     game.flags.countersAddedThisTurn.clear();
     game.flags.leftBattlefieldThisTurn.clear();
     game.flags.topLibsCast.clear();
+    // Wave 32 — Revolt's per-controller counter resets each turn alongside
+    // the existing per-turn tracking (CR-style "this turn" predicates).
+    game.flags.permanentsLeftBfThisTurn.clear();
     // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
     // spell-cast counts into lastTurnSpellsCast + record whose turn just
     // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the

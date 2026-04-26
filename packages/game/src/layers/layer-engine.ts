@@ -16,6 +16,7 @@
 import { type Characteristics, type EntityId, GameStateIntegrityError } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import { deriveBaseCharacteristics } from "./base-characteristics.js";
+import type { Layer6KeywordGrant } from "./keyword-layer.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
 import { applyFaceDownOverride } from "./layer1-face-down.js";
 import { applyLayer2Control } from "./layer2-control.js";
@@ -57,6 +58,11 @@ export class LayerEngine {
   readonly typeEffects: TypeChangeEffect[] = [];
   readonly colorEffects: ColorChangeEffect[] = [];
   readonly abilityEffects: AbilityChangeEffect[] = [];
+  // Wave 32 — Layer 6 keyword grants. Currently consumed by combat helpers'
+  // hasKeyword (via game.layerEngine.effectiveKeywords lookup) rather than
+  // injected into Characteristics. Future Wave 36 (Wither/Infect) and
+  // others will route additional keyword grants through this array.
+  readonly keywordGrants: Layer6KeywordGrant[] = [];
   readonly pt7a: Layer7aEffect[] = [];
   readonly pt7b: Layer7bEffect[] = [];
   readonly pt7c: Layer7cEffect[] = [];
@@ -98,6 +104,28 @@ export class LayerEngine {
 
   getCached(id: EntityId): LayerCacheEntry | undefined {
     return this.cache.get(id);
+  }
+
+  /**
+   * Wave 32 — collect keyword ids granted to `cardId` by Layer 6 keyword
+   * grants. Each grant's `targetCardIdFn` is evaluated live, so dynamic
+   * conditions (e.g. Threshold) reflect the current game state on every
+   * call. Returns lowercase_snake_case ids matching the keyword registry.
+   */
+  effectiveGrantedKeywords(cardId: EntityId): Set<string> {
+    if (this.keywordGrants.length === 0) return new Set();
+    const out = new Set<string>();
+    for (const g of this.keywordGrants) {
+      if (g.targetCardIdFn() !== cardId) continue;
+      // Inline normalisation to avoid an extra import on the hot path.
+      const norm = g.keyword
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
+      if (norm.length > 0) out.add(norm);
+    }
+    return out;
   }
 
   computeCharacteristics(id: EntityId): Characteristics {

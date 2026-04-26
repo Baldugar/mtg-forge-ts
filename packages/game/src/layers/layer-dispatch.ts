@@ -11,6 +11,7 @@
 // and unregister — a fresh object literal on removal silently leaks the
 // original into the layer array.
 import type { Game } from "../game.js";
+import type { Layer6KeywordGrant } from "./keyword-layer.js";
 import type { TextSubstitution } from "./layer3-text.js";
 import type { TypeChangeEffect } from "./layer4-type.js";
 import type { ColorChangeEffect } from "./layer5-color.js";
@@ -22,9 +23,16 @@ export type LayerPayload =
   | { readonly kind: "type"; readonly effect: TypeChangeEffect }
   | { readonly kind: "color"; readonly effect: ColorChangeEffect }
   | { readonly kind: "ability"; readonly effect: AbilityChangeEffect }
+  | { readonly kind: "kw-grant"; readonly effect: Layer6KeywordGrant }
   | { readonly kind: "pt-set"; readonly effect: Layer7bEffect }
   | { readonly kind: "pt-modify"; readonly effect: Layer7cEffect }
   | { readonly kind: "pt-counter"; readonly effect: Layer7dEffect }
+  // Wave 32 — multi-payload envelope. A single Continuous static can
+  // contribute several layer effects (e.g. Threshold = pt-modify +
+  // kw-grant). The envelope is processed by walking `entries` in order;
+  // referential equality on the inner payloads' effect references is
+  // preserved so register/unregister round-trip correctly.
+  | { readonly kind: "multi"; readonly entries: readonly LayerPayload[] }
   // SP3 Batch D — cleanup-only payload. EffectEffect (delayed-trigger host)
   // registers a continuous effect whose sole purpose is to drive a cleanup
   // hook at duration expiry (tearing down the host card + its synthesized
@@ -48,6 +56,9 @@ export const pushLayerPayload = (game: Game, payload: LayerPayload): void => {
     case "ability":
       game.layerEngine.abilityEffects.push(payload.effect);
       break;
+    case "kw-grant":
+      game.layerEngine.keywordGrants.push(payload.effect);
+      break;
     case "pt-set":
       game.layerEngine.pt7b.push(payload.effect);
       break;
@@ -56,6 +67,9 @@ export const pushLayerPayload = (game: Game, payload: LayerPayload): void => {
       break;
     case "pt-counter":
       game.layerEngine.pt7d.push(payload.effect);
+      break;
+    case "multi":
+      for (const entry of payload.entries) pushLayerPayload(game, entry);
       break;
     case "noop":
       // No layer state to mutate — this payload exists only so the
@@ -88,6 +102,9 @@ export const removeLayerPayload = (game: Game, payload: LayerPayload): void => {
     case "ability":
       spliceOut(game.layerEngine.abilityEffects, payload.effect);
       break;
+    case "kw-grant":
+      spliceOut(game.layerEngine.keywordGrants, payload.effect);
+      break;
     case "pt-set":
       spliceOut(game.layerEngine.pt7b, payload.effect);
       break;
@@ -96,6 +113,16 @@ export const removeLayerPayload = (game: Game, payload: LayerPayload): void => {
       break;
     case "pt-counter":
       spliceOut(game.layerEngine.pt7d, payload.effect);
+      break;
+    case "multi":
+      // Splice in reverse order so referential identity matches the push
+      // ordering even if entries shift indices (defensive — current layer
+      // arrays don't depend on order, but this keeps the shape consistent
+      // with how the registry expects symmetric register/unregister).
+      for (let i = payload.entries.length - 1; i >= 0; i--) {
+        const entry = payload.entries[i];
+        if (entry !== undefined) removeLayerPayload(game, entry);
+      }
       break;
     case "noop":
       // Mirrors the noop branch in pushLayerPayload — nothing to splice.
