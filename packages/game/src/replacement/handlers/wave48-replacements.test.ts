@@ -151,7 +151,7 @@ describe("AddCounterReplacement (Wave 48)", () => {
       amount: 2,
       sourceId: null,
     } as unknown as MutationIntent;
-    const result = ra.apply(intent, {} as never) as { amount: number };
+    const result = ra.apply(intent, {} as never) as unknown as { amount: number };
     expect(result).not.toBeNull();
     expect(result.amount).toBe(4);
   });
@@ -176,7 +176,7 @@ describe("AddCounterReplacement (Wave 48)", () => {
       amount: 1,
       sourceId: null,
     } as unknown as MutationIntent;
-    const result = ra.apply(intent, {} as never) as { amount: number };
+    const result = ra.apply(intent, {} as never) as unknown as { amount: number };
     expect(result.amount).toBe(2);
   });
 
@@ -251,7 +251,7 @@ describe("CreateTokenReplacement (Wave 48)", () => {
       isCopy: false,
       copyOf: null,
     } as unknown as MutationIntent;
-    const result = ra.apply(intent, {} as never) as { count: number };
+    const result = ra.apply(intent, {} as never) as unknown as { count: number };
     expect(result).not.toBeNull();
     expect(result.count).toBe(4);
   });
@@ -307,7 +307,7 @@ describe("DrawReplacement (Wave 48)", () => {
       seat: SEAT1,
       count: 1,
     } as unknown as MutationIntent;
-    const result = ra.apply(intent, {} as never) as { seat: number };
+    const result = ra.apply(intent, {} as never) as unknown as { seat: number };
     expect(result).not.toBeNull();
     expect(result.seat).toBe(SEAT0);
   });

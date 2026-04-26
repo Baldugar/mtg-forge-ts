@@ -18,7 +18,6 @@
 //     Wave 32 threshold-static.test.ts file).
 import type { LobbyPlayer, ManaCostAst, PaperCard, StaticAst } from "@mtg-forge-ts/core";
 import {
-  CardType,
   Color,
   DEFAULT_PAPER_CARD_FLAGS,
   SeededRng,
@@ -119,7 +118,6 @@ const mkArtifactPaper = (name: string): PaperCard => ({
     oracle: "",
     types: TypeLine.parse("Artifact"),
     manaCost: { raw: "1", symbols: [] } satisfies ManaCostAst,
-    pt: undefined,
     abilities: [],
     triggers: [],
     replacements: [],
@@ -141,7 +139,6 @@ const mkInstantPaper = (name: string): PaperCard => ({
     oracle: "",
     types: TypeLine.parse("Instant"),
     manaCost: { raw: "U", symbols: [] } satisfies ManaCostAst,
-    pt: undefined,
     abilities: [],
     triggers: [],
     replacements: [],
