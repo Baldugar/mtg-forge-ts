@@ -12,7 +12,9 @@
 //   ActivateAbility, TakeInitiative, VillainousChoice, RollPlanarDice.
 import type { AbilityAst, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
+import { grantInitiative } from "../../dnd/initiative-tracker.js";
 import type { Game } from "../../game.js";
+import { grantMonarch } from "../../monarch/monarch-tracker.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -123,31 +125,12 @@ export class BecomeMonarchEffect extends SpellAbilityEffect {
     const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "You";
     const seat: PlayerSeat =
       definedRaw === "Opponent" ? otherSeat(sa.controllerSeat, game) : sa.controllerSeat;
-    const oldMonarch = (game as { monarchSeat?: PlayerSeat }).monarchSeat;
-    (game as { monarchSeat?: PlayerSeat }).monarchSeat = seat;
-    if (oldMonarch !== undefined && oldMonarch !== seat) {
-      yield {
-        kind: "event",
-        event: {
-          kind: "LostMonarch",
-          version: 1,
-          turn: game.turn,
-          phase: game.phase,
-          payload: { playerSeat: oldMonarch },
-        },
-      };
-    }
-    yield {
-      kind: "event",
-      event: {
-        kind: "BecameMonarch",
-        version: 1,
-        turn: game.turn,
-        phase: game.phase,
-        payload: { playerSeat: seat },
-      },
-    };
-    // TODO(advanced): wire end-of-turn-draw-a-card + combat-damage transfer.
+    // Wave 27 — canonical monarch lives at game.flags.monarch (snapshot-
+    // backed). Use the shared monarch-tracker so BecomeMonarchEffect, the
+    // combat-damage transfer hook, and any future card-driven mutator all
+    // route through one path.
+    const events = grantMonarch(game, seat);
+    for (const evt of events) yield { kind: "event", event: evt };
   }
 }
 effectRegistry.register(BecomeMonarchEffect);
@@ -454,17 +437,12 @@ export class TakeInitiativeEffect extends SpellAbilityEffect {
     const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "You";
     const seat: PlayerSeat =
       definedRaw === "Opponent" ? otherSeat(sa.controllerSeat, game) : sa.controllerSeat;
-    (game as { initiativeSeat?: PlayerSeat }).initiativeSeat = seat;
-    yield {
-      kind: "event",
-      event: {
-        kind: "BecameInitiative",
-        version: 1,
-        turn: game.turn,
-        phase: game.phase,
-        payload: { playerSeat: seat },
-      },
-    };
+    // Wave 27 — route through the shared initiative-tracker so card-driven
+    // and combat-damage transfers all write the same canonical slot
+    // (game.flags.initiative). The old duck-typed `Game.initiativeSeat`
+    // was incompatible with the snapshot pipeline.
+    const events = grantInitiative(game, seat);
+    for (const evt of events) yield { kind: "event", event: evt };
     // TODO(advanced): venture into Undercity dungeon on initiative gain.
   }
 }

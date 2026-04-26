@@ -26,6 +26,7 @@ import {
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { GameAction } from "../action/game-action.js";
+import { onUpkeepAdvanceInitiativeDungeon } from "../dnd/initiative-tracker.js";
 import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
 import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
@@ -197,6 +198,19 @@ export class PhaseHandler {
           phase: game.phase,
           payload: { oldValue: transition.oldValue, newValue: transition.newValue },
         });
+      }
+      // Wave 27 — Initiative-dungeon advance (CR 906.4c). MVP stub: the
+      // hook fires when the active player is the initiative-holder; full
+      // dungeon-room advance lands once the Dungeon data structure exists.
+      onUpkeepAdvanceInitiativeDungeon(game, active);
+    }
+    if (step === Phase.EndStep) {
+      // Wave 27 — Monarch end-step draw (CR 716.4a). At the BEGINNING of
+      // the monarch's end step, the monarch draws a card. We trigger it
+      // unconditionally on EndStep — drawCards is a no-op if the seat
+      // isn't the monarch (we gate here, not inside drawCards).
+      if (game.flags.monarch !== null && game.flags.monarch === active) {
+        yield* this.action.drawCards(active, 1);
       }
     }
     if (step === Phase.Untap) {

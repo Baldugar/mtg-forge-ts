@@ -173,7 +173,7 @@ describe("BecomeMonarchEffect", () => {
     seedSourceCard(game);
     const sa = mkSa("BecomeMonarch", {});
     const yields = drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
-    expect((game as unknown as { monarchSeat?: number }).monarchSeat).toBe(mkPlayerSeat(0));
+    expect(game.flags.monarch).toBe(mkPlayerSeat(0));
     expect(yields.some((y) => (y as { event?: { kind: string } }).event?.kind === "BecameMonarch")).toBe(
       true,
     );
@@ -326,7 +326,7 @@ describe("TakeInitiativeEffect", () => {
     seedSourceCard(game);
     const sa = mkSa("TakeInitiative", {});
     const yields = drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
-    expect((game as unknown as { initiativeSeat?: number }).initiativeSeat).toBe(mkPlayerSeat(0));
+    expect(game.flags.initiative).toBe(mkPlayerSeat(0));
     expect(yields.some((y) => (y as { event?: { kind: string } }).event?.kind === "BecameInitiative")).toBe(
       true,
     );
