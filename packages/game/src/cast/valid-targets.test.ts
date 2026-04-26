@@ -8,6 +8,7 @@ import { parseCard } from "@mtg-forge-ts/cards";
 import type { LobbyPlayer, PaperCard } from "@mtg-forge-ts/core";
 import {
   CardType,
+  Color,
   DEFAULT_PAPER_CARD_FLAGS,
   SeededRng,
   ZoneType,
@@ -73,12 +74,31 @@ describe("parseValidTgts — Wave 4 unit tests", () => {
     expect(r.mayTargetPlayers).toBe(false);
   });
 
-  it("Creature.nonBlack → permitTypes={Creature}, forbidTypes empty (color not enforced yet)", () => {
+  it("Creature.nonBlack → permitTypes={Creature}, forbidColors={Black}", () => {
     const r = parseValidTgts("Creature.nonBlack");
     expect(r.permitTypes.has(CardType.Creature)).toBe(true);
-    // nonBlack is recognized but not enforced via forbidTypes (color gap noted in code)
     expect(r.forbidTypes.size).toBe(0);
+    expect(r.forbidColors?.has(Color.Black)).toBe(true);
     expect(r.controllerScope).toBe("any");
+  });
+
+  it("Creature.nonRed → forbidColors={Red}", () => {
+    const r = parseValidTgts("Creature.nonRed");
+    expect(r.permitTypes.has(CardType.Creature)).toBe(true);
+    expect(r.forbidColors?.has(Color.Red)).toBe(true);
+  });
+
+  it("Creature.nonBlack.nonGreen → forbidColors={Black, Green}", () => {
+    const r = parseValidTgts("Creature.nonBlack.nonGreen");
+    expect(r.forbidColors?.has(Color.Black)).toBe(true);
+    expect(r.forbidColors?.has(Color.Green)).toBe(true);
+    expect(r.forbidColors?.size).toBe(2);
+  });
+
+  it("Creature.nonColorless → forbidColorless=true", () => {
+    const r = parseValidTgts("Creature.nonColorless");
+    expect(r.forbidColorless).toBe(true);
+    expect(r.permitTypes.has(CardType.Creature)).toBe(true);
   });
 
   it("Creature.YouCtrl → controllerScope='you'", () => {

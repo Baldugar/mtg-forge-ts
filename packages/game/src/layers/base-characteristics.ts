@@ -94,11 +94,15 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
       base.toughness = parsePt(def.pt.toughness);
     }
 
-    // colors: if explicitly set on the definition, use it. Otherwise the
-    // colors field stays ColorSet.empty() — Layer 5 derives color from mana
-    // cost for cards without a color indicator override.
+    // colors: if explicitly set on the definition (Colors: line override),
+    // use it. Otherwise CR 202.2 — a card's color is derived from its mana
+    // cost's colored pips. Wave 12: derive from base.manaCost so target
+    // filters (forbidColors / forbidColorless) and color-aware effects can
+    // reason about printed cards that omit a Colors: line.
     if (def.colors !== undefined) {
       base.colors = def.colors;
+    } else {
+      base.colors = base.manaCost.colors();
     }
   }
 

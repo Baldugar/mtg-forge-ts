@@ -21,12 +21,12 @@
 // Non-null assertion is avoided; unsupported forms return a permissive
 // fallthrough restriction so unrecognised filters don't crash the game.
 //
-// Color-based filters (nonBlack etc) are noted in a plain boolean on
-// the restriction payload — the enumeration system doesn't enforce color
-// today, but the ValidTgts$ type filter (permitTypes / forbidTypes) IS
-// enforced by enumerateEligibleTargets in enumeration.ts.
+// Color-based filters (nonBlack etc) are stored as a `forbidColors` set on
+// the restriction; nonColorless is stored as a `forbidColorless` boolean.
+// Both are enforced by enumerateEligibleTargets via the layer-engine
+// characteristics (Layer 5 = applied), so animate/become-X recolors compose.
 
-import { CardType, ZoneType } from "@mtg-forge-ts/core";
+import { CardType, Color, ZoneType } from "@mtg-forge-ts/core";
 import type { TargetRestriction } from "../target/restriction.js";
 
 // Battlefield is the default permit zone for permanents.
@@ -256,22 +256,26 @@ const applyQualifier = (r: TargetRestriction, qualifier: string): TargetRestrict
   if (qualifier === "nonLand") {
     return { ...r, forbidTypes: new Set([...r.forbidTypes, CardType.Land]) };
   }
-  // Color-based qualifiers — note: enumeration doesn't enforce colors yet
-  // (SP3 keyword parser adds protection). Stored as a no-op for forward compat.
-  // The filter is valid and recognized but not yet enforced at enumerate time.
-  if (
-    qualifier === "nonBlack" ||
-    qualifier === "nonBlue" ||
-    qualifier === "nonRed" ||
-    qualifier === "nonGreen" ||
-    qualifier === "nonWhite" ||
-    qualifier === "nonColorless"
-  ) {
-    // TODO(SP3 color filter): enforce via protectionKeywords or a dedicated
-    // colorFilter slot on TargetRestriction. For now, the qualifier is parsed
-    // but not enforced — the restriction is otherwise correct (type filter,
-    // zone, controller scope apply normally).
-    return r;
+  // Wave 12 — color-forbid qualifiers. Each non<Color> appends its bit to
+  // forbidColors; nonColorless flips the dedicated forbidColorless flag.
+  // enumerateEligibleTargets reads chars.colors (Layer 5) to enforce.
+  if (qualifier === "nonBlack") {
+    return { ...r, forbidColors: new Set([...(r.forbidColors ?? []), Color.Black]) };
+  }
+  if (qualifier === "nonBlue") {
+    return { ...r, forbidColors: new Set([...(r.forbidColors ?? []), Color.Blue]) };
+  }
+  if (qualifier === "nonRed") {
+    return { ...r, forbidColors: new Set([...(r.forbidColors ?? []), Color.Red]) };
+  }
+  if (qualifier === "nonGreen") {
+    return { ...r, forbidColors: new Set([...(r.forbidColors ?? []), Color.Green]) };
+  }
+  if (qualifier === "nonWhite") {
+    return { ...r, forbidColors: new Set([...(r.forbidColors ?? []), Color.White]) };
+  }
+  if (qualifier === "nonColorless") {
+    return { ...r, forbidColorless: true };
   }
   if (qualifier === "Self") {
     return { ...r, forbidSelfSource: false }; // Self = target is own source

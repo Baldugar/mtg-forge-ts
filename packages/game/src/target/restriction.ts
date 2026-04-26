@@ -7,7 +7,7 @@
 // Forge references:
 //   - forge.game.spellability.TargetRestrictions
 //   - forge.game.ability.AbilityUtils#isValidTarget
-import type { CardType, EntityId, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type { CardType, Color, EntityId, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 
 /**
  * Whose cards/players the restriction considers eligible, relative to the
@@ -31,6 +31,14 @@ export interface TargetRestriction {
   readonly permitTypes: ReadonlySet<CardType>;
   // Types the target MUST NOT have (for "target nonartifact creature" etc).
   readonly forbidTypes: ReadonlySet<CardType>;
+  // Wave 12 — colors the target MUST NOT have any of. Empty/absent = no
+  // color constraint. Used by ValidTgts$ Creature.nonBlack / nonRed / etc.
+  // Card colors come from `LayerEngine.computeCharacteristics(id).colors`
+  // (Layer 5 = applied) so devotion / animate / become-X effects compose.
+  readonly forbidColors?: ReadonlySet<Color>;
+  // Wave 12 — when true, the target MUST have at least one color (i.e.,
+  // colorless cards are excluded). Used by ValidTgts$ Creature.nonColorless.
+  readonly forbidColorless?: boolean;
   // If set, target cannot have protection from any of these color/type keys.
   // SP2 has no parser yet; placeholder slot so the shape is stable.
   readonly protectionKeywords?: readonly string[];

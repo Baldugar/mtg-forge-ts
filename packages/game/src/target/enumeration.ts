@@ -58,10 +58,18 @@ export const enumerateEligibleTargets = (
     // Hexproof denies opponents only (CR 702.11).
     if (r.hexproof === true && card.controllerSeat !== ctx.sourceControllerSeat) continue;
 
-    // permitTypes / forbidTypes require the layered characteristics view —
-    // a card that "becomes a creature" via Layer 4 should pass a Creature
-    // filter even though its base PaperCard doesn't carry the type.
-    if (r.permitTypes.size > 0 || r.forbidTypes.size > 0) {
+    // permitTypes / forbidTypes / forbidColors / forbidColorless require the
+    // layered characteristics view — a card that "becomes a creature" via
+    // Layer 4 should pass a Creature filter even though its base PaperCard
+    // doesn't carry the type, and a green creature pumped to also-black
+    // should be rejected by nonBlack. Compute chars once if any layered
+    // filter is in play.
+    const needsChars =
+      r.permitTypes.size > 0 ||
+      r.forbidTypes.size > 0 ||
+      (r.forbidColors !== undefined && r.forbidColors.size > 0) ||
+      r.forbidColorless === true;
+    if (needsChars) {
       const chars = game.layerEngine.computeCharacteristics(card.id);
       if (r.permitTypes.size > 0) {
         let ok = false;
@@ -83,6 +91,20 @@ export const enumerateEligibleTargets = (
         }
         if (forbidden) continue;
       }
+      // Wave 12 — forbidColors: reject if the card carries ANY of the
+      // forbidden colors (Forge: nonBlack disqualifies B, B/G, B/W, etc.).
+      if (r.forbidColors !== undefined && r.forbidColors.size > 0) {
+        let colorForbidden = false;
+        for (const c of r.forbidColors) {
+          if (chars.colors.has(c)) {
+            colorForbidden = true;
+            break;
+          }
+        }
+        if (colorForbidden) continue;
+      }
+      // Wave 12 — forbidColorless: reject if the card has no colors at all.
+      if (r.forbidColorless === true && chars.colors.size === 0) continue;
     }
 
     // Protection: SP2 doesn't have the keyword parser yet (SP3 lands with
