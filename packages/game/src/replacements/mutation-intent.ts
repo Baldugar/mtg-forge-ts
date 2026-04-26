@@ -7,7 +7,7 @@
 // New intent kinds land here rather than in core because game-package
 // mutation shapes are internal to the engine — replacements that match
 // them are SP3 card-specific abilities.
-import type { CounterType, EntityId, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type { CounterType, EntityId, PaperCard, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 
 export const INTENT_KINDS = {
   Damage: "damage",
@@ -52,6 +52,17 @@ export const INTENT_KINDS = {
   BeginTurn: "beginTurn",
   // SP3 Wave 20 — long-tail replacement intents matching Forge ReplacementType.
   CopySpell: "copySpell",
+  // Wave 48 — un-stub replacement handlers that previously had matches() ⇒ false.
+  // CounteredIntent: emitted by CounterSpellEffect before moving a countered
+  // spell to its owner's graveyard. Replacements may prevent the counter
+  // (Cavern of Souls / Gaea's Herald) or redirect the destination zone
+  // (counter-and-exile / counter-to-hand variants).
+  Countered: "countered",
+  // CreateTokenIntent: emitted by GameAction.createToken before minting the
+  // tokens. Replacements may prevent token creation entirely (Tocatli Honor
+  // Guard-style "creatures enter as 0/1") or multiply count (Doubling Season,
+  // Parallel Lives, Anointed Procession, Mondrak).
+  CreateToken: "createToken",
 } as const;
 
 export type IntentKind = (typeof INTENT_KINDS)[keyof typeof INTENT_KINDS];
@@ -287,6 +298,32 @@ export interface CopySpellIntent {
   readonly seat: PlayerSeat;
 }
 
+// Wave 48 — counter-spell replacement target. Emitted by CounterSpellEffect
+// just before moving the countered spell to graveyard. `stackItemId` is
+// the StackItem being countered; `sourceCardId` is the source of the
+// counter effect (so "this spell can't be countered" replacements on
+// other zones can decline by sourceCardId mismatch).
+export interface CounteredIntent {
+  readonly kind: "countered";
+  readonly stackItemId: EntityId;
+  readonly counteredCardId: EntityId;
+  readonly sourceId: EntityId;
+  readonly seat: PlayerSeat;
+}
+
+// Wave 48 — token-creation replacement target. Emitted by
+// GameAction.createToken before minting tokens. Multiplier replacements
+// (Doubling Season / Parallel Lives / Anointed Procession / Mondrak)
+// modify `count`.
+export interface CreateTokenIntent {
+  readonly kind: "createToken";
+  readonly controllerSeat: PlayerSeat;
+  readonly paperCard: PaperCard;
+  readonly count: number;
+  readonly isCopy: boolean;
+  readonly copyOf: EntityId | null;
+}
+
 // Union of all known intent shapes (non-exhaustive; GameAction may emit
 // additional kinds — replacements that don't recognize the kind should
 // decline via matches() returning false).
@@ -331,4 +368,6 @@ export type KnownIntent =
   | TransformIntent
   | BeginPhaseIntent
   | BeginTurnIntent
-  | CopySpellIntent;
+  | CopySpellIntent
+  | CounteredIntent
+  | CreateTokenIntent;

@@ -30,3 +30,7 @@ export * from "./destroy-replacement.js";
 export * from "./begin-phase-replacement.js";
 // Wave 20 — long-tail corpus replacements (13 handlers)
 export * from "./wave-20-replacements.js";
+// Wave 48 — six lower-frequency replacement event handlers
+// (AssignDealDamage, DealtDamage, DeclareBlocker, PlanarDiceResult,
+// SetInMotion, Tap).
+export * from "./wave-48-replacements.js";

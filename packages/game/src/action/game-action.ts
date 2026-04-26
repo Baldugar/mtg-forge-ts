@@ -55,6 +55,8 @@ import type {
   AddCounterIntent,
   AttachIntent,
   ControlChangeIntent,
+  CounteredIntent,
+  CreateTokenIntent,
   DamageIntent,
   DestroyIntent,
   DrawCardsIntent,
@@ -95,7 +97,9 @@ type RoutedIntent =
   | AttachIntent
   | UnattachIntent
   | GameLossIntent
-  | GameWinIntent;
+  | GameWinIntent
+  | CounteredIntent
+  | CreateTokenIntent;
 
 export class GameAction {
   constructor(private readonly game: Game) {}
@@ -1644,11 +1648,11 @@ export class GameAction {
    * paper-shaped object. Returns the minted EntityIds so callers can track
    * them (e.g. to apply ETB replacements, re-query for triggers).
    *
-   * The factory runs OUTSIDE applyWithReplacements because token creation
-   * is not itself a MutationIntent kind — it is a cast-analog that enters
-   * the battlefield directly. ETB replacements (Task 18) fire via the
-   * subsequent CardChangedZone/TokenCreated events downstream in SP3's
-   * full ETB pipeline.
+   * Wave 48 — token creation now flows through applyWithReplacements so
+   * `R:Event$ CreateToken` replacements (Doubling Season / Parallel Lives /
+   * Anointed Procession / Mondrak) can multiply or zero out the count
+   * before the actual mint. ETB replacements (Task 18) still fire via the
+   * subsequent CardChangedZone/TokenCreated events downstream.
    */
   *createToken(params: {
     readonly paperCard: PaperCard;
@@ -1661,15 +1665,54 @@ export class GameAction {
     if (!Number.isInteger(params.count) || params.count <= 0) {
       throw new IllegalDecisionError(`createToken: count must be a positive integer, got ${params.count}`);
     }
+    // Wave 48 — route the token-creation through replacements before the
+    // mint loop so multiplier replacements (Doubling Season / Parallel
+    // Lives / Anointed Procession / Mondrak) can bump the count and
+    // prevent-style replacements can zero the event. We drive
+    // applyReplacementLoop directly here rather than via the helper
+    // because the canonical event is per-minted-token (TokenCreated)
+    // and the helper expects a single buildCanonicalEvent call.
+    const intent: CreateTokenIntent = {
+      kind: "createToken",
+      controllerSeat: params.controller,
+      paperCard: params.paperCard,
+      count: params.count,
+      isCopy: params.isCopy === true,
+      copyOf: params.copyOf ?? null,
+    };
+    const result = yield* applyReplacementLoop(intent as unknown as MutationIntent, game);
+    for (const rid of result.appliedIds) {
+      yield {
+        kind: "event",
+        event: mkEvent("ReplacementApplied", game.turn, game.phase, {
+          replacementId: rid,
+          original: intent,
+          replaced: result.status === "applied" ? result.final : null,
+        }),
+      };
+    }
+    if (result.status === "prevented") {
+      yield {
+        kind: "event",
+        event: mkEvent("EventPrevented", game.turn, game.phase, { original: intent }),
+      };
+      return [];
+    }
+    const finalIntent = result.final as unknown as CreateTokenIntent;
+    if (finalIntent.count <= 0) {
+      return [];
+    }
     const ids: EntityId[] = [];
-    for (let i = 0; i < params.count; i++) {
+    const finalController = finalIntent.controllerSeat;
+    const finalPaperCard = finalIntent.paperCard;
+    for (let i = 0; i < finalIntent.count; i++) {
       const id = game.newEntityId();
-      const card = new Card(id, params.paperCard, params.controller, params.controller, Zt.Battlefield);
+      const card = new Card(id, finalPaperCard, finalController, finalController, Zt.Battlefield);
       card.isToken = true;
       // Audit I-14 — CR 613.7 timestamp.
       card.timestamp = game.newCardTimestamp();
-      if (params.isCopy === true && params.copyOf !== undefined) {
-        const original = game.cards.get(params.copyOf);
+      if (finalIntent.isCopy && finalIntent.copyOf !== null) {
+        const original = game.cards.get(finalIntent.copyOf);
         if (original) {
           // SP2 Milestone P already models CopiableCharacteristics on Card;
           // capture the source's copiable snapshot if it exists. When the
@@ -1684,10 +1727,10 @@ export class GameAction {
       // No-op for cosmetic creature tokens whose `definition.abilities`
       // is empty.
       card.activateAbilitiesFromDefinition();
-      const bf = game.getPlayer(params.controller).zones.get(Zt.Battlefield);
+      const bf = game.getPlayer(finalController).zones.get(Zt.Battlefield);
       if (!bf) {
         throw new GameStateIntegrityError(
-          `createToken: battlefield zone missing for seat ${params.controller as unknown as number}`,
+          `createToken: battlefield zone missing for seat ${finalController as unknown as number}`,
         );
       }
       bf.add(id);
@@ -1695,7 +1738,7 @@ export class GameAction {
       yield {
         kind: "event",
         event: mkEvent("TokenCreated", game.turn, game.phase, {
-          controllerSeat: params.controller,
+          controllerSeat: finalController,
           tokenCardId: id,
         }),
       };

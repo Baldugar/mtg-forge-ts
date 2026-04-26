@@ -5,8 +5,10 @@ import type { CascadeIntent, KnownIntent, ProduceManaIntent, ScryIntent } from "
 import { INTENT_KINDS } from "./mutation-intent.js";
 
 describe("MutationIntent expansion", () => {
-  it("exposes 40 intent kinds total", () => {
-    expect(Object.keys(INTENT_KINDS)).toHaveLength(40);
+  it("exposes 42 intent kinds total", () => {
+    // Wave 48 added Countered + CreateToken (2 kinds) on top of the
+    // original 40 (SP1 base + SP3 expansion + Wave 20 long-tail).
+    expect(Object.keys(INTENT_KINDS)).toHaveLength(42);
   });
 
   it("narrows ScryIntent payload", () => {
@@ -24,7 +26,7 @@ describe("MutationIntent expansion", () => {
     expect(i.triggerCmc).toBe(4);
   });
 
-  it("KnownIntent union discriminates all 40 kinds", () => {
+  it("KnownIntent union discriminates all 42 kinds", () => {
     const fn = (i: KnownIntent): string => i.kind;
     const sample: KnownIntent = { kind: "proliferate", seat: mkPlayerSeat(0) };
     expect(fn(sample)).toBe("proliferate");
