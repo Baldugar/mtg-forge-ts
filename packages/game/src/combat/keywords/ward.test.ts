@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Ward (CR 702.21) replacement-factory shape test. SP2 Task 49 only wires
-// the factory; full behavior lands in SP3 when the cast pipeline emits a
-// `targeted` MutationIntent for stepChooseTargets — see ward.ts preamble.
+// Ward (CR 702.21d) replacement-factory shape test. The live semantic
+// implementation lives in keyword/handlers/ward-keyword.ts as a
+// BecomesTarget triggered ability; the factory tested here is the
+// replacement-shape entry-point preserved for callers that opt into a
+// replacement-shape rewrite. See ward.ts preamble.
 import { ZoneType, mkEntityId, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { describe, expect, it } from "vitest";
 import { createWardReplacement } from "./ward.js";
 
-describe("createWardReplacement (SP2 Task 49 factory)", () => {
+describe("createWardReplacement (Wave 49 replacement-shape factory)", () => {
   it("builds a ReplacementAbility with the expected shape", () => {
     const sourceCardId = mkEntityId(1);
     const id = mkEntityId(100);
@@ -43,7 +45,7 @@ describe("createWardReplacement (SP2 Task 49 factory)", () => {
     });
     expect(repl.timestamp).toBe(42);
   });
-  it("matches returns false for every intent (SP2 no-op)", () => {
+  it("matches returns false for non-targeted intents", () => {
     const repl = createWardReplacement({
       sourceCardId: mkEntityId(1),
       wardAmount: 2,
@@ -54,7 +56,57 @@ describe("createWardReplacement (SP2 Task 49 factory)", () => {
     expect(repl.matches({ kind: "damage", anything: 1 } as never)).toBe(false);
     expect(repl.matches({ kind: "moveTo", anything: 2 } as never)).toBe(false);
   });
-  it("apply returns the intent unchanged (SP2 no-op)", () => {
+  it("matches returns true for a targeted intent naming self by an opponent", () => {
+    const sourceCardId = mkEntityId(1);
+    const ownerSeat = mkPlayerSeat(0);
+    const opponentSeat = mkPlayerSeat(1);
+    const repl = createWardReplacement({
+      sourceCardId,
+      wardAmount: 2,
+      id: mkEntityId(2),
+      controllerSeat: ownerSeat,
+    });
+    expect(
+      repl.matches({
+        kind: "targeted",
+        targetCardId: sourceCardId,
+        spellControllerSeat: opponentSeat,
+      } as never),
+    ).toBe(true);
+  });
+  it("matches returns false for a targeted intent naming self by SAME controller", () => {
+    const sourceCardId = mkEntityId(1);
+    const ownerSeat = mkPlayerSeat(0);
+    const repl = createWardReplacement({
+      sourceCardId,
+      wardAmount: 2,
+      id: mkEntityId(2),
+      controllerSeat: ownerSeat,
+    });
+    expect(
+      repl.matches({
+        kind: "targeted",
+        targetCardId: sourceCardId,
+        spellControllerSeat: ownerSeat,
+      } as never),
+    ).toBe(false);
+  });
+  it("matches returns false for a targeted intent naming a different card", () => {
+    const repl = createWardReplacement({
+      sourceCardId: mkEntityId(1),
+      wardAmount: 2,
+      id: mkEntityId(2),
+      controllerSeat: mkPlayerSeat(0),
+    });
+    expect(
+      repl.matches({
+        kind: "targeted",
+        targetCardId: mkEntityId(99),
+        spellControllerSeat: mkPlayerSeat(1),
+      } as never),
+    ).toBe(false);
+  });
+  it("apply returns the intent unchanged (identity-pass; live behavior in ward-keyword.ts)", () => {
     const repl = createWardReplacement({
       sourceCardId: mkEntityId(1),
       wardAmount: 2,

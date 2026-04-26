@@ -872,6 +872,62 @@ export class CastPipeline {
       }
     }
 
+    // Wave 49 — Kicker / Multikicker (CR 702.32). When the source card
+    // carries a `kickerCost` (Kicker) or `multikickerCost` (Multikicker)
+    // slot stamped by the corresponding keyword handler, yield a
+    // confirmAction asking whether to pay the optional additional cost.
+    // On confirm, splice the cost into base.raw so payCost charges the
+    // full amount, and stamp `wasKicked` / `kickerCount` so Wave 51's
+    // Count$Kicked SVar conditional can branch on the choice.
+    const kickerCost = card.kickerCost;
+    if (kickerCost !== undefined && kickerCost.trim().length > 0) {
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "confirmAction",
+          sourceId: ctx.sourceCardId,
+          prompt: `Pay kicker {${kickerCost}}?`,
+        },
+      }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
+      if (decision?.confirmed === true) {
+        const baseMaybe = striveAdjusted as { raw?: string } | null | undefined;
+        if (baseMaybe != null && typeof baseMaybe.raw === "string") {
+          striveAdjusted = { ...baseMaybe, raw: `${baseMaybe.raw} ${kickerCost.trim()}`.trim() };
+        } else {
+          striveAdjusted = { raw: kickerCost.trim() };
+        }
+        card.wasKicked = true;
+      }
+    }
+    const multikickerCost = card.multikickerCost;
+    if (multikickerCost !== undefined && multikickerCost.trim().length > 0) {
+      let mkPaid = 0;
+      const HARD_CAP = 32;
+      for (let i = 0; i < HARD_CAP; i++) {
+        const decision = (yield {
+          kind: "decision",
+          request: {
+            kind: "confirmAction",
+            sourceId: ctx.sourceCardId,
+            prompt: `Pay multikicker {${multikickerCost}} (paid ${mkPaid})?`,
+          },
+        }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
+        if (decision?.confirmed !== true) break;
+        mkPaid++;
+      }
+      if (mkPaid > 0) {
+        const surcharge = Array.from({ length: mkPaid }, () => multikickerCost.trim()).join(" ");
+        const baseMaybe = striveAdjusted as { raw?: string } | null | undefined;
+        if (baseMaybe != null && typeof baseMaybe.raw === "string") {
+          striveAdjusted = { ...baseMaybe, raw: `${baseMaybe.raw} ${surcharge}`.trim() };
+        } else {
+          striveAdjusted = { raw: surcharge };
+        }
+        card.wasKicked = true;
+        card.kickerCount = mkPaid;
+      }
+    }
+
     ctx.totalCost = {
       base: striveAdjusted,
       modIds: costMods.map((s) => s.id),

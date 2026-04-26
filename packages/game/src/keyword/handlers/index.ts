@@ -108,4 +108,14 @@ export * from "./companion-keyword.js";
 // game-action.drawCards (decision-yielding can't fit the synchronous
 // ReplacementAbility shape); the keyword handler stamps the slot.
 export * from "./dredge-keyword.js";
+// Wave 49 — Equip / Kicker / Multikicker / Ward. Equip synthesizes a
+// Battlefield-zone sorcery-speed activated Attach SA. Kicker and
+// Multikicker stamp `card.kickerCost` / `card.multikickerCost` for the
+// cast pipeline's confirmAction loop in stepDetermineTotalCost. Ward
+// synthesizes a BecomesTarget triggered ability that yields a pay-or-
+// counter decision and counters the targeting spell on declined or
+// failed payment.
+export * from "./equip-keyword.js";
+export * from "./kicker-keyword.js";
+export * from "./ward-keyword.js";
 export * from "./flag-keyword.js";

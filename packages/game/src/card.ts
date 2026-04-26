@@ -326,6 +326,27 @@ export class Card {
   // stamped by StriveKeywordHandler.activate. Read by the cast pipeline
   // when computing total cost. Cleared by handler.deactivate.
   striveExtraCost: string | undefined = undefined;
+  // Wave 49 — Kicker (CR 702.32a): optional additional cost paid at cast
+  // time. Stamped by KickerKeywordHandler.activate; read by the cast
+  // pipeline's stepDetermineTotalCost which emits a confirmAction and,
+  // on confirm, splices the cost into base.raw. The boolean below
+  // (`wasKicked`) is set on payment so Wave 51's Count$Kicked SVar
+  // ternary can branch on it.
+  kickerCost: string | undefined = undefined;
+  // Wave 49 — Multikicker (CR 702.32b): optional additional cost paid
+  // any number of times at cast. Same pipeline hook as kickerCost; the
+  // confirmAction loops until the controller declines. `kickerCount`
+  // captures how many times multikicker was paid.
+  multikickerCost: string | undefined = undefined;
+  // Wave 49 — Set true on a successful kicker payment; set to a count
+  // for multikicker. Both slots are read by Wave 51's Count$Kicked SVar.
+  wasKicked: boolean | undefined = undefined;
+  kickerCount: number | undefined = undefined;
+  // Wave 49 — Ward (CR 702.21d): cost string stamped by
+  // WardKeywordHandler. Read by the ward trigger's resolver when a
+  // CardTargeted event names this card and the targeting source is
+  // controlled by an opponent. Cleared on deactivate.
+  wardCost: string | undefined = undefined;
   // Wave 39 — Sweep (CR Saviors of Kamigawa cycle). `sweepReturnedType` is
   // the land subtype the spell asks the controller to return; `sweepReturnedCount`
   // is the count of lands actually returned this resolution (read by SVar

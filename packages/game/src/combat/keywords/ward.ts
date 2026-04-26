@@ -1,24 +1,25 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// CR 702.21 — Ward N. Whenever a permanent with ward becomes the target of
-// a spell or ability an opponent controls, counter that spell/ability unless
-// its controller pays N (mana/life/other cost variants). Implemented as a
-// replacement-style effect fired at the "target-locking" step of the cast
-// pipeline.
+// CR 702.21d — Ward [cost]. When a permanent with ward becomes the target
+// of a spell or ability an opponent controls, counter that spell/ability
+// unless its controller pays the ward cost.
 //
-// SP2 scope: expose the factory + the expected intent shape. Wiring of the
-// "targeted" MutationIntent lives in Milestone U (SP3's resolve-time
-// decisions, Task 67) and the cast pipeline's stepChooseTargets. Today the
-// factory produces a ReplacementAbility whose `matches` returns false for
-// every intent — a harmless no-op that keeps the registry-shape contract
-// satisfied while SP3 wires the real behavior.
+// Wave 49 — Real semantic implementation lives in
+// `keyword/handlers/ward-keyword.ts` (a BecomesTarget triggered ability).
+// That path watches CardTargeted events emitted by the cast pipeline /
+// activateAbility, asks the targeting player to pay the ward cost, and
+// counters the targeting stack item if payment is declined or fails.
 //
-// Downstream (SP3) integration note: stepChooseTargets should construct a
-// `{ kind: "targeted", targetCardId, spellControllerSeat, stackItemId }`
-// intent per target locked; ward's `matches` narrows on that kind, checks
-// `targetCardId === sourceCardId`, rejects same-controller targeting, and
-// `apply` requires a Ward-cost payment via a choice decision before
-// letting the intent through.
-import type { EntityId, PlayerSeat, ReplacementAbility } from "@mtg-forge-ts/core";
+// This factory remains for API compatibility with SP2 callers that wired
+// ward as a ReplacementAbility shape. It now narrows on a future
+// `kind === "targeted"` MutationIntent (currently never emitted; the
+// trigger path supersedes this for all live ward effects). The factory
+// is preserved as the canonical replacement-shape entry-point for cards
+// or rules variants that need ward-as-replacement (e.g. a ReplaceEffect
+// rewrite of the BecomesTarget trigger). Until such a path lands, the
+// `matches` predicate remains a strict narrow on the targeted intent
+// shape — it returns true for ward-applicable targeted intents and false
+// for everything else.
+import type { EntityId, MutationIntent, PlayerSeat, ReplacementAbility } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 
 export interface WardReplacementOptions {
@@ -34,28 +35,43 @@ export interface WardReplacementOptions {
   readonly timestamp?: number;
 }
 
+interface TargetedIntentShape {
+  readonly kind: "targeted";
+  readonly targetCardId: EntityId;
+  readonly spellControllerSeat: PlayerSeat;
+}
+
 export const createWardReplacement = (opts: WardReplacementOptions): ReplacementAbility => {
+  const { sourceCardId, controllerSeat } = opts;
   return {
     id: opts.id,
     kind: "replacement",
-    sourceCardId: opts.sourceCardId,
+    sourceCardId,
     activeInZones: new Set([ZoneType.Battlefield]),
     timestamp: opts.timestamp ?? 0,
-    controllerSeatAtReg: opts.controllerSeat,
-    // SP2 no-op: no "targeted" MutationIntent exists yet. Returning false
-    // here means the apply-loop ignores this replacement entirely. When
-    // the cast pipeline emits the intent (SP3 Milestone U), this closure
-    // will narrow on kind === "targeted" and check sourceCardId.
-    matches: (_intent) => false,
-    // SP2 identity apply: returns the intent unchanged. SP3 will consult
-    // the ward amount (opts.wardAmount) and issue a pay-or-counter
-    // decision before letting the intent through, returning null when
-    // the targeted spell/ability is countered.
+    controllerSeatAtReg: controllerSeat,
+    matches: (intent: MutationIntent): boolean => {
+      // Narrow on the future `targeted` MutationIntent. The trigger path
+      // (ward-keyword.ts) handles every live ward fire today; this branch
+      // is the carve-out for an opt-in replacement-shape rewrite. Until
+      // a `targeted` intent kind ships, this returns false for every
+      // existing intent — exactly the SP2 contract — but does so by
+      // structural narrowing rather than a hardcoded constant.
+      if ((intent as { kind?: string }).kind !== "targeted") return false;
+      const t = intent as unknown as TargetedIntentShape;
+      if (t.targetCardId !== sourceCardId) return false;
+      if (t.spellControllerSeat === controllerSeat) return false;
+      return true;
+    },
+    // Identity apply: when the trigger path supersedes this branch for
+    // all live ward effects, callers that opt into the replacement-shape
+    // rewrite must pre-attach a pay-or-counter decision yielder before
+    // invoking applyReplacementLoop. Until such a caller exists, this
+    // identity-pass keeps the contract no-op-safe.
     apply: (intent) => intent,
     // Ward is NOT a self-replacement for ETB ordering (CR 614.1c-d) — it
     // fires against external targeting intents, not the permanent's own
-    // ETB. False here keeps the apply-loop's self-replacement prefix
-    // from mistakenly prioritizing ward.
+    // ETB.
     isSelfReplacement: false,
     layer: "other",
   };
