@@ -88,3 +88,5 @@ export * from "./wave-18-effects.js";
 export * from "./wave-19-effects.js";
 // Wave 21 — corpus long-tail effects (20 handlers)
 export * from "./wave-21-effects.js";
+// Wave 22 — final corpus long-tail effects (20 handlers)
+export * from "./wave-22-effects.js";
