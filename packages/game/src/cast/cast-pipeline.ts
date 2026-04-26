@@ -17,7 +17,7 @@
 // specialized cast paths — cascade, storm copies, flashback) subclass and
 // override individual steps without reimplementing the dispatch.
 import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
-import { IllegalDecisionError, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
+import { CardType, Color, IllegalDecisionError, ManaCost, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../ability/spell-ability.js";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { CostPartReceipt, CostPaymentContext } from "../cost/parts/cost-part.js";
@@ -125,6 +125,81 @@ export interface CastProposal {
  * SP2 synthetic fixtures that pre-date real payment leave `receipt`
  * undefined; abort silently skips those entries.
  */
+/**
+ * Wave 23 helper — Convoke / Improvise generic-cost reducer. Parses a raw
+ * mana-cost string, decrements the generic component by `n` (clamped at 0),
+ * and serializes back to a space-separated raw string in the same letter
+ * form the cost-string parser (parseCostString → MANA_SYMBOL_RE) expects.
+ *
+ * Examples:
+ *   reduceGeneric("3 G", 2)    → "1 G"
+ *   reduceGeneric("2 G W", 2)  → "G W"
+ *   reduceGeneric("4", 4)      → "0"
+ *   reduceGeneric("4", 6)      → "0"   (clamp; excess taps are wasted)
+ *   reduceGeneric("R", 2)      → "R"   (no generic to reduce)
+ *
+ * Implementation: walk ManaCost.parse(raw).symbols, sum generic shards,
+ * and re-emit non-generic shards as W/U/B/R/G letters / X / Y / Z / S /
+ * brace-encoded hybrid pips. The output stays inside MANA_SYMBOL_RE's
+ * accepted set (letters, digits, X/Y/Z, /, whitespace, S, C) so it passes
+ * the cost-payment parser unchanged.
+ */
+const reduceGeneric = (raw: string, n: number): string => {
+  if (n <= 0) return raw;
+  const parsed = ManaCost.parse(raw);
+  let generic = 0;
+  const others: string[] = [];
+  for (const s of parsed.symbols) {
+    switch (s.kind) {
+      case "generic":
+        generic += s.amount;
+        break;
+      case "colored": {
+        const letter = colorToLetter(s.color);
+        if (letter) others.push(letter);
+        break;
+      }
+      case "variable":
+        others.push(s.letter);
+        break;
+      case "colorless":
+        others.push("C");
+        break;
+      case "snow":
+        others.push("S");
+        break;
+      default:
+        // Fall back to toForgeString for hybrid / phyrexian / etc. The cost
+        // solver may not accept this form for all kinds, but Convoke /
+        // Improvise spells in practice carry only generic + monocoloured
+        // pips. Documented as a follow-up if a non-trivial shape appears.
+        others.push(new ManaCost([s], false).toForgeString().trim());
+        break;
+    }
+  }
+  const newGeneric = Math.max(0, generic - n);
+  if (others.length === 0) return String(newGeneric);
+  if (newGeneric === 0) return others.join(" ");
+  return `${newGeneric} ${others.join(" ")}`;
+};
+
+const colorToLetter = (color: Color): string | null => {
+  switch (color) {
+    case Color.White:
+      return "W";
+    case Color.Blue:
+      return "U";
+    case Color.Black:
+      return "B";
+    case Color.Red:
+      return "R";
+    case Color.Green:
+      return "G";
+    default:
+      return null;
+  }
+};
+
 export interface CostPayment {
   readonly sourceCardId: EntityId;
   readonly totalCost: unknown;
@@ -155,6 +230,7 @@ export class CastPipeline {
       yield* this.stepDistributeX(ctx);
       yield* this.stepChooseTargets(ctx);
       yield* this.stepDetermineTotalCost(ctx);
+      yield* this.stepChooseConvokeImproviseTap(ctx);
       yield* this.stepActivateManaAbilities(ctx);
       yield* this.stepPayCosts(ctx);
       const item = this.finalizeStackItem(ctx);
@@ -650,6 +726,103 @@ export class CastPipeline {
   }
 
   /**
+   * Wave 23 — CR 702.51 (Convoke) + CR 702.126 (Improvise). After the total
+   * cost is determined, the casting player may tap untapped creatures
+   * (Convoke) or untapped artifacts (Improvise) they control to substitute
+   * mana payments. Each tapped object reduces the spell's generic cost by
+   * {1}. (Forge full-fidelity: a Convoke-tapped creature can also pay one
+   * mana of any color in its color identity. SP3 MVP supports only the
+   * generic substitution; the colored-pip path is a follow-up.)
+   *
+   * Step ordering: runs AFTER stepDetermineTotalCost so the alt-cost arm
+   * (Flashback / Bestow / Overload) has already populated ctx.totalCost,
+   * and BEFORE stepActivateManaAbilities so the mana-ability window sees
+   * the post-substitution cost (i.e. the casting player only needs to tap
+   * lands for the residual mana). Tapping happens in stepPayCosts AFTER
+   * the regular mana payment to keep the cost-rollback story simple — if
+   * the cast aborts mid-pay, the helpers were never tapped.
+   *
+   * Skipped when the card has neither keyword. Skipped when the keyword is
+   * present but no eligible tap-targets exist.
+   */
+  protected *stepChooseConvokeImproviseTap(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    const hasConvoke = card.keywords?.has("convoke") === true;
+    const hasImprovise = card.keywords?.has("improvise") === true;
+    if (!hasConvoke && !hasImprovise) return;
+
+    // Enumerate eligible tap-targets:
+    //   • Convoke — untapped creatures controlled by the caster.
+    //   • Improvise — untapped artifacts controlled by the caster.
+    // A card that's both a creature and an artifact can be used for either
+    // keyword if the spell carries both (Convoke + Improvise on the same
+    // spell is exotic but the rules text composes cleanly); we prefer the
+    // Convoke mode in that case so the colored-pip follow-up has a path.
+    const eligible: { cardId: EntityId; mode: "convoke" | "improvise" }[] = [];
+    for (const [id, c] of this.game.cards) {
+      if (c.controllerSeat !== ctx.castingPlayer) continue;
+      if (c.zone !== Zt.Battlefield) continue;
+      if (c.tapped) continue;
+      // Defensive: skip the source card itself — a creature can't tap to
+      // help cast itself (it's not on the battlefield until it resolves).
+      if (id === ctx.sourceCardId) continue;
+      const chars = this.game.layerEngine.computeCharacteristics(id);
+      if (hasConvoke && chars.types.has(CardType.Creature)) {
+        eligible.push({ cardId: id, mode: "convoke" });
+      } else if (hasImprovise && chars.types.has(CardType.Artifact)) {
+        eligible.push({ cardId: id, mode: "improvise" });
+      }
+    }
+    if (eligible.length === 0) return;
+
+    const response = (yield {
+      kind: "decision",
+      request: {
+        kind: "chooseConvokeImproviseTap",
+        playerSeat: ctx.castingPlayer,
+        sourceCardId: ctx.sourceCardId,
+        eligible,
+      },
+    }) as { readonly kind: "chooseConvokeImproviseTap"; readonly tapIds: readonly EntityId[] };
+
+    if (response.tapIds.length === 0) return;
+
+    // Validate every chosen id is in the eligible set; reject duplicates.
+    const eligibleIds = new Set(eligible.map((e) => e.cardId));
+    const seen = new Set<EntityId>();
+    for (const tid of response.tapIds) {
+      if (!eligibleIds.has(tid)) {
+        throw new IllegalDecisionError(`chooseConvokeImproviseTap: ${tid} not eligible`);
+      }
+      if (seen.has(tid)) {
+        throw new IllegalDecisionError(`chooseConvokeImproviseTap: duplicate id ${tid}`);
+      }
+      seen.add(tid);
+    }
+
+    // Reduce ctx.totalCost.base by N generic. The base shape is
+    // ManaCostAst-like with a `raw` string the cost solver consumes; we
+    // parse the raw, drop generic by N (clamp at 0), and rewrite the raw
+    // string in Forge's canonical "<generic> <colored>" space-separated
+    // form. Non-generic pips pass through unchanged. If the base is null
+    // / missing a raw the spell is free already and Convoke/Improvise has
+    // nothing to reduce — silently skip the cost mutation but still record
+    // the taps so step PayCosts taps the helpers (parity with Forge: a
+    // free cast still consumes the helpers if the player offered them).
+    const totalCost = ctx.totalCost as { base?: { raw?: string } | null } | null | undefined;
+    const base = totalCost?.base;
+    if (base != null && typeof base.raw === "string" && base.raw !== "") {
+      const reduced = reduceGeneric(base.raw, response.tapIds.length);
+      // Mutate raw in place — the totalCost object is a fresh literal
+      // produced by stepDetermineTotalCost so this is safe.
+      (base as { raw: string }).raw = reduced;
+    }
+
+    ctx.convokeImproviseTaps = [...response.tapIds];
+  }
+
+  /**
    * CR 601.2g — between cost determination and payment, the active player
    * gets a window to activate legal mana abilities. A proper orchestrator
    * emits per-activation priority bundles; SP2 collapses the window to a
@@ -699,11 +872,16 @@ export class CastPipeline {
   protected *stepPayCosts(ctx: CastContext): Generator<EngineYield, void, unknown> {
     const totalCost = ctx.totalCost as { base?: { raw?: string } | null } | null | undefined;
     if (totalCost == null || totalCost.base == null) {
-      return; // free cast or no cost recorded — skip payment
+      // free cast or no cost recorded — still tap any Convoke/Improvise
+      // helpers the caster offered so the cast is symmetric (rare path:
+      // free spell with the keyword e.g. via cost-reducing static).
+      yield* this.tapConvokeImproviseHelpers(ctx);
+      return;
     }
     const rawCost = totalCost.base.raw;
     if (!rawCost) {
-      return; // base present but no raw string (SP2 placeholder) — skip
+      yield* this.tapConvokeImproviseHelpers(ctx);
+      return; // base present but no raw string (SP2 placeholder)
     }
 
     // SP3 Part C Task 60: real cost payment via payCost orchestrator.
@@ -764,6 +942,29 @@ export class CastPipeline {
         payerSeat: ctx.castingPlayer,
       }),
     };
+
+    // Wave 23 — tap each Convoke/Improvise helper AFTER mana payment so
+    // a payment failure (insufficient mana) doesn't strand the helpers
+    // tapped. abort() runs through the catch path before reaching here.
+    yield* this.tapConvokeImproviseHelpers(ctx);
+  }
+
+  /**
+   * Wave 23 helper — tap each card the caster nominated in
+   * stepChooseConvokeImproviseTap. Drives game.action.tap (which emits
+   * CardTapped + runs replacement effects) for every entry in
+   * ctx.convokeImproviseTaps. Returns immediately when the list is empty.
+   */
+  protected *tapConvokeImproviseHelpers(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    if (ctx.convokeImproviseTaps.length === 0) return;
+    for (const id of ctx.convokeImproviseTaps) {
+      // Guard re-tap: if a CardTapped replacement (or a buggy script) tapped
+      // the helper between step 8.5 and now, action.tap is already a no-op
+      // for tapped permanents — skip the call to avoid spurious yields.
+      const c = this.game.cards.get(id);
+      if (!c || c.tapped) continue;
+      yield* this.game.action.tap(id);
+    }
   }
 
   /**

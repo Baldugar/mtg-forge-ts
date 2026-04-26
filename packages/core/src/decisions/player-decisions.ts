@@ -466,6 +466,24 @@ export type DecisionRequest =
       // Forge-style filter description (e.g. "creature", "nonland"); UI
       // hint only. Engine accepts whatever string is returned.
       readonly restriction: string;
+    }
+  | {
+      // Wave 23 — Convoke (CR 702.51) + Improvise (CR 702.126). After the
+      // cast pipeline determines the total cost (step 8) and BEFORE the
+      // mana-ability window (step 9), the casting player may tap untapped
+      // creatures (Convoke) or untapped artifacts (Improvise) they control
+      // to substitute mana payments. Each tapped object reduces the cost
+      // by {1} generic. (Forge full-fidelity: Convoke also lets a tapped
+      // creature pay one mana of any color in its color identity. SP3
+      // MVP supports the {1}-generic substitution only; the colored-pip
+      // path is a follow-up.)
+      readonly kind: "chooseConvokeImproviseTap";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceCardId: EntityId;
+      readonly eligible: readonly {
+        readonly cardId: EntityId;
+        readonly mode: "convoke" | "improvise";
+      }[];
     };
 
 /**
@@ -621,7 +639,15 @@ export type DecisionResponse =
   // Wave 15 — generic choice from labeled SVar list.
   | { readonly kind: "chooseGenericOption"; readonly optionId: string }
   // Wave 15 — name a card.
-  | { readonly kind: "nameCard"; readonly cardName: string };
+  | { readonly kind: "nameCard"; readonly cardName: string }
+  // Wave 23 — Convoke / Improvise: which untapped creatures/artifacts the
+  // caster taps to substitute mana payments. `tapIds` is the chosen subset
+  // (each entry MUST be present in the request's `eligible` list). The
+  // engine taps each id and reduces the spell's generic cost by 1 per tap.
+  | {
+      readonly kind: "chooseConvokeImproviseTap";
+      readonly tapIds: readonly EntityId[];
+    };
 
 /** All request discriminator values. */
 export type DecisionRequestKind = DecisionRequest["kind"];

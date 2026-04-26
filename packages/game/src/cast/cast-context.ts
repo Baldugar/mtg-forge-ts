@@ -54,6 +54,12 @@ export interface CastContext {
   // attaches the source card to the chosen creature instead of merely
   // putting it on the battlefield as a stand-alone permanent.
   bestowed: boolean;
+  // Wave 23 — Convoke (CR 702.51) / Improvise (CR 702.126): card ids the
+  // caster chose to tap as mana-payment substitutes during step 8.5
+  // (stepChooseConvokeImproviseTap). stepPayCosts taps each id after the
+  // regular mana-cost payment runs against the reduced cost. Empty when
+  // neither keyword applies or the caster declined to tap any helpers.
+  convokeImproviseTaps: readonly EntityId[];
 }
 
 export const createCastContext = (params: {
@@ -82,4 +88,5 @@ export const createCastContext = (params: {
   paidAlready: [],
   overloaded: false,
   bestowed: false,
+  convokeImproviseTaps: [],
 });
