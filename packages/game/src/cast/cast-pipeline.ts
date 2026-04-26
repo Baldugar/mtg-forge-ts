@@ -911,8 +911,10 @@ export class CastPipeline {
     if (ctx.faceChosen !== undefined) {
       const card = this.game.cards.get(ctx.sourceCardId);
       if (card) {
-        // WHY undefined: Card.face uses undefined to mean "default front face".
-        card.face = undefined;
+        // Card.face uses "default" as its sentinel for "no face selected" —
+        // the constructor initializes it to "default" and stepChooseFace
+        // overwrites with a concrete FaceKind on selection.
+        card.face = "default";
       }
       ctx.faceChosen = undefined;
     }

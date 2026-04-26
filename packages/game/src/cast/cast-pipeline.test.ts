@@ -1802,9 +1802,9 @@ describe("CastPipeline — A-004 face-leak abort cleanup", () => {
     const third = gen.next();
     expect(third.done).toBe(true);
     expect(third.value).toBeNull();
-    // Audit A-004 — Card.face must be cleared so the next cast attempt
-    // doesn't see "L" as a stale default.
-    expect(card.face).toBeUndefined();
+    // Audit A-004 — Card.face must be reset to "default" so the next cast
+    // attempt doesn't see "L" as a stale pick.
+    expect(card.face).toBe("default");
   });
 });
 
