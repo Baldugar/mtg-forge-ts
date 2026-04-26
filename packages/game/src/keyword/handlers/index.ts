@@ -8,5 +8,6 @@
 // The registry stores specific handlers in byKeyword and the fallback
 // separately — lookup always prefers byKeyword over fallback — so order is
 // actually irrelevant at runtime, but listing specifics first is cleaner.
+export * from "./cascade-keyword.js";
 export * from "./cycling-keyword.js";
 export * from "./flag-keyword.js";
