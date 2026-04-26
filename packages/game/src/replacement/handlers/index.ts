@@ -26,3 +26,5 @@ export * from "./cascade-replacement.js";
 export * from "./roll-dice-replacement.js";
 export * from "./mill-replacement.js";
 export * from "./destroy-replacement.js";
+// Wave 19 — final corpus unknown replacement (BeginPhase)
+export * from "./begin-phase-replacement.js";
