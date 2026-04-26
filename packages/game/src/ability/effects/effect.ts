@@ -222,6 +222,8 @@ export class EffectEffect extends SpellAbilityEffect {
     const ownerSeat = sa.controllerSeat;
     const host = new Card(hostId, paperCard, ownerSeat, ownerSeat, ZoneType.Command);
     host.isEmblem = true; // Closest existing flag — no dedicated isEffect slot yet.
+    // Audit I-14 — CR 613.7 timestamp.
+    host.timestamp = game.newCardTimestamp();
     game.cards.set(hostId, host);
     const cmd = game.getPlayer(ownerSeat).zones.get(ZoneType.Command);
     if (cmd) cmd.add(hostId);

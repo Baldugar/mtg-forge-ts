@@ -446,6 +446,10 @@ export interface SerializedCard {
   readonly mutatedInto: EntityId | null;
   readonly isAugment: boolean;
   readonly meldedFrom: readonly EntityId[] | null;
+  // Audit I-14 — CR 613.7 timestamp. Optional for back-compat with v6
+  // snapshots written before the field landed; restore defaults to 0
+  // when absent. Game.cardTimestampCounter advances past max(timestamps).
+  readonly timestamp?: number;
 }
 
 /**
@@ -775,6 +779,7 @@ const cardToSnapshot = (c: Card): SerializedCard => ({
   mutatedInto: c.mutatedInto === undefined ? null : c.mutatedInto,
   isAugment: c.isAugment === true,
   meldedFrom: c.meldedFrom === undefined ? null : [...c.meldedFrom],
+  timestamp: c.timestamp,
 });
 
 // === Zone snapshot helpers =========================================
@@ -1151,8 +1156,19 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     if (sc.mutatedInto !== null) card.mutatedInto = sc.mutatedInto;
     if (sc.isAugment) card.isAugment = true;
     if (sc.meldedFrom !== null) card.meldedFrom = [...sc.meldedFrom];
+    // Audit I-14 — restore CR 613.7 timestamp. Older v6 blobs without
+    // the field default to 0; advanceTimestampPast below bumps the
+    // counter past max so subsequent newCardTimestamp calls don't collide.
+    if (sc.timestamp !== undefined) card.timestamp = sc.timestamp;
     game.cards.set(sc.id, card);
   }
+  // Audit I-14 — bump cardTimestampCounter past the highest restored
+  // timestamp so post-restore card creation gets a fresh value.
+  let maxTs = 0;
+  for (const sc of snap.state.cards) {
+    if (sc.timestamp !== undefined && sc.timestamp > maxTs) maxTs = sc.timestamp;
+  }
+  if (maxTs > 0) game.restoreCardTimestampCounter(maxTs + 1);
 
   // Shared zones. Game's constructor already mints Exile + Ante instances; we
   // clear and refill them rather than replacing (keeps the Game.sharedZones

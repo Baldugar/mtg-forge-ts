@@ -169,6 +169,16 @@ export class Card {
   isAugment?: boolean;
   meldedFrom?: readonly EntityId[];
 
+  // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
+  // timestamp consumed by the layer engine for tiebreaks among continuous
+  // effects with the same timestamp. EntityId is monotonic at issue time
+  // but not preserved across snapshot/restore reissue paths; a dedicated
+  // timestamp field round-trips cleanly through GameSnapshot.
+  // Default 0: Card constructed standalone (legacy test fixtures); the
+  // engine's create-paths (cast, token, emblem, snapshot-restore) overwrite
+  // with the next monotonic value.
+  timestamp = 0;
+
   constructor(
     readonly id: EntityId,
     readonly paperCard: PaperCard,

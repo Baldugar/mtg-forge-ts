@@ -1442,6 +1442,8 @@ export class GameAction {
       const id = game.newEntityId();
       const card = new Card(id, params.paperCard, params.controller, params.controller, Zt.Battlefield);
       card.isToken = true;
+      // Audit I-14 — CR 613.7 timestamp.
+      card.timestamp = game.newCardTimestamp();
       if (params.isCopy === true && params.copyOf !== undefined) {
         const original = game.cards.get(params.copyOf);
         if (original) {
