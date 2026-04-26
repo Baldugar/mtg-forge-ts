@@ -71,4 +71,17 @@ export * from "./soulbond-keyword.js";
 export * from "./splice-keyword.js";
 export * from "./hideaway-keyword.js";
 export * from "./sunburst-keyword.js";
+// Wave 38 — Channel / Transmute / Replicate / Recover / Scavenge /
+// Reinforce / Strive (Retrace ships as an AltCost). Hand-zone and
+// graveyard-zone activated abilities (Channel, Transmute, Reinforce,
+// Scavenge), a SpellCast self-trigger (Replicate), a creature-LTB
+// graveyard trigger (Recover), and a cost-tag stamp (Strive). The
+// per-keyword TODO(advanced) tails close the cast-pipeline gaps.
+export * from "./channel-keyword.js";
+export * from "./transmute-keyword.js";
+export * from "./replicate-keyword.js";
+export * from "./recover-keyword.js";
+export * from "./scavenge-keyword.js";
+export * from "./reinforce-keyword.js";
+export * from "./strive-keyword.js";
 export * from "./flag-keyword.js";

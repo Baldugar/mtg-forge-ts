@@ -124,3 +124,10 @@ export * from "./ninjutsu.js";
 // / mana-cost overrides applied by deriveBaseCharacteristics.
 export * from "./embalm.js";
 export * from "./eternalize.js";
+// Wave 38 — Channel / Transmute / Reinforce / Scavenge resolvers
+// (CR 702.74 / 702.49 / 702.76 / 702.95). Hand- and graveyard-activated
+// abilities synthesized by their respective keyword handlers.
+export * from "./channel.js";
+export * from "./transmute.js";
+export * from "./reinforce.js";
+export * from "./scavenge.js";

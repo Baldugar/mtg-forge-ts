@@ -36,6 +36,7 @@ const META: readonly KeywordMeta[] = [
   { id: "cascade", displayName: "Cascade", multipleRedundant: false },
   { id: "casualty", displayName: "Casualty", multipleRedundant: false },
   { id: "champion", displayName: "Champion", multipleRedundant: false },
+  { id: "channel", displayName: "Channel", multipleRedundant: false },
   { id: "chapter", displayName: "Chapter", multipleRedundant: false },
   { id: "changeling", displayName: "Changeling", multipleRedundant: true },
   { id: "choose_a_background", displayName: "Choose a Background", multipleRedundant: true },

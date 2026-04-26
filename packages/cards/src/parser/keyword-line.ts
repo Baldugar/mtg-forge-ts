@@ -42,12 +42,16 @@ const COST_KEYWORDS: ReadonlySet<string> = new Set([
   "plot",
   "prototype",
   "prowl",
+  "recover",
   "reconfigure",
   "reflect",
+  "replicate",
+  "retrace",
   "scavenge",
   "specialize",
   "spectacle",
   "squad",
+  "strive",
   "surge",
   "transfigure",
   "transmute",
@@ -83,7 +87,6 @@ const AMOUNT_KEYWORDS: ReadonlySet<string> = new Set([
   "mobilize",
   "poisonous",
   "rampage",
-  "reinforce",
   "renown",
   "ripple",
   "saddle",
@@ -119,6 +122,14 @@ const TWO_PARAM_KEYWORDS: ReadonlyMap<string, readonly [string, string]> = new M
   // if this creature has none. K:Adapt:N:<cost> stores `amount` (N) +
   // `cost` (mana). CR 702.139.
   ["adapt", ["amount", "cost"]],
+  // Wave 38 — Channel <cost>:<effect-svar>: hand-zone activated ability that
+  // discards the card to fire the named SVar effect. K:Channel:1 G:ChEff
+  // stores `cost` (mana) + `effect` (svar key). CR 702.74.
+  ["channel", ["cost", "effect"]],
+  // Wave 38 — Reinforce N — <cost>: hand-zone activated ability that
+  // discards the card to put N +1/+1 counters on target creature.
+  // K:Reinforce:N:<cost> stores `amount` (N) + `cost` (mana). CR 702.76.
+  ["reinforce", ["amount", "cost"]],
 ]);
 
 // Matches "Protection from <something>" — maps to the canonical "protection"

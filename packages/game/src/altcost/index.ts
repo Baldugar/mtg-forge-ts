@@ -16,3 +16,7 @@ export * from "./aftermath.js";
 // stamp; full graft of effects onto the in-flight Arcane spell is
 // deferred (TODO(advanced)).
 export * from "./splice.js";
+// Wave 38 — Retrace (Eventide, CR 702.81). Graveyard-cast alt-cost
+// without printed-mana-cost replacement; the additional Discard-a-Land
+// cost is documented under TODO(advanced).
+export * from "./retrace.js";
