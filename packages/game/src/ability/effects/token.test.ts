@@ -165,7 +165,32 @@ describe("TokenEffect", () => {
     expect(bf?.size).toBe(2);
   });
 
-  it("throws a clear deferred error when TokenScript$ is present", () => {
+  it("throws a clear error when TokenScript$ identifier is unknown", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = game.newEntityId();
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "Token",
+          params: {
+            TokenScript: { kind: "literal", raw: "totally_made_up_token_id" },
+          },
+        },
+        cost: { raw: "" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
+    );
+
+    expect(() => drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>)).toThrow(
+      /unknown TokenScript\$/i,
+    );
+  });
+
+  it("resolves TokenScript$ w_1_1_soldier to a 1/1 white Soldier creature", () => {
     const game = mkGame();
     const seat0 = mkPlayerSeat(0);
     const sourceId = game.newEntityId();
@@ -185,9 +210,76 @@ describe("TokenEffect", () => {
       new Map(),
     );
 
-    expect(() => drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>)).toThrow(
-      /TokenScript\$.*SP4/i,
+    const bf = game.getPlayer(seat0).zones.get(ZoneType.Battlefield);
+    drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+
+    expect(bf?.size).toBe(1);
+    const id = bf?.toArray()[0];
+    const card = game.cards.get(id ?? (0 as ReturnType<typeof game.newEntityId>));
+    expect(card?.isToken).toBe(true);
+    expect(card?.paperCard.name).toBe("Soldier Token");
+    expect(card?.paperCard.definition?.pt?.power).toBe("1");
+    expect(card?.paperCard.definition?.pt?.toughness).toBe("1");
+  });
+
+  it("respects TokenAmount$ alongside TokenScript$ (3 Saproling tokens)", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = game.newEntityId();
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "Token",
+          params: {
+            TokenScript: { kind: "literal", raw: "g_1_1_saproling" },
+            TokenAmount: { kind: "literal", raw: "3" },
+          },
+        },
+        cost: { raw: "" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
     );
+
+    const bf = game.getPlayer(seat0).zones.get(ZoneType.Battlefield);
+    drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+
+    expect(bf?.size).toBe(3);
+    for (const id of bf?.toArray() ?? []) {
+      const card = game.cards.get(id);
+      expect(card?.paperCard.name).toBe("Saproling Token");
+    }
+  });
+
+  it("resolves a non-creature artifact token (c_a_treasure_sac) without PT", () => {
+    const game = mkGame();
+    const seat0 = mkPlayerSeat(0);
+    const sourceId = game.newEntityId();
+    const sa = new SpellAbility(
+      {
+        kind: "spell",
+        effect: {
+          handlerKey: "Token",
+          params: { TokenScript: { kind: "literal", raw: "c_a_treasure_sac" } },
+        },
+        cost: { raw: "" },
+      },
+      sourceId,
+      seat0,
+      new Map(),
+    );
+
+    const bf = game.getPlayer(seat0).zones.get(ZoneType.Battlefield);
+    drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+
+    expect(bf?.size).toBe(1);
+    const id = bf?.toArray()[0];
+    const card = game.cards.get(id ?? (0 as ReturnType<typeof game.newEntityId>));
+    expect(card?.paperCard.name).toBe("Treasure Token");
+    // Treasure has no PT.
+    expect(card?.paperCard.definition?.pt).toBeUndefined();
   });
 
   it("defaults to a 0/0 colorless Token named 'Token' when all optional params omitted", () => {

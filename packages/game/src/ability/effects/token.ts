@@ -1,14 +1,21 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// TokenEffect — creates tokens by synthesizing a PaperCard from inline DSL
-// parameters (TokenName$, TokenPower$, TokenToughness$, TokenTypes$,
-// TokenColors$, TokenKeywords$, TokenAmount$). The TokenScript$ form (which
-// references a predefined token entry in the token database) is deferred to
-// SP4 when the token database is wired in.
+// TokenEffect — creates tokens by either:
+//   (a) looking up a predefined entry in the token database (`TokenScript$`
+//       form), or
+//   (b) synthesizing a PaperCard from inline DSL parameters (`TokenName$`,
+//       `TokenPower$`, `TokenToughness$`, `TokenTypes$`, `TokenColors$`,
+//       `TokenKeywords$`, `TokenAmount$`).
 //
-// Forge DSL (inline form):
+// `TokenAmount$` and other count-modifying parameters apply to both forms.
+//
+// Forge DSL examples:
 //   A:SP$ Token | TokenAmount$ 1 | TokenPower$ 3 | TokenToughness$ 1
 //     | TokenName$ Elemental | TokenTypes$ Creature,Elemental
 //     | TokenColors$ Red | TokenKeywords$ Haste
+//   A:AB$ Token | Cost$ 1 W | TokenScript$ w_1_1_soldier
+//   SVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_spirit_flying
+import { tokenDatabase } from "@mtg-forge-ts/cards";
+import type { TokenEntry } from "@mtg-forge-ts/cards";
 import {
   CardType,
   Color,
@@ -150,6 +157,41 @@ const synthesizeTokenPaperCard = (opts: {
 };
 
 // ---------------------------------------------------------------------------
+// PaperCard synthesis from a TokenEntry
+// ---------------------------------------------------------------------------
+
+/**
+ * Build a PaperCard from a `TokenEntry` (the `TokenScript$` form). Mirrors
+ * `synthesizeTokenPaperCard` for the inline form but reads pre-parsed
+ * structural fields off the entry instead of parsing strings.
+ */
+const paperCardFromEntry = (entry: TokenEntry): PaperCard => {
+  const definition: CardDefinition = {
+    name: entry.name,
+    oracle: entry.oracle,
+    types: entry.types,
+    manaCost: entry.manaCost,
+    ...(entry.pt !== undefined ? { pt: entry.pt } : {}),
+    colors: entry.colors,
+    abilities: entry.abilities,
+    triggers: [],
+    replacements: [],
+    statics: [],
+    keywords: entry.keywords,
+    svars: new Map(),
+  };
+  return {
+    name: entry.name,
+    edition: "TOK",
+    collectorNumber: "0",
+    language: "en",
+    foil: false,
+    flags: DEFAULT_PAPER_CARD_FLAGS,
+    definition,
+  };
+};
+
+// ---------------------------------------------------------------------------
 // TokenEffect
 // ---------------------------------------------------------------------------
 
@@ -157,12 +199,27 @@ export class TokenEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Token";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    // TokenScript$ form requires the SP4 token database — defer with a clear error.
+    const count = hasParam(sa, "TokenAmount") ? evaluateParamNumber(sa, "TokenAmount", game) : 1;
+
+    // ---- TokenScript$ form: look up predefined entry in the token database. ----
     if (hasParam(sa, "TokenScript")) {
-      throw new Error("TokenEffect: TokenScript$ form deferred to SP4 — requires token database lookup");
+      const id = evaluateParamRaw(sa, "TokenScript").trim();
+      const entry = tokenDatabase.get(id);
+      if (entry === undefined) {
+        throw new Error(
+          `TokenEffect: unknown TokenScript$ "${id}" — not present in the predefined token database`,
+        );
+      }
+      const paperCard = paperCardFromEntry(entry);
+      yield* game.action.createToken({
+        paperCard,
+        controller: sa.controllerSeat,
+        count,
+      });
+      return;
     }
 
-    const count = hasParam(sa, "TokenAmount") ? evaluateParamNumber(sa, "TokenAmount", game) : 1;
+    // ---- Inline form: synthesise a PaperCard from raw DSL params. ----
     const power = hasParam(sa, "TokenPower") ? evaluateParamRaw(sa, "TokenPower") : "0";
     const toughness = hasParam(sa, "TokenToughness") ? evaluateParamRaw(sa, "TokenToughness") : "0";
     const name = hasParam(sa, "TokenName") ? evaluateParamRaw(sa, "TokenName") : "Token";

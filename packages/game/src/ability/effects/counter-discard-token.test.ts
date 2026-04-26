@@ -313,7 +313,7 @@ describe("TokenEffect (SP3 Part D Wave 3)", () => {
     ).not.toThrow();
   });
 
-  it("throws a clear deferred error when TokenScript$ is present", () => {
+  it("resolves TokenScript$ w_1_1_soldier to a 1/1 white Soldier (token database lookup)", () => {
     const game = mkGame();
     const seat0 = mkPlayerSeat(0);
     const sourceId = mkEntityId(10);
@@ -333,8 +333,15 @@ describe("TokenEffect (SP3 Part D Wave 3)", () => {
       new Map(),
     );
 
-    expect(() => drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>)).toThrow(
-      /TokenScript\$.*SP4/i,
-    );
+    const bf = game.getPlayer(seat0).zones.get(ZoneType.Battlefield);
+    expect(() =>
+      drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>),
+    ).not.toThrow();
+    // One Soldier token created. (The source `paper` card is registered in
+    // game.cards but not added to the battlefield zone in this test setup.)
+    expect(bf?.size).toBe(1);
+    const id = bf?.toArray()[0];
+    const token = game.cards.get(id ?? (0 as ReturnType<typeof mkEntityId>));
+    expect(token?.paperCard.name).toBe("Soldier Token");
   });
 });
