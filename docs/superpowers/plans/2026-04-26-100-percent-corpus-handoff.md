@@ -6,11 +6,13 @@
 
 - Repo: `F:\BACKUP\Programacion\mtg-forge-ts`
 - Branch: `sp1-engine-foundations` (local only; never pushed)
-- HEAD: post-`4b2d414` (Wave 22b — final 7 effect handlers)
-- ~245 commits since `dbe90e6` (end of SP2 Round 1 remediation)
-- ~3200 tests passing
+- HEAD: post-`649ea45` (Wave 27c — Monarch tracker)
+- ~270 commits since `dbe90e6` (end of SP2 Round 1 remediation)
+- ~3300+ tests passing (game ~2452 + cards 127 + core 720 + dsl-validator 12)
 - **Cap-5000 corpus**: 100.0% (5000/5000 cards parse clean)
 - **Full 32,300-card corpus**: 100.0% (32300/32300 cards parse clean)
+- **Functional keyword catalogue** (in addition to all 250+ effect / 80+ trigger / 25+ replacement handlers):
+  Cycling, Flashback, Madness, Foretell, Bestow, Overload, Cascade, Plot, Specialize, Convoke, Improvise, Crew, Saddle, Mutate, Suspend, Conspire, Champion, Echo, Cumulative Upkeep, Day/Night transitions, Initiative + dungeon-advance hook, Monarch + end-step draw + combat-transfer.
 
 ## What was accomplished (Waves 6-22b)
 
