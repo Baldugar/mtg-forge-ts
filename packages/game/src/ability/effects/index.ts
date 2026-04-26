@@ -104,6 +104,9 @@ export * from "./saddle.js";
 // Wave 28 — Station (Aetherdrift / CR 718). Synthesized by
 // StationKeywordHandler; mirrors Crew with type-flip to Creature.
 export * from "./station.js";
+// Wave 28 — VisitAttraction (Unfinity). Emits AttractionVisited so
+// VisitAttractionTrigger (Wave 22) fires.
+export * from "./visit-attraction.js";
 // Wave 26 — Suspend special-action resolver (Time Spiral / CR 702.61).
 // Synthesized by SuspendKeywordHandler; registered as handlerKey "Suspend".
 export * from "./suspend.js";
