@@ -87,7 +87,7 @@ describe("Stack.copy (CR 707.10)", () => {
     expect(copy.id).not.toBe(source.id);
   });
 
-  it("copy inherits sourceCardId, modes, xValue, costPaid, provenance", () => {
+  it("copy inherits sourceCardId, modes, xValue, costPaid, provenance fields", () => {
     const g = mkGame();
     const source = mkItem(102, 502);
     g.sharedZones.stack.push(source);
@@ -96,7 +96,14 @@ describe("Stack.copy (CR 707.10)", () => {
     expect(copy.modes).toEqual(source.modes);
     expect(copy.xValue).toBe(source.xValue);
     expect(copy.costPaid).toBe(source.costPaid);
-    expect(copy.provenance).toBe(source.provenance);
+    // Audit "Stack.copy re-parent" — provenance is REPARENTED with copiedFrom
+    // pointing to the source item id (CR 706.10b retarget hook). Other
+    // provenance fields (originZone, altCostUsed, additionalCostsPaid)
+    // are preserved verbatim.
+    expect(copy.provenance.originZone).toBe(source.provenance.originZone);
+    expect(copy.provenance.altCostUsed).toBe(source.provenance.altCostUsed);
+    expect(copy.provenance.additionalCostsPaid).toEqual(source.provenance.additionalCostsPaid);
+    expect(copy.provenance.copiedFrom).toBe(source.id);
   });
 
   it("copy preserves source's targets when changeTargets is omitted", () => {

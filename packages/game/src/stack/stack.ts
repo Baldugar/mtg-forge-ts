@@ -109,12 +109,21 @@ export class Stack {
       throw new GameStateIntegrityError(`Stack.copy: source ${sourceItemId} not on stack`);
     }
     const id = game.newEntityId();
+    // Audit "Stack.copy re-parent" — CR 706.10. The copy must record its
+    // origin item id in provenance so retarget flows (CR 706.10b — copying
+    // player may choose new targets) and resolve-time effects can walk back
+    // to the parent. Spreading source.provenance retains its other fields
+    // (originZone, altCostUsed, …); we explicitly stamp `copiedFrom`.
     const copyItem: StackItem = {
       ...source,
       id,
       controllerSeat: newController,
       kind: "copy",
       isCast: false,
+      provenance: {
+        ...source.provenance,
+        copiedFrom: source.id,
+      },
       // changeTargets === undefined → preserve source targets (spread wins).
       // changeTargets !== undefined → override (including explicit null to
       // drop targets). Use `in` semantics via the explicit check so that

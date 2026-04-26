@@ -232,4 +232,56 @@ describe("deriveBaseCharacteristics — reads PaperCard.definition", () => {
     expect(chars.power).toBeNull();
     expect(chars.toughness).toBeNull();
   });
+
+  // Audit I-16 — CR 604.3 cross-layer CDA ordering. CDAs apply within their
+  // own layer (layer 4 CDA in layer 4, layer 5 CDA in layer 5, layer 7a CDA
+  // for P/T). This test pins the cross-layer ordering: a Layer 4 CDA that
+  // adds Creature must be visible to subsequent Layer 5 + Layer 7 effects.
+  it("I-16 — Layer 4 CDA → Layer 5 + Layer 7 see the new type", () => {
+    const g = mkGame();
+    const cid = mkEntityId(300);
+    const noDefPaper: PaperCard = {
+      name: "ManLand",
+      edition: "LEA",
+      collectorNumber: "1",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+    };
+    const card = new Card(cid, noDefPaper, mkPlayerSeat(0), mkPlayerSeat(0), ZoneType.Battlefield);
+    g.cards.set(cid, card);
+
+    // Layer 4 CDA — make it a Creature.
+    g.layerEngine.typeEffects.push({
+      kind: "add",
+      cardType: CardType.Creature,
+      isCda: true,
+      timestamp: 1,
+      sourceAbilityId: null,
+    });
+    // Layer 7a CDA — set 1/1 (only meaningful because Layer 4 CDA made it
+    // a creature; non-creatures get null P/T from base + 7a-only would still
+    // set, but 7c modifications gate on null per CR 613.4b).
+    g.layerEngine.pt7a.push({
+      kind: "cdaSet",
+      power: 1,
+      toughness: 1,
+      timestamp: 1,
+      sourceAbilityId: null,
+    });
+    // Layer 7c modify (non-CDA) — +2/+0. This must apply on top of the CDA
+    // 1/1, yielding 3/1.
+    g.layerEngine.pt7c.push({
+      kind: "modify",
+      powerDelta: 2,
+      toughnessDelta: 0,
+      timestamp: 2,
+      sourceAbilityId: null,
+    });
+    g.layerEngine.bumpEpoch("test-cda-cross-layer");
+    const chars = g.layerEngine.computeCharacteristics(cid);
+    expect(chars.types.has(CardType.Creature)).toBe(true);
+    expect(chars.power).toBe(3);
+    expect(chars.toughness).toBe(1);
+  });
 });
