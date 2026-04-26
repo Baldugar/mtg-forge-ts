@@ -163,5 +163,34 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     base.types.add(CARDTYPE_CREATURE);
   }
 
+  // Wave 33 — Embalm / Eternalize (CR 702.131 / 702.139). Token copies spawned
+  // by these graveyard-recursion keywords carry tokenOverrides that replace
+  // the printed-card characteristics:
+  //   - colors: replace the printed color identity wholesale.
+  //   - addedTypes: appended as subtypes (Embalm/Eternalize → "Zombie").
+  //   - clearManaCost: token has no mana cost (CR 111.10).
+  //   - setPower / setToughness: Eternalize prints 4/4 P/T regardless.
+  // Applied AFTER the printed population so overrides win.
+  const overrides = card.tokenOverrides;
+  if (overrides !== undefined) {
+    if (overrides.colors !== undefined) {
+      base.colors = overrides.colors;
+    }
+    if (overrides.addedTypes !== undefined) {
+      for (const t of overrides.addedTypes) {
+        base.subtypes.add(t);
+      }
+    }
+    if (overrides.clearManaCost === true) {
+      base.manaCost = ManaCost.parse("");
+    }
+    if (overrides.setPower !== undefined) {
+      base.power = overrides.setPower;
+    }
+    if (overrides.setToughness !== undefined) {
+      base.toughness = overrides.setToughness;
+    }
+  }
+
   return base;
 };

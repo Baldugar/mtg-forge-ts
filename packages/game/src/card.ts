@@ -8,6 +8,7 @@
 import type {
   AbilityAst,
   Color,
+  ColorSet,
   CounterType,
   EntityId,
   FaceDownState,
@@ -246,6 +247,28 @@ export class Card {
   isAugment?: boolean;
   meldedFrom?: readonly EntityId[];
 
+  // Wave 33 — token-spawn overrides for Embalm / Eternalize (CR 702.131 /
+  // 702.139). When a graveyard-recursion keyword spawns a token copy of the
+  // source card, the token enters with characteristic overrides applied:
+  //   - colors: replaces the printed color identity (Embalm → White,
+  //     Eternalize → Black);
+  //   - addedTypes: appended to the type set (both → "Zombie");
+  //   - clearManaCost: when true, the printed mana cost is cleared (CR
+  //     702.131c — the token has no mana cost);
+  //   - setPower / setToughness: overrides for Eternalize's 4/4 P/T.
+  // deriveBaseCharacteristics consumes this slot AFTER the printed-card
+  // population so overrides win. Slot is `T | undefined = undefined` so
+  // biome's no-delete rule is satisfied (handlers can null it out without
+  // delete) and exactOptionalPropertyTypes is honoured.
+  tokenOverrides:
+    | {
+        readonly colors?: ColorSet;
+        readonly addedTypes?: readonly string[];
+        readonly clearManaCost?: boolean;
+        readonly setPower?: number;
+        readonly setToughness?: number;
+      }
+    | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

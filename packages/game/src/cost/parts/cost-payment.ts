@@ -32,6 +32,10 @@ const DISCARD_RE = /^discard(?:\s+(?:cardname|self|this\s+card))?$/i;
 // parameters — the choice between exile-3-from-graveyard and sacrifice-Food
 // is yielded as a `chooseForageMode` decision inside CostForage.pay.
 const FORAGE_RE = /^forage$/i;
+// Wave 33 — matches "ExileFromGrave<1/CARDNAME>" (Forge canonical form for
+// Embalm + Eternalize) or the bare "ExileFromGrave" (self-only synonym).
+// Both decompose to "exile the source card from its graveyard".
+const EXILE_FROM_GRAVE_RE = /^exilefromgrave(?:\s*<[^>]*>)?$/i;
 
 export interface CostPlan {
   readonly parts: readonly { readonly handlerKey: string; readonly raw: string }[];
@@ -75,6 +79,10 @@ export const parseCostString = (raw: string): CostPlan => {
     }
     if (FORAGE_RE.test(seg)) {
       parts.push({ handlerKey: "Forage", raw: seg });
+      continue;
+    }
+    if (EXILE_FROM_GRAVE_RE.test(seg)) {
+      parts.push({ handlerKey: "ExileFromGrave", raw: seg });
       continue;
     }
     if (MANA_SYMBOL_RE.test(seg)) {

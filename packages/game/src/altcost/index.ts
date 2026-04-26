@@ -10,3 +10,5 @@ export * from "./mutate.js";
 export * from "./overload.js";
 export * from "./plot.js";
 export * from "./suspend.js";
+// Wave 33 — Aftermath (graveyard-cast, exile-after-resolve for split R-half).
+export * from "./aftermath.js";

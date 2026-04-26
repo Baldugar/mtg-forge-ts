@@ -7,4 +7,6 @@ export * from "./cost-pay-life.js";
 export * from "./cost-sacrifice.js";
 export * from "./cost-discard.js";
 export * from "./cost-forage.js";
+// Wave 33 — exile-self-from-graveyard (Embalm / Eternalize).
+export * from "./cost-exile-self-from-grave.js";
 export * from "./cost-payment.js";

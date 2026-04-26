@@ -47,4 +47,10 @@ export * from "./rebound-keyword.js";
 // counter (M1M1 for Persist, P1P1 for Undying).
 export * from "./persist-keyword.js";
 export * from "./undying-keyword.js";
+// Wave 33 — Embalm / Eternalize. Synthesize a Graveyard-zone activated
+// SpellAbility that pays mana + ExileFromGrave<self> to spawn a token copy
+// with colour / type / P-T / no-mana-cost overrides applied via the
+// tokenOverrides slot consumed by deriveBaseCharacteristics.
+export * from "./embalm-keyword.js";
+export * from "./eternalize-keyword.js";
 export * from "./flag-keyword.js";

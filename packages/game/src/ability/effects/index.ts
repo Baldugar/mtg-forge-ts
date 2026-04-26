@@ -118,3 +118,9 @@ export * from "./suspend.js";
 export * from "./adapt.js";
 // Wave 30 — Ninjutsu activated-ability resolver (CR 702.49).
 export * from "./ninjutsu.js";
+// Wave 33 — Embalm / Eternalize activated-ability resolvers
+// (CR 702.131 / 702.139). Each spawns a token copy of the source via
+// game.action.createToken and stamps tokenOverrides for color / type / P-T
+// / mana-cost overrides applied by deriveBaseCharacteristics.
+export * from "./embalm.js";
+export * from "./eternalize.js";
