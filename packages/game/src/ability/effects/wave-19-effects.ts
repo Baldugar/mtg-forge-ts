@@ -9,7 +9,14 @@
 //   LookAt, RemoveFromCombat, DigMultiple, Goad, Shuffle, ChangeTargets,
 //   PermanentNoncreature, Discover, Blight, Connive, FlipOntoBattlefield,
 //   BecomesBlocked, AddOrRemoveCounter, AdvanceCrank, WinsGame.
-import { CardType, CounterType, GameStateIntegrityError, TypeLine, ZoneType } from "@mtg-forge-ts/core";
+import {
+  CardType,
+  CounterType,
+  GameStateIntegrityError,
+  TypeLine,
+  ZoneType,
+  mkEvent,
+} from "@mtg-forge-ts/core";
 import type {
   AbilityAst,
   CardDefinition,
@@ -244,6 +251,16 @@ export class DiscoverEffect extends SpellAbilityEffect {
       yield* game.action.moveTo(pickedNonLand, ZoneType.Hand, { toSeat: seat, cause: "effect" });
       const source = game.cards.get(sa.sourceCardId);
       if (source) source.remembered.push(pickedNonLand);
+      // Wave 16b — CardDiscovered (CR 702.166) — fires when a card is
+      // discovered (cascade-like reveal-and-cast). Wave 20 DiscoverTrigger
+      // listens. `value` carries the Discover N parameter.
+      yield game.emitEvent(
+        mkEvent("CardDiscovered", game.turn, game.phase, {
+          playerSeat: seat,
+          discoveredCardId: pickedNonLand,
+          value: n,
+        }),
+      );
     }
     // TODO(advanced): bottom remaining exiled cards in random order; offer
     // the cast-for-free decision via FreeCastPipeline. Mirrors Cascade resolver.
@@ -403,12 +420,20 @@ effectRegistry.register(AddOrRemoveCounterEffect);
 export class AdvanceCrankEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "AdvanceCrank";
 
-  // biome-ignore lint/correctness/useYield: stub mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const source = game.cards.get(sa.sourceCardId);
     if (source) source.remembered.push(sa.sourceCardId);
+    // Wave 16b — CardCranked (Unstable Crank! mechanic) — fires when a
+    // contraption is "cranked" (assembled/advanced). Wave 16 CrankContraption-
+    // Trigger listens. Payload tracks the source card + controller.
+    yield game.emitEvent(
+      mkEvent("CardCranked", game.turn, game.phase, {
+        cardId: sa.sourceCardId,
+        controllerSeat: sa.controllerSeat,
+      }),
+    );
     // TODO(advanced): rotate Game.flags.attractions sprocket pointer per
-    // controller; emit CardCranked event via game.eventBus.
+    // controller; full sprocket-state machine is SP4.
   }
 }
 effectRegistry.register(AdvanceCrankEffect);

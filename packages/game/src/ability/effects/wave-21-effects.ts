@@ -70,9 +70,10 @@ export class VentureEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const source = game.cards.get(sa.sourceCardId);
     if (source) source.remembered.push(sa.sourceCardId);
-    // TODO(advanced): full dungeon state machine — track current room per
-    // player on game.flags.dungeons and advance the pointer; emit
-    // DungeonRoomEntered + DungeonCompleted when the last room is reached.
+    // TODO(emit-wiring): emit DungeonCompleted when the dungeon-tracker
+    // advances past the last room. Requires the dungeon state machine
+    // (game.flags.dungeons) which is SP4 scope. For now the trigger fires
+    // only via test-side synth-emit.
   }
 }
 effectRegistry.register(VentureEffect);

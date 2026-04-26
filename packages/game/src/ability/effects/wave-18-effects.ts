@@ -20,6 +20,7 @@ import {
   GameStateIntegrityError,
   TypeLine,
   ZoneType,
+  mkEvent,
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
 import type { CardDefinition, DecisionResponse, EntityId, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
@@ -308,7 +309,12 @@ export class InvestigateEffect extends SpellAbilityEffect {
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
-    const entry = tokenDatabase.get("c_a_clue");
+    // Wave 16b — switched to canonical token-database id `c_a_clue_draw`. The
+    // legacy lookup `c_a_clue` returned undefined and silently routed through
+    // the fallback branch (which builds a Clue token with TypeLine "Token …",
+    // an invalid type token). With the correct id the canonical Clue entry is
+    // used and the fallback only fires when the database is unavailable.
+    const entry = tokenDatabase.get("c_a_clue_draw");
     if (!entry) {
       // Fallback synth — the real token DB should always have this entry,
       // but if it is missing for any reason, build a minimal Clue PaperCard
@@ -335,11 +341,21 @@ export class InvestigateEffect extends SpellAbilityEffect {
         flags: DEFAULT_PAPER_CARD_FLAGS,
         definition,
       };
-      yield* game.action.createToken({
+      const fallbackIds = yield* game.action.createToken({
         paperCard,
         controller: sa.controllerSeat,
         count: num,
       });
+      // Wave 16b — CardInvestigated (CR 701.30) — fires once per Clue token
+      // minted via Investigate. Triggers (Wave 21 InvestigateTrigger) listen.
+      for (const clueId of fallbackIds) {
+        yield game.emitEvent(
+          mkEvent("CardInvestigated", game.turn, game.phase, {
+            playerSeat: sa.controllerSeat,
+            clueTokenId: clueId,
+          }),
+        );
+      }
       return;
     }
     const definition: CardDefinition = {
@@ -365,11 +381,21 @@ export class InvestigateEffect extends SpellAbilityEffect {
       flags: DEFAULT_PAPER_CARD_FLAGS,
       definition,
     };
-    yield* game.action.createToken({
+    const clueIds = yield* game.action.createToken({
       paperCard,
       controller: sa.controllerSeat,
       count: num,
     });
+    // Wave 16b — CardInvestigated emit (post-token-create) so Investigate
+    // triggers fire once per Clue minted.
+    for (const clueId of clueIds) {
+      yield game.emitEvent(
+        mkEvent("CardInvestigated", game.turn, game.phase, {
+          playerSeat: sa.controllerSeat,
+          clueTokenId: clueId,
+        }),
+      );
+    }
   }
 }
 effectRegistry.register(InvestigateEffect);

@@ -19,7 +19,7 @@
 //   Permanent.YouCtrl    — all permanents controlled by sa.controllerSeat
 //
 // Cards are collected first, then untapped (simultaneous semantics).
-import { CardType, ZoneType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -64,6 +64,15 @@ export class UntapAllEffect extends SpellAbilityEffect {
     const targets = collectMatching(sa, game);
     for (const cardId of targets) {
       yield* game.action.untap(cardId);
+    }
+    // Wave 16b — CardsUntappedAll batch event (Forge T:Mode$ UntapAll).
+    // Skip empty resolutions to avoid vacuous trigger fires.
+    if (targets.length > 0) {
+      yield game.emitEvent(
+        mkEvent("CardsUntappedAll", game.turn, game.phase, {
+          cardIds: [...targets],
+        }),
+      );
     }
   }
 }

@@ -19,7 +19,7 @@
 //   Permanent.OpponentCtrl — all permanents NOT controlled by sa.controllerSeat
 //
 // Cards are collected first, then tapped (simultaneous semantics).
-import { CardType, ZoneType } from "@mtg-forge-ts/core";
+import { CardType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -64,6 +64,16 @@ export class TapAllEffect extends SpellAbilityEffect {
     const targets = collectMatching(sa, game);
     for (const cardId of targets) {
       yield* game.action.tap(cardId);
+    }
+    // Wave 16b — CardsTappedAll batch event (Forge T:Mode$ TapAll). Emitted
+    // once per resolution after individual CardTapped events. Skip the empty
+    // case so triggers don't fire for vacuous resolutions.
+    if (targets.length > 0) {
+      yield game.emitEvent(
+        mkEvent("CardsTappedAll", game.turn, game.phase, {
+          cardIds: [...targets],
+        }),
+      );
     }
   }
 }
