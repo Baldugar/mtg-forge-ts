@@ -8,8 +8,8 @@
 // pay:    if cost has X pips, yields chooseX decision to get the bound value;
 //         then solves and applies the plan.
 // undo:   restores pool snapshot + refunds phyrexian life.
-import { ManaCost } from "@mtg-forge-ts/core";
-import type { ManaProduced } from "@mtg-forge-ts/core";
+import { ManaCost, mkEvent } from "@mtg-forge-ts/core";
+import type { Color, ManaProduced } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { ManaPool } from "../../mana/mana-pool.js";
 import { applyCostMods } from "../../mana/solver/apply-cost-mods.js";
@@ -111,6 +111,27 @@ export const CostMana: CostPart = {
 
     // Apply the plan: drain pool entries and pay life for phyrexian pips.
     yield* applyPaymentPlan(plan, pool, ctx.game, ctx.payerSeat);
+
+    // Wave 16/17b — emit ManaSpent (one event per distinct color) so
+    // ManaExpendTrigger ("whenever you spend <color> mana, …") fires.
+    // The plan's `consumed` list records every drained pool entry; we
+    // bucket them by color (null for colorless) and emit one event per
+    // bucket carrying the bucket's count. Phyrexian-paid pips are NOT
+    // mana spend (they're life payment) so they don't contribute here.
+    const byColor = new Map<Color | null, number>();
+    for (const c of plan.consumed) {
+      const col = c.symbol.color;
+      byColor.set(col, (byColor.get(col) ?? 0) + 1);
+    }
+    for (const [col, amount] of byColor) {
+      yield ctx.game.emitEvent(
+        mkEvent("ManaSpent", ctx.game.turn, ctx.game.phase, {
+          playerSeat: ctx.payerSeat,
+          color: col,
+          amount,
+        }),
+      );
+    }
 
     // Wave 11 — fire markUsed on every consumed mod (OnlyFirstSpell$ guard).
     // Marking ALL matched mods is sound: non-OnlyFirstSpell mods have no

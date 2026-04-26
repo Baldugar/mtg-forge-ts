@@ -1414,6 +1414,54 @@ export class GameAction {
   }
 
   /**
+   * CR 305.1 / 116.2a — play a land as a special action. The card must be
+   * in `seat`'s hand and the seat must be allowed to play another land
+   * this turn (caller responsibility — `legal-action-enumerator` consults
+   * `flags.landsPlayedThisTurn`). On success:
+   *
+   *   1. The land moves Hand → Battlefield via the canonical `moveTo`
+   *      mutator (so MovedTo / CardChangedZone fire and ETB replacements
+   *      route through the standard chain).
+   *   2. `flags.landsPlayedThisTurn[seat]` is incremented.
+   *   3. A `LandPlayed` event is emitted with `{ cardId, playerSeat }`,
+   *      allowing `LandPlayedTrigger` (Wave 16) to observe the land drop.
+   *
+   * Land plays are NOT spells (CR 305.1) — they don't go on the stack and
+   * have no associated cost. We therefore route through `moveTo` rather
+   * than the cast pipeline.
+   */
+  *playLand(cardId: EntityId, seat: PlayerSeat): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const card = game.cards.get(cardId);
+    if (!card) {
+      throw new GameStateIntegrityError(`playLand: card ${cardId} not found in game.cards`);
+    }
+    if (card.zone !== Zt.Hand) {
+      throw new GameStateIntegrityError(
+        `playLand: card ${cardId} must be in Hand to be played, found ${card.zone}`,
+      );
+    }
+    // Move the land to the battlefield via the canonical zone-change path
+    // so the CardChangedZone event fires and ETB replacements gather as
+    // they would for any zone change. The land's controller is set to the
+    // playing seat by moveTo via its toSeat option (the new owner of the
+    // battlefield permanent must be the player who played it; CR 305.5).
+    yield* this.moveTo(cardId, Zt.Battlefield, { toSeat: seat, cause: "playLand" });
+    // Increment per-turn drop counter so the legal-action enumerator
+    // disallows further land plays under default rules.
+    const currentDrops = game.flags.landsPlayedThisTurn.get(seat) ?? 0;
+    game.flags.landsPlayedThisTurn.set(seat, currentDrops + 1);
+    // Emit LandPlayed AFTER the zone change applies so observers see the
+    // post-state (the land is on the battlefield when the trigger fires).
+    yield game.emitEvent(
+      mkEvent("LandPlayed", game.turn, game.phase, {
+        cardId,
+        playerSeat: seat,
+      }),
+    );
+  }
+
+  /**
    * CR 111 / 701.8 — create N tokens with identical characteristics. The
    * PaperCard supplies the token's identity (name, type line, P/T, etc.);
    * callers building non-paper tokens (Treasure, Food, Clue) wrap a
