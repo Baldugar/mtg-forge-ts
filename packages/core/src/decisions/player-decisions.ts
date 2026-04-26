@@ -513,6 +513,19 @@ export type DecisionRequest =
       readonly playerSeat: PlayerSeat;
       readonly sourceCardId: EntityId;
       readonly eligible: readonly EntityId[];
+    }
+  | {
+      // Wave 25 — Mutate (CR 702.139, Ikoria). When a mutate spell resolves,
+      // the caster must choose to put the new card OVER (top) or UNDER
+      // (bottom) the target creature. The merged pile's name/types/P/T are
+      // taken from the topmost card; abilities of every card in the pile
+      // are unioned onto the merged permanent. The cast pipeline pins the
+      // target via stepChooseTargets; the resolver yields this decision
+      // before performing the merge so the caster can place the new card.
+      readonly kind: "chooseMutateOrder";
+      readonly playerSeat: PlayerSeat;
+      readonly mutatorCardId: EntityId;
+      readonly hostCardId: EntityId;
     };
 
 /**
@@ -691,6 +704,11 @@ export type DecisionResponse =
   | {
       readonly kind: "chooseConspireTap";
       readonly tapIds: readonly EntityId[];
+    }
+  // Wave 25 — Mutate: place the new card on TOP or UNDER the target.
+  | {
+      readonly kind: "chooseMutateOrder";
+      readonly placement: "top" | "bottom";
     };
 
 /** All request discriminator values. */

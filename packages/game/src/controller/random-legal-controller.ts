@@ -233,6 +233,9 @@ export class RandomLegalController implements PlayerController {
       // Wave 26 — Conspire: random-legal declines (no taps → no copy).
       case "chooseConspireTap":
         return { kind: "chooseConspireTap", tapIds: [] };
+      // Wave 25 — Mutate: random-legal places the new card on top.
+      case "chooseMutateOrder":
+        return { kind: "chooseMutateOrder", placement: "top" };
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(

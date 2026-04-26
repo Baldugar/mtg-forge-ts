@@ -35,6 +35,7 @@ const COST_KEYWORDS: ReadonlySet<string> = new Set([
   "miracle",
   "more_than_meets_the_eye",
   "morph",
+  "mutate",
   "ninjutsu",
   "outlast",
   "overload",

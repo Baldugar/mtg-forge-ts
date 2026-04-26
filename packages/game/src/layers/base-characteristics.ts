@@ -40,6 +40,18 @@ const parsePt = (raw: string): number | null => {
 };
 
 export const deriveBaseCharacteristics = (card: Card): Characteristics => {
+  // Wave 25 — Mutate (CR 702.139). A card that is mutated INTO another's
+  // pile is hidden — it no longer exists independently on the battlefield.
+  // Returning empty characteristics is the cleanest way to ensure no
+  // downstream consumer (P/T derivation, type filters, color enumeration,
+  // SBA scans) treats it as a live permanent. The merged pile's
+  // characteristics live on the canonical pile owner (the card whose
+  // mutatedPile is non-empty). Independent of the multi-face/face-aware
+  // path because mutated-into cards may still carry a Card.face value
+  // from before they merged; the empty baseline preempts that.
+  if (card.mutatedInto !== undefined) {
+    return emptyCharacteristics();
+  }
   const base = emptyCharacteristics();
   const paper = card.paperCard;
   const faces = paper.faces;

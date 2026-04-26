@@ -5,6 +5,7 @@ export * from "./bestow.js";
 export * from "./flashback.js";
 export * from "./foretell.js";
 export * from "./madness.js";
+export * from "./mutate.js";
 export * from "./overload.js";
 export * from "./plot.js";
 export * from "./suspend.js";

@@ -60,6 +60,14 @@ export interface CastContext {
   // regular mana-cost payment runs against the reduced cost. Empty when
   // neither keyword applies or the caster declined to tap any helpers.
   convokeImproviseTaps: readonly EntityId[];
+  // Wave 25 — Mutate (CR 702.139). When true, the cast was paid via the
+  // mutate alt-cost. stepChooseTargets uses a synthesized "Creature.YouOwn
+  // .nonHuman" target restriction (the spell stacks onto the chosen
+  // creature's pile rather than entering the battlefield independently),
+  // and finalizeStackItem plumbs the "mutated" tag onto the bound
+  // SpellAbility so the resolveStackItem branch performs the merge logic
+  // instead of the standard permanent-ETB path.
+  mutated: boolean;
 }
 
 export const createCastContext = (params: {
@@ -89,4 +97,5 @@ export const createCastContext = (params: {
   overloaded: false,
   bestowed: false,
   convokeImproviseTaps: [],
+  mutated: false,
 });

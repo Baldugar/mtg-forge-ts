@@ -612,8 +612,19 @@ export class CastPipeline {
     // its SpellAbility (it's a creature spell), so we synthesize a
     // "any creature on the battlefield" restriction here and let the rest
     // of the step run normally.
+    //
+    // Wave 25 — Mutate: a mutate spell targets a non-Human creature you own
+    // (CR 702.139). We synthesize a creature restriction whose
+    // controllerScope is "you" and post-filter the eligibility set in this
+    // step to exclude Humans + non-owned creatures. (Forge's ValidTgts$
+    // filter is enough for "creature you control" via YouCtrl, but mutate
+    // requires ownership not just control, and "Human" is a subtype filter
+    // not represented in the existing parser. Inlining the filter keeps the
+    // SP3 wave footprint tight.)
     let restriction: TargetRestriction | undefined;
-    if (ctx.bestowed) {
+    if (ctx.mutated) {
+      restriction = parseValidTgts("Creature.YouCtrl");
+    } else if (ctx.bestowed) {
       restriction = parseValidTgts("Creature");
     } else {
       // Derive restriction: prefer paper.targetRestriction (explicit, set by
@@ -634,7 +645,26 @@ export class CastPipeline {
       sourceId: ctx.sourceCardId,
       sourceControllerSeat: ctx.castingPlayer,
     };
-    const eligible = this.game.targetSystem.enumerate(enumerationCtx, restriction);
+    let eligible = this.game.targetSystem.enumerate(enumerationCtx, restriction);
+    // Wave 25 — Mutate post-filter: drop Humans + non-owned creatures + any
+    // card already mutated-into another (those are "hidden" inside a pile
+    // and not legal targets for further mutation). The base restriction
+    // is "Creature.YouCtrl"; ownership and the Human subtype guard are
+    // applied here so we don't have to extend the ValidTgts$ grammar.
+    if (ctx.mutated) {
+      const filtered: TargetRef[] = [];
+      for (const ref of eligible) {
+        if (ref.kind !== "card") continue;
+        const c = this.game.cards.get(ref.id);
+        if (!c) continue;
+        if (c.ownerSeat !== ctx.castingPlayer) continue;
+        if (c.mutatedInto !== undefined) continue;
+        const chars = this.game.layerEngine.computeCharacteristics(ref.id);
+        if (chars.subtypes.has("Human")) continue;
+        filtered.push(ref);
+      }
+      eligible = filtered;
+    }
     const response = (yield {
       kind: "decision",
       request: {
@@ -1123,6 +1153,7 @@ export class CastPipeline {
       const altTags: string[] = [];
       if (ctx.overloaded) altTags.push("overloaded");
       if (ctx.bestowed) altTags.push("bestowed");
+      if (ctx.mutated) altTags.push("mutated");
       const tags = altTags.length > 0 ? new Set(altTags) : undefined;
       const boundSa = new SpellAbility(
         saTemplate.ast,

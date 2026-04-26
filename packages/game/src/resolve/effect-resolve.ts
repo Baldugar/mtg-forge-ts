@@ -128,6 +128,111 @@ export function* resolveStackItem(game: Game, item: StackItem): Generator<Engine
       // card to move.
       return;
     case "spell": {
+      // Wave 25 — Mutate (CR 702.139). A mutate spell merges with the
+      // chosen target instead of entering the battlefield as a separate
+      // permanent. The resolver yields a chooseMutateOrder decision so
+      // the caster picks "top" (new card defines the merged permanent's
+      // characteristics) or "bottom" (existing top stays). After the
+      // decision, the new card is moved to the battlefield, the host's
+      // mutatedPile + the mutator's mutatedInto are stitched together,
+      // and a CardMutated event fires for trigger consumption.
+      if (item.provenance.altCostUsed === "Mutate") {
+        const targets = item.targets as
+          | readonly { readonly kind: string; readonly id?: EntityId }[]
+          | null
+          | undefined;
+        const firstCardTarget = Array.isArray(targets)
+          ? targets.find((t): t is { readonly kind: "card"; readonly id: EntityId } => t.kind === "card")
+          : undefined;
+        if (!firstCardTarget) {
+          // No legal mutate target at resolve time — fizzle softly: send
+          // the source to its owner's graveyard (CR 608.2b — a spell with
+          // all illegal targets fizzles).
+          yield* game.action.moveTo(item.sourceCardId, ZoneType.Graveyard);
+          return;
+        }
+        const hostId = firstCardTarget.id;
+        const mutatorId = item.sourceCardId;
+
+        const orderResp = (yield {
+          kind: "decision",
+          request: {
+            kind: "chooseMutateOrder",
+            playerSeat: item.controllerSeat,
+            mutatorCardId: mutatorId,
+            hostCardId: hostId,
+          },
+        }) as { readonly kind: "chooseMutateOrder"; readonly placement: "top" | "bottom" };
+        const placeOnTop = orderResp.placement === "top";
+
+        // Move the new card onto the battlefield first; once both cards are
+        // there, perform the merge bookkeeping. The mutated-into back-
+        // pointer hides the underlying card from independent characteristic
+        // derivation (see deriveBaseCharacteristics for the Wave 25 branch).
+        yield* game.action.moveTo(mutatorId, ZoneType.Battlefield);
+
+        const host = game.cards.get(hostId);
+        const mutator = game.cards.get(mutatorId);
+        if (!host || !mutator) return;
+
+        const existing = host.mutatedPile;
+        const seeded: readonly EntityId[] = existing === undefined ? [hostId] : existing;
+        const pile: readonly EntityId[] = placeOnTop ? [mutatorId, ...seeded] : [...seeded, mutatorId];
+        host.mutatedPile = pile;
+
+        if (placeOnTop) {
+          // The new card defines the merged permanent. The previous
+          // "topmost" card (host or earlier mutator) becomes hidden inside
+          // the mutator's pile slot. We track the hidden cards via
+          // mutatedInto so deriveBaseCharacteristics can return empty
+          // characteristics for them.
+          //
+          // For "top" placement, the merged permanent inhabits the new
+          // card's slot — copy the pile onto the mutator and clear the
+          // host's pile so the mutator becomes the canonical pile owner.
+          mutator.mutatedPile = pile;
+          // Clear the host's pile so the canonical pile owner moves to the
+          // mutator. Reflect.deleteProperty satisfies both biome's no-delete
+          // rule and exactOptionalPropertyTypes (which forbids `= undefined`
+          // on a typed-undefined-disallowed optional).
+          Reflect.deleteProperty(host as object, "mutatedPile");
+          for (const id of pile) {
+            if (id === mutatorId) continue;
+            const c = game.cards.get(id);
+            if (c) c.mutatedInto = mutatorId;
+          }
+        } else {
+          // "bottom" placement: the host stays the canonical pile owner;
+          // the new card slides under and gets hidden.
+          mutator.mutatedInto = hostId;
+        }
+
+        // Migrate the hidden cards' triggered abilities onto the merged
+        // pile owner so trigger inheritance works (CR 702.139c — abilities
+        // of every card in the pile fire as if from the merged permanent).
+        // We move triggeredAbilities so the existing TriggerRegistry index
+        // (keyed by ability id) keeps firing without re-registration; the
+        // sourceCardId on each ability points at the original card, which
+        // is fine — it's still a registered live ability.
+        const owner = placeOnTop ? mutator : host;
+        const hiddenIds = pile.filter((id) => id !== owner.id);
+        for (const hid of hiddenIds) {
+          const hidden = game.cards.get(hid);
+          if (!hidden) continue;
+          if (hidden.triggeredAbilities.length === 0) continue;
+          owner.triggeredAbilities = [...owner.triggeredAbilities, ...hidden.triggeredAbilities];
+        }
+
+        game.layerEngine.bumpEpoch("mutate");
+        yield game.emitEvent(
+          mkEvent("CardMutated", game.turn, game.phase, {
+            mutatorId,
+            hostId,
+            controllerSeat: item.controllerSeat,
+          }),
+        );
+        return;
+      }
       // Wave 10 — Bestow (CR 702.103). A bestowed creature spell becomes
       // an Aura with enchant creature; on resolution it enters the
       // battlefield attached to the chosen target rather than as a stand-

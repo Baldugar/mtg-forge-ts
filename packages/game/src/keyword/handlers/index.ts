@@ -21,4 +21,5 @@ export * from "./conspire-keyword.js";
 export * from "./champion-keyword.js";
 export * from "./echo-keyword.js";
 export * from "./cumulative-upkeep-keyword.js";
+export * from "./mutate-keyword.js";
 export * from "./flag-keyword.js";
