@@ -62,6 +62,15 @@ export interface GameFlags {
   // this. PhaseHandler reads it when computing the next active player.
   // "forward" = clockwise / seat ascending, "reverse" = counter-clockwise.
   turnOrder: "forward" | "reverse";
+  // Wave 45 — Initiative dungeon (Undercity) tracker. CR 906.4c says the
+  // initiative-holder ventures into the Undercity at the beginning of their
+  // upkeep. The full dungeon graph (10 rooms with per-room effects) lives
+  // in Forge's `initiative.txt`; for MVP we track only the room index
+  // (1..10, 0 = "not yet entered"). Each call to grantInitiative or the
+  // upkeep advance bumps the index modulo 10. Per-room effects are
+  // // TODO(advanced): hook room-specific abilities once the dungeon
+  // data structure lands.
+  undercityRoom: number;
   // Wave 27 — Day/Night auto-transition support (CR 726.4). Snapshot of the
   // previous turn's `spellsCastThisTurn` taken at TurnEnded so the upkeep
   // transition logic on the FOLLOWING turn can read "the previous turn's
@@ -101,4 +110,5 @@ export const createDefaultFlags = (): GameFlags => ({
   turnOrder: "forward",
   lastTurnSpellsCast: new Map(),
   lastTurnActiveSeat: null,
+  undercityRoom: 0,
 });

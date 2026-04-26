@@ -19,9 +19,58 @@
 // name per CR 708.4a; all other "default" cases (single-face cards, DFCs
 // before any chooseFace selection, etc.) fall through to paperCard.name.
 import type { ManaCostAst } from "@mtg-forge-ts/core";
-import { CardType, type Characteristics, ManaCost, emptyCharacteristics } from "@mtg-forge-ts/core";
+import {
+  CardType,
+  type Characteristics,
+  Color,
+  ColorSet,
+  ManaCost,
+  emptyCharacteristics,
+} from "@mtg-forge-ts/core";
 import type { Card } from "../card.js";
 import { combinedSplitCharacteristics, isSplitCard } from "../multiface/split.js";
+
+// Wave 45 — ChangeText (Layer 1/4 partial wiring). Maps the canonical
+// English color word found in card text to the corresponding Color bit so
+// `card.textChanges` rewrites can swap one color for another in the
+// effective ColorSet. Casing matches Forge's printed-text convention
+// (Title-Case word). TODO(advanced): re-parse rules text + replace
+// keyword-color phrases (e.g. "protection from white"); MVP only patches
+// the effective color set so color-aware filters observe the swap.
+const COLOR_WORD_TO_BIT: Readonly<Record<string, Color>> = {
+  White: Color.White,
+  Blue: Color.Blue,
+  Black: Color.Black,
+  Red: Color.Red,
+  Green: Color.Green,
+};
+
+const applyColorTextChange = (chars: Characteristics, fromWord: string, toWord: string): void => {
+  const fromBit = COLOR_WORD_TO_BIT[fromWord];
+  const toBit = COLOR_WORD_TO_BIT[toWord];
+  if (fromBit === undefined || toBit === undefined) return;
+  if (!chars.colors.has(fromBit)) return;
+  // Remove fromBit and union with toBit. ColorSet is immutable; rebuild
+  // from the bits we keep + the new one.
+  const remaining: Color[] = [];
+  for (const c of [Color.White, Color.Blue, Color.Black, Color.Red, Color.Green]) {
+    if (c === fromBit) continue;
+    if (chars.colors.has(c)) remaining.push(c);
+  }
+  remaining.push(toBit);
+  chars.colors = ColorSet.of(...remaining);
+};
+
+const applyTypeTextChange = (chars: Characteristics, fromType: string, toType: string): void => {
+  // CR 612 — the "type word" change rewrites the printed text wholesale,
+  // so creature subtypes (Goblin → Elf) flip both on the type line and
+  // anywhere the original word appeared in rules text. MVP swaps the
+  // subtype set; rules-text rewrite is TODO(advanced).
+  if (chars.subtypes.has(fromType)) {
+    chars.subtypes.delete(fromType);
+    chars.subtypes.add(toType);
+  }
+};
 
 // Wave 10 — Bestow type-flip (see end of deriveBaseCharacteristics). Hoist
 // the enum value to a module-local constant for readability.
@@ -161,6 +210,20 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
   // pattern as crewedUntilEot.
   if (card.stationedUntilEot === true) {
     base.types.add(CARDTYPE_CREATURE);
+  }
+
+  // Wave 45 — ChangeText (CR 612). Apply each text-change rule on top of
+  // the populated characteristics. The full Layer 1 (text) integration
+  // would re-parse the printed rules text with substitutions in place;
+  // MVP patches the effective color set + creature-subtype set so color-
+  // aware filters and type-aware filters observe the swap. TODO(advanced)
+  // — full rules-text replacement (e.g. "deals damage to target white
+  // creature" → "...black creature").
+  if (card.textChanges.length > 0) {
+    for (const tc of card.textChanges) {
+      if (tc.kind === "color") applyColorTextChange(base, tc.from, tc.to);
+      else applyTypeTextChange(base, tc.from, tc.to);
+    }
   }
 
   // Wave 33 — Embalm / Eternalize (CR 702.131 / 702.139). Token copies spawned

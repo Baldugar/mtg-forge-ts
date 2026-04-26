@@ -203,10 +203,13 @@ export class PhaseHandler {
           payload: { oldValue: transition.oldValue, newValue: transition.newValue },
         });
       }
-      // Wave 27 — Initiative-dungeon advance (CR 906.4c). MVP stub: the
-      // hook fires when the active player is the initiative-holder; full
-      // dungeon-room advance lands once the Dungeon data structure exists.
-      onUpkeepAdvanceInitiativeDungeon(game, active);
+      // Wave 27 — Initiative-dungeon advance (CR 906.4c). The active player,
+      // if they hold the initiative, ventures one room into the Undercity.
+      // Wave 45 — emit the UndercityRoomEntered pulse so triggers + UI can
+      // observe; per-room SVar effects remain TODO(advanced).
+      for (const evt of onUpkeepAdvanceInitiativeDungeon(game, active)) {
+        yield game.emitEvent(evt);
+      }
       // Wave 29 — CR 702.61b suspend tick. At the start of each player's
       // upkeep, decrement one time counter from each suspended card that
       // player owns. Cards whose counter reaches 0 are eligible for the

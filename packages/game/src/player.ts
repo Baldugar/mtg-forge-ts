@@ -19,6 +19,14 @@ export class Player {
   // Populated by MatchSetup (Task 45); key by ZoneType lets consumers look up
   // a player's library/hand/graveyard/battlefield uniformly.
   zones = new Map<ZoneType, Zone>();
+  // Wave 45 — Unfinity / Unstable contraption deck slot. Forge models the
+  // contraption deck as a separate ordered Zone the player constructs at
+  // game start (CR 717.x). MVP holds an opt-in slot here; cards-package
+  // populates it (TODO(advanced) — wiring lives in SP4 once the lobby
+  // surface ships a contraption-deck builder). When undefined, the
+  // AssembleContraption effect emits the ContraptionAssembled pulse and
+  // stamps an attractions counter on the source so observers still fire.
+  contraptionDeck: Zone | undefined = undefined;
   // SP2 Milestone G (Task 30): CR 704.5b — set when the player was required
   // to draw from an empty library since the last SBA check. The SBA engine
   // reads this flag to produce a `playerLosesEmptyDraw` action, then clears

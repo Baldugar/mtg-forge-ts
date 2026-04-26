@@ -21,6 +21,48 @@ import type { GameEvent, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 
 /**
+ * Wave 45 — Undercity dungeon room sequence (CR 906.4c). The 10 rooms in
+ * Forge's `initiative.txt` are listed in venture order. Per-room SVar
+ * effects are TODO(advanced); the index is the only piece of state the
+ * MVP tracks. Index 0 is "not yet entered"; the first venture lands on
+ * room 1 (SecretEntrance) and the 10th venture wraps to 1 (per CR 309.4
+ * — completing a dungeon lets the next venture start from the entrance).
+ */
+export const UNDERCITY_ROOMS: readonly string[] = [
+  "SecretEntrance",
+  "Forge of Doom",
+  "Shrine of the Gnoll Lord",
+  "Lost Well",
+  "Stash of Goods",
+  "Chamber of Sleep",
+  "Sandfall Cell",
+  "Down Among the Dead Men",
+  "Hall of Mists",
+  "Lair of the Spider",
+];
+
+/**
+ * Advance the Undercity dungeon by one room (mod 10). Returns the new
+ * room index (1..10) and the corresponding name. Caller routes the
+ * UndercityRoomEntered event through the engine pipeline.
+ */
+export const advanceUndercityRoom = (game: Game, seat: PlayerSeat): readonly GameEvent[] => {
+  const prior = game.flags.undercityRoom;
+  const next = (prior % UNDERCITY_ROOMS.length) + 1;
+  game.flags.undercityRoom = next;
+  const roomName = UNDERCITY_ROOMS[next - 1] ?? "SecretEntrance";
+  return [
+    {
+      kind: "UndercityRoomEntered",
+      version: 1,
+      turn: game.turn,
+      phase: game.phase,
+      payload: { playerSeat: seat, room: next, roomName },
+    },
+  ];
+};
+
+/**
  * Set the initiative-holder + emit BecameInitiative for the new holder.
  * Returns the events to yield (caller routes through engine pipeline).
  *
@@ -32,15 +74,18 @@ export const grantInitiative = (game: Game, seat: PlayerSeat): readonly GameEven
   const prior = game.flags.initiative;
   if (prior === seat) return [];
   game.flags.initiative = seat;
-  return [
-    {
-      kind: "BecameInitiative",
-      version: 1,
-      turn: game.turn,
-      phase: game.phase,
-      payload: { playerSeat: seat },
-    },
-  ];
+  // Wave 45 — taking the initiative ventures into the Undercity (CR 906.4c
+  // covers the upkeep advance; CR 906.4 says the player who takes the
+  // initiative also ventures immediately on TAKE). Emit BecameInitiative
+  // first, then the dungeon advance.
+  const becameEvent: GameEvent = {
+    kind: "BecameInitiative",
+    version: 1,
+    turn: game.turn,
+    phase: game.phase,
+    payload: { playerSeat: seat },
+  };
+  return [becameEvent, ...advanceUndercityRoom(game, seat)];
 };
 
 /**
@@ -75,10 +120,14 @@ export const onCombatDamageToPlayer = (
  * the hook fire. Full Initiative-dungeon (Undercity) advance lands once
  * the Dungeon data structure exists.
  */
-export const onUpkeepAdvanceInitiativeDungeon = (game: Game, activeSeat: PlayerSeat): boolean => {
-  if (game.flags.initiative !== activeSeat) return false;
-  // TODO(Initiative-dungeon): walk the Undercity dungeon graph and emit
-  // DungeonAdvanced + the room-on-enter SVar. Until the data structure
-  // lands, this hook just signals "yes, the holder would advance now".
-  return true;
+export const onUpkeepAdvanceInitiativeDungeon = (
+  game: Game,
+  activeSeat: PlayerSeat,
+): readonly GameEvent[] => {
+  if (game.flags.initiative !== activeSeat) return [];
+  // Wave 45 — venture one room. Per-room SVar effects (room exit triggers,
+  // Lair of the Spider's "venture again", etc.) are TODO(advanced); the
+  // index advance + UndercityRoomEntered emit is the canonical pulse that
+  // observers and tests need today.
+  return advanceUndercityRoom(game, activeSeat);
 };

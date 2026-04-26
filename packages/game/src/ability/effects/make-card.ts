@@ -17,10 +17,47 @@
 //     else controller.
 //   - RememberMade$ True appends the new EntityId to source.remembered.
 //
-// TODO(advanced): full CardDb-driven materialization (real PaperCard from
-// the inventory, not a stub) lands in SP4 when CardDb integration is wired.
-// For now we synthesize a minimal PaperCard so cards using MakeCard for
-// placeholders / "you may exile a card with the chosen name" work.
+// Wave 45 — when a runtime PaperCard registry is wired (via
+// `registerMakeCardPaperCard`), MakeCard now consults the registry first
+// and falls back to the synthetic placeholder on a miss. The registry is
+// a process-local Map populated either by tests or by a future cards-
+// package integration step.
+//
+// TODO(advanced): full CardDb-driven materialization — the cards-package
+// today exposes parser primitives (parser/lexer / parser/assembler) but
+// no runtime "look up a PaperCard by name" registry. Once such a
+// registry surfaces, drop the placeholder synthesis and route every
+// MakeCard through it.
+
+/**
+ * Process-local PaperCard lookup, populated by integration tests or a
+ * future cards-package init hook. Keyed by `paperCard.name`.
+ *
+ * Registering the same name twice overwrites — last-wins. That matches
+ * Forge's CardDb semantics (the latest printing in the inventory wins).
+ */
+const PAPER_CARD_REGISTRY = new Map<string, PaperCard>();
+
+/**
+ * Register a real PaperCard for MakeCard lookup. Called by tests +
+ * (future) cards-package init.
+ */
+export const registerMakeCardPaperCard = (paperCard: PaperCard): void => {
+  if (typeof paperCard.name !== "string" || paperCard.name.length === 0) {
+    return;
+  }
+  PAPER_CARD_REGISTRY.set(paperCard.name, paperCard);
+};
+
+/**
+ * Test/snapshot reset hook. Clears the registry. Engine tests that
+ * register fixtures should call this in `afterEach`.
+ */
+export const clearMakeCardPaperCardRegistry = (): void => {
+  PAPER_CARD_REGISTRY.clear();
+};
+
+export const lookupMakeCardPaperCard = (name: string): PaperCard | undefined => PAPER_CARD_REGISTRY.get(name);
 import {
   CardType,
   ColorSet,
@@ -94,7 +131,11 @@ export class MakeCardEffect extends SpellAbilityEffect {
     }
 
     const newId: EntityId = game.newEntityId();
-    const paper = synthesizeMakeCardPaper(name);
+    // Wave 45 — prefer the registered PaperCard when available so triggered/
+    // activated abilities, P/T, and types come through. Fall back to the
+    // placeholder when no fixture is registered.
+    const registered = lookupMakeCardPaperCard(name);
+    const paper = registered ?? synthesizeMakeCardPaper(name);
     const newCard = new Card(newId, paper, owner, owner, zone);
     game.cards.set(newId, newCard);
     const player = game.getPlayer(owner);

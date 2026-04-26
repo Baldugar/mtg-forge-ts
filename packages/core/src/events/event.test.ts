@@ -201,6 +201,9 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "PrizeClaimed",
   // Wave 34 — Battle card type (1)
   "BattleDefeated",
+  // Wave 45 — Final long-tail: Initiative dungeon + AssembleContraption (2)
+  "UndercityRoomEntered",
+  "ContraptionAssembled",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -383,12 +386,15 @@ const ALL_KINDS_MAP = {
   PrizeClaimed: true,
   // Wave 34 — Battle card type (1)
   BattleDefeated: true,
+  // Wave 45 — Final long-tail (2)
+  UndercityRoomEntered: true,
+  ContraptionAssembled: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 167 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1)", () => {
-    expect(EXPECTED_KINDS.length).toBe(167);
-    expect(new Set(EXPECTED_KINDS).size).toBe(167);
+  it("has 169 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2)", () => {
+    expect(EXPECTED_KINDS.length).toBe(169);
+    expect(new Set(EXPECTED_KINDS).size).toBe(169);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -613,6 +619,9 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     PrizeClaimed: { playerSeat: seat0 },
     // Wave 34 payloads
     BattleDefeated: { cardId: id(1) },
+    // Wave 45 payloads
+    UndercityRoomEntered: { playerSeat: seat0, room: 1, roomName: "SecretEntrance" },
+    ContraptionAssembled: { playerSeat: seat0, sourceCardId: id(1) },
   };
 
   for (const kind of EXPECTED_KINDS) {

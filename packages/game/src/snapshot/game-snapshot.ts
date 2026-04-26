@@ -527,6 +527,8 @@ export interface SerializedCard {
     readonly setPower?: number;
     readonly setToughness?: number;
   };
+  // Wave 45 — running per-card AssembleContraption count.
+  readonly attractions?: number;
 }
 
 /**
@@ -592,6 +594,10 @@ export interface SerializedGameFlags {
   // counter (Revolt). Promoted to REQUIRED in v7 (was optional during v6
   // back-compat). Empty array is the no-state-tracked default.
   readonly permanentsLeftBfThisTurn: readonly (readonly [PlayerSeat, number])[];
+  // Wave 45 — Initiative dungeon (Undercity) room index. Optional in v7
+  // for back-compat with snapshots taken before this slot existed; the
+  // default 0 ("not yet entered") is restored on load.
+  readonly undercityRoom?: number;
 }
 
 /**
@@ -794,6 +800,7 @@ const flagsToJSON = (f: GameFlags): SerializedGameFlags => ({
   leftBattlefieldThisTurn: [...f.leftBattlefieldThisTurn],
   topLibsCast: [...f.topLibsCast],
   permanentsLeftBfThisTurn: [...f.permanentsLeftBfThisTurn.entries()].map(([s, n]) => [s, n] as const),
+  ...(f.undercityRoom !== 0 ? { undercityRoom: f.undercityRoom } : {}),
 });
 
 const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
@@ -831,6 +838,9 @@ const flagsFromJSON = (s: SerializedGameFlags): GameFlags => {
   for (const id of s.topLibsCast) f.topLibsCast.add(id);
   // Wave 32 — required in v7.
   for (const [seat, n] of s.permanentsLeftBfThisTurn) f.permanentsLeftBfThisTurn.set(seat, n);
+  // Wave 45 — Initiative dungeon (Undercity) room index. Optional for
+  // back-compat with snapshots predating this slot.
+  if (s.undercityRoom !== undefined) f.undercityRoom = s.undercityRoom;
   return f;
 };
 
@@ -889,6 +899,7 @@ const cardToSnapshot = (c: Card): SerializedCard => {
   if (c.companionCondition !== undefined) transient.companionCondition = c.companionCondition;
   if (c.riotChoseHaste !== undefined) transient.riotChoseHaste = c.riotChoseHaste;
   if (c.reboundUntilUpkeep !== undefined) transient.reboundUntilUpkeep = c.reboundUntilUpkeep;
+  if (c.attractions !== undefined) transient.attractions = c.attractions;
   if (c.tokenOverrides !== undefined) {
     const o = c.tokenOverrides;
     const w: {
@@ -1362,6 +1373,7 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
     if (sc.companionCondition !== undefined) card.companionCondition = sc.companionCondition;
     if (sc.riotChoseHaste !== undefined) card.riotChoseHaste = sc.riotChoseHaste;
     if (sc.reboundUntilUpkeep !== undefined) card.reboundUntilUpkeep = sc.reboundUntilUpkeep;
+    if (sc.attractions !== undefined) card.attractions = sc.attractions;
     if (sc.tokenOverrides !== undefined) {
       const o = sc.tokenOverrides;
       const w: {

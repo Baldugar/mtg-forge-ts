@@ -204,6 +204,12 @@ export class Card {
   // draw to offer the dredge alternative: mill N + return-to-hand
   // instead of drawing.
   dredgeAmount: number | undefined = undefined;
+  // Wave 45 — AssembleContraption stamps the running count of contraptions
+  // assembled by this source onto the card so future state-checks observe
+  // the bump even when the contraption deck is empty/absent. Forge tracks
+  // the same per-card counter for "for each contraption you've assembled"-
+  // style triggers. Undefined = no contraptions assembled.
+  attractions: number | undefined = undefined;
   // Wave 15 — ChangeTextEffect appends a record per text-change. Stored on
   // the affected card so layered char derivation can re-apply at compute
   // time. MVP: opaque records — Layer 1 application is deferred to a future

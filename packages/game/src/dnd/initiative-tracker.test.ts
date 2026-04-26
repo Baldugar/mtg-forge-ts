@@ -58,13 +58,16 @@ const mkGame = (): Game => {
 };
 
 describe("InitiativeTracker", () => {
-  it("grantInitiative sets the holder + emits BecameInitiative", () => {
+  it("grantInitiative sets the holder + emits BecameInitiative + UndercityRoomEntered", () => {
     const game = mkGame();
     const seat0 = mkPlayerSeat(0);
     const events = grantInitiative(game, seat0);
     expect(game.flags.initiative).toBe(seat0);
-    expect(events).toHaveLength(1);
+    // Wave 45 — taking the initiative also ventures one room.
+    expect(events).toHaveLength(2);
     expect(events[0]?.kind).toBe("BecameInitiative");
+    expect(events[1]?.kind).toBe("UndercityRoomEntered");
+    expect(game.flags.undercityRoom).toBe(1);
   });
 
   it("grantInitiative is idempotent on self-grant (no event)", () => {

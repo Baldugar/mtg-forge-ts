@@ -1720,6 +1720,39 @@ export type GameEvent =
         readonly cardId: EntityId;
         readonly defeatedBySeat?: PlayerSeat;
       };
+    }
+  // === Wave 45 — Final long-tail (Initiative dungeon + Contraption deck) ===
+  | {
+      // Initiative dungeon (Undercity) advance pulse — fires on each upkeep
+      // dungeon advance + on every fresh take-initiative. `room` is the
+      // 1..10 room index after the advance (1 = SecretEntrance, 10 = Lair
+      // of the Spider). Per-room SVar effects are TODO(advanced); this is
+      // the canonical observation point so triggers / UI can react.
+      readonly kind: "UndercityRoomEntered";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly room: number;
+        readonly roomName: string;
+      };
+    }
+  | {
+      // AssembleContraption resolution pulse. Fires once per contraption
+      // assembled by the SP$ AssembleContraption effect. `cardId` is the
+      // contraption-deck card placed onto the battlefield when a real
+      // contraption deck is wired (TODO(advanced)) or undefined when the
+      // MVP placeholder path is taken.
+      readonly kind: "ContraptionAssembled";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly sourceCardId: EntityId;
+        readonly cardId?: EntityId;
+      };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */
