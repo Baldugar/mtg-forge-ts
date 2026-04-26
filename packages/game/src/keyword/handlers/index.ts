@@ -118,4 +118,13 @@ export * from "./dredge-keyword.js";
 export * from "./equip-keyword.js";
 export * from "./kicker-keyword.js";
 export * from "./ward-keyword.js";
+// Wave 52 — Saga (Chapter) + Class. ChapterKeywordHandler synthesizes
+// the Lore-counter machinery: ETB stamp + Main1-start tick + a
+// CounterAdded watcher that flips card.sagaFinalChapterResolved when
+// the final chapter resolves (SBA reads this in sba/saga-class.ts).
+// ClassKeywordHandler stamps card.classLevel and synthesizes a
+// Battlefield-zone sorcery-speed level-up activated SA per K:Class
+// line; per-level conditional triggers/statics are TODO(advanced).
+export * from "./chapter-keyword.js";
+export * from "./class-keyword.js";
 export * from "./flag-keyword.js";

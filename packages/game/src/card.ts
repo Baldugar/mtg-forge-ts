@@ -392,6 +392,22 @@ export class Card {
   // the upkeep trigger reads it to detect when the free-cast window is open.
   // Cleared by the upkeep resolver before invoking FreeCastPipeline.
   reboundUntilUpkeep: number | undefined = undefined;
+  // Wave 52 — Class (CR 715). Read+written by ClassKeywordHandler's
+  // synthesized activated SA. Each `K:Class:level:cost:flag:abilityKey`
+  // installs an activation that, on resolve, stamps
+  // `card.classLevel = max(card.classLevel ?? 1, level)`. Default 1 once
+  // a Class permanent ETBs (mirror of the Level-counter SBA bump in
+  // saga-class.ts, but the slot is the authoritative read used by the
+  // per-level conditional trigger/static gates).
+  classLevel: number | undefined = undefined;
+  // Wave 52 — Saga (CR 714). Read+written by ChapterKeywordHandler. The
+  // total chapter count parsed from `K:Chapter:N:DB1,DB2,...,DBN`. Used by
+  // the CounterAdded watcher to detect when the final-chapter trigger has
+  // resolved (Lore counter == N). The names slot stores the SVar keys for
+  // chapters I..N; Wave-52 dispatch is TODO(advanced) — count + flag is
+  // enough for the SBA sacrifice path.
+  sagaChapterCount: number | undefined = undefined;
+  sagaChapterSVars: readonly string[] | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time
