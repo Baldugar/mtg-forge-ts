@@ -159,3 +159,15 @@ export class DamageDoneOnceTrigger extends TriggerHandler {
 }
 
 triggerHandlerRegistry.register(DamageDoneOnceTrigger);
+
+// Wave 12D — Forge corpus also uses the spelling "DamageDealtOnce" (e.g.
+// Delirium triggers, attach-aura damage life-gain). Register an alias
+// constructor that produces a DamageDoneOnceTrigger instance under the
+// alternate mode string. We can't subclass and override the static `mode`
+// type literal (TS narrows it on the parent), so we hand-roll the ctor
+// shape that triggerHandlerRegistry expects.
+export class DamageDealtOnceTrigger extends DamageDoneOnceTrigger {}
+// Registry register() reads the static `mode` field; assign at runtime to
+// avoid the TS literal-narrowing error on subclass redeclaration.
+(DamageDealtOnceTrigger as unknown as { mode: string }).mode = "DamageDealtOnce";
+triggerHandlerRegistry.register(DamageDealtOnceTrigger as unknown as typeof DamageDoneOnceTrigger);

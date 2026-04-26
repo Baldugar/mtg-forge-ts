@@ -7,7 +7,7 @@ import { PhaseStep, mkEntityId, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core
 import { afterEach, describe, expect, it } from "vitest";
 import { triggerHandlerRegistry } from "../trigger-handler-registry.js";
 import type { TriggerBuildContext } from "../trigger-handler.js";
-import { DamageDoneOnceTrigger } from "./damage-done-once-trigger.js";
+import { DamageDealtOnceTrigger, DamageDoneOnceTrigger } from "./damage-done-once-trigger.js";
 
 const SOURCE_ID = mkEntityId(70);
 const OTHER_ID = mkEntityId(71);
@@ -35,8 +35,10 @@ const mkAst = (validSource = "Card.Self", validTarget = "Player"): TriggerAst =>
 afterEach(() => {
   triggerHandlerRegistry.clear();
   triggerHandlerRegistry.register(DamageDoneOnceTrigger);
+  triggerHandlerRegistry.register(DamageDealtOnceTrigger as unknown as typeof DamageDoneOnceTrigger);
 });
 triggerHandlerRegistry.register(DamageDoneOnceTrigger);
+triggerHandlerRegistry.register(DamageDealtOnceTrigger as unknown as typeof DamageDoneOnceTrigger);
 
 // Build a context whose `game` reports `turn` reactively from a closure
 // var, so a single test can advance the turn between matches() calls.
@@ -55,6 +57,10 @@ const mkTurnedCtx = (turnRef: { value: number }): TriggerBuildContext =>
 describe("DamageDoneOnceTrigger", () => {
   it("is registered under mode 'DamageDoneOnce'", () => {
     expect(triggerHandlerRegistry.has("DamageDoneOnce")).toBe(true);
+  });
+
+  it("Wave 12D — also registered under the corpus-alias 'DamageDealtOnce'", () => {
+    expect(triggerHandlerRegistry.has("DamageDealtOnce")).toBe(true);
   });
 
   it("matches when source deals damage to a player (Card.Self + Player)", () => {
