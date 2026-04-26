@@ -307,6 +307,38 @@ export type SerializedTypeChangeEffect =
       readonly isCda: boolean;
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
+    }
+  // Wave 47 — Continuous-static AddSubType / RemoveSubType / RemoveCardTypes /
+  // RemoveCreatureTypes payloads. Snapshot round-trip drops the runtime
+  // `appliesToCardIdFn` predicate (closure refs can't be serialised); on
+  // restore the effect re-applies globally. This is acceptable because
+  // Continuous statics re-register from each card's static-list when
+  // GameSnapshot re-derives them; the layer arrays are a derived cache.
+  | {
+      readonly kind: "addSubtype";
+      readonly subtype: string;
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
+    }
+  | {
+      readonly kind: "removeSubtype";
+      readonly subtype: string;
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
+    }
+  | {
+      readonly kind: "removeAllCardTypes";
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
+    }
+  | {
+      readonly kind: "removeAllCreatureTypes";
+      readonly isCda: boolean;
+      readonly timestamp: number;
+      readonly sourceAbilityId: EntityId | null;
     };
 
 const serializeTypeEffect = (e: TypeChangeEffect): SerializedTypeChangeEffect => {
@@ -331,6 +363,36 @@ const serializeTypeEffect = (e: TypeChangeEffect): SerializedTypeChangeEffect =>
       return {
         kind: "becomes",
         types: [...e.types].sort(),
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    case "addSubtype":
+      return {
+        kind: "addSubtype",
+        subtype: e.subtype,
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    case "removeSubtype":
+      return {
+        kind: "removeSubtype",
+        subtype: e.subtype,
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    case "removeAllCardTypes":
+      return {
+        kind: "removeAllCardTypes",
+        isCda: e.isCda,
+        timestamp: e.timestamp,
+        sourceAbilityId: e.sourceAbilityId,
+      };
+    case "removeAllCreatureTypes":
+      return {
+        kind: "removeAllCreatureTypes",
         isCda: e.isCda,
         timestamp: e.timestamp,
         sourceAbilityId: e.sourceAbilityId,
@@ -364,6 +426,36 @@ const deserializeTypeEffect = (s: SerializedTypeChangeEffect): TypeChangeEffect 
       return {
         kind: "becomes",
         types: new Set(s.types as readonly CardType[]),
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    case "addSubtype":
+      return {
+        kind: "addSubtype",
+        subtype: s.subtype,
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    case "removeSubtype":
+      return {
+        kind: "removeSubtype",
+        subtype: s.subtype,
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    case "removeAllCardTypes":
+      return {
+        kind: "removeAllCardTypes",
+        isCda: s.isCda,
+        timestamp: s.timestamp,
+        sourceAbilityId: s.sourceAbilityId,
+      };
+    case "removeAllCreatureTypes":
+      return {
+        kind: "removeAllCreatureTypes",
         isCda: s.isCda,
         timestamp: s.timestamp,
         sourceAbilityId: s.sourceAbilityId,

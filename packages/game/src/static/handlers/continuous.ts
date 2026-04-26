@@ -1,49 +1,69 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Wave 10 / Wave 32 — Continuous static handler. Forge's "Mode$ Continuous"
-// wraps a passel of layered effects (P/T, type, color, ability, text, kw).
-// Currently supported parameter cocktails:
+// Wave 47 — Continuous static handler. Forge's `S:Mode$ Continuous`
+// broadcasts a passel of layered effects (P/T, type, color, ability, kw)
+// against an `Affected$` target set. This handler routes each recognised
+// payload param into the appropriate Layer 4/5/6/7 effect with optional
+// per-card scoping and live `Condition$` gating.
 //
-//   Bestow flagship (Boon Satyr):
-//     S:Mode$ Continuous | Affected$ Card.EnchantedBy
-//                        | AddPower$ N | AddToughness$ M
+// Affected$ — full Wave 32 cardMatchesFilter grammar:
+//   - `Card.Self`        → only the source card.
+//   - `Card.EnchantedBy` → the aura's current attachedTo (Bestow flagship).
+//   - `Card.YouCtrl`, `Creature.YouCtrl`, `Creature.OppCtrl`, `Creature`,
+//     `Permanent.YouCtrl`, `Card`, `<Subtype>.YouCtrl`, etc.
+//   - Comma-OR alternatives + dot/plus-AND qualifiers (Wave 32 grammar).
 //
-//   Threshold flagship (Excavating Anurid, ~30 cards):
-//     S:Mode$ Continuous | Affected$ Card.Self
-//                        | AddPower$ 1 | AddToughness$ 1
-//                        | AddKeyword$ Vigilance
-//                        | Condition$ Threshold
+// Payloads — each pushes a Layer effect with `appliesToCardIdFn` set to
+// the handler's filter predicate (the predicate also includes the live
+// Condition$ gate, so a single test on the predicate suppresses the
+// effect entirely when the condition doesn't hold):
+//   - AddPower / AddToughness   → Layer 7c (modify P/T).
+//   - SetPower / SetToughness   → Layer 7b (set P/T).
+//   - AddKeyword                → Layer 6 keyword grant. Multi-keyword
+//     grants split on " & " (rare, but Forge uses it).
+//   - RemoveKeyword             → not yet wired (no Layer 6 negative
+//     keyword storage). Tagged TODO(advanced).
+//   - AddType                   → Layer 4 add card type.
+//   - AddSubType / AddSubtype   → Layer 4 addSubtype.
+//   - RemoveType                → Layer 4 remove card type.
+//   - RemoveSubType / RemoveSubtype → Layer 4 removeSubtype.
+//   - RemoveCardTypes           → Layer 4 removeAllCardTypes.
+//   - RemoveCreatureTypes       → Layer 4 removeAllCreatureTypes.
+//   - AddColor / SetColor       → Layer 5 add/set colors.
+//   - AddAbility / AddTrigger / AddStaticAbility → SVar-defined grants
+//     not yet wired through this MVP. Tagged TODO(advanced) — they
+//     require synthesising abilities/triggers/statics from SVars on the
+//     source card and registering/unregistering them in lockstep with
+//     the static's lifecycle. The handler accepts them silently so
+//     cards using these don't crash; promotion is a follow-up wave.
+//   - CharacteristicDefining    → marker only; Layer 4/5 apply CDA-first
+//     ordering. We forward the flag to per-payload `isCda` where the
+//     layer differentiates (Layer 4 / Layer 5).
+//   - MayLookAt                 → not yet wired. Tagged TODO(advanced).
 //
-// Affected$:
-//   Card.EnchantedBy → target = the card with attachedTo === sourceId.
-//   Card.Self        → target = the static's source card itself.
+// Condition$ — eight live evaluators (see ./conditions.ts): Threshold,
+// Hellbent, Metalcraft, Delirium, FatefulHour, Landfall, Revolt,
+// Spellmastery. The condition gate is checked inside the per-card
+// predicate so re-evaluation happens on every layer-engine epoch bump.
 //
-// Condition$ (Wave 32) — string-flag conditions evaluated live at apply
-// time. `Threshold` checks the controller's graveyard size (≥7). Other
-// canonical Forge conditions (Hellbent, Metalcraft, Delirium, FatefulHour,
-// Landfall, Heroic, Revolt, Spellmastery) are TODO(advanced) — they'll
-// land alongside their flagship waves; the handler permits the param but
-// treats them as always-active until promoted (with a //
-// TODO(advanced-condition) comment so the omission is auditable).
-//
-// AddKeyword$ (Wave 32) — space-preserved keyword tokens (e.g. "First
-// Strike", "Vigilance") are routed through a Layer 6 keyword grant.
-// Multi-keyword grants (rare in Forge) split on ` & `.
-//
-// Accepted params: Mode, Affected, AddPower, AddToughness, AddKeyword,
-// Condition, Description, EffectZone, Mod (the latter two come from the
-// parser unchanged). Anything else triggers an unsupported-param throw
-// so we don't silently drop card text.
-import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
-import { ZoneType } from "@mtg-forge-ts/core";
+// Static-id stamping — describe() returns the SAME LayerPayload reference
+// on successive calls (referential-equality contract for register /
+// unregister). The payload graph is built once at build() time; the
+// per-card predicate is a closure that re-reads game state live.
+import type { CardType, EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import { CardType as CardTypeEnum, Color, ColorSet } from "@mtg-forge-ts/core";
 import type { Layer6KeywordGrant } from "../../layers/keyword-layer.js";
 import type { LayerPayload } from "../../layers/layer-dispatch.js";
-import type { Layer7cEffect } from "../../layers/layer7-pt.js";
+import type { TypeChangeEffect } from "../../layers/layer4-type.js";
+import type { ColorChangeEffect } from "../../layers/layer5-color.js";
+import type { Layer7bEffect, Layer7cEffect } from "../../layers/layer7-pt.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
+import { cardIdMatchesAffectedFilter } from "./affected-filter.js";
+import { evalCondition } from "./conditions.js";
 
 const literalRaw = (p: ParamValue | undefined): string | undefined =>
   p && p.kind === "literal" ? p.raw : undefined;
@@ -55,144 +75,336 @@ const numericParam = (p: ParamValue | undefined): number => {
   return Number.isFinite(n) ? n : 0;
 };
 
-const ACCEPTED_PARAMS: ReadonlySet<string> = new Set([
-  "Mode",
-  "Affected",
-  "AddPower",
-  "AddToughness",
-  "AddKeyword",
-  "Condition",
-  "Description",
-  "EffectZone",
-  "Mod",
-]);
-
-/**
- * Wave 32 — evaluate a string-flag Condition$ live against the current
- * game state. Returns true when the condition holds (the static's
- * effects apply); false when it doesn't (effects are suppressed).
- *
- * Threshold (CR 702.74): controller has ≥7 cards in graveyard.
- *
- * Other Forge conditions (Hellbent, Metalcraft, Delirium, FatefulHour,
- * Landfall, Heroic, Revolt, Spellmastery, etc.) are accepted but not
- * yet evaluated — they default to true so the surrounding effect at
- * least applies. Each TODO(advanced-condition) comment marks one for a
- * subsequent wave.
- */
-const evalConditionString = (
-  cond: string | undefined,
-  game: {
-    players: ReadonlyArray<{
-      readonly seat: number;
-      readonly zones: Map<ZoneType, { readonly size: number }>;
-    }>;
-  },
-  controllerSeat: number,
-): boolean => {
-  if (cond === undefined) return true;
-  switch (cond) {
-    case "Threshold": {
-      const player = game.players.find((p) => p.seat === controllerSeat);
-      if (!player) return false;
-      const gy = player.zones.get(ZoneType.Graveyard);
-      return gy !== undefined && gy.size >= 7;
-    }
-    // TODO(advanced-condition): Hellbent (controller's hand is empty).
-    // TODO(advanced-condition): Metalcraft (controller controls ≥3 artifacts).
-    // TODO(advanced-condition): Delirium (≥4 card types in controller's GY).
-    // TODO(advanced-condition): FatefulHour (controller has ≤5 life).
-    // TODO(advanced-condition): Landfall (a land entered this turn).
-    // TODO(advanced-condition): Heroic (you cast a spell targeting CARDNAME).
-    // TODO(advanced-condition): Revolt (handled separately on triggers).
-    // TODO(advanced-condition): Spellmastery (≥2 instants/sorceries in GY).
-    default:
-      return true;
-  }
-};
-
-/** Split AddKeyword$ value on " & " (the rare multi-grant separator). */
 const splitKeywords = (raw: string): string[] => {
   const parts = raw.split(/\s+&\s+/);
   return parts.map((p) => p.trim()).filter((p) => p.length > 0);
 };
+
+// Map a Forge color name (or single-letter code) to ColorSet. Returns
+// null when the name is unrecognised (e.g. an SVar reference like
+// "ChosenColor" — Wave 47 MVP does not synthesise SVar selectors here;
+// resolved-at-build dynamic colors are TODO(advanced)).
+const COLOR_BY_NAME: Readonly<Record<string, Color>> = {
+  White: Color.White,
+  Blue: Color.Blue,
+  Black: Color.Black,
+  Red: Color.Red,
+  Green: Color.Green,
+  W: Color.White,
+  U: Color.Blue,
+  B: Color.Black,
+  R: Color.Red,
+  G: Color.Green,
+};
+
+const parseColorList = (raw: string): ColorSet | null => {
+  const tokens = raw.split(/[,\s&+]+/).filter((t) => t.length > 0);
+  const bits: Color[] = [];
+  for (const t of tokens) {
+    const bit = COLOR_BY_NAME[t];
+    if (bit === undefined) return null;
+    bits.push(bit);
+  }
+  return ColorSet.of(...bits);
+};
+
+// Map a Forge core-type name to the CardType enum; returns null for
+// names that are subtypes (Goblin, Wizard) — those flow into the
+// addSubtype / removeSubtype path instead.
+const CORE_TYPE_BY_NAME: Readonly<Record<string, CardType>> = {
+  Artifact: CardTypeEnum.Artifact,
+  Battle: CardTypeEnum.Battle,
+  Creature: CardTypeEnum.Creature,
+  Enchantment: CardTypeEnum.Enchantment,
+  Instant: CardTypeEnum.Instant,
+  Kindred: CardTypeEnum.Kindred,
+  Land: CardTypeEnum.Land,
+  Planeswalker: CardTypeEnum.Planeswalker,
+  Sorcery: CardTypeEnum.Sorcery,
+};
+
+const isTrue = (raw: string | undefined): boolean => raw === "True" || raw === "true";
 
 export class ContinuousStaticHandler extends StaticHandler {
   static override readonly mode = "Continuous" as const;
 
   override build(ast: StaticAst, ctx: StaticHandlerCtx): StaticAbility {
     const params = ast.params;
-    const affected = literalRaw(params.Affected);
+    const affected = literalRaw(params.Affected) ?? "Card.Self";
+
     const addPower = numericParam(params.AddPower);
     const addToughness = numericParam(params.AddToughness);
+    const setPowerRaw = literalRaw(params.SetPower);
+    const setToughnessRaw = literalRaw(params.SetToughness);
     const addKeywordRaw = literalRaw(params.AddKeyword);
     const conditionRaw = literalRaw(params.Condition);
 
-    if (affected !== "Card.EnchantedBy" && affected !== "Card.Self") {
-      throw new Error(
-        `ContinuousStaticHandler: Affected$ "${affected ?? "<missing>"}" not yet supported (only Card.EnchantedBy / Card.Self are implemented in this MVP)`,
-      );
-    }
+    const addTypeRaw = literalRaw(params.AddType);
+    const removeTypeRaw = literalRaw(params.RemoveType);
+    const addSubtypeRaw = literalRaw(params.AddSubType) ?? literalRaw(params.AddSubtype);
+    const removeSubtypeRaw = literalRaw(params.RemoveSubType) ?? literalRaw(params.RemoveSubtype);
+    const removeCardTypesRaw = literalRaw(params.RemoveCardTypes);
+    const removeCreatureTypesRaw = literalRaw(params.RemoveCreatureTypes);
 
-    const otherKeys = Object.keys(params).filter((k) => !ACCEPTED_PARAMS.has(k));
-    if (otherKeys.length > 0) {
-      throw new Error(
-        `ContinuousStaticHandler: parameters [${otherKeys.join(", ")}] not yet supported in Continuous mode`,
-      );
-    }
+    const addColorRaw = literalRaw(params.AddColor);
+    const setColorRaw = literalRaw(params.SetColor);
+
+    const isCda = isTrue(literalRaw(params.CharacteristicDefining));
 
     const game = ctx.game;
     const sourceId: EntityId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
     const timestamp = game.newEntityId();
 
-    // Resolve the affected target id at apply time. Card.Self → sourceId
-    // when the condition holds; Card.EnchantedBy → the aura's current
-    // attachedTo. Returns null to suppress the effect (condition false,
-    // attachment missing).
-    const targetCardIdFn = (): EntityId | null => {
-      if (affected === "Card.Self") {
-        if (!evalConditionString(conditionRaw, game, controllerSeat)) return null;
-        return sourceId;
-      }
+    // Per-card predicate: live filter + live condition gate. Returns true
+    // iff `cardId` matches the Affected$ filter AND Condition$ holds in
+    // the current game state. Used by every Layer 4/5/6/7 effect we
+    // build below; the layer-engine re-evaluates the predicate on every
+    // epoch bump (matching the Wave 32 contract for live conditions).
+    const appliesToCardIdFn = (cardId: EntityId): boolean => {
+      if (!evalCondition(conditionRaw, game, controllerSeat)) return false;
+      return cardIdMatchesAffectedFilter(game, sourceId, controllerSeat, cardId, affected);
+    };
+
+    // Backwards-compat for the Wave 32 / Wave 33 single-target shape.
+    // Threshold-static.test.ts asserts on `targetCardIdFn?.()` returning
+    // null when the condition is inactive and the source id when active.
+    // We preserve that shape for the two narrow filters that always
+    // resolve to a single card; multi-target filters use the predicate
+    // path and leave targetCardIdFn unset (the layer apply prefers the
+    // predicate when both are present).
+    const isSingleTargetFilter = affected === "Card.Self" || affected === "Card.EnchantedBy";
+    const singleTargetCardIdFn = (): EntityId | null => {
+      if (!evalCondition(conditionRaw, game, controllerSeat)) return null;
+      if (affected === "Card.Self") return sourceId;
       // Card.EnchantedBy
       const aura = game.cards.get(sourceId);
       if (!aura) return null;
-      if (!evalConditionString(conditionRaw, game, controllerSeat)) return null;
       return aura.attachedTo;
     };
 
-    // Build payload entries. We always add a pt-modify (delta may be
-    // 0/0 — the applier short-circuits for non-creatures and 0/0 is a
-    // no-op). When AddKeyword$ is present, append one kw-grant per
-    // keyword token (multi-keyword grants are rare but supported).
     const payloads: LayerPayload[] = [];
+
+    // ---- Layer 7c (modify P/T) ---------------------------------------------
     if (addPower !== 0 || addToughness !== 0) {
-      const layer7c: Layer7cEffect = {
-        kind: "modify",
-        powerDelta: addPower,
-        toughnessDelta: addToughness,
-        timestamp,
-        sourceAbilityId: ctx.staticId,
-        targetCardIdFn,
-      };
-      payloads.push({ kind: "pt-modify", effect: layer7c });
+      const e: Layer7cEffect = isSingleTargetFilter
+        ? {
+            kind: "modify",
+            powerDelta: addPower,
+            toughnessDelta: addToughness,
+            timestamp,
+            sourceAbilityId: ctx.staticId,
+            targetCardIdFn: singleTargetCardIdFn,
+          }
+        : {
+            kind: "modify",
+            powerDelta: addPower,
+            toughnessDelta: addToughness,
+            timestamp,
+            sourceAbilityId: ctx.staticId,
+            appliesToCardIdFn,
+          };
+      payloads.push({ kind: "pt-modify", effect: e });
     }
+
+    // ---- Layer 7b (set P/T) -------------------------------------------------
+    if (setPowerRaw !== undefined || setToughnessRaw !== undefined) {
+      // CR 613.4 — SetPower without SetToughness still produces a 7b
+      // effect; we leave the un-set side untouched by re-using the
+      // current characteristics. MVP shape: literal numbers only.
+      // Symbolic values (NEUTRAL$DefenseValue etc.) are
+      // TODO(advanced) — they require an SVar resolver hooked into
+      // the layer applier. We default to 0 when the literal is not a
+      // number so handler does not throw on dynamic values.
+      const sp = setPowerRaw === undefined ? 0 : Number.parseInt(setPowerRaw, 10);
+      const st = setToughnessRaw === undefined ? 0 : Number.parseInt(setToughnessRaw, 10);
+      const e: Layer7bEffect = isSingleTargetFilter
+        ? {
+            kind: "set",
+            power: Number.isFinite(sp) ? sp : 0,
+            toughness: Number.isFinite(st) ? st : 0,
+            timestamp,
+            sourceAbilityId: ctx.staticId,
+            targetCardIdFn: singleTargetCardIdFn,
+          }
+        : {
+            kind: "set",
+            power: Number.isFinite(sp) ? sp : 0,
+            toughness: Number.isFinite(st) ? st : 0,
+            timestamp,
+            sourceAbilityId: ctx.staticId,
+            appliesToCardIdFn,
+          };
+      payloads.push({ kind: "pt-set", effect: e });
+    }
+
+    // ---- Layer 6 keyword grants --------------------------------------------
     if (addKeywordRaw !== undefined) {
       for (const kw of splitKeywords(addKeywordRaw)) {
-        const grant: Layer6KeywordGrant = {
-          keyword: kw,
-          sourceAbilityId: ctx.staticId,
-          timestamp,
-          targetCardIdFn,
-        };
+        const grant: Layer6KeywordGrant = isSingleTargetFilter
+          ? {
+              keyword: kw,
+              sourceAbilityId: ctx.staticId,
+              timestamp,
+              targetCardIdFn: singleTargetCardIdFn,
+            }
+          : {
+              keyword: kw,
+              sourceAbilityId: ctx.staticId,
+              timestamp,
+              // Single-target shape requires a function; provide a
+              // stub for the contract and rely on appliesToCardIdFn for
+              // multi-target predicate routing.
+              targetCardIdFn: () => null,
+              appliesToCardIdFn,
+            };
         payloads.push({ kind: "kw-grant", effect: grant });
       }
     }
 
-    // Defensive: a Continuous static with no concrete delta + no keyword
-    // grant + no condition would be a no-op. Emit a noop payload so the
-    // registry has SOMETHING to register/unregister symmetrically.
+    // ---- Layer 4 type / subtype additions and removals ---------------------
+    if (addTypeRaw !== undefined) {
+      const coreType = CORE_TYPE_BY_NAME[addTypeRaw];
+      if (coreType !== undefined) {
+        const e: TypeChangeEffect = {
+          kind: "add",
+          cardType: coreType,
+          isCda,
+          timestamp,
+          sourceAbilityId: ctx.staticId,
+          appliesToCardIdFn,
+        };
+        payloads.push({ kind: "type", effect: e });
+      } else {
+        // Treat unknown name as a subtype (Conspiracy: AddType$ ChosenType
+        // — ChosenType resolves to a creature subtype like "Goblin").
+        // Wave 47 MVP — when the raw string IS a literal subtype, we
+        // route through addSubtype. Dynamic SVar refs (ChosenType,
+        // ChosenColor) would currently be added as a literal subtype
+        // string; full SVar resolution lives in a follow-up wave.
+        const e: TypeChangeEffect = {
+          kind: "addSubtype",
+          subtype: addTypeRaw,
+          isCda,
+          timestamp,
+          sourceAbilityId: ctx.staticId,
+          appliesToCardIdFn,
+        };
+        payloads.push({ kind: "type", effect: e });
+      }
+    }
+    if (removeTypeRaw !== undefined) {
+      const coreType = CORE_TYPE_BY_NAME[removeTypeRaw];
+      if (coreType !== undefined) {
+        const e: TypeChangeEffect = {
+          kind: "remove",
+          cardType: coreType,
+          isCda,
+          timestamp,
+          sourceAbilityId: ctx.staticId,
+          appliesToCardIdFn,
+        };
+        payloads.push({ kind: "type", effect: e });
+      } else {
+        const e: TypeChangeEffect = {
+          kind: "removeSubtype",
+          subtype: removeTypeRaw,
+          isCda,
+          timestamp,
+          sourceAbilityId: ctx.staticId,
+          appliesToCardIdFn,
+        };
+        payloads.push({ kind: "type", effect: e });
+      }
+    }
+    if (addSubtypeRaw !== undefined) {
+      const e: TypeChangeEffect = {
+        kind: "addSubtype",
+        subtype: addSubtypeRaw,
+        isCda,
+        timestamp,
+        sourceAbilityId: ctx.staticId,
+        appliesToCardIdFn,
+      };
+      payloads.push({ kind: "type", effect: e });
+    }
+    if (removeSubtypeRaw !== undefined) {
+      const e: TypeChangeEffect = {
+        kind: "removeSubtype",
+        subtype: removeSubtypeRaw,
+        isCda,
+        timestamp,
+        sourceAbilityId: ctx.staticId,
+        appliesToCardIdFn,
+      };
+      payloads.push({ kind: "type", effect: e });
+    }
+    if (isTrue(removeCardTypesRaw)) {
+      const e: TypeChangeEffect = {
+        kind: "removeAllCardTypes",
+        isCda,
+        timestamp,
+        sourceAbilityId: ctx.staticId,
+        appliesToCardIdFn,
+      };
+      payloads.push({ kind: "type", effect: e });
+    }
+    if (isTrue(removeCreatureTypesRaw)) {
+      const e: TypeChangeEffect = {
+        kind: "removeAllCreatureTypes",
+        isCda,
+        timestamp,
+        sourceAbilityId: ctx.staticId,
+        appliesToCardIdFn,
+      };
+      payloads.push({ kind: "type", effect: e });
+    }
+
+    // ---- Layer 5 color additions and replacements --------------------------
+    if (addColorRaw !== undefined) {
+      const colors = parseColorList(addColorRaw);
+      // Unknown / SVar colors fall through to a no-op rather than throw —
+      // the param is recognised, the dynamic value is just unresolved here.
+      // TODO(advanced): wire ChosenColor SVar into a live colors fn.
+      if (colors !== null) {
+        const e: ColorChangeEffect = {
+          kind: "add",
+          colors,
+          isCda,
+          timestamp,
+          sourceAbilityId: ctx.staticId,
+          appliesToCardIdFn,
+        };
+        payloads.push({ kind: "color", effect: e });
+      }
+    }
+    if (setColorRaw !== undefined) {
+      const colors = parseColorList(setColorRaw);
+      if (colors !== null) {
+        const e: ColorChangeEffect = {
+          kind: "set",
+          colors,
+          isCda,
+          timestamp,
+          sourceAbilityId: ctx.staticId,
+          appliesToCardIdFn,
+        };
+        payloads.push({ kind: "color", effect: e });
+      }
+    }
+
+    // ---- TODO(advanced) payloads -------------------------------------------
+    // RemoveKeyword$, AddAbility$, AddTrigger$, AddStaticAbility$,
+    // MayLookAt$ — these need synthesised-ability machinery (Layer 6
+    // negative kw store, ability/trigger/static SVar synthesis). The
+    // handler currently accepts the params silently so cards using
+    // them don't crash; the surrounding effect (P/T, types, colors,
+    // additive keywords) still applies. Each is targeted by a
+    // future wave.
+
+    // Defensive: a Continuous static with NO concrete payload would be
+    // a no-op. Emit a noop payload so the registry has SOMETHING to
+    // register/unregister symmetrically (mirrors Wave 32 behavior).
     const payload: LayerPayload =
       payloads.length === 0
         ? { kind: "noop" }

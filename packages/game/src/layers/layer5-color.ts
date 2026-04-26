@@ -18,6 +18,7 @@ import type { Characteristics, EntityId } from "@mtg-forge-ts/core";
 import { ColorSet } from "@mtg-forge-ts/core";
 import { type DepNode, resolveDependencyOrder } from "./dependency-resolver.js";
 
+// Wave 47 — Layer 5 carries optional per-card scoping. See Layer 4 doc-comment.
 export type ColorChangeEffect =
   | {
       readonly kind: "set";
@@ -26,6 +27,7 @@ export type ColorChangeEffect =
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
       readonly dependsOn?: readonly string[];
+      readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
     }
   | {
       readonly kind: "add";
@@ -34,6 +36,7 @@ export type ColorChangeEffect =
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
       readonly dependsOn?: readonly string[];
+      readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
     }
   | {
       readonly kind: "remove";
@@ -42,6 +45,7 @@ export type ColorChangeEffect =
       readonly timestamp: number;
       readonly sourceAbilityId: EntityId | null;
       readonly dependsOn?: readonly string[];
+      readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
     };
 
 const subtract = (a: ColorSet, b: ColorSet): ColorSet => ColorSet.fromJSON(a.toJSON() & ~b.toJSON());
@@ -65,9 +69,18 @@ const toDepNodes = <
     raw: e,
   }));
 
-export const applyLayer5Color = (target: Characteristics, effects: readonly ColorChangeEffect[]): void => {
-  const cdas = toDepNodes(effects.filter((e) => e.isCda));
-  const normals = toDepNodes(effects.filter((e) => !e.isCda));
+export const applyLayer5Color = (
+  target: Characteristics,
+  effects: readonly ColorChangeEffect[],
+  targetCardId?: EntityId | null,
+): void => {
+  // Wave 47 — per-card scoping for `Affected$ <filter>` continuous statics.
+  const scoped =
+    targetCardId === undefined || targetCardId === null
+      ? effects
+      : effects.filter((e) => e.appliesToCardIdFn === undefined || e.appliesToCardIdFn(targetCardId));
+  const cdas = toDepNodes(scoped.filter((e) => e.isCda));
+  const normals = toDepNodes(scoped.filter((e) => !e.isCda));
   const ordered: ColorChangeEffect[] = [
     ...resolveDependencyOrder(cdas).map((n) => n.raw as ColorChangeEffect),
     ...resolveDependencyOrder(normals).map((n) => n.raw as ColorChangeEffect),

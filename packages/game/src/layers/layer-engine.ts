@@ -116,7 +116,10 @@ export class LayerEngine {
     if (this.keywordGrants.length === 0) return new Set();
     const out = new Set<string>();
     for (const g of this.keywordGrants) {
-      if (g.targetCardIdFn() !== cardId) continue;
+      // Wave 47 — multi-target predicate wins when set (broadcast).
+      if (g.appliesToCardIdFn !== undefined) {
+        if (!g.appliesToCardIdFn(cardId)) continue;
+      } else if (g.targetCardIdFn() !== cardId) continue;
       // Inline normalisation to avoid an extra import on the hot path.
       const norm = g.keyword
         .trim()
@@ -141,11 +144,11 @@ export class LayerEngine {
     applyFaceDownOverride(chars, card.faceDown);
     applyLayer2Control();
     applyLayer3Text(chars, this.textSubstitutions);
-    applyLayer4Type(chars, this.typeEffects);
-    applyLayer5Color(chars, this.colorEffects);
+    applyLayer4Type(chars, this.typeEffects, id);
+    applyLayer5Color(chars, this.colorEffects, id);
     applyLayer6Ability(chars, id, this.abilityEffects);
     applyLayer7a(chars, this.pt7a);
-    applyLayer7b(chars, this.pt7b);
+    applyLayer7b(chars, this.pt7b, id);
     applyLayer7c(chars, this.pt7c, id);
     applyLayer7d(chars, this.pt7d);
     applyLayer7e(chars, this.pt7e);

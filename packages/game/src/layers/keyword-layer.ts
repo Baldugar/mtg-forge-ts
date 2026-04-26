@@ -31,6 +31,13 @@ export interface Layer6KeywordGrant {
    * conditions re-check on every epoch bump.
    */
   readonly targetCardIdFn: () => EntityId | null;
+  /**
+   * Wave 47 — multi-target alternative for `Affected$ Creature.YouCtrl`
+   * and similar broadcasts. When set, the grant applies to a card iff the
+   * predicate returns true. Takes precedence over `targetCardIdFn` if
+   * both are present (broadcast supersedes single-target).
+   */
+  readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
 }
 
 /**
@@ -55,7 +62,10 @@ export const normalizeKeywordToken = (raw: string): string =>
 export const grantsForCard = (cardId: EntityId, grants: readonly Layer6KeywordGrant[]): Set<string> => {
   const out = new Set<string>();
   for (const g of grants) {
-    if (g.targetCardIdFn() !== cardId) continue;
+    // Wave 47 — multi-target predicate (broadcast) takes precedence.
+    if (g.appliesToCardIdFn !== undefined) {
+      if (!g.appliesToCardIdFn(cardId)) continue;
+    } else if (g.targetCardIdFn() !== cardId) continue;
     out.add(normalizeKeywordToken(g.keyword));
   }
   return out;

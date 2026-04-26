@@ -37,6 +37,23 @@ export interface Layer7bEffect {
   readonly timestamp: number;
   readonly sourceAbilityId: EntityId | null;
   readonly dependsOn?: readonly string[];
+  /**
+   * Wave 47 — Continuous-static SetPower/SetToughness on `Card.Self`. When
+   * set, applyLayer7b applies the effect only when its function returns
+   * the id of the card being computed. Returning null suppresses (Condition
+   * gating, no live source). Mirrors the 7c shape; left undefined for
+   * effects that should apply globally (the SP2 baseline).
+   */
+  readonly targetCardIdFn?: () => EntityId | null;
+  /**
+   * Wave 47 — multi-target alternative for `Affected$ Creature.YouCtrl` and
+   * similar broadcasts. When set, applyLayer7b applies the effect to a
+   * card iff the predicate returns true. Takes precedence over
+   * `targetCardIdFn` when both are present (a multi-target effect always
+   * wins over a single-target one because the broadcast superset includes
+   * the single id).
+   */
+  readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
 }
 
 export interface Layer7cEffect {
@@ -60,6 +77,14 @@ export interface Layer7cEffect {
    * leak the original target.
    */
   readonly targetCardIdFn?: () => EntityId | null;
+  /**
+   * Wave 47 — multi-target predicate for `Affected$ Creature.YouCtrl` and
+   * similar broadcasts. When set, applyLayer7c applies to any card for
+   * which the predicate returns true. Takes precedence over
+   * `targetCardIdFn` if both are present (broadcast supersedes
+   * single-target).
+   */
+  readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
 }
 
 export type Layer7dEffect =
@@ -129,8 +154,24 @@ export const applyLayer7a = (c: Characteristics, effects: readonly Layer7aEffect
   }
 };
 
-export const applyLayer7b = (c: Characteristics, effects: readonly Layer7bEffect[]): void => {
-  const ordered = resolveDependencyOrder(toDepNodes(effects)).map((n) => n.raw as Layer7bEffect);
+export const applyLayer7b = (
+  c: Characteristics,
+  effects: readonly Layer7bEffect[],
+  targetCardId?: EntityId | null,
+): void => {
+  // Wave 47 — Layer 7b accepts an optional `targetCardId` for the same
+  // reason 7c does: SetPower/SetToughness from Continuous statics needs
+  // per-card scoping. Effects without a targetCardIdFn / appliesToCardIdFn
+  // remain global (the SP2 default).
+  const scoped =
+    targetCardId === undefined || targetCardId === null
+      ? effects
+      : effects.filter((e) => {
+          if (e.appliesToCardIdFn !== undefined) return e.appliesToCardIdFn(targetCardId);
+          if (e.targetCardIdFn === undefined) return true; // global
+          return e.targetCardIdFn() === targetCardId;
+        });
+  const ordered = resolveDependencyOrder(toDepNodes(scoped)).map((n) => n.raw as Layer7bEffect);
   for (const e of ordered) {
     c.power = safePt(e.power);
     c.toughness = safePt(e.toughness);
@@ -143,9 +184,11 @@ export const applyLayer7c = (
   targetCardId?: EntityId | null,
 ): void => {
   const scoped =
-    targetCardId === undefined
+    targetCardId === undefined || targetCardId === null
       ? effects
       : effects.filter((e) => {
+          // Wave 47 — multi-target predicate wins when set (broadcast).
+          if (e.appliesToCardIdFn !== undefined) return e.appliesToCardIdFn(targetCardId);
           if (e.targetCardIdFn === undefined) return true; // global
           return e.targetCardIdFn() === targetCardId;
         });
