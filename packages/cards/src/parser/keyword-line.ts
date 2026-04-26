@@ -107,6 +107,9 @@ const TYPE_KEYWORDS: ReadonlySet<string> = new Set([
   "offering",
   "partner_with",
   "typecycling",
+  // Wave 39 — Sweep names a land subtype as the additional-cost return
+  // target (e.g. K:Sweep:Plains).
+  "sweep",
 ]);
 
 // Keywords with two parameter slots — `K:Suspend:N:cost` parses to

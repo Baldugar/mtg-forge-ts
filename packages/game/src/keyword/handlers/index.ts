@@ -84,4 +84,22 @@ export * from "./recover-keyword.js";
 export * from "./scavenge-keyword.js";
 export * from "./reinforce-keyword.js";
 export * from "./strive-keyword.js";
+// Wave 39 — Bushido / Outlast / Provoke / Skulk / Friends Forever /
+// Tempting Offer / Ripple / Sweep / Companion. Mixed combat / cast /
+// activated keyword batch closing roughly 70 cards. Bushido (block-
+// trigger pump), Outlast (Battlefield-zone sorcery activated), Provoke
+// (attacks-trigger force-block), Ripple (SpellCast reveal), Sweep
+// (SpellCast type-slot stamp). Skulk, Friends Forever, Tempting Offer,
+// and Companion stamp the keyword + carry TODO(advanced) tails for the
+// downstream block-restriction / deck-validation / per-opponent-confirm
+// / sideboard plumbing.
+export * from "./bushido-keyword.js";
+export * from "./outlast-keyword.js";
+export * from "./provoke-keyword.js";
+export * from "./skulk-keyword.js";
+export * from "./friends-forever-keyword.js";
+export * from "./tempting-offer-keyword.js";
+export * from "./ripple-keyword.js";
+export * from "./sweep-keyword.js";
+export * from "./companion-keyword.js";
 export * from "./flag-keyword.js";

@@ -223,6 +223,16 @@ const META: readonly KeywordMeta[] = [
   { id: "may_effect_from_opening_deck", displayName: "MayEffectFromOpeningDeck", multipleRedundant: false },
   // Synthetic keyword — catches any keyword text the parser does not
   // recognise canonically.  Full semantics are deferred to future waves.
+  // Wave 39 — non-canonical aliases used by the engine to expose the
+  // mechanic to KeywordHandler bindings even where Forge's printed text
+  // doesn't carry a separate K: line. friends_forever is the "Partner —
+  // Friends forever" variant (CR 702.137); tempting_offer / sweep are
+  // mode names lifted from Forge's `Mode$ TemptingOffer` triggers / the
+  // "Sweep" cycle of additional-cost spells (Saviors of Kamigawa) so
+  // Wave 39's keyword handlers can register against a stable id.
+  { id: "friends_forever", displayName: "Friends forever", multipleRedundant: true },
+  { id: "tempting_offer", displayName: "Tempting offer", multipleRedundant: false },
+  { id: "sweep", displayName: "Sweep", multipleRedundant: false },
   { id: "freeform", displayName: "Freeform", multipleRedundant: false },
 ] as const satisfies readonly KeywordMeta[];
 
