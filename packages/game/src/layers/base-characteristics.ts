@@ -156,5 +156,12 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     base.types.add(CARDTYPE_CREATURE);
   }
 
+  // Wave 28 — Station (CR 718). Mirrors Crew: a non-creature Spacecraft
+  // becomes a creature until end of turn when stationed. Same flag/cleanup
+  // pattern as crewedUntilEot.
+  if (card.stationedUntilEot === true) {
+    base.types.add(CARDTYPE_CREATURE);
+  }
+
   return base;
 };

@@ -158,6 +158,12 @@ export class Card {
   // change types.
   crewedUntilEot?: boolean;
   saddledUntilEot?: boolean;
+  // Wave 28 — Station (CR 718, "Spaceship — The Final Frontier"). A non-
+  // creature Spacecraft becomes a creature until end of turn when it is
+  // "stationed" (mirror of Crew). The flag is set by StationEffect and
+  // cleared by an untilEndOfTurn ContinuousEffect cleanup hook.
+  // deriveBaseCharacteristics adds CardType.Creature when this is true.
+  stationedUntilEot?: boolean;
   // Wave 26 — Suspend (CR 702.61). When the suspend special-action exiles
   // the card from hand, `suspendedCounters` is stamped to N (the time-counter
   // count) and `hasteFromSuspend` is set when the eventual free-cast resolves

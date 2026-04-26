@@ -495,7 +495,7 @@ export type DecisionRequest =
       // (Crew) or Mount (Saddle) being activated is identified by
       // `sourceCardId`; `mode` distinguishes which keyword fired.
       readonly kind: "chooseCrewSaddleCreatures";
-      readonly mode: "crew" | "saddle";
+      readonly mode: "crew" | "saddle" | "station";
       readonly playerSeat: PlayerSeat;
       readonly sourceCardId: EntityId;
       readonly requiredPower: number;

@@ -23,4 +23,5 @@ export * from "./echo-keyword.js";
 export * from "./cumulative-upkeep-keyword.js";
 export * from "./mutate-keyword.js";
 export * from "./evolve-keyword.js";
+export * from "./station-keyword.js";
 export * from "./flag-keyword.js";
