@@ -12,3 +12,4 @@ import "./selectors/count.js";
 import "./selectors/sum-aggregates.js";
 import "./selectors/targeted.js";
 import "./selectors/arithmetic.js";
+import "./selectors/domain.js";

@@ -126,10 +126,10 @@ export const buildAmountResolver = (
       }
       return v;
     } catch {
-      // SVar evaluator throws on unsupported expressions (e.g.
-      // Count$Domain — Wave 11 does not implement Domain selector).
-      // Falling back to 0 keeps the cost-mod inert for unsupported
-      // expressions instead of crashing the cast pipeline.
+      // SVar evaluator throws on unsupported expressions. Wave 12 added
+      // Count$Domain support; remaining unsupported forms (e.g. Count$
+      // <Valid<...>>) still fall through to 0 so the cost-mod stays inert
+      // instead of crashing the cast pipeline.
       return 0;
     }
   };
