@@ -23,7 +23,7 @@ import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
-import { lookupReplaceWithAbility } from "./replace-with-svar.js";
+import { lookupReplaceWithAbility, runReplaceWithAbilitySync } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -67,7 +67,12 @@ export class MillReplacement extends ReplacementHandler {
         if (replaceWithKey !== undefined) {
           const game = gameUnknown as Game;
           const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
-          if (ability !== null) return null;
+          if (ability !== null) {
+            // Wave 29 — execute the substituted mill-redirect synchronously
+            // (e.g. exile from library instead of mill).
+            runReplaceWithAbilitySync(game, sourceCardId, controllerSeat, ability);
+            return null;
+          }
         }
         return intent;
       },

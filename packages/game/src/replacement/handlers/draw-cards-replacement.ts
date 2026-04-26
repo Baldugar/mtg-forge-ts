@@ -26,7 +26,7 @@ import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
-import { lookupReplaceWithAbility } from "./replace-with-svar.js";
+import { lookupReplaceWithAbility, runReplaceWithAbilitySync } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -67,15 +67,21 @@ export class DrawCardsReplacement extends ReplacementHandler {
 
       apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
-        // ReplaceWith$ <SVar> — Wave 17b: when the SVar dereferences to an
-        // ability on the source card, treat the canonical draw as
-        // replaced (return null). Wave 18 will execute the alternative
-        // ability synchronously here; for now the ability fires through
-        // the parent ability path that registered this replacement.
+        // ReplaceWith$ <SVar> — Wave 17b looked up the SVar; Wave 29 wires
+        // the synchronous execution. When the SVar dereferences to an
+        // ability on the source card, run its resolver in place (drain
+        // the generator under the apply() boundary) and treat the
+        // canonical draw as replaced (return null). The runner mirrors
+        // GameLossReplacement's direct mutation but generalised across
+        // any registered effect handler. Decision-yielding effects are
+        // skipped — see runReplaceWithAbilitySync's contract.
         if (replaceWithKey !== undefined) {
           const game = gameUnknown as Game;
           const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
-          if (ability !== null) return null;
+          if (ability !== null) {
+            runReplaceWithAbilitySync(game, sourceCardId, controllerSeat, ability);
+            return null;
+          }
         }
         return intent;
       },
