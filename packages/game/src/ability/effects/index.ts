@@ -116,3 +116,5 @@ export * from "./forage.js";
 export * from "./suspend.js";
 // Wave 29 — Adapt activated-ability resolver (CR 702.139).
 export * from "./adapt.js";
+// Wave 30 — Ninjutsu activated-ability resolver (CR 702.49).
+export * from "./ninjutsu.js";

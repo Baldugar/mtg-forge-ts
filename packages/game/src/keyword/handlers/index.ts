@@ -31,4 +31,15 @@ export * from "./station-keyword.js";
 export * from "./adapt-keyword.js";
 export * from "./renown-keyword.js";
 export * from "./mentor-keyword.js";
+// Wave 30 — Storm / Ninjutsu / Graft / Modular / Living Weapon / Riot /
+// Rebound. Each is a self-contained keyword handler that registers ETB,
+// LTB, SpellCast, or upkeep triggers + (for Ninjutsu) a synthesized
+// activated SpellAbility.
+export * from "./storm-keyword.js";
+export * from "./ninjutsu-keyword.js";
+export * from "./graft-keyword.js";
+export * from "./modular-keyword.js";
+export * from "./living-weapon-keyword.js";
+export * from "./riot-keyword.js";
+export * from "./rebound-keyword.js";
 export * from "./flag-keyword.js";
