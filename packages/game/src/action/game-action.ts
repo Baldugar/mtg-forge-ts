@@ -970,14 +970,26 @@ export class GameAction {
           }
         }
       },
-      (final) =>
-        mkEvent("DamageDealt", game.turn, game.phase, {
+      (final) => {
+        // Wave 59 — track combat damage dealt to players this turn,
+        // keyed by the source card's controller. Backs the Freerunning
+        // alt-cost availability gate. Resets on TurnEnded.
+        if (final.isCombat && final.amount > 0 && final.targetKind === "player") {
+          const sourceCard = game.cards.get(final.sourceId);
+          if (sourceCard) {
+            const seat = sourceCard.controllerSeat;
+            const prev = game.flags.combatDamageDealtThisTurn.get(seat) ?? 0;
+            game.flags.combatDamageDealtThisTurn.set(seat, prev + final.amount);
+          }
+        }
+        return mkEvent("DamageDealt", game.turn, game.phase, {
           sourceId: final.sourceId,
           targetKind: final.targetKind,
           targetId: final.targetId,
           amount: final.amount,
           isCombat: final.isCombat,
-        }),
+        });
+      },
     );
     // Audit I-1 — route damage-to-player life deduction through the full
     // replacement pipeline so prevention replacements (e.g., "if you would

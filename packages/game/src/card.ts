@@ -504,6 +504,59 @@ export class Card {
   emergeCast: boolean | undefined = undefined;
   miracleCast: boolean | undefined = undefined;
   miracleEligible: boolean | undefined = undefined;
+  // Wave 59 — Affinity + final niche keyword cleanup batch 3 slots. Each
+  // slot is set/cleared by its corresponding KeywordHandler / AltCost.
+  // All `T | undefined = undefined` so handlers can clear via `= undefined`
+  // (biome no-delete + exactOptionalPropertyTypes).
+  //
+  //   affinityFilter   : K:Affinity:<filter> — type-name filter string used
+  //                      by stepDetermineTotalCost to count matching
+  //                      permanents the controller controls and reduce
+  //                      generic cost by that count. CR 702.40.
+  //   unearthCost      : K:Unearth:<cost> — alt-cost from graveyard.
+  //   unearthCast      : true if cast via Unearth (haste UEoT + EoT exile).
+  //   readAhead        : K:Read ahead — Saga ETB modification flag.
+  //   moreThanMeetsTheEyeCost : K:More Than Meets the Eye:<cost> — alt-face
+  //                      cast cost.
+  //   forMirrodin      : K:For Mirrodin — ETB-trigger marker.
+  //   jobSelectChoices : K:Job select:choices — comma-separated mode list.
+  //   spectacleCost    : K:Spectacle:<cost> — alt-cost when opp lost life.
+  //   freerunningCost  : K:Freerunning:<cost> — alt-cost after combat dmg.
+  //   frenzyAmount     : K:Frenzy:N — attacks-unblocked +N/+0 UEoT.
+  //   auraSwap         : K:Aura swap — activated SA marker.
+  //   ascend           : K:Ascend — city's-blessing trigger marker.
+  //   decayed          : K:Decayed — replacement effect / sacrifice marker.
+  //   compleated       : K:Compleated — phyrexian-mana cost variant marker.
+  //   compleatedPaidLife : true if Φ paid as 2 life (PW enters with -2).
+  //   doubleTeam       : K:Double team — cast-from-hand-trigger marker.
+  //   doubleTeamCopyRequested : true if double-team triggered this cast.
+  //   visit            : K:Visit — attraction-visit-trigger marker.
+  //   webSlingingCost  : K:Web-slinging:<cost> — bonus-card alt-cost.
+  //   firebendingCost  : K:Firebending:<cost> — bonus-card alt-cost.
+  //   enlist           : K:Enlist — attacks-trigger marker.
+  //   ravenous         : K:Ravenous — cast-with-X +1/+1 marker.
+  affinityFilter: string | undefined = undefined;
+  unearthCost: string | undefined = undefined;
+  unearthCast: boolean | undefined = undefined;
+  readAhead: boolean | undefined = undefined;
+  moreThanMeetsTheEyeCost: string | undefined = undefined;
+  forMirrodin: boolean | undefined = undefined;
+  jobSelectChoices: string | undefined = undefined;
+  spectacleCost: string | undefined = undefined;
+  freerunningCost: string | undefined = undefined;
+  frenzyAmount: number | undefined = undefined;
+  auraSwap: string | undefined = undefined;
+  ascend: boolean | undefined = undefined;
+  decayed: boolean | undefined = undefined;
+  compleated: boolean | undefined = undefined;
+  compleatedPaidLife: boolean | undefined = undefined;
+  doubleTeam: boolean | undefined = undefined;
+  doubleTeamCopyRequested: boolean | undefined = undefined;
+  visit: boolean | undefined = undefined;
+  webSlingingCost: string | undefined = undefined;
+  firebendingCost: string | undefined = undefined;
+  enlist: boolean | undefined = undefined;
+  ravenous: boolean | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

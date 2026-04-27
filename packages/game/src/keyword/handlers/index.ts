@@ -180,4 +180,29 @@ export * from "./sneak-keyword.js";
 export * from "./transfigure-keyword.js";
 export * from "./living-metal-keyword.js";
 export * from "./dethrone-keyword.js";
+// Wave 59 — Affinity (cost-mod static) + final niche keyword cleanup
+// batch 3: Unearth, Read ahead, More Than Meets the Eye, For Mirrodin,
+// Job select, Spectacle, Freerunning, Frenzy, Aura swap, Ascend, Decayed,
+// Compleated, Double team, Visit, Web-slinging, Firebending, Enlist,
+// Ravenous. Spectacle / Freerunning / Unearth additionally register
+// AltCosts; the rest are pure keyword stamps + (where appropriate)
+// trigger / static-effect synthesis.
+export * from "./affinity-keyword.js";
+export * from "./unearth-keyword.js";
+export * from "./read-ahead-keyword.js";
+export * from "./more-than-meets-the-eye-keyword.js";
+export * from "./for-mirrodin-keyword.js";
+export * from "./job-select-keyword.js";
+export * from "./spectacle-keyword.js";
+export * from "./freerunning-keyword.js";
+export * from "./frenzy-keyword.js";
+export * from "./aura-swap-keyword.js";
+export * from "./ascend-keyword.js";
+export * from "./decayed-keyword.js";
+export * from "./compleated-keyword.js";
+export * from "./double-team-keyword.js";
+export * from "./visit-keyword.js";
+export * from "./web-slinging-keyword.js";
+export * from "./enlist-keyword.js";
+export * from "./ravenous-keyword.js";
 export * from "./flag-keyword.js";

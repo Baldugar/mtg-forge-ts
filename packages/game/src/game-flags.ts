@@ -102,6 +102,12 @@ export interface GameFlags {
   // Wave 51 — per-game spell cast counter (Count$YouCastThisGame). Never
   // resets across turns; only reset on game start.
   spellsCastThisGame: Map<PlayerSeat, number>;
+  // Wave 59 — per-controller "combat damage dealt by your creatures this
+  // turn" tracker, backing the Freerunning alt-cost availability gate
+  // ("you may cast this spell for its freerunning cost if a player was
+  // dealt combat damage by one of your creatures this turn"). Reset on
+  // TurnEnded by phase-handler.
+  combatDamageDealtThisTurn: Map<PlayerSeat, number>;
   // Wave 56 — side-channel for the ReplaceEffect family. When a parent
   // replacement's apply() runs an SVar that resolves to a `DB$ Replace*`
   // effect handler (ReplaceEffect / ReplaceDamage / ReplaceMana /
@@ -161,6 +167,8 @@ export const createDefaultFlags = (): GameFlags => ({
   leftGraveyardThisTurn: new Set(),
   creaturesDiedThisTurn: 0,
   spellsCastThisGame: new Map(),
+  // Wave 59 — Freerunning availability tracker.
+  combatDamageDealtThisTurn: new Map(),
   // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
   activeReplacementIntent: null,
 });

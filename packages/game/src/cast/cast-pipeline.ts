@@ -928,6 +928,15 @@ export class CastPipeline {
       }
     }
 
+    // Wave 59 — Affinity (CR 702.40) is wired via a per-card cost-mod
+    // static effect registered by AffinityKeywordHandler.activate(). The
+    // static's filter narrows to the source card via `Card.Self`; the
+    // dynamic generic-delta closure counts matching permanents the
+    // controller controls and returns `-count`. The reduction therefore
+    // flows through the same `gatherCostModsFor → applyCostMods` path
+    // used by Wave 6's ReduceCost / Wave 11 cost-mod runtime, no
+    // additional cast-pipeline plumbing needed here.
+
     ctx.totalCost = {
       base: striveAdjusted,
       modIds: costMods.map((s) => s.id),

@@ -115,6 +115,8 @@ export class PhaseHandler {
     game.flags.countersRemovedThisTurn = 0;
     game.flags.leftGraveyardThisTurn.clear();
     game.flags.creaturesDiedThisTurn = 0;
+    // Wave 59 — Freerunning availability tracker resets at TurnEnded.
+    game.flags.combatDamageDealtThisTurn.clear();
     // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
     // spell-cast counts into lastTurnSpellsCast + record whose turn just
     // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the
