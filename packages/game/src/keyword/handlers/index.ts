@@ -140,4 +140,22 @@ export * from "./disguise-keyword.js";
 // line; per-level conditional triggers/statics are TODO(advanced).
 export * from "./chapter-keyword.js";
 export * from "./class-keyword.js";
+// Wave 57 — Niche keyword cleanup batch 1: ~200 cards. 11 keywords
+// un-stubbed from FlagKeywordHandler fallthrough — Annihilator,
+// Battle cry, Exalted, Prowess, Extort, Melee (combat / SpellCast
+// triggers), Bloodthirst, Fabricate (ETB triggers), Cipher (encode +
+// combat-damage cast-copy), Awaken (kicker-style optional-cost +
+// land-animate), and Buyback (ships as an AltCost in altcost/buyback.ts;
+// no separate keyword handler — FlagKeywordHandler stamps the keyword
+// set entry from the keyword line).
+export * from "./annihilator-keyword.js";
+export * from "./battle-cry-keyword.js";
+export * from "./exalted-keyword.js";
+export * from "./prowess-keyword.js";
+export * from "./extort-keyword.js";
+export * from "./melee-keyword.js";
+export * from "./bloodthirst-keyword.js";
+export * from "./fabricate-keyword.js";
+export * from "./cipher-keyword.js";
+export * from "./awaken-keyword.js";
 export * from "./flag-keyword.js";

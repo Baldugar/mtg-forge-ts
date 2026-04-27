@@ -431,6 +431,23 @@ export class Card {
   // enough for the SBA sacrifice path.
   sagaChapterCount: number | undefined = undefined;
   sagaChapterSVars: readonly string[] | undefined = undefined;
+  // Wave 57 — Cipher (CR 702.97). Stamped on a creature when an encoded
+  // instant/sorcery is "ciphered" onto it; mirrors Champion's bidirectional
+  // link. The encoded card carries the creature it is encoded on; the
+  // creature carries the encoded card id. Combat-damage trigger on the
+  // creature reads `cipherEncodedHere` to find the spell to copy.
+  cipherEncodedOnId: EntityId | undefined = undefined;
+  cipherEncodedHere: EntityId | undefined = undefined;
+  // Wave 57 — Buyback (CR 702.26). When a buyback cast resolves, the card
+  // returns to its owner's hand instead of going to the graveyard. The
+  // AltCost stamps `buybackPaid = true` at cast time; the post-resolution
+  // routing reads this slot. Cleared on deactivate.
+  buybackPaid: boolean | undefined = undefined;
+  // Wave 57 — Awaken (CR 702.112). When the awaken alt-cost is paid,
+  // `awakenAmount` is set to N (the number of P1P1 counters to put on the
+  // chosen target land). The handler resolution consumes the slot and
+  // animates the land. Cleared after the awaken sub-effect resolves.
+  awakenAmount: number | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

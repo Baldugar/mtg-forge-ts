@@ -71,7 +71,6 @@ const AMOUNT_KEYWORDS: ReadonlySet<string> = new Set([
   "afflict",
   "afterlife",
   "annihilator",
-  "awaken",
   "backup",
   "bloodthirst",
   "bushido",
@@ -133,6 +132,11 @@ const TWO_PARAM_KEYWORDS: ReadonlyMap<string, readonly [string, string]> = new M
   // discards the card to put N +1/+1 counters on target creature.
   // K:Reinforce:N:<cost> stores `amount` (N) + `cost` (mana). CR 702.76.
   ["reinforce", ["amount", "cost"]],
+  // Wave 57 — Awaken N — <cost>: optional kicker-style cost on a sorcery /
+  // instant. When paid, the spell additionally awakens — turn target land
+  // into a 0/0 creature with N P1P1 counters. K:Awaken:N:<cost> stores
+  // `amount` (N) + `cost` (mana). CR 702.112.
+  ["awaken", ["amount", "cost"]],
 ]);
 
 // Matches "Protection from <something>" — maps to the canonical "protection"

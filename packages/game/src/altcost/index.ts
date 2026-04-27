@@ -29,3 +29,10 @@ export * from "./retrace.js";
 //     discard cost wiring is documented under TODO(advanced).
 export * from "./adventure.js";
 export * from "./jump-start.js";
+// Wave 57 — Buyback (CR 702.26). Additional optional cost paid at cast
+// time; on resolution, the card returns to its owner's hand instead of
+// the graveyard. The MVP routes through AltCost so the keyword stamps
+// and the post-resolution destination override is observable; the
+// "additional cost" wiring in stepDetermineTotalCost is documented under
+// TODO(advanced) in altcost/buyback.ts.
+export * from "./buyback.js";
