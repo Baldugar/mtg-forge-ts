@@ -118,6 +118,19 @@ export * from "./dredge-keyword.js";
 export * from "./equip-keyword.js";
 export * from "./kicker-keyword.js";
 export * from "./ward-keyword.js";
+// Wave 55 — Morph / Megamorph / Disguise (CR 702.36 / 702.94 / 702.166).
+// Each handler stamps a flip-up cost slot (`card.morphCost` /
+// `card.disguiseCost`) and synthesizes a Battlefield-zone activated
+// SpellAbility with handlerKey "TurnFaceUp"; the synthesized SA is
+// tagged with the keyword name so the TurnFaceUp resolver knows
+// whether to add a +1/+1 counter (megamorph) post-flip. Disguise also
+// stamps `wardCost = 2` so Wave 49's ward trigger fires while the
+// card is face-down. The 3-mana face-down alt-cast for Morph is the
+// cast-pipeline-level concern; Wave 55 ships the keyword data layer
+// + flip-up activated ability + Adventure / Jump-Start AltCosts.
+export * from "./morph-keyword.js";
+export * from "./megamorph-keyword.js";
+export * from "./disguise-keyword.js";
 // Wave 52 — Saga (Chapter) + Class. ChapterKeywordHandler synthesizes
 // the Lore-counter machinery: ETB stamp + Main1-start tick + a
 // CounterAdded watcher that flips card.sagaFinalChapterResolved when

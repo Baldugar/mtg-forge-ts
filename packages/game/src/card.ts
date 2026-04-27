@@ -378,6 +378,24 @@ export class Card {
   // CardTargeted event names this card and the targeting source is
   // controlled by an opponent. Cleared on deactivate.
   wardCost: string | undefined = undefined;
+  // Wave 55 — Morph / Megamorph / Disguise (CR 702.36 / 702.94 / 702.166).
+  // The flip-up cost stamped by the matching keyword handler. Read by
+  // the synthesized Battlefield-zone activated SA's TurnFaceUp resolver
+  // (cost-payment plumbing happens via the SA's cost field; the slot is
+  // the durable read used by SVar selectors and tests).
+  //   morphCost — Morph cost (also covers Megamorph via the SA tag).
+  //   disguiseCost — Disguise cost; the face-down state additionally
+  //     carries Ward N so Wave 49's ward trigger fires for opponents.
+  // Slots are typed `T | undefined = undefined` so handlers can clear via
+  // `= undefined` (biome no-delete + exactOptionalPropertyTypes).
+  morphCost: string | undefined = undefined;
+  disguiseCost: string | undefined = undefined;
+  // Wave 55 — Adventure (CR 715). Stamped to "spell" while the Adventure
+  // half is on the stack / resolving; cleared (or set to "creature") when
+  // the creature half is later cast from exile. Used by the
+  // post-resolution zone-routing logic to send the Adventure half to
+  // exile (instead of graveyard) so it can be cast later from exile.
+  adventureSide: "creature" | "spell" | undefined = undefined;
   // Wave 39 — Sweep (CR Saviors of Kamigawa cycle). `sweepReturnedType` is
   // the land subtype the spell asks the controller to return; `sweepReturnedCount`
   // is the count of lands actually returned this resolution (read by SVar

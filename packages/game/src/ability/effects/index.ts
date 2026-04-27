@@ -131,3 +131,8 @@ export * from "./channel.js";
 export * from "./transmute.js";
 export * from "./reinforce.js";
 export * from "./scavenge.js";
+// Wave 55 — TurnFaceUp resolver (CR 702.36 / 702.94 / 702.166).
+// Synthesized by Morph/Megamorph/Disguise keyword handlers; flips the
+// face-down card via the existing turn-face-up primitive and (for
+// megamorph) adds a +1/+1 counter post-flip.
+export * from "./turn-face-up.js";

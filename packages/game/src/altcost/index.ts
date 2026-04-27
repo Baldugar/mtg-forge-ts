@@ -20,3 +20,12 @@ export * from "./splice.js";
 // without printed-mana-cost replacement; the additional Discard-a-Land
 // cost is documented under TODO(advanced).
 export * from "./retrace.js";
+// Wave 55 — Adventure (CR 715) and Jump-Start (CR 702.139).
+//   Adventure: cast-from-Exile of the creature half after the Adventure
+//     half resolves and exiles the card. Overrides the default exile-
+//     origin → exile-on-resolve to Battlefield.
+//   Jump-Start: cast-from-Graveyard with an additional Discard cost,
+//     post-resolution → Exile (mirrors Flashback). The additional
+//     discard cost wiring is documented under TODO(advanced).
+export * from "./adventure.js";
+export * from "./jump-start.js";
