@@ -12,6 +12,7 @@ const COST_KEYWORDS: ReadonlySet<string> = new Set([
   "kicker",
   "multikicker",
   "bestow",
+  "blitz",
   "buyback",
   "cycling",
   "dash",
@@ -19,7 +20,9 @@ const COST_KEYWORDS: ReadonlySet<string> = new Set([
   "echo",
   "embalm",
   "emerge",
+  "encore",
   "entwine",
+  "escalate",
   "eternalize",
   "escape",
   "evoke",
@@ -37,10 +40,10 @@ const COST_KEYWORDS: ReadonlySet<string> = new Set([
   "morph",
   "mutate",
   "ninjutsu",
+  "offspring",
   "outlast",
   "overload",
   "plot",
-  "prototype",
   "prowl",
   "recover",
   "reconfigure",
@@ -70,6 +73,7 @@ const AMOUNT_KEYWORDS: ReadonlySet<string> = new Set([
   "absorb",
   "afflict",
   "afterlife",
+  "amplify",
   "annihilator",
   "backup",
   "bloodthirst",
@@ -137,6 +141,12 @@ const TWO_PARAM_KEYWORDS: ReadonlyMap<string, readonly [string, string]> = new M
   // into a 0/0 creature with N P1P1 counters. K:Awaken:N:<cost> stores
   // `amount` (N) + `cost` (mana). CR 702.112.
   ["awaken", ["amount", "cost"]],
+  // Wave 59 — Prototype <cost>:<P/T> — cast as a different cost / size
+  // (Brothers' War, CR 702.160). The split is at the FIRST inner colon;
+  // the trailing P/T pair (e.g. "2/3") stays in the second slot. Wave 58's
+  // PrototypeKeywordHandler tolerated the single-slot form; the canonical
+  // form now produces { cost: <mana>, pt: <P/T> }.
+  ["prototype", ["cost", "pt"]],
 ]);
 
 // Matches "Protection from <something>" — maps to the canonical "protection"

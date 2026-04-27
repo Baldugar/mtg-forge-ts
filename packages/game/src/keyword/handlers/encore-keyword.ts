@@ -34,7 +34,9 @@ export class EncoreKeywordHandler extends KeywordHandler {
     if (!card.keywords) card.keywords = new Set();
     card.keywords.add("encore");
 
-    // encore isn't in the parser's COST set — accept either slot.
+    // Wave 59 — keyword-line parser cleanup moved encore into
+    // COST_KEYWORDS, so the canonical slot is `cost`. The legacy `detail`
+    // fallback is retained for snapshot-restore tolerance only.
     const costParam =
       (ast.params?.cost as ParamValue | undefined) ?? (ast.params?.detail as ParamValue | undefined);
     const encoreCost = costParam && costParam.kind === "literal" ? (costParam.raw as string) : "0";

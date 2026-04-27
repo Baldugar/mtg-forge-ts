@@ -35,8 +35,9 @@ export class AmplifyKeywordHandler extends KeywordHandler {
     if (!card.keywords) card.keywords = new Set();
     card.keywords.add("amplify");
 
-    // amplify isn't in any of the parser's slot sets — accept either
-    // "amount" or "detail".
+    // Wave 59 — keyword-line parser cleanup moved amplify into
+    // AMOUNT_KEYWORDS, so the canonical slot is `amount`. The legacy
+    // `detail` fallback is retained for snapshot-restore tolerance only.
     const amountParam =
       (ast.params?.amount as ParamValue | undefined) ?? (ast.params?.detail as ParamValue | undefined);
     const rawN =

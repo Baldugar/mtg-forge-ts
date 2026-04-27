@@ -100,4 +100,60 @@ describe("parseKeywordLine", () => {
     expect(out.keyword).toBe("may_effect_from_opening_deck");
     expect(out.params?.detail).toEqual({ kind: "literal", raw: "DBReveal" });
   });
+
+  // ------------------------------------------------------------------
+  // Wave 59 — keyword-line parser cleanup. Verify the keywords moved into
+  // COST_KEYWORDS / AMOUNT_KEYWORDS / TWO_PARAM_KEYWORDS now emit the
+  // canonical slot (`cost` / `amount` / `cost`+`pt`) instead of falling
+  // through to the opaque `detail`.
+  // ------------------------------------------------------------------
+
+  it("parses 'K:Escalate:1' with cost param (Wave 59)", () => {
+    const out = parseKeywordLine(first(lex("K:Escalate:1\n")));
+    expect(out.keyword).toBe("escalate");
+    expect(out.params?.cost).toEqual({ kind: "literal", raw: "1" });
+    expect(out.params?.detail).toBeUndefined();
+  });
+
+  it("parses 'K:Offspring:2' with cost param (Wave 59)", () => {
+    const out = parseKeywordLine(first(lex("K:Offspring:2\n")));
+    expect(out.keyword).toBe("offspring");
+    expect(out.params?.cost).toEqual({ kind: "literal", raw: "2" });
+    expect(out.params?.detail).toBeUndefined();
+  });
+
+  it("parses 'K:Encore:3' with cost param (Wave 59)", () => {
+    const out = parseKeywordLine(first(lex("K:Encore:3\n")));
+    expect(out.keyword).toBe("encore");
+    expect(out.params?.cost).toEqual({ kind: "literal", raw: "3" });
+    expect(out.params?.detail).toBeUndefined();
+  });
+
+  it("parses 'K:Blitz:1 R' with cost param (Wave 59)", () => {
+    const out = parseKeywordLine(first(lex("K:Blitz:1 R\n")));
+    expect(out.keyword).toBe("blitz");
+    expect(out.params?.cost).toEqual({ kind: "literal", raw: "1 R" });
+    expect(out.params?.detail).toBeUndefined();
+  });
+
+  it("parses 'K:Amplify:2' with amount param (Wave 59)", () => {
+    const out = parseKeywordLine(first(lex("K:Amplify:2\n")));
+    expect(out.keyword).toBe("amplify");
+    expect(out.params?.amount).toEqual({ kind: "literal", raw: "2" });
+    expect(out.params?.detail).toBeUndefined();
+  });
+
+  it("parses 'K:Prototype:2 R:2/3' with cost + pt slots (Wave 59)", () => {
+    const out = parseKeywordLine(first(lex("K:Prototype:2 R:2/3\n")));
+    expect(out.keyword).toBe("prototype");
+    expect(out.params?.cost).toEqual({ kind: "literal", raw: "2 R" });
+    expect(out.params?.pt).toEqual({ kind: "literal", raw: "2/3" });
+  });
+
+  it("parses 'K:Awaken:2:3 G' with amount + cost slots (existing TWO_PARAM)", () => {
+    const out = parseKeywordLine(first(lex("K:Awaken:2:3 G\n")));
+    expect(out.keyword).toBe("awaken");
+    expect(out.params?.amount).toEqual({ kind: "literal", raw: "2" });
+    expect(out.params?.cost).toEqual({ kind: "literal", raw: "3 G" });
+  });
 });

@@ -20,11 +20,11 @@
 //   K:Prototype:2 R:2/3   → cast for {2}{R} as a 2/3
 //   K:Prototype:1 U U:2/2 → cast for {1}{U}{U} as a 2/2
 //
-// Parser note: keyword-line lists prototype in COST_KEYWORDS but only
-// gives a single slot. The full "cost:P/T" pair requires the parser's
-// two-param-keyword path; until that lands the handler tolerates a
-// single-slot literal whose raw form contains the colon (we split on
-// the first colon at activation time).
+// Wave 59 — keyword-line parser cleanup moved prototype into
+// TWO_PARAM_KEYWORDS (`cost`:`pt`); the canonical AST is now
+// `params: { cost: <mana>, pt: <P/T> }`. The legacy single-slot form
+// (where the raw text combines "cost P/T" or "cost:P/T") is retained for
+// snapshot-restore tolerance.
 import type { KeywordAst, ParamValue } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
@@ -55,8 +55,19 @@ export class PrototypeKeywordHandler extends KeywordHandler {
     card.keywords.add("prototype");
 
     const costParam = ast.params?.cost as ParamValue | undefined;
-    const raw = costParam && costParam.kind === "literal" ? (costParam.raw as string) : "";
-    const { cost, pt } = splitCostAndPT(raw);
+    const ptParam = ast.params?.pt as ParamValue | undefined;
+    const rawCost = costParam && costParam.kind === "literal" ? (costParam.raw as string) : "";
+    const rawPt = ptParam && ptParam.kind === "literal" ? (ptParam.raw as string) : "";
+
+    if (rawPt.length > 0) {
+      // Canonical TWO_PARAM_KEYWORDS form — slots already split.
+      card.prototypeCost = rawCost.length > 0 ? rawCost : "0";
+      card.prototypePT = rawPt;
+      return;
+    }
+
+    // Legacy single-slot form ("2 R 2/3" or "2 R:2/3") — split here.
+    const { cost, pt } = splitCostAndPT(rawCost);
     card.prototypeCost = cost.length > 0 ? cost : "0";
     if (pt !== null) card.prototypePT = pt;
   }

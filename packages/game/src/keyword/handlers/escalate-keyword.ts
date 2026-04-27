@@ -27,9 +27,9 @@ export class EscalateKeywordHandler extends KeywordHandler {
     if (!card.keywords) card.keywords = new Set();
     card.keywords.add("escalate");
 
-    // The escalate keyword line uses "detail" since it isn't in the
-    // COST_KEYWORDS set in keyword-line.ts; tolerate either slot for
-    // forward-compat with a parser cleanup that moves it into COST.
+    // Wave 59 — keyword-line parser cleanup moved escalate into
+    // COST_KEYWORDS, so the canonical slot is `cost`. The legacy `detail`
+    // fallback is retained for snapshot-restore tolerance only.
     const costParam =
       (ast.params?.cost as ParamValue | undefined) ?? (ast.params?.detail as ParamValue | undefined);
     const escalateCost = costParam && costParam.kind === "literal" ? (costParam.raw as string) : "0";

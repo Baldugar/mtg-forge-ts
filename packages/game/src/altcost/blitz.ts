@@ -33,6 +33,9 @@ const extractBlitzCost = (card: Card): string | null => {
   if (!keywords) return null;
   const kw = keywords.find((k) => k.keyword === "blitz");
   if (!kw) return null;
+  // Wave 59 — keyword-line parser cleanup moved blitz into COST_KEYWORDS,
+  // so the canonical slot is `cost`. The legacy `detail` fallback is
+  // retained for snapshot-restore tolerance only.
   const costParam =
     (kw.params?.cost as ParamValue | undefined) ?? (kw.params?.detail as ParamValue | undefined);
   if (!costParam || costParam.kind !== "literal") return null;
