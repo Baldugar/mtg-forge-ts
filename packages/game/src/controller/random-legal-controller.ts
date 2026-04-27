@@ -5,7 +5,14 @@
 // fixed seed. SP3 expands this further with cost-aware heuristics; SP2's
 // scope is "pick a legal answer, any legal answer" so driver tests can
 // exercise full flows without hand-rolling per-kind responses.
-import type { DecisionRequest, DecisionResponse, PlayerSeat, PriorityAction, Rng } from "@mtg-forge-ts/core";
+import type {
+  DecisionRequest,
+  DecisionResponse,
+  EntityId,
+  PlayerSeat,
+  PriorityAction,
+  Rng,
+} from "@mtg-forge-ts/core";
 import { Color, ColorSet, IllegalDecisionError } from "@mtg-forge-ts/core";
 import type { PlayerController } from "./controller.js";
 
@@ -255,6 +262,43 @@ export class RandomLegalController implements PlayerController {
           };
         }
         throw new IllegalDecisionError("RandomLegalController: chooseForageMode with no legal mode");
+      }
+      // Wave 56 — typed-discriminator decisions. Random controller picks
+      // the first canonical option deterministically (rngless picks would
+      // bias regression tests toward a fixed branch; consumers driving
+      // these in tests pass explicit responses).
+      case "chooseEvenOdd": {
+        return { kind: "chooseEvenOdd", choice: "odd" };
+      }
+      case "chooseDirection": {
+        return { kind: "chooseDirection", direction: "left" };
+      }
+      case "chooseLearnOption": {
+        return {
+          kind: "chooseLearnOption",
+          option: req.canDiscard ? "discardDraw" : "lesson",
+        };
+      }
+      case "chooseEndureOption": {
+        return { kind: "chooseEndureOption", option: "counters" };
+      }
+      case "dividePileChoice": {
+        // Even partition — divide cards across numPiles roughly evenly,
+        // routing remainder onto the first pile. Matches the deterministic
+        // identity-partition behaviour used elsewhere in the controller.
+        const piles: EntityId[][] = [];
+        for (let i = 0; i < req.numPiles; i++) piles.push([]);
+        for (let i = 0; i < req.cards.length; i++) {
+          const card = req.cards[i];
+          if (card === undefined) continue;
+          const targetPile = piles[i % req.numPiles];
+          if (targetPile) targetPile.push(card);
+        }
+        return { kind: "dividePileChoice", piles };
+      }
+      case "orderCards": {
+        // Identity ordering — preserves the input permutation.
+        return { kind: "orderCards", ordered: req.cards.slice() };
       }
       default: {
         const _never: never = req;

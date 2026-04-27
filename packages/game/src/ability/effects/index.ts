@@ -136,3 +136,8 @@ export * from "./scavenge.js";
 // face-down card via the existing turn-face-up primitive and (for
 // megamorph) adds a +1/+1 counter post-flip.
 export * from "./turn-face-up.js";
+// Wave 56 — ReplaceEffect family. Six sub-effects used INSIDE replacement
+// bodies via `ReplaceWith$ <SVar>` dispatch. They mutate the in-flight
+// intent through the `game.flags.activeReplacementIntent` side channel
+// rather than executing standalone game-state changes.
+export * from "./replace-effect.js";

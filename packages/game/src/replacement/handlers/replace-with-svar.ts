@@ -23,7 +23,14 @@
 // the exile intent). Handlers that don't yet have a recognised pattern
 // record the SVar AND execute it synchronously, then fall through to
 // "canonical event replaced".
-import type { AbilityAst, EffectInvocation, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
+import type {
+  AbilityAst,
+  EffectInvocation,
+  EntityId,
+  MutationIntent,
+  PlayerSeat,
+  SVarAst,
+} from "@mtg-forge-ts/core";
 import { effectRegistry } from "../../ability/effect-registry.js";
 import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
@@ -112,4 +119,46 @@ export const runReplaceWithAbilitySync = (
     cur = cur.subAbility;
   }
   return true;
+};
+
+/**
+ * Wave 56 — execute a `ReplaceWith$ <SVar>` substituted ability that is
+ * meant to MUTATE the in-flight replacement intent (rather than perform
+ * a game-state side effect). Used by parent replacement handlers (Damage,
+ * Moved, AddCounter, CreateToken, etc.) when their SVar resolves to a
+ * `DB$ Replace*` effect from the ReplaceEffect family.
+ *
+ * Threading: stamps `intent` into `game.flags.activeReplacementIntent`
+ * before invoking the SVar; the `Replace*` resolvers read the slot,
+ * mutate, and write back. After the SVar resolves we read the slot
+ * (which the resolver may have overwritten) and return it. The slot is
+ * cleared after the read so subsequent apply() calls see a clean state.
+ *
+ * Returns:
+ *   - `null` if the SVar lookup missed or its handler isn't registered
+ *     (caller should fall back to identity / canonical behaviour).
+ *   - `null` if the resolver decided to PREVENT (set the slot to `null`).
+ *   - the mutated `MutationIntent` otherwise.
+ */
+export const runReplaceWithIntentMutation = (
+  game: Game,
+  sourceCardId: EntityId,
+  controllerSeat: PlayerSeat,
+  ability: EffectInvocation,
+  intent: MutationIntent,
+): MutationIntent | null => {
+  // Stash the prior slot value so re-entrant apply() calls (a Replace*
+  // resolver that cascades into another) see consistent state on the
+  // way out.
+  const prior = game.flags.activeReplacementIntent;
+  game.flags.activeReplacementIntent = intent as unknown;
+  try {
+    const ok = runReplaceWithAbilitySync(game, sourceCardId, controllerSeat, ability);
+    if (!ok) return null;
+    const after = game.flags.activeReplacementIntent;
+    if (after === null || after === undefined) return null;
+    return after as MutationIntent;
+  } finally {
+    game.flags.activeReplacementIntent = prior;
+  }
 };

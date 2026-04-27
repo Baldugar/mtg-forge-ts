@@ -102,6 +102,18 @@ export interface GameFlags {
   // Wave 51 — per-game spell cast counter (Count$YouCastThisGame). Never
   // resets across turns; only reset on game start.
   spellsCastThisGame: Map<PlayerSeat, number>;
+  // Wave 56 — side-channel for the ReplaceEffect family. When a parent
+  // replacement's apply() runs an SVar that resolves to a `DB$ Replace*`
+  // effect handler (ReplaceEffect / ReplaceDamage / ReplaceMana /
+  // ReplaceToken / ReplaceCounter / ReplaceSplitDamage), the parent stamps
+  // the in-flight intent into this slot before invoking the SVar dispatch
+  // and reads it back afterwards. This avoids threading the intent through
+  // the SpellAbility resolver signature (which would balloon the SP1
+  // SpellAbility surface for one narrow use). Set transiently within
+  // applyWithReplacements; cleared after the SVar resolves (whether or
+  // not the slot was touched). null when no replacement is mid-flight.
+  // Not snapshotted: the slot is only meaningful inside an apply() boundary.
+  activeReplacementIntent: unknown;
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -149,4 +161,6 @@ export const createDefaultFlags = (): GameFlags => ({
   leftGraveyardThisTurn: new Set(),
   creaturesDiedThisTurn: 0,
   spellsCastThisGame: new Map(),
+  // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
+  activeReplacementIntent: null,
 });

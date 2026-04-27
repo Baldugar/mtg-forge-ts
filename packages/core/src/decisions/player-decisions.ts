@@ -540,6 +540,70 @@ export type DecisionRequest =
       readonly sourceCardId: EntityId;
       readonly eligibleGyIds: readonly EntityId[];
       readonly eligibleFoodIds: readonly EntityId[];
+    }
+  | {
+      // Wave 56 — ChooseEvenOddEffect: controller picks even or odd. Forge
+      // SP$ ChooseEvenOdd (Yidris-style mana-value referencing). Distinct
+      // from generic chooseOption because the response carries a typed
+      // discriminator the consumers (SVar selectors, triggers reading
+      // chosenEvenOdd) can read without string parsing.
+      readonly kind: "chooseEvenOdd";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+    }
+  | {
+      // Wave 56 — ChooseDirectionEffect: pick Left or Right (multiplayer
+      // turn-direction abilities; Yawgmoth-style "you choose left or right").
+      // Distinct from chooseOption so future NSEW expansion stays one-step:
+      // the schema admits "Left" | "Right" today and can grow to NSEW
+      // without rebuilding consumers.
+      readonly kind: "chooseDirection";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+    }
+  | {
+      // Wave 56 — Strixhaven Learn (CR 701.27). Replaces Wave 54's generic
+      // chooseOption shape with a typed Lesson/DiscardDraw discriminator
+      // so the controller's pick is unambiguous to observers.
+      readonly kind: "chooseLearnOption";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+      // True iff the player has at least one card in hand (gating the
+      // DiscardDraw branch). Lesson branch is always available — the engine
+      // does not validate sideboard contents (format-layer concern).
+      readonly canDiscard: boolean;
+    }
+  | {
+      // Wave 56 — Bloomburrow Endure (CR 702.171). Replaces Wave 54's
+      // generic chooseOption with a typed Counters/Token discriminator.
+      // amount is the Endure N (number of +1/+1 counters or token P/T).
+      readonly kind: "chooseEndureOption";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+      readonly amount: number;
+    }
+  | {
+      // Wave 56 — N-pile divide (Fact or Fiction generalization). Distinct
+      // from chooseCardsPile (which is hardcoded 2-pile a/b). The dividing
+      // player partitions `cards` into `numPiles` non-empty piles; the
+      // request response is `piles: EntityId[][]`. Engine validates that
+      // every input id appears exactly once across the piles.
+      readonly kind: "dividePileChoice";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+      readonly cards: readonly EntityId[];
+      readonly numPiles: number;
+    }
+  | {
+      // Wave 56 — interactive ordering. Distinct from `chooseCardOrder`,
+      // which predates the orderCards schema and was used as an
+      // identity-reorder placeholder by ReorderZoneEffect (Wave 22). The
+      // response carries the full permutation; engine validates the
+      // permutation is a bijection over the input set.
+      readonly kind: "orderCards";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+      readonly cards: readonly EntityId[];
     };
 
 /**
@@ -744,6 +808,26 @@ export type DecisionResponse =
       readonly kind: "chooseForageMode";
       readonly mode: "sacFood";
       readonly foodId: EntityId;
+    }
+  // Wave 56 — typed discriminator pair responses. Each request kind has a
+  // sibling response with the same discriminator. Consumers narrow via the
+  // `kind` and can rely on the typed payload (no free-form string parsing).
+  | { readonly kind: "chooseEvenOdd"; readonly choice: "even" | "odd" }
+  | { readonly kind: "chooseDirection"; readonly direction: "left" | "right" }
+  | { readonly kind: "chooseLearnOption"; readonly option: "lesson" | "discardDraw" }
+  | { readonly kind: "chooseEndureOption"; readonly option: "counters" | "token" }
+  | {
+      readonly kind: "dividePileChoice";
+      // WHY: response `piles` is the full N-pile partition. Each inner
+      // array is a non-empty pile; the engine validates that every input
+      // id appears exactly once and that piles.length === request.numPiles.
+      readonly piles: readonly (readonly EntityId[])[];
+    }
+  | {
+      readonly kind: "orderCards";
+      // WHY: full permutation. Engine validates it is a bijection over
+      // request.cards (same length, identical multiset).
+      readonly ordered: readonly EntityId[];
     };
 
 /** All request discriminator values. */

@@ -32,9 +32,11 @@ import type {
   ReplacementAbility,
   ReplacementAst,
 } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility, runReplaceWithIntentMutation } from "./replace-with-svar.js";
 
 // ---------------------------------------------------------------------------
 // Internal helpers
@@ -119,7 +121,7 @@ export class DamageReplacement extends ReplacementHandler {
         return true;
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         // Prevent$ True — cancel damage
         if (prevent) return null;
 
@@ -133,6 +135,27 @@ export class DamageReplacement extends ReplacementHandler {
           const di = intent as { amount?: number };
           const doubled = (di.amount ?? 0) * 2;
           return { ...intent, amount: doubled };
+        }
+
+        // Wave 56 — ReplaceWith$ <SVar> dispatch. When the SVar resolves
+        // to a ReplaceEffect-family handler (DB$ ReplaceEffect /
+        // ReplaceDamage / ReplaceSplitDamage), thread the intent through
+        // the side-channel runner so the mutated intent flows back into
+        // the apply loop. SVars resolving to other (side-effect) handlers
+        // fall through to identity; the parent apply loop applies them
+        // separately.
+        const game = gameUnknown as Game;
+        const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWith);
+        if (ability !== null) {
+          const handlerKey = ability.handlerKey;
+          if (
+            handlerKey === "ReplaceEffect" ||
+            handlerKey === "ReplaceDamage" ||
+            handlerKey === "ReplaceSplitDamage"
+          ) {
+            const next = runReplaceWithIntentMutation(game, sourceCardId, controllerSeat, ability, intent);
+            return next;
+          }
         }
 
         // Unknown replacement key — no-op
