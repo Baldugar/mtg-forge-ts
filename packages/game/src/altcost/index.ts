@@ -36,3 +36,11 @@ export * from "./jump-start.js";
 // "additional cost" wiring in stepDetermineTotalCost is documented under
 // TODO(advanced) in altcost/buyback.ts.
 export * from "./buyback.js";
+// Wave 58 — Warp, Blitz, Surge, Emerge, Miracle. Each is a Hand-zone
+// alt-cost stamping altCostUsed + replacing totalCost.base; per-keyword
+// post-resolve / availability checks live in the AltCost module.
+export * from "./warp.js";
+export * from "./blitz.js";
+export * from "./surge.js";
+export * from "./emerge.js";
+export * from "./miracle.js";

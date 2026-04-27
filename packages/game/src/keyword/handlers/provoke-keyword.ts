@@ -65,8 +65,10 @@ export class ProvokeKeywordHandler extends KeywordHandler {
 
       matches(event: GameEvent): boolean {
         if (event.kind !== "AttackersDeclared") return false;
-        const p = event.payload as { readonly attackerIds?: readonly EntityId[] };
-        return p.attackerIds?.includes(sourceCardId) ?? false;
+        const p = event.payload as {
+          readonly attackers?: readonly { readonly attackerId: EntityId }[];
+        };
+        return p.attackers?.some((a) => a.attackerId === sourceCardId) ?? false;
       },
 
       resolver: {

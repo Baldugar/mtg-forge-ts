@@ -158,4 +158,26 @@ export * from "./bloodthirst-keyword.js";
 export * from "./fabricate-keyword.js";
 export * from "./cipher-keyword.js";
 export * from "./awaken-keyword.js";
+// Wave 58 — Niche keyword cleanup batch 2: ~300 cards. 16 keyword
+// handlers (Casualty, Squad, Escalate, Prototype, Spree, Offspring,
+// Backup, Tribute, Amplify, Mobilize, Demonstrate, Encore, Reconfigure,
+// Sneak, Transfigure, Living metal, Dethrone) + 5 alt-costs (Warp,
+// Blitz, Surge, Emerge, Miracle) registered via altcost/index.ts.
+export * from "./casualty-keyword.js";
+export * from "./squad-keyword.js";
+export * from "./escalate-keyword.js";
+export * from "./prototype-keyword.js";
+export * from "./spree-keyword.js";
+export * from "./offspring-keyword.js";
+export * from "./backup-keyword.js";
+export * from "./tribute-keyword.js";
+export * from "./amplify-keyword.js";
+export * from "./mobilize-keyword.js";
+export * from "./demonstrate-keyword.js";
+export * from "./encore-keyword.js";
+export * from "./reconfigure-keyword.js";
+export * from "./sneak-keyword.js";
+export * from "./transfigure-keyword.js";
+export * from "./living-metal-keyword.js";
+export * from "./dethrone-keyword.js";
 export * from "./flag-keyword.js";

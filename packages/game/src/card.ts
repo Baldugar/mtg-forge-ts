@@ -448,6 +448,62 @@ export class Card {
   // chosen target land). The handler resolution consumes the slot and
   // animates the land. Cleared after the awaken sub-effect resolves.
   awakenAmount: number | undefined = undefined;
+  // Wave 58 — Niche keyword cleanup batch 2. Each slot is set/cleared by
+  // its corresponding KeywordHandler / AltCost. All `T | undefined =
+  // undefined` so handlers can clear via `= undefined` (biome no-delete +
+  // exactOptionalPropertyTypes).
+  //
+  //   casualtyAmount     : K:Casualty:N — N is the power threshold for the
+  //                        sacrificed creature copy-on-cast trigger.
+  //   squadCost          : K:Squad:cost — per-payment ETB-token-copy.
+  //   squadCount         : count of squad payments at cast time.
+  //   escalateCost       : K:Escalate:cost — per-extra-mode surcharge.
+  //   prototypeCost      : K:Prototype:cost:P/T — alt-cost.
+  //   prototypePT        : prototype P/T pair (e.g. "2/3").
+  //   prototypeCast      : true if this spell was cast as prototype.
+  //   isSpree            : K:Spree marker for SVar / cast-pipeline reads.
+  //   offspringCost      : K:Offspring:cost — additional cost.
+  //   offspringPaid      : true once the offspring cost is paid at cast.
+  //   backupAmount       : K:Backup:N — counter count + ability grant.
+  //   tributeAmount      : K:Tribute:N — counter count if confirmed.
+  //   tributePaid        : true if opponent confirmed tribute.
+  //   amplifyAmount      : K:Amplify:N — multiplier for revealed shared-
+  //                        type cards from hand at ETB.
+  //   mobilizeAmount     : K:Mobilize:N — token count on attack.
+  //   reconfigureCost    : K:Reconfigure:cost — toggle attach activation.
+  //   sneakCost          : K:Sneak:cost — placeholder for sneak-style
+  //                        keywords.
+  //   livingMetal        : K:Living metal — Vehicle becomes a creature on
+  //                        controller's turn without being crewed.
+  //   warpCast           : true if cast via Warp.
+  //   blitzCast          : true if cast via Blitz.
+  //   emergeCast         : true if cast via Emerge.
+  //   miracleCast        : true if cast via Miracle.
+  //   miracleEligible    : true while the card is the first drawn this
+  //                        turn and a Miracle cast window is open.
+  casualtyAmount: number | undefined = undefined;
+  squadCost: string | undefined = undefined;
+  squadCount: number | undefined = undefined;
+  escalateCost: string | undefined = undefined;
+  prototypeCost: string | undefined = undefined;
+  prototypePT: string | undefined = undefined;
+  prototypeCast: boolean | undefined = undefined;
+  isSpree: boolean | undefined = undefined;
+  offspringCost: string | undefined = undefined;
+  offspringPaid: boolean | undefined = undefined;
+  backupAmount: number | undefined = undefined;
+  tributeAmount: number | undefined = undefined;
+  tributePaid: boolean | undefined = undefined;
+  amplifyAmount: number | undefined = undefined;
+  mobilizeAmount: number | undefined = undefined;
+  reconfigureCost: string | undefined = undefined;
+  sneakCost: string | undefined = undefined;
+  livingMetal: boolean | undefined = undefined;
+  warpCast: boolean | undefined = undefined;
+  blitzCast: boolean | undefined = undefined;
+  emergeCast: boolean | undefined = undefined;
+  miracleCast: boolean | undefined = undefined;
+  miracleEligible: boolean | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

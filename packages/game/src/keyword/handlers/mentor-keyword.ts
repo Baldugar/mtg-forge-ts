@@ -64,8 +64,10 @@ export class MentorKeywordHandler extends KeywordHandler {
         // emits AttackersDeclared (batch) with the attacker list. Match
         // when self is in the batch.
         if (event.kind !== "AttackersDeclared") return false;
-        const p = event.payload as { attackerIds?: readonly EntityId[] };
-        return p.attackerIds?.includes(sourceCardId) ?? false;
+        const p = event.payload as {
+          readonly attackers?: readonly { readonly attackerId: EntityId }[];
+        };
+        return p.attackers?.some((a) => a.attackerId === sourceCardId) ?? false;
       },
 
       resolver: {
