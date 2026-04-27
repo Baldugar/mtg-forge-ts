@@ -84,8 +84,19 @@ export const hasKeyword = (game: Game, cardId: EntityId, keyword: string): boole
  * triggers, and combat. SP2 Task 52 (phasing) reads `card.phased` directly
  * off the live Card; this wrapper exists so downstream filters in
  * target-system / trigger-registry / combat-handler get one import point.
+ *
+ * Wave 54 — also consult `card.phasedOut`. Two flags exist on Card:
+ *   - `card.phased` is set by the phasing keyword's untap-step processor
+ *     (per-turn phasing — Vanishing/Phasing K:Phasing).
+ *   - `card.phasedOut` is set by Forge's `SP$ Phases` effect (Teferi's Veil,
+ *     Tawnos's Coffin, etc. — direct phase-out).
+ * Both have identical engine semantics per CR 702.26d/e: the card is
+ * treated as if it doesn't exist. Reading both here means combat,
+ * targeting, and SBA collectors all see the same view through a single
+ * import point.
  */
 export const isPhasedOut = (game: Game, cardId: EntityId): boolean => {
   const card = game.cards.get(cardId);
-  return card?.phased === true;
+  if (!card) return false;
+  return card.phased === true || card.phasedOut === true;
 };

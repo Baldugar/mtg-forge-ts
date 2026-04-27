@@ -56,8 +56,13 @@ export function* phaseIn(
 ): Generator<EngineYield, void, unknown> {
   const card = game.cards.get(cardId);
   if (!card) return;
-  if (!card.phased) return;
+  // Wave 54 — accept either of the two phased-out flags. `card.phased` is
+  // the keyword-Phasing flag; `card.phasedOut` is the `SP$ Phases` (Teferi's
+  // Veil / Tawnos's Coffin) flag. CR 702.26d treats both states identically
+  // for phase-in purposes, so we reset both here.
+  if (!card.phased && !card.phasedOut) return;
   card.phased = false;
+  card.phasedOut = false;
   game.layerEngine.bumpEpoch("phase-in");
   yield {
     kind: "event",

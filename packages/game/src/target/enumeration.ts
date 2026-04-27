@@ -11,6 +11,7 @@
 //   - forge.game.ability.AbilityUtils#isValidTarget
 //   - forge.game.spellability.TargetRestrictions#canTgtPlayer / canTgtCard
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import { isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
 import type { ControllerScope, TargetRef, TargetRestriction } from "./restriction.js";
 
@@ -49,7 +50,10 @@ export const enumerateEligibleTargets = (
     // never surface a phased card to eligibility. SP3 will add a rare
     // "mayTargetPhased" restriction flag if any card in the data set turns
     // out to ignore phasing (none in the current Forge catalog).
-    if (card.phased === true) continue;
+    // Wave 54 — `isPhasedOut` consults BOTH `card.phased` (keyword Phasing)
+    // and `card.phasedOut` (`SP$ Phases` direct phase-out, e.g. Teferi's
+    // Veil) so both code paths gate identically.
+    if (isPhasedOut(game, card.id)) continue;
     if (!matchesControllerScope(ctx.sourceControllerSeat, card.controllerSeat, r.controllerScope)) {
       continue;
     }

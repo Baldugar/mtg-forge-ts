@@ -24,13 +24,19 @@
 // creatures. 704.5f (toughness ≤ 0) is NOT a destruction — it's a "goes to
 // the graveyard" rule, which applies to indestructible creatures too.
 import { CardType, CounterType, ZoneType } from "@mtg-forge-ts/core";
-import { hasKeyword } from "../combat/damage-assignment-helpers.js";
+import { hasKeyword, isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
 import type { SbaAction } from "./sba-action.js";
 
 export const collectCreatureRemoval = (game: Game, out: SbaAction[]): void => {
   for (const [id, card] of game.cards) {
     if (card.zone !== ZoneType.Battlefield) continue;
+    // CR 702.26d — phased-out permanents are treated as if they don't
+    // exist for SBA purposes. A phased-out 0-toughness or lethally damaged
+    // creature must NOT be destroyed by 704.5f/g until it phases back in.
+    // Audit Wave 54 — `SP$ Phases` (Teferi's Veil) and the Phasing keyword
+    // both feed isPhasedOut.
+    if (isPhasedOut(game, id)) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
 
     // Creatures (CR 704.5f + 704.5g)

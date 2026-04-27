@@ -25,6 +25,7 @@ import {
 } from "@mtg-forge-ts/core";
 import type { CardDefinition, DecisionResponse, EntityId, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
+import { captureCopiable } from "../../copy/capture.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
@@ -512,16 +513,38 @@ effectRegistry.register(VoteEffect);
 
 // 11. Phases ------------------------------------------------------------------
 // Forge `SP$ Phases` — make a card phase out (or in). Toggles
-// card.phasedOut; combat / abilities check this slot.
+// card.phasedOut; combat / target enumeration / SBA destroy collectors all
+// honour this slot via the unified isPhasedOut helper (Wave 54).
+//
+// Cards: Teferi's Veil, Tawnos's Coffin, Vanishing (Sylvan Safekeeper),
+// Reality Ripple, Time and Tide. ~25 cards in the corpus.
 export class PhasesEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Phases";
 
-  // biome-ignore lint/correctness/useYield: pure flag mutation
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     for (const id of sa.targets) {
       const card = game.cards.get(id);
       if (!card) continue;
-      card.phasedOut = !card.phasedOut;
+      const wasOut = card.phasedOut === true || card.phased === true;
+      // Toggle: phased-in cards phase out, phased-out cards (via either flag)
+      // phase in. Reset both flags on phase-in to keep the two flag streams
+      // aligned (the keyword Phasing untap-step processor sets card.phased;
+      // direct effects set card.phasedOut — phase-in clears whichever was
+      // set).
+      if (wasOut) {
+        card.phasedOut = false;
+        card.phased = false;
+      } else {
+        card.phasedOut = true;
+      }
+      game.layerEngine.bumpEpoch("phases-effect");
+      yield game.emitEvent({
+        kind: wasOut ? "PhasedIn" : "PhasedOut",
+        version: 1,
+        turn: game.turn,
+        phase: game.phase,
+        payload: { cardId: id, direct: true },
+      });
     }
   }
 }
@@ -652,13 +675,30 @@ effectRegistry.register(ChooseDirectionEffect);
 
 // 18. Clone -------------------------------------------------------------------
 // Forge `SP$ Clone` — copy the characteristics of one card onto another.
-// MVP: copy paperCard reference from clonee to cloner so layered char
-// derivation picks up the new base. Distinct from CopyPermanent (which
-// makes a token copy).
+// Distinct from CopyPermanent (which mints a token copy). Clone proper
+// rebases the source's copiable characteristics onto an existing card —
+// canonically used by Phantasmal Image, Clone, Phyrexian Metamorph,
+// Renegade Doppelganger, Quasiduplicate, etc. (~50 cards).
+//
+// Wave 54 — wires the missing Layer 1 link: capture the target's copiable
+// snapshot via captureCopiable (CR 707.2) and stamp it on
+// sourceCard.copiedFrom. The layer engine's deriveBaseCharacteristics
+// already invokes applyLayer1Copy(chars, card.copiedFrom) on every walk,
+// so the Clone enters the battlefield with the target's name, P/T, types,
+// abilities, etc.
+//
+// TODO(advanced) sub-variants:
+//   - Phantasmal Image: also register a "when targeted, sacrifice"
+//     replacement-trigger pair on sourceCard.
+//   - Phyrexian Metamorph: also stamp a Layer 4 "is also an artifact"
+//     continuous effect via the Layer 4 type-add machinery.
+//   - Sakashima of a Thousand Faces: legend-rule waiver flag on the copy.
+// All three sub-variants are decoded from explicit script params on the
+// caller (AddTypes$ / Triggers$) and don't ride this effect.
 export class CloneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Clone";
 
-  // biome-ignore lint/correctness/useYield: stashes copy reference on remembered
+  // biome-ignore lint/correctness/useYield: pure characteristic snapshot
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     if (sa.targets.length === 0) return;
     const sourceCard = game.cards.get(sa.sourceCardId);
@@ -667,14 +707,12 @@ export class CloneEffect extends SpellAbilityEffect {
     if (targetId === undefined) return;
     const targetCard = game.cards.get(targetId);
     if (!targetCard) return;
-    // Wave 18 MVP: record the clone source on the cloner's `remembered`
-    // list. Card.paperCard is readonly (frozen at construction), so a true
-    // base-characteristic rebase requires a Layer 1 copyable-effect entry —
-    // tracked as a TODO. Static observers / tests can introspect via
-    // sourceCard.remembered to confirm the clone fired.
+    // CR 707.2 — capture the target's current (post-layer) copiable
+    // characteristics. Use captureCopiable so layered transforms (Day/Night
+    // flip, face-down, prior copies) on the target carry through.
+    sourceCard.copiedFrom = captureCopiable(targetId, game);
     sourceCard.remembered.push(targetId);
-    // TODO(Wave 19): emit a Layer 1 ContinuousEffect "copy" payload so
-    // computeCharacteristics returns the target's base.
+    game.layerEngine.bumpEpoch("clone");
   }
 }
 effectRegistry.register(CloneEffect);

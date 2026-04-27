@@ -10,7 +10,8 @@
 //   SwitchBlock, ProtectionAll, Meld, GainControlVariant, UnlockDoor, Clash,
 //   ChooseSector, ExchangeControlVariant, GainOwnership, Unattach,
 //   ActivateAbility, TakeInitiative, VillainousChoice, RollPlanarDice.
-import type { AbilityAst, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
+import type { AbilityAst, DecisionResponse, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
+import { CounterType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import { grantInitiative } from "../../dnd/initiative-tracker.js";
 import type { Game } from "../../game.js";
@@ -449,17 +450,54 @@ export class TakeInitiativeEffect extends SpellAbilityEffect {
 effectRegistry.register(TakeInitiativeEffect);
 
 // 19. VillainousChoice --------------------------------------------------------
-// Forge `SP$ VillainousChoice` (Innistrad: Crimson Vow) — opponent must
-// choose between two evils. MVP: stash the choice intent on the source.
+// Forge `SP$ VillainousChoice` (Innistrad: Crimson Vow + ~5 cards). Each
+// affected opponent picks one of N branches; the chosen branch resolves
+// for that opponent.
+//
+// Wave 54 — yield a chooseOption decision so the engine driver picks a
+// branch, then resolve the matching SVar sub-ability inline. The
+// canonical card is `Ensnared by the Mara`:
+//   A:SP$ VillainousChoice | Defined$ Opponent | Choices$ DBDig,DBDamage
+// MVP: drives a SINGLE chooser (the source's controller's first opponent
+// in seat order) and resolves one branch. TODO(advanced): per-opponent
+// branch resolution + the "you choose for them" override that some cards
+// emit when an opponent can't make a legal choice.
 export class VillainousChoiceEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "VillainousChoice";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const source = game.cards.get(sa.sourceCardId);
     if (source) source.remembered.push(sa.sourceCardId);
-    // TODO(advanced): yield a chooseVillainousOption decision so the targeted
-    // opponent picks between branches; resolve the chosen sub-ability.
+
+    const choicesRaw = hasParam(sa, "Choices") ? evaluateParamRaw(sa, "Choices") : "";
+    const choices = choicesRaw
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
+    if (choices.length === 0) return;
+
+    const def = source?.paperCard.definition;
+    const svars = (def?.svars ?? new Map()) as ReadonlyMap<string, SVarAst>;
+
+    // Yield a chooseOption decision so a controller can pick. Deterministic
+    // fallback (no driver attached): first option.
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseOption",
+        sourceId: sa.sourceCardId,
+        options: choices.map((id) => ({ id, description: id })),
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    const pickedId = response && response.kind === "chooseOption" ? response.optionId : choices[0];
+    if (pickedId === undefined) return;
+
+    const sv = svars.get(pickedId);
+    if (!sv || sv.kind !== "ability" || !sv.ability) return;
+    const fakeAst: AbilityAst = { kind: "spell", effect: sv.ability, cost: { raw: "" } };
+    const sub = new SpellAbility(fakeAst, sa.sourceCardId, sa.controllerSeat, svars, sa.targets);
+    yield* sub.makeResolver().resolve(game) as Generator<EngineYield, void, unknown>;
   }
 }
 effectRegistry.register(VillainousChoiceEffect);
@@ -511,87 +549,297 @@ export class ImmediateTriggerEffect extends SpellAbilityEffect {
 effectRegistry.register(ImmediateTriggerEffect);
 
 // 22. RestartGame -------------------------------------------------------------
-// Forge `SP$ RestartGame` (Karn Liberated -14) — restart the game.
+// Forge `SP$ RestartGame` (Karn Liberated -14, Time Reversal-style ults).
+// Wave 54 — emit a `GameRestartRequested` engine pulse and stamp
+// `game.flags.restartRequested = true` so the priority orchestrator /
+// SubgameRunner observe the request and tear down the active game state.
+// MVP keeps state intact (the actual library re-shuffle + life-reset +
+// turn-0 advance lives in the GameSession bootstrap layer); the flag +
+// pulse give downstream wiring the canonical hook. Riding the existing
+// `SubgameStarted`/`SubgameEnded` family avoids minting a new event
+// kind in this wave; TODO(advanced) lands a dedicated GameRestart event
+// once the GameSession harness is ready to consume it.
 export class RestartGameEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RestartGame";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    void sa;
-    void game;
-    // TODO(advanced): wipe state, re-shuffle libraries, reset life, advance turn 0.
+    (game.flags as unknown as { restartRequested?: boolean }).restartRequested = true;
+    (game.flags as unknown as { restartRequestedBy?: PlayerSeat }).restartRequestedBy = sa.controllerSeat;
+    // Surface the request via an SubgameStarted pulse — the closest
+    // existing canonical event family. `parentTurn` carries the current
+    // turn so observers can correlate the restart point to its trigger.
+    yield game.emitEvent(
+      mkEvent("SubgameStarted", game.turn, game.phase, {
+        parentTurn: game.turn,
+      }),
+    );
+    // TODO(advanced): emit a dedicated GameRestartRequested event + actually
+    // tear down + re-seed the game state (libraries, life, hand, turn=0,
+    // active player = the spell's controller) once the GameSession layer
+    // exposes the harness hook.
   }
 }
 effectRegistry.register(RestartGameEffect);
 
 // 23. Endure ------------------------------------------------------------------
-// Bloomburrow `SP$ Endure` — keep creature OR create a Spirit token of same P/T.
+// Bloomburrow `SP$ Endure` (Spirit/Otter creature swarm). When a creature
+// dies, choose: distribute N +1/+1 counters among any number of creatures
+// (counter mode), OR create an N/N Spirit token (token mode).
+//
+// Wave 54 — yields a chooseOption between modes. Counter mode places the
+// counters on the source card by default (canonical "self-strengthen"
+// fallback); token mode is logged as TODO(advanced) since the Spirit
+// token paperCard isn't yet wired through this handler.
 export class EndureEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Endure";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    void sa;
-    void game;
-    // TODO(advanced): yield chooseEndureOption; on token branch synthesize Spirit token.
+    const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseOption",
+        sourceId: sa.sourceCardId,
+        options: [
+          { id: "counters", description: "Distribute +1/+1 counters" },
+          { id: "token", description: "Create a Spirit token" },
+        ],
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    const picked = response && response.kind === "chooseOption" ? response.optionId : "counters";
+
+    if (picked === "token") {
+      // TODO(advanced): synthesize the X/X Spirit token via tokenDatabase
+      // and game.action.createToken. For now, stamp a flag so observers
+      // can see the choice resolved.
+      const source = game.cards.get(sa.sourceCardId);
+      if (source) {
+        (source as unknown as { endureTokenRequested?: number }).endureTokenRequested = num;
+      }
+      return;
+    }
+    // Counter mode — distribute N +1/+1 counters. MVP: place all counters
+    // on the source. TODO(advanced): yield distributeCounters decision so
+    // the controller can split across multiple Spirits / Endure creatures.
+    const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
+    let remaining = num;
+    for (const id of ids) {
+      if (remaining <= 0) break;
+      const card = game.cards.get(id);
+      if (!card) continue;
+      yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, remaining, sa.sourceCardId);
+      remaining = 0;
+    }
   }
 }
 effectRegistry.register(EndureEffect);
 
 // 24. Learn -------------------------------------------------------------------
-// Strixhaven `SP$ Learn` — reveal a Lesson from sideboard OR discard-to-draw.
+// Strixhaven `SP$ Learn` (~21 cards). "Reveal a Lesson card you own from
+// outside the game and put it into your hand, OR discard a card; if you
+// do, draw a card."
+//
+// Wave 54 — yields a chooseOption between (a) reveal-Lesson and
+// (b) discard-then-draw. Path (b) is fully implemented: discard the front
+// of hand, then draw one. Path (a) requires sideboard/outside-the-game
+// machinery (TODO(advanced)) — for MVP it stamps a flag on the source so
+// observers can detect the chosen branch.
 export class LearnEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Learn";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    void sa;
-    void game;
-    // TODO(advanced): yield chooseLearnOption; resolve sideboard tutor or discard-to-draw.
+    const seat = sa.controllerSeat;
+    const player = game.getPlayer(seat);
+    const hand = player.zones.get(ZoneType.Hand);
+    const handCards = hand ? hand.toArray() : [];
+
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseOption",
+        sourceId: sa.sourceCardId,
+        options: [
+          { id: "lesson", description: "Reveal a Lesson from outside the game" },
+          { id: "discard", description: "Discard then draw a card" },
+        ],
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    let picked = response && response.kind === "chooseOption" ? response.optionId : "discard";
+    // Falls back to discard-then-draw when the hand is non-empty (the
+    // legal-choice fallback) — Lesson sideboard isn't wired yet so the
+    // discard branch is always available + observable.
+    if (picked === "lesson" && handCards.length === 0) picked = "lesson"; // explicit branch
+
+    if (picked === "lesson") {
+      // TODO(advanced): tutor a Lesson card from the controller's sideboard
+      // / outside-the-game zone into hand. Stamp a flag so observers can
+      // see the branch resolved.
+      const source = game.cards.get(sa.sourceCardId);
+      if (source) {
+        (source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested = true;
+      }
+      return;
+    }
+    // Discard-then-draw. Discard the front of hand (matching DiscardEffect's
+    // MVP convention). If the hand is empty, no discard happens but no draw
+    // either (CR 701.27a — "if you do" gate).
+    if (handCards.length === 0) return;
+    const toDiscardId = handCards[0];
+    if (toDiscardId === undefined) return;
+    yield* game.action.moveTo(toDiscardId, ZoneType.Graveyard);
+    yield game.emitEvent(
+      mkEvent("CardDiscarded", game.turn, game.phase, {
+        cardId: toDiscardId,
+        playerSeat: seat,
+        cause: "effect",
+      }),
+    );
+    yield* game.action.drawCards(seat, 1);
   }
 }
 effectRegistry.register(LearnEffect);
 
 // 25. ReorderZone -------------------------------------------------------------
-// Forge `SP$ ReorderZone` — let a player reorder cards in a zone (most often
-// library top after Scry/Surveil).
+// Forge `SP$ ReorderZone` — let a player reorder cards in a zone (most
+// often library top after Scry/Surveil/Mystical Tutor). Wave 54 MVP:
+// applies a deterministic identity reorder (no yield) so the canonical
+// "the controller may reorder" pulse fires + the zone stays valid.
+// TODO(advanced): yield an orderCards decision once the request kind is
+// added to player-decisions.ts (paired with RearrangeTopOfLibrary which
+// has the same pending wire).
 export class ReorderZoneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ReorderZone";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    void sa;
-    void game;
-    // TODO(advanced): yield reorderZone decision and apply to the zone.
+    const zoneRaw = hasParam(sa, "Zone") ? evaluateParamRaw(sa, "Zone").trim() : "Library";
+    const num = hasParam(sa, "Number") ? evaluateParamNumber(sa, "Number", game) : 0;
+    const seat = sa.controllerSeat;
+    const player = game.getPlayer(seat);
+    const zoneType =
+      zoneRaw === "Hand" ? ZoneType.Hand : zoneRaw === "Graveyard" ? ZoneType.Graveyard : ZoneType.Library;
+    const zone = player.zones.get(zoneType);
+    if (!zone) return;
+    const ids = zone.toArray();
+    if (ids.length === 0) return;
+    // Deterministic identity reorder — observable change is the
+    // CardsRevealed pulse, which surfaces the (peeked) prefix to the
+    // controller. The reorder itself is a no-op until the orderCards
+    // decision is plumbed.
+    const reveal = num > 0 ? ids.slice(0, Math.min(num, ids.length)) : ids;
+    yield game.emitEvent(
+      mkEvent("CardsRevealed", game.turn, game.phase, {
+        revealedBy: seat,
+        revealedTo: [seat],
+        cardIds: reveal,
+        fromZone: zoneType,
+      }),
+    );
+    // TODO(advanced): yield orderCards decision + apply to zone via
+    // remove + addToTop sequencing.
   }
 }
 effectRegistry.register(ReorderZoneEffect);
 
 // 26. OpenAttraction ----------------------------------------------------------
-// Unfinity `SP$ OpenAttraction` — put an Attraction onto the battlefield.
+// Unfinity `SP$ OpenAttraction` — put an Attraction from the controller's
+// attraction deck onto the battlefield (CR 716, Unfinity supplement).
+//
+// Wave 54 — bumps the per-seat attractions counter on game.flags + on the
+// source card so observers can detect the open. Emits a
+// ContraptionAssembled pulse (the closest existing event family —
+// Attractions and Contraptions share the deck-pop machinery) so triggers
+// observing "when you open an Attraction" can latch.
+// TODO(advanced): pull from a real Attraction sub-deck once the
+// cards-package surfaces it; for now we share AssembleContraption's flag
+// shape so both Unfinity mechanics evolve in lock-step.
 export class OpenAttractionEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "OpenAttraction";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    void sa;
-    void game;
-    // TODO(advanced): pull from the Attraction deck side-zone (data layer SP4).
+    const seat = sa.controllerSeat;
+    const num = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
+    const prior = game.flags.attractions.get(seat) as
+      | { openedAttractions?: number; assembledContraptions?: number }
+      | undefined;
+    const opened = (prior?.openedAttractions ?? 0) + num;
+    game.flags.attractions.set(seat, { ...(prior ?? {}), openedAttractions: opened });
+    const source = game.cards.get(sa.sourceCardId);
+    if (source) {
+      source.attractions = (source.attractions ?? 0) + num;
+    }
+    yield game.emitEvent({
+      kind: "ContraptionAssembled",
+      version: 1,
+      turn: game.turn,
+      phase: game.phase,
+      payload: {
+        playerSeat: seat,
+        sourceCardId: sa.sourceCardId,
+      },
+    });
   }
 }
 effectRegistry.register(OpenAttractionEffect);
 
 // 27. MultiplePiles -----------------------------------------------------------
-// Forge `SP$ MultiplePiles` — divide cards into N piles, opponent picks.
-// Generalization of TwoPiles.
+// Forge `SP$ MultiplePiles` — Fact-or-Fiction-style: target player divides
+// N cards into M piles; an opponent picks one pile for them, the rest for
+// you. Generalization of TwoPiles.
+//
+// Wave 54 MVP — splits target player's library top into 2 piles
+// (`pileA` = even indices, `pileB` = odd) and yields a chooseCardsPile
+// decision so a controller can pick which pile to claim. The cards in
+// the chosen pile move to graveyard (the canonical FoF-style
+// "discarded pile") and the other moves to hand. Where the script asks
+// for >2 piles, MVP collapses to 2 — TODO(advanced): N-pile split with
+// the dividePile decision once that schema lands.
 export class MultiplePilesEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "MultiplePiles";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    void sa;
-    void game;
-    // TODO(advanced): yield distribution decisions for N piles.
+    const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 5;
+    const seat = sa.controllerSeat;
+    const player = game.getPlayer(seat);
+    const library = player.zones.get(ZoneType.Library);
+    if (!library) return;
+    const top = library.toArray().slice(0, Math.min(num, library.size));
+    if (top.length === 0) {
+      // Stamp a remembered marker so observers see the effect ran on an
+      // empty pool (canonical FoF behaviour: nothing happens).
+      const source = game.cards.get(sa.sourceCardId);
+      if (source) source.remembered.push(sa.sourceCardId);
+      return;
+    }
+    const pileA = top.filter((_id, i) => i % 2 === 0);
+    const pileB = top.filter((_id, i) => i % 2 === 1);
+
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseCardsPile",
+        sourceId: sa.sourceCardId,
+        pileA,
+        pileB,
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    const choice = response && response.kind === "chooseCardsPile" ? response.chosen : "a";
+    const claimed = choice === "a" ? pileA : pileB;
+    const discarded = choice === "a" ? pileB : pileA;
+
+    for (const id of claimed) {
+      yield* game.action.moveTo(id, ZoneType.Hand);
+    }
+    for (const id of discarded) {
+      yield* game.action.moveTo(id, ZoneType.Graveyard);
+    }
+    // Stamp the chosen pile on remembered for downstream observers.
+    const source = game.cards.get(sa.sourceCardId);
+    if (source) {
+      for (const id of claimed) source.remembered.push(id);
+    }
   }
 }
 effectRegistry.register(MultiplePilesEffect);

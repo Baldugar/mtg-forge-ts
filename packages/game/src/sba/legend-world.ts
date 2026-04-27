@@ -15,6 +15,7 @@
 // can be swapped for a real timestamp lookup.
 import { Supertype, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import { isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
 import type { SbaAction } from "./sba-action.js";
 
@@ -26,7 +27,10 @@ export const collectLegendWorld = (game: Game, out: SbaAction[]): void => {
     if (card.zone !== ZoneType.Battlefield) continue;
     // CR 702.26e — phased-out permanents are treated as though they don't
     // exist for most rules, including the legend rule. Audit A-007.
-    if (card.phased === true) continue;
+    // Wave 54 — gate via the unified isPhasedOut helper so direct
+    // `SP$ Phases` (card.phasedOut) is honoured alongside keyword phasing
+    // (card.phased).
+    if (isPhasedOut(game, id)) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     if (!chars.supertypes.has(Supertype.Legendary)) continue;
     // Unnamed legendaries (vanishingly rare but valid in test setup) are
@@ -51,7 +55,8 @@ export const collectLegendWorld = (game: Game, out: SbaAction[]): void => {
   for (const [id, card] of game.cards) {
     if (card.zone !== ZoneType.Battlefield) continue;
     // CR 702.26e — phased-out permanents are invisible to the world rule.
-    if (card.phased === true) continue;
+    // Wave 54 — uses isPhasedOut to honour both flags.
+    if (isPhasedOut(game, id)) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     if (!chars.supertypes.has(Supertype.World)) continue;
     // EntityId is branded on a number — coerce via unknown. Larger ids
