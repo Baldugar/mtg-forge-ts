@@ -64,6 +64,7 @@ import {
 } from "../static-handler.js";
 import { cardIdMatchesAffectedFilter } from "./affected-filter.js";
 import { evalCondition } from "./conditions.js";
+import { GrantedAbilitySweep } from "./granted-ability.js";
 
 const literalRaw = (p: ParamValue | undefined): string | undefined =>
   p && p.kind === "literal" ? p.raw : undefined;
@@ -393,14 +394,68 @@ export class ContinuousStaticHandler extends StaticHandler {
       }
     }
 
+    // ---- Wave 60.B — Continuous static grants of T/R/S abilities ----------
+    // AddTrigger$ / AddReplacement$ / AddStaticAbility$ each name an SVar
+    // on the source card whose body is a `T:` / `R:` / `S:` line (Forge
+    // stores them sans the line prefix). At static activation we build a
+    // GrantedAbilitySweep per payload that:
+    //   - parses the SVar text once (lazily on first sweep);
+    //   - on every layer-engine epoch bump, reconciles which matched
+    //     cards currently hold a granted ability — adds for newly-
+    //     matched, removes for newly-unmatched;
+    //   - on static deactivation, tears down all current grants
+    //     symmetrically.
+    // The sweep is encapsulated in a new layer payload kind
+    // ("granted-ability") so push/remove flows through layer-dispatch
+    // alongside the rest of the Continuous static contributions; this
+    // keeps the register/unregister contract uniform with the existing
+    // Layer 4/5/6/7 paths.
+    const addTriggerRaw = literalRaw(params.AddTrigger);
+    const addReplacementRaw = literalRaw(params.AddReplacement);
+    const addStaticAbilityRaw = literalRaw(params.AddStaticAbility);
+
+    if (addTriggerRaw !== undefined) {
+      const sweep = new GrantedAbilitySweep({
+        staticId: ctx.staticId,
+        staticSourceCardId: sourceId,
+        controllerSeat,
+        kind: "trigger",
+        svarName: addTriggerRaw,
+        appliesToCardIdFn,
+      });
+      payloads.push({ kind: "granted-ability", sweep });
+    }
+    if (addReplacementRaw !== undefined) {
+      const sweep = new GrantedAbilitySweep({
+        staticId: ctx.staticId,
+        staticSourceCardId: sourceId,
+        controllerSeat,
+        kind: "replacement",
+        svarName: addReplacementRaw,
+        appliesToCardIdFn,
+      });
+      payloads.push({ kind: "granted-ability", sweep });
+    }
+    if (addStaticAbilityRaw !== undefined) {
+      const sweep = new GrantedAbilitySweep({
+        staticId: ctx.staticId,
+        staticSourceCardId: sourceId,
+        controllerSeat,
+        kind: "static",
+        svarName: addStaticAbilityRaw,
+        appliesToCardIdFn,
+      });
+      payloads.push({ kind: "granted-ability", sweep });
+    }
+
     // ---- TODO(advanced) payloads -------------------------------------------
-    // RemoveKeyword$, AddAbility$, AddTrigger$, AddStaticAbility$,
-    // MayLookAt$ — these need synthesised-ability machinery (Layer 6
-    // negative kw store, ability/trigger/static SVar synthesis). The
-    // handler currently accepts the params silently so cards using
-    // them don't crash; the surrounding effect (P/T, types, colors,
-    // additive keywords) still applies. Each is targeted by a
-    // future wave.
+    // RemoveKeyword$, AddAbility$, MayLookAt$ — these need additional
+    // synthesised-ability machinery (Layer 6 negative kw store, ability
+    // SVar synthesis, MayLookAt zone-visibility tracking). The handler
+    // currently accepts the params silently so cards using them don't
+    // crash; the surrounding effect (P/T, types, colors, additive
+    // keywords, granted T/R/S abilities) still applies. Each is targeted
+    // by a future wave.
 
     // Defensive: a Continuous static with NO concrete payload would be
     // a no-op. Emit a noop payload so the registry has SOMETHING to

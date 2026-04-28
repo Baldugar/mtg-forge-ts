@@ -15,6 +15,7 @@
 // per-layer effect arrays and applying them in order.
 import { type Characteristics, type EntityId, GameStateIntegrityError } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import type { GrantedAbilitySweep } from "../static/handlers/granted-ability.js";
 import { deriveBaseCharacteristics } from "./base-characteristics.js";
 import type { Layer6KeywordGrant } from "./keyword-layer.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
@@ -68,6 +69,14 @@ export class LayerEngine {
   readonly pt7c: Layer7cEffect[] = [];
   readonly pt7d: Layer7dEffect[] = [];
   readonly pt7e: Layer7eEffect[] = [];
+  // Wave 60.B — Continuous static grants of T/R/S abilities. Each sweep
+  // tracks its own granted-ability ↔ matched-card map and reconciles
+  // filter-membership churn on every epoch bump. Push/remove is driven
+  // by layer-dispatch's "granted-ability" payload (lifecycle is symmetric
+  // with the rest of the layer engine's payload contract). Public so
+  // pushLayerPayload / removeLayerPayload can splice; reads are
+  // intended for the sweep helper itself plus debug / test.
+  readonly grantedAbilitySweeps: GrantedAbilitySweep[] = [];
 
   constructor(private readonly game: Game) {}
 
@@ -97,6 +106,18 @@ export class LayerEngine {
     this.bumping = true;
     try {
       this.game.continuousEffectRegistry.checkEpoch();
+      // Wave 60.B — reconcile granted T/R/S ability membership after any
+      // state change that could shift the Affected$ filter. Each sweep
+      // adds grants for newly-matched cards and removes grants for
+      // cards that no longer match. Snapshot the sweep array so a sweep
+      // that triggers register/unregister side effects (rare but
+      // possible — granted statics can themselves be ability-granting)
+      // doesn't mutate the iteration target. The re-entrancy guard
+      // above (`this.bumping`) collapses any nested bumpEpoch calls
+      // into a single cache invalidation.
+      for (const sweep of [...this.grantedAbilitySweeps]) {
+        sweep.sweep(this.game);
+      }
     } finally {
       this.bumping = false;
     }

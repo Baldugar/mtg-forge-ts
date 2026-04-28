@@ -11,6 +11,7 @@
 // and unregister — a fresh object literal on removal silently leaks the
 // original into the layer array.
 import type { Game } from "../game.js";
+import type { GrantedAbilitySweep } from "../static/handlers/granted-ability.js";
 import type { Layer6KeywordGrant } from "./keyword-layer.js";
 import type { TextSubstitution } from "./layer3-text.js";
 import type { TypeChangeEffect } from "./layer4-type.js";
@@ -40,7 +41,16 @@ export type LayerPayload =
   // not flow into any LayerEngine array. Adding it here keeps the
   // discriminated-union check exhaustive across pushLayerPayload /
   // removeLayerPayload without introducing a side channel.
-  | { readonly kind: "noop" };
+  | { readonly kind: "noop" }
+  // Wave 60.B — Continuous static grants of T/R/S abilities. The payload
+  // owns a sweep that, on push, registers grants for all currently-
+  // matched cards and registers itself with `layerEngine.grantedAbilitySweeps`
+  // so subsequent epoch bumps reconcile filter-membership churn. On
+  // remove, the sweep tears down all current grants and is dropped from
+  // the sweep list. The payload is otherwise inert from a layer-array
+  // perspective — granted T/R/S abilities flow through their own
+  // registries, not the layer engine.
+  | { readonly kind: "granted-ability"; readonly sweep: GrantedAbilitySweep };
 
 export const pushLayerPayload = (game: Game, payload: LayerPayload): void => {
   switch (payload.kind) {
@@ -76,6 +86,17 @@ export const pushLayerPayload = (game: Game, payload: LayerPayload): void => {
       // continuous-effect-registry can host a cleanup hook against a
       // duration. See LayerPayload's "noop" doc-comment.
       break;
+    case "granted-ability": {
+      // Wave 60.B — register the sweep so subsequent bumpEpoch calls
+      // reconcile filter-membership churn, then run an initial sweep so
+      // grants land for currently-matched cards. The sweep object is
+      // referentially identical across push/remove (same contract as
+      // every other layer-payload effect ref), so the splice in
+      // removeLayerPayload finds it.
+      game.layerEngine.grantedAbilitySweeps.push(payload.sweep);
+      payload.sweep.sweep(game);
+      break;
+    }
     default: {
       const _: never = payload;
       throw new Error(`pushLayerPayload: unreachable ${JSON.stringify(_)}`);
@@ -127,6 +148,15 @@ export const removeLayerPayload = (game: Game, payload: LayerPayload): void => {
     case "noop":
       // Mirrors the noop branch in pushLayerPayload — nothing to splice.
       break;
+    case "granted-ability": {
+      // Wave 60.B — tear down all granted abilities currently held by
+      // the sweep, then splice it out of the sweeps list so future
+      // bumpEpoch calls don't visit a stale sweep.
+      payload.sweep.removeAll(game);
+      const i = game.layerEngine.grantedAbilitySweeps.indexOf(payload.sweep);
+      if (i >= 0) game.layerEngine.grantedAbilitySweeps.splice(i, 1);
+      break;
+    }
     default: {
       const _: never = payload;
       throw new Error(`removeLayerPayload: unreachable ${JSON.stringify(_)}`);
