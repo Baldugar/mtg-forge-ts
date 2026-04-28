@@ -38,3 +38,9 @@ export * from "./panharmonicon.js";
 export * from "./cant-put-counter-static.js";
 export * from "./cant-regenerate-static.js";
 export * from "./dont-untap-static.js";
+// Wave 60.C — two same-shape "permission gate" statics:
+//   - MayBeCastBy (Bolas's Citadel / Oracle of Mul Daya / Sen Triplets /
+//     Wishclaw Talisman / Knowledge Pool / Mind's Dilation)
+//   - MaxLevel (Class enchantment level cap, CR 716)
+export * from "./may-be-cast-by-static.js";
+export * from "./max-level-static.js";

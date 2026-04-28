@@ -423,6 +423,13 @@ export class Card {
   // saga-class.ts, but the slot is the authoritative read used by the
   // per-level conditional trigger/static gates).
   classLevel: number | undefined = undefined;
+  // Wave 60.C — Class enchantment level cap (CR 716). Stamped by an
+  // active MaxLevel static (`S:Mode$ MaxLevel | ValidCard$ Card.Self |
+  // MaxLevel$ N`) on activate; cleared on deactivate. The Class level-up
+  // SA gates on `card.classLevel >= classMaxLevel` before firing — when
+  // the cap is reached, the activation is rejected (no cost paid, no
+  // stack entry).
+  classMaxLevel: number | undefined = undefined;
   // Wave 52 — Saga (CR 714). Read+written by ChapterKeywordHandler. The
   // total chapter count parsed from `K:Chapter:N:DB1,DB2,...,DBN`. Used by
   // the CounterAdded watcher to detect when the final-chapter trigger has

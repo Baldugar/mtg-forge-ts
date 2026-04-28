@@ -80,6 +80,22 @@ export function* activateAbility(
     );
   }
 
+  // 3a-bis. Wave 60.C — Class enchantment level cap (CR 716). If this
+  // SA is a synthesized Class level-up (tagged "class") and the source
+  // card has a classMaxLevel stamp from an active MaxLevel static, refuse
+  // the activation when the current level has already reached the cap.
+  // The level-up SA's tags include `class_level_N` (set by ClassKeywordHandler);
+  // the gate fires when card.classLevel >= classMaxLevel — once the cap
+  // is reached, no further level-up activations are legal.
+  if (sa.tags.has("class") && card.classMaxLevel !== undefined) {
+    const currentLevel = card.classLevel ?? 0;
+    if (currentLevel >= card.classMaxLevel) {
+      throw new IllegalDecisionError(
+        `activateAbility: Class level cap reached (level ${currentLevel} >= max ${card.classMaxLevel}) on card ${cardId}`,
+      );
+    }
+  }
+
   // 3b. Wave 8 — target selection (CR 602.1b: choose modes/targets BEFORE
   //     paying costs). If the ability's effect carries a ValidTgts$ param,
   //     parse it into a TargetRestriction, enumerate eligible targets via

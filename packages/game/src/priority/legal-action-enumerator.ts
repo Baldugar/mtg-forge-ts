@@ -27,6 +27,7 @@ import { CardType, PhaseStep, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import { shouldGrantFlash } from "../statics/cant-must-may-extras.js";
 import { isRestricted } from "../statics/cant-must-may.js";
+import { mayBeCastBy } from "../statics/wave60-cast-gates.js";
 
 /**
  * True when the game is in a main phase AND the stack is empty. This is the
@@ -117,6 +118,49 @@ export const enumerateLegalActions = (game: Game, seat: PlayerSeat): readonly Pr
       if (isRestricted(game, "cantCast", cardId)) continue;
       out.push({ kind: "castSpell", cardId, zone: ZoneType.Hand });
     }
+  }
+
+  // Wave 60.C — MayBeCastBy positively grants a player permission to cast
+  // a card from a non-hand zone (Bolas's Citadel topdeck cast / Sen
+  // Triplets opponent-hand cast / Knowledge Pool exile cast). Iterate the
+  // candidate non-hand zones and add cast actions where the gate matches.
+  // Keeps the standard timing + cantCast filter — the gate only relaxes
+  // the zone-source restriction, not the rule-of-law checks.
+  //
+  // Zones to iterate: Library (top card only — Bolas's Citadel shape) and
+  // Exile (Knowledge Pool / Mind's Dilation shape). Opponents' hands are
+  // // TODO(advanced) — Sen Triplets requires sequencing the "target
+  // opponent" choice ahead of the cast surface enumeration; today the
+  // hand-only iteration above covers the most common case where the
+  // gated player IS the seat asked to enumerate (the Sen Triplets caster
+  // is the Sen Triplets controller, not the opponent).
+  const enumerateMayBeCastFromZone = (zone: ZoneType, candidateIds: readonly EntityId[]): void => {
+    for (const cardId of candidateIds) {
+      const card = game.cards.get(cardId);
+      if (!card) continue;
+      if (!mayBeCastBy(game, cardId, seat)) continue;
+      const chars = game.layerEngine.computeCharacteristics(cardId);
+      if (chars.types.has(CardType.Land)) continue; // lands need playLand path
+      if (!canCastAtCurrentTiming(game, chars, seat, cardId)) continue;
+      if (isRestricted(game, "cantCast", cardId)) continue;
+      out.push({ kind: "castSpell", cardId, zone });
+    }
+  };
+
+  // Library: only the top card (Bolas's Citadel-shape — "you may cast the
+  // top card of your library"). Forge convention: index 0 is the TOP
+  // (see GameAction.drawCards — `library.peekAt(0)` is the top).
+  const library = player.zones.get(ZoneType.Library);
+  if (library !== undefined) {
+    const top = library.peekAt(0);
+    if (top !== undefined) enumerateMayBeCastFromZone(ZoneType.Library, [top]);
+  }
+
+  // Exile: every face-up card in the player's exile zone (Knowledge Pool
+  // / Mind's Dilation shape — exiled cards available for casting).
+  const exile = player.zones.get(ZoneType.Exile);
+  if (exile !== undefined) {
+    enumerateMayBeCastFromZone(ZoneType.Exile, exile.toArray());
   }
 
   // Activated abilities on controlled permanents — SP2 stub.

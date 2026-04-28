@@ -10,6 +10,12 @@
 // has it under the AttackVigilance / Untap family even though it isn't
 // a combat-vigilance mode per se. Mapped to the cantMustMay category
 // (action-filter consulted by the untap loop) — see MODE_TO_CATEGORY.
+//
+// Wave 60.C — `MayBeCastBy` (positive cast-permission gate; CR 601;
+// Bolas's Citadel / Oracle of Mul Daya / Sen Triplets / Wishclaw Talisman)
+// and `MaxLevel` (Class enchantment level-up cap; CR 716) added. Both
+// share the same shape as the Wave 60.A gates: registry-walk consulted
+// at a decision point. See MODE_TO_CATEGORY for category routing.
 import type { StaticAbilityCategory } from "./static-ability.js";
 
 /** All Forge static-ability modes, in Forge enum declaration order. */
@@ -99,6 +105,14 @@ export const STATIC_ABILITY_MODES = [
   // Wave 60 — Stasis-style "permanents don't untap during their controller's
   // untap step". Action-filter consulted by phase-handler's untap loop.
   "DontUntap",
+  // Wave 60.C — Positive cast-permission gate (CR 601). Bolas's Citadel /
+  // Oracle of Mul Daya / Sen Triplets / Wishclaw Talisman / Knowledge Pool
+  // grant a player permission to cast a card matching ValidCard$ from a
+  // zone where it would otherwise be illegal to cast it.
+  "MayBeCastBy",
+  // Wave 60.C — Class enchantment level-up cap (CR 716). The level-up
+  // activated SA refuses to fire when classLevel >= classMaxLevel.
+  "MaxLevel",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -149,6 +163,13 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   // filter (the engine asks "may this permanent untap?" before applying
   // the untap). Lives in the cantMustMay bucket alongside CantAttack/CantBlock.
   DontUntap: "cantMustMay",
+  // Wave 60.C — MaxLevel is an action-filter on the Class level-up
+  // activated SA (refuses to fire when classLevel >= classMaxLevel). The
+  // gate is consulted at the activate-time path; the static itself
+  // stamps card.classMaxLevel on the source, so the consumer reads from
+  // the card slot directly. Routing via cantMustMay keeps the registry
+  // hookup uniform.
+  MaxLevel: "cantMustMay",
 
   // replacementGenerating (mutation-interception statics; generate
   // ReplacementAbility entries rather than acting as action filters)
@@ -206,6 +227,12 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   UntapOtherPlayer: "ruleChanging",
   TurnReversed: "ruleChanging",
   PhaseReversed: "ruleChanging",
+  // Wave 60.C — MayBeCastBy positively grants a player permission to cast
+  // a card from a zone where it would otherwise be illegal (Bolas's
+  // Citadel / Oracle of Mul Daya). Routing via ruleChanging mirrors the
+  // CastWithFlash sibling (also a positive cast permission, also
+  // ruleChanging) — both override the default cast rules.
+  MayBeCastBy: "ruleChanging",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>
