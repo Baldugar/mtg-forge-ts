@@ -16,8 +16,9 @@
 import { type Characteristics, type EntityId, GameStateIntegrityError } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { GrantedAbilitySweep } from "../static/handlers/granted-ability.js";
+import type { MayLookAtGate } from "../statics/wave60-may-look-at-gate.js";
 import { deriveBaseCharacteristics } from "./base-characteristics.js";
-import type { Layer6KeywordGrant } from "./keyword-layer.js";
+import type { Layer6KeywordGrant, Layer6KeywordRemoval } from "./keyword-layer.js";
 import { applyLayer1Copy } from "./layer1-copy.js";
 import { applyFaceDownOverride } from "./layer1-face-down.js";
 import { applyLayer2Control } from "./layer2-control.js";
@@ -64,6 +65,12 @@ export class LayerEngine {
   // injected into Characteristics. Future Wave 36 (Wither/Infect) and
   // others will route additional keyword grants through this array.
   readonly keywordGrants: Layer6KeywordGrant[] = [];
+  // Wave 60.F — Layer 6 keyword removals (RemoveKeyword$ on Continuous).
+  // Applied AFTER additive grants in `effectiveGrantedKeywords`, and also
+  // subtracted from intrinsic Card.keywords in the `hasKeyword` helper —
+  // both reads consult `effectiveKeywordRemovals` so the negative-keyword
+  // gate is observed uniformly across combat / SBA / target filters.
+  readonly keywordRemovals: Layer6KeywordRemoval[] = [];
   readonly pt7a: Layer7aEffect[] = [];
   readonly pt7b: Layer7bEffect[] = [];
   readonly pt7c: Layer7cEffect[] = [];
@@ -77,6 +84,12 @@ export class LayerEngine {
   // pushLayerPayload / removeLayerPayload can splice; reads are
   // intended for the sweep helper itself plus debug / test.
   readonly grantedAbilitySweeps: GrantedAbilitySweep[] = [];
+  // Wave 60.F — MayLookAt$ peek-rights gates. Consulted by
+  // `mayLookAtFaceDown(game, cardId, seat)` when a visibility consumer
+  // probes whether a seat has permission to look at a face-down card.
+  // Push/remove flows through layer-dispatch's "may-look-at" payload so
+  // lifecycle is symmetric with kw-grant / pt-modify / etc.
+  readonly mayLookAtGates: MayLookAtGate[] = [];
 
   constructor(private readonly game: Game) {}
 
@@ -143,6 +156,47 @@ export class LayerEngine {
       } else if (g.targetCardIdFn() !== cardId) continue;
       // Inline normalisation to avoid an extra import on the hot path.
       const norm = g.keyword
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
+      if (norm.length > 0) out.add(norm);
+    }
+    // Wave 60.F — subtract removals AFTER additive grants. A card that has
+    // both a granted Flying and a removed Flying ends up without Flying
+    // (negative wins per Forge's Layer 6 ordering — additive then negative).
+    if (this.keywordRemovals.length > 0) {
+      for (const r of this.keywordRemovals) {
+        if (r.appliesToCardIdFn !== undefined) {
+          if (!r.appliesToCardIdFn(cardId)) continue;
+        } else if (r.targetCardIdFn() !== cardId) continue;
+        const norm = r.keyword
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "_")
+          .replace(/^_+|_+$/g, "");
+        if (norm.length > 0) out.delete(norm);
+      }
+    }
+    return out;
+  }
+
+  /**
+   * Wave 60.F — collect the lowercase_snake_case keyword ids that have
+   * been REMOVED from `cardId` by a Layer 6 RemoveKeyword$ effect. Used
+   * by `hasKeyword` to subtract negative keywords from the union of
+   * (intrinsic Card.keywords ∪ granted Layer-6 keywords) so a card with
+   * baseline Flying + a removed Flying ends up without Flying. Returns
+   * an empty set when no removals are live.
+   */
+  effectiveKeywordRemovals(cardId: EntityId): Set<string> {
+    if (this.keywordRemovals.length === 0) return new Set();
+    const out = new Set<string>();
+    for (const r of this.keywordRemovals) {
+      if (r.appliesToCardIdFn !== undefined) {
+        if (!r.appliesToCardIdFn(cardId)) continue;
+      } else if (r.targetCardIdFn() !== cardId) continue;
+      const norm = r.keyword
         .trim()
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "_")

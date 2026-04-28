@@ -69,10 +69,21 @@ export const creatureToughness = (game: Game, creatureId: EntityId): number => {
  * with AddKeyword$, e.g. Threshold). The two sources are unioned so
  * intrinsic Vigilance + a Threshold grant both resolve true even when
  * one is absent.
+ *
+ * Wave 60.F — Layer 6 RemoveKeyword$ effects subtract from the union.
+ * A card that has baseline Flying + a removed Flying (e.g. Cessation
+ * stripping Flying off creatures of a specific filter) ends up without
+ * Flying for combat / SBA / target queries. Removal applies AFTER the
+ * additive union so additions cannot un-remove a removal in the same
+ * static; this matches Forge's Layer 6 ordering for negative keywords.
  */
 export const hasKeyword = (game: Game, cardId: EntityId, keyword: string): boolean => {
   const card = game.cards.get(cardId);
   if (!card) return false;
+  // Wave 60.F — short-circuit on negative keyword: if a Layer 6 removal
+  // strips this keyword from the card, the answer is false regardless of
+  // intrinsic / granted sources.
+  if (game.layerEngine.effectiveKeywordRemovals(cardId).has(keyword)) return false;
   if (card.keywords?.has(keyword)) return true;
   // Wave 32 — Layer 6 keyword grants (Threshold, Wither/Infect roadmap).
   return game.layerEngine.effectiveGrantedKeywords(cardId).has(keyword);

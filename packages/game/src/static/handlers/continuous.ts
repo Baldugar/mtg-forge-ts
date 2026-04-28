@@ -20,8 +20,11 @@
 //   - SetPower / SetToughness   → Layer 7b (set P/T).
 //   - AddKeyword                → Layer 6 keyword grant. Multi-keyword
 //     grants split on " & " (rare, but Forge uses it).
-//   - RemoveKeyword             → not yet wired (no Layer 6 negative
-//     keyword storage). Tagged TODO(advanced).
+//   - RemoveKeyword             → Wave 60.F — Layer 6 negative keyword
+//     removal. Multi-keyword removals split on " & ". Applied AFTER
+//     additive grants in `effectiveGrantedKeywords`; subtracted in the
+//     `hasKeyword` combat helper so combat / SBA / target filters see
+//     the gate uniformly.
 //   - AddType                   → Layer 4 add card type.
 //   - AddSubType / AddSubtype   → Layer 4 addSubtype.
 //   - RemoveType                → Layer 4 remove card type.
@@ -29,16 +32,25 @@
 //   - RemoveCardTypes           → Layer 4 removeAllCardTypes.
 //   - RemoveCreatureTypes       → Layer 4 removeAllCreatureTypes.
 //   - AddColor / SetColor       → Layer 5 add/set colors.
-//   - AddAbility / AddTrigger / AddStaticAbility → SVar-defined grants
-//     not yet wired through this MVP. Tagged TODO(advanced) — they
-//     require synthesising abilities/triggers/statics from SVars on the
-//     source card and registering/unregistering them in lockstep with
-//     the static's lifecycle. The handler accepts them silently so
-//     cards using these don't crash; promotion is a follow-up wave.
+//   - AddTrigger / AddReplacement / AddStaticAbility → Wave 60.B —
+//     SVar-defined grants of T/R/S abilities. Each names an SVar on the
+//     source card whose body is a `T:` / `R:` / `S:` line; the
+//     GrantedAbilitySweep machinery parses the SVar text, builds a granted
+//     ability per matched card, and reconciles add/remove deltas on every
+//     epoch bump. See granted-ability.ts.
+//   - AddAbility                → Wave 60.F — SVar-defined grant of an
+//     activated ability. Same GrantedAbilitySweep machinery (4th
+//     `activated` kind) — parses the SVar's `AB$ ...` body via the
+//     standard ability-line parser and pushes the resulting SpellAbility
+//     onto the matched card's `spellAbilities`.
 //   - CharacteristicDefining    → marker only; Layer 4/5 apply CDA-first
 //     ordering. We forward the flag to per-payload `isCda` where the
 //     layer differentiates (Layer 4 / Layer 5).
-//   - MayLookAt                 → not yet wired. Tagged TODO(advanced).
+//   - MayLookAt                 → Wave 60.F — face-down peek-rights gate.
+//     Stamps a MayLookAtGate on the layer engine that visibility consumers
+//     consult via `mayLookAtFaceDown(game, cardId, seat)`. Player-filter
+//     parsing handles `You` / `Each` / `Opponent` (Telepathy / Sen
+//     Triplets / similar).
 //
 // Condition$ — eight live evaluators (see ./conditions.ts): Threshold,
 // Hellbent, Metalcraft, Delirium, FatefulHour, Landfall, Revolt,
@@ -51,11 +63,12 @@
 // per-card predicate is a closure that re-reads game state live.
 import type { CardType, EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import { CardType as CardTypeEnum, Color, ColorSet } from "@mtg-forge-ts/core";
-import type { Layer6KeywordGrant } from "../../layers/keyword-layer.js";
+import type { Layer6KeywordGrant, Layer6KeywordRemoval } from "../../layers/keyword-layer.js";
 import type { LayerPayload } from "../../layers/layer-dispatch.js";
 import type { TypeChangeEffect } from "../../layers/layer4-type.js";
 import type { ColorChangeEffect } from "../../layers/layer5-color.js";
 import type { Layer7bEffect, Layer7cEffect } from "../../layers/layer7-pt.js";
+import { type MayLookAtGate, parseMayLookAtSeatFilter } from "../../statics/wave60-may-look-at-gate.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
@@ -448,14 +461,68 @@ export class ContinuousStaticHandler extends StaticHandler {
       payloads.push({ kind: "granted-ability", sweep });
     }
 
-    // ---- TODO(advanced) payloads -------------------------------------------
-    // RemoveKeyword$, AddAbility$, MayLookAt$ — these need additional
-    // synthesised-ability machinery (Layer 6 negative kw store, ability
-    // SVar synthesis, MayLookAt zone-visibility tracking). The handler
-    // currently accepts the params silently so cards using them don't
-    // crash; the surrounding effect (P/T, types, colors, additive
-    // keywords, granted T/R/S abilities) still applies. Each is targeted
-    // by a future wave.
+    // ---- Wave 60.F — RemoveKeyword$, AddAbility$, MayLookAt$ ---------------
+    // RemoveKeyword$ — Layer 6 negative keyword removal applied AFTER
+    // additive grants. Same predicate / target plumbing as kw-grant; multi-
+    // keyword removals split on " & " (mirrors AddKeyword$).
+    const removeKeywordRaw = literalRaw(params.RemoveKeyword);
+    if (removeKeywordRaw !== undefined) {
+      for (const kw of splitKeywords(removeKeywordRaw)) {
+        const removal: Layer6KeywordRemoval = isSingleTargetFilter
+          ? {
+              keyword: kw,
+              sourceAbilityId: ctx.staticId,
+              timestamp,
+              targetCardIdFn: singleTargetCardIdFn,
+            }
+          : {
+              keyword: kw,
+              sourceAbilityId: ctx.staticId,
+              timestamp,
+              targetCardIdFn: () => null,
+              appliesToCardIdFn,
+            };
+        payloads.push({ kind: "kw-remove", effect: removal });
+      }
+    }
+
+    // AddAbility$ — granted activated SA via SVar dispatch. Extends the
+    // Wave 60.B GrantedAbilitySweep machinery with a 4th `activated` kind
+    // (see granted-ability.ts). The sweep parses the SVar's `AB$ ...` body
+    // via the standard parseAbilityLine pipeline, then per-matched-card
+    // builds an SA bound to the matched card and pushes it onto
+    // `card.spellAbilities`. Symmetric unregister splices the SA out by
+    // reference on static deactivation.
+    const addAbilityRaw = literalRaw(params.AddAbility);
+    if (addAbilityRaw !== undefined) {
+      const sweep = new GrantedAbilitySweep({
+        staticId: ctx.staticId,
+        staticSourceCardId: sourceId,
+        controllerSeat,
+        kind: "activated",
+        svarName: addAbilityRaw,
+        appliesToCardIdFn,
+      });
+      payloads.push({ kind: "granted-ability", sweep });
+    }
+
+    // MayLookAt$ — face-down peek-rights gate. Stamps a MayLookAtGate on
+    // the layer engine; visibility consumers consult `mayLookAtFaceDown`
+    // (see statics/wave60-may-look-at-gate.ts) when probing whether a
+    // given seat may peek at a face-down card. The gate's predicate is
+    // `appliesToCardIdFn` (the static's Affected$ filter); the seat
+    // predicate is parsed from the MayLookAt$ raw value (`You` / `Each` /
+    // `Opponent` / fallback admit-all).
+    const mayLookAtRaw = literalRaw(params.MayLookAt);
+    if (mayLookAtRaw !== undefined) {
+      const seatHasPeekRights = parseMayLookAtSeatFilter(mayLookAtRaw, controllerSeat);
+      const gate: MayLookAtGate = {
+        sourceAbilityId: ctx.staticId,
+        appliesToCardIdFn,
+        seatHasPeekRights,
+      };
+      payloads.push({ kind: "may-look-at", gate });
+    }
 
     // Defensive: a Continuous static with NO concrete payload would be
     // a no-op. Emit a noop payload so the registry has SOMETHING to

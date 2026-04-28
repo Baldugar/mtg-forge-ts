@@ -46,7 +46,13 @@
 //     authoritative body. The standard registry path looks up SVars
 //     against `sourceCardId`, so granted triggers wrap their resolver
 //     to redirect SVar lookup to the static-source.
-import { lex, parseReplacementLine, parseStaticLine, parseTriggerLine } from "@mtg-forge-ts/cards";
+import {
+  lex,
+  parseAbilityLine,
+  parseReplacementLine,
+  parseStaticLine,
+  parseTriggerLine,
+} from "@mtg-forge-ts/cards";
 import type {
   AbilityAst,
   EntityId,
@@ -80,8 +86,8 @@ import { staticHandlerRegistry } from "../static-handler.js";
  */
 const reparseSVarAs = <T>(
   svarRaw: string,
-  prefix: "T" | "R" | "S",
-  // biome-ignore lint/suspicious/noExplicitAny: the parser dispatch chooses one of three return shapes
+  prefix: "T" | "R" | "S" | "A",
+  // biome-ignore lint/suspicious/noExplicitAny: the parser dispatch chooses one of four return shapes
   parser: (line: any) => T | readonly T[],
 ): T | null => {
   const source = `${prefix}:${svarRaw}`;
@@ -278,6 +284,50 @@ const buildGrantedReplacement = (
 };
 
 /**
+ * Wave 60.F — Build a granted activated SpellAbility for `matchedCardId`
+ * from a parsed `AbilityAst` (an `AB$` SVar body). The SA is pushed onto
+ * the matched card's `spellAbilities`; ownership tracking lives in the
+ * sweep's `grantedActivatedSAs` map keyed by matched card id.
+ *
+ * Source / SVar semantics:
+ *   - `sourceCardId = matchedCardId` so `Card.Self` resolves to the
+ *     matched card and effects targeting "this" hit it.
+ *   - `svars` is the static-SOURCE card's svars map. Granted activated
+ *     SVars commonly reference sibling SVars on the static source
+ *     (e.g. `AB$ Pump | Defined$ Self | NumAtt$ ChoseN_X` where ChoseN_X
+ *     is an SVar on the static source). Routing svars through the source
+ *     keeps the printed body authoritative — matches the granted-trigger
+ *     SVar-redirect contract.
+ *   - Active zone is Battlefield by default (matches Forge's standard
+ *     activated-ability zone for `creatures you control have ...` lord
+ *     statics).
+ */
+const buildGrantedActivated = (
+  game: Game,
+  abilityAst: AbilityAst,
+  staticSourceCardId: EntityId,
+  matchedCardId: EntityId,
+  staticId: EntityId,
+  svarName: string,
+): SpellAbility | null => {
+  const matched = game.cards.get(matchedCardId);
+  if (!matched) return null;
+  const staticSrc = game.cards.get(staticSourceCardId);
+  if (!staticSrc) return null;
+  const def = staticSrc.paperCard.definition;
+  const svars = (def?.svars as ReadonlyMap<string, SVarAst> | undefined) ?? new Map<string, SVarAst>();
+  const sa = new SpellAbility(abilityAst, matchedCardId, matched.controllerSeat, svars, []);
+  // Tag with grantedBy so future audits / snapshot inspection can find
+  // the parent. `grantedBy` is duck-typed on the SA the same way it is on
+  // the trigger / replacement / static results elsewhere in this module.
+  const tagged = sa as unknown as {
+    grantedBy?: { staticId: EntityId; targetCardId: EntityId; svarName: string };
+  };
+  tagged.grantedBy = { staticId, targetCardId: matchedCardId, svarName };
+  return sa;
+};
+
+/**
  * Build a granted StaticAbility for `matchedCardId`. The granted static
  * is itself a sub-static (commonly Continuous with `Affected$ Card.Self`)
  * — its source is the matched card, so layer effects scope correctly.
@@ -321,8 +371,16 @@ const buildGrantedStatic = (
 /**
  * What a sweep grants. Determines which registry the sweep targets and
  * how the SVar text is parsed.
+ *
+ * Wave 60.F — `activated` joins the trigger / replacement / static trio.
+ * The granted activated SA is pushed onto the matched card's
+ * `spellAbilities` and removed (by reference) on un-grant. The SA's
+ * `sourceCardId` is the matched card so `Card.Self` checks resolve to the
+ * matched card; SVar lookup is implicit via the SA's stored svars map,
+ * which we set to the static-source's svars so the printed body is
+ * authoritative (matches the granted-trigger SVar-redirect contract).
  */
-export type GrantedAbilityKind = "trigger" | "replacement" | "static";
+export type GrantedAbilityKind = "trigger" | "replacement" | "static" | "activated";
 
 /**
  * Parameters captured at static-build time and passed to the sweep.
@@ -353,10 +411,19 @@ export interface GrantedAbilitySweepParams {
 export class GrantedAbilitySweep {
   // matchedCardId → grantedAbilityId. Always in sync with the
   // appropriate registry's content; reconciled in sweep().
+  // For kind === "activated", the value is the SA's sourceCardId (a
+  // sentinel we don't actually reference at unregister time — we use
+  // grantedActivatedSAs for the SA-reference splice). The size of `granted`
+  // is the source of truth for membership tracking across all kinds.
   private readonly granted = new Map<EntityId, EntityId>();
+  // Wave 60.F — for kind === "activated" only: track SA references so
+  // unregister can splice them out of `card.spellAbilities` by reference.
+  // Mirrors the registry-id keying of `granted` (one entry per matched
+  // card); the two maps are kept in lockstep.
+  private readonly grantedActivatedSAs = new Map<EntityId, SpellAbility>();
   // Parsed AST cached after first successful parse. null = parse failed
   // (or hasn't been attempted yet — the boolean below differentiates).
-  private parsedAst: TriggerAst | ReplacementAst | StaticAst | null = null;
+  private parsedAst: TriggerAst | ReplacementAst | StaticAst | AbilityAst | null = null;
   private parseAttempted = false;
 
   constructor(public readonly params: GrantedAbilitySweepParams) {}
@@ -369,20 +436,27 @@ export class GrantedAbilitySweep {
    * lifetime; deactivation still cleans up correctly via the empty
    * `granted` map.
    */
-  private ensureAst(game: Game): TriggerAst | ReplacementAst | StaticAst | null {
+  private ensureAst(game: Game): TriggerAst | ReplacementAst | StaticAst | AbilityAst | null {
     if (this.parseAttempted) return this.parsedAst;
     this.parseAttempted = true;
     const sv = lookupSVar(game, this.params.staticSourceCardId, this.params.svarName);
     if (!sv) return null;
     const body = svarRawBody(sv);
     if (body === null) return null;
-    let ast: TriggerAst | ReplacementAst | StaticAst | null = null;
+    let ast: TriggerAst | ReplacementAst | StaticAst | AbilityAst | null = null;
     if (this.params.kind === "trigger") {
       ast = reparseSVarAs<TriggerAst>(body, "T", parseTriggerLine);
     } else if (this.params.kind === "replacement") {
       ast = reparseSVarAs<ReplacementAst>(body, "R", parseReplacementLine);
-    } else {
+    } else if (this.params.kind === "static") {
       ast = reparseSVarAs<StaticAst>(body, "S", parseStaticLine);
+    } else {
+      // Wave 60.F — activated. Re-lex with `A:` prefix so parseAbilityLine
+      // accepts the body. Forge stores AddAbility$ SVars sans line prefix
+      // (e.g. `SVar:GrantedAct:AB$ GainLife | Cost$ T | LifeAmount$ 1`),
+      // so the body starts with `AB$ ...` and re-prefixing it as a synthetic
+      // ability line drives the standard parser pipeline verbatim.
+      ast = reparseSVarAs<AbilityAst>(body, "A", parseAbilityLine);
     }
     this.parsedAst = ast;
     return ast;
@@ -440,7 +514,7 @@ export class GrantedAbilitySweep {
 
   private registerOne(
     game: Game,
-    ast: TriggerAst | ReplacementAst | StaticAst,
+    ast: TriggerAst | ReplacementAst | StaticAst | AbilityAst,
     matchedCardId: EntityId,
   ): void {
     // Register-order matters: the registry's register() may bump the
@@ -476,7 +550,7 @@ export class GrantedAbilitySweep {
       if (!ra) return;
       this.granted.set(matchedCardId, ra.id);
       game.replacementRegistry.register(ra);
-    } else {
+    } else if (this.params.kind === "static") {
       const sa = buildGrantedStatic(
         game,
         ast as StaticAst,
@@ -488,6 +562,29 @@ export class GrantedAbilitySweep {
       if (!sa) return;
       this.granted.set(matchedCardId, sa.id);
       game.staticEffectRegistry.register(sa);
+    } else {
+      // Wave 60.F — activated. The granted SA is pushed onto the matched
+      // card's `spellAbilities`; we track the SA reference so unregister
+      // can splice it out by identity. No registry is involved — activated
+      // abilities live on Card per the Wave 32 / Wave 49 keyword-handler
+      // pattern (Equip / Cycling / Outlast etc.).
+      const sa = buildGrantedActivated(
+        game,
+        ast as AbilityAst,
+        this.params.staticSourceCardId,
+        matchedCardId,
+        this.params.staticId,
+        this.params.svarName,
+      );
+      if (!sa) return;
+      const matched = game.cards.get(matchedCardId);
+      if (!matched) return;
+      // The granted-id key is a sentinel — kept in `granted` for membership
+      // accounting only. Unregister uses `grantedActivatedSAs` to find the
+      // SA reference for splice.
+      this.granted.set(matchedCardId, matchedCardId);
+      this.grantedActivatedSAs.set(matchedCardId, sa);
+      matched.spellAbilities.push(sa);
     }
   }
 
@@ -496,8 +593,20 @@ export class GrantedAbilitySweep {
       game.triggerRegistry.unregister(grantedId);
     } else if (this.params.kind === "replacement") {
       game.replacementRegistry.unregister(grantedId);
-    } else {
+    } else if (this.params.kind === "static") {
       game.staticEffectRegistry.unregister(grantedId);
+    } else {
+      // Wave 60.F — activated. Splice the SA out of the matched card's
+      // `spellAbilities` by reference. If the card has already been
+      // de-registered (zone change → spellAbilities cleared) the splice
+      // is a safe no-op (indexOf returns -1).
+      const sa = this.grantedActivatedSAs.get(matchedCardId);
+      const card = game.cards.get(matchedCardId);
+      if (sa && card) {
+        const i = card.spellAbilities.indexOf(sa);
+        if (i >= 0) card.spellAbilities.splice(i, 1);
+      }
+      this.grantedActivatedSAs.delete(matchedCardId);
     }
     this.granted.delete(matchedCardId);
   }
