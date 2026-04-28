@@ -22,6 +22,7 @@ import { ZoneType } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import type { DestroyIntent } from "../../replacements/mutation-intent.js";
+import { canBeRegenerated } from "../../statics/wave60-cant-gates.js";
 import { effectRegistry } from "../effect-registry.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
@@ -33,6 +34,13 @@ export class RegenerateEffect extends SpellAbilityEffect {
     for (const targetId of sa.targets) {
       const card = game.cards.get(targetId);
       if (!card) continue;
+
+      // Wave 60 — CantRegenerate gate. Eldrazi Conscription / Kaervek-style
+      // statics flip this off; the shield silently doesn't form (no
+      // replacement attaches, the legacy counter doesn't tick). Mirrors
+      // Forge: the regen effect resolves but does nothing for the gated
+      // creature.
+      if (!canBeRegenerated(game, targetId)) continue;
 
       // Legacy field — still incremented so existing tests that check
       // regenerationShields remain green. The replacement consumes

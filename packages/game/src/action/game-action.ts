@@ -73,6 +73,7 @@ import type {
   UntapIntent,
 } from "../replacements/mutation-intent.js";
 import type { StackItem } from "../stack/stack-item.js";
+import { canPutCounter } from "../statics/wave60-cant-gates.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { Zone } from "../zone/zone.js";
 import type { EngineYield } from "./engine-yield.js";
@@ -1020,6 +1021,12 @@ export class GameAction {
       throw new IllegalDecisionError(`addCounter: amount must be a positive integer, got ${amount}`);
     }
     const game = this.game;
+    // Wave 60 — CantPutCounter gate. Forge's behavior: when a counter
+    // can't be put on the card (Solemnity, Phyrexian Unlife, Hushwood
+    // Verge, etc.), the addition simply doesn't happen — no event fires,
+    // no replacement chain runs. We short-circuit before building the
+    // AddCounterIntent so observers never see the attempt.
+    if (!canPutCounter(game, cardId, counterType)) return;
     const intent: AddCounterIntent = {
       kind: "addCounter",
       cardId,

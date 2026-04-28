@@ -31,3 +31,10 @@ export * from "./alternative-cost.js";
 export * from "./optional-cost.js";
 // Wave 50 — replacement-generating-shape (Panharmonicon, ruleChanging)
 export * from "./panharmonicon.js";
+// Wave 60 — three same-shape "cant" gate statics:
+//   - CantPutCounter (Solemnity / Hushwood Verge / Phyrexian Unlife)
+//   - CantRegenerate (Eldrazi Conscription / Kaervek synergies)
+//   - DontUntap (Stasis basic case)
+export * from "./cant-put-counter-static.js";
+export * from "./cant-regenerate-static.js";
+export * from "./dont-untap-static.js";

@@ -31,6 +31,7 @@ import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
 import { tickSuspendedCards } from "../keyword/suspend-tick.js";
 import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
+import { canUntap } from "../statics/wave60-cant-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -266,6 +267,10 @@ export class PhaseHandler {
           const card = game.cards.get(cardId);
           // CR 702.26e — phased-out permanents don't untap.
           if (card?.phased === true) continue;
+          // Wave 60 — DontUntap gate (Stasis-style "permanents don't
+          // untap during their controller's untap step"). Skip the
+          // matching card entirely; no untap, no event.
+          if (!canUntap(game, cardId)) continue;
           if (card?.tapped) {
             yield* this.action.untap(cardId);
           }

@@ -9,8 +9,8 @@ import {
 import type { StaticAbilityCategory } from "./static-ability.js";
 
 describe("StaticAbilityMode", () => {
-  it("enumerates 82 Forge modes", () => {
-    expect(STATIC_ABILITY_MODES).toHaveLength(82);
+  it("enumerates 83 Forge modes", () => {
+    expect(STATIC_ABILITY_MODES).toHaveLength(83);
   });
 
   it("every mode maps to exactly one StaticAbilityCategory", () => {

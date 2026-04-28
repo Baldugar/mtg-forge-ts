@@ -1,12 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// StaticAbilityMode — 82-entry enum ported from Forge's
+// StaticAbilityMode — 83-entry enum ported from Forge's
 // forge-game/.../staticability/StaticAbilityMode.java (Forge order
 // preserved). Each mode maps to exactly one StaticAbilityCategory
 // (total function); SP3 card ports set precise modes per Forge script
 // semantics.
+//
+// Wave 60 — `DontUntap` (Stasis-style "permanents don't untap during
+// their controller's untap step") added; Forge's StaticAbilityMode.java
+// has it under the AttackVigilance / Untap family even though it isn't
+// a combat-vigilance mode per se. Mapped to the cantMustMay category
+// (action-filter consulted by the untap loop) — see MODE_TO_CATEGORY.
 import type { StaticAbilityCategory } from "./static-ability.js";
 
-/** All 82 Forge static-ability modes, in Forge enum declaration order. */
+/** All Forge static-ability modes, in Forge enum declaration order. */
 export const STATIC_ABILITY_MODES = [
   "Continuous",
   "CantAttackUnless",
@@ -90,6 +96,9 @@ export const STATIC_ABILITY_MODES = [
   "PhaseReversed",
   "AttackRequirement",
   "CountersRemain",
+  // Wave 60 — Stasis-style "permanents don't untap during their controller's
+  // untap step". Action-filter consulted by phase-handler's untap loop.
+  "DontUntap",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -136,6 +145,10 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   BlockRestrict: "cantMustMay",
   AttackRestrict: "cantMustMay",
   AttackRequirement: "cantMustMay",
+  // Wave 60 — DontUntap is consulted by the untap-step loop as an action
+  // filter (the engine asks "may this permanent untap?" before applying
+  // the untap). Lives in the cantMustMay bucket alongside CantAttack/CantBlock.
+  DontUntap: "cantMustMay",
 
   // replacementGenerating (mutation-interception statics; generate
   // ReplacementAbility entries rather than acting as action filters)
