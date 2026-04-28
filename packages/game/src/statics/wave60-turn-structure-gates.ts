@@ -1,15 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Wave 60.D — query helpers for the two Wave-60.D "turn-structure
-// modifier" statics: LimitOnHandSize and AdditionalCombatPhase. Each
-// helper walks the staticEffectRegistry by mode and returns either a
-// number cap (cleanup-step discard) or a boolean / counter consumption
-// (phase-handler end-of-combat).
+// Wave 60.D + 60.G — query helpers for the turn-structure modifier
+// statics. Each helper walks the staticEffectRegistry by mode and returns
+// either a number cap, a boolean skip-gate, or a counter consumption.
 //
 // Read-side consumers:
-//   - effectiveMaxHandSize → cleanup-step discard logic (replaces the
-//                            hard-coded 7).
-//   - consumePendingAdditionalCombat → phase-handler end-of-combat hook;
-//                                      decrements one per call.
+//   - effectiveMaxHandSize             → cleanup-step discard logic
+//   - consumePendingAdditionalCombat   → phase-handler end-of-combat hook
+//   - shouldSkipUntap (60.G)           → phase-handler untap-step entry
+//   - shouldSkipDraw  (60.G)           → phase-handler draw-step entry
+//   - consumePendingAdditionalUntap (60.G) → phase-handler untap loop tail
 //
 // Why standalone helpers (mirrors wave60-cant-gates.ts and wave60-cast-
 // gates.ts): GameFlags is a serializable struct; methods on it would not
@@ -19,6 +18,8 @@
 import type { PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { LimitOnHandSizePayload } from "../static/handlers/limit-on-hand-size-static.js";
+import type { SkipDrawPayload } from "../static/handlers/skip-draw-static.js";
+import type { SkipUntapPayload } from "../static/handlers/skip-untap-static.js";
 
 const DEFAULT_MAX_HAND_SIZE = 7;
 
@@ -73,4 +74,62 @@ export const consumePendingAdditionalCombat = (game: Game, seat: PlayerSeat): bo
  */
 export const pendingAdditionalCombatCount = (game: Game, seat: PlayerSeat): number => {
   return game.flags.pendingAdditionalCombatPhases.get(seat) ?? 0;
+};
+
+// ─── Wave 60.G — SkipUntap / SkipDraw / AdditionalUntapStep gates ─────────
+
+/**
+ * True iff `seat` should skip the untap step entirely (CR 502.1). Walks
+ * every active SkipUntap static; on the first match the entire untap-
+ * step turn-based action is suppressed (no untap-all loop, no phasing
+ * processing, no DontUntap consultation — the step shell still emits
+ * for replay determinism but its body is a no-op).
+ */
+export const shouldSkipUntap = (game: Game, seat: PlayerSeat): boolean => {
+  const statics = game.staticEffectRegistry.byMode("SkipUntap");
+  for (const s of statics) {
+    const payload = s.describe() as SkipUntapPayload;
+    if (payload.playerMatches(seat)) return true;
+  }
+  return false;
+};
+
+/**
+ * True iff `seat` should skip the draw step entirely (CR 504.1). Walks
+ * every active SkipDraw static; on the first match the draw turn-based
+ * action is suppressed (no card drawn). The step shell still emits.
+ */
+export const shouldSkipDraw = (game: Game, seat: PlayerSeat): boolean => {
+  const statics = game.staticEffectRegistry.byMode("SkipDraw");
+  for (const s of statics) {
+    const payload = s.describe() as SkipDrawPayload;
+    if (payload.playerMatches(seat)) return true;
+  }
+  return false;
+};
+
+/**
+ * Returns true and decrements the pending counter if `seat` has at least
+ * one pending additional untap step queued. False otherwise (no
+ * decrement). Called by the phase handler at the END of the canonical
+ * untap-step turn-based actions; while this returns true the handler
+ * runs the untap-all loop again. CR 502 (Awakening Zone / Time Vault).
+ */
+export const consumePendingAdditionalUntap = (game: Game, seat: PlayerSeat): boolean => {
+  const cur = game.flags.pendingAdditionalUntapSteps.get(seat) ?? 0;
+  if (cur <= 0) return false;
+  if (cur === 1) {
+    game.flags.pendingAdditionalUntapSteps.delete(seat);
+  } else {
+    game.flags.pendingAdditionalUntapSteps.set(seat, cur - 1);
+  }
+  return true;
+};
+
+/**
+ * Returns the current pending-additional-untap-step count for `seat`
+ * without decrementing. Useful for UI / introspection.
+ */
+export const pendingAdditionalUntapCount = (game: Game, seat: PlayerSeat): number => {
+  return game.flags.pendingAdditionalUntapSteps.get(seat) ?? 0;
 };

@@ -119,6 +119,17 @@ export interface GameFlags {
   // (matches Forge's semantics: the trigger only schedules the bonus
   // combat for THIS turn).
   pendingAdditionalCombatPhases: Map<PlayerSeat, number>;
+  // Wave 60.G — per-seat counter of pending additional untap steps queued
+  // for the matched player's NEXT untap step (CR 502 / Awakening Zone /
+  // Time Vault analogues). Stamped at static-activation time by the
+  // AdditionalUntapStep handler; consumed at the END of the canonical
+  // untap-step turn-based actions, where each consumption performs a
+  // second untap-all loop. MVP ordering is "right-after-normal-untap";
+  // CR 502.2's "before normal untap" precise ordering is TODO(advanced).
+  // Reset on TurnEnded — a leftover counter does not roll over to the
+  // next turn (matches Forge: the static stamps once per activation +
+  // re-activation in the next turn re-stamps; the counter is per-turn).
+  pendingAdditionalUntapSteps: Map<PlayerSeat, number>;
   // Wave 56 — side-channel for the ReplaceEffect family. When a parent
   // replacement's apply() runs an SVar that resolves to a `DB$ Replace*`
   // effect handler (ReplaceEffect / ReplaceDamage / ReplaceMana /
@@ -182,6 +193,8 @@ export const createDefaultFlags = (): GameFlags => ({
   combatDamageDealtThisTurn: new Map(),
   // Wave 60.D — per-seat extra-combat-phase counter.
   pendingAdditionalCombatPhases: new Map(),
+  // Wave 60.G — per-seat extra-untap-step counter.
+  pendingAdditionalUntapSteps: new Map(),
   // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
   activeReplacementIntent: null,
 });

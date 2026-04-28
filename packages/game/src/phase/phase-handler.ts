@@ -34,7 +34,10 @@ import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
 import { canUntap } from "../statics/wave60-cant-gates.js";
 import {
   consumePendingAdditionalCombat,
+  consumePendingAdditionalUntap,
   effectiveMaxHandSize,
+  shouldSkipDraw,
+  shouldSkipUntap,
 } from "../statics/wave60-turn-structure-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
@@ -126,6 +129,9 @@ export class PhaseHandler {
     // over to the next turn (matches Forge: the trigger only schedules
     // the bonus combat for THIS turn).
     game.flags.pendingAdditionalCombatPhases.clear();
+    // Wave 60.G — leftover additional untap steps do NOT roll over either.
+    // The static will re-stamp on the next turn the source remains active.
+    game.flags.pendingAdditionalUntapSteps.clear();
     // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
     // spell-cast counts into lastTurnSpellsCast + record whose turn just
     // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the
@@ -257,6 +263,16 @@ export class PhaseHandler {
       }
     }
     if (step === Phase.Untap) {
+      // Wave 60.G — SkipUntap gate (CR 502.1, Stasis / Eon Hub). Active
+      // player skips their untap step entirely: no phasing, no untap-all,
+      // no DontUntap consultation. The step shell (StepStarted /
+      // StepEnded + priority) still emits — Forge keeps the step as a
+      // step even when its body is a no-op (state-based actions and any
+      // "at the beginning of the untap step" triggers do NOT fire per
+      // CR 502.1, but the priority window itself stays for determinism).
+      if (shouldSkipUntap(game, active)) {
+        return;
+      }
       // CR 702.26d — phasing turn-based action runs at the START of the
       // untap step, before untap. Permanents the active player controls
       // toggle phased state; phased-out permanents coming back in this
@@ -268,23 +284,31 @@ export class PhaseHandler {
       // iterate the active player's battlefield; control-change effects
       // mean SP2 will need to scan all battlefields for controllerSeat
       // matches instead.
-      const player = game.getPlayer(active);
-      const bf = player.zones.get(ZoneType.Battlefield);
-      if (bf) {
-        for (const cardId of bf.toArray()) {
-          const card = game.cards.get(cardId);
-          // CR 702.26e — phased-out permanents don't untap.
-          if (card?.phased === true) continue;
-          // Wave 60 — DontUntap gate (Stasis-style "permanents don't
-          // untap during their controller's untap step"). Skip the
-          // matching card entirely; no untap, no event.
-          if (!canUntap(game, cardId)) continue;
-          if (card?.tapped) {
-            yield* this.action.untap(cardId);
-          }
-        }
+      yield* this.runUntapPass(active);
+      // Wave 60.G — AdditionalUntapStep consumption (CR 502; Awakening
+      // Zone / Time Vault analogues). After the canonical untap pass,
+      // drain the pending counter, performing one extra untap-all loop
+      // per consumed entry. MVP ordering: right-after-normal-untap.
+      // CR 502.2's "before normal untap" precise ordering is
+      // TODO(advanced) — observable to triggers that fire "at the
+      // beginning of the untap step" only, not to the untap action itself.
+      while (consumePendingAdditionalUntap(game, active)) {
+        yield* this.runUntapPass(active);
       }
     } else if (step === Phase.Draw) {
+      // Wave 60.G — SkipDraw gate (CR 504.1, The Abyss-shape). Suppress
+      // the draw turn-based action; the step shell (priority window) is
+      // preserved. Returns BEFORE the firstTurnDrawSkipped recording
+      // path because the static-skip is the more general suppression —
+      // the turn-1 first-player rule only fires when no SkipDraw static
+      // is in play. The flag still records false in that case via the
+      // explicit set below the static gate.
+      if (shouldSkipDraw(game, active)) {
+        if (game.turn === 1) {
+          game.flags.firstTurnDrawSkipped.set(active, false);
+        }
+        return;
+      }
       // Active player draws one, unless this is turn 1 and rules say the
       // first player skips their draw (standard 2-player rule). "First
       // player" is whichever seat won the setup die-roll — game.startingPlayer
@@ -357,5 +381,29 @@ export class PhaseHandler {
     // "until end of turn" cleanup), Combat steps (TBAs for
     // attacker/blocker assignment) layer here without changing the outer
     // runStep contract.
+  }
+
+  /**
+   * Wave 60.G — single untap-all pass over the active player's
+   * battlefield. Extracted so AdditionalUntapStep can drive multiple
+   * passes per Untap step. Honors phased-out and DontUntap gates.
+   */
+  private *runUntapPass(active: PlayerSeat): Generator<EngineYield, void, DecisionResponse> {
+    const game = this.game;
+    const player = game.getPlayer(active);
+    const bf = player.zones.get(ZoneType.Battlefield);
+    if (!bf) return;
+    for (const cardId of bf.toArray()) {
+      const card = game.cards.get(cardId);
+      // CR 702.26e — phased-out permanents don't untap.
+      if (card?.phased === true) continue;
+      // Wave 60 — DontUntap gate (Stasis-style "permanents don't
+      // untap during their controller's untap step"). Skip the
+      // matching card entirely; no untap, no event.
+      if (!canUntap(game, cardId)) continue;
+      if (card?.tapped) {
+        yield* this.action.untap(cardId);
+      }
+    }
   }
 }

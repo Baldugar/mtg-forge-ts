@@ -57,3 +57,10 @@ export * from "./additional-combat-phase-static.js";
 //                          color-conditional source variant)
 //   - PreventAllDamageTo  (filtered target — Worship-shape protection)
 export * from "./prevent-damage-static.js";
+// Wave 60.G — three same-shape turn-structure phase-step modifier statics:
+//   - SkipUntap            (Stasis / Eon Hub / Curses — skip untap step)
+//   - SkipDraw             (The Abyss-style — skip draw step)
+//   - AdditionalUntapStep  (Awakening Zone / Time Vault — extra untap step)
+export * from "./skip-untap-static.js";
+export * from "./skip-draw-static.js";
+export * from "./additional-untap-step-static.js";

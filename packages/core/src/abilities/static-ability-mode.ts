@@ -136,6 +136,22 @@ export const STATIC_ABILITY_MODES = [
   "PreventAllDamage",
   "PreventAllDamageBy",
   "PreventAllDamageTo",
+  // Wave 60.G — three same-shape turn-structure phase-step modifier
+  // statics, all routed via ruleChanging (they override the canonical
+  // turn structure). Consulted by the phase handler at the respective
+  // step entry points.
+  // SkipUntap (CR 502.1) — Stasis / Eon Hub / Curse of Misfortunes:
+  // matched player skips their untap step entirely. Distinct from
+  // DontUntap which keeps the step but blocks specific permanents.
+  "SkipUntap",
+  // SkipDraw (CR 504.1) — The Abyss-style enchantments / Wheel of
+  // Sun and Moon: matched player skips their draw step entirely.
+  "SkipDraw",
+  // AdditionalUntapStep (CR 502) — Awakening Zone / Time Vault
+  // analogues: insert an additional untap step at the start of the
+  // matched player's turn. Stamps a per-seat counter consumed by the
+  // phase handler right after the normal untap (MVP ordering).
+  "AdditionalUntapStep",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -269,6 +285,13 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   PreventAllDamage: "replacementGenerating",
   PreventAllDamageBy: "replacementGenerating",
   PreventAllDamageTo: "replacementGenerating",
+  // Wave 60.G — turn-structure phase-step modifier statics. All three
+  // override CR-prescribed turn structure (skip a step / inject an extra
+  // step), so they live in ruleChanging alongside AdditionalCombatPhase /
+  // TurnReversed / PhaseReversed.
+  SkipUntap: "ruleChanging",
+  SkipDraw: "ruleChanging",
+  AdditionalUntapStep: "ruleChanging",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>
