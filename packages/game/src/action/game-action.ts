@@ -74,6 +74,7 @@ import type {
 } from "../replacements/mutation-intent.js";
 import type { StackItem } from "../stack/stack-item.js";
 import { canPutCounter } from "../statics/wave60-cant-gates.js";
+import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { Zone } from "../zone/zone.js";
 import type { EngineYield } from "./engine-yield.js";
@@ -873,6 +874,28 @@ export class GameAction {
     isCombat: boolean,
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
+    // Wave 60.E — CR 615 damage-prevention statics gate. Walks the
+    // registry for active PreventAllDamage / PreventAllDamageBy /
+    // PreventAllDamageTo modes; if any matches the would-be damage event
+    // (source + target + isCombat), emit a DamagePrevented event and
+    // bail BEFORE constructing the DamageIntent. Mirrors Forge's silent-
+    // prevention semantics: no DamageDealt fires, so downstream observers
+    // (life-loss triggers, wither/infect redirects, deathtouch flags,
+    // combat-damage-dealt trackers) do not observe damage that was fully
+    // prevented. Targeted "prevent the next N damage" partial prevention
+    // stays on the existing R:Event$ DamageDone replacement-handler path.
+    if (amount > 0 && wouldPreventDamage(game, sourceId, targetKind, targetId, isCombat)) {
+      yield {
+        kind: "event",
+        event: mkEvent("DamagePrevented", game.turn, game.phase, {
+          sourceId,
+          targetKind,
+          targetId,
+          amount,
+        }),
+      };
+      return;
+    }
     // CR 702.16b — protection damage prevention (Task 49). If the target
     // card has protection from the source, pre-zero the intent amount so
     // the replacement chain still sees a typed damage intent (for

@@ -125,6 +125,17 @@ export const STATIC_ABILITY_MODES = [
   // Assault / Relentless Assault / Hellkite Charger / Combat Celebrant) use
   // the AB$ AdditionalCombat effect instead.
   "AdditionalCombatPhase",
+  // Wave 60.E — three same-shape damage-prevention statics (CR 615).
+  // PreventAllDamage is the global Fog-shape prevention (no filter);
+  // PreventAllDamageBy filters on ValidSource$; PreventAllDamageTo on
+  // ValidTarget$. All three additionally honor a Combat$ True/False
+  // filter and route via replacementGenerating — the GameAction.damage
+  // call site consults wouldPreventDamage before constructing the
+  // DamageIntent, emits a DamagePrevented event on match, and bails
+  // before any DamageDealt fires (Forge's silent-prevention semantics).
+  "PreventAllDamage",
+  "PreventAllDamageBy",
+  "PreventAllDamageTo",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -250,6 +261,14 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   // turn/phase rule overrides (TurnReversed, PhaseReversed).
   LimitOnHandSize: "ruleChanging",
   AdditionalCombatPhase: "ruleChanging",
+  // Wave 60.E — damage-prevention statics. Routed via replacementGenerating
+  // alongside the rest of the Cant* damage / life family (CantPreventDamage,
+  // CantGainLife, CantLoseLife, etc.) — the consumer site (GameAction.damage)
+  // walks the registry before constructing the DamageIntent and bails
+  // silently on a match (mirrors Forge's StaticAbilityPreventDamage path).
+  PreventAllDamage: "replacementGenerating",
+  PreventAllDamageBy: "replacementGenerating",
+  PreventAllDamageTo: "replacementGenerating",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>

@@ -51,3 +51,9 @@ export * from "./max-level-static.js";
 //     companion to AB$ AdditionalCombat used by Aggravated Assault et al.)
 export * from "./limit-on-hand-size-static.js";
 export * from "./additional-combat-phase-static.js";
+// Wave 60.E — three same-shape damage-prevention statics (CR 615):
+//   - PreventAllDamage    (global Fog-shape statics — no filter)
+//   - PreventAllDamageBy  (filtered source — Holy Day, Story Circle's
+//                          color-conditional source variant)
+//   - PreventAllDamageTo  (filtered target — Worship-shape protection)
+export * from "./prevent-damage-static.js";
