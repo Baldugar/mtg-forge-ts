@@ -71,3 +71,14 @@ export * from "./additional-untap-step-static.js";
 export * from "./cant-search-library-static.js";
 export * from "./cant-sacrifice-static.js";
 export * from "./cant-transform-static.js";
+// Wave 60.I — wrap-up batch: three remaining named modes from the
+// Wave 60 roadmap (different shapes, all small):
+//   - ManaConvert        (CR 605 — payment-time mana-color rewrite,
+//                          Forge's StaticAbilityManaConvert.java; canon.
+//                          ManaConversion$ token; ~15-20 cards)
+//   - Crew (static form) (CR 702.122 — rare; per-card "is a creature
+//                          without crewing" flag stamp; ~5-10 cards)
+//   - StartingHandSizeMod (CR 103 — accumulator on Player; ~5 cards)
+export * from "./mana-convert-static.js";
+export * from "./crew-static.js";
+export * from "./starting-hand-size-mod-static.js";

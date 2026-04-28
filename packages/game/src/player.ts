@@ -38,6 +38,13 @@ export class Player {
   // (intercepting incoming damage through the replacement-ability pipeline)
   // is deferred to SP3/F2. The field is typed as `number` (0 = no shield).
   damagePreventionShield = 0;
+  // Wave 60.I — StartingHandSizeMod accumulator (CR 103). Stamped by
+  // active `S:Mode$ StartingHandSizeMod | ValidPlayer$ <filter> |
+  // Amount$ +/-N` statics on activate. The game-start drawing logic
+  // (drawStartingHand / mulligan) reads this when computing the
+  // effective opening hand size; mid-game changes are no-ops. Multiple
+  // active statics stack additively. Default 0.
+  startingHandSizeMod = 0;
   // Audit I-12 — per-seat loss flag, set by SbaEngine.markPlayerLost when
   // the player has lost. Distinct from Game.terminalState.concededSeats:
   // in 3+ player matches terminalState is only set when ≤1 player remains,

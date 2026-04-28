@@ -159,6 +159,21 @@ export const STATIC_ABILITY_MODES = [
   // routed via cantMustMay; consulted by SeekEffect / TransmuteEffect
   // / TransfigureEffect / library-search call sites.
   "CantSearchLibrary",
+  // Wave 60.I — Crew static form (CR 702.122). Forward-compat
+  // extension to Forge's enum (which only enumerates the activated
+  // `K:Crew:N` keyword form): the static form is "becomes a creature
+  // without requiring Crew" — collapses to a Continuous Layer-4 type
+  // addition. Routed via cantMustMay so the registry hookup mirrors
+  // the other Wave 60 gates; the type-derivation path reads
+  // `card.crewStaticActive` directly.
+  "Crew",
+  // Wave 60.I — StartingHandSizeMod (CR 103). Modifies the matched
+  // player's opening hand size by Amount$. Stamps an additive
+  // accumulator on Player.startingHandSizeMod; the game-start drawing
+  // logic reads it when computing the opening hand size. Routed via
+  // ruleChanging alongside the other turn-structure / setup statics
+  // (LimitOnHandSize / AdditionalCombatPhase / SkipUntap).
+  "StartingHandSizeMod",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -307,6 +322,18 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   // mapped above (replacementGenerating) — Wave 60.H wires their
   // handlers without changing routing.
   CantSearchLibrary: "cantMustMay",
+  // Wave 60.I — Crew static (CR 702.122). Action-filter-shape registry
+  // hookup; the actual "is a creature without crewing" semantics route
+  // through Continuous Layer-4 type addition synthesis (TODO(advanced))
+  // + a per-card flag stamp consumed by the type-derivation path. Lives
+  // in cantMustMay so the registry contract mirrors the other Wave 60
+  // gates (CantAttack, DontUntap, MaxLevel et al.).
+  Crew: "cantMustMay",
+  // Wave 60.I — StartingHandSizeMod (CR 103). Overrides the canonical
+  // game-start opening-hand-size behaviour, so it lives in
+  // ruleChanging alongside the other turn-structure / setup overrides
+  // (LimitOnHandSize, AdditionalCombatPhase, SkipUntap, SkipDraw).
+  StartingHandSizeMod: "ruleChanging",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>

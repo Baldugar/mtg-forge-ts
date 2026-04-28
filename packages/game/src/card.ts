@@ -564,6 +564,13 @@ export class Card {
   firebendingCost: string | undefined = undefined;
   enlist: boolean | undefined = undefined;
   ravenous: boolean | undefined = undefined;
+  // Wave 60.I — Crew static (CR 702.122 — rare static-form Vehicle "is a
+  // creature without crewing"). Stamped by an active `S:Mode$ Crew |
+  // ValidCard$ Card.Self` on activate; cleared on deactivate. The
+  // type-derivation path consults the slot to add Creature to the type
+  // line without requiring a Crew activation; full Continuous AddType
+  // synthesis is // TODO(advanced).
+  crewStaticActive: boolean | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time
