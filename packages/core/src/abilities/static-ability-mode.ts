@@ -152,6 +152,13 @@ export const STATIC_ABILITY_MODES = [
   // matched player's turn. Stamps a per-seat counter consumed by the
   // phase handler right after the normal untap (MVP ordering).
   "AdditionalUntapStep",
+  // Wave 60.H — CantSearchLibrary (CR 701.18). Mindlock Orb /
+  // Stranglehold — the matched player can't search any library. Forge
+  // expresses this as Continuous + AddKeyword$ CantSearchLibrary; we
+  // also accept the direct Mode$ CantSearchLibrary form. Action filter,
+  // routed via cantMustMay; consulted by SeekEffect / TransmuteEffect
+  // / TransfigureEffect / library-search call sites.
+  "CantSearchLibrary",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -292,6 +299,14 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   SkipUntap: "ruleChanging",
   SkipDraw: "ruleChanging",
   AdditionalUntapStep: "ruleChanging",
+  // Wave 60.H — CantSearchLibrary (CR 701.18). Pure action filter
+  // consulted by library-search call sites (SeekEffect / TransmuteEffect
+  // / TransfigureEffect / etc.) — bails before the library scan and
+  // emits no event on match. Lives in cantMustMay alongside CantAttack /
+  // CantBlock / DontUntap. CantSacrifice and CantTransform are already
+  // mapped above (replacementGenerating) — Wave 60.H wires their
+  // handlers without changing routing.
+  CantSearchLibrary: "cantMustMay",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>

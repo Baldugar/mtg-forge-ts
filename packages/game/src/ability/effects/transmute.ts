@@ -8,6 +8,7 @@ import type { EntityId, ManaCostAst, PaperCard } from "@mtg-forge-ts/core";
 import { ManaCost, ZoneType } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { canSearchLibrary } from "../../statics/wave60-cant-gates.js";
 import { effectRegistry } from "../effect-registry.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
@@ -27,6 +28,14 @@ export class TransmuteEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     const source = game.cards.get(sa.sourceCardId);
     if (!source) return;
+    // Wave 60.H — CR 701.18 search-prevention static. Mindlock Orb /
+    // Stranglehold gate the library scan; on a match the library is
+    // still shuffled (Transmute's tail effect) but no candidate is
+    // chosen and no card moves. Forge's silent-skip semantics.
+    if (!canSearchLibrary(game, sa.controllerSeat)) {
+      yield* game.action.shuffle(sa.controllerSeat);
+      return;
+    }
     const cmc = cardManaValue(source.paperCard);
 
     const player = game.getPlayer(sa.controllerSeat);

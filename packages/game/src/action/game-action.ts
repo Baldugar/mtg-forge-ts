@@ -73,7 +73,7 @@ import type {
   UntapIntent,
 } from "../replacements/mutation-intent.js";
 import type { StackItem } from "../stack/stack-item.js";
-import { canPutCounter } from "../statics/wave60-cant-gates.js";
+import { canBeSacrificed, canPutCounter } from "../statics/wave60-cant-gates.js";
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { Zone } from "../zone/zone.js";
@@ -841,6 +841,16 @@ export class GameAction {
     const { owner } = this.locate(cardId);
     if (owner === null) {
       throw new GameStateIntegrityError(`Cannot sacrifice ${cardId} — not owned by any player`);
+    }
+    // Wave 60.H — CR 701.16 sacrifice-prevention static. Walks the
+    // registry for active CantSacrifice modes; on a match, no event
+    // fires and no zone change happens (Forge's silent-skip semantics
+    // for static sacrifice-prevention effects). Cost-pay paths that
+    // include a sacrifice clause should likewise consult canBeSacrificed
+    // before declaring the cost payable; that wiring is on the cost-
+    // part side and is independent of this gate.
+    if (!canBeSacrificed(this.game, cardId, owner)) {
+      return;
     }
     const intent: SacrificeIntent = {
       kind: "sacrifice",

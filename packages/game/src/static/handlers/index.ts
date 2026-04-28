@@ -64,3 +64,10 @@ export * from "./prevent-damage-static.js";
 export * from "./skip-untap-static.js";
 export * from "./skip-draw-static.js";
 export * from "./additional-untap-step-static.js";
+// Wave 60.H — three same-shape registry-walk gate statics:
+//   - CantSearchLibrary  (Mindlock Orb / Stranglehold)
+//   - CantSacrifice      (Sigarda / Aegis / Heroic Intervention static form)
+//   - CantTransform      (Immerwolf / Day-Night interaction disruptors)
+export * from "./cant-search-library-static.js";
+export * from "./cant-sacrifice-static.js";
+export * from "./cant-transform-static.js";

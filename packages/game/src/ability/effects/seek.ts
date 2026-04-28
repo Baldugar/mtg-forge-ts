@@ -22,6 +22,7 @@ import { CardType, GameStateIntegrityError, ZoneType, mkEvent } from "@mtg-forge
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { canSearchLibrary } from "../../statics/wave60-cant-gates.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -52,6 +53,12 @@ export class SeekEffect extends SpellAbilityEffect {
     const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
     const filter = hasParam(sa, "Type") ? evaluateParamRaw(sa, "Type") : "Card";
     const seat = sa.controllerSeat;
+    // Wave 60.H — CR 701.18 search-prevention static. Mindlock Orb /
+    // Stranglehold gate the library scan; on a match no card is found,
+    // no reveal fires, no move happens. Forge's silent-skip semantics.
+    if (!canSearchLibrary(game, seat)) {
+      return;
+    }
     const player = game.getPlayer(seat);
     const library = player.zones.get(ZoneType.Library);
     if (!library) throw new GameStateIntegrityError(`SeekEffect: player ${seat} has no Library zone`);

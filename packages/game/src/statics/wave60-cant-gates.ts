@@ -15,10 +15,13 @@
 // restores cleanly, so walking the registry per-query is the right
 // source of truth — and matches the pattern Wave 50 established with
 // cant-must-may-extras.ts.
-import type { CounterType, EntityId } from "@mtg-forge-ts/core";
+import type { CounterType, EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { CantPutCounterPayload } from "../static/handlers/cant-put-counter-static.js";
 import type { CantRegeneratePayload } from "../static/handlers/cant-regenerate-static.js";
+import type { CantSacrificePayload } from "../static/handlers/cant-sacrifice-static.js";
+import type { CantSearchLibraryPayload } from "../static/handlers/cant-search-library-static.js";
+import type { CantTransformPayload } from "../static/handlers/cant-transform-static.js";
 import { isRestricted } from "./cant-must-may.js";
 
 /**
@@ -58,4 +61,68 @@ export const canBeRegenerated = (game: Game, cardId: EntityId): boolean => {
  */
 export const canUntap = (game: Game, cardId: EntityId): boolean => {
   return !isRestricted(game, "cantUntap", cardId);
+};
+
+// ─── Wave 60.H — CantSearchLibrary / CantSacrifice / CantTransform ─────────
+
+/**
+ * True iff `seat` may search a library (CR 701.18). False iff any active
+ * CantSearchLibrary static matches the seat. Consumed by SeekEffect /
+ * TransmuteEffect / TransfigureEffect / ChangeZone-with-library-origin
+ * call sites — the consumer short-circuits before scanning the library
+ * (no card found, no reveal, no shuffle).
+ */
+export const canSearchLibrary = (game: Game, seat: PlayerSeat): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantSearchLibrary");
+  for (const s of statics) {
+    const payload = s.describe() as CantSearchLibraryPayload;
+    if (payload.playerMatches(seat)) return false;
+  }
+  return true;
+};
+
+/**
+ * True iff `cardId` may be sacrificed (CR 701.16). False iff any active
+ * CantSacrifice static matches the card. Consumed by GameAction.sacrifice
+ * BEFORE the SacrificeIntent is constructed; on a match the action no-ops
+ * silently (no event, no zone change). Cost-pay paths that include a
+ * sacrifice clause likewise consult this gate before declaring the cost
+ * payable.
+ *
+ * The optional `byPlayer` parameter is accepted for forward compatibility
+ * with the CantSacrificeBy$ sub-param (TODO(advanced) — Sigarda's "except
+ * by you" carve-out). MVP ignores it; all matched cards are gated
+ * regardless of the sacrificing player.
+ */
+export const canBeSacrificed = (
+  game: Game,
+  cardId: EntityId,
+  // Forward-compat slot for CantSacrificeBy$ sub-param (Sigarda's
+  // "except by you" carve-out). MVP ignores it; renamed to `_byPlayer`
+  // to avoid TS6133 unused-parameter complaints while keeping the
+  // public 3-arity signature stable for callers.
+  _byPlayer?: PlayerSeat,
+): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantSacrifice");
+  for (const s of statics) {
+    const payload = s.describe() as CantSacrificePayload;
+    if (payload.cardMatches(cardId, game)) return false;
+  }
+  return true;
+};
+
+/**
+ * True iff `cardId` may transform (CR 701.32). False iff any active
+ * CantTransform static matches the card. Consumed by GameAction.transform
+ * (multiface/transform.ts) BEFORE the face is toggled; on a match the
+ * action no-ops silently (no Transformed event, no face change, no
+ * layer-epoch bump).
+ */
+export const canTransform = (game: Game, cardId: EntityId): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantTransform");
+  for (const s of statics) {
+    const payload = s.describe() as CantTransformPayload;
+    if (payload.cardMatches(cardId, game)) return false;
+  }
+  return true;
 };

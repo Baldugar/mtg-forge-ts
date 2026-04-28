@@ -17,6 +17,7 @@ import { GameStateIntegrityError, mkEvent } from "@mtg-forge-ts/core";
 import type { PaperCard } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
+import { canTransform } from "../statics/wave60-cant-gates.js";
 
 /**
  * True when PaperCard.faces carries both "front" and "back" entries
@@ -47,6 +48,13 @@ export function* transform(game: Game, cardId: EntityId): Generator<EngineYield,
   if (!card) throw new GameStateIntegrityError(`transform: card ${cardId} not found`);
   if (!isTransformDfc(card.paperCard)) {
     throw new GameStateIntegrityError(`transform: ${cardId} is not a transform DFC`);
+  }
+  // Wave 60.H — CR 701.32 transform-prevention static. Walks the
+  // registry for active CantTransform modes; on a match no Transformed
+  // event fires, no face change, no layer-epoch bump. Mirrors Forge's
+  // silent-skip semantics for static transform-prevention effects.
+  if (!canTransform(game, cardId)) {
+    return;
   }
   // CR 711.4 — toggle. "back" → "front", anything else → "back".
   const toFace: "front" | "back" = card.face === "back" ? "front" : "back";
