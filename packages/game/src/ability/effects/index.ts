@@ -141,3 +141,9 @@ export * from "./turn-face-up.js";
 // intent through the `game.flags.activeReplacementIntent` side channel
 // rather than executing standalone game-state changes.
 export * from "./replace-effect.js";
+// Wave 60.D — AdditionalCombat effect (Aggravated Assault / Relentless
+// Assault / Hellkite Charger / Combat Celebrant / Savage Beating /
+// Seize the Day). Bumps the per-seat pendingAdditionalCombatPhases
+// counter; phase handler consumes one at end-of-combat and injects an
+// extra combat block via PhaseSequence.injectExtraCombat.
+export * from "./additional-combat.js";

@@ -44,3 +44,10 @@ export * from "./dont-untap-static.js";
 //   - MaxLevel (Class enchantment level cap, CR 716)
 export * from "./may-be-cast-by-static.js";
 export * from "./max-level-static.js";
+// Wave 60.D — two turn-structure modifier statics:
+//   - LimitOnHandSize (Reliquary Tower / Spellbook / Library of Leng /
+//     Thought Vessel)
+//   - AdditionalCombatPhase (Aurelia, the Warleader emblem-shape +
+//     companion to AB$ AdditionalCombat used by Aggravated Assault et al.)
+export * from "./limit-on-hand-size-static.js";
+export * from "./additional-combat-phase-static.js";

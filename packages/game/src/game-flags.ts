@@ -108,6 +108,17 @@ export interface GameFlags {
   // dealt combat damage by one of your creatures this turn"). Reset on
   // TurnEnded by phase-handler.
   combatDamageDealtThisTurn: Map<PlayerSeat, number>;
+  // Wave 60.D — per-seat counter of pending extra combat phases. Bumped
+  // by the AB$ AdditionalCombat effect (Aggravated Assault / Relentless
+  // Assault / Hellkite Charger / Combat Celebrant / Savage Beating /
+  // Seize the Day) and by the AdditionalCombatPhase static (Aurelia, the
+  // Warleader emblem form). Consumed (decremented) one at a time by the
+  // phase handler at end-of-combat; each consumption injects an extra
+  // combat block via PhaseSequence.injectExtraCombat. CR 506. Reset on
+  // TurnEnded — a leftover counter does not roll over to the next turn
+  // (matches Forge's semantics: the trigger only schedules the bonus
+  // combat for THIS turn).
+  pendingAdditionalCombatPhases: Map<PlayerSeat, number>;
   // Wave 56 — side-channel for the ReplaceEffect family. When a parent
   // replacement's apply() runs an SVar that resolves to a `DB$ Replace*`
   // effect handler (ReplaceEffect / ReplaceDamage / ReplaceMana /
@@ -169,6 +180,8 @@ export const createDefaultFlags = (): GameFlags => ({
   spellsCastThisGame: new Map(),
   // Wave 59 — Freerunning availability tracker.
   combatDamageDealtThisTurn: new Map(),
+  // Wave 60.D — per-seat extra-combat-phase counter.
+  pendingAdditionalCombatPhases: new Map(),
   // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
   activeReplacementIntent: null,
 });

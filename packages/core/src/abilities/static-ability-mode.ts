@@ -113,6 +113,18 @@ export const STATIC_ABILITY_MODES = [
   // Wave 60.C — Class enchantment level-up cap (CR 716). The level-up
   // activated SA refuses to fire when classLevel >= classMaxLevel.
   "MaxLevel",
+  // Wave 60.D — Two turn-structure state-modifier statics. Both routed
+  // ruleChanging because they override the canonical turn structure
+  // rather than acting as action filters.
+  // LimitOnHandSize (CR 402.2) — overrides a player's max hand size at
+  // cleanup. Reliquary Tower / Spellbook / Library of Leng / Thought Vessel.
+  "LimitOnHandSize",
+  // AdditionalCombatPhase (CR 506) — grants the active player an extra
+  // combat phase + main phase after the current combat. Aurelia, the
+  // Warleader's static-emblem form; the activated/sorcery forms (Aggravated
+  // Assault / Relentless Assault / Hellkite Charger / Combat Celebrant) use
+  // the AB$ AdditionalCombat effect instead.
+  "AdditionalCombatPhase",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -233,6 +245,11 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   // CastWithFlash sibling (also a positive cast permission, also
   // ruleChanging) — both override the default cast rules.
   MayBeCastBy: "ruleChanging",
+  // Wave 60.D — turn-structure modifier statics. Both override CR-prescribed
+  // turn / phase behavior, so they live in ruleChanging alongside the other
+  // turn/phase rule overrides (TurnReversed, PhaseReversed).
+  LimitOnHandSize: "ruleChanging",
+  AdditionalCombatPhase: "ruleChanging",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>

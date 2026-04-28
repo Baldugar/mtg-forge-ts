@@ -415,13 +415,18 @@ describe("scripted no-op game (integration smoke)", () => {
     // attribute mid-turn events to seats, so we lock the invariant via
     // hand size progression: after setup, seat 0's hand has 7. After the
     // three turns, seat 0 has drawn exactly once more (turn 3 draw).
-    // Seat 1 drew once on turn 2, so seat 1's hand grew by 1.
+    // Seat 1 drew once on turn 2, so seat 1's hand grew by 1 — but
+    // Wave 60.D's cleanup-step discard then trimmed seat 1 back to 7.
     const seat0HandSize = game.players[0]?.zones.get(ZoneType.Hand)?.size ?? 0;
     const seat1HandSize = game.players[1]?.zones.get(ZoneType.Hand)?.size ?? 0;
-    // Starting hand 7 + turn-1 skipped + turn-3 drawn = 8 for seat 0.
-    // Starting hand 7 + turn-2 drawn = 8 for seat 1.
-    expect(seat0HandSize).toBe(8);
-    expect(seat1HandSize).toBe(8);
+    // Starting hand 7 + turn-1 skipped + turn-3 drawn = 8 for seat 0
+    // (turn-3 cleanup hasn't fully trimmed because there's no further
+    // priority-pass beyond that; CleanupStep just barely fires within run()).
+    // Wave 60.D — turn-2 cleanup discards seat 1 back to 7 (max hand
+    // size cap, no LimitOnHandSize active). turn-3 cleanup fires for
+    // seat 0 too — seat 0 at 8 after draw, discards down to 7.
+    expect(seat0HandSize).toBe(7);
+    expect(seat1HandSize).toBe(7);
     // Post-setup, at least 2 CardDrawn events were emitted across the three
     // turn sequence (seat 1 on turn 2 + seat 0 on turn 3). The seat-0 turn-1
     // Draw is skipped, so exactly 2 CardDrawn events emerge from run().

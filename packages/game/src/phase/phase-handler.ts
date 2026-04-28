@@ -32,6 +32,10 @@ import type { Game } from "../game.js";
 import { tickSuspendedCards } from "../keyword/suspend-tick.js";
 import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
 import { canUntap } from "../statics/wave60-cant-gates.js";
+import {
+  consumePendingAdditionalCombat,
+  effectiveMaxHandSize,
+} from "../statics/wave60-turn-structure-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -118,6 +122,10 @@ export class PhaseHandler {
     game.flags.creaturesDiedThisTurn = 0;
     // Wave 59 — Freerunning availability tracker resets at TurnEnded.
     game.flags.combatDamageDealtThisTurn.clear();
+    // Wave 60.D — leftover pending additional combat phases do NOT roll
+    // over to the next turn (matches Forge: the trigger only schedules
+    // the bonus combat for THIS turn).
+    game.flags.pendingAdditionalCombatPhases.clear();
     // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
     // spell-cast counts into lastTurnSpellsCast + record whose turn just
     // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the
@@ -295,8 +303,58 @@ export class PhaseHandler {
         yield* this.action.drawCards(active, 1);
       }
     }
-    // SP2: Upkeep (triggered-ability harvest), Cleanup (discard-to-max,
-    // damage wipe, "until end of turn" cleanup), Combat steps (TBAs for
+    if (step === Phase.EndOfCombat) {
+      // Wave 60.D — consume one pending additional combat phase per
+      // EndOfCombat (CR 506; Aggravated Assault et al.). When the active
+      // player has at least one pending entry, decrement and inject an
+      // extra combat block via PhaseSequence.injectExtraCombat. The
+      // injected block lands AFTER the FIRST EndOfCombat (which is the
+      // current step we're in), so the `for (const step of steps)` loop
+      // in runTurn picks it up on the next iteration.
+      //
+      // NB: injectExtraCombat splices after the FIRST EndOfCombat in the
+      // current sequence; on the second consumption the sequence already
+      // has two EndOfCombat steps, so it splices after the FIRST again,
+      // giving Aggravated Assault's "as long as you can pay, get an
+      // extra combat" loop the right shape (each new combat that
+      // resolves an extra AB$ AdditionalCombat appends another block
+      // after itself, since by that point the FIRST EndOfCombat is past).
+      if (consumePendingAdditionalCombat(game, active)) {
+        this.phaseSequence.injectExtraCombat();
+      }
+    }
+    if (step === Phase.Cleanup) {
+      // Wave 60.D — CR 514.1 cleanup-step "discard down to maximum hand
+      // size" turn-based action. Replaces the previously-deferred SP2
+      // implementation. The gate consults effectiveMaxHandSize() which
+      // walks LimitOnHandSize statics; default is 7 when no static
+      // matches. Unlimited returns POSITIVE_INFINITY → no discard.
+      //
+      // MVP — auto-discards from the FRONT of the hand list to reach
+      // the cap deterministically. The full interactive "player chooses
+      // which N to discard" decision is // TODO(advanced); the front-
+      // first discard is observably correct for the common Reliquary
+      // Tower / Spellbook test path (no discard occurs at all when
+      // max is Unlimited) and for headless deterministic replays.
+      const max = effectiveMaxHandSize(game, active);
+      if (Number.isFinite(max)) {
+        const player = game.getPlayer(active);
+        const hand = player.zones.get(ZoneType.Hand);
+        if (hand) {
+          const handCards = hand.toArray();
+          const overflow = handCards.length - max;
+          if (overflow > 0) {
+            // Snapshot first; moveTo mutates the zone underneath.
+            const toDiscard = handCards.slice(0, overflow);
+            for (const cid of toDiscard) {
+              yield* this.action.moveTo(cid, ZoneType.Graveyard, { cause: "handSize" });
+            }
+          }
+        }
+      }
+    }
+    // SP2: Upkeep (triggered-ability harvest), Cleanup (damage wipe,
+    // "until end of turn" cleanup), Combat steps (TBAs for
     // attacker/blocker assignment) layer here without changing the outer
     // runStep contract.
   }
