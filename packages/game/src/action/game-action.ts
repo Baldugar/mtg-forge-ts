@@ -620,7 +620,25 @@ export class GameAction {
     if (isPlaneswalker && def.loyalty !== undefined) {
       const n = Number.parseInt(def.loyalty, 10);
       if (Number.isFinite(n) && n > 0 && (card.counters.get(CT.Loyalty) ?? 0) === 0) {
-        yield* this.addCounter(card.id, CT.Loyalty, n);
+        // Wave 65.B — Compleated (CR 702.156, Phyrexia: All Will Be
+        // One). "If a player paid life for any of [its] Phyrexian mana
+        // symbols, this planeswalker enters with that many fewer
+        // loyalty counters." MVP encodes the canonical "paid 2 life
+        // for one Φ pip" stamp as a single flag (compleatedPaidLife);
+        // multi-pip cards exist in theory but the printed corpus only
+        // has one Φ pip per Compleated PW today. Subtract 2; clamp at
+        // 0 (the PW would still ETB but as an effective non-PW until
+        // the next loyalty increment, which matches CR 306.5b's
+        // "with N counters" zero edge case). Clear the flag after
+        // consumption so the stamp is one-shot.
+        let starting = n;
+        if (card.compleatedPaidLife === true) {
+          starting = Math.max(0, n - 2);
+          card.compleatedPaidLife = undefined;
+        }
+        if (starting > 0) {
+          yield* this.addCounter(card.id, CT.Loyalty, starting);
+        }
       }
     }
     // Stamp Defense counters for Battles (CR 310.7 — printed defense

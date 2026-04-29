@@ -13,7 +13,7 @@
 //
 // The layer walk body is a skeleton here; Tasks 3-9 fill it in by reading
 // per-layer effect arrays and applying them in order.
-import { type Characteristics, type EntityId, GameStateIntegrityError } from "@mtg-forge-ts/core";
+import { CardType, type Characteristics, type EntityId, GameStateIntegrityError } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { GrantedAbilitySweep } from "../static/handlers/granted-ability.js";
 import type { MayLookAtGate } from "../statics/wave60-may-look-at-gate.js";
@@ -220,6 +220,19 @@ export class LayerEngine {
     applyLayer2Control();
     applyLayer3Text(chars, this.textSubstitutions);
     applyLayer4Type(chars, this.typeEffects, id);
+    // Wave 65.B — Living metal (CR 702.158, Transformers / The
+    // Brothers' War). "As long as it's your turn, this Vehicle is also
+    // a creature." Add Creature to the effective type set when the
+    // card carries the livingMetal flag and the active turn belongs to
+    // its controller. Layer 4 is additive — we never remove Vehicle /
+    // Artifact, only add Creature so existing animate / crew / static
+    // type-additions compose naturally. The cache is invalidated by
+    // every state change that bumps the epoch, so a turn change will
+    // re-derive on the next characteristics read (turn boundaries pass
+    // through bumpEpoch via end-of-turn cleanup events).
+    if (card.livingMetal === true && this.game.activePlayer === card.controllerSeat) {
+      chars.types.add(CardType.Creature);
+    }
     applyLayer5Color(chars, this.colorEffects, id);
     applyLayer6Ability(chars, id, this.abilityEffects);
     applyLayer7a(chars, this.pt7a);

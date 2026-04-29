@@ -39,7 +39,7 @@ import {
   shouldSkipDraw,
   shouldSkipUntap,
 } from "../statics/wave60-turn-structure-gates.js";
-import { sweepEndOfCombat } from "../statics/wave65-combat-gates.js";
+import { sweepEndOfCombat, sweepEndOfTurnWarpExile } from "../statics/wave65-combat-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -262,6 +262,13 @@ export class PhaseHandler {
       if (game.flags.monarch !== null && game.flags.monarch === active) {
         yield* this.action.drawCards(active, 1);
       }
+      // Wave 65.B — Warp end-of-turn exile (CR 702.180a, Edge of
+      // Eternities). Cards stamped `warpedUntilEot` by the Warp
+      // altcost are exiled at the beginning of the end step; the
+      // sweep clears the flag so the trigger is one-shot. Free
+      // function entry mirrors sweepEndOfCombat — no dependency on a
+      // dedicated handler instance.
+      yield* sweepEndOfTurnWarpExile(game);
     }
     if (step === Phase.Untap) {
       // Wave 60.G — SkipUntap gate (CR 502.1, Stasis / Eon Hub). Active

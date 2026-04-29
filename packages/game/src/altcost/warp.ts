@@ -54,6 +54,11 @@ export const Warp: AltCost = {
     (ctx as { totalCost: unknown }).totalCost = { base: { raw: cost } };
     (ctx as { alternativeZoneDestination: ZoneType | undefined }).alternativeZoneDestination = ZoneType.Exile;
     card.warpCast = true;
+    // Wave 65.B — stamp the EOT-exile marker so the PhaseHandler's
+    // EndStep sweep exiles this card at the next end step (CR 702.180a:
+    // "If you cast it this way, exile it at the beginning of the next
+    // end step"). Cleared by the sweep so the flag is one-shot.
+    card.warpedUntilEot = true;
   },
 };
 

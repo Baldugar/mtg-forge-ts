@@ -532,6 +532,12 @@ export class Card {
   sneakCost: string | undefined = undefined;
   livingMetal: boolean | undefined = undefined;
   warpCast: boolean | undefined = undefined;
+  // Wave 65.B — Warp end-of-turn exile marker (CR 702.180a, Edge of
+  // Eternities). Stamped by the Warp altcost when a card is cast via
+  // its warp cost; consumed by the EndStep sweep in PhaseHandler that
+  // exiles the card at the next end step. Cleared in the same sweep
+  // so the flag is one-shot.
+  warpedUntilEot: boolean | undefined = undefined;
   blitzCast: boolean | undefined = undefined;
   emergeCast: boolean | undefined = undefined;
   miracleCast: boolean | undefined = undefined;

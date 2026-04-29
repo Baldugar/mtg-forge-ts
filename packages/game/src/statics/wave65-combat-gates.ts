@@ -4,6 +4,13 @@
 // pattern as Wave 50 (cant-must-may-extras.ts) and Wave 60.A
 // (wave60-cant-gates.ts) — read-only, side-effect-free, snapshot-friendly.
 //
+// Wave 65.B — adds an EndStep sweep for warpedUntilEot (CR 702.180a,
+// Edge of Eternities). The Warp altcost stamps the flag during the
+// cast; the sweep exiles flagged cards at the next end step and
+// clears the flag. Distinct from sweepEndOfCombat — that sweep fires
+// at end of combat (decayed sacrifice timing), this fires at end of
+// turn (CR 514).
+//
 // Closes the "registered but not consulted at decision points" gap that the
 // Wave-59 audit identified for several cant/must combat statics + stamped
 // card flags:
@@ -17,6 +24,7 @@
 //   - canBlock       → consults card.decayed (CR 702.176) — decayed
 //                      creatures are excluded from the legal-blocker pool.
 import type { EntityId } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 import { gatherRestrictions } from "./cant-must-may.js";
@@ -112,5 +120,37 @@ export function* sweepEndOfCombat(game: Game): Generator<EngineYield, void, unkn
   // re-stamps when declareAttackers runs.
   for (const card of game.cards.values()) {
     if (card.attackedThisCombat) card.attackedThisCombat = false;
+  }
+}
+
+/**
+ * Wave 65.B — End-of-Turn sweep. Exiles every card flagged with
+ * `warpedUntilEot` (CR 702.180a — "exile it at the beginning of the
+ * next end step") and clears the flag in the same pass so the stamp is
+ * one-shot. The Warp altcost (`altcost/warp.ts`) stamps the flag at
+ * cast time; this sweep is the read.
+ *
+ * Implemented as a free function to mirror sweepEndOfCombat — the
+ * PhaseHandler drives it without needing a dedicated handler instance
+ * attached to Game. Snapshots the id list before mutating the card map
+ * (moveTo to Exile bumps zone state and replacement-effect lookups
+ * iterate the live map).
+ */
+export function* sweepEndOfTurnWarpExile(game: Game): Generator<EngineYield, void, unknown> {
+  const warped: EntityId[] = [];
+  for (const card of game.cards.values()) {
+    if (card.warpedUntilEot === true) {
+      warped.push(card.id);
+    }
+  }
+  for (const id of warped) {
+    yield* game.action.moveTo(id, ZoneType.Exile);
+  }
+  // Clear the flag on every flagged card AFTER the moveTo passes; if the
+  // moveTo was prevented (replacement effects) we still clear so the
+  // delayed trigger doesn't accumulate. CR 702.180a treats the exile as
+  // a single one-shot end-step delayed trigger; it doesn't re-arm.
+  for (const card of game.cards.values()) {
+    if (card.warpedUntilEot === true) card.warpedUntilEot = undefined;
   }
 }
