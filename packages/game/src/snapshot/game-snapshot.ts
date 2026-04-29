@@ -156,6 +156,9 @@ import { Exile } from "../zone/zones/exile.js";
 import { Graveyard } from "../zone/zones/graveyard.js";
 import { Hand } from "../zone/zones/hand.js";
 import { Library } from "../zone/zones/library.js";
+// Wave 66 — Sideboard + OutsideTheGame concrete subclasses.
+import { OutsideTheGame } from "../zone/zones/outside-the-game.js";
+import { Sideboard } from "../zone/zones/sideboard.js";
 
 /**
  * Snapshot format version. v7 is the SP3 Wave 43 shape; see the migration-
@@ -1067,6 +1070,11 @@ const makeZone = (type: ZoneType, ownerSeat: PlayerSeat | null): Zone => {
       return new CommandZone(type, ownerSeat);
     case ZoneTypeEnum.Ante:
       return new Ante(type, ownerSeat);
+    // Wave 66 — Sideboard + OutsideTheGame concrete subclasses.
+    case ZoneTypeEnum.Sideboard:
+      return new Sideboard(type, ownerSeat);
+    case ZoneTypeEnum.OutsideTheGame:
+      return new OutsideTheGame(type, ownerSeat);
     // WHY: SP1 doesn't yet surface concrete classes for these zones; fall
     // through to a Battlefield-shaped generic so the snapshot round-trip
     // preserves item lists losslessly. Replace as subclasses land.

@@ -2108,6 +2108,55 @@ export class GameAction {
     return newId;
   }
 
+  /**
+   * Wave 66 — `conjureCopyToHand`. Mints a duplicate of `sourceCardId`
+   * directly into `controllerSeat`'s hand, routing through OutsideTheGame
+   * as the canonical source zone (CR 100.4). Used by Double team's
+   * attacks-trigger (CR 702.176) and Wishes that synthesize a copy of an
+   * existing card.
+   *
+   * Steps:
+   *   1. Allocate a fresh entity id; clone the source's PaperCard reference
+   *      (reusing the PaperCard is fine — PaperCard records are immutable
+   *      reference objects that already get shared across multiple Card
+   *      instances for tokens/copies).
+   *   2. Create the new Card with `zone = OutsideTheGame`, owner =
+   *      controllerSeat, controller = controllerSeat. Copy the source's
+   *      copiable characteristics so any layered values track.
+   *   3. Insert into game.cards + the controller's OutsideTheGame zone.
+   *   4. Activate spell-abilities from definition so the new card is
+   *      castable from hand once moved.
+   *   5. Route the OutsideTheGame → Hand move through canonical moveTo
+   *      so ZoneChange replacements (e.g. "if a card would enter your
+   *      hand") see the move + CardChangedZone fires.
+   *   6. Return the new entity id.
+   */
+  *conjureCopyToHand(
+    sourceCardId: EntityId,
+    controllerSeat: PlayerSeat,
+  ): Generator<EngineYield, EntityId, unknown> {
+    const game = this.game;
+    const source = game.cards.get(sourceCardId);
+    if (!source) {
+      throw new GameStateIntegrityError(`conjureCopyToHand: card ${sourceCardId} not found`);
+    }
+    const newId = game.newEntityId();
+    const copy = new Card(newId, source.paperCard, controllerSeat, controllerSeat, Zt.OutsideTheGame);
+    // Audit I-14 — fresh CR 613.7 timestamp so layer ties order correctly.
+    copy.timestamp = game.newCardTimestamp();
+    copy.copiedFrom = source.copiedFrom;
+    game.cards.set(newId, copy);
+    // Wire up spell-abilities so the new card is castable post-move.
+    copy.activateAbilitiesFromDefinition();
+    // Insert into the controller's OutsideTheGame zone (lazy-create via
+    // the convenience accessor on Player).
+    const player = game.getPlayer(controllerSeat);
+    player.outsideTheGame.add(newId);
+    // Route through canonical moveTo so replacements + CardChangedZone fire.
+    yield* this.moveTo(newId, Zt.Hand, { toSeat: controllerSeat, cause: "conjure-copy" });
+    return newId;
+  }
+
   // === Loop-detection shortcut (SP2 Task 66) ===
 
   /**

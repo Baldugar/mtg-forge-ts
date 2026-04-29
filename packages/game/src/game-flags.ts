@@ -130,6 +130,15 @@ export interface GameFlags {
   // next turn (matches Forge: the static stamps once per activation +
   // re-activation in the next turn re-stamps; the counter is per-turn).
   pendingAdditionalUntapSteps: Map<PlayerSeat, number>;
+  // Wave 66 — per-seat "have you already activated your companion's
+  // 3-mana once-per-game tutor this game?" flag (CR 702.139b — "Once per
+  // game, that player may pay {3} as a special action to put their
+  // companion from outside the game into their hand"). Stamped when the
+  // synthesized companion activated SA resolves; consulted as an
+  // availability gate the next time the same SA is presented. NOT reset
+  // per-turn — strictly per-game. Default empty (no seat has used their
+  // companion yet).
+  companionUsedThisGame: Map<PlayerSeat, boolean>;
   // Wave 56 — side-channel for the ReplaceEffect family. When a parent
   // replacement's apply() runs an SVar that resolves to a `DB$ Replace*`
   // effect handler (ReplaceEffect / ReplaceDamage / ReplaceMana /
@@ -195,6 +204,8 @@ export const createDefaultFlags = (): GameFlags => ({
   pendingAdditionalCombatPhases: new Map(),
   // Wave 60.G — per-seat extra-untap-step counter.
   pendingAdditionalUntapSteps: new Map(),
+  // Wave 66 — per-seat companion-activation tracker (once-per-game).
+  companionUsedThisGame: new Map(),
   // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
   activeReplacementIntent: null,
 });

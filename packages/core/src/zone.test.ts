@@ -13,7 +13,7 @@ import {
 } from "./zone.js";
 
 describe("ZoneType", () => {
-  it("defines Forge's canonical 19 zones in PascalCase", () => {
+  it("defines Forge's canonical 19 zones plus the engine-side OutsideTheGame slot (Wave 66)", () => {
     const expected = [
       "Hand",
       "Library",
@@ -34,9 +34,11 @@ describe("ZoneType", () => {
       "Subgame",
       "ExtraHand",
       "None",
+      // Wave 66 — explicit "outside the game" per-player zone (CR 100.4).
+      "OutsideTheGame",
     ];
     expect(Object.values(ZoneType).sort()).toEqual([...expected].sort());
-    expect(Object.values(ZoneType)).toHaveLength(19);
+    expect(Object.values(ZoneType)).toHaveLength(20);
   });
 
   it("exposes the Forge-added entries previously missing from our enum", () => {
@@ -47,10 +49,12 @@ describe("ZoneType", () => {
     expect(ZoneType.ExtraHand).toBe("ExtraHand");
   });
 
-  it("HIDDEN_ZONES matches Forge's holdsHiddenInfo ctor flag exactly", () => {
+  it("HIDDEN_ZONES matches Forge's holdsHiddenInfo ctor flag (plus Wave-66 OutsideTheGame)", () => {
     // Derived from forge.game.zone.ZoneType.java: every zone declared with
-    // holdsHidden=true becomes a member here.
-    const forgeHidden = new Set<ZoneType>([
+    // holdsHidden=true becomes a member here. Wave 66 adds OutsideTheGame
+    // — Forge has no direct entry, but conceptually it holds hidden info
+    // (CR 100.4 + 400.4: opponents don't see what's there).
+    const expectedHidden = new Set<ZoneType>([
       ZoneType.Hand,
       ZoneType.Library,
       ZoneType.Sideboard,
@@ -61,10 +65,11 @@ describe("ZoneType", () => {
       ZoneType.Subgame,
       ZoneType.ExtraHand,
       ZoneType.None,
+      ZoneType.OutsideTheGame,
     ]);
     // Mutual subset check.
-    for (const z of forgeHidden) expect(HIDDEN_ZONES.has(z)).toBe(true);
-    for (const z of HIDDEN_ZONES) expect(forgeHidden.has(z)).toBe(true);
+    for (const z of expectedHidden) expect(HIDDEN_ZONES.has(z)).toBe(true);
+    for (const z of HIDDEN_ZONES) expect(expectedHidden.has(z)).toBe(true);
     // Explicit not-hidden sampling.
     expect(HIDDEN_ZONES.has(ZoneType.Battlefield)).toBe(false);
     expect(HIDDEN_ZONES.has(ZoneType.Graveyard)).toBe(false);
@@ -110,7 +115,7 @@ describe("ZoneType", () => {
     expect(isPartOfCommandZone(ZoneType.Stack)).toBe(false);
   });
 
-  it("isPerPlayerZone covers library, hand, graveyard, battlefield, sideboard, deck-y zones, plus ExtraHand/Junkyard", () => {
+  it("isPerPlayerZone covers library, hand, graveyard, battlefield, sideboard, deck-y zones, plus ExtraHand/Junkyard/OutsideTheGame", () => {
     expect(isPerPlayerZone(ZoneType.Library)).toBe(true);
     expect(isPerPlayerZone(ZoneType.Hand)).toBe(true);
     expect(isPerPlayerZone(ZoneType.Graveyard)).toBe(true);
@@ -122,6 +127,8 @@ describe("ZoneType", () => {
     expect(isPerPlayerZone(ZoneType.ContraptionDeck)).toBe(true);
     expect(isPerPlayerZone(ZoneType.Junkyard)).toBe(true);
     expect(isPerPlayerZone(ZoneType.ExtraHand)).toBe(true);
+    // Wave 66 — engine-side per-player "outside the game" zone.
+    expect(isPerPlayerZone(ZoneType.OutsideTheGame)).toBe(true);
   });
 
   it("isPerPlayerZone: Stack, Exile, Command, Ante, Flashback, Merged, Subgame, None are NOT per-player", () => {
@@ -170,6 +177,8 @@ describe("ZoneType", () => {
 
   it("does not define the zones that were drift-only (not in Forge)", () => {
     // Compile-time + runtime guard: these strings must not appear as enum values.
+    // (`OutsideTheGame` is OUR Wave-66 engine-side zone — distinct from the
+    // pre-Wave-66 drift-only "OutsideGame" / "outsideGame" naming.)
     const values = Object.values(ZoneType) as string[];
     expect(values).not.toContain("ConspiracyDeck");
     expect(values).not.toContain("StickerDeck");

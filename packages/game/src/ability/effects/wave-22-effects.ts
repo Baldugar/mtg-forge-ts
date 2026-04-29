@@ -769,14 +769,62 @@ export class LearnEffect extends SpellAbilityEffect {
     if (picked === "discardDraw" && !canDiscard) picked = "lesson";
 
     if (picked === "lesson") {
-      // TODO(advanced): tutor a Lesson card from the controller's sideboard
-      // / outside-the-game zone into hand. The OutsideTheGame zone wires
-      // up in Wave 66; until then we stamp a flag on the source so
-      // observers can see the branch resolved (and so the resolver doesn't
-      // crash on a missing zone). The graceful fallback also covers the
-      // canonical "no Lesson available" rule (CR 701.27b — if there is no
-      // Lesson, the player chooses to do nothing).
+      // Wave 66 — lesson tutor. Search the sideboard for cards with the
+      // "Lesson" subtype, yield chooseCard, and move the chosen card from
+      // sideboard → hand. CR 701.27a: "the player may reveal a Lesson card
+      // they own from outside the game and put it into their hand."
+      // CR 701.27b: if there is no Lesson, the lesson branch is a no-op
+      // (we stamp `learnLessonRequested` so observers can see the branch
+      // resolved without a tutor target).
       const source = game.cards.get(sa.sourceCardId);
+      const sideboard = player.zones.get(ZoneType.Sideboard);
+      const sideboardIds = sideboard ? sideboard.toArray() : [];
+      const lessons = sideboardIds.filter((id) => {
+        const c = game.cards.get(id);
+        if (!c) return false;
+        const subtypes = c.paperCard.definition?.types?.subtypes;
+        // `subtypes` may be a readonly array (TypeLine.subtypes) or
+        // undefined for tokens / emblems / no-definition cards. Lesson is
+        // a Sorcery subtype (CR 205.3m) printed exactly as "Lesson".
+        return subtypes?.includes("Lesson") === true;
+      });
+      if (lessons.length === 0) {
+        // No legal Lesson — graceful fallback, stamp flag, return.
+        if (source) {
+          (source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested = true;
+        }
+        return;
+      }
+      const tutorResp = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: seat,
+          pool: lessons,
+          restriction: { lessonTutor: true },
+          min: 0,
+          max: 1,
+        },
+      };
+      const r = tutorResp as DecisionResponse | undefined;
+      let chosenId: EntityId | undefined;
+      if (r && r.kind === "chooseCard" && r.chosen.length > 0) {
+        const candidate = r.chosen[0];
+        if (candidate !== undefined && lessons.includes(candidate)) {
+          chosenId = candidate;
+        }
+      }
+      if (chosenId === undefined) {
+        // Controller declined — stamp the flag (matches CR 701.27b "may"
+        // semantics: the player CAN choose to do nothing).
+        if (source) {
+          (source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested = true;
+        }
+        return;
+      }
+      yield* game.action.moveTo(chosenId, ZoneType.Hand, { toSeat: seat, cause: "learn-lesson" });
+      // Stamp the slot too — observers / tests can see the lesson branch
+      // resolved AND that a card was actually pulled.
       if (source) {
         (source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested = true;
       }

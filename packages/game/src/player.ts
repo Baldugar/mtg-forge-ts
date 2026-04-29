@@ -3,8 +3,11 @@
 // mutable game state (life, counters, mana pool, zones). The zones map is
 // populated at MatchSetup time (Task 45); manaPool is typed once Task 36 adds
 // the ManaPool class.
-import type { CounterType, LobbyPlayer, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
+import type { CounterType, EntityId, LobbyPlayer, PlayerSeat } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { Zone } from "./zone/zone.js";
+import { OutsideTheGame } from "./zone/zones/outside-the-game.js";
+import { Sideboard } from "./zone/zones/sideboard.js";
 
 export class Player {
   // WHY: life is initialized from GameRules.startingLife by the Game ctor
@@ -59,6 +62,57 @@ export class Player {
     startingLife = 20,
   ) {
     this.life = startingLife;
+  }
+
+  /**
+   * Wave 66 — Sideboard convenience accessor. Returns the player's
+   * Sideboard zone, lazy-creating it if absent. Engine internals that
+   * already operate via `player.zones.get(ZoneType.Sideboard)` are not
+   * required to use this; it exists for keyword handlers + tests that
+   * want a stable reference. CR 100.4 / 100.5: a player's sideboard is
+   * "outside the game" until cards from it are brought in.
+   */
+  get sideboard(): Zone {
+    let z = this.zones.get(ZoneType.Sideboard);
+    if (!z) {
+      z = new Sideboard(ZoneType.Sideboard, this.seat);
+      this.zones.set(ZoneType.Sideboard, z);
+    }
+    return z;
+  }
+
+  /**
+   * Wave 66 — OutsideTheGame convenience accessor. Returns the player's
+   * OutsideTheGame zone, lazy-creating it if absent. Wishes / Companion /
+   * Double-team-conjure use this slot to materialize cards before moving
+   * them into a "real" zone.
+   */
+  get outsideTheGame(): Zone {
+    let z = this.zones.get(ZoneType.OutsideTheGame);
+    if (!z) {
+      z = new OutsideTheGame(ZoneType.OutsideTheGame, this.seat);
+      this.zones.set(ZoneType.OutsideTheGame, z);
+    }
+    return z;
+  }
+
+  /**
+   * Wave 66 — append a card id to the sideboard (creating the zone on
+   * demand). Mirrors the pattern of `Library.add`/`Hand.add` for callers
+   * that want a one-liner for test fixture / future setup wiring.
+   */
+  addToSideboard(cardId: EntityId): void {
+    this.sideboard.add(cardId);
+  }
+
+  /**
+   * Wave 66 — append a card id to the outside-the-game zone (creating
+   * the zone on demand). Used by Companion declaration plumbing +
+   * `GameAction.conjureCopyToHand` to mint a duplicate before promoting
+   * it to hand.
+   */
+  addToOutsideTheGame(cardId: EntityId): void {
+    this.outsideTheGame.add(cardId);
   }
 
   toJSON(): {

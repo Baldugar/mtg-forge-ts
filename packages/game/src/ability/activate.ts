@@ -96,6 +96,17 @@ export function* activateAbility(
     }
   }
 
+  // 3a-ter. Wave 66 — Companion once-per-game gate (CR 702.139b). If this
+  // SA is the synthesized companion 3-mana hand-tutor (tagged "companion")
+  // and the controller has already activated their companion this game,
+  // refuse activation. The resolver also re-checks the flag (defense in
+  // depth) so a stale activation can't slip through.
+  if (sa.tags.has("companion") && game.flags.companionUsedThisGame.get(controllerSeat) === true) {
+    throw new IllegalDecisionError(
+      `activateAbility: companion already used this game by seat ${controllerSeat as unknown as number}`,
+    );
+  }
+
   // 3b. Wave 8 — target selection (CR 602.1b: choose modes/targets BEFORE
   //     paying costs). If the ability's effect carries a ValidTgts$ param,
   //     parse it into a TargetRestriction, enumerate eligible targets via

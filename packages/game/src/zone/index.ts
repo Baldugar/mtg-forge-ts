@@ -7,3 +7,6 @@ export * from "./zones/battlefield.js";
 export * from "./zones/exile.js";
 export * from "./zones/command-zone.js";
 export * from "./zones/ante.js";
+// Wave 66 — Sideboard + OutsideTheGame zones.
+export * from "./zones/sideboard.js";
+export * from "./zones/outside-the-game.js";

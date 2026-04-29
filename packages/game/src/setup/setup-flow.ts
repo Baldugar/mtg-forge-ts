@@ -39,6 +39,8 @@ import { CommandZone } from "../zone/zones/command-zone.js";
 import { Graveyard } from "../zone/zones/graveyard.js";
 import { Hand } from "../zone/zones/hand.js";
 import { Library } from "../zone/zones/library.js";
+import { OutsideTheGame } from "../zone/zones/outside-the-game.js";
+import { Sideboard } from "../zone/zones/sideboard.js";
 
 /**
  * Map seat → starting library as EntityIds. Index-by-seat keeps the public
@@ -92,7 +94,10 @@ export interface SetupOptions {
 
 // Per-player zone set covered by SP1. Sideboard/Ante/etc. populate in SP2 as
 // scenarios require them; keeping the creator local to this module means
-// Game doesn't need a zone-factory dependency outside setup.
+// Game doesn't need a zone-factory dependency outside setup. Wave 66 adds
+// Sideboard + OutsideTheGame so Companion / Learn / Double-team / Wish-style
+// effects always find a non-null source zone (cards are added/removed by
+// downstream pipelines, but the empty zone always exists).
 const createPlayerZones = (seat: PlayerSeat): Map<ZoneType, Zone> => {
   const m = new Map<ZoneType, Zone>();
   m.set(ZoneType.Library, new Library(ZoneType.Library, seat));
@@ -100,6 +105,9 @@ const createPlayerZones = (seat: PlayerSeat): Map<ZoneType, Zone> => {
   m.set(ZoneType.Graveyard, new Graveyard(ZoneType.Graveyard, seat));
   m.set(ZoneType.Battlefield, new Battlefield(ZoneType.Battlefield, seat));
   m.set(ZoneType.Command, new CommandZone(ZoneType.Command, seat));
+  // Wave 66 — Sideboard (CR 100.4) + OutsideTheGame (engine-side staging).
+  m.set(ZoneType.Sideboard, new Sideboard(ZoneType.Sideboard, seat));
+  m.set(ZoneType.OutsideTheGame, new OutsideTheGame(ZoneType.OutsideTheGame, seat));
   return m;
 };
 
