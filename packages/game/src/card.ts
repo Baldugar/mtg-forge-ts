@@ -87,9 +87,18 @@ export class Card {
   isCommander = false;
   // Wave 53 — ChangeZone `Attacking$ True` stamps this flag at battlefield
   // entry so the active combat phase treats the new permanent as an
-  // attacker (CR 506.4). The combat integration is wave-54+ work; this slot
-  // is the forward-compatible contract for stamping the intent at ETB.
+  // attacker (CR 506.4). Wave 65.A wires the combat-handler read: at
+  // declareAttackers, any battlefield card with enteredAttacking=true is
+  // pulled into the attackers list (defender resolved from
+  // attackingDefender stamp); the flag is cleared post-add so subsequent
+  // combats don't re-include the creature.
   enteredAttacking = false;
+  // Wave 65.A — stamped to true by CombatHandler.declareAttackers when a
+  // creature actually enters the attackers list this combat. Read at the
+  // EndOfCombat sweep to drive Decayed (CR 702.176 — "When this creature
+  // attacks, sacrifice it at end of combat"). Cleared by the same EOC
+  // sweep so the next combat starts fresh.
+  attackedThisCombat = false;
   // SP2 Tasks 46-48 (combat damage, first-strike split) — placeholder keyword
   // set used by CombatHandler to gate trample, deathtouch, first_strike,
   // double_strike behaviors from tests. Populated ad-hoc in Milestone M tests

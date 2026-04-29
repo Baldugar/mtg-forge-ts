@@ -39,6 +39,7 @@ import {
   shouldSkipDraw,
   shouldSkipUntap,
 } from "../statics/wave60-turn-structure-gates.js";
+import { sweepEndOfCombat } from "../statics/wave65-combat-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -328,6 +329,13 @@ export class PhaseHandler {
       }
     }
     if (step === Phase.EndOfCombat) {
+      // Wave 65.A — Decayed sacrifice + attackedThisCombat clear (CR
+      // 702.176). Runs BEFORE the additional-combat injection so the
+      // sacrifices belong to the just-completed combat; the extra combat
+      // (if any) then opens with a clean slate. Free-function entry so
+      // we don't depend on a CombatHandler instance being attached to
+      // Game (the test fixtures construct CombatHandler externally).
+      yield* sweepEndOfCombat(game);
       // Wave 60.D — consume one pending additional combat phase per
       // EndOfCombat (CR 506; Aggravated Assault et al.). When the active
       // player has at least one pending entry, decrement and inject an

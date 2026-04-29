@@ -18,6 +18,12 @@ import type { EngineYield } from "../action/engine-yield.js";
 import { onCombatDamageToPlayer as onCombatDamageInitiative } from "../dnd/initiative-tracker.js";
 import type { Game } from "../game.js";
 import { onCombatDamageToPlayer as onCombatDamageMonarch } from "../monarch/monarch-tracker.js";
+import {
+  canAttack,
+  canBlock,
+  collectMustAttackSubjects,
+  sweepEndOfCombat,
+} from "../statics/wave65-combat-gates.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -43,10 +49,44 @@ export class CombatHandler {
   constructor(private readonly game: Game) {}
 
   declareAttackers(decls: readonly { attackerId: EntityId; defender: DefenderTarget }[]): void {
+    // Wave 65.A — consult the static CantAttack registry (Wave 50). A
+    // creature matched by an active CantAttack restriction (Propaganda-
+    // shape "creatures can't attack") is illegal at declaration. Throw
+    // IllegalDecisionError so the caller surfaces the reason; this
+    // mirrors the declareBlockers I-13 path.
+    const illegalAttackers: EntityId[] = [];
+    for (const d of decls) {
+      if (!canAttack(this.game, d.attackerId)) illegalAttackers.push(d.attackerId);
+    }
+    if (illegalAttackers.length > 0) {
+      throw new IllegalDecisionError(
+        `declareAttackers: cantAttack static rejects ${illegalAttackers.join(",")}`,
+      );
+    }
     for (const d of decls) {
       const info: AttackerInfo = { attackerId: d.attackerId, defender: d.defender, isTapped: false };
       this.state.attackers.set(d.attackerId, info);
+      // Wave 65.A — stamp `attackedThisCombat` on the live card. Read by
+      // the EOC sweep to drive Decayed (CR 702.176 — sacrifice at end of
+      // combat if attacked).
+      const card = this.game.cards.get(d.attackerId);
+      if (card) card.attackedThisCombat = true;
     }
+    // Wave 65.A — Read 4 (card.enteredAttacking, Wave 53). Scan the
+    // battlefield for any creature stamped with enteredAttacking = true
+    // that isn't already in the attackers list, and pull it in. Each ETB-
+    // as-attacking source (Encore tokens, Mobilize tokens, "ETB attacking"
+    // ChangeZone effects) sets attackingDefender alongside enteredAttacking
+    // — that field carries the resolved defender (PlayerSeat for player /
+    // EntityId for planeswalker). Clear both flags after add so the next
+    // combat starts clean.
+    this.applyEnteredAttacking();
+    // Wave 65.A — Read 3 (Static MustAttack, Wave 50). Auto-correct: any
+    // creature subject to an active MustAttack that wasn't already in the
+    // attackers list gets pulled in. Defender defaults to "any opponent"
+    // (the first non-active player); MustAttack$ <player> sub-param
+    // payload is // TODO(advanced).
+    this.applyMustAttack();
   }
 
   declareBlockers(decls: readonly { blockerId: EntityId; attackerIds: readonly EntityId[] }[]): void {
@@ -58,10 +98,151 @@ export class CombatHandler {
       const reasons = illegal.map((r) => r.reason ?? "unknown block restriction").join("; ");
       throw new IllegalDecisionError(`declareBlockers: ${reasons}`);
     }
+    // Wave 65.A — Read 1 (card.decayed, Wave 59). CR 702.176 — "A creature
+    // with decayed can't block." Reject decayed creatures BEFORE storing
+    // declarations. The block-restrictions module already filters static
+    // cantBlock; Decayed is a card-flag stamp, not a static, so it lives
+    // here at the gate.
+    const decayed: EntityId[] = [];
+    for (const d of decls) {
+      if (!canBlock(this.game, d.blockerId)) decayed.push(d.blockerId);
+    }
+    if (decayed.length > 0) {
+      throw new IllegalDecisionError(
+        `declareBlockers: decayed creature(s) cannot block: ${decayed.join(",")}`,
+      );
+    }
     for (const d of decls) {
       const info: BlockerInfo = { blockerId: d.blockerId, attackerIds: [...d.attackerIds] };
       this.state.blockers.set(d.blockerId, info);
     }
+  }
+
+  /**
+   * Wave 65.A — pulls every battlefield card with `enteredAttacking = true`
+   * + an `attackingDefender` stamp into the attackers list, then clears
+   * both flags. Idempotent — running twice in the same combat is a no-op
+   * after the first run.
+   *
+   * Defender resolution: `attackingDefender` carries either a PlayerSeat
+   * (number stored as the seat's branded id) or an EntityId (planeswalker).
+   * We disambiguate by checking if the value resolves to a live card
+   * (planeswalker) vs. a player seat. The runtime stamp already carries
+   * the right shape per the source effect; we duck-type into the same
+   * DefenderTarget union.
+   */
+  private applyEnteredAttacking(): void {
+    for (const card of this.game.cards.values()) {
+      if (!card.enteredAttacking) continue;
+      if (this.state.attackers.has(card.id)) {
+        // Already declared — just clear the flag.
+        card.enteredAttacking = false;
+        const cu = card as unknown as { attackingDefender?: unknown };
+        cu.attackingDefender = undefined;
+        card.attackedThisCombat = true;
+        continue;
+      }
+      const cu = card as unknown as { attackingDefender?: unknown };
+      const stamp = cu.attackingDefender;
+      const defender = this.resolveDefenderStamp(stamp);
+      if (defender === null) {
+        // No defender stamp → can't form an attacker; clear the flag so
+        // we don't loop on a dead stamp next combat.
+        card.enteredAttacking = false;
+        continue;
+      }
+      const info: AttackerInfo = { attackerId: card.id, defender, isTapped: false };
+      this.state.attackers.set(card.id, info);
+      card.attackedThisCombat = true;
+      card.enteredAttacking = false;
+      cu.attackingDefender = undefined;
+    }
+  }
+
+  /**
+   * Wave 65.A — auto-add must-attack creatures (CR 506.5 attack
+   * requirements; goad-shape statics from Wave 50). Walks the
+   * mustAttack restriction registry, finds matching battlefield
+   * creatures not already in the attackers list, and pulls them in
+   * with a default-opponent defender.
+   *
+   * MVP — defender is the first non-active opponent. The MustAttack$
+   * <player> sub-param (Forge's "must attack PLAYER if able") is
+   * // TODO(advanced); same shape as goad's "must attack a player
+   * other than the goader" — needs the static's payload to carry the
+   * required-defender constraint.
+   */
+  private applyMustAttack(): void {
+    const subjects = collectMustAttackSubjects(this.game);
+    if (subjects.length === 0) return;
+    const opponent = this.firstOpponent();
+    if (opponent === null) return;
+    for (const id of subjects) {
+      if (this.state.attackers.has(id)) continue;
+      // Respect CantAttack — if a creature is both must-attack and
+      // cant-attack, the cant- side wins (CR 509.1d "if able"). Skip it.
+      if (!canAttack(this.game, id)) continue;
+      const card = this.game.cards.get(id);
+      if (!card) continue;
+      const info: AttackerInfo = {
+        attackerId: id,
+        defender: { kind: "player", seat: opponent },
+        isTapped: false,
+      };
+      this.state.attackers.set(id, info);
+      card.attackedThisCombat = true;
+    }
+  }
+
+  /**
+   * Wave 65.A — return the first non-active player seat (the canonical
+   * "any opponent" choice for auto-correct must-attack). MVP only; full
+   * multiplayer goad-shape "any opponent other than goader" needs payload
+   * threading.
+   */
+  private firstOpponent(): PlayerSeat | null {
+    const active = this.game.activePlayer;
+    for (const p of this.game.players) {
+      if (p.seat !== active) return p.seat;
+    }
+    return null;
+  }
+
+  /**
+   * Wave 65.A — best-effort defender stamp normalization. The
+   * `attackingDefender` slot is stamped by Encore / Mobilize / ChangeZone
+   * Attacking$ True and carries either a PlayerSeat (number) or an
+   * EntityId (planeswalker). We disambiguate by checking the live card
+   * registry: if the stamp resolves to a live card, treat as
+   * planeswalker; otherwise treat as player seat.
+   */
+  private resolveDefenderStamp(stamp: unknown): DefenderTarget | null {
+    if (stamp === null || stamp === undefined) return null;
+    if (typeof stamp !== "number") return null;
+    // Try planeswalker first — if the stamp is a live card id, treat as
+    // planeswalker defender.
+    const card = this.game.cards.get(stamp as EntityId);
+    if (card !== undefined) {
+      return { kind: "planeswalker", id: stamp as EntityId };
+    }
+    // Otherwise treat as player seat.
+    return { kind: "player", seat: stamp as PlayerSeat };
+  }
+
+  /**
+   * Wave 65.A — End-of-Combat sweep. Sacrifice every decayed creature
+   * that attacked this combat (CR 702.176 second sentence — "When this
+   * creature attacks, sacrifice it at end of combat"); then clear
+   * attackedThisCombat on every card so the next combat starts fresh.
+   *
+   * Phase-handler invokes this at PhaseStep.EndOfCombat. Order: the
+   * Wave-60.D "additional combat phase" consumption already runs at
+   * EndOfCombat; we run BEFORE that injection so the sacrifices fire
+   * for the just-completed combat (the additional combat then opens
+   * with a clean slate).
+   */
+  *endOfCombat(): Generator<EngineYield, void, unknown> {
+    yield* sweepEndOfCombat(this.game);
   }
 
   setBlockerOrder(attackerId: EntityId, blockerOrder: readonly EntityId[]): void {
