@@ -91,30 +91,19 @@ export class ReplicateKeywordHandler extends KeywordHandler {
 
           if (copies <= 0) return;
 
-          // Locate the in-flight stack item for this spell and queue
-          // copies. game.action.copySpell handles stack placement; if the
-          // spell already resolved (race), the loop becomes a no-op.
-          const stack = g.sharedZones.stack;
-          let spellStackId: EntityId | undefined;
-          for (const it of stack.toArray()) {
-            if (it.kind === "spell" && it.sourceCardId === sourceCardId) {
-              spellStackId = it.id;
-              break;
-            }
-          }
-          if (spellStackId === undefined) return;
-
-          const action = g.action as unknown as {
-            copySpell?: (
-              stackItemId: EntityId,
-              opts: { count: number; chooseNewTargets: boolean; controller: number },
-            ) => Generator<unknown, void, unknown>;
-          };
-          if (typeof action.copySpell === "function") {
-            yield* action.copySpell(spellStackId, {
-              count: copies,
-              chooseNewTargets: true,
-              controller: controllerSeat,
+          // Wave 64 — route through unified castCopyOf. CR 702.108: the
+          // copies retain the original spell's targets ("You may choose
+          // new targets" is technically allowed by 706.10b but Replicate
+          // historically resolves with retained targets unless the
+          // controller opts otherwise). MVP keeps targets to avoid
+          // forcing an extra decision per copy; future waves can promote
+          // to per-copy newTargets prompts.
+          for (let i = 0; i < copies; i++) {
+            yield* g.action.castCopyOf(sourceCardId, {
+              controllerSeat,
+              newTargets: false,
+              retainTargets: true,
+              freecast: true,
             });
           }
         },

@@ -40,7 +40,9 @@ import {
   mkEvent,
 } from "@mtg-forge-ts/core";
 import { activateAbility as activateAbilityImpl } from "../ability/activate.js";
+import { SpellAbility } from "../ability/spell-ability.js";
 import { Card } from "../card.js";
+import { parseValidTgts } from "../cast/valid-targets.js";
 import { hasKeyword as cardHasKeyword } from "../combat/damage-assignment-helpers.js";
 import { damageProtected } from "../combat/keywords/protection.js";
 import { turnFaceUp as turnFaceUpOp } from "../face-down/turn-face-up.js";
@@ -72,10 +74,11 @@ import type {
   UnattachIntent,
   UntapIntent,
 } from "../replacements/mutation-intent.js";
-import type { StackItem } from "../stack/stack-item.js";
+import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
 import { canBeSacrificed, canPutCounter } from "../statics/wave60-cant-gates.js";
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { onZoneChange } from "../statics/zone-activation.js";
+import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
 import type { EngineYield } from "./engine-yield.js";
 
@@ -1905,6 +1908,204 @@ export class GameAction {
       }),
     };
     return id;
+  }
+
+  // === Cast-copy infrastructure (Wave 64) ===
+
+  /**
+   * Wave 64 — castCopyOf: shared cast-copy helper used by every spell-copy
+   * mechanic (Cipher / Demonstrate / Replicate / Casualty / Conspire /
+   * cascade / etc.). Mirrors Forge's `AbilityUtils.addCopyOnStack` /
+   * `copySpellAbility`.
+   *
+   * Behavior:
+   *   1. If a live spell-kind StackItem exists for `spellSourceId` (the
+   *      common case for Replicate / Casualty / Demonstrate firing during
+   *      the original spell's cast), copy that item via Stack.copy(). The
+   *      copy keeps controller/targets/modes/X by default.
+   *   2. Otherwise (the Cipher case — the original spell already resolved
+   *      and went to graveyard/exile), synthesize a fresh copy StackItem
+   *      directly from the source card's first SpellAbility. The copy's
+   *      provenance records `originZone: card.zone` and `copiedFrom: null`
+   *      since there's no live parent.
+   *
+   * Options:
+   *   - controllerSeat: the seat that controls the new copy. Cipher / Demo
+   *     opponent-copies use the opponent's seat; same-controller copies
+   *     pass the original controller.
+   *   - newTargets: when true, the controller picks new targets via the
+   *     same chooseCastTargets decision the cast pipeline uses. Targets
+   *     must satisfy the source card's target restriction. CR 706.10b
+   *     allows the copying player to pick any legal targets.
+   *   - retainTargets: when true (default for non-newTargets paths), the
+   *     copy preserves the source's target list verbatim. Honored only
+   *     when newTargets is false; ignored otherwise.
+   *   - freecast: cosmetic — castCopyOf NEVER charges any cost. The flag
+   *     is part of the contract for parity with Forge's copySpellAbility
+   *     and is reserved for future scenarios where a copy might re-pay
+   *     (none in the current rules; CR 707.10 says copies are never paid).
+   *
+   * Returns the new copy StackItem's EntityId so callers can chain
+   * (e.g. Replicate stacking N copies in succession).
+   *
+   * Throws GameStateIntegrityError if `spellSourceId` doesn't resolve to
+   * a known card. A card with no spellAbilities[0] AND no live stack item
+   * has nothing to copy — that case also throws so the caller learns the
+   * mechanic was misapplied (e.g. a non-spell card slipping through).
+   */
+  *castCopyOf(
+    spellSourceId: EntityId,
+    opts: {
+      readonly controllerSeat: PlayerSeat;
+      readonly newTargets?: boolean;
+      readonly retainTargets?: boolean;
+      readonly freecast?: boolean;
+    },
+  ): Generator<EngineYield, EntityId, unknown> {
+    const game = this.game;
+    void opts.freecast; // copies are always free per CR 707.10; reserved flag.
+    const card = game.cards.get(spellSourceId);
+    if (!card) {
+      throw new GameStateIntegrityError(`castCopyOf: card ${spellSourceId} not found`);
+    }
+
+    // Step 1 — find a live spell-kind StackItem for this card. If found,
+    // route through Stack.copy() (the same path Conspire uses).
+    let liveItem: StackItem | undefined;
+    for (const it of game.sharedZones.stack.toArray()) {
+      if (it.kind === "spell" && it.sourceCardId === spellSourceId) {
+        liveItem = it;
+        break;
+      }
+    }
+
+    // Step 2 — pick targets. When newTargets is true we yield a
+    // chooseCastTargets decision; eligibility is enumerated against the
+    // card's target restriction (parsed from paper.targetRestriction or
+    // ValidTgts$ on the first SpellAbility, mirroring the cast pipeline's
+    // step-7 derivation). When newTargets is false we either inherit from
+    // the live item (when present) or carry over targets from the bound
+    // resolver (when synthesizing fresh).
+    let chosenTargetRefs: readonly TargetRef[] | undefined;
+    if (opts.newTargets === true) {
+      let restriction: TargetRestriction | undefined;
+      const paper = card.paperCard as { targetRestriction?: TargetRestriction };
+      restriction = paper.targetRestriction;
+      if (!restriction && card.spellAbilities.length > 0) {
+        const sa = card.spellAbilities[0];
+        const validTgtsParam = sa?.ast.effect.params.ValidTgts;
+        if (validTgtsParam && validTgtsParam.kind === "literal" && validTgtsParam.raw) {
+          restriction = parseValidTgts(validTgtsParam.raw);
+        }
+      }
+      if (restriction) {
+        const enumCtx = { sourceId: spellSourceId, sourceControllerSeat: opts.controllerSeat };
+        const eligible = game.targetSystem.enumerate(enumCtx, restriction);
+        const response = (yield {
+          kind: "decision",
+          request: {
+            kind: "chooseCastTargets",
+            playerSeat: opts.controllerSeat,
+            sourceId: spellSourceId,
+            legalTargets: eligible as readonly unknown[],
+            min: restriction.minTargets,
+            max: restriction.maxTargets,
+          },
+        }) as {
+          readonly kind: "chooseCastTargets";
+          readonly targets: readonly unknown[];
+        };
+        chosenTargetRefs = response.targets as readonly TargetRef[];
+        // Emit CardTargeted per chosen card-typed target so trigger
+        // observers (BecomesTarget) fire for the copy too.
+        for (const ref of chosenTargetRefs) {
+          if (ref.kind === "card") {
+            yield game.emitEvent(
+              mkEvent("CardTargeted", game.turn, game.phase, {
+                targetId: ref.id,
+                sourceCardId: spellSourceId,
+                targetingSeat: opts.controllerSeat,
+              }),
+            );
+          }
+        }
+      }
+    }
+
+    // Step 3a — live-item path: delegate to Stack.copy with optional new
+    // targets. The copy gets a fresh id, kind: "copy", isCast: false.
+    if (liveItem !== undefined) {
+      const stackOpts =
+        chosenTargetRefs !== undefined
+          ? { changeTargets: chosenTargetRefs as unknown }
+          : opts.retainTargets === false
+            ? { changeTargets: null as unknown }
+            : {};
+      const copyItem = game.sharedZones.stack.copy(liveItem.id, opts.controllerSeat, game, stackOpts);
+      // Wave 64 — emit SpellCopied so observers (storm count, copy-watching
+      // triggers) can react. Distinct from SpellCast (which only fires for
+      // isCast=true items).
+      yield game.emitEvent(
+        mkEvent("SpellPutOnStack", game.turn, game.phase, {
+          stackItemId: copyItem.id,
+          cardId: copyItem.sourceCardId,
+          controllerSeat: copyItem.controllerSeat,
+        }),
+      );
+      return copyItem.id;
+    }
+
+    // Step 3b — synthesize path: the original spell isn't on the stack
+    // anymore (Cipher / cascade-of-LKI-spell / etc.). Build a fresh copy
+    // StackItem from the card's first SpellAbility. The bound SA carries
+    // the chosen targets so the copy's resolver sees them at resolve time.
+    const saTemplate = card.spellAbilities[0] ?? null;
+    if (saTemplate === null) {
+      throw new GameStateIntegrityError(`castCopyOf: card ${spellSourceId} has no SpellAbility to copy`);
+    }
+    const targetIds: EntityId[] =
+      chosenTargetRefs !== undefined
+        ? chosenTargetRefs.map((r) => (r.kind === "card" ? r.id : (r.seat as unknown as EntityId)))
+        : [];
+    const boundSa = new SpellAbility(
+      saTemplate.ast,
+      saTemplate.sourceCardId,
+      opts.controllerSeat,
+      saTemplate.svars,
+      targetIds,
+      saTemplate.xValue,
+      undefined,
+      saTemplate.tags.size > 0 ? new Set(saTemplate.tags) : undefined,
+    );
+    const resolver: StackItemResolver = boundSa.makeResolver();
+
+    const newId = game.newEntityId();
+    const copyItem: StackItem = {
+      id: newId,
+      sourceCardId: spellSourceId,
+      controllerSeat: opts.controllerSeat,
+      kind: "copy",
+      isCast: false,
+      targets: chosenTargetRefs ?? null,
+      modes: [],
+      xValue: saTemplate.xValue ?? null,
+      costPaid: [],
+      resolver,
+      provenance: {
+        originZone: card.zone,
+        altCostUsed: null,
+        additionalCostsPaid: [],
+      },
+    };
+    game.sharedZones.stack.push(copyItem);
+    yield game.emitEvent(
+      mkEvent("SpellPutOnStack", game.turn, game.phase, {
+        stackItemId: newId,
+        cardId: spellSourceId,
+        controllerSeat: opts.controllerSeat,
+      }),
+    );
+    return newId;
   }
 
   // === Loop-detection shortcut (SP2 Task 66) ===

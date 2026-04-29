@@ -14,8 +14,9 @@
 //      copy-and-opponent-copy synthesis happens via the cast pipeline
 //      (TODO(advanced)). The trigger registration captures the durable
 //      contract.
-import type { EntityId, GameEvent, KeywordAst, TriggeredAbility } from "@mtg-forge-ts/core";
+import type { EntityId, GameEvent, KeywordAst, PlayerSeat, TriggeredAbility } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
@@ -61,7 +62,8 @@ export class DemonstrateKeywordHandler extends KeywordHandler {
       },
 
       resolver: {
-        *resolve(): Generator<unknown, void, unknown> {
+        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
+          const g = gameUnknown as Game;
           const response = (yield {
             kind: "decision",
             request: {
@@ -71,8 +73,55 @@ export class DemonstrateKeywordHandler extends KeywordHandler {
             },
           }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
           if (response?.confirmed !== true) return;
-          // TODO(advanced) — synthesize own copy + opponent's copy via
-          // the cast-copy pipeline.
+
+          // Wave 64 — controller's own copy (with new targets per CR 702.144).
+          yield* g.action.castCopyOf(sourceCardId, {
+            controllerSeat,
+            newTargets: true,
+            freecast: true,
+          });
+
+          // Wave 64 — CR 702.144b: "If you do, choose an opponent to copy
+          // it as well." Enumerate opponents (single-active or multi-) and
+          // resolve to a single chosen seat. Auto-pick when only one
+          // opponent exists.
+          const opponents: PlayerSeat[] = [];
+          for (const p of g.players) {
+            if (p.seat !== controllerSeat) opponents.push(p.seat);
+          }
+          if (opponents.length === 0) return;
+          let chosenOpp: PlayerSeat | undefined;
+          if (opponents.length === 1) {
+            chosenOpp = opponents[0];
+          } else {
+            const oppDecision = yield {
+              kind: "decision",
+              request: {
+                kind: "chooseGenericOption",
+                sourceId: sourceCardId,
+                playerSeat: controllerSeat,
+                options: opponents.map((s) => ({
+                  id: String(s as unknown as number),
+                  description: `Player ${String(s as unknown as number)}`,
+                })),
+              },
+            };
+            const r = oppDecision as { kind: string; optionId?: string } | undefined;
+            if (r && r.kind === "chooseGenericOption" && typeof r.optionId === "string") {
+              const parsed = Number.parseInt(r.optionId, 10);
+              if (Number.isFinite(parsed)) {
+                chosenOpp = opponents.find((s) => (s as unknown as number) === parsed);
+              }
+            }
+            chosenOpp ??= opponents[0];
+          }
+          if (chosenOpp === undefined) return;
+          // The chosen opponent gets a copy with new targets too.
+          yield* g.action.castCopyOf(sourceCardId, {
+            controllerSeat: chosenOpp,
+            newTargets: true,
+            freecast: true,
+          });
         },
       },
     };

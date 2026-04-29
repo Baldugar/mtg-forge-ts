@@ -35,13 +35,9 @@ import {
   type EntityId,
   type GameEvent,
   type KeywordAst,
-  type PlayerSeat,
   type TriggeredAbility,
   ZoneType,
 } from "@mtg-forge-ts/core";
-import type { EngineYield } from "../../action/engine-yield.js";
-import type { CastContext } from "../../cast/cast-context.js";
-import { CastPipeline, type CastProposal } from "../../cast/cast-pipeline.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -51,19 +47,6 @@ import { KeywordHandler } from "../keyword-handler.js";
 type TriggeredAbilityWithResolver = TriggeredAbility & {
   readonly resolver: StackItemResolver | null;
 };
-
-class FreeCastPipeline extends CastPipeline {
-  protected override *stepDetermineTotalCost(ctx: CastContext): Generator<EngineYield, void, unknown> {
-    const costMods = this.game.staticEffectRegistry.byCategory("costModification");
-    ctx.totalCost = {
-      base: null,
-      modIds: costMods.map((s) => s.id),
-      additionalCostIds: [...ctx.additionalCostsPaid],
-      altCostUsed: ctx.altCostUsed,
-      xValue: ctx.xValue,
-    };
-  }
-}
 
 export class CipherKeywordHandler extends KeywordHandler {
   static override readonly keyword = "cipher" as const;
@@ -204,17 +187,16 @@ export class CipherKeywordHandler extends KeywordHandler {
           }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
           if (response?.confirmed !== true) return;
 
-          // Free-cast a copy of the ciphered card from its current zone.
-          const pipeline = new FreeCastPipeline(g);
-          const proposal: CastProposal = {
-            castingPlayer: controllerSeat,
-            sourceCardId,
-            originZone: self.zone,
-            asSpecialAction: false,
-          };
-          // Closure over PlayerSeat — referenced for typing parity.
-          void (controllerSeat as PlayerSeat);
-          yield* pipeline.run(proposal) as Generator<unknown, unknown, unknown>;
+          // Wave 64 — route through the unified castCopyOf helper. CR
+          // 702.97a: the controller may cast a COPY of the encoded card
+          // without paying its mana cost. CR 706.10b lets the copying
+          // player choose new targets, so newTargets: true. freecast
+          // is true (copies never re-pay).
+          yield* g.action.castCopyOf(sourceCardId, {
+            controllerSeat,
+            newTargets: true,
+            freecast: true,
+          });
         },
       },
     };
