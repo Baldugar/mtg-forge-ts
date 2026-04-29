@@ -422,6 +422,22 @@ const entries: readonly TokenEntry[] = [
     abilities: [],
     oracle: "",
   },
+  {
+    // Wave 62.A — For Mirrodin (CR 702.158, Mirrodin Besieged; reprinted
+    // with the Phyrexia: All Will Be One swordbreakers and Mirrodin
+    // Besieged equipment cycle). 2/2 red Rebel creature token. Spawned
+    // by ForMirrodinKeywordHandler on the Equipment's ETB; the
+    // Equipment auto-attaches to the new token.
+    id: "r_2_2_rebel",
+    name: "Rebel Token",
+    types: types("Creature Rebel"),
+    pt: { power: "2", toughness: "2" },
+    colors: colorsOf(R),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
 
   // --- mono-green creatures ---
   {
