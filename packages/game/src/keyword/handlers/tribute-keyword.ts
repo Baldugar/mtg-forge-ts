@@ -1,22 +1,39 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // TributeKeywordHandler — processes K:Tribute:N keyword lines (Born of
-// the Gods, CR 702.110) and synthesizes an ETB trigger that yields a
-// confirmAction to an opponent. If they confirm: addCounter +1/+1 N. If
-// they decline: trigger the alternate effect (TODO(advanced)).
+// the Gods, CR 702.99) and synthesizes an ETB trigger that yields a
+// chooseGenericOption to the controller (pick which opponent gets the
+// choice) followed by a confirmAction to the chosen opponent. If they
+// confirm: addCounter +1/+1 N. If they decline: stamp `tributePaid =
+// false` so the alternate trigger (encoded on the source as a
+// Conditional Trigger gated on Count$Tribute) fires.
 //
-// CR 702.110a — "Tribute N" — "As this creature enters, an opponent of
+// CR 702.99a — "Tribute N" — "As this creature enters, an opponent of
 // your choice may put N +1/+1 counters on it. If they don't, the
-// alternate trigger fires."
+// alternate 'if no Tribute was paid' trigger fires."
 //
-// MVP scope:
+// Wave 61.F — multi-decision migration replacing the old single-yield
+// confirmAction. Now:
 //   1. Adds "tribute" to card.keywords.
 //   2. Stamps `card.tributeAmount = N`.
-//   3. ETB trigger: yield confirmAction. On confirm: addCounter(P1P1, N)
-//      and stamp `card.tributePaid = true`. On decline: stamp
-//      `card.tributePaid = false`. The alternate-trigger dispatch on
-//      decline is TODO(advanced) — Forge encodes the alternate as a
-//      Conditional Trigger gated on Count$Tribute.
-import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
+//   3. ETB trigger: yield chooseGenericOption over opponent seats. If
+//      no opponents (impossible in standard 2-player with Bob alive),
+//      fall back to first non-controller seat. Then yield confirmAction
+//      to the chosen opponent. On confirm: addCounter +1/+1 N + stamp
+//      tributePaid = true. On decline: stamp tributePaid = false.
+//
+// TODO(advanced) — fire the alternate trigger encoded on the source as
+// a Conditional Trigger gated on Count$Tribute via sub-SVar dispatch.
+// The data side already round-trips `tributePaid`; what's missing is
+// a triggered-ability matcher reading the flag, which lives in the
+// Wave 51 SVar selector pack and is a pure read-side wire-up.
+import type {
+  EntityId,
+  GameEvent,
+  KeywordAst,
+  ParamValue,
+  PlayerSeat,
+  TriggeredAbility,
+} from "@mtg-forge-ts/core";
 import { CounterType, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
@@ -69,7 +86,65 @@ export class TributeKeywordHandler extends KeywordHandler {
           const g = gameUnknown as Game;
           const self = g.cards.get(sourceCardId);
           if (!self) return;
-          const response = (yield {
+
+          // Enumerate live opponent seats (everyone but the controller).
+          // We do not gate on `hasLost` here — Tribute fires before SBA
+          // in real play, and the controller-side defensive pick handles
+          // 0-opponents (no possible interaction, fall through to "no").
+          const oppSeats: PlayerSeat[] = [];
+          for (const p of g.players) {
+            if (p.seat !== controllerSeat) oppSeats.push(p.seat);
+          }
+
+          let chosenOpp: PlayerSeat | undefined;
+          if (oppSeats.length === 0) {
+            // No opponents — treat as "no Tribute paid" and stamp false.
+            self.tributePaid = false;
+            return;
+          }
+          if (oppSeats.length === 1) {
+            // Single-opponent shortcut: skip the chooser yield (no real
+            // choice). Match real-play UX: don't ask a one-option pick.
+            chosenOpp = oppSeats[0];
+          } else {
+            // Wave 61.F — controller picks which opponent is offered the
+            // tribute choice. Yield chooseGenericOption with one option per
+            // opponent seat (`opp:<seatNumber>` ids).
+            const options = oppSeats.map((seat) => ({
+              id: `opp:${seat as unknown as number}`,
+              description: `Opponent ${(seat as unknown as number).toString()}`,
+            }));
+            const pickResp = yield {
+              kind: "decision",
+              request: {
+                kind: "chooseGenericOption",
+                sourceId: sourceCardId,
+                playerSeat: controllerSeat,
+                options,
+              },
+            };
+            const r = pickResp as { kind: string; optionId?: string } | undefined;
+            if (r && r.kind === "chooseGenericOption" && typeof r.optionId === "string") {
+              const m = /^opp:(\d+)$/.exec(r.optionId);
+              if (m) {
+                const seatNum = Number.parseInt(m[1] as string, 10);
+                const candidate = oppSeats.find((s) => (s as unknown as number) === seatNum);
+                if (candidate !== undefined) chosenOpp = candidate;
+              }
+            }
+            // Fallback to first opponent on missing/invalid response.
+            if (chosenOpp === undefined) chosenOpp = oppSeats[0];
+          }
+          if (chosenOpp === undefined) return;
+
+          // Closure-over-PlayerSeat preserved for future opponent-side
+          // routing in confirmAction (the request schema currently lacks
+          // a seat slot — Wave 61.F follows existing precedent of using
+          // confirmAction with sourceId only; the controller surface is
+          // expected to dispatch the prompt to the chosen opponent).
+          void (chosenOpp as PlayerSeat);
+
+          const confirmResp = (yield {
             kind: "decision",
             request: {
               kind: "confirmAction",
@@ -77,13 +152,15 @@ export class TributeKeywordHandler extends KeywordHandler {
               prompt: `Opponent: pay tribute (put ${n} +1/+1 counters)?`,
             },
           }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
-          if (response?.confirmed === true) {
+
+          if (confirmResp?.confirmed === true) {
             self.tributePaid = true;
             yield* g.action.addCounter(sourceCardId, CounterType.PlusOnePlusOne, n, sourceCardId);
           } else {
             self.tributePaid = false;
             // TODO(advanced) — fire the alternate trigger encoded on the
-            // source as a Conditional Trigger gated on Count$Tribute.
+            // source as a Conditional Trigger gated on Count$Tribute via
+            // sub-SVar dispatch.
           }
         },
       },

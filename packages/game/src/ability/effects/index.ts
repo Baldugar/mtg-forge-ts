@@ -147,3 +147,7 @@ export * from "./replace-effect.js";
 // counter; phase handler consumes one at end-of-combat and injects an
 // extra combat block via PhaseSequence.injectExtraCombat.
 export * from "./additional-combat.js";
+// Wave 61.F — Encore activated-ability resolver (CR 702.143).
+// Synthesized by EncoreKeywordHandler; per-opponent token-copy spawn
+// tapped + attacking that opponent + haste, with EOT-sac stamp.
+export * from "./encore.js";

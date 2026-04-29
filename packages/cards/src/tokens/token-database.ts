@@ -408,6 +408,20 @@ const entries: readonly TokenEntry[] = [
     abilities: [],
     oracle: "Flying",
   },
+  {
+    // Wave 61.F — Mobilize (CR 702.176, Tarkir: Dragonstorm).
+    // 1/1 red Warrior creature token. Spawned tapped + attacking by
+    // MobilizeKeywordHandler when the source attacks.
+    id: "r_1_1_warrior",
+    name: "Warrior Token",
+    types: types("Creature Warrior"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(R),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
 
   // --- mono-green creatures ---
   {
