@@ -280,6 +280,7 @@ export class CastPipeline {
       yield* this.stepDistributeX(ctx);
       yield* this.stepChooseTargets(ctx);
       yield* this.stepDetermineTotalCost(ctx);
+      yield* this.stepChooseSplices(ctx);
       yield* this.stepChooseConvokeImproviseTap(ctx);
       yield* this.stepActivateManaAbilities(ctx);
       yield* this.stepPayCosts(ctx);
@@ -1048,6 +1049,136 @@ export class CastPipeline {
   }
 
   /**
+   * Wave 69 — Splice onto Arcane (CR 702.46/702.47). After total cost is
+   * computed, if the casting card carries the Arcane subtype, scan the
+   * caster's hand for K:Splice cards. For each eligible splicer in turn,
+   * yield a `confirmAction` decision; on confirmation:
+   *   1. Splice the splicer's cost into ctx.totalCost.base.raw (so payCost
+   *      charges the bundled cost in stepPayCosts).
+   *   2. Emit `CardsRevealed` for the splicer (CR 701.23 reveal mechanic;
+   *      the splicer stays in hand per CR 702.46c).
+   *   3. Append a {splicerCardId, svarName} entry to `card.splicedEffects`
+   *      so finalizeStackItem's resolver can dispatch each splicer's
+   *      effect AFTER the parent spell's effect resolves (CR 702.46a's
+   *      "add this card's effects to that spell").
+   *
+   * Step ordering: runs AFTER stepDetermineTotalCost so ctx.totalCost.base
+   * is populated, and BEFORE stepChooseConvokeImproviseTap /
+   * stepActivateManaAbilities / stepPayCosts so any spliced surcharge
+   * flows through the same payment loop the base cost uses.
+   *
+   * Cards without the Arcane subtype skip this step entirely (the early
+   * return keeps Spree / Strive / Kicker spells untouched). Casts with no
+   * eligible splicers in hand also skip cleanly.
+   *
+   * The svarName extraction probes the splicer's first SpellAbility's AST
+   * (`spellAbilities[0]?.ast.effect.handlerKey`/svar lookup) — the same
+   * source the cast resolver uses. The resolver-side dispatch path mirrors
+   * ChannelEffect: build a synthetic AbilityAst from the SVar's ability
+   * body and resolve through effectRegistry.
+   */
+  protected *stepChooseSplices(ctx: CastContext): Generator<EngineYield, void, unknown> {
+    const card = this.game.cards.get(ctx.sourceCardId);
+    if (!card) return;
+    // Arcane gating — only Arcane spells admit splice graft (CR 702.46a).
+    // The subtype check goes through layer-engine characteristics so any
+    // type-changing static effects (rare for the printed corpus, but
+    // robust) are honored. Cards in hand normally aren't on the
+    // battlefield, but computeCharacteristics works on any card.
+    const chars = this.game.layerEngine.computeCharacteristics(ctx.sourceCardId);
+    if (!chars.subtypes.has("Arcane")) return;
+
+    // Enumerate eligible splicers — K:Splice cards in caster's hand,
+    // distinct from the casting card itself. Order by monotonic id so
+    // the prompt order is deterministic across replay.
+    const eligible: Array<{ id: EntityId; cost: string; svarName: string }> = [];
+    for (const [id, c] of this.game.cards) {
+      if (id === ctx.sourceCardId) continue;
+      if (c.zone !== Zt.Hand) continue;
+      if (c.ownerSeat !== ctx.castingPlayer) continue;
+      if (c.keywords?.has("splice") !== true) continue;
+      const def = c.paperCard.definition;
+      if (!def) continue;
+      const keywords = def.keywords as
+        | readonly { keyword: string; params?: { detail?: { kind: string; raw: string } } }[]
+        | undefined;
+      const kw = keywords?.find((k) => k.keyword === "splice");
+      if (!kw) continue;
+      const detailRaw = kw.params?.detail?.raw ?? "";
+      // K:Splice:Arcane:cost — detail = "Arcane:cost". Take the cost half.
+      const colon = detailRaw.indexOf(":");
+      const splCost = colon >= 0 ? detailRaw.slice(colon + 1).trim() : detailRaw.trim();
+      if (splCost.length === 0) continue;
+      // SVar name — splice grafts the first A: ability's effect onto the
+      // spell. We surface the splicer's first SpellAbility template (the
+      // card's "A:" ability) and, at resolve time, dispatch through
+      // effectRegistry directly rather than via an SVar map. Capture the
+      // handlerKey + a synthetic SVar name keyed off the splicer id so
+      // resolver dispatch can recover the AST. We use the special name
+      // "" (empty) as a sentinel meaning "use the splicer's first SA's
+      // own effect AST directly"; the resolver branches on that.
+      const splicerSa = c.spellAbilities[0];
+      if (splicerSa === undefined) continue;
+      eligible.push({ id, cost: splCost, svarName: "" });
+    }
+    if (eligible.length === 0) return;
+
+    // Multi-confirm sequence: ask for each splicer in id order.
+    const accepted: Array<{ id: EntityId; cost: string; svarName: string }> = [];
+    for (const cand of eligible) {
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "confirmAction",
+          sourceId: ctx.sourceCardId,
+          prompt: `Splice ${cand.id} onto this Arcane spell (cost {${cand.cost}})?`,
+        },
+      }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
+      if (decision?.confirmed === true) accepted.push(cand);
+    }
+    if (accepted.length === 0) return;
+
+    // Splice each accepted card's cost into the spell's base raw.
+    const surchargeParts = accepted.map((a) => a.cost);
+    const tc = ctx.totalCost as { base?: { raw?: string } | unknown } | undefined;
+    const baseMaybe = tc?.base as { raw?: string } | null | undefined;
+    const newRaw =
+      baseMaybe != null && typeof baseMaybe.raw === "string"
+        ? `${baseMaybe.raw} ${surchargeParts.join(" ")}`.trim()
+        : surchargeParts.join(" ");
+    const newBase =
+      baseMaybe != null && typeof baseMaybe.raw === "string"
+        ? { ...baseMaybe, raw: newRaw }
+        : { raw: newRaw };
+    ctx.totalCost = {
+      ...(tc as object),
+      base: newBase,
+    };
+
+    // Emit CardsRevealed once for the bundle (CR 701.23 — splicers stay
+    // in hand; revealing them is a separate game action). Reveal target
+    // is "all" because the splice mechanic is an open action.
+    yield {
+      kind: "event",
+      event: mkEvent("CardsRevealed", this.game.turn, this.game.phase, {
+        revealedBy: ctx.castingPlayer,
+        revealedTo: "all",
+        cardIds: accepted.map((a) => a.id),
+        fromZone: Zt.Hand,
+      }),
+    };
+
+    // Stamp the chosen splicers on the casting card so finalizeStackItem
+    // captures them onto the StackItem's resolver. The slot is read once
+    // by finalizeStackItem and then cleared so a re-cast attempt on the
+    // same source card starts fresh.
+    card.splicedEffects = accepted.map((a) => ({
+      splicerCardId: a.id,
+      svarName: a.svarName,
+    }));
+  }
+
+  /**
    * Wave 23 — CR 702.51 (Convoke) + CR 702.126 (Improvise). After the total
    * cost is determined, the casting player may tap untapped creatures
    * (Convoke) or untapped artifacts (Improvise) they control to substitute
@@ -1484,7 +1615,64 @@ export class CastPipeline {
         undefined,
         tags,
       );
-      resolver = boundSa.makeResolver();
+      const baseResolver = boundSa.makeResolver();
+
+      // Wave 69 — Splice onto Arcane (CR 702.46/702.47). If
+      // stepChooseSplices stamped `card.splicedEffects` on this casting
+      // card, capture the list NOW (so a re-cast on the same card starts
+      // fresh) and wrap the parent resolver to dispatch each splicer's
+      // effect AFTER the parent body resolves. CR 702.46a — "add this
+      // card's effects to that spell." We mirror ChannelEffect's path:
+      // for each splicer, build a synthetic SpellAbility from the
+      // splicer's first SpellAbility AST (or a named SVar lookup), bind
+      // to the casting card's controller + targets/x, and resolve through
+      // the registered effect.
+      const spliced = sourceCard?.splicedEffects;
+      if (sourceCard !== undefined) {
+        // Clear the slot so re-casts of the same source card start fresh.
+        sourceCard.splicedEffects = undefined;
+      }
+      if (spliced !== undefined && spliced.length > 0) {
+        const game = this.game;
+        const splicedTargetIds = targets;
+        resolver = {
+          *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
+            // Drive the parent resolver fully first (CR 702.46a — spliced
+            // effects are added to "that spell"; rules text composition
+            // resolves the parent before/alongside, but order in practice
+            // is parent then spliced for stable observation).
+            yield* baseResolver.resolve(gameUnknown) as Generator<unknown, void, unknown>;
+            for (const entry of spliced) {
+              const splicer = game.cards.get(entry.splicerCardId);
+              if (!splicer) continue;
+              // Resolve the splicer's first SpellAbility's effect against
+              // the casting card's targets / x value — exactly as if the
+              // splicer's body had been printed on the parent. Source
+              // card stays the casting card so SVar selectors that read
+              // "Card.Self" continue to mean the parent. (Forge full
+              // fidelity may flip the source-card reference for some
+              // selectors; the printed Splice corpus is small and the
+              // first-SA dispatch covers the prevailing pattern.)
+              const splicerSa = splicer.spellAbilities[0];
+              if (splicerSa === undefined) continue;
+              const innerSa = new SpellAbility(
+                splicerSa.ast,
+                ctx.sourceCardId,
+                ctx.castingPlayer,
+                splicerSa.svars,
+                splicedTargetIds,
+                ctx.xValue,
+                undefined,
+                tags,
+              );
+              const innerResolver = innerSa.makeResolver();
+              yield* innerResolver.resolve(gameUnknown) as Generator<unknown, void, unknown>;
+            }
+          },
+        };
+      } else {
+        resolver = baseResolver;
+      }
     }
 
     return {

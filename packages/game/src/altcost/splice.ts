@@ -9,21 +9,20 @@
 // DSL form in card definitions:
 //   K:Splice:Arcane:cost      → splice cost is "cost", e.g. "1U" or "2"
 //
-// MVP scope:
-//   - Register a SpliceAltCost handlerKey so the cast pipeline doesn't
-//     reject K:Splice keywords as unknown alt-costs.
-//   - isAvailable: card must be in Hand and carry K:Splice. The full
-//     gate ("only available during the cast of an Arcane spell") would
-//     require a sub-cast pipeline integration — it is deferred.
-//   - modifyCastContext: TODO(advanced). The full splice path requires
-//     grafting this card's effects/abilities onto the in-flight Arcane
-//     spell, mutating its effect chain at cast time. That is a sizeable
-//     infrastructure change (cast-pipeline must support add-on spells).
-//     For now this stamps altCostUsed = "Splice" as a marker.
+// Wave 69 — the Arcane text-grafting flow lives in CastPipeline's
+// `stepChooseSplices` step (post-`stepDetermineTotalCost`). That step
+// detects Arcane spells, scans the caster's hand for K:Splice cards,
+// yields a per-splicer confirmation, splices the chosen costs into the
+// spell's total cost, emits CardsRevealed, and stamps the splicers on
+// `card.splicedEffects` for the resolver to dispatch after the parent
+// spell's effects resolve (CR 702.46a — "add this card's effects to
+// that spell").
 //
-// The keyword registration + AltCost stamp closes the validator gap so
-// Splice cards parse and resolve normally; the cards' Arcane interaction
-// stays unimplemented behind the TODO(advanced) boundary.
+// This AltCost remains as a registry stub so cards using K:Splice via
+// the older AltCost-based path don't break, but the canonical splice
+// integration is the cast-pipeline step. `modifyCastContext` here is a
+// no-op beyond stamping the marker; the real cost addition + reveal +
+// graft happens in the cast pipeline.
 import type { KeywordAst, ParamValue } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { SpellAbility } from "../ability/spell-ability.js";
@@ -74,11 +73,11 @@ export const Splice: AltCost = {
   },
 
   modifyCastContext(ctx: CastContext, _sa: SpellAbility, _game: Game): void {
-    // TODO(advanced) — Splice's full integration grafts this card's
-    // effects onto the in-flight Arcane spell. That requires a
-    // cast-pipeline extension we haven't yet built. For now we only
-    // stamp the marker so the cast loop's altCostUsed accounting is
-    // consistent.
+    // Wave 69 — the real splice graft happens in CastPipeline's
+    // `stepChooseSplices` step. This AltCost stays as a marker only;
+    // calling sites that drive splice via the AltCost path get the
+    // marker on ctx.altCostUsed so any downstream provenance / SVar
+    // selectors keyed on alt-cost names still see "Splice".
     (ctx as { altCostUsed: string | null }).altCostUsed = "Splice";
   },
 };

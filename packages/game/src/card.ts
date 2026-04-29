@@ -602,6 +602,21 @@ export class Card {
   // line without requiring a Crew activation; full Continuous AddType
   // synthesis is // TODO(advanced).
   crewStaticActive: boolean | undefined = undefined;
+  // Wave 69 — Splice onto Arcane (CR 702.46/702.47). When a player splices
+  // K:Splice cards onto an in-flight Arcane spell, the cast pipeline
+  // records each chosen splicer + the SVar name of its first ability here
+  // on the casting card. The bound StackItem's resolver iterates this
+  // list AFTER the parent spell's effect resolves and dispatches each
+  // splicer's effect through the SVar mechanism (mirrors ChannelEffect's
+  // svar→AbilityAst→effectRegistry path). Cleared in finalizeStackItem
+  // after the resolver captures the list, so a re-cast attempt on the same
+  // source card starts fresh.
+  splicedEffects:
+    | ReadonlyArray<{
+        readonly splicerCardId: EntityId;
+        readonly svarName: string;
+      }>
+    | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

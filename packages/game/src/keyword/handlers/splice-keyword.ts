@@ -10,15 +10,19 @@
 // DSL form:
 //   K:Splice:Arcane:cost     → splice subtype = Arcane, cost = "cost"
 //
-// MVP scope:
-//   1. Adds "splice" to card.keywords so the AltCost gate's
-//      keyword-presence check fires.
-//   2. The actual cost grafting lives in altcost/splice.ts.
+// Wave 69 — the Arcane text-grafting flow lives in CastPipeline's
+// `stepChooseSplices`: it detects Arcane spells, scans the caster's
+// hand for K:Splice cards, yields per-splicer confirmations, splices
+// each accepted splicer's cost into the spell's total cost, emits
+// CardsRevealed, and stamps `card.splicedEffects` on the casting card.
+// finalizeStackItem wraps the resolver to dispatch each splicer's
+// effect after the parent spell's body resolves.
 //
-// TODO(advanced) — Full splice graft requires the cast pipeline to
-// support add-on spells. The keyword + AltCost are registered so that
-// cards parse and don't break casts; the actual "add this card's
-// effects to that spell" path is deferred.
+// This handler remains as the registration point that:
+//   1. Adds "splice" to card.keywords so the cast pipeline's
+//      hand-scan gate (keyword-presence check) fires.
+//   2. Lets the SpliceAltCost in altcost/splice.ts continue to register
+//      the alt-cost id for completeness.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
