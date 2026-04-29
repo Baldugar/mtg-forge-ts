@@ -54,6 +54,12 @@ export const lookupReplaceWithAbility = (
   sourceCardId: EntityId,
   key: string,
 ): EffectInvocation | null => {
+  // Wave 67 — defensive null-check on the game ctx. Several legacy unit tests
+  // pass `{} as never` as the game arg to apply() (they only exercise the
+  // canonical replacement transform without going through SVar dispatch). In
+  // those scenarios `game.cards` is undefined; bail rather than crash so the
+  // caller falls through to its inline behavior.
+  if (!game || !game.cards) return null;
   const card = game.cards.get(sourceCardId);
   const def = card?.paperCard?.definition;
   if (!def) return null;

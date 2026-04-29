@@ -37,6 +37,7 @@ import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility, runReplaceWithIntentMutation } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -91,6 +92,11 @@ export class AddCounterReplacement extends ReplacementHandler {
     const preventParam = getParamRaw(ast, "Prevent");
     const multiplier = parseLiteralInt(getParamRaw(ast, "Amount"));
     const addAmount = parseLiteralInt(getParamRaw(ast, "AddAmount"));
+    // Wave 67 — ReplaceWith$ <SVar> for the SVar-bodied form (e.g. Doubling
+    // Season's "DBDouble" SVar that resolves to DB$ ReplaceCounter |
+    // Multiplier$ 2). When the SVar handler is from the ReplaceEffect family
+    // we thread the addCounter intent through the side-channel runner.
+    const replaceWithKey = getParamRaw(ast, "ReplaceWith") ?? ast.effect.handlerKey;
 
     return {
       id: replacementId,
@@ -116,15 +122,38 @@ export class AddCounterReplacement extends ReplacementHandler {
         return matchesValidCardLite(validCardRaw, ci.cardId, sourceCardId, controllerSeat, game);
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
         const ci = intent as { amount?: number };
         const current = ci.amount ?? 1;
         let newAmount = current;
         if (multiplier !== null && multiplier > 1) newAmount = current * multiplier;
         if (addAmount !== null && addAmount !== 0) newAmount = newAmount + addAmount;
+
+        // Wave 67 — ReplaceWith$ <SVar> dispatch into the ReplaceEffect family.
+        // Doubling Season's counter half is parsed as
+        //   R:Event$ AddCounter | ValidCard$ Permanent.YouCtrl
+        //                       | ReplaceWith$ DBDouble
+        //   SVar:DBDouble:DB$ ReplaceCounter | Multiplier$ 2
+        // When such a ReplaceWith$ is present and the SVar resolves to a
+        // ReplaceEffect-family handler, we thread the (already inline-multiplied)
+        // intent through the side-channel runner so the SVar's mutation stacks
+        // on top.
+        const game = gameUnknown as Game;
+        const interim: MutationIntent =
+          newAmount === current ? intent : ({ ...intent, amount: newAmount } as MutationIntent);
+        if (replaceWithKey !== undefined) {
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
+          if (ability !== null) {
+            const handlerKey = ability.handlerKey;
+            if (handlerKey === "ReplaceEffect" || handlerKey === "ReplaceCounter") {
+              const next = runReplaceWithIntentMutation(game, sourceCardId, controllerSeat, ability, interim);
+              return next;
+            }
+          }
+        }
         if (newAmount === current) return intent;
-        return { ...intent, amount: newAmount };
+        return interim;
       },
     };
   }

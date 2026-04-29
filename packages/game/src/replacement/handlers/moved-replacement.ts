@@ -14,8 +14,14 @@
 //
 // Prevent$ True  — return null (event prevented entirely; the card doesn't move).
 //
-// More complex replacements (DBCreateToken, DBReturnWithCounter, etc.) require
-// full SVar-ability dispatch and are deferred to Part F2.
+// Wave 67 — ReplaceWith$ <SVar> dispatch into the ReplaceEffect family. When
+// the SVar resolves to `DB$ ReplaceEffect` (the generic VarName/VarValue
+// rewrite), the parent threads the moveTo intent through the side-channel
+// runner so the rewritten destination flows back into the apply loop. This
+// covers Rest in Peace ("if a card would be put into a graveyard from
+// anywhere, exile it instead") expressed as
+// `R:Event$ Moved | ReplaceWith$ DBExile` AND the more general SVar-bodied
+// shape used for conditional / SVar-targeted redirects.
 import type {
   EntityId,
   MutationIntent,
@@ -23,9 +29,11 @@ import type {
   ReplacementAst,
   ZoneType,
 } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility, runReplaceWithIntentMutation } from "./replace-with-svar.js";
 
 // ---------------------------------------------------------------------------
 // Internal helpers
@@ -100,14 +108,29 @@ export class MovedReplacement extends ReplacementHandler {
         return false;
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         // Prevent$ True — stop the move entirely
         if (prevent) return null;
 
-        // ReplaceWith$ destination redirect
+        // ReplaceWith$ destination redirect (canonical DBExile / DBHand / etc.)
         const targetZone = replaceWithToZone(replaceWith);
         if (targetZone !== null) {
           return { ...intent, toZone: targetZone };
+        }
+
+        // Wave 67 — ReplaceWith$ <SVar> dispatch into the ReplaceEffect family.
+        // When the SVar resolves to a generic intent-mutating handler
+        // (DB$ ReplaceEffect — VarName$ toZone | VarValue$ Exile etc.), thread
+        // the in-flight moveTo intent through the side-channel runner so the
+        // rewritten destination flows back into the apply loop.
+        const game = gameUnknown as Game;
+        const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWith);
+        if (ability !== null) {
+          const handlerKey = ability.handlerKey;
+          if (handlerKey === "ReplaceEffect") {
+            const next = runReplaceWithIntentMutation(game, sourceCardId, controllerSeat, ability, intent);
+            return next;
+          }
         }
 
         // Unknown replaceWith → return unchanged (no-op redirect)

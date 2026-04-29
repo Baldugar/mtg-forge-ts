@@ -22,9 +22,11 @@
 //   Proliferate (1)
 //   CopySpell (1)
 import type { MutationIntent, PlayerSeat, ReplacementAbility, ReplacementAst } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import { replacementHandlerRegistry } from "../replacement-handler-registry.js";
 import type { ReplacementBuildContext } from "../replacement-handler.js";
 import { ReplacementHandler } from "../replacement-handler.js";
+import { lookupReplaceWithAbility, runReplaceWithIntentMutation } from "./replace-with-svar.js";
 
 const getParamRaw = (ast: ReplacementAst, key: string): string | undefined => {
   const pv = ast.params[key];
@@ -59,7 +61,12 @@ export class ProduceManaReplacement extends ReplacementHandler {
     const layerParam = getParamRaw(ast, "Layer");
     const preventParam = getParamRaw(ast, "Prevent");
     const multiplier = parseLiteralInt(getParamRaw(ast, "Multiplier"));
-    void getParamRaw(ast, "ReplaceWith");
+    // Wave 67 — ReplaceWith$ <SVar> for SVar-bodied mana doublers (Mana
+    // Reflection / Mirari's Wake / Caged Sun in their generalized parsed
+    // form):
+    //   R:Event$ ProduceMana | ValidCard$ Land.YouCtrl | ReplaceWith$ DBDouble
+    //   SVar:DBDouble:DB$ ReplaceMana | ... (or DB$ ReplaceEffect | ...)
+    const replaceWithKey = getParamRaw(ast, "ReplaceWith") ?? ast.effect.handlerKey;
     const { sourceCardId, controllerSeat, replacementId } = ctx;
 
     return {
@@ -82,11 +89,30 @@ export class ProduceManaReplacement extends ReplacementHandler {
         return false;
       },
 
-      apply(intent: MutationIntent, _game: unknown): MutationIntent | null {
+      apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {
         if (layerParam === "CantHappen" || preventParam === "True") return null;
-        // Multiplier — duplicate produced symbols. Default Mana Reflection
-        // semantics ("Whenever a land you control produces mana, it produces
-        // an additional mana of any of those types").
+
+        // Wave 67 — ReplaceWith$ <SVar> dispatch into the ReplaceEffect family.
+        // When the SVar resolves to a ReplaceEffect / ReplaceMana handler, we
+        // thread the produceMana intent through the side-channel runner. The
+        // SVar body owns the full symbol rewrite (we DON'T also inline-multiply,
+        // which would over-produce).
+        const game = gameUnknown as Game;
+        if (replaceWithKey !== undefined) {
+          const ability = lookupReplaceWithAbility(game, sourceCardId, replaceWithKey);
+          if (ability !== null) {
+            const handlerKey = ability.handlerKey;
+            if (handlerKey === "ReplaceEffect" || handlerKey === "ReplaceMana") {
+              const next = runReplaceWithIntentMutation(game, sourceCardId, controllerSeat, ability, intent);
+              return next;
+            }
+          }
+        }
+
+        // Inline Multiplier path — duplicate produced symbols. Default Mana
+        // Reflection semantics ("Whenever a land you control produces mana,
+        // it produces an additional mana of any of those types"). Preserved
+        // from Wave 20 for the bare Multiplier$ shape.
         const m = multiplier ?? 2;
         if (m === 1) return intent;
         const symbols = (intent as { symbols?: readonly string[] }).symbols ?? [];
