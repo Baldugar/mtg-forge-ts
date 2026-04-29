@@ -400,9 +400,95 @@ describe("Wave 54 — ReorderZone fill", () => {
       Zone: { kind: "literal", raw: "Library" },
       Number: { kind: "literal", raw: "2" },
     });
-    const yields = drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    const yields: unknown[] = [];
+    let r = gen.next();
+    while (!r.done) {
+      yields.push(r.value);
+      // If the engine yields an orderCards decision, respond with the
+      // identity ordering so the resolver continues. Otherwise pass
+      // undefined for events.
+      const yv = r.value as { kind?: string; request?: { kind?: string; cards?: readonly unknown[] } };
+      if (yv.kind === "decision" && yv.request?.kind === "orderCards") {
+        r = gen.next({
+          kind: "orderCards",
+          ordered: (yv.request.cards ?? []).slice() as unknown[],
+        });
+      } else {
+        r = gen.next();
+      }
+    }
     const reveal = yields.find((y) => (y as { event?: { kind: string } }).event?.kind === "CardsRevealed");
     expect(reveal).toBeDefined();
+    // The orderCards decision request was yielded.
+    const orderReq = yields.find((y) => {
+      const yv = y as { kind?: string; request?: { kind?: string } };
+      return yv.kind === "decision" && yv.request?.kind === "orderCards";
+    });
+    expect(orderReq).toBeDefined();
+  });
+
+  it("applies the responder's permutation to the top of the zone", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
+    const player = game.getPlayer(seat0);
+    const ids: ReturnType<typeof mkEntityId>[] = [];
+    for (let i = 0; i < 3; i++) {
+      const id = mkEntityId(190 + i);
+      const c = new Card(id, paper, seat0, seat0, ZoneType.Library);
+      game.cards.set(id, c);
+      player.zones.get(ZoneType.Library)?.add(id);
+      ids.push(id);
+    }
+    const sa = mkSa("ReorderZone", {
+      Zone: { kind: "literal", raw: "Library" },
+      Number: { kind: "literal", raw: "3" },
+    });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    // First yield: CardsRevealed event.
+    expect((r.value as { kind?: string }).kind).toBe("event");
+    r = gen.next();
+    // Second yield: orderCards decision. Reverse the order.
+    const decision = r.value as { kind: string; request: { kind: string; cards: readonly unknown[] } };
+    expect(decision.kind).toBe("decision");
+    expect(decision.request.kind).toBe("orderCards");
+    const reversed = (decision.request.cards as ReturnType<typeof mkEntityId>[]).slice().reverse();
+    r = gen.next({ kind: "orderCards", ordered: reversed });
+    while (!r.done) r = gen.next();
+    // Library should now be ids reversed at the top.
+    const libIds = player.zones.get(ZoneType.Library)?.toArray() ?? [];
+    expect(libIds).toEqual([ids[2], ids[1], ids[0]]);
+  });
+
+  it("falls back to original ordering on an invalid permutation", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
+    const player = game.getPlayer(seat0);
+    const ids: ReturnType<typeof mkEntityId>[] = [];
+    for (let i = 0; i < 3; i++) {
+      const id = mkEntityId(290 + i);
+      const c = new Card(id, paper, seat0, seat0, ZoneType.Library);
+      game.cards.set(id, c);
+      player.zones.get(ZoneType.Library)?.add(id);
+      ids.push(id);
+    }
+    const sa = mkSa("ReorderZone", {
+      Zone: { kind: "literal", raw: "Library" },
+      Number: { kind: "literal", raw: "3" },
+    });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    r = gen.next();
+    // Respond with a non-bijection (duplicate first id, missing last).
+    const bogus = [ids[0], ids[0], ids[1]] as ReturnType<typeof mkEntityId>[];
+    r = gen.next({ kind: "orderCards", ordered: bogus });
+    while (!r.done) r = gen.next();
+    // Original ordering preserved.
+    const libIds = player.zones.get(ZoneType.Library)?.toArray() ?? [];
+    expect(libIds).toEqual(ids);
   });
 });
 
@@ -422,7 +508,7 @@ describe("Wave 54 — OpenAttraction fill", () => {
 });
 
 describe("Wave 54 — MultiplePiles fill", () => {
-  it("splits library top into 2 piles + claims the chosen one", () => {
+  it("yields dividePileChoice + chooseCardsPile and applies the splitter's partition", () => {
     const game = mkGame();
     const source = seedSourceCard(game);
     const seat0 = mkPlayerSeat(0);
@@ -437,15 +523,116 @@ describe("Wave 54 — MultiplePiles fill", () => {
     }
     const sa = mkSa("MultiplePiles", { Num: { kind: "literal", raw: "4" } });
     const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    // First yield: dividePileChoice request to splitter (opponent of source ctrl).
     let r = gen.next();
-    expect((r.value as { kind: string }).kind).toBe("decision");
+    const splitDec = r.value as {
+      kind: string;
+      request: { kind: string; numPiles: number; playerSeat: unknown };
+    };
+    expect(splitDec.kind).toBe("decision");
+    expect(splitDec.request.kind).toBe("dividePileChoice");
+    expect(splitDec.request.numPiles).toBe(2);
+    // Splitter returns a partition: [ids[0], ids[1]] vs [ids[2], ids[3]].
+    const id0 = ids[0];
+    const id1 = ids[1];
+    const id2 = ids[2];
+    const id3 = ids[3];
+    if (id0 === undefined || id1 === undefined || id2 === undefined || id3 === undefined) {
+      throw new Error("ids missing");
+    }
+    r = gen.next({
+      kind: "dividePileChoice",
+      piles: [
+        [id0, id1],
+        [id2, id3],
+      ],
+    });
+    // Second yield: chooseCardsPile to the chooser.
+    const pickDec = r.value as { kind: string; request: { kind: string } };
+    expect(pickDec.kind).toBe("decision");
+    expect(pickDec.request.kind).toBe("chooseCardsPile");
     r = gen.next({ kind: "chooseCardsPile", chosen: "a" });
     while (!r.done) r = gen.next();
-    // Pile A = even indices [0,2] → 2 cards moved to hand.
+    // Pile A claimed (ids[0],ids[1]) → 2 cards in hand. Pile B → graveyard.
     const handIds = player.zones.get(ZoneType.Hand)?.toArray() ?? [];
     expect(handIds.length).toBe(2);
-    // Source remembered list captures the claimed cards.
+    expect(handIds).toContain(id0);
+    expect(handIds).toContain(id1);
+    const graveIds = player.zones.get(ZoneType.Graveyard)?.toArray() ?? [];
+    expect(graveIds).toContain(id2);
+    expect(graveIds).toContain(id3);
+    // Remembered captures the claimed pile.
     expect(source.remembered.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("falls back to the engine's even-split when the splitter returns an invalid partition", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
+    const player = game.getPlayer(seat0);
+    const ids: ReturnType<typeof mkEntityId>[] = [];
+    for (let i = 0; i < 4; i++) {
+      const id = mkEntityId(160 + i);
+      const c = new Card(id, paper, seat0, seat0, ZoneType.Library);
+      game.cards.set(id, c);
+      player.zones.get(ZoneType.Library)?.add(id);
+      ids.push(id);
+    }
+    const sa = mkSa("MultiplePiles", { Num: { kind: "literal", raw: "4" } });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    // Bad partition: missing one card.
+    const id0 = ids[0];
+    const id2 = ids[2];
+    if (id0 === undefined || id2 === undefined) throw new Error("ids missing");
+    r = gen.next({ kind: "dividePileChoice", piles: [[id0], [id2]] });
+    // Falls back to default even-split (idx 0,2 vs 1,3) on chooseCardsPile.
+    expect((r.value as { kind: string }).kind).toBe("decision");
+    expect((r.value as { request: { kind: string } }).request.kind).toBe("chooseCardsPile");
+    r = gen.next({ kind: "chooseCardsPile", chosen: "a" });
+    while (!r.done) r = gen.next();
+    // Default pile A = even indices [0,2].
+    const handIds = player.zones.get(ZoneType.Hand)?.toArray() ?? [];
+    expect(handIds.length).toBe(2);
+    expect(handIds).toContain(ids[0]);
+    expect(handIds).toContain(ids[2]);
+  });
+
+  it("Piles$ 3 yields chooseOption with pile-index ids", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
+    const player = game.getPlayer(seat0);
+    const ids: ReturnType<typeof mkEntityId>[] = [];
+    for (let i = 0; i < 6; i++) {
+      const id = mkEntityId(260 + i);
+      const c = new Card(id, paper, seat0, seat0, ZoneType.Library);
+      game.cards.set(id, c);
+      player.zones.get(ZoneType.Library)?.add(id);
+      ids.push(id);
+    }
+    const sa = mkSa("MultiplePiles", {
+      Num: { kind: "literal", raw: "6" },
+      Piles: { kind: "literal", raw: "3" },
+    });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    expect((r.value as { request: { kind: string; numPiles: number } }).request.numPiles).toBe(3);
+    // Use the engine fallback partition (decline to provide one).
+    r = gen.next({ kind: "dividePileChoice", piles: [] });
+    // Chooser yield is chooseOption.
+    const opt = r.value as { kind: string; request: { kind: string; options: readonly { id: string }[] } };
+    expect(opt.kind).toBe("decision");
+    expect(opt.request.kind).toBe("chooseOption");
+    expect(opt.request.options.length).toBe(3);
+    r = gen.next({ kind: "chooseOption", optionId: "1" });
+    while (!r.done) r = gen.next();
+    // Default partition into 3 piles for 6 cards: [0,3], [1,4], [2,5].
+    // Choosing pile index 1 claims [ids[1], ids[4]].
+    const handIds = player.zones.get(ZoneType.Hand)?.toArray() ?? [];
+    expect(handIds.length).toBe(2);
+    expect(handIds).toContain(ids[1]);
+    expect(handIds).toContain(ids[4]);
   });
 
   it("smoke — empty library still resolves without throwing", () => {

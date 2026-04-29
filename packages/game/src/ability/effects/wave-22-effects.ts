@@ -703,12 +703,14 @@ effectRegistry.register(LearnEffect);
 
 // 25. ReorderZone -------------------------------------------------------------
 // Forge `SP$ ReorderZone` — let a player reorder cards in a zone (most
-// often library top after Scry/Surveil/Mystical Tutor). Wave 54 MVP:
-// applies a deterministic identity reorder (no yield) so the canonical
-// "the controller may reorder" pulse fires + the zone stays valid.
-// TODO(advanced): yield an orderCards decision once the request kind is
-// added to player-decisions.ts (paired with RearrangeTopOfLibrary which
-// has the same pending wire).
+// often library top after Scry/Surveil/Mystical Tutor).
+//
+// Wave 61.A — yields an orderCards decision; the response permutation is
+// applied by stripping the affected prefix and re-adding in the chosen
+// order at the top of the zone (forge-game/.../ReorderEffect.java behaviour).
+// Validation: the response MUST be a bijection over the input prefix; on
+// invalid responses we fall back to the original ordering and continue
+// (TODO(advanced) for hardened error reporting upstream).
 export class ReorderZoneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ReorderZone";
 
@@ -723,21 +725,57 @@ export class ReorderZoneEffect extends SpellAbilityEffect {
     if (!zone) return;
     const ids = zone.toArray();
     if (ids.length === 0) return;
-    // Deterministic identity reorder — observable change is the
-    // CardsRevealed pulse, which surfaces the (peeked) prefix to the
-    // controller. The reorder itself is a no-op until the orderCards
-    // decision is plumbed.
-    const reveal = num > 0 ? ids.slice(0, Math.min(num, ids.length)) : ids;
+    // Reveal the prefix to the controller so observers see the peek.
+    const prefix = num > 0 ? ids.slice(0, Math.min(num, ids.length)) : ids.slice();
     yield game.emitEvent(
       mkEvent("CardsRevealed", game.turn, game.phase, {
         revealedBy: seat,
         revealedTo: [seat],
-        cardIds: reveal,
+        cardIds: prefix,
         fromZone: zoneType,
       }),
     );
-    // TODO(advanced): yield orderCards decision + apply to zone via
-    // remove + addToTop sequencing.
+    if (prefix.length === 0) return;
+
+    // Yield the orderCards decision so the controller picks the new order.
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "orderCards",
+        playerSeat: seat,
+        sourceId: sa.sourceCardId,
+        cards: prefix,
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    let ordered: readonly EntityId[] = prefix;
+    if (response && response.kind === "orderCards") {
+      const candidate = response.ordered;
+      // Validate permutation: same length and same multiset of ids.
+      if (candidate.length === prefix.length) {
+        const expected = new Set(prefix);
+        const seen = new Set<EntityId>();
+        let ok = true;
+        for (const id of candidate) {
+          if (!expected.has(id) || seen.has(id)) {
+            ok = false;
+            break;
+          }
+          seen.add(id);
+        }
+        if (ok) ordered = candidate.slice();
+        // TODO(advanced): surface a structured warning when the controller
+        // returns an invalid permutation — current path silently falls back.
+      }
+    }
+
+    // Apply: remove each card in the prefix from the zone, then re-add at
+    // the top in REVERSE order so ordered[0] ends up at index 0 (top).
+    for (const id of prefix) zone.remove(id);
+    for (let i = ordered.length - 1; i >= 0; i--) {
+      const id = ordered[i];
+      if (id !== undefined) zone.addToTop(id);
+    }
   }
 }
 effectRegistry.register(ReorderZoneEffect);
@@ -784,25 +822,28 @@ export class OpenAttractionEffect extends SpellAbilityEffect {
 effectRegistry.register(OpenAttractionEffect);
 
 // 27. MultiplePiles -----------------------------------------------------------
-// Forge `SP$ MultiplePiles` — Fact-or-Fiction-style: target player divides
-// N cards into M piles; an opponent picks one pile for them, the rest for
-// you. Generalization of TwoPiles.
+// Forge `SP$ MultiplePiles` — Fact-or-Fiction-style: a defined player
+// divides N cards into M piles; an opponent picks one pile, claiming it
+// (the rest go to graveyard). Generalization of TwoPiles.
 //
-// Wave 54 MVP — splits target player's library top into 2 piles
-// (`pileA` = even indices, `pileB` = odd) and yields a chooseCardsPile
-// decision so a controller can pick which pile to claim. The cards in
-// the chosen pile move to graveyard (the canonical FoF-style
-// "discarded pile") and the other moves to hand. Where the script asks
-// for >2 piles, MVP collapses to 2 — TODO(advanced): N-pile split with
-// the dividePile decision once that schema lands.
+// Wave 61.A — yields a dividePileChoice request to the SPLITTING player
+// (the source controller's opponent — Forge's "an opponent of you divides"
+// canonical), then a follow-up choice request to the CHOOSING player
+// (the source controller). For the chooser we use chooseCardsPile when
+// numPiles == 2 (the FoF-2-pile classical case) and chooseOption with
+// pile-index ids for numPiles > 2 (TODO(advanced): a richer
+// `chooseFromList` request kind). Validation: the divider's piles must
+// be a partition (each card exactly once, piles.length === numPiles).
+// On invalid responses we fall back to the engine-side even split.
 export class MultiplePilesEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "MultiplePiles";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 5;
-    const seat = sa.controllerSeat;
-    const player = game.getPlayer(seat);
-    const library = player.zones.get(ZoneType.Library);
+    const numPiles = hasParam(sa, "Piles") ? evaluateParamNumber(sa, "Piles", game) : 2;
+    const controllerSeat = sa.controllerSeat;
+    const controllerPlayer = game.getPlayer(controllerSeat);
+    const library = controllerPlayer.zones.get(ZoneType.Library);
     if (!library) return;
     const top = library.toArray().slice(0, Math.min(num, library.size));
     if (top.length === 0) {
@@ -812,28 +853,118 @@ export class MultiplePilesEffect extends SpellAbilityEffect {
       if (source) source.remembered.push(sa.sourceCardId);
       return;
     }
-    const pileA = top.filter((_id, i) => i % 2 === 0);
-    const pileB = top.filter((_id, i) => i % 2 === 1);
+    // Forge canonical: the source-controller's opponent splits, the
+    // source-controller chooses. With only one opponent in 1v1 the
+    // splitter resolves deterministically.
+    const splitterSeat = otherSeat(controllerSeat, game);
+    const chooserSeat = controllerSeat;
+    const effectiveNumPiles = Math.max(1, Math.min(numPiles, top.length));
 
-    const rawResponse = yield {
+    // Default even-split partition (engine fallback).
+    const defaultPiles: EntityId[][] = [];
+    for (let i = 0; i < effectiveNumPiles; i++) defaultPiles.push([]);
+    for (let i = 0; i < top.length; i++) {
+      const id = top[i];
+      if (id === undefined) continue;
+      const pile = defaultPiles[i % effectiveNumPiles];
+      if (pile) pile.push(id);
+    }
+
+    // Yield dividePileChoice to the splitting player.
+    const splitRaw = yield {
       kind: "decision",
       request: {
-        kind: "chooseCardsPile",
+        kind: "dividePileChoice",
+        playerSeat: splitterSeat,
         sourceId: sa.sourceCardId,
-        pileA,
-        pileB,
+        cards: top,
+        numPiles: effectiveNumPiles,
       },
     };
-    const response = rawResponse as DecisionResponse | undefined;
-    const choice = response && response.kind === "chooseCardsPile" ? response.chosen : "a";
-    const claimed = choice === "a" ? pileA : pileB;
-    const discarded = choice === "a" ? pileB : pileA;
+    const splitResp = splitRaw as DecisionResponse | undefined;
+    let piles: readonly (readonly EntityId[])[] = defaultPiles;
+    if (splitResp && splitResp.kind === "dividePileChoice") {
+      const candidate = splitResp.piles;
+      // Validate: piles.length === effectiveNumPiles AND every input id
+      // appears exactly once across the union of all piles.
+      let ok = candidate.length === effectiveNumPiles;
+      if (ok) {
+        const seen = new Set<EntityId>();
+        const expected = new Set(top);
+        for (const pile of candidate) {
+          for (const id of pile) {
+            if (!expected.has(id) || seen.has(id)) {
+              ok = false;
+              break;
+            }
+            seen.add(id);
+          }
+          if (!ok) break;
+        }
+        if (ok && seen.size !== top.length) ok = false;
+      }
+      if (ok) piles = candidate;
+      // TODO(advanced): surface a structured warning for invalid partitions
+      // upstream — current path silently falls back to engine even-split.
+    }
 
+    // Yield the chooser's pick. 2-pile case maps to the canonical
+    // chooseCardsPile request (sourceId-only schema) so existing controllers
+    // and tests on that path continue to work. For N>2 we fall back to
+    // chooseOption with pile-index ids; TODO(advanced) once a richer
+    // chooseFromList request kind exists.
+    let chosenIndex = 0;
+    if (effectiveNumPiles === 2) {
+      const pileA = piles[0] ?? [];
+      const pileB = piles[1] ?? [];
+      const pickRaw = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCardsPile",
+          sourceId: sa.sourceCardId,
+          pileA,
+          pileB,
+        },
+      };
+      const pickResp = pickRaw as DecisionResponse | undefined;
+      if (pickResp && pickResp.kind === "chooseCardsPile") {
+        chosenIndex = pickResp.chosen === "b" ? 1 : 0;
+      }
+    } else {
+      const options = piles.map((_p, i) => ({
+        id: String(i),
+        description: `Pile ${i + 1}`,
+      }));
+      const pickRaw = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseOption",
+          sourceId: sa.sourceCardId,
+          options,
+        },
+      };
+      const pickResp = pickRaw as DecisionResponse | undefined;
+      if (pickResp && pickResp.kind === "chooseOption") {
+        const idx = Number.parseInt(pickResp.optionId, 10);
+        if (Number.isFinite(idx) && idx >= 0 && idx < piles.length) chosenIndex = idx;
+      }
+      // Suppress unused-binding warning for chooserSeat in the N>2 branch —
+      // the chooseOption request kind doesn't carry a playerSeat field.
+      void chooserSeat;
+    }
+
+    const claimed = piles[chosenIndex] ?? [];
+    // All non-chosen piles' cards go to graveyard (FoF discarded pile).
+    for (let i = 0; i < piles.length; i++) {
+      if (i === chosenIndex) continue;
+      const pile = piles[i];
+      if (!pile) continue;
+      for (const id of pile) {
+        yield* game.action.moveTo(id, ZoneType.Graveyard);
+      }
+    }
     for (const id of claimed) {
       yield* game.action.moveTo(id, ZoneType.Hand);
-    }
-    for (const id of discarded) {
-      yield* game.action.moveTo(id, ZoneType.Graveyard);
     }
     // Stamp the chosen pile on remembered for downstream observers.
     const source = game.cards.get(sa.sourceCardId);
