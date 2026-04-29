@@ -100,10 +100,29 @@ export class MentorKeywordHandler extends KeywordHandler {
           }
           if (eligible.length === 0) return;
 
-          // MVP auto-pick: take the first eligible. The full
-          // chooseCard decision is yielded once the decision schema for
-          // mentor is registered with the decision engine.
-          const target = eligible[0];
+          // Wave 61.D — yield chooseCard so the source-card's controller
+          // (the attacking player, per CR 702.130) picks among the
+          // attackers with lesser power. Validates the response is one
+          // of the eligible ids; falls back to the first eligible on
+          // empty/invalid response (CR 700.2 graceful-fizzle parity).
+          const decision = yield {
+            kind: "decision",
+            request: {
+              kind: "chooseCard",
+              playerSeat: controllerSeat,
+              pool: eligible,
+              restriction: { keyword: "mentor" },
+              min: 1,
+              max: 1,
+            },
+          };
+          const r = decision as { kind: string; chosen?: readonly EntityId[] } | undefined;
+          let target: EntityId | undefined;
+          if (r && r.kind === "chooseCard" && r.chosen && r.chosen.length === 1) {
+            const picked = r.chosen[0];
+            if (picked !== undefined && eligible.includes(picked)) target = picked;
+          }
+          if (target === undefined) target = eligible[0];
           if (target === undefined) return;
           yield* g.action.addCounter(target, CounterType.PlusOnePlusOne, 1, sourceCardId);
           // Wave 41 — emit Mentored so MentoredTrigger (Wave 18) fires.

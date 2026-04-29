@@ -27,7 +27,7 @@
 //     captured at attacker-declaration time. If the engine's combat
 //     layer doesn't yet expose per-attacker defender, the MVP falls
 //     back to "any creature controlled by an opponent of the attacker".
-import type { EntityId, GameEvent, KeywordAst, PlayerSeat, TriggeredAbility } from "@mtg-forge-ts/core";
+import type { EntityId, GameEvent, KeywordAst, TriggeredAbility } from "@mtg-forge-ts/core";
 import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
@@ -92,10 +92,40 @@ export class ProvokeKeywordHandler extends KeywordHandler {
           }
           if (eligible.length === 0) return;
 
-          // MVP auto-pick: take the first eligible. The full chooseCard
-          // decision lands once the decision schema for provoke is
-          // registered.
-          const target: EntityId | undefined = eligible[0];
+          // Wave 61.D — Provoke is a "you may" trigger (CR 702.39a). Ask
+          // the source-controller first whether they want to provoke at
+          // all. If yes, yield chooseCard so they pick which opponent's
+          // creature to provoke. Falls back to the first eligible on
+          // invalid pick.
+          const optDec = yield {
+            kind: "decision",
+            request: {
+              kind: "confirmAction",
+              sourceId: sourceCardId,
+              prompt: "Provoke — choose target creature to untap and force-block?",
+            },
+          };
+          const optResp = optDec as { kind: string; confirmed?: boolean } | undefined;
+          if (!optResp || optResp.kind !== "confirmAction" || optResp.confirmed !== true) return;
+
+          const pickDec = yield {
+            kind: "decision",
+            request: {
+              kind: "chooseCard",
+              playerSeat: controllerSeat,
+              pool: eligible,
+              restriction: { keyword: "provoke" },
+              min: 1,
+              max: 1,
+            },
+          };
+          const r = pickDec as { kind: string; chosen?: readonly EntityId[] } | undefined;
+          let target: EntityId | undefined;
+          if (r && r.kind === "chooseCard" && r.chosen && r.chosen.length === 1) {
+            const picked = r.chosen[0];
+            if (picked !== undefined && eligible.includes(picked)) target = picked;
+          }
+          if (target === undefined) target = eligible[0];
           if (target === undefined) return;
 
           // Untap the chosen creature.
@@ -109,9 +139,6 @@ export class ProvokeKeywordHandler extends KeywordHandler {
             (targetCard as unknown as { mustBlockTargetId: EntityId | null }).mustBlockTargetId =
               sourceCardId;
           }
-          // Reference unused capture to satisfy the `controllerSeat`
-          // closure once we widen this to a chooseCard decision.
-          void (controllerSeat as PlayerSeat);
         },
       },
     };

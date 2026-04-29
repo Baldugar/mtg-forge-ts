@@ -68,19 +68,45 @@ export class BackupKeywordHandler extends KeywordHandler {
       resolver: {
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
           const g = gameUnknown as Game;
-          // Auto-pick first eligible creature on the battlefield.
-          let target: EntityId | undefined;
+          // Wave 61.D — Backup picks any creature on the battlefield
+          // (CR 702.164: "target creature"). Self is eligible — Backup
+          // is allowed to bolster the entering creature itself.
+          const eligible: EntityId[] = [];
           for (const [id, c] of g.cards) {
             if (c.zone !== ZoneType.Battlefield) continue;
             const chars = g.layerEngine.computeCharacteristics(id);
             if (!chars.types.has(CardType.Creature)) continue;
-            target = id;
-            break;
+            eligible.push(id);
           }
+          if (eligible.length === 0) return;
+
+          // Yield chooseCard for the controller of the source.
+          const decision = yield {
+            kind: "decision",
+            request: {
+              kind: "chooseCard",
+              playerSeat: controllerSeat,
+              pool: eligible,
+              restriction: { keyword: "backup", amount: n },
+              min: 1,
+              max: 1,
+            },
+          };
+          const r = decision as { kind: string; chosen?: readonly EntityId[] } | undefined;
+          let target: EntityId | undefined;
+          if (r && r.kind === "chooseCard" && r.chosen && r.chosen.length === 1) {
+            const picked = r.chosen[0];
+            if (picked !== undefined && eligible.includes(picked)) target = picked;
+          }
+          if (target === undefined) target = eligible[0];
           if (target === undefined) return;
+
           yield* g.action.addCounter(target, CounterType.PlusOnePlusOne, n, sourceCardId);
-          // TODO(advanced) — grant the listed abilities until end of
-          // turn when target is a different creature.
+          // TODO(advanced) — when target !== sourceCardId, grant the
+          // source's listed abilities to the chosen creature until end
+          // of turn (Layer 6/7 grants via sub-SVar dispatch — pending
+          // sub-SVar wiring on keyword handlers).
+          void (target === sourceCardId);
         },
       },
     };
