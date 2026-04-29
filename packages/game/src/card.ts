@@ -455,6 +455,14 @@ export class Card {
   // chosen target land). The handler resolution consumes the slot and
   // animates the land. Cleared after the awaken sub-effect resolves.
   awakenAmount: number | undefined = undefined;
+  // Wave 61.E — Awaken animation flag (CR 702.112a). Stamped on the
+  // chosen land when the awaken sub-effect resolves; the layer engine
+  // reads it to add CardType.Creature + Elemental subtype + base 0/0
+  // P/T + Haste on top of the land's regular characteristics. Persists
+  // for the rest of the game per CR 702.112a (no EOT bound). Flag name
+  // mirrors crewedUntilEot/stationedUntilEot for symmetry; full Layer 4
+  // / 7b / 6 hooks driven off this slot are TODO(advanced).
+  awakenAnimatedUntilEot?: boolean;
   // Wave 58 — Niche keyword cleanup batch 2. Each slot is set/cleared by
   // its corresponding KeywordHandler / AltCost. All `T | undefined =
   // undefined` so handlers can clear via `= undefined` (biome no-delete +

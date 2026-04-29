@@ -120,28 +120,46 @@ export class AwakenKeywordHandler extends KeywordHandler {
           }
           if (eligible.length === 0) return;
 
-          const decision = (yield {
+          // Wave 61.E — yield chooseCard so the caster picks the land
+          // to awaken. Validates the response is one of the eligible
+          // ids; falls back to the first eligible on empty/invalid
+          // response (CR 700.2 graceful-fizzle parity).
+          const decision = yield {
             kind: "decision",
             request: {
               kind: "chooseCard",
               playerSeat: controllerSeat,
               pool: eligible,
-              restriction: { keyword: "awaken" },
+              restriction: { keyword: "awaken", amount },
               min: 1,
               max: 1,
             },
-          }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
-
-          const targetId = decision && decision.kind === "chooseCard" ? decision.chosen[0] : eligible[0];
+          };
+          const r = decision as { kind: string; chosen?: readonly EntityId[] } | undefined;
+          let targetId: EntityId | undefined;
+          if (r && r.kind === "chooseCard" && r.chosen && r.chosen.length === 1) {
+            const picked = r.chosen[0];
+            if (picked !== undefined && eligible.includes(picked)) targetId = picked;
+          }
+          if (targetId === undefined) targetId = eligible[0];
           if (targetId === undefined) return;
 
-          // Stamp +N/+N counters.
+          // Stamp +N/+N counters on the chosen land.
           yield* g.action.addCounter(targetId, CounterType.PlusOnePlusOne, amount, sourceCardId);
 
-          // Register a 0/0 base PT (Layer 7b) — MVP: just modify so
-          // the result is "0/0 + N P1P1 counters". The layer engine
-          // tolerates the simpler shape; full "land becomes Elemental
-          // creature" Layer 4 type-add is TODO(advanced).
+          // Wave 61.E — stamp `awakenAnimatedUntilEot` on the chosen
+          // land so the layer engine treats it as a 0/0 Elemental
+          // creature with haste. CR 702.112a says "it becomes a 0/0
+          // Elemental creature with haste" without an EOT bound; the
+          // effect persists until the land leaves play. The flag name
+          // preserves the "UntilEot" suffix to match the Crew/Saddle
+          // pattern; full Layer 4 type-add + Layer 7b base-PT + Layer 6
+          // Haste-grant wiring driven off this flag is TODO(advanced).
+          const target = g.cards.get(targetId);
+          if (target) target.awakenAnimatedUntilEot = true;
+
+          // Register an inert Layer 7c effect timestamp slot — the
+          // future advanced wiring reads it to anchor expiry.
           const timestamp: number = g.newEntityId();
           const layer7c: Layer7cEffect = {
             kind: "modify",
@@ -156,11 +174,6 @@ export class AwakenKeywordHandler extends KeywordHandler {
             sourceCardId,
             timestamp,
             layer: Layer.L7c_PTModify,
-            // CR 702.112a — "until end of turn" is NOT specified; the
-            // awaken effect persists for the rest of the game on that
-            // land. Use untilSourceLeaves so the effect ends only if
-            // the spell card permanently leaves play; for MVP we use
-            // a permanent duration (no expiration).
             duration: { kind: "permanent" },
             payload: { kind: "pt-modify", effect: layer7c },
           };

@@ -108,21 +108,43 @@ export class CipherKeywordHandler extends KeywordHandler {
           }
           if (filtered.length === 0) return;
 
-          const decision = (yield {
+          // Wave 61.E — CR 702.97a "Then you MAY exile this spell card
+          // encoded on a creature you control." First yield a confirm
+          // so the controller can decline encoding entirely.
+          const confirmResp = yield {
+            kind: "decision",
+            request: {
+              kind: "confirmAction",
+              sourceId: sourceCardId,
+              prompt: "Encode this spell on a creature you control?",
+            },
+          };
+          const confirm = confirmResp as { kind: string; confirmed?: boolean } | undefined;
+          if (!confirm || confirm.kind !== "confirmAction" || confirm.confirmed !== true) return;
+
+          // Wave 61.E — yield chooseCard so the controller picks which
+          // creature to encode on. Validates the response is one of the
+          // eligible ids; falls back to the first eligible on empty/
+          // invalid response (CR 700.2 graceful-fizzle parity).
+          const decision = yield {
             kind: "decision",
             request: {
               kind: "chooseCard",
               playerSeat: controllerSeat,
               pool: filtered,
               restriction: { keyword: "cipher" },
-              min: 0,
+              min: 1,
               max: 1,
             },
-          }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
-          if (!decision || decision.kind !== "chooseCard") return;
-          const targetId = decision.chosen[0];
+          };
+          const r = decision as { kind: string; chosen?: readonly EntityId[] } | undefined;
+          let targetId: EntityId | undefined;
+          if (r && r.kind === "chooseCard" && r.chosen && r.chosen.length === 1) {
+            const picked = r.chosen[0];
+            if (picked !== undefined && filtered.includes(picked)) targetId = picked;
+          }
+          if (targetId === undefined) targetId = filtered[0];
           if (targetId === undefined) return;
-          if (!filtered.includes(targetId)) return;
 
           const self = g.cards.get(sourceCardId);
           const target = g.cards.get(targetId);
