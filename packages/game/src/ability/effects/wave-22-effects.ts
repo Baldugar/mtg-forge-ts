@@ -466,18 +466,23 @@ export class TakeInitiativeEffect extends SpellAbilityEffect {
 effectRegistry.register(TakeInitiativeEffect);
 
 // 19. VillainousChoice --------------------------------------------------------
-// Forge `SP$ VillainousChoice` (Innistrad: Crimson Vow + ~5 cards). Each
-// affected opponent picks one of N branches; the chosen branch resolves
-// for that opponent.
+// Forge `SP$ VillainousChoice` (Innistrad: Crimson Vow + ~5 cards from
+// Murders at Karlov Manor). Each affected opponent picks one of N branches;
+// the chosen branch resolves for that opponent.
 //
-// Wave 54 — yield a chooseOption decision so the engine driver picks a
-// branch, then resolve the matching SVar sub-ability inline. The
-// canonical card is `Ensnared by the Mara`:
+// Wave 61.C — migrated from generic `chooseOption` (Wave 54) to
+// `chooseGenericOption` so the request carries an explicit `playerSeat`
+// (the OPPONENT of the source's controller — Forge: "an opponent of you
+// chooses"). The chosen sub-SVar is dispatched via the existing SVar
+// resolver. Validation: the response option id must be present in
+// the request's choices list; on missing / invalid response we fall
+// back to the first choice (deterministic default for tests without
+// a controller). Canonical card: `Ensnared by the Mara`:
 //   A:SP$ VillainousChoice | Defined$ Opponent | Choices$ DBDig,DBDamage
-// MVP: drives a SINGLE chooser (the source's controller's first opponent
-// in seat order) and resolves one branch. TODO(advanced): per-opponent
-// branch resolution + the "you choose for them" override that some cards
-// emit when an opponent can't make a legal choice.
+// MVP: drives a SINGLE chooser (the source-controller's first opponent
+// in seat order). TODO(advanced): per-opponent branch resolution + the
+// "you choose for them" override that some cards emit when an opponent
+// can't make a legal choice.
 export class VillainousChoiceEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "VillainousChoice";
 
@@ -495,18 +500,30 @@ export class VillainousChoiceEffect extends SpellAbilityEffect {
     const def = source?.paperCard.definition;
     const svars = (def?.svars ?? new Map()) as ReadonlyMap<string, SVarAst>;
 
-    // Yield a chooseOption decision so a controller can pick. Deterministic
-    // fallback (no driver attached): first option.
+    // Yield a chooseGenericOption decision (Wave 15 schema, has explicit
+    // playerSeat). The chooser is the OPPONENT of the source's controller.
+    // Deterministic fallback (no driver attached, or invalid pick): first
+    // option in the printed order.
+    const chooserSeat = otherSeat(sa.controllerSeat, game);
     const rawResponse = yield {
       kind: "decision",
       request: {
-        kind: "chooseOption",
+        kind: "chooseGenericOption",
         sourceId: sa.sourceCardId,
+        playerSeat: chooserSeat,
         options: choices.map((id) => ({ id, description: id })),
       },
     };
     const response = rawResponse as DecisionResponse | undefined;
-    const pickedId = response && response.kind === "chooseOption" ? response.optionId : choices[0];
+    // Validate: the response must be of the matching kind AND its optionId
+    // must be one of the printed choices. On any mismatch fall back to
+    // the first choice (canonical safe default — the legal set is non-
+    // empty by the early `if (choices.length === 0) return;` above).
+    const validIds = new Set(choices);
+    const pickedId =
+      response && response.kind === "chooseGenericOption" && validIds.has(response.optionId)
+        ? response.optionId
+        : choices[0];
     if (pickedId === undefined) return;
 
     const sv = svars.get(pickedId);

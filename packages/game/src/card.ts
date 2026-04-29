@@ -469,6 +469,13 @@ export class Card {
   //   prototypePT        : prototype P/T pair (e.g. "2/3").
   //   prototypeCast      : true if this spell was cast as prototype.
   //   isSpree            : K:Spree marker for SVar / cast-pipeline reads.
+  //   spreeChosenModes   : Wave 61.C — populated by the cast-pipeline's
+  //                        stepDetermineTotalCost when a Spree spell is
+  //                        cast. Holds the SVar names the caster chose
+  //                        (each carries a `ModeCost` whose cost was
+  //                        added to the spell's total cost). The CharmEffect
+  //                        resolver reads this to skip its own chooseModes
+  //                        decision when present.
   //   offspringCost      : K:Offspring:cost — additional cost.
   //   offspringPaid      : true once the offspring cost is paid at cast.
   //   backupAmount       : K:Backup:N — counter count + ability grant.
@@ -496,6 +503,7 @@ export class Card {
   prototypePT: string | undefined = undefined;
   prototypeCast: boolean | undefined = undefined;
   isSpree: boolean | undefined = undefined;
+  spreeChosenModes: readonly string[] | undefined = undefined;
   offspringCost: string | undefined = undefined;
   offspringPaid: boolean | undefined = undefined;
   backupAmount: number | undefined = undefined;

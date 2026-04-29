@@ -300,6 +300,22 @@ export class RandomLegalController implements PlayerController {
         // Identity ordering — preserves the input permutation.
         return { kind: "orderCards", ordered: req.cards.slice() };
       }
+      // Wave 61.C — Spree per-mode pick. Random-legal picks the FIRST mode
+      // only — Spree requires at least one mode (CR 702.169a) and picking
+      // exactly one keeps the additional-cost surcharge minimal so cost-
+      // payment tests don't fail on an unexpected pool requirement. The
+      // empty-array branch is illegal at the cast pipeline boundary, so
+      // we never return [].
+      case "chooseSpreeModes": {
+        if (req.modes.length === 0) {
+          throw new IllegalDecisionError("RandomLegalController: chooseSpreeModes with no modes");
+        }
+        const first = req.modes[0];
+        if (first === undefined) {
+          throw new IllegalDecisionError("RandomLegalController: chooseSpreeModes missing first mode");
+        }
+        return { kind: "chooseSpreeModes", modeIds: [first.id] };
+      }
       default: {
         const _never: never = req;
         throw new IllegalDecisionError(

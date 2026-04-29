@@ -937,6 +937,107 @@ export class CastPipeline {
     // used by Wave 6's ReduceCost / Wave 11 cost-mod runtime, no
     // additional cast-pipeline plumbing needed here.
 
+    // Wave 61.C — Spree (CR 702.169, Outlaws of Thunder Junction). When
+    // the source card carries `isSpree === true` (stamped by
+    // SpreeKeywordHandler), introspect its primary SpellAbility's
+    // `Choices$` list, look up each named SVar's `ModeCost` parameter,
+    // and yield a `chooseSpreeModes` decision so the caster picks the
+    // mode subset (CR 702.169a — at least one mode required). Each
+    // chosen mode's ModeCost is appended to the spell's base raw cost
+    // so payCost charges the full bundle. The chosen mode ids are
+    // stamped on `card.spreeChosenModes` so CharmEffect at resolve
+    // time skips its own chooseModes decision and applies exactly the
+    // chosen subset.
+    //
+    // Decision-mock fallback: if no controller is wired and the response
+    // is missing / invalid, default to the first printed mode (legal
+    // default — Spree requires ≥1 mode). The empty-array branch is
+    // explicitly rejected by RandomLegalController + by the validation
+    // path here (illegal-cast).
+    if (card.isSpree === true) {
+      const saTemplate = card.spellAbilities[0];
+      if (saTemplate !== undefined) {
+        const ast = saTemplate.ast;
+        const choicesParam = ast.effect.params.Choices;
+        const choicesRaw =
+          choicesParam !== undefined && choicesParam.kind === "literal" ? choicesParam.raw : "";
+        const modeIds = choicesRaw
+          .split(",")
+          .map((s) => s.trim())
+          .filter((s) => s !== "");
+        if (modeIds.length > 0) {
+          const svars = saTemplate.svars;
+          // Build the per-mode metadata: the ModeCost raw string from each
+          // chosen SVar's params record. Modes whose SVar is missing or
+          // whose ModeCost param isn't a literal are skipped from the
+          // surface (the controller can't pick them — they have no cost
+          // displayable).
+          const modes: { id: string; description: string; additionalCost: string }[] = [];
+          for (const id of modeIds) {
+            const sv = svars.get(id);
+            if (sv === undefined || sv.kind !== "ability" || sv.ability === undefined) continue;
+            const modeCostParam = sv.ability.params.ModeCost;
+            const additionalCost =
+              modeCostParam !== undefined && modeCostParam.kind === "literal" ? modeCostParam.raw : "";
+            modes.push({ id, description: id, additionalCost });
+          }
+          if (modes.length > 0) {
+            const decision = (yield {
+              kind: "decision",
+              request: {
+                kind: "chooseSpreeModes",
+                playerSeat: ctx.castingPlayer,
+                sourceId: ctx.sourceCardId,
+                modes,
+              },
+            }) as { readonly kind: "chooseSpreeModes"; readonly modeIds: readonly string[] } | undefined;
+            // Validate: response shape, all ids known, non-empty (Spree
+            // CR 702.169a). Fall back to picking the first mode on any
+            // invalid response — the safest legal pick that keeps the
+            // cast valid without inflating the surcharge.
+            const validIds = new Set(modes.map((m) => m.id));
+            let chosen: string[] = [];
+            if (decision !== undefined && decision.kind === "chooseSpreeModes") {
+              const seen = new Set<string>();
+              for (const id of decision.modeIds) {
+                if (validIds.has(id) && !seen.has(id)) {
+                  chosen.push(id);
+                  seen.add(id);
+                }
+              }
+            }
+            if (chosen.length === 0) {
+              const firstId = modes[0]?.id;
+              if (firstId !== undefined) chosen = [firstId];
+            }
+            // Splice each chosen mode's ModeCost into the base raw cost.
+            const surchargeParts: string[] = [];
+            for (const id of chosen) {
+              const mode = modes.find((m) => m.id === id);
+              if (mode === undefined) continue;
+              const trimmed = mode.additionalCost.trim();
+              if (trimmed.length > 0) surchargeParts.push(trimmed);
+            }
+            if (surchargeParts.length > 0) {
+              const surcharge = surchargeParts.join(" ");
+              const baseMaybe = striveAdjusted as { raw?: string } | null | undefined;
+              if (baseMaybe != null && typeof baseMaybe.raw === "string") {
+                striveAdjusted = { ...baseMaybe, raw: `${baseMaybe.raw} ${surcharge}`.trim() };
+              } else {
+                striveAdjusted = { raw: surcharge };
+              }
+            }
+            // Stamp the chosen modes onto the source card so CharmEffect
+            // (and any future Spree-aware resolver) applies exactly the
+            // selected subset. Also mirror onto ctx.modesChosen so the
+            // StackItem provenance reflects the chosen modes.
+            card.spreeChosenModes = chosen;
+            ctx.modesChosen = [...chosen];
+          }
+        }
+      }
+    }
+
     ctx.totalCost = {
       base: striveAdjusted,
       modIds: costMods.map((s) => s.id),

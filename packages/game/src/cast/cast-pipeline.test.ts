@@ -4,6 +4,7 @@ import {
   DEFAULT_PAPER_CARD_FLAGS,
   IllegalDecisionError,
   SeededRng,
+  TypeLine,
   ZoneType,
   mkEntityId,
   mkPlayerSeat,
@@ -1422,6 +1423,272 @@ describe("CastPipeline — Task 38 steps 8-10", () => {
       );
       const tc = pipe.capturedCtx?.totalCost as { modIds: readonly EntityId[] };
       expect(tc.modIds).toContain(modId);
+    });
+
+    // Wave 61.C — Spree (CR 702.169). The cast pipeline yields a
+    // chooseSpreeModes decision when the source card carries
+    // `isSpree === true`; chosen modes' ModeCost params are summed into
+    // the spell's base cost; the chosen-mode list is stamped on
+    // card.spreeChosenModes for the resolver.
+    describe("Spree mode-cost selection", () => {
+      const sprPaper: PaperCard & { manaCost: unknown } = {
+        ...samplePaper,
+        name: "Spree Spell",
+        manaCost: { raw: "{1}{R}" },
+      };
+
+      // Minimal SVar-bearing definition: two modes (DBA / DBB), each with
+      // its own ModeCost. The cast pipeline introspects
+      // card.spellAbilities[0] which is populated from card.paperCard.definition;
+      // we attach the definition by reusing the structural surface the
+      // pipeline already reads (paper.definition).
+      const mkSpreeCard = (game: Game, seat: PlayerSeat, cardId: EntityId): Card => {
+        const definition = {
+          name: "Spree Spell",
+          oracle: "",
+          types: TypeLine.parse(""),
+          manaCost: { raw: "{1}{R}" },
+          abilities: [
+            {
+              kind: "spell" as const,
+              effect: {
+                handlerKey: "Charm",
+                params: {
+                  Choices: { kind: "literal" as const, raw: "DBA,DBB" },
+                  CharmNum: { kind: "literal" as const, raw: "1" },
+                },
+              },
+              cost: { raw: "" },
+            },
+          ],
+          triggers: [],
+          replacements: [],
+          statics: [],
+          keywords: [],
+          svars: new Map([
+            [
+              "DBA",
+              {
+                kind: "ability" as const,
+                raw: "",
+                ability: {
+                  handlerKey: "Pump",
+                  params: {
+                    NumAtt: { kind: "literal" as const, raw: "1" },
+                    NumDef: { kind: "literal" as const, raw: "1" },
+                    ModeCost: { kind: "literal" as const, raw: "1" },
+                  },
+                },
+              },
+            ],
+            [
+              "DBB",
+              {
+                kind: "ability" as const,
+                raw: "",
+                ability: {
+                  handlerKey: "Pump",
+                  params: {
+                    NumAtt: { kind: "literal" as const, raw: "2" },
+                    NumDef: { kind: "literal" as const, raw: "2" },
+                    ModeCost: { kind: "literal" as const, raw: "2" },
+                  },
+                },
+              },
+            ],
+          ]),
+        };
+        const paper: PaperCard = {
+          ...sprPaper,
+          definition,
+        } as unknown as PaperCard;
+        const card = new Card(cardId, paper, seat, seat, ZoneType.Hand);
+        // Stamp spree marker (would normally be set by SpreeKeywordHandler).
+        card.isSpree = true;
+        // Populate spellAbilities so the pipeline can introspect the
+        // Charm Choices / SVar set.
+        card.activateAbilitiesFromDefinition();
+        game.cards.set(cardId, card);
+        const hand = game.getPlayer(seat).zones.get(ZoneType.Hand);
+        if (!hand) throw new Error("test: missing hand");
+        hand.add(cardId);
+        return card;
+      };
+
+      it("yields chooseSpreeModes and splices chosen mode costs into base raw", () => {
+        const { game, seat0 } = makeGame();
+        const cardId = mkEntityId(820);
+        const card = mkSpreeCard(game, seat0, cardId);
+
+        class InspectingPipeline extends CastPipeline {
+          capturedCtx: CastContext | undefined;
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepActivateManaAbilities(
+            ctx: CastContext,
+          ): Generator<EngineYield, void, unknown> {
+            this.capturedCtx = ctx;
+          }
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+            return;
+          }
+        }
+
+        const pipe = new InspectingPipeline(game);
+        const gen = pipe.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        });
+        // Drive until the chooseSpreeModes decision surfaces.
+        let step = gen.next();
+        while (!step.done) {
+          const v = step.value as { kind: string; request?: { kind: string } };
+          if (v.kind === "decision" && v.request?.kind === "chooseSpreeModes") break;
+          step = gen.next();
+        }
+        const decision = step.value as {
+          kind: "decision";
+          request: {
+            kind: "chooseSpreeModes";
+            playerSeat: PlayerSeat;
+            sourceId: EntityId;
+            modes: readonly { id: string; description: string; additionalCost: string }[];
+          };
+        };
+        expect(decision.kind).toBe("decision");
+        expect(decision.request.kind).toBe("chooseSpreeModes");
+        expect(decision.request.playerSeat).toBe(seat0);
+        expect(decision.request.sourceId).toBe(cardId);
+        expect(decision.request.modes.map((m) => m.id)).toEqual(["DBA", "DBB"]);
+        expect(decision.request.modes.map((m) => m.additionalCost)).toEqual(["1", "2"]);
+        // Pick mode "DBB" — should add cost "2" to the base raw.
+        let r = gen.next({ kind: "chooseSpreeModes", modeIds: ["DBB"] });
+        while (!r.done) r = gen.next();
+        const tc = pipe.capturedCtx?.totalCost as { base: { raw: string } };
+        expect(tc.base.raw).toContain("{1}{R}");
+        expect(tc.base.raw).toContain("2");
+        // Chosen-mode list stamped on the card for the resolver.
+        expect(card.spreeChosenModes).toEqual(["DBB"]);
+      });
+
+      it("falls back to first mode on invalid / empty response", () => {
+        const { game, seat0 } = makeGame();
+        const cardId = mkEntityId(821);
+        const card = mkSpreeCard(game, seat0, cardId);
+
+        class InspectingPipeline extends CastPipeline {
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepActivateManaAbilities(
+            _ctx: CastContext,
+          ): Generator<EngineYield, void, unknown> {
+            return;
+          }
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+            return;
+          }
+        }
+
+        const pipe = new InspectingPipeline(game);
+        const gen = pipe.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        });
+        let step = gen.next();
+        while (!step.done) {
+          const v = step.value as { kind: string; request?: { kind: string } };
+          if (v.kind === "decision" && v.request?.kind === "chooseSpreeModes") break;
+          step = gen.next();
+        }
+        // Pass an empty modeIds — handler must fall back to first mode.
+        let r = gen.next({ kind: "chooseSpreeModes", modeIds: [] });
+        while (!r.done) r = gen.next();
+        // Fallback: first mode "DBA".
+        expect(card.spreeChosenModes).toEqual(["DBA"]);
+      });
+
+      it("ignores unknown mode ids (defensive)", () => {
+        const { game, seat0 } = makeGame();
+        const cardId = mkEntityId(822);
+        const card = mkSpreeCard(game, seat0, cardId);
+
+        class InspectingPipeline extends CastPipeline {
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepActivateManaAbilities(
+            _ctx: CastContext,
+          ): Generator<EngineYield, void, unknown> {
+            return;
+          }
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+            return;
+          }
+        }
+
+        const pipe = new InspectingPipeline(game);
+        const gen = pipe.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        });
+        let step = gen.next();
+        while (!step.done) {
+          const v = step.value as { kind: string; request?: { kind: string } };
+          if (v.kind === "decision" && v.request?.kind === "chooseSpreeModes") break;
+          step = gen.next();
+        }
+        // Mix of valid and invalid ids — only the valid one survives.
+        let r = gen.next({ kind: "chooseSpreeModes", modeIds: ["DBNOPE", "DBA"] });
+        while (!r.done) r = gen.next();
+        expect(card.spreeChosenModes).toEqual(["DBA"]);
+      });
+
+      it("does NOT yield chooseSpreeModes on a non-Spree card", () => {
+        // Sanity test — a regular paid card shouldn't trigger Spree handling.
+        const { game, seat0 } = makeGame();
+        const cardId = mkEntityId(823);
+        const c = new Card(cardId, sprPaper, seat0, seat0, ZoneType.Hand);
+        game.cards.set(cardId, c);
+        const hand = game.getPlayer(seat0).zones.get(ZoneType.Hand);
+        if (!hand) throw new Error("test: missing hand");
+        hand.add(cardId);
+        // Note: c.isSpree is undefined (never stamped).
+        class InspectingPipeline extends CastPipeline {
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepActivateManaAbilities(
+            _ctx: CastContext,
+          ): Generator<EngineYield, void, unknown> {
+            return;
+          }
+          // biome-ignore lint/correctness/useYield: inspection only
+          protected override *stepPayCosts(_ctx: CastContext): Generator<EngineYield, void, unknown> {
+            return;
+          }
+        }
+        const pipe = new InspectingPipeline(game);
+        const gen = pipe.run({
+          castingPlayer: seat0,
+          sourceCardId: cardId,
+          originZone: ZoneType.Hand,
+          asSpecialAction: false,
+        });
+        // Drain — should NOT yield any chooseSpreeModes.
+        let step = gen.next();
+        let sawSpree = false;
+        while (!step.done) {
+          const v = step.value as { kind: string; request?: { kind: string } };
+          if (v.kind === "decision" && v.request?.kind === "chooseSpreeModes") {
+            sawSpree = true;
+          }
+          step = gen.next();
+        }
+        expect(sawSpree).toBe(false);
+      });
     });
   });
 

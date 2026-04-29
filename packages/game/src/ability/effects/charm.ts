@@ -44,26 +44,47 @@ export class CharmEffect extends SpellAbilityEffect {
       ...(sa.xValue !== undefined ? { xValue: sa.xValue } : {}),
     };
 
-    // Yield decision: ask the controller to pick charmNum modes.
-    const modeOptions = choices.map((name) => ({ id: name, description: name }));
-    const rawResponse = yield {
-      kind: "decision",
-      request: {
-        kind: "chooseModes",
-        sourceId: sa.sourceCardId,
-        modes: modeOptions,
-        min: charmNum,
-        max: charmNum,
-      },
-    };
+    // Wave 61.C — Spree fast path. When the source card was cast as a
+    // Spree spell, the cast pipeline's stepDetermineTotalCost already
+    // yielded a `chooseSpreeModes` decision and stamped the chosen mode
+    // ids onto `card.spreeChosenModes`. Honor that pre-pick instead of
+    // yielding a fresh chooseModes — re-prompting would let the caster
+    // resolve modes they didn't pay the additional cost for. Validate
+    // that each pre-chosen id is in the printed Choices$ list (defensive:
+    // the cast pipeline's own validation already restricts to printed
+    // modes). On any mismatch fall back to the canonical chooseModes
+    // path so a stale stamp can't deadlock resolution.
+    const sourceCard = game.cards.get(sa.sourceCardId);
+    let picked: readonly string[] | undefined;
+    if (sourceCard?.isSpree === true && sourceCard.spreeChosenModes !== undefined) {
+      const printed = new Set(choices);
+      const stamped = sourceCard.spreeChosenModes.filter((id) => printed.has(id));
+      if (stamped.length > 0) {
+        picked = stamped;
+      }
+    }
 
-    const response = rawResponse as DecisionResponse | undefined;
-    let picked: readonly string[];
-    if (response && response.kind === "chooseModes") {
-      picked = response.modeIds;
-    } else {
-      // Deterministic fallback: first charmNum choices (for tests without a driver).
-      picked = choices.slice(0, charmNum);
+    if (picked === undefined) {
+      // Yield decision: ask the controller to pick charmNum modes.
+      const modeOptions = choices.map((name) => ({ id: name, description: name }));
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseModes",
+          sourceId: sa.sourceCardId,
+          modes: modeOptions,
+          min: charmNum,
+          max: charmNum,
+        },
+      };
+
+      const response = rawResponse as DecisionResponse | undefined;
+      if (response && response.kind === "chooseModes") {
+        picked = response.modeIds;
+      } else {
+        // Deterministic fallback: first charmNum choices (for tests without a driver).
+        picked = choices.slice(0, charmNum);
+      }
     }
 
     // Resolve each chosen mode as a sub-ability.

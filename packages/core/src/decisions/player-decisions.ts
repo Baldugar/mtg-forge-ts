@@ -604,6 +604,25 @@ export type DecisionRequest =
       readonly playerSeat: PlayerSeat;
       readonly sourceId: EntityId;
       readonly cards: readonly EntityId[];
+    }
+  | {
+      // Wave 61.C — Spree (CR 702.169, Outlaws of Thunder Junction). The
+      // caster picks one or more additional modes; each mode carries an
+      // additional mana cost that is summed into the spell's total cast
+      // cost. Distinct from `chooseModes`: Spree presents per-mode costs
+      // alongside descriptions so the controller can weigh the bundle, and
+      // Spree always requires at least one mode (min=1, max=N where N is
+      // the number of modes printed on the card). Per-mode `additionalCost`
+      // is the raw Forge-cost string (e.g. "1 R") parsed by the cast-time
+      // cost parser when the response lands.
+      readonly kind: "chooseSpreeModes";
+      readonly playerSeat: PlayerSeat;
+      readonly sourceId: EntityId;
+      readonly modes: readonly {
+        readonly id: string;
+        readonly description: string;
+        readonly additionalCost: string;
+      }[];
     };
 
 /**
@@ -828,6 +847,14 @@ export type DecisionResponse =
       // WHY: full permutation. Engine validates it is a bijection over
       // request.cards (same length, identical multiset).
       readonly ordered: readonly EntityId[];
+    }
+  | {
+      // Wave 61.C — response to `chooseSpreeModes`. Each id MUST be present
+      // in request.modes; engine rejects unknowns. Empty array is illegal
+      // (Spree requires at least one mode); the cast pipeline catches the
+      // empty-array case and aborts the cast (CR 601.2 illegal-cast path).
+      readonly kind: "chooseSpreeModes";
+      readonly modeIds: readonly string[];
     };
 
 /** All request discriminator values. */

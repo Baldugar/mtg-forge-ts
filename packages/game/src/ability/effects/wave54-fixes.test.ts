@@ -750,27 +750,65 @@ describe("Wave 54 — MultiplePiles fill", () => {
   });
 });
 
-describe("Wave 54 — VillainousChoice fill", () => {
-  it("yields chooseOption + resolves picked sub-SVar", () => {
+describe("Wave 61.C — VillainousChoice migration", () => {
+  it("yields chooseGenericOption + routes to opponent + resolves picked sub-SVar", () => {
     const game = mkGame();
     const source = seedSourceCard(game);
-    // Use a bare DBA reference; the test asserts the chooseOption decision
-    // surfaces and the sub-resolution runs without throwing when the SVar
-    // is missing (graceful no-op tail).
+    // Use a bare DBA reference; the test asserts the chooseGenericOption
+    // decision surfaces and the sub-resolution runs without throwing when
+    // the SVar is missing (graceful no-op tail).
     const sa = mkSa("VillainousChoice", {
       Choices: { kind: "literal", raw: "DBA,DBB" },
     });
     const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
     const first = gen.next();
     expect(first.done).toBe(false);
-    expect((first.value as { kind: string }).kind).toBe("decision");
-    expect(((first.value as { request: { kind: string } }).request as { kind: string }).kind).toBe(
-      "chooseOption",
-    );
+    const yielded = first.value as {
+      kind: string;
+      request: { kind: string; playerSeat: number; options: { id: string }[] };
+    };
+    expect(yielded.kind).toBe("decision");
+    expect(yielded.request.kind).toBe("chooseGenericOption");
+    // Source's controller is seat 0 (Alice) — chooser must be the OPPONENT
+    // (Bob, seat 1). Forge: "an opponent of you chooses".
+    expect(yielded.request.playerSeat).toBe(mkPlayerSeat(1));
+    expect(yielded.request.options.map((o) => o.id)).toEqual(["DBA", "DBB"]);
     // Drive to completion.
-    let r = gen.next({ kind: "chooseOption", optionId: "DBA" });
+    let r = gen.next({ kind: "chooseGenericOption", optionId: "DBA" });
     while (!r.done) r = gen.next();
     // Source remembered still bumped (back-compat smoke).
     expect(source.remembered.length).toBeGreaterThan(0);
+  });
+
+  it("falls back to first option when response is missing / invalid", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const sa = mkSa("VillainousChoice", {
+      Choices: { kind: "literal", raw: "DBA,DBB" },
+    });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    gen.next(); // surface decision
+    // Pass an undefined response — handler should fall back to first option
+    // and complete without throwing.
+    expect(() => {
+      let r = gen.next(undefined as unknown as { kind: string });
+      while (!r.done) r = gen.next();
+    }).not.toThrow();
+  });
+
+  it("falls back to first option when response carries an unknown id", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const sa = mkSa("VillainousChoice", {
+      Choices: { kind: "literal", raw: "DBA,DBB" },
+    });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    gen.next(); // surface decision
+    // Pass an option id that isn't in the printed choices — should fall
+    // back gracefully to the first option.
+    expect(() => {
+      let r = gen.next({ kind: "chooseGenericOption", optionId: "DBNOPE" });
+      while (!r.done) r = gen.next();
+    }).not.toThrow();
   });
 });
