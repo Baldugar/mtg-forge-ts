@@ -10,8 +10,24 @@
 //   SwitchBlock, ProtectionAll, Meld, GainControlVariant, UnlockDoor, Clash,
 //   ChooseSector, ExchangeControlVariant, GainOwnership, Unattach,
 //   ActivateAbility, TakeInitiative, VillainousChoice, RollPlanarDice.
-import type { AbilityAst, DecisionResponse, EntityId, PlayerSeat, SVarAst } from "@mtg-forge-ts/core";
-import { CounterType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import { tokenDatabase } from "@mtg-forge-ts/cards";
+import type {
+  AbilityAst,
+  CardDefinition,
+  DecisionResponse,
+  EntityId,
+  PaperCard,
+  PlayerSeat,
+  SVarAst,
+} from "@mtg-forge-ts/core";
+import {
+  ColorSet,
+  CounterType,
+  DEFAULT_PAPER_CARD_FLAGS,
+  TypeLine,
+  ZoneType,
+  mkEvent,
+} from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import { grantInitiative } from "../../dnd/initiative-tracker.js";
 import type { Game } from "../../game.js";
@@ -582,14 +598,19 @@ export class RestartGameEffect extends SpellAbilityEffect {
 effectRegistry.register(RestartGameEffect);
 
 // 23. Endure ------------------------------------------------------------------
-// Bloomburrow `SP$ Endure` (Spirit/Otter creature swarm). When a creature
-// dies, choose: distribute N +1/+1 counters among any number of creatures
-// (counter mode), OR create an N/N Spirit token (token mode).
+// Bloomburrow `SP$ Endure` (CR 702.171). When a creature dies, choose:
+// put N +1/+1 counters on a creature you control (counter mode), OR create
+// an N/N white Spirit creature token with bands-with-other Spirits (token
+// mode).
 //
-// Wave 54 — yields a chooseOption between modes. Counter mode places the
-// counters on the source card by default (canonical "self-strengthen"
-// fallback); token mode is logged as TODO(advanced) since the Spirit
-// token paperCard isn't yet wired through this handler.
+// Wave 61.B — migrated from the Wave 54 generic chooseOption to the typed
+// `chooseEndureOption` decision request added in Wave 56. The response
+// carries a `option: "counters" | "token"` discriminator instead of a
+// free-form string. Counter mode applies N +1/+1 counters to the first
+// target (or to the source as fallback). Token mode synthesizes the N/N
+// Spirit via tokenDatabase + game.action.createToken; bands-with-other
+// is left as TODO(advanced) until the keyword resolver handles
+// bands-with-other on tokens.
 export class EndureEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Endure";
 
@@ -598,30 +619,76 @@ export class EndureEffect extends SpellAbilityEffect {
     const rawResponse = yield {
       kind: "decision",
       request: {
-        kind: "chooseOption",
+        kind: "chooseEndureOption",
+        playerSeat: sa.controllerSeat,
         sourceId: sa.sourceCardId,
-        options: [
-          { id: "counters", description: "Distribute +1/+1 counters" },
-          { id: "token", description: "Create a Spirit token" },
-        ],
+        amount: num,
       },
     };
     const response = rawResponse as DecisionResponse | undefined;
-    const picked = response && response.kind === "chooseOption" ? response.optionId : "counters";
+    // Validate the response — accept only the typed discriminator. On any
+    // invalid / missing response fall back to "counters" (the safer
+    // canonical default — counters on a creature you already control vs
+    // synthesizing a token from outside the corpus).
+    const picked: "counters" | "token" =
+      response &&
+      response.kind === "chooseEndureOption" &&
+      (response.option === "counters" || response.option === "token")
+        ? response.option
+        : "counters";
 
     if (picked === "token") {
-      // TODO(advanced): synthesize the X/X Spirit token via tokenDatabase
-      // and game.action.createToken. For now, stamp a flag so observers
-      // can see the choice resolved.
+      // Mint an N/N white Spirit creature token. tokenDatabase only carries
+      // a fixed-size 1/1 white Spirit entry today (Wave 14 token canon);
+      // for Endure we synthesize a tailored Spirit paperCard inline so the
+      // printed P/T scales with the Endure N param. The
+      // bands-with-other-Spirits keyword is omitted here (TODO(advanced) —
+      // the bands resolver doesn't yet honour token-source keywords; the
+      // canonical 1/1-flying Spirit entry is referenced for color identity
+      // so the synthesized token stays consistent with the existing Spirit
+      // canon).
+      const referenceSpirit = tokenDatabase.get("w_1_1_spirit_flying");
+      const definition: CardDefinition = {
+        name: "Spirit",
+        oracle: "Bands with other Spirits.",
+        types: TypeLine.parse("Creature — Spirit"),
+        manaCost: null,
+        pt: { power: String(num), toughness: String(num) },
+        colors: referenceSpirit?.colors ?? ColorSet.empty(),
+        abilities: [],
+        triggers: [],
+        replacements: [],
+        statics: [],
+        keywords: [],
+        svars: new Map(),
+      };
+      const paperCard: PaperCard = {
+        name: "Spirit",
+        edition: "TOK",
+        collectorNumber: "0",
+        language: "en",
+        foil: false,
+        flags: DEFAULT_PAPER_CARD_FLAGS,
+        definition,
+      };
+      yield* game.action.createToken({
+        paperCard,
+        controller: sa.controllerSeat,
+        count: 1,
+      });
+      // Stamp the requested amount on the source so observers can correlate
+      // the resolved branch (back-compat with Wave 54 tests). TODO(advanced):
+      // remove once consumers migrate to inspecting the actual token entity.
       const source = game.cards.get(sa.sourceCardId);
       if (source) {
         (source as unknown as { endureTokenRequested?: number }).endureTokenRequested = num;
       }
       return;
     }
-    // Counter mode — distribute N +1/+1 counters. MVP: place all counters
-    // on the source. TODO(advanced): yield distributeCounters decision so
-    // the controller can split across multiple Spirits / Endure creatures.
+    // Counter mode — apply N +1/+1 counters. MVP: place all counters on the
+    // first target (or the source as fallback). TODO(advanced): yield a
+    // distributeCounters request so the controller can split across multiple
+    // creatures they control (canonical Endure rule allows distribution).
     const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     let remaining = num;
     for (const id of ids) {
@@ -636,15 +703,18 @@ export class EndureEffect extends SpellAbilityEffect {
 effectRegistry.register(EndureEffect);
 
 // 24. Learn -------------------------------------------------------------------
-// Strixhaven `SP$ Learn` (~21 cards). "Reveal a Lesson card you own from
-// outside the game and put it into your hand, OR discard a card; if you
-// do, draw a card."
+// Strixhaven `SP$ Learn` (CR 701.27, ~21 cards). "Reveal a Lesson card you
+// own from outside the game and put it into your hand, OR discard a card;
+// if you do, draw a card."
 //
-// Wave 54 — yields a chooseOption between (a) reveal-Lesson and
-// (b) discard-then-draw. Path (b) is fully implemented: discard the front
-// of hand, then draw one. Path (a) requires sideboard/outside-the-game
-// machinery (TODO(advanced)) — for MVP it stamps a flag on the source so
-// observers can detect the chosen branch.
+// Wave 61.B — migrated from the Wave 54 generic chooseOption to the typed
+// `chooseLearnOption` decision request added in Wave 56. The response
+// carries `option: "lesson" | "discardDraw"` instead of a free-form string.
+// The discard-then-draw branch is fully implemented; the lesson-tutor
+// branch is a graceful fallback (sideboard-as-OutsideTheGame zone lands
+// in Wave 66 — see project memory). When the chooser picks lesson but no
+// Lesson is reachable, we stamp a flag on the source so observers can see
+// the branch resolved without crashing.
 export class LearnEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Learn";
 
@@ -653,29 +723,42 @@ export class LearnEffect extends SpellAbilityEffect {
     const player = game.getPlayer(seat);
     const hand = player.zones.get(ZoneType.Hand);
     const handCards = hand ? hand.toArray() : [];
+    const canDiscard = handCards.length > 0;
 
     const rawResponse = yield {
       kind: "decision",
       request: {
-        kind: "chooseOption",
+        kind: "chooseLearnOption",
+        playerSeat: seat,
         sourceId: sa.sourceCardId,
-        options: [
-          { id: "lesson", description: "Reveal a Lesson from outside the game" },
-          { id: "discard", description: "Discard then draw a card" },
-        ],
+        canDiscard,
       },
     };
     const response = rawResponse as DecisionResponse | undefined;
-    let picked = response && response.kind === "chooseOption" ? response.optionId : "discard";
-    // Falls back to discard-then-draw when the hand is non-empty (the
-    // legal-choice fallback) — Lesson sideboard isn't wired yet so the
-    // discard branch is always available + observable.
-    if (picked === "lesson" && handCards.length === 0) picked = "lesson"; // explicit branch
+    // Validate the response shape. Accept only the typed Wave 56
+    // discriminator. On any invalid / missing response fall back to the
+    // legal default: discardDraw when the hand is non-empty, else lesson
+    // (the sideboard-tutor stub). This matches RandomLegalController's
+    // canDiscard-aware default in `chooseLearnOption`.
+    let picked: "lesson" | "discardDraw" = canDiscard ? "discardDraw" : "lesson";
+    if (response && response.kind === "chooseLearnOption") {
+      if (response.option === "lesson" || response.option === "discardDraw") {
+        picked = response.option;
+      }
+    }
+    // Engine guard: discard branch requires a non-empty hand. If the
+    // chooser picks discardDraw with an empty hand (the controller misread
+    // canDiscard), gracefully degrade to the lesson branch.
+    if (picked === "discardDraw" && !canDiscard) picked = "lesson";
 
     if (picked === "lesson") {
       // TODO(advanced): tutor a Lesson card from the controller's sideboard
-      // / outside-the-game zone into hand. Stamp a flag so observers can
-      // see the branch resolved.
+      // / outside-the-game zone into hand. The OutsideTheGame zone wires
+      // up in Wave 66; until then we stamp a flag on the source so
+      // observers can see the branch resolved (and so the resolver doesn't
+      // crash on a missing zone). The graceful fallback also covers the
+      // canonical "no Lesson available" rule (CR 701.27b — if there is no
+      // Lesson, the player chooses to do nothing).
       const source = game.cards.get(sa.sourceCardId);
       if (source) {
         (source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested = true;
@@ -683,9 +766,9 @@ export class LearnEffect extends SpellAbilityEffect {
       return;
     }
     // Discard-then-draw. Discard the front of hand (matching DiscardEffect's
-    // MVP convention). If the hand is empty, no discard happens but no draw
-    // either (CR 701.27a — "if you do" gate).
-    if (handCards.length === 0) return;
+    // MVP convention). The "if you do" gate (CR 701.27a) — if the hand is
+    // empty, no discard happens but no draw either — is upheld by the
+    // canDiscard check above which routes empty-hand to the lesson branch.
     const toDiscardId = handCards[0];
     if (toDiscardId === undefined) return;
     yield* game.action.moveTo(toDiscardId, ZoneType.Graveyard);

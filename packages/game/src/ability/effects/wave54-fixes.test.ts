@@ -307,38 +307,108 @@ describe("Wave 54 — RestartGame fill", () => {
   });
 });
 
-describe("Wave 54 — Endure fill", () => {
-  it("counter mode adds +1/+1 counters to the source by default", () => {
+describe("Wave 61.B — Endure typed decision", () => {
+  it("yields a chooseEndureOption request with the Endure N", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const sa = mkSa("Endure", { Num: { kind: "literal", raw: "3" } });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    const r = gen.next();
+    expect(r.done).toBe(false);
+    const decision = r.value as {
+      kind: "decision";
+      request: { kind: string; amount?: number; playerSeat?: unknown };
+    };
+    expect(decision.kind).toBe("decision");
+    expect(decision.request.kind).toBe("chooseEndureOption");
+    expect(decision.request.amount).toBe(3);
+    expect(decision.request.playerSeat).toBe(mkPlayerSeat(0));
+  });
+
+  it("counter mode applies +1/+1 counters to the source by default", () => {
     const game = mkGame();
     const source = seedSourceCard(game);
     const sa = mkSa("Endure", { Num: { kind: "literal", raw: "3" } });
     const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
     let r = gen.next();
-    // First yield is the chooseOption decision.
-    expect(r.done).toBe(false);
-    const decision = r.value as { kind: "decision"; request: { kind: string } };
-    expect(decision.kind).toBe("decision");
-    expect(decision.request.kind).toBe("chooseOption");
-    // Respond with "counters".
-    r = gen.next({ kind: "chooseOption", optionId: "counters" });
+    r = gen.next({ kind: "chooseEndureOption", option: "counters" });
     while (!r.done) r = gen.next();
     expect(source.counters.get(CounterType.PlusOnePlusOne) ?? 0).toBeGreaterThanOrEqual(3);
   });
 
-  it("token mode stamps endureTokenRequested when chosen", () => {
+  it("token mode mints an N/N Spirit token onto the controller's battlefield", () => {
     const game = mkGame();
     const source = seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
     const sa = mkSa("Endure", { Num: { kind: "literal", raw: "2" } });
     const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
     let r = gen.next();
+    r = gen.next({ kind: "chooseEndureOption", option: "token" });
+    while (!r.done) r = gen.next();
+    // Source NOT counter-stamped (token branch).
+    expect(source.counters.get(CounterType.PlusOnePlusOne) ?? 0).toBe(0);
+    // A new Spirit creature card landed on the battlefield, distinct from
+    // the source seedSourceCard. Find it by name + controller.
+    const bf = game.getPlayer(seat0).zones.get(ZoneType.Battlefield);
+    const ids = bf?.toArray() ?? [];
+    const spiritIds = ids.filter((id) => {
+      const card = game.cards.get(id);
+      return card && card.paperCard.name === "Spirit";
+    });
+    expect(spiritIds.length).toBe(1);
+    // Back-compat: endureTokenRequested still stamped so legacy
+    // observers see the branch resolved.
+    expect((source as unknown as { endureTokenRequested?: number }).endureTokenRequested).toBe(2);
+  });
+
+  it("falls back to counters mode on an invalid decision response", () => {
+    const game = mkGame();
+    const source = seedSourceCard(game);
+    const sa = mkSa("Endure", { Num: { kind: "literal", raw: "1" } });
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    // Bogus response: wrong kind discriminator.
     r = gen.next({ kind: "chooseOption", optionId: "token" });
     while (!r.done) r = gen.next();
-    expect((source as unknown as { endureTokenRequested?: number }).endureTokenRequested).toBe(2);
+    // Counters branch ran on the source.
+    expect(source.counters.get(CounterType.PlusOnePlusOne) ?? 0).toBeGreaterThanOrEqual(1);
   });
 });
 
-describe("Wave 54 — Learn fill", () => {
-  it("discard-then-draw path moves a hand card to graveyard and draws", () => {
+describe("Wave 61.B — Learn typed decision", () => {
+  it("yields a chooseLearnOption request with canDiscard=true when hand is non-empty", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
+    const player = game.getPlayer(seat0);
+    const handCardId = mkEntityId(800);
+    const handCard = new Card(handCardId, paper, seat0, seat0, ZoneType.Hand);
+    game.cards.set(handCardId, handCard);
+    player.zones.get(ZoneType.Hand)?.add(handCardId);
+
+    const sa = mkSa("Learn", {});
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    const r = gen.next();
+    const decision = r.value as {
+      kind: "decision";
+      request: { kind: string; canDiscard?: boolean };
+    };
+    expect(decision.kind).toBe("decision");
+    expect(decision.request.kind).toBe("chooseLearnOption");
+    expect(decision.request.canDiscard).toBe(true);
+  });
+
+  it("canDiscard is false when the hand is empty", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const sa = mkSa("Learn", {});
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    const r = gen.next();
+    const decision = r.value as { request: { canDiscard?: boolean } };
+    expect(decision.request.canDiscard).toBe(false);
+  });
+
+  it("discardDraw path moves a hand card to graveyard and draws", () => {
     const game = mkGame();
     seedSourceCard(game);
     const seat0 = mkPlayerSeat(0);
@@ -355,15 +425,14 @@ describe("Wave 54 — Learn fill", () => {
     const sa = mkSa("Learn", {});
     const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
     let r = gen.next();
-    // Drive: pick discard.
-    r = gen.next({ kind: "chooseOption", optionId: "discard" });
+    r = gen.next({ kind: "chooseLearnOption", option: "discardDraw" });
     while (!r.done) r = gen.next();
 
     expect(handCard.zone).toBe(ZoneType.Graveyard);
     expect(libCard.zone).toBe(ZoneType.Hand);
   });
 
-  it("lesson path stamps the requested flag + does NOT discard", () => {
+  it("lesson path stamps the requested flag + does NOT discard (Wave 66 sideboard pending)", () => {
     const game = mkGame();
     const source = seedSourceCard(game);
     const seat0 = mkPlayerSeat(0);
@@ -376,10 +445,46 @@ describe("Wave 54 — Learn fill", () => {
     const sa = mkSa("Learn", {});
     const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
     let r = gen.next();
-    r = gen.next({ kind: "chooseOption", optionId: "lesson" });
+    r = gen.next({ kind: "chooseLearnOption", option: "lesson" });
     while (!r.done) r = gen.next();
 
     expect(handCard.zone).toBe(ZoneType.Hand);
+    expect((source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested).toBe(true);
+  });
+
+  it("falls back to discardDraw on an invalid response when canDiscard is true", () => {
+    const game = mkGame();
+    seedSourceCard(game);
+    const seat0 = mkPlayerSeat(0);
+    const player = game.getPlayer(seat0);
+    const handCardId = mkEntityId(83);
+    const handCard = new Card(handCardId, paper, seat0, seat0, ZoneType.Hand);
+    game.cards.set(handCardId, handCard);
+    player.zones.get(ZoneType.Hand)?.add(handCardId);
+    const libCardId = mkEntityId(84);
+    const libCard = new Card(libCardId, paper, seat0, seat0, ZoneType.Library);
+    game.cards.set(libCardId, libCard);
+    player.zones.get(ZoneType.Library)?.add(libCardId);
+
+    const sa = mkSa("Learn", {});
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    // Bogus response — wrong kind.
+    r = gen.next({ kind: "chooseOption", optionId: "lesson" });
+    while (!r.done) r = gen.next();
+    expect(handCard.zone).toBe(ZoneType.Graveyard);
+    expect(libCard.zone).toBe(ZoneType.Hand);
+  });
+
+  it("falls back to lesson when discardDraw is picked but hand is empty", () => {
+    const game = mkGame();
+    const source = seedSourceCard(game);
+    const sa = mkSa("Learn", {});
+    const gen = sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>;
+    let r = gen.next();
+    // Empty hand — canDiscard=false. Picking discardDraw degrades to lesson.
+    r = gen.next({ kind: "chooseLearnOption", option: "discardDraw" });
+    while (!r.done) r = gen.next();
     expect((source as unknown as { learnLessonRequested?: boolean }).learnLessonRequested).toBe(true);
   });
 });
