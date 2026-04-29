@@ -20,8 +20,12 @@
 //                                target list. MVP splits evenly.
 //   - MaxFromEffect$ N         — cap counters added per target. MVP applies
 //                                Math.min(n, MaxFromEffect).
+//
+// Wave 63.A — UpTo$ True now yields a chooseNumber decision (range 0..N)
+// to the controller; valid responses pick the chosen amount, invalid
+// responses fall back to the full N (matching the prior MVP behaviour).
 import { CardType, ZoneType } from "@mtg-forge-ts/core";
-import type { CounterType, EntityId } from "@mtg-forge-ts/core";
+import type { CounterType, DecisionResponse, EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -102,18 +106,35 @@ export class PutCounterEffect extends SpellAbilityEffect {
     );
 
     // ---- UpTo$ + MaxFromEffect$ ------------------------------------------
-    // UpTo$ True: defaults to the full N for MVP (decision subsystem may
-    // narrow later). MaxFromEffect$ caps the count.
+    // MaxFromEffect$ caps the count. UpTo$ True yields a chooseNumber
+    // request to the controller (range 0..N) per Wave 63.A; on invalid
+    // responses we fall back to the full N (the prior MVP default).
     let n = baseN;
     if (hasParam(sa, "MaxFromEffect")) {
       const cap = evaluateParamNumber(sa, "MaxFromEffect", game);
       if (Number.isFinite(cap)) n = Math.min(n, Math.max(0, cap));
     }
-    // UpTo$ flag is preserved for downstream readers; current default is
-    // "use the full count". We deliberately do not narrow it because the
-    // canonical Forge behavior matches "controller picks N" with MVP =
-    // "controller picks the maximum".
-    void isTrue(hasParam(sa, "UpTo") ? evaluateParamRaw(sa, "UpTo") : undefined);
+    const upTo = isTrue(hasParam(sa, "UpTo") ? evaluateParamRaw(sa, "UpTo") : undefined);
+    if (upTo && n > 0) {
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseNumber",
+          sourceId: sa.sourceCardId,
+          min: 0,
+          max: n,
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      if (response && response.kind === "chooseNumber") {
+        const chosen = response.chosen;
+        if (Number.isFinite(chosen) && chosen >= 0 && chosen <= n) {
+          n = Math.floor(chosen);
+        }
+        // TODO(advanced): structured warning for out-of-range responses;
+        // current path silently falls back to the full N.
+      }
+    }
 
     if (divided && sa.targets.length > 0) {
       // Even split across targets (decision subsystem will customize).
@@ -125,6 +146,7 @@ export class PutCounterEffect extends SpellAbilityEffect {
       return;
     }
 
+    if (n <= 0) return;
     for (const targetId of sa.targets) {
       yield* game.action.addCounter(targetId, counterType, n, sa.sourceCardId);
     }

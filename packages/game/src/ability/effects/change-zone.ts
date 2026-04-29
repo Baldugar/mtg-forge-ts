@@ -24,11 +24,16 @@
 //   - RememberChanged$ True   — push moved-card ids into the source card's
 //                               `remembered` slot.
 //
-// AtRandom$ / Chooser$ are scheduled for the decision-subsystem pass (Wave
-// 56+). For now, AtRandom$ True still narrows to a single random target
-// using game.rng.
-import { ZoneType } from "@mtg-forge-ts/core";
-import type { CounterType, EntityId } from "@mtg-forge-ts/core";
+// Wave 63.A — Chooser$ migration: when Chooser$ <player-tok> is set, the
+// designated player picks which subset of `candidates` (capped by
+// ChangeNum$) actually moves. The chooser yields a chooseCard decision
+// over the candidate pool; valid chosen ids are honoured, and the
+// resolver falls back to the first ChangeNum$ eligibles on invalid
+// response (matching the Wave 61 decision-yield pattern).
+//
+// AtRandom$ still narrows to a single random target using game.rng.
+import { ZoneType, mkPlayerSeat } from "@mtg-forge-ts/core";
+import type { CounterType, DecisionResponse, EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -49,6 +54,37 @@ function parseZone(raw: string): ZoneType | undefined {
 }
 
 const isTrue = (raw: string | undefined): boolean => raw !== undefined && raw.trim().toLowerCase() === "true";
+
+/**
+ * Resolve a Chooser$ player token to a concrete PlayerSeat. Recognises the
+ * Forge canonical tokens used in `AB$ ChangeZone | Chooser$ ...`:
+ *   - You / Controller          → sa.controllerSeat
+ *   - Opponent / Player.Opponent → 1v1 opposite seat
+ *   - TargetPlayer              → the first targeted player (sa.targets[0]
+ *     reinterpreted as a seat — Forge ChangeZone uses the same target list
+ *     for player- and card-targets at parse time; the seat-shape is the
+ *     primitive player-seat number wrapped via mkPlayerSeat).
+ * Returns undefined when the token is unrecognised so callers can fall
+ * back to the controller default.
+ */
+const resolveChooserSeat = (raw: string, sa: SpellAbility, game: Game): PlayerSeat | undefined => {
+  const tok = raw.trim();
+  if (tok === "" || tok === "You" || tok === "Controller") return sa.controllerSeat;
+  if (tok === "Opponent" || tok === "Player.Opponent") {
+    const n = sa.controllerSeat as unknown as number;
+    for (const p of game.players) {
+      const pn = p.seat as unknown as number;
+      if (pn !== n) return p.seat;
+    }
+    return mkPlayerSeat(n === 0 ? 1 : 0);
+  }
+  if (tok === "TargetPlayer") {
+    const t0 = sa.targets[0];
+    if (t0 !== undefined) return t0 as unknown as PlayerSeat;
+    return sa.controllerSeat;
+  }
+  return undefined;
+};
 
 export class ChangeZoneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChangeZone";
@@ -85,9 +121,61 @@ export class ChangeZoneEffect extends SpellAbilityEffect {
 
     // ---- ChangeNum$ N -----------------------------------------------------
     // Cap how many of the candidate set are actually moved.
-    if (hasParam(sa, "ChangeNum")) {
-      const n = evaluateParamNumber(sa, "ChangeNum", game);
-      candidates = candidates.slice(0, Math.max(0, n));
+    const changeNumCap = hasParam(sa, "ChangeNum") ? evaluateParamNumber(sa, "ChangeNum", game) : undefined;
+
+    // ---- Chooser$ <player-tok> -------------------------------------------
+    // Wave 63.A — when Chooser$ is set, route the "which N do we move?"
+    // decision through the named seat instead of slicing in source order.
+    // The chooser yields a chooseCard request over the eligible candidate
+    // pool; valid responses are honoured, invalid ones fall back to the
+    // canonical "first N eligible" (matching the prior MVP behaviour).
+    const chooserRaw = hasParam(sa, "Chooser") ? evaluateParamRaw(sa, "Chooser") : undefined;
+    if (chooserRaw !== undefined && candidates.length > 0) {
+      const chooserSeat = resolveChooserSeat(chooserRaw, sa, game);
+      if (chooserSeat !== undefined) {
+        const wantedMax = changeNumCap !== undefined ? Math.max(0, changeNumCap) : candidates.length;
+        const cap = Math.min(wantedMax, candidates.length);
+        if (cap > 0) {
+          const rawResponse = yield {
+            kind: "decision",
+            request: {
+              kind: "chooseCard",
+              playerSeat: chooserSeat,
+              pool: candidates,
+              restriction: { effect: "ChangeZone", origin: originRaw, destination: destRaw },
+              min: cap,
+              max: cap,
+            },
+          };
+          const response = rawResponse as DecisionResponse | undefined;
+          let picked: readonly EntityId[] | undefined;
+          if (response && response.kind === "chooseCard") {
+            const candidateSet = new Set(candidates);
+            const chosen = response.chosen;
+            // Validate: must be exactly `cap` distinct ids, all drawn from
+            // the candidate pool. Any deviation falls back to the prefix.
+            if (chosen.length === cap) {
+              const seen = new Set<EntityId>();
+              let ok = true;
+              for (const id of chosen) {
+                if (!candidateSet.has(id) || seen.has(id)) {
+                  ok = false;
+                  break;
+                }
+                seen.add(id);
+              }
+              if (ok) picked = chosen.slice();
+            }
+          }
+          candidates = picked ?? candidates.slice(0, cap);
+        } else {
+          candidates = [];
+        }
+      } else if (changeNumCap !== undefined) {
+        candidates = candidates.slice(0, Math.max(0, changeNumCap));
+      }
+    } else if (changeNumCap !== undefined) {
+      candidates = candidates.slice(0, Math.max(0, changeNumCap));
     }
 
     // ---- Per-target post-move modifiers ----------------------------------

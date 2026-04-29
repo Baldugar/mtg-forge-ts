@@ -6,14 +6,17 @@
 //   - Mode$ Random          — controller picks N uniformly at random
 //                             (using game.rng for determinism).
 //   - Mode$ TgtChoose       — discard a card the targeted player chooses
-//                             (MVP: front of their hand).
+//                             (Wave 63.A: yields chooseCard to the
+//                             discarder; falls back to first N on invalid).
 //   - Mode$ RevealYouChoose — target reveals N, then attacker (sa.controller)
 //                             picks one to discard (MVP: pick the first
 //                             revealed card; revealed event is emitted).
+//   - Mode$ Defined         — discard the cards listed in DefinedCards$
+//                             (Wave 63.A: literal card-id list applied).
 //
 // NumCards$ accepts SVar so X-cost discard ("each opponent discards X") works.
 // Defined$ resolves the discarder when sa.targets is empty.
-import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
+import type { DecisionResponse, EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { ZoneType, mkEvent, mkPlayerSeat } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -81,9 +84,74 @@ export class DiscardEffect extends SpellAbilityEffect {
         toDiscard = revealed.slice(0, 1);
         break;
       }
-      // case "Hand", "TgtChoose", or any other → controller (or targeted
-      //   player for TgtChoose) picks. MVP picks the front of the hand;
-      //   the decision subsystem will refine in a later wave.
+      case "Defined": {
+        // Wave 63.A — literal id list via DefinedCards$. Forge usually emits
+        // this with a token list (e.g. RememberedCards, TargetedCard); we
+        // honour an explicit comma-separated EntityId list here. Each id
+        // must be present in the discarder's hand; unknown ids are filtered.
+        const definedRaw = hasParam(sa, "DefinedCards") ? evaluateParamRaw(sa, "DefinedCards") : "";
+        const handSet = new Set(handCards);
+        const ids: EntityId[] = [];
+        for (const tok of definedRaw
+          .split(",")
+          .map((s) => s.trim())
+          .filter((s) => s !== "")) {
+          const num = Number.parseInt(tok, 10);
+          if (!Number.isFinite(num)) continue;
+          const candidate = num as unknown as EntityId;
+          if (handSet.has(candidate)) ids.push(candidate);
+        }
+        // TODO(advanced): resolve token forms (RememberedCards / TargetedCard)
+        // through the Defined-resolver pipeline once available.
+        toDiscard = ids;
+        break;
+      }
+      case "TgtChoose": {
+        // Wave 63.A — yield chooseCard to the discarder so they pick which
+        // card(s) to discard. The min/max equal the requested N (capped to
+        // hand size). On invalid response (wrong shape, wrong size, or any
+        // chosen id not in hand) we fall back to the front of the hand,
+        // matching the prior MVP convention.
+        const want = Math.min(n, handCards.length);
+        if (want <= 0) {
+          toDiscard = [];
+          break;
+        }
+        const rawResponse = yield {
+          kind: "decision",
+          request: {
+            kind: "chooseCard",
+            playerSeat: seat,
+            pool: handCards,
+            restriction: { effect: "Discard", mode: "TgtChoose" },
+            min: want,
+            max: want,
+          },
+        };
+        const response = rawResponse as DecisionResponse | undefined;
+        let picked: readonly EntityId[] | undefined;
+        if (response && response.kind === "chooseCard") {
+          const chosen = response.chosen;
+          if (chosen.length === want) {
+            const handSet = new Set(handCards);
+            const seen = new Set<EntityId>();
+            let ok = true;
+            for (const id of chosen) {
+              if (!handSet.has(id) || seen.has(id)) {
+                ok = false;
+                break;
+              }
+              seen.add(id);
+            }
+            if (ok) picked = chosen.slice();
+          }
+        }
+        toDiscard = picked ?? handCards.slice(0, want);
+        break;
+      }
+      // case "Hand" or any other → controller picks. MVP picks the front of
+      //   the hand; the Hand-mode decision subsystem refinement is tracked
+      //   under TODO(advanced) in the Wave 63 sweep.
       default:
         toDiscard = handCards.slice(0, Math.min(n, handCards.length));
         break;
