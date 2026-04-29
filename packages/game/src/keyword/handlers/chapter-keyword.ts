@@ -128,7 +128,36 @@ export class ChapterKeywordHandler extends KeywordHandler {
           // (e.g. blink loop), do not double-stamp.
           const existing = c.counters.get(CounterType.Lore) ?? 0;
           if (existing > 0) return;
-          yield* g.action.addCounter(sourceCardId, CounterType.Lore, 1, sourceCardId);
+          // Wave 68 — Read ahead (CR 714.4d, Dominaria United): "As this
+          // Saga enters, choose a chapter and start with that many lore
+          // counters on it." When the keyword is stamped on this Saga,
+          // yield a chooseNumber decision (range 1..N) to the controller
+          // and place that many Lore counters instead of the default 1.
+          // The chosen value is a one-time pick at ETB; no need to persist.
+          let amount = 1;
+          if (c.readAhead === true) {
+            const maxChapter = c.sagaChapterCount ?? 0;
+            if (maxChapter >= 1) {
+              const response = (yield {
+                kind: "decision",
+                request: {
+                  kind: "chooseNumber",
+                  sourceId: sourceCardId,
+                  min: 1,
+                  max: maxChapter,
+                },
+              }) as { readonly kind?: string; readonly chosen?: number } | undefined;
+              if (response && response.kind === "chooseNumber" && typeof response.chosen === "number") {
+                const chosen = response.chosen;
+                if (Number.isFinite(chosen) && chosen >= 1 && chosen <= maxChapter) {
+                  amount = Math.floor(chosen);
+                }
+                // Out-of-range or non-numeric responses fall back to 1
+                // (the default starting chapter).
+              }
+            }
+          }
+          yield* g.action.addCounter(sourceCardId, CounterType.Lore, amount, sourceCardId);
         },
       },
     };

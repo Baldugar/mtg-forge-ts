@@ -285,10 +285,41 @@ export function* resolveStackItem(game: Game, item: StackItem): Generator<Engine
           }
         }
       }
-      const destination =
+      // Wave 65.C — Adventure (CR 715.2). When the adventure half resolves,
+      // the card is exiled (with a "may cast as a creature spell" permission
+      // the AdventureAltCost reads later) instead of going to the graveyard.
+      // Detection: the StackItem's faceChosen is "adventure". On detection:
+      //   • stamp `card.adventureSide = "spell"` so the AdventureAltCost
+      //     `isAvailable` lights up,
+      //   • override destination Graveyard → Exile.
+      // The flag is cleared by the AdventureAltCost when the creature half
+      // is then cast (modifyCastContext flips adventureSide to "creature");
+      // a subsequent zone change off battlefield clears it via the
+      // post-move clear below as a defense-in-depth.
+      const isAdventureSpellResolve = item.provenance.faceChosen === "adventure";
+      let destination =
         item.provenance.alternativeZoneDestination ??
         (isPermanent ? ZoneType.Battlefield : ZoneType.Graveyard);
+      if (isAdventureSpellResolve && source !== undefined) {
+        source.adventureSide = "spell";
+        // Adventure half is an instant/sorcery — non-permanent. Override
+        // its post-resolve destination to Exile (CR 715.2). If the
+        // alternativeZoneDestination is already set (e.g. flashback +
+        // adventure interaction — not in the printed corpus, but defensive),
+        // we still pin to Exile because the adventure mechanic specifies the
+        // exile destination as part of CR 715.
+        destination = ZoneType.Exile;
+      }
       yield* game.action.moveTo(item.sourceCardId, destination);
+      // Wave 65.C — defensive clear. If the spell-resolve path moved the
+      // card OFF Exile (shouldn't happen for the printed adventure path,
+      // but keeps the flag honest if a future replacement effect rewrites
+      // the destination), clear adventureSide so subsequent moves don't
+      // keep redirecting. The Exile-stays case keeps the flag set so the
+      // AdventureAltCost can read it when the creature half is cast.
+      if (isAdventureSpellResolve && source !== undefined && source.zone !== ZoneType.Exile) {
+        source.adventureSide = undefined;
+      }
       return;
     }
     case "activatedAbility":
