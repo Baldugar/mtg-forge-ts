@@ -14,6 +14,22 @@
 //
 // Combo / Any variants are documented as MVP (pick first / colorless).
 // Full player-choice wiring requires the decision subsystem (SP3+).
+//
+// Wave 63.B sub-params:
+//   - Replace$ <from>:<to>[, <from2>:<to2>...] — color rewrite of the
+//     produced atoms BEFORE they hit the pool. Mana Reflection-style
+//     "replace any with U" effects script this. Each `from` symbol from
+//     the produced list is rewritten to its mapped `to`; the special
+//     `Any` token also matches the "Any" branch above so Mana Reflection
+//     can re-target the colorless fallback. Symbols not in the map flow
+//     through unchanged.
+//   - Pool$ True — bypass any "ask which color to produce" decision and
+//     produce as specified. The current MVP picks the first listed
+//     option for `Combo` deterministically; with `Pool$ True` we
+//     additionally force the `Any` branch to skip the future
+//     decision-yield path entirely (we go straight to the colorless
+//     atom as today). Once the decision subsystem lands a `chooseMana`
+//     yield, the `Pool$` flag will be the gate that suppresses it.
 import { Color, ManaProduced } from "@mtg-forge-ts/core";
 import type { ManaProductionRestriction } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
@@ -102,9 +118,32 @@ export class ManaEffect extends SpellAbilityEffect {
     };
     if (restriction !== "none") colorlessOpts.restriction = restriction;
 
+    // Wave 63.B — Replace$ <from>:<to>[, ...] color rewrite map. Applied
+    // to every produced symbol BEFORE it's parsed into a ManaProduced
+    // atom. Both `from` and `to` are normalised to single-letter color
+    // tokens (W/U/B/R/G/C) when the mapping uses long-form words.
+    const replaceMap = parseReplaceMap(hasParam(sa, "Replace") ? evaluateParamRaw(sa, "Replace") : "");
+    const remap = (sym: string): string => {
+      const norm = REWRITE_NORMALIZE[sym] ?? sym;
+      return replaceMap[norm] ?? sym;
+    };
+    // Wave 63.B — Pool$ True is the explicit gate for "skip the decision".
+    // The MVP already produces deterministically; the flag is wired so the
+    // future chooseMana decision yield (Combo / Any) can branch on it.
+    void (hasParam(sa, "Pool") ? evaluateParamRaw(sa, "Pool") : "");
+
     // "Any" → MVP: add one colorless. Full decision support deferred to SP3.
+    // Wave 63.B — when Replace$ remaps "Any", honour the rewrite (Mana
+    // Reflection style "any color → blue").
     if (produced === "Any") {
-      for (let m = 0; m < amount; m++) pool.add(ManaProduced.colorless(colorlessOpts));
+      const remapped = remap("Any");
+      for (let m = 0; m < amount; m++) {
+        if (remapped === "Any") {
+          pool.add(ManaProduced.colorless(colorlessOpts));
+        } else {
+          pool.add(parseProducedSymbol(remapped, src, restriction));
+        }
+      }
       return;
     }
 
@@ -115,7 +154,8 @@ export class ManaEffect extends SpellAbilityEffect {
         .split(/\s+/)
         .filter((s) => s !== "");
       const choice = opts[0] ?? "C";
-      for (let m = 0; m < amount; m++) pool.add(parseProducedSymbol(choice, src, restriction));
+      const remapped = remap(choice);
+      for (let m = 0; m < amount; m++) pool.add(parseProducedSymbol(remapped, src, restriction));
       return;
     }
 
@@ -130,11 +170,40 @@ export class ManaEffect extends SpellAbilityEffect {
             pool.add(ManaProduced.colorless(colorlessOpts));
           }
         } else {
-          pool.add(parseProducedSymbol(sym, src, restriction));
+          pool.add(parseProducedSymbol(remap(sym), src, restriction));
         }
       }
     }
   }
+}
+
+// Wave 63.B — Replace$ map parser. Accepts "Any:U" or "W:G,B:R"
+// (comma-separated pairs). Long-form words (White → W) are normalised so
+// callers can write either letter or word forms. Empty strings yield an
+// empty map.
+const REWRITE_NORMALIZE: Readonly<Record<string, string>> = {
+  White: "W",
+  Blue: "U",
+  Black: "B",
+  Red: "R",
+  Green: "G",
+  Colorless: "C",
+};
+
+function parseReplaceMap(raw: string): Readonly<Record<string, string>> {
+  const out: Record<string, string> = {};
+  if (raw.trim() === "") return out;
+  for (const pair of raw.split(",")) {
+    const [fromRaw, toRaw] = pair.split(":");
+    if (fromRaw === undefined || toRaw === undefined) continue;
+    const from = fromRaw.trim();
+    const to = toRaw.trim();
+    if (from === "" || to === "") continue;
+    const fromKey = REWRITE_NORMALIZE[from] ?? from;
+    const toKey = REWRITE_NORMALIZE[to] ?? to;
+    out[fromKey] = toKey;
+  }
+  return out;
 }
 
 effectRegistry.register(ManaEffect);

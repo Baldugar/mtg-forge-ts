@@ -12,24 +12,28 @@
 //
 // Wave 53 broadens the MVP:
 //   - AddTypes$ <Type[,…]>  — add card-type(s) to the copy via Layer 4 effect.
-//   - AddColors$ <Color[,…]> — add color(s) via the existing ColorChange
-//                              field on the token's CardDefinition. Since
-//                              tokens use the source's PaperCard verbatim,
-//                              we carry colors as a permanent Layer 5
-//                              continuous effect against the new token's id.
-//                              MVP: stamps as a static color override on
-//                              the token paperCard (definition.colors ∪ X).
 //   - SetPower$/SetToughness$ <N> — Layer 7b set on the token.
 //   - AddTriggers$ <SVar list> — register additional trigger SVars on the
 //                                copy. SVars are looked up off sa.svars.
 //   - Embalm$/Eternalize$ flags — already handled via tokenOverrides in the
 //                                 Embalm/Eternalize handlers; pass-through
 //                                 here is a no-op (preserves Wave 33).
-import { CardType, Layer } from "@mtg-forge-ts/core";
+//
+// Wave 63.B — broadened sub-params:
+//   - AddColors$ <Color[,…]>      — Layer 5 "add" continuous effect against
+//                                    the new copy's id (W/U/B/R/G letters or
+//                                    full color words).
+//   - AddSubtypes$ <Subtype[,…]>  — Layer 4 "addSubtype" effect per subtype.
+//   - AddKeywords$ <Kw[,…]>       — Layer 6 "kw-grant" effect per keyword.
+//   - Power$ / Toughness$ <N>     — aliases for SetPower$ / SetToughness$
+//                                    matching the Forge-DSL surface.
+import { CardType, Color, ColorSet, Layer } from "@mtg-forge-ts/core";
 import type { ContinuousEffect, EntityId, TriggerAst } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import type { Layer6KeywordGrant } from "../../layers/keyword-layer.js";
 import type { TypeChangeEffect } from "../../layers/layer4-type.js";
+import type { ColorChangeEffect } from "../../layers/layer5-color.js";
 import type { Layer7bEffect } from "../../layers/layer7-pt.js";
 import { triggerHandlerRegistry } from "../../trigger/index.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -48,11 +52,36 @@ const CARD_TYPE_BY_NAME: Readonly<Record<string, CardType>> = {
   Battle: CardType.Battle,
 };
 
+// Wave 63.B — Forge color tokens accept either the canonical letters
+// (W/U/B/R/G) or the long-form words (White/Blue/Black/Red/Green). We
+// normalise both.
+const COLOR_BY_NAME: Readonly<Record<string, Color>> = {
+  W: Color.White,
+  White: Color.White,
+  U: Color.Blue,
+  Blue: Color.Blue,
+  B: Color.Black,
+  Black: Color.Black,
+  R: Color.Red,
+  Red: Color.Red,
+  G: Color.Green,
+  Green: Color.Green,
+};
+
 const splitNames = (raw: string): readonly string[] =>
   raw
     .split(/[,\s]+/)
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
+
+const parseColorList = (raw: string): ColorSet => {
+  const colors: Color[] = [];
+  for (const name of splitNames(raw)) {
+    const c = COLOR_BY_NAME[name];
+    if (c !== undefined) colors.push(c);
+  }
+  return colors.length === 0 ? ColorSet.empty() : ColorSet.of(...colors);
+};
 
 export class CopyPermanentEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "CopyPermanent";
@@ -61,15 +90,32 @@ export class CopyPermanentEffect extends SpellAbilityEffect {
     const num = hasParam(sa, "NumCopies") ? evaluateParamNumber(sa, "NumCopies", game) : 1;
 
     const addTypeNames = hasParam(sa, "AddTypes") ? splitNames(evaluateParamRaw(sa, "AddTypes")) : [];
-    const setPower = hasParam(sa, "SetPower") ? evaluateParamNumber(sa, "SetPower", game) : null;
-    const setToughness = hasParam(sa, "SetToughness") ? evaluateParamNumber(sa, "SetToughness", game) : null;
+    const addSubtypeNames = hasParam(sa, "AddSubtypes")
+      ? splitNames(evaluateParamRaw(sa, "AddSubtypes"))
+      : [];
+    const addKeywordNames = hasParam(sa, "AddKeywords")
+      ? splitNames(evaluateParamRaw(sa, "AddKeywords"))
+      : [];
+    // Wave 63.B — AddColors$ becomes a Layer 5 "add" continuous effect on
+    // the new copy's id, so color-aware filters / triggers / replacements
+    // observe the augmented color set.
+    const addColors = hasParam(sa, "AddColors")
+      ? parseColorList(evaluateParamRaw(sa, "AddColors"))
+      : ColorSet.empty();
+    // Wave 63.B — Power$ / Toughness$ aliases for SetPower$ / SetToughness$.
+    const setPower = hasParam(sa, "SetPower")
+      ? evaluateParamNumber(sa, "SetPower", game)
+      : hasParam(sa, "Power")
+        ? evaluateParamNumber(sa, "Power", game)
+        : null;
+    const setToughness = hasParam(sa, "SetToughness")
+      ? evaluateParamNumber(sa, "SetToughness", game)
+      : hasParam(sa, "Toughness")
+        ? evaluateParamNumber(sa, "Toughness", game)
+        : null;
     const addTriggerNames = hasParam(sa, "AddTriggers")
       ? splitNames(evaluateParamRaw(sa, "AddTriggers"))
       : [];
-    // AddColors$ is preserved for forward compatibility — Layer 5 color
-    // continuous effects are scheduled for the next continuous-effects
-    // wave; for MVP we simply collect and ignore.
-    void (hasParam(sa, "AddColors") ? evaluateParamRaw(sa, "AddColors") : "");
 
     for (const targetId of sa.targets) {
       const target = game.cards.get(targetId);
@@ -103,6 +149,71 @@ export class CopyPermanentEffect extends SpellAbilityEffect {
             layer: Layer.L4_Type,
             duration: { kind: "permanent" },
             payload: { kind: "type", effect: eff },
+          };
+          game.continuousEffectRegistry.register(ce);
+        }
+
+        // ---- AddSubtypes$ → Layer 4 addSubtype (Wave 63.B) -----------
+        for (const sub of addSubtypeNames) {
+          const ts = game.newEntityId();
+          const eff: TypeChangeEffect = {
+            kind: "addSubtype",
+            subtype: sub,
+            isCda: false,
+            timestamp: ts,
+            sourceAbilityId: sa.sourceCardId,
+            appliesToCardIdFn: (id: EntityId) => id === newId,
+          };
+          const ce: ContinuousEffect = {
+            id: game.newEntityId(),
+            sourceCardId: sa.sourceCardId,
+            timestamp: ts,
+            layer: Layer.L4_Type,
+            duration: { kind: "permanent" },
+            payload: { kind: "type", effect: eff },
+          };
+          game.continuousEffectRegistry.register(ce);
+        }
+
+        // ---- AddColors$ → Layer 5 add (Wave 63.B) --------------------
+        if (addColors.toJSON() !== 0) {
+          const ts = game.newEntityId();
+          const eff: ColorChangeEffect = {
+            kind: "add",
+            colors: addColors,
+            isCda: false,
+            timestamp: ts,
+            sourceAbilityId: sa.sourceCardId,
+            appliesToCardIdFn: (id: EntityId) => id === newId,
+          };
+          const ce: ContinuousEffect = {
+            id: game.newEntityId(),
+            sourceCardId: sa.sourceCardId,
+            timestamp: ts,
+            layer: Layer.L5_Color,
+            duration: { kind: "permanent" },
+            payload: { kind: "color", effect: eff },
+          };
+          game.continuousEffectRegistry.register(ce);
+        }
+
+        // ---- AddKeywords$ → Layer 6 kw-grant (Wave 63.B) -------------
+        for (const kw of addKeywordNames) {
+          const ts = game.newEntityId();
+          const grant: Layer6KeywordGrant = {
+            keyword: kw,
+            sourceAbilityId: sa.sourceCardId,
+            timestamp: ts,
+            // Single-target shape: target the freshly-minted copy.
+            targetCardIdFn: () => newId,
+          };
+          const ce: ContinuousEffect = {
+            id: game.newEntityId(),
+            sourceCardId: sa.sourceCardId,
+            timestamp: ts,
+            layer: Layer.L6_Ability,
+            duration: { kind: "permanent" },
+            payload: { kind: "kw-grant", effect: grant },
           };
           game.continuousEffectRegistry.register(ce);
         }
