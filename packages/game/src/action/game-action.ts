@@ -80,6 +80,7 @@ import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { canDraw } from "../statics/wave70i-loyalty-gates.js";
 import { canAttach } from "../statics/wave70k-gate-helpers.js";
 import { canLoseLife, cantBeCopied, maxCounter } from "../statics/wave70m-gate-helpers.js";
+import { canChangeLife } from "../statics/wave70o-gate-helpers.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -323,8 +324,14 @@ export class GameAction {
     // Resolve / Everybody Lives!). Mirrors Wave 70.E's CantGainLife
     // path on the negative side: when delta is negative AND any
     // active CantLoseLife static matches the seat, rewrite to 0.
+    // Wave 70.O — CantChangeLife is the strongest gate (Platinum
+    // Emperion / Argentum Masticore-shape). When any active
+    // CantChangeLife static matches the seat, ANY non-zero delta is
+    // rewritten to 0 BEFORE the LifeChanged event fires — both gain and
+    // loss directions are blocked by a single gate.
     let effectiveDelta = delta;
-    if (delta > 0 && !canGainLife(game, seat)) effectiveDelta = 0;
+    if (delta !== 0 && !canChangeLife(game, seat)) effectiveDelta = 0;
+    else if (delta > 0 && !canGainLife(game, seat)) effectiveDelta = 0;
     else if (delta < 0 && !canLoseLife(game, seat)) effectiveDelta = 0;
     const intent: LifeChangeIntent = {
       kind: "lifeChange",

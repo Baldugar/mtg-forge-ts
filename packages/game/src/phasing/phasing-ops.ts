@@ -29,6 +29,7 @@ import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { hasKeyword, isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
+import { canPhaseIn, canPhaseOut } from "../statics/wave70o-gate-helpers.js";
 
 export function* phaseOut(
   game: Game,
@@ -38,6 +39,10 @@ export function* phaseOut(
   const card = game.cards.get(cardId);
   if (!card) return;
   if (card.phased) return;
+  // Wave 70.O — CR 702.26 CantPhaseOut static gate. When any active
+  // CantPhaseOut static matches the card, the transition no-ops silently
+  // — no PhasedOut event is emitted.
+  if (!canPhaseOut(game, cardId)) return;
   card.phased = true;
   game.layerEngine.bumpEpoch("phase-out");
   yield {
@@ -61,6 +66,10 @@ export function* phaseIn(
   // Veil / Tawnos's Coffin) flag. CR 702.26d treats both states identically
   // for phase-in purposes, so we reset both here.
   if (!card.phased && !card.phasedOut) return;
+  // Wave 70.O — CR 702.26 CantPhaseIn static gate. When any active
+  // CantPhaseIn static matches the card, the transition no-ops silently
+  // — the card stays phased out, no PhasedIn event is emitted.
+  if (!canPhaseIn(game, cardId)) return;
   card.phased = false;
   card.phasedOut = false;
   game.layerEngine.bumpEpoch("phase-in");

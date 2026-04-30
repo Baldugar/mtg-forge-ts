@@ -258,3 +258,17 @@ export * from "./cant-lose-life-static.js";
 //                                    Wave 70.D CombatDamageToughness but
 //                                    forces 0 damage regardless of power)
 export * from "./assign-no-combat-damage-static.js";
+// Wave 70.O — three more registry-walk gate statics from the long-tail
+// static-mode pack (enum entries previously unhandled):
+//   - CantPhaseIn      (~5 cards — "this can't phase in" lock-down
+//                                    of the phasing pipeline)
+//   - CantPhaseOut     (~2 cards — anti-phasing guardrails;
+//                                    matched permanents stay phased in)
+//   - CantChangeLife   (~4 cards — Platinum Emperion / Argentum
+//                                    Masticore-shape; stronger than
+//                                    CantGainLife + CantLoseLife
+//                                    combined: blocks ANY non-zero
+//                                    delta on changeLife)
+export * from "./cant-phase-in-static.js";
+export * from "./cant-phase-out-static.js";
+export * from "./cant-change-life-static.js";
