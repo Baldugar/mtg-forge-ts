@@ -32,6 +32,7 @@
 // requires the event at K:Suspect-application time, route through a
 // synthesized ETB trigger here instead.
 import type { KeywordAst } from "@mtg-forge-ts/core";
+import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
@@ -48,8 +49,14 @@ export class SuspectKeywordHandler extends KeywordHandler {
     // copy / clone) is a no-op for the slot but still re-stamps the
     // keyword set entry above.
     if (card.suspected !== true) {
-      card.suspected = true;
-      ctx.game.layerEngine.bumpEpoch("suspect-keyword");
+      // Wave 76 — CantBeSuspected static gate; matched cards refuse the
+      // suspect transition (silent rejection — keyword set entry still
+      // stamped above for textual fidelity, but the suspected flag stays
+      // false so Layer 6 menace synthesis doesn't fire).
+      if (canBeSuspected(ctx.game, ctx.sourceCardId)) {
+        card.suspected = true;
+        ctx.game.layerEngine.bumpEpoch("suspect-keyword");
+      }
     }
   }
 

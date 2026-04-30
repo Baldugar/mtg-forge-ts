@@ -351,3 +351,23 @@ export * from "./can-adapt-static.js";
 export * from "./can-exhaust-static.js";
 export * from "./ignore-shroud-static.js";
 export * from "./cant-exile-static.js";
+// Wave 76 — final batch of forward-compat-stub static modes from the
+// long-tail enum. All four target mechanics (Suspect / Venture /
+// Plot / Radiation counter) aren't yet ported, so the handlers
+// register and snapshot correctly while their consumers are left
+// TODO(advanced) until the underlying mechanic infra lands. The
+// query helpers (wave76-gate-helpers.ts) are exposed today so the
+// future pipelines can read them uniformly.
+//   - CantBeSuspected   (~1 card — Suspect mechanic, MOM block)
+//   - CantVenture       (~1 card — Venture / Dungeon mechanic,
+//                          AFR / CLB sets)
+//   - PlotZone          (~1 card — Plot mechanic, MKM block;
+//                          augments the canonical "plot from
+//                          hand" zone restriction)
+//   - GainLifeRadiation (~1 card — Radiation counter mechanic,
+//                          PIP set; layers a life-gain on the
+//                          canonical Radiation counter add path)
+export * from "./cant-be-suspected-static.js";
+export * from "./cant-venture-static.js";
+export * from "./plot-zone-static.js";
+export * from "./gain-life-radiation-static.js";

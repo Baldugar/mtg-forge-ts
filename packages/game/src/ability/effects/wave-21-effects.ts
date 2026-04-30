@@ -21,6 +21,7 @@ import type {
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -555,6 +556,9 @@ export class AlterAttributeEffect extends SpellAbilityEffect {
               // Forge's setSuspected guard).
               if (activate && card.suspected === true) continue;
               if (!activate && card.suspected !== true) continue;
+              // Wave 76 — CantBeSuspected static gate; matched cards
+              // refuse the suspect transition (silent rejection).
+              if (activate && !canBeSuspected(game, id)) continue;
               card.suspected = activate ? true : undefined;
               // Bump the layer engine epoch so the menace synthesis in
               // hasKeyword sees the new flag without a stale cache.

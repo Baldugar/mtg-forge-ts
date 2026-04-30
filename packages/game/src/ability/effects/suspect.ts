@@ -21,6 +21,7 @@
 import { mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
@@ -37,6 +38,9 @@ export class SuspectEffect extends SpellAbilityEffect {
       // guard; not an error path, just a no-op so chained triggers don't
       // get duplicate events).
       if (card.suspected === true) continue;
+      // Wave 76 — CantBeSuspected static gate; matched cards refuse the
+      // suspect transition (silent rejection — no event, no flag flip).
+      if (!canBeSuspected(game, id)) continue;
       card.suspected = true;
       game.layerEngine.bumpEpoch("suspect");
       yield game.emitEvent(
