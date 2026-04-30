@@ -30,6 +30,7 @@ import type {
 } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { isTriggerDisabled } from "../statics/wave70j-rule-gates.js";
 import type { PendingTrigger } from "./pending-trigger.js";
 
 export type SuppressionFilter = (
@@ -96,6 +97,14 @@ export class TriggerRegistry {
         event.kind === "CardChangedZone" && event.payload.fromZone === ZoneType.Battlefield;
       if (sourceCard?.phased === true && !isLeavingBattlefield) continue;
       if (this.isSuppressed(t, event)) continue;
+      // Wave 70.J — DisableTriggers static (Hushwing Gryff / Tocatli
+      // Honor Guard / Torpor Orb). Silently drops trigger fires whose
+      // (cause, mode, origin, destination, source) match an active
+      // DisableTriggers static. Same semantics as Forge's
+      // StaticAbilityDisableTriggers gate: no PendingTrigger entry
+      // queued, no APNAP ordering, no observable side effect on the
+      // pending list.
+      if (isTriggerDisabled(this.game, t, event)) continue;
       if (t.interveningIf && !t.interveningIf(event, this.game)) continue;
       const lki = t.captureLki ? (t.captureLki(event, this.game) as LastKnownInfo | null) : null;
       const sourceCtl = this.resolveSourceController(t);

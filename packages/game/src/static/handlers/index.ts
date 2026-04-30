@@ -174,3 +174,25 @@ export * from "./block-restrict-static.js";
 export * from "./cant-draw-static.js";
 export * from "./num-loyalty-act-static.js";
 export * from "./no-cleanup-damage-static.js";
+// Wave 70.J — three more registry-walk gate statics from the long-tail
+// static-mode pack (next-frequency tier of unwired modes after 70.I):
+//   - IgnoreLegendRule          (~10 cards — Mirror Gallery / Sliver
+//                                 Legion / Brothers Yamazaki / Spider
+//                                 tribal / token doppelgangers /
+//                                 commander-only exemptions; CR 704.5j
+//                                 override — matched cards skipped by
+//                                 the legend-rule SBA collector)
+//   - CantBlockUnless           (~9 cards — Aurochs Herd shape /
+//                                 Crawlspace siblings / Vampiric Link
+//                                 aura / power-3+ guardrails / "tap
+//                                 creature" cost variants. Mirror of
+//                                 CantAttackUnless on the block side)
+//   - DisableTriggers           (~8 cards — Hushwing Gryff / Tocatli
+//                                 Honor Guard / Torpor Orb / Hushbringer
+//                                 / Cursed Totem-shape emblem / Permanent
+//                                 .OppCtrl scoped variants; suppresses
+//                                 trigger fires whose cause/mode/zone
+//                                 transitions match the static)
+export * from "./ignore-legend-rule-static.js";
+export * from "./cant-block-unless-static.js";
+export * from "./disable-triggers-static.js";

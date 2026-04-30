@@ -17,6 +17,7 @@ import { Supertype, ZoneType } from "@mtg-forge-ts/core";
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
+import { isExemptFromLegendRule } from "../statics/wave70j-rule-gates.js";
 import type { SbaAction } from "./sba-action.js";
 
 export const collectLegendWorld = (game: Game, out: SbaAction[]): void => {
@@ -33,6 +34,11 @@ export const collectLegendWorld = (game: Game, out: SbaAction[]): void => {
     if (isPhasedOut(game, id)) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     if (!chars.supertypes.has(Supertype.Legendary)) continue;
+    // Wave 70.J — IgnoreLegendRule (CR 704.5j override). Mirror Gallery
+    // / Sliver Legion / Brothers Yamazaki et al. exempt matched cards
+    // from the legend-rule grouping pass. Skip exempt cards entirely so
+    // they never contribute to a duplicate-name bucket.
+    if (isExemptFromLegendRule(game, id)) continue;
     // Unnamed legendaries (vanishingly rare but valid in test setup) are
     // grouped by empty-string name — still correct per CR (same name,
     // including absent ones, groups together).
