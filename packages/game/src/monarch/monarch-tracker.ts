@@ -12,13 +12,20 @@
 // right turn-based / damage step boundaries.
 import type { GameEvent, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { canBecomeMonarch } from "../statics/wave70p-gate-helpers.js";
 
 /**
  * Set the monarch + emit BecameMonarch (and LostMonarch for the prior
  * holder if any). Returns the events to yield (caller routes through the
  * engine pipeline). Idempotent on no-op self-grants.
+ *
+ * Wave 70.P — CantBecomeMonarch static (Jared Carthalion shape).
+ * Consulted before the prior-monarch comparison: when an active gate
+ * matches `seat`, the grant is rejected silently — no LostMonarch /
+ * BecameMonarch events fire, the prior monarch is preserved unchanged.
  */
 export const grantMonarch = (game: Game, seat: PlayerSeat): readonly GameEvent[] => {
+  if (!canBecomeMonarch(game, seat)) return [];
   const prior = game.flags.monarch;
   if (prior === seat) return [];
   game.flags.monarch = seat;

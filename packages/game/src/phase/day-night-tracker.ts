@@ -28,6 +28,7 @@
 import type { PlayerSeat } from "@mtg-forge-ts/core";
 import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { canChangeDayTimeTo } from "../statics/wave70p-gate-helpers.js";
 
 /**
  * Increment the per-turn non-land spell count for `seat`. Called by the
@@ -98,6 +99,11 @@ export const tryUpkeepTransition = (
   if (cur === "night" && prevSpellCount >= 2) next = "day";
   else if (cur === "day" && prevSpellCount === 0) next = "night";
   if (next === cur) return null;
+  // Wave 70.P — CantChangeDayTime static (Angel of Eternal Dawn shape).
+  // When an active gate matches the proposed new state, the transition
+  // is rejected silently — dayNight stays at `cur`, no DayTimeChanged
+  // event fires, the daybound/nightbound auto-flip pass is skipped.
+  if (!canChangeDayTimeTo(game, next)) return null;
   game.flags.dayNight = next;
   // Wave 29 — autoFlip daybound/nightbound permanents to mirror the
   // Day/Night state. Daybound front-face creatures should sit on the

@@ -272,3 +272,32 @@ export * from "./assign-no-combat-damage-static.js";
 export * from "./cant-phase-in-static.js";
 export * from "./cant-phase-out-static.js";
 export * from "./cant-change-life-static.js";
+// Wave 70.P — final small batch of registry-walk gate statics:
+//   - CanBlockIfReach   (~1 card — Dragon Hunter; mirror of Wave 70.F's
+//                                   IgnoreLandwalk on the flying-keyword
+//                                   side: relax flying rejection for the
+//                                   matched (blocker, attacker) pairing)
+//   - CantBecomeMonarch (~1 card — Jared Carthalion; gates the
+//                                   monarch-tracker grantMonarch path —
+//                                   matched seat can't become the
+//                                   monarch, prior monarch preserved)
+//   - CantChangeDayTime (~1 card — Angel of Eternal Dawn; gates the
+//                                   day-night-tracker upkeep transition
+//                                   plus any explicit setDayNight call —
+//                                   the matched proposed time is
+//                                   silently rejected)
+//   - TurnReversed      (~1 card — Topsy Turvy; ruleChanging gate
+//                                   flagging the matched seat's turn
+//                                   order as reversed; consumer-side
+//                                   wiring on PhaseHandler.advanceActiveSeat
+//                                   is SP4-scope future work)
+//   - PhaseReversed     (~1 card — Topsy Turvy; ruleChanging gate
+//                                   flagging the matched seat's phase
+//                                   order as reversed; consumer-side
+//                                   wiring on PhaseHandler.advancePhase
+//                                   is SP4-scope future work)
+export * from "./can-block-if-reach-static.js";
+export * from "./cant-become-monarch-static.js";
+export * from "./cant-change-day-time-static.js";
+export * from "./turn-reversed-static.js";
+export * from "./phase-reversed-static.js";

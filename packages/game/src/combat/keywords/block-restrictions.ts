@@ -20,6 +20,7 @@ import { CardType, Color } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import { isBlockingRestricted } from "../../statics/cant-must-may-extras.js";
 import { ignoresLandWalk } from "../../statics/wave70f-combat-gates.js";
+import { canBlockIfReach } from "../../statics/wave70p-gate-helpers.js";
 import { attackerPower, hasKeyword } from "../damage-assignment-helpers.js";
 import { hasProtectionFrom } from "./protection.js";
 
@@ -95,8 +96,18 @@ export const isBlockLegal = (
 
   // Flying (CR 702.9): attacker with flying can only be blocked by a
   // creature with flying or reach.
+  //
+  // Wave 70.P — CanBlockIfReach static (Dragon Hunter shape). When an
+  // active static matches the (blocker, attacker) pairing, the flying
+  // rejection is suppressed: the blocker may legally block the
+  // attacker even if it has neither flying nor reach. Mirrors the Wave
+  // 70.F IgnoreLandwalk pattern on the flying-keyword side.
   if (hasKeyword(game, attacker, "flying")) {
-    if (!hasKeyword(game, blocker, "flying") && !hasKeyword(game, blocker, "reach")) {
+    if (
+      !hasKeyword(game, blocker, "flying") &&
+      !hasKeyword(game, blocker, "reach") &&
+      !canBlockIfReach(game, blocker, attacker)
+    ) {
       return { legal: false, reason: "flying requires flying/reach blocker" };
     }
   }
