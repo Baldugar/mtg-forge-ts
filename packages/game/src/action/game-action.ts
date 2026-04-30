@@ -81,6 +81,7 @@ import { canDraw } from "../statics/wave70i-loyalty-gates.js";
 import { canAttach } from "../statics/wave70k-gate-helpers.js";
 import { canLoseLife, cantBeCopied, maxCounter } from "../statics/wave70m-gate-helpers.js";
 import { canChangeLife } from "../statics/wave70o-gate-helpers.js";
+import { canDiscard } from "../statics/wave74-gate-helpers.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -464,6 +465,16 @@ export class GameAction {
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const { fromZone, owner } = this.locate(cardId);
+    // Wave 74 — CantDiscard gate. When the cause is "discard" or
+    // "handSize" and the card's owner is matched by an active
+    // CantDiscard static (Tamiyo, Collector of Tales et al.), the
+    // discard no-ops silently — no zone change, no CardDiscarded event,
+    // no DiscardedTrigger fire. Mirrors Forge's silent-rejection
+    // semantics for prevented discards.
+    const cause = opts?.cause;
+    if ((cause === "discard" || cause === "handSize") && owner !== null && !canDiscard(game, owner)) {
+      return;
+    }
     const toSeat = opts?.toSeat ?? this.defaultDestinationSeat(toZone, owner, cardId);
     const intent: MoveToIntent = {
       kind: "moveTo",

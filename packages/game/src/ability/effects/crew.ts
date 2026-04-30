@@ -41,6 +41,7 @@ import { CardType, Layer, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectiveTapPowerValue } from "../../statics/wave72-tap-power-value.js";
+import { canCrew } from "../../statics/wave74-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -87,6 +88,12 @@ export class CrewEffect extends SpellAbilityEffect {
     // Enumerate eligible untapped creatures the controller controls
     // (excluding the Vehicle itself). Must use the layer engine for the
     // type check so layered animate effects are honored.
+    //
+    // Wave 74 — CantCrew gate. Creatures matched by an active CantCrew
+    // static (Revoke Privileges / Bound in Gold / Intercessor's Arrest)
+    // are dropped from the eligible pool. The Vehicle's controller can
+    // never select them; if the eligible set ends up empty (and the
+    // chosen subset is empty), the activation fizzles silently.
     const eligible: EntityId[] = [];
     for (const [id, c] of game.cards) {
       if (id === sourceId) continue;
@@ -94,6 +101,7 @@ export class CrewEffect extends SpellAbilityEffect {
       if (c.tapped) continue;
       const chars = game.layerEngine.computeCharacteristics(id);
       if (!chars.types.has(CardType.Creature)) continue;
+      if (!canCrew(game, id)) continue;
       eligible.push(id);
     }
 

@@ -323,3 +323,15 @@ export * from "./mana-burn-static.js";
 //   Crew / Saddle / Station activations: Value$ Toughness swaps power
 //   for toughness; Value$ N adds N to power.
 export * from "./tap-power-value-static.js";
+// Wave 74 — three more bespoke-infra static modes:
+//   - CantCrew                 (~3 cards — Revoke Privileges / Bound in
+//                                Gold / Intercessor's Arrest; matched
+//                                creatures can't tap to crew Vehicles)
+//   - CantDiscard              (~1 card — Tamiyo, Collector of Tales;
+//                                matched player can't discard cards)
+//   - ColorlessDamageSource    (~1 card — Ghostly Flame; matched cards'
+//                                damage is colorless regardless of
+//                                printed color)
+export * from "./cant-crew-static.js";
+export * from "./cant-discard-static.js";
+export * from "./colorless-damage-source-static.js";
