@@ -209,3 +209,22 @@ export * from "./disable-triggers-static.js";
 export * from "./cant-attach-static.js";
 export * from "./attack-requirement-static.js";
 export * from "./ignore-hexproof-static.js";
+// Wave 70.L — three more long-tail static modes (small but exact card
+// impact; previously enum-only without a registered handler):
+//   - CantPayLife                  (~3 cards — Angel of Jubilation /
+//                                    Karn's Sylex / Yasharn, Implacable
+//                                    Earth; gates life-payment as part
+//                                    of casting / activating)
+//   - MustTarget                   (~3 cards — Coalition Flag /
+//                                    Coalition Honor Guard / Standard
+//                                    Bearer; the Flagbearer mechanic —
+//                                    opponents must target a Flagbearer
+//                                    if able)
+//   - ActivateAbilityAsIfHaste     (~3 cards — Dynaheir, Invoker Adept /
+//                                    Thousand-Year Elixir / Tyvar,
+//                                    Jubilant Brawler; bypass summoning
+//                                    sickness for activated-ability
+//                                    tap costs)
+export * from "./cant-pay-life-static.js";
+export * from "./must-target-static.js";
+export * from "./activate-ability-as-if-haste-static.js";
