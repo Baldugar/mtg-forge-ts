@@ -140,3 +140,21 @@ export * from "./ignore-land-walk-static.js";
 export * from "./can-attack-if-haste-static.js";
 export * from "./must-block-static.js";
 export * from "./attack-vigilance-static.js";
+// Wave 70.H — three more registry-walk gate statics, picked from the
+// Forge corpus by frequency (the largest unwired modes after 70.G):
+//   - OptionalAttackCost   (~28 cards — Exert family: Ahn-Crop Champion
+//                            / Battlefield Scavenger / Combat Celebrant
+//                            / Glorybringer / Vizier of Hazoret /
+//                            Champion of Rhonas; "may pay <Cost> as
+//                            CARDNAME attacks. If you do, <Trigger>")
+//   - AttackRestrict       (~8 cards — Astral Arena / Caverns of
+//                            Despair / Crawlspace / Dueling Grounds /
+//                            Silent Arbiter / The Eternal Wanderer;
+//                            MaxAttackers$ N global combat cap)
+//   - BlockRestrict        (~5 cards — Astral Arena / Caverns of
+//                            Despair / Dueling Grounds / Silent Arbiter
+//                            / Mirri, Weatherlight Duelist;
+//                            MaxBlockers$ N global combat cap)
+export * from "./optional-attack-cost-static.js";
+export * from "./attack-restrict-static.js";
+export * from "./block-restrict-static.js";

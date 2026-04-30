@@ -26,6 +26,11 @@ import {
 } from "../statics/wave65-combat-gates.js";
 import { assignsCombatDamageAsUnblocked } from "../statics/wave70f-combat-gates.js";
 import { collectMustBlockSubjects } from "../statics/wave70g-combat-gates.js";
+import {
+  type DeclaredBlockerForCap,
+  exceedsAttackerCap,
+  exceedsBlockerCap,
+} from "../statics/wave70h-combat-gates.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -63,6 +68,19 @@ export class CombatHandler {
     if (illegalAttackers.length > 0) {
       throw new IllegalDecisionError(
         `declareAttackers: cantAttack static rejects ${illegalAttackers.join(",")}`,
+      );
+    }
+    // Wave 70.H — AttackRestrict cap. Reject the declaration when more
+    // attackers are declared than any active AttackRestrict static
+    // permits (Astral Arena / Caverns of Despair / Crawlspace / Silent
+    // Arbiter / The Eternal Wanderer). The cap is total or per-defender
+    // (when ValidDefender$ is set). On a violation we throw before
+    // storing any declarations — same all-or-nothing semantics as the
+    // CantAttack rejection above.
+    const attackerCapViolation = exceedsAttackerCap(this.game, decls);
+    if (attackerCapViolation !== null) {
+      throw new IllegalDecisionError(
+        `declareAttackers: AttackRestrict cap ${attackerCapViolation.payload.maxAttackers} exceeded (${attackerCapViolation.count} declared)`,
       );
     }
     for (const d of decls) {
@@ -112,6 +130,26 @@ export class CombatHandler {
     if (decayed.length > 0) {
       throw new IllegalDecisionError(
         `declareBlockers: decayed creature(s) cannot block: ${decayed.join(",")}`,
+      );
+    }
+    // Wave 70.H — BlockRestrict cap. Reject when more blockers are
+    // declared than any active BlockRestrict static permits. Each
+    // (blocker, attacker) pair counts independently against the cap
+    // (CR 509.1g — band-style declarations). On a violation we throw
+    // before storing any declarations — same all-or-nothing semantics
+    // as the decayed rejection above.
+    const flattened: DeclaredBlockerForCap[] = [];
+    for (const d of decls) {
+      for (const aid of d.attackerIds) {
+        const att = this.state.attackers.get(aid);
+        if (att === undefined) continue;
+        flattened.push({ blockerId: d.blockerId, attackerId: aid, defender: att.defender });
+      }
+    }
+    const blockerCapViolation = exceedsBlockerCap(this.game, flattened);
+    if (blockerCapViolation !== null) {
+      throw new IllegalDecisionError(
+        `declareBlockers: BlockRestrict cap ${blockerCapViolation.payload.maxBlockers} exceeded (${blockerCapViolation.count} declared)`,
       );
     }
     for (const d of decls) {
