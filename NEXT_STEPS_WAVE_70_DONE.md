@@ -6,13 +6,13 @@
 
 ---
 
-## State snapshot (post-Wave 70.C)
+## State snapshot (post-Wave 70.F)
 
 - **Repo:** `F:\BACKUP\Programacion\mtg-forge-ts`
 - **Branch:** `sp1-engine-foundations` (local only; never pushed)
-- **HEAD:** `afbc842` (Wave 70.C — Phantasmal Image + Phyrexian Metamorph polish)
-- **Commits since `dbe90e6`:** ~360
-- **Tests: 3,249 game + 134 cards + 727 core = 4,110 passing**
+- **HEAD:** `dafc29f` (Wave 70.F — UntapOtherPlayer + AssignCombatDamageAsUnblocked + IgnoreLandwalk)
+- **Commits since `dbe90e6`:** ~365
+- **Tests: 3,284 game + 134 cards + 727 core = 4,145 passing**
 - **Coverage:** **100.0%** on full 32,300-card Forge corpus
 - **Gates:** typecheck (fresh tsc --noEmit) ✅, build ✅, test ✅, lint ✅, DCO ✅
 
@@ -34,7 +34,10 @@
 | **70.A** | Trigger mode coverage (ClassLevelGained etc.) | 1 | `544d8c3` | +12 (9 game + 3 core) |
 | **70.B** | Initiative dungeon per-room SVar effects | 1 | `2779f0f` | +13 |
 | **70.C** | Phantasmal Image + Phyrexian Metamorph polish | 1 | `afbc842` | +4 |
-| **TOTAL** | | **28** | | **+255** |
+| **70.D** | Static mode survey + CantTarget/CantAttackUnless/CombatDamageToughness | 1 | `09cf5b9` | +13 |
+| **70.E** | CantGainLife + CantPlayLand + CantPreventDamage | 1 | `85c4260` | +12 |
+| **70.F** | UntapOtherPlayer + AssignCombatDamageAsUnblocked + IgnoreLandwalk | 1 | `dafc29f` | +10 |
+| **TOTAL** | | **31** | | **+290** |
 
 ---
 
