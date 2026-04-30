@@ -19,6 +19,7 @@ import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { CardType, Color } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import { isBlockingRestricted } from "../../statics/cant-must-may-extras.js";
+import { ignoresLandWalk } from "../../statics/wave70f-combat-gates.js";
 import { attackerPower, hasKeyword } from "../damage-assignment-helpers.js";
 import { hasProtectionFrom } from "./protection.js";
 
@@ -159,8 +160,14 @@ export const isBlockLegal = (
   // Landwalk (CR 702.14 family): if the attacker has Xwalk and the
   // defending player (the blocker's controller) controls a land with
   // subtype X, the attacker can't be blocked at all by that defender.
+  //
+  // Wave 70.F — IgnoreLandwalk static (CR 702.13). When an active
+  // static matches this (blocker, attacker) pairing, the landwalk
+  // rejection is suppressed: the blocker may legally block the
+  // attacker even though the attacker has a matching landwalk. Sphere
+  // of Truth / Reverence / Suppression Field analogues.
   const landwalks = readLandwalks(game, attacker);
-  if (landwalks.length > 0) {
+  if (landwalks.length > 0 && !ignoresLandWalk(game, blocker, attacker)) {
     const blockerCard = game.cards.get(blocker);
     if (blockerCard) {
       const defenderSubtypes = collectLandSubtypes(game, blockerCard.controllerSeat);

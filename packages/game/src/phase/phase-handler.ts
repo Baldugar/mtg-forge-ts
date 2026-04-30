@@ -40,6 +40,7 @@ import {
   shouldSkipUntap,
 } from "../statics/wave60-turn-structure-gates.js";
 import { sweepEndOfCombat, sweepEndOfTurnWarpExile } from "../statics/wave65-combat-gates.js";
+import { shouldUntapDuringStep } from "../statics/wave70f-combat-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -406,6 +407,11 @@ export class PhaseHandler {
    * Wave 60.G — single untap-all pass over the active player's
    * battlefield. Extracted so AdditionalUntapStep can drive multiple
    * passes per Untap step. Honors phased-out and DontUntap gates.
+   *
+   * Wave 70.F — additionally scans every other player's battlefield
+   * for cards a UntapOtherPlayer static says should untap during the
+   * active player's untap step (CR 502; Awakening / Vedalken Orrery).
+   * The cross-player scan honors the same phased-out / DontUntap gates.
    */
   private *runUntapPass(active: PlayerSeat): Generator<EngineYield, void, DecisionResponse> {
     const game = this.game;
@@ -422,6 +428,26 @@ export class PhaseHandler {
       if (!canUntap(game, cardId)) continue;
       if (card?.tapped) {
         yield* this.action.untap(cardId);
+      }
+    }
+    // Wave 70.F — UntapOtherPlayer cross-player extension. For each
+    // other-controlled battlefield card, consult shouldUntapDuringStep
+    // with the ACTIVE player's seat — a static of the form
+    // `S:Mode$ UntapOtherPlayer | ValidCard$ <filter> | ValidPlayer$ X`
+    // tells us "during X's untap step, also untap matching cards". On
+    // a match the card is pulled into this untap pass.
+    for (const other of game.players) {
+      if (other.seat === active) continue;
+      const otherBf = other.zones.get(ZoneType.Battlefield);
+      if (!otherBf) continue;
+      for (const cardId of otherBf.toArray()) {
+        const card = game.cards.get(cardId);
+        if (card?.phased === true) continue;
+        if (!canUntap(game, cardId)) continue;
+        if (!shouldUntapDuringStep(game, cardId, active)) continue;
+        if (card?.tapped) {
+          yield* this.action.untap(cardId);
+        }
       }
     }
   }

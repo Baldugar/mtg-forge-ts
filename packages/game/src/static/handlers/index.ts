@@ -108,3 +108,19 @@ export * from "./combat-damage-toughness-static.js";
 export * from "./cant-gain-life-static.js";
 export * from "./cant-play-land-static.js";
 export * from "./cant-prevent-damage-static.js";
+// Wave 70.F — three more registry-walk gate statics from the long-tail
+// static-mode pack (enum entries previously unhandled):
+//   - UntapOtherPlayer              (~15 cards — Awakening / Vedalken
+//                                    Orrery analogues / Dramatic
+//                                    Reversal-style emblems)
+//   - AssignCombatDamageAsUnblocked (~13 cards — Bloodthorn Tine /
+//                                    Tempting Wurm / Rogue's Passage
+//                                    analogues; routes blocked attacker
+//                                    damage to defending player as if
+//                                    unblocked)
+//   - IgnoreLandwalk                (~10 cards — Sphere of Truth /
+//                                    Reverence; blocker can block
+//                                    attacker with landwalk)
+export * from "./untap-other-player-static.js";
+export * from "./assign-combat-damage-as-unblocked-static.js";
+export * from "./ignore-land-walk-static.js";

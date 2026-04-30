@@ -24,6 +24,7 @@ import {
   collectMustAttackSubjects,
   sweepEndOfCombat,
 } from "../statics/wave65-combat-gates.js";
+import { assignsCombatDamageAsUnblocked } from "../statics/wave70f-combat-gates.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -295,7 +296,14 @@ export class CombatHandler {
       const power = attackerPower(this.game, attackerId);
       if (power <= 0) continue;
       const blockers = this.state.blockerOrdering.get(attackerId) ?? [];
-      if (blockers.length === 0) {
+      // Wave 70.F — AssignCombatDamageAsUnblocked (CR 510). When an
+      // active static matches this attacker, treat the blocked branch as
+      // if no blockers existed: damage routes to the declared defender
+      // using the attacker's full power. Distinct from Trample — trample
+      // assigns lethal-to-blockers then spills excess to defender; this
+      // routes ALL damage to defender regardless of blocker survival.
+      const asUnblocked = assignsCombatDamageAsUnblocked(this.game, attackerId);
+      if (blockers.length === 0 || asUnblocked) {
         const d = info.defender;
         const dKind = defenderKind(d);
         const dId = defenderId(d);
