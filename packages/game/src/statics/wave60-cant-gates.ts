@@ -17,6 +17,8 @@
 // cant-must-may-extras.ts.
 import type { CounterType, EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import type { CantGainLifePayload } from "../static/handlers/cant-gain-life-static.js";
+import type { CantPlayLandPayload } from "../static/handlers/cant-play-land-static.js";
 import type { CantPutCounterPayload } from "../static/handlers/cant-put-counter-static.js";
 import type { CantRegeneratePayload } from "../static/handlers/cant-regenerate-static.js";
 import type { CantSacrificePayload } from "../static/handlers/cant-sacrifice-static.js";
@@ -123,6 +125,51 @@ export const canTransform = (game: Game, cardId: EntityId): boolean => {
   for (const s of statics) {
     const payload = s.describe() as CantTransformPayload;
     if (payload.cardMatches(cardId, game)) return false;
+  }
+  return true;
+};
+
+// ─── Wave 70.E — CantGainLife / CantPlayLand ─────────────────────────────────
+
+/**
+ * True iff `seat` may gain life (CR 119). False iff any active CantGainLife
+ * static matches the seat. Consumed by GameAction.changeLife when the delta
+ * is positive (life-gain) — on a match the delta is rewritten to 0 BEFORE
+ * the LifeChanged event is emitted, so downstream observers (Soul's
+ * Attendant / Ajani's Pridemate / Crested Sunmare) do not observe a gain.
+ *
+ * Damage-induced life gain (e.g. Soul Sister's "whenever a creature ETBs,
+ * you gain 1 life") routes through changeLife and is therefore covered
+ * by the same gate. The Sulfuric Vortex / Roiling Vortex / Stigma Lasher
+ * / Rampaging Ferocidon shapes (each player can't gain life) all consult
+ * this helper.
+ */
+export const canGainLife = (game: Game, seat: PlayerSeat): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantGainLife");
+  for (const s of statics) {
+    const payload = s.describe() as CantGainLifePayload;
+    if (payload.playerMatches(seat)) return false;
+  }
+  return true;
+};
+
+/**
+ * True iff `seat` may play a land this turn (CR 305). False iff any active
+ * CantPlayLand static matches the seat. Consumed by GameAction.playLand
+ * BEFORE the zone change is initiated; on a match the action no-ops
+ * silently (no LandPlayed event, no zone change, no drop counter
+ * increment). The legal-action enumerator (Wave 50) likewise consults
+ * this gate so the AI / UI never offers play-land as a legal action.
+ *
+ * Spell-effect land plays (AB$ Play with Land$ True) bypass this gate
+ * by routing through `moveTo` directly rather than `playLand` — matches
+ * Forge's "as a special action" carve-out (Restorm-style).
+ */
+export const canPlayLand = (game: Game, seat: PlayerSeat): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantPlayLand");
+  for (const s of statics) {
+    const payload = s.describe() as CantPlayLandPayload;
+    if (payload.playerMatches(seat)) return false;
   }
   return true;
 };

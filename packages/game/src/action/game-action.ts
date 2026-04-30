@@ -75,7 +75,7 @@ import type {
   UntapIntent,
 } from "../replacements/mutation-intent.js";
 import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
-import { canBeSacrificed, canPutCounter } from "../statics/wave60-cant-gates.js";
+import { canBeSacrificed, canGainLife, canPlayLand, canPutCounter } from "../statics/wave60-cant-gates.js";
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
@@ -299,10 +299,19 @@ export class GameAction {
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const player = game.getPlayer(seat);
+    // Wave 70.E — CR 119 CantGainLife static gate. When the requested
+    // delta is positive (life-gain) and any active CantGainLife static
+    // matches the seat, rewrite the delta to 0 BEFORE constructing the
+    // LifeChangeIntent. The LifeChanged event still fires (with delta
+    // 0) so SBA bookkeeping stays consistent; downstream observers
+    // (Soul's Attendant / Ajani's Pridemate / Crested Sunmare) do not
+    // observe a gain. Damage-induced life gain (Soul Sister) routes
+    // through here too, so it is covered by the same gate.
+    const effectiveDelta = delta > 0 && !canGainLife(game, seat) ? 0 : delta;
     const intent: LifeChangeIntent = {
       kind: "lifeChange",
       seat,
-      delta,
+      delta: effectiveDelta,
       cause: opts?.cause ?? "effect",
     };
     yield* this.applyWithReplacements<LifeChangeIntent>(
@@ -1776,6 +1785,16 @@ export class GameAction {
       throw new GameStateIntegrityError(
         `playLand: card ${cardId} must be in Hand to be played, found ${card.zone}`,
       );
+    }
+    // Wave 70.E — CR 305 CantPlayLand static gate. If any active
+    // CantPlayLand static matches the seat, the action no-ops silently
+    // (no LandPlayed event, no zone change, no drop counter increment).
+    // The legal-action enumerator likewise consults the gate so the AI
+    // / UI never offers play-land as a legal action when blocked.
+    // Spell-effect land plays (AB$ Play with Land$ True) bypass this
+    // gate by routing through `moveTo` directly — Restorm-style carve-out.
+    if (!canPlayLand(game, seat)) {
+      return;
     }
     // Move the land to the battlefield via the canonical zone-change path
     // so the CardChangedZone event fires and ETB replacements gather as

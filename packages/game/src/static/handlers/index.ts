@@ -94,3 +94,17 @@ export * from "./starting-hand-size-mod-static.js";
 export * from "./cant-target-static.js";
 export * from "./cant-attack-unless-static.js";
 export * from "./combat-damage-toughness-static.js";
+// Wave 70.E — three more registry-walk gate statics from the long-tail
+// static-mode pack (already in the enum; previously unhandled):
+//   - CantGainLife              (~18 cards — Erebos / Sulfuric Vortex /
+//                                Roiling Vortex / Stigma Lasher /
+//                                Rampaging Ferocidon / Yasharn)
+//   - CantPlayLand              (~11 cards — Restorm, the Searing /
+//                                Stranglehold / Emberwilde Captain /
+//                                Ob Nixilis, the Adversary)
+//   - CantPreventDamage         (~10 cards — Comet, Stellar Pup /
+//                                Inferno; bypasses Wave 60.E
+//                                PreventAllDamage for matched sources)
+export * from "./cant-gain-life-static.js";
+export * from "./cant-play-land-static.js";
+export * from "./cant-prevent-damage-static.js";

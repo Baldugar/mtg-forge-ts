@@ -20,9 +20,31 @@
 // canPutCounter / canBeRegenerated / canUntap.
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import type { CantPreventDamagePayload } from "../static/handlers/cant-prevent-damage-static.js";
 import type { PreventDamagePayload } from "../static/handlers/prevent-damage-static.js";
 
 const PREVENT_MODES = ["PreventAllDamage", "PreventAllDamageBy", "PreventAllDamageTo"] as const;
+
+/**
+ * True iff damage from `sourceId` may be prevented (CR 615.6). False iff
+ * any active CantPreventDamage static matches the damage source. Consumed
+ * by `wouldPreventDamage` BEFORE the prevention statics are walked — on
+ * a match, the prevention loop is short-circuited and damage flows
+ * normally. Implements the "X's damage can't be prevented" precedence
+ * rule for sources like Comet, Stellar Pup / Inferno / certain Eldrazi.
+ *
+ * Standalone helper exposure (in addition to its inline use within
+ * wouldPreventDamage) lets the AI evaluator and combat-handler pre-flight
+ * checks query prevention permissibility without re-walking the registry.
+ */
+export const canDamageBePrevented = (game: Game, sourceId: EntityId): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantPreventDamage");
+  for (const s of statics) {
+    const payload = s.describe() as CantPreventDamagePayload;
+    if (payload.sourceMatches(sourceId, game)) return false;
+  }
+  return true;
+};
 
 /**
  * True iff some active prevent-damage static fully prevents the supplied
@@ -43,6 +65,11 @@ export const wouldPreventDamage = (
   targetId: EntityId | PlayerSeat,
   isCombat: boolean,
 ): boolean => {
+  // Wave 70.E — CR 615.6 precedence: if the damage source is gated by an
+  // active CantPreventDamage static, the prevention loop is bypassed and
+  // damage flows normally. Mirrors Forge's StaticAbilityCantPreventDamage
+  // short-circuit at the prevention consultation site.
+  if (!canDamageBePrevented(game, sourceId)) return false;
   for (const mode of PREVENT_MODES) {
     const statics = game.staticEffectRegistry.byMode(mode);
     for (const s of statics) {
