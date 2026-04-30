@@ -25,6 +25,7 @@ import {
   sweepEndOfCombat,
 } from "../statics/wave65-combat-gates.js";
 import { assignsCombatDamageAsUnblocked } from "../statics/wave70f-combat-gates.js";
+import { collectMustBlockSubjects } from "../statics/wave70g-combat-gates.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -117,6 +118,12 @@ export class CombatHandler {
       const info: BlockerInfo = { blockerId: d.blockerId, attackerIds: [...d.attackerIds] };
       this.state.blockers.set(d.blockerId, info);
     }
+    // Wave 70.G — auto-correct: any creature subject to an active
+    // MustBlock static that wasn't already declared as a blocker gets
+    // pulled in, blocking the first attacker available (preferring the
+    // attacker matched by the static's Attacker$ filter when present).
+    // Mirror of applyMustAttack — same "if able" gating contract.
+    this.applyMustBlock();
   }
 
   /**
@@ -192,6 +199,54 @@ export class CombatHandler {
       };
       this.state.attackers.set(id, info);
       card.attackedThisCombat = true;
+    }
+  }
+
+  /**
+   * Wave 70.G — auto-add must-block creatures (CR 509.1g block
+   * requirements; Provoke / Lure-shape statics + the Wave 70.G
+   * MustBlock static-mode handler). Walks the mustBlock restriction
+   * registry, finds matching battlefield creatures NOT already in
+   * the blockers list, and pulls them in blocking the matched
+   * attacker (when Attacker$ is supplied) or the first declared
+   * attacker otherwise.
+   *
+   * MVP — defender is the first declared attacker; the
+   * collectMustBlockSubjects helper carries the must-block-attacker id
+   * via the second tuple element when the static specifies Attacker$.
+   * "If able" gating: respects the existing canBlock gate (decayed) +
+   * the static cantBlock registry (via gatherRestrictions sweep at
+   * declareBlockers time). The full Forge "if able" check (tap state,
+   * evasion vs the required attacker) is // TODO(advanced); same
+   * contract as applyMustAttack.
+   */
+  private applyMustBlock(): void {
+    const subjects = collectMustBlockSubjects(this.game);
+    if (subjects.length === 0) return;
+    // Pick a default attacker (first declared) for must-block entries
+    // without a specific Attacker$ filter.
+    const declaredAttackerIds = [...this.state.attackers.keys()];
+    if (declaredAttackerIds.length === 0) return;
+    const defaultAttackerId = declaredAttackerIds[0];
+    if (defaultAttackerId === undefined) return;
+    for (const subj of subjects) {
+      if (this.state.blockers.has(subj.blockerId)) continue;
+      // Respect canBlock — decayed / future cant-block-flagged creatures
+      // are excluded (CR 509.1d "if able").
+      if (!canBlock(this.game, subj.blockerId)) continue;
+      const card = this.game.cards.get(subj.blockerId);
+      if (!card) continue;
+      // Resolve the required attacker. If the static targeted a specific
+      // Attacker$ that matches a declared attacker, use that; otherwise
+      // fall back to the default (first declared attacker).
+      const requiredId = subj.mustBlockAttackerId;
+      const targetAttackerId =
+        requiredId !== undefined && this.state.attackers.has(requiredId) ? requiredId : defaultAttackerId;
+      const info: BlockerInfo = {
+        blockerId: subj.blockerId,
+        attackerIds: [targetAttackerId],
+      };
+      this.state.blockers.set(subj.blockerId, info);
     }
   }
 

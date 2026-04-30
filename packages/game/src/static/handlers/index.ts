@@ -124,3 +124,19 @@ export * from "./cant-prevent-damage-static.js";
 export * from "./untap-other-player-static.js";
 export * from "./assign-combat-damage-as-unblocked-static.js";
 export * from "./ignore-land-walk-static.js";
+// Wave 70.G — top-three remaining unwired static modes from the
+// Forge corpus by frequency:
+//   - CanAttackIfHaste     (~28 cards — Glorybringer / Combat Celebrant
+//                            / Frenzied Saddlebrute / Instill Energy;
+//                            positive override of summoning sickness
+//                            for matched attacker + matched defender)
+//   - MustBlock            (~27 cards — Provoke / Brutal Hordechief /
+//                            Lure-shape statics; auto-correct at
+//                            declareBlockers pulls subjects in if able)
+//   - AttackVigilance      (~11 cards — Archangel of Tithes / Hipparion
+//                            / Hollow Warrior / Heat Wave; attacker
+//                            doesn't tap when attacking, vigilance-
+//                            equivalent without the keyword stamp)
+export * from "./can-attack-if-haste-static.js";
+export * from "./must-block-static.js";
+export * from "./attack-vigilance-static.js";
