@@ -30,6 +30,7 @@ import { applyUndercityRoomEffect, onUpkeepAdvanceInitiativeDungeon } from "../d
 import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
 import { tickSuspendedCards } from "../keyword/suspend-tick.js";
+import { ManaPool } from "../mana/mana-pool.js";
 import { processPhasingOnUntap } from "../phasing/phasing-ops.js";
 import { canUntap } from "../statics/wave60-cant-gates.js";
 import {
@@ -42,6 +43,7 @@ import {
 import { sweepEndOfCombat, sweepEndOfTurnWarpExile } from "../statics/wave65-combat-gates.js";
 import { shouldUntapDuringStep } from "../statics/wave70f-combat-gates.js";
 import { clearsDamageInCleanup } from "../statics/wave70i-loyalty-gates.js";
+import { playerHasManaBurn, shardSurvivesEmpty } from "../statics/wave73-unspent-mana.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -212,6 +214,16 @@ export class PhaseHandler {
     // loops priority between all seats and resolves the stack before the
     // step closes.
 
+    // Wave 73 — CR 106.4 mana-pool empty step. Each player's mana pool
+    // empties as each step / phase ends. The UnspentMana static
+    // (Omnath / Upwelling / Leyline Tyrant / etc.) gates this per-color
+    // per-seat: shards whose color is retained survive the drain. The
+    // ManaBurn rule (pre-2009 R 119.10, modernized as a per-game flag
+    // OR per-seat ManaBurn static — Yurlok of Scorch Thrash) deals 1
+    // life-loss per shard removed. Mirrors Forge's onPhaseEnd in
+    // PhaseHandler.java: clearPool(true) → loseLife(burn).
+    yield* this.emptyManaPools();
+
     yield {
       kind: "event",
       event: mkEvent("StepEnded", game.turn, game.phase, {
@@ -219,6 +231,32 @@ export class PhaseHandler {
         step,
       }),
     };
+  }
+
+  /**
+   * Wave 73 — drain every player's mana pool subject to the
+   * UnspentMana static gate, then apply ManaBurn life-loss when
+   * configured. Skips silently when a player has no ManaPool
+   * attached (early SP1 tests + standalone Player constructions
+   * leave the slot at the unknown=null default).
+   */
+  private *emptyManaPools(): Generator<EngineYield, void, DecisionResponse> {
+    const game = this.game;
+    for (const player of game.players) {
+      const pool = player.manaPool;
+      if (!(pool instanceof ManaPool)) continue;
+      if (pool.size() === 0) continue;
+      const seat = player.seat;
+      const removed = pool.emptyExcept((shard) => shardSurvivesEmpty(game, seat, shard.color));
+      if (removed > 0 && playerHasManaBurn(game, seat)) {
+        // CR pre-2009 R 119.10. Routed through changeLife so the full
+        // replacement / SBA pipeline observes the loss (CantLoseLife
+        // / damage-prevention shields don't apply since this is life
+        // loss, not damage; changeLife with cause:"manaBurn" is the
+        // canonical entry point).
+        yield* this.action.changeLife(seat, -removed, { cause: "manaBurn" });
+      }
+    }
   }
 
   *performTurnBasedActions(

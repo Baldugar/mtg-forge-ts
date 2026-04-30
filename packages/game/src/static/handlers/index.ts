@@ -301,6 +301,20 @@ export * from "./cant-become-monarch-static.js";
 export * from "./cant-change-day-time-static.js";
 export * from "./turn-reversed-static.js";
 export * from "./phase-reversed-static.js";
+// Wave 73 — UnspentMana + ManaBurn statics (~7 + ~1 cards):
+//   - UnspentMana          (Omnath, Locus of Mana / Upwelling / Leyline
+//                            Tyrant / Fangorn Tree Shepherd / Ashling,
+//                            Flame Dancer / Electro, Assaulting Battery /
+//                            The Last Agni Kai svar form)
+//   - ManaBurn             (Yurlok of Scorch Thrash; per-seat opt-in to
+//                            the pre-2009 mana-burn rule layered on top
+//                            of the per-game GameRules.manaBurn flag)
+//   Both modes are read by the new mana-pool empty step in PhaseHandler
+//   (CR 106.4) — the empty step now consults shardSurvivesEmpty per
+//   shard before dropping it, and applies playerHasManaBurn life-loss
+//   right after.
+export * from "./unspent-mana-static.js";
+export * from "./mana-burn-static.js";
 // Wave 72 — TapPowerValue static (~10 cards, MKM Vehicle pilot cluster):
 //   - Cloudspire Captain / Deathless Pilot / Dragonfly Pilot / Dynamite
 //     Diver / Experimental Pilot / Giant Ox / Hotshot Mechanic /
