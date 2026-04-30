@@ -301,3 +301,11 @@ export * from "./cant-become-monarch-static.js";
 export * from "./cant-change-day-time-static.js";
 export * from "./turn-reversed-static.js";
 export * from "./phase-reversed-static.js";
+// Wave 72 — TapPowerValue static (~10 cards, MKM Vehicle pilot cluster):
+//   - Cloudspire Captain / Deathless Pilot / Dragonfly Pilot / Dynamite
+//     Diver / Experimental Pilot / Giant Ox / Hotshot Mechanic /
+//     Interface Ace / Stoic Star Captain / Tapestry Warden
+//   Substitutes the per-creature "tap power value" contribution in
+//   Crew / Saddle / Station activations: Value$ Toughness swaps power
+//   for toughness; Value$ N adds N to power.
+export * from "./tap-power-value-static.js";

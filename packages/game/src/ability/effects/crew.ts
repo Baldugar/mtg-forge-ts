@@ -40,17 +40,36 @@ import type { ContinuousEffect, DecisionResponse, EntityId } from "@mtg-forge-ts
 import { CardType, Layer, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { effectiveTapPowerValue } from "../../statics/wave72-tap-power-value.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
-const sumPower = (game: Game, ids: readonly EntityId[]): number => {
+// Wave 72 — TapPowerValue statics (Hotshot Mechanic et al.) substitute
+// the per-creature contribution to the crew total. We consult the
+// effectiveTapPowerValue helper per id; when no static matches, the
+// helper returns null and we fall back to the creature's effective
+// power.
+const sumPower = (game: Game, sourceId: EntityId, ids: readonly EntityId[]): number => {
   let total = 0;
   for (const id of ids) {
     const chars = game.layerEngine.computeCharacteristics(id);
+    const tpv = effectiveTapPowerValue(game, id, {
+      saKind: "Crew",
+      activatingSourceId: sourceId,
+    });
+    if (tpv?.useToughness) {
+      const t = chars.toughness;
+      if (t !== null && Number.isFinite(t)) total += Math.max(0, t);
+      continue;
+    }
     const p = chars.power;
-    if (p !== null && Number.isFinite(p)) total += p;
+    if (p !== null && Number.isFinite(p)) {
+      total += Math.max(0, p + (tpv?.mod ?? 0));
+    } else if (tpv) {
+      total += Math.max(0, tpv.mod);
+    }
   }
   return total;
 };
@@ -103,7 +122,7 @@ export class CrewEffect extends SpellAbilityEffect {
       if (seen.has(tid)) return;
       seen.add(tid);
     }
-    if (sumPower(game, tapIds) < requiredPower) return; // not enough power — fizzle
+    if (sumPower(game, sourceId, tapIds) < requiredPower) return; // not enough power — fizzle
 
     // Tap the chosen creatures. Direct mutation: this happens during effect
     // resolution, not as a cost — no CardTapped event for the cost-tap path
