@@ -205,4 +205,9 @@ export * from "./visit-keyword.js";
 export * from "./web-slinging-keyword.js";
 export * from "./enlist-keyword.js";
 export * from "./ravenous-keyword.js";
+// Wave 71 — Suspect (CR 701.58, Murders at Karlov Manor). Forward-
+// compatibility stamp; the canonical Forge surface is an ETB trigger
+// that invokes AB$ AlterAttribute | Attributes$ Suspected (handled by
+// AlterAttributeEffect / SuspectEffect).
+export * from "./suspect-keyword.js";
 export * from "./flag-keyword.js";

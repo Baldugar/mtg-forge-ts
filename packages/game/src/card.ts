@@ -602,6 +602,21 @@ export class Card {
   // line without requiring a Crew activation; full Continuous AddType
   // synthesis is // TODO(advanced).
   crewStaticActive: boolean | undefined = undefined;
+  // Wave 71 — Suspect (CR 701.58 / Murders at Karlov Manor). Stamped to
+  // true when a creature becomes suspected (CR 701.58a — "It has menace
+  // and can't block."). Read by:
+  //   - canBlock (statics/wave65-combat-gates.ts) — a suspected creature
+  //     is excluded from the legal-blocker pool;
+  //   - hasKeyword (combat/damage-assignment-helpers.ts) — synthesizes
+  //     "menace" while the flag is set so block-restrictions enforce the
+  //     two-blocker minimum;
+  //   - cardMatchesAlt (trigger/card-filter.ts) — the `Suspected`
+  //     qualifier matches when the flag is true (Card.Suspected);
+  //   - the Wave 21 AlterAttributeEffect sets/clears the slot when
+  //     `Attributes$ Suspected` is the requested flip.
+  // Slot is `boolean | undefined = undefined` so handlers can clear via
+  // `= undefined` (biome no-delete + exactOptionalPropertyTypes).
+  suspected: boolean | undefined = undefined;
   // Wave 69 — Splice onto Arcane (CR 702.46/702.47). When a player splices
   // K:Splice cards onto an in-flight Arcane spell, the cast pipeline
   // records each chosen splicer + the SVar name of its first ability here

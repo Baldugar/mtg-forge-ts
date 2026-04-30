@@ -87,6 +87,11 @@ export const canBlock = (game: Game, blockerId: EntityId): boolean => {
   const card = game.cards.get(blockerId);
   if (!card) return true;
   if (card.decayed === true) return false;
+  // Wave 71 — CR 701.58a — "A suspected creature has menace and can't
+  // block." The flag is set by the AlterAttribute / Suspect effects;
+  // remains until a CeaseBeingSuspected effect (or a "no longer
+  // suspected" replacement) clears it.
+  if (card.suspected === true) return false;
   return true;
 };
 

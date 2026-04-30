@@ -151,3 +151,7 @@ export * from "./additional-combat.js";
 // Synthesized by EncoreKeywordHandler; per-opponent token-copy spawn
 // tapped + attacking that opponent + haste, with EOT-sac stamp.
 export * from "./encore.js";
+// Wave 71 — Suspect / CeaseBeingSuspected (CR 701.58, Murders at Karlov
+// Manor). Thin wrappers around the same flag-flip the Wave 21
+// AlterAttributeEffect performs for `Attributes$ Suspected`.
+export * from "./suspect.js";

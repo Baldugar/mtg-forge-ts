@@ -195,6 +195,13 @@ const META: readonly KeywordMeta[] = [
   { id: "strive", displayName: "Strive", multipleRedundant: false },
   { id: "sunburst", displayName: "Sunburst", multipleRedundant: false },
   { id: "surge", displayName: "Surge", multipleRedundant: false },
+  // Wave 71 — Suspect (CR 701.58, Murders at Karlov Manor). Forge's
+  // canonical surface is `AB$ AlterAttribute | Attributes$ Suspected`
+  // rather than a printed K:Suspect line, so this id exists primarily
+  // for forward compatibility (innate-suspect cards / static synthesis)
+  // and the menace-while-suspected hasKeyword path. Marked redundant
+  // (extra K:Suspect activations are no-ops once card.suspected is set).
+  { id: "suspect", displayName: "Suspect", multipleRedundant: true },
   { id: "suspend", displayName: "Suspend", multipleRedundant: false },
   { id: "tiered", displayName: "Tiered", multipleRedundant: true },
   { id: "toxic", displayName: "Toxic", multipleRedundant: false },

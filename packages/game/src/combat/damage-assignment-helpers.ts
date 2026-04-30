@@ -115,6 +115,12 @@ export const hasKeyword = (game: Game, cardId: EntityId, keyword: string): boole
   // intrinsic / granted sources.
   if (game.layerEngine.effectiveKeywordRemovals(cardId).has(keyword)) return false;
   if (card.keywords?.has(keyword)) return true;
+  // Wave 71 — CR 701.58a — "A suspected creature has menace and can't
+  // block." Synthesize the menace keyword while card.suspected is set
+  // so block-restrictions (combat/keywords/block-restrictions.ts) sees
+  // the same answer combat does, without needing a dedicated layer-6
+  // grant per suspect application.
+  if (keyword === "menace" && card.suspected === true) return true;
   // Wave 32 — Layer 6 keyword grants (Threshold, Wither/Infect roadmap).
   return game.layerEngine.effectiveGrantedKeywords(cardId).has(keyword);
 };

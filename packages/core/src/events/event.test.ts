@@ -89,6 +89,8 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "Surveil",
   "Shuffle",
   "CardPlotted",
+  "CardSuspected",
+  "CardUnsuspected",
   "TokenCreated",
   // Mana (1)
   "ManaEnteredPool",
@@ -286,6 +288,8 @@ const ALL_KINDS_MAP = {
   Surveil: true,
   Shuffle: true,
   CardPlotted: true,
+  CardSuspected: true,
+  CardUnsuspected: true,
   TokenCreated: true,
   ManaEnteredPool: true,
   DayTimeChanged: true,
@@ -400,9 +404,9 @@ const ALL_KINDS_MAP = {
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 172 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2, Wave 70.A + 3)", () => {
-    expect(EXPECTED_KINDS.length).toBe(172);
-    expect(new Set(EXPECTED_KINDS).size).toBe(172);
+  it("has 174 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2, Wave 70.A + 3, Wave 71 + 2)", () => {
+    expect(EXPECTED_KINDS.length).toBe(174);
+    expect(new Set(EXPECTED_KINDS).size).toBe(174);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -511,6 +515,8 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     Surveil: { playerSeat: seat0, count: 1 },
     Shuffle: { playerSeat: seat0, zoneShuffled: ZoneType.Library },
     CardPlotted: { playerSeat: seat0, cardId: id(1) },
+    CardSuspected: { cardId: id(1), sourceId: id(2) },
+    CardUnsuspected: { cardId: id(1), sourceId: null },
     TokenCreated: { controllerSeat: seat0, tokenCardId: id(1) },
     ManaEnteredPool: { playerSeat: seat0, color: null, sourceId: null, amount: 1 },
     DayTimeChanged: { oldValue: "day", newValue: "night" },

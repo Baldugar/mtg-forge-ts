@@ -728,6 +728,26 @@ export type GameEvent =
       readonly phase: PhaseStep;
       readonly payload: { readonly playerSeat: PlayerSeat; readonly cardId: EntityId };
     }
+  // Wave 71 — Suspect (CR 701.58, Murders at Karlov Manor). The
+  // suspect/cease-being-suspected pair is emitted by the Wave 21
+  // AlterAttributeEffect when `Attributes$ Suspected` flips card.suspected
+  // — cardId points at the affected card; sourceId is the spell or
+  // ability that suspected it (or `null` for innate K:Suspect / ETB
+  // self-suspect cases).
+  | {
+      readonly kind: "CardSuspected";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly sourceId: EntityId | null };
+    }
+  | {
+      readonly kind: "CardUnsuspected";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly cardId: EntityId; readonly sourceId: EntityId | null };
+    }
   | {
       readonly kind: "TokenCreated";
       readonly version: 1;

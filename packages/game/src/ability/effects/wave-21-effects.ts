@@ -511,16 +511,78 @@ export class RingTemptsYouEffect extends SpellAbilityEffect {
 effectRegistry.register(RingTemptsYouEffect);
 
 // 19. AlterAttribute ----------------------------------------------------------
-// Forge `SP$ AlterAttribute` — modify a numeric attribute on the source/target
-// (rare; e.g. variant rules). MVP: bump a card-local attribute map.
+// Forge `SP$ AlterAttribute` — modify a flag-style attribute on the source/
+// target. Mirrors AlterAttributeEffect.java's switch on "Attributes$" —
+// recognised values flip a typed Card slot; unrecognised attribute names
+// fall back to the legacy `card.attributes` Map (variant rules / numeric
+// counters).
+//
+// Forge surface (CR 701.58 / Murders at Karlov Manor):
+//   AB$ AlterAttribute | Defined$ Self    | Attributes$ Suspected
+//   AB$ AlterAttribute | Defined$ Targeted| Attributes$ Suspect
+//   AB$ AlterAttribute | Defined$ Self    | Attributes$ Suspected | Activate$ False
+//
+// "Activate$" is "true" by default (set the attribute); "Activate$ False"
+// clears it. The Suspect/Suspected synonym is from Forge's switch cases:
+// `case "Suspect": case "Suspected": altered = gameCard.setSuspected(activate);`
 export class AlterAttributeEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "AlterAttribute";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const activate = hasParam(sa, "Activate") ? evaluateParamRaw(sa, "Activate") !== "False" : true;
+    const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
+
+    // Wave 71 — multi-attribute support (Forge's `Attributes$` is comma-
+    // separated). When `Attributes$` is set we dispatch each attribute
+    // through the typed-flag path below. The legacy `Attribute$` (single)
+    // / `Amount$` (numeric delta) path is preserved for the variant-rule
+    // case (e.g. ring-level).
+    if (hasParam(sa, "Attributes")) {
+      const raw = evaluateParamRaw(sa, "Attributes");
+      const attrs = raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0);
+      for (const id of ids) {
+        const card = game.cards.get(id);
+        if (!card) continue;
+        for (const attr of attrs) {
+          switch (attr) {
+            case "Suspect":
+            case "Suspected": {
+              // CR 701.58d — "A suspected permanent can't become
+              // suspected again." Skip when already suspected (matches
+              // Forge's setSuspected guard).
+              if (activate && card.suspected === true) continue;
+              if (!activate && card.suspected !== true) continue;
+              card.suspected = activate ? true : undefined;
+              // Bump the layer engine epoch so the menace synthesis in
+              // hasKeyword sees the new flag without a stale cache.
+              game.layerEngine.bumpEpoch(activate ? "suspect" : "cease-suspect");
+              yield game.emitEvent(
+                mkEvent(activate ? "CardSuspected" : "CardUnsuspected", game.turn, game.phase, {
+                  cardId: id,
+                  sourceId: sa.sourceCardId,
+                }),
+              );
+              break;
+            }
+            // TODO(advanced): Plotted/Solved/Saddled/Harnessed parity —
+            // currently handled by their own keyword/effect paths
+            // (plot-keyword.ts, saddle-keyword.ts). Leave the switch
+            // open for future fold-ins so Forge's full AlterAttribute
+            // umbrella matches.
+            default:
+              break;
+          }
+        }
+      }
+      return;
+    }
+
+    // Legacy single-attribute / numeric path.
     const attr = hasParam(sa, "Attribute") ? evaluateParamRaw(sa, "Attribute") : "default";
     const delta = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
-    const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     for (const id of ids) {
       const card = game.cards.get(id);
       if (!card) continue;

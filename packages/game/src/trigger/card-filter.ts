@@ -155,6 +155,13 @@ const cardMatchesAlt = (card: Card, alt: string, ctx: CardFilterCtx): boolean =>
       if (!ctx.attackingIds || !ctx.attackingIds.has(card.id)) return false;
       continue;
     }
+    // Wave 71 — CR 701.58 — Card.Suspected matches when the card is
+    // currently suspected (Murders at Karlov Manor). Mirrors Forge's
+    // CardProperty.IsSuspected predicate.
+    if (q === "Suspected" || q === "IsSuspected") {
+      if (card.suspected !== true) return false;
+      continue;
+    }
     if (COLOR_NAMES.has(q)) {
       if (!cardHasColor(card, q)) return false;
       continue;
