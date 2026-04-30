@@ -6,16 +6,16 @@
 
 ---
 
-## State snapshot (post-Wave 70.P)
+## State snapshot (post-Wave 76)
 
 - **Repo:** `F:\BACKUP\Programacion\mtg-forge-ts`
 - **Branch:** `sp1-engine-foundations` (local only; never pushed)
-- **HEAD:** `865b01c` (Wave 70.P — final small-mode batch)
-- **Commits since `dbe90e6`:** ~375
-- **Tests: 3,396 game + 134 cards + 727 core = 4,257 passing**
+- **HEAD:** `22df2d9` (Wave 76 — final small modes batch)
+- **Commits since `dbe90e6`:** ~382
+- **Tests: 3,461 game + 134 cards + 729 core = 4,324 passing**
 - **Coverage:** **100.0%** on full 32,300-card Forge corpus
 - **Gates:** typecheck (fresh tsc --noEmit) ✅, build ✅, test ✅, lint ✅, DCO ✅
-- **Static-mode registration: ~75 of ~96 enum entries**
+- **Static-mode registration: 90 of ~96 (~94%)**
 
 ---
 
@@ -48,7 +48,13 @@
 | **70.N** | AssignNoCombatDamage (~26 cards) | 1 | `bdca50a` | +6 |
 | **70.O** | CantPhaseIn + CantPhaseOut + CantChangeLife | 1 | `1075ba7` | +9 |
 | **70.P** | CanBlockIfReach + CantBecomeMonarch + CantChangeDayTime + TurnReversed + PhaseReversed | 1 | `865b01c` | +13 |
-| **TOTAL** | | **41** | | **+402** |
+| **71** | Suspect mechanic (MKM) | 1 | `b13745f` | +13 |
+| **72** | TapPowerValue Vehicle Crew/Saddle/Station sum-power | 1 | `7d6ebcb` | +9 |
+| **73** | UnspentMana + ManaBurn + per-step mana-pool empty (CR 106.4) | 1 | `5c66119` | +12 |
+| **74** | CantCrew + CantDiscard + ColorlessDamageSource | 1 | `108c75e` | +8 |
+| **75** | CanAdapt + CanExhaust + IgnoreShroud + CantExile | 1 | `04e28d6` | +12 |
+| **76** | CantBeSuspected + CantVenture + PlotZone + GainLifeRadiation | 1 | `22df2d9` | +13 |
+| **TOTAL** | | **47** | | **+469** |
 
 ---
 
