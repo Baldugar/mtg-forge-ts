@@ -27,19 +27,39 @@
 //   - AddKeywords$ <Kw[,…]>       — Layer 6 "kw-grant" effect per keyword.
 //   - Power$ / Toughness$ <N>     — aliases for SetPower$ / SetToughness$
 //                                    matching the Forge-DSL surface.
+//
+// Wave 70.C — AddTriggers$ resolver override:
+//   The standard trigger handler (e.g. BecomesTargetTrigger) builds a
+//   resolver that looks up its `Execute$` SVar off the trigger's
+//   `sourceCardId`'s PaperCard.definition.svars. For a granted trigger
+//   on a *copy*, the source-card is the copy — whose PaperCard belongs
+//   to the original (a Bear, an Artifact, etc.) and does NOT carry
+//   Phantasmal Image's `PhantasmalSacrifice` SVar. We override the
+//   resolver to look up the SVar on the SpellAbility's svars (the
+//   CopyPermanent caller's svars — i.e. Phantasmal Image's). This
+//   mirrors Wave 60.B's `makeGrantedTriggerResolver` SVar-redirect
+//   pattern verbatim.
 import { CardType, Color, ColorSet, Layer } from "@mtg-forge-ts/core";
-import type { ContinuousEffect, EntityId, TriggerAst } from "@mtg-forge-ts/core";
+import type {
+  AbilityAst,
+  ContinuousEffect,
+  EntityId,
+  PlayerSeat,
+  SVarAst,
+  TriggerAst,
+} from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import type { Layer6KeywordGrant } from "../../layers/keyword-layer.js";
 import type { TypeChangeEffect } from "../../layers/layer4-type.js";
 import type { ColorChangeEffect } from "../../layers/layer5-color.js";
 import type { Layer7bEffect } from "../../layers/layer7-pt.js";
+import type { StackItemResolver } from "../../stack/stack-item.js";
 import { triggerHandlerRegistry } from "../../trigger/index.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
-import type { SpellAbility } from "../spell-ability.js";
+import { SpellAbility } from "../spell-ability.js";
 
 const CARD_TYPE_BY_NAME: Readonly<Record<string, CardType>> = {
   Creature: CardType.Creature,
@@ -82,6 +102,44 @@ const parseColorList = (raw: string): ColorSet => {
   }
   return colors.length === 0 ? ColorSet.empty() : ColorSet.of(...colors);
 };
+
+/**
+ * Wave 70.C — build the resolver that drives an AddTriggers$ SVar's
+ * `Execute$` body. SVar lookup is redirected to the CopyPermanent
+ * caller's svars (passed in) instead of the trigger source-card's
+ * PaperCard svars; effects still operate on the matched card (the
+ * freshly-minted copy) via `sa.sourceCardId = matchedCardId`. Mirrors
+ * Wave 60.B's `makeGrantedTriggerResolver`.
+ */
+const makeAddedTriggerResolver = (params: {
+  readonly executeKey: string;
+  readonly svars: ReadonlyMap<string, SVarAst>;
+  readonly matchedCardId: EntityId;
+  readonly controllerSeat: PlayerSeat;
+}): StackItemResolver => ({
+  *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
+    const game = gameUnknown as Game;
+    const sv = params.svars.get(params.executeKey);
+    if (!sv) return;
+    if (sv.kind !== "ability" || !sv.ability) return;
+    const fakeAst: AbilityAst = {
+      kind: "spell",
+      effect: sv.ability,
+      cost: { raw: "" },
+    };
+    const inner = new SpellAbility(
+      fakeAst,
+      params.matchedCardId,
+      params.controllerSeat,
+      params.svars,
+      // Default Defined$ Self semantics: pass the copy as the implicit
+      // target so DBSac / DBDestroy / DBPump on Self-style SVars route
+      // to the matched card without having to walk a Defined$ resolver.
+      [params.matchedCardId],
+    );
+    yield* inner.makeResolver().resolve(game);
+  },
+});
 
 export class CopyPermanentEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "CopyPermanent";
@@ -255,6 +313,19 @@ export class CopyPermanentEffect extends SpellAbilityEffect {
             sourceCardId: newId,
             controllerSeat: sa.controllerSeat,
             triggerId,
+          });
+          // Wave 70.C — override the resolver so the Execute$ SVar
+          // lookup goes through `sa.svars` (the CopyPermanent caller's
+          // svars), not the copy's PaperCard svars. The copy's source
+          // PaperCard belongs to the COPIED card, which does not carry
+          // the cloner's SVars (e.g. Phantasmal Image's
+          // PhantasmalSacrifice).
+          const overridden = ta as unknown as { resolver: StackItemResolver | null };
+          overridden.resolver = makeAddedTriggerResolver({
+            executeKey: ast.effect.handlerKey,
+            svars: sa.svars,
+            matchedCardId: newId,
+            controllerSeat: sa.controllerSeat,
           });
           game.triggerRegistry.register(ta);
         }
