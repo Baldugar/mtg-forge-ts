@@ -7,8 +7,14 @@
 // carries AbilityRef{id, grantedBy, origin} today, with no keyword string
 // surface. When SP3 lands the keyword registry we drop this helper's
 // Card.keywords fallback in favor of a Characteristics lookup.
+//
+// Wave 70.D — `attackerPower` consults the CombatDamageToughness static
+// (Doran, the Siege Tower / Assault Formation / Belligerent Brontodon)
+// before reading chars.power; on match the layered toughness is
+// returned instead. CR 702.95.
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { usesToughnessForCombatDamage } from "../statics/wave70d-target-combat-gates.js";
 import type { DefenderTarget } from "./combat-state.js";
 
 export const defenderKind = (d: DefenderTarget): "player" | "planeswalker" | "battle" => {
@@ -45,11 +51,19 @@ export const defenderId = (d: DefenderTarget): EntityId | PlayerSeat => {
  * Attacker power for combat-damage purposes. CR 104.3m: damage-dealing
  * creatures with power less than 0 deal no damage — clamp at 0 here so the
  * caller can filter with a single `power <= 0` check.
+ *
+ * Wave 70.D — when a CombatDamageToughness static (CR 702.95) matches
+ * the attacker, the Doran-shape rule kicks in: the attacker assigns
+ * combat damage equal to its toughness rather than its power. The
+ * toughness is read from the same layered characteristics view, also
+ * clamped at 0 (CR 702.95 carries the same "less than 0 → no damage"
+ * convention as power).
  */
 export const attackerPower = (game: Game, attackerId: EntityId): number => {
   const chars = game.layerEngine.computeCharacteristics(attackerId);
-  const p = chars.power ?? 0;
-  return p < 0 ? 0 : p;
+  const useToughness = usesToughnessForCombatDamage(game, attackerId);
+  const raw = useToughness ? (chars.toughness ?? 0) : (chars.power ?? 0);
+  return raw < 0 ? 0 : raw;
 };
 
 /**

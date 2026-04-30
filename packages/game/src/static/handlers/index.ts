@@ -82,3 +82,15 @@ export * from "./cant-transform-static.js";
 export * from "./mana-convert-static.js";
 export * from "./crew-static.js";
 export * from "./starting-hand-size-mod-static.js";
+// Wave 70.D — top-three long-tail static modes by Forge corpus
+// frequency (already in the enum but until now lacked a registered
+// handler):
+//   - CantTarget                (~26 cards — True Believer / Mother of
+//                                Runes / Spectra Ward / Aether Membrane)
+//   - CantAttackUnless          (~25 cards — Propaganda / Ghostly Prison /
+//                                Mystic Barrier / Sphere of Resistance)
+//   - CombatDamageToughness     (~18 cards — Doran, the Siege Tower /
+//                                Assault Formation / Belligerent Brontodon)
+export * from "./cant-target-static.js";
+export * from "./cant-attack-unless-static.js";
+export * from "./combat-damage-toughness-static.js";

@@ -7,22 +7,36 @@
 // the complete eligibility set. validateAtCast then checks that the player's
 // chosen targets are all members of that set.
 //
+// Wave 70.D — eligibility now consults CantTarget statics. Cards matched
+// by an active CantTarget gate (against the source/activator/SA-kind
+// tuple in the EnumerationContext) are dropped silently. Forge:
+// `StaticAbilityCantTarget.cantTarget` is consulted before the candidate
+// is added to the target list.
+//
 // Forge references:
 //   - forge.game.ability.AbilityUtils#isValidTarget
 //   - forge.game.spellability.TargetRestrictions#canTgtPlayer / canTgtCard
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
+import { canBeTargetedBy } from "../statics/wave70d-target-combat-gates.js";
 import type { ControllerScope, TargetRef, TargetRestriction } from "./restriction.js";
 
 /**
  * Context describing the source ability's identity — its source card and
  * controller — so enumeration can evaluate controller-scope and the
  * forbid-self-source rule.
+ *
+ * Wave 70.D — `saKind` is consulted by the CantTarget gate (CR 702.11
+ * sub-shape ValidSA$ Spell / Activated). undefined treats the SA as
+ * "any kind", which matches Forge's behaviour during early enumeration
+ * before the SA is fully classified.
  */
 export interface EnumerationContext {
   readonly sourceId: EntityId;
   readonly sourceControllerSeat: PlayerSeat;
+  /** SA classification for CantTarget ValidSA$ filter. undefined → any. */
+  readonly saKind?: "Spell" | "Activated" | "Triggered" | "Other";
 }
 
 /**
@@ -119,6 +133,23 @@ export const enumerateEligibleTargets = (
     // without behaving as a silent allow-all filter that later-added
     // protection data would fail to consult. Consumers who need protection
     // checks before SP3 must lift this into a companion filter.
+
+    // Wave 70.D — CantTarget gate (CR 702.11 sub-shape; True Believer /
+    // Mother of Runes / Spectra Ward / Aether Membrane). The static
+    // matches against the candidate target id AND the (sourceId,
+    // activatorSeat, saKind) tuple in ctx. On match, the candidate
+    // is dropped from eligibility silently — Forge equivalent of
+    // `StaticAbilityCantTarget.cantTarget(...)` returning a non-null
+    // gating static.
+    if (
+      !canBeTargetedBy(game, card.id, {
+        sourceId: ctx.sourceId,
+        activatorSeat: ctx.sourceControllerSeat,
+        ...(ctx.saKind !== undefined ? { saKind: ctx.saKind } : {}),
+      })
+    ) {
+      continue;
+    }
 
     out.push({ kind: "card", id: card.id });
   }
