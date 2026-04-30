@@ -18,6 +18,7 @@
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { cantBeCopied } from "../../statics/wave70m-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -26,7 +27,6 @@ import type { SpellAbility } from "../spell-ability.js";
 export class CopySpellAbilityEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "CopySpellAbility";
 
-  // biome-ignore lint/correctness/useYield: Stack.copy is synchronous; no events to yield in MVP
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "NumCopies") ? evaluateParamNumber(sa, "NumCopies", game) : 1;
 
@@ -45,6 +45,15 @@ export class CopySpellAbilityEffect extends SpellAbilityEffect {
       if (top) sourceItemId = top.id;
     }
     if (sourceItemId === undefined) return;
+
+    // Wave 70.M — CantBeCopied silent gate. When any active static
+    // matches the source's underlying card (Display of Power / See
+    // Double — "this spell can't be copied"), the copy attempt is
+    // suppressed entirely. We resolve the underlying sourceCardId from
+    // the live stack item BEFORE looping so all NumCopies attempts are
+    // gated uniformly.
+    const source = game.sharedZones.stack.toArray().find((it) => it.id === sourceItemId);
+    if (source !== undefined && cantBeCopied(game, source.sourceCardId)) return;
 
     for (let i = 0; i < num; i++) {
       try {

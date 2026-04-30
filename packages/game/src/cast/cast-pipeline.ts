@@ -30,6 +30,7 @@ import { altCostRegistry } from "../registries/alt-cost-registry.js";
 import "../cost/parts/index.js";
 import { noteSpellCast } from "../phase/day-night-tracker.js";
 import type { StackItem, StackItemProvenance, StackItemResolver } from "../stack/stack-item.js";
+import { cantBeCopied } from "../statics/wave70m-gate-helpers.js";
 import type { TargetChoices, TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { CastContext } from "./cast-context.js";
 import { createCastContext } from "./cast-context.js";
@@ -1399,7 +1400,10 @@ export class CastPipeline {
 
     // Push a copy of the live stack item alongside the original. CR 707.10:
     // copies don't fire SpellCast triggers (Stack.copy stamps isCast=false).
-    this.game.sharedZones.stack.copy(item.id, ctx.castingPlayer, this.game);
+    // Wave 70.M — silent CantBeCopied gate (Display of Power / See Double).
+    if (!cantBeCopied(this.game, item.sourceCardId)) {
+      this.game.sharedZones.stack.copy(item.id, ctx.castingPlayer, this.game);
+    }
   }
 
   /**

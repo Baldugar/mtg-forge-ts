@@ -29,6 +29,7 @@ import type { EntityId, GameEvent, KeywordAst, PlayerSeat, TriggeredAbility } fr
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
+import { cantBeCopied } from "../../statics/wave70m-gate-helpers.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
@@ -91,6 +92,13 @@ export class StormKeywordHandler extends KeywordHandler {
             }
           }
           if (sourceItemId === null) return;
+
+          // Wave 70.M — silent CantBeCopied gate. When any active static
+          // matches this storm spell's underlying card, suppress all
+          // copies (Display of Power / See Double — "this spell can't be
+          // copied"). Resolved once outside the loop since the gate
+          // doesn't change between iterations.
+          if (cantBeCopied(g, sourceCardId)) return;
 
           for (let i = 0; i < otherCount; i++) {
             stack.copy(sourceItemId, controllerSeat, g);

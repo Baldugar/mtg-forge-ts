@@ -97,6 +97,13 @@ export class Stack {
    * Throws GameStateIntegrityError if `sourceItemId` is not currently on
    * this Stack — copies of already-resolved items are not supported here
    * (they're modeled as LKI-fueled delayed triggers, not stack items).
+   *
+   * Wave 70.M — CantBeCopied silent gate is enforced one level up at the
+   * caller (game.action.castCopyOf, CopySpellAbilityEffect, Storm
+   * trigger, etc.) via the `cantBeCopied(game, sourceCardId)` helper
+   * (see statics/wave70m-gate-helpers.ts). Stack.copy itself remains a
+   * pure low-level primitive with non-null return for caller
+   * convenience.
    */
   copy(
     sourceItemId: EntityId,

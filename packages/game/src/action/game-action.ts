@@ -79,6 +79,7 @@ import { canBeSacrificed, canGainLife, canPlayLand, canPutCounter } from "../sta
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { canDraw } from "../statics/wave70i-loyalty-gates.js";
 import { canAttach } from "../statics/wave70k-gate-helpers.js";
+import { canLoseLife, cantBeCopied, maxCounter } from "../statics/wave70m-gate-helpers.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -318,7 +319,13 @@ export class GameAction {
     // (Soul's Attendant / Ajani's Pridemate / Crested Sunmare) do not
     // observe a gain. Damage-induced life gain (Soul Sister) routes
     // through here too, so it is covered by the same gate.
-    const effectiveDelta = delta > 0 && !canGainLife(game, seat) ? 0 : delta;
+    // Wave 70.M — symmetric CantLoseLife gate (CR 119; Courageous
+    // Resolve / Everybody Lives!). Mirrors Wave 70.E's CantGainLife
+    // path on the negative side: when delta is negative AND any
+    // active CantLoseLife static matches the seat, rewrite to 0.
+    let effectiveDelta = delta;
+    if (delta > 0 && !canGainLife(game, seat)) effectiveDelta = 0;
+    else if (delta < 0 && !canLoseLife(game, seat)) effectiveDelta = 0;
     const intent: LifeChangeIntent = {
       kind: "lifeChange",
       seat,
@@ -1101,11 +1108,29 @@ export class GameAction {
     // no replacement chain runs. We short-circuit before building the
     // AddCounterIntent so observers never see the attempt.
     if (!canPutCounter(game, cardId, counterType)) return;
+    // Wave 70.M — MaxCounter clamp (Rasputin Dreamweaver — "CARDNAME
+    // can't have more than seven dream counters on it"). When an
+    // active MaxCounter static matches the (cardId, counterType)
+    // pair, clamp `amount` so the post-add count does not exceed the
+    // gate's MaxNum$. When the existing count already equals the
+    // cap, the addCounter no-ops silently (no event, no replacement
+    // chain).
+    let effectiveAmount = amount;
+    {
+      const cap = maxCounter(game, cardId, counterType);
+      if (cap !== undefined) {
+        const card = game.cards.get(cardId);
+        const existing = card?.counters.get(counterType) ?? 0;
+        const allowed = Math.max(0, cap - existing);
+        if (allowed === 0) return;
+        if (effectiveAmount > allowed) effectiveAmount = allowed;
+      }
+    }
     const intent: AddCounterIntent = {
       kind: "addCounter",
       cardId,
       counterType,
-      amount,
+      amount: effectiveAmount,
       sourceId: sourceId ?? null,
     };
     // Wave 70.A — capture old level for Class subtype cards so the
@@ -2028,7 +2053,15 @@ export class GameAction {
       readonly retainTargets?: boolean;
       readonly freecast?: boolean;
     },
-  ): Generator<EngineYield, EntityId, unknown> {
+    // Wave 70.M — return type widened: an active CantBeCopied static
+    // (Display of Power / See Double) silently rejects the copy
+    // attempt; in that case we return `undefined` to signal "no copy
+    // produced" without throwing. Pre-existing callers in production
+    // that relied on a non-null return now get a chance to handle
+    // the silent-rejection outcome (most ignore the return; the few
+    // that don't would be the `// TODO(advanced)` cipher / casualty
+    // / replicate target-stash flows, which already null-check).
+  ): Generator<EngineYield, EntityId | undefined, unknown> {
     const game = this.game;
     void opts.freecast; // copies are always free per CR 707.10; reserved flag.
     const card = game.cards.get(spellSourceId);
@@ -2108,6 +2141,13 @@ export class GameAction {
           : opts.retainTargets === false
             ? { changeTargets: null as unknown }
             : {};
+      // Wave 70.M — CantBeCopied silent gate. When any active static
+      // matches the live source's underlying card (Display of Power /
+      // See Double — "this spell can't be copied"), the copy is
+      // suppressed entirely (no stack item, no event, returns undefined
+      // to signal "no copy made"). Mirrors Forge's
+      // StaticAbilityCantBeCopied semantics.
+      if (cantBeCopied(game, liveItem.sourceCardId)) return undefined;
       const copyItem = game.sharedZones.stack.copy(liveItem.id, opts.controllerSeat, game, stackOpts);
       // Wave 64 — emit SpellCopied so observers (storm count, copy-watching
       // triggers) can react. Distinct from SpellCast (which only fires for

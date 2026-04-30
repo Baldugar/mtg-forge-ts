@@ -228,3 +228,25 @@ export * from "./ignore-hexproof-static.js";
 export * from "./cant-pay-life-static.js";
 export * from "./must-target-static.js";
 export * from "./activate-ability-as-if-haste-static.js";
+// Wave 70.M — four more long-tail static modes (small but exact card
+// impact; previously enum-only without a registered handler):
+//   - PlayerMustAttack             (~2 cards — Seeker of Slaanesh /
+//                                    Trove of Temptation; the matched
+//                                    player must attack with at least
+//                                    one creature each combat if able)
+//   - CantBeCopied                 (~2 cards — Display of Power / See
+//                                    Double; "this spell can't be
+//                                    copied" — Stack.copy rejects)
+//   - MaxCounter                   (~1 card — Rasputin Dreamweaver;
+//                                    caps counter accumulation by
+//                                    counter type via clamp at
+//                                    addCounter)
+//   - CantLoseLife                 (~2 cards — Courageous Resolve /
+//                                    Everybody Lives!; mirror of
+//                                    CantGainLife on the negative-
+//                                    delta side — clamps changeLife
+//                                    losses to 0)
+export * from "./player-must-attack-static.js";
+export * from "./cant-be-copied-static.js";
+export * from "./max-counter-static.js";
+export * from "./cant-lose-life-static.js";

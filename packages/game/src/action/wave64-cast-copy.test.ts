@@ -316,6 +316,10 @@ describe("game.action.castCopyOf — Wave 64", () => {
           freecast: true,
         }),
       );
+      // Wave 70.M — castCopyOf return widened to EntityId | undefined
+      // (silent CantBeCopied gate). The test path doesn't trigger that
+      // gate, so we assert defined and unwrap.
+      if (result === undefined) throw new Error("expected castCopyOf to produce a copy id");
       ids.push(result);
     }
     expect(new Set(ids).size).toBe(3);
