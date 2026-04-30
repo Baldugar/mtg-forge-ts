@@ -6,15 +6,16 @@
 
 ---
 
-## State snapshot (post-Wave 70.F)
+## State snapshot (post-Wave 70.P)
 
 - **Repo:** `F:\BACKUP\Programacion\mtg-forge-ts`
 - **Branch:** `sp1-engine-foundations` (local only; never pushed)
-- **HEAD:** `dafc29f` (Wave 70.F — UntapOtherPlayer + AssignCombatDamageAsUnblocked + IgnoreLandwalk)
-- **Commits since `dbe90e6`:** ~365
-- **Tests: 3,284 game + 134 cards + 727 core = 4,145 passing**
+- **HEAD:** `865b01c` (Wave 70.P — final small-mode batch)
+- **Commits since `dbe90e6`:** ~375
+- **Tests: 3,396 game + 134 cards + 727 core = 4,257 passing**
 - **Coverage:** **100.0%** on full 32,300-card Forge corpus
 - **Gates:** typecheck (fresh tsc --noEmit) ✅, build ✅, test ✅, lint ✅, DCO ✅
+- **Static-mode registration: ~75 of ~96 enum entries**
 
 ---
 
@@ -37,7 +38,17 @@
 | **70.D** | Static mode survey + CantTarget/CantAttackUnless/CombatDamageToughness | 1 | `09cf5b9` | +13 |
 | **70.E** | CantGainLife + CantPlayLand + CantPreventDamage | 1 | `85c4260` | +12 |
 | **70.F** | UntapOtherPlayer + AssignCombatDamageAsUnblocked + IgnoreLandwalk | 1 | `dafc29f` | +10 |
-| **TOTAL** | | **31** | | **+290** |
+| **70.G** | CanAttackIfHaste + MustBlock + AttackVigilance | 1 | `117194b` | +11 |
+| **70.H** | OptionalAttackCost + AttackRestrict + BlockRestrict | 1 | `ec944d2` | +9 |
+| **70.I** | CantDraw + NumLoyaltyAct + NoCleanupDamage + cleanup-damage-clear (CR 514.2) | 1 | `f70350b` | +13 |
+| **70.J** | IgnoreLegendRule + CantBlockUnless + DisableTriggers | 1 | `324cf1d` | +11 |
+| **70.K** | CantAttach + AttackRequirement + IgnoreHexproof | 1 | `f4a87aa` | +12 |
+| **70.L** | CantPayLife + MustTarget + ActivateAbilityAsIfHaste | 1 | `42c54a6` | +13 |
+| **70.M** | PlayerMustAttack + CantBeCopied + MaxCounter + CantLoseLife | 1 | `4fa3776` | +15 |
+| **70.N** | AssignNoCombatDamage (~26 cards) | 1 | `bdca50a` | +6 |
+| **70.O** | CantPhaseIn + CantPhaseOut + CantChangeLife | 1 | `1075ba7` | +9 |
+| **70.P** | CanBlockIfReach + CantBecomeMonarch + CantChangeDayTime + TurnReversed + PhaseReversed | 1 | `865b01c` | +13 |
+| **TOTAL** | | **41** | | **+402** |
 
 ---
 
