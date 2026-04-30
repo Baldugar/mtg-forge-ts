@@ -250,3 +250,11 @@ export * from "./player-must-attack-static.js";
 export * from "./cant-be-copied-static.js";
 export * from "./max-counter-static.js";
 export * from "./cant-lose-life-static.js";
+// Wave 70.N — highest-frequency remaining unwired static mode:
+//   - AssignNoCombatDamage         (~26 cards — Sunhome Enforcer style
+//                                    "deals no combat damage", Indomitable
+//                                    Ancients defender forms, "cannot
+//                                    deal damage" curses; same shape as
+//                                    Wave 70.D CombatDamageToughness but
+//                                    forces 0 damage regardless of power)
+export * from "./assign-no-combat-damage-static.js";

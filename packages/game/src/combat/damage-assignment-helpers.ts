@@ -12,9 +12,15 @@
 // (Doran, the Siege Tower / Assault Formation / Belligerent Brontodon)
 // before reading chars.power; on match the layered toughness is
 // returned instead. CR 702.95.
+//
+// Wave 70.N — `attackerPower` ALSO consults the AssignNoCombatDamage
+// static (Sunhome Enforcer / Indomitable Ancients / "deals no combat
+// damage" curses). On match the value is 0 — this short-circuits BEFORE
+// CombatDamageToughness so 0 trumps any toughness substitution. CR 510.1d.
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import { usesToughnessForCombatDamage } from "../statics/wave70d-target-combat-gates.js";
+import { assignsNoCombatDamage } from "../statics/wave70n-combat-gates.js";
 import type { DefenderTarget } from "./combat-state.js";
 
 export const defenderKind = (d: DefenderTarget): "player" | "planeswalker" | "battle" => {
@@ -58,8 +64,18 @@ export const defenderId = (d: DefenderTarget): EntityId | PlayerSeat => {
  * toughness is read from the same layered characteristics view, also
  * clamped at 0 (CR 702.95 carries the same "less than 0 → no damage"
  * convention as power).
+ *
+ * Wave 70.N — when an AssignNoCombatDamage static (CR 510.1d) matches
+ * the attacker, the value is 0 regardless of power or any
+ * CombatDamageToughness substitution. AssignNoCombatDamage takes
+ * precedence: in Forge, StaticAbilityAssignNoCombatDamage short-circuits
+ * before CombatDamageToughness substitution, so 0 trumps the toughness
+ * value.
  */
 export const attackerPower = (game: Game, attackerId: EntityId): number => {
+  // Wave 70.N — short-circuit: matched creatures assign 0 combat damage,
+  // overriding the CombatDamageToughness substitution.
+  if (assignsNoCombatDamage(game, attackerId)) return 0;
   const chars = game.layerEngine.computeCharacteristics(attackerId);
   const useToughness = usesToughnessForCombatDamage(game, attackerId);
   const raw = useToughness ? (chars.toughness ?? 0) : (chars.power ?? 0);
