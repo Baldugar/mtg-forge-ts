@@ -20,6 +20,7 @@ import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
 import { canBeTargetedBy } from "../statics/wave70d-target-combat-gates.js";
+import { ignoresHexproof } from "../statics/wave70k-gate-helpers.js";
 import type { ControllerScope, TargetRef, TargetRestriction } from "./restriction.js";
 
 /**
@@ -74,7 +75,18 @@ export const enumerateEligibleTargets = (
     // Shroud denies everyone, including the controller (CR 702.18).
     if (r.shroud === true) continue;
     // Hexproof denies opponents only (CR 702.11).
-    if (r.hexproof === true && card.controllerSeat !== ctx.sourceControllerSeat) continue;
+    // Wave 70.K — IgnoreHexproof gate (CR 702.11 carve-out: Glaring
+    // Spotlight / Arcane Lighthouse). When the casting source matches
+    // an active IgnoreHexproof static (and the candidate target matches
+    // its optional ValidCard$ filter), hexproof is bypassed for that
+    // pairing — the candidate stays in the eligibility set.
+    if (
+      r.hexproof === true &&
+      card.controllerSeat !== ctx.sourceControllerSeat &&
+      !ignoresHexproof(game, ctx.sourceId, card.id)
+    ) {
+      continue;
+    }
 
     // permitTypes / forbidTypes / forbidColors / forbidColorless require the
     // layered characteristics view — a card that "becomes a creature" via

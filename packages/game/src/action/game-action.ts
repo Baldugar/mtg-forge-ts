@@ -78,6 +78,7 @@ import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
 import { canBeSacrificed, canGainLife, canPlayLand, canPutCounter } from "../statics/wave60-cant-gates.js";
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { canDraw } from "../statics/wave70i-loyalty-gates.js";
+import { canAttach } from "../statics/wave70k-gate-helpers.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -1338,6 +1339,12 @@ export class GameAction {
     targetId: EntityId,
     cause: "cast" | "static" | "sba" | "activated",
   ): Generator<EngineYield, void, unknown> {
+    // Wave 70.K — CantAttach gate. The matched (equipment, target) pair
+    // is silently denied: no event, no zone change, no replacement loop.
+    // Mirrors `attach` no-op semantics when the target ref has been
+    // removed mid-resolution (Forge equivalent: the CR 304.2 / 702.6c
+    // illegal-target carve-out folds this into a fizzle on resolution).
+    if (!canAttach(this.game, sourceId, targetId)) return;
     const intent: AttachIntent = { kind: "attach", sourceId, targetId, cause };
     yield* this.applyWithReplacements<AttachIntent>(
       intent,

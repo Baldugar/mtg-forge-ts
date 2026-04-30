@@ -196,3 +196,16 @@ export * from "./no-cleanup-damage-static.js";
 export * from "./ignore-legend-rule-static.js";
 export * from "./cant-block-unless-static.js";
 export * from "./disable-triggers-static.js";
+// Wave 70.K — three more registry-walk gate statics:
+//   - CantAttach           (~7 cards — Sigarda / True Believer /
+//                            Witchbane Orb / attach-time hexproof
+//                            analogues / Story Circle attach siblings)
+//   - AttackRequirement    (~4 cards — Goad-with-target-restriction /
+//                            curse-shape "creatures attack you if able"
+//                            / Vow auras / Marisi-shape goading)
+//   - IgnoreHexproof       (~3 cards — Glaring Spotlight / Arcane
+//                            Lighthouse / Beast Within analogues /
+//                            Obeka-shape carve-outs)
+export * from "./cant-attach-static.js";
+export * from "./attack-requirement-static.js";
+export * from "./ignore-hexproof-static.js";

@@ -31,6 +31,7 @@ import {
   exceedsAttackerCap,
   exceedsBlockerCap,
 } from "../statics/wave70h-combat-gates.js";
+import { attackRequirementsFor, isDefenderPermitted } from "../statics/wave70k-gate-helpers.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -81,6 +82,22 @@ export class CombatHandler {
     if (attackerCapViolation !== null) {
       throw new IllegalDecisionError(
         `declareAttackers: AttackRestrict cap ${attackerCapViolation.payload.maxAttackers} exceeded (${attackerCapViolation.count} declared)`,
+      );
+    }
+    // Wave 70.K — AttackRequirement validation. Each declared attacker
+    // subject to an active AttackRequirement static MUST attack one of
+    // the permitted defenders (CR 509.1c — must satisfy requirements).
+    // The intersect-across-gates resolution lives in attackRequirementsFor.
+    const requirementViolations: EntityId[] = [];
+    for (const d of decls) {
+      const req = attackRequirementsFor(this.game, d.attackerId);
+      if (!isDefenderPermitted(req, d.defender)) {
+        requirementViolations.push(d.attackerId);
+      }
+    }
+    if (requirementViolations.length > 0) {
+      throw new IllegalDecisionError(
+        `declareAttackers: AttackRequirement rejects defender for ${requirementViolations.join(",")}`,
       );
     }
     for (const d of decls) {
