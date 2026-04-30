@@ -204,6 +204,10 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   // Wave 45 — Final long-tail: Initiative dungeon + AssembleContraption (2)
   "UndercityRoomEntered",
   "ContraptionAssembled",
+  // Wave 70.A — Trigger-mode coverage additions (3)
+  "ClassLevelGained",
+  "RoomEntered",
+  "CardAdapted",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -389,12 +393,16 @@ const ALL_KINDS_MAP = {
   // Wave 45 — Final long-tail (2)
   UndercityRoomEntered: true,
   ContraptionAssembled: true,
+  // Wave 70.A — Trigger-mode coverage additions (3)
+  ClassLevelGained: true,
+  RoomEntered: true,
+  CardAdapted: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 169 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2)", () => {
-    expect(EXPECTED_KINDS.length).toBe(169);
-    expect(new Set(EXPECTED_KINDS).size).toBe(169);
+  it("has 172 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2, Wave 70.A + 3)", () => {
+    expect(EXPECTED_KINDS.length).toBe(172);
+    expect(new Set(EXPECTED_KINDS).size).toBe(172);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -622,6 +630,10 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     // Wave 45 payloads
     UndercityRoomEntered: { playerSeat: seat0, room: 1, roomName: "SecretEntrance" },
     ContraptionAssembled: { playerSeat: seat0, sourceCardId: id(1) },
+    // Wave 70.A payloads
+    ClassLevelGained: { cardId: id(1), oldLevel: 1, newLevel: 2, controllerSeat: seat0 },
+    RoomEntered: { cardId: id(1), playerSeat: seat0, fullyUnlocked: true },
+    CardAdapted: { cardId: id(1), amount: 1 },
   };
 
   for (const kind of EXPECTED_KINDS) {

@@ -62,3 +62,5 @@ export * from "./wave-20-triggers.js";
 export * from "./wave-21-triggers.js";
 // Wave 22 — final corpus long-tail triggers (14 handlers)
 export * from "./wave-22-triggers.js";
+// Wave 70.A — trigger mode coverage additions (4 handlers)
+export * from "./wave-70-triggers.js";

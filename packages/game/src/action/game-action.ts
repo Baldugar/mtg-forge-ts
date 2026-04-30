@@ -1088,6 +1088,13 @@ export class GameAction {
       amount,
       sourceId: sourceId ?? null,
     };
+    // Wave 70.A — capture old level for Class subtype cards so the
+    // post-apply emit can reference oldLevel/newLevel symmetrically.
+    let priorLevel: number | undefined;
+    if (counterType === CT.Level) {
+      const c = game.cards.get(cardId);
+      if (c) priorLevel = c.counters.get(CT.Level) ?? 0;
+    }
     yield* this.applyWithReplacements<AddCounterIntent>(
       intent,
       (final) => {
@@ -1113,6 +1120,30 @@ export class GameAction {
           ...(final.sourceId !== null ? { sourceId: final.sourceId } : {}),
         }),
     );
+    // Wave 70.A — Class enchantment level transition pulse (CR 716).
+    // Fires AFTER the underlying CounterAdded event so triggers see a
+    // fully-applied state. Gated on Class subtype to avoid emitting on
+    // non-Class permanents that happen to gain Level counters (none in
+    // standard rules, but the gate keeps the contract explicit).
+    if (counterType === CT.Level && priorLevel !== undefined) {
+      const card = game.cards.get(cardId);
+      if (card) {
+        const chars = game.layerEngine.computeCharacteristics(cardId);
+        if (chars.subtypes.has("Class")) {
+          const newLevel = card.counters.get(CT.Level) ?? priorLevel;
+          if (newLevel > priorLevel) {
+            yield game.emitEvent(
+              mkEvent("ClassLevelGained", game.turn, game.phase, {
+                cardId,
+                oldLevel: priorLevel,
+                newLevel,
+                controllerSeat: card.controllerSeat,
+              }),
+            );
+          }
+        }
+      }
+    }
   }
 
   *removeCounter(

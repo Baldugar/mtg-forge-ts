@@ -1753,6 +1753,56 @@ export type GameEvent =
         readonly sourceCardId: EntityId;
         readonly cardId?: EntityId;
       };
+    }
+  // === Wave 70.A — Trigger-mode coverage additions ===
+  | {
+      // CR 716 — Class enchantment level transition. Fires when a Class
+      // card's level increases (either via the level-up activated ability
+      // or via the SBA "Class without a Level counter gains level 1"
+      // bump). Trigger handlers gate on `newLevel` to match Forge's
+      // NewLevel$ N filter.
+      readonly kind: "ClassLevelGained";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly oldLevel: number;
+        readonly newLevel: number;
+        readonly controllerSeat: PlayerSeat;
+      };
+    }
+  | {
+      // Duskmourn: House of Horror — Room enters fully unlocked (both
+      // halves' costs paid). MVP: stub — no engine emission yet (Rooms
+      // aren't fully wired). The trigger-mode handler exists so card
+      // text parses cleanly. TODO(advanced) — emit when the Room
+      // unlock pipeline lands.
+      readonly kind: "RoomEntered";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly playerSeat: PlayerSeat;
+        readonly fullyUnlocked: boolean;
+      };
+    }
+  | {
+      // CR 702.130 — Adapt resolution pulse. Fires when an Adapt
+      // activated ability resolves AND adds +1/+1 counters (i.e. the
+      // CR 702.139a precondition "this creature has no +1/+1 counters
+      // on it" was satisfied at resolution time). Distinct from the
+      // generic CounterAdded event so triggers can fire ONLY on the
+      // Adapt mechanic, not on every counter addition.
+      readonly kind: "CardAdapted";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly cardId: EntityId;
+        readonly amount: number;
+      };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */

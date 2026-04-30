@@ -12,7 +12,7 @@
 //      counters on it." If self.counters[+1/+1] > 0 the ability has no
 //      effect (Forge parity — the ability still resolves, just no-ops).
 //   4. Otherwise, addCounter(self, +1/+1, AdaptN, sourceCardId=self).
-import { CounterType } from "@mtg-forge-ts/core";
+import { CounterType, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -29,6 +29,14 @@ export class AdaptEffect extends SpellAbilityEffect {
     const existing = self.counters?.get(CounterType.PlusOnePlusOne) ?? 0;
     if (existing > 0) return; // CR 702.139a precondition fails — no-op.
     yield* game.action.addCounter(sa.sourceCardId, CounterType.PlusOnePlusOne, n, sa.sourceCardId);
+    // Wave 70.A — emit CardAdapted pulse so Mode$ Adapted triggers can
+    // distinguish Adapt resolution from generic +1/+1 counter additions.
+    yield game.emitEvent(
+      mkEvent("CardAdapted", game.turn, game.phase, {
+        cardId: sa.sourceCardId,
+        amount: n,
+      }),
+    );
   }
 }
 
