@@ -26,7 +26,7 @@ import {
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import { GameAction } from "../action/game-action.js";
-import { onUpkeepAdvanceInitiativeDungeon } from "../dnd/initiative-tracker.js";
+import { applyUndercityRoomEffect, onUpkeepAdvanceInitiativeDungeon } from "../dnd/initiative-tracker.js";
 import { endGame } from "../end/end-game.js";
 import type { Game } from "../game.js";
 import { tickSuspendedCards } from "../keyword/suspend-tick.js";
@@ -242,9 +242,13 @@ export class PhaseHandler {
       // Wave 27 — Initiative-dungeon advance (CR 906.4c). The active player,
       // if they hold the initiative, ventures one room into the Undercity.
       // Wave 45 — emit the UndercityRoomEntered pulse so triggers + UI can
-      // observe; per-room SVar effects remain TODO(advanced).
-      for (const evt of onUpkeepAdvanceInitiativeDungeon(game, active)) {
+      // observe; Wave 70.B applies the room's printed effect after emit.
+      const upkeepEvents = onUpkeepAdvanceInitiativeDungeon(game, active);
+      for (const evt of upkeepEvents) {
         yield game.emitEvent(evt);
+        if (evt.kind === "UndercityRoomEntered") {
+          yield* applyUndercityRoomEffect(game, evt.payload.playerSeat, evt.payload.room);
+        }
       }
       // Wave 29 — CR 702.61b suspend tick. At the start of each player's
       // upkeep, decrement one time counter from each suspended card that

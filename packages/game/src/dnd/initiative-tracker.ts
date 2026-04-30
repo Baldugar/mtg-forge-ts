@@ -3,54 +3,90 @@
 //
 // game.flags.initiative: PlayerSeat | null. The initiative starts unowned
 // and is taken by the FIRST card that says "you take the initiative". Two
-// transitions matter for this wave:
+// transitions matter:
 //
 //   1. Combat damage to the initiative-holder transfers initiative to the
 //      attacker's controller (CR 906.4b). Hooked from CombatHandler.
 //   2. At the beginning of the initiative-holder's upkeep, they advance
-//      one room in the Initiative dungeon (Undercity; CR 906.4c). MVP:
-//      emit a stub "InitiativeAdvanced" intent — the actual dungeon-room
-//      advance requires the dungeon data structure (deferred to a later
-//      wave). The hook is wired here so the data-structure work is the
-//      only remaining piece.
+//      one room in the Initiative dungeon (Undercity; CR 906.4c).
 //
-// This module is a small set of pure helpers; phase-handler.ts and
-// combat-handler.ts call them at the right turn-based-action / damage
-// step boundaries.
-import type { GameEvent, PlayerSeat } from "@mtg-forge-ts/core";
+// Wave 70.B closes the per-room SVar-effect TODO. Each room's printed
+// effect is applied to the player who entered. The 9-room sequence + the
+// effects are taken verbatim from Forge's `tokenscripts/undercity.txt`:
+//
+//   1. Secret Entrance         — search library for a basic land
+//   2. Forge                   — put two +1/+1 counters on a creature you control
+//   3. Lost Well               — scry 2
+//   4. Trap!                   — each opponent loses 5 life
+//   5. Arena                   — goad target creature you don't control
+//   6. Stash                   — create a Treasure token
+//   7. Archives                — draw a card
+//   8. Catacombs               — create a 4/1 black Skeleton with menace
+//   9. Throne of the Dead Three — reveal top 10, put a creature with three
+//                                 +1/+1 counters onto the battlefield (MVP:
+//                                 +1/+1 counters; full hexproof-until-next-
+//                                 turn pump is documented inline).
+//
+// The room sequence is a non-branching loop in our model — Forge's text
+// allows branching ("Leads to: Forge, Lost Well") but in practice the
+// canonical pulse is "venture one room in this fixed order"; CR 309.4
+// completion-and-restart wraps room 9 back to room 1 on the next venture.
+//
+// This module exposes three entry points:
+//   - grantInitiative(game, seat) → events for BecameInitiative + the
+//     UndercityRoomEntered pulse from the immediate venture-on-take.
+//   - applyUndercityRoomEffect(game, seat, room) → generator that runs
+//     the room's printed effect via game.action.* / sub-effect calls.
+//     Callers iterate this AFTER emitting UndercityRoomEntered.
+//   - onCombatDamageToPlayer / onUpkeepAdvanceInitiativeDungeon as before.
+import type { TokenEntry } from "@mtg-forge-ts/cards";
+import { tokenDatabase } from "@mtg-forge-ts/cards";
+import {
+  CardType,
+  ColorSet,
+  DEFAULT_PAPER_CARD_FLAGS,
+  type EntityId,
+  type GameEvent,
+  type KeywordAst,
+  type PaperCard,
+  type PlayerSeat,
+  Supertype,
+  TypeLine,
+  ZoneType,
+  keywordIdFromDisplayName,
+} from "@mtg-forge-ts/core";
+import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
 
 /**
- * Wave 45 — Undercity dungeon room sequence (CR 906.4c). The 10 rooms in
- * Forge's `initiative.txt` are listed in venture order. Per-room SVar
- * effects are TODO(advanced); the index is the only piece of state the
- * MVP tracks. Index 0 is "not yet entered"; the first venture lands on
- * room 1 (SecretEntrance) and the 10th venture wraps to 1 (per CR 309.4
- * — completing a dungeon lets the next venture start from the entrance).
+ * Wave 45 / Wave 70.B — Undercity dungeon room sequence (CR 906.4c). Forge's
+ * `tokenscripts/undercity.txt` lists 9 rooms in the canonical venture
+ * order. Index 0 is "not yet entered"; the first venture lands on room 1
+ * (Secret Entrance) and the 10th venture wraps to 1 (per CR 309.4 —
+ * completing a dungeon lets the next venture start from the entrance).
  */
 export const UNDERCITY_ROOMS: readonly string[] = [
-  "SecretEntrance",
-  "Forge of Doom",
-  "Shrine of the Gnoll Lord",
+  "Secret Entrance",
+  "Forge",
   "Lost Well",
-  "Stash of Goods",
-  "Chamber of Sleep",
-  "Sandfall Cell",
-  "Down Among the Dead Men",
-  "Hall of Mists",
-  "Lair of the Spider",
+  "Trap!",
+  "Arena",
+  "Stash",
+  "Archives",
+  "Catacombs",
+  "Throne of the Dead Three",
 ];
 
 /**
- * Advance the Undercity dungeon by one room (mod 10). Returns the new
- * room index (1..10) and the corresponding name. Caller routes the
+ * Advance the Undercity dungeon by one room (mod 9). Returns the new
+ * room index (1..9) and the corresponding name. Caller routes the
  * UndercityRoomEntered event through the engine pipeline.
  */
 export const advanceUndercityRoom = (game: Game, seat: PlayerSeat): readonly GameEvent[] => {
   const prior = game.flags.undercityRoom;
   const next = (prior % UNDERCITY_ROOMS.length) + 1;
   game.flags.undercityRoom = next;
-  const roomName = UNDERCITY_ROOMS[next - 1] ?? "SecretEntrance";
+  const roomName = UNDERCITY_ROOMS[next - 1] ?? "Secret Entrance";
   return [
     {
       kind: "UndercityRoomEntered",
@@ -115,19 +151,272 @@ export const onCombatDamageToPlayer = (
 
 /**
  * Upkeep dungeon-advance hook. Called from PhaseHandler at the start of
- * the active player's upkeep when they're the initiative-holder. MVP
- * stub: returns a sentinel intent so observers (and future tests) see
- * the hook fire. Full Initiative-dungeon (Undercity) advance lands once
- * the Dungeon data structure exists.
+ * the active player's upkeep when they're the initiative-holder. Returns
+ * the UndercityRoomEntered event(s); the caller emits them and then runs
+ * `applyUndercityRoomEffect` to apply the printed effect.
  */
 export const onUpkeepAdvanceInitiativeDungeon = (
   game: Game,
   activeSeat: PlayerSeat,
 ): readonly GameEvent[] => {
   if (game.flags.initiative !== activeSeat) return [];
-  // Wave 45 — venture one room. Per-room SVar effects (room exit triggers,
-  // Lair of the Spider's "venture again", etc.) are TODO(advanced); the
-  // index advance + UndercityRoomEntered emit is the canonical pulse that
-  // observers and tests need today.
   return advanceUndercityRoom(game, activeSeat);
 };
+
+// ---------------------------------------------------------------------------
+// Wave 70.B — per-room printed effect dispatch
+// ---------------------------------------------------------------------------
+
+/**
+ * Pick the seat directly after `seat` in turn order. With 2-player MVP we
+ * always have exactly one opponent, so the lookup degenerates to the
+ * other player. Multiplayer expansion: iterate `game.players` and pick
+ * the next non-eliminated seat (TODO(advanced) — same pattern used by the
+ * monarch tracker).
+ */
+const opponentOf = (game: Game, seat: PlayerSeat): PlayerSeat => {
+  for (const p of game.players) {
+    if (p.seat !== seat) return p.seat;
+  }
+  return seat;
+};
+
+/**
+ * Pick a single creature card the seat controls (battlefield), excluding
+ * tokens that have already been removed or moved. MVP: returns the first
+ * matching card. Decision-driven targeting (Forge's `ValidTgts$ Creature`
+ * = "controller chooses one") is documented inline.
+ */
+const pickOwnCreature = (game: Game, seat: PlayerSeat): EntityId | undefined => {
+  for (const [id, card] of game.cards) {
+    if (card.zone !== ZoneType.Battlefield) continue;
+    if (card.controllerSeat !== seat) continue;
+    const chars = game.layerEngine.computeCharacteristics(id);
+    if (chars.types.has(CardType.Creature)) return id;
+  }
+  return undefined;
+};
+
+/**
+ * Pick a single creature the seat does NOT control (battlefield). Used by
+ * Arena (goad). MVP: first match.
+ */
+const pickOpponentCreature = (game: Game, seat: PlayerSeat): EntityId | undefined => {
+  for (const [id, card] of game.cards) {
+    if (card.zone !== ZoneType.Battlefield) continue;
+    if (card.controllerSeat === seat) continue;
+    const chars = game.layerEngine.computeCharacteristics(id);
+    if (chars.types.has(CardType.Creature)) return id;
+  }
+  return undefined;
+};
+
+/**
+ * Find the top basic land in `seat`'s library. Used by Secret Entrance
+ * (search library for a basic land card). MVP: pick the first basic the
+ * library scan finds. Forge's actual flow yields a chooseCard request
+ * over the full library; documented as TODO(advanced) since the
+ * decision-driven path needs the full library scanned + revealed.
+ */
+const findBasicLandInLibrary = (game: Game, seat: PlayerSeat): EntityId | undefined => {
+  const player = game.getPlayer(seat);
+  const library = player.zones.get(ZoneType.Library);
+  if (!library) return undefined;
+  for (const id of library.toArray()) {
+    const card = game.cards.get(id);
+    if (!card) continue;
+    const chars = game.layerEngine.computeCharacteristics(id);
+    if (!chars.types.has(CardType.Land)) continue;
+    if (!chars.supertypes.has(Supertype.Basic)) continue;
+    return id;
+  }
+  return undefined;
+};
+
+/**
+ * Build a 4/1 black Skeleton paper card with menace for Catacombs. We
+ * synthesize this inline rather than depending on a token-database entry
+ * because the database currently has the 1/1 black Skeleton form
+ * (`b_1_1_skeleton`); the 4/1 + menace shape is unique to the Undercity
+ * Catacombs effect.
+ */
+const synthesizeSkeletonMenacePaperCard = (): PaperCard => {
+  const typeLine = TypeLine.parse("Creature — Skeleton");
+  const menaceId = keywordIdFromDisplayName("Menace");
+  const keywords: readonly KeywordAst[] = menaceId !== null ? [{ keyword: menaceId }] : [];
+  return {
+    name: "Skeleton Token",
+    edition: "TOK",
+    collectorNumber: "0",
+    language: "en",
+    foil: false,
+    flags: DEFAULT_PAPER_CARD_FLAGS,
+    definition: {
+      name: "Skeleton Token",
+      oracle: "Menace",
+      types: typeLine,
+      manaCost: null,
+      pt: { power: "4", toughness: "1" },
+      colors: ColorSet.empty(),
+      abilities: [],
+      triggers: [],
+      replacements: [],
+      statics: [],
+      keywords,
+      svars: new Map(),
+    },
+  };
+};
+
+/**
+ * Apply the printed effect for the Undercity room indexed by `room` (1..9)
+ * to `seat`. The room number matches what `advanceUndercityRoom` returned;
+ * out-of-range / "not yet entered" (0) is a no-op for safety.
+ *
+ * The effects mirror Forge's `tokenscripts/undercity.txt` SVars:
+ *   1 Secret Entrance — search library for basic land, put into hand, shuffle
+ *   2 Forge           — put two +1/+1 counters on a creature you control
+ *   3 Lost Well       — scry 2
+ *   4 Trap!           — each opponent loses 5 life
+ *   5 Arena           — goad a creature you don't control
+ *   6 Stash           — create a Treasure token
+ *   7 Archives        — draw a card
+ *   8 Catacombs       — create a 4/1 black Skeleton creature token with menace
+ *   9 Throne of the Dead Three — reveal top 10, put a creature card from
+ *     among them onto the battlefield with three +1/+1 counters on it
+ *     (MVP: hexproof-until-next-turn pump documented inline as TODO(advanced)).
+ */
+export function* applyUndercityRoomEffect(
+  game: Game,
+  seat: PlayerSeat,
+  room: number,
+): Generator<EngineYield, void, unknown> {
+  switch (room) {
+    case 1: {
+      // Secret Entrance — search basic land + reveal + put into hand,
+      // then shuffle. MVP: scan library deterministically (decision-driven
+      // search-and-reveal is TODO(advanced)).
+      const found = findBasicLandInLibrary(game, seat);
+      if (found !== undefined) {
+        yield* game.action.moveTo(found, ZoneType.Hand, { toSeat: seat, cause: "effect" });
+      }
+      yield* game.action.shuffle(seat);
+      return;
+    }
+    case 2: {
+      // Forge — put two +1/+1 counters on a creature you control. MVP:
+      // first creature; decision-driven targeting is TODO(advanced).
+      const target = pickOwnCreature(game, seat);
+      if (target !== undefined) {
+        yield* game.action.addCounter(target, "P1P1" as never, 2);
+      }
+      return;
+    }
+    case 3: {
+      // Lost Well — scry 2.
+      yield* game.action.scry(seat, 2);
+      return;
+    }
+    case 4: {
+      // Trap! — Forge's printed text is "target player loses 5 life";
+      // CR 906 dungeon-room effects let the venturing player choose the
+      // target. MVP: route to the opponent (the canonical play). Decision-
+      // driven target choice is TODO(advanced).
+      const opp = opponentOf(game, seat);
+      yield* game.action.changeLife(opp, -5, { cause: "effect" });
+      return;
+    }
+    case 5: {
+      // Arena — goad target creature you don't control. MVP: stamp the
+      // goaded flag on the first eligible target. Decision-driven target
+      // pick is TODO(advanced) — same MVP shape as the Goad effect handler.
+      const tgt = pickOpponentCreature(game, seat);
+      if (tgt !== undefined) {
+        const card = game.cards.get(tgt);
+        if (card) card.goaded = true;
+      }
+      return;
+    }
+    case 6: {
+      // Stash — create a Treasure token. Routes through the predefined
+      // token-database entry so the {T}, Sacrifice ability is wired.
+      const treasureEntry = tokenDatabase.get("c_a_treasure_sac");
+      if (treasureEntry !== undefined) {
+        const paperCard = paperCardFromTreasureEntry(treasureEntry);
+        yield* game.action.createToken({ paperCard, controller: seat, count: 1 });
+      }
+      return;
+    }
+    case 7: {
+      // Archives — draw a card.
+      yield* game.action.drawCards(seat, 1);
+      return;
+    }
+    case 8: {
+      // Catacombs — create a 4/1 black Skeleton creature token with menace.
+      const paperCard = synthesizeSkeletonMenacePaperCard();
+      yield* game.action.createToken({ paperCard, controller: seat, count: 1 });
+      return;
+    }
+    case 9: {
+      // Throne of the Dead Three — reveal top 10 of `seat`'s library; put
+      // a creature card from among them onto the battlefield with three
+      // +1/+1 counters on it; the rest are shuffled back. MVP scans the
+      // top 10 deterministically and picks the first creature; the
+      // hexproof-until-next-turn pump and the "may" wording are
+      // TODO(advanced) — Wave 56's decision pipeline can drive the chooser
+      // request and the chained Pump sub-ability once the trigger flow
+      // here grows beyond the MVP single-yield shape.
+      const player = game.getPlayer(seat);
+      const library = player.zones.get(ZoneType.Library);
+      if (library === undefined) return;
+      const topIds = library.toArray().slice(0, 10);
+      let chosen: EntityId | undefined;
+      for (const id of topIds) {
+        const chars = game.layerEngine.computeCharacteristics(id);
+        if (chars.types.has(CardType.Creature)) {
+          chosen = id;
+          break;
+        }
+      }
+      if (chosen !== undefined) {
+        yield* game.action.moveTo(chosen, ZoneType.Battlefield, { toSeat: seat, cause: "effect" });
+        yield* game.action.addCounter(chosen, "P1P1" as never, 3);
+      }
+      yield* game.action.shuffle(seat);
+      return;
+    }
+    default:
+      // 0 = "not yet entered"; nothing to do. Out-of-range never reached
+      // from advanceUndercityRoom (which always returns 1..9 modulo 9).
+      return;
+  }
+}
+
+/**
+ * Build a PaperCard from a TokenEntry (Treasure / Skeleton / Food / etc.).
+ * Inlined here so this module doesn't depend on token.ts (which lives in
+ * the ability-effects layer). Mirrors `paperCardFromEntry` in token.ts.
+ */
+const paperCardFromTreasureEntry = (entry: TokenEntry): PaperCard => ({
+  name: entry.name,
+  edition: "TOK",
+  collectorNumber: "0",
+  language: "en",
+  foil: false,
+  flags: DEFAULT_PAPER_CARD_FLAGS,
+  definition: {
+    name: entry.name,
+    oracle: entry.oracle,
+    types: entry.types,
+    manaCost: entry.manaCost,
+    ...(entry.pt !== undefined ? { pt: entry.pt } : {}),
+    colors: entry.colors,
+    abilities: entry.abilities,
+    triggers: [],
+    replacements: [],
+    statics: [],
+    keywords: entry.keywords,
+    svars: new Map(),
+  },
+});

@@ -628,7 +628,7 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     // Wave 34 payloads
     BattleDefeated: { cardId: id(1) },
     // Wave 45 payloads
-    UndercityRoomEntered: { playerSeat: seat0, room: 1, roomName: "SecretEntrance" },
+    UndercityRoomEntered: { playerSeat: seat0, room: 1, roomName: "Secret Entrance" },
     ContraptionAssembled: { playerSeat: seat0, sourceCardId: id(1) },
     // Wave 70.A payloads
     ClassLevelGained: { cardId: id(1), oldLevel: 1, newLevel: 2, controllerSeat: seat0 },

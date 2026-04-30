@@ -29,7 +29,7 @@ import {
   mkEvent,
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
-import { grantInitiative } from "../../dnd/initiative-tracker.js";
+import { applyUndercityRoomEffect, grantInitiative } from "../../dnd/initiative-tracker.js";
 import type { Game } from "../../game.js";
 import { grantMonarch } from "../../monarch/monarch-tracker.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -458,9 +458,18 @@ export class TakeInitiativeEffect extends SpellAbilityEffect {
     // and combat-damage transfers all write the same canonical slot
     // (game.flags.initiative). The old duck-typed `Game.initiativeSeat`
     // was incompatible with the snapshot pipeline.
+    // Wave 70.B — when grantInitiative emits an UndercityRoomEntered pulse
+    // (the immediate venture-on-take), apply the room's printed effect so
+    // Initiative-granting cards from Commander Legends 2 / Battle for
+    // Baldur's Gate produce the canonical board impact (treasure /
+    // skeleton / draw / etc.) rather than just stamping the flag.
     const events = grantInitiative(game, seat);
-    for (const evt of events) yield { kind: "event", event: evt };
-    // TODO(advanced): venture into Undercity dungeon on initiative gain.
+    for (const evt of events) {
+      yield { kind: "event", event: evt };
+      if (evt.kind === "UndercityRoomEntered") {
+        yield* applyUndercityRoomEffect(game, evt.payload.playerSeat, evt.payload.room);
+      }
+    }
   }
 }
 effectRegistry.register(TakeInitiativeEffect);

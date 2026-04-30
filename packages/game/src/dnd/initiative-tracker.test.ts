@@ -68,6 +68,10 @@ describe("InitiativeTracker", () => {
     expect(events[0]?.kind).toBe("BecameInitiative");
     expect(events[1]?.kind).toBe("UndercityRoomEntered");
     expect(game.flags.undercityRoom).toBe(1);
+    // Wave 70.B — the room name is the canonical Forge label.
+    if (events[1]?.kind === "UndercityRoomEntered") {
+      expect(events[1].payload.roomName).toBe("Secret Entrance");
+    }
   });
 
   it("grantInitiative is idempotent on self-grant (no event)", () => {

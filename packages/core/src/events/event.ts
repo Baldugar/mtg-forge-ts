@@ -1725,9 +1725,10 @@ export type GameEvent =
   | {
       // Initiative dungeon (Undercity) advance pulse — fires on each upkeep
       // dungeon advance + on every fresh take-initiative. `room` is the
-      // 1..10 room index after the advance (1 = SecretEntrance, 10 = Lair
-      // of the Spider). Per-room SVar effects are TODO(advanced); this is
-      // the canonical observation point so triggers / UI can react.
+      // 1..9 room index after the advance (1 = Secret Entrance, 9 = Throne
+      // of the Dead Three). Per-room printed effects fire after this
+      // pulse via `applyUndercityRoomEffect` (Wave 70.B); this remains
+      // the canonical observation point for triggers + UI.
       readonly kind: "UndercityRoomEntered";
       readonly version: 1;
       readonly turn: number;
