@@ -335,3 +335,19 @@ export * from "./tap-power-value-static.js";
 export * from "./cant-crew-static.js";
 export * from "./cant-discard-static.js";
 export * from "./colorless-damage-source-static.js";
+// Wave 75 — four more bespoke-infra static modes:
+//   - CanAdapt        (~1 card — Biomancer's Familiar; matched
+//                       creatures can adapt as though they had no
+//                       +1/+1 counters on them; bypasses CR 702.139a)
+//   - CanExhaust      (~1 card — Elvish Refueler; forward-compat
+//                       stub for the EOE Exhaust mechanic — re-
+//                       activate exhaust abilities)
+//   - IgnoreShroud    (~1 card — Autumn Willow; matched activator
+//                       can target matched entity as though it
+//                       didn't have shroud; CR 702.18 carve-out)
+//   - CantExile       (~1 card — The Master, Multiplied; matched
+//                       cards refuse exile destinations; CR 406)
+export * from "./can-adapt-static.js";
+export * from "./can-exhaust-static.js";
+export * from "./ignore-shroud-static.js";
+export * from "./cant-exile-static.js";

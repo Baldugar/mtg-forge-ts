@@ -21,6 +21,7 @@ import { isPhasedOut } from "../combat/damage-assignment-helpers.js";
 import type { Game } from "../game.js";
 import { canBeTargetedBy } from "../statics/wave70d-target-combat-gates.js";
 import { ignoresHexproof } from "../statics/wave70k-gate-helpers.js";
+import { ignoresShroud } from "../statics/wave75-gate-helpers.js";
 import type { ControllerScope, TargetRef, TargetRestriction } from "./restriction.js";
 
 /**
@@ -73,7 +74,13 @@ export const enumerateEligibleTargets = (
       continue;
     }
     // Shroud denies everyone, including the controller (CR 702.18).
-    if (r.shroud === true) continue;
+    // Wave 75 — IgnoreShroud gate (CR 702.18 carve-out: Autumn
+    // Willow's "{G}: target player can target this as though it
+    // didn't have shroud"). When the activator's seat matches an
+    // active IgnoreShroud static (and the candidate target matches
+    // its optional ValidEntity$ filter), shroud is bypassed for
+    // that pairing — the candidate stays in the eligibility set.
+    if (r.shroud === true && !ignoresShroud(game, ctx.sourceControllerSeat, card.id)) continue;
     // Hexproof denies opponents only (CR 702.11).
     // Wave 70.K — IgnoreHexproof gate (CR 702.11 carve-out: Glaring
     // Spotlight / Arcane Lighthouse). When the casting source matches

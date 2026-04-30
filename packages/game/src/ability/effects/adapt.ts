@@ -15,6 +15,7 @@
 import { CounterType, mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { canAdaptAgain } from "../../statics/wave75-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -27,7 +28,13 @@ export class AdaptEffect extends SpellAbilityEffect {
     const self = game.cards.get(sa.sourceCardId);
     if (!self) return;
     const existing = self.counters?.get(CounterType.PlusOnePlusOne) ?? 0;
-    if (existing > 0) return; // CR 702.139a precondition fails — no-op.
+    // Wave 75 — CanAdapt static carve-out (CR 702.139a override).
+    // When a CanAdapt static matches the adapting creature, the
+    // "no +1/+1 counters" precondition is treated as satisfied and
+    // adapt proceeds even with counters already on the creature.
+    // Forge: StaticAbilityAdapt.anyWithAdapt(...). Used by
+    // Biomancer's Familiar's temporary StaticAllowAdapt effect.
+    if (existing > 0 && !canAdaptAgain(game, sa.sourceCardId)) return; // CR 702.139a precondition fails — no-op.
     yield* game.action.addCounter(sa.sourceCardId, CounterType.PlusOnePlusOne, n, sa.sourceCardId);
     // Wave 70.A — emit CardAdapted pulse so Mode$ Adapted triggers can
     // distinguish Adapt resolution from generic +1/+1 counter additions.

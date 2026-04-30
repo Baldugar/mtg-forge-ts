@@ -82,6 +82,7 @@ import { canAttach } from "../statics/wave70k-gate-helpers.js";
 import { canLoseLife, cantBeCopied, maxCounter } from "../statics/wave70m-gate-helpers.js";
 import { canChangeLife } from "../statics/wave70o-gate-helpers.js";
 import { canDiscard } from "../statics/wave74-gate-helpers.js";
+import { canBeExiled } from "../statics/wave75-gate-helpers.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -473,6 +474,14 @@ export class GameAction {
     // semantics for prevented discards.
     const cause = opts?.cause;
     if ((cause === "discard" || cause === "handSize") && owner !== null && !canDiscard(game, owner)) {
+      return;
+    }
+    // Wave 75 — CantExile gate. When the destination zone is Exile
+    // and the card matches an active CantExile static (The Master,
+    // Multiplied et al.), the move is rejected silently — no zone
+    // change, no CardChangedZone event for the Exile transition.
+    // Mirrors Forge's silent-rejection semantics for prevented exiles.
+    if (toZone === Zt.Exile && !canBeExiled(game, cardId)) {
       return;
     }
     const toSeat = opts?.toSeat ?? this.defaultDestinationSeat(toZone, owner, cardId);
