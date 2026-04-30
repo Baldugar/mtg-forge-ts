@@ -138,6 +138,15 @@ export interface GameFlags {
   // per-turn — strictly per-game. Default empty (no seat has used their
   // companion yet).
   companionUsedThisGame: Map<PlayerSeat, boolean>;
+  // Wave 70.I — per-card loyalty-ability activation counter for the
+  // current turn (CR 606.5b: "no more than one of a planeswalker's
+  // loyalty abilities can be activated each turn"). Keyed by the
+  // planeswalker's EntityId; default cap is 1, extended by NumLoyaltyAct
+  // statics (Carth the Lion / The Chain Veil / Oath of Teferi). The
+  // activate-time gate increments the counter AFTER cost payment +
+  // before stack push (so a rejected activation does not consume a
+  // count). Reset at the cleanup step (matches the per-turn semantics).
+  loyaltyActivationsThisTurn: Map<EntityId, number>;
   // Wave 56 — side-channel for the ReplaceEffect family. When a parent
   // replacement's apply() runs an SVar that resolves to a `DB$ Replace*`
   // effect handler (ReplaceEffect / ReplaceDamage / ReplaceMana /
@@ -205,6 +214,8 @@ export const createDefaultFlags = (): GameFlags => ({
   pendingAdditionalUntapSteps: new Map(),
   // Wave 66 — per-seat companion-activation tracker (once-per-game).
   companionUsedThisGame: new Map(),
+  // Wave 70.I — per-card loyalty-activation counter (CR 606.5b).
+  loyaltyActivationsThisTurn: new Map(),
   // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
   activeReplacementIntent: null,
 });

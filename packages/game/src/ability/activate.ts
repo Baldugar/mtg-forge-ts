@@ -30,8 +30,25 @@ import { parseValidTgts } from "../cast/valid-targets.js";
 import { parseCostString, payCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
 import type { StackItem, StackItemProvenance } from "../stack/stack-item.js";
+import { effectiveMaxLoyaltyActivations } from "../statics/wave70i-loyalty-gates.js";
 import type { TargetChoices, TargetRef } from "../target/restriction.js";
 import { SpellAbility } from "./spell-ability.js";
+
+/**
+ * Wave 70.I — heuristic: an SA is a planeswalker loyalty ability iff its
+ * cost string contains an `AddCounter<n/LOYALTY>` or `SubCounter<n/LOYALTY>`
+ * cost part (Forge's canonical decomposition for `+N:`/`-N:` activated
+ * abilities; CR 606.5). Case-insensitive on the LOYALTY token to match the
+ * cost-part registry's parser. Pure string check — no regex, no parse —
+ * because the activate path already does the canonical parse a few lines
+ * later via parseCostString and the gate must run BEFORE cost payment.
+ */
+const isLoyaltyAbility = (costRaw: string): boolean => {
+  const upper = costRaw.toUpperCase();
+  if (upper.includes("ADDCOUNTER<") && upper.includes("/LOYALTY>")) return true;
+  if (upper.includes("SUBCOUNTER<") && upper.includes("/LOYALTY>")) return true;
+  return false;
+};
 
 /**
  * Activate the ability at `abilityIndex` on `cardId`. Validates the
@@ -92,6 +109,23 @@ export function* activateAbility(
     if (currentLevel >= card.classMaxLevel) {
       throw new IllegalDecisionError(
         `activateAbility: Class level cap reached (level ${currentLevel} >= max ${card.classMaxLevel}) on card ${cardId}`,
+      );
+    }
+  }
+
+  // 3a-bis2. Wave 70.I — Planeswalker loyalty-ability per-turn cap (CR
+  // 606.5b: "no more than one of a planeswalker's loyalty abilities
+  // can be activated each turn"). Default cap is 1; NumLoyaltyAct
+  // statics (Carth the Lion / The Chain Veil / Oath of Teferi) raise
+  // it. Detected via cost-string heuristic (AddCounter<n/LOYALTY> /
+  // SubCounter<n/LOYALTY>). The gate runs BEFORE cost payment so a
+  // rejected activation pays nothing.
+  if (isLoyaltyAbility(sa.ast.cost.raw)) {
+    const usedThisTurn = game.flags.loyaltyActivationsThisTurn.get(cardId) ?? 0;
+    const cap = effectiveMaxLoyaltyActivations(game, cardId);
+    if (usedThisTurn >= cap) {
+      throw new IllegalDecisionError(
+        `activateAbility: loyalty-activation cap reached on planeswalker ${cardId} (${usedThisTurn}/${cap} this turn)`,
       );
     }
   }
@@ -276,6 +310,14 @@ export function* activateAbility(
 
   // 6. Push to stack (emits AbilityActivated).
   yield* game.action.putOnStack(stackItem);
+
+  // 6a. Wave 70.I — increment per-card loyalty-activation counter AFTER
+  // the stack push so a successful activation contributes to the
+  // per-turn cap (CR 606.5b). Reset at the cleanup step by phase-handler.
+  if (isLoyaltyAbility(sa.ast.cost.raw)) {
+    const prior = game.flags.loyaltyActivationsThisTurn.get(cardId) ?? 0;
+    game.flags.loyaltyActivationsThisTurn.set(cardId, prior + 1);
+  }
 
   // 7. Return the stack item id for callers that need to track it.
   return itemId;

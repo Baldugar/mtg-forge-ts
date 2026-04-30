@@ -77,6 +77,7 @@ import type {
 import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
 import { canBeSacrificed, canGainLife, canPlayLand, canPutCounter } from "../statics/wave60-cant-gates.js";
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
+import { canDraw } from "../statics/wave70i-loyalty-gates.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -211,6 +212,15 @@ export class GameAction {
     // …"). A batched draw must expose N separate replacement points. SP2
     // keeps this simple by looping in the mutator; triggers (Milestone E)
     // collapse the batch back into a single summary as needed.
+    //
+    // Wave 70.I — CR 121.5 CantDraw static gate. If any active CantDraw
+    // static matches the seat, every per-card draw is rewritten to a no-op
+    // (drawing 0 cards). No CardDrawn event fires; library + hand state
+    // unchanged; cardsDrawnThisTurn unchanged. Mirrors Forge's silent
+    // short-circuit semantics — the draw is "performed" with count 0.
+    if (count > 0 && !canDraw(game, seat)) {
+      return;
+    }
     for (let i = 0; i < count; i++) {
       // Wave 40 — Dredge (CR 702.52): before each per-card draw, check for
       // dredgeable cards in the player's graveyard. Each dredgeable card

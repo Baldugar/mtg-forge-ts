@@ -41,6 +41,7 @@ import {
 } from "../statics/wave60-turn-structure-gates.js";
 import { sweepEndOfCombat, sweepEndOfTurnWarpExile } from "../statics/wave65-combat-gates.js";
 import { shouldUntapDuringStep } from "../statics/wave70f-combat-gates.js";
+import { clearsDamageInCleanup } from "../statics/wave70i-loyalty-gates.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
 import { type Turn, TurnQueue } from "./turn-queue.js";
@@ -396,6 +397,30 @@ export class PhaseHandler {
           }
         }
       }
+      // Wave 70.I — CR 514.2 cleanup-step "all damage marked on creatures
+      // is removed" turn-based action. Sweeps every battlefield card with
+      // marked damage and resets card.damage to 0, unless an active
+      // NoCleanupDamage static matches the card (in which case the marked
+      // damage persists across turns until cleared by another effect).
+      // The gate also clears damagedByDeathtouch alongside the damage —
+      // both are "marked damage state" per CR 119.10.
+      for (const p of game.players) {
+        const bf = p.zones.get(ZoneType.Battlefield);
+        if (!bf) continue;
+        for (const cid of bf.toArray()) {
+          const card = game.cards.get(cid);
+          if (!card) continue;
+          if (card.damage <= 0 && card.damagedByDeathtouch === false) continue;
+          if (!clearsDamageInCleanup(game, cid)) continue;
+          card.damage = 0;
+          card.damagedByDeathtouch = false;
+        }
+      }
+      // Wave 70.I — reset per-card loyalty-activation counters at end of
+      // turn (CR 606.5b — the cap is per-turn). Cleared at cleanup step
+      // so the next turn's activations start fresh under the same
+      // effective-cap walk through NumLoyaltyAct statics.
+      game.flags.loyaltyActivationsThisTurn.clear();
     }
     // SP2: Upkeep (triggered-ability harvest), Cleanup (damage wipe,
     // "until end of turn" cleanup), Combat steps (TBAs for

@@ -158,3 +158,19 @@ export * from "./attack-vigilance-static.js";
 export * from "./optional-attack-cost-static.js";
 export * from "./attack-restrict-static.js";
 export * from "./block-restrict-static.js";
+// Wave 70.I — three more registry-walk gate statics from the long-tail
+// static-mode pack (enum entries previously unhandled):
+//   - CantDraw                  (~7 cards — Howling Mine inverse / Curse
+//                                 of the Forsaken / Black Vise variants;
+//                                 matched player's draws no-op silently)
+//   - NumLoyaltyAct             (~6 cards — Carth the Lion / The Chain
+//                                 Veil / Oath of Teferi; +N additional
+//                                 loyalty activations per planeswalker
+//                                 per turn over the CR 606.5b default)
+//   - NoCleanupDamage           (~7 cards — permanent-damage themed
+//                                 creatures; marked damage doesn't
+//                                 clear at cleanup, persists across
+//                                 turns until cleared by another effect)
+export * from "./cant-draw-static.js";
+export * from "./num-loyalty-act-static.js";
+export * from "./no-cleanup-damage-static.js";
