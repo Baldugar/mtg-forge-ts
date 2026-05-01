@@ -9,12 +9,15 @@
 // single value the consumer site (when it lands) will use to override
 // the canonical behavior at the matching decision point.
 //
-// All four target mechanics (Suspect, Venture/Dungeon, Plot,
-// Radiation counter) are forward-compat stubs in this codebase —
-// the Forge mechanics haven't been ported yet (TODO(advanced) on
-// each static handler). The helpers register and resolve
-// correctly so static-registry snapshots stay consistent and the
-// future mechanic pipelines have a uniform read-side hook.
+// Wave 102 — Suspect IS wired (Wave 71's `ability/effects/suspect.ts`
+// and the AlterAttribute lane in `wave-21-effects.ts` consult
+// `canBeSuspected` at the application call site, silently
+// rejecting matched cards and skipping the CardSuspected event).
+// Venture/Dungeon, Plot, and Radiation remain forward-compat
+// stubs — the Forge mechanics haven't been ported yet, but the
+// helpers register and resolve correctly so static-registry
+// snapshots stay consistent and the future mechanic pipelines
+// have a uniform read-side hook.
 //
 // Why standalone helpers (not methods on Game / Game.flags):
 // mirrors the established Wave 60 / 70 / 74 / 75 pattern. The

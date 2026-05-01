@@ -190,33 +190,36 @@ const opponentOf = (game: Game, seat: PlayerSeat): PlayerSeat => {
 };
 
 /**
- * Pick a single creature card the seat controls (battlefield), excluding
- * tokens that have already been removed or moved. MVP: returns the first
- * matching card. Decision-driven targeting (Forge's `ValidTgts$ Creature`
- * = "controller chooses one") is documented inline.
+ * Wave 102 — collect every battlefield creature card the seat controls.
+ * Used by the Forge room as the eligible pool for the `chooseCard`
+ * decision request (`ValidTgts$ Creature.YouCtrl` shape). The
+ * caller treats `[0]` as the deterministic fallback when the
+ * decision provider returns no chosen ids.
  */
-const pickOwnCreature = (game: Game, seat: PlayerSeat): EntityId | undefined => {
+const collectOwnCreatures = (game: Game, seat: PlayerSeat): readonly EntityId[] => {
+  const out: EntityId[] = [];
   for (const [id, card] of game.cards) {
     if (card.zone !== ZoneType.Battlefield) continue;
     if (card.controllerSeat !== seat) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
-    if (chars.types.has(CardType.Creature)) return id;
+    if (chars.types.has(CardType.Creature)) out.push(id);
   }
-  return undefined;
+  return out;
 };
 
 /**
- * Pick a single creature the seat does NOT control (battlefield). Used by
- * Arena (goad). MVP: first match.
+ * Wave 102 — collect every battlefield creature card the seat does
+ * NOT control. Used by the Arena room (goad target choice).
  */
-const pickOpponentCreature = (game: Game, seat: PlayerSeat): EntityId | undefined => {
+const collectOpponentCreatures = (game: Game, seat: PlayerSeat): readonly EntityId[] => {
+  const out: EntityId[] = [];
   for (const [id, card] of game.cards) {
     if (card.zone !== ZoneType.Battlefield) continue;
     if (card.controllerSeat === seat) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
-    if (chars.types.has(CardType.Creature)) return id;
+    if (chars.types.has(CardType.Creature)) out.push(id);
   }
-  return undefined;
+  return out;
 };
 
 /**
@@ -312,9 +315,38 @@ export function* applyUndercityRoomEffect(
       return;
     }
     case 2: {
-      // Forge — put two +1/+1 counters on a creature you control. MVP:
-      // first creature; decision-driven targeting is TODO(advanced).
-      const target = pickOwnCreature(game, seat);
+      // Forge — put two +1/+1 counters on a creature you control.
+      // Wave 102: decision-driven target choice. The venturing player
+      // yields a `chooseCard` decision over the eligible pool of
+      // creatures they control; first-match is the deterministic
+      // fallback when the decision provider returns nothing
+      // (snapshot replay parity, headless tests). Single-creature
+      // pools still surface the decision request for trace
+      // determinism — Forge's chooser path is consistent regardless
+      // of pool size.
+      const ownCreatures = collectOwnCreatures(game, seat);
+      if (ownCreatures.length === 0) return;
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: seat,
+          pool: ownCreatures,
+          restriction: { effect: "undercity-forge" },
+          min: 1,
+          max: 1,
+        },
+      }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+      const eligible = new Set(ownCreatures);
+      let target: EntityId | undefined = ownCreatures[0];
+      if (decision && decision.kind === "chooseCard") {
+        for (const id of decision.chosen) {
+          if (eligible.has(id)) {
+            target = id;
+            break;
+          }
+        }
+      }
       if (target !== undefined) {
         yield* game.action.addCounter(target, "P1P1" as never, 2);
       }
@@ -327,18 +359,77 @@ export function* applyUndercityRoomEffect(
     }
     case 4: {
       // Trap! — Forge's printed text is "target player loses 5 life";
-      // CR 906 dungeon-room effects let the venturing player choose the
-      // target. MVP: route to the opponent (the canonical play). Decision-
-      // driven target choice is TODO(advanced).
-      const opp = opponentOf(game, seat);
-      yield* game.action.changeLife(opp, -5, { cause: "effect" });
+      // CR 906 dungeon-room effects let the venturing player choose
+      // the target. Wave 102: decision-driven `choosePlayer` request.
+      // The venturing player picks any live player; deterministic
+      // fallback is the first live opponent (or self-fallback if
+      // every other seat has lost — same shape as the priority
+      // pipeline's "no live opponent" degenerate case).
+      const livePool: PlayerSeat[] = [];
+      for (const p of game.players) {
+        if (p.hasLost) continue;
+        livePool.push(p.seat);
+      }
+      if (livePool.length === 0) return;
+      // Dungeon-room turn-based actions have no real card source
+      // (CR 906.4c is a state-based, undercity-driven effect, not
+      // an ability of any specific card). Mint a fresh entity id so
+      // the decision request stays well-typed; the value is
+      // opaque to the chooser and only echoes back through telemetry.
+      const trapSourceId = game.newEntityId();
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "choosePlayer",
+          sourceId: trapSourceId,
+          restriction: { effect: "undercity-trap" },
+          min: 1,
+          max: 1,
+        },
+      }) as { readonly kind: "choosePlayer"; readonly chosen: readonly PlayerSeat[] } | undefined;
+      const livePoolSet = new Set(livePool);
+      let target: PlayerSeat = opponentOf(game, seat);
+      if (decision && decision.kind === "choosePlayer") {
+        for (const s of decision.chosen) {
+          if (livePoolSet.has(s)) {
+            target = s;
+            break;
+          }
+        }
+      }
+      yield* game.action.changeLife(target, -5, { cause: "effect" });
       return;
     }
     case 5: {
-      // Arena — goad target creature you don't control. MVP: stamp the
-      // goaded flag on the first eligible target. Decision-driven target
-      // pick is TODO(advanced) — same MVP shape as the Goad effect handler.
-      const tgt = pickOpponentCreature(game, seat);
+      // Arena — goad target creature you don't control. Wave 102:
+      // decision-driven `chooseCard` request over the eligible
+      // pool of opponent-controlled creatures. First-match is the
+      // deterministic fallback so snapshot replays / headless
+      // tests still resolve when the decision provider returns
+      // nothing.
+      const opponentCreatures = collectOpponentCreatures(game, seat);
+      if (opponentCreatures.length === 0) return;
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: seat,
+          pool: opponentCreatures,
+          restriction: { effect: "undercity-arena" },
+          min: 1,
+          max: 1,
+        },
+      }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+      const eligible = new Set(opponentCreatures);
+      let tgt: EntityId | undefined = opponentCreatures[0];
+      if (decision && decision.kind === "chooseCard") {
+        for (const id of decision.chosen) {
+          if (eligible.has(id)) {
+            tgt = id;
+            break;
+          }
+        }
+      }
       if (tgt !== undefined) {
         const card = game.cards.get(tgt);
         if (card) card.goaded = true;

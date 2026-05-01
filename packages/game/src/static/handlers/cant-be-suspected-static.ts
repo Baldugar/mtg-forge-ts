@@ -22,14 +22,16 @@
 // suspect-application call site rather than via a derived
 // replacement chain.
 //
-// MVP scope: forward-compat stub. Our codebase has no Suspect
-// mechanic infra yet — there is no per-card `suspected` flag, no
-// AB$ Suspect / TR$ Suspect handler, no SuspectGained event. The
-// static still registers (so ports of cards with this S: line
-// don't break the parser) and the `canBeSuspected` helper is
-// exposed so the future Suspect pipeline can read it uniformly.
-// TODO(advanced) — wire into the Suspect application gate once the
-// Suspect mechanic lands.
+// Wave 102 — gate IS wired. The Suspect mechanic landed in Wave 71
+// (`ability/effects/suspect.ts` + the `AB$ AlterAttribute |
+// Attributes$ Suspect/Suspected` lane in `wave-21-effects.ts`) and
+// both call `canBeSuspected(game, id)` before flipping the flag,
+// silently rejecting matched cards. CardSuspected events are gated
+// at the same call site so a refused suspect emits no event. The
+// describe() payload's `cardMatches` predicate is the read-side
+// surface; consumers walk the registry through
+// `statics/wave76-gate-helpers.ts::canBeSuspected`. Wave 76's
+// "forward-compat stub" framing was retired with that wiring.
 import type { EntityId, ParamValue, ReplacementAbility, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";

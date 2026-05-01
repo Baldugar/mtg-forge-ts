@@ -13,12 +13,15 @@
 // extra performs the full untap-step semantics (untap permanents +
 // phasing + DontUntap gate consultation).
 //
-// MVP ordering: right-after-normal-untap. CR 502.2 says additional untap
-// steps occur BEFORE the canonical untap step, with no priority window
-// between them; the observable difference for headless deterministic
-// replays is nil (both orderings untap the same permanents). Tighter
-// ordering remains TODO(advanced) — would require splitting the step
-// emission shell from the turn-based action.
+// Wave 99 — CR 502.2 ordering closed. Additional untap steps run
+// BEFORE the canonical untap step in `phase-handler.ts`'s untap
+// branch: the per-seat counter is drained via a `while
+// (consumePendingAdditionalUntap(...)) { runUntapPass(...) }` loop
+// PRECEDING the canonical pass. Two observable consequences:
+//   - "at the beginning of the untap step" triggers see the extra
+//     loop's events first.
+//   - permanents tapped during the extra loop's resolution are
+//     still untapped by the canonical loop that follows.
 //
 // Routing: ruleChanging category. Mirrors AdditionalCombatPhase's stamp-
 // at-build-time pattern: the handler stamps the counter on activate +
