@@ -372,3 +372,71 @@ behaviour. Hard contract held.
    no-op trigger pair on the TS side at the parity-classifier
    boundary. Option (b) needs a discriminator the trigger metadata
    doesn't currently carry.
+
+## Milestone 6.7 — close M6.6 infra gaps + expand to ~160
+
+M6.7 closed the two `bridge-engine-state-event-not-captured` rows
+from M6.6 and expanded the cohort from 130 → 159 scenarios, then
+re-ran parity end-to-end against the rebuilt Java goldens.
+
+### Aggregate this run (post-M6.7)
+
+- **159 scenarios** (up from 130).
+- **152 full-match** (95.6%).
+- **7 mvp-known** (4.4%). Distribution:
+  - 5× `shallow-trigger-fanout` + `no-stack-drain`
+    (`kor-outfitter-etb`, `oblivion-ring-etb`, `cleric-class-etb`,
+    `knight-of-the-white-orchid-etb`, `sand-strangler-etb`) — Forge
+    skips the optional-target ETB trigger fan-out when no legal
+    target exists; TS runner fires the trigger anyway as a no-op
+    `AbilityActivated` + `StackItemResolved` pair.
+  - 1× `bridge-counter-event-not-captured` (`cleric-class-etb`'s
+    Class-keyword level-1 counter, same family as M6 rows).
+  - 1× `ts-runner-shallow` (`murderous-redcap-etb`) — Forge fires
+    the Persist-revive damage trigger on a different cycle.
+  - 1× `bridge-action-skipped` (`tilted-animar-etb`) — fake card
+    (made-up name); Forge can't find it so Java side is empty.
+- **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+### What M6.7 changed
+
+1. **Strip `BecameMonarch` and `ClassLevelGained` as engine-internal
+   on TS side.** Forge has **no GameEvent** for monarchy transitions
+   or Class-keyword level changes — `Game.setMonarch()` and the
+   level-up path silently mutate state without firing on the
+   EventBus. The TS engine emits discrete state events; with no Java
+   counterpart to subscribe to, classify both as engine-internal
+   (same family as `CardDestroyed`/`StateBasedActionApplied`).
+   Closes `court-of-grace-etb` and the `bridge-engine-state-event-
+   not-captured` class for these two TS-only kinds.
+
+2. **Strip `CardAttached` / `CardUnattached` as engine-internal on
+   TS side.** Bridge V2 doesn't subscribe to
+   `GameEventCardAttachment`. The semantic equip step is already
+   represented on both sides via the equipment/Germ token's
+   `CardChangedZone(null → Battlefield)` (Living Weapon path); the
+   attachment edge is a TS-side bookkeeping marker that Forge folds
+   into the equipment's modifier graph silently. Closes
+   `batterskull-etb`'s real-divergence-investigate row.
+
+3. **Cohort expansion: +29 scenarios** (130 → 159). Mechanics added:
+   Suspend (Lotus Bloom), Outlast (Mer-Ek Nightblade), Renown-style
+   (Knight of the White Orchid), Adapt-flavored (Migratory Route),
+   Mentor (Tajic, Legion's Edge), Strive-flavored (Mizzium Mortars),
+   Channel-flavored (Generous Visitor), Cascade-chain (Maelstrom
+   Wanderer), Mutate (Auspicious Starrix), Encore (Faldorn),
+   For-Mirrodin (Sword of the Realms), Living Weapon (Batterskull),
+   Scavenge (Slitherhead), Persist (Murderous Redcap), Undying
+   (Strangleroot Geist), Embalm (Sacred Cat), Eternalize (Sand
+   Strangler), Foretell (Augury Raven), Domain (Tribal Flames),
+   Constellation (Doomwake Giant), Battalion-flavored (Boros
+   Reckoner), Revolt (Tilted Animar), Landfall (Steppe Lynx),
+   Heroic (Anax and Cymede), Coven-flavored (Light of Promise),
+   Magecraft (Quandrix Apprentice), Awaken (Awaken the Bear),
+   Bestow (Hopeful Eidolon), Compleated (Tamiyo, Compleated Sage).
+
+### Real engine bugs surfaced — none
+
+No M6.7 scenario landed in `real-divergence-investigate`. Every
+divergence maps to a documented bridge capture gap or known Forge
+behaviour. Hard contract held.

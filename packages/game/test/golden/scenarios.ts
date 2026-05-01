@@ -1169,6 +1169,265 @@ SVar:DBRemove:DB$ RemoveCounter | ValidTgts$ Permanent | CounterType$ Any | Coun
 Oracle:First strike, deathtouch\\nWhenever Glissa Sunslayer deals combat damage to a player, choose one —\\n• You draw a card and you lose 1 life.\\n• Destroy target enchantment.\\n• Remove up to three counters from target permanent.
 `;
 
+// ── M6.7 cohort expansion card sources ──────────────────────────────────────
+
+const merEkNightbladeSrc = `Name:Mer-Ek Nightblade
+ManaCost:3 B
+Types:Creature Orc Assassin
+PT:2/3
+K:Outlast:B
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Deathtouch | Description$ Each creature you control with a +1/+1 counter on it has deathtouch.
+Oracle:Outlast {B}.
+`;
+
+const knightOfTheWhiteOrchidSrc = `Name:Knight of the White Orchid
+ManaCost:W W
+Types:Creature Human Knight
+PT:2/2
+K:First Strike
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | CheckSVar$ Y | SVarCompare$ GTX | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if an opponent controls more lands than you, you may search your library for a Plains card.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Plains | ChangeNum$ 1 | ShuffleNonMandatory$ True
+SVar:X:Count$Valid Land.YouCtrl
+SVar:Y:PlayerCountOpponents$HighestValid Land.YouCtrl
+Oracle:First strike. ETB conditional search.
+`;
+
+const migratoryRouteSrc = `Name:Migratory Route
+ManaCost:3 W U
+Types:Sorcery
+A:SP$ Token | TokenAmount$ 4 | TokenScript$ w_1_1_bird_flying | TokenOwner$ You | SpellDescription$ Create four 1/1 white Bird creature tokens with flying.
+K:TypeCycling:Basic:2
+DeckHas:Ability$Token
+Oracle:Create four 1/1 white Bird creature tokens with flying. Basic landcycling {2}.
+`;
+
+const tajicLegionsEdgeSrc = `Name:Tajic, Legion's Edge
+ManaCost:1 R W
+Types:Legendary Creature Human Soldier
+PT:3/2
+K:Haste
+K:Mentor
+R:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ Creature.Other+YouCtrl | IsCombat$ False | Description$ Prevent all noncombat damage that would be dealt to other creatures you control.
+A:AB$ Pump | Cost$ R W | Defined$ Self | KW$ First Strike | SpellDescription$ CARDNAME gains first strike until end of turn.
+Oracle:Haste, Mentor.
+`;
+
+const mizziumMortarsSrc = `Name:Mizzium Mortars
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature you don't control.
+K:Overload:3 R R R
+Oracle:CARDNAME deals 4 damage to target creature you don't control. Overload.
+`;
+
+const generousVisitorSrc = `Name:Generous Visitor
+ManaCost:G
+Types:Creature Spirit
+PT:1/1
+T:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an enchantment spell, put a +1/+1 counter on target creature.
+SVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Whenever you cast an enchantment, put +1/+1 on target creature.
+`;
+
+const maelstromWandererSrc = `Name:Maelstrom Wanderer
+ManaCost:5 G U R
+Types:Legendary Creature Elemental
+PT:7/5
+K:Cascade
+K:Cascade
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Creatures you control have haste.
+Oracle:Creatures you control have haste. Cascade twice.
+`;
+
+const auspiciousStarrixSrc = `Name:Auspicious Starrix
+ManaCost:4 G
+Types:Creature Elk Beast
+PT:6/6
+K:Mutate:5 G
+T:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Whenever this creature mutates, exile cards from the top of your library until you exile X permanent cards.
+SVar:TrigDigUntil:DB$ DigUntil | Amount$ X | Defined$ You | Valid$ Permanent
+SVar:X:Count$TimesMutated
+Oracle:Mutate {5}{G}.
+`;
+
+const faldornDreadWolfHeraldSrc = `Name:Faldorn, Dread Wolf Herald
+ManaCost:1 R G
+Types:Legendary Creature Human Druid
+PT:3/3
+T:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from exile, create a 2/2 green Wolf creature token.
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf
+K:Encore:2 R G
+Oracle:Create Wolf token on cast-from-exile. Encore.
+`;
+
+const swordOfTheRealmsSrc = `Name:Sword of the Realms
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black | Description$ Equipped creature gets +2/+2 and has protection from white and from black.
+Oracle:Equipped creature gets +2/+2 and protection from white and black.
+`;
+
+const batterskullSrc = `Name:Batterskull
+ManaCost:5
+Types:Artifact Equipment
+K:Living Weapon
+K:Equip:5
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Vigilance & Lifelink | Description$ Equipped creature gets +4/+4 and has vigilance and lifelink.
+A:AB$ ChangeZone | Cost$ 3 | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.
+Oracle:Living weapon. Equipped creature +4/+4, vigilance, lifelink.
+`;
+
+const slitherheadSrc = `Name:Slitherhead
+ManaCost:BG
+Types:Creature Plant Zombie
+PT:1/1
+K:Scavenge:0
+Oracle:Scavenge {0}.
+`;
+
+const murderousRedcapSrc = `Name:Murderous Redcap
+ManaCost:2 BR BR
+Types:Creature Goblin Assassin
+PT:2/2
+K:Persist
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals damage equal to its power to any target.
+SVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X
+SVar:X:Count$CardPower
+Oracle:Persist + ETB damage trigger.
+`;
+
+const stranglerootGeistSrc = `Name:Strangleroot Geist
+ManaCost:G G
+Types:Creature Spirit
+PT:2/1
+K:Haste
+K:Undying
+Oracle:Haste, Undying.
+`;
+
+const sacredCatSrc = `Name:Sacred Cat
+ManaCost:W
+Types:Creature Cat
+PT:1/1
+K:Lifelink
+K:Embalm:W
+Oracle:Lifelink, Embalm {W}.
+`;
+
+const sandStranglerSrc = `Name:Sand Strangler
+ManaCost:3 R
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | Desert$ True | TriggerDescription$ ETB conditional damage on Desert.
+SVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 3
+K:Eternalize:5 R R
+Oracle:Eternalize ETB conditional damage.
+`;
+
+const auguryRavenSrc = `Name:Augury Raven
+ManaCost:3 U
+Types:Creature Bird
+PT:3/3
+K:Flying
+K:Foretell:1 U
+Oracle:Flying, Foretell {1}{U}.
+`;
+
+const tribalFlamesSrc = `Name:Tribal Flames
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SpellDescription$ Domain — CARDNAME deals X damage to any target.
+SVar:X:Count$Domain
+Oracle:Domain — CARDNAME deals X damage.
+`;
+
+const doomwakeGiantSrc = `Name:Doomwake Giant
+ManaCost:4 B
+Types:Enchantment Creature Giant
+PT:4/6
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigMassacre | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, creatures your opponents control get -1/-1 until end of turn.
+SVar:TrigMassacre:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.OppCtrl | IsCurse$ True
+Oracle:Constellation -1/-1 sweep on enchantment ETB.
+`;
+
+const borosReckonerSrc = `Name:Boros Reckoner
+ManaCost:RW RW RW
+Types:Creature Minotaur Wizard
+PT:3/3
+T:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to any target.
+SVar:TrigDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any
+A:AB$ Pump | Cost$ RW | KW$ First Strike | Defined$ Self | SpellDescription$ CARDNAME gains first strike until end of turn.
+SVar:X:TriggerCount$DamageAmount
+Oracle:Damage redirect + activated first strike.
+`;
+
+const tiltedAnimarSrc = `Name:Tilted Animar
+ManaCost:1 U R
+Types:Legendary Creature Elemental
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Revolt — Whenever a permanent you control leaves, put a +1/+1 counter on CARDNAME.
+SVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Revolt-style counter trigger.
+`;
+
+const steppeLynxSrc = `Name:Steppe Lynx
+ManaCost:W
+Types:Creature Cat
+PT:0/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — +2/+2 until EOT.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2
+Oracle:Landfall pump.
+`;
+
+const anaxAndCymedeSrc = `Name:Anax and Cymede
+ManaCost:1 R W
+Types:Legendary Creature Human Soldier
+PT:3/2
+K:First Strike
+K:Vigilance
+T:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Heroic — When you cast a spell that targets CARDNAME, anthem until EOT.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample | NumAtt$ +1 | NumDef$ +1
+Oracle:Heroic — anthem on target.
+`;
+
+const lightOfPromiseSrc = `Name:Light of Promise
+ManaCost:2 W
+Types:Enchantment Aura
+K:Enchant:Creature
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ LightOfPromiseTrig | Description$ Enchanted creature has lifegain-counter trigger.
+SVar:LightOfPromiseTrig:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ LightOfPromisePutCounter | TriggerDescription$ Whenever you gain life, put that many +1/+1 counters on this creature.
+SVar:LightOfPromisePutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X
+SVar:X:TriggerCount$LifeAmount
+Oracle:Aura with grant-trigger.
+`;
+
+const quandrixApprenticeSrc = `Name:Quandrix Apprentice
+ManaCost:G U
+Types:Creature Human Wizard
+PT:2/2
+T:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Magecraft — surveil-style dig on instant/sorcery cast.
+SVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Land
+Oracle:Magecraft trigger.
+`;
+
+const awakenTheBearSrc = `Name:Awaken the Bear
+ManaCost:2 G
+Types:Instant
+A:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | KW$ Trample | SpellDescription$ Target creature gets +3/+3 and gains trample until end of turn.
+Oracle:Pump + trample.
+`;
+
+const hopefulEidolonSrc = `Name:Hopeful Eidolon
+ManaCost:W
+Types:Enchantment Creature Spirit
+PT:1/1
+K:Bestow:3 W
+K:Lifelink
+S:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Lifelink | Description$ Enchanted creature gets +1/+1 and has lifelink.
+Oracle:Bestow {3}{W}, Lifelink.
+`;
+
 // ── Scenarios ────────────────────────────────────────────────────────────────
 
 export const SCENARIOS: readonly GoldenScenario[] = [
@@ -3188,6 +3447,415 @@ export const SCENARIOS: readonly GoldenScenario[] = [
         battlefield: [{ card: "Bonecrusher Giant" }],
         manaPool: ["R"],
       },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ── M6.7 cohort expansion (130 → 165) ─────────────────────────────────────
+
+  // 131. Suspend keyword parse — Lotus Bloom (in-hand; locks Suspend
+  // keyword + activated mana ability registry).
+  {
+    id: "lotus-bloom-in-hand",
+    description: "Lotus Bloom in hand; Suspend:3:0 keyword + tap-mana activated ability registered.",
+    seed: 0xc4,
+    cards: { "Lotus Bloom": lotusBloomSrc },
+    players: [
+      { life: 20, hand: ["Lotus Bloom"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 132. Outlast — Mer-Ek Nightblade ETB (Outlast:B activation registry +
+  // counters-driven static).
+  {
+    id: "mer-ek-nightblade-etb",
+    description: "Mer-Ek Nightblade ETB; Outlast:B + counters-conditional Deathtouch static.",
+    seed: 0xc5,
+    cards: { "Mer-Ek Nightblade": merEkNightbladeSrc },
+    players: [
+      { life: 20, hand: ["Mer-Ek Nightblade"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mer-Ek Nightblade", controller: SEAT0 }],
+  },
+
+  // 133. Renown — Knight of the White Orchid ETB (conditional library
+  // search trigger; opponent has 0 lands so it's a no-op fan-out path).
+  {
+    id: "knight-of-the-white-orchid-etb",
+    description: "Knight of the White Orchid ETB; First Strike + conditional ChangeZone trigger.",
+    seed: 0xc6,
+    cards: { "Knight of the White Orchid": knightOfTheWhiteOrchidSrc },
+    players: [
+      { life: 20, hand: ["Knight of the White Orchid"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Knight of the White Orchid", controller: SEAT0 }],
+  },
+
+  // 134. Adapt-flavored token-creator — Migratory Route in-hand (locks
+  // Storm-style token-amount + cycling parse).
+  {
+    id: "migratory-route-in-hand",
+    description: "Migratory Route in hand; 4-bird-token spell + Basic landcycling keyword.",
+    seed: 0xc7,
+    cards: { "Migratory Route": migratoryRouteSrc },
+    players: [
+      { life: 20, hand: ["Migratory Route"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 135. Mentor — Tajic, Legion's Edge ETB (Haste + Mentor + prevention
+  // replacement + activated first-strike pump).
+  {
+    id: "tajic-legions-edge-etb",
+    description: "Tajic, Legion's Edge ETB; Mentor keyword + DamageDone prevention replacement.",
+    seed: 0xc8,
+    cards: { "Tajic, Legion's Edge": tajicLegionsEdgeSrc },
+    players: [
+      { life: 20, hand: ["Tajic, Legion's Edge"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tajic, Legion's Edge", controller: SEAT0 }],
+  },
+
+  // 136. Strive-flavored — Mizzium Mortars in hand (Overload keyword +
+  // creature target spell).
+  {
+    id: "mizzium-mortars-in-hand",
+    description: "Mizzium Mortars in hand; DealDamage spell + Overload keyword.",
+    seed: 0xc9,
+    cards: { "Mizzium Mortars": mizziumMortarsSrc },
+    players: [
+      { life: 20, hand: ["Mizzium Mortars"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 137. Channel-flavored — Generous Visitor ETB (SpellCast trigger on
+  // enchantment).
+  {
+    id: "generous-visitor-etb",
+    description: "Generous Visitor ETB; SpellCast(Enchantment) trigger registered.",
+    seed: 0xca,
+    cards: { "Generous Visitor": generousVisitorSrc },
+    players: [
+      { life: 20, hand: ["Generous Visitor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Generous Visitor", controller: SEAT0 }],
+  },
+
+  // 138. Cascade chain — Maelstrom Wanderer ETB (double Cascade keyword +
+  // anthem static).
+  {
+    id: "maelstrom-wanderer-etb",
+    description: "Maelstrom Wanderer ETB; Cascade x2 keyword + Haste-anthem static.",
+    seed: 0xcb,
+    cards: { "Maelstrom Wanderer": maelstromWandererSrc },
+    players: [
+      { life: 20, hand: ["Maelstrom Wanderer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maelstrom Wanderer", controller: SEAT0 }],
+  },
+
+  // 139. Mutate — Auspicious Starrix ETB (Mutate keyword + Mutates
+  // trigger registry; ETB-as-creature path).
+  {
+    id: "auspicious-starrix-etb",
+    description: "Auspicious Starrix ETB; Mutate:5G + Mutates trigger registered.",
+    seed: 0xcc,
+    cards: { "Auspicious Starrix": auspiciousStarrixSrc },
+    players: [
+      { life: 20, hand: ["Auspicious Starrix"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Auspicious Starrix", controller: SEAT0 }],
+  },
+
+  // 140. Encore — Faldorn, Dread Wolf Herald ETB (Encore keyword +
+  // SpellCast-from-exile trigger).
+  {
+    id: "faldorn-dread-wolf-etb",
+    description: "Faldorn, Dread Wolf Herald ETB; Encore + cast-from-exile token trigger.",
+    seed: 0xcd,
+    cards: { "Faldorn, Dread Wolf Herald": faldornDreadWolfHeraldSrc },
+    players: [
+      { life: 20, hand: ["Faldorn, Dread Wolf Herald"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Faldorn, Dread Wolf Herald", controller: SEAT0 }],
+  },
+
+  // 141. For Mirrodin (mock via Sword of the Realms) — equipment ETB
+  // with protection-static.
+  {
+    id: "sword-of-the-realms-etb",
+    description: "Sword of the Realms ETB; Equip:2 + Protection-from-color static.",
+    seed: 0xce,
+    cards: { "Sword of the Realms": swordOfTheRealmsSrc },
+    players: [
+      { life: 20, hand: ["Sword of the Realms"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword of the Realms", controller: SEAT0 }],
+  },
+
+  // 142. Living Weapon — Batterskull ETB (Living Weapon keyword +
+  // anthem static + activated bounce).
+  {
+    id: "batterskull-etb",
+    description: "Batterskull ETB; Living Weapon + Equip:5 + activated bounce-to-hand.",
+    seed: 0xcf,
+    cards: { Batterskull: batterskullSrc },
+    players: [
+      { life: 20, hand: ["Batterskull"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Batterskull", controller: SEAT0 }],
+  },
+
+  // 143. Scavenge — Slitherhead ETB (Scavenge:0 keyword registry).
+  {
+    id: "slitherhead-etb",
+    description: "Slitherhead ETB; Scavenge:0 keyword registered.",
+    seed: 0xd0,
+    cards: { Slitherhead: slitherheadSrc },
+    players: [
+      { life: 20, hand: ["Slitherhead"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Slitherhead", controller: SEAT0 }],
+  },
+
+  // 144. Persist — Murderous Redcap ETB (Persist keyword + ETB damage
+  // trigger; no target so trigger fan-out is the no-target path).
+  {
+    id: "murderous-redcap-etb",
+    description: "Murderous Redcap ETB; Persist keyword + ETB damage trigger.",
+    seed: 0xd1,
+    cards: { "Murderous Redcap": murderousRedcapSrc },
+    players: [
+      { life: 20, hand: ["Murderous Redcap"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Murderous Redcap", controller: SEAT0 }],
+  },
+
+  // 145. Undying — Strangleroot Geist ETB.
+  {
+    id: "strangleroot-geist-etb",
+    description: "Strangleroot Geist ETB; Haste + Undying keyword pair.",
+    seed: 0xd2,
+    cards: { "Strangleroot Geist": stranglerootGeistSrc },
+    players: [
+      { life: 20, hand: ["Strangleroot Geist"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Strangleroot Geist", controller: SEAT0 }],
+  },
+
+  // 146. Embalm — Sacred Cat ETB.
+  {
+    id: "sacred-cat-etb",
+    description: "Sacred Cat ETB; Lifelink + Embalm:W keyword.",
+    seed: 0xd3,
+    cards: { "Sacred Cat": sacredCatSrc },
+    players: [
+      { life: 20, hand: ["Sacred Cat"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sacred Cat", controller: SEAT0 }],
+  },
+
+  // 147. Eternalize — Sand Strangler ETB (Eternalize keyword + ETB
+  // conditional damage).
+  {
+    id: "sand-strangler-etb",
+    description: "Sand Strangler ETB; Eternalize:5RR + ETB-conditional damage trigger.",
+    seed: 0xd4,
+    cards: { "Sand Strangler": sandStranglerSrc },
+    players: [
+      { life: 20, hand: ["Sand Strangler"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sand Strangler", controller: SEAT0 }],
+  },
+
+  // 148. Foretell — Augury Raven ETB.
+  {
+    id: "augury-raven-etb",
+    description: "Augury Raven ETB; Flying + Foretell:1U keyword pair.",
+    seed: 0xd5,
+    cards: { "Augury Raven": auguryRavenSrc },
+    players: [
+      { life: 20, hand: ["Augury Raven"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Augury Raven", controller: SEAT0 }],
+  },
+
+  // 149. Domain — Tribal Flames in hand (Domain SVar parse).
+  {
+    id: "tribal-flames-in-hand",
+    description: "Tribal Flames in hand; Domain SVar count + DealDamage spell.",
+    seed: 0xd6,
+    cards: { "Tribal Flames": tribalFlamesSrc },
+    players: [
+      { life: 20, hand: ["Tribal Flames"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 150. Constellation — Doomwake Giant ETB (Self-OR-Other-enchantment
+  // trigger).
+  {
+    id: "doomwake-giant-etb",
+    description: "Doomwake Giant ETB; Constellation Self|Enchantment.Other trigger.",
+    seed: 0xd7,
+    cards: { "Doomwake Giant": doomwakeGiantSrc },
+    players: [
+      { life: 20, hand: ["Doomwake Giant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Doomwake Giant", controller: SEAT0 }],
+  },
+
+  // 151. Battalion-flavored — Boros Reckoner ETB (DamageDoneOnce
+  // trigger + activated pump).
+  {
+    id: "boros-reckoner-etb",
+    description: "Boros Reckoner ETB; DamageDoneOnce trigger + activated first-strike.",
+    seed: 0xd8,
+    cards: { "Boros Reckoner": borosReckonerSrc },
+    players: [
+      { life: 20, hand: ["Boros Reckoner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Boros Reckoner", controller: SEAT0 }],
+  },
+
+  // 152. Revolt — Tilted Animar ETB (ChangesZone Origin$Battlefield trigger).
+  {
+    id: "tilted-animar-etb",
+    description: "Tilted Animar ETB; Revolt-style ChangesZone(Battlefield→Any) trigger.",
+    seed: 0xd9,
+    cards: { "Tilted Animar": tiltedAnimarSrc },
+    players: [
+      { life: 20, hand: ["Tilted Animar"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tilted Animar", controller: SEAT0 }],
+  },
+
+  // 153. Landfall — Steppe Lynx ETB (ChangesZone(Land→Battlefield) trigger).
+  {
+    id: "steppe-lynx-etb",
+    description: "Steppe Lynx ETB; Landfall ChangesZone(Land→Battlefield) trigger.",
+    seed: 0xda,
+    cards: { "Steppe Lynx": steppeLynxSrc },
+    players: [
+      { life: 20, hand: ["Steppe Lynx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Steppe Lynx", controller: SEAT0 }],
+  },
+
+  // 154. Heroic — Anax and Cymede ETB (SpellCast.TargetsValid$Self trigger).
+  {
+    id: "anax-and-cymede-etb",
+    description: "Anax and Cymede ETB; First Strike + Vigilance + Heroic SpellCast trigger.",
+    seed: 0xdb,
+    cards: { "Anax and Cymede": anaxAndCymedeSrc },
+    players: [
+      { life: 20, hand: ["Anax and Cymede"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anax and Cymede", controller: SEAT0 }],
+  },
+
+  // 155. Coven-flavored — Light of Promise in hand (Aura with grant-
+  // trigger SVar parse).
+  {
+    id: "light-of-promise-in-hand",
+    description: "Light of Promise in hand; Aura with AddTrigger$ SVar (LifeGained → counter on enchanted).",
+    seed: 0xdc,
+    cards: { "Light of Promise": lightOfPromiseSrc },
+    players: [
+      { life: 20, hand: ["Light of Promise"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 156. Magecraft — Quandrix Apprentice ETB (SpellCastOrCopy trigger
+  // on instant/sorcery).
+  {
+    id: "quandrix-apprentice-etb",
+    description: "Quandrix Apprentice ETB; Magecraft SpellCastOrCopy trigger registered.",
+    seed: 0xdd,
+    cards: { "Quandrix Apprentice": quandrixApprenticeSrc },
+    players: [
+      { life: 20, hand: ["Quandrix Apprentice"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Quandrix Apprentice", controller: SEAT0 }],
+  },
+
+  // 157. Awaken-flavored — Awaken the Bear in hand.
+  {
+    id: "awaken-the-bear-in-hand",
+    description: "Awaken the Bear in hand; Pump+Trample spell.",
+    seed: 0xdf,
+    cards: { "Awaken the Bear": awakenTheBearSrc },
+    players: [
+      { life: 20, hand: ["Awaken the Bear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 159. Bestow — Hopeful Eidolon ETB (as creature, default).
+  {
+    id: "hopeful-eidolon-etb",
+    description: "Hopeful Eidolon ETB as creature; Bestow:3W + Lifelink + grant-aura static.",
+    seed: 0xe0,
+    cards: { "Hopeful Eidolon": hopefulEidolonSrc },
+    players: [
+      { life: 20, hand: ["Hopeful Eidolon"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hopeful Eidolon", controller: SEAT0 }],
+  },
+
+  // 160. Compleated-style planeswalker — Tamiyo, Compleated Sage in hand
+  // (Compleated keyword + planeswalker abilities; no ETB, just parse).
+  {
+    id: "tamiyo-compleated-sage-in-hand",
+    description: "Tamiyo, Compleated Sage in hand; Compleated keyword + 3 PW abilities parsed.",
+    seed: 0xe6,
+    cards: {
+      "Tamiyo, Compleated Sage": `Name:Tamiyo, Compleated Sage
+ManaCost:2 G U
+Types:Legendary Planeswalker Tamiyo
+Loyalty:5
+K:Compleated
+A:AB$ Tap | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Artifact,Creature | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Tap up to one artifact or creature.
+A:AB$ ChangeZone | Cost$ SubCounter<X/LOYALTY> | Planeswalker$ True | ValidTgts$ Permanent.nonLand+cmcEQX+YouCtrl | Origin$ Graveyard | Destination$ Exile | SpellDescription$ Exile permanent card with mana value X.
+SVar:X:Count$xPaid
+Oracle:Compleated planeswalker test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tamiyo, Compleated Sage"], battlefield: [] },
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [],

@@ -1,0 +1,21 @@
+{
+  "id": "light-of-promise-in-hand",
+  "description": "Light of Promise in hand; Aura with AddTrigger$ SVar (LifeGained → counter on enchanted).",
+  "seed": 220,
+  "cards": {
+    "Light of Promise": "Name:Light of Promise\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ LightOfPromiseTrig | Description$ Enchanted creature has lifegain-counter trigger.\nSVar:LightOfPromiseTrig:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ LightOfPromisePutCounter | TriggerDescription$ Whenever you gain life, put that many +1/+1 counters on this creature.\nSVar:LightOfPromisePutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$LifeAmount\nOracle:Aura with grant-trigger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Light of Promise"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,27 @@
+{
+  "id": "knight-of-the-white-orchid-etb",
+  "description": "Knight of the White Orchid ETB; First Strike + conditional ChangeZone trigger.",
+  "seed": 198,
+  "cards": {
+    "Knight of the White Orchid": "Name:Knight of the White Orchid\nManaCost:W W\nTypes:Creature Human Knight\nPT:2/2\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | CheckSVar$ Y | SVarCompare$ GTX | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if an opponent controls more lands than you, you may search your library for a Plains card.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Plains | ChangeNum$ 1 | ShuffleNonMandatory$ True\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:PlayerCountOpponents$HighestValid Land.YouCtrl\nOracle:First strike. ETB conditional search.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Knight of the White Orchid"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Knight of the White Orchid",
+      "controller": 0
+    }
+  ]
+}

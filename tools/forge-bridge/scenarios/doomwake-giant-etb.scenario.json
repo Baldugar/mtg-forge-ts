@@ -1,0 +1,27 @@
+{
+  "id": "doomwake-giant-etb",
+  "description": "Doomwake Giant ETB; Constellation Self|Enchantment.Other trigger.",
+  "seed": 215,
+  "cards": {
+    "Doomwake Giant": "Name:Doomwake Giant\nManaCost:4 B\nTypes:Enchantment Creature Giant\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigMassacre | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, creatures your opponents control get -1/-1 until end of turn.\nSVar:TrigMassacre:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.OppCtrl | IsCurse$ True\nOracle:Constellation -1/-1 sweep on enchantment ETB.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Doomwake Giant"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Doomwake Giant",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "batterskull-etb",
+  "description": "Batterskull ETB; Living Weapon + Equip:5 + activated bounce-to-hand.",
+  "seed": 207,
+  "cards": {
+    "Batterskull": "Name:Batterskull\nManaCost:5\nTypes:Artifact Equipment\nK:Living Weapon\nK:Equip:5\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Vigilance & Lifelink | Description$ Equipped creature gets +4/+4 and has vigilance and lifelink.\nA:AB$ ChangeZone | Cost$ 3 | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nOracle:Living weapon. Equipped creature +4/+4, vigilance, lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Batterskull"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Batterskull",
+      "controller": 0
+    }
+  ]
+}

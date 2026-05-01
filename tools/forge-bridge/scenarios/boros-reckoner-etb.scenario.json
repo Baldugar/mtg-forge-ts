@@ -1,0 +1,27 @@
+{
+  "id": "boros-reckoner-etb",
+  "description": "Boros Reckoner ETB; DamageDoneOnce trigger + activated first-strike.",
+  "seed": 216,
+  "cards": {
+    "Boros Reckoner": "Name:Boros Reckoner\nManaCost:RW RW RW\nTypes:Creature Minotaur Wizard\nPT:3/3\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to any target.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any\nA:AB$ Pump | Cost$ RW | KW$ First Strike | Defined$ Self | SpellDescription$ CARDNAME gains first strike until end of turn.\nSVar:X:TriggerCount$DamageAmount\nOracle:Damage redirect + activated first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Boros Reckoner"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Boros Reckoner",
+      "controller": 0
+    }
+  ]
+}

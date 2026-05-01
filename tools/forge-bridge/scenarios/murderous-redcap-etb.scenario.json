@@ -1,0 +1,27 @@
+{
+  "id": "murderous-redcap-etb",
+  "description": "Murderous Redcap ETB; Persist keyword + ETB damage trigger.",
+  "seed": 209,
+  "cards": {
+    "Murderous Redcap": "Name:Murderous Redcap\nManaCost:2 BR BR\nTypes:Creature Goblin Assassin\nPT:2/2\nK:Persist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals damage equal to its power to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$CardPower\nOracle:Persist + ETB damage trigger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Murderous Redcap"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Murderous Redcap",
+      "controller": 0
+    }
+  ]
+}

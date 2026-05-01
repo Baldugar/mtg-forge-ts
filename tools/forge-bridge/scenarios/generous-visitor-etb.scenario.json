@@ -1,0 +1,27 @@
+{
+  "id": "generous-visitor-etb",
+  "description": "Generous Visitor ETB; SpellCast(Enchantment) trigger registered.",
+  "seed": 202,
+  "cards": {
+    "Generous Visitor": "Name:Generous Visitor\nManaCost:G\nTypes:Creature Spirit\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an enchantment spell, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1\nOracle:Whenever you cast an enchantment, put +1/+1 on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Generous Visitor"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Generous Visitor",
+      "controller": 0
+    }
+  ]
+}

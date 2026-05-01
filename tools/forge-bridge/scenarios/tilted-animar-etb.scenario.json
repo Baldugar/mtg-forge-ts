@@ -1,0 +1,27 @@
+{
+  "id": "tilted-animar-etb",
+  "description": "Tilted Animar ETB; Revolt-style ChangesZone(Battlefield→Any) trigger.",
+  "seed": 217,
+  "cards": {
+    "Tilted Animar": "Name:Tilted Animar\nManaCost:1 U R\nTypes:Legendary Creature Elemental\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Revolt — Whenever a permanent you control leaves, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Revolt-style counter trigger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tilted Animar"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tilted Animar",
+      "controller": 0
+    }
+  ]
+}

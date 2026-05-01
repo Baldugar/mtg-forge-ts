@@ -1,0 +1,27 @@
+{
+  "id": "sand-strangler-etb",
+  "description": "Sand Strangler ETB; Eternalize:5RR + ETB-conditional damage trigger.",
+  "seed": 212,
+  "cards": {
+    "Sand Strangler": "Name:Sand Strangler\nManaCost:3 R\nTypes:Creature Beast\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | Desert$ True | TriggerDescription$ ETB conditional damage on Desert.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 3\nK:Eternalize:5 R R\nOracle:Eternalize ETB conditional damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sand Strangler"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sand Strangler",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "quandrix-apprentice-etb",
+  "description": "Quandrix Apprentice ETB; Magecraft SpellCastOrCopy trigger registered.",
+  "seed": 221,
+  "cards": {
+    "Quandrix Apprentice": "Name:Quandrix Apprentice\nManaCost:G U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Magecraft — surveil-style dig on instant/sorcery cast.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Land\nOracle:Magecraft trigger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Quandrix Apprentice"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Quandrix Apprentice",
+      "controller": 0
+    }
+  ]
+}

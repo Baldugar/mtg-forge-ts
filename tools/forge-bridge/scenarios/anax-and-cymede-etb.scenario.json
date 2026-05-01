@@ -1,0 +1,27 @@
+{
+  "id": "anax-and-cymede-etb",
+  "description": "Anax and Cymede ETB; First Strike + Vigilance + Heroic SpellCast trigger.",
+  "seed": 219,
+  "cards": {
+    "Anax and Cymede": "Name:Anax and Cymede\nManaCost:1 R W\nTypes:Legendary Creature Human Soldier\nPT:3/2\nK:First Strike\nK:Vigilance\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Heroic — When you cast a spell that targets CARDNAME, anthem until EOT.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample | NumAtt$ +1 | NumDef$ +1\nOracle:Heroic — anthem on target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Anax and Cymede"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Anax and Cymede",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "auspicious-starrix-etb",
+  "description": "Auspicious Starrix ETB; Mutate:5G + Mutates trigger registered.",
+  "seed": 204,
+  "cards": {
+    "Auspicious Starrix": "Name:Auspicious Starrix\nManaCost:4 G\nTypes:Creature Elk Beast\nPT:6/6\nK:Mutate:5 G\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Whenever this creature mutates, exile cards from the top of your library until you exile X permanent cards.\nSVar:TrigDigUntil:DB$ DigUntil | Amount$ X | Defined$ You | Valid$ Permanent\nSVar:X:Count$TimesMutated\nOracle:Mutate {5}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Auspicious Starrix"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Auspicious Starrix",
+      "controller": 0
+    }
+  ]
+}

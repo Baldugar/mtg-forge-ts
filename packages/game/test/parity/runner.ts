@@ -151,6 +151,27 @@ function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
       // `CardChangedZone` for the token. The TS-only `TokenCreated`
       // marker doubles up the token signal and inflates divergence.
       case "TokenCreated":
+      // M6.7: TS-only `BecameMonarch` and `ClassLevelGained` — Forge has
+      // **no GameEvent** for either monarchy transitions or Class-keyword
+      // level changes. `Game.setMonarch()` and the level-up replacement
+      // path silently mutate state without firing on the EventBus. The TS
+      // engine emits a discrete state event for each transition; with no
+      // Java counterpart to subscribe to, classify them as engine-internal
+      // (same family as `CardDestroyed` / `StateBasedActionApplied`).
+      // Closes `court-of-grace-etb` and the bridge-engine-state-event-
+      // not-captured class for these two TS-only kinds.
+      case "BecameMonarch":
+      case "ClassLevelGained":
+      // M6.7: TS-only `CardAttached` / `CardUnattached` — bridge V2 doesn't
+      // subscribe to `GameEventCardAttachment`. The semantic equip-step
+      // is already represented on both sides: for Living Weapon the Germ
+      // token's `CardChangedZone(null → Battlefield)` shares 1:1, and the
+      // attachment edge itself is a TS-side bookkeeping marker (Forge folds
+      // it into the equipment's modifier graph silently). Strip here so the
+      // canonical zone-move remains the only attach-step signal. Closes
+      // `batterskull-etb`'s real-divergence-investigate row.
+      case "CardAttached":
+      case "CardUnattached":
         return true;
       default:
         return false;

@@ -1,0 +1,27 @@
+{
+  "id": "faldorn-dread-wolf-etb",
+  "description": "Faldorn, Dread Wolf Herald ETB; Encore + cast-from-exile token trigger.",
+  "seed": 205,
+  "cards": {
+    "Faldorn, Dread Wolf Herald": "Name:Faldorn, Dread Wolf Herald\nManaCost:1 R G\nTypes:Legendary Creature Human Druid\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from exile, create a 2/2 green Wolf creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf\nK:Encore:2 R G\nOracle:Create Wolf token on cast-from-exile. Encore.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Faldorn, Dread Wolf Herald"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Faldorn, Dread Wolf Herald",
+      "controller": 0
+    }
+  ]
+}
