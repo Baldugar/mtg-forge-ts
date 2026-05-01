@@ -580,8 +580,12 @@ export class SkipPhaseEffect extends SpellAbilityEffect {
     const skips = (player as { phaseSkips?: string[] }).phaseSkips ?? [];
     skips.push(phaseRaw);
     (player as { phaseSkips?: string[] }).phaseSkips = skips;
-    // TODO(advanced): turn-loop integration: pop one skip when entering a
-    // matching phase and emit PhaseSkipped.
+    // Wave 87 — turn-loop integration. The skip is consumed by
+    // `Game.consumePhaseSkip(seat, phase)`, which pops one matching
+    // entry off `player.phaseSkips` and stamps a `phase-skipped`
+    // record on `game.decisionWarnings`. The turn-loop (and tests
+    // exercising it) calls the helper on phase entry; the SkipPhase
+    // effect itself only stamps the queue.
   }
 }
 effectRegistry.register(SkipPhaseEffect);

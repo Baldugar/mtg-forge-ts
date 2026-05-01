@@ -30,6 +30,13 @@ export class Player {
   // AssembleContraption effect emits the ContraptionAssembled pulse and
   // stamps an attractions counter on the source so observers still fire.
   contraptionDeck: Zone | undefined = undefined;
+  // Wave 87 — Unfinity attraction deck slot. Forge models the attraction
+  // deck as a separate ordered Zone, similar in spirit to the
+  // `contraptionDeck` above; cards-package populates the contents at
+  // game start. When non-empty, OpenAttractionEffect pops the top card
+  // onto the battlefield (mirrors AssembleContraption's deck-pop branch);
+  // otherwise the legacy attractions-counter bump path runs.
+  attractionDeck: Zone | undefined = undefined;
   // SP2 Milestone G (Task 30): CR 704.5b — set when the player was required
   // to draw from an empty library since the last SBA check. The SBA engine
   // reads this flag to produce a `playerLosesEmptyDraw` action, then clears

@@ -1271,9 +1271,13 @@ effectRegistry.register(ReorderZoneEffect);
 // ContraptionAssembled pulse (the closest existing event family —
 // Attractions and Contraptions share the deck-pop machinery) so triggers
 // observing "when you open an Attraction" can latch.
-// TODO(advanced): pull from a real Attraction sub-deck once the
-// cards-package surfaces it; for now we share AssembleContraption's flag
-// shape so both Unfinity mechanics evolve in lock-step.
+// Wave 87 — when the controlling Player has a non-empty `attractionDeck`,
+// pop the top card of that deck onto the battlefield (mirrors
+// AssembleContraption's deck-pop branch). Otherwise fall through to the
+// legacy attractions-counter bump + ContraptionAssembled pulse so the
+// flag-shape consumers (corpus tests + Wave 54 observers) still see the
+// effect ran. Both paths now stamp the same canonical
+// `openedAttractions` counter on `game.flags.attractions[seat]`.
 export class OpenAttractionEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "OpenAttraction";
 
@@ -1289,16 +1293,35 @@ export class OpenAttractionEffect extends SpellAbilityEffect {
     if (source) {
       source.attractions = (source.attractions ?? 0) + num;
     }
-    yield game.emitEvent({
-      kind: "ContraptionAssembled",
-      version: 1,
-      turn: game.turn,
-      phase: game.phase,
-      payload: {
-        playerSeat: seat,
-        sourceCardId: sa.sourceCardId,
-      },
-    });
+    const player = game.getPlayer(seat);
+    const deck = player.attractionDeck;
+    for (let i = 0; i < num; i++) {
+      let movedCardId: EntityId | undefined;
+      if (deck !== undefined && deck.size > 0) {
+        const topId = deck.peekAt(0);
+        if (topId !== undefined) {
+          deck.remove(topId);
+          const bf = player.zones.get(ZoneType.Battlefield);
+          if (bf) bf.add(topId);
+          const card = game.cards.get(topId);
+          if (card) {
+            (card as unknown as { zone: ZoneType }).zone = ZoneType.Battlefield;
+          }
+          movedCardId = topId;
+        }
+      }
+      yield game.emitEvent({
+        kind: "ContraptionAssembled",
+        version: 1,
+        turn: game.turn,
+        phase: game.phase,
+        payload: {
+          playerSeat: seat,
+          sourceCardId: sa.sourceCardId,
+          ...(movedCardId !== undefined ? { cardId: movedCardId } : {}),
+        },
+      });
+    }
   }
 }
 effectRegistry.register(OpenAttractionEffect);
@@ -1385,9 +1408,20 @@ export class MultiplePilesEffect extends SpellAbilityEffect {
         }
         if (ok && seen.size !== top.length) ok = false;
       }
-      if (ok) piles = candidate;
-      // TODO(advanced): surface a structured warning for invalid partitions
-      // upstream — current path silently falls back to engine even-split.
+      if (ok) {
+        piles = candidate;
+      } else {
+        // Wave 87 — surface a structured warning for invalid partitions.
+        // Mirrors ReorderZone's `orderCards-invalid-permutation` shape;
+        // the engine still falls back to the engine-side even-split
+        // (the conservative deterministic default) so the rest of the
+        // resolution stays well-defined.
+        game.decisionWarnings.push({
+          kind: "dividePile-invalid-partition",
+          sourceId: sa.sourceCardId,
+          detail: `MultiplePiles: response of length ${candidate.length} is not a partition over ${top.length} cards into ${effectiveNumPiles} piles`,
+        });
+      }
     }
 
     // Yield the chooser's pick. 2-pile case maps to the canonical

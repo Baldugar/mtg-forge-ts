@@ -407,4 +407,33 @@ export class Game {
     }
     return { kind: "event", event };
   }
+
+  /**
+   * Wave 87 — phase-skip consumer. The SkipPhase effect (`SP$ SkipPhase`)
+   * stamps a phase-name string on `player.phaseSkips`; the turn-loop
+   * (or test paths exercising it) calls this helper when entering a new
+   * phase to pop one matching skip. Returns `true` when a skip was
+   * consumed (the caller should skip the phase + emit any UI pulse) or
+   * `false` otherwise. Matching is case-sensitive on the printed phase
+   * name as set by SkipPhaseEffect (e.g. "Combat", "Draw").
+   *
+   * The helper also pushes a structured `phase-skipped` entry on
+   * `decisionWarnings` so observers and tests can introspect each
+   * consumed skip — the same surface used by the rest of the Wave 86/87
+   * effect handlers for advisory state-machine ticks.
+   */
+  consumePhaseSkip(seat: PlayerSeat, phaseName: string): boolean {
+    const player = this.getPlayer(seat);
+    const skips = (player as { phaseSkips?: string[] }).phaseSkips;
+    if (!skips || skips.length === 0) return false;
+    const idx = skips.indexOf(phaseName);
+    if (idx < 0) return false;
+    skips.splice(idx, 1);
+    this.decisionWarnings.push({
+      kind: "phase-skipped",
+      sourceId: mkEntityId(0),
+      detail: `SkipPhase: consumed '${phaseName}' for seat ${seat}`,
+    });
+    return true;
+  }
 }

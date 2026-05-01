@@ -17,12 +17,22 @@
 //     count on game.flags.attractions[seat] for deterministic test
 //     introspection.
 //
-// TODO(advanced): full contraption deck integration — sprocket choice,
-// contraption-shuffle on assemble, "When you crank a contraption" trigger
-// hookup. Forge models contraptions as a sub-zone of Battlefield with a
-// rotating sprocket id. Once the cards-package surfaces a real contraption
-// deck, the placeholder branch below will give way to the deck-pop path.
+// Wave 87 — sprocket choice. Forge models contraptions as a sub-zone of
+// Battlefield assigned to one of THREE sprockets (1, 2, 3). Each
+// AssembleContraption resolution yields a `chooseSprocket` decision so
+// the controller picks where the new contraption lands; when no
+// controller responds we land on the canonical default sprocket
+// (`source.preferredSprocket` if set, otherwise sprocket 1). The chosen
+// sprocket id is stamped on the moved card via `card.assignedSprocket`
+// AND tracked on the source's `lastAssembledSprocket` slot so per-source
+// "Crank the sprocket where this contraption lives" lookups work
+// without rebuilding the sub-zone.
+//
+// TODO(advanced): contraption-shuffle on assemble + "When you crank a
+// contraption" trigger hookup remain; the trigger family lands once
+// the SP4 corpus surfaces the cards.
 import { ZoneType } from "@mtg-forge-ts/core";
+import type { DecisionResponse } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
 import type { AssembleContraptionIntent } from "../../replacements/mutation-intent.js";
@@ -31,6 +41,8 @@ import { evaluateParamNumber, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
+const SPROCKETS: readonly number[] = [1, 2, 3];
+
 export class AssembleContraptionEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "AssembleContraption";
 
@@ -38,12 +50,35 @@ export class AssembleContraptionEffect extends SpellAbilityEffect {
     const num = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
     const player = game.getPlayer(sa.controllerSeat);
     const deck = player.contraptionDeck;
+    const source = game.cards.get(sa.sourceCardId);
     for (let i = 0; i < num; i++) {
       const intent: AssembleContraptionIntent = {
         kind: "assembleContraption",
         seat: sa.controllerSeat,
       };
       void intent;
+      // Wave 87 — yield a chooseSprocket decision so the controller
+      // picks where this contraption lands. Default to the canonical
+      // first sprocket on missing / out-of-range responses.
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseSprocket",
+          sourceId: sa.sourceCardId,
+          sprockets: SPROCKETS,
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      let chosenSprocket = 1;
+      if (response && response.kind === "chooseSprocket" && SPROCKETS.includes(response.sprocket)) {
+        chosenSprocket = response.sprocket;
+      } else {
+        const preferred = source as { preferredSprocket?: number } | undefined;
+        if (preferred?.preferredSprocket !== undefined && SPROCKETS.includes(preferred.preferredSprocket)) {
+          chosenSprocket = preferred.preferredSprocket;
+        }
+      }
+
       // Wave 45 — when a contraption deck is wired, pop the top into the
       // battlefield. Otherwise fall through to the legacy attraction-flag
       // bump + ContraptionAssembled pulse.
@@ -57,9 +92,16 @@ export class AssembleContraptionEffect extends SpellAbilityEffect {
           const card = game.cards.get(topId);
           if (card) {
             (card as unknown as { zone: ZoneType }).zone = ZoneType.Battlefield;
+            (card as unknown as { assignedSprocket?: number }).assignedSprocket = chosenSprocket;
           }
           movedCardId = topId;
         }
+      }
+      // Track the chosen sprocket on the source so per-source lookups
+      // observe the latest assembly even when the contraption deck is
+      // empty (legacy MVP path).
+      if (source) {
+        (source as unknown as { lastAssembledSprocket?: number }).lastAssembledSprocket = chosenSprocket;
       }
       yield game.emitEvent({
         kind: "ContraptionAssembled",
@@ -81,7 +123,6 @@ export class AssembleContraptionEffect extends SpellAbilityEffect {
       | undefined;
     const assembled = (prior?.assembledContraptions ?? 0) + num;
     game.flags.attractions.set(sa.controllerSeat, { assembledContraptions: assembled });
-    const source = game.cards.get(sa.sourceCardId);
     if (source) {
       source.attractions = (source.attractions ?? 0) + num;
     }
