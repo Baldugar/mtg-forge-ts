@@ -5,18 +5,16 @@
 // CR 702.106a — "Strive — This spell costs [cost] more to cast for each
 // target beyond the first."
 //
-// MVP scope:
+// Scope:
 //   1. Adds "strive" to card.keywords.
 //   2. Stamps `card.striveExtraCost = <costStr>` so the cast pipeline
 //      can read it when computing the per-extra-target surcharge.
 //
-// TODO(advanced) — Full Strive integration registers a per-cast cost
-// modification that bumps ctx.totalCost.base by `<cost>` for each
-// `(targets.length - 1)` extra target chosen. That is structurally the
-// same shape as RaiseCost (Wave 6) but parameterised on the in-flight
-// SpellAbility's target count. Wave 38 stamps the keyword + cost slot
-// so the cast pipeline can pick it up once the per-cast cost-mod hook
-// lands; until then the surcharge is not actually charged.
+// Wave 41 closure — the cast pipeline now consumes `striveExtraCost`
+// and splices `(targets.length - 1)` copies of the surcharge into
+// `baseCost.raw` before payCost runs (see cast-pipeline.ts strive
+// block). The keyword handler's responsibility ends at stamping the
+// slot; the per-extra-target charging is end-to-end working.
 import type { KeywordAst, ParamValue } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

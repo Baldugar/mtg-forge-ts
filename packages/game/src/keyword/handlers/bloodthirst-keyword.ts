@@ -9,12 +9,20 @@
 // DSL form:
 //   K:Bloodthirst:1     → N = 1
 //   K:Bloodthirst:3     → N = 3
-//   K:Bloodthirst:X     → variable amount (TODO(advanced))
+//   K:Bloodthirst:X     → variable amount; X resolves at trigger-resolve
+//                         time to the maximum life lost this turn across
+//                         all opponents (CR 702.53b: "X equals the amount
+//                         of damage dealt to opponents this turn"). The
+//                         engine reads `game.flags.lifeLostThisTurn` —
+//                         the closest fidelity-equivalent counter, since
+//                         every damage event funnels through changeLife.
 //
-// MVP scope:
+// Scope:
 //   1. Adds "bloodthirst" to card.keywords.
 //   2. ETB trigger checks `game.flags.lifeLostThisTurn[opp] >= 1` for any
-//      opponent. If so, addCounter(+1/+1, N) on self.
+//      opponent. If so, addCounter(+1/+1, N) on self where N is the
+//      literal amount, or — for K:Bloodthirst:X — the maximum
+//      `lifeLostThisTurn` across all opponents.
 //
 // Note: this is implemented as an ETB trigger rather than a true ETB-
 // with-counters replacement (CR 614.1c). Forge implements it as both
@@ -43,9 +51,13 @@ export class BloodthirstKeywordHandler extends KeywordHandler {
     card.keywords.add("bloodthirst");
 
     const amountParam = ast.params?.amount as ParamValue | undefined;
-    const rawN =
-      amountParam && amountParam.kind === "literal" ? Number.parseInt(amountParam.raw as string, 10) : 1;
-    const n = Number.isFinite(rawN) && rawN > 0 ? rawN : 1;
+    const rawAmount = amountParam && amountParam.kind === "literal" ? (amountParam.raw as string) : "1";
+    // K:Bloodthirst:X marker — when the amount literal is "X" (any case),
+    // resolve N at trigger-resolve time as the max life-lost-this-turn
+    // across opponents. Otherwise parse the literal at activate time.
+    const isVariable = rawAmount.trim().toUpperCase() === "X";
+    const literalN = Number.parseInt(rawAmount, 10);
+    const fixedN = !isVariable && Number.isFinite(literalN) && literalN > 0 ? literalN : 1;
 
     const game = ctx.game;
     const sourceCardId = ctx.sourceCardId;
@@ -72,15 +84,19 @@ export class BloodthirstKeywordHandler extends KeywordHandler {
           // Read game.flags.lifeLostThisTurn for any opponent — Wave 51's
           // changeLife already increments this map under cause "damage".
           let any = false;
+          let maxLost = 0;
           for (const player of g.players) {
             if (player.seat === controllerSeat) continue;
             const lost = g.flags.lifeLostThisTurn.get(player.seat) ?? 0;
-            if (lost >= 1) {
-              any = true;
-              break;
-            }
+            if (lost >= 1) any = true;
+            if (lost > maxLost) maxLost = lost;
           }
           if (!any) return;
+          // For K:Bloodthirst:X — N is the max damage dealt to any
+          // opponent this turn (CR 702.53b X-variant). Otherwise N is
+          // the parsed literal.
+          const n = isVariable ? maxLost : fixedN;
+          if (n <= 0) return;
           yield* g.action.addCounter(sourceCardId, CounterType.PlusOnePlusOne, n, sourceCardId);
         },
       },

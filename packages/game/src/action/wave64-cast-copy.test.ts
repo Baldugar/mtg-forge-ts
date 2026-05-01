@@ -29,6 +29,7 @@ import type {
 import {
   type CardType,
   DEFAULT_PAPER_CARD_FLAGS,
+  ManaProduced,
   SeededRng,
   ZoneType,
   mkEntityId,
@@ -44,6 +45,7 @@ import { CasualtyKeywordHandler } from "../keyword/handlers/casualty-keyword.js"
 import { CipherKeywordHandler } from "../keyword/handlers/cipher-keyword.js";
 import { DemonstrateKeywordHandler } from "../keyword/handlers/demonstrate-keyword.js";
 import { ReplicateKeywordHandler } from "../keyword/handlers/replicate-keyword.js";
+import { ManaPool } from "../mana/mana-pool.js";
 import type { StackItem } from "../stack/stack-item.js";
 import { Battlefield } from "../zone/zones/battlefield.js";
 import { Graveyard } from "../zone/zones/graveyard.js";
@@ -440,6 +442,15 @@ describe("Replicate integration — per-pay-count copies stack up", () => {
     const cardId = mkEntityId(400);
     addCardToZone(game, seat0, ZoneType.Hand, cardId);
     pushFakeSpellOnStack(game, cardId, seat0);
+
+    // Wave 91 — replicate now charges its cost via parseCostString/payCost
+    // on each confirmed iteration. Seed the mana pool with 3 generic mana
+    // so the three confirms can pay {1} each.
+    const pool = new ManaPool();
+    pool.add(ManaProduced.colorless({ sourceId: mkEntityId(901) }));
+    pool.add(ManaProduced.colorless({ sourceId: mkEntityId(902) }));
+    pool.add(ManaProduced.colorless({ sourceId: mkEntityId(903) }));
+    game.getPlayer(seat0).manaPool = pool;
 
     const handler = new ReplicateKeywordHandler();
     const ast: KeywordAst = {

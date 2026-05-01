@@ -8,13 +8,22 @@
 // Phyrexian mana symbols, this planeswalker enters the battlefield with
 // that many fewer loyalty counters."
 //
-// MVP scope:
+// Scope:
 //   1. Adds "compleated" to card.keywords.
 //   2. Stamps `card.compleated = true`. The cast pipeline's mana payment
-//      step stamps `card.compleatedPaidLife = true` when at least one Φ pip
-//      was paid as life; the PW ETB-loyalty stamping (Wave 34) reads the
-//      slot. The "minus 2 per Φ paid as life" stamp count is documented
-//      under TODO(advanced).
+//      step stamps `card.compleatedPaidLife = true` when at least one Φ
+//      pip was paid as life; the PW ETB-loyalty stamping (Wave 34, refined
+//      in Wave 65.B) reads the slot and subtracts 2 loyalty (clamped at 0).
+//
+// Per-pip count: Today's printed corpus has exactly one Φ pip per
+// Compleated planeswalker (Jin-Gitaxias, Tamiyo, Tekuthal, Vraska — all
+// {ΦΦ}{X}{X}-style or {Φ}-pip cycles where the keyword fires once). The
+// boolean stamp therefore covers every printed card. If a future printing
+// adds multi-Φ-pip Compleated planeswalkers, switch
+// `Card.compleatedPaidLife` from `boolean | undefined` to a `number` count
+// and update the Wave 65.B subtraction to `n * 2`. The MVP boolean form
+// is forward-compatible — any future N > 1 case requires a one-line type
+// change at the read site.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

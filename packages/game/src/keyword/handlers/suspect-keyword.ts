@@ -14,7 +14,7 @@
 // surfaces as a literal `K:Suspect` (innate suspect) registers the
 // keyword set entry and immediately marks the source as suspected.
 //
-// MVP scope:
+// Scope:
 //   1. Adds "suspect" to card.keywords so hasKeyword("suspect") works
 //      from the registry-driven lookup path.
 //   2. Stamps `card.suspected = true` so the combat-handler / hasKeyword
@@ -22,16 +22,14 @@
 //      suspected without waiting for an ETB trigger to fire.
 //   3. Bumps the layer-engine epoch so the menace synthesis is visible
 //      on the next computeCharacteristics call.
-//
-// TODO(advanced): the keyword handler does NOT yet emit a CardSuspected
-// event because keyword activation runs eagerly during card construction
-// (before the card has resolved its ETB), and emitting an event during
-// activate() would order before any ETB triggers. The dedicated
-// AB$ Suspect / AlterAttribute path emits the event from the resolver
-// where it belongs. If a card surfaces in the corpus that strictly
-// requires the event at K:Suspect-application time, route through a
-// synthesized ETB trigger here instead.
+//   4. Emits a `CardSuspected` event so any registered listener (e.g.
+//      "whenever this is suspected" triggers) sees the transition. The
+//      event uses `sourceId: null` for the innate K:Suspect path since
+//      no spell or ability caused the suspect transition (the keyword
+//      itself is the cause). The dedicated AB$ Suspect / AlterAttribute
+//      path emits with `sourceId: sa.sourceCardId` from its resolver.
 import type { KeywordAst } from "@mtg-forge-ts/core";
+import { mkEvent } from "@mtg-forge-ts/core";
 import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
@@ -56,6 +54,18 @@ export class SuspectKeywordHandler extends KeywordHandler {
       if (canBeSuspected(ctx.game, ctx.sourceCardId)) {
         card.suspected = true;
         ctx.game.layerEngine.bumpEpoch("suspect-keyword");
+        // Wave 91 — emit CardSuspected so registered listeners
+        // ("whenever this is suspected", Investigation watchers, etc.)
+        // see the transition. The activate path is sync; we discard the
+        // EngineYield envelope return value (registry routing happens
+        // synchronously inside emitEvent and is what we need here).
+        ctx.game.emitEvent(
+          mkEvent("CardSuspected", ctx.game.turn, ctx.game.phase, {
+            cardId: ctx.sourceCardId,
+            // Innate K:Suspect — no spell/ability caused the transition.
+            sourceId: null,
+          }),
+        );
       }
     }
   }

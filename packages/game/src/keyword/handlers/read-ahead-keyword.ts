@@ -8,13 +8,17 @@
 // ability and start at that chapter. Lore counters added to it advance
 // the chapter ability one less than they would otherwise."
 //
-// MVP scope:
+// Scope:
 //   1. Adds "read_ahead" to card.keywords.
-//   2. Stamps `card.readAhead = true`. The chapter / lore-counter
-//      pipeline reads this slot and offers a chooseMode decision at ETB.
-//      The slot also pre-advances the lore counter by 1 to model the
-//      "starting at chapter N" Forge semantics. Full chapter-skipping
-//      machinery is documented under TODO(advanced) in chapter-keyword.ts.
+//   2. Stamps `card.readAhead = true`. Wave 68 closure — the chapter /
+//      lore-counter pipeline (chapter-keyword.ts) consumes the slot at
+//      ETB by yielding a chooseNumber decision (range 1..N) and placing
+//      that many Lore counters instead of the default 1, which causes the
+//      Saga to start at the chosen chapter. Lore counter behavior on
+//      subsequent turns is the standard CR 714.2 advancement; the "one
+//      less than otherwise" wording in CR 714.2g is captured by the
+//      "start at chapter N" interpretation since starting deeper means
+//      fewer counters need to be added to reach chapter N.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

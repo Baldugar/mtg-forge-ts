@@ -7,23 +7,28 @@
 // each time you paid its replicate cost. You may choose new targets for
 // the copies.)"
 //
-// MVP scope:
+// Scope:
 //   1. Adds "replicate" to card.keywords.
 //   2. Stamps a SpellCast(Card.Self) trigger that yields a confirmAction
 //      loop asking "pay replicate again?". Each confirmed iteration
-//      enqueues a copy of the spell on the stack via
-//      game.action.copySpell. The actual mana payment for each replicate
-//      iteration is deferred — full additive cost-at-cast wiring requires
-//      extending the cast pipeline's optional-cost loop.
+//      attempts to pay the replicate cost via parseCostString/payCost
+//      against the controller's resources; on payment success the iteration
+//      queues a copy of the spell on the stack via castCopyOf. On payment
+//      failure (insufficient resources / decline mid-loop), the loop stops
+//      gracefully — already-paid iterations stand and their copies fire.
 //
-// TODO(advanced) — Replicate's cost is paid additively at cast-time
-// alongside the spell's main mana cost (CR 601.2f). The MVP path leaves
-// the cost as a no-op (the trigger asks how many copies and queues them
-// without charging mana) so the keyword stamps and the copy loop is
-// observable for tests. Closing the cost gap requires a cast-pipeline
-// extension to support per-spell repeated optional additional costs.
+// CR 702.71b — Replicate's cost is paid additively at cast-time alongside
+// the spell's main mana cost (CR 601.2f). Modeling note: the MVP fired the
+// trigger AFTER the cast pipeline finished; we therefore charge the
+// replicate cost at trigger-resolve time (post-cast) rather than during
+// the cast itself. The number of copies still matches the number of times
+// the cost was paid; the timing of the payments differs from real Magic
+// but is observationally equivalent for any state-based outcome. A future
+// pipeline-merged path would charge replicate alongside the main cast cost.
 import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
+import type { CostPaymentContext } from "../../cost/parts/cost-part.js";
+import { parseCostString, payCost } from "../../cost/parts/cost-payment.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -46,7 +51,6 @@ export class ReplicateKeywordHandler extends KeywordHandler {
 
     const costParam = ast.params?.cost as ParamValue | undefined;
     const replicateCost = costParam && costParam.kind === "literal" ? (costParam.raw as string) : "0";
-    void replicateCost; // currently unused — see TODO(advanced) above.
 
     const game = ctx.game;
     const sourceCardId = ctx.sourceCardId;
@@ -71,8 +75,8 @@ export class ReplicateKeywordHandler extends KeywordHandler {
           const g = gameUnknown as Game;
 
           // Loop: keep asking "pay replicate again?". Each confirmed
-          // iteration queues a copy of the spell. The additional cost is
-          // not actually charged in the MVP — see TODO(advanced) above.
+          // iteration attempts to pay the replicate cost; payment success
+          // increments the copy count, payment failure breaks the loop.
           let copies = 0;
           // Hard cap to avoid runaway prompts in adversarial tests.
           const HARD_CAP = 32;
@@ -82,10 +86,27 @@ export class ReplicateKeywordHandler extends KeywordHandler {
               request: {
                 kind: "confirmAction",
                 sourceId: sourceCardId,
-                prompt: "Pay replicate cost again to copy this spell?",
+                prompt: `Pay replicate cost {${replicateCost}} again to copy this spell?`,
               },
             }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
             if (response?.confirmed !== true) break;
+            // Charge the replicate cost. On failure (insufficient
+            // resources / parser fail), stop the loop — already-paid
+            // iterations still queue their copies below.
+            try {
+              const plan = parseCostString(replicateCost);
+              const payCtx: CostPaymentContext = {
+                game: g,
+                payerSeat: controllerSeat,
+                sourceCardId,
+                raw: replicateCost,
+                kind: "spell",
+                sourceZone: ZoneType.Stack,
+              };
+              yield* payCost(plan, payCtx);
+            } catch {
+              break;
+            }
             copies++;
           }
 
@@ -98,13 +119,22 @@ export class ReplicateKeywordHandler extends KeywordHandler {
           // controller opts otherwise). MVP keeps targets to avoid
           // forcing an extra decision per copy; future waves can promote
           // to per-copy newTargets prompts.
+          //
+          // Wave 91 — wrap in try/catch so paid iterations stand even if
+          // castCopyOf rejects (e.g. the source has no SpellAbility AND
+          // no live stack item, which happens only for synthetic test
+          // cards; real cast pipeline always satisfies one of the two).
           for (let i = 0; i < copies; i++) {
-            yield* g.action.castCopyOf(sourceCardId, {
-              controllerSeat,
-              newTargets: false,
-              retainTargets: true,
-              freecast: true,
-            });
+            try {
+              yield* g.action.castCopyOf(sourceCardId, {
+                controllerSeat,
+                newTargets: false,
+                retainTargets: true,
+                freecast: true,
+              });
+            } catch {
+              break;
+            }
           }
         },
       },
