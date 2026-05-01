@@ -946,11 +946,64 @@ export class AlterAttributeEffect extends SpellAbilityEffect {
               );
               break;
             }
-            // TODO(advanced): Plotted/Solved/Saddled/Harnessed parity —
-            // currently handled by their own keyword/effect paths
-            // (plot-keyword.ts, saddle-keyword.ts). Leave the switch
-            // open for future fold-ins so Forge's full AlterAttribute
-            // umbrella matches.
+            // Wave 90 — Plotted/Solved/Saddled/Harnessed fold-ins. These
+            // mirror Forge's full AlterAttribute umbrella. Each writes a
+            // duck-typed slot on the card so that downstream observers
+            // (keyword paths + effect-side checkers) can detect the
+            // transition. The dedicated effect/keyword paths
+            // (plot-keyword.ts, saddle-keyword.ts) emit their canonical
+            // events; AlterAttribute's surface here is purely the flag-
+            // toggle so corpus cards using the umbrella DSL still
+            // produce the same observable state.
+            case "Plotted": {
+              if (activate && card.plotted === true) continue;
+              if (!activate && card.plotted !== true) continue;
+              if (activate) {
+                card.plotted = true;
+                card.plottedOnTurn = game.turn;
+              } else {
+                // biome-ignore lint/performance/noDelete: exactOptionalPropertyTypes — `?:` slots use delete
+                delete card.plotted;
+                // biome-ignore lint/performance/noDelete: exactOptionalPropertyTypes — `?:` slots use delete
+                delete card.plottedOnTurn;
+              }
+              game.layerEngine.bumpEpoch(activate ? "plot" : "cease-plot");
+              break;
+            }
+            case "Solved": {
+              const cardWithSolved = card as { solved?: boolean };
+              const wasSolved = cardWithSolved.solved === true;
+              if (activate && wasSolved) continue;
+              if (!activate && !wasSolved) continue;
+              if (activate) cardWithSolved.solved = true;
+              // biome-ignore lint/performance/noDelete: exactOptionalPropertyTypes — `?:` slot
+              else delete cardWithSolved.solved;
+              game.layerEngine.bumpEpoch(activate ? "solve" : "cease-solve");
+              break;
+            }
+            case "Saddle":
+            case "Saddled": {
+              const wasSaddled = card.saddledUntilEot === true;
+              if (activate && wasSaddled) continue;
+              if (!activate && !wasSaddled) continue;
+              if (activate) card.saddledUntilEot = true;
+              // biome-ignore lint/performance/noDelete: exactOptionalPropertyTypes — `?:` slot
+              else delete card.saddledUntilEot;
+              game.layerEngine.bumpEpoch(activate ? "saddle" : "cease-saddle");
+              break;
+            }
+            case "Harness":
+            case "Harnessed": {
+              const cardWithHarness = card as { harnessed?: boolean };
+              const wasHarnessed = cardWithHarness.harnessed === true;
+              if (activate && wasHarnessed) continue;
+              if (!activate && !wasHarnessed) continue;
+              if (activate) cardWithHarness.harnessed = true;
+              // biome-ignore lint/performance/noDelete: exactOptionalPropertyTypes — `?:` slot
+              else delete cardWithHarness.harnessed;
+              game.layerEngine.bumpEpoch(activate ? "harness" : "cease-harness");
+              break;
+            }
             default:
               break;
           }

@@ -23,11 +23,19 @@
 // a process-local Map populated either by tests or by a future cards-
 // package integration step.
 //
-// TODO(advanced): full CardDb-driven materialization — the cards-package
-// today exposes parser primitives (parser/lexer / parser/assembler) but
-// no runtime "look up a PaperCard by name" registry. Once such a
-// registry surfaces, drop the placeholder synthesis and route every
-// MakeCard through it.
+// Wave 90 — additional fallback layer. Before placeholder synthesis we
+// also scan the cards-package `tokenDatabase` by entry.name. Cards
+// resolving to a printed token (Treasure, Food, Clue, Blood, Soldier,
+// etc.) get the canonical TypeLine + abilities + colors from the
+// database rather than the empty-Sorcery placeholder, so MakeCard can
+// produce semi-functional named-token results without a registered
+// PaperCard fixture.
+//
+// Resolution order (post-Wave 90):
+//   1. PAPER_CARD_REGISTRY — explicit fixture wins (Wave 45).
+//   2. tokenDatabase by name — canonical token data when the request
+//      names a known token.
+//   3. synthesizeMakeCardPaper — empty Sorcery placeholder (Wave 25).
 
 /**
  * Process-local PaperCard lookup, populated by integration tests or a
@@ -58,6 +66,7 @@ export const clearMakeCardPaperCardRegistry = (): void => {
 };
 
 export const lookupMakeCardPaperCard = (name: string): PaperCard | undefined => PAPER_CARD_REGISTRY.get(name);
+import { tokenDatabase } from "@mtg-forge-ts/cards";
 import {
   CardType,
   ColorSet,
@@ -74,6 +83,44 @@ import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
+
+/**
+ * Wave 90 — token-database lookup by printed name. Returns a synthesized
+ * PaperCard from the matching `tokenDatabase` entry when the requested
+ * name (case-insensitive) maps to a known token; otherwise undefined.
+ */
+const lookupTokenByName = (name: string): PaperCard | undefined => {
+  const target = name.trim().toLowerCase();
+  if (target.length === 0) return undefined;
+  for (const entry of tokenDatabase.values()) {
+    if (entry.name.trim().toLowerCase() === target) {
+      const definition: CardDefinition = {
+        name: entry.name,
+        oracle: entry.oracle,
+        types: entry.types,
+        manaCost: entry.manaCost,
+        ...(entry.pt !== undefined ? { pt: entry.pt } : {}),
+        colors: entry.colors,
+        abilities: entry.abilities,
+        triggers: [],
+        replacements: [],
+        statics: [],
+        keywords: entry.keywords,
+        svars: new Map(),
+      };
+      return {
+        name: entry.name,
+        edition: "TOK",
+        collectorNumber: "0",
+        language: "en",
+        foil: false,
+        flags: DEFAULT_PAPER_CARD_FLAGS,
+        definition,
+      };
+    }
+  }
+  return undefined;
+};
 
 const ZONE_BY_NAME: Record<string, ZoneType> = {
   hand: ZoneType.Hand,
@@ -134,8 +181,12 @@ export class MakeCardEffect extends SpellAbilityEffect {
     // Wave 45 — prefer the registered PaperCard when available so triggered/
     // activated abilities, P/T, and types come through. Fall back to the
     // placeholder when no fixture is registered.
+    // Wave 90 — when the registry misses, also try the cards-package
+    // tokenDatabase by name; only fall through to the empty placeholder
+    // when neither lookup yields a match.
     const registered = lookupMakeCardPaperCard(name);
-    const paper = registered ?? synthesizeMakeCardPaper(name);
+    const tokenMatch = registered ?? lookupTokenByName(name);
+    const paper = tokenMatch ?? synthesizeMakeCardPaper(name);
     const newCard = new Card(newId, paper, owner, owner, zone);
     game.cards.set(newId, newCard);
     const player = game.getPlayer(owner);

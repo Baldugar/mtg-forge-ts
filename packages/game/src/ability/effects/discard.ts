@@ -172,12 +172,50 @@ export class DiscardEffect extends SpellAbilityEffect {
         toDiscard = picked ?? handCards.slice(0, want);
         break;
       }
-      // case "Hand" or any other → controller picks. MVP picks the front of
-      //   the hand; the Hand-mode decision subsystem refinement is tracked
-      //   under TODO(advanced) in the Wave 63 sweep.
-      default:
-        toDiscard = handCards.slice(0, Math.min(n, handCards.length));
+      // case "Hand" or any other → discarder picks. Wave 90 — yield
+      // chooseCard so the discarder actually picks which card(s) to
+      // discard (mirrors TgtChoose with mode "Hand"). On invalid
+      // responses we fall back to the front of the hand (the legacy
+      // MVP convention) so test paths without a decision driver still
+      // produce a deterministic result.
+      default: {
+        const want = Math.min(n, handCards.length);
+        if (want <= 0) {
+          toDiscard = [];
+          break;
+        }
+        const rawResponse = yield {
+          kind: "decision",
+          request: {
+            kind: "chooseCard",
+            playerSeat: seat,
+            pool: handCards,
+            restriction: { effect: "Discard", mode: "Hand" },
+            min: want,
+            max: want,
+          },
+        };
+        const response = rawResponse as DecisionResponse | undefined;
+        let picked: readonly EntityId[] | undefined;
+        if (response && response.kind === "chooseCard") {
+          const chosen = response.chosen;
+          if (chosen.length === want) {
+            const handSet = new Set(handCards);
+            const seen = new Set<EntityId>();
+            let ok = true;
+            for (const id of chosen) {
+              if (!handSet.has(id) || seen.has(id)) {
+                ok = false;
+                break;
+              }
+              seen.add(id);
+            }
+            if (ok) picked = chosen.slice();
+          }
+        }
+        toDiscard = picked ?? handCards.slice(0, want);
         break;
+      }
     }
 
     for (const cardId of toDiscard) {

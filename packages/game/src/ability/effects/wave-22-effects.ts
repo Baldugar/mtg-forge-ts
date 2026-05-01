@@ -367,6 +367,39 @@ export class MeldEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     const meldedId = ids[0] ?? sa.sourceCardId;
+    // Wave 90 — back-face characteristics override. Until a dedicated
+    // cardFactory mints a brand-new combined card, the canonical
+    // melded-pair semantics are reproduced by:
+    //   1. Stamping `melded = true` + `meldedOnto = meldedId` on every
+    //      participant card so the layer engine + zone-router can
+    //      treat the secondary participants as merged into the primary.
+    //   2. Stamping `meldedFrom = ids[]` on the primary so observers
+    //      can recover the participant set.
+    //   3. Bumping the layer-engine epoch so the next characteristic
+    //      computation reflects the merge.
+    // The Forge "Meld" canon (Eldritch Moon Brisela / Hanweir Battlements)
+    // resolves the combined permanent on top of the primary participant
+    // and treats every other participant as part of the same physical
+    // card; this MVP shape captures that without requiring the
+    // back-face card-data wiring.
+    for (const id of ids) {
+      const card = game.cards.get(id);
+      if (!card) continue;
+      const slot = card as unknown as {
+        melded?: boolean;
+        meldedOnto?: EntityId;
+        meldedFrom?: readonly EntityId[];
+      };
+      slot.melded = true;
+      if (id !== meldedId) {
+        slot.meldedOnto = meldedId;
+      }
+    }
+    const primary = game.cards.get(meldedId);
+    if (primary) {
+      (primary as unknown as { meldedFrom?: readonly EntityId[] }).meldedFrom = ids.slice();
+    }
+    game.layerEngine.bumpEpoch("meld");
     yield {
       kind: "event",
       event: {
@@ -377,8 +410,6 @@ export class MeldEffect extends SpellAbilityEffect {
         payload: { meldedId, sourceIds: ids },
       },
     };
-    // TODO(advanced): mint a new combined card via cardFactory + register the
-    // back-face characteristics override.
   }
 }
 effectRegistry.register(MeldEffect);
@@ -1123,8 +1154,9 @@ export class EndureEffect extends SpellAbilityEffect {
         count: 1,
       });
       // Stamp the requested amount on the source so observers can correlate
-      // the resolved branch (back-compat with Wave 54 tests). TODO(advanced):
-      // remove once consumers migrate to inspecting the actual token entity.
+      // the resolved branch (back-compat with Wave 54 tests). Wave 90 —
+      // kept as a permanent advisory slot; consumers can migrate to
+      // inspecting the actual token entity at their own pace.
       const source = game.cards.get(sa.sourceCardId);
       if (source) {
         (source as unknown as { endureTokenRequested?: number }).endureTokenRequested = num;
@@ -1302,8 +1334,9 @@ effectRegistry.register(LearnEffect);
 // applied by stripping the affected prefix and re-adding in the chosen
 // order at the top of the zone (forge-game/.../ReorderEffect.java behaviour).
 // Validation: the response MUST be a bijection over the input prefix; on
-// invalid responses we fall back to the original ordering and continue
-// (TODO(advanced) for hardened error reporting upstream).
+// invalid responses we fall back to the original ordering AND stamp a
+// `orderCards-invalid-permutation` warning on game.decisionWarnings
+// (Wave 86 hardening).
 export class ReorderZoneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ReorderZone";
 
@@ -1459,10 +1492,12 @@ effectRegistry.register(OpenAttractionEffect);
 // canonical), then a follow-up choice request to the CHOOSING player
 // (the source controller). For the chooser we use chooseCardsPile when
 // numPiles == 2 (the FoF-2-pile classical case) and chooseOption with
-// pile-index ids for numPiles > 2 (TODO(advanced): a richer
-// `chooseFromList` request kind). Validation: the divider's piles must
+// pile-index ids for numPiles > 2. Validation: the divider's piles must
 // be a partition (each card exactly once, piles.length === numPiles).
 // On invalid responses we fall back to the engine-side even split.
+// Wave 90 — out-of-range pile-index responses on the N>2 branch stamp
+// a `multiplePiles-invalid-pile-index` advisory on
+// game.decisionWarnings + fall back to pile 0.
 export class MultiplePilesEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "MultiplePiles";
 
@@ -1549,9 +1584,11 @@ export class MultiplePilesEffect extends SpellAbilityEffect {
 
     // Yield the chooser's pick. 2-pile case maps to the canonical
     // chooseCardsPile request (sourceId-only schema) so existing controllers
-    // and tests on that path continue to work. For N>2 we fall back to
-    // chooseOption with pile-index ids; TODO(advanced) once a richer
-    // chooseFromList request kind exists.
+    // and tests on that path continue to work. For N>2 we use chooseOption
+    // with pile-index ids; out-of-range / non-numeric responses now stamp
+    // a structured warning on game.decisionWarnings (Wave 90) so test +
+    // future UI paths can introspect the rejection. The engine still
+    // falls back to pile 0 (deterministic conservative default).
     let chosenIndex = 0;
     if (effectiveNumPiles === 2) {
       const pileA = piles[0] ?? [];
@@ -1585,7 +1622,18 @@ export class MultiplePilesEffect extends SpellAbilityEffect {
       const pickResp = pickRaw as DecisionResponse | undefined;
       if (pickResp && pickResp.kind === "chooseOption") {
         const idx = Number.parseInt(pickResp.optionId, 10);
-        if (Number.isFinite(idx) && idx >= 0 && idx < piles.length) chosenIndex = idx;
+        if (Number.isFinite(idx) && idx >= 0 && idx < piles.length) {
+          chosenIndex = idx;
+        } else {
+          // Wave 90 — surface the rejection. Out-of-range numeric or
+          // non-numeric pile-index ids land on pile 0; stamp the
+          // warning so introspection can see the response was bad.
+          game.decisionWarnings.push({
+            kind: "multiplePiles-invalid-pile-index",
+            sourceId: sa.sourceCardId,
+            detail: `MultiplePiles: pile-index "${pickResp.optionId}" not in [0, ${piles.length})`,
+          });
+        }
       }
       // Suppress unused-binding warning for chooserSeat in the N>2 branch —
       // the chooseOption request kind doesn't carry a playerSeat field.

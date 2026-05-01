@@ -25,12 +25,14 @@ import {
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
 import type {
+  AbilityAst,
   CardDefinition,
   ContinuousEffect,
   DecisionResponse,
   EntityId,
   PaperCard,
   PlayerSeat,
+  SVarAst,
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import { captureCopiable } from "../../copy/capture.js";
@@ -39,7 +41,7 @@ import type { Layer6KeywordGrant } from "../../layers/keyword-layer.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
-import type { SpellAbility } from "../spell-ability.js";
+import { SpellAbility } from "../spell-ability.js";
 
 // Helpers ---------------------------------------------------------------------
 
@@ -418,11 +420,30 @@ export class EarthbendEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Earthbend";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    const num = hasParam(sa, "CounterNum") ? evaluateParamNumber(sa, "CounterNum", game) : 1;
+    // Wave 90 — X-scaling. Forge's Earthbend reads X from the source's
+    // chosenX (`X$ Count$xPaid`) when CounterNum is omitted or set to "X".
+    // Resolution order:
+    //   1. CounterNum$ literal numeric (or non-X string) — direct value.
+    //   2. CounterNum$ X / no CounterNum — fall back to source.chosenX, else 1.
+    let num = 1;
+    if (hasParam(sa, "CounterNum")) {
+      const raw = evaluateParamRaw(sa, "CounterNum").trim();
+      if (raw === "X" || raw === "x") {
+        const source = game.cards.get(sa.sourceCardId);
+        const chosenX = (source as { chosenX?: number } | undefined)?.chosenX;
+        num = typeof chosenX === "number" && chosenX >= 0 ? chosenX : 0;
+      } else {
+        num = evaluateParamNumber(sa, "CounterNum", game);
+      }
+    } else {
+      const source = game.cards.get(sa.sourceCardId);
+      const chosenX = (source as { chosenX?: number } | undefined)?.chosenX;
+      num = typeof chosenX === "number" && chosenX >= 0 ? chosenX : 1;
+    }
+    if (num <= 0) return;
     for (const id of sa.targets) {
       yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, num, sa.sourceCardId);
     }
-    // TODO(advanced): scale by mana paid X / cost-mode chooser; SP4 hooks.
   }
 }
 effectRegistry.register(EarthbendEffect);
@@ -539,10 +560,49 @@ export class VoteEffect extends SpellAbilityEffect {
         winner = c;
       }
     }
-    // Stash result on source.remembered (as an entity id reference)
-    // TODO(advanced): per-choice SubAbility$ branching; the full
-    // CouncilsDilemma family wires these via SubAbility-by-choice.
-    void winner;
+
+    // Wave 90 — per-choice SubAbility$ branching. CouncilsDilemma cards
+    // ride a `<ChoiceName>SubAbility$ DBFoo` style param convention OR
+    // a Choices$-aligned positional sub-SVar list (`SubAbilities$ DB1,DB2`).
+    // The handler now dispatches the SVar named for the winning choice.
+    // Resolution order:
+    //   1. `<winner>SubAbility$ <SVarKey>` — explicit per-choice mapping.
+    //   2. `SubAbilities$ <key1>,<key2>,…` — positional list aligned with
+    //      `Choices$` order; the winner's index picks the matching key.
+    //   3. SVar lookup: `<winner>` directly when the choice id is itself
+    //      an SVar key (the most compact convention).
+    // On a hit the named ability runs as a sub-SA on the source; on a
+    // miss the winner is stamped on `source.chosenVote` so downstream
+    // SVars / triggers still observe the result.
+    const source = game.cards.get(sa.sourceCardId);
+    (source as unknown as { chosenVote?: string }).chosenVote = winner;
+
+    let svarKey: string | undefined;
+    const perChoiceParam = `${winner}SubAbility`;
+    if (hasParam(sa, perChoiceParam)) {
+      svarKey = evaluateParamRaw(sa, perChoiceParam).trim();
+    } else if (hasParam(sa, "SubAbilities")) {
+      const list = evaluateParamRaw(sa, "SubAbilities")
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0);
+      const idx = choices.indexOf(winner);
+      if (idx >= 0 && idx < list.length) {
+        svarKey = list[idx];
+      }
+    }
+    if (svarKey === undefined) {
+      // Final fallback: the winner is itself an SVar key.
+      svarKey = winner;
+    }
+    if (!source) return;
+    const def = source.paperCard.definition;
+    const svars = (def?.svars ?? new Map()) as ReadonlyMap<string, SVarAst>;
+    const sv = svars.get(svarKey);
+    if (!sv || sv.kind !== "ability" || !sv.ability) return;
+    const fakeAst: AbilityAst = { kind: "spell", effect: sv.ability, cost: { raw: "" } };
+    const sub = new SpellAbility(fakeAst, sa.sourceCardId, sa.controllerSeat, svars, sa.targets);
+    yield* sub.makeResolver().resolve(game) as Generator<EngineYield, void, unknown>;
   }
 }
 effectRegistry.register(VoteEffect);
