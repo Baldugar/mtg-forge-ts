@@ -33,6 +33,7 @@ import { parseValidTgts } from "../../cast/valid-targets.js";
 import type { Game } from "../../game.js";
 import { tempt } from "../../ring/temptation.js";
 import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
+import { runSubgame } from "../../subgame/subgame-runner.js";
 import { type EnumerationContext, enumerateEligibleTargets } from "../../target/enumeration.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
@@ -754,64 +755,52 @@ effectRegistry.register(LosesGameEffect);
 // loses half their life rounded up. Single-card target in the entire Forge
 // corpus.
 //
-// MVP simplification: a faithful Shahrazad implementation needs to spawn a
-// nested Game with a copy of each player's lobby + library and run a complete
-// game loop with autonomous play (priority, AI, mulligans, an entire match-
-// in-a-match). That is far out of scope for the SP1/SP2 engine slice. Instead
-// we resolve the subgame deterministically from the parent state:
+// Wave 116 — full nested-game runtime. SubgameRunner builds a child Game
+// instance from the parent's lobby + rules + per-player libraries and drives
+// an autonomous priority loop with RandomLegalController answering every
+// decision. The subgame runs to terminal state OR a bounded-turn / yield
+// fallback — when budget is exhausted, the runner falls back to Wave 44's
+// deterministic score-based outcome (life*2 + power + librarySize) computed
+// against the parent state so observers always get a definitive winner.
 //
-//   score(p) = p.life * 2 + sum(power of creatures p controls) + p.library.size
-//
-// The higher-scoring player wins; the active player breaks ties. The loser
-// loses half their life rounded up via game.action.changeLife (so the LifeLost
-// / LifeChanged pipeline still fires). A single SubgameResolved event captures
-// the outcome.
-//
-// TODO(advanced): instantiate a child Game with the same lobby + a copy of
-// each player's library; emit SubgameStarted/SubgameEnded; route the subgame
-// through the priority orchestrator; apply the loser consequence based on the
-// nested game's actual winner.
+// Tie-break for two-player subgames: the parent's active player wins on
+// equal scores (CR 723 doesn't specify; this matches Wave 44's behavior so
+// regression tests stay green and the "active player has the initiative"
+// ordering is intuitive).
 export class SubgameEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Subgame";
 
   override *resolve(_sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     if (game.players.length < 2) return;
 
-    // Compute deterministic score for each player.
-    const scoreOf = (seat: PlayerSeat): number => {
-      const player = game.getPlayer(seat);
-      const life = player.life;
-      const librarySize = player.zones.get(ZoneType.Library)?.size ?? 0;
-      let powerTotal = 0;
-      const battlefield = player.zones.get(ZoneType.Battlefield);
-      if (battlefield) {
-        for (const id of battlefield.toArray()) {
-          const chars = game.layerEngine.computeCharacteristics(id);
-          powerTotal += chars.power ?? 0;
-        }
-      }
-      return life * 2 + powerTotal + librarySize;
-    };
+    // Wave 116 — drive the actual nested game. The runner emits its own
+    // SubgameStarted + SubgameEnded events on the parent pipe and forwards
+    // every internal subgame event so observers / replay logs see the
+    // boundary plus the full subgame trace.
+    const outcome = yield* runSubgame(game);
 
-    const [a, b] = game.players;
-    if (!a || !b) return;
-    const seatA = a.seat;
-    const seatB = b.seat;
-    const scoreA = scoreOf(seatA);
-    const scoreB = scoreOf(seatB);
-
-    let winnerSeat: PlayerSeat;
+    // Pick the canonical loser for the parent-side life consequence.
+    // The runner returns an array of loserSeats (1+ entries depending on
+    // the format); for the 2-player Shahrazad case the array is [seatX].
+    const winnerSeat = outcome.winnerSeat ?? game.activePlayer;
     let loserSeat: PlayerSeat;
-    if (scoreA > scoreB) {
-      winnerSeat = seatA;
-      loserSeat = seatB;
-    } else if (scoreB > scoreA) {
-      winnerSeat = seatB;
-      loserSeat = seatA;
+    if (outcome.loserSeats.length > 0) {
+      // Pick the first loser deterministically. For the 2-player case
+      // there's exactly one; for multi-player we'd loop, but Shahrazad
+      // is currently 2-player-only in Forge's corpus.
+      const first = outcome.loserSeats[0];
+      if (first === undefined) {
+        // No loser identified — fall back to "the non-winner" if any.
+        const nonWinner = game.players.find((p) => p.seat !== winnerSeat);
+        if (!nonWinner) return;
+        loserSeat = nonWinner.seat;
+      } else {
+        loserSeat = first;
+      }
     } else {
-      // Tie — active player wins.
-      winnerSeat = game.activePlayer;
-      loserSeat = winnerSeat === seatA ? seatB : seatA;
+      const nonWinner = game.players.find((p) => p.seat !== winnerSeat);
+      if (!nonWinner) return;
+      loserSeat = nonWinner.seat;
     }
 
     const loser = game.getPlayer(loserSeat);
