@@ -154,19 +154,42 @@ effectRegistry.register(BecomeMonarchEffect);
 
 // 5. ChooseEvenOdd -----------------------------------------------------------
 // Forge `SP$ ChooseEvenOdd` — controller chooses even or odd (rare; e.g.
-// Odric's Helm or Yidris-style mana-value referencing). MVP: stash the
-// deterministic default "odd" on the source card.
+// Odric's Helm or Yidris-style mana-value referencing).
+//
+// Wave 81 — yield the typed `chooseEvenOdd` decision (request kind exists in
+// Wave 56's player-decisions schema) so the controller actually picks. The
+// chosen result is stamped on `source.chosenEvenOdd` for downstream SVar
+// selectors that read it (e.g. `chosenEvenOdd` checks in cost / static
+// payloads). Falls back to a Choice$ param default ("odd" if absent) when
+// the decision response is missing or wrong-shape — matches the prior MVP
+// fallback for tests that drain without a controller. The Choice$ override
+// lets a card pre-resolve the choice (the Wave 22 stub used this for
+// determinism); when no override is present we look for a chooseEvenOdd
+// response.
 export class ChooseEvenOddEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChooseEvenOdd";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    const choice = hasParam(sa, "Choice") ? evaluateParamRaw(sa, "Choice") : "odd";
     const source = game.cards.get(sa.sourceCardId);
     if (!source) return;
-    (source as { chosenEvenOdd?: string }).chosenEvenOdd = choice === "even" ? "even" : "odd";
-    // TODO(advanced): yield a chooseEvenOdd decision so the controller picks
-    // and route the result through the SVar pipeline.
+    const fallback: "even" | "odd" =
+      hasParam(sa, "Choice") && evaluateParamRaw(sa, "Choice") === "even" ? "even" : "odd";
+    let choice: "even" | "odd" = fallback;
+    if (!hasParam(sa, "Choice")) {
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseEvenOdd",
+          playerSeat: sa.controllerSeat,
+          sourceId: sa.sourceCardId,
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      if (response && response.kind === "chooseEvenOdd") {
+        choice = response.choice === "even" ? "even" : "odd";
+      }
+    }
+    (source as { chosenEvenOdd?: string }).chosenEvenOdd = choice;
   }
 }
 effectRegistry.register(ChooseEvenOddEffect);
@@ -334,19 +357,43 @@ export class ClashEffect extends SpellAbilityEffect {
 effectRegistry.register(ClashEffect);
 
 // 13. ChooseSector ------------------------------------------------------------
-// Forge `SP$ ChooseSector` — Unfinity Attractions / sector picker. MVP: stash
-// chosen sector index on the source card.
+// Forge `SP$ ChooseSector` — Unfinity Attractions / sector picker. The
+// controller picks among printed sectors (1 / 2 / 3 / 4 / 5 / 6) so a later
+// roll-die check can compare against the chosen sector.
+//
+// Wave 81 — yield the typed `chooseSector` decision (Wave 56's schema). The
+// chosen sectorId is stamped on `source.chosenSector` for downstream consumers
+// (Attraction cards' "When you visit ~"-style triggers read this slot, as do
+// roll-die comparators). The candidate set defaults to sectors 1-6 (the
+// printed Unfinity range). When the card's `Sectors$` param lists explicit
+// sectors (comma-separated) we honor that. On missing / wrong-shape response
+// we fall back to the legacy `Sector$` deterministic param (or "1").
 export class ChooseSectorEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChooseSector";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    const sector = hasParam(sa, "Sector") ? evaluateParamRaw(sa, "Sector") : "1";
     const source = game.cards.get(sa.sourceCardId);
     if (!source) return;
+    const sectorListRaw = hasParam(sa, "Sectors") ? evaluateParamRaw(sa, "Sectors") : "1,2,3,4,5,6";
+    const sectorIds = sectorListRaw
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
+    const fallback = hasParam(sa, "Sector") ? evaluateParamRaw(sa, "Sector") : (sectorIds[0] ?? "1");
+    let sector: string = fallback;
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseSector",
+        sourceId: sa.sourceCardId,
+        sectorIds,
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    if (response && response.kind === "chooseSector" && sectorIds.includes(response.sectorId)) {
+      sector = response.sectorId;
+    }
     (source as { chosenSector?: string }).chosenSector = sector;
-    // TODO(advanced): yield chooseSector decision so the controller picks
-    // among the printed sectors and route through cardFactory metadata.
   }
 }
 effectRegistry.register(ChooseSectorEffect);

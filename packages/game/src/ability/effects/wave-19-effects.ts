@@ -48,18 +48,43 @@ const resolveCounterType = (raw: string): CounterType => {
 
 // 1. LookAt -------------------------------------------------------------------
 // Forge `SP$ LookAt` — reveal cards face-up to ONE chosen player only (vs.
-// `Reveal` which reveals to all). MVP: emit a CardsRevealed event scoped to
-// the controller as the sole `revealedTo` recipient.
+// `Reveal` which reveals to all).
+//
+// Wave 81 — extend the prior MVP (top of controller's library) to support
+// peeking at an opponent (Telepathy / Mindcensor / Sigiled Sword's "look
+// at the top card of target opponent's library"-style cards). New params:
+//   * Defined$ Player.Opponent / Player.Self / Player (default Self/You) —
+//     selects whose library/hand to peek at. "Player.Opponent" routes to
+//     the controller's first opponent in seat order.
+//   * Zone$ Hand / Library (default Library) — which zone of the chosen
+//     player to peek into. "Hand" reveals the entire hand to the controller.
+//   * LookAtAll$ True — reveals every card in the chosen zone (overrides
+//     LookAtAmount$). Used by hand-peeking (Mindcensor) and by full-library
+//     peeks (rare, Library of Lat-Nam variants).
+// `revealedBy` always carries the chosen player's seat (the player whose
+// zone is exposed) and `revealedTo` is just the source-controller seat —
+// only the looker sees the cards, matching CR 701.20.
 export class LookAtEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "LookAt";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "You";
+    const targetSeat: PlayerSeat =
+      definedRaw === "Player.Opponent" || definedRaw === "Opponent"
+        ? (() => {
+            for (const p of game.players) if (p.seat !== sa.controllerSeat) return p.seat;
+            return sa.controllerSeat;
+          })()
+        : sa.controllerSeat;
+    const zoneRaw = hasParam(sa, "Zone") ? evaluateParamRaw(sa, "Zone") : "Library";
+    const fromZone: ZoneType = zoneRaw === "Hand" ? ZoneType.Hand : ZoneType.Library;
+    const lookAtAll = hasParam(sa, "LookAtAll") && evaluateParamRaw(sa, "LookAtAll") !== "False";
     const num = hasParam(sa, "LookAtAmount") ? evaluateParamNumber(sa, "LookAtAmount", game) : 1;
-    const seat = sa.controllerSeat;
-    const player = game.getPlayer(seat);
-    const lib = player.zones.get(ZoneType.Library);
-    if (!lib) return;
-    const ids = lib.toArray().slice(0, num);
+    const player = game.getPlayer(targetSeat);
+    const z = player.zones.get(fromZone);
+    if (!z) return;
+    const all = z.toArray();
+    const ids = lookAtAll ? all : all.slice(0, num);
     if (ids.length === 0) return;
     yield {
       kind: "event",
@@ -69,15 +94,13 @@ export class LookAtEffect extends SpellAbilityEffect {
         turn: game.turn,
         phase: game.phase,
         payload: {
-          revealedBy: seat,
-          revealedTo: [seat],
+          revealedBy: targetSeat,
+          revealedTo: [sa.controllerSeat],
           cardIds: ids,
-          fromZone: ZoneType.Library,
+          fromZone,
         },
       },
     };
-    // TODO(advanced): support `LookAtAll` / `Defined$ Player.Opponent` so the
-    // controller may peek at an opponent's hand or library.
   }
 }
 effectRegistry.register(LookAtEffect);
@@ -262,9 +285,21 @@ export class DiscoverEffect extends SpellAbilityEffect {
         }),
       );
     }
-    // TODO(advanced): bottom remaining exiled cards in random order; offer
-    // the cast-for-free decision via FreeCastPipeline. Mirrors Cascade resolver.
-    void exiled;
+    // Wave 81 — bottom the remaining exiled cards in random order. CR 702.166c
+    // ("put the rest on the bottom of your library in a random order") so we
+    // shuffle the exiled set minus the kept card via game.rng (deterministic
+    // per the game seed) and append each to the bottom of the controller's
+    // library. The cast-for-free decision (CR 702.166b "may cast it without
+    // paying its mana cost") still routes through the standard hand path —
+    // FreeCastPipeline parity is tracked under Cascade's resolver and is
+    // shared once SP4 lands.
+    const remaining = pickedNonLand === null ? exiled : exiled.filter((id) => id !== pickedNonLand);
+    if (remaining.length > 0) {
+      const order = game.rng.shuffle(remaining);
+      for (const id of order) {
+        yield* game.action.moveTo(id, ZoneType.Library, { toSeat: seat, cause: "effect" });
+      }
+    }
   }
 }
 effectRegistry.register(DiscoverEffect);

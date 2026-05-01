@@ -22,6 +22,7 @@ import type {
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { tempt } from "../../ring/temptation.js";
 import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
@@ -597,47 +598,61 @@ effectRegistry.register(SubgameEffect);
 export class ExchangeLifeVariantEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ExchangeLifeVariant";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    const a = game.getPlayer(sa.controllerSeat);
-    const b = game.getPlayer(otherSeat(sa.controllerSeat, game));
+    const aSeat = sa.controllerSeat;
+    const bSeat = otherSeat(sa.controllerSeat, game);
+    const a = game.getPlayer(aSeat);
+    const b = game.getPlayer(bSeat);
     const cond = hasParam(sa, "Condition") ? evaluateParamRaw(sa, "Condition") : "Always";
     if (cond === "LowerLife" && a.life >= b.life) return;
     if (cond === "HigherLife" && a.life <= b.life) return;
-    const tmp = a.life;
-    a.life = b.life;
-    b.life = tmp;
-    // TODO(advanced): full Condition$ DSL; route through setLife to fire
-    // life-change replacements/triggers.
+    // Wave 81 — route through game.action.changeLife (mirrors Wave 80's
+    // ExchangeLifeEffect fix). Snapshot both totals BEFORE the first
+    // changeLife call so the second call sees the pre-swap delta even
+    // though the first call has already mutated player.life. Going through
+    // changeLife means CR 119 replacements (CantGainLife / CantLoseLife /
+    // CantChangeLife from Waves 70.E/M/O), LifeChanged triggers, and the
+    // Wave 51 per-turn life trackers all engage on this variant, just like
+    // the unconditional ExchangeLifeEffect.
+    const aLife = a.life;
+    const bLife = b.life;
+    const aDelta = bLife - aLife;
+    const bDelta = aLife - bLife;
+    if (aDelta !== 0) yield* game.action.changeLife(aSeat, aDelta, { cause: "exchange-life" });
+    if (bDelta !== 0) yield* game.action.changeLife(bSeat, bDelta, { cause: "exchange-life" });
   }
 }
 effectRegistry.register(ExchangeLifeVariantEffect);
 
 // 18. RingTemptsYou (effect form) --------------------------------------------
-// Forge `SP$ RingTemptsYou` — the Ring tempts you. Increment the ring-temptations
-// counter on the controller and pick a creature to be the Ring-bearer.
-// (The corresponding *trigger* lives in Wave 18.) MVP: bump player ring counter
-// + emit RingTempted event.
+// Forge `SP$ RingTemptsYou` — the Ring tempts you (CR 701.52). Increments the
+// player's Ring level (clamped at 4) and yields a `chooseRingBearer` decision
+// so the controller picks one of their creatures; on null/empty the bearer
+// reverts to null. RingTempted (and RingLevelChanged on transition) are
+// emitted by the shared `tempt()` helper, which also bumps the duck-typed
+// `ringTemptations` counter for back-compat with this handler's prior MVP.
+//
+// Wave 81 — closes the prior TODO that read "yield a chooseRingBearer
+// decision so the controller picks a creature; track ring-bearer ID on the
+// player." Delegating to `tempt()` (Tasks 63 + 68) reuses the canonical Ring
+// pipeline: the same level-clamp, the same candidate enumeration (creatures
+// you control, on the battlefield, via layerEngine.computeCharacteristics),
+// the same ledger refresh, and the same event payloads — so corpus cards
+// like `The Ring Goes South` (an SP$ RingTemptsYou variant) line up with
+// the existing keyword-side Ring temptation that all Tales of Middle-earth
+// LOTR cards already use.
 export class RingTemptsYouEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RingTemptsYou";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const seat = sa.controllerSeat;
+    // Bump the legacy `ringTemptations` counter for any consumers that
+    // still read it (snapshot back-compat); `tempt()` advances the
+    // canonical `game.ringState[seat].level` independently.
     const player = game.getPlayer(seat);
     const cur = (player as { ringTemptations?: number }).ringTemptations ?? 0;
     (player as { ringTemptations?: number }).ringTemptations = cur + 1;
-    yield {
-      kind: "event",
-      event: {
-        kind: "RingTempted",
-        version: 1,
-        turn: game.turn,
-        phase: game.phase,
-        payload: { playerSeat: seat, cardId: sa.sourceCardId },
-      },
-    };
-    // TODO(advanced): yield a `chooseRingBearer` decision so the controller
-    // picks a creature; track ring-bearer ID on the player.
+    yield* tempt(game, seat);
   }
 }
 effectRegistry.register(RingTemptsYouEffect);
