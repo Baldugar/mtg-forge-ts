@@ -210,6 +210,10 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   "ClassLevelGained",
   "RoomEntered",
   "CardAdapted",
+  // Wave 114 — final effect TODO closures (3)
+  "GameRestartRequested",
+  "PlayerControlled",
+  "PlayerControlReleased",
 ];
 
 // WHY: compile-time exhaustiveness — if a new kind is added to GameEvent
@@ -401,12 +405,16 @@ const ALL_KINDS_MAP = {
   ClassLevelGained: true,
   RoomEntered: true,
   CardAdapted: true,
+  // Wave 114 — final effect TODO closures (3)
+  GameRestartRequested: true,
+  PlayerControlled: true,
+  PlayerControlReleased: true,
 } as const satisfies Record<GameEventKind, true>;
 
 describe("GameEvent enumeration", () => {
-  it("has 174 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2, Wave 70.A + 3, Wave 71 + 2)", () => {
-    expect(EXPECTED_KINDS.length).toBe(174);
-    expect(new Set(EXPECTED_KINDS).size).toBe(174);
+  it("has 177 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2, Wave 70.A + 3, Wave 71 + 2, Wave 114 + 3)", () => {
+    expect(EXPECTED_KINDS.length).toBe(177);
+    expect(new Set(EXPECTED_KINDS).size).toBe(177);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -640,6 +648,10 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     ClassLevelGained: { cardId: id(1), oldLevel: 1, newLevel: 2, controllerSeat: seat0 },
     RoomEntered: { cardId: id(1), playerSeat: seat0, fullyUnlocked: true },
     CardAdapted: { cardId: id(1), amount: 1 },
+    // Wave 114 payloads
+    GameRestartRequested: { requestingSeat: seat0 },
+    PlayerControlled: { controlledSeat: seat0, controllerSeat: seat1 },
+    PlayerControlReleased: { controlledSeat: seat0 },
   };
 
   for (const kind of EXPECTED_KINDS) {

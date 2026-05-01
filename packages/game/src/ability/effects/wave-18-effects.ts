@@ -283,32 +283,35 @@ export class BalanceEffect extends SpellAbilityEffect {
       }
     }
 
-    // Hands. Discard down to the minimum hand size.
-    let minHand = Number.POSITIVE_INFINITY;
-    for (const seat of seats) {
-      const player = game.getPlayer(seat);
-      const hand = player.zones.get(ZoneType.Hand);
-      const size = hand ? hand.size : 0;
-      if (size < minHand) minHand = size;
-    }
-    if (!Number.isFinite(minHand)) minHand = 0;
-    for (const seat of seats) {
-      const player = game.getPlayer(seat);
-      const hand = player.zones.get(ZoneType.Hand);
-      if (!hand) continue;
-      const ids = hand.toArray();
-      for (let i = ids.length - 1; i >= minHand; i--) {
-        const id = ids[i];
-        if (id === undefined) continue;
-        yield* game.action.moveTo(id, ZoneType.Graveyard, {
-          toSeat: seat,
-          cause: "discard",
-        });
+    // Hands. Discard down to the minimum hand size — unless the script
+    // disables the hand step via `HandZone$ False` (the per-zone
+    // restriction Forge supports for the small set of "lands and
+    // creatures only" Balance variants — Wave 114 closes this TODO).
+    const handZoneRaw = hasParam(sa, "HandZone") ? evaluateParamRaw(sa, "HandZone") : "True";
+    if (handZoneRaw !== "False") {
+      let minHand = Number.POSITIVE_INFINITY;
+      for (const seat of seats) {
+        const player = game.getPlayer(seat);
+        const hand = player.zones.get(ZoneType.Hand);
+        const size = hand ? hand.size : 0;
+        if (size < minHand) minHand = size;
+      }
+      if (!Number.isFinite(minHand)) minHand = 0;
+      for (const seat of seats) {
+        const player = game.getPlayer(seat);
+        const hand = player.zones.get(ZoneType.Hand);
+        if (!hand) continue;
+        const ids = hand.toArray();
+        for (let i = ids.length - 1; i >= minHand; i--) {
+          const id = ids[i];
+          if (id === undefined) continue;
+          yield* game.action.moveTo(id, ZoneType.Graveyard, {
+            toSeat: seat,
+            cause: "discard",
+          });
+        }
       }
     }
-    // TODO(advanced): Forge supports per-zone restrictions (HandZone$ False);
-    // this MVP balances lands+creatures+hand, the canonical Balance form.
-    void sa;
   }
 }
 effectRegistry.register(BalanceEffect);
@@ -822,14 +825,14 @@ effectRegistry.register(ChooseDirectionEffect);
 // so the Clone enters the battlefield with the target's name, P/T, types,
 // abilities, etc.
 //
-// TODO(advanced) sub-variants:
-//   - Phantasmal Image: also register a "when targeted, sacrifice"
-//     replacement-trigger pair on sourceCard.
-//   - Phyrexian Metamorph: also stamp a Layer 4 "is also an artifact"
-//     continuous effect via the Layer 4 type-add machinery.
-//   - Sakashima of a Thousand Faces: legend-rule waiver flag on the copy.
-// All three sub-variants are decoded from explicit script params on the
-// caller (AddTypes$ / Triggers$) and don't ride this effect.
+// Wave 114 — Clone sub-variants confirmed handled at the script-param
+// level on the caller (CopyPermanent's AddTypes$ / AddSubtypes$ /
+// AddTriggers$ broadenings cover Phantasmal Image, Phyrexian Metamorph,
+// Sakashima). See `wave70c-clone-variants.test.ts` for the resolved
+// path. The plain Clone effect intentionally stays minimal: callers
+// that need extra types/triggers attach them via CopyPermanent (the
+// SP$ Clone sites in the corpus that DON'T add anything use this
+// handler directly with no parameters).
 export class CloneEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Clone";
 

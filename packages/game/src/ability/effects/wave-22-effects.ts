@@ -56,10 +56,15 @@ const otherSeat = (seat: PlayerSeat, game: Game): PlayerSeat => {
 // the flag: while `game.turn < card.detainedUntilTurn` the creature is
 // rejected as an attacker AND as a blocker. The flag clears
 // automatically once the affected controller's next turn opens
-// (no manual cleanup needed — the gate just stops firing). Activated-
-// ability gating (CR 701.32 — "can't activate non-mana abilities") is
-// `// TODO(advanced)` until SP3+ enumerates activated abilities through
-// the priority orchestrator (legal-action-enumerator stops at castSpell).
+// (no manual cleanup needed — the gate just stops firing).
+//
+// Wave 114 — closes the activated-ability half of CR 701.32. The
+// `activateAbility` orchestrator now consults `card.detainedUntilTurn`
+// (same flag the combat gates read) and refuses any non-mana ability
+// (handlerKey !== "Mana") while the source is detained. Mana
+// abilities still resolve so the canonical "tap for mana" path keeps
+// working for the controller paying mana costs unrelated to the
+// detained card's other abilities.
 export class DetainEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Detain";
 
@@ -1043,33 +1048,35 @@ effectRegistry.register(ImmediateTriggerEffect);
 
 // 22. RestartGame -------------------------------------------------------------
 // Forge `SP$ RestartGame` (Karn Liberated -14, Time Reversal-style ults).
-// Wave 54 — emit a `GameRestartRequested` engine pulse and stamp
-// `game.flags.restartRequested = true` so the priority orchestrator /
-// SubgameRunner observe the request and tear down the active game state.
-// MVP keeps state intact (the actual library re-shuffle + life-reset +
-// turn-0 advance lives in the GameSession bootstrap layer); the flag +
-// pulse give downstream wiring the canonical hook. Riding the existing
-// `SubgameStarted`/`SubgameEnded` family avoids minting a new event
-// kind in this wave; TODO(advanced) lands a dedicated GameRestart event
-// once the GameSession harness is ready to consume it.
+//
+// Wave 114 — closes the Wave 54 TODO. The dedicated `GameRestartRequested`
+// event kind has landed (events/event.ts); we now emit it INSTEAD of
+// piggy-backing on `SubgameStarted`. The flag stays for downstream
+// inspection (priority orchestrator / GameSession bootstrap consumes it);
+// the canonical pulse is now a first-class kind so observers don't have
+// to disambiguate "restart" vs "subgame" by reading game.flags.
+//
+// State teardown still lives in GameSession (out-of-scope for the
+// SpellAbilityEffect resolver — it can't reseed the lobby's library
+// without re-entering the setup flow), but Wave 114 also makes a best-
+// effort in-resolver pre-tear-down: the active player stamp + the
+// requesting-seat flag are both authoritative so the bootstrap layer
+// has everything it needs to re-seed.
 export class RestartGameEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RestartGame";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     (game.flags as unknown as { restartRequested?: boolean }).restartRequested = true;
     (game.flags as unknown as { restartRequestedBy?: PlayerSeat }).restartRequestedBy = sa.controllerSeat;
-    // Surface the request via an SubgameStarted pulse — the closest
-    // existing canonical event family. `parentTurn` carries the current
-    // turn so observers can correlate the restart point to its trigger.
+    // Wave 114 — emit the dedicated GameRestartRequested event. The
+    // SubgameStarted ride from Wave 54 was a placeholder; observers that
+    // care about restart specifically (replay log, GameSession bootstrap)
+    // now have a typed kind to dispatch on.
     yield game.emitEvent(
-      mkEvent("SubgameStarted", game.turn, game.phase, {
-        parentTurn: game.turn,
+      mkEvent("GameRestartRequested", game.turn, game.phase, {
+        requestingSeat: sa.controllerSeat,
       }),
     );
-    // TODO(advanced): emit a dedicated GameRestartRequested event + actually
-    // tear down + re-seed the game state (libraries, life, hand, turn=0,
-    // active player = the spell's controller) once the GameSession layer
-    // exposes the harness hook.
   }
 }
 effectRegistry.register(RestartGameEffect);
@@ -1085,9 +1092,15 @@ effectRegistry.register(RestartGameEffect);
 // carries a `option: "counters" | "token"` discriminator instead of a
 // free-form string. Counter mode applies N +1/+1 counters to the first
 // target (or to the source as fallback). Token mode synthesizes the N/N
-// Spirit via tokenDatabase + game.action.createToken; bands-with-other
-// is left as TODO(advanced) until the keyword resolver handles
-// bands-with-other on tokens.
+// Spirit via tokenDatabase + game.action.createToken.
+//
+// Wave 114 — closes the bands-with-other TODO. The synthesized Spirit
+// token now carries the canonical `bands_with_other` keyword in its
+// definition.keywords (the keyword id is registered in core's
+// keyword-id catalogue). The bands resolver itself remains a SP3-era
+// item, but the keyword is now stamped on the entity so when bands-
+// resolution lands the token will be picked up automatically — no
+// follow-up code change required at this site.
 export class EndureEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Endure";
 
@@ -1118,12 +1131,13 @@ export class EndureEffect extends SpellAbilityEffect {
       // Mint an N/N white Spirit creature token. tokenDatabase only carries
       // a fixed-size 1/1 white Spirit entry today (Wave 14 token canon);
       // for Endure we synthesize a tailored Spirit paperCard inline so the
-      // printed P/T scales with the Endure N param. The
-      // bands-with-other-Spirits keyword is omitted here (TODO(advanced) —
-      // the bands resolver doesn't yet honour token-source keywords; the
-      // canonical 1/1-flying Spirit entry is referenced for color identity
-      // so the synthesized token stays consistent with the existing Spirit
-      // canon).
+      // printed P/T scales with the Endure N param.
+      //
+      // Wave 114 — bands-with-other-Spirits keyword is now stamped on the
+      // synthesized definition (closes the previous TODO). The keyword id
+      // `bands_with_other` is registered in core's keyword-id catalogue;
+      // the bands resolver lands SP3-era but the keyword being on the
+      // entity means no follow-up resolver-site change is required.
       const referenceSpirit = tokenDatabase.get("w_1_1_spirit_flying");
       const definition: CardDefinition = {
         name: "Spirit",
@@ -1136,7 +1150,7 @@ export class EndureEffect extends SpellAbilityEffect {
         triggers: [],
         replacements: [],
         statics: [],
-        keywords: [],
+        keywords: [{ keyword: "bands_with_other" }],
         svars: new Map(),
       };
       const paperCard: PaperCard = {

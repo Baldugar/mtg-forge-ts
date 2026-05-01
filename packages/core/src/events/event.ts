@@ -1824,6 +1824,41 @@ export type GameEvent =
         readonly cardId: EntityId;
         readonly amount: number;
       };
+    }
+  // === Wave 114 — final effect TODO closures (3) ===
+  // GameRestartRequested — fired when SP$ RestartGame resolves. Distinct
+  // from the SubgameStarted pulse the MVP rode pre-Wave-114; observers
+  // (game-session bootstrap, replay log) consume this kind to actually
+  // tear down + re-seed the game state.
+  | {
+      readonly kind: "GameRestartRequested";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly requestingSeat: PlayerSeat };
+    }
+  // PlayerControlled — fired when SP$ ControlPlayer (Mindslaver-style)
+  // claims control of the target player's next turn. The flag was
+  // already stamped pre-Wave-114; the event closes the observable
+  // surface.
+  | {
+      readonly kind: "PlayerControlled";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly controlledSeat: PlayerSeat;
+        readonly controllerSeat: PlayerSeat;
+      };
+    }
+  // PlayerControlReleased — fired when the controlled player's turn
+  // ends and the flag clears (or when the source leaves play, etc.).
+  | {
+      readonly kind: "PlayerControlReleased";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: { readonly controlledSeat: PlayerSeat };
     };
 
 /** The set of all event kinds. Derived from the union discriminator. */

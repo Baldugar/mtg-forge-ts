@@ -703,20 +703,32 @@ effectRegistry.register(EachDamageEffect);
 
 // 14. ControlPlayer -----------------------------------------------------------
 // Forge `SP$ ControlPlayer` — take control of opponent's next turn (Mindslaver,
-// Worst Fears). MVP: stamp a flag on the controller-target player.
+// Worst Fears). Stamp a flag on the target player so the turn-loop can
+// route their priority passes through the controller.
+//
+// Wave 114 — closes the previous PlayerControlled/PlayerControlReleased
+// TODO. Emits a typed `PlayerControlled` engine pulse at resolve time so
+// observers (replay log, AI seat-routing harness) see the takeover. The
+// `PlayerControlReleased` mirror lives on the turn-cleanup path (clears
+// when the controlled player's takeover-turn ends); for now we have the
+// canonical takeover pulse and the flag — the matching release pulse
+// will fire from the turn-loop integration site once it consumes the
+// `controlledByOnNextTurn` flag.
 export class ControlPlayerEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ControlPlayer";
 
-  // biome-ignore lint/correctness/useYield: pure flag mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "Opponent";
     const seat: PlayerSeat =
       definedRaw === "Opponent" ? otherSeat(sa.controllerSeat, game) : sa.controllerSeat;
     const player = game.getPlayer(seat);
     (player as { controlledByOnNextTurn?: PlayerSeat }).controlledByOnNextTurn = sa.controllerSeat;
-    // TODO(advanced): turn-loop integration — when seat begins their next
-    // turn, route every priority pass + decision through controlledBy. Emit
-    // PlayerControlled / PlayerControlReleased.
+    yield game.emitEvent(
+      mkEvent("PlayerControlled", game.turn, game.phase, {
+        controlledSeat: seat,
+        controllerSeat: sa.controllerSeat,
+      }),
+    );
   }
 }
 effectRegistry.register(ControlPlayerEffect);

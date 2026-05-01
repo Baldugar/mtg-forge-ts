@@ -295,15 +295,17 @@ describe("Wave 54 — Clone copy", () => {
 // ---------------------------------------------------------------------------
 
 describe("Wave 54 — RestartGame fill", () => {
-  it("stamps restartRequested + emits a SubgameStarted pulse", () => {
+  it("stamps restartRequested + emits a GameRestartRequested pulse (Wave 114 — was SubgameStarted)", () => {
     const game = mkGame();
     seedSourceCard(game);
     const sa = mkSa("RestartGame", {});
     const yields = drainGen(sa.makeResolver().resolve(game) as Generator<unknown, void, unknown>);
     expect((game.flags as unknown as { restartRequested?: boolean }).restartRequested).toBe(true);
-    expect(yields.some((y) => (y as { event?: { kind: string } }).event?.kind === "SubgameStarted")).toBe(
-      true,
-    );
+    // Wave 114 — RestartGame now emits its dedicated kind. The legacy
+    // SubgameStarted ride was a placeholder pre-Wave-114.
+    expect(
+      yields.some((y) => (y as { event?: { kind: string } }).event?.kind === "GameRestartRequested"),
+    ).toBe(true);
   });
 });
 

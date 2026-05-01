@@ -141,6 +141,27 @@ export function* activateAbility(
     );
   }
 
+  // 3a-quater. Wave 114 — Detain non-mana-ability gate (CR 701.32). Closes
+  // the previous TODO(advanced) on DetainEffect (wave-22-effects.ts). A
+  // detained permanent can't activate non-mana abilities until the
+  // detainer's controller's next turn opens. We let mana abilities
+  // (handlerKey === "Mana") through so the canonical "tap for mana"
+  // path keeps working — only non-mana activated abilities are gated.
+  // The same flag (`card.detainedUntilTurn`) the canAttack/canBlock
+  // gates consult is read here, so the three Detain consequences fire
+  // off one source of truth.
+  {
+    const detainedUntil = (card as { detainedUntilTurn?: number }).detainedUntilTurn;
+    if (detainedUntil !== undefined && game.turn < detainedUntil) {
+      const handlerKey = sa.ast.effect.handlerKey;
+      if (handlerKey !== "Mana") {
+        throw new IllegalDecisionError(
+          `activateAbility: card ${cardId} is detained until turn ${detainedUntil} (current turn ${game.turn})`,
+        );
+      }
+    }
+  }
+
   // 3b. Wave 8 — target selection (CR 602.1b: choose modes/targets BEFORE
   //     paying costs). If the ability's effect carries a ValidTgts$ param,
   //     parse it into a TargetRestriction, enumerate eligible targets via
