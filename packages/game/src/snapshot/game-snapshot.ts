@@ -647,6 +647,13 @@ export interface SerializedPlayer {
   readonly life: number;
   readonly counters: Record<string, number>;
   readonly zones: readonly SerializedZone[];
+  // Wave 117 — Contraption-deck side-zones. Both optional on the wire so a
+  // snapshot taken on a player with no contraption corpus stays minimal.
+  // Forge models contraptionDeck as a Junkyard-paired side zone; we round-
+  // trip the live ordered ids + the discard pile so AssembleContraption's
+  // shuffle-on-empty path is preserved across save/load.
+  readonly contraptionDeck?: SerializedZone | null;
+  readonly contraptionDiscard?: readonly EntityId[];
 }
 
 /**
@@ -1181,14 +1188,21 @@ const DEFAULT_SAVED_AT = "1970-01-01T00:00:00.000Z";
  * unlock full fidelity.
  */
 export const snapshot = (game: Game, opts: SnapshotOptions = {}): GameSnapshot => {
-  const players: SerializedPlayer[] = game.players.map((p) => ({
-    seat: p.seat,
-    lobbyPlayerId: p.lobbyPlayer.id,
-    teamId: p.teamId,
-    life: p.life,
-    counters: Object.fromEntries(p.counters),
-    zones: [...p.zones.values()].map(zoneToSnapshot),
-  }));
+  const players: SerializedPlayer[] = game.players.map((p) => {
+    const sp: SerializedPlayer = {
+      seat: p.seat,
+      lobbyPlayerId: p.lobbyPlayer.id,
+      teamId: p.teamId,
+      life: p.life,
+      counters: Object.fromEntries(p.counters),
+      zones: [...p.zones.values()].map(zoneToSnapshot),
+      // Wave 117 — only emit contraption side-zones when populated so
+      // snapshots of contraption-free games stay minimal.
+      ...(p.contraptionDeck ? { contraptionDeck: zoneToSnapshot(p.contraptionDeck) } : {}),
+      ...(p.contraptionDiscard.length > 0 ? { contraptionDiscard: [...p.contraptionDiscard] } : {}),
+    };
+    return sp;
+  });
 
   const cards: SerializedCard[] = [...game.cards.values()].map(cardToSnapshot);
 
@@ -1379,6 +1393,24 @@ export const restore = (snap: GameSnapshot, opts: RestoreOptions): Game => {
       const z = makeZone(sz.type, sz.ownerSeat);
       for (const entry of sz.items) z.add(mkEntityId(entry as unknown as number));
       p.zones.set(sz.type, z);
+    }
+    // Wave 117 — restore the contraption side-zones. Both fields are
+    // optional on the wire; absent / null keeps the default empty state
+    // (deck = undefined, discard = []) so v7 snapshots taken before this
+    // wave still load.
+    if (sp.contraptionDeck) {
+      const cz = makeZone(sp.contraptionDeck.type, sp.contraptionDeck.ownerSeat);
+      for (const entry of sp.contraptionDeck.items) {
+        cz.add(mkEntityId(entry as unknown as number));
+      }
+      p.contraptionDeck = cz;
+    } else {
+      p.contraptionDeck = undefined;
+    }
+    if (sp.contraptionDiscard && sp.contraptionDiscard.length > 0) {
+      p.contraptionDiscard = sp.contraptionDiscard.map((e) => mkEntityId(e as unknown as number));
+    } else {
+      p.contraptionDiscard = [];
     }
   }
 

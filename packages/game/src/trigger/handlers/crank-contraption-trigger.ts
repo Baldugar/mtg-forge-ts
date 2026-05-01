@@ -5,18 +5,30 @@
 // Forge pattern:
 //   T:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank
 //     | TriggerDescription$ When you crank this contraption, ...
+//   T:Mode$ CrankContraption | ValidPlayer$ You | Execute$ TrigBoom
+//     | TriggerDescription$ When you crank a contraption, ...
 //
 // Engine event: "CardCranked" (added in Wave 16) — payload { cardId, controllerSeat }.
-// Engine-side EMIT: TODO — Unstable contraption-assembly mechanic does not yet
-// exist; tests stub-emit CardCranked for now.
+// Engine-side EMIT: Wave 117 — AdvanceCrankEffect fires CardCranked per
+// on-sprocket contraption AFTER rotating the per-controller sprocket
+// pointer (mirrors Forge.Player.advanceCrankCounter), then closes with a
+// ContraptionCranked deck-event pulse.
 //
 // ValidCard$ MVP support:
 //   Card.Self — fires when this exact contraption is cranked.
 //   Card      — fires when any contraption is cranked.
+//
+// ValidPlayer$ MVP support (Wave 117):
+//   You       — fires when the controller cranks a contraption.
+//   Opponent  — fires when an opponent cranks a contraption.
+//   Player    — fires regardless of who cranked.
+//   (omitted) — defaults to "Player" (backwards-compatible no-op for
+//               trigger lines that only declare ValidCard$).
 import type {
   AbilityAst,
   EntityId,
   GameEvent,
+  PlayerSeat,
   SVarAst,
   TriggerAst,
   TriggeredAbility,
@@ -45,6 +57,7 @@ export class CrankContraptionTrigger extends TriggerHandler {
 
   override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
     const validCardRaw = getParamRaw(ast, "ValidCard") ?? "Card.Self";
+    const validPlayerRaw = getParamRaw(ast, "ValidPlayer") ?? "Player";
     const { sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = ast.effect.handlerKey;
 
@@ -59,10 +72,17 @@ export class CrankContraptionTrigger extends TriggerHandler {
 
       matches(event: GameEvent): boolean {
         if (event.kind !== "CardCranked") return false;
-        const { cardId } = event.payload as { cardId: EntityId };
-        if (validCardRaw === "Card.Self") return cardId === sourceCardId;
-        if (validCardRaw === "Card") return true;
-        return false;
+        const { cardId, controllerSeat: cranker } = event.payload as {
+          cardId: EntityId;
+          controllerSeat: PlayerSeat;
+        };
+        // ValidCard$ — gate on which contraption was cranked.
+        if (validCardRaw === "Card.Self" && cardId !== sourceCardId) return false;
+        if (validCardRaw !== "Card.Self" && validCardRaw !== "Card") return false;
+        // ValidPlayer$ — gate on who cranked. Default "Player" matches all.
+        if (validPlayerRaw === "You" && cranker !== controllerSeat) return false;
+        if (validPlayerRaw === "Opponent" && cranker === controllerSeat) return false;
+        return true;
       },
 
       resolver: {

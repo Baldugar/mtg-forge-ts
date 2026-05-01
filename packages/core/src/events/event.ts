@@ -1775,6 +1775,26 @@ export type GameEvent =
         readonly cardId?: EntityId;
       };
     }
+  | {
+      // Wave 117 — AdvanceCrank resolution pulse. Fires once per
+      // AdvanceCrank effect AFTER the per-controller sprocket pointer
+      // rotates and AFTER each on-sprocket contraption has fired its own
+      // CardCranked. Carries the rotated sprocket pointer + the list of
+      // contraption card ids that landed on the new sprocket so deck-event
+      // observers ("when one or more of your contraptions are cranked")
+      // can latch without re-walking the battlefield. CR 308.3 — the
+      // crank rotation is the entire sprocket-state machine; this event
+      // is purely informational for triggers / tests.
+      readonly kind: "ContraptionCranked";
+      readonly version: 1;
+      readonly turn: number;
+      readonly phase: PhaseStep;
+      readonly payload: {
+        readonly playerSeat: PlayerSeat;
+        readonly sprocket: number;
+        readonly cardIds: readonly EntityId[];
+      };
+    }
   // === Wave 70.A — Trigger-mode coverage additions ===
   | {
       // CR 716 — Class enchantment level transition. Fires when a Class

@@ -8,6 +8,11 @@ import { ZoneType } from "@mtg-forge-ts/core";
 import type { Zone } from "./zone/zone.js";
 import { OutsideTheGame } from "./zone/zones/outside-the-game.js";
 import { Sideboard } from "./zone/zones/sideboard.js";
+// Wave 117 — Internal contraption-discard slot keys. The discard pile is
+// modeled as a flat EntityId array; when the contraptionDeck empties, the
+// AssembleContraption effect shuffles the discard back in (CR 308.3).
+// Forge models this as the Junkyard zone — we keep the model name aligned
+// with Forge while exposing a simpler array slot here.
 
 export class Player {
   // WHY: life is initialized from GameRules.startingLife by the Game ctor
@@ -37,6 +42,16 @@ export class Player {
   // onto the battlefield (mirrors AssembleContraption's deck-pop branch);
   // otherwise the legacy attractions-counter bump path runs.
   attractionDeck: Zone | undefined = undefined;
+  // Wave 117 — Contraption discard pile (Forge: Junkyard for contraptions).
+  // CR 308.3 — when a contraption leaves the battlefield it is exiled
+  // face-down into the contraption-discard pile; when AssembleContraption
+  // resolves with an empty contraptionDeck, the discard is shuffled back
+  // into the deck. We model the discard as a flat ordered EntityId array
+  // (no zone-membership semantics; Forge's Junkyard zone is purely a
+  // "stash" for the recycling step). The companion field on Game.flags
+  // marks the seat; this slot tracks the actual ids so a snapshot
+  // round-trip preserves the recycle pool.
+  contraptionDiscard: EntityId[] = [];
   // SP2 Milestone G (Task 30): CR 704.5b — set when the player was required
   // to draw from an empty library since the last SBA check. The SBA engine
   // reads this flag to produce a `playerLosesEmptyDraw` action, then clears

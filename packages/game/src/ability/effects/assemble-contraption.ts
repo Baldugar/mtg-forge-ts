@@ -28,9 +28,13 @@
 // "Crank the sprocket where this contraption lives" lookups work
 // without rebuilding the sub-zone.
 //
-// TODO(advanced): contraption-shuffle on assemble + "When you crank a
-// contraption" trigger hookup remain; the trigger family lands once
-// the SP4 corpus surfaces the cards.
+// Wave 117 — contraption-shuffle on assemble + "When you crank a
+// contraption" trigger family. CR 308.3: when AssembleContraption
+// resolves with an empty contraption deck, the contraption discard
+// pile is shuffled back in to refill it before the top card is popped.
+// The Cranked trigger family lands via the AdvanceCrank emission path
+// (per-contraption CardCranked + a deck-event ContraptionCranked
+// pulse), see wave-19-effects.ts AdvanceCrankEffect.
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { DecisionResponse } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
@@ -82,7 +86,16 @@ export class AssembleContraptionEffect extends SpellAbilityEffect {
       // Wave 45 — when a contraption deck is wired, pop the top into the
       // battlefield. Otherwise fall through to the legacy attraction-flag
       // bump + ContraptionAssembled pulse.
+      // Wave 117 — when the deck is wired but empty AND the discard pile
+      // has contents, shuffle the discard back in (CR 308.3) before
+      // popping. This is the canonical "refill from junkyard" step Forge
+      // implements via Player.advanceCrankCounter / Junkyard cycling.
       let movedCardId: Parameters<Game["cards"]["get"]>[0] | undefined;
+      if (deck !== undefined && deck.size === 0 && player.contraptionDiscard.length > 0) {
+        const shuffled = game.rng.shuffle(player.contraptionDiscard);
+        for (const id of shuffled) deck.add(id);
+        player.contraptionDiscard.length = 0;
+      }
       if (deck !== undefined && deck.size > 0) {
         const topId = deck.peekAt(0);
         if (topId !== undefined) {

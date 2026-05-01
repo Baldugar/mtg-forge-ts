@@ -206,6 +206,8 @@ const EXPECTED_KINDS: readonly GameEventKind[] = [
   // Wave 45 — Final long-tail: Initiative dungeon + AssembleContraption (2)
   "UndercityRoomEntered",
   "ContraptionAssembled",
+  // Wave 117 — Contraption deck shuffle + crank trigger (1)
+  "ContraptionCranked",
   // Wave 70.A — Trigger-mode coverage additions (3)
   "ClassLevelGained",
   "RoomEntered",
@@ -401,6 +403,8 @@ const ALL_KINDS_MAP = {
   // Wave 45 — Final long-tail (2)
   UndercityRoomEntered: true,
   ContraptionAssembled: true,
+  // Wave 117 — Contraption deck shuffle + crank trigger (1)
+  ContraptionCranked: true,
   // Wave 70.A — Trigger-mode coverage additions (3)
   ClassLevelGained: true,
   RoomEntered: true,
@@ -413,8 +417,8 @@ const ALL_KINDS_MAP = {
 
 describe("GameEvent enumeration", () => {
   it("has 177 distinct kinds (Wave 16 + 12, Wave 18 + 6, Wave 19 + 9 + 2, Wave 20 + 16, Wave 21 + 18, Wave 22 + 6, Wave 34 + 1, Wave 44 + 1, Wave 45 + 2, Wave 70.A + 3, Wave 71 + 2, Wave 114 + 3)", () => {
-    expect(EXPECTED_KINDS.length).toBe(177);
-    expect(new Set(EXPECTED_KINDS).size).toBe(177);
+    expect(EXPECTED_KINDS.length).toBe(178);
+    expect(new Set(EXPECTED_KINDS).size).toBe(178);
     // ALL_KINDS_MAP satisfies Record<GameEventKind, true> already enforces
     // compile-time exhaustiveness; this asserts the two lists stay aligned.
     expect(Object.keys(ALL_KINDS_MAP).sort()).toEqual([...EXPECTED_KINDS].sort());
@@ -644,6 +648,8 @@ describe("Event taxonomy lock — version:1 sweep", () => {
     // Wave 45 payloads
     UndercityRoomEntered: { playerSeat: seat0, room: 1, roomName: "Secret Entrance" },
     ContraptionAssembled: { playerSeat: seat0, sourceCardId: id(1) },
+    // Wave 117 payload
+    ContraptionCranked: { playerSeat: seat0, sprocket: 1, cardIds: [id(1)] },
     // Wave 70.A payloads
     ClassLevelGained: { cardId: id(1), oldLevel: 1, newLevel: 2, controllerSeat: seat0 },
     RoomEntered: { cardId: id(1), playerSeat: seat0, fullyUnlocked: true },

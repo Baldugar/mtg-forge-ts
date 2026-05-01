@@ -674,6 +674,47 @@ export class AdvanceCrankEffect extends SpellAbilityEffect {
         controllerSeat: sa.controllerSeat,
       }),
     );
+    // Wave 117 — fire CardCranked for each on-sprocket contraption the
+    // controller controls (mirrors Forge.Player.advanceCrankCounter which
+    // calls TriggerType.CrankContraption per chosen contraption). The
+    // ContraptionCranked deck-event pulse rounds out the AdvanceCrank
+    // resolution so observers can latch onto the rotated pointer + the
+    // full set of cranked card ids without re-walking the battlefield.
+    const player = game.getPlayer(seat);
+    const bf = player.zones.get(ZoneType.Battlefield);
+    const crankedIds: EntityId[] = [];
+    if (bf) {
+      for (const cardId of bf.toArray()) {
+        const card = game.cards.get(cardId);
+        if (!card) continue;
+        const sp = (card as unknown as { assignedSprocket?: number }).assignedSprocket;
+        if (sp === nextSprocket) {
+          crankedIds.push(cardId);
+        }
+      }
+    }
+    for (const cardId of crankedIds) {
+      // WHY: skip duplicate when the source happens to be on the rotated
+      // sprocket — wave-16b's emit-wiring test asserts a single CardCranked
+      // for the source at minimum, and downstream trigger watchers should
+      // not see two events for the same card from one AdvanceCrank.
+      if (cardId === sa.sourceCardId) continue;
+      yield game.emitEvent(
+        mkEvent("CardCranked", game.turn, game.phase, {
+          cardId,
+          controllerSeat: sa.controllerSeat,
+        }),
+      );
+    }
+    // Deck-event pulse — observers that want "any contraption was cranked
+    // this turn" or want the full sprocket pointer + id list latch here.
+    yield game.emitEvent(
+      mkEvent("ContraptionCranked", game.turn, game.phase, {
+        playerSeat: sa.controllerSeat,
+        sprocket: nextSprocket,
+        cardIds: crankedIds,
+      }),
+    );
   }
 }
 effectRegistry.register(AdvanceCrankEffect);
