@@ -401,8 +401,15 @@ effectRegistry.register(ConniveEffect);
 
 // 11. FlipOntoBattlefield -----------------------------------------------------
 // Forge `SP$ FlipOntoBattlefield` — flip a coin and, depending on outcome,
-// put a target onto the battlefield. MVP: deterministic via game.rng heads
-// branch — put source onto battlefield; tails branch — leave as-is.
+// put a target onto the battlefield.
+//
+// Wave 83 — honor `WinIfFlippedHeads$ True` / `LoseIfTails$ True` flag
+// params: route through game.action.gameWin / game.action.gameLoss when set
+// so Platinum-Angel-style replacements can deny the loss/win and the SBA
+// engine sees the canonical PlayerWon / PlayerLost events. Without these
+// flags the original heads-puts-source-on-battlefield behavior is
+// preserved (the Forge corpus's printed "Chance Encounter" / "Chaos Confetti"
+// cards rely on the flag-driven win/lose path).
 export class FlipOntoBattlefieldEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "FlipOntoBattlefield";
 
@@ -418,6 +425,30 @@ export class FlipOntoBattlefieldEffect extends SpellAbilityEffect {
         payload: { playerSeat: sa.controllerSeat, resultHeads: heads },
       },
     };
+    const winOnHeads =
+      hasParam(sa, "WinIfFlippedHeads") &&
+      evaluateParamRaw(sa, "WinIfFlippedHeads").trim().toLowerCase() === "true";
+    const loseOnTails =
+      hasParam(sa, "LoseIfTails") && evaluateParamRaw(sa, "LoseIfTails").trim().toLowerCase() === "true";
+
+    if (heads && winOnHeads) {
+      // CR 104.2a — controller wins the game; routes through the
+      // gameWin pipeline so PlayerWon emits and the terminal-state SBA
+      // sweep observes the win.
+      yield* game.action.gameWin(sa.controllerSeat, { cause: "flip-onto-battlefield" });
+      return;
+    }
+    if (!heads && loseOnTails) {
+      // CR 104.3 — controller loses the game; gameLoss runs the
+      // replacement chain (Platinum Angel et al) before PlayerLost
+      // emits, mirroring the canonical effect-driven loss path.
+      yield* game.action.gameLoss(sa.controllerSeat, {
+        cause: "flip-onto-battlefield",
+        reason: "effect",
+      });
+      return;
+    }
+
     if (heads) {
       const card = game.cards.get(sa.sourceCardId);
       if (card && card.zone !== ZoneType.Battlefield) {
@@ -427,30 +458,71 @@ export class FlipOntoBattlefieldEffect extends SpellAbilityEffect {
         });
       }
     }
-    // TODO(advanced): consult `WinIfFlippedHeads$` / `LoseIfTails$` flags and
-    // honor explicit Defined$ targets.
   }
 }
 effectRegistry.register(FlipOntoBattlefieldEffect);
 
 // 12. BecomesBlocked ----------------------------------------------------------
 // Forge `SP$ BecomesBlocked` — set a "becomes blocked" trigger on the
-// targets. MVP: stash on remembered so the corpus resolves; the actual
-// trigger is provided by Wave 19's BecomesBlocked-style triggers (none of
-// the current corpus uses this as a *triggered effect* shape — most use it
-// as a trigger Mode$. The effect form is rare wraparound).
+// targets.
+//
+// Wave 83 — register a one-shot delayed trigger per target on
+// game.delayedTriggerQueue that fires on the next AttackerBecomesBlocked
+// event whose attackerId matches the target. Mirrors the
+// DelayedTriggerEffect (Mode$ Phase / Mode$ ChangesZone) registration shape.
+// The matched event is captured on the source card's
+// `becomesBlockedTriggered` slot (set of attackerIds that have triggered)
+// so observers can correlate the firing without standing up a new event
+// kind. The remembered fallback is preserved for legacy back-compat.
 export class BecomesBlockedEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "BecomesBlocked";
 
-  // biome-ignore lint/correctness/useYield: pure mutation MVP
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const sourceCardId = sa.sourceCardId;
+    const ownerSeat = sa.controllerSeat;
+    const sourceCard = game.cards.get(sourceCardId);
+
     for (const id of sa.targets) {
       const card = game.cards.get(id);
       if (!card) continue;
+      // Legacy slot (kept for back-compat with prior wave tests).
       card.remembered.push(id);
+
+      // Capture the attacker id in the closure so the predicate compares
+      // against the correct id even when sa.targets is later mutated.
+      const attackerId: EntityId = id;
+      const dtId = game.newEntityId();
+      game.delayedTriggerQueue.add({
+        id: dtId,
+        kind: "triggered",
+        sourceCardId,
+        activeInZones: new Set([ZoneType.Battlefield, ZoneType.Stack, ZoneType.Graveyard, ZoneType.Command]),
+        timestamp: 0,
+        controllerSeatAtReg: ownerSeat,
+        isDelayed: true,
+        createdAtTurn: game.turn,
+        creationContext: { attackerId },
+        oneShot: true,
+        matches(event) {
+          if (event.kind !== "AttackerBecomesBlocked") return false;
+          const p = event.payload as { attackerId?: EntityId };
+          if (p.attackerId !== attackerId) return false;
+          // Side-effect: stamp the source's `becomesBlockedTriggered` set
+          // so observers + the attached test harness can correlate the
+          // delayed-trigger fire to the source. Skipped on missing source
+          // (the register call's source has left play, fall-through is
+          // safe — the queue itself drops the one-shot regardless).
+          if (sourceCard) {
+            const set =
+              (sourceCard as { becomesBlockedTriggered?: Set<EntityId> }).becomesBlockedTriggered ??
+              new Set<EntityId>();
+            set.add(attackerId);
+            (sourceCard as { becomesBlockedTriggered?: Set<EntityId> }).becomesBlockedTriggered = set;
+          }
+          return true;
+        },
+      });
     }
-    // TODO(advanced): wire as a delayed trigger that fires on the next
-    // AttackerBecomesBlocked event for the target.
   }
 }
 effectRegistry.register(BecomesBlockedEffect);

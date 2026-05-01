@@ -356,10 +356,49 @@ effectRegistry.register(UnlockDoorEffect);
 
 // 12. Clash ------------------------------------------------------------------
 // Forge `SP$ Clash` (Lorwyn; CR 701.4) — both players reveal top card; higher
-// mana value wins. MVP: deterministic — controller wins the clash; emit
-// CardClashed for the controller.
+// mana value wins.
+//
+// Wave 83 — actually peek the top of each player's library, compare the
+// computed mana values via the LayerEngine, and resolve the winner per
+// CR 701.4d (ties → no clash winner, both cards stay on top by default).
+// The winner additionally yields a chooseOption decision to keep the
+// revealed card on top or send it to the bottom of their library
+// (CR 701.4d — "the player who clashed may put their card on the bottom
+// of their library"). Each player's pick is independent. On missing /
+// wrong-shape responses we keep the card on top (the conservative default,
+// matching prior MVP behavior). The CardClashed event continues to fire
+// with the winning seat (or the controller as fallback on ties).
 export class ClashEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const controllerSeat = sa.controllerSeat;
+    const opponentSeat = otherSeat(controllerSeat, game);
+    const seatsInOrder: PlayerSeat[] = [controllerSeat, opponentSeat];
+    const reveals: { seat: PlayerSeat; topId: EntityId | undefined; mv: number }[] = [];
+    for (const seat of seatsInOrder) {
+      const player = game.getPlayer(seat);
+      const lib = player.zones.get(ZoneType.Library);
+      const topId = lib?.toArray()[0];
+      if (topId === undefined) {
+        reveals.push({ seat, topId: undefined, mv: -1 });
+        continue;
+      }
+      const chars = game.layerEngine.computeCharacteristics(topId);
+      const mv = chars.manaCost ? chars.manaCost.cmc(0) : 0;
+      reveals.push({ seat, topId, mv });
+    }
+    const [controllerReveal, opponentReveal] = reveals;
+    let winnerSeat: PlayerSeat = controllerSeat;
+    let tied = false;
+    if (controllerReveal && opponentReveal) {
+      if (controllerReveal.mv > opponentReveal.mv) {
+        winnerSeat = controllerReveal.seat;
+      } else if (opponentReveal.mv > controllerReveal.mv) {
+        winnerSeat = opponentReveal.seat;
+      } else {
+        // Tie — CR 701.4d: no winner, both cards stay on top.
+        tied = true;
+      }
+    }
     yield {
       kind: "event",
       event: {
@@ -367,11 +406,43 @@ export class ClashEffect extends SpellAbilityEffect {
         version: 1,
         turn: game.turn,
         phase: game.phase,
-        payload: { playerSeat: sa.controllerSeat, winner: sa.controllerSeat },
+        payload: { playerSeat: controllerSeat, winner: winnerSeat },
       },
     };
-    // TODO(advanced): route through library top peek + actual MV comparison +
-    // surface the winner choice on whether to keep on top or send to bottom.
+    if (tied) return;
+    // Each player whose top card was revealed may choose to send it to the
+    // bottom of their library or leave on top. The winner picks first.
+    const orderedReveals = [
+      reveals.find((r) => r.seat === winnerSeat),
+      reveals.find((r) => r.seat !== winnerSeat),
+    ];
+    for (const reveal of orderedReveals) {
+      if (!reveal || reveal.topId === undefined) continue;
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseOption",
+          sourceId: sa.sourceCardId,
+          options: [
+            { id: "keep", description: "Keep on top of library" },
+            { id: "bottom", description: "Put on bottom of library" },
+          ],
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      const sendBottom = response && response.kind === "chooseOption" && response.optionId === "bottom";
+      if (sendBottom) {
+        // moveTo to Library re-adds the card; with no library "send-to-bottom"
+        // primitive the simplest faithful approximation moves it to the
+        // library and leverages Library.add's append semantics. Library
+        // zones implement add as push-to-end (bottom).
+        yield* game.action.moveTo(reveal.topId, ZoneType.Library, {
+          toSeat: reveal.seat,
+          cause: "clash-bottom",
+        });
+      }
+      // Otherwise card stays on top of the library (no movement).
+    }
   }
 
   static override readonly handlerKey = "Clash";

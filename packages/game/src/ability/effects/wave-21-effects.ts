@@ -84,8 +84,20 @@ effectRegistry.register(VentureEffect);
 // 3. Manifest -----------------------------------------------------------------
 // Forge `SP$ Manifest` (Khans of Tarkir; CR 701.34) — put the top N cards of
 // the controller's library onto the battlefield face-down as 2/2 creatures.
-// MVP: move the top N to the battlefield (face-down state to be modeled in
-// SP4 via Card.faceDown). Sets faceDown=true if available.
+//
+// Wave 83 — properly route through the canonical face-down state machine:
+//   * stamp `card.faceDown = { kind: "manifest" }` (typed FaceDownState slot,
+//     not the legacy `unknown` cast) so Layer 1's face-down override
+//     (applyFaceDownOverride in layers/layer1-face-down.ts) clamps the public
+//     characteristics to the canonical 2/2 colorless creature with no name,
+//     no mana cost, and no abilities (CR 708.2).
+//   * bump the layer-engine epoch so the next computeCharacteristics walk
+//     re-evaluates Layer 1 and observes the new faceDown state (the engine's
+//     epoch cache otherwise serves a stale face-up snapshot).
+//   * emit FaceDownStateChanged so observers (snapshot logging, the
+//     turn-face-up ledger, opening View flushes) see the transition.
+// The turn-face-up activated ability (paying the printed mana cost to flip)
+// remains an SP3 cost-pipeline concern.
 export class ManifestEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Manifest";
 
@@ -96,20 +108,41 @@ export class ManifestEffect extends SpellAbilityEffect {
     const lib = player.zones.get(ZoneType.Library);
     if (!lib) return;
     const ids = lib.toArray().slice(0, num);
+    let bumpedEpoch = false;
     for (const id of ids) {
       yield* game.action.moveTo(id, ZoneType.Battlefield, { toSeat: seat, cause: "manifest" });
       const card = game.cards.get(id);
-      if (card) (card as unknown as { faceDown?: unknown }).faceDown = { kind: "manifest" };
+      if (card) {
+        card.faceDown = { kind: "manifest" };
+        if (!bumpedEpoch) {
+          game.layerEngine.bumpEpoch("manifest");
+          bumpedEpoch = true;
+        }
+        yield game.emitEvent(
+          mkEvent("FaceDownStateChanged", game.turn, game.phase, {
+            cardId: id,
+            faceDown: true,
+          }),
+        );
+      }
     }
-    // TODO(advanced): apply 2/2 vanilla characteristics override + register a
-    // turn-face-up activated ability that pays the manifest cost.
   }
 }
 effectRegistry.register(ManifestEffect);
 
 // 4. StoreSVar ----------------------------------------------------------------
 // Forge `SP$ StoreSVar` — store an SVar value on the source card so a later
-// effect can reference it. MVP: stash on a card-local map.
+// effect can reference it.
+//
+// Wave 83 — evaluate the `Expression$` param into a number alongside the raw
+// form so future SVar-driven calculations can read the stored result without
+// re-evaluating each time. Both the raw expression (for back-compat / debug)
+// and the evaluated numeric value live on the source card:
+//   * `card.storedSVars: Map<string, string>` — raw, prior MVP slot.
+//   * `card.storedSVarValues: Map<string, number>` — numeric, the new slot.
+// On unparseable expressions (literal "X", non-numeric SVar refs) the value
+// is omitted from `storedSVarValues` so callers can detect "stored but
+// unevaluable" by checking presence in the numeric map.
 export class StoreSVarEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "StoreSVar";
 
@@ -122,8 +155,32 @@ export class StoreSVarEffect extends SpellAbilityEffect {
     const bag = (source as { storedSVars?: Map<string, string> }).storedSVars ?? new Map<string, string>();
     bag.set(key, expr);
     (source as { storedSVars?: Map<string, string> }).storedSVars = bag;
-    // TODO(advanced): evaluate Expression into a number/raw value so future
-    // SVar-driven calculations can read the stored result.
+
+    // Numeric evaluation pass. Try evaluateParamNumber first (handles literal
+    // numbers + SVar references); the evaluator throws on unparseable input,
+    // so wrap in try/catch and fall through to a base-10 parse. On both-fail
+    // we omit the entry from the numeric map (callers detect "stored but
+    // unevaluable" via map.has).
+    const numericBag =
+      (source as { storedSVarValues?: Map<string, number> }).storedSVarValues ?? new Map<string, number>();
+    if (hasParam(sa, "Expression")) {
+      let stored = false;
+      try {
+        const evaluated = evaluateParamNumber(sa, "Expression", game);
+        if (Number.isFinite(evaluated)) {
+          numericBag.set(key, evaluated);
+          stored = true;
+        }
+      } catch {
+        // Fall through — non-numeric expression; the parse-int retry below
+        // catches the "Expression$ N" base-10 literal-only case.
+      }
+      if (!stored) {
+        const parsed = Number.parseInt(expr, 10);
+        if (Number.isFinite(parsed)) numericBag.set(key, parsed);
+      }
+    }
+    (source as { storedSVarValues?: Map<string, number> }).storedSVarValues = numericBag;
   }
 }
 effectRegistry.register(StoreSVarEffect);
@@ -232,8 +289,14 @@ effectRegistry.register(ExploreEffect);
 
 // 7. ManifestDread ------------------------------------------------------------
 // Forge `SP$ ManifestDread` (Duskmourn) — look at top 2 cards; manifest one
-// face-down as a 2/2, put the other into the graveyard. MVP: move top of
-// library face-down + send #2 to graveyard.
+// face-down as a 2/2, put the other into the graveyard.
+//
+// Wave 83 — yield a typed `chooseCard` decision so the controller actually
+// picks which of the two top cards is manifested vs. milled (CR 701.34 +
+// Duskmourn rules); on missing / wrong-shape response we fall back to the
+// legacy "first is manifested, second is milled" deterministic order. Also
+// stamp the canonical face-down state + bump the layer-engine epoch + emit
+// FaceDownStateChanged (mirrors ManifestEffect) so the 2/2 override applies.
 export class ManifestDreadEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ManifestDread";
 
@@ -244,21 +307,53 @@ export class ManifestDreadEffect extends SpellAbilityEffect {
     if (!lib) return;
     const ids = lib.toArray().slice(0, 2);
     if (ids.length === 0) return;
-    const [manifestId, graveId] = ids;
+
+    // Yield a chooseCard decision (pool = the two top cards; pick exactly 1
+    // to manifest). The non-picked id is milled.
+    let manifestId: EntityId | undefined = ids[0];
+    let graveId: EntityId | undefined = ids[1];
+    if (ids.length === 2) {
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: seat,
+          pool: ids,
+          restriction: { effect: "ManifestDread", mode: "PickManifested" },
+          min: 1,
+          max: 1,
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      if (response && response.kind === "chooseCard" && response.chosen.length === 1) {
+        const picked = response.chosen[0];
+        if (picked !== undefined && (picked === ids[0] || picked === ids[1])) {
+          manifestId = picked;
+          graveId = picked === ids[0] ? ids[1] : ids[0];
+        }
+      }
+    }
+
     if (manifestId !== undefined) {
       yield* game.action.moveTo(manifestId, ZoneType.Battlefield, {
         toSeat: seat,
         cause: "manifest-dread",
       });
       const card = game.cards.get(manifestId);
-      if (card) (card as unknown as { faceDown?: unknown }).faceDown = { kind: "manifest" };
+      if (card) {
+        card.faceDown = { kind: "manifest" };
+        game.layerEngine.bumpEpoch("manifest-dread");
+        yield game.emitEvent(
+          mkEvent("FaceDownStateChanged", game.turn, game.phase, {
+            cardId: manifestId,
+            faceDown: true,
+          }),
+        );
+      }
     }
     if (graveId !== undefined) {
       yield* game.action.moveTo(graveId, ZoneType.Graveyard, { toSeat: seat, cause: "discard" });
     }
-    // TODO(advanced): yield a chooser so the controller picks which of the
-    // two cards is manifested vs. milled (default is "first"). 2/2 override
-    // shares ManifestEffect's TODO.
   }
 }
 effectRegistry.register(ManifestDreadEffect);
