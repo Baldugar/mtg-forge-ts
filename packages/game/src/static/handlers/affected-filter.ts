@@ -35,15 +35,44 @@ import { cardMatchesFilter } from "../../trigger/card-filter.js";
 const BATTLEFIELD = ZoneType.Battlefield;
 
 /**
+ * Wave 100 — parse Forge's `AffectedZone$ <list>` parameter. The grammar
+ * is comma-separated zone names (mixed-case as Forge writes them) plus
+ * the symbolic literal `All` which expands to "every zone game.cards
+ * tracks".
+ *
+ * Returns:
+ *   - `null`   when the parameter is absent or empty (caller should
+ *              default to battlefield-only).
+ *   - `"all"`  when the parameter is the literal `All` (Painter's
+ *              Servant / Conspiracy shape — match every zone).
+ *   - a Set    of canonical ZoneType values otherwise. Unknown tokens
+ *              are dropped silently so a malformed list collapses to an
+ *              empty set (caller treats that as "no zone matches").
+ */
+export const parseAffectedZones = (raw: string | undefined): ReadonlySet<ZoneType> | "all" | null => {
+  if (raw === undefined || raw.length === 0) return null;
+  if (raw === "All" || raw === "all") return "all";
+  const known = new Set(Object.values(ZoneType) as string[]);
+  const result = new Set<ZoneType>();
+  for (const tok of raw.split(",").map((s) => s.trim())) {
+    if (tok.length === 0) continue;
+    if (known.has(tok)) result.add(tok as ZoneType);
+  }
+  return result;
+};
+
+/**
  * True iff `cardId` is the affected target of an `Affected$ <filter>`
  * static whose source is `sourceId` controlled by `controllerSeat`.
  *
  * - `Card.Self`        → cardId === sourceId.
  * - `Card.EnchantedBy` → game.cards.get(sourceId).attachedTo === cardId.
  * - Any other filter   → delegate to Wave 32's cardMatchesFilter on
- *   the resolved Card, requiring it to be on the battlefield (most
- *   Continuous statics are battlefield-scoped; AffectedZone$ All
- *   widening is currently TODO(advanced)).
+ *   the resolved Card, gating by the static's `AffectedZone$` parameter
+ *   (Wave 100 closure). When `affectedZones` is omitted the caller
+ *   keeps the canonical battlefield-only default; pass `"all"` for
+ *   Painter's Servant-shape statics that need to reach every zone, or a
+ *   Set for explicit lists like `Hand,Battlefield`.
  */
 export const cardIdMatchesAffectedFilter = (
   game: Game,
@@ -51,6 +80,7 @@ export const cardIdMatchesAffectedFilter = (
   controllerSeat: PlayerSeat,
   cardId: EntityId,
   filter: string,
+  affectedZones?: ReadonlySet<ZoneType> | "all",
 ): boolean => {
   if (filter === "Card.Self") return cardId === sourceId;
   if (filter === "Card.EnchantedBy") {
@@ -60,15 +90,16 @@ export const cardIdMatchesAffectedFilter = (
   }
   const card = game.cards.get(cardId);
   if (!card) return false;
-  // Wave 47 MVP — gate on battlefield zone. Continuous statics with
-  // `AffectedZone$ All` (Conspiracy / Painter's Servant) reach beyond the
-  // battlefield, but the layer-engine cache is only populated for cards
-  // accessible via game.cards.get; effects that need to reach hand /
-  // graveyard / library cards still apply once those cards are on the
-  // battlefield. Off-battlefield-color-add for Painter's Servant is
-  // // TODO(advanced) — full multi-zone scoping wires through layer
-  // appliers' input zone, which we don't expose today.
-  if (card.zone !== BATTLEFIELD) return false;
+  // Wave 100 — `AffectedZone$ All` (Painter's Servant / Conspiracy shape)
+  // bypasses the battlefield gate; an explicit zone list narrows to those
+  // zones; the default (undefined) keeps the canonical Wave 47 contract.
+  if (affectedZones === "all") {
+    // No zone gate — every zone game.cards tracks is in scope.
+  } else if (affectedZones !== undefined) {
+    if (!affectedZones.has(card.zone)) return false;
+  } else if (card.zone !== BATTLEFIELD) {
+    return false;
+  }
   return cardMatchesFilter(card, filter, { sourceCardId: sourceId, controllerSeat });
 };
 
@@ -89,6 +120,7 @@ export const enumerateAffectedFromFilter = (
   sourceId: EntityId,
   controllerSeat: PlayerSeat,
   filter: string,
+  affectedZones?: ReadonlySet<ZoneType> | "all",
 ): EntityId[] => {
   if (filter === "Card.Self") {
     const src = game.cards.get(sourceId);
@@ -102,7 +134,14 @@ export const enumerateAffectedFromFilter = (
   }
   const out: EntityId[] = [];
   for (const card of game.cards.values()) {
-    if (card.zone !== BATTLEFIELD) continue;
+    // Wave 100 — symmetric zone gating with cardIdMatchesAffectedFilter.
+    if (affectedZones === "all") {
+      // Every zone in scope.
+    } else if (affectedZones !== undefined) {
+      if (!affectedZones.has(card.zone)) continue;
+    } else if (card.zone !== BATTLEFIELD) {
+      continue;
+    }
     if (cardMatchesFilter(card as Card, filter, { sourceCardId: sourceId, controllerSeat })) {
       out.push(card.id);
     }

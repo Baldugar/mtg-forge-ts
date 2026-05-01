@@ -75,7 +75,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { cardIdMatchesAffectedFilter } from "./affected-filter.js";
+import { cardIdMatchesAffectedFilter, parseAffectedZones } from "./affected-filter.js";
 import { evalCondition } from "./conditions.js";
 import { GrantedAbilitySweep } from "./granted-ability.js";
 
@@ -165,6 +165,13 @@ export class ContinuousStaticHandler extends StaticHandler {
 
     const isCda = isTrue(literalRaw(params.CharacteristicDefining));
 
+    // Wave 100 — `AffectedZone$ <list>` (or `All`). When omitted, the
+    // affected-filter helper preserves the canonical battlefield-only
+    // default. `All` (Painter's Servant / Conspiracy shape) widens the
+    // scope to every zone game.cards tracks; an explicit zone list
+    // narrows to those zones (e.g. `Hand,Battlefield`).
+    const affectedZones = parseAffectedZones(literalRaw(params.AffectedZone)) ?? undefined;
+
     const game = ctx.game;
     const sourceId: EntityId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
@@ -177,7 +184,7 @@ export class ContinuousStaticHandler extends StaticHandler {
     // epoch bump (matching the Wave 32 contract for live conditions).
     const appliesToCardIdFn = (cardId: EntityId): boolean => {
       if (!evalCondition(conditionRaw, game, controllerSeat)) return false;
-      return cardIdMatchesAffectedFilter(game, sourceId, controllerSeat, cardId, affected);
+      return cardIdMatchesAffectedFilter(game, sourceId, controllerSeat, cardId, affected, affectedZones);
     };
 
     // Backwards-compat for the Wave 32 / Wave 33 single-target shape.

@@ -21,21 +21,20 @@
 // pack; the slot indirection mirrors the buybackPaid / awakenAmount
 // pattern (Card-level scratch slots that handlers stamp directly).
 //
-// MVP scope: ValidCard$ Card.Self (the typical Class shape) is fully
-// supported. A non-Self filter is treated by stamping every matching
-// card's slot at activate time — but the Wave 60 MVP iterates only
-// the source card on activate (the static's source by definition
-// passes Card.Self; for non-Self the registry would need a card-set
-// scan at activate time). Non-Self ValidCard$ shapes are //
-// TODO(advanced) — the only published Forge usage stamps the Class
-// itself.
+// Scope (Wave 100 broaden): ValidCard$ Card.Self stamps the source card's
+// slot directly (the typical Class shape). Non-Self filters now scan
+// `game.cards` at build time and stamp every matching card's
+// `classMaxLevel` slot — the registry's per-build invocation gives the
+// canonical Forge "static-time scan" semantics. The slot is read at
+// level-up activation time, so the cap is enforced uniformly across all
+// matched cards.
 //
 // Note: Forge uses MaxLevel both for Level Up creatures (CR 702.83)
 // and Class enchantments (CR 716). The Level Up creatures sub-case
 // is // TODO(advanced) — Wave 52 only wired the Class keyword. When
 // Level Up creatures land, the same slot can be reused (or a sibling
 // `levelUpMaxLevel` slot added) — the gate logic is identical.
-import type { ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
   StaticHandler,
@@ -43,7 +42,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface MaxLevelPayload {
   readonly kind: "maxLevel";
@@ -57,13 +56,32 @@ const parseIntDefault = (raw: string | undefined, fallback: number): number => {
 };
 
 const stampMaxLevel = (game: Game, sourceCardId: number, maxLevel: number): void => {
-  // Direct slot stamp on the static's source card. Mirrors Card.Self
-  // (the typical Forge shape for MaxLevel — the Class itself names its
-  // own cap). For non-Self filters (TODO(advanced)) we'd scan
-  // game.cards here.
+  // Direct slot stamp on the static's source card (Card.Self default
+  // shape). For non-Self ValidCard$ filters, see stampMaxLevelMatching.
   const card = game.cards.get(sourceCardId as never);
   if (!card) return;
   card.classMaxLevel = maxLevel;
+};
+
+/**
+ * Wave 100 — stamp `classMaxLevel = maxLevel` on EVERY card matching the
+ * predicate. Used for non-Self ValidCard$ shapes (e.g. a global "all
+ * Class permanents you control max out at level 2" hypothetical card).
+ * Iterates `game.cards` once at build time; subsequent re-evaluations
+ * happen if the registry rebuilds the static (re-activate path).
+ */
+const stampMaxLevelMatching = (
+  game: Game,
+  predicate: (id: EntityId, game: Game) => boolean,
+  maxLevel: number,
+): EntityId[] => {
+  const stamped: EntityId[] = [];
+  for (const card of game.cards.values()) {
+    if (!predicate(card.id, game)) continue;
+    card.classMaxLevel = maxLevel;
+    stamped.push(card.id);
+  }
+  return stamped;
 };
 
 const clearMaxLevel = (game: Game, sourceCardId: number): void => {
@@ -78,13 +96,23 @@ export class MaxLevelStaticHandler extends StaticHandler {
   override build(ast: StaticAst, ctx: StaticHandlerCtx): StaticAbility {
     const params: Readonly<Record<string, ParamValue>> = ast.params;
     const maxLevel = parseIntDefault(literalRaw(params.MaxLevel), 0);
+    const validCardRaw = literalRaw(params.ValidCard);
 
     // Stamp the slot at build-time. The build is invoked when the static
     // becomes active (zone-activation in StaticEffectRegistry) and the
     // payload-stamping is the durable contract: the Class level-up SA
     // reads `card.classMaxLevel` at activate-time. The describe() return
     // is informational (mirrors the slot value).
-    stampMaxLevel(ctx.game, ctx.sourceCardId as unknown as number, maxLevel);
+    if (validCardRaw === undefined || validCardRaw.length === 0 || validCardRaw === "Card.Self") {
+      // Default + Card.Self — stamp the source card directly (the
+      // canonical Forge shape; avoids an O(N) scan per build).
+      stampMaxLevel(ctx.game, ctx.sourceCardId as unknown as number, maxLevel);
+    } else {
+      // Wave 100 — non-Self ValidCard$. Build a predicate from the
+      // Wave 32 grammar and stamp every matching card's slot.
+      const pred = buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
+      stampMaxLevelMatching(ctx.game, pred, maxLevel);
+    }
 
     const payload: MaxLevelPayload = {
       kind: "maxLevel",
@@ -119,5 +147,6 @@ export class MaxLevelStaticHandler extends StaticHandler {
 // matching the source. The Class level-up gate (in class-keyword.ts)
 // re-checks via maxLevelOf() — see wave60-cast-gates.ts.
 export const _clearMaxLevelSlot = clearMaxLevel;
+export const _stampMaxLevelMatching = stampMaxLevelMatching;
 
 staticHandlerRegistry.register(MaxLevelStaticHandler);

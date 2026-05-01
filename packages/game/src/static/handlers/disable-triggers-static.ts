@@ -71,13 +71,14 @@
 //                                   opponents' triggers).
 //   - ValidTrigger$ <token>      — pattern-string match on the trigger's
 //                                   `triggered:` annotation (Ward, etc.).
-// TODO(advanced):
-//   - ValidCause$ targeting a Player (not a card) — rare; default to
-//     not-matched per MVP. Used by some pseudo-trigger blocks.
-//   - Conditional sub-params (Secondary$ True, etc.) consulted
-//     elsewhere in Forge — surfaced on payload but not enforced at the
-//     gate.
-import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+// Wave 100 — ValidCausePlayer$ adds a per-player cause filter for events
+// whose canonical cause is a player rather than a card (LifeChanged,
+// PlayerLost, mana-pool drains, etc.). Sigarda-shape "your opponents
+// can't make you sacrifice" already routes through CantSacrifice; this
+// extension is for raw player-event-level disabling not used in the
+// corpus today, but the payload surface lets the gate-helper match by
+// player when the event provides a `playerSeat` payload.
+import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -86,7 +87,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 /**
  * Read-side payload exposing the per-field predicates the gate consults.
@@ -102,6 +103,12 @@ export interface DisableTriggersPayload {
   readonly kind: "disableTriggers";
   /** Predicate on the EVENT'S CAUSE card (e.g. the creature that just ETB'd). */
   readonly causeMatches: ((cardId: EntityId, game: Game) => boolean) | undefined;
+  /**
+   * Wave 100 — predicate on the EVENT'S CAUSE PLAYER (LifeChanged /
+   * PlayerLost / similar). undefined → no player-cause gating; the gate
+   * walks card-cause only.
+   */
+  readonly playerCauseMatches: ((seat: PlayerSeat) => boolean) | undefined;
   /** Set of trigger mode strings (Forge "ValidMode$" comma-list). undefined → all modes. */
   readonly modes: ReadonlySet<string> | undefined;
   /** Set of permitted destination zones (toZone). undefined → any. */
@@ -158,6 +165,16 @@ export class DisableTriggersStaticHandler extends StaticHandler {
         ? undefined
         : buildCardIdPredicate(validCauseRaw, ctx.sourceCardId, ctx.controllerSeat);
 
+    // Wave 100 — `ValidCausePlayer$ <player-filter>` predicate (Player /
+    // You / Opponent / Each / Player.YouCtrl / Player.OppCtrl). When
+    // omitted, the player-cause path is skipped entirely (undefined →
+    // gate considers card-cause only).
+    const validCausePlayerRaw = literalRaw(params.ValidCausePlayer);
+    const playerCauseMatches =
+      validCausePlayerRaw === undefined
+        ? undefined
+        : buildPlayerPredicate(validCausePlayerRaw, ctx.controllerSeat);
+
     const validCardRaw = literalRaw(params.ValidCard);
     const triggerSourceMatches =
       validCardRaw === undefined
@@ -172,6 +189,7 @@ export class DisableTriggersStaticHandler extends StaticHandler {
     const payload: DisableTriggersPayload = {
       kind: "disableTriggers",
       causeMatches,
+      playerCauseMatches,
       modes,
       destinations,
       origins,

@@ -29,7 +29,7 @@
 // Wave 60.A / 60.H / 70.D / 70.E / 70.F / 70.I. The static registry
 // already snapshots and restores cleanly, so walking the registry
 // per-query is the right source of truth.
-import type { EntityId, GameEvent, TriggeredAbility } from "@mtg-forge-ts/core";
+import type { EntityId, GameEvent, PlayerSeat, TriggeredAbility } from "@mtg-forge-ts/core";
 import type { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { CantBlockUnlessPayload } from "../static/handlers/cant-block-unless-static.js";
@@ -94,6 +94,18 @@ const eventCauseCardId = (event: GameEvent): EntityId | undefined => {
   return payload?.cardId;
 };
 
+/**
+ * Wave 100 — best-effort player-seat extractor for events whose cause
+ * is canonically a player (LifeChanged, PlayerLost, MaybePoisonGain,
+ * etc. — anything carrying a `playerSeat` in the payload). Returns
+ * undefined for card-cause events so the player-cause filter is
+ * skipped (the canonical card-cause filter still applies).
+ */
+const eventCausePlayerSeat = (event: GameEvent): PlayerSeat | undefined => {
+  const payload = (event as { payload?: { playerSeat?: PlayerSeat } }).payload;
+  return payload?.playerSeat;
+};
+
 const eventOrigin = (event: GameEvent): ZoneType | undefined => {
   if (event.kind !== "CardChangedZone") return undefined;
   return event.payload.fromZone;
@@ -139,6 +151,7 @@ export const isTriggerDisabled = (game: Game, trigger: TriggeredAbility, event: 
   if (statics.length === 0) return false;
 
   const causeCardId = eventCauseCardId(event);
+  const causePlayerSeat = eventCausePlayerSeat(event);
   const origin = eventOrigin(event);
   const destination = eventDestination(event);
   const tMode = triggerMode(trigger);
@@ -163,6 +176,17 @@ export const isTriggerDisabled = (game: Game, trigger: TriggeredAbility, event: 
     if (p.causeMatches !== undefined) {
       if (causeCardId === undefined) continue;
       if (!p.causeMatches(causeCardId, game)) continue;
+    }
+    // 4b. Wave 100 — ValidCausePlayer$ — require a cause player present
+    // and matching (LifeChanged / PlayerLost / similar player-event
+    // shapes). When the static specifies BOTH ValidCause$ and
+    // ValidCausePlayer$, the gate consults each predicate independently:
+    // the card filter binds card-cause events; the player filter binds
+    // player-cause events. Most events carry only one cause kind, so in
+    // practice the two filters are alternatives.
+    if (p.playerCauseMatches !== undefined) {
+      if (causePlayerSeat === undefined) continue;
+      if (!p.playerCauseMatches(causePlayerSeat)) continue;
     }
     // 5. ValidCard$ — restrict to triggers sourced by matching cards.
     if (p.triggerSourceMatches !== undefined) {

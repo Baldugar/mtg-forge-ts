@@ -38,18 +38,20 @@
 //   - Activator$ <player-filter>       → buildPlayerPredicate (Wave 50 grammar).
 //   - ValidSA$ Spell / Activated / All → simple kind gate.
 //   - Card.Self short-circuit honored (sourceCardId === cardId).
+// Wave 100 — `AffectedZone$ <list>` is now respected (Card-in-Graveyard
+// candidates no longer inherit the battlefield-only default). Each zone
+// listed is honored; `All` widens to every zone game.cards tracks. The
+// canonical "battlefield only" default holds when AffectedZone$ is
+// omitted.
+//
 // TODO(advanced):
-//   - AffectedZone$ Graveyard — filter "in this zone, can't be targeted"
-//     (currently we treat unspecified AffectedZone as "battlefield only",
-//     which Forge default behavior; Graveyard shape is rare and gated
-//     out for now — matches Forge's behavior of dropping targets from
-//     the eligibility set when the candidate is in the wrong zone).
 //   - SourceCanOnlyTarget$ — Enthralling Hold's narrow choose-clause
 //     constraint at cast-time.
 //   - Hexproof / Shroud-keyword sub-shapes — already handled by the
 //     restriction.shroud/hexproof slots on TargetRestriction; CantTarget
 //     here covers the bespoke text shapes that DON'T grant the keyword.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { Restriction } from "../../statics/cant-must-may.js";
 import {
@@ -58,6 +60,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
+import { parseAffectedZones } from "./affected-filter.js";
 import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 /**
@@ -75,6 +78,12 @@ export interface CantTargetPayload {
   readonly activatorMatches: (seat: PlayerSeat) => boolean;
   /** True iff the SA "kind" matches ValidSA$ (Spell / Activated / All). */
   readonly saKindMatches: (saKind: "Spell" | "Activated" | "Triggered" | "Other") => boolean;
+  /**
+   * Wave 100 — set of zones the candidate target's card must currently
+   * be in for the gate to fire. Undefined → battlefield-only (Wave 70.D
+   * default); `"all"` matches every zone; an explicit Set narrows.
+   */
+  readonly affectedZones: ReadonlySet<ZoneType> | "all" | undefined;
 }
 
 const matchValidSA = (raw: string | undefined) => {
@@ -100,6 +109,11 @@ export class CantTargetStaticHandler extends StaticHandler {
     const validSourceRaw = literalRaw(params.ValidSource);
     const activatorRaw = literalRaw(params.Activator);
     const validSARaw = literalRaw(params.ValidSA);
+    // Wave 100 — `AffectedZone$ <list>` is honored (default
+    // battlefield-only); `All` widens to every zone (rare); an explicit
+    // list narrows (Card-in-Graveyard targeting protections, e.g.
+    // Vigilance for the Dead).
+    const affectedZones = parseAffectedZones(literalRaw(params.AffectedZone)) ?? undefined;
 
     const targetPred = buildCardIdPredicate(validTargetRaw, ctx.sourceCardId, ctx.controllerSeat);
     // ValidSource undefined → match any source.
@@ -110,12 +124,29 @@ export class CantTargetStaticHandler extends StaticHandler {
     const activatorPred = buildPlayerPredicate(activatorRaw, ctx.controllerSeat);
     const saKindPred = matchValidSA(validSARaw);
 
+    // Wave 100 — wrap the target predicate with the AffectedZone$ gate.
+    // The default (undefined) preserves the canonical battlefield-only
+    // restriction (Wave 70.D); explicit zones widen / narrow.
+    const targetMatchesGated = (cardId: EntityId, game: Game): boolean => {
+      const card = game.cards.get(cardId);
+      if (!card) return false;
+      if (affectedZones === "all") {
+        // Every zone in scope.
+      } else if (affectedZones !== undefined) {
+        if (!affectedZones.has(card.zone)) return false;
+      } else if (card.zone !== ZoneType.Battlefield) {
+        return false;
+      }
+      return targetPred(cardId, game);
+    };
+
     const payload: CantTargetPayload = {
       kind: "cantTargetExtended",
-      targetMatches: (cardId, game) => targetPred(cardId, game),
+      targetMatches: (cardId, game) => targetMatchesGated(cardId, game),
       sourceMatches: (cardId, game) => sourcePred(cardId, game),
       activatorMatches: (seat) => activatorPred(seat),
       saKindMatches: (k) => saKindPred(k),
+      affectedZones,
     };
 
     // Concretely surface a generic Restriction so the existing
@@ -131,7 +162,7 @@ export class CantTargetStaticHandler extends StaticHandler {
           // PlayerSeat — players can't be filtered by ValidTarget$ Card.X.
           return false;
         }
-        return targetPred(subjectId as EntityId, game);
+        return targetMatchesGated(subjectId as EntityId, game);
       },
       payload,
     };

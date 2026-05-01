@@ -51,25 +51,57 @@ export const buildCardIdPredicate = (
 
 /**
  * Build a seat predicate from a Caster$ / ValidActivator$ / ValidPlayer$
- * filter string. Recognised tokens:
- *   - undefined / "Any" / "Player" → always-true.
- *   - "You"  → seat === controllerSeat.
- *   - "Opponent" / "Player.NonActive" → seat !== controllerSeat.
- *   - any other literal → conservative reject (Wave-50 MVP).
+ * filter string. Recognised tokens (Wave 100 broadens the grammar to the
+ * canonical Forge dot-AND alternatives that the corpus actually uses):
  *
- * The full Forge player-filter grammar (Player.YouCtrlOrYou,
- * Player.controllingThis, etc.) is TODO(advanced); the four shapes above
- * cover Vedalken Orrery, Linvala, Conqueror's Flail, Surge and Awaken.
+ *   - undefined / "Any" / "Player" → always-true.
+ *   - "You" / "Player.YouCtrl"     → seat === controllerSeat.
+ *   - "Opponent" / "Player.Opponent" / "Player.OppCtrl" → seat !== controllerSeat.
+ *   - "Each"                       → always-true (each-player iteration).
+ *   - comma-OR alternatives        → any token matching short-circuits true.
+ *   - any other literal            → conservative reject (preserves the
+ *                                     Wave-50 fail-closed default).
+ *
+ * The full Forge `Player.controllingThis` / `Player.YouCtrlOrYou` grammar
+ * (per-card relational predicates) is still TODO(advanced); the broader
+ * tokens above cover Vedalken Orrery, Linvala, Conqueror's Flail, Surge,
+ * Awaken, AND the canonical dot-form aliases the static parser emits when
+ * Forge writes "Player.YouCtrl" / "Player.OppCtrl".
  */
 export const buildPlayerPredicate = (
   raw: string | undefined,
   controllerSeat: PlayerSeat,
 ): ((seat: PlayerSeat) => boolean) => {
-  if (raw === undefined || raw.length === 0 || raw === "Any" || raw === "Player") {
+  if (raw === undefined || raw.length === 0 || raw === "Any" || raw === "Player" || raw === "Each") {
     return () => true;
   }
-  if (raw === "You") return (seat) => seat === controllerSeat;
-  if (raw === "Opponent" || raw === "Player.NonActive") {
+  // Comma-OR alternatives — try each token; the first match wins. A
+  // comma-list like "You,Opponent.Active" should evaluate as "You OR
+  // Opponent.Active". This matches Forge's filter grammar for
+  // ValidPlayer$ / Caster$ comma-separated lists.
+  if (raw.includes(",")) {
+    const tokens = raw
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+    const preds = tokens.map((t) => buildPlayerPredicate(t, controllerSeat));
+    return (seat) => preds.some((p) => p(seat));
+  }
+  // Self-side aliases.
+  if (raw === "You" || raw === "Player.YouCtrl" || raw === "Player.You") {
+    return (seat) => seat === controllerSeat;
+  }
+  // Opponent-side aliases. "Player.NonActive" remains for backwards-compat —
+  // strictly speaking it means "not the active player", but for two-player
+  // seat-binary games this is identical to "opponent-of-controller" when the
+  // static was registered while the controller was active. Wave 50 / 70.K
+  // call sites pass NonActive as the OppCtrl alias, so we keep that shape.
+  if (
+    raw === "Opponent" ||
+    raw === "Player.Opponent" ||
+    raw === "Player.OppCtrl" ||
+    raw === "Player.NonActive"
+  ) {
     return (seat) => seat !== controllerSeat;
   }
   // Conservative reject for unrecognised tokens.
