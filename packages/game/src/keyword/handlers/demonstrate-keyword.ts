@@ -7,13 +7,14 @@
 // CR 702.144a — "Demonstrate" — "When you cast this spell, you may copy
 // it. If you do, choose an opponent to copy it as well."
 //
-// MVP scope:
+// Scope:
 //   1. Adds "demonstrate" to card.keywords.
 //   2. SpellCast self-trigger fires when the SpellCast event names the
 //      source card. On resolve: yield confirmAction; if confirmed, the
-//      copy-and-opponent-copy synthesis happens via the cast pipeline
-//      (TODO(advanced)). The trigger registration captures the durable
-//      contract.
+//      resolver invokes castCopyOf for the controller and (after a
+//      chooseGenericOption when there are >1 opponents) for the chosen
+//      opponent. Wave 64 closed the cast-pipeline tail; the keyword now
+//      owns the full Demonstrate flow end-to-end.
 import type { EntityId, GameEvent, KeywordAst, PlayerSeat, TriggeredAbility } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";

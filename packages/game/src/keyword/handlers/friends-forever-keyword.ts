@@ -16,13 +16,13 @@
 // MVP scope:
 //   1. Adds "friends_forever" to card.keywords.
 //
-// TODO(advanced) — Full Friends Forever integration is a deck-building
-// constraint enforced at lobby/deck-validation time. The runtime engine
-// only needs the flag for downstream commander-related queries (the UI
-// surfaces the pair, the SBA layer treats the second commander as
-// commander-typed). Wave 39 stamps the flag so the keyword resolves at
-// card-load; the validator wiring lands once the deck-validation layer
-// is widened.
+// Scope note — Friends Forever is a deck-building constraint enforced
+// at lobby/deck-validation time, not a runtime ability. The runtime
+// engine only needs the flag for downstream commander-related queries
+// (the UI surfaces the pair, the SBA layer treats the second commander
+// as commander-typed). Wave 39 stamps the flag so the keyword resolves
+// at card-load; the validator wiring lives in the deck-builder layer.
+// No advanced-tail wiring belongs here.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

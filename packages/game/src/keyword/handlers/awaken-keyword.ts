@@ -29,12 +29,13 @@
 //      stamped via card.types/subtypes for MVP read-paths; full Layer 4
 //      type-add lives in a follow-up).
 //
-// TODO(advanced) — wiring the optional-cost loop to a separate slot
-// (`awakenCost` rather than `kickerCost`) is a pure refactor; both
-// slots feed into the same confirmAction pipeline. Sharing the kicker
-// slot means a card with both Kicker and Awaken would conflict — none
-// of the printed Awaken cards also carry Kicker, so this is safe in
-// practice.
+// Slot-naming note — wiring the optional-cost loop to a separate slot
+// (`awakenCost` rather than `kickerCost`) would be a pure refactor;
+// both slots feed into the same confirmAction pipeline. Sharing the
+// kicker slot means a card with both Kicker and Awaken would conflict
+// — none of the printed Awaken cards also carry Kicker, so this is
+// safe in practice. No advanced-tail wiring belongs here; the slot
+// reuse is a deliberate, durable choice.
 import type {
   ContinuousEffect,
   EntityId,

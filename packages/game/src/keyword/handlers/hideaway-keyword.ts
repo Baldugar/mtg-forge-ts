@@ -19,14 +19,15 @@
 //      `card.hideawayCard = chosen` and `chosen.hideawayHost = self`,
 //      shuffle remaining cards back into the bottom of the library.
 //
-// TODO(advanced) — The conditional free-cast ability ("Cast the exiled
+// Scope note — The conditional free-cast ability ("Cast the exiled
 // card without paying its mana cost") is per-card text (each Hideaway
 // card has its own activation condition: "at the beginning of your
 // upkeep, if you have 7 or more lands…"). Those abilities are
 // represented in the card's AST as separate triggered/static rules; the
 // keyword's portion ends at exile-and-stamp. The stamped slots
 // (`hideawayCard` / `hideawayHost`) are the contract those abilities
-// consult to find the exiled card.
+// consult to find the exiled card. No advanced-tail wiring belongs
+// here.
 import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";

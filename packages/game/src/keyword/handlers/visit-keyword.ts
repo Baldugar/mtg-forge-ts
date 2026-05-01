@@ -4,12 +4,14 @@
 // triggered abilities when the controller "visits" the attraction (rolls
 // a die during their turn matching the attraction's lit numbers).
 //
-// MVP scope:
+// Scope:
 //   1. Adds "visit" to card.keywords.
-//   2. Stamps `card.visit = true`. The attractions visit-trigger machinery
-//      reads `game.flags.attractions[seat]` and fires the keyword's
-//      effect SVar; full visit-trigger synthesis is documented under
-//      TODO(advanced).
+//   2. Stamps `card.visit = true`. The visit-trigger flow lives in the
+//      ability layer: `SP$ VisitAttraction` (visit-attraction.ts) emits
+//      the canonical AttractionVisited event, which the Wave-22 visit-
+//      attraction trigger handler matches and dispatches via the source
+//      card's printed visit-triggered ability. The keyword's contract is
+//      the durable `visit` stamp; no advanced-tail wiring belongs here.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

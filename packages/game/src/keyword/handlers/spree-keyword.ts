@@ -7,10 +7,15 @@
 //
 // CR 702.169a — "Spree" — "Choose one or more additional costs."
 //
-// MVP scope:
+// Scope:
 //   1. Adds "spree" to card.keywords.
-//   2. Stamps `card.isSpree = true` for SVar / cast-pipeline reads. The
-//      per-mode-additional-cost wiring is documented under TODO(advanced).
+//   2. Stamps `card.isSpree = true` for SVar / cast-pipeline reads.
+//      Wave 61.C closed the cast-pipeline tail: cast-pipeline.ts now
+//      yields a `chooseSpreeModes` decision when `card.isSpree === true`,
+//      splices each chosen mode's ModeCost into the base raw cost, and
+//      stamps `card.spreeChosenModes` so CharmEffect at resolve time
+//      applies exactly the chosen subset. No advanced-tail wiring
+//      belongs here.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
