@@ -1,0 +1,22 @@
+{
+  "id": "negate-in-hand",
+  "description": "Negate mints into hand (parse + activation lock).",
+  "seed": 78,
+  "cards": {
+    "Negate": "Name:Negate\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | Cost$ 1 U | TargetType$ Spell | ValidTgts$ Card.nonCreature | TgtPrompt$ Select target noncreature spell | SpellDescription$ Counter target noncreature spell.\nOracle:Counter target noncreature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Negate"],
+      "battlefield": [],
+      "manaPool": ["U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,28 @@
+{
+  "id": "holy-day-cast",
+  "description": "Holy Day cast — registers damage-prevention replacement.",
+  "seed": 80,
+  "cards": {
+    "Holy Day": "Name:Holy Day\nManaCost:W\nTypes:Instant\nA:SP$ Effect | Cost$ W | ReplacementEffects$ RPrevent | SpellDescription$ Prevent all combat damage this turn.\nSVar:RPrevent:Event$ DamageDone | IsCombat$ True | PreventionEffect$ True | Description$ Prevent all combat damage that would be dealt this turn.\nOracle:Prevent all combat damage that would be dealt this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Holy Day"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Holy Day",
+      "castingPlayer": 0
+    }
+  ]
+}

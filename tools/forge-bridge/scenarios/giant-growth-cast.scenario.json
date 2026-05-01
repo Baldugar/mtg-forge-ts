@@ -1,0 +1,37 @@
+{
+  "id": "giant-growth-cast",
+  "description": "Giant Growth cast on own Grizzly Bears (target-bound).",
+  "seed": 85,
+  "cards": {
+    "Giant Growth": "Name:Giant Growth\nManaCost:G\nTypes:Instant\nA:SP$ PumpAll | Cost$ G | ValidCards$ Creature.targetedBy | NumAtt$ 3 | NumDef$ 3 | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ Target creature gets +3/+3 until end of turn.\nOracle:Target creature gets +3/+3 until end of turn.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Giant Growth"],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": ["G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Giant Growth",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Grizzly Bears"
+      }
+    }
+  ]
+}

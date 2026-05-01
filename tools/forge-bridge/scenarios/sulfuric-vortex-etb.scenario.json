@@ -1,0 +1,27 @@
+{
+  "id": "sulfuric-vortex-etb",
+  "description": "Sulfuric Vortex ETB; trigger registry holds the upkeep ping.",
+  "seed": 81,
+  "cards": {
+    "Sulfuric Vortex": "Name:Sulfuric Vortex\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ At the beginning of each player's upkeep, this deals 2 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer\nOracle:At the beginning of each player's upkeep, Sulfuric Vortex deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sulfuric Vortex"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sulfuric Vortex",
+      "controller": 0
+    }
+  ]
+}

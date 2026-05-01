@@ -1,0 +1,27 @@
+{
+  "id": "rest-in-peace-etb",
+  "description": "Rest in Peace ETB; future graveyard moves should re-route via Replace registry.",
+  "seed": 74,
+  "cards": {
+    "Rest in Peace": "Name:Rest in Peace\nManaCost:1 W\nTypes:Enchantment\nR:Event$ Moved | ValidCard$ Card | Destination$ Graveyard | ReplaceWith$ ExileInstead | Description$ Exile cards going to graveyards.\nSVar:ExileInstead:DB$ ChangeZone | Origin$ All | Destination$ Exile\nS:Mode$ Continuous | Affected$ Card.inZoneGraveyard | RemoveAllAbilities$ True | Description$ Graveyards have no cards.\nOracle:If a card or token would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Rest in Peace"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rest in Peace",
+      "controller": 0
+    }
+  ]
+}

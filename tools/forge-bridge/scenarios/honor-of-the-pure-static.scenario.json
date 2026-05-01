@@ -1,0 +1,32 @@
+{
+  "id": "honor-of-the-pure-static",
+  "description": "Honor of the Pure ETBs; only white creatures get +1/+1.",
+  "seed": 72,
+  "cards": {
+    "Honor of the Pure": "Name:Honor of the Pure\nManaCost:1 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.White+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ White creatures you control get +1/+1.\nOracle:White creatures you control get +1/+1.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Honor of the Pure"],
+      "battlefield": [
+        {
+          "card": "Serra Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Honor of the Pure",
+      "controller": 0
+    }
+  ]
+}

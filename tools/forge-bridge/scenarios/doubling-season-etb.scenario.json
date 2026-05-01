@@ -1,0 +1,27 @@
+{
+  "id": "doubling-season-etb",
+  "description": "Doubling Season ETB: replacement registry registers the multiplier.",
+  "seed": 73,
+  "cards": {
+    "Doubling Season": "Name:Doubling Season\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DoubleAmount | Description$ Counters added to permanents you control are doubled.\nSVar:DoubleAmount:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleTokens | Description$ Tokens you'd create are doubled.\nSVar:DoubleTokens:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:If an effect would create one or more tokens under your control, it creates twice that many. If an effect would put one or more counters on a permanent you control, it puts twice that many on that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Doubling Season"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Doubling Season",
+      "controller": 0
+    }
+  ]
+}

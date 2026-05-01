@@ -1,0 +1,22 @@
+{
+  "id": "counterspell-in-hand",
+  "description": "Counterspell mints into hand (parse + activation lock).",
+  "seed": 77,
+  "cards": {
+    "Counterspell": "Name:Counterspell\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell | SpellDescription$ Counter target spell.\nOracle:Counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Counterspell"],
+      "battlefield": [],
+      "manaPool": ["U", "U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,37 @@
+{
+  "id": "ancestral-recall-cast",
+  "description": "Ancestral Recall: draw 3 for self.",
+  "seed": 87,
+  "cards": {
+    "Ancestral Recall": "Name:Ancestral Recall\nManaCost:U\nTypes:Instant\nA:SP$ Draw | Cost$ U | NumCards$ 3 | TargetType$ Player | ValidTgts$ Player | SpellDescription$ Target player draws three cards.\nOracle:Target player draws three cards.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Ancestral Recall"],
+      "battlefield": [],
+      "library": ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+      "manaPool": ["U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Ancestral Recall",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 0
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

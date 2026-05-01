@@ -1,0 +1,37 @@
+{
+  "id": "stone-rain-cast",
+  "description": "Stone Rain on stack targeting a Forest.",
+  "seed": 92,
+  "cards": {
+    "Stone Rain": "Name:Stone Rain\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Destroy | Cost$ 2 R | TargetType$ Card | ValidTgts$ Land | SpellDescription$ Destroy target land.\nOracle:Destroy target land.\n",
+    "Forest": "Name:Forest\nTypes:Basic Land Forest\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:({T}: Add {G}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Stone Rain"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Forest"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Stone Rain",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Forest"
+      }
+    }
+  ]
+}
