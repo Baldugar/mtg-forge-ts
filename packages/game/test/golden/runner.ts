@@ -23,6 +23,8 @@ import { fileURLToPath } from "node:url";
 import { parseCard } from "@mtg-forge-ts/cards";
 import type {
   CardDefinition,
+  DecisionRequest,
+  DecisionResponse,
   EntityId,
   GameEvent,
   LobbyPlayer,
@@ -36,18 +38,20 @@ import {
   SeededRng,
   ZoneType,
   isPermanentType,
+  mkEvent,
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../src/ability/spell-ability.js";
 import { GameAction } from "../../src/action/game-action.js";
 import { Card } from "../../src/card.js";
 import type { CastProposal } from "../../src/cast/cast-pipeline.js";
+import { RandomLegalController } from "../../src/controller/random-legal-controller.js";
 import type { GameMeta } from "../../src/game-meta.js";
 import type { GameRules } from "../../src/game-rules.js";
 import { Game } from "../../src/game.js";
 import { ManaPool } from "../../src/mana/mana-pool.js";
 import { resolveStackItem } from "../../src/resolve/effect-resolve.js";
-import type { StackItem } from "../../src/stack/stack-item.js";
+import type { StackItem, StackItemResolver } from "../../src/stack/stack-item.js";
 import { Battlefield } from "../../src/zone/zones/battlefield.js";
 import { Graveyard } from "../../src/zone/zones/graveyard.js";
 import { Hand } from "../../src/zone/zones/hand.js";
@@ -117,12 +121,32 @@ const COLOR_MAP: Readonly<Record<ManaPoolEntry, Color | "C">> = {
 // ── Public API ───────────────────────────────────────────────────────────────
 
 /**
+ * Runner options. M2.5: `drainStack` (default true) drives the priority
+ * loop's stack-drain semantics after each scripted action — resolving
+ * stack items, draining triggered abilities into the stack, applying
+ * SBAs — until the stack is empty and no more triggers are pending.
+ *
+ * Symmetric with Bridge V2's full Forge resolution: re-captured goldens
+ * include the post-resolution events Forge already surfaces (triggered-
+ * ability `SpellCast`, `StackItemResolved`, post-resolve `CardChangedZone`
+ * for spells → graveyard, `LifeTotalChanged` from triggered life-changes).
+ *
+ * Set `drainStack: false` for legacy single-action capture (kept for
+ * regression isolation when debugging a specific scripted action without
+ * resolution noise).
+ */
+export interface RunOptions {
+  readonly drainStack?: boolean;
+}
+
+/**
  * Run a scenario and return its captured trace. Pure: caller decides
  * whether to write or compare.
  */
-export function runScenario(scenario: GoldenScenario): GoldenTrace {
+export function runScenario(scenario: GoldenScenario, opts: RunOptions = {}): GoldenTrace {
   const ctx = buildContext(scenario);
   const events: GameEvent[] = [];
+  const drainStack = opts.drainStack !== false;
 
   // Capture pre-action setup events (statics ETB, etc.) — these are part
   // of the locked trace because regression in ETB ordering is exactly
@@ -130,8 +154,22 @@ export function runScenario(scenario: GoldenScenario): GoldenTrace {
   events.push(...ctx.pendingEvents);
   ctx.pendingEvents.length = 0;
 
-  for (const action of scenario.actions) {
+  for (let i = 0; i < scenario.actions.length; i++) {
+    const action = scenario.actions[i];
+    if (action === undefined) continue;
     runAction(ctx, action);
+    if (drainStack) {
+      // Symmetric with Bridge V2: resolve everything that's left on the
+      // stack (drain triggered abilities + resolve any unresolved spell)
+      // — UNLESS the scenario explicitly drives the next step via
+      // `resolveTopOfStack`. In that case we only drain triggers and
+      // skip the floor item so the next action finds the same stack
+      // shape it expects (preserves backwards-compat with cast +
+      // resolveTopOfStack scenarios like lightning-bolt-target-*).
+      const next = scenario.actions[i + 1];
+      const nextIsScriptedResolve = next !== undefined && next.kind === "resolveTopOfStack";
+      runStackUntilEmpty(ctx, { resolveFloor: !nextIsScriptedResolve });
+    }
     events.push(...ctx.pendingEvents);
     ctx.pendingEvents.length = 0;
   }
@@ -573,6 +611,286 @@ function runActivate(
     }
     if (y.kind === "decision" && y.request?.kind === "orderReplacements") {
       step = gen.next({ order: [...(y.request.replacementIds ?? [])] });
+      continue;
+    }
+    step = gen.next();
+  }
+}
+
+// ── Stack-drain (M2.5) ───────────────────────────────────────────────────────
+
+// WHY MAX_DRAIN_ITERATIONS: every iteration must reduce one of {stack
+// size, pending-trigger count}. Forge's deepest in-corpus chain is on
+// the order of a few dozen; 200 is generous and any breach is an engine
+// bug (self-sustaining trigger, runaway cascade), not a game-legal state.
+const MAX_DRAIN_ITERATIONS = 200;
+
+/**
+ * Drain the priority loop until no triggers are pending AND no stack
+ * items above the scenario's "floor" remain. Each iteration:
+ *   1. Drain pending triggers from the registry → push as triggeredAbility
+ *      stack items (APNAP order via simple sort by sourceControllerAtFire,
+ *      active player first; identity-order within group is acceptable for
+ *      the M2 cohort which never has >1 simultaneous trigger per player).
+ *   2. Resolve any stack item ABOVE the floor (so we never touch a spell /
+ *      activated ability the scenario placed and is about to drive itself
+ *      via `resolveTopOfStack`). The resolver's generator drives effect
+ *      events + StackItemResolved. RandomLegalController answers any
+ *      decisions (target picks, mode picks, …) — same pattern as
+ *      Subgame Wave 116.
+ *   3. Run an SBA sweep so post-resolve state-based actions (creature
+ *      death from damage, etc.) get a chance to fire before the next
+ *      trigger drain.
+ *
+ * `floor` is the stack size at entry: existing items belong to the
+ * scenario, anything pushed by the drain (triggered abilities) is fair
+ * game. This preserves backwards-compat with scenarios that mix `cast`
+ * and explicit `resolveTopOfStack` actions.
+ *
+ * Hard cap at 200 iterations to prevent infinite loops.
+ */
+interface DrainOptions {
+  /**
+   * When true (default), the floor (pre-drain stack contents) is also
+   * resolved — symmetric with Bridge V2's full drain. When false, the
+   * scenario's pre-existing items are left intact so a follow-up
+   * scripted `resolveTopOfStack` action can drive them.
+   */
+  readonly resolveFloor?: boolean;
+}
+
+function runStackUntilEmpty(ctx: RunnerContext, opts: DrainOptions = {}): void {
+  // Bind a controller once; the RNG is the Game's own SeededRng so
+  // determinism is preserved across re-captures.
+  const controller = new RandomLegalController(ctx.game.rng);
+  const resolveFloor = opts.resolveFloor !== false;
+  const floor = resolveFloor ? 0 : ctx.game.sharedZones.stack.size;
+
+  for (let iter = 0; iter < MAX_DRAIN_ITERATIONS; iter++) {
+    let didSomething = false;
+
+    // (1) Drain triggers → push triggered-ability stack items.
+    const pending = ctx.game.triggerRegistry.drain();
+    if (pending.length > 0) {
+      const ordered = orderTriggersApnap(pending, ctx.game.activePlayer, [ctx.seats[0], ctx.seats[1]]);
+      for (const pt of ordered) {
+        const trigger = ctx.game.triggerRegistry.getTrigger(pt.triggerId);
+        const triggerResolver =
+          (trigger as { readonly resolver?: StackItemResolver | null } | undefined)?.resolver ?? null;
+        const stackItem: StackItem = {
+          id: ctx.game.newEntityId(),
+          sourceCardId: pt.sourceCardId,
+          controllerSeat: pt.sourceControllerAtFire,
+          kind: "triggeredAbility",
+          isCast: false,
+          targets: null,
+          modes: [],
+          xValue: null,
+          costPaid: null,
+          provenance: {
+            originZone:
+              pt.lki?.zone ?? ctx.game.cards.get(pt.sourceCardId)?.zone ?? ctx.game.sharedZones.stack.type,
+            altCostUsed: null,
+            additionalCostsPaid: [],
+          },
+          triggerId: pt.triggerId,
+          lki: pt.lki,
+          event: pt.event,
+          resolver: triggerResolver,
+        };
+        ctx.game.sharedZones.stack.push(stackItem);
+        // Bridge V2 parity — Forge fires `GameEventSpellAbilityCast` when
+        // a triggered ability goes on the stack (one bucket for spells +
+        // activated + triggered). The cross-side alias map treats TS
+        // `AbilityActivated` ≡ Java `SpellCast`, so we emit the same
+        // kind here as `game.action.activateAbility` does for activated
+        // abilities. Without this, the parity harness sees Forge's
+        // SpellCast for the trigger as TS-shallow.
+        // The core AbilityActivated event-shape carries
+        // `abilityKind: "activated" | "manaAbility"` only; triggered
+        // abilities don't have their own kind here. We tag as
+        // "activated" because the parity classifier only consults
+        // event-kind ("AbilityActivated" ≡ Java `SpellCast`) — the
+        // triggered/activated distinction never escapes the runner.
+        ctx.pendingEvents.push(
+          mkEvent("AbilityActivated", ctx.game.turn, ctx.game.phase, {
+            stackItemId: stackItem.id,
+            sourceCardId: pt.sourceCardId,
+            controllerSeat: pt.sourceControllerAtFire,
+            abilityKind: "activated",
+          }),
+        );
+      }
+      didSomething = true;
+    }
+
+    // (2) Resolve top of stack only if it's ABOVE the floor — i.e. it
+    // was pushed by THIS drain (triggered ability), not by the scenario's
+    // pre-drain `cast` action that the scenario will resolve explicitly.
+    if (ctx.game.sharedZones.stack.size > floor) {
+      const top = ctx.game.sharedZones.stack.top();
+      if (top) {
+        // CR 605.3a — mana abilities don't use the stack. Forge bypasses
+        // the stack entirely (the ManaProduced events fire and that's it).
+        // Our engine's `activateAbility` still pushes them to the stack
+        // for uniformity, but the parity-side bridge V2 doesn't see a
+        // post-resolution `StackItemResolved`. Pop+resolve a mana ability
+        // here would emit `StackItemResolved` that Forge never fires.
+        // Detection: source card's spell ability at the resolver's
+        // handler-key is "Mana".
+        if (isManaAbilityStackItem(ctx, top)) {
+          // Pop without resolving — drop the synthetic stack slot quietly.
+          // No `StackItemResolved` emission so the trace stays symmetric
+          // with Forge's mana-ability-bypasses-stack semantics.
+          ctx.game.sharedZones.stack.pop();
+        } else {
+          driveResolveStackItem(ctx, top, controller);
+        }
+        didSomething = true;
+      }
+    }
+
+    // (3) Apply SBAs. Post-resolve a creature may have lethal damage
+    // (Lightning Bolt → 3 damage to a 2-toughness creature → SBA destroys
+    // it → DiesTrigger fires next iteration). The driver yields zero or
+    // more SBA event-batches; we relay each event into the trace.
+    const sbaGen = ctx.game.sbaEngine.sweep() as Generator<
+      { kind: string; event?: GameEvent; request?: DecisionRequest },
+      readonly (readonly unknown[])[],
+      DecisionResponse
+    >;
+    let sbaStep = sbaGen.next();
+    let sbaSafety = 0;
+    while (!sbaStep.done) {
+      sbaSafety++;
+      if (sbaSafety > 5000) throw new Error("golden runner: runaway SBA generator");
+      const y = sbaStep.value;
+      if (y.kind === "event" && y.event) {
+        ctx.pendingEvents.push(y.event);
+        sbaStep = sbaGen.next();
+        continue;
+      }
+      if (y.kind === "decision" && y.request) {
+        const resp = controller.decide(y.request);
+        sbaStep = sbaGen.next(resp);
+        continue;
+      }
+      sbaStep = sbaGen.next();
+    }
+    if ((sbaStep.value as readonly unknown[]).length > 0) didSomething = true;
+
+    if (!didSomething) return;
+    if (iter === MAX_DRAIN_ITERATIONS - 1) {
+      throw new Error(
+        `golden runner: runStackUntilEmpty exceeded ${MAX_DRAIN_ITERATIONS} iterations — likely engine bug or scripted scenario depth`,
+      );
+    }
+  }
+}
+
+/**
+ * CR 605.3a — heuristic for "stack item produces mana, doesn't go on the
+ * stack in Forge". Looks for an `activatedAbility` whose source card's
+ * matching SpellAbility has `handlerKey === "Mana"`. Conservative —
+ * non-mana activated abilities (firebreathing, etc.) return false and
+ * resolve normally.
+ */
+function isManaAbilityStackItem(ctx: RunnerContext, item: StackItem): boolean {
+  if (item.kind !== "activatedAbility") return false;
+  const card = ctx.game.cards.get(item.sourceCardId);
+  if (!card) return false;
+  // Any SpellAbility on the card with handlerKey "Mana" → treat as mana
+  // ability. This matches Forge's per-ability stack-bypass semantics
+  // (CR 605.1a) — if any ability would qualify, the activation that
+  // produced this stack item is the mana one.
+  return card.spellAbilities.some((sa) => (sa as { handlerKey?: string }).handlerKey === "Mana");
+}
+
+/**
+ * Lightweight APNAP ordering for the trigger-drain. CR 603.3b: active
+ * player's triggers first, then non-active in turn-order; within a
+ * player's group the player orders their triggers (identity here — the
+ * M2 cohort never has >1 simultaneous trigger per player, and RandomLegal
+ * for `orderTriggers` returns identity-order anyway, so we skip the
+ * decision yield to keep the runner deterministic on registry-insertion
+ * order).
+ *
+ * Returns triggers in stack-PUSH order (later pushed → resolves first per
+ * LIFO). That matches what the priority orchestrator does.
+ */
+function orderTriggersApnap<T extends { readonly sourceControllerAtFire: PlayerSeat }>(
+  pending: readonly T[],
+  activeSeat: PlayerSeat,
+  allSeats: readonly PlayerSeat[],
+): readonly T[] {
+  if (pending.length <= 1) return pending;
+  const order = new Map<PlayerSeat, number>();
+  // Active player first (rank 0), then non-active in seat-order rotated.
+  const idx = allSeats.indexOf(activeSeat);
+  const rotated = idx < 0 ? allSeats : [...allSeats.slice(idx), ...allSeats.slice(0, idx)];
+  for (let i = 0; i < rotated.length; i++) {
+    const s = rotated[i];
+    if (s !== undefined) order.set(s, i);
+  }
+  // Stable sort with rank; tied entries keep registry-insertion order.
+  // The result is APNAP-flat; reverse for stack-push so AP triggers
+  // resolve first (top of LIFO).
+  const apnapFlat = [...pending].sort((a, b) => {
+    const ra = order.get(a.sourceControllerAtFire) ?? Number.MAX_SAFE_INTEGER;
+    const rb = order.get(b.sourceControllerAtFire) ?? Number.MAX_SAFE_INTEGER;
+    return ra - rb;
+  });
+  return apnapFlat.slice().reverse();
+}
+
+/**
+ * Drive resolveStackItem on the given top item. Forwards events to
+ * pendingEvents and answers any decision via the controller.
+ */
+function driveResolveStackItem(ctx: RunnerContext, top: StackItem, controller: RandomLegalController): void {
+  // For permanent SPELL items with no alternativeZoneDestination, default
+  // to Battlefield (matches runResolveTop's auto-detect for scripted
+  // resolveTopOfStack). Triggered/activated abilities resolve in place.
+  let patched: StackItem = top;
+  if (top.kind === "spell" && top.provenance.alternativeZoneDestination === undefined) {
+    const sourceCard = ctx.game.cards.get(top.sourceCardId);
+    const def = sourceCard?.paperCard.definition;
+    if (def?.types.types.some((t) => isPermanentType(t))) {
+      patched = {
+        ...top,
+        provenance: { ...top.provenance, alternativeZoneDestination: ZoneType.Battlefield },
+      };
+      ctx.game.sharedZones.stack.pop();
+      ctx.game.sharedZones.stack.push(patched);
+    }
+  }
+
+  const gen = resolveStackItem(ctx.game, patched) as Generator<
+    { kind: string; event?: GameEvent; request?: DecisionRequest },
+    void,
+    DecisionResponse | { order?: number[] }
+  >;
+  let step = gen.next();
+  let safety = 0;
+  while (!step.done) {
+    safety++;
+    if (safety > 5000) throw new Error("golden runner: runaway resolve generator (drain)");
+    const y = step.value;
+    if (y.kind === "event" && y.event) {
+      ctx.pendingEvents.push(y.event);
+      step = gen.next();
+      continue;
+    }
+    if (y.kind === "decision" && y.request) {
+      // Special-case orderReplacements (resolveStackItem yields this with
+      // a typed `replacementIds` field that isn't a full DecisionRequest).
+      const req = y.request as unknown as { kind?: string; replacementIds?: number[] };
+      if (req.kind === "orderReplacements") {
+        step = gen.next({ order: [...(req.replacementIds ?? [])] } as unknown as DecisionResponse);
+        continue;
+      }
+      const resp = controller.decide(y.request);
+      step = gen.next(resp);
       continue;
     }
     step = gen.next();

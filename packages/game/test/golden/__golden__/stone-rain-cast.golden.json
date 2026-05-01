@@ -74,19 +74,56 @@
         "cardId": 0,
         "controllerSeat": 0
       }
+    },
+    {
+      "kind": "CardDestroyed",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "sourceId": 0,
+        "cause": "effect"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Battlefield",
+        "toZone": "Graveyard",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
     }
   ],
   "finalState": {
     "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
-    "battlefield": [
-      {
-        "name": "Forest",
-        "controller": 1,
-        "tapped": false
-      }
-    ],
-    "graveyards": [[], []],
-    "stackSize": 1
+    "handSizes": [0, 0],
+    "battlefield": [],
+    "graveyards": [["Stone Rain"], ["Forest"]],
+    "stackSize": 0
   }
 }

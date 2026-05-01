@@ -203,6 +203,15 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   ["CardDrawn", "no-stack-drain"],
   ["CardTapped", "no-stack-drain"],
   ["StackItemResolved", "no-stack-drain"],
+  // M2.5 — TS runner V2 added stack-drain + SBA sweep symmetric with
+  // Bridge V2. SBA-driven creature deaths (Lightning Bolt → 3 damage to
+  // a 2-toughness creature → SBA destroys it) emit CardDestroyed +
+  // StateBasedActionApplied on the TS side. Forge's bridge V2 doesn't
+  // drive a corresponding SBA-after-resolution, so these surface as
+  // TS-only. Classified as `bridge-action-skipped` — the Forge bridge
+  // skips the post-resolution SBA pass that the TS runner now performs.
+  ["CardDestroyed", "bridge-action-skipped"],
+  ["StateBasedActionApplied", "bridge-action-skipped"],
   // SpellCast and the post-resolution CardChangedZone (spell→graveyard)
   // are part of the cast-and-resolve sequence. When Java captures zero
   // events for a cast scenario, the bridge silently skipped the cast

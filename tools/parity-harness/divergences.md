@@ -1,10 +1,11 @@
-# Divergence catalog — M2 cohort (post-Bridge V2)
+# Divergence catalog — M2 cohort (post-Bridge V2 + TS runner V2)
 
 Per-scenario divergence classification produced by the M4 parity harness
 (`packages/game/test/parity/runner.ts`) on the M2 30-scenario cohort,
-captured against the V2 bridge (`forge-bridge-v2-0.2.0`) at HEAD
-(post-Testing-M3.5). No scenario landed in `real-divergence-investigate`,
-so there are no real bugs to chase from this cohort.
+captured against the V2 bridge (`forge-bridge-v2-0.2.0`) and the V2 TS
+golden runner (Testing M2.5 — stack-drain symmetric with Bridge V2).
+No scenario landed in `real-divergence-investigate`, so there are no
+real bugs to chase from this cohort.
 
 ## Severity legend
 
@@ -33,12 +34,14 @@ so there are no real bugs to chase from this cohort.
 - `bridge-action-skipped` — was the dominant V1 class; now zero. V2's
   cost-payment + target-binding makes every cast in this cohort land.
 - `ts-runner-shallow` — Java-only events from V2's full stack drain
-  that the **M2 TS golden runner** hasn't caught up to yet. The TS
-  runner is single-action (resolves only the primary cast / etb) so
-  triggered-ability `SpellCast` events, the `StackItemResolved` flag,
-  resolution-zone `CardChangedZone` (spell→graveyard) and
-  `LifeTotalChanged` from triggered life-changes are all Java-only.
-  Closing these is M5 work on the TS runner, **not** the bridge.
+  that the TS golden runner hadn't caught up to. **M2.5 closed most of
+  this** — the V2 TS runner now drains the stack symmetrically. The
+  residual entries are scenarios where Forge fires extra `LifeTotalChanged`
+  beats (the TS engine emits one `LifeChanged` per delta but Forge
+  emits one per intermediate value when a single resolver chains
+  multiple deltas) or `SpellCast` for static-installation triggers
+  the TS engine doesn't yet fan out (e.g. Rest in Peace's "static
+  effect installed" trigger doesn't have a TS analogue).
 
 ## Cross-side kind aliases
 
@@ -49,17 +52,33 @@ so there are no real bugs to chase from this cohort.
 - TS `CardTapped` ≡ Java `CardTappedChanged` (Forge fires
   `GameEventCardTapped`; TS uses a slightly different name).
 
-## Aggregate this run (post-V2)
+## Aggregate this run (post-V2 + M2.5 TS runner V2)
 
 - 30 scenarios.
-- **14 full match** (47%). Up from 18 V1 — the count *dropped* because
-  V2 surfaces real Java-side events that the TS runner doesn't emit
-  yet, lifting some scenarios out of "match" into `mvp-known/
-  ts-runner-shallow`. Each of those is a TS-runner gap, not a bridge
-  regression.
-- **16 mvp-known** (53%). All entries classified into documented
-  buckets.
+- **16 full match** (53%). Up from 14 (post-V2 baseline). M2.5 closed
+  the trigger fan-out + post-resolution gap by adding `runStackUntilEmpty`
+  after each scripted action: triggered abilities now drain to the
+  stack, resolve via the same `resolveStackItem` path, and emit
+  `AbilityActivated` (≡ Java `SpellCast`) + `StackItemResolved` +
+  `LifeChanged` symmetrically with Bridge V2. Cast scenarios that
+  don't have an explicit `resolveTopOfStack` action now also see the
+  spell drain (Holy Day / Wrath / Cloudshift / Stone Rain). Mana
+  abilities are explicitly excluded from the drain (CR 605.3a — Forge
+  bypasses the stack).
+- **14 mvp-known** (47%). Down from 16 (post-V2). All entries classified
+  into documented buckets.
 - **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+### What M2.5 changed in the divergence histogram
+
+| Class                       | Post-V2 | Post-M2.5 | Notes |
+| ---                         | ---     | ---       | --- |
+| `target-mismatch`           | 6       | 6         | Unchanged — TS emits `CardTargeted` kinds Forge doesn't have. |
+| `free-cast-missing-mana`    | 9       | 9         | Unchanged — `CostPaid` umbrella event still TS-only. |
+| `no-stack-drain`            | 1       | 2         | +1 from Mulldrifter (`CardDrawn` TS-only — Forge folds into bare `CardChangedZone`). |
+| `bridge-action-skipped`     | 0       | 2         | NEW. TS-side `CardDestroyed` + `StateBasedActionApplied` (Lightning Bolt → Grizzly Bears SBA-death) Forge bridge doesn't drive. |
+| `ts-runner-shallow`         | 13      | 5         | Down massively. Trigger fan-out + StackItemResolved now match. Residual: 5 scenarios with leftover `LifeTotalChanged` / `SpellCast` / `StackItemResolved` Java-side that don't yet fully alias. |
+| `real-divergence-investigate` | 0     | 0         | Hard contract held. |
 
 ## Per-scenario classification (post-V2)
 
