@@ -13,27 +13,25 @@
 // can land same-shape K:Sweep:<Type> entries. Wave 39 stamps the keyword
 // + the type slot so the additional-cost wiring has a hook.
 //
-// DSL form:
-//   K:Sweep:Plains      → type = "Plains"
-//   K:Sweep:Mountain    → type = "Mountain"
-//
-// MVP scope:
-//   1. Adds "sweep" to card.keywords.
-//   2. Stamps `card.sweepReturnedType = <Type>` so the cast pipeline /
-//      SVar layer can read it.
-//   3. Synthesizes a SpellCast(Card.Self) trigger that, on resolve,
-//      stamps `card.sweepReturnedCount = 0` (default; the additional-
-//      cost loop populates the slot when the player returns lands).
-//
-// TODO(advanced) — the full additional-cost loop yields a chooseCards
-// over `Land.<Type>+YouCtrl`, returns each chosen land to its owner's
-// hand, and stamps `card.sweepReturnedCount = chosen.length` so the
-// spell's effect can read `Count$Sweep` via the SVar resolver. Wave 39
-// stamps the keyword + slots so the corpus parses; the chooseCards loop
-// + Count$Sweep SVar binding land when the additional-cost-at-cast hook
-// is widened beyond the existing Strive / Kicker shapes.
-import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
-import { ZoneType } from "@mtg-forge-ts/core";
+// Wave 93 — closes the additional-cost loop TODO. The handler now:
+//   1. Adds "sweep" to card.keywords + stamps card.sweepReturnedType.
+//   2. SpellCast(Card.Self) trigger: yields chooseCard over the
+//      controller's battlefield lands matching sweepReturnedType
+//      (min=0, max=eligible.length); routes each chosen land back to
+//      its owner's hand via game.action.moveTo(Hand); stamps
+//      card.sweepReturnedCount = chosen.length so SVar Count$Sweep
+//      reads the live count when the spell resolves. When no lands
+//      match, the trigger is a no-op (count stays at 0).
+import {
+  CardType,
+  type EntityId,
+  type GameEvent,
+  type KeywordAst,
+  type ParamValue,
+  type TriggeredAbility,
+  ZoneType,
+} from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
@@ -41,6 +39,21 @@ import { KeywordHandler } from "../keyword-handler.js";
 
 type TriggeredAbilityWithResolver = TriggeredAbility & {
   readonly resolver: StackItemResolver | null;
+};
+
+/**
+ * Test whether a card is a Land with the requested subtype (case-insensitive).
+ * Empty `sweepType` matches every Land (the catch-all variant).
+ */
+const matchesSweepLand = (game: Game, cardId: EntityId, sweepType: string): boolean => {
+  const chars = game.layerEngine.computeCharacteristics(cardId);
+  if (!chars.types.has(CardType.Land)) return false;
+  if (sweepType.length === 0) return true;
+  const target = sweepType.toLowerCase();
+  for (const s of chars.subtypes) {
+    if (s.toLowerCase() === target) return true;
+  }
+  return false;
 };
 
 export class SweepKeywordHandler extends KeywordHandler {
@@ -55,9 +68,8 @@ export class SweepKeywordHandler extends KeywordHandler {
 
     const typeParam = ast.params?.type as ParamValue | undefined;
     const sweepType = typeParam && typeParam.kind === "literal" ? (typeParam.raw as string) : "";
-    (card as unknown as { sweepReturnedType?: string; sweepReturnedCount?: number }).sweepReturnedType =
-      sweepType;
-    (card as unknown as { sweepReturnedType?: string; sweepReturnedCount?: number }).sweepReturnedCount = 0;
+    card.sweepReturnedType = sweepType;
+    card.sweepReturnedCount = 0;
 
     const game = ctx.game;
     const sourceCardId = ctx.sourceCardId;
@@ -80,13 +92,60 @@ export class SweepKeywordHandler extends KeywordHandler {
       },
 
       resolver: {
-        *resolve(_gameUnknown: unknown): Generator<unknown, void, unknown> {
-          // TODO(advanced) — yield chooseCards over `Land.<sweepType>+
-          // YouCtrl`, return each to its owner's hand, then stamp
-          // `card.sweepReturnedCount = chosen.length`. The additional-
-          // cost loop is a sibling of Strive / Kicker; it lands once the
-          // additional-cost-at-cast hook is widened. Until then the
-          // count is left at the entry-time default of 0.
+        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
+          const g = gameUnknown as Game;
+          const self = g.cards.get(sourceCardId);
+          if (!self) return;
+          const type = self.sweepReturnedType ?? "";
+
+          // Enumerate the controller's battlefield lands that match the
+          // sweep type (case-insensitive subtype match; empty type =>
+          // every land qualifies).
+          const player = g.getPlayer(controllerSeat);
+          const battlefield = player.zones.get(ZoneType.Battlefield);
+          if (!battlefield) {
+            self.sweepReturnedCount = 0;
+            return;
+          }
+          const eligible: EntityId[] = [];
+          for (const id of battlefield.toArray()) {
+            if (matchesSweepLand(g, id, type)) eligible.push(id);
+          }
+          if (eligible.length === 0) {
+            self.sweepReturnedCount = 0;
+            return;
+          }
+
+          // Yield chooseCard for the controller — "any number" form
+          // (min=0, max=eligible.length). Mirrors Amplify's reveal
+          // pattern.
+          const decision = (yield {
+            kind: "decision",
+            request: {
+              kind: "chooseCard",
+              playerSeat: controllerSeat,
+              pool: eligible,
+              restriction: { keyword: "sweep", type },
+              min: 0,
+              max: eligible.length,
+            },
+          }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+          if (!decision || decision.kind !== "chooseCard") {
+            self.sweepReturnedCount = 0;
+            return;
+          }
+          const eligibleSet = new Set(eligible);
+          const chosen: EntityId[] = [];
+          for (const id of decision.chosen) {
+            if (eligibleSet.has(id) && !chosen.includes(id)) chosen.push(id);
+          }
+
+          // Return each chosen land to its owner's hand.
+          for (const landId of chosen) {
+            yield* g.action.moveTo(landId, ZoneType.Hand, { cause: "sweep" });
+          }
+          // Stamp the count for SVar Count$Sweep.
+          self.sweepReturnedCount = chosen.length;
         },
       },
     };
@@ -100,8 +159,8 @@ export class SweepKeywordHandler extends KeywordHandler {
     const card = ctx.game.cards.get(ctx.sourceCardId);
     if (!card) return;
     card.keywords?.delete("sweep");
-    Reflect.deleteProperty(card as object, "sweepReturnedType");
-    Reflect.deleteProperty(card as object, "sweepReturnedCount");
+    card.sweepReturnedType = undefined;
+    card.sweepReturnedCount = undefined;
   }
 }
 

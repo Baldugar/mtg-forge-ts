@@ -8,13 +8,18 @@
 // with different mana cost, color, and size. It keeps its abilities and
 // types."
 //
-// MVP scope:
-//   1. Adds "prototype" to card.keywords.
-//   2. Stamps `card.prototypeCost` and `card.prototypePT` (the raw "P/T"
-//      string from the second slot). The cast pipeline offers a
-//      confirmAction; on confirm, totalCost.base is replaced with the
-//      prototype cost and a Layer 7b override is registered for P/T.
-//      Layer 7b registration is documented under TODO(advanced).
+// Wave 93 — closes the Layer 7b registration TODO. The handler now:
+//   1. Adds "prototype" to card.keywords + stamps card.prototypeCost +
+//      card.prototypePT.
+//   2. Registers a permanent Layer 7b "set" effect targeting Card.Self,
+//      gated on `card.prototypeCast === true`. The targetCardIdFn
+//      returns the source id only when the prototypeCast flag is live,
+//      so the override is silently inert until the cast pipeline stamps
+//      the flag at additional-cost time. P/T is parsed once at
+//      activate; deactivate strips the kw + slots (the
+//      ContinuousEffectRegistry permanent-duration entry stays — it
+//      remains gated on the now-undefined flag, which makes
+//      targetCardIdFn return null, so the effect filters out cleanly).
 //
 // DSL form:
 //   K:Prototype:2 R:2/3   → cast for {2}{R} as a 2/3
@@ -25,7 +30,8 @@
 // `params: { cost: <mana>, pt: <P/T> }`. The legacy single-slot form
 // (where the raw text combines "cost P/T" or "cost:P/T") is retained for
 // snapshot-restore tolerance.
-import type { KeywordAst, ParamValue } from "@mtg-forge-ts/core";
+import { type ContinuousEffect, type KeywordAst, Layer, type ParamValue } from "@mtg-forge-ts/core";
+import type { Layer7bEffect } from "../../layers/layer7-pt.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
@@ -44,6 +50,15 @@ const splitCostAndPT = (raw: string): { cost: string; pt: string | null } => {
   return { cost: cleanCost, pt };
 };
 
+const parsePT = (pt: string): { power: number; toughness: number } | null => {
+  const m = /^(\d+)\/(\d+)$/.exec(pt.trim());
+  if (!m) return null;
+  const power = Number.parseInt(m[1] as string, 10);
+  const toughness = Number.parseInt(m[2] as string, 10);
+  if (!Number.isFinite(power) || !Number.isFinite(toughness)) return null;
+  return { power, toughness };
+};
+
 export class PrototypeKeywordHandler extends KeywordHandler {
   static override readonly keyword = "prototype" as const;
 
@@ -59,17 +74,57 @@ export class PrototypeKeywordHandler extends KeywordHandler {
     const rawCost = costParam && costParam.kind === "literal" ? (costParam.raw as string) : "";
     const rawPt = ptParam && ptParam.kind === "literal" ? (ptParam.raw as string) : "";
 
+    let resolvedPt: string | undefined;
     if (rawPt.length > 0) {
       // Canonical TWO_PARAM_KEYWORDS form — slots already split.
       card.prototypeCost = rawCost.length > 0 ? rawCost : "0";
       card.prototypePT = rawPt;
-      return;
+      resolvedPt = rawPt;
+    } else {
+      // Legacy single-slot form ("2 R 2/3" or "2 R:2/3") — split here.
+      const { cost, pt } = splitCostAndPT(rawCost);
+      card.prototypeCost = cost.length > 0 ? cost : "0";
+      if (pt !== null) {
+        card.prototypePT = pt;
+        resolvedPt = pt;
+      }
     }
 
-    // Legacy single-slot form ("2 R 2/3" or "2 R:2/3") — split here.
-    const { cost, pt } = splitCostAndPT(rawCost);
-    card.prototypeCost = cost.length > 0 ? cost : "0";
-    if (pt !== null) card.prototypePT = pt;
+    // Layer 7b registration — gated SetPower/SetToughness scoped to
+    // Card.Self when prototypeCast is live. The targetCardIdFn returns
+    // null when the flag isn't set so the effect is filtered out by
+    // applyLayer7b's per-card scoping (Wave 47). Permanent duration so
+    // the override persists for the prototype card's lifetime on the
+    // battlefield (CR 702.160a — the alt-P/T applies as long as the
+    // spell was cast as prototype).
+    if (resolvedPt === undefined) return;
+    const parsed = parsePT(resolvedPt);
+    if (parsed === null) return;
+    const game = ctx.game;
+    const sourceCardId = ctx.sourceCardId;
+    const ts = game.newEntityId();
+    const ptSet: Layer7bEffect = {
+      kind: "set",
+      power: parsed.power,
+      toughness: parsed.toughness,
+      timestamp: ts,
+      sourceAbilityId: sourceCardId,
+      targetCardIdFn: () => {
+        const c = game.cards.get(sourceCardId);
+        if (!c) return null;
+        if (c.prototypeCast !== true) return null;
+        return sourceCardId;
+      },
+    };
+    const ce: ContinuousEffect = {
+      id: game.newEntityId(),
+      sourceCardId,
+      timestamp: ts,
+      layer: Layer.L7b_PTSet,
+      duration: { kind: "permanent" },
+      payload: { kind: "pt-set", effect: ptSet },
+    };
+    game.continuousEffectRegistry.register(ce);
   }
 
   override deactivate(_ast: KeywordAst, ctx: KeywordActivationContext): void {
