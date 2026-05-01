@@ -29,13 +29,13 @@
 // MVP scope:
 //   - ValidCard$ <filter>      → cardMatchesFilter (Wave 32 grammar).
 //   - Card.Self short-circuit  → sourceCardId === cardId.
-// TODO(advanced):
-//   - Multiple statics with overlapping filters: behaviour matches Forge
-//     (first match wins; toughness used). Already correct for Doran-shape.
-//   - Secondary$ True / Doran's Aura sub-shape (Vigor Mortis-style
-//     combined +0/+2 + use toughness): the AddPower / AddToughness layer
-//     already runs through Continuous; the CombatDamageToughness static
-//     is independent.
+// Wave 109 — closes the prior TODO(advanced) tail. Both bullets were
+// observations of correct existing behaviour rather than open work:
+// overlapping-filter first-match-wins is already what the helper
+// returns; Secondary$ / aura-shape combined +0/+2 + use-toughness is
+// already independent of this static (the AddPower / AddToughness
+// layer runs through Continuous). The cardMatches predicate is the
+// durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

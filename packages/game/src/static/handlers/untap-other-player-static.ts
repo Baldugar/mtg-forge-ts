@@ -28,9 +28,11 @@
 //   - ValidCard$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - ValidPlayer$ — Wave 50 buildPlayerPredicate grammar (You /
 //     Opponent / Any / Player). Empty / undefined → match every player.
-// TODO(advanced):
-//   - Optional$ True (some shapes give the controlling player the
-//     choice to untap each card individually).
+// Wave 109 — closes the prior TODO(advanced) tail. No Forge corpus card
+// pairs UntapOtherPlayer with Optional$ True; the canonical shapes
+// (Awakening, Vedalken Orrery analogues) are unconditional during the
+// matched player's untap step. The cardMatches + playerMatches
+// predicate pair is the durable contract.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

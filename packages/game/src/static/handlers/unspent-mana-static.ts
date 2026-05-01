@@ -42,10 +42,12 @@
 //   - No ManaType$ token at all → every color retained for the matched
 //     player (Upwelling shape).
 //
-// TODO(advanced):
-//   - ManaType$ Colorless (no Forge card uses it today).
-//   - Snow-mana retention sub-filter.
-//   - Conditional retention via ActivationConditions$ (none in corpus).
+// Wave 109 — closes the prior TODO(advanced) tail. The three sub-bullets
+// (ManaType$ Colorless, Snow-mana retention, ActivationConditions$
+// conditional retention) have no corpus instance: every UnspentMana
+// static in Forge's data uses one of the five WUBRG ManaType$ tokens or
+// the no-filter Upwelling shape. The handler keeps the WUBRG +
+// no-filter scope as the durable contract.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import { Color } from "@mtg-forge-ts/core";
 import {

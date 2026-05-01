@@ -26,9 +26,11 @@
 // MVP scope:
 //   - ValidCard$ <filter>      → cardMatchesFilter (Wave 32 grammar).
 //   - Card.Self short-circuit  → sourceCardId === cardId.
-// TODO(advanced):
-//   - Optional$ True (controller may waive on a per-combat basis); not yet
-//     parsed.
+// Wave 109 — closes the prior TODO(advanced) tail. No Forge corpus card
+// pairs AssignNoCombatDamage with Optional$ True; every shape in
+// Forge's data is unconditional ("doesn't deal combat damage" / "deals
+// no combat damage"). The cardMatches predicate is the durable
+// contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

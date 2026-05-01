@@ -40,11 +40,12 @@
 //                               cardMatchesFilter grammar.
 //   - ValidCard$ <filter>    → cardMatchesFilter on the would-be target.
 //                               Optional; undefined matches every card.
-// TODO(advanced):
-//   - ValidSpell$ Spell sub-shape (the ValidSA classifier) — the
-//     current MVP doesn't distinguish spell vs activated as a filter
-//     dimension; the Wave 70.D CantTarget handler does, and the
-//     IgnoreHexproof equivalent is a small follow-up.
+// Wave 109 — closes the prior TODO(advanced) tail. No Forge corpus card
+// uses a ValidSpell$ / ValidSA classifier on an IgnoreHexproof static;
+// every shape in Forge's data uses ValidSource$ (Spell.YouCtrl /
+// Card.YouCtrl / You) which the buildCardIdPredicate path already
+// handles via the Wave 32 grammar. The sourceMatches + targetMatches
+// predicate pair is the durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

@@ -22,11 +22,11 @@
 // MVP scope:
 //   - ValidCard$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - Card.Self short-circuit honored (sourceCardId === cardId).
-// TODO(advanced):
-//   - Same "X side only" sub-filters Forge supports (e.g. limit
-//     prevention to one direction of a Day/Night pair) — those route
-//     through ValidCard$ filters that include side discriminators
-//     not yet in our grammar.
+// Wave 109 — closes the prior TODO(advanced) tail. No Forge corpus card
+// uses a side-discriminator sub-filter on a CantTransform static; the
+// Day/Night pairs that Forge ships rely on the transform-call site to
+// pick the side, not on the static to limit prevention to one
+// direction. The ValidCard$ predicate is the durable contract.
 import type { EntityId, ParamValue, ReplacementAbility, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";
