@@ -382,7 +382,13 @@ effectRegistry.register(ManifestDreadEffect);
 
 // 8. AssignGroup --------------------------------------------------------------
 // Forge `SP$ AssignGroup` — assign cards to one of N labeled groups (rare;
-// e.g. Council's Dilemma piles). MVP: stash each target on `remembered`.
+// e.g. Council's Dilemma piles).
+//
+// Wave 86 — per-group slots via `Group$ <label>` param. The targets land on
+// `source.groupedRemembered.get(label)` AND continue to be appended to
+// `source.remembered` for back-compat with downstream readers that don't
+// know about labels yet. When no Group$ is supplied the legacy "default"
+// label is used so existing tests keep working without explicit grouping.
 export class AssignGroupEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "AssignGroup";
 
@@ -390,9 +396,19 @@ export class AssignGroupEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const source = game.cards.get(sa.sourceCardId);
     if (!source) return;
-    for (const id of sa.targets) source.remembered.push(id);
-    // TODO(advanced): per-group remembered slots (Group$ A/B/C); fold into
-    // TwoPiles for the binary case.
+    const label = hasParam(sa, "Group") ? evaluateParamRaw(sa, "Group") : "default";
+    const sourceWithGroups = source as {
+      groupedRemembered?: Map<string, EntityId[]>;
+    };
+    const groups = sourceWithGroups.groupedRemembered ?? new Map<string, EntityId[]>();
+    const slot = groups.get(label) ?? [];
+    for (const id of sa.targets) {
+      slot.push(id);
+      // Back-compat — flat remembered list still gets the targets.
+      source.remembered.push(id);
+    }
+    groups.set(label, slot);
+    sourceWithGroups.groupedRemembered = groups;
   }
 }
 effectRegistry.register(AssignGroupEffect);

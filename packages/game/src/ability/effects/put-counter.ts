@@ -130,9 +130,18 @@ export class PutCounterEffect extends SpellAbilityEffect {
         const chosen = response.chosen;
         if (Number.isFinite(chosen) && chosen >= 0 && chosen <= n) {
           n = Math.floor(chosen);
+        } else {
+          // Wave 86 — structured-warning surface. The controller returned a
+          // value outside [0, n] (or NaN). The engine falls back to the
+          // legacy "full N" default but stamps a record on
+          // game.decisionWarnings so test paths and the eventual UI can
+          // introspect the rejection.
+          game.decisionWarnings.push({
+            kind: "chooseNumber-out-of-range",
+            sourceId: sa.sourceCardId,
+            detail: `PutCounter UpTo$: response ${String(chosen)} outside [0, ${n}]`,
+          });
         }
-        // TODO(advanced): structured warning for out-of-range responses;
-        // current path silently falls back to the full N.
       }
     }
 

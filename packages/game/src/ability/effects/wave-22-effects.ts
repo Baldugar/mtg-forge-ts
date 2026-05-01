@@ -104,8 +104,26 @@ export class DayTimeEffect extends SpellAbilityEffect {
           payload: { oldValue: old, newValue },
         },
       };
+      // Wave 86 — autoFlip daybound/nightbound permanents on manual
+      // transitions, matching the upkeep-tracker behavior in
+      // day-night-tracker.tryUpkeepTransition. CR 726.4: when the state
+      // becomes day, every nightbound (back-face) creature transforms; when
+      // it becomes night, every daybound (front-face) creature transforms.
+      // This handler used to leave the manual SP$ DayTime path silent on
+      // transform — now both manual + automatic transitions share the same
+      // face-flip pass, and the layer engine's epoch is bumped so the new
+      // face is observed on the next computeCharacteristics call.
+      const flipFront = newValue === "night" ? "daybound" : newValue === "day" ? "nightbound" : null;
+      if (flipFront !== null) {
+        for (const [, card] of game.cards) {
+          if (card.zone !== ZoneType.Battlefield) continue;
+          const kws = card.keywords;
+          if (!kws || !kws.has(flipFront)) continue;
+          card.face = card.face === "default" ? "back" : "default";
+        }
+        game.layerEngine.bumpEpoch("dayTime-effect-autoFlip");
+      }
     }
-    // TODO(advanced): trigger transform-on-day/night daybound/nightbound permanents.
   }
 }
 effectRegistry.register(DayTimeEffect);
@@ -426,10 +444,21 @@ export class UnlockDoorEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     const doorId = hasParam(sa, "Door") ? evaluateParamRaw(sa, "Door") : "front";
+    // Wave 86 — fully-unlocked detection. Rooms (Duskmourn) print TWO doors;
+    // when both are open the room "fully unlocks" and the merged
+    // characteristics activate. The MVP tracks unlocked door names in
+    // `card.unlockedDoors`; once that set contains both canonical Forge ids
+    // ("front" and "back" — the two-door room shape) we stamp
+    // `card.fullyUnlocked = true` and emit a RoomEntered pulse with
+    // `fullyUnlocked: true` so Wave 70 trigger modes engage on the canonical
+    // "when this room is fully unlocked" trigger family. Single-door cards
+    // (Outlaws of TJ doors that print only "front") fully-unlock as soon as
+    // the lone door opens.
     for (const id of ids) {
       const card = game.cards.get(id);
       if (!card) continue;
       const doors = (card as { unlockedDoors?: Set<string> }).unlockedDoors ?? new Set<string>();
+      const wasOpenBefore = doors.has(doorId);
       doors.add(doorId);
       (card as { unlockedDoors?: Set<string> }).unlockedDoors = doors;
       yield {
@@ -442,9 +471,57 @@ export class UnlockDoorEffect extends SpellAbilityEffect {
           payload: { cardId: id, doorId },
         },
       };
+      // Detect transition to fully-unlocked. Two-door rooms require both
+      // "front" and "back"; otherwise any printed-doors set fully-unlocks
+      // as soon as it is non-empty (single-door form). Re-firing on the
+      // same already-unlocked state is suppressed via wasFullyUnlockedBefore.
+      const cardWithUnlock = card as {
+        unlockedDoors?: Set<string>;
+        fullyUnlocked?: boolean;
+        printedDoors?: readonly string[];
+      };
+      const printed = cardWithUnlock.printedDoors ?? ["front", "back"];
+      const fullyOpen = printed.every((d) => doors.has(d));
+      const wasFullyUnlockedBefore = cardWithUnlock.fullyUnlocked === true;
+      if (fullyOpen && !wasFullyUnlockedBefore) {
+        cardWithUnlock.fullyUnlocked = true;
+        // Bump the layer epoch so any room-fully-unlocked layered grants
+        // (printed front-face characteristics) recompute on next pull.
+        game.layerEngine.bumpEpoch("door-fully-unlocked");
+        yield {
+          kind: "event",
+          event: {
+            kind: "RoomEntered",
+            version: 1,
+            turn: game.turn,
+            phase: game.phase,
+            payload: {
+              cardId: id,
+              playerSeat: card.controllerSeat,
+              fullyUnlocked: true,
+            },
+          },
+        };
+      } else if (!fullyOpen && !wasOpenBefore) {
+        // Partial-unlock pulse — fires on each newly-opened door before the
+        // final door lands. Mirrors Forge's "RoomPartiallyUnlocked"
+        // semantics so triggers that watch partial unlocks engage.
+        yield {
+          kind: "event",
+          event: {
+            kind: "RoomEntered",
+            version: 1,
+            turn: game.turn,
+            phase: game.phase,
+            payload: {
+              cardId: id,
+              playerSeat: card.controllerSeat,
+              fullyUnlocked: false,
+            },
+          },
+        };
+      }
     }
-    // TODO(advanced): wire fully-unlocked detection so the front face
-    // characteristics activate when both doors are open.
   }
 }
 effectRegistry.register(UnlockDoorEffect);
@@ -1145,10 +1222,10 @@ export class ReorderZoneEffect extends SpellAbilityEffect {
     if (response && response.kind === "orderCards") {
       const candidate = response.ordered;
       // Validate permutation: same length and same multiset of ids.
-      if (candidate.length === prefix.length) {
+      let ok = candidate.length === prefix.length;
+      if (ok) {
         const expected = new Set(prefix);
         const seen = new Set<EntityId>();
-        let ok = true;
         for (const id of candidate) {
           if (!expected.has(id) || seen.has(id)) {
             ok = false;
@@ -1156,9 +1233,21 @@ export class ReorderZoneEffect extends SpellAbilityEffect {
           }
           seen.add(id);
         }
-        if (ok) ordered = candidate.slice();
-        // TODO(advanced): surface a structured warning when the controller
-        // returns an invalid permutation — current path silently falls back.
+      }
+      if (ok) {
+        ordered = candidate.slice();
+      } else {
+        // Wave 86 — structured warning surface. Invalid permutations now
+        // stamp a record on game.decisionWarnings so the test path /
+        // eventual UI can introspect the rejection. The engine still
+        // falls back to the original prefix order (the conservative
+        // "no-reorder" default), matching Forge's behaviour on garbled
+        // controller input.
+        game.decisionWarnings.push({
+          kind: "orderCards-invalid-permutation",
+          sourceId: sa.sourceCardId,
+          detail: `ReorderZone: response of length ${candidate.length} not a bijection over ${prefix.length}-card prefix`,
+        });
       }
     }
 

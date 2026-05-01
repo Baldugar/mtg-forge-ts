@@ -191,6 +191,21 @@ export class Game {
    */
   readonly companions = new Map<PlayerSeat, EntityId | null>();
 
+  /**
+   * Wave 86 — structured-warning sink for effect handlers that recover from
+   * malformed decision responses (out-of-range chooseNumber, non-bijective
+   * orderCards permutation, invalid pile partitions, etc.). Each entry is a
+   * lightweight `{ kind, sourceId, detail }` record so test paths and the
+   * eventual UI surface can introspect "the controller returned X but the
+   * engine fell back to Y". Effect handlers append; the engine never reads
+   * them back into the resolution path (they are advisory).
+   */
+  readonly decisionWarnings: {
+    kind: string;
+    sourceId: EntityId;
+    detail: string;
+  }[] = [];
+
   constructor(opts: { lobbyPlayers: LobbyPlayer[]; rules: GameRules; meta: GameMeta; rng: Rng }) {
     if (opts.lobbyPlayers.length < opts.rules.playerCount.min) {
       throw new GameStateIntegrityError(

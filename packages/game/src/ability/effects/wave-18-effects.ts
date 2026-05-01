@@ -818,24 +818,82 @@ effectRegistry.register(ExchangeControlEffect);
 // 20. RearrangeTopOfLibrary ---------------------------------------------------
 // Forge `SP$ RearrangeTopOfLibrary` — yield an order decision, reorder the
 // top N library cards. Used by Brainstorm-shuffle, Telepathic Spies, etc.
-// MVP: applies a deterministic identity reorder (no yield) so the corpus
-// passes; SP4 wires the orderCards decision request.
+//
+// Wave 86 — yield the canonical orderCards decision so the controller
+// actually picks a permutation. Mirrors ReorderZoneEffect's validation
+// (length match + bijection over the input multiset). On invalid responses
+// we fall back to the original prefix order AND stamp a structured warning
+// on game.decisionWarnings; on missing responses (test-mode draining a
+// generator without a controller) the legacy identity-reorder MVP behavior
+// is preserved (the prefix lands at the top in its original order, which
+// is a no-op).
 export class RearrangeTopOfLibraryEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RearrangeTopOfLibrary";
 
-  // biome-ignore lint/correctness/useYield: deterministic identity reorder MVP
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "NumCards") ? evaluateParamNumber(sa, "NumCards", game) : 3;
     const seat = sa.controllerSeat;
     const player = game.getPlayer(seat);
     const lib = player.zones.get(ZoneType.Library);
     if (!lib) throw new GameStateIntegrityError("RearrangeTopOfLibrary: no Library zone");
-    // Touch top N to validate: no reorder by default. The decision wiring
-    // (orderCards yield) is the SP4 advanced sub-param; this MVP confirms
-    // the cards are present and is a no-op otherwise.
-    const ids = lib.toArray().slice(0, num);
-    void ids;
-    // TODO(advanced): yield orderCards decision and apply the response.
+    const allIds = lib.toArray();
+    const prefix = allIds.slice(0, Math.max(0, Math.min(num, allIds.length)));
+    if (prefix.length === 0) return;
+
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "orderCards",
+        playerSeat: seat,
+        sourceId: sa.sourceCardId,
+        cards: prefix,
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    let ordered: readonly EntityId[] = prefix;
+    if (response && response.kind === "orderCards") {
+      const candidate = response.ordered;
+      let ok = candidate.length === prefix.length;
+      if (ok) {
+        const expected = new Set(prefix);
+        const seen = new Set<EntityId>();
+        for (const id of candidate) {
+          if (!expected.has(id) || seen.has(id)) {
+            ok = false;
+            break;
+          }
+          seen.add(id);
+        }
+      }
+      if (ok) {
+        ordered = candidate.slice();
+      } else {
+        game.decisionWarnings.push({
+          kind: "orderCards-invalid-permutation",
+          sourceId: sa.sourceCardId,
+          detail: `RearrangeTopOfLibrary: response of length ${candidate.length} not a bijection over ${prefix.length}-card prefix`,
+        });
+      }
+    }
+
+    // If ordered === prefix (identity, no decision response), skip the
+    // remove/re-add round-trip — pure no-op preserves earlier MVP semantics.
+    let identical = true;
+    for (let i = 0; i < prefix.length; i++) {
+      if (prefix[i] !== ordered[i]) {
+        identical = false;
+        break;
+      }
+    }
+    if (identical) return;
+
+    // Apply: remove each card in the prefix, then re-add at the top in
+    // REVERSE order so ordered[0] ends up at index 0 (top).
+    for (const id of prefix) lib.remove(id);
+    for (let i = ordered.length - 1; i >= 0; i--) {
+      const id = ordered[i];
+      if (id !== undefined) lib.addToTop(id);
+    }
   }
 }
 effectRegistry.register(RearrangeTopOfLibraryEffect);
