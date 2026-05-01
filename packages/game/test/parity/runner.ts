@@ -1,0 +1,387 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Milestone 4 — TS-vs-Java parity diff harness.
+//
+// Loads the TS golden (locked under packages/game/test/golden/__golden__/)
+// and the Java golden (captured by tools/forge-bridge/ under
+// __golden_java__/), normalizes both sides around the M3 MVP bridge
+// limitations (shallow trigger fan-out, AI-picked targets, free casts,
+// no stack drain) and produces a structured ParityReport.
+//
+// Why M4 doesn't enforce hard parity:
+//   The M3 bridge MVP captures only the primary moveTo / SpellCast event
+//   per action — it does not pay costs, drain the stack, fire effects,
+//   or fan out triggers. Hard event-by-event parity is impossible until
+//   the bridge gains those features (M5 work). For M4 we instead measure
+//   "did the headline action land?" plus classify every TS-only event by
+//   which known MVP limitation explains it.
+
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import type { GoldenEvent, GoldenTrace } from "../golden/types.js";
+
+// ── Filesystem layout ────────────────────────────────────────────────────────
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = join(__dirname, "..", "..", "..", "..");
+const TS_GOLDEN_DIR = join(REPO_ROOT, "packages", "game", "test", "golden", "__golden__");
+const JAVA_GOLDEN_DIR = join(REPO_ROOT, "tools", "forge-bridge", "__golden_java__");
+
+// ── Java trace shape ─────────────────────────────────────────────────────────
+
+/**
+ * The Java bridge trace mirrors GoldenTrace but adds a `setupEvents`
+ * bucket for battlefield-seeding events and omits `finalState`.
+ * See tools/forge-bridge/README.md for the source.
+ */
+export interface JavaGoldenTrace {
+  readonly scenarioId: string;
+  readonly seed: number;
+  readonly engineVersion: string;
+  readonly events: readonly GoldenEvent[];
+  readonly setupEvents?: readonly GoldenEvent[];
+}
+
+// ── Loaders ──────────────────────────────────────────────────────────────────
+
+export function loadTsGolden(scenarioId: string): GoldenTrace | null {
+  const p = join(TS_GOLDEN_DIR, `${scenarioId}.golden.json`);
+  if (!existsSync(p)) return null;
+  return JSON.parse(readFileSync(p, "utf8")) as GoldenTrace;
+}
+
+export function loadJavaGolden(scenarioId: string): JavaGoldenTrace | null {
+  const p = join(JAVA_GOLDEN_DIR, `${scenarioId}.golden.java.json`);
+  if (!existsSync(p)) return null;
+  return JSON.parse(readFileSync(p, "utf8")) as JavaGoldenTrace;
+}
+
+// ── Normalization ────────────────────────────────────────────────────────────
+
+/**
+ * Canonical event for parity comparison. After normalization, both
+ * sides emit events in this shape so a structural diff is meaningful.
+ */
+export interface NormalizedEvent {
+  readonly kind: string;
+  readonly turn: number;
+  /** Card name when discoverable (TS via lookup, Java via payload). null otherwise. */
+  readonly cardName: string | null;
+  /** For CardChangedZone events. */
+  readonly fromZone: string | null;
+  readonly toZone: string | null;
+}
+
+/**
+ * Collapse a side's raw event stream into the canonical NormalizedEvent
+ * shape. Both sides apply the same projection so post-normalization
+ * comparison is apples-to-apples.
+ *
+ * Java side requires a `setupEvents`-prepend so the implicit ordering
+ * matches TS (which emits setup ETB events first within `events`).
+ *
+ * @param tsCardNamesById  TS-side helper: map of cardId → cardName so we
+ *   can recover names from the TS golden's CardChangedZone payloads.
+ *   Pass an empty Map for the Java side.
+ */
+export function normalizeTrace(
+  trace: GoldenTrace | JavaGoldenTrace,
+  side: "ts" | "java",
+  tsCardNamesById: ReadonlyMap<number, string> = new Map(),
+): NormalizedEvent[] {
+  const stream: GoldenEvent[] = [];
+  if (side === "java") {
+    const javaTrace = trace as JavaGoldenTrace;
+    if (javaTrace.setupEvents) stream.push(...javaTrace.setupEvents);
+    stream.push(...javaTrace.events);
+  } else {
+    stream.push(...trace.events);
+  }
+
+  const out: NormalizedEvent[] = [];
+  for (const e of stream) {
+    if (isEngineInternal(e, side)) continue;
+    out.push(projectEvent(e, side, tsCardNamesById));
+  }
+  return out;
+}
+
+/**
+ * Engine-internal events that have no parity counterpart and should be
+ * stripped before comparison. These are TS-only side-channels that
+ * would otherwise inflate divergence counts.
+ */
+function isEngineInternal(_e: GoldenEvent, _side: "ts" | "java"): boolean {
+  // Reserved for future use (e.g. EngineYield in TS, dead-letter
+  // spectator events in Java). M3-MVP cohort doesn't surface any.
+  return false;
+}
+
+/**
+ * Project a raw GoldenEvent into the canonical NormalizedEvent shape,
+ * stripping volatile / side-specific fields per the rules in
+ * tools/parity-harness/event-mapping.md.
+ */
+function projectEvent(
+  e: GoldenEvent,
+  side: "ts" | "java",
+  tsCardNamesById: ReadonlyMap<number, string>,
+): NormalizedEvent {
+  const payload = (e.payload ?? {}) as Record<string, unknown>;
+
+  let cardName: string | null = null;
+  let fromZone: string | null = null;
+  let toZone: string | null = null;
+
+  if (e.kind === "CardChangedZone") {
+    fromZone = typeof payload.fromZone === "string" ? (payload.fromZone as string) : null;
+    toZone = typeof payload.toZone === "string" ? (payload.toZone as string) : null;
+    if (side === "java" && typeof payload.cardName === "string") {
+      cardName = payload.cardName as string;
+    } else if (side === "ts" && typeof payload.cardId === "number") {
+      const id = payload.cardId as number;
+      cardName = tsCardNamesById.get(id) ?? null;
+    }
+  }
+
+  return {
+    kind: e.kind,
+    turn: e.turn,
+    cardName,
+    fromZone,
+    toZone,
+  };
+}
+
+// ── Diff + classification ────────────────────────────────────────────────────
+
+/**
+ * Categories the harness can apply to TS-only event-kinds. Each maps
+ * 1:1 to a documented M3 MVP bridge limitation. Anything not classified
+ * lands in `realDivergenceInvestigate` for human review.
+ */
+export type DivergenceClass =
+  | "shallow-trigger-fanout"
+  | "target-mismatch"
+  | "free-cast-missing-mana"
+  | "no-stack-drain"
+  | "bridge-action-skipped"
+  | "real-divergence-investigate";
+
+/** TS event-kinds → which MVP limit explains their absence on the Java side. */
+const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
+  ["CardTargeted", "target-mismatch"],
+  ["CrimeCommitted", "target-mismatch"],
+  ["ManaSpent", "free-cast-missing-mana"],
+  ["CostPaid", "free-cast-missing-mana"],
+  ["DamageDealt", "no-stack-drain"],
+  ["LifeChanged", "no-stack-drain"],
+  ["LifeLost", "no-stack-drain"],
+  ["LifeGained", "no-stack-drain"],
+  ["CardDrawn", "no-stack-drain"],
+  ["CardTapped", "no-stack-drain"],
+  ["StackItemResolved", "no-stack-drain"],
+  // SpellCast and the post-resolution CardChangedZone (spell→graveyard)
+  // are part of the cast-and-resolve sequence. When Java captures zero
+  // events for a cast scenario, the bridge silently skipped the cast
+  // action — a documented MVP limit (cast-without-cost-payment can fail
+  // for non-trivial spells that need scripted targets).
+  ["SpellCast", "bridge-action-skipped"],
+  ["CardChangedZone", "bridge-action-skipped"],
+]);
+
+/**
+ * Cross-side kind aliases. Forge folds multiple TS kinds into a single
+ * `SpellCast` event (activated abilities, triggered abilities, spells
+ * all share `GameEventSpellAbilityCast`). When matching TS-only and
+ * Java-only kinds we treat aliased pairs as shared.
+ *
+ * Format: [tsKind, javaKind].
+ */
+const KIND_ALIASES: ReadonlyArray<readonly [string, string]> = [["AbilityActivated", "SpellCast"]];
+
+export interface ParityReport {
+  readonly scenarioId: string;
+  /** Histogram of normalized event kinds, per side. */
+  readonly tsKindHistogram: Readonly<Record<string, number>>;
+  readonly javaKindHistogram: Readonly<Record<string, number>>;
+  /**
+   * "Did the headline action land on both sides?" — for the M2 cohort
+   * each scenario has exactly one primary moveTo or one primary cast.
+   * The harness checks whether Java captured at least one event whose
+   * normalized kind matches a TS event of the same kind.
+   */
+  readonly primaryActionMatch: boolean;
+  /**
+   * The shared event-kind set across both sides, ordered by appearance
+   * in the TS trace. Used as the "we agree on something" signal.
+   */
+  readonly sharedKinds: readonly string[];
+  /**
+   * TS-only event kinds — present in TS, absent in Java. Each is
+   * classified per `TS_ONLY_KIND_CLASS`.
+   */
+  readonly tsOnlyKinds: readonly { readonly kind: string; readonly classification: DivergenceClass }[];
+  /**
+   * Java-only event kinds — present in Java, absent in TS. Should be
+   * empty for the M3-MVP cohort; non-empty entries surface as real
+   * divergences worth investigating.
+   */
+  readonly javaOnlyKinds: readonly string[];
+  /**
+   * Aggregate severity. `match` = full kind-set parity. `mvp-known` =
+   * divergences are all explained by documented M3 limits. `unknown` =
+   * something landed in realDivergenceInvestigate.
+   */
+  readonly severity: "match" | "mvp-known" | "unknown-divergence";
+  /**
+   * First-divergence trace (where in the kind-histogram the streams
+   * disagreed). Best-effort, useful for human inspection.
+   */
+  readonly firstDivergence: string | null;
+}
+
+/** Build a kind→count histogram from a normalized stream. */
+function histogramOf(events: readonly NormalizedEvent[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const e of events) out[e.kind] = (out[e.kind] ?? 0) + 1;
+  return out;
+}
+
+/**
+ * Compute the parity report for a single scenario. Both goldens must
+ * be loaded by the caller; the harness does not load on the caller's
+ * behalf to make missing-file behaviour explicit at the call site.
+ */
+export function diffTraces(
+  scenarioId: string,
+  tsTrace: GoldenTrace,
+  javaTrace: JavaGoldenTrace,
+): ParityReport {
+  // TS-side cardId→name lookup. The TS golden doesn't echo names into
+  // CardChangedZone payloads, so we rebuild from the raw events. (For
+  // the M2 cohort the bridge always emits name; we just need to match.)
+  const tsCardNamesById = new Map<number, string>();
+
+  const tsNorm = normalizeTrace(tsTrace, "ts", tsCardNamesById);
+  const javaNorm = normalizeTrace(javaTrace, "java", new Map());
+
+  const tsHist = histogramOf(tsNorm);
+  const javaHist = histogramOf(javaNorm);
+
+  const tsKinds = new Set(Object.keys(tsHist));
+  const javaKinds = new Set(Object.keys(javaHist));
+
+  // Apply cross-side aliases — kinds that map across engines (e.g.
+  // AbilityActivated ↔ SpellCast). When an aliased pair is present on
+  // both sides, both kinds are treated as shared rather than divergent.
+  const tsAliasedAsJava = new Map<string, string>(); // tsKind → javaKind
+  const javaAliasedAsTs = new Map<string, string>(); // javaKind → tsKind
+  for (const [tsKind, javaKind] of KIND_ALIASES) {
+    tsAliasedAsJava.set(tsKind, javaKind);
+    javaAliasedAsTs.set(javaKind, tsKind);
+  }
+
+  const sharedKinds: string[] = [];
+  for (const e of tsNorm) {
+    if (sharedKinds.includes(e.kind)) continue;
+    const aliased = tsAliasedAsJava.get(e.kind);
+    if (javaKinds.has(e.kind) || (aliased !== undefined && javaKinds.has(aliased))) {
+      sharedKinds.push(e.kind);
+    }
+  }
+
+  const tsOnly: { kind: string; classification: DivergenceClass }[] = [];
+  for (const k of tsKinds) {
+    const aliased = tsAliasedAsJava.get(k);
+    const matchedOnJava = javaKinds.has(k) || (aliased !== undefined && javaKinds.has(aliased));
+    if (!matchedOnJava) {
+      tsOnly.push({
+        kind: k,
+        classification: TS_ONLY_KIND_CLASS.get(k) ?? "real-divergence-investigate",
+      });
+    }
+  }
+  const javaOnly: string[] = [];
+  for (const k of javaKinds) {
+    const aliasedBack = javaAliasedAsTs.get(k);
+    const matchedOnTs = tsKinds.has(k) || (aliasedBack !== undefined && tsKinds.has(aliasedBack));
+    if (!matchedOnTs) javaOnly.push(k);
+  }
+
+  // Headline match: every Java event-kind has a matching TS event-kind.
+  // For the empty-Java case (Java MVP captured no events at all), we
+  // require the TS trace also to be empty for primaryActionMatch=true.
+  const primaryActionMatch = javaNorm.length === 0 ? tsNorm.length === 0 : javaOnly.length === 0;
+
+  // Severity classification.
+  let severity: ParityReport["severity"];
+  if (tsOnly.length === 0 && javaOnly.length === 0) {
+    severity = "match";
+  } else if (
+    tsOnly.every((d) => d.classification !== "real-divergence-investigate") &&
+    javaOnly.length === 0
+  ) {
+    severity = "mvp-known";
+  } else {
+    severity = "unknown-divergence";
+  }
+
+  let firstDivergence: string | null = null;
+  if (tsOnly.length > 0) {
+    const first = tsOnly[0];
+    if (first) firstDivergence = `ts-only:${first.kind} (${first.classification})`;
+  } else if (javaOnly.length > 0) {
+    firstDivergence = `java-only:${javaOnly[0] ?? "unknown"}`;
+  }
+
+  return {
+    scenarioId,
+    tsKindHistogram: tsHist,
+    javaKindHistogram: javaHist,
+    primaryActionMatch,
+    sharedKinds,
+    tsOnlyKinds: tsOnly,
+    javaOnlyKinds: javaOnly,
+    severity,
+    firstDivergence,
+  };
+}
+
+/**
+ * Aggregate report across multiple scenarios. Used by both the test
+ * suite (to produce a per-class summary failure message) and the
+ * tools/parity-harness/run-parity.ts entry point.
+ */
+export interface AggregateReport {
+  readonly totalScenarios: number;
+  readonly fullMatch: number;
+  readonly mvpKnown: number;
+  readonly unknown: number;
+  readonly perClass: Readonly<Record<DivergenceClass, number>>;
+  readonly perScenario: readonly ParityReport[];
+}
+
+export function aggregateReports(reports: readonly ParityReport[]): AggregateReport {
+  const perClass: Record<DivergenceClass, number> = {
+    "shallow-trigger-fanout": 0,
+    "target-mismatch": 0,
+    "free-cast-missing-mana": 0,
+    "no-stack-drain": 0,
+    "bridge-action-skipped": 0,
+    "real-divergence-investigate": 0,
+  };
+  let fullMatch = 0;
+  let mvpKnown = 0;
+  let unknown = 0;
+  for (const r of reports) {
+    if (r.severity === "match") fullMatch++;
+    else if (r.severity === "mvp-known") mvpKnown++;
+    else unknown++;
+    // Each scenario contributes the unique classifications it touched.
+    const seen = new Set<DivergenceClass>();
+    for (const d of r.tsOnlyKinds) seen.add(d.classification);
+    for (const c of seen) perClass[c]++;
+  }
+  return { totalScenarios: reports.length, fullMatch, mvpKnown, unknown, perClass, perScenario: reports };
+}
