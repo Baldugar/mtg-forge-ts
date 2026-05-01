@@ -4,6 +4,15 @@
 // modifies) the amount. Doubling Season / Vorinclex / Hardened Scales
 // belong here.
 //
+// Wave 115 — the parent matches BOTH `addCounter` (card-counter) and
+// `addPlayerCounter` (player-counter) MutationIntent kinds so a single
+// `R:Event$ AddCounter | ValidPlayer$ Opponent | Amount$ 2` replacement
+// (Vorinclex of the Hunger) doubles counters going onto an opponent's
+// permanent OR onto the opponent themselves. ValidCard$ filters scope
+// the card half; ValidPlayer$ filters scope the player half. When neither
+// is set, the replacement matches BOTH halves (matches Forge's "permanent
+// or player" wording).
+//
 // Forge patterns:
 //   R:Event$ AddCounter | ValidCard$ Permanent.YouCtrl | Amount$ 2
 //     | Description$ If one or more counters would be put on a permanent
@@ -86,7 +95,13 @@ export class AddCounterReplacement extends ReplacementHandler {
 
   override build(ast: ReplacementAst, ctx: ReplacementBuildContext): ReplacementAbility {
     const { sourceCardId, controllerSeat, replacementId, game } = ctx;
-    const validCardRaw = getParamRaw(ast, "ValidCard") ?? "Permanent.YouCtrl";
+    // Wave 115 — when the script omits ValidCard$ entirely we must NOT
+    // default to a card-only filter, otherwise Vorinclex-shape
+    // ValidPlayer$ Opponent forms would never engage the player half.
+    // Treat "no ValidCard$" as "card half is permissive" by sentinelling
+    // it with `null`.
+    const validCardRawOrNull = getParamRaw(ast, "ValidCard") ?? null;
+    const validPlayerRaw = getParamRaw(ast, "ValidPlayer");
     const counterTypeRaw = getParamRaw(ast, "CounterType");
     const layerParam = getParamRaw(ast, "Layer");
     const preventParam = getParamRaw(ast, "Prevent");
@@ -97,6 +112,12 @@ export class AddCounterReplacement extends ReplacementHandler {
     // Multiplier$ 2). When the SVar handler is from the ReplaceEffect family
     // we thread the addCounter intent through the side-channel runner.
     const replaceWithKey = getParamRaw(ast, "ReplaceWith") ?? ast.effect.handlerKey;
+
+    // Card-half default: legacy Wave-48 callers that didn't pass ValidPlayer$
+    // expected the parent to match cards with the historical
+    // "Permanent.YouCtrl" filter. Preserve that when the ValidPlayer$ side
+    // is also absent.
+    const validCardRaw = validCardRawOrNull ?? "Permanent.YouCtrl";
 
     return {
       id: replacementId,
@@ -109,17 +130,41 @@ export class AddCounterReplacement extends ReplacementHandler {
       layer: layerParam === "CantHappen" ? "cantHappen" : "other",
 
       matches(intent: MutationIntent): boolean {
-        if (intent.kind !== "addCounter") return false;
-        const ci = intent as { cardId?: EntityId; counterType?: string };
-        if (ci.cardId === undefined) return false;
+        // CounterType filter applies to both card + player halves.
+        const ciAny = intent as { counterType?: string };
         if (
           counterTypeRaw !== undefined &&
-          ci.counterType !== undefined &&
-          String(ci.counterType) !== counterTypeRaw
+          ciAny.counterType !== undefined &&
+          String(ciAny.counterType) !== counterTypeRaw
         ) {
           return false;
         }
-        return matchesValidCardLite(validCardRaw, ci.cardId, sourceCardId, controllerSeat, game);
+        if (intent.kind === "addCounter") {
+          const ci = intent as { cardId?: EntityId };
+          if (ci.cardId === undefined) return false;
+          return matchesValidCardLite(validCardRaw, ci.cardId, sourceCardId, controllerSeat, game);
+        }
+        if (intent.kind === "addPlayerCounter") {
+          // Wave 115 — player half. Match ValidPlayer$ if set; otherwise the
+          // parent matches all players unless ValidCard$ pinned us to the
+          // card half (legacy callers).
+          const ci = intent as { playerSeat?: PlayerSeat };
+          const seat = ci.playerSeat;
+          if (seat === undefined) return false;
+          if (validPlayerRaw === undefined) {
+            // No explicit ValidPlayer$ — the parent only engages the player
+            // half when the script also omitted ValidCard$ (so the intent
+            // is "permanent or player" as in Vorinclex's printed wording).
+            // Legacy Wave-48 callers that pinned ValidCard$ but not
+            // ValidPlayer$ stay card-only.
+            return validCardRawOrNull === null;
+          }
+          if (validPlayerRaw === "You") return seat === controllerSeat;
+          if (validPlayerRaw === "Opponent") return seat !== controllerSeat;
+          if (validPlayerRaw === "Each" || validPlayerRaw === "Player") return true;
+          return false;
+        }
+        return false;
       },
 
       apply(intent: MutationIntent, gameUnknown: unknown): MutationIntent | null {

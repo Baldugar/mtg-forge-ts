@@ -141,27 +141,25 @@ effectRegistry.register(DayTimeEffect);
 // sba/loss-conditions.ts) instead of the duck-typed `poisonCounters` slot.
 // Earlier waves stored counts on `(player as { poisonCounters?: number })`,
 // which meant the SBA threshold (CR 704.5c — 10 poison counters → lose)
-// never fired off this handler. Mirroring the Wither/Infect damage path
-// (game-action.ts:1064) wires Poison through the canonical store so loss
-// + proliferate + snapshot all engage. Bumps the poison counter directly
-// (no MutationIntent for player counters yet — same shape as the wither
-// path) and additionally stamps the legacy `poisonCounters` slot so any
-// observers reading the duck-typed field still see the same total.
-// Vorinclex-style replacement parity is `// TODO(advanced)` for the
-// Player-counter MutationIntent layer (SP3+).
+// never fired off this handler. Wave 82 wired Poison through the canonical
+// store so loss + proliferate + snapshot engage; the legacy
+// `poisonCounters` slot was stamped in parallel for back-compat.
+//
+// Wave 115 — route the player-counter add through `GameAction.addPlayerCounter`
+// so doublers (Vorinclex of the Hunger, Vorinclex Voice of Hunger,
+// Doubling-Season-shape on the player half) can intercept via the new
+// `addPlayerCounter` MutationIntent. The legacy duck-typed `poisonCounters`
+// slot mirror, the canonical `player.counters.get(CounterType.Poison)`
+// store, and the Wave 70.E `canPutCounterOnPlayer` gate are all owned by
+// the routed mutator. The `PlayerPoisoned` event is still emitted so the
+// PoisonEffect-specific observers remain wired.
 export class PoisonEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
     const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "Opponent";
     const seat: PlayerSeat =
       definedRaw === "Opponent" ? otherSeat(sa.controllerSeat, game) : sa.controllerSeat;
-    const player = game.getPlayer(seat);
-    const curCanonical = player.counters.get(CounterType.Poison) ?? 0;
-    player.counters.set(CounterType.Poison, curCanonical + num);
-    // Back-compat: keep the legacy duck-typed slot in sync for any consumers
-    // still reading off `(player as { poisonCounters?: number })`.
-    const curLegacy = (player as { poisonCounters?: number }).poisonCounters ?? 0;
-    (player as { poisonCounters?: number }).poisonCounters = curLegacy + num;
+    yield* game.action.addPlayerCounter(seat, CounterType.Poison, num, sa.sourceCardId);
     yield {
       kind: "event",
       event: {

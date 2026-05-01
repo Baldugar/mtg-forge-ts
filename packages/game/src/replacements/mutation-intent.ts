@@ -15,6 +15,13 @@ export const INTENT_KINDS = {
   DrawCards: "drawCards",
   MoveTo: "moveTo",
   AddCounter: "addCounter",
+  // Wave 115 — player-counter add (poison / energy / experience / ticket /
+  // rad / etc.). Distinct from `addCounter` (which targets a card) so
+  // replacement handlers can match either or both: Vorinclex of the Hunger
+  // ("If an opponent would put a counter on a permanent or player, they
+  // put twice that many counters there instead") matches BOTH; Phyrexian
+  // Unlife / Solemnity-style player-only blockers match this kind alone.
+  AddPlayerCounter: "addPlayerCounter",
   RemoveCounter: "removeCounter",
   Tap: "tap",
   Untap: "untap",
@@ -104,6 +111,16 @@ export interface AddCounterIntent {
 export interface RemoveCounterIntent {
   readonly kind: "removeCounter";
   readonly cardId: EntityId;
+  readonly counterType: CounterType;
+  readonly amount: number;
+  readonly sourceId: EntityId | null;
+}
+// Wave 115 — player-counter add. Routed through GameAction.addPlayerCounter
+// so doublers (Vorinclex, Doubling Season-shape) can intercept and the
+// CantPutCounter player-side gate (Wave 70.E / Wave 101) fires uniformly.
+export interface AddPlayerCounterIntent {
+  readonly kind: "addPlayerCounter";
+  readonly playerSeat: PlayerSeat;
   readonly counterType: CounterType;
   readonly amount: number;
   readonly sourceId: EntityId | null;
@@ -333,6 +350,7 @@ export type KnownIntent =
   | DrawCardsIntent
   | MoveToIntent
   | AddCounterIntent
+  | AddPlayerCounterIntent
   | RemoveCounterIntent
   | TapIntent
   | UntapIntent

@@ -55,6 +55,7 @@ import * as phasing from "../phasing/phasing-ops.js";
 import { applyReplacementLoop } from "../replacements/apply-loop.js";
 import type {
   AddCounterIntent,
+  AddPlayerCounterIntent,
   AttachIntent,
   ControlChangeIntent,
   CounteredIntent,
@@ -75,7 +76,13 @@ import type {
   UntapIntent,
 } from "../replacements/mutation-intent.js";
 import type { StackItem, StackItemResolver } from "../stack/stack-item.js";
-import { canBeSacrificed, canGainLife, canPlayLand, canPutCounter } from "../statics/wave60-cant-gates.js";
+import {
+  canBeSacrificed,
+  canGainLife,
+  canPlayLand,
+  canPutCounter,
+  canPutCounterOnPlayer,
+} from "../statics/wave60-cant-gates.js";
 import { wouldPreventDamage } from "../statics/wave60-damage-gates.js";
 import { canDraw } from "../statics/wave70i-loyalty-gates.js";
 import { canAttach } from "../statics/wave70k-gate-helpers.js";
@@ -98,6 +105,7 @@ type RoutedIntent =
   | DrawCardsIntent
   | MoveToIntent
   | AddCounterIntent
+  | AddPlayerCounterIntent
   | RemoveCounterIntent
   | TapIntent
   | UntapIntent
@@ -1029,6 +1037,16 @@ export class GameAction {
     // LifeChange intent) AFTER the DamageDealt event has been emitted.
     // Audit I-1.
     let playerLifeRequest: { readonly seat: PlayerSeat; readonly amount: number } | null = null;
+    // Wave 115 — Infect-to-player redirect: deferred poison-counter add
+    // routed through GameAction.addPlayerCounter AFTER DamageDealt emits.
+    // Same structural reason as `playerLifeRequest`: keep the Damage event
+    // first in the stream, then run the consequent counter mutation through
+    // the Vorinclex-shape replacement chain.
+    let infectPoisonRequest: {
+      readonly seat: PlayerSeat;
+      readonly amount: number;
+      readonly sourceId: EntityId;
+    } | null = null;
     yield* this.applyWithReplacements<DamageIntent>(
       intent,
       (final) => {
@@ -1076,11 +1094,16 @@ export class GameAction {
         } else if (final.targetKind === "player" && typeof final.targetId === "number") {
           if (infectSource) {
             // CR 702.90b — Infect to players: poison counters instead of life.
-            const player = game.players.find((p) => p.seat === (final.targetId as PlayerSeat));
-            if (player) {
-              const cur = player.counters.get(CT.Poison) ?? 0;
-              player.counters.set(CT.Poison, cur + final.amount);
-            }
+            // Wave 115 — defer the actual mutation to AFTER the DamageDealt
+            // event emits so the routed addPlayerCounter call (which itself
+            // emits PlayerCounterAdded + may dispatch through Vorinclex-shape
+            // doublers) lands in causal order. We stash the request on the
+            // outer scope's `infectPoisonRequest` slot — captured below.
+            infectPoisonRequest = {
+              seat: final.targetId as PlayerSeat,
+              amount: final.amount,
+              sourceId: final.sourceId,
+            };
           } else {
             // Stash the amount + seat; actually route through changeLife
             // (below, after the DamageDealt event is emitted) so prevention
@@ -1148,6 +1171,21 @@ export class GameAction {
     if (playerLifeRequest !== null) {
       const req = playerLifeRequest as { readonly seat: PlayerSeat; readonly amount: number };
       yield* this.changeLife(req.seat, -req.amount, { cause: "damage" });
+    }
+    // Wave 115 — Infect-to-player poison redirect, routed through
+    // addPlayerCounter so doublers (Vorinclex of the Hunger / Vorinclex
+    // Voice of Hunger) and the Wave 70.E player-side `CantPutCounter`
+    // gate (Phyrexian Unlife / Melira) fire on the poison-from-Infect
+    // path. Drained after DamageDealt emitted so the causal order stays:
+    // damage dealt → poison counters as a consequence (mirrors the
+    // playerLifeRequest pattern above).
+    if (infectPoisonRequest !== null) {
+      const req = infectPoisonRequest as {
+        readonly seat: PlayerSeat;
+        readonly amount: number;
+        readonly sourceId: EntityId;
+      };
+      yield* this.addPlayerCounter(req.seat, CT.Poison, req.amount, req.sourceId);
     }
   }
 
@@ -1254,6 +1292,84 @@ export class GameAction {
         }
       }
     }
+  }
+
+  /**
+   * Wave 115 — player-counter add through the MutationIntent layer.
+   *
+   * Card counters route through `addCounter` so doublers (Doubling Season,
+   * Hardened Scales, etc.) can intercept the AddCounter parent. Player
+   * counters (poison from Infect, energy, experience, ticket, rad)
+   * historically bypassed this layer — Vorinclex of the Hunger
+   * ("If an opponent would put a counter on a permanent or player, they
+   * put twice that many counters there instead") and Vorinclex Voice of
+   * Hunger ("If a player would put one or more counters on a permanent
+   * or player, that player puts twice that many of those counters on
+   * that permanent or player instead") both require the intent layer to
+   * fire on the player half.
+   *
+   * Same shape as `addCounter`:
+   *   1. Wave 70.E player-side `CantPutCounter` gate (Phyrexian Unlife,
+   *      Melira) silently no-ops the addition before the intent is built.
+   *   2. Build `AddPlayerCounterIntent`, route through
+   *      `applyWithReplacements`. Doublers register on the
+   *      `addPlayerCounter` parent.
+   *   3. On apply: bump `player.counters` and emit `PlayerCounterAdded`
+   *      so the Wave 16 trigger family observes uniformly. The legacy
+   *      `poisonCounters` duck-typed slot is kept in sync for the Poison
+   *      counter type so prior-wave consumers still see the canonical
+   *      total.
+   *
+   * Distinct from `addCounter`: card-counter handlers (Wave 67's
+   * AddCounterReplacement) walk `intent.cardId`; player-counter handlers
+   * walk `intent.playerSeat`. The two intents are kept disjoint by kind
+   * so a `CantPutCounter` static targeting a card never blocks a
+   * player-side counter (matches `canPutCounterOnPlayer`'s split).
+   */
+  *addPlayerCounter(
+    playerSeat: PlayerSeat,
+    counterType: CounterType,
+    amount: number,
+    sourceId?: EntityId,
+  ): Generator<EngineYield, void, unknown> {
+    if (!Number.isInteger(amount) || amount <= 0) {
+      throw new IllegalDecisionError(`addPlayerCounter: amount must be a positive integer, got ${amount}`);
+    }
+    const game = this.game;
+    // Wave 70.E player-side gate (Phyrexian Unlife etc.) — silent no-op.
+    if (!canPutCounterOnPlayer(game, playerSeat, counterType)) return;
+    const intent: AddPlayerCounterIntent = {
+      kind: "addPlayerCounter",
+      playerSeat,
+      counterType,
+      amount,
+      sourceId: sourceId ?? null,
+    };
+    yield* this.applyWithReplacements<AddPlayerCounterIntent>(
+      intent,
+      (final) => {
+        const player = game.players.find((p) => p.seat === final.playerSeat);
+        if (!player) return;
+        const cur = player.counters.get(final.counterType) ?? 0;
+        player.counters.set(final.counterType, cur + final.amount);
+        // Back-compat: keep `poisonCounters` duck-typed slot in sync (the
+        // PoisonEffect previously stamped it; some prior-wave consumers
+        // still read off it).
+        if (final.counterType === CT.Poison) {
+          const curLegacy = (player as { poisonCounters?: number }).poisonCounters ?? 0;
+          (player as { poisonCounters?: number }).poisonCounters = curLegacy + final.amount;
+        }
+        // Defensive epoch bump — SP2's layer engine doesn't yet scope on
+        // player counters but cards may grow such conditionals.
+        game.layerEngine.bumpEpoch("player-counter-add");
+      },
+      (final) =>
+        mkEvent("PlayerCounterAdded", game.turn, game.phase, {
+          playerSeat: final.playerSeat,
+          counterType: String(final.counterType),
+          amount: final.amount,
+        }),
+    );
   }
 
   *removeCounter(
