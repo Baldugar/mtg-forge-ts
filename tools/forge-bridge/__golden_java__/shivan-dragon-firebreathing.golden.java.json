@@ -1,8 +1,16 @@
 {
   "scenarioId": "shivan-dragon-firebreathing",
   "seed": 88,
-  "engineVersion": "forge-bridge-mvp-0.1.0",
+  "engineVersion": "forge-bridge-v2-0.2.0",
   "events": [
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 8
+      }
+    },
     {
       "kind": "SpellCast",
       "turn": 1,
@@ -10,6 +18,14 @@
       "payload": {
         "stackIndex": 0,
         "description": null
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false
       }
     }
   ],

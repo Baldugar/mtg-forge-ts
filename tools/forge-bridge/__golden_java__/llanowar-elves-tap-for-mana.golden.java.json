@@ -1,15 +1,24 @@
 {
   "scenarioId": "llanowar-elves-tap-for-mana",
   "seed": 75,
-  "engineVersion": "forge-bridge-mvp-0.1.0",
+  "engineVersion": "forge-bridge-v2-0.2.0",
   "events": [
+    {
+      "kind": "CardTappedChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "tapped": true
+      }
+    },
     {
       "kind": "SpellCast",
       "turn": 1,
       "phase": "Main1",
       "payload": {
-        "stackIndex": 0,
-        "description": null
+        "description": "{T}: Add {G}.",
+        "isManaAbility": true
       }
     }
   ],

@@ -79,7 +79,10 @@ for (const r of agg.perScenario) {
     r.tsOnlyKinds.length === 0
       ? "—"
       : r.tsOnlyKinds.map((d) => `${d.kind} *(${d.classification})*`).join(", ");
-  const javaOnly = r.javaOnlyKinds.length === 0 ? "—" : r.javaOnlyKinds.join(", ");
+  const javaOnly =
+    r.javaOnlyKinds.length === 0
+      ? "—"
+      : r.javaOnlyKinds.map((d) => `${d.kind} *(${d.classification})*`).join(", ");
   const shared = r.sharedKinds.length === 0 ? "—" : r.sharedKinds.join(", ");
   lines.push(`| \`${r.scenarioId}\` | ${r.severity} | ${tsOnly} | ${javaOnly} | ${shared} |`);
 }

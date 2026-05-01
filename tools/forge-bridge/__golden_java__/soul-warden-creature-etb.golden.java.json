@@ -1,7 +1,7 @@
 {
   "scenarioId": "soul-warden-creature-etb",
   "seed": 86,
-  "engineVersion": "forge-bridge-mvp-0.1.0",
+  "engineVersion": "forge-bridge-v2-0.2.0",
   "events": [
     {
       "kind": "CardChangedZone",
@@ -12,6 +12,32 @@
         "cardId": 3,
         "fromZone": "Hand",
         "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": null
+      }
+    },
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 21
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false
       }
     }
   ],

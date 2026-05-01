@@ -1,7 +1,7 @@
 {
   "scenarioId": "mulldrifter-etb-draw",
   "seed": 69,
-  "engineVersion": "forge-bridge-mvp-0.1.0",
+  "engineVersion": "forge-bridge-v2-0.2.0",
   "events": [
     {
       "kind": "CardChangedZone",
@@ -9,9 +9,48 @@
       "phase": "Main1",
       "payload": {
         "cardName": "Mulldrifter",
-        "cardId": 2,
+        "cardId": 5,
         "fromZone": "Hand",
         "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": null
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Grizzly Bears",
+        "cardId": 2,
+        "fromZone": "Library",
+        "toZone": "Hand"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Grizzly Bears",
+        "cardId": 3,
+        "fromZone": "Library",
+        "toZone": "Hand"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false
       }
     }
   ],

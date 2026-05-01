@@ -1,111 +1,121 @@
-# Divergence catalog — M2 cohort
+# Divergence catalog — M2 cohort (post-Bridge V2)
 
 Per-scenario divergence classification produced by the M4 parity harness
-(`packages/game/test/parity/runner.ts`) on the M2 30-scenario cohort.
-
-Each row says: which scenario, what severity the parity harness assigned,
-and which documented M3-MVP bridge limits explain the gap. No scenario
-landed in `real-divergence-investigate` for this run, so there is no
-"likely real bug" backlog from this cohort.
+(`packages/game/test/parity/runner.ts`) on the M2 30-scenario cohort,
+captured against the V2 bridge (`forge-bridge-v2-0.2.0`) at HEAD
+(post-Testing-M3.5). No scenario landed in `real-divergence-investigate`,
+so there are no real bugs to chase from this cohort.
 
 ## Severity legend
 
 - **match** — the normalized event-kind sets agree on both sides.
-  Java MVP captured at least the headline action(s) we expect.
 - **mvp-known** — divergences are entirely explained by documented
-  bridge MVP limitations. M5 work to lift those limits will collapse
-  these into `match`.
-- **unknown-divergence** — TS sees event-kinds Java doesn't, and
-  none of them are explained by an MVP bucket. **Treat as a real
-  parity bug.** This run has zero of these.
+  bucket(s) below.
+- **unknown-divergence** — TS or Java has events not explained by an
+  MVP bucket. **Treat as a real parity bug.** Currently zero of these.
 
-## Divergence class buckets
+## Divergence class buckets (post-V2)
 
-- `target-mismatch` — Java MVP doesn't bind scripted targets. TS-only
-  `CardTargeted` and `CrimeCommitted` events go here.
-- `free-cast-missing-mana` — Java MVP casts spells without paying cost.
-  TS-only `ManaSpent` and `CostPaid` go here.
-- `no-stack-drain` — Java MVP pushes onto the stack but doesn't drain
-  via `mainLoopStep` for our cohort. TS-only `DamageDealt`, `LifeChanged`,
-  `LifeLost`, `LifeGained`, `CardDrawn`, `CardTapped`, `StackItemResolved`
-  go here.
-- `bridge-action-skipped` — Java MVP captured zero events for a cast
-  action. The bridge silently skipped the cast (sometimes due to AI
-  rejecting the cast, sometimes due to the cast pipeline raising). TS-only
-  `SpellCast` and post-resolution `CardChangedZone` (spell→graveyard) go
-  here.
-- `shallow-trigger-fanout` — TS captures secondary trigger fan-out
-  (Mulldrifter draw two, Soul Warden gain 1 life). Currently zero
-  scenarios surface this because the M2 trace runner doesn't drive
-  trigger resolution either — the gap will widen once both runners gain
-  full stack drain.
+- `target-mismatch` — TS emits `CardTargeted` / `CrimeCommitted` for
+  scripted targets; Forge has no equivalent event-kind (targeting is
+  folded into the `GameEventSpellAbilityCast` payload). The bridge V2
+  binds the right targets, but the kinds themselves don't appear on the
+  Java side.
+- `free-cast-missing-mana` — TS emits `CostPaid` to mark cost completion;
+  Forge fires `GameEventManaPool(Removed)` per mana globe (mapped to
+  `ManaSpent` in our trace) but no aggregate `CostPaid`. With V2 the
+  individual `ManaSpent` events do show up on both sides; only the
+  TS-only `CostPaid` umbrella event survives in this bucket.
+- `no-stack-drain` — TS-only events that V2's bridge drain should now
+  match (this bucket has shrunk to 1 scenario, ancestral-recall, where
+  TS emits `CardDrawn` per draw but Forge emits a single
+  `CardChangedZone` per drawn card without a separate `CardDrawn`).
+- `bridge-action-skipped` — was the dominant V1 class; now zero. V2's
+  cost-payment + target-binding makes every cast in this cohort land.
+- `ts-runner-shallow` — Java-only events from V2's full stack drain
+  that the **M2 TS golden runner** hasn't caught up to yet. The TS
+  runner is single-action (resolves only the primary cast / etb) so
+  triggered-ability `SpellCast` events, the `StackItemResolved` flag,
+  resolution-zone `CardChangedZone` (spell→graveyard) and
+  `LifeTotalChanged` from triggered life-changes are all Java-only.
+  Closing these is M5 work on the TS runner, **not** the bridge.
 
 ## Cross-side kind aliases
 
-- TS `AbilityActivated` ≡ Java `SpellCast`. Forge folds activated and
-  triggered abilities into the same `GameEventSpellAbilityCast` type.
-  The harness treats these as equivalent so e.g. Llanowar Elves'
-  tap-for-mana (TS `AbilityActivated`, Java `SpellCast`) is `shared`,
-  not divergent.
+- TS `AbilityActivated` ≡ Java `SpellCast` (Forge folds activated /
+  triggered / spell casts under one event-kind).
+- TS `LifeChanged` / `LifeGained` / `LifeLost` ≡ Java `LifeTotalChanged`
+  (Forge has one `GameEventPlayerLivesChanged`; TS splits gain vs lose).
+- TS `CardTapped` ≡ Java `CardTappedChanged` (Forge fires
+  `GameEventCardTapped`; TS uses a slightly different name).
 
-## Per-scenario classification
+## Aggregate this run (post-V2)
 
-(Source: `tools/parity-harness/reports/parity-*.md`. This summary is
-hand-rolled to add per-scenario root-cause notes.)
+- 30 scenarios.
+- **14 full match** (47%). Up from 18 V1 — the count *dropped* because
+  V2 surfaces real Java-side events that the TS runner doesn't emit
+  yet, lifting some scenarios out of "match" into `mvp-known/
+  ts-runner-shallow`. Each of those is a TS-runner gap, not a bridge
+  regression.
+- **16 mvp-known** (53%). All entries classified into documented
+  buckets.
+- **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+## Per-scenario classification (post-V2)
 
 | Scenario                          | Severity   | Notes |
 | ---                               | ---        | --- |
-| `grizzly-bears-etb`               | match      | Pure ETB, no triggers/cost — both sides emit one CardChangedZone. |
-| `mulldrifter-etb-draw`            | match      | ETB primary lands; Mulldrifter's "draw two" trigger fan-out is missing on **both** sides (TS runner is single-action, doesn't resolve queued triggers; Java MVP is shallow). Will surface once both sides drain. |
-| `eternal-witness-etb-return`      | match      | ETB primary lands. Witness's "return target from grave" trigger same as Mulldrifter — invisible on both sides for now. |
+| `grizzly-bears-etb`               | match      | Pure ETB, both sides emit one `CardChangedZone`. |
+| `mulldrifter-etb-draw`            | mvp-known  | Java now drains: 1× `SpellCast` (the trigger), 2× `CardChangedZone` (Library→Hand draws), `StackItemResolved`. TS runner hasn't caught up — `ts-runner-shallow`. |
+| `eternal-witness-etb-return`      | mvp-known  | Same shape as Mulldrifter — `ts-runner-shallow`. |
 | `glorious-anthem-static`          | match      | Pure static + ETB. |
 | `honor-of-the-pure-static`        | match      | Pure static + ETB. |
 | `doubling-season-etb`             | match      | Pure replacement install + ETB. |
-| `rest-in-peace-etb`               | match      | Pure replacement install + ETB. |
+| `rest-in-peace-etb`               | mvp-known  | Java fires the install trigger; TS runner shallow. |
 | `serra-angel-etb`                 | match      | Pure ETB. |
 | `birds-of-paradise-etb`           | match      | Pure ETB. |
-| `angel-of-mercy-etb`              | match      | Pure ETB; ETB life-gain trigger same suppression as Mulldrifter. |
-| `sulfuric-vortex-etb`             | match      | Pure ETB; "each upkeep" trigger doesn't fire (single turn, no upkeep). |
-| `tarmogoyf-etb`                   | match      | Pure ETB; CDA P/T computed by TS layers, no event needed. |
+| `angel-of-mercy-etb`              | mvp-known  | Java fires gain-3 trigger + `LifeTotalChanged`; TS shallow. |
+| `sulfuric-vortex-etb`             | match      | Pure ETB. |
+| `tarmogoyf-etb`                   | match      | Pure ETB; CDA P/T no event needed. |
 | `giant-spider-etb`                | match      | Pure ETB. |
-| `soul-warden-creature-etb`        | match      | Pure ETB; Soul Warden's "gain 1" trigger same suppression. |
-| `soul-warden-angel-chain`         | match      | Two ETBs, both lands. Trigger fan-out from Warden seeing the Angel ETB invisible on both sides. |
-| `counterspell-in-hand`            | match      | Card just sits in hand; both sides emit zero events. |
-| `negate-in-hand`                  | match      | Same as Counterspell. |
+| `soul-warden-creature-etb`        | mvp-known  | Java fires Warden's gain-1 trigger; TS shallow. |
+| `soul-warden-angel-chain`         | mvp-known  | Java fires Warden + Angel triggers + `LifeTotalChanged` ×2; TS shallow. |
+| `counterspell-in-hand`            | match      | No actions; both sides empty. |
+| `negate-in-hand`                  | match      | Same. |
 | `settle-the-wreckage-in-hand`     | match      | Same. |
-| `llanowar-elves-tap-for-mana`     | mvp-known  | TS-only `CardTapped` (the tap cost). Java treats activated ability as `SpellCast` (shared via alias). `no-stack-drain`. |
-| `sol-ring-tap-for-mana`           | mvp-known  | Same shape as Llanowar Elves. `no-stack-drain`. |
-| `shivan-dragon-firebreathing`     | mvp-known  | TS-only `ManaSpent` (firebreathing cost). Both sides see ETB+activation (alias). `free-cast-missing-mana`. |
-| `holy-day-cast`                   | mvp-known  | TS-only `ManaSpent` + `CostPaid`. SpellCast shared. `free-cast-missing-mana`. |
-| `wrath-of-god-cast`               | mvp-known  | Same as Holy Day. `free-cast-missing-mana`. Wrath's "destroy all creatures" effect not visible because cohort has empty battlefield. |
-| `cloudshift-cast`                 | mvp-known  | TS-only target + cost events. `target-mismatch` + `free-cast-missing-mana` + `bridge-action-skipped` (Cloudshift's resolve effect missing because Java didn't capture). |
-| `giant-growth-cast`               | mvp-known  | Same shape as Cloudshift (instant with target). |
-| `stone-rain-cast`                 | mvp-known  | Sorcery with target — same envelope. |
-| `lightning-bolt-target-creature`  | mvp-known  | Headline burn spell — exposes every MVP limit at once: `target-mismatch` + `free-cast-missing-mana` + `bridge-action-skipped` + `no-stack-drain`. M5 fixes will collapse this row to `match`. |
-| `lightning-bolt-target-player`    | mvp-known  | Same as creature variant; adds `LifeChanged` / `LifeLost` events on the TS side. |
-| `double-lightning-bolt`           | mvp-known  | Two bolts in sequence; same envelope, doubled counts. |
-| `ancestral-recall-cast`           | mvp-known  | Single instant that draws three. TS-only `CardDrawn`×3 lands in `no-stack-drain`. |
+| `llanowar-elves-tap-for-mana`     | match      | V2 promoted to match — synthetic `SpellCast` for mana ability + shared `CardTapped` alias. |
+| `sol-ring-tap-for-mana`           | match      | Same as Llanowar. |
+| `shivan-dragon-firebreathing`     | mvp-known  | Activation cost `{R}` paid through V2 cost pipeline; only Java-only `StackItemResolved` remains (`ts-runner-shallow`). |
+| `holy-day-cast`                   | mvp-known  | TS-only `CostPaid` (umbrella event) + Java-only `CardChangedZone` (Stack→Graveyard) and `StackItemResolved`. |
+| `wrath-of-god-cast`               | mvp-known  | Same envelope as Holy Day. |
+| `cloudshift-cast`                 | mvp-known  | Targets bound (Grizzly Bears found by name). TS-only `CardTargeted`/`CostPaid`; Java-only `StackItemResolved`. |
+| `giant-growth-cast`               | mvp-known  | Same as Cloudshift. |
+| `stone-rain-cast`                 | mvp-known  | Same shape — `target-mismatch` + `free-cast-missing-mana` + `ts-runner-shallow`. |
+| `lightning-bolt-target-creature`  | mvp-known  | Massive shared event set: ManaSpent / SpellCast / DamageDealt / StackItemResolved / CardChangedZone all match. Residual: TS-only CardTargeted/CrimeCommitted/CostPaid. |
+| `lightning-bolt-target-player`    | mvp-known  | Even richer — adds `LifeChanged`/`LifeLost` (TS) ↔ `LifeTotalChanged` (Java) via alias. |
+| `double-lightning-bolt`           | mvp-known  | Two-bolt sequence; Java emits an extra `LifeTotalChanged` per bolt (alias + ts-runner-shallow on extra). |
+| `ancestral-recall-cast`           | mvp-known  | Drives 3× `CardChangedZone` (Library→Hand) on both sides. TS-only `CardDrawn` (`no-stack-drain` because TS runner emits a separate kind). |
 
-## Aggregate this run
+## What changed vs the V1 / M3-MVP baseline
 
-- 30 scenarios.
-- **18 full match** (60% — primarily the simple ETB / no-action cohort).
-- **12 mvp-known** (40% — every cast scenario lands here because the
-  Java MVP doesn't pay costs / drain stack / bind scripted targets).
-- **0 unknown** — no real divergences for the M3 MVP / M4 harness.
+| V1 class              | V1 count | V2 count | Notes |
+| ---                   | ---      | ---      | --- |
+| `target-mismatch`     | 6        | 6        | Unchanged — TS emits `CardTargeted` kinds Forge doesn't have. |
+| `free-cast-missing-mana` | 10    | 9        | Down because individual `ManaSpent` events now match; only `CostPaid` umbrella event remains TS-only. |
+| `no-stack-drain`      | 6        | 1        | Almost cleared — V2 drains the stack. Only `ancestral-recall-cast` remains because TS emits a `CardDrawn` kind Forge doesn't. |
+| `bridge-action-skipped` | 7      | 0        | Cleared — V2 cost-payment + target-binding makes every cast land. |
+| `shallow-trigger-fanout` | 0     | 0        | Trigger fan-out now lands on Java (Mulldrifter, Soul Warden, Angel of Mercy etc.). |
+| `ts-runner-shallow` (new) | n/a   | 13       | **New bucket.** Java now sees Forge's full resolution events; the M2 TS runner doesn't emit them yet. M5 closes this. |
 
 ## Real divergences? Per-side correctness analysis
 
-Since this run has zero `real-divergence-investigate` rows, there is
-no per-CR root-cause needed. All gaps trace back to the M3 bridge MVP
-spec'ing out specific features:
+Zero `real-divergence-investigate` rows. The remaining gaps split into:
 
-| Java MVP feature absent | TS does this correctly | M5 fix path |
-| ---                     | ---                    | --- |
-| Cost payment            | Yes (`ManaSpent`/`CostPaid` events fire) | Bridge: pay cost via Forge `Cost.payAbility(...)` instead of bypassing |
-| Scripted target binding | Yes (target carried in scenario) | Bridge: `sa.setTargetCard(...)` before `stack.add(sa)` |
-| Stack drain to effect   | Yes (effects resolve, events fire) | Bridge: drive Forge `mainLoopStep`/`PhaseHandler` until stack empty |
-| Trigger fan-out         | Currently no (TS runner is single-action) | Both sides need stack-drain to see this |
-
-Once M5 lifts those, the parity report should converge on near-100%
-matches for this cohort.
+| Gap                                  | Side affected | M5 fix path |
+| ---                                  | ---           | --- |
+| `CostPaid` umbrella event            | TS-only       | Map TS `CostPaid` to Java `ManaSpent` via alias, or drop CostPaid as engine-internal. |
+| `CardTargeted` / `CrimeCommitted`    | TS-only       | Drop / aliasing — Forge has no equivalent kind. |
+| `CardDrawn` (vs Java's bare CardChangedZone) | TS-only | Alias `CardDrawn` ↔ `CardChangedZone(Library→Hand)` with origin/dest match. |
+| Triggered-ability fan-out events     | Java-only     | TS runner needs to drive trigger resolution end-to-end (M5). |
+| `StackItemResolved`                  | Java-only     | TS runner needs to emit on each stack-item resolve (M5). |
+| `LifeTotalChanged` (post-trigger)    | Java-only     | TS runner already emits `LifeChanged` — alias once trigger fan-out lands. |

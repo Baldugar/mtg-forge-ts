@@ -166,7 +166,29 @@ export type DivergenceClass =
   | "free-cast-missing-mana"
   | "no-stack-drain"
   | "bridge-action-skipped"
+  // Bridge V2 inverted the trigger/resolution gap: now Forge surfaces
+  // the trigger fan-out + StackItemResolved that the TS golden runner
+  // doesn't yet emit (because the TS runner is still single-action).
+  // These Java-only events get bucketed as a known-TS-runner-gap.
+  | "ts-runner-shallow"
   | "real-divergence-investigate";
+
+/**
+ * Java event-kinds → which TS-runner gap explains their absence on the
+ * TS side. After Bridge V2 lands, Forge fires triggered-ability casts
+ * (`SpellCast`, `StackItemResolved`) and resolution-zone moves
+ * (`CardChangedZone` for spell→graveyard) that the M2 TS golden runner
+ * doesn't yet emit because it captures only the primary action. M5
+ * work on the TS side will close these gaps.
+ */
+const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
+  ["SpellCast", "ts-runner-shallow"],
+  ["StackItemResolved", "ts-runner-shallow"],
+  ["CardChangedZone", "ts-runner-shallow"],
+  ["LifeTotalChanged", "ts-runner-shallow"],
+  ["CardTappedChanged", "ts-runner-shallow"],
+  ["DamageDealt", "ts-runner-shallow"],
+]);
 
 /** TS event-kinds → which MVP limit explains their absence on the Java side. */
 const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
@@ -198,7 +220,19 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
  *
  * Format: [tsKind, javaKind].
  */
-const KIND_ALIASES: ReadonlyArray<readonly [string, string]> = [["AbilityActivated", "SpellCast"]];
+const KIND_ALIASES: ReadonlyArray<readonly [string, string]> = [
+  ["AbilityActivated", "SpellCast"],
+  // Bridge V2 — Forge fires `GameEventPlayerLivesChanged` whose canonical
+  // bridge kind is `LifeTotalChanged`. The TS engine emits separate
+  // `LifeChanged` / `LifeLost` / `LifeGained` events. The harness aliases
+  // them so a TS LifeChanged + Java LifeTotalChanged register as shared.
+  ["LifeChanged", "LifeTotalChanged"],
+  ["LifeGained", "LifeTotalChanged"],
+  ["LifeLost", "LifeTotalChanged"],
+  // Bridge V2 — Forge fires `GameEventCardTapped` (bridge kind
+  // `CardTappedChanged`); TS emits `CardTapped`.
+  ["CardTapped", "CardTappedChanged"],
+];
 
 export interface ParityReport {
   readonly scenarioId: string;
@@ -223,11 +257,13 @@ export interface ParityReport {
    */
   readonly tsOnlyKinds: readonly { readonly kind: string; readonly classification: DivergenceClass }[];
   /**
-   * Java-only event kinds — present in Java, absent in TS. Should be
-   * empty for the M3-MVP cohort; non-empty entries surface as real
-   * divergences worth investigating.
+   * Java-only event kinds — present in Java, absent in TS. Each is
+   * classified per `JAVA_ONLY_KIND_CLASS`. Bridge V2 surfaces trigger
+   * fan-out + resolution events that the M2 TS runner doesn't yet
+   * emit; those land in `ts-runner-shallow`. Anything not classified
+   * lands in `real-divergence-investigate` for human review.
    */
-  readonly javaOnlyKinds: readonly string[];
+  readonly javaOnlyKinds: readonly { readonly kind: string; readonly classification: DivergenceClass }[];
   /**
    * Aggregate severity. `match` = full kind-set parity. `mvp-known` =
    * divergences are all explained by documented M3 limits. `unknown` =
@@ -302,11 +338,16 @@ export function diffTraces(
       });
     }
   }
-  const javaOnly: string[] = [];
+  const javaOnly: { kind: string; classification: DivergenceClass }[] = [];
   for (const k of javaKinds) {
     const aliasedBack = javaAliasedAsTs.get(k);
     const matchedOnTs = tsKinds.has(k) || (aliasedBack !== undefined && tsKinds.has(aliasedBack));
-    if (!matchedOnTs) javaOnly.push(k);
+    if (!matchedOnTs) {
+      javaOnly.push({
+        kind: k,
+        classification: JAVA_ONLY_KIND_CLASS.get(k) ?? "real-divergence-investigate",
+      });
+    }
   }
 
   // Headline match: every Java event-kind has a matching TS event-kind.
@@ -314,13 +355,14 @@ export function diffTraces(
   // require the TS trace also to be empty for primaryActionMatch=true.
   const primaryActionMatch = javaNorm.length === 0 ? tsNorm.length === 0 : javaOnly.length === 0;
 
-  // Severity classification.
+  // Severity classification. mvp-known now covers both TS-only AND
+  // Java-only divergences as long as every entry maps to a known bucket.
   let severity: ParityReport["severity"];
   if (tsOnly.length === 0 && javaOnly.length === 0) {
     severity = "match";
   } else if (
     tsOnly.every((d) => d.classification !== "real-divergence-investigate") &&
-    javaOnly.length === 0
+    javaOnly.every((d) => d.classification !== "real-divergence-investigate")
   ) {
     severity = "mvp-known";
   } else {
@@ -332,7 +374,8 @@ export function diffTraces(
     const first = tsOnly[0];
     if (first) firstDivergence = `ts-only:${first.kind} (${first.classification})`;
   } else if (javaOnly.length > 0) {
-    firstDivergence = `java-only:${javaOnly[0] ?? "unknown"}`;
+    const first = javaOnly[0];
+    if (first) firstDivergence = `java-only:${first.kind} (${first.classification})`;
   }
 
   return {
@@ -369,6 +412,7 @@ export function aggregateReports(reports: readonly ParityReport[]): AggregateRep
     "free-cast-missing-mana": 0,
     "no-stack-drain": 0,
     "bridge-action-skipped": 0,
+    "ts-runner-shallow": 0,
     "real-divergence-investigate": 0,
   };
   let fullMatch = 0;
@@ -378,9 +422,11 @@ export function aggregateReports(reports: readonly ParityReport[]): AggregateRep
     if (r.severity === "match") fullMatch++;
     else if (r.severity === "mvp-known") mvpKnown++;
     else unknown++;
-    // Each scenario contributes the unique classifications it touched.
+    // Each scenario contributes the unique classifications it touched
+    // across both ts-only and java-only buckets.
     const seen = new Set<DivergenceClass>();
     for (const d of r.tsOnlyKinds) seen.add(d.classification);
+    for (const d of r.javaOnlyKinds) seen.add(d.classification);
     for (const c of seen) perClass[c]++;
   }
   return { totalScenarios: reports.length, fullMatch, mvpKnown, unknown, perClass, perScenario: reports };

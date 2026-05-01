@@ -1,14 +1,18 @@
-# forge-bridge — Milestone 3 Java parity bridge (MVP)
+# forge-bridge — Milestone 3.5 Java parity bridge (V2)
 
 A small Java subproject that wraps Forge's `Game` class so the TS test
 harness can run the same `GoldenScenario` JSON through Forge's actual
 engine and capture an event-trace for parity comparison against our
 Milestone-2 TS goldens.
 
-> **Status:** MVP. Compiles + captures parity goldens for the M2 30-card
-> cohort. Trigger fan-out (e.g. Mulldrifter's "draw two", Soul Warden's
-> "gain 1 life") is not yet captured — only the primary `moveTo` /
-> `SpellCast` event lands. See **Limitations** below.
+> **Status:** V2 (`forge-bridge-v2-0.2.0`). Closes every M3 MVP gap:
+> scripted target injection, mana-cost payment via `CostPayment`, full
+> stack drain (so Mulldrifter draws two and Soul Warden gains 1 fan
+> out), multi-turn phase advancement (`advancePhase` / `advanceToStep`
+> action kinds). The 30-scenario cohort runs through cleanly and the
+> parity harness reports zero `real-divergence-investigate` rows.
+> Remaining `mvp-known` rows are TS-runner-side gaps (the M2 TS golden
+> runner is still single-action; M5 will close those).
 
 ## How it works
 
@@ -116,30 +120,59 @@ for sc in scenarios/*.scenario.json; do
 done
 ```
 
-## Limitations (MVP scope)
+## What V2 closed (vs M3 MVP)
 
-Documented so they don't surprise you when reading captured goldens:
+- **Scripted target injection.** `cast` and `activate` actions now read
+  `target` (singular) and `targets[]` (plural) from the scenario JSON.
+  Targets are looked up in the live `Game` state by name (cards across
+  Battlefield/Graveyard/Hand/Stack) or by seat (players) and bound onto
+  the SpellAbility before `isTargetNumberValid()` runs in
+  `ComputerUtil.handlePlayingSpellAbility(...)`. If a scripted target
+  isn't findable the bridge emits a `BridgeTargetNotFound` synthetic
+  event and aborts the cast — it does **not** fall back to AI targeting.
+- **Cost / mana payment.** Casts and non-mana activations route through
+  `ComputerUtil.handlePlayingSpellAbility(...)` which calls
+  `CostPayment.payComputerCosts(...)`, emitting `GameEventManaPool`
+  (`Removed`) events that we map to canonical `ManaSpent`. The bridge
+  seeds the activating player's pool from the scenario's `manaPool`
+  array plus a generous floor (3 of each color + 10 generic) so
+  arbitrary spells can pay. Mana-pool side-effects (synthetic Wastes
+  source-card, top-up `Added` events) are muted on the recorder so
+  they don't pollute the parity diff.
+- **Stack drain.** After every primary action, `drainStack(...)` loops
+  `checkStateEffects` → `addAllTriggeredAbilitiesToStack` →
+  `resolveStack` until empty (capped at 200 iterations). Mulldrifter's
+  "draw two", Soul Warden's "gain 1", Eternal Witness's "return target",
+  Lightning Bolt's "destroy creature", etc. now all fan out into the
+  trace.
+- **Multi-turn / phase advance.** New action kinds:
+  - `{kind: "advancePhase"}` — walk one phase forward via
+    `PhaseHandler.devAdvanceToPhase`.
+  - `{kind: "advanceToStep", step: "END_OF_TURN"}` — jump to a named
+    step. Recognized values are PhaseType enum names (case-insensitive,
+    `-` and `_` interchangeable) plus Forge's `smartValueOf` aliases.
 
-- **Trigger fan-out is shallow.** When an ETB triggers (e.g. Mulldrifter
-  draws two cards, Soul Warden gains 1 life), our trace currently shows
-  only the primary `CardChangedZone` for the ETB itself. The triggered
-  ability registers but its on-stack resolution doesn't fully drain
-  through the simplified `mainLoopStep` we drive. This is a known gap;
-  fixing it requires deeper integration with Forge's phase / priority
-  loop and likely a custom `PlayerController` that auto-confirms "may"
-  triggers. Tracked for post-MVP.
-- **AI picks targets, not the scenario.** For `cast` actions the bridge
-  pushes the SpellAbility onto the stack but lets Forge's AI controller
-  pick targets. The TS scenario's `target: { kind: "card", name: "..." }`
-  is **not** bound on the Java side. A future iteration should inject
-  scripted targets via `sa.setTargetCard(...)` before stack-add.
-- **Cost is not paid.** Spells are cast for free (`stack.add(sa)`
-  bypasses cost payment). This means we don't capture `ManaSpent` /
-  `CostPaid` events. Acceptable for MVP — divergence in cost-payment
-  ordering is rare and not the highest-value parity signal.
-- **One turn, MAIN1 only.** Every action runs in turn 1, MAIN1, on
-  player 0. Multi-turn scenarios (Sulfuric Vortex over multiple upkeeps)
-  would need full phase progression.
+## Remaining mvp-known divergences (post-V2)
+
+After V2 the parity harness reports:
+
+- **0 `real-divergence-investigate`** rows.
+- **Full match** scenarios: 14/30 (every ETB-only / static / mana-ability /
+  in-hand-only scenario, plus a couple of pure-effect casts).
+- **`mvp-known` divergences** (16/30): residual gaps that all explain
+  themselves through documented buckets — see
+  `tools/parity-harness/divergences.md`. The dominant remaining classes
+  are:
+  - `target-mismatch` (6) — TS-only `CardTargeted` / `CrimeCommitted`
+    events that have no Forge counterpart (Forge folds targeting into
+    the SpellCast event).
+  - `free-cast-missing-mana` (9) — TS-only `CostPaid` event that the
+    bridge maps to `ManaSpent` only (Forge has no separate `CostPaid`).
+  - `ts-runner-shallow` (13) — Java-only events from V2's full stack
+    drain that the **M2 TS golden runner doesn't emit** (the TS runner
+    captures only the primary action; trigger fan-out + StackItemResolved
+    + post-resolution CardChangedZone are missing). Closing these is
+    M5 work on the TS runner, not the bridge.
 - **Setup events are bucketed separately.** The `setupEvents` array
   contains the moveTo events from seeding the battlefield. The action
   parity comparison should look at `events` only.

@@ -1,8 +1,56 @@
 {
   "scenarioId": "giant-growth-cast",
   "seed": 85,
-  "engineVersion": "forge-bridge-mvp-0.1.0",
-  "events": [],
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Giant Growth",
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 16
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Grizzly Bears (1)]"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Giant Growth",
+        "cardId": 2,
+        "fromZone": "Stack",
+        "toZone": "Graveyard"
+      }
+    }
+  ],
   "setupEvents": [
     {
       "kind": "CardChangedZone",

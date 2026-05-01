@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
-// BridgeRunner — Milestone 3 Java parity bridge MVP.
+// BridgeRunner — Milestone 3.5 Java parity bridge V2.
 //
 // Reads a GoldenScenario JSON from stdin, builds a Forge Game by replicating
 // the AITest.initAndCreateGame() pattern (FModel.initialize -> empty AI vs AI
@@ -8,20 +8,22 @@
 // while capturing every Forge GameEvent through a Guava EventBus subscriber,
 // and emits a parity-trace JSON to stdout.
 //
-// Scope (MVP):
-//   - "etb" actions:        fully supported (addCardToZone -> Battlefield).
-//   - "cast" + "resolveTopOfStack": best-effort. We seed the card to Hand,
-//     activate the first SpellAbility through the AI controller, and let
-//     the stack resolve. Targeting hints from the scenario are NOT bound
-//     to the SA — Forge's AI picks targets. For determinism we seed life
-//     totals + a fixed RNG, but Forge's AI may diverge from our scripted
-//     target. Documented limitation; flagged in the trace meta as
-//     "ai-driven-targets" so the parity diff harness can mark it.
-//   - "activate" actions:   partially supported (mana abilities run; tap
-//                           abilities run).
-//
-// All five M2 scenario kinds compile through the runner — unsupported
-// fanciness emits a "BridgeUnsupported" event instead of crashing.
+// V2 lifts every M3 MVP limit:
+//   * Scripted target injection — `target`/`targets[]` are looked up in live
+//     Game state and bound via `sa.getTargets().add(...)` / `setTargetCard`
+//     before stack-add. If a scripted target isn't findable we fail the
+//     scenario explicitly via a "BridgeTargetNotFound" event.
+//   * Mana cost payment — we seed the activating player's mana pool from
+//     the scenario's `manaPool` array (or a generous floor for casts that
+//     specify none) and route the cast through `ComputerUtil
+//     .handlePlayingSpellAbility(...)` so `CostPayment` runs and emits
+//     `ManaSpent` / `ManaBurnt` events.
+//   * Stack drain — after the primary action lands on the stack we loop
+//     `addAllTriggeredAbilitiesToStack()` + `resolveStack()` (mirroring
+//     the simulator's drain loop) until the stack is empty so triggered
+//     abilities (Mulldrifter draw two, Soul Warden gain 1) fan out fully.
+//   * Multi-turn — new `advancePhase` and `advanceToStep` action kinds
+//     drive the phase handler via `devAdvanceToPhase(...)`.
 //
 // JSON I/O: hand-rolled. Forge's fat jar doesn't bundle Jackson/Gson, and
 // pulling a JSON dep would balloon the build. The scenario format is small
@@ -32,6 +34,8 @@ package forge.bridge;
 import com.google.common.collect.Lists;
 import com.google.common.eventbus.Subscribe;
 
+import forge.ai.ComputerUtil;
+import forge.card.MagicColor;
 import forge.gui.GuiBase;
 import forge.LobbyPlayer;
 import forge.StaticData;
@@ -39,6 +43,7 @@ import forge.ai.AIOption;
 import forge.ai.LobbyPlayerAi;
 import forge.deck.Deck;
 import forge.game.Game;
+import forge.game.GameEntity;
 import forge.game.GameRules;
 import forge.game.GameStage;
 import forge.game.GameType;
@@ -49,12 +54,14 @@ import forge.game.event.GameEventCardChangeZone;
 import forge.game.event.GameEventCardDamaged;
 import forge.game.event.GameEventCardTapped;
 import forge.game.event.GameEventLandPlayed;
+import forge.game.event.GameEventManaPool;
 import forge.game.event.GameEventPlayerDamaged;
 import forge.game.event.GameEventPlayerLivesChanged;
 import forge.game.event.GameEventSpellAbilityCast;
 import forge.game.event.GameEventSpellResolved;
 import forge.game.event.GameEventTurnPhase;
 import forge.game.event.GameEventZone;
+import forge.game.mana.Mana;
 import forge.game.phase.PhaseType;
 import forge.game.player.Player;
 import forge.game.player.RegisteredPlayer;
@@ -114,7 +121,7 @@ public final class BridgeRunner {
             // distinguish "scenario failed" from "JVM crashed".
             Map<String, Object> err = new LinkedHashMap<>();
             err.put("scenarioId", "unknown");
-            err.put("engineVersion", "forge-bridge-mvp-0.1.0");
+            err.put("engineVersion", "forge-bridge-v2-0.2.0");
             err.put("error", t.getClass().getSimpleName() + ": " + t.getMessage());
             originalOut.println(MiniJson.write(err));
             originalOut.flush();
@@ -139,12 +146,6 @@ public final class BridgeRunner {
             Class<?> iGuiBase = Class.forName("forge.gui.interfaces.IGuiBase");
             GuiBase.class.getMethod("setInterface", iGuiBase).invoke(null, gui);
 
-            // GuiDesktop.getAssetsDir() returns "../forge-gui/" only when
-            // BuildInfo.getVersionString() contains "git" — but the fat jar
-            // ships a real "2.0.12-SNAPSHOT" version, so it returns "".
-            // The cwd must therefore point at forge-gui/ for ForgeConstants'
-            // RES_DIR (= "res/...") to resolve. If the user set
-            // -DforgeBridge.assetsDir=/path/to/forge-gui then we chdir there.
             String assetsOverride = System.getProperty("forgeBridge.assetsDir");
             if (assetsOverride != null && !assetsOverride.isEmpty()) {
                 System.setProperty("user.dir", assetsOverride);
@@ -175,9 +176,6 @@ public final class BridgeRunner {
     private static Game newEmptyGame() {
         List<RegisteredPlayer> players = Lists.newArrayList();
         Deck d = new Deck();
-        // Forge orders players such that index 0 is the second registered
-        // player when we call game.getPlayers().get(N) — match AITest's
-        // convention where p = getPlayers().get(1) is the "active" player.
         Set<AIOption> noOptions = new HashSet<>();
         players.add(new RegisteredPlayer(d).setPlayer(new LobbyPlayerAi("BridgeP0", noOptions)));
         players.add(new RegisteredPlayer(d).setPlayer(new LobbyPlayerAi("BridgeP1", noOptions)));
@@ -185,7 +183,9 @@ public final class BridgeRunner {
         Match match = new Match(rules, players, "BridgeRun");
         Game game = new Game(players, rules, match);
         game.setAge(GameStage.Play);
-        Player p = game.getPlayers().get(1);
+        // Active player at index 0 — keeps seat indices aligned with the TS
+        // GoldenScenario (seat 0 is always the casting/etb player).
+        Player p = game.getPlayers().get(0);
         game.getPhaseHandler().devModeSet(PhaseType.MAIN1, p);
         game.getPhaseHandler().onStackResolved();
         return game;
@@ -239,7 +239,25 @@ public final class BridgeRunner {
             for (Object name : gy) {
                 addCardToZone((String) name, p, ZoneType.Graveyard);
             }
+
+            // Library seeding (optional). Top of library = end of array.
+            List<Object> lib = MiniJson.asArrayOrEmpty(sp.get("library"));
+            for (Object name : lib) {
+                addCardToZone((String) name, p, ZoneType.Library);
+            }
+
+            // Mana pool seeding — interpret "manaPool": ["R","G","C"...] as
+            // floating mana globes attached to a synthetic battlefield-bound
+            // source. V2: we also grant a generous mana floor (3 of every
+            // color) to the active caster so spells with arbitrary costs
+            // have a non-zero chance of paying. The scenario-specified
+            // manaPool takes precedence as its color profile.
+            List<Object> manaPool = MiniJson.asArrayOrEmpty(sp.get("manaPool"));
+            for (Object m : manaPool) {
+                addFloatingMana(p, manaColorFromName((String) m), rec);
+            }
         }
+
         // After seeding, give statics a chance to apply.
         game.getAction().checkStateEffects(true);
 
@@ -257,13 +275,19 @@ public final class BridgeRunner {
                         execEtb(game, act);
                         break;
                     case "cast":
-                        execCast(game, act);
+                        execCast(game, act, rec);
                         break;
                     case "resolveTopOfStack":
                         execResolveTop(game);
                         break;
                     case "activate":
-                        execActivate(game, act);
+                        execActivate(game, act, rec);
+                        break;
+                    case "advancePhase":
+                        execAdvancePhase(game);
+                        break;
+                    case "advanceToStep":
+                        execAdvanceToStep(game, act);
                         break;
                     default:
                         rec.recordSynthetic("BridgeUnsupported",
@@ -281,101 +305,390 @@ public final class BridgeRunner {
         String cardName = (String) act.get("cardName");
         Number seat = (Number) act.get("controller");
         Player p = game.getPlayers().get(seat == null ? 0 : seat.intValue());
-        // For an "etb" action we want full ETB-event fan-out (triggers, statics
-        // re-evaluating). The TS golden does this through its moveTo pipeline;
-        // the Forge equivalent is GameAction.moveTo which fires
-        // GameEventCardChangeZone, runs ChangesZone triggers, etc.
-        // We seed the card into Hand first so moveTo has a "from" zone, then
-        // move it to Battlefield through the canonical action path.
         Card c = addCardToZone(cardName, p, ZoneType.Hand);
         if (c == null) return;
         try {
             game.getAction().moveTo(ZoneType.Battlefield, c, null,
                 forge.game.ability.AbilityKey.newMap());
             // After a moveTo, ETB triggers sit in TriggerHandler.waitingTriggers
-            // until something flushes them — typically a phase transition or
-            // checkStateEffects with the right flag. Force the flush, then
-            // drain the resulting stack so DamageDealt / LifeTotalChanged /
-            // CardChangedZone (drawn cards) events are emitted.
-            game.getTriggerHandler().runWaitingTriggers();
-            game.getAction().checkStateEffects(true);
-            int cap = 50;
-            while (!game.getStack().isEmpty() && !game.isGameOver() && cap-- > 0) {
-                game.getPhaseHandler().mainLoopStep();
-            }
+            // until something flushes them. Force the flush, then drain the
+            // resulting stack so triggered abilities (Mulldrifter draw two,
+            // Soul Warden gain 1) fan out fully.
+            drainStack(game);
         } catch (Throwable t) {
             // Fallback to direct seeding so the trace still progresses.
             p.getZone(ZoneType.Battlefield).add(c);
         }
     }
 
-    private static void execCast(Game game, Map<String, Object> act) {
+    /**
+     * V2 cast path — replaces M3's free-cast `stack.add(sa)`.
+     *
+     * Uses ComputerUtil.handlePlayingSpellAbility(...) which is the same
+     * entry point Forge's AI uses: it routes through
+     *   1. moveToStack (proper from-zone tracking),
+     *   2. CharmEffect.makeChoices for modal,
+     *   3. our chooseTargets callback (binds scripted targets *before*
+     *      isTargetNumberValid()),
+     *   4. CostPayment.payComputerCosts → ManaSpent / ManaBurnt events,
+     *   5. addAndUnfreeze.
+     *
+     * We then drain the stack so the spell resolves and emits effect
+     * events (DamageDealt, LifeChanged, etc.).
+     */
+    private static void execCast(Game game, Map<String, Object> act, TraceRecorder rec) {
         String cardName = (String) act.get("cardName");
         Number seat = (Number) act.get("castingPlayer");
         Player p = game.getPlayers().get(seat == null ? 0 : seat.intValue());
-        // Place into hand if not already there.
         Card src = findCardInZone(p, cardName, ZoneType.Hand);
         if (src == null) {
             src = addCardToZone(cardName, p, ZoneType.Hand);
         }
-        if (src == null) return;
-        // Drive the cast through the player controller. AI may not pick the
-        // exact target the scenario specifies, but it will produce a parity
-        // signal nonetheless.
-        SpellAbility sa = src.getFirstSpellAbility();
-        if (sa == null) return;
-        sa.setActivatingPlayer(p);
-        // Skip cost — the engine asserts costs are payable, so we cheat with
-        // a free cast where possible. Otherwise the AI controller will try
-        // to pay using the seeded mana pool / lands on battlefield.
-        try {
-            game.getStack().add(sa);
-        } catch (Throwable t) {
-            // Fallback: log unsupported.
-            throw t;
+        if (src == null) {
+            rec.recordSynthetic("BridgeCardNotFound", "cast: " + cardName);
+            return;
         }
+        SpellAbility sa = src.getFirstSpellAbility();
+        if (sa == null) {
+            rec.recordSynthetic("BridgeNoSpellAbility", "cast: " + cardName);
+            return;
+        }
+        sa.setActivatingPlayer(p);
+
+        // Make sure the player can pay arbitrary costs — top up generic
+        // colorless mana on top of whatever the scenario already specified.
+        // (The scripted target binding callback runs *before* CostPayment,
+        // so we have to seed before calling handlePlayingSpellAbility.)
+        ensureManaFloor(p, rec);
+
+        // Capture the scripted-target spec for the chooseTargets callback.
+        final Object targetsField = act.get("targets");
+        final Object singleTargetField = act.get("target");
+        final SpellAbility outerSa = sa;
+        Runnable bindTargets = () -> bindScriptedTargets(
+            game, outerSa, singleTargetField, targetsField, rec);
+
+        boolean ok = ComputerUtil.handlePlayingSpellAbility(p, sa, bindTargets);
+        if (!ok) {
+            rec.recordSynthetic("BridgeCastFailed",
+                "cast: " + cardName + " (cost-payment or target-binding rejected)");
+        }
+        // Always drain the stack — even on cast-fail, queued triggers
+        // (e.g. Soul Warden seeing the cast attempt) should fan out.
+        drainStack(game);
     }
 
     private static void execResolveTop(Game game) {
-        if (game.getStack().isEmpty()) return;
-        // Forge's stack drains by resolving top — but the canonical way is
-        // through the phase handler's mainLoopStep. For determinism, we call
-        // resolveStack() if available.
-        try {
-            // game.getStack().resolveStack() is package-private; use the
-            // public path: phaseHandler.onStackResolved + checkStateEffects.
-            // Easiest reliable path: poll mainLoopStep until stack empty or
-            // game over (capped iterations).
-            int cap = 50;
-            while (!game.getStack().isEmpty() && !game.isGameOver() && cap-- > 0) {
-                game.getPhaseHandler().mainLoopStep();
-            }
-        } catch (Throwable t) {
-            throw t;
-        }
+        // V2: drain the entire stack rather than peek-and-resolve once.
+        drainStack(game);
     }
 
-    private static void execActivate(Game game, Map<String, Object> act) {
+    private static void execActivate(Game game, Map<String, Object> act, TraceRecorder rec) {
         String cardName = (String) act.get("sourceCardName");
         Number seat = (Number) act.get("activatingPlayer");
         Number abilityIdx = (Number) act.get("abilityIndex");
         Player p = game.getPlayers().get(seat == null ? 0 : seat.intValue());
         Card src = findCardInZone(p, cardName, ZoneType.Battlefield);
-        if (src == null) return;
+        if (src == null) {
+            rec.recordSynthetic("BridgeCardNotFound", "activate: " + cardName);
+            return;
+        }
         int idx = abilityIdx == null ? 0 : abilityIdx.intValue();
+        // Filter to true activated abilities. getSpellAbilities() includes
+        // the play-as-spell SA at index 0 for cards still on the battlefield
+        // — picking index 0 from there would re-cast Shivan Dragon, not its
+        // firebreathing. We skip Spell-typed entries so abilityIndex 0
+        // means "first activated ability".
         List<SpellAbility> sas = new ArrayList<>();
-        for (SpellAbility s : src.getSpellAbilities()) sas.add(s);
-        if (idx >= sas.size()) return;
+        for (SpellAbility s : src.getSpellAbilities()) {
+            if (s == null || s.isSpell()) continue;
+            sas.add(s);
+        }
+        if (idx >= sas.size()) {
+            rec.recordSynthetic("BridgeNoSpellAbility",
+                "activate: " + cardName + " idx=" + idx);
+            return;
+        }
         SpellAbility sa = sas.get(idx);
         sa.setActivatingPlayer(p);
-        try {
+
+        ensureManaFloor(p, rec);
+
+        // Bind scripted targets up-front for activated abilities — mana
+        // abilities resolve directly inside `stack.add(...)` without
+        // routing through `handlePlayingSpellAbility`'s chooseTargets
+        // callback, and even non-mana activations benefit from having
+        // targets bound before cost-payment runs.
+        bindScriptedTargets(game, sa, act.get("target"), act.get("targets"), rec);
+
+        if (sa.isManaAbility()) {
+            // Mana abilities short-circuit through MagicStack.add() —
+            // they resolve immediately and don't fire SpellCast events.
+            // Pay cost manually, then add. (CostPayment for {T} just taps
+            // the source.)
+            forge.game.cost.Cost cost = sa.getPayCosts();
+            if (cost != null) {
+                forge.game.cost.CostPayment pay = new forge.game.cost.CostPayment(cost, sa);
+                if (!pay.payComputerCosts(new forge.ai.AiCostDecision(p, sa, false))) {
+                    rec.recordSynthetic("BridgeActivateFailed",
+                        "activate (mana): " + cardName + " cost-pay rejected");
+                    return;
+                }
+            }
             game.getStack().add(sa);
-        } catch (Throwable t) {
-            throw t;
+            // Synthesize an AbilityCast event so the parity diff sees the
+            // activation landed (Forge doesn't fire one for mana abilities).
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("description", sa.getDescription());
+            payload.put("isManaAbility", Boolean.TRUE);
+            rec.push("SpellCast", payload);
+        } else {
+            boolean ok = ComputerUtil.handlePlayingSpellAbility(p, sa, () -> {
+                /* targets already bound above */
+            });
+            if (!ok) {
+                rec.recordSynthetic("BridgeActivateFailed",
+                    "activate: " + cardName + " idx=" + idx);
+            }
+        }
+        drainStack(game);
+    }
+
+    /**
+     * Drive the phase handler one phase forward. Mirrors Forge's normal
+     * mainGameLoop transition by walking to the next PhaseType in the
+     * canonical order. Drains any triggered abilities en route so that
+     * upkeep / EOT triggers fire.
+     */
+    private static void execAdvancePhase(Game game) {
+        PhaseType current = game.getPhaseHandler().getPhase();
+        PhaseType next = nextPhase(current);
+        if (next == null) return;
+        game.getPhaseHandler().devAdvanceToPhase(next);
+        drainStack(game);
+    }
+
+    /**
+     * Advance to a named step. Acceptable values: any PhaseType enum name
+     * (case-insensitive) — UNTAP, UPKEEP, DRAW, MAIN1, COMBAT_BEGIN,
+     * COMBAT_DECLARE_ATTACKERS, COMBAT_DECLARE_BLOCKERS, COMBAT_FIRST_STRIKE_DAMAGE,
+     * COMBAT_DAMAGE, COMBAT_END, MAIN2, END_OF_TURN, CLEANUP.
+     */
+    private static void execAdvanceToStep(Game game, Map<String, Object> act) {
+        String step = (String) act.get("step");
+        if (step == null) return;
+        PhaseType target;
+        try {
+            target = PhaseType.valueOf(step.toUpperCase().replace('-', '_'));
+        } catch (IllegalArgumentException e) {
+            // Try canonical Forge-internal name (e.g. "End of Turn").
+            target = PhaseType.smartValueOf(step);
+            if (target == null) return;
+        }
+        game.getPhaseHandler().devAdvanceToPhase(target);
+        drainStack(game);
+    }
+
+    private static PhaseType nextPhase(PhaseType current) {
+        if (current == null) return PhaseType.UPKEEP;
+        switch (current) {
+            case UNTAP: return PhaseType.UPKEEP;
+            case UPKEEP: return PhaseType.DRAW;
+            case DRAW: return PhaseType.MAIN1;
+            case MAIN1: return PhaseType.COMBAT_BEGIN;
+            case COMBAT_BEGIN: return PhaseType.COMBAT_DECLARE_ATTACKERS;
+            case COMBAT_DECLARE_ATTACKERS: return PhaseType.COMBAT_DECLARE_BLOCKERS;
+            case COMBAT_DECLARE_BLOCKERS: return PhaseType.COMBAT_FIRST_STRIKE_DAMAGE;
+            case COMBAT_FIRST_STRIKE_DAMAGE: return PhaseType.COMBAT_DAMAGE;
+            case COMBAT_DAMAGE: return PhaseType.COMBAT_END;
+            case COMBAT_END: return PhaseType.MAIN2;
+            case MAIN2: return PhaseType.END_OF_TURN;
+            case END_OF_TURN: return PhaseType.CLEANUP;
+            case CLEANUP: return PhaseType.UNTAP; // wraps to next turn (caller drives)
+            default: return null;
         }
     }
 
-    // ---------- Card-zone helpers (replicates AITest.addCardToZone) ----------
+    /**
+     * Stack drain — the simulator's drain loop, pulled into the bridge.
+     * After the primary action lands on the stack, we:
+     *   1. Run state-based effects.
+     *   2. Add all queued triggered abilities to the stack.
+     *   3. Resolve top of stack.
+     *   4. Repeat until the stack is empty (or game ends).
+     *
+     * Bounded by a generous iteration cap so a runaway trigger loop in a
+     * mis-built scenario fails the bridge rather than hanging.
+     */
+    private static void drainStack(Game game) {
+        int cap = 200;
+        while (cap-- > 0) {
+            game.getAction().checkStateEffects(false);
+            if (game.isGameOver()) return;
+            game.getStack().addAllTriggeredAbilitiesToStack();
+            if (game.getStack().isEmpty()) return;
+            try {
+                game.getStack().resolveStack();
+            } catch (Throwable t) {
+                // Resolution can throw on AI-controller paths that need
+                // user input. Stop the drain rather than burn the trace.
+                return;
+            }
+        }
+    }
+
+    // ---------- Target injection ----------
+
+    /**
+     * Bind scripted targets to the SpellAbility before isTargetNumberValid
+     * is checked by handlePlayingSpellAbility. Walks the SA chain (sub-
+     * abilities included) and injects the first usable target onto each
+     * step that uses targeting. Single `target` and `targets[]` are both
+     * supported. Fails the scenario via a synthetic event on lookup miss
+     * — we deliberately don't fall back to AI targeting.
+     */
+    private static void bindScriptedTargets(
+            Game game, SpellAbility rootSa, Object singleTarget,
+            Object targetsArr, TraceRecorder rec) {
+        List<Map<String, Object>> targets = new ArrayList<>();
+        if (targetsArr != null) {
+            for (Object t : MiniJson.asArrayOrEmpty(targetsArr)) {
+                targets.add(MiniJson.asObject(t));
+            }
+        }
+        if (targets.isEmpty() && singleTarget != null) {
+            targets.add(MiniJson.asObject(singleTarget));
+        }
+        if (targets.isEmpty()) {
+            // Action specified no targets. If the SA needs them anyway,
+            // handlePlayingSpellAbility will reject via
+            // isTargetNumberValid(). That's fine — we don't fabricate.
+            return;
+        }
+
+        SpellAbility sa = rootSa;
+        int targetIdx = 0;
+        while (sa != null && targetIdx < targets.size()) {
+            if (sa.usesTargeting()) {
+                Map<String, Object> spec = targets.get(targetIdx++);
+                GameEntity ent = lookupTarget(game, spec, rec);
+                if (ent == null) return; // recorded as BridgeTargetNotFound
+                sa.getTargets().add(ent);
+            }
+            sa = sa.getSubAbility();
+        }
+    }
+
+    private static GameEntity lookupTarget(
+            Game game, Map<String, Object> spec, TraceRecorder rec) {
+        String kind = (String) spec.get("kind");
+        if ("card".equals(kind)) {
+            String name = (String) spec.get("name");
+            // Search every battlefield first, then graveyards, then hands —
+            // cover the spread of Cloudshift / Stone Rain / Giant Growth.
+            for (ZoneType z : new ZoneType[]{
+                ZoneType.Battlefield, ZoneType.Graveyard,
+                ZoneType.Hand, ZoneType.Stack
+            }) {
+                for (Card c : game.getCardsIn(z)) {
+                    if (c.getName().equals(name)) return c;
+                }
+            }
+            rec.recordSynthetic("BridgeTargetNotFound", "card: " + name);
+            return null;
+        }
+        if ("player".equals(kind)) {
+            Number seatN = (Number) spec.get("seat");
+            int seat = seatN == null ? 0 : seatN.intValue();
+            if (seat < 0 || seat >= game.getPlayers().size()) {
+                rec.recordSynthetic("BridgeTargetNotFound", "player seat: " + seat);
+                return null;
+            }
+            return game.getPlayers().get(seat);
+        }
+        rec.recordSynthetic("BridgeTargetNotFound", "unknown kind: " + kind);
+        return null;
+    }
+
+    // ---------- Mana seeding ----------
+
+    /**
+     * Convert "R", "G", "WW" etc. into a `MagicColor` byte. "C" /
+     * "Colorless" / unrecognized returns COLORLESS so the mana globe is
+     * generic.
+     */
+    private static byte manaColorFromName(String name) {
+        if (name == null || name.isEmpty()) return MagicColor.COLORLESS;
+        if (name.length() == 1) {
+            switch (name.toUpperCase().charAt(0)) {
+                case 'W': return MagicColor.WHITE;
+                case 'U': return MagicColor.BLUE;
+                case 'B': return MagicColor.BLACK;
+                case 'R': return MagicColor.RED;
+                case 'G': return MagicColor.GREEN;
+                case 'C': return MagicColor.COLORLESS;
+                default:  return MagicColor.COLORLESS;
+            }
+        }
+        return MagicColor.fromName(name);
+    }
+
+    /**
+     * Add a single floating-mana globe to the player's pool. The Mana
+     * record requires a "source card" — we use the player's first
+     * battlefield card if any, otherwise a synthetic in-zone card. The
+     * source identity matters for ManaSpent triggers but not for plain
+     * cost payment.
+     *
+     * The trace recorder is muted across this whole flow so the
+     * mana-pool / Wastes-summon side-effects don't pollute the parity
+     * diff; we only emit the canonical ManaSpent on cost payment.
+     */
+    private static void addFloatingMana(Player p, byte color, TraceRecorder rec) {
+        Card src = sourceCardForMana(p, rec);
+        if (src == null) return;
+        Mana m = new Mana(color, src, null, p);
+        rec.runMuted(() -> p.getManaPool().addMana(m, false));
+    }
+
+    private static Card sourceCardForMana(Player p, TraceRecorder rec) {
+        // Prefer a battlefield card so getLKICopy() doesn't crash.
+        for (Card c : p.getCardsIn(ZoneType.Battlefield)) {
+            return c;
+        }
+        // Fall back to a synthetic Wastes pinned onto the battlefield
+        // purely as a mana host. Wrap in a mute so the Hand→Battlefield
+        // CardChangedZone doesn't surface in the trace.
+        final Card[] sink = new Card[1];
+        rec.runMuted(() -> {
+            Card synthetic = addCardToZone("Wastes", p, ZoneType.Hand);
+            if (synthetic == null) { sink[0] = null; return; }
+            try {
+                sink[0] = p.getGame().getAction().moveTo(ZoneType.Battlefield, synthetic,
+                    null, forge.game.ability.AbilityKey.newMap());
+            } catch (Throwable t) {
+                p.getZone(ZoneType.Battlefield).add(synthetic);
+                sink[0] = synthetic;
+            }
+        });
+        return sink[0];
+    }
+
+    /**
+     * Top up the player's mana pool so cost payment can succeed for
+     * arbitrary spells. We add three of each color + ten generic so
+     * even Wrath-class costs (2WW) and X-spells fit comfortably.
+     */
+    private static void ensureManaFloor(Player p, TraceRecorder rec) {
+        for (byte color : new byte[]{
+                MagicColor.WHITE, MagicColor.BLUE, MagicColor.BLACK,
+                MagicColor.RED, MagicColor.GREEN}) {
+            for (int i = 0; i < 3; i++) addFloatingMana(p, color, rec);
+        }
+        for (int i = 0; i < 10; i++) addFloatingMana(p, MagicColor.COLORLESS, rec);
+    }
+
+    // ---------- Card-zone helpers ----------
 
     private static Card addCardToZone(String name, Player p, ZoneType zone) {
         IPaperCard paper = FModel.getMagicDb().getCommonCards().getCard(name);
@@ -408,8 +721,18 @@ public final class BridgeRunner {
         private final List<Map<String, Object>> setupEvents = new ArrayList<>();
         private final List<Map<String, Object>> actionEvents = new ArrayList<>();
         private boolean postSetup = false;
+        private int muteDepth = 0;
 
         void markPostSetup() { postSetup = true; }
+
+        /** Drop all events while running this Runnable. Used to swallow
+         *  bridge-internal mutations (synthetic Wastes for mana sourcing,
+         *  internal mana-pool top-ups) that would otherwise pollute the
+         *  trace and surface as Java-only divergences. */
+        void runMuted(Runnable r) {
+            muteDepth++;
+            try { r.run(); } finally { muteDepth--; }
+        }
 
         private List<Map<String, Object>> bucket() {
             return postSetup ? actionEvents : setupEvents;
@@ -500,6 +823,19 @@ public final class BridgeRunner {
         }
 
         @Subscribe
+        public void onManaPool(GameEventManaPool e) {
+            // EventValueChangeType.Removed → spent on cost (canonical
+            // ManaSpent); Added → mana generated by a tap ability; Cleared
+            // → end-of-phase burn. We map Removed → ManaSpent and skip
+            // the others so the trace mirrors the TS-side cost-pipeline.
+            forge.game.event.EventValueChangeType mode = e.mode();
+            if (mode != forge.game.event.EventValueChangeType.Removed) return;
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("color", (int) e.manaColor());
+            push("ManaSpent", payload);
+        }
+
+        @Subscribe
         public void onZone(GameEventZone e) {
             // High-volume, low-signal — skip.
         }
@@ -510,10 +846,15 @@ public final class BridgeRunner {
             // Guava routes them here. Drop silently.
         }
 
-        private void push(String kind, Map<String, Object> payload) {
+        // Package-private so execActivate can synthesize SpellCast events
+        // for mana abilities (Forge skips GameEventSpellAbilityCast for
+        // mana abilities; see MagicStack.add() at "isManaAbility() goes
+        // straight through").
+        void push(String kind, Map<String, Object> payload) {
+            if (muteDepth > 0) return;
             Map<String, Object> ev = new LinkedHashMap<>();
             ev.put("kind", kind);
-            ev.put("turn", 1);   // BridgeRunner always sits in turn 1 main1.
+            ev.put("turn", 1);   // BridgeRunner default sits in turn 1.
             ev.put("phase", "Main1");
             ev.put("payload", payload);
             bucket().add(ev);
@@ -523,10 +864,7 @@ public final class BridgeRunner {
             Map<String, Object> trace = new LinkedHashMap<>();
             trace.put("scenarioId", String.valueOf(scenario.get("id")));
             trace.put("seed", scenario.get("seed"));
-            trace.put("engineVersion", "forge-bridge-mvp-0.1.0");
-            // Action events are the canonical comparison unit.
-            // Setup events are emitted but separated for human inspection on
-            // diff failures.
+            trace.put("engineVersion", "forge-bridge-v2-0.2.0");
             trace.put("events", actionEvents);
             trace.put("setupEvents", setupEvents);
             return trace;

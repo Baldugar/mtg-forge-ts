@@ -1,7 +1,7 @@
 {
   "scenarioId": "eternal-witness-etb-return",
   "seed": 70,
-  "engineVersion": "forge-bridge-mvp-0.1.0",
+  "engineVersion": "forge-bridge-v2-0.2.0",
   "events": [
     {
       "kind": "CardChangedZone",
@@ -12,6 +12,34 @@
         "cardId": 3,
         "fromZone": "Hand",
         "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Lightning Bolt (2)]"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 2,
+        "fromZone": "Graveyard",
+        "toZone": "Hand"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false
       }
     }
   ],

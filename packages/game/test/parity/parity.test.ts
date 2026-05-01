@@ -52,13 +52,16 @@ describe("parity (TS golden vs Java golden)", () => {
         const tsOnlyUnknown = report.tsOnlyKinds.filter(
           (d) => d.classification === "real-divergence-investigate",
         );
+        const javaOnlyUnknown = report.javaOnlyKinds.filter(
+          (d) => d.classification === "real-divergence-investigate",
+        );
         const lines = [
           `parity: '${scenario.id}' has unexplained divergences`,
           `  ts-histogram:   ${JSON.stringify(report.tsKindHistogram)}`,
           `  java-histogram: ${JSON.stringify(report.javaKindHistogram)}`,
           `  shared:         ${JSON.stringify(report.sharedKinds)}`,
-          `  ts-only unknown: ${JSON.stringify(tsOnlyUnknown.map((x) => x.kind))}`,
-          `  java-only:      ${JSON.stringify(report.javaOnlyKinds)}`,
+          `  ts-only unknown:   ${JSON.stringify(tsOnlyUnknown.map((x) => x.kind))}`,
+          `  java-only unknown: ${JSON.stringify(javaOnlyUnknown.map((x) => x.kind))}`,
         ];
         throw new Error(lines.join("\n"));
       }
