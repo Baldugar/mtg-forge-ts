@@ -23,11 +23,10 @@
 //      self-trigger below.
 //   3. SpellCast self-trigger: when this spell is cast and `wasKicked`
 //      is true, yield a chooseCard over lands the controller controls.
-//      On chosen, addCounter PlusOnePlusOne N + register a Layer 7c
-//      "this land is also a 0/0 Elemental creature with haste"
-//      continuous effect (TODO(advanced) — the type-changing static is
-//      stamped via card.types/subtypes for MVP read-paths; full Layer 4
-//      type-add lives in a follow-up).
+//      On chosen, addCounter PlusOnePlusOne N, set
+//      `awakenAnimatedUntilEot` (Layer 4 + Layer 7b consume this in
+//      base-characteristics from Wave 103), AND add "haste" to the
+//      target land's keyword set (Wave 113 closes the Haste grant).
 //
 // Slot-naming note — wiring the optional-cost loop to a separate slot
 // (`awakenCost` rather than `kickerCost`) would be a pure refactor;
@@ -155,9 +154,18 @@ export class AwakenKeywordHandler extends KeywordHandler {
           // effect persists until the land leaves play. The flag name
           // preserves the "UntilEot" suffix to match the Crew/Saddle
           // pattern; full Layer 4 type-add + Layer 7b base-PT + Layer 6
-          // Haste-grant wiring driven off this flag is TODO(advanced).
+          // Wave 113 closes the Haste grant: we add "haste" directly to
+          // the awakened land's keyword set so summoning-sickness checks
+          // observe it without a Layer-6 grant (mirrors riot-keyword's
+          // self.keywords.add("haste") pattern). Wave 103 already closed
+          // Layer 4 type-add + Layer 7b base-PT via base-characteristics.
           const target = g.cards.get(targetId);
-          if (target) target.awakenAnimatedUntilEot = true;
+          if (target) {
+            target.awakenAnimatedUntilEot = true;
+            // CR 702.112a "...becomes a 0/0 Elemental creature with haste."
+            if (!target.keywords) target.keywords = new Set();
+            target.keywords.add("haste");
+          }
 
           // Register an inert Layer 7c effect timestamp slot — the
           // future advanced wiring reads it to anchor expiry.

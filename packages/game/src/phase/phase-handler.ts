@@ -168,6 +168,8 @@ export class PhaseHandler {
     game.flags.creaturesDiedThisTurn = 0;
     // Wave 59 — Freerunning availability tracker resets at TurnEnded.
     game.flags.combatDamageDealtThisTurn.clear();
+    // Wave 113 — Freerunning per-source set resets too.
+    game.flags.combatDamageSourcesThisTurn.clear();
     // Wave 60.D — leftover pending additional combat phases do NOT roll
     // over to the next turn (matches Forge: the trigger only schedules
     // the bonus combat for THIS turn).

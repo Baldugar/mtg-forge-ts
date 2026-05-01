@@ -129,6 +129,10 @@ export * from "./eternalize.js";
 // abilities synthesized by their respective keyword handlers.
 export * from "./channel.js";
 export * from "./transmute.js";
+// Wave 113 — Transfigure resolver (CR 702.74). Sister of Transmute; the
+// synthesized activated ability searches the library for a creature
+// card with the same mana value and puts it onto the battlefield.
+export * from "./transfigure.js";
 export * from "./reinforce.js";
 export * from "./scavenge.js";
 // Wave 55 — TurnFaceUp resolver (CR 702.36 / 702.94 / 702.166).

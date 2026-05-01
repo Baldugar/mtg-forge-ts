@@ -7,10 +7,12 @@
 // CR 702.179a — "Freerunning [cost]" — "You may cast this spell for its
 // freerunning cost if an opponent was dealt combat damage by a Rogue,
 // Assassin, Pirate, Mercenary, or Ninja you control this turn."
-// Forge MVP simplifies the gate to "any combat damage to any player by
-// your creatures this turn"; the printed-creature-type narrowing is
-// documented under TODO(advanced).
-import type { KeywordAst, ParamValue, PlayerSeat } from "@mtg-forge-ts/core";
+// Wave 113 closes the printed-creature-type narrowing: instead of
+// allowing freerunning whenever ANY of your creatures dealt combat
+// damage to a player, we walk `combatDamageSourcesThisTurn[seat]` and
+// require at least one source whose printed subtypes intersect the
+// allowed type set.
+import type { EntityId, KeywordAst, ParamValue } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { SpellAbility } from "../../ability/spell-ability.js";
 import type { Card } from "../../card.js";
@@ -34,10 +36,42 @@ const extractFreerunningCost = (card: Card): string | null => {
   return (costParam.raw as string) || "0";
 };
 
+// Wave 113 — CR 702.179a's allowed-creature-type list. Stored as a Set
+// for O(1) membership; matched case-sensitively against the printed
+// subtype string set on PaperCard.definition (Forge stores subtypes in
+// Title-Case canonical form). Adding a printed type here is the only
+// extension point if the corpus ever broadens.
+const FREERUNNING_TYPES: ReadonlySet<string> = new Set(["Rogue", "Assassin", "Pirate", "Mercenary", "Ninja"]);
+
+const sourceMatchesFreerunningType = (sourceId: EntityId, game: Game): boolean => {
+  const c = game.cards.get(sourceId);
+  if (!c) return false;
+  // Read the printed subtype set off the PaperCard definition. The
+  // source may have left the battlefield by the time freerunning is
+  // checked (a Rogue that dealt combat damage and was destroyed still
+  // counts per CR 702.179a — the qualifier is "this turn", not
+  // "currently controlled"). The printed types are the durable read.
+  const def = c.paperCard.definition;
+  const subtypes = def?.types?.subtypes;
+  if (!subtypes) return false;
+  for (const t of subtypes) {
+    if (FREERUNNING_TYPES.has(t)) return true;
+  }
+  return false;
+};
+
 const controllerDealtCombatDamage = (card: Card, game: Game): boolean => {
-  const flags = game.flags as { combatDamageDealtThisTurn?: ReadonlyMap<PlayerSeat, number> };
-  if (!flags.combatDamageDealtThisTurn) return false;
-  return (flags.combatDamageDealtThisTurn.get(card.controllerSeat) ?? 0) > 0;
+  // Wave 113 — narrow the gate: at least one source in
+  // combatDamageSourcesThisTurn[controllerSeat] must have a printed
+  // creature subtype in FREERUNNING_TYPES. An empty set / no matches
+  // returns false. The pre-Wave-113 fast-path "any damage" check is
+  // dropped because the new requirement is strictly narrower.
+  const sources = game.flags.combatDamageSourcesThisTurn.get(card.controllerSeat);
+  if (!sources || sources.size === 0) return false;
+  for (const id of sources) {
+    if (sourceMatchesFreerunningType(id, game)) return true;
+  }
+  return false;
 };
 
 export class FreerunningKeywordHandler extends KeywordHandler {

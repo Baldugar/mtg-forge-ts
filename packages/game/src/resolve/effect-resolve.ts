@@ -300,6 +300,26 @@ export function* resolveStackItem(game: Game, item: StackItem): Generator<Engine
       let destination =
         item.provenance.alternativeZoneDestination ??
         (isPermanent ? ZoneType.Battlefield : ZoneType.Graveyard);
+      // Wave 113 — Cipher (CR 702.97b) "Then you may exile this spell card
+      // encoded on a creature you control." Closes the prior TODO(advanced)
+      // in cipher-keyword.ts: when the cipher cast trigger established the
+      // encode link (source.cipherEncodedOnId !== undefined), redirect the
+      // post-resolve destination to Exile so the spell card is "exiled
+      // encoded on the creature" instead of going to its owner's
+      // graveyard. The combat-damage trigger already lives in the
+      // CipherKeywordHandler and reads `cipherEncodedHere` on the
+      // creature; the link survives the zone change. Only applies to
+      // non-permanent cipher spells (the printed corpus is all
+      // instants/sorceries — Forge's cipher keyword is restricted to
+      // those types).
+      if (
+        !isPermanent &&
+        source !== undefined &&
+        source.cipherEncodedOnId !== undefined &&
+        item.provenance.alternativeZoneDestination === undefined
+      ) {
+        destination = ZoneType.Exile;
+      }
       if (isAdventureSpellResolve && source !== undefined) {
         source.adventureSide = "spell";
         // Adventure half is an instant/sorcery — non-permanent. Override

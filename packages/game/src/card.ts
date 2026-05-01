@@ -450,6 +450,13 @@ export class Card {
   // saga-class.ts, but the slot is the authoritative read used by the
   // per-level conditional trigger/static gates).
   classLevel: number | undefined = undefined;
+  // Wave 113 — guard against double-registering the Class CounterAdded
+  // watcher when the keyword handler activates more than once (e.g. on
+  // a re-entry after blink). The watcher itself is safe to fire
+  // repeatedly, but registering it twice would yield duplicate level
+  // bumps per CounterAdded event. Reset on zone-leave by the keyword
+  // handler's deactivate (additive cleanup).
+  classLevelWatcherRegistered: boolean | undefined = undefined;
   // Wave 60.C — Class enchantment level cap (CR 716). Stamped by an
   // active MaxLevel static (`S:Mode$ MaxLevel | ValidCard$ Card.Self |
   // MaxLevel$ N`) on activate; cleared on deactivate. The Class level-up

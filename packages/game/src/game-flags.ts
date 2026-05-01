@@ -107,6 +107,14 @@ export interface GameFlags {
   // dealt combat damage by one of your creatures this turn"). Reset on
   // TurnEnded by phase-handler.
   combatDamageDealtThisTurn: Map<PlayerSeat, number>;
+  // Wave 113 — per-controller set of source card ids that dealt combat
+  // damage to a player this turn. Backs the Freerunning printed-type
+  // narrowing: CR 702.179a says the alt-cost is available only when an
+  // opponent was dealt combat damage by a Rogue / Assassin / Pirate /
+  // Mercenary / Ninja you control. The keyword handler walks this set
+  // and asks each source's PaperCard.definition.types.subtypes for a
+  // hit on the allowed type list. Reset on TurnEnded by phase-handler.
+  combatDamageSourcesThisTurn: Map<PlayerSeat, Set<EntityId>>;
   // Wave 60.D — per-seat counter of pending extra combat phases. Bumped
   // by the AB$ AdditionalCombat effect (Aggravated Assault / Relentless
   // Assault / Hellkite Charger / Combat Celebrant / Savage Beating /
@@ -218,6 +226,9 @@ export const createDefaultFlags = (): GameFlags => ({
   spellsCastThisGame: new Map(),
   // Wave 59 — Freerunning availability tracker.
   combatDamageDealtThisTurn: new Map(),
+  // Wave 113 — per-controller source id set for Freerunning's printed
+  // creature-type gate.
+  combatDamageSourcesThisTurn: new Map(),
   // Wave 60.D — per-seat extra-combat-phase counter.
   pendingAdditionalCombatPhases: new Map(),
   // Wave 60.G — per-seat extra-untap-step counter.

@@ -13,7 +13,10 @@
 //   1. Adds "transfigure" to card.keywords.
 //   2. Synthesizes a Battlefield-zone, sorcery-speed SpellAbility with
 //      cost `<cost>, Sac<1/CARDNAME>` and handlerKey "Transfigure". The
-//      tutor synthesis is documented under TODO(advanced).
+//      TransfigureEffect resolver (Wave 113) reads the source's printed
+//      mana value, searches the controller's library for a creature
+//      card with the same CMC, yields a chooseCard decision, puts the
+//      chosen card onto the battlefield, and shuffles the library.
 import type { KeywordAst, ParamValue, SVarAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";

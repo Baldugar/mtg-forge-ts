@@ -24,12 +24,12 @@
 //     resolve, yield a confirmAction; on confirm, run a free-cast pipeline
 //     of the ciphered card.
 //
-// TODO(advanced) — actual "exile spell encoded on creature" (CR 702.97b)
-// requires the cast pipeline to redirect post-resolution destination of
-// the cipher spell to a special ENCODED state. The MVP retains the
-// spell's normal post-resolution routing; the link suffices for the
-// damage-trigger free-cast loop, which is the observable behavior the
-// keyword carries.
+// Wave 113 — Cipher's "exile encoded on creature" (CR 702.97b) is now
+// closed. effect-resolve.ts checks `source.cipherEncodedOnId !==
+// undefined` post-resolution and redirects the destination from
+// Graveyard to Exile when the cipher cast trigger established the
+// encode link. The damage-trigger free-cast loop continues to read
+// the encoded link via `cipherEncodedHere` on the creature.
 import {
   CardType,
   type EntityId,

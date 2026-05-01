@@ -11,9 +11,11 @@
 // MVP scope:
 //   1. Adds "reconfigure" to card.keywords.
 //   2. Synthesizes a Battlefield-zone, sorcery-speed SpellAbility with
-//      cost `<cost>` and handlerKey "Reconfigure". The
-//      attach/unattach toggle and the Layer 4 not-a-creature override
-//      while attached are documented under TODO(advanced).
+//      cost `<cost>` and handlerKey "Reconfigure". The Layer 4
+//      "while attached, this isn't a creature" override is closed by
+//      Wave 113 in base-characteristics.ts: when the card carries the
+//      reconfigure keyword AND attachedTo !== null, base derivation
+//      strips CardType.Creature from the type set.
 import type { KeywordAst, ParamValue, SVarAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";

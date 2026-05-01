@@ -1116,6 +1116,17 @@ export class GameAction {
             const seat = sourceCard.controllerSeat;
             const prev = game.flags.combatDamageDealtThisTurn.get(seat) ?? 0;
             game.flags.combatDamageDealtThisTurn.set(seat, prev + final.amount);
+            // Wave 113 — record the source card id for Freerunning's
+            // printed creature-type gate (Rogue / Assassin / Pirate /
+            // Mercenary / Ninja). The handler walks this set at
+            // availability-check time and reads each source's printed
+            // subtypes from PaperCard.definition.
+            let srcs = game.flags.combatDamageSourcesThisTurn.get(seat);
+            if (!srcs) {
+              srcs = new Set();
+              game.flags.combatDamageSourcesThisTurn.set(seat, srcs);
+            }
+            srcs.add(final.sourceId);
           }
         }
         return mkEvent("DamageDealt", game.turn, game.phase, {

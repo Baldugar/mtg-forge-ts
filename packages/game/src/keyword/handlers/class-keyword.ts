@@ -32,15 +32,30 @@
 //      On resolve, the SA stamps card.classLevel = max(prev, level)
 //      AND adds Level counters so the SBA gates and counter-driven
 //      reads agree.
-//   3. Per-level conditional triggers/statics gated on classLevel:
-//      TODO(advanced). The slot is populated; downstream readers can
-//      consult `card.classLevel >= N` once Wave 53+ wires the gate.
-import type { KeywordAst, ParamValue, SVarAst } from "@mtg-forge-ts/core";
-import { ZoneType } from "@mtg-forge-ts/core";
+//   3. CounterAdded watcher: when a Level counter is added to this
+//      Class, bump card.classLevel = max(prev, total) so per-level
+//      conditional triggers/statics that consult `card.classLevel >= N`
+//      stay synchronized with the live counter total without relying
+//      on the SBA sweep timing (closes the prior TODO(advanced)).
+import type {
+  EntityId,
+  GameEvent,
+  KeywordAst,
+  ParamValue,
+  SVarAst,
+  TriggeredAbility,
+} from "@mtg-forge-ts/core";
+import { CounterType, ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";
+import type { Game } from "../../game.js";
+import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
+
+type TriggeredAbilityWithResolver = TriggeredAbility & {
+  readonly resolver: StackItemResolver | null;
+};
 
 /**
  * Parse the Class detail string. Form: "level:cost:flagAndKey" — the
@@ -82,6 +97,55 @@ export class ClassKeywordHandler extends KeywordHandler {
     // Default level 1 on first activation (mirror of the SBA bump in
     // sba/saga-class.ts which adds Level=1 when the counter is 0).
     if (card.classLevel === undefined) card.classLevel = 1;
+
+    // Wave 113 — CounterAdded watcher: when a Level counter is added to
+    // this Class, bump card.classLevel = max(prev, total). Closes the
+    // prior TODO(advanced) so per-level static / trigger gates that read
+    // `card.classLevel >= N` agree with the live counter total without
+    // relying on the SBA sweep timing. Idempotent (registered once per
+    // activate) — the keyword handler activates once per zone-entry, so
+    // a single watcher per source card is correct. Mirrors chapter-keyword's
+    // Lore-counter watcher pattern.
+    if (card.classLevelWatcherRegistered !== true) {
+      card.classLevelWatcherRegistered = true;
+      const game = ctx.game;
+      const sourceCardId = ctx.sourceCardId;
+      const controllerSeat = ctx.controllerSeat;
+      const watcherId = game.newEntityId();
+      const watcher: TriggeredAbilityWithResolver = {
+        id: watcherId,
+        kind: "triggered",
+        sourceCardId,
+        activeInZones: new Set([ZoneType.Battlefield]),
+        timestamp: 0,
+        controllerSeatAtReg: controllerSeat,
+        isDelayed: false,
+        matches(event: GameEvent): boolean {
+          if (event.kind !== "CounterAdded") return false;
+          const p = event.payload as { cardId: EntityId; counterType: string };
+          if (p.cardId !== sourceCardId) return false;
+          return p.counterType === (CounterType.Level as string);
+        },
+        resolver: {
+          // biome-ignore lint/correctness/useYield: pure data-mutation watcher — bumps classLevel from the live Level counter total; no engine yields needed
+          *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
+            const g = gameUnknown as Game;
+            const c = g.cards.get(sourceCardId);
+            if (!c) return;
+            const total = c.counters.get(CounterType.Level) ?? 0;
+            const prev = c.classLevel ?? 1;
+            if (total > prev) {
+              c.classLevel = total;
+              g.layerEngine.bumpEpoch("class-level-bump");
+            }
+            return;
+          },
+        },
+      };
+      if (!card.triggeredAbilities) card.triggeredAbilities = [];
+      card.triggeredAbilities.push(watcher as unknown as TriggeredAbility);
+      game.triggerRegistry.register(watcher as unknown as TriggeredAbility);
+    }
 
     const detailParam = ast.params?.detail as ParamValue | undefined;
     const detailRaw = detailParam && detailParam.kind === "literal" ? (detailParam.raw as string) : "";
@@ -142,11 +206,12 @@ export class ClassKeywordHandler extends KeywordHandler {
     // instead expose the level via an attached metadata slot read by
     // a CounterAdded watcher (mirroring chapter-keyword).
     //
-    // TODO(advanced) — wire a per-level CounterAdded watcher that
-    // reads card.counters.get(CounterType.Level) and stamps
-    // card.classLevel = max(prev, level). For MVP, the SBA sweep
-    // observes the Level counter and the test asserts the counter
-    // increment directly.
+    // Wave 113 — the per-level CounterAdded watcher is now wired at
+    // the top of activate() (gated by classLevelWatcherRegistered).
+    // The watcher fires on each Level-counter add and stamps
+    // card.classLevel = max(prev, total). The synthesized SA's
+    // PutCounter handlerKey adds 1 Level counter on each activation,
+    // so the watcher sees the bump and propagates it to the slot.
     void level;
   }
 
@@ -154,6 +219,9 @@ export class ClassKeywordHandler extends KeywordHandler {
     const card = ctx.game.cards.get(ctx.sourceCardId);
     if (!card) return;
     card.keywords?.delete("class");
+    // Wave 113 — clear the watcher guard so a re-entry (blink / clone /
+    // bestow re-attach) can re-register the watcher.
+    card.classLevelWatcherRegistered = undefined;
     // classLevel slot left as-is — re-entry after blink/exile re-stamps
     // via activate(). Wave 53+ may add a controller-change reset hook.
   }

@@ -284,6 +284,25 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     base.toughness = 0;
   }
 
+  // Wave 113 — Reconfigure (CR 702.150a) "While attached, this isn't a
+  // creature." Closes the Layer 4 portion of the prior TODO(advanced)
+  // in reconfigure-keyword.ts: when the card carries the reconfigure
+  // keyword AND is currently attached (attachedTo !== null), we strip
+  // CardType.Creature from the type set so it reads as the equipment-
+  // form (Artifact + Equipment subtype). The Reconfigure activated
+  // ability handles the attach/unattach toggle; this baseline ensures
+  // a reconfigure card that's attached (post-toggle) is no longer a
+  // creature for combat / target-restriction / SBA checks. Additive
+  // peers (Crew / Awaken / Bestow on top) compose naturally — they
+  // re-add Creature on their own conditions.
+  if (
+    card.attachedTo !== null &&
+    card.keywords?.has("reconfigure") === true &&
+    card.reconfigureCost !== undefined
+  ) {
+    base.types.delete(CARDTYPE_CREATURE);
+  }
+
   // Wave 45 — ChangeText (CR 612). Apply each text-change rule on top of
   // the populated characteristics. Wave 98 — rules-text rewrite path is
   // now wired in alongside the color-set / subtype-set swaps, so any
