@@ -156,6 +156,17 @@ effectRegistry.register(DigMultipleEffect);
 // Forge `SP$ Goad` (CR 701.42) — set the goaded flag on each target. Combat
 // declaration logic treats a goaded creature as "must attack if able and must
 // attack a player other than the goader".
+//
+// Wave 82 — also stamps `goaderSeats` on the card so the "must attack a
+// player other than the goader" rule has the data it needs at declaration
+// time. CR 701.42b explicitly admits multiple goaders (each Goad is its
+// own effect), so the slot is a Set keyed by PlayerSeat — every goader
+// adds itself; combat-declaration logic intersects the legal defenders
+// with the complement of the goader set. The slot is duck-typed (no
+// snapshot expansion needed for this wave); when the set is empty (e.g.
+// pre-Wave-82 ungoaded card or one whose goading was cleared at EOT) the
+// gate degenerates to "must attack any opponent if able" which mirrors
+// the prior MVP behavior.
 export class GoadEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Goad";
 
@@ -165,9 +176,11 @@ export class GoadEffect extends SpellAbilityEffect {
       const card = game.cards.get(id);
       if (!card) continue;
       card.goaded = true;
+      const slot = card as { goaderSeats?: Set<PlayerSeat> };
+      const seats = slot.goaderSeats ?? new Set<PlayerSeat>();
+      seats.add(sa.controllerSeat);
+      slot.goaderSeats = seats;
     }
-    // TODO(advanced): track goader seat so the "other than goader" rule is
-    // enforced during combat declaration.
   }
 }
 effectRegistry.register(GoadEffect);

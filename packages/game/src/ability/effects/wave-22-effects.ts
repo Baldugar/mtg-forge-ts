@@ -47,9 +47,18 @@ const otherSeat = (seat: PlayerSeat, game: Game): PlayerSeat => {
 
 // 1. Detain ------------------------------------------------------------------
 // Forge `SP$ Detain` (Ravnica: Return to Ravnica; CR 701.32) — tap target
-// permanent and prevent it from attacking, blocking, or activating non-mana
-// abilities until its controller's next turn. MVP: tap each target + stamp a
-// `detainedUntilTurn` flag on the card.
+// permanent and prevent it from attacking or blocking until its
+// controller's next turn.
+//
+// Wave 82 — wires `detainedUntilTurn` into the combat-declaration gate.
+// canAttack and canBlock (statics/wave65-combat-gates.ts) both consult
+// the flag: while `game.turn < card.detainedUntilTurn` the creature is
+// rejected as an attacker AND as a blocker. The flag clears
+// automatically once the affected controller's next turn opens
+// (no manual cleanup needed — the gate just stops firing). Activated-
+// ability gating (CR 701.32 — "can't activate non-mana abilities") is
+// `// TODO(advanced)` until SP3+ enumerates activated abilities through
+// the priority orchestrator (legal-action-enumerator stops at castSpell).
 export class DetainEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Detain";
 
@@ -61,8 +70,6 @@ export class DetainEffect extends SpellAbilityEffect {
       yield* game.action.tap(id);
       (card as { detainedUntilTurn?: number }).detainedUntilTurn = game.turn + 1;
     }
-    // TODO(advanced): wire detainedUntilTurn into combat declaration + activated
-    // ability gating, and emit CardDetained event.
   }
 }
 effectRegistry.register(DetainEffect);
@@ -103,8 +110,21 @@ export class DayTimeEffect extends SpellAbilityEffect {
 effectRegistry.register(DayTimeEffect);
 
 // 3. Poison ------------------------------------------------------------------
-// Forge `SP$ Poison` (CR 704.5c) — give target player N poison counters. MVP:
-// bump the player's poison-counter store and emit PlayerPoisoned.
+// Forge `SP$ Poison` (CR 704.5c) — give target player N poison counters.
+//
+// Wave 82 — write the canonical `player.counters.get(CounterType.Poison)`
+// slot (the same store the SBA loss-condition checker reads at
+// sba/loss-conditions.ts) instead of the duck-typed `poisonCounters` slot.
+// Earlier waves stored counts on `(player as { poisonCounters?: number })`,
+// which meant the SBA threshold (CR 704.5c — 10 poison counters → lose)
+// never fired off this handler. Mirroring the Wither/Infect damage path
+// (game-action.ts:1064) wires Poison through the canonical store so loss
+// + proliferate + snapshot all engage. Bumps the poison counter directly
+// (no MutationIntent for player counters yet — same shape as the wither
+// path) and additionally stamps the legacy `poisonCounters` slot so any
+// observers reading the duck-typed field still see the same total.
+// Vorinclex-style replacement parity is `// TODO(advanced)` for the
+// Player-counter MutationIntent layer (SP3+).
 export class PoisonEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
@@ -112,8 +132,12 @@ export class PoisonEffect extends SpellAbilityEffect {
     const seat: PlayerSeat =
       definedRaw === "Opponent" ? otherSeat(sa.controllerSeat, game) : sa.controllerSeat;
     const player = game.getPlayer(seat);
-    const cur = (player as { poisonCounters?: number }).poisonCounters ?? 0;
-    (player as { poisonCounters?: number }).poisonCounters = cur + num;
+    const curCanonical = player.counters.get(CounterType.Poison) ?? 0;
+    player.counters.set(CounterType.Poison, curCanonical + num);
+    // Back-compat: keep the legacy duck-typed slot in sync for any consumers
+    // still reading off `(player as { poisonCounters?: number })`.
+    const curLegacy = (player as { poisonCounters?: number }).poisonCounters ?? 0;
+    (player as { poisonCounters?: number }).poisonCounters = curLegacy + num;
     yield {
       kind: "event",
       event: {
@@ -124,8 +148,6 @@ export class PoisonEffect extends SpellAbilityEffect {
         payload: { playerSeat: seat, amount: num },
       },
     };
-    // TODO(advanced): route through game.action so SBA threshold (10 = lose)
-    // and replacements (Vorinclex variant) fire.
   }
 
   static override readonly handlerKey = "Poison";
@@ -442,8 +464,17 @@ export class GainOwnershipEffect extends SpellAbilityEffect {
 effectRegistry.register(GainOwnershipEffect);
 
 // 16. Unattach (effect form) --------------------------------------------------
-// Forge `SP$ Unattach` — unattach an Aura/Equipment from its host. MVP:
-// clear attachedTo on each target + emit CardUnattached.
+// Forge `SP$ Unattach` — unattach an Aura/Equipment from its host.
+//
+// Wave 82 — route through `game.action.unattach` so the canonical
+// replacement chain runs (Replace$ Unattach handlers — Wave 26's
+// AttachReplacement family) AND the per-attachment Layer 6 grants are
+// removed via auraGrantLedger.onUnattach (Task 43). The MVP path stamped
+// `attachedTo = null` directly, which left aura grants stale (a buffed
+// creature kept the +1/+1 grant after the aura "unattached" via SP$
+// Unattach because the ledger never fired). The action mutator also
+// updates the host card's `attachments[]` array, mirroring the SBA-
+// driven unattach path used by sba-engine.ts:210.
 export class UnattachEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Unattach";
 
@@ -452,20 +483,12 @@ export class UnattachEffect extends SpellAbilityEffect {
     for (const id of ids) {
       const card = game.cards.get(id);
       if (!card) continue;
-      (card as { attachedTo?: EntityId | null }).attachedTo = null;
-      yield {
-        kind: "event",
-        event: {
-          kind: "CardUnattached",
-          version: 1,
-          turn: game.turn,
-          phase: game.phase,
-          payload: { sourceId: id, reason: "effect" },
-        },
-      };
+      // game.action.unattach is a no-op if attachedTo is already null
+      // (matches tap/untap convention — no spurious event/replacement
+      // chain). Tests stamp a fake attachedTo so the unattach actually
+      // runs.
+      yield* game.action.unattach(id, "effect");
     }
-    // TODO(advanced): route through game.action.unattach so SBA-driven
-    // unattachments and dependent triggers fire.
   }
 }
 effectRegistry.register(UnattachEffect);

@@ -36,8 +36,20 @@ import { gatherRestrictions } from "./cant-must-may.js";
  * Wave 50 registered the CantAttack static handler; Wave 65.A wires the
  * read at declareAttackers so a Propaganda-shape "creatures can't attack"
  * static actually rejects the declaration.
+ *
+ * Wave 82 — also consults `card.detainedUntilTurn` (CR 701.32 — a detained
+ * permanent can't attack on the controller's next turn). The DetainEffect
+ * (wave-22-effects.ts:DetainEffect) stamps `detainedUntilTurn = game.turn
+ * + 1`; this gate rejects the attacker as long as `game.turn <
+ * detainedUntilTurn`. Once the affected controller's next turn opens
+ * (`game.turn >= detainedUntilTurn`) the gate clears automatically.
  */
 export const canAttack = (game: Game, attackerId: EntityId): boolean => {
+  const card = game.cards.get(attackerId);
+  if (card !== undefined) {
+    const detainedUntil = (card as { detainedUntilTurn?: number }).detainedUntilTurn;
+    if (detainedUntil !== undefined && game.turn < detainedUntil) return false;
+  }
   for (const r of gatherRestrictions(game, "cantAttack")) {
     if (r.subjectFilter(attackerId, game)) return false;
   }
@@ -92,6 +104,11 @@ export const canBlock = (game: Game, blockerId: EntityId): boolean => {
   // remains until a CeaseBeingSuspected effect (or a "no longer
   // suspected" replacement) clears it.
   if (card.suspected === true) return false;
+  // Wave 82 — CR 701.32: a detained permanent can't block until the
+  // controller's next turn. Same flag as canAttack reads (set by
+  // DetainEffect — wave-22-effects.ts).
+  const detainedUntil = (card as { detainedUntilTurn?: number }).detainedUntilTurn;
+  if (detainedUntil !== undefined && game.turn < detainedUntil) return false;
   return true;
 };
 

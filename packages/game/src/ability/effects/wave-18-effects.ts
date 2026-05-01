@@ -578,8 +578,15 @@ effectRegistry.register(ChooseNumberEffect);
 
 // 13. TapOrUntap --------------------------------------------------------------
 // Forge `SP$ TapOrUntap` — yield a binary choice; tap or untap each target.
-// Without explicit user choice (no decision wire-up here), defaults to "tap
-// if untapped, untap if tapped" — the natural toggle.
+//
+// Wave 82 — yields a typed `confirmAction` decision (Wave 56 schema). The
+// prompt is `"Tap?"`; `confirmed = true` taps the target (and is a no-op
+// if already tapped), `confirmed = false` untaps (no-op if already
+// untapped). The independent per-target decision matches Forge's behavior
+// (each target prompts independently). When the controller doesn't
+// answer (drain-without-driver path) we fall back to the toggle — tap if
+// untapped, untap if tapped — mirroring the prior MVP for back-compat
+// with tests that don't yet thread a controller.
 export class TapOrUntapEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "TapOrUntap";
 
@@ -587,14 +594,28 @@ export class TapOrUntapEffect extends SpellAbilityEffect {
     for (const id of sa.targets) {
       const card = game.cards.get(id);
       if (!card) continue;
-      if (card.tapped) {
-        yield* game.action.untap(id);
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "confirmAction",
+          sourceId: sa.sourceCardId,
+          prompt: "Tap?",
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      let shouldTap: boolean;
+      if (response && response.kind === "confirmAction") {
+        shouldTap = response.confirmed === true;
       } else {
-        yield* game.action.tap(id);
+        // Toggle fallback — preserves the prior MVP behavior.
+        shouldTap = !card.tapped;
+      }
+      if (shouldTap) {
+        if (!card.tapped) yield* game.action.tap(id);
+      } else {
+        if (card.tapped) yield* game.action.untap(id);
       }
     }
-    // TODO(advanced): emit a confirmAction decision so the controller can
-    // explicitly pick tap-vs-untap independent of current state.
   }
 }
 effectRegistry.register(TapOrUntapEffect);
@@ -660,15 +681,33 @@ effectRegistry.register(TimeTravelEffect);
 // 17. ChooseDirection ---------------------------------------------------------
 // Forge `SP$ ChooseDirection` — Choose left or right (multiplayer-relevant).
 // Stores on source.chosenDirection.
+//
+// Wave 82 — yields a typed `chooseDirection` decision (Wave 56 schema —
+// player-decisions.ts:560). The chosen direction is normalized to
+// "Left" / "Right" (the schema admits lowercase; Card.chosenDirection
+// stores capitalized form for back-compat with Wave 18's earlier
+// readers). On missing / wrong-shape response we fall back to "Left"
+// deterministically — same behavior as the prior MVP.
 export class ChooseDirectionEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChooseDirection";
 
-  // biome-ignore lint/correctness/useYield: deterministic default — left
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    // TODO(advanced): yield a decision request once the chooseDirection
-    // request kind exists. MVP defaults to "Left" deterministically.
     const source = game.cards.get(sa.sourceCardId);
-    if (source) source.chosenDirection = "Left";
+    if (!source) return;
+    const rawResponse = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseDirection",
+        playerSeat: sa.controllerSeat,
+        sourceId: sa.sourceCardId,
+      },
+    };
+    const response = rawResponse as DecisionResponse | undefined;
+    let direction: "Left" | "Right" = "Left";
+    if (response && response.kind === "chooseDirection") {
+      direction = response.direction === "right" ? "Right" : "Left";
+    }
+    source.chosenDirection = direction;
   }
 }
 effectRegistry.register(ChooseDirectionEffect);
