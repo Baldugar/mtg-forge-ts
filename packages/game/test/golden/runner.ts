@@ -57,13 +57,18 @@ import { Graveyard } from "../../src/zone/zones/graveyard.js";
 import { Hand } from "../../src/zone/zones/hand.js";
 import { Library } from "../../src/zone/zones/library.js";
 
-// Self-register all effects, cost parts, svar selectors, trigger handlers.
-// Order does not matter — each uses idempotent registration.
+// Self-register all effects, cost parts, svar selectors, trigger / keyword
+// / static handlers. Order does not matter — each uses idempotent
+// registration. M6.5: keyword + static handler sets were missing here, so
+// keyword-driven triggers (K:Chapter saga lore counters, K:Hideaway etc.)
+// never registered and Java parity surfaced their fan-out as TS-runner-shallow.
 import "../../src/ability/effects/index.js";
 import "../../src/cost/parts/index.js";
 import "../../src/svar/selectors/number.js";
 import "../../src/trigger/handlers/index.js";
 import "../../src/replacement/handlers/index.js";
+import "../../src/keyword/handlers/index.js";
+import "../../src/static/handlers/index.js";
 
 import type {
   GoldenBattlefieldEntry,
@@ -338,8 +343,15 @@ function buildContext(scenario: GoldenScenario): RunnerContext {
   };
 
   // Seed players' zones in deterministic order: library → graveyard → hand
-  // → battlefield. Battlefield last because moveTo there fires triggers
-  // that may inspect other zones.
+  // → battlefield. M6.5: mint ALL setup permanents into Hand first
+  // (registering their triggers + statics + replacements), THEN issue
+  // the moveTo(Battlefield) sequence. This mirrors Forge's behavior —
+  // when Aurelia moves to bf during setup, Soul Warden's trigger is
+  // already registered (even though SW is still in Hand) and matches
+  // Aurelia's ETB through the normal trigger registry path. Without the
+  // pre-mint step, Soul Warden's trigger doesn't exist yet at Aurelia's
+  // ETB time and the post-setup drain has nothing to fire.
+  const pendingPermanents: { perm: ScenarioPermanent; seat: PlayerSeat; cardId: EntityId }[] = [];
   for (let i = 0; i < 2; i++) {
     // PlayerSeat is a branded number; seat 0 is falsy in JS so `!seat`
     // would skip seat 0. Use explicit undefined-check.
@@ -356,23 +368,37 @@ function buildContext(scenario: GoldenScenario): RunnerContext {
     for (const name of seatBlock.hand) {
       mintCardInZone(ctx, name, seat, ZoneType.Hand);
     }
+    // Pre-mint each setup permanent into Hand so its triggers register
+    // before any moveTo fires. The order across players preserves the
+    // scenario authoring order (seat 0 then seat 1).
     for (const perm of seatBlock.battlefield) {
-      seedPermanent(ctx, perm, seat);
+      const id = mintCardInZone(ctx, perm.card, seat, ZoneType.Hand);
+      pendingPermanents.push({ perm, seat, cardId: id });
     }
   }
 
-  return ctx;
-}
-
-function seedPermanent(ctx: RunnerContext, perm: ScenarioPermanent, seat: PlayerSeat): void {
-  // Mint into Hand first, then drive moveTo(Battlefield) so the canonical
-  // ETB pipeline runs (replacement loop, layer-epoch bump, trigger queue).
-  const id = mintCardInZone(ctx, perm.card, seat, ZoneType.Hand);
-  driveMoveTo(ctx, id, ZoneType.Battlefield);
-  if (perm.tapped === true) {
-    const card = ctx.game.cards.get(id);
-    if (card) card.tapped = true;
+  // Now move every pending permanent to Battlefield in scenario order.
+  // ETB triggers fire as we go — and any inter-card trigger (Soul Warden
+  // sees Aurelia's ETB) is observable because both triggers were
+  // pre-registered above.
+  for (const p of pendingPermanents) {
+    driveMoveTo(ctx, p.cardId, ZoneType.Battlefield);
+    if (p.perm.tapped === true) {
+      const card = ctx.game.cards.get(p.cardId);
+      if (card) card.tapped = true;
+    }
   }
+
+  // Drain any setup-pending triggers (Aurelia's ETB queued a Soul-Warden
+  // gain-1 trigger that hasn't been added to the stack yet because the
+  // drainer only runs in the action loop). Run runStackUntilEmpty here
+  // so setup-trigger fan-out is captured in the setup pendingEvents
+  // bucket — symmetric with Bridge V2's setup-end drainStack.
+  if (pendingPermanents.length > 0) {
+    runStackUntilEmpty(ctx, { resolveFloor: true });
+  }
+
+  return ctx;
 }
 
 function mintCardInZone(ctx: RunnerContext, name: string, seat: PlayerSeat, zone: ZoneType): EntityId {

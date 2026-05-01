@@ -80,7 +80,11 @@ export class HideawayKeywordHandler extends KeywordHandler {
           // tapped" — CR text uses the wording "enters tapped"; modeling
           // it as a post-ETB tap is a small visible difference but
           // mechanically equivalent for SBA/combat purposes).
-          yield* g.action.tap(sourceCardId);
+          // M6.5 — suppress the CardTapped event because Forge's
+          // TapEffect skips firing GameEventCardTapped when the tap is
+          // ETB-related (`if (sa.hasParam("ETB")) tgtC.setTapped(true);`
+          // — see TapEffect.java). The state mutation still applies.
+          yield* g.action.tap(sourceCardId, { suppressEvent: true });
 
           // Peek top N library cards.
           const player = g.getPlayer(controllerSeat);

@@ -92,6 +92,8 @@ Oracle:If an effect would create one or more tokens under your control, it creat
 const restInPeaceSrc = `Name:Rest in Peace
 ManaCost:1 W
 Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, exile all graveyards.
+SVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile
 R:Event$ Moved | ValidCard$ Card | Destination$ Graveyard | ReplaceWith$ ExileInstead | Description$ Exile cards going to graveyards.
 SVar:ExileInstead:DB$ ChangeZone | Origin$ All | Destination$ Exile
 S:Mode$ Continuous | Affected$ Card.inZoneGraveyard | RemoveAllAbilities$ True | Description$ Graveyards have no cards.
@@ -1659,9 +1661,13 @@ export const SCENARIOS: readonly GoldenScenario[] = [
     id: "snapcaster-mage-etb",
     description: "Snapcaster Mage ETB; Flash keyword + ETB pump-grant trigger.",
     seed: 0x81,
-    cards: { "Snapcaster Mage": snapcasterMageSrc },
+    cards: { "Snapcaster Mage": snapcasterMageSrc, "Lightning Bolt": lightningBoltSrc },
     players: [
-      { life: 20, hand: ["Snapcaster Mage"], battlefield: [] },
+      // Lightning Bolt seeded in graveyard so the ETB Flashback trigger
+      // has a legal target on both engines (Forge skips an optional-no-
+      // legal-target trigger silently — without a target the bridge
+      // wouldn't surface a SpellCast and parity diverges).
+      { life: 20, hand: ["Snapcaster Mage"], graveyard: ["Lightning Bolt"], battlefield: [] },
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "etb", cardName: "Snapcaster Mage", controller: SEAT0 }],

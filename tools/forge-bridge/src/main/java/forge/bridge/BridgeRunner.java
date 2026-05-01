@@ -51,10 +51,12 @@ import forge.game.Match;
 import forge.game.card.Card;
 import forge.game.event.GameEvent;
 import forge.game.event.GameEventCardChangeZone;
+import forge.game.event.GameEventCardCounters;
 import forge.game.event.GameEventCardDamaged;
 import forge.game.event.GameEventCardTapped;
 import forge.game.event.GameEventLandPlayed;
 import forge.game.event.GameEventManaPool;
+import forge.game.event.GameEventPlayerCounters;
 import forge.game.event.GameEventPlayerDamaged;
 import forge.game.event.GameEventPlayerLivesChanged;
 import forge.game.event.GameEventSpellAbilityCast;
@@ -260,6 +262,16 @@ public final class BridgeRunner {
 
         // After seeding, give statics a chance to apply.
         game.getAction().checkStateEffects(true);
+
+        // M6.5 — drain any triggers queued during setup BEFORE we mark the
+        // post-setup boundary. Without this, Forge holds setup-time
+        // triggered abilities (e.g. Aurelia's ETB queues a Soul-Warden
+        // gain-1 trigger that wasn't drained because no addAll-to-stack
+        // ran between permanents) until the first action's drainStack
+        // executes, causing them to surface as action events. The TS
+        // runner buckets setup triggers into the setup phase too, so
+        // pulling Forge here keeps both sides symmetric.
+        drainStack(game);
 
         // Mark "setup events" boundary so the recorder can split them out.
         rec.markPostSetup();
@@ -798,6 +810,38 @@ public final class BridgeRunner {
             payload.put("oldLife", e.oldLives());
             payload.put("newLife", e.newLives());
             push("LifeTotalChanged", payload);
+        }
+
+        @Subscribe
+        public void onCardCounters(GameEventCardCounters e) {
+            // M6.5 — surface counter additions/removals so loyalty
+            // placements (planeswalkers), +1/+1 (Hardened Scales),
+            // hideaway/charge counters all align with the TS engine's
+            // canonical CounterAdded event. Forge's record carries old
+            // and new totals; we synthesize a single event with the
+            // delta so it matches the TS payload shape.
+            int oldVal = e.oldValue();
+            int newVal = e.newValue();
+            int delta = newVal - oldVal;
+            if (delta == 0) return;
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("cardName", e.card() == null ? null : e.card().getName());
+            payload.put("counterType", String.valueOf(e.type()).toLowerCase());
+            payload.put("amount", Math.abs(delta));
+            payload.put("removed", delta < 0);
+            push(delta < 0 ? "CounterRemoved" : "CounterAdded", payload);
+        }
+
+        @Subscribe
+        public void onPlayerCounters(GameEventPlayerCounters e) {
+            // Player counters (poison, energy, experience). Same shape
+            // as card counters but the recipient is a player. Mirror as
+            // CounterAdded with a `playerSeat` discriminator so the TS
+            // CounterAdded alias still matches.
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("counterType", String.valueOf(e.type()).toLowerCase());
+            payload.put("amount", e.amount());
+            push("CounterAdded", payload);
         }
 
         @Subscribe

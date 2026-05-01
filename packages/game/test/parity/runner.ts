@@ -145,6 +145,12 @@ function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
       // so the Bridge→Battlefield zone-move (which already matches)
       // remains the only signal.
       case "ReplacementApplied":
+      // M6.5: TS-only `TokenCreated` — Forge surfaces tokens via a
+      // `CardChangedZone(null → Battlefield)` (no discrete creation
+      // event), which already aligns 1:1 with the TS side's
+      // `CardChangedZone` for the token. The TS-only `TokenCreated`
+      // marker doubles up the token signal and inflates divergence.
+      case "TokenCreated":
         return true;
       default:
         return false;

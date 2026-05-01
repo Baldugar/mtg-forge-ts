@@ -772,7 +772,22 @@ export class GameAction {
 
   // === Tap/untap ===
 
-  *tap(cardId: EntityId): Generator<EngineYield, void, unknown> {
+  /**
+   * Tap a permanent.
+   *
+   * @param opts.suppressEvent — when true, the canonical CardTapped game
+   *   event is NOT emitted. Used by ETB-tap paths (Mosswort Bridge's
+   *   `R: ... | ReplaceWith$ ETBTapped` + `DB$ Tap | Defined$ Self | ETB$ True`)
+   *   so the Tap doesn't fire CardTapped triggers — matches Forge's
+   *   `TapEffect.java` ETB-branch which calls `tgtC.setTapped(true)`
+   *   directly (no GameEventCardTapped). The state mutation still
+   *   applies and statics observing tap-state still resolve through the
+   *   layer-epoch bump.
+   */
+  *tap(
+    cardId: EntityId,
+    opts: { readonly suppressEvent?: boolean } = {},
+  ): Generator<EngineYield, void, unknown> {
     const card = this.game.cards.get(cardId);
     // WHY pre-check before building intent: idempotent no-op on a missing
     // card or already-tapped permanent — no replacement chain for
@@ -780,6 +795,17 @@ export class GameAction {
     // on redundant tap() calls per Forge semantics; skipping the intent
     // also skips replacement gather, matching reality.
     if (!card || card.tapped) return;
+    if (opts.suppressEvent === true) {
+      // ETB-tap fast path: mutate state + bump layer epoch, but DO NOT
+      // emit CardTapped. Replacement chain is intentionally skipped here
+      // because the ETB intent already routed through the moveTo
+      // replacement chain (where Mosswort's "enters tapped" replacer
+      // lives); a second replacement gather on the inner Tap would
+      // double-apply.
+      card.tapped = true;
+      this.game.layerEngine.bumpEpoch("tap");
+      return;
+    }
     const intent: TapIntent = { kind: "tap", cardId };
     yield* this.applyWithReplacements<TapIntent>(
       intent,
