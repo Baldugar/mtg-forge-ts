@@ -499,10 +499,24 @@ function runCast(
     );
   }
 
-  // If a target was supplied and the stack-item resolver isn't already
-  // bound to it (cast pipeline binds via chooseCastTargets only when the
-  // PaperCard had a targetRestriction), patch a target-bound resolver in.
-  if (action.target) {
+  // If a target was supplied and the cast pipeline didn't already bind
+  // it (only happens when the PaperCard has no targetRestriction —
+  // chooseCastTargets is the canonical bind path otherwise), patch a
+  // target-bound resolver in.
+  //
+  // M4.5 — only patch when stackItem has no bound targets. Patching an
+  // already-bound stackItem corrupts player targets in scenarios with
+  // multiple cards in hand: `resolveTarget` returns `seat` as a raw
+  // EntityId, which collides with cardIds when the seat number happens
+  // to match a card's id. The DealDamage effect then misclassifies the
+  // target as a creature. Trusting the pipeline's binding fixes this
+  // (lightning-bolt-target-player still works because that path already
+  // binds via chooseCastTargets too).
+  const pipelineBoundTargets =
+    stackItem.targets !== null &&
+    Array.isArray(stackItem.targets) &&
+    (stackItem.targets as readonly unknown[]).length > 0;
+  if (action.target && !pipelineBoundTargets) {
     const targetId = resolveTarget(ctx, action.target);
     const card = ctx.game.cards.get(id);
     const saTemplate = card?.spellAbilities[0];

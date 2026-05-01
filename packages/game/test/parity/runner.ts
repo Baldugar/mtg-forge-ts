@@ -110,10 +110,37 @@ export function normalizeTrace(
  * Engine-internal events that have no parity counterpart and should be
  * stripped before comparison. These are TS-only side-channels that
  * would otherwise inflate divergence counts.
+ *
+ * M4.5 strips:
+ *   - `CardDestroyed` / `StateBasedActionApplied` (TS-only): the TS
+ *     engine emits explicit destroy + SBA-applied marker events on top
+ *     of the canonical `CardChangedZone(Battlefield→Graveyard)`. Forge's
+ *     bridge captures only the zone-move (which already matches on both
+ *     sides). The TS-only marker kinds inflate the diff for no signal.
+ *   - `CostPaid` (TS-only): umbrella event that brackets the per-globe
+ *     `ManaSpent` events. Forge has no equivalent — `ManaSpent` already
+ *     matches per-globe on both sides via the bridge V2 cost pipeline.
+ *   - `CardTargeted` / `CrimeCommitted` (TS-only): targeting/crime
+ *     bookkeeping that Forge folds into the `SpellCast` payload rather
+ *     than firing as separate event kinds.
+ *   - `CardDrawn` (TS-only): TS emits a per-draw kind; Forge represents
+ *     a draw as `CardChangedZone(Library→Hand)`, which already matches
+ *     on both sides (the per-draw count differs but the kind is shared).
  */
-function isEngineInternal(_e: GoldenEvent, _side: "ts" | "java"): boolean {
-  // Reserved for future use (e.g. EngineYield in TS, dead-letter
-  // spectator events in Java). M3-MVP cohort doesn't surface any.
+function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
+  if (side === "ts") {
+    switch (e.kind) {
+      case "CardDestroyed":
+      case "StateBasedActionApplied":
+      case "CostPaid":
+      case "CardTargeted":
+      case "CrimeCommitted":
+      case "CardDrawn":
+        return true;
+      default:
+        return false;
+    }
+  }
   return false;
 }
 
@@ -190,33 +217,28 @@ const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   ["DamageDealt", "ts-runner-shallow"],
 ]);
 
-/** TS event-kinds → which MVP limit explains their absence on the Java side. */
+/**
+ * TS event-kinds → which MVP limit explains their absence on the Java
+ * side. M4.5 stripped most TS-only umbrella kinds (CardDestroyed,
+ * StateBasedActionApplied, CostPaid, CardTargeted, CrimeCommitted,
+ * CardDrawn) at the `isEngineInternal` boundary, so this table is the
+ * tail of TS-only kinds that aren't engine-internal but still surface
+ * as divergences (e.g. when the TS runner emits an aggregated kind the
+ * Java side splits across multiple finer-grained events).
+ */
 const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
-  ["CardTargeted", "target-mismatch"],
-  ["CrimeCommitted", "target-mismatch"],
   ["ManaSpent", "free-cast-missing-mana"],
-  ["CostPaid", "free-cast-missing-mana"],
   ["DamageDealt", "no-stack-drain"],
   ["LifeChanged", "no-stack-drain"],
   ["LifeLost", "no-stack-drain"],
   ["LifeGained", "no-stack-drain"],
-  ["CardDrawn", "no-stack-drain"],
   ["CardTapped", "no-stack-drain"],
   ["StackItemResolved", "no-stack-drain"],
-  // M2.5 — TS runner V2 added stack-drain + SBA sweep symmetric with
-  // Bridge V2. SBA-driven creature deaths (Lightning Bolt → 3 damage to
-  // a 2-toughness creature → SBA destroys it) emit CardDestroyed +
-  // StateBasedActionApplied on the TS side. Forge's bridge V2 doesn't
-  // drive a corresponding SBA-after-resolution, so these surface as
-  // TS-only. Classified as `bridge-action-skipped` — the Forge bridge
-  // skips the post-resolution SBA pass that the TS runner now performs.
-  ["CardDestroyed", "bridge-action-skipped"],
-  ["StateBasedActionApplied", "bridge-action-skipped"],
   // SpellCast and the post-resolution CardChangedZone (spell→graveyard)
-  // are part of the cast-and-resolve sequence. When Java captures zero
-  // events for a cast scenario, the bridge silently skipped the cast
-  // action — a documented MVP limit (cast-without-cost-payment can fail
-  // for non-trivial spells that need scripted targets).
+  // can surface as TS-only when the Java bridge silently skips a cast
+  // action (a residual MVP limit for non-trivial spells that need
+  // scripted targets the bridge can't fabricate). Bridge V2 cleared
+  // every cohort scenario but keep the classifier for safety.
   ["SpellCast", "bridge-action-skipped"],
   ["CardChangedZone", "bridge-action-skipped"],
 ]);
@@ -320,26 +342,44 @@ export function diffTraces(
   // Apply cross-side aliases — kinds that map across engines (e.g.
   // AbilityActivated ↔ SpellCast). When an aliased pair is present on
   // both sides, both kinds are treated as shared rather than divergent.
-  const tsAliasedAsJava = new Map<string, string>(); // tsKind → javaKind
-  const javaAliasedAsTs = new Map<string, string>(); // javaKind → tsKind
+  //
+  // M4.5: aliases are 1-to-many. Forge's `LifeTotalChanged` aliases to
+  // *any* of `LifeChanged` / `LifeGained` / `LifeLost` — a flat Map
+  // (one javaKind → one tsKind) silently drops earlier entries when the
+  // Map key is overwritten, which surfaces as "Java-only LifeTotalChanged"
+  // for scenarios that emit only LifeChanged on the TS side. Switch to
+  // an array per side so any present alias counts as a match.
+  const tsAliasedAsJava = new Map<string, string[]>(); // tsKind → javaKinds[]
+  const javaAliasedAsTs = new Map<string, string[]>(); // javaKind → tsKinds[]
   for (const [tsKind, javaKind] of KIND_ALIASES) {
-    tsAliasedAsJava.set(tsKind, javaKind);
-    javaAliasedAsTs.set(javaKind, tsKind);
+    const fwd = tsAliasedAsJava.get(tsKind);
+    if (fwd === undefined) tsAliasedAsJava.set(tsKind, [javaKind]);
+    else fwd.push(javaKind);
+    const rev = javaAliasedAsTs.get(javaKind);
+    if (rev === undefined) javaAliasedAsTs.set(javaKind, [tsKind]);
+    else rev.push(tsKind);
   }
+
+  const hasAnyAlias = (map: Map<string, string[]>, key: string, target: Set<string>): boolean => {
+    const aliases = map.get(key);
+    if (aliases === undefined) return false;
+    for (const a of aliases) {
+      if (target.has(a)) return true;
+    }
+    return false;
+  };
 
   const sharedKinds: string[] = [];
   for (const e of tsNorm) {
     if (sharedKinds.includes(e.kind)) continue;
-    const aliased = tsAliasedAsJava.get(e.kind);
-    if (javaKinds.has(e.kind) || (aliased !== undefined && javaKinds.has(aliased))) {
+    if (javaKinds.has(e.kind) || hasAnyAlias(tsAliasedAsJava, e.kind, javaKinds)) {
       sharedKinds.push(e.kind);
     }
   }
 
   const tsOnly: { kind: string; classification: DivergenceClass }[] = [];
   for (const k of tsKinds) {
-    const aliased = tsAliasedAsJava.get(k);
-    const matchedOnJava = javaKinds.has(k) || (aliased !== undefined && javaKinds.has(aliased));
+    const matchedOnJava = javaKinds.has(k) || hasAnyAlias(tsAliasedAsJava, k, javaKinds);
     if (!matchedOnJava) {
       tsOnly.push({
         kind: k,
@@ -349,8 +389,7 @@ export function diffTraces(
   }
   const javaOnly: { kind: string; classification: DivergenceClass }[] = [];
   for (const k of javaKinds) {
-    const aliasedBack = javaAliasedAsTs.get(k);
-    const matchedOnTs = tsKinds.has(k) || (aliasedBack !== undefined && tsKinds.has(aliasedBack));
+    const matchedOnTs = tsKinds.has(k) || hasAnyAlias(javaAliasedAsTs, k, tsKinds);
     if (!matchedOnTs) {
       javaOnly.push({
         kind: k,
