@@ -37,17 +37,33 @@ const DEFAULT_MAX_HAND_SIZE = 7;
  */
 export const effectiveMaxHandSize = (game: Game, seat: PlayerSeat): number => {
   const statics = game.staticEffectRegistry.byMode("LimitOnHandSize");
-  let best: number | undefined;
+  // Wave 96 — split additive vs literal contributions. Additive +N / -N
+  // modifiers stack atop the base 7 cap (CR 402.2 layering — additive
+  // before literal); literal caps (Unlimited / fixed N) are most-
+  // restrictive (lowest wins). When a literal is set, the literal wins
+  // and additive deltas are dropped (matches Forge's StaticAbilityHandSize:
+  // a fixed value overrides any modifier).
+  let literalBest: number | undefined;
+  let additiveDelta = 0;
   for (const s of statics) {
     const payload = s.describe() as LimitOnHandSizePayload;
     if (!payload.playerMatches(seat)) continue;
-    // TODO(advanced) — `isAdditive` (+N / -N modifiers) skipped at MVP;
-    // most Forge cards use Unlimited / literal values. Treat additive
-    // forms as if literal (the parseAmount in the handler already
-    // collapsed them to their integer value).
-    if (best === undefined || payload.amount < best) best = payload.amount;
+    if (payload.isAdditive) {
+      additiveDelta += payload.amount;
+      continue;
+    }
+    if (literalBest === undefined || payload.amount < literalBest) literalBest = payload.amount;
   }
-  return best ?? DEFAULT_MAX_HAND_SIZE;
+  if (literalBest !== undefined) return literalBest;
+  if (additiveDelta !== 0) {
+    const adjusted = DEFAULT_MAX_HAND_SIZE + additiveDelta;
+    // Floor at 0 — a -10 modifier on the base 7 still bottoms at 0,
+    // never goes negative (matches Forge's MaximumHandSize.subtractFrom
+    // clamp semantics). The cleanup step's discard-down compares
+    // hand.size > cap, so 0 means "discard everything".
+    return adjusted < 0 ? 0 : adjusted;
+  }
+  return DEFAULT_MAX_HAND_SIZE;
 };
 
 /**

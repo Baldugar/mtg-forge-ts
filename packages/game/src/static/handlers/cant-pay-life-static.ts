@@ -60,13 +60,15 @@ import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 /**
  * The cause classification the helper provides at query time. Mirrors
- * the cost-payment context's `kind` field: "spell" or "ability". The
- * extra `isManaAbility` flag is consulted only by the
- * "Activated.!ManaAbility" sub-shape; default false matches the corpus
- * (no mana ability path goes through the same cost pipeline today).
+ * the cost-payment context's `kind` field: "spell", "ability", or
+ * "triggered" (Wave 96 — costs paid as part of a triggered ability's
+ * resolution, e.g. cumulative upkeep variants). The extra
+ * `isManaAbility` flag is consulted only by the "Activated.!ManaAbility"
+ * sub-shape; default false matches the corpus (no mana ability path
+ * goes through the same cost pipeline today).
  */
 export interface PayLifeCause {
-  readonly kind: "spell" | "ability";
+  readonly kind: "spell" | "ability" | "triggered";
   readonly isManaAbility?: boolean;
 }
 
@@ -100,7 +102,12 @@ const matchValidCause = (raw: string | undefined): ((c: PayLifeCause) => boolean
         // hasn't tagged any path yet).
         if (cause.isManaAbility !== true) return true;
       }
-      // Any other token: conservative miss (TODO(advanced)).
+      // Wave 96 — broader cause heads.
+      if (tok === "Triggered" && cause.kind === "triggered") return true;
+      if (tok === "ManaAbility" && cause.kind === "ability" && cause.isManaAbility === true) return true;
+      // Any other token: conservative miss (deeper sub-filters such as
+      // ValidCause$ Spell.YouCtrl land when the cost-context surfaces
+      // its caster identity to this gate).
     }
     return false;
   };

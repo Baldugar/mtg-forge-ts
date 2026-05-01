@@ -61,12 +61,12 @@ import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
  * resolve relative to the static's controller seat at query time.
  */
 export interface MustTargetSA {
-  readonly kind: "spell" | "ability";
+  readonly kind: "spell" | "ability" | "triggered";
   readonly controllerSeat: PlayerSeat;
 }
 
 interface SaToken {
-  readonly kind: "spell" | "ability";
+  readonly kind: "spell" | "ability" | "triggered";
   /** "OppCtrl" / "YouCtrl" / undefined (= any controller). */
   readonly controllerScope?: "OppCtrl" | "YouCtrl";
 }
@@ -75,7 +75,7 @@ const parseSaTokens = (raw: string | undefined): readonly SaToken[] => {
   if (raw === undefined || raw.length === 0) return [];
   const out: SaToken[] = [];
   for (const tok of raw.split(",").map((t) => t.trim())) {
-    let kind: "spell" | "ability" | undefined;
+    let kind: "spell" | "ability" | "triggered" | undefined;
     let scope: "OppCtrl" | "YouCtrl" | undefined;
     let head = tok;
     let tail: string | undefined;
@@ -84,13 +84,30 @@ const parseSaTokens = (raw: string | undefined): readonly SaToken[] => {
       head = tok.slice(0, dot);
       tail = tok.slice(dot + 1);
     }
+    // Wave 96 — broader SA-kind heads. "Triggered" lands so the
+    // Flagbearer gate also constrains targeting choices made during
+    // triggered-ability resolution (CR 603.3d). "Any" / "SpellOrAbility"
+    // are aliases for the unconstrained-kind shape.
     if (head === "Spell") kind = "spell";
     else if (head === "Activated") kind = "ability";
-    else continue; // unknown head — skip (TODO(advanced))
+    else if (head === "Triggered") kind = "triggered";
+    else if (head === "Any" || head === "SpellOrAbility")
+      kind = "spell"; // any kind matches
+    else continue; // truly-unknown head — skip
     if (tail === "OppCtrl") scope = "OppCtrl";
     else if (tail === "YouCtrl") scope = "YouCtrl";
     else if (tail === undefined) scope = undefined;
     else continue; // unknown tail — skip
+    // For the Any / SpellOrAbility alias, emit one token per kind so the
+    // saMatches walk treats them as a wildcard. Cheaper than threading a
+    // sentinel through the matcher.
+    if (head === "Any" || head === "SpellOrAbility") {
+      const base = scope === undefined ? {} : { controllerScope: scope };
+      out.push({ kind: "spell", ...base });
+      out.push({ kind: "ability", ...base });
+      out.push({ kind: "triggered", ...base });
+      continue;
+    }
     out.push(scope === undefined ? { kind } : { kind, controllerScope: scope });
   }
   return out;

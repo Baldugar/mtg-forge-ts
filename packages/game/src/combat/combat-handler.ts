@@ -21,7 +21,7 @@ import { onCombatDamageToPlayer as onCombatDamageMonarch } from "../monarch/mona
 import {
   canAttack,
   canBlock,
-  collectMustAttackSubjects,
+  collectMustAttackSubjectsWithDefender,
   sweepEndOfCombat,
 } from "../statics/wave65-combat-gates.js";
 import { assignsCombatDamageAsUnblocked } from "../statics/wave70f-combat-gates.js";
@@ -121,8 +121,8 @@ export class CombatHandler {
     // Wave 65.A — Read 3 (Static MustAttack, Wave 50). Auto-correct: any
     // creature subject to an active MustAttack that wasn't already in the
     // attackers list gets pulled in. Defender defaults to "any opponent"
-    // (the first non-active player); MustAttack$ <player> sub-param
-    // payload is // TODO(advanced).
+    // (the first non-active player); Wave 96 — MustAttack$ <player>
+    // sub-param now constrains the chosen defender per subject.
     this.applyMustAttack();
   }
 
@@ -227,34 +227,57 @@ export class CombatHandler {
    * requirements; goad-shape statics from Wave 50). Walks the
    * mustAttack restriction registry, finds matching battlefield
    * creatures not already in the attackers list, and pulls them in
-   * with a default-opponent defender.
-   *
-   * MVP — defender is the first non-active opponent. The MustAttack$
-   * <player> sub-param (Forge's "must attack PLAYER if able") is
-   * // TODO(advanced); same shape as goad's "must attack a player
-   * other than the goader" — needs the static's payload to carry the
-   * required-defender constraint.
+   * with a defender that satisfies the static's MustAttack$ filter
+   * (Wave 96 — first opposing seat that matches the per-subject
+   * defender filter; falls back to the first non-active opponent
+   * when no filter is set or no opponent satisfies the filter).
    */
   private applyMustAttack(): void {
-    const subjects = collectMustAttackSubjects(this.game);
+    const subjects = collectMustAttackSubjectsWithDefender(this.game);
     if (subjects.length === 0) return;
     const opponent = this.firstOpponent();
     if (opponent === null) return;
-    for (const id of subjects) {
+    for (const subj of subjects) {
+      const id = subj.cardId;
       if (this.state.attackers.has(id)) continue;
       // Respect CantAttack — if a creature is both must-attack and
       // cant-attack, the cant- side wins (CR 509.1d "if able"). Skip it.
       if (!canAttack(this.game, id)) continue;
       const card = this.game.cards.get(id);
       if (!card) continue;
+      // Wave 96 — pick a defender seat that satisfies MustAttack$. We
+      // walk every non-active player; first match wins. If no opponent
+      // satisfies the filter, the auto-correct falls back to the
+      // canonical first-opponent default (the "if able" gate; the
+      // requirement is then vacuous against this player set).
+      let defenderSeat: PlayerSeat = opponent;
+      if (subj.hasFilter) {
+        const candidate = this.findDefenderMatching(subj.defenderSeatMatches);
+        if (candidate !== null) defenderSeat = candidate;
+      }
       const info: AttackerInfo = {
         attackerId: id,
-        defender: { kind: "player", seat: opponent },
+        defender: { kind: "player", seat: defenderSeat },
         isTapped: false,
       };
       this.state.attackers.set(id, info);
       card.attackedThisCombat = true;
     }
+  }
+
+  /**
+   * Wave 96 — find the first opposing seat (skipping the active player)
+   * for which `pred` returns true. Returns null when no opponent
+   * satisfies the filter.
+   */
+  private findDefenderMatching(pred: (seat: PlayerSeat) => boolean): PlayerSeat | null {
+    const active = this.game.activePlayer;
+    for (const player of this.game.players) {
+      const seat = player.seat;
+      if (seat === active) continue;
+      if (pred(seat)) return seat;
+    }
+    return null;
   }
 
   /**

@@ -21,9 +21,12 @@
 //     buildPlayerPredicate (Wave 50 grammar).
 //   - Amount$ Unlimited      → POSITIVE_INFINITY
 //   - Amount$ <integer>      → that integer
-//   - Amount$ +N / -N        → // TODO(advanced) arithmetic modifiers.
-//     The MVP rejects these (returns 7) — most Forge cards use Unlimited
-//     or a literal value.
+//   - Amount$ +N / -N        → arithmetic modifiers stacked atop the
+//     base 7 cap. Wave 96 — wired through `effectiveMaxHandSize` so
+//     emblems such as "your maximum hand size is increased by 1" land.
+//     When multiple additive statics match a seat we sum them; when a
+//     literal (non-additive) static is also active for the same seat,
+//     the literal wins (most-restrictive cap, per CR 402.2 layering).
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import {
   StaticHandler,
@@ -47,10 +50,9 @@ export interface LimitOnHandSizePayload {
 const parseAmount = (raw: string | undefined): { amount: number; isAdditive: boolean } => {
   if (raw === undefined || raw.length === 0) return { amount: Number.POSITIVE_INFINITY, isAdditive: false };
   if (raw === "Unlimited") return { amount: Number.POSITIVE_INFINITY, isAdditive: false };
-  // TODO(advanced) — Forge supports +N / -N modifier forms (rare; some
-  // emblems and "your maximum hand size is increased by 1" cards). MVP
-  // marks them as additive but parses the absolute count; the consumer
-  // ignores the additive flag for now.
+  // Wave 96 — additive +N / -N modifier forms. The handler stamps the
+  // signed integer plus `isAdditive: true`; effectiveMaxHandSize sums
+  // the additive deltas atop the base/literal cap.
   if (raw.startsWith("+") || raw.startsWith("-")) {
     const n = Number.parseInt(raw, 10);
     if (Number.isFinite(n)) return { amount: n, isAdditive: true };

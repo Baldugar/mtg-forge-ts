@@ -48,7 +48,14 @@
 //     missing or "True" — i.e. the Fog-shape / Holy-Day-shape full
 //     prevention). Targeted "prevent the next N damage" stays on the
 //     R:Event$ DamageDone replacement path it already lives on.
-//   - IsPresent$ sub-conditional gate is TODO(advanced).
+//   - IsPresent$ + PresentCompare$ — Wave 96 sub-conditional gate. The
+//     filter walks the battlefield (controller-scoped via the existing
+//     ValidCard$ grammar) and the matched count is compared against the
+//     PresentCompare$ operator (GE/GT/LE/LT/EQ/NE — see card-filter.ts
+//     `evalPresentCompare`). Default operator when PresentCompare$ is
+//     absent is "GE1" (at least one present). Used by cards that gate
+//     prevention on a board-state predicate (e.g. "as long as you
+//     control three or more clerics, prevent ...").
 import type {
   EntityId,
   ParamValue,
@@ -57,8 +64,10 @@ import type {
   StaticAbility,
   StaticAst,
 } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";
+import { cardMatchesFilter, evalPresentCompare } from "../../trigger/card-filter.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
@@ -152,9 +161,40 @@ const buildPreventDamage = (ast: StaticAst, ctx: StaticHandlerCtx, args: BuildAr
   const validTargetRaw = literalRaw(params.ValidTarget);
   const combatRaw = literalRaw(params.Combat);
   const combatFilter = parseCombatFilter(combatRaw);
+  // Wave 96 — IsPresent$ + PresentCompare$ sub-conditional gate. Both are
+  // optional; absent IsPresent$ skips the gate entirely. PresentCompare$
+  // defaults to "GE1" (at least one match present) when IsPresent$ is set
+  // without an explicit comparator. Filter is evaluated at match-time
+  // against the live battlefield to honor mid-turn board-state changes.
+  const isPresentRaw = literalRaw(params.IsPresent);
+  const presentCompareRaw = literalRaw(params.PresentCompare) ?? "GE1";
+  const presentZoneRaw = literalRaw(params.PresentZone);
+  const presentZone: ZoneType =
+    presentZoneRaw === "Graveyard"
+      ? ZoneType.Graveyard
+      : presentZoneRaw === "Hand"
+        ? ZoneType.Hand
+        : presentZoneRaw === "Exile"
+          ? ZoneType.Exile
+          : presentZoneRaw === "Library"
+            ? ZoneType.Library
+            : ZoneType.Battlefield;
 
   const sourcePred = buildSourcePredicate(validSourceRaw, ctx.sourceCardId, ctx.controllerSeat);
   const targetPred = buildTargetPredicate(validTargetRaw, ctx.sourceCardId, ctx.controllerSeat);
+
+  const sourceCardId = ctx.sourceCardId;
+  const controllerSeat = ctx.controllerSeat;
+
+  const isPresentSatisfied = (game: Game): boolean => {
+    if (isPresentRaw === undefined || isPresentRaw.length === 0) return true;
+    let count = 0;
+    for (const c of game.cards.values()) {
+      if (c.zone !== presentZone) continue;
+      if (cardMatchesFilter(c, isPresentRaw, { controllerSeat, sourceCardId })) count += 1;
+    }
+    return evalPresentCompare(count, presentCompareRaw);
+  };
 
   const matchesEvent = (
     sourceId: EntityId,
@@ -166,6 +206,9 @@ const buildPreventDamage = (ast: StaticAst, ctx: StaticHandlerCtx, args: BuildAr
     // Combat$ filter — short-circuit when the isCombat flag does not
     // match the static's Combat$ param.
     if (combatFilter !== undefined && combatFilter !== isCombat) return false;
+    // IsPresent$ sub-conditional gate (Wave 96). Re-evaluated per query
+    // since the battlefield can mutate between damage events.
+    if (!isPresentSatisfied(game)) return false;
 
     // Source filter — every mode honors ValidSource$ if present (the
     // unfiltered PreventAllDamage simply has no ValidSource$, so the

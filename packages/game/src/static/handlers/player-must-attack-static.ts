@@ -107,7 +107,27 @@ const matchMustAttack = (
         return true;
       if (tok === "Planeswalker" && d.kind === "planeswalker") return true;
       if (tok === "Player" && d.kind === "player") return true;
-      // Any other token: conservative miss (TODO(advanced)).
+      // Wave 96 — broaden tokens. "You.Or.Planeswalker.YouCtrl" is the
+      // textual variant Forge sometimes emits for "you or a planeswalker
+      // you control"; we treat the dotted alias as a synonym for the
+      // canonical comma-OR form. "OppOrPlaneswalker.OppCtrl" is the
+      // mirror.
+      if (
+        (tok === "You.Or.Planeswalker.YouCtrl" || tok === "YouOrPlaneswalker.YouCtrl") &&
+        ((d.kind === "player" && d.controllerSeat === staticCtrl) ||
+          (d.kind === "planeswalker" && d.controllerSeat === staticCtrl))
+      ) {
+        return true;
+      }
+      if (
+        (tok === "Opp.Or.Planeswalker.OppCtrl" || tok === "OpponentOrPlaneswalker.OppCtrl") &&
+        ((d.kind === "player" && d.controllerSeat !== staticCtrl) ||
+          (d.kind === "planeswalker" && d.controllerSeat !== staticCtrl))
+      ) {
+        return true;
+      }
+      // Any other token: conservative miss (deeper subtype filters land
+      // when MustAttack$ broadens beyond the corpus's published shapes).
     }
     return false;
   };

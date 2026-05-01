@@ -23,7 +23,7 @@
 //                      matched creatures to the attackers list.
 //   - canBlock       → consults card.decayed (CR 702.176) — decayed
 //                      creatures are excluded from the legal-blocker pool.
-import type { EntityId } from "@mtg-forge-ts/core";
+import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
@@ -63,10 +63,6 @@ export const canAttack = (game: Game, attackerId: EntityId): boolean => {
  * attack each combat if able"). Wave 65.A MVP auto-adds them; full
  * "if able" gating (tap state, summoning sickness, CantAttack statics
  * that win out) is handled by the caller.
- *
- * The returned ids are SUBJECTS — the static's ValidCard$ matched them.
- * The caller still needs to pick a defender (the helper does NOT carry
- * MustAttack$ <player> sub-param payload yet — that's // TODO(advanced)).
  */
 export const collectMustAttackSubjects = (game: Game): readonly EntityId[] => {
   const out: EntityId[] = [];
@@ -80,6 +76,60 @@ export const collectMustAttackSubjects = (game: Game): readonly EntityId[] => {
         seen.add(id);
       }
     }
+  }
+  return out;
+};
+
+/**
+ * Wave 96 — richer must-attack collector that also carries the optional
+ * defender filter (MustAttack$ payload) per subject. The combat-handler
+ * uses this to pick a defender that satisfies the filter when one is
+ * present; subjects without a filter accept any defender (back-compat).
+ *
+ * When multiple mustAttack restrictions match the same subject, the
+ * intersection of their defender filters wins (every restriction's
+ * `seatMatches` must succeed). Subjects with no filter at all keep an
+ * always-true matcher, preserving the existing first-opponent default.
+ */
+export interface MustAttackSubject {
+  readonly cardId: EntityId;
+  /** AND of every matching restriction's defender filter. */
+  readonly defenderSeatMatches: (seat: PlayerSeat) => boolean;
+  /** True iff at least one matching restriction had an explicit filter. */
+  readonly hasFilter: boolean;
+}
+
+export const collectMustAttackSubjectsWithDefender = (game: Game): readonly MustAttackSubject[] => {
+  const map = new Map<
+    EntityId,
+    {
+      preds: ((seat: PlayerSeat) => boolean)[];
+      hasFilter: boolean;
+    }
+  >();
+  for (const r of gatherRestrictions(game, "mustAttack")) {
+    for (const card of game.cards.values()) {
+      const id = card.id;
+      if (!r.subjectFilter(id, game)) continue;
+      const payload = r.payload as
+        | { readonly seatMatches?: (seat: PlayerSeat) => boolean; readonly hasFilter?: boolean }
+        | undefined;
+      const cur = map.get(id) ?? { preds: [], hasFilter: false };
+      if (payload?.seatMatches !== undefined && payload.hasFilter === true) {
+        cur.preds.push(payload.seatMatches);
+        cur.hasFilter = true;
+      }
+      map.set(id, cur);
+    }
+  }
+  const out: MustAttackSubject[] = [];
+  for (const [cardId, info] of map) {
+    const preds = info.preds;
+    const defenderSeatMatches = (seat: PlayerSeat): boolean => {
+      for (const p of preds) if (!p(seat)) return false;
+      return true;
+    };
+    out.push({ cardId, defenderSeatMatches, hasFilter: info.hasFilter });
   }
   return out;
 };
