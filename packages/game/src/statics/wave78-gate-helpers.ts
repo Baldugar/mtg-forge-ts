@@ -55,9 +55,11 @@ export interface FlipCoinModifierResult {
    * "default" when no static is in force; "forced-heads" / "forced-tails"
    * when an active static dictates the outcome; "double-flip-pick" when a
    * Krark's-Thumb-shape modifier grants the controller-preferred result
-   * out of 2 random draws.
+   * out of 2 random draws; "reflip-on-loss" (Wave 101) when a Krark's-
+   * Other-Thumb-shape modifier re-flips losing outcomes (the second
+   * outcome stands).
    */
-  readonly mode: "default" | "forced-heads" | "forced-tails" | "double-flip-pick";
+  readonly mode: "default" | "forced-heads" | "forced-tails" | "double-flip-pick" | "reflip-on-loss";
 }
 
 const RESULT_TO_MODE: Readonly<Record<FlipCoinForcedResult, "forced-heads" | "forced-tails">> = {
@@ -79,6 +81,7 @@ const RESULT_TO_MODE: Readonly<Record<FlipCoinForcedResult, "forced-heads" | "fo
 export const flipCoinModifier = (game: Game, seat: PlayerSeat): FlipCoinModifierResult => {
   const statics = game.staticEffectRegistry.byMode("FlipCoinMod");
   let doubleFlip = false;
+  let reflip = false;
   for (const s of statics) {
     const payload = s.describe() as FlipCoinModPayload;
     if (!payload || payload.kind !== "flipCoinMod") continue;
@@ -87,8 +90,16 @@ export const flipCoinModifier = (game: Game, seat: PlayerSeat): FlipCoinModifier
       return { mode: RESULT_TO_MODE[payload.forcedResult] };
     }
     if (payload.doubleFlip) doubleFlip = true;
+    if (payload.reflip) reflip = true;
   }
-  return { mode: doubleFlip ? "double-flip-pick" : "default" };
+  // Precedence: doubleFlip (controller-pick from 2) is strictly stronger
+  // than reflip-on-loss (re-roll a single loss); when both are granted,
+  // doubleFlip wins. Forge mirrors this — Krark's Thumb's
+  // controller-pick supersedes reflip if both are in force on the same
+  // controller.
+  if (doubleFlip) return { mode: "double-flip-pick" };
+  if (reflip) return { mode: "reflip-on-loss" };
+  return { mode: "default" };
 };
 
 /**

@@ -14,8 +14,9 @@
 // that combat-handler / cast-pipeline / legal-action-enumerator consult on
 // a single audit surface.
 import type { EntityId, ParamValue, PlayerSeat } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
-import { cardMatchesFilter } from "../../trigger/card-filter.js";
+import { cardMatchesFilter, evalPresentCompare } from "../../trigger/card-filter.js";
 
 export const literalRaw = (p: ParamValue | undefined): string | undefined =>
   p && p.kind === "literal" ? p.raw : undefined;
@@ -106,4 +107,59 @@ export const buildPlayerPredicate = (
   }
   // Conservative reject for unrecognised tokens.
   return () => false;
+};
+
+/**
+ * Wave 101 — shared `IsPresent$` / `PresentCompare$` / `PresentZone$`
+ * sub-conditional gate. Returns a thunk `(game) => boolean` that the
+ * static-handler runtime consults at match-time.
+ *
+ * Grammar (Forge canonical):
+ *   - `IsPresent$ <filter>`   — Wave 32 cardMatchesFilter grammar.
+ *   - `PresentCompare$ <op>N` — GE / GT / LE / LT / EQ / NE; default
+ *                                "GE1" (at least one matching card).
+ *   - `PresentZone$ <zone>`   — Battlefield (default), Graveyard, Hand,
+ *                                Exile, Library, Stack.
+ *
+ * When `IsPresent$` is absent or empty the gate returns `true` (no gate).
+ *
+ * Re-evaluated per query so the gate honors mid-turn board-state changes
+ * (e.g. Stasis with Domain-style "as long as" clause requiring at least
+ * one Plains in your graveyard).
+ */
+export const buildIsPresentGate = (
+  params: Readonly<Record<string, ParamValue>>,
+  ctx: { sourceCardId: EntityId; controllerSeat: PlayerSeat },
+): ((game: Game) => boolean) => {
+  const isPresentRaw = literalRaw(params.IsPresent);
+  if (isPresentRaw === undefined || isPresentRaw.length === 0) {
+    return () => true;
+  }
+  const presentCompareRaw = literalRaw(params.PresentCompare) ?? "GE1";
+  const presentZoneRaw = literalRaw(params.PresentZone);
+  const presentZone: ZoneType = (() => {
+    switch (presentZoneRaw) {
+      case "Graveyard":
+        return ZoneType.Graveyard;
+      case "Hand":
+        return ZoneType.Hand;
+      case "Exile":
+        return ZoneType.Exile;
+      case "Library":
+        return ZoneType.Library;
+      case "Stack":
+        return ZoneType.Stack;
+      default:
+        return ZoneType.Battlefield;
+    }
+  })();
+  const { sourceCardId, controllerSeat } = ctx;
+  return (game) => {
+    let count = 0;
+    for (const c of game.cards.values()) {
+      if (c.zone !== presentZone) continue;
+      if (cardMatchesFilter(c, isPresentRaw, { controllerSeat, sourceCardId })) count += 1;
+    }
+    return evalPresentCompare(count, presentCompareRaw);
+  };
 };

@@ -35,17 +35,23 @@
 // Routing: ruleChanging per MODE_TO_CATEGORY (overrides CR 705 random-
 // outcome generation rather than gating an action).
 //
-// MVP scope:
+// Scope:
 //   - ValidPlayer$ <filter> — Wave 50 grammar via buildPlayerPredicate.
 //                              Defaults to "Any" / always-true.
 //   - Result$ True / False  — forces the outcome to that side. Default
 //                              undefined (no forced outcome).
 //   - DoubleFlip$ True      — flip 2 coins, pick the controller-preferred
 //                              result. Default false.
+//   - Reflip$ True          — Wave 101: Krark's Other Thumb shape — when a
+//                              flip "is lost" by the matched player, the
+//                              flip is re-flipped (the better of two
+//                              outcomes wins). The runtime FlipACoinEffect
+//                              consults `flipCoinModifier(game, seat)` and
+//                              re-rolls when this flag is true.
 // TODO(advanced):
 //   - CheckSVar$ + SVarCompare$ guard expressions (gate the modifier on
-//     a per-turn count, e.g. Edgar's "first time" gating).
-//   - Reflip$ True (Krark's Other Thumb-style: re-flip on loss).
+//     a per-turn count, e.g. Edgar's "first time" gating). Tracked as a
+//     SVar-resolver dependency under svar/selectors.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import {
   StaticHandler,
@@ -75,6 +81,14 @@ export interface FlipCoinModPayload {
    * the double-flip privilege.
    */
   readonly doubleFlip: boolean;
+  /**
+   * Wave 101 — Krark's-Other-Thumb-shape modifier: when the matched
+   * player loses a coin flip, the result is re-flipped (the second
+   * outcome stands). The runtime FlipACoinEffect honors this flag by
+   * re-rolling once on a "lost" outcome before the result is recorded.
+   * False (default) when the static doesn't grant the re-flip privilege.
+   */
+  readonly reflip: boolean;
 }
 
 const parseForcedResult = (raw: string | undefined): FlipCoinForcedResult | undefined => {
@@ -96,12 +110,14 @@ export class FlipCoinModStaticHandler extends StaticHandler {
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
     const forcedResult = parseForcedResult(literalRaw(params.Result));
     const doubleFlip = parseBool(literalRaw(params.DoubleFlip));
+    const reflip = parseBool(literalRaw(params.Reflip));
 
     const payload: FlipCoinModPayload = {
       kind: "flipCoinMod",
       playerMatches: (seat) => seatPred(seat),
       forcedResult,
       doubleFlip,
+      reflip,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

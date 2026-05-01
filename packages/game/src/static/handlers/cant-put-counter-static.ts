@@ -16,17 +16,24 @@
 // Subject conventions:
 //   - ValidCard$ Card.Self       → cardId === sourceCardId
 //   - ValidCard$ <type/subtype>  → cardMatchesFilter (Wave 32 grammar)
+//   - ValidPlayer$ <filter>      → Wave 101: player-subject filter for
+//                                    Phyrexian Unlife / Melira (poison
+//                                    counters) / Solphim, Mayhem Dominus
+//                                    style "counters can't be put on
+//                                    {player}" effects. Defaults to no
+//                                    match (preserves Wave 60 contract
+//                                    when the param is omitted).
 //   - CounterType$ Any (or omitted) → matches every counter type
 //   - CounterType$ <name>        → exact CounterType-enum match
 //
-// MVP — counters on PLAYERS (Phyrexian Unlife "you" / Crawling Filth-style
-// poison-counter blockers) require a Player-subject filter. The MVP
-// CantPutCounterPayload exposes `playerMatches` returning false by
-// default; player-side gating is // TODO(advanced).
+// Wave 101 closes the prior `// TODO(advanced)` for player-side gating.
+// `cantPutCounterOnPlayer(game, seat, counterType)` consults the registry
+// uniformly, mirroring `cantPutCounterOnCard`.
 import type {
   CounterType,
   EntityId,
   ParamValue,
+  PlayerSeat,
   ReplacementAbility,
   StaticAbility,
   StaticAst,
@@ -39,7 +46,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 // Payload extends the replacementGen envelope (mandatory for the
 // replacementGenerating category contract) with two extra predicates the
@@ -51,6 +58,16 @@ import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
 export interface CantPutCounterPayload extends ReplacementGenPayload {
   readonly cardMatches: (cardId: EntityId, game: Game) => boolean;
   readonly counterMatches: (ct: CounterType) => boolean;
+  /**
+   * Wave 101 — true iff `seat` matches the static's `ValidPlayer$`
+   * filter. Defaults to false when the static's subject is a card
+   * (no `ValidPlayer$` set), preserving the Wave-60 default. Phyrexian
+   * Unlife / Melira / Solphim shapes set ValidPlayer$ and consult the
+   * gate via `cantPutCounterOnPlayer`.
+   */
+  readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /** True iff this static targets a player (ValidPlayer$ set). */
+  readonly hasPlayerSubject: boolean;
 }
 
 const buildCounterPredicate = (raw: string | undefined): ((ct: CounterType) => boolean) => {
@@ -84,15 +101,22 @@ export class CantPutCounterStaticHandler extends StaticHandler {
     const params: Readonly<Record<string, ParamValue>> = ast.params;
     const validCardRaw = literalRaw(params.ValidCard) ?? "Card";
     const counterRaw = literalRaw(params.CounterType);
+    const validPlayerRaw = literalRaw(params.ValidPlayer);
 
     const cardPred = buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
     const counterPred = buildCounterPredicate(counterRaw);
+    const hasPlayerSubject = validPlayerRaw !== undefined && validPlayerRaw.length > 0;
+    const playerPred = hasPlayerSubject
+      ? buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat)
+      : () => false;
 
     const payload: CantPutCounterPayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       cardMatches: (cardId, game) => cardPred(cardId, game),
       counterMatches: counterPred,
+      playerMatches: (seat) => playerPred(seat),
+      hasPlayerSubject,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

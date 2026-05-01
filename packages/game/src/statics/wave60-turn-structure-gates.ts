@@ -105,7 +105,10 @@ export const shouldSkipUntap = (game: Game, seat: PlayerSeat): boolean => {
   const statics = game.staticEffectRegistry.byMode("SkipUntap");
   for (const s of statics) {
     const payload = s.describe() as SkipUntapPayload;
-    if (payload.playerMatches(seat)) return true;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 101 — sub-conditional IsPresent$ gate (defaults to always-true).
+    if (!payload.isPresentSatisfied(game)) continue;
+    return true;
   }
   return false;
 };
@@ -119,7 +122,10 @@ export const shouldSkipDraw = (game: Game, seat: PlayerSeat): boolean => {
   const statics = game.staticEffectRegistry.byMode("SkipDraw");
   for (const s of statics) {
     const payload = s.describe() as SkipDrawPayload;
-    if (payload.playerMatches(seat)) return true;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 101 — sub-conditional IsPresent$ gate (defaults to always-true).
+    if (!payload.isPresentSatisfied(game)) continue;
+    return true;
   }
   return false;
 };

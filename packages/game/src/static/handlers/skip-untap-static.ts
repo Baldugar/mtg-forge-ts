@@ -21,21 +21,33 @@
 // `playerMatches(seat)`; the gate consumer (shouldSkipUntap in
 // wave60-turn-structure-gates.ts) walks the registry per-query.
 //
-// MVP scope: ValidPlayer$ You / Opponent / Any / Player (Wave 50
-// buildPlayerPredicate grammar). Sub-conditional gates (IsPresent$ / etc.)
-// are TODO(advanced).
+// Scope: ValidPlayer$ You / Opponent / Any / Player (Wave 50
+// buildPlayerPredicate grammar). Wave 101 closes the prior TODO(advanced)
+// for `IsPresent$` / `PresentCompare$` / `PresentZone$` sub-conditional
+// gates via the shared `buildIsPresentGate` helper — the canonical Forge
+// shape `S:Mode$ SkipUntap | ValidPlayer$ You | IsPresent$ Land.YouCtrl
+// | PresentCompare$ GE5` ("if you control five or more lands, skip your
+// untap step") is now honored uniformly.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildIsPresentGate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface SkipUntapPayload {
   readonly kind: "skipUntap";
   readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * True iff the static's `IsPresent$` sub-conditional gate is currently
+   * satisfied. Defaults to always-true when no IsPresent$ is set. The gate
+   * consumer (shouldSkipUntap) calls this with the live Game to honor
+   * mid-turn board-state changes (Wave 101).
+   */
+  readonly isPresentSatisfied: (game: Game) => boolean;
 }
 
 export class SkipUntapStaticHandler extends StaticHandler {
@@ -45,10 +57,15 @@ export class SkipUntapStaticHandler extends StaticHandler {
     const params: Readonly<Record<string, ParamValue>> = ast.params;
     const validPlayerRaw = literalRaw(params.ValidPlayer);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
+    const presentGate = buildIsPresentGate(params, {
+      sourceCardId: ctx.sourceCardId,
+      controllerSeat: ctx.controllerSeat,
+    });
 
     const payload: SkipUntapPayload = {
       kind: "skipUntap",
       playerMatches: (seat) => seatPred(seat),
+      isPresentSatisfied: (game) => presentGate(game),
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

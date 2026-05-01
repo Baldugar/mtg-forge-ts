@@ -35,13 +35,16 @@
 // Build-time scope:
 //   - ValidPlayer$ <filter> via buildPlayerPredicate (You / Opponent
 //     / Any / Player).
+//   - PlayerTurn$ <filter>  — Wave 101: restricts the modifier to the
+//     matched player's own turn (Elvish Refueler's "During your turn"
+//     clause). Reuses Wave 50 buildPlayerPredicate grammar against
+//     `game.activePlayerSeat`.
 // TODO(advanced):
-//   - PlayerTurn$ <filter> — restricts to the matched player's own
-//     turn.
 //   - CheckSVar$ + SVarCompare$ — the per-turn activation count
 //     gate. Elvish Refueler's full fidelity needs the SVar reader
 //     (Count$ThisTurnActivated_Activated.Exhaust+YouCtrl).
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
@@ -53,6 +56,13 @@ import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 export interface CanExhaustPayload {
   readonly kind: "canExhaust";
   readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * Wave 101 — true iff the active-player seat matches the static's
+   * `PlayerTurn$` filter (or the filter is absent / always-true). The
+   * runtime exhaust gate AND-combines this with `playerMatches(seat)`
+   * to honor "during your turn"-style clauses.
+   */
+  readonly turnMatches: (game: Game) => boolean;
 }
 
 export class CanExhaustStaticHandler extends StaticHandler {
@@ -61,11 +71,14 @@ export class CanExhaustStaticHandler extends StaticHandler {
   override build(ast: StaticAst, ctx: StaticHandlerCtx): StaticAbility {
     const params: Readonly<Record<string, ParamValue>> = ast.params;
     const validPlayerRaw = literalRaw(params.ValidPlayer);
+    const playerTurnRaw = literalRaw(params.PlayerTurn);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
+    const turnPred = buildPlayerPredicate(playerTurnRaw, ctx.controllerSeat);
 
     const payload: CanExhaustPayload = {
       kind: "canExhaust",
       playerMatches: (seat) => seatPred(seat),
+      turnMatches: (game) => turnPred(game.activePlayer),
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

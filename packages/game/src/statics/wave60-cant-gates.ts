@@ -30,12 +30,43 @@ import { isRestricted } from "./cant-must-may.js";
  * True iff a counter of `counterType` may be added to `cardId`. False iff
  * any active CantPutCounter static matches both the card and the counter
  * type (or matches the card with `CounterType$ Any`).
+ *
+ * Wave 101 — when a static targets a player (`hasPlayerSubject`), it's
+ * scoped to `canPutCounterOnPlayer` and intentionally NOT applied here:
+ * a card-side gate must not block a player-side counter (Phyrexian Unlife
+ * blocks poison on you, not on your creatures), and vice-versa.
  */
 export const canPutCounter = (game: Game, cardId: EntityId, counterType: CounterType): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantPutCounter");
   for (const s of statics) {
     const payload = s.describe() as CantPutCounterPayload;
+    if (payload.hasPlayerSubject) continue;
     if (!payload.cardMatches(cardId, game)) continue;
+    if (!payload.counterMatches(counterType)) continue;
+    return false;
+  }
+  return true;
+};
+
+/**
+ * Wave 101 — true iff a counter of `counterType` may be put on player
+ * `seat` (Phyrexian Unlife / Melira / poison-counter blockers). False iff
+ * any active CantPutCounter static with a player subject matches both the
+ * seat and the counter type. Counter-on-player is currently observed via
+ * the canonical poison / experience / energy counters; the gate consults
+ * the same static-mode registry.
+ *
+ * Consumers: poison-counter / experience-counter / energy-counter
+ * application sites consult this gate before stamping the counter on the
+ * Player. The dual to `canPutCounter` (card-side); the two are kept
+ * disjoint via `hasPlayerSubject`.
+ */
+export const canPutCounterOnPlayer = (game: Game, seat: PlayerSeat, counterType: CounterType): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantPutCounter");
+  for (const s of statics) {
+    const payload = s.describe() as CantPutCounterPayload;
+    if (!payload.hasPlayerSubject) continue;
+    if (!payload.playerMatches(seat)) continue;
     if (!payload.counterMatches(counterType)) continue;
     return false;
   }

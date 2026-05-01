@@ -80,7 +80,10 @@ export const canReExhaust = (game: Game, seat: PlayerSeat): boolean => {
   for (const s of statics) {
     const payload = s.describe() as CanExhaustPayload;
     if (!payload || payload.kind !== "canExhaust") continue;
-    if (payload.playerMatches(seat)) return true;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 101 — PlayerTurn$ filter AND-combined with ValidPlayer$.
+    if (!payload.turnMatches(game)) continue;
+    return true;
   }
   return false;
 };
