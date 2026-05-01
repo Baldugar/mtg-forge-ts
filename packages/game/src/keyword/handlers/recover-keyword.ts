@@ -15,12 +15,15 @@
 //      attempt to pay <cost> via the cost-pipeline; if paid, return self
 //      to Hand. On decline OR cost failure: exile self.
 //
-// TODO(advanced) — The Recover cost is paid out-of-cast (a "cost" payment
-// outside the cast pipeline). Wave 38 stamps the optional payment as
-// confirmAction-only; full mana payment will land alongside the
-// pay-arbitrary-cost helper used by other "pay X to do Y" triggers.
+// Wave 79 — The Recover cost is now paid through parseCostString /
+// payCost (mirroring the Wave 29 echo loop). On confirm + successful
+// payment: return self to hand. On decline OR payment failure: exile
+// self. The cost-payment infra handles mana solving, X bind, and
+// ManaSpent emits identically to other "pay X to do Y" triggers.
 import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
 import { CardType, ZoneType } from "@mtg-forge-ts/core";
+import type { CostPaymentContext } from "../../cost/parts/cost-part.js";
+import { parseCostString, payCost } from "../../cost/parts/cost-payment.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -92,14 +95,32 @@ export class RecoverKeywordHandler extends KeywordHandler {
           }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
 
           if (response?.confirmed === true) {
-            // TODO(advanced) — actually charge the recover cost. For
-            // MVP, on confirm we treat the cost as paid and return to
-            // hand; on decline we exile.
-            yield* g.action.moveTo(sourceCardId, ZoneType.Hand, {
-              toSeat: self.ownerSeat,
-              cause: "recover",
-            });
-            return;
+            // Run the recover cost through the cost-payment infra. On
+            // success: return self to hand. On failure (insufficient
+            // resources / cost throws): fall through to exile.
+            let paid = false;
+            try {
+              const plan = parseCostString(recoverCost);
+              const ctx: CostPaymentContext = {
+                game: g,
+                payerSeat: self.ownerSeat,
+                sourceCardId,
+                raw: recoverCost,
+                kind: "ability",
+                sourceZone: ZoneType.Graveyard,
+              };
+              yield* payCost(plan, ctx);
+              paid = true;
+            } catch {
+              paid = false;
+            }
+            if (paid) {
+              yield* g.action.moveTo(sourceCardId, ZoneType.Hand, {
+                toSeat: self.ownerSeat,
+                cause: "recover",
+              });
+              return;
+            }
           }
 
           // Declined (or cost failed): exile self.

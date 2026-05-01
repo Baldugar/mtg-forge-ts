@@ -9,9 +9,13 @@
 // MVP scope:
 //   1. Adds "decayed" to card.keywords.
 //   2. Stamps `card.decayed = true`. Combat-handler reads this slot when
-//      enumerating legal blockers (a decayed creature is excluded). The
-//      "sacrifice at end of combat after attacking" delayed-trigger is
-//      documented under TODO(advanced).
+//      enumerating legal blockers (a decayed creature is excluded).
+//
+// Wave 79 — The "sacrifice at end of combat after attacking" half is
+// now driven by `sweepEndOfCombat` in statics/wave65-combat-gates.ts
+// (CR 702.148a). The PhaseHandler invokes the sweep at end-of-combat;
+// any card with `decayed === true && attackedThisCombat === true` is
+// sacrificed. Both halves of CR 702.148a are wired.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

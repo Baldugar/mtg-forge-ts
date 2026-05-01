@@ -11,13 +11,11 @@
 // MVP scope:
 //   1. Adds "skulk" to card.keywords.
 //
-// TODO(advanced) — Full Skulk integration registers a block-restriction
-// in the combat layer that filters blockers by power. The combat
-// pipeline already consults `card.keywords` for menace / fear / shadow,
-// so the legality check has a stable hook for "if attacker.skulk and
-// blocker.power > attacker.power → reject". Wave 39 stamps the flag so
-// the corpus parses; the per-blocker filter lands when the combat
-// layer's keyword-restriction shelf is widened.
+// Wave 79 — Full Skulk integration is now live in
+// combat/keywords/block-restrictions.ts (CR 702.118 — attacker.skulk
+// rejects blocker when blocker.power > attacker.power). The keyword
+// stamp here is the single source of truth that block-restrictions.ts
+// reads via hasKeyword.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

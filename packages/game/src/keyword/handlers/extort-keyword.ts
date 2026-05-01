@@ -11,16 +11,20 @@
 // DSL form:
 //   K:Extort     → no parameters
 //
-// MVP scope:
+// Wave 79 scope:
 //   1. Adds "extort" to card.keywords.
 //   2. Synthesizes one TriggeredAbility watching `SpellCast` whose
 //      controllerSeat matches self's controller.
-//   3. Resolver yields a confirmAction; on confirm, the cost-payment is
-//      a TODO(advanced) — for MVP we proceed with the drain (the spell
-//      cast pipeline will add the {W/B} additional cost gate in a
-//      follow-up). Each opponent loses 1; controller gains the total.
+//   3. Resolver yields a confirmAction; on confirm, the {W/B}
+//      cost-payment is run through parseCostString/payCost (mirroring
+//      the Wave 29 echo loop). On payment failure (insufficient mana
+//      or similar), the drain is skipped so a mis-confirmed pay can't
+//      strand state. On payment success, each opponent loses 1; the
+//      controller gains the total drained.
 import type { EntityId, GameEvent, KeywordAst, PlayerSeat, TriggeredAbility } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
+import type { CostPaymentContext } from "../../cost/parts/cost-part.js";
+import { parseCostString, payCost } from "../../cost/parts/cost-payment.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -81,8 +85,27 @@ export class ExtortKeywordHandler extends KeywordHandler {
           }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
           if (response?.confirmed !== true) return;
 
-          // TODO(advanced) — actual {W/B} payment goes through the cost
-          // solver. MVP proceeds without charging.
+          // Pay {W/B} via the cost-payment infra. parseCostString builds
+          // the CostPlan; payCost runs the mana solver / hybrid pick /
+          // ManaSpent emits. On failure (insufficient mana) treat as
+          // declined and skip the drain so state can't strand.
+          let paid = false;
+          try {
+            const plan = parseCostString("W/B");
+            const ctx: CostPaymentContext = {
+              game: g,
+              payerSeat: controllerSeat,
+              sourceCardId,
+              raw: "W/B",
+              kind: "ability",
+              sourceZone: ZoneType.Battlefield,
+            };
+            yield* payCost(plan, ctx);
+            paid = true;
+          } catch {
+            paid = false;
+          }
+          if (!paid) return;
 
           // Each opponent loses 1 life; controller gains the total drained.
           let drained = 0;
