@@ -15,8 +15,10 @@
 //   - Put Num$ +1/+1 counters on the chosen Army.
 //   - RememberAmass$ True appends the Army's id to source.remembered.
 //
-// TODO(advanced): when controller has multiple Armies, Forge prompts for a
-// chosen Army; MVP picks the first by iteration order.
+// Wave 80 — when controller has multiple Armies, yield a chooseCard
+// decision so the controller picks which Army receives the counters
+// (CR 701.45). On invalid responses we fall back to the first by
+// iteration order (the prior MVP default).
 import {
   CardType,
   Color,
@@ -60,16 +62,20 @@ const synthesizeArmyTokenPaper = (subType: string): PaperCard => {
   };
 };
 
-const findControllerArmy = (game: Game, seat: SpellAbility["controllerSeat"]): EntityId | null => {
+const findControllerArmies = (game: Game, seat: SpellAbility["controllerSeat"]): EntityId[] => {
+  const armies: EntityId[] = [];
   for (const [id, card] of game.cards) {
     if (card.controllerSeat !== seat) continue;
     if (card.zone !== ZoneType.Battlefield) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     for (const sub of chars.subtypes) {
-      if (sub.toLowerCase() === "army") return id;
+      if (sub.toLowerCase() === "army") {
+        armies.push(id);
+        break;
+      }
     }
   }
-  return null;
+  return armies;
 };
 
 export class AmassEffect extends SpellAbilityEffect {
@@ -79,8 +85,8 @@ export class AmassEffect extends SpellAbilityEffect {
     const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
     const subType = hasParam(sa, "Type") ? evaluateParamRaw(sa, "Type") : "Zombie";
 
-    let armyId = findControllerArmy(game, sa.controllerSeat);
-    if (armyId === null) {
+    let armies = findControllerArmies(game, sa.controllerSeat);
+    if (armies.length === 0) {
       // Create a 0/0 black <subType> Army token first.
       const paper = synthesizeArmyTokenPaper(subType);
       const result = yield* game.action.createToken({
@@ -92,7 +98,36 @@ export class AmassEffect extends SpellAbilityEffect {
       // void from the generator with side-effects on game.cards. Re-locate
       // the freshest matching Army.
       void result;
-      armyId = findControllerArmy(game, sa.controllerSeat);
+      armies = findControllerArmies(game, sa.controllerSeat);
+    }
+    if (armies.length === 0) return;
+
+    // Wave 80 — when controller has multiple Armies, yield chooseCard so
+    // controller picks which Army receives the counters (CR 701.45). With a
+    // single Army the choice is forced; we still take the head-of-list to
+    // keep parity with the prior MVP path.
+    let armyId: EntityId | null = armies[0] ?? null;
+    if (armies.length > 1) {
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: sa.controllerSeat,
+          pool: armies,
+          restriction: { effect: "amass", num },
+          min: 1,
+          max: 1,
+        },
+      }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+      if (decision && decision.kind === "chooseCard") {
+        const eligible = new Set(armies);
+        for (const id of decision.chosen) {
+          if (eligible.has(id)) {
+            armyId = id;
+            break;
+          }
+        }
+      }
     }
     if (armyId === null) return;
 

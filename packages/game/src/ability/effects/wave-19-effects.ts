@@ -289,33 +289,64 @@ effectRegistry.register(BlightEffect);
 // 10. Connive -----------------------------------------------------------------
 // Forge `SP$ Connive` (Streets of New Capenna; CR 702.165) — draw a card,
 // then discard a card. If a non-land was discarded, +1/+1 counter on each
-// target. MVP: draw + discard + counter (skip the non-land conditional check
-// since counter goes on Self regardless in Forge's MVP form).
+// target.
+//
+// Wave 80 — yield a chooseCard discard request to the controller (CR
+// 702.165a) instead of mechanically picking the last card in hand. Also
+// honors Num$ for multi-Connive cards (Connive 2 = draw+discard twice;
+// counters scale with non-lands discarded). On invalid responses we fall
+// back to the last card in hand (the prior MVP path).
 export class ConniveEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Connive";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const seat = sa.controllerSeat;
-    yield* game.action.drawCards(seat, 1);
-    const player = game.getPlayer(seat);
-    const hand = player.zones.get(ZoneType.Hand);
-    if (!hand) return;
-    const ids = hand.toArray();
-    const discardId = ids[ids.length - 1];
-    let nonLandDiscarded = false;
-    if (discardId !== undefined) {
-      const chars = game.layerEngine.computeCharacteristics(discardId);
-      nonLandDiscarded = !chars.types.has(CardType.Land);
-      yield* game.action.moveTo(discardId, ZoneType.Graveyard, { toSeat: seat, cause: "discard" });
-    }
-    if (nonLandDiscarded) {
-      const targetIds = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
-      for (const id of targetIds) {
-        yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, 1, sa.sourceCardId);
+    const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
+    let nonLandDiscarded = 0;
+    for (let i = 0; i < num; i++) {
+      yield* game.action.drawCards(seat, 1);
+      const player = game.getPlayer(seat);
+      const hand = player.zones.get(ZoneType.Hand);
+      if (!hand) continue;
+      const handIds = hand.toArray();
+      if (handIds.length === 0) continue;
+      let discardId: EntityId | undefined;
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: seat,
+          pool: handIds,
+          restriction: { effect: "connive-discard" },
+          min: 1,
+          max: 1,
+        },
+      }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+      if (decision && decision.kind === "chooseCard") {
+        const eligible = new Set(handIds);
+        for (const id of decision.chosen) {
+          if (eligible.has(id)) {
+            discardId = id;
+            break;
+          }
+        }
+      }
+      if (discardId === undefined) discardId = handIds[handIds.length - 1];
+      if (discardId !== undefined) {
+        const chars = game.layerEngine.computeCharacteristics(discardId);
+        if (!chars.types.has(CardType.Land)) nonLandDiscarded++;
+        yield* game.action.moveTo(discardId, ZoneType.Graveyard, {
+          toSeat: seat,
+          cause: "discard",
+        });
       }
     }
-    // TODO(advanced): yield a discard chooser instead of "last in hand";
-    // honor `Num$` for multi-Connive cards.
+    if (nonLandDiscarded > 0) {
+      const targetIds = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
+      for (const id of targetIds) {
+        yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, nonLandDiscarded, sa.sourceCardId);
+      }
+    }
   }
 }
 effectRegistry.register(ConniveEffect);

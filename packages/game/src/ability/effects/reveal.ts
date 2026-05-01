@@ -17,10 +17,13 @@
 //   - Default (no params) reveals the source card.
 // `RememberRevealed$ True` appends revealed ids to source.remembered.
 //
-// TODO(advanced): full Forge filter language (sub-types, color filters,
-// nested predicates) is out of scope for the MVP — those filters are
-// handled by SP4's full TargetRestriction AST.
-import { CardType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+// Wave 80 — extends the coarse filter language to also cover subtypes
+// (Card.Dinosaur, Card.Goblin) and the five mono-color qualifiers
+// (White / Blue / Black / Red / Green) on the qualifier side. Full SP4
+// TargetRestriction AST is still out of scope for cross-zone predicates;
+// what's covered here is the dominant Forge usage on RevealValid$ from
+// hand for reveal-effect SVars.
+import { CardType, Color, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -29,34 +32,94 @@ import { evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
 
+// Wave 80 — extended coarse filter. Each `+`-joined qualifier is checked
+// independently; ALL qualifiers must match. Recognized tokens:
+//   - "Card" / no head: match any card.
+//   - Card type (creature, artifact, enchantment, land, instant, sorcery,
+//     planeswalker, nonland, noncreature).
+//   - Mono-color (white/blue/black/red/green/colorless/multicolor).
+//   - Subtype (any other token; case-insensitive match against the card's
+//     computed subtypes set).
+//   - Soft qualifiers (youctrl, oppctrl, ...) pass through — the call site
+//     scopes the search to the controller's hand or the explicit-targets
+//     path, so seat is implicit.
+const matchesQualifier = (game: Game, cardId: EntityId, raw: string): boolean => {
+  const t = raw.toLowerCase();
+  const chars = game.layerEngine.computeCharacteristics(cardId);
+  switch (t) {
+    case "":
+    case "card":
+      return true;
+    case "creature":
+      return chars.types.has(CardType.Creature);
+    case "artifact":
+      return chars.types.has(CardType.Artifact);
+    case "enchantment":
+      return chars.types.has(CardType.Enchantment);
+    case "land":
+      return chars.types.has(CardType.Land);
+    case "instant":
+      return chars.types.has(CardType.Instant);
+    case "sorcery":
+      return chars.types.has(CardType.Sorcery);
+    case "planeswalker":
+      return chars.types.has(CardType.Planeswalker);
+    case "nonland":
+      return !chars.types.has(CardType.Land);
+    case "noncreature":
+      return !chars.types.has(CardType.Creature);
+    case "white":
+      return chars.colors.has(Color.White);
+    case "blue":
+      return chars.colors.has(Color.Blue);
+    case "black":
+      return chars.colors.has(Color.Black);
+    case "red":
+      return chars.colors.has(Color.Red);
+    case "green":
+      return chars.colors.has(Color.Green);
+    case "colorless":
+      return chars.colors.size === 0;
+    case "multicolor":
+      return chars.colors.size >= 2;
+    case "youctrl":
+    case "yourctrl":
+    case "oppctrl":
+    case "youown":
+    case "oppown":
+      // Seat-scope qualifiers: caller already constrains the search to the
+      // controller's hand, so accept and continue.
+      return true;
+    default:
+      // Subtype match (Dinosaur, Goblin, Wizard, ...) — case-insensitive.
+      for (const sub of chars.subtypes) {
+        if (sub.toLowerCase() === t) return true;
+      }
+      return false;
+  }
+};
+
 const matchesCoarseFilter = (game: Game, cardId: EntityId, filter: string): boolean => {
   const tokens = filter.split(".").map((t) => t.trim());
   const head = tokens[0] ?? "";
   if (head === "Card") {
     const rest = tokens[1] ?? "";
     if (!rest) return true;
-    const subTokens = rest.split("+").map((s) => s.trim().toLowerCase());
-    const chars = game.layerEngine.computeCharacteristics(cardId);
-    for (const t of subTokens) {
-      if (t === "creature" && !chars.types.has(CardType.Creature)) return false;
-      if (t === "artifact" && !chars.types.has(CardType.Artifact)) return false;
-      if (t === "enchantment" && !chars.types.has(CardType.Enchantment)) return false;
-      if (t === "land" && !chars.types.has(CardType.Land)) return false;
-      if (t === "instant" && !chars.types.has(CardType.Instant)) return false;
-      if (t === "sorcery" && !chars.types.has(CardType.Sorcery)) return false;
-      if (t === "nonland" && chars.types.has(CardType.Land)) return false;
-      // qualifiers we don't enforce (e.g. youctrl) just pass through —
-      // RevealValid$ on hand cards is implicitly limited to the controller.
+    const subTokens = rest.split("+").map((s) => s.trim());
+    for (const tok of subTokens) {
+      if (!matchesQualifier(game, cardId, tok)) return false;
     }
     return true;
   }
-  // Bare type name (e.g. "Dinosaur") → check creature subtype.
-  const lower = head.toLowerCase();
-  const chars = game.layerEngine.computeCharacteristics(cardId);
-  for (const sub of chars.subtypes) {
-    if (sub.toLowerCase() === lower) return true;
+  // Bare head (e.g. "Dinosaur" or "Creature") followed by optional "+"
+  // qualifiers. This covers Forge shapes like "Dinosaur+YouCtrl" written
+  // without a "Card." prefix.
+  const subTokens = (tokens[0] ?? "").split("+").map((s) => s.trim());
+  const restTokens = tokens.slice(1).flatMap((t) => t.split("+").map((s) => s.trim()));
+  for (const tok of [...subTokens, ...restTokens]) {
+    if (!matchesQualifier(game, cardId, tok)) return false;
   }
-  return false;
+  return true;
 };
 
 export class RevealEffect extends SpellAbilityEffect {

@@ -14,6 +14,7 @@ import { CardType, CounterType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type {
   AbilityAst,
   CardDefinition,
+  DecisionResponse,
   EntityId,
   PaperCard,
   PlayerSeat,
@@ -146,8 +147,13 @@ effectRegistry.register(EndTurnEffect);
 // Forge `SP$ Explore` (Ixalan; CR 701.39) — reveal the top of the library;
 // if it is a land, put it into hand. Otherwise put a +1/+1 counter on the
 // exploring creature, then choose to put the card into hand or graveyard.
-// MVP: deterministic — peek top, route land to hand or non-land card stays
-// on top + add +1/+1 counter to each target.
+//
+// Wave 80 — emit the canonical CardExplored event so Wave 20's
+// "whenever ~ explores" trigger ("you may put it into your graveyard")
+// observers fire (Trapjaw Tyrant, Pugnacious Pugilist, etc.). On the
+// non-land branch, yield a chooseOption decision so the controller picks
+// keep-on-top vs. graveyard (CR 701.39c). The +1/+1 counter goes on the
+// exploring creature when non-land regardless of the keep/graveyard pick.
 export class ExploreEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Explore";
 
@@ -155,27 +161,70 @@ export class ExploreEffect extends SpellAbilityEffect {
     const seat = sa.controllerSeat;
     const player = game.getPlayer(seat);
     const lib = player.zones.get(ZoneType.Library);
+    const targetIds = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     if (!lib) return;
     const ids = lib.toArray();
     const topId = ids[0];
-    const targetIds = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     if (topId === undefined) {
+      // Empty library: still counts as an explore for triggers; counter the
+      // creature (CR 701.39c — no card revealed = +1/+1 counter only).
       for (const id of targetIds) {
         yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, 1, sa.sourceCardId);
+        yield {
+          kind: "event",
+          event: {
+            kind: "CardExplored",
+            version: 1,
+            turn: game.turn,
+            phase: game.phase,
+            payload: { cardId: id, playerSeat: seat, resultPutIntoHand: false },
+          },
+        };
       }
       return;
     }
     const chars = game.layerEngine.computeCharacteristics(topId);
     const isLand = chars.types.has(CardType.Land);
+    let landed = false;
     if (isLand) {
       yield* game.action.moveTo(topId, ZoneType.Hand, { toSeat: seat, cause: "explore" });
+      landed = true;
     } else {
+      // Non-land branch: +1/+1 counter on each exploring creature, then a
+      // chooseOption for the revealed card (keep-on-top vs. graveyard).
       for (const id of targetIds) {
         yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, 1, sa.sourceCardId);
       }
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseOption",
+          sourceId: sa.sourceCardId,
+          options: [
+            { id: "keep", description: "Keep on top of library" },
+            { id: "grave", description: "Put into graveyard" },
+          ],
+        },
+      }) as { readonly kind: "chooseOption"; readonly optionId: string } | undefined;
+      const sendToGrave = decision?.kind === "chooseOption" && decision.optionId === "grave";
+      if (sendToGrave) {
+        yield* game.action.moveTo(topId, ZoneType.Graveyard, { toSeat: seat, cause: "explore" });
+      }
+      // Otherwise the card stays on top of the library (no movement needed).
     }
-    // TODO(advanced): emit a CardExplored event + offer the keep-on-top vs.
-    // graveyard chooser when a non-land is revealed.
+    // Emit one CardExplored per exploring creature for trigger observers.
+    for (const id of targetIds) {
+      yield {
+        kind: "event",
+        event: {
+          kind: "CardExplored",
+          version: 1,
+          turn: game.turn,
+          phase: game.phase,
+          payload: { cardId: id, playerSeat: seat, resultPutIntoHand: landed },
+        },
+      };
+    }
   }
 }
 effectRegistry.register(ExploreEffect);
@@ -232,22 +281,34 @@ effectRegistry.register(AssignGroupEffect);
 
 // 9. ExchangeLife -------------------------------------------------------------
 // Forge `SP$ ExchangeLife` (CR 701.10) — exchange the controller's life total
-// with another player's. MVP: swap the two `Player.life` values directly.
+// with another player's.
+//
+// Wave 80 — route through game.action.changeLife with the per-seat delta so
+// life-change replacements (CantGainLife / CantLoseLife / CantChangeLife
+// gates from Wave 70.E/M/O), LifeChanged triggers, and Wave 51 per-turn
+// life trackers all fire correctly. Both deltas snapshot the original life
+// totals BEFORE the first changeLife call so the second call sees the
+// pre-swap delta even though the first call already mutated player.life.
 export class ExchangeLifeEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ExchangeLife";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const a = game.getPlayer(sa.controllerSeat);
     const otherDef = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "Opponent";
     const bSeat: PlayerSeat =
       otherDef === "Opponent" ? otherSeat(sa.controllerSeat, game) : sa.controllerSeat;
+    if (bSeat === sa.controllerSeat) return;
     const b = game.getPlayer(bSeat);
-    const tmp = a.life;
-    a.life = b.life;
-    b.life = tmp;
-    // TODO(advanced): route through game.action.setLife so life-set
-    // replacements (Forsaken Wastes-style) and triggers fire.
+    const aLife = a.life;
+    const bLife = b.life;
+    const deltaA = bLife - aLife;
+    const deltaB = aLife - bLife;
+    if (deltaA !== 0) {
+      yield* game.action.changeLife(sa.controllerSeat, deltaA, { cause: "exchange-life" });
+    }
+    if (deltaB !== 0) {
+      yield* game.action.changeLife(bSeat, deltaB, { cause: "exchange-life" });
+    }
   }
 }
 effectRegistry.register(ExchangeLifeEffect);
@@ -272,29 +333,99 @@ effectRegistry.register(IncubateEffect);
 // 11. TwoPiles ----------------------------------------------------------------
 // Forge `SP$ TwoPiles` (Fact or Fiction; CR 701.6) — divide a set of cards
 // into two piles; opponent picks which pile becomes hand and which becomes
-// graveyard. MVP: split the top N library cards into two equal halves; route
-// half[0] to hand, half[1] to graveyard.
+// graveyard.
+//
+// Wave 80 — yield a `dividePileChoice` request to the splitting player
+// (the source controller's opponent — Forge's "an opponent of you divides"
+// canonical), then a `chooseCardsPile` request to the chooser (the source
+// controller). Mirrors the proven MultiplePilesEffect pattern but for the
+// strict 2-pile case. On invalid divider response the engine falls back to
+// the even half/half split; on invalid chooser response we default to pile
+// A. Pile A goes to hand; pile B goes to graveyard, matching FoF canonical.
 export class TwoPilesEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "TwoPiles";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 5;
-    const seat = sa.controllerSeat;
-    const player = game.getPlayer(seat);
-    const lib = player.zones.get(ZoneType.Library);
+    const controllerSeat = sa.controllerSeat;
+    const controllerPlayer = game.getPlayer(controllerSeat);
+    const lib = controllerPlayer.zones.get(ZoneType.Library);
     if (!lib) return;
-    const ids = lib.toArray().slice(0, num);
-    const half = Math.ceil(ids.length / 2);
-    const pileHand = ids.slice(0, half);
-    const pileGrave = ids.slice(half);
-    for (const id of pileHand) {
-      yield* game.action.moveTo(id, ZoneType.Hand, { toSeat: seat, cause: "two-piles" });
+    const top = lib.toArray().slice(0, num);
+    if (top.length === 0) return;
+
+    const splitterSeat = otherSeat(controllerSeat, game);
+    // Default even-split partition (engine fallback).
+    const half = Math.ceil(top.length / 2);
+    const defaultA = top.slice(0, half);
+    const defaultB = top.slice(half);
+
+    // Yield dividePileChoice to the splitting player.
+    const splitRaw = yield {
+      kind: "decision",
+      request: {
+        kind: "dividePileChoice",
+        playerSeat: splitterSeat,
+        sourceId: sa.sourceCardId,
+        cards: top,
+        numPiles: 2,
+      },
+    };
+    const splitResp = splitRaw as DecisionResponse | undefined;
+    let pileA: readonly EntityId[] = defaultA;
+    let pileB: readonly EntityId[] = defaultB;
+    if (splitResp && splitResp.kind === "dividePileChoice" && splitResp.piles.length === 2) {
+      const [candA, candB] = splitResp.piles;
+      // Validate: piles partition the input set (each id exactly once).
+      const expected = new Set(top);
+      const seen = new Set<EntityId>();
+      let ok = true;
+      for (const pile of [candA, candB]) {
+        if (!pile) {
+          ok = false;
+          break;
+        }
+        for (const id of pile) {
+          if (!expected.has(id) || seen.has(id)) {
+            ok = false;
+            break;
+          }
+          seen.add(id);
+        }
+        if (!ok) break;
+      }
+      if (ok && seen.size === top.length) {
+        pileA = candA ?? defaultA;
+        pileB = candB ?? defaultB;
+      }
     }
-    for (const id of pileGrave) {
-      yield* game.action.moveTo(id, ZoneType.Graveyard, { toSeat: seat, cause: "two-piles" });
+
+    // Yield the chooser's pick.
+    const pickRaw = yield {
+      kind: "decision",
+      request: {
+        kind: "chooseCardsPile",
+        sourceId: sa.sourceCardId,
+        pileA,
+        pileB,
+      },
+    };
+    const pickResp = pickRaw as DecisionResponse | undefined;
+    let chosenIsA = true;
+    if (pickResp && pickResp.kind === "chooseCardsPile") {
+      chosenIsA = pickResp.chosen !== "b";
     }
-    // TODO(advanced): yield a `dividePileChoice` request so the active
-    // player divides + the opponent picks; emit PilesDivided + PilePicked.
+    const chosen = chosenIsA ? pileA : pileB;
+    const discarded = chosenIsA ? pileB : pileA;
+    for (const id of chosen) {
+      yield* game.action.moveTo(id, ZoneType.Hand, { toSeat: controllerSeat, cause: "two-piles" });
+    }
+    for (const id of discarded) {
+      yield* game.action.moveTo(id, ZoneType.Graveyard, {
+        toSeat: controllerSeat,
+        cause: "two-piles",
+      });
+    }
   }
 }
 effectRegistry.register(TwoPilesEffect);
