@@ -229,14 +229,22 @@ export class PayCumulativeUpkeepTrigger extends TriggerHandler {
 triggerHandlerRegistry.register(PayCumulativeUpkeepTrigger);
 
 // 7. FullyUnlock --------------------------------------------------------------
-// Outlaws of Thunder Junction Door mechanic. Fires when ALL doors on the
-// source are unlocked. Maps to DoorOpened with full=true semantics — MVP
-// fires on every DoorOpened that targets the source card.
+// Outlaws of Thunder Junction / Duskmourn Room mechanic. Fires when ALL
+// doors on the source are unlocked. Wave 98 — gates on the source card's
+// `fullyUnlocked` flag, which UnlockDoorEffect transitions exactly once
+// per Room (the partial-unlock pulse leaves the flag false; the final
+// door-open flips it to true and emits the DoorOpened event we observe
+// here). Reading the flag inside the matcher is the canonical "last
+// unlock only" semantics — earlier door-opens fail the gate because the
+// flag is still false at observation time, only the door-open that
+// completes the room sees `fullyUnlocked === true`. Single-door rooms
+// (most OTJ doors) trivially fully-unlock on their lone open, so the
+// trigger fires on that one event.
 export class FullyUnlockTrigger extends TriggerHandler {
   static override readonly mode = "FullyUnlock";
 
   override build(_ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
-    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const { game, sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = _ast.effect.handlerKey;
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
@@ -249,9 +257,28 @@ export class FullyUnlockTrigger extends TriggerHandler {
       matches(event: GameEvent): boolean {
         if (event.kind !== "DoorOpened") return false;
         const p = event.payload as { cardId?: EntityId };
-        // TODO(advanced): track unlocked door count per card and fire only
-        // on the LAST unlock. MVP fires once per DoorOpened on the source.
-        return p.cardId === sourceCardId;
+        if (p.cardId !== sourceCardId) return false;
+        // CR 702.166 (OTJ) / Duskmourn Room — fire only on the door-open
+        // that completes the room. UnlockDoorEffect adds the freshly-
+        // opened door to `card.unlockedDoors` BEFORE yielding the
+        // DoorOpened event, so the set observed here always includes the
+        // current door. The room is fully unlocked iff every entry in
+        // `printedDoors` is in `unlockedDoors`. Single-door rooms (most
+        // OTJ doors) trivially satisfy this on the lone open. Two-door
+        // Duskmourn rooms only fire on the second open. Defaulting
+        // `printedDoors` to ["front", "back"] mirrors UnlockDoorEffect's
+        // own fallback so the two implementations stay aligned.
+        const card = game.cards.get(sourceCardId);
+        const probe = card as unknown as
+          | { unlockedDoors?: Set<string>; printedDoors?: readonly string[] }
+          | undefined;
+        const open = probe?.unlockedDoors;
+        if (!(open instanceof Set) || open.size === 0) return false;
+        const printed = probe?.printedDoors ?? ["front", "back"];
+        for (const d of printed) {
+          if (!open.has(d)) return false;
+        }
+        return true;
       },
       resolver: makeSvarResolver(sourceCardId, controllerSeat, executeKey, "FullyUnlockTrigger"),
     };

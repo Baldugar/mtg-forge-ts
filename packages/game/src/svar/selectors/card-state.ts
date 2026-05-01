@@ -102,17 +102,21 @@ const computeCardCounters = (ast: SVarExpressionAst, ctx: SvarContext): number =
 };
 
 // Count$CrewSize — number of creatures currently crewing the source
-// vehicle. Forge tracks this on a `crewedBy` array stamped by CrewEffect;
-// MVP probe defensively for either slot shape (`crewedBy` array or
-// `crewSize` number) until the canonical slot is finalised.
-// TODO(advanced): wire CrewEffect to maintain the slot uniformly.
+// vehicle. Wave 98 — CrewEffect now maintains the canonical `crewedBy`
+// readonly array slot on Card; this selector reads it directly. The
+// legacy `crewSize` numeric probe remains as a fallback so any
+// pre-existing test fixture or AI pump that stamps the count without
+// going through CrewEffect (no Forge card prints this shape, but the
+// engine APIs allow it for headless replays) still resolves cleanly.
+// Returns 0 when no crew is currently active (vehicle uncrewed or off
+// battlefield). Cleared at end of turn alongside crewedUntilEot.
 const computeCrewSize = (_ast: SVarExpressionAst, ctx: SvarContext): number => {
   const id = ctx.sourceCardId;
   if (id === undefined) return 0;
   const card = ctx.game.cards.get(id);
   if (!card) return 0;
-  const probe = card as unknown as { crewedBy?: readonly unknown[]; crewSize?: number };
-  if (Array.isArray(probe.crewedBy)) return probe.crewedBy.length;
+  if (Array.isArray(card.crewedBy)) return card.crewedBy.length;
+  const probe = card as unknown as { crewSize?: number };
   if (typeof probe.crewSize === "number") return probe.crewSize;
   return 0;
 };

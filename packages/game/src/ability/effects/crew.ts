@@ -151,6 +151,14 @@ export class CrewEffect extends SpellAbilityEffect {
     // Stamp the transient flag and register the EOT cleanup hook. The
     // ContinuousEffect itself is a noop — it exists only to drive expiry.
     card.crewedUntilEot = true;
+    // Wave 98 — record the canonical crewedBy list so Count$CrewSize and
+    // any "remember the crew" trigger can read a single uniform slot
+    // (no more probing crewedBy / crewSize alternates). Snapshot the
+    // tapped ids; the array is `readonly` after the assignment so the
+    // EOT cleanup clears via `= undefined` rather than splicing in
+    // place. CR 702.121b: a creature stops crewing the moment crewedUntilEot
+    // expires, so clearing the list at the same EOT hook stays in sync.
+    card.crewedBy = [...tapIds];
     const effectId = game.newEntityId();
     const continuousEffect: ContinuousEffect = {
       id: effectId,
@@ -163,7 +171,10 @@ export class CrewEffect extends SpellAbilityEffect {
     game.continuousEffectRegistry.register(continuousEffect);
     game.continuousEffectRegistry.registerCleanup(effectId, (g) => {
       const v = g.cards.get(sourceId);
-      if (v) v.crewedUntilEot = false;
+      if (v) {
+        v.crewedUntilEot = false;
+        v.crewedBy = undefined;
+      }
       g.layerEngine.bumpEpoch("crew-cleanup");
     });
 

@@ -32,6 +32,7 @@ import {
   exceedsBlockerCap,
 } from "../statics/wave70h-combat-gates.js";
 import { attackRequirementsFor, isDefenderPermitted } from "../statics/wave70k-gate-helpers.js";
+import { canBlockWhileTapped } from "../statics/wave78-gate-helpers.js";
 import type { AttackerInfo, BlockerInfo, CombatState, DefenderTarget } from "./combat-state.js";
 import { createCombatState } from "./combat-state.js";
 import {
@@ -294,9 +295,16 @@ export class CombatHandler {
    * via the second tuple element when the static specifies Attacker$.
    * "If able" gating: respects the existing canBlock gate (decayed) +
    * the static cantBlock registry (via gatherRestrictions sweep at
-   * declareBlockers time). The full Forge "if able" check (tap state,
-   * evasion vs the required attacker) is // TODO(advanced); same
-   * contract as applyMustAttack.
+   * declareBlockers time). Wave 98 — extended with the canonical
+   * tap-state check (CR 509.1a — "an attacking creature that is tapped
+   * cannot block"; same rule applies to the candidate blocker), with the
+   * standard BlockTapped static carve-out (Vedalken Outlander-shape
+   * "may block as though it were untapped"). Evasion vs the required
+   * attacker (Flying / Reach / Fear / Skulk / Menace etc.) still routes
+   * through the existing canBlock + block-restrictions gate at
+   * declareBlockers time, so a Provoke-pulled blocker that simply cannot
+   * legally block the matched attacker is filtered out by the same path
+   * as a player-declared block.
    */
   private applyMustBlock(): void {
     const subjects = collectMustBlockSubjects(this.game);
@@ -314,6 +322,12 @@ export class CombatHandler {
       if (!canBlock(this.game, subj.blockerId)) continue;
       const card = this.game.cards.get(subj.blockerId);
       if (!card) continue;
+      // Wave 98 — tap-state "if able" gate. A tapped creature cannot block
+      // (CR 509.1a) unless an active BlockTapped static permits it
+      // (Vedalken Outlander / Maze of Ith analogues). Skip silently — the
+      // must-block contract is "if able", so a tapped creature without a
+      // BlockTapped grant is simply not pulled in.
+      if (card.tapped === true && !canBlockWhileTapped(this.game, subj.blockerId)) continue;
       // Resolve the required attacker. If the static targeted a specific
       // Attacker$ that matches a declared attacker, use that; otherwise
       // fall back to the default (first declared attacker).

@@ -339,6 +339,12 @@ describe("scripted no-op game (integration smoke)", () => {
     // 12 priority windows (one per PhaseStep) seen only by the active seat
     // (priority is SP1-minimal, active-only). Three turns × 12 steps = up
     // to 36 priority windows for the active player (split across seats).
+    //
+    // Wave 98 — Cleanup-step CR 514.1 discard now yields a chooseCard
+    // decision when the active seat's hand exceeds maxHandSize. The test
+    // driver below catches the chooseCard kind and answers it directly
+    // (front-of-hand pick) so the scripted controllers' positional script
+    // does not need chooseCard slots interleaved.
     const priorityPass: DecisionResponse = { kind: "priority", action: { kind: "pass" } };
     const mulliganKeep: DecisionResponse = { kind: "mulligan", keep: true };
     const companionDecline: DecisionResponse = { kind: "companionDeclaration", companionId: null };
@@ -385,6 +391,13 @@ describe("scripted no-op game (integration smoke)", () => {
       if (phaseStep.value.kind === "decision") {
         const req = phaseStep.value.request;
         if (!("playerSeat" in req)) throw new Error("unexpected req kind");
+        // Wave 98 — answer chooseCard inline without consuming a script slot.
+        // Front-of-hand pick mirrors the legacy auto-discard semantics.
+        if (req.kind === "chooseCard") {
+          const cleanupChoice = req.pool.slice(0, req.min);
+          phaseStep = gen.next({ kind: "chooseCard", chosen: cleanupChoice });
+          continue;
+        }
         const c = controllers.get(req.playerSeat);
         if (!c) throw new Error("no controller");
         phaseStep = gen.next(c.decide(req));

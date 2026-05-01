@@ -170,13 +170,21 @@ export const onUpkeepAdvanceInitiativeDungeon = (
 /**
  * Pick the seat directly after `seat` in turn order. With 2-player MVP we
  * always have exactly one opponent, so the lookup degenerates to the
- * other player. Multiplayer expansion: iterate `game.players` and pick
- * the next non-eliminated seat (TODO(advanced) — same pattern used by the
- * monarch tracker).
+ * other player. Wave 98 — multiplayer expansion: iterate `game.players`
+ * and pick the next non-eliminated seat (mirrors the monarch tracker /
+ * priority pipeline). Eliminated seats (`hasLost === true`) are skipped
+ * so the dungeon-room "another player" fallback does not stall on a
+ * dead seat. If no live opponent exists (degenerate solo replay or every
+ * other seat has lost), returns `seat` itself — the canonical "self
+ * fallback" used by the priority pipeline; downstream callers that
+ * apply life-loss / goad-target / etc. effectively no-op when the
+ * routed seat happens to be the venturing player.
  */
 const opponentOf = (game: Game, seat: PlayerSeat): PlayerSeat => {
   for (const p of game.players) {
-    if (p.seat !== seat) return p.seat;
+    if (p.seat === seat) continue;
+    if (p.hasLost) continue;
+    return p.seat;
   }
   return seat;
 };

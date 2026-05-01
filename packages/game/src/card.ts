@@ -173,6 +173,15 @@ export class Card {
   // change types.
   crewedUntilEot?: boolean;
   saddledUntilEot?: boolean;
+  // Wave 98 — canonical "creatures currently crewing this Vehicle"
+  // membership list. Stamped by CrewEffect.resolve when the activation
+  // succeeds (mirrors the `crewedBy` slot Forge maintains in Java); read
+  // by Count$CrewSize (svar/selectors/card-state.ts) and surfaced to
+  // triggers that ask "who crewed this vehicle". Cleared by the same
+  // EOT cleanup hook that flips `crewedUntilEot` back to false. The
+  // `?: undefined` clause keeps the slot strictly absent on Vehicles
+  // that have never been crewed (no empty-array baseline allocations).
+  crewedBy?: readonly EntityId[] | undefined;
   // Wave 28 — Station (CR 718, "Spaceship — The Final Frontier"). A non-
   // creature Spacecraft becomes a creature until end of turn when it is
   // "stationed" (mirror of Crew). The flag is set by StationEffect and

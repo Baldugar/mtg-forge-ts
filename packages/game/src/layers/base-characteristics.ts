@@ -34,9 +34,14 @@ import { combinedSplitCharacteristics, isSplitCard } from "../multiface/split.js
 // English color word found in card text to the corresponding Color bit so
 // `card.textChanges` rewrites can swap one color for another in the
 // effective ColorSet. Casing matches Forge's printed-text convention
-// (Title-Case word). TODO(advanced): re-parse rules text + replace
-// keyword-color phrases (e.g. "protection from white"); MVP only patches
-// the effective color set so color-aware filters observe the swap.
+// (Title-Case word). Wave 98 — rules-text rewrite path is now wired in:
+// the printed `rulesText` is also rewritten in place so phrasings like
+// "protection from white" / "deals damage to target Goblin" observe the
+// swap. Word-boundary semantics match layers/layer3-text.ts (negative
+// lookarounds for word characters, so "creatures" is not partially
+// matched by "creature"). Both Title-Case and lower-case forms of the
+// color word are rewritten because Forge text uses both ("White creature"
+// in costs / type lines, "white" mid-sentence).
 const COLOR_WORD_TO_BIT: Readonly<Record<string, Color>> = {
   White: Color.White,
   Blue: Color.Blue,
@@ -45,31 +50,55 @@ const COLOR_WORD_TO_BIT: Readonly<Record<string, Color>> = {
   Green: Color.Green,
 };
 
+// Word-boundary literal-string substitution mirroring layer3-text. Returns
+// the rewritten text so callers can chain replacements on the result.
+const replaceWord = (haystack: string, from: string, to: string): string => {
+  if (haystack.length === 0 || from.length === 0) return haystack;
+  const escaped = from.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return haystack.replace(new RegExp(`(?<!\\w)${escaped}(?!\\w)`, "g"), to);
+};
+
 const applyColorTextChange = (chars: Characteristics, fromWord: string, toWord: string): void => {
   const fromBit = COLOR_WORD_TO_BIT[fromWord];
   const toBit = COLOR_WORD_TO_BIT[toWord];
   if (fromBit === undefined || toBit === undefined) return;
-  if (!chars.colors.has(fromBit)) return;
-  // Remove fromBit and union with toBit. ColorSet is immutable; rebuild
-  // from the bits we keep + the new one.
-  const remaining: Color[] = [];
-  for (const c of [Color.White, Color.Blue, Color.Black, Color.Red, Color.Green]) {
-    if (c === fromBit) continue;
-    if (chars.colors.has(c)) remaining.push(c);
+  if (chars.colors.has(fromBit)) {
+    // Remove fromBit and union with toBit. ColorSet is immutable; rebuild
+    // from the bits we keep + the new one.
+    const remaining: Color[] = [];
+    for (const c of [Color.White, Color.Blue, Color.Black, Color.Red, Color.Green]) {
+      if (c === fromBit) continue;
+      if (chars.colors.has(c)) remaining.push(c);
+    }
+    remaining.push(toBit);
+    chars.colors = ColorSet.of(...remaining);
   }
-  remaining.push(toBit);
-  chars.colors = ColorSet.of(...remaining);
+  // CR 612.2 — rewrite both casings of the color word so any color-aware
+  // text reader (cost gates, target restrictions, "protection from <X>"
+  // checks) observes the swap. Independent of whether the card's own
+  // color set held `fromBit` (a card with "deals damage to target white
+  // creature" is not itself white but still rewrites the text).
+  let txt = chars.rulesText;
+  txt = replaceWord(txt, fromWord, toWord);
+  txt = replaceWord(txt, fromWord.toLowerCase(), toWord.toLowerCase());
+  chars.rulesText = txt;
 };
 
 const applyTypeTextChange = (chars: Characteristics, fromType: string, toType: string): void => {
   // CR 612 — the "type word" change rewrites the printed text wholesale,
   // so creature subtypes (Goblin → Elf) flip both on the type line and
-  // anywhere the original word appeared in rules text. MVP swaps the
-  // subtype set; rules-text rewrite is TODO(advanced).
+  // anywhere the original word appeared in rules text. Wave 98 — rules-
+  // text rewrite path is now wired in alongside the subtype-set swap so
+  // phrasings like "Goblin creatures you control" observe the change.
+  // Title-Case only: subtypes are printed Title-Case in Forge (Goblin /
+  // Elf / Soldier) and the rules-text references match. Lower-case forms
+  // are not rewritten — they would risk matching unrelated words (e.g.
+  // "soldier" inside a flavor reference).
   if (chars.subtypes.has(fromType)) {
     chars.subtypes.delete(fromType);
     chars.subtypes.add(toType);
   }
+  chars.rulesText = replaceWord(chars.rulesText, fromType, toType);
 };
 
 // Wave 10 — Bestow type-flip (see end of deriveBaseCharacteristics). Hoist
@@ -155,6 +184,17 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
       base.toughness = parsePt(def.pt.toughness);
     }
 
+    // Wave 98 — populate the printed rules text from the definition's
+    // oracle string so the Layer 1 ChangeText path (below) can rewrite
+    // phrases like "white creature" → "black creature". The layer3
+    // text-substitution pass operates on this same field via a
+    // dedicated module (layers/layer3-text.ts) that runs over the
+    // statics-driven text-change registry; the per-card textChanges
+    // rewrite path below operates on the same string in place.
+    if (typeof def.oracle === "string" && def.oracle.length > 0) {
+      base.rulesText = def.oracle;
+    }
+
     // colors: if explicitly set on the definition (Colors: line override),
     // use it. Otherwise CR 202.2 — a card's color is derived from its mana
     // cost's colored pips. Wave 12: derive from base.manaCost so target
@@ -213,12 +253,13 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
   }
 
   // Wave 45 — ChangeText (CR 612). Apply each text-change rule on top of
-  // the populated characteristics. The full Layer 1 (text) integration
-  // would re-parse the printed rules text with substitutions in place;
-  // MVP patches the effective color set + creature-subtype set so color-
-  // aware filters and type-aware filters observe the swap. TODO(advanced)
-  // — full rules-text replacement (e.g. "deals damage to target white
-  // creature" → "...black creature").
+  // the populated characteristics. Wave 98 — rules-text rewrite path is
+  // now wired in alongside the color-set / subtype-set swaps, so any
+  // downstream consumer reading `chars.rulesText` (target-restriction
+  // parsers, "protection from <X>" gates, type-line rewrites) observes
+  // the substitution as well. Color words rewrite both casings (Title-
+  // Case + lower); type words rewrite Title-Case only (subtypes are
+  // canonically Title-Case in Forge text).
   if (card.textChanges.length > 0) {
     for (const tc of card.textChanges) {
       if (tc.kind === "color") applyColorTextChange(base, tc.from, tc.to);

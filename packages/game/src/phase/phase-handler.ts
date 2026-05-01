@@ -16,7 +16,13 @@
 // the legal actions are {pass, concede}. Full priority passing between all
 // seats, stack resolution, upkeep triggers, cleanup-phase discard, and
 // combat damage assignment land in SP2 on top of this scaffold.
-import type { DecisionRequest, DecisionResponse, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
+import type {
+  DecisionRequest,
+  DecisionResponse,
+  EntityId as EntityIdT,
+  PhaseStep,
+  PlayerSeat,
+} from "@mtg-forge-ts/core";
 import {
   GameStateIntegrityError,
   IllegalDecisionError,
@@ -413,12 +419,12 @@ export class PhaseHandler {
       // walks LimitOnHandSize statics; default is 7 when no static
       // matches. Unlimited returns POSITIVE_INFINITY → no discard.
       //
-      // MVP — auto-discards from the FRONT of the hand list to reach
-      // the cap deterministically. The full interactive "player chooses
-      // which N to discard" decision is // TODO(advanced); the front-
-      // first discard is observably correct for the common Reliquary
-      // Tower / Spellbook test path (no discard occurs at all when
-      // max is Unlimited) and for headless deterministic replays.
+      // Wave 98 — interactive "player chooses which N to discard" via the
+      // canonical chooseCard decision (min=max=overflow). The PlayerController
+      // returns the chosen subset; on a malformed / size-mismatched response
+      // we fall back to the front-of-hand auto-pick so the turn does not
+      // stall. The fallback also covers the headless test fixtures that
+      // wire a passing controller — those replays remain deterministic.
       const max = effectiveMaxHandSize(game, active);
       if (Number.isFinite(max)) {
         const player = game.getPlayer(active);
@@ -428,7 +434,41 @@ export class PhaseHandler {
           const overflow = handCards.length - max;
           if (overflow > 0) {
             // Snapshot first; moveTo mutates the zone underneath.
-            const toDiscard = handCards.slice(0, overflow);
+            let toDiscard: readonly EntityIdT[] = handCards.slice(0, overflow);
+            const decision = (yield {
+              kind: "decision",
+              request: {
+                kind: "chooseCard",
+                playerSeat: active,
+                pool: handCards,
+                restriction: { reason: "cleanupHandSize" },
+                min: overflow,
+                max: overflow,
+              },
+            } as EngineYield) as { kind?: string; chosen?: readonly EntityIdT[] };
+            if (
+              decision &&
+              decision.kind === "chooseCard" &&
+              Array.isArray(decision.chosen) &&
+              decision.chosen.length === overflow
+            ) {
+              // Validate every chosen id is in the snapshotted hand.
+              const handSet = new Set<EntityIdT>(handCards);
+              const dedup = new Set<EntityIdT>();
+              let valid = true;
+              for (const cid of decision.chosen) {
+                if (!handSet.has(cid)) {
+                  valid = false;
+                  break;
+                }
+                if (dedup.has(cid)) {
+                  valid = false;
+                  break;
+                }
+                dedup.add(cid);
+              }
+              if (valid) toDiscard = decision.chosen;
+            }
             for (const cid of toDiscard) {
               yield* this.action.moveTo(cid, ZoneType.Graveyard, { cause: "handSize" });
             }
