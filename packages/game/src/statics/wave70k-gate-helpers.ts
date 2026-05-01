@@ -45,7 +45,35 @@ export const canAttach = (game: Game, equipmentId: EntityId, targetId: EntityId)
     const payload = s.describe() as CantAttachPayload;
     if (!payload || payload.kind !== "cantAttach") continue;
     if (!payload.equipmentMatches(equipmentId, game)) continue;
+    // CARD-target gates: only consult ValidTarget$ when the static does
+    // NOT specify a ValidPlayerTarget$. A static with a ValidPlayerTarget$
+    // only gates the player-target path; the card path skips it.
+    if (payload.hasPlayerTargetFilter) continue;
     if (!payload.targetMatches(targetId, game)) continue;
+    return false;
+  }
+  return true;
+};
+
+/**
+ * True iff the equipment / aura `equipmentId` may be attached to the
+ * candidate PLAYER target at `targetSeat`. False iff any active
+ * CantAttach static with a ValidPlayerTarget$ filter matches the
+ * (equipment, target-seat) pair. Wave 97 closure: Curse-shape auras
+ * (Curse of Disturbance / Curse of the Restless Dead / etc.) attach to
+ * players, not cards — gating those needs a player-target predicate.
+ *
+ * Statics WITHOUT a ValidPlayerTarget$ slot do not gate player-target
+ * attaches at all (they are scoped to card targets via ValidTarget$).
+ */
+export const canAttachPlayer = (game: Game, equipmentId: EntityId, targetSeat: PlayerSeat): boolean => {
+  const statics = game.staticEffectRegistry.byMode("CantAttach");
+  for (const s of statics) {
+    const payload = s.describe() as CantAttachPayload;
+    if (!payload || payload.kind !== "cantAttach") continue;
+    if (!payload.hasPlayerTargetFilter) continue;
+    if (!payload.equipmentMatches(equipmentId, game)) continue;
+    if (!payload.playerTargetMatches(targetSeat)) continue;
     return false;
   }
   return true;

@@ -33,15 +33,18 @@
 // replacement chain. Mirrors Wave 70.E's CantGainLife pattern.
 //
 // MVP scope: ValidPlayer$ You / Opponent / Any / Player (Wave 50
-// buildPlayerPredicate grammar). Source-conditional sub-filters
-// (CantLoseLifeFromSource$ Card.X) are TODO(advanced).
+// buildPlayerPredicate grammar). Wave 97 closes the source-conditional
+// CantLoseLifeFromSource$ Card.X sub-filter, mirroring
+// CantGainLifeFromSource$ on the negative-delta side.
 import type {
+  EntityId,
   ParamValue,
   PlayerSeat,
   ReplacementAbility,
   StaticAbility,
   StaticAst,
 } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";
 import {
   StaticHandler,
@@ -49,10 +52,18 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface CantLoseLifePayload extends ReplacementGenPayload {
   readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * Wave 97 — true iff the cause source `sourceId` matches the static's
+   * CantLoseLifeFromSource$ filter. When the static omits the
+   * sub-filter, the predicate trivially matches every source. When
+   * `sourceId` is undefined at the call site (sourceless loss path),
+   * the predicate accepts only the unconditional shape.
+   */
+  readonly sourceMatches: (sourceId: EntityId | undefined, game: Game) => boolean;
 }
 
 export class CantLoseLifeStaticHandler extends StaticHandler {
@@ -63,10 +74,24 @@ export class CantLoseLifeStaticHandler extends StaticHandler {
     const validPlayerRaw = literalRaw(params.ValidPlayer);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
 
+    // Wave 97 — symmetric FromSource$ sub-filter (mirrors
+    // CantGainLifeFromSource$). See cant-gain-life-static.ts for
+    // semantics.
+    const fromSourceRaw = literalRaw(params.CantLoseLifeFromSource);
+    const hasSourceFilter = fromSourceRaw !== undefined;
+    const sourcePred = hasSourceFilter
+      ? buildCardIdPredicate(fromSourceRaw, ctx.sourceCardId, ctx.controllerSeat)
+      : undefined;
+
     const payload: CantLoseLifePayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       playerMatches: (seat) => seatPred(seat),
+      sourceMatches: (sourceId, game) => {
+        if (!hasSourceFilter) return true;
+        if (sourceId === undefined) return false;
+        return sourcePred ? sourcePred(sourceId, game) : false;
+      },
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

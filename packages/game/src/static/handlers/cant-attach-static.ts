@@ -40,14 +40,15 @@
 // established by Wave 70.D's CantTarget.
 //
 // MVP scope:
-//   - ValidCard$ <filter>     → cardMatchesFilter applied to the
-//                                attaching card (equipment / aura).
-//   - ValidTarget$ <filter>   → cardMatchesFilter applied to the
-//                                attachment target.
-//   - ValidPlayerTarget$      → TODO(advanced): "can't be attached to
-//                                player <X>" (rare; only Curse-shape
-//                                auras attach to players).
-import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+//   - ValidCard$ <filter>          → cardMatchesFilter applied to the
+//                                     attaching card (equipment / aura).
+//   - ValidTarget$ <filter>        → cardMatchesFilter applied to the
+//                                     attachment target (a card).
+//   - ValidPlayerTarget$ <filter>  → buildPlayerPredicate applied to the
+//                                     attachment target when it's a player
+//                                     (Curse-shape auras attach to players).
+//                                     Wave 97 closure.
+import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
   StaticHandler,
@@ -55,7 +56,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 /**
  * Read-side payload exposing per-side predicates the gate consults.
@@ -67,8 +68,24 @@ export interface CantAttachPayload {
   readonly kind: "cantAttach";
   /** True iff the attaching card (equipment / aura) matches ValidCard$. */
   readonly equipmentMatches: (cardId: EntityId, game: Game) => boolean;
-  /** True iff the candidate attachment target matches ValidTarget$. */
+  /** True iff the candidate attachment CARD target matches ValidTarget$. */
   readonly targetMatches: (cardId: EntityId, game: Game) => boolean;
+  /**
+   * True iff the candidate attachment PLAYER target matches
+   * ValidPlayerTarget$. Defaults to a predicate that returns false (no
+   * player-target gating) when the parameter is absent — matches the
+   * canonical Forge default where a CantAttach without a player-target
+   * filter only gates card-target attachments.
+   *
+   * Wave 97 closure of the prior TODO(advanced).
+   */
+  readonly playerTargetMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * True iff the static specifies a ValidPlayerTarget$ at all. Consumers
+   * that intersect by-target-kind use this to know whether to consult
+   * the player path (vs the card path).
+   */
+  readonly hasPlayerTargetFilter: boolean;
 }
 
 export class CantAttachStaticHandler extends StaticHandler {
@@ -82,6 +99,7 @@ export class CantAttachStaticHandler extends StaticHandler {
     // when a forgetful card script omits the filter.
     const validCardRaw = literalRaw(params.ValidCard);
     const validTargetRaw = literalRaw(params.ValidTarget);
+    const validPlayerTargetRaw = literalRaw(params.ValidPlayerTarget);
     const equipmentPred =
       validCardRaw === undefined
         ? () => true
@@ -90,11 +108,20 @@ export class CantAttachStaticHandler extends StaticHandler {
       validTargetRaw === undefined
         ? () => true
         : buildCardIdPredicate(validTargetRaw, ctx.sourceCardId, ctx.controllerSeat);
+    // ValidPlayerTarget$ uses the Wave-50 player-predicate grammar. When
+    // absent we default to "never matches" — a CantAttach static without
+    // an explicit player-target filter only gates CARD-target attaches.
+    const hasPlayerTargetFilter = validPlayerTargetRaw !== undefined;
+    const playerTargetPred = hasPlayerTargetFilter
+      ? buildPlayerPredicate(validPlayerTargetRaw, ctx.controllerSeat)
+      : () => false;
 
     const payload: CantAttachPayload = {
       kind: "cantAttach",
       equipmentMatches: (cardId, game) => equipmentPred(cardId, game),
       targetMatches: (cardId, game) => targetPred(cardId, game),
+      playerTargetMatches: (seat) => playerTargetPred(seat),
+      hasPlayerTargetFilter,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

@@ -23,15 +23,26 @@
 //   - ValidPlayer$ <filter> via buildPlayerPredicate (You / Opponent /
 //     Any / Player).
 //   - "no discard period for matched player" is the durable contract.
-// TODO(advanced):
-//   - ValidCause$ SpellAbility.OppCtrl  — only block discards CAUSED
-//                                          by opponent-controlled spells/
-//                                          abilities. Tamiyo's full
-//                                          fidelity needs the cause-
-//                                          source-controller threading.
-//   - ForCost$ True/False               — distinguishes cost-driven
-//                                          discard (e.g. Madness, Bargain)
-//                                          from effect-driven discard.
+//
+// Wave 97 closures:
+//   - ValidCause$ SpellAbility.OppCtrl  — block only discards caused by
+//                                          opponent-controlled spells /
+//                                          abilities. The discard call
+//                                          site threads an optional
+//                                          `causeControllerSeat` so the
+//                                          gate compares against the
+//                                          static's controller. SVar
+//                                          tail covers SpellAbility.YouCtrl
+//                                          / SpellAbility (any controller)
+//                                          for completeness.
+//   - ForCost$ True/False               — when False (Tamiyo et al.) the
+//                                          gate blocks ONLY effect-driven
+//                                          discard, leaving cost-driven
+//                                          discard (Madness payment, etc.)
+//                                          alone. When True the gate
+//                                          blocks ONLY cost-driven discard.
+//                                          When undefined the gate blocks
+//                                          both — the canonical default.
 import type {
   ParamValue,
   PlayerSeat,
@@ -48,8 +59,28 @@ import {
 } from "../static-handler.js";
 import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
+/**
+ * The discard-cause classification a caller threads through to the
+ * gate. `kind === "cost"` for cost-payment discards (Madness payment
+ * lane); `kind === "effect"` for effect-driven discards (random discard,
+ * targeted discard, etc.). `causeControllerSeat` is the seat
+ * controlling the spell / ability that initiated the discard; when
+ * absent, the gate's ValidCause$ controller-scoped tokens are
+ * conservatively treated as non-matching.
+ */
+export interface DiscardCause {
+  readonly kind: "cost" | "effect";
+  readonly causeControllerSeat?: PlayerSeat;
+}
+
 export interface CantDiscardPayload extends ReplacementGenPayload {
   readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * Wave 97 — true iff the discard's cause classification matches the
+   * static's ValidCause$ + ForCost$ filters. Undefined parameters are
+   * the canonical "any cause" / "any cost-mode" shape.
+   */
+  readonly causeMatches: (cause: DiscardCause, staticControllerSeat: PlayerSeat) => boolean;
 }
 
 export class CantDiscardStaticHandler extends StaticHandler {
@@ -60,10 +91,49 @@ export class CantDiscardStaticHandler extends StaticHandler {
     const validPlayerRaw = literalRaw(params.ValidPlayer);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
 
+    // Wave 97 — ValidCause$ + ForCost$ sub-filters.
+    const validCauseRaw = literalRaw(params.ValidCause);
+    const forCostRaw = literalRaw(params.ForCost);
+    let forCostMode: "costOnly" | "effectOnly" | "both" = "both";
+    if (forCostRaw !== undefined) {
+      forCostMode = forCostRaw.toLowerCase() === "false" ? "effectOnly" : "costOnly";
+    }
+    const causeTokens =
+      validCauseRaw === undefined
+        ? undefined
+        : validCauseRaw
+            .split(",")
+            .map((s) => s.trim())
+            .filter((s) => s.length > 0);
+
+    const causeMatches = (cause: DiscardCause, staticCtrl: PlayerSeat): boolean => {
+      // ForCost$ gate.
+      if (forCostMode === "costOnly" && cause.kind !== "cost") return false;
+      if (forCostMode === "effectOnly" && cause.kind !== "effect") return false;
+      // ValidCause$ gate.
+      if (causeTokens === undefined || causeTokens.length === 0) return true;
+      for (const tok of causeTokens) {
+        // Bare "SpellAbility" matches any controller.
+        if (tok === "SpellAbility") return true;
+        if (
+          tok === "SpellAbility.OppCtrl" &&
+          cause.causeControllerSeat !== undefined &&
+          cause.causeControllerSeat !== staticCtrl
+        ) {
+          return true;
+        }
+        if (tok === "SpellAbility.YouCtrl" && cause.causeControllerSeat === staticCtrl) {
+          return true;
+        }
+      }
+      return false;
+    };
+
     const payload: CantDiscardPayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       playerMatches: (seat) => seatPred(seat),
+      causeMatches,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

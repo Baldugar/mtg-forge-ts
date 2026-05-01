@@ -31,7 +31,7 @@
 import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { CantCrewPayload } from "../static/handlers/cant-crew-static.js";
-import type { CantDiscardPayload } from "../static/handlers/cant-discard-static.js";
+import type { CantDiscardPayload, DiscardCause } from "../static/handlers/cant-discard-static.js";
 import type { ColorlessDamageSourcePayload } from "../static/handlers/colorless-damage-source-static.js";
 
 /**
@@ -76,12 +76,35 @@ export const canCrew = (game: Game, cardId: EntityId): boolean => {
  * Forge equivalent: `StaticAbilityCantDiscard.applyAbility(...)`
  * returning a non-null gating static.
  */
-export const canDiscard = (game: Game, seat: PlayerSeat): boolean => {
+export const canDiscard = (game: Game, seat: PlayerSeat, cause?: DiscardCause): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantDiscard");
+  // Default cause shape — effect-driven discard with no known controller.
+  // Mirrors the pre-Wave-97 unconditional contract for legacy callers
+  // that don't yet thread cost vs effect classification.
+  const effectiveCause: DiscardCause = cause ?? { kind: "effect" };
   for (const s of statics) {
     const payload = s.describe() as CantDiscardPayload;
     if (!payload || payload.kind !== "replacementGen") continue;
-    if (payload.playerMatches(seat)) return false;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 97 — ValidCause$ + ForCost$ sub-filter consultation.
+    // Statics with a null controllerSeatAtReg (emblem-shape with no
+    // controller) skip the controller-scoped cause filter; they
+    // conservatively miss "SpellAbility.OppCtrl"/"SpellAbility.YouCtrl"
+    // since neither is meaningful without a static controller.
+    const ctrl = s.controllerSeatAtReg;
+    if (ctrl === null) {
+      // Treat as plain "any cost-mode, any cause" — the gate degenerates
+      // to the unconditional pre-Wave-97 shape.
+      if (!payload.causeMatches(effectiveCause, seat)) {
+        // Even "match anything" returns true here; only ForCost$ may
+        // selectively reject. Re-check via the seat as a placeholder
+        // (no controller-scoped tokens can possibly fire).
+        continue;
+      }
+    } else if (!payload.causeMatches(effectiveCause, ctrl)) {
+      continue;
+    }
+    return false;
   }
   return true;
 };

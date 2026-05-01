@@ -92,6 +92,11 @@ import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
  * Read-side payload exposing the per-field predicates the gate consults.
  * Each predicate is independent — the gate AND-combines all matched
  * predicates. An undefined predicate matches everything.
+ *
+ * Wave 97 — Origin$ / Destination$ now widen to a SET of zones so the
+ * canonical Forge "Battlefield,Graveyard" composite parses end-to-end
+ * (Cursed Totem-shape disabling triggers across multiple zones in one
+ * S: line).
  */
 export interface DisableTriggersPayload {
   readonly kind: "disableTriggers";
@@ -99,10 +104,10 @@ export interface DisableTriggersPayload {
   readonly causeMatches: ((cardId: EntityId, game: Game) => boolean) | undefined;
   /** Set of trigger mode strings (Forge "ValidMode$" comma-list). undefined → all modes. */
   readonly modes: ReadonlySet<string> | undefined;
-  /** Predicate on the destination zone (toZone). undefined → any. */
-  readonly destination: ZoneType | undefined;
-  /** Predicate on the origin zone (fromZone). undefined → any. */
-  readonly origin: ZoneType | undefined;
+  /** Set of permitted destination zones (toZone). undefined → any. */
+  readonly destinations: ReadonlySet<ZoneType> | undefined;
+  /** Set of permitted origin zones (fromZone). undefined → any. */
+  readonly origins: ReadonlySet<ZoneType> | undefined;
   /** Predicate on the TRIGGER SOURCE CARD. undefined → any trigger source. */
   readonly triggerSourceMatches: ((cardId: EntityId, game: Game) => boolean) | undefined;
   /** Trigger-annotation pattern (e.g. "Triggered.Ward"). undefined → any annotation. */
@@ -119,15 +124,26 @@ const splitCsv = (raw: string | undefined): ReadonlySet<string> | undefined => {
   );
 };
 
-const parseZone = (raw: string | undefined): ZoneType | undefined => {
+/**
+ * Wave 97 — comma-separated zone list parser. Each token must be a
+ * canonical ZoneType string ("Battlefield" / "Graveyard" / "Hand" /
+ * etc.). Unknown tokens are dropped; an entirely-unknown list
+ * collapses back to undefined (treated as "any zone"). The behavior
+ * keeps malformed scripts permissive instead of fail-closed, matching
+ * Forge's tolerant parser.
+ */
+const parseZoneSet = (raw: string | undefined): ReadonlySet<ZoneType> | undefined => {
   if (raw === undefined || raw.length === 0) return undefined;
-  // ZoneType is a string-enum keyed on Forge's canonical zone names.
-  // The enum's string values match the Forge DSL tokens 1:1 (Battlefield
-  // / Graveyard / Hand / Library / Exile / Stack / etc.).
-  // Composite "Battlefield,Graveyard" strings are TODO(advanced).
-  const candidate = raw as ZoneType;
-  if ((Object.values(ZoneType) as string[]).includes(candidate)) return candidate;
-  return undefined;
+  const known = new Set(Object.values(ZoneType) as string[]);
+  const tokens = raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+  const result = new Set<ZoneType>();
+  for (const tok of tokens) {
+    if (known.has(tok)) result.add(tok as ZoneType);
+  }
+  return result.size === 0 ? undefined : result;
 };
 
 export class DisableTriggersStaticHandler extends StaticHandler {
@@ -149,16 +165,16 @@ export class DisableTriggersStaticHandler extends StaticHandler {
         : buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
 
     const modes = splitCsv(literalRaw(params.ValidMode));
-    const destination = parseZone(literalRaw(params.Destination));
-    const origin = parseZone(literalRaw(params.Origin));
+    const destinations = parseZoneSet(literalRaw(params.Destination));
+    const origins = parseZoneSet(literalRaw(params.Origin));
     const triggerAnnotationRaw = literalRaw(params.ValidTrigger);
 
     const payload: DisableTriggersPayload = {
       kind: "disableTriggers",
       causeMatches,
       modes,
-      destination,
-      origin,
+      destinations,
+      origins,
       triggerSourceMatches,
       triggerAnnotationRaw,
     };

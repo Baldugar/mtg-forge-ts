@@ -145,12 +145,18 @@ export const maxCounter = (game: Game, cardId: EntityId, counterType: CounterTyp
  * total becomes 1, then until end of turn, players can't lose life"
  * shape (Everybody Lives!) consults this helper.
  */
-export const canLoseLife = (game: Game, seat: PlayerSeat): boolean => {
+export const canLoseLife = (game: Game, seat: PlayerSeat, sourceId?: EntityId): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantLoseLife");
   for (const s of statics) {
     const payload = s.describe() as CantLoseLifePayload;
     if (!payload || payload.kind !== "replacementGen") continue;
-    if (payload.playerMatches(seat)) return false;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 97 — CantLoseLifeFromSource$ source-conditional gate. When the
+    // static omits FromSource$, sourceMatches trivially returns true and
+    // the gate fires for every loss. When present, only matching sources
+    // gate the loss; non-matching sources fall through.
+    if (!payload.sourceMatches(sourceId, game)) continue;
+    return false;
   }
   return true;
 };

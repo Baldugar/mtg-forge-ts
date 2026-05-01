@@ -224,10 +224,21 @@ export class GameAction {
     // (drawing 0 cards). No CardDrawn event fires; library + hand state
     // unchanged; cardsDrawnThisTurn unchanged. Mirrors Forge's silent
     // short-circuit semantics — the draw is "performed" with count 0.
+    //
+    // Wave 97 — CantDrawByCount$ N count-conditional sub-filter is
+    // checked PER-CARD inside the loop (below) so the first N draws
+    // succeed and subsequent draws are gated. The pre-loop call here
+    // remains for the unconditional shape (byCount === undefined → gate
+    // is "always on") so we can early-exit without entering the loop.
     if (count > 0 && !canDraw(game, seat)) {
       return;
     }
     for (let i = 0; i < count; i++) {
+      // Wave 97 — re-consult the gate inside the loop so a count-
+      // conditional CantDrawByCount$ N short-circuits at the right card.
+      // Each successful per-card draw bumps cardsDrawnThisTurn, which
+      // canDraw reads back live to compute the byCount threshold.
+      if (!canDraw(game, seat)) return;
       // Wave 40 — Dredge (CR 702.52): before each per-card draw, check for
       // dredgeable cards in the player's graveyard. Each dredgeable card
       // requires its dredge amount of cards in the library to be milled,
@@ -311,7 +322,7 @@ export class GameAction {
   *changeLife(
     seat: PlayerSeat,
     delta: number,
-    opts?: { readonly cause?: string },
+    opts?: { readonly cause?: string; readonly sourceCardId?: EntityId },
   ): Generator<EngineYield, void, unknown> {
     const game = this.game;
     const player = game.getPlayer(seat);
@@ -333,9 +344,15 @@ export class GameAction {
     // rewritten to 0 BEFORE the LifeChanged event fires — both gain and
     // loss directions are blocked by a single gate.
     let effectiveDelta = delta;
+    // Wave 97 — thread the optional source card id through the gates so
+    // CantGainLifeFromSource$ / CantLoseLifeFromSource$ source-conditional
+    // sub-filters can match. Sourceless gains/losses (Soul Sister-style
+    // spontaneous triggers without a tracked cause) keep the
+    // pre-Wave-97 behavior — only unconditional gates fire on them.
+    const srcId = opts?.sourceCardId;
     if (delta !== 0 && !canChangeLife(game, seat)) effectiveDelta = 0;
-    else if (delta > 0 && !canGainLife(game, seat)) effectiveDelta = 0;
-    else if (delta < 0 && !canLoseLife(game, seat)) effectiveDelta = 0;
+    else if (delta > 0 && !canGainLife(game, seat, srcId)) effectiveDelta = 0;
+    else if (delta < 0 && !canLoseLife(game, seat, srcId)) effectiveDelta = 0;
     const intent: LifeChangeIntent = {
       kind: "lifeChange",
       seat,

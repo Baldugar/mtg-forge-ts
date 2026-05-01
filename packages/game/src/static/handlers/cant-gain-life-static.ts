@@ -31,15 +31,21 @@
 // circuit before applyWithReplacements runs.
 //
 // MVP scope: ValidPlayer$ You / Opponent / Any / Player (Wave 50
-// buildPlayerPredicate grammar). Source-conditional sub-filters
-// (CantGainLifeFromSource$ Card.X) are TODO(advanced).
+// buildPlayerPredicate grammar). Wave 97 closes the source-conditional
+// CantGainLifeFromSource$ Card.X sub-filter — the changeLife call site
+// threads an optional `sourceCardId` and the gate consults its
+// `sourceMatches` predicate AFTER the seat predicate. When the static
+// omits FromSource$ the predicate accepts every source (existing
+// always-active behavior preserved).
 import type {
+  EntityId,
   ParamValue,
   PlayerSeat,
   ReplacementAbility,
   StaticAbility,
   StaticAst,
 } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";
 import {
   StaticHandler,
@@ -47,10 +53,21 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface CantGainLifePayload extends ReplacementGenPayload {
   readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * Wave 97 — true iff the cause source `sourceId` matches the static's
+   * CantGainLifeFromSource$ filter. When the static omits the
+   * sub-filter, the predicate trivially matches every source (the
+   * unconditional canonical case). When `sourceId` is undefined at the
+   * call site (no causal source threaded through changeLife), the
+   * predicate accepts only the unconditional shape — so a
+   * source-scoped gate doesn't fire on sourceless gains (Soul's Attendant
+   * spontaneous trigger paths that don't carry a source id).
+   */
+  readonly sourceMatches: (sourceId: EntityId | undefined, game: Game) => boolean;
 }
 
 export class CantGainLifeStaticHandler extends StaticHandler {
@@ -61,10 +78,26 @@ export class CantGainLifeStaticHandler extends StaticHandler {
     const validPlayerRaw = literalRaw(params.ValidPlayer);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
 
+    // Wave 97 — optional FromSource$ sub-filter. When present, only
+    // life-gain whose causal source-card matches the predicate is
+    // blocked; sourceless gains are conservatively NOT blocked (the
+    // gate falls through). When absent, the predicate trivially accepts
+    // any (or no) source — the historical unconditional behavior.
+    const fromSourceRaw = literalRaw(params.CantGainLifeFromSource);
+    const hasSourceFilter = fromSourceRaw !== undefined;
+    const sourcePred = hasSourceFilter
+      ? buildCardIdPredicate(fromSourceRaw, ctx.sourceCardId, ctx.controllerSeat)
+      : undefined;
+
     const payload: CantGainLifePayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       playerMatches: (seat) => seatPred(seat),
+      sourceMatches: (sourceId, game) => {
+        if (!hasSourceFilter) return true;
+        if (sourceId === undefined) return false;
+        return sourcePred ? sourcePred(sourceId, game) : false;
+      },
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

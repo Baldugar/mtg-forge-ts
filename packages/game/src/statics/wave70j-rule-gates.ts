@@ -150,13 +150,14 @@ export const isTriggerDisabled = (game: Game, trigger: TriggeredAbility, event: 
     if (p.modes !== undefined) {
       if (tMode === undefined || !p.modes.has(tMode)) continue;
     }
-    // 2. Origin$
-    if (p.origin !== undefined) {
-      if (origin !== p.origin) continue;
+    // 2. Origin$ (Wave 97 widened to a set — composite
+    //    "Battlefield,Graveyard" S: lines now match either zone).
+    if (p.origins !== undefined) {
+      if (origin === undefined || !p.origins.has(origin)) continue;
     }
-    // 3. Destination$
-    if (p.destination !== undefined) {
-      if (destination !== p.destination) continue;
+    // 3. Destination$ (Wave 97 widened to a set — same shape as Origin$).
+    if (p.destinations !== undefined) {
+      if (destination === undefined || !p.destinations.has(destination)) continue;
     }
     // 4. ValidCause$ — require a cause card present and matching.
     if (p.causeMatches !== undefined) {

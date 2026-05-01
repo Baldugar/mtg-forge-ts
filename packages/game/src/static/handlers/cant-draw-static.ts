@@ -33,8 +33,11 @@
 // applyWithReplacements runs.
 //
 // MVP scope: ValidPlayer$ You / Opponent / Any / Player (Wave 50
-// buildPlayerPredicate grammar). Source-conditional sub-filters
-// (CantDrawByCount$ N, CantDrawIfSpellsCast$ K) are TODO(advanced).
+// buildPlayerPredicate grammar). Wave 97 closes the count-conditional
+// CantDrawByCount$ N sub-filter — the gate fires only after the matched
+// player has already drawn N cards this turn. Combines with
+// `cardsDrawnThisTurn` tracker (game-flags) so each per-card draw is
+// gated against the live count.
 import type {
   ParamValue,
   PlayerSeat,
@@ -53,6 +56,14 @@ import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface CantDrawPayload extends ReplacementGenPayload {
   readonly playerMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * Wave 97 — CantDrawByCount$ N parameter. When undefined, the gate is
+   * unconditional (canonical pre-Wave-97 behavior). When set, the gate
+   * fires only after the matched player has drawn AT LEAST N cards this
+   * turn — i.e. the (N+1)-th draw and onward are blocked. The 0 case
+   * matches "can't draw any cards" which is the unconditional shape.
+   */
+  readonly byCount: number | undefined;
 }
 
 export class CantDrawStaticHandler extends StaticHandler {
@@ -63,10 +74,21 @@ export class CantDrawStaticHandler extends StaticHandler {
     const validPlayerRaw = literalRaw(params.ValidPlayer);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
 
+    // Wave 97 — optional count threshold. Negative / non-integer values
+    // are coerced to undefined so a malformed script doesn't silently
+    // change the gate's semantics.
+    const byCountRaw = literalRaw(params.CantDrawByCount);
+    let byCount: number | undefined;
+    if (byCountRaw !== undefined) {
+      const n = Number.parseInt(byCountRaw, 10);
+      if (Number.isFinite(n) && n >= 0) byCount = n;
+    }
+
     const payload: CantDrawPayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       playerMatches: (seat) => seatPred(seat),
+      byCount,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

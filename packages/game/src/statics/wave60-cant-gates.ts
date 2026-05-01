@@ -144,11 +144,17 @@ export const canTransform = (game: Game, cardId: EntityId): boolean => {
  * / Rampaging Ferocidon shapes (each player can't gain life) all consult
  * this helper.
  */
-export const canGainLife = (game: Game, seat: PlayerSeat): boolean => {
+export const canGainLife = (game: Game, seat: PlayerSeat, sourceId?: EntityId): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantGainLife");
   for (const s of statics) {
     const payload = s.describe() as CantGainLifePayload;
-    if (payload.playerMatches(seat)) return false;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 97 — CantGainLifeFromSource$ source-conditional gate. When the
+    // static omits FromSource$, sourceMatches trivially returns true and
+    // the gate fires for every gain. When present, only matching sources
+    // gate the gain; non-matching sources fall through.
+    if (!payload.sourceMatches(sourceId, game)) continue;
+    return false;
   }
   return true;
 };

@@ -42,9 +42,16 @@ import type { NumLoyaltyActPayload } from "../static/handlers/num-loyalty-act-st
  */
 export const canDraw = (game: Game, seat: PlayerSeat): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantDraw");
+  const drawnSoFar = game.flags.cardsDrawnThisTurn.get(seat) ?? 0;
   for (const s of statics) {
     const payload = s.describe() as CantDrawPayload;
-    if (payload.playerMatches(seat)) return false;
+    if (!payload.playerMatches(seat)) continue;
+    // Wave 97 — CantDrawByCount$ N gate. Fires only when the matched
+    // player has already drawn N cards this turn (i.e. the (N+1)-th
+    // draw is blocked, but the first N are allowed). Undefined byCount
+    // is the unconditional shape — gate fires regardless.
+    if (payload.byCount !== undefined && drawnSoFar < payload.byCount) continue;
+    return false;
   }
   return true;
 };
