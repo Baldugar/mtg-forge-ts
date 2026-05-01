@@ -371,3 +371,22 @@ export * from "./cant-be-suspected-static.js";
 export * from "./cant-venture-static.js";
 export * from "./plot-zone-static.js";
 export * from "./gain-life-radiation-static.js";
+// Wave 77 — three more bespoke-infra static modes that build on
+// already-wired keyword machinery / effect handlers:
+//   - WitherDamage     (~few cards — static form of K:Wither;
+//                        damage to creatures becomes -1/-1
+//                        counters. OR-combines with the K:Wither
+//                        keyword check at the damage-application
+//                        call site.)
+//   - InfectDamage     (~few cards — static form of K:Infect;
+//                        damage to creatures becomes -1/-1
+//                        counters AND damage to players becomes
+//                        poison counters. OR-combines with the
+//                        K:Infect keyword check.)
+//   - SurveilNum       (~few cards — Niv-Mizzet-Parun-shape /
+//                        surveil-deck synergy modifier; runtime
+//                        surveil count becomes baseN + sum of
+//                        matching modifiers.)
+export * from "./wither-damage-static.js";
+export * from "./infect-damage-static.js";
+export * from "./surveil-num-static.js";

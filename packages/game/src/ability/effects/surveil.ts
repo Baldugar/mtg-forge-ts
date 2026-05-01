@@ -15,8 +15,16 @@
 // Surveil player resolution:
 //   You / self / absent → controllerSeat
 //   Targeted             → first target's seat (deferred, falls back to controller)
+//
+// Wave 77 — the runtime surveil count is `baseN + surveilNumModifier(seat)`
+// where the modifier is the sum of Amount$ values from all active
+// SurveilNum statics matching the surveiling player. Niv-Mizzet, Parun-
+// shape effects ("you surveil 1 additional time") and surveil-deck
+// synergies that augment the canonical count without changing the
+// printed amount on the source effect.
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { surveilNumModifier } from "../../statics/wave77-gate-helpers.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -36,7 +44,12 @@ export class SurveilEffect extends SpellAbilityEffect {
       seat = sa.controllerSeat;
     }
 
-    yield* game.action.surveil(seat, n);
+    // Wave 77 — layer the SurveilNum static modifier on the printed count.
+    // Clamp at 0 so a hypothetical negative-modifier static can't push the
+    // count below zero (game.action.surveil rejects count <= 0).
+    const total = Math.max(0, n + surveilNumModifier(game, seat));
+    if (total <= 0) return;
+    yield* game.action.surveil(seat, total);
   }
 }
 

@@ -83,6 +83,7 @@ import { canLoseLife, cantBeCopied, maxCounter } from "../statics/wave70m-gate-h
 import { canChangeLife } from "../statics/wave70o-gate-helpers.js";
 import { canDiscard } from "../statics/wave74-gate-helpers.js";
 import { canBeExiled } from "../statics/wave75-gate-helpers.js";
+import { dealsInfectDamage, dealsWitherDamage } from "../statics/wave77-gate-helpers.js";
 import { onZoneChange } from "../statics/zone-activation.js";
 import type { TargetRef, TargetRestriction } from "../target/restriction.js";
 import type { Zone } from "../zone/zone.js";
@@ -1024,8 +1025,17 @@ export class GameAction {
         // poison counters instead. The DamageDealt event still fires
         // (downstream triggers observing damage observe normally); only
         // the application step is redirected.
-        const witherSource = cardHasKeyword(game, final.sourceId, "wither");
-        const infectSource = cardHasKeyword(game, final.sourceId, "infect");
+        //
+        // Wave 77 — the static-form rewriters WitherDamage / InfectDamage
+        // OR-combine with the keyword checks. Either path triggers the
+        // redirect: a card without K:Wither but matched by an active
+        // WitherDamage static rewrites identically to a K:Wither source,
+        // and likewise InfectDamage matches grant the dual creature/
+        // player redirect even when K:Infect is absent.
+        const witherSource =
+          cardHasKeyword(game, final.sourceId, "wither") || dealsWitherDamage(game, final.sourceId);
+        const infectSource =
+          cardHasKeyword(game, final.sourceId, "infect") || dealsInfectDamage(game, final.sourceId);
         const redirectCreatureToCounters = witherSource || infectSource;
         if (final.targetKind === "creature" && typeof final.targetId === "number") {
           const card = game.cards.get(final.targetId as EntityId);
