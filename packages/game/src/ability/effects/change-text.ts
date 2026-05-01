@@ -16,8 +16,18 @@
 //     application is deferred to a future wave (the slot is populated
 //     and tests verify it; full Layer 1/4 application is SP4-scope).
 //
-// TODO(advanced): Plumb textChanges through deriveBaseCharacteristics so
-// rules-text-driven keywords / abilities pick up the substituted strings.
+// Wave 84 — bump the layer-engine epoch every time a textChanges record is
+// pushed. Layer 3 (text-changing effects, CR 613.1c) is recomputed on every
+// epoch bump; downstream consumers that depend on text substitution
+// (Layer 4 type / Layer 6 ability tags derived from rules text) re-derive
+// against the updated `textChanges` array. Epoch-bumping here is the
+// canonical signal that a card's printed-text shadow has changed —
+// mirrors the pattern used by `tap` / `untap` / counter mutations in
+// game-action.ts. The full Layer 3 derive-text pipeline still defers
+// rules-text-driven keyword / ability re-derivation to a future wave; the
+// epoch bump unblocks observers that DO honour textChanges (the layer3
+// substitution tape exposed by `getEffectiveText`) without paying for an
+// in-place rules-text reparse.
 import type { Color, DecisionResponse } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
@@ -95,10 +105,20 @@ export class ChangeTextEffect extends SpellAbilityEffect {
 
     if (!from || !to) return;
 
+    let mutated = false;
     for (const t of sa.targets) {
       const card = game.cards.get(t);
       if (!card) continue;
       card.textChanges.push({ kind, from, to });
+      mutated = true;
+    }
+    if (mutated) {
+      // Wave 84 — bump the layer epoch so the layer engine re-derives
+      // characteristics that consult textChanges (and any downstream cache
+      // keyed on the printed-text-shadow signal). The reason string is
+      // the canonical signal source the layer engine surfaces in its
+      // diagnostic logging.
+      game.layerEngine.bumpEpoch("change-text");
     }
   }
 }

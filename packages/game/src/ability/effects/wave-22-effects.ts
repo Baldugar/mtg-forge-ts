@@ -24,6 +24,7 @@ import {
   ColorSet,
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
+  Layer,
   TypeLine,
   ZoneType,
   mkEvent,
@@ -218,19 +219,36 @@ effectRegistry.register(ChooseEvenOddEffect);
 
 // 6. AddPhase ----------------------------------------------------------------
 // Forge `SP$ AddPhase` (Aggravated Assault, Relentless Assault, etc.) — add
-// an additional combat (or other) phase after the current one. MVP: append a
-// pending phase token to game.flags.
+// an additional combat (or other) phase after the current one.
+//
+// Wave 84 — turn-loop integration. When `Phase$ Combat` (the dominant
+// corpus form), route the request through the canonical
+// `game.flags.pendingAdditionalCombatPhases` map that the phase handler
+// already drains via `PhaseSequence.injectExtraCombat` (see
+// AdditionalCombatEffect at additional-combat.ts). The legacy duck-typed
+// `pendingExtraPhases` slot is kept in sync for any prior-wave consumer
+// that read off it. Non-Combat phase requests are still recorded on the
+// legacy slot only — there's no canonical drain target for arbitrary
+// phase injection in SP1; the legacy slot remains the trace channel.
 export class AddPhaseEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "AddPhase";
 
   // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const phaseRaw = hasParam(sa, "Phase") ? evaluateParamRaw(sa, "Phase") : "Combat";
+    // Legacy slot — keep populated for any prior wave consumer.
     const pending = (game as { pendingExtraPhases?: string[] }).pendingExtraPhases ?? [];
     pending.push(phaseRaw);
     (game as { pendingExtraPhases?: string[] }).pendingExtraPhases = pending;
-    // TODO(advanced): turn-loop integration — pop one entry and inject the
-    // matching phase before the cleanup step; emit PhaseInjected.
+
+    // Canonical drain — Combat phase requests bump
+    // `pendingAdditionalCombatPhases[recipient]` so PhaseHandler injects
+    // an extra combat block at end-of-combat (CR 500.5 + Forge corpus).
+    if (phaseRaw === "Combat") {
+      const recipient: PlayerSeat = sa.controllerSeat;
+      const cur = game.flags.pendingAdditionalCombatPhases.get(recipient) ?? 0;
+      game.flags.pendingAdditionalCombatPhases.set(recipient, cur + 1);
+    }
   }
 }
 effectRegistry.register(AddPhaseEffect);
@@ -260,23 +278,59 @@ effectRegistry.register(SwitchBlockEffect);
 
 // 8. ProtectionAll -----------------------------------------------------------
 // Forge `SP$ ProtectionAll` — grant protection to a group of permanents.
-// MVP: stash a per-card protection flag on each target.
+//
+// Wave 84 — alongside the legacy `temporaryProtections` slot (kept for
+// back-compat), stamp `protection:<tag>` directly on each target's
+// `keywords` set so the canonical reader at combat/keywords/protection.ts
+// (`readProtectionTags`) sees the gain. Mirrors the single-target
+// ProtectionEffect pattern exactly. The `until-end-of-turn` cleanup
+// below splices the keyword off via `continuousEffectRegistry.registerCleanup`
+// — the same shape used by ProtectionEffect (Wave 9). When `Gains$` is
+// absent the corpus default is "everything" (a wildcard tag); we record
+// it as `protection:everything` so later checks against specific colors
+// still negate via the wildcard branch in readProtectionTags.
 export class ProtectionAllEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ProtectionAll";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    const fromRaw = hasParam(sa, "Gains") ? evaluateParamRaw(sa, "Gains") : "everything";
+    const fromRaw = hasParam(sa, "Gains") ? evaluateParamRaw(sa, "Gains").toLowerCase() : "everything";
     const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
+    const keyword = `protection:${fromRaw}`;
+    const stamped: EntityId[] = [];
     for (const id of ids) {
       const card = game.cards.get(id);
       if (!card) continue;
+      // Legacy slot — kept for any prior wave consumer reading it.
       const list = (card as { temporaryProtections?: string[] }).temporaryProtections ?? [];
       list.push(fromRaw);
       (card as { temporaryProtections?: string[] }).temporaryProtections = list;
+      // Canonical stamp — drives readProtectionTags and combat targeting.
+      if (!card.keywords) card.keywords = new Set();
+      if (!card.keywords.has(keyword)) {
+        card.keywords.add(keyword);
+        stamped.push(id);
+      }
     }
-    // TODO(advanced): plumb through the layers engine so ProtectionFrom
-    // characteristics propagate properly.
+
+    if (stamped.length === 0) return;
+    // Register a Layer 6 noop continuous effect with a cleanup hook that
+    // peels the keyword back off at end-of-turn — mirrors ProtectionEffect
+    // (single-target) exactly so the until-EOT lifetime is honoured.
+    const effectId = game.newEntityId();
+    game.continuousEffectRegistry.register({
+      id: effectId,
+      sourceCardId: sa.sourceCardId,
+      timestamp: game.newEntityId(),
+      layer: Layer.L6_Ability,
+      duration: { kind: "untilEndOfTurn" },
+      payload: { kind: "noop" },
+    });
+    game.continuousEffectRegistry.registerCleanup(effectId, (g) => {
+      for (const id of stamped) {
+        const c = g.cards.get(id);
+        if (c?.keywords) c.keywords.delete(keyword);
+      }
+    });
   }
 }
 effectRegistry.register(ProtectionAllEffect);
