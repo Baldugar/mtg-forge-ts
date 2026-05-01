@@ -175,6 +175,9 @@ export class PhaseHandler {
     // Wave 60.G — leftover additional untap steps do NOT roll over either.
     // The static will re-stamp on the next turn the source remains active.
     game.flags.pendingAdditionalUntapSteps.clear();
+    // Wave 112 — Unless-cost payment ledger is per-turn (matches Forge:
+    // Propaganda is paid each turn the attack is declared, etc.).
+    game.flags.unlessPaymentsByStaticId.clear();
     // Wave 27 — Day/Night auto-transition support. Snapshot this turn's
     // spell-cast counts into lastTurnSpellsCast + record whose turn just
     // ended so the NEXT upkeep can apply CR 726.4 ("if it's day and the

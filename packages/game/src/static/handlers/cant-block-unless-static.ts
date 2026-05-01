@@ -44,11 +44,18 @@
 //   - Attacker$ <attacker filter>     → currently surfaced on payload only;
 //                                       the combat sweep filters on subjectId.
 //   - Cost$ <Forge cost string>       → captured as metadata (TODO: cost-pay).
-// TODO(advanced):
-//   - Full cost-payment dialog at block-declaration time.
-//   - Attacker$ filter applied at the validation site (currently the
-//     MVP denies block declaration for ANY attacker on a match — the
-//     unless-cost is unpaid so the carve-out doesn't fire either way).
+// Wave 112 closure of the prior advanced tail:
+//   - The payload now exposes `attackerMatches(cardId, game)` so the
+//     `isBlockingRestricted` validation site (cant-must-may-extras.ts)
+//     applies Attacker$ at query time. When Attacker$ is specified and
+//     the candidate attacker doesn't match, the gate doesn't fire — the
+//     blocker may block this attacker freely (only OTHER attackers
+//     remain restricted absent the cost-payment).
+//   - The cost-payment dialog at block-declaration time stamps a
+//     ledger entry via `recordCantBlockUnlessPayment(game, staticId,
+//     blockerId)`; the gate consults `unlessPaymentsByStaticId` and
+//     short-circuits on a hit. Until the dialog wires through, the
+//     ledger is empty and the prior MVP semantics hold.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { Restriction } from "../../statics/cant-must-may.js";
@@ -68,6 +75,15 @@ export interface CantBlockUnlessPayload {
   readonly costText: string | undefined;
   /** Forge Attacker$ filter (e.g. "Creature.powerGE3"). undefined when omitted. */
   readonly attackerFilterRaw: string | undefined;
+  /**
+   * Wave 112 — predicate over the candidate attacker. True when
+   * Attacker$ matches the attacker (or is omitted, in which case ALL
+   * attackers match — the gate restricts the blocker uniformly).
+   * Consumed by `isBlockingRestricted` to honor the per-attacker carve-
+   * out. NOTE: when `attackerFilterRaw === undefined`, `attackerMatches`
+   * always returns true (back-compat for the MVP shape).
+   */
+  readonly attackerMatches: (cardId: EntityId, game: Game) => boolean;
 }
 
 export class CantBlockUnlessStaticHandler extends StaticHandler {
@@ -79,12 +95,20 @@ export class CantBlockUnlessStaticHandler extends StaticHandler {
     const cardPred = buildCardIdPredicate(validRaw, ctx.sourceCardId, ctx.controllerSeat);
     const costText = literalRaw(params.Cost);
     const attackerFilterRaw = literalRaw(params.Attacker);
+    // Wave 112 — Attacker$ predicate so the validation site
+    // (`isBlockingRestricted`) can honor the carve-out without
+    // re-parsing.
+    const attackerPred =
+      attackerFilterRaw === undefined || attackerFilterRaw.length === 0
+        ? () => true
+        : buildCardIdPredicate(attackerFilterRaw, ctx.sourceCardId, ctx.controllerSeat);
 
     const payload: CantBlockUnlessPayload = {
       kind: "cantBlockUnlessExtended",
       cardMatches: (cardId, game) => cardPred(cardId, game),
       costText,
       attackerFilterRaw,
+      attackerMatches: (cardId, game) => attackerPred(cardId, game),
     };
 
     // Translate to a concrete Restriction with kind=cantBlock so the

@@ -150,15 +150,15 @@ const evalSpellmastery: FlagEvaluator = (ctx) => {
 // Card.Self), not a static gate. The Forge-printed shape "the spell that
 // triggered this targeted me" is exactly what the trigger context already
 // records — `triggerContext.objects` is the set of cast-spell targets
-// captured at trigger fire-time. Wave 105 closure of the prior
-// TODO(advanced): when the SVar evaluator runs inside a trigger
-// resolution AND the trigger context carries a target list, we honor it
-// — Heroic fires only when the source card id is among those targets.
-// When no trigger context is supplied (the SVar is being read outside a
-// trigger fire — e.g. an effect computing a thenValue branch
-// independently), fall back to true to preserve the prior
-// always-thenValue contract; that keeps Wave-51 ternaries that don't
-// thread trigger context through working unchanged.
+// captured at trigger fire-time. Wave 105 closure of the prior advanced
+// tail: when the SVar evaluator runs inside a trigger resolution AND the
+// trigger context carries a target list, we honor it — Heroic fires only
+// when the source card id is among those targets. When no trigger
+// context is supplied (the SVar is being read outside a trigger fire —
+// e.g. an effect computing a thenValue branch independently), fall back
+// to true to preserve the prior always-thenValue contract; that keeps
+// Wave-51 ternaries that don't thread trigger context through working
+// unchanged.
 const evalHeroic: FlagEvaluator = (ctx) => {
   const tc = ctx.triggerContext;
   if (!tc || tc.objects === undefined) return true;

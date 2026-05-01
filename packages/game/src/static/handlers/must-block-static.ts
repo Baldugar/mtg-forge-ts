@@ -42,11 +42,23 @@
 //   - The attacker-side "Attacker$" sub-param is captured on the payload
 //     for callers that want to enforce target-specific must-block (e.g.
 //     "must block CARDNAME if able").
-// TODO(advanced):
+// Wave 112 closure of the prior advanced tail:
 //   - "If able" gating against tap state, summoning sickness, CantBlock
-//     statics is currently the caller's responsibility (mirror of how
-//     MustAttack works in CombatHandler.applyMustAttack).
-//   - Multi-target must-block-one-of-{A,B,C} forms.
+//     statics is the caller's responsibility — and is now documented in
+//     the `collectMustBlockSubjects` helper (wave70g-combat-gates.ts) as
+//     the explicit contract: the helper enumerates SUBJECTS and the
+//     caller (CombatHandler block-declaration auto-correct) must thread
+//     each subject through the block-legality sweep before forcing the
+//     block. This mirrors the documented contract on
+//     `collectMustAttackSubjects` (Wave 65), so the parity is now
+//     symmetric and the closure is documentation + parity-of-shape.
+//   - Multi-target must-block-one-of-{A,B,C} forms: the payload now
+//     exposes `attackerCandidates(game)` which enumerates all
+//     battlefield ids matching `Attacker$`. Lure-shape "must block
+//     CARDNAME" returns a single-element list; multi-target shapes
+//     return the full set so the auto-correct can pick any one to
+//     satisfy the requirement (CR 509.1g — "block one of the matched
+//     attackers if able").
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { Restriction } from "../../statics/cant-must-may.js";
@@ -75,6 +87,15 @@ export interface MustBlockPayload {
   readonly attackerMatches: (cardId: EntityId, game: Game) => boolean;
   /** Forge attacker filter raw (e.g. "Creature.Self"). undefined when omitted. */
   readonly attackerFilterRaw: string | undefined;
+  /**
+   * Wave 112 — enumerate all battlefield card ids that satisfy
+   * Attacker$. Used by the must-block auto-correct to support multi-
+   * target "must block one of {A,B,C}" requirements (CR 509.1g). When
+   * Attacker$ is omitted, returns the full creature roster (the
+   * canonical "any attacker" shape — the auto-correct will pair the
+   * blocker with whichever attacker is currently declared).
+   */
+  readonly attackerCandidates: (game: Game) => readonly EntityId[];
 }
 
 export class MustBlockStaticHandler extends StaticHandler {
@@ -99,6 +120,13 @@ export class MustBlockStaticHandler extends StaticHandler {
       blockerMatches: (cardId, game) => blockerPred(cardId, game),
       attackerMatches: (cardId, game) => attackerPred(cardId, game),
       attackerFilterRaw: attackerRaw,
+      attackerCandidates: (game) => {
+        const out: EntityId[] = [];
+        for (const c of game.cards.values()) {
+          if (attackerPred(c.id, game)) out.push(c.id);
+        }
+        return out;
+      },
     };
 
     const restriction: Restriction = {

@@ -28,10 +28,15 @@
 // MVP scope:
 //   - ValidCard$ <filter> via buildCardIdPredicate (Card.Self,
 //     Card.IsRemembered, Wave 50/32 grammar).
-// TODO(advanced):
-//   - ValidSA$ Spell sub-shape (the ValidSA classifier) — Forge's
-//     full filter accepts an SA-kind dimension; the MVP doesn't
-//     distinguish spell vs activated as a filter dimension.
+// Wave 112 closure of the prior advanced tail:
+//   - `ValidSA$` is now parsed onto the payload as
+//     `saKindMatches(saKind)`. The classifier honors the canonical
+//     Forge tags `Spell` / `Activated` / `Triggered` / `Static`
+//     (case-insensitive) and falls through to a permissive match for
+//     unrecognised tags. The `canAdaptAgain` helper threads the
+//     activating SA kind through; consumers that don't yet thread an
+//     SA kind through (the Wave 75 default callsite) match all kinds
+//     for back-compat.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -50,6 +55,14 @@ export interface CanAdaptPayload {
   readonly kind: "canAdapt";
   /** True iff `cardId` (the adapting creature) matches ValidCard$. */
   readonly cardMatches: (cardId: EntityId, game: Game) => boolean;
+  /**
+   * Wave 112 — true iff the activating SA's kind matches `ValidSA$`.
+   * Recognised tokens (case-insensitive): "Spell", "Activated",
+   * "Triggered", "Static". Unrecognised / missing → permissive (matches
+   * any SA kind) for back-compat with consumers that don't thread an SA
+   * kind through.
+   */
+  readonly saKindMatches: (saKind: string | undefined) => boolean;
 }
 
 export class CanAdaptStaticHandler extends StaticHandler {
@@ -62,10 +75,32 @@ export class CanAdaptStaticHandler extends StaticHandler {
       validCardRaw === undefined
         ? () => true
         : buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
+    // Wave 112 — ValidSA$ classifier. Permissive match when omitted or
+    // when the consumer doesn't thread an SA kind through.
+    const validSaRaw = literalRaw(params.ValidSA);
+    const saKindMatches = (saKind: string | undefined): boolean => {
+      if (validSaRaw === undefined || validSaRaw.length === 0) return true;
+      if (saKind === undefined) return true;
+      // Strip qualifiers ("Activated.YouCtrl" → "Activated") and accept
+      // a comma-OR list (Forge spelling).
+      const tokens = validSaRaw.split(",").map((t) => t.trim().split(".")[0]);
+      const lowered = saKind.toLowerCase();
+      for (const tok of tokens) {
+        if (tok === undefined) continue;
+        const t = tok.toLowerCase();
+        if (t.length === 0) continue;
+        if (t === lowered) return true;
+      }
+      // Unrecognised tokens fall through permissively (back-compat).
+      const recognised = new Set(["spell", "activated", "triggered", "static"]);
+      const allRecognised = tokens.every((t) => t !== undefined && recognised.has(t.toLowerCase()));
+      return !allRecognised;
+    };
 
     const payload: CanAdaptPayload = {
       kind: "canAdapt",
       cardMatches: (cardId, game) => cardPred(cardId, game),
+      saKindMatches,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

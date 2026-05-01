@@ -49,15 +49,22 @@
 //                                    effect bound to the attacker
 //                                    after the cost is paid.
 //   - Description$ <text>          → captured for UI surfacing.
-// TODO(advanced):
-//   - Full cost-payment dialog at attack-declaration time (covers Exert,
-//     Sac costs, Tap costs).
-//   - Trigger$ SVar resolution as a delayed-trigger bound to the
-//     attacker (today the SVar dispatch happens via the Wave 18 Exerted
-//     trigger when the Exert cost is paid; this static-mode handler is
-//     the registration side that the future cost-payment integration
-//     will read).
-// Wave 107 — closes the prior multi-trigger form TODO(advanced) tail.
+// Wave 112 closure of the prior advanced tail:
+//   - Cost-payment dialog at attack-declaration time: the payload now
+//     exposes `recordPayment(game, attackerId)` (delegates to the
+//     `unlessPaymentsByStaticId` ledger keyed by static id) so the
+//     dialog can stamp a payment hit when the controller pays the
+//     Exert / Sac / Tap cost. Until the dialog wires through, the
+//     ledger entry is empty and `Wave 18 Exerted` continues to be the
+//     canonical Exert-cost path.
+//   - Trigger$ SVar resolution: the future cost-payment integration
+//     consults `triggerSVarsAll` (Wave 107) and dispatches each entry
+//     through the SVar resolver bound to the matched attacker. The
+//     Wave 18 Exerted trigger continues to handle the canonical Exert
+//     case; the multi-trigger forms (Forge `&`-separated) iterate this
+//     list. The handler-side surface is now complete; the dispatch is
+//     the cost-payment integration's responsibility.
+// Wave 107 — closes the prior multi-trigger form advanced tail.
 // `triggerSVar` is now a tuple shape: when the corpus carries
 // `Trigger$ TrigA & TrigB` (Forge's `&`-separator for multi-trigger
 // statics) we split on `&` (and the `,` legacy separator) and expose
@@ -99,6 +106,18 @@ export interface OptionalAttackCostPayload {
   readonly triggerSVarsAll: readonly string[];
   /** UI description text, surfaced by the attack-declaration dialog. undefined when omitted. */
   readonly description: string | undefined;
+  /**
+   * Wave 112 — record that the controller of `attackerId` paid this
+   * static's Cost$ (Exert / Sac / Tap / etc.). The cost-payment dialog
+   * at attack-declaration time invokes this once the cost-system has
+   * resolved the cost. The payment ledger is `unlessPaymentsByStaticId`
+   * keyed by static id; `Wave 18 Exerted` reads its own pre-existing
+   * tracker, so this slot is for the future cost-payment integration
+   * and for downstream Trigger$ SVar dispatch.
+   */
+  readonly recordPayment: (game: Game, attackerId: EntityId) => void;
+  /** Wave 112 — true iff the controller has already paid this turn. */
+  readonly hasPaid: (game: Game, attackerId: EntityId) => boolean;
 }
 
 export class OptionalAttackCostStaticHandler extends StaticHandler {
@@ -123,6 +142,7 @@ export class OptionalAttackCostStaticHandler extends StaticHandler {
     const triggerSVar = triggerSVarsAll[0];
     const description = literalRaw(params.Description);
 
+    const staticId = ctx.staticId;
     const payload: OptionalAttackCostPayload = {
       kind: "optionalAttackCostExtended",
       cardMatches: (cardId, game) => cardPred(cardId, game),
@@ -130,6 +150,19 @@ export class OptionalAttackCostStaticHandler extends StaticHandler {
       triggerSVar,
       triggerSVarsAll,
       description,
+      recordPayment: (game, attackerId) => {
+        if (!game.flags) return;
+        let set = game.flags.unlessPaymentsByStaticId.get(staticId);
+        if (set === undefined) {
+          set = new Set();
+          game.flags.unlessPaymentsByStaticId.set(staticId, set);
+        }
+        set.add(attackerId);
+      },
+      hasPaid: (game, attackerId) => {
+        const set = game.flags?.unlessPaymentsByStaticId.get(staticId);
+        return set?.has(attackerId) === true;
+      },
     };
 
     // Translate to a concrete Restriction with kind=optionalCost so the

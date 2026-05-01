@@ -45,11 +45,15 @@
 //                                 helper site by walking the static
 //                                 registry's payload predicate; MVP here
 //                                 captures the raw filter string.
-// TODO(advanced):
-//   - Composite "You,Planeswalker.YouCtrl" — payload exposes the raw
-//     string and the helper resolves the planeswalker side.
+// Wave 112 closure of the prior advanced tail:
+//   - Composite "You,Planeswalker.YouCtrl" is now resolved by the
+//     `attackRequirementsFor` helper (wave70k-gate-helpers.ts) which
+//     splits the comma-separated tokens into independent seat / PW /
+//     battle sets and unions them into the allowed-defender result.
 //   - "Player.Other" (= any seat that isn't the attacker's controller)
-//     deferred to the helper that has both seats in scope.
+//     is also resolved by `attackRequirementsFor`, which has the
+//     attacker's live controller seat in scope and can populate the
+//     allowed-seats set with every other seat.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

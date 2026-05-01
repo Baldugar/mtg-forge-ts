@@ -117,9 +117,32 @@ export const canAttackUnlessPaid = (
       const matches = matchesDefenderFilter(payload.targetFilterRaw, defenderHint, s.controllerSeatAtReg);
       if (!matches) continue;
     }
+    // Wave 112 — consult the per-game payment ledger. The cost-payment
+    // dialog stamps `unlessPaymentsByStaticId.get(s.id)` with the
+    // attacker id when the controller pays Cost$. On a hit, the gate
+    // short-circuits and treats the cost as paid.
+    const paidAttackers = game.flags?.unlessPaymentsByStaticId.get(s.id);
+    if (paidAttackers?.has(attackerId)) continue;
     return false;
   }
   return true;
+};
+
+/**
+ * Wave 112 — record that the controller of `attackerId` has paid the
+ * Cost$ for the CantAttackUnless static identified by `staticId`. Idempotent
+ * within a turn; reset on TurnEnded. Called by the cost-payment dialog at
+ * attack-declaration time after the cost has been paid through the cost
+ * system.
+ */
+export const recordCantAttackUnlessPayment = (game: Game, staticId: EntityId, attackerId: EntityId): void => {
+  if (!game.flags) return;
+  let set = game.flags.unlessPaymentsByStaticId.get(staticId);
+  if (set === undefined) {
+    set = new Set();
+    game.flags.unlessPaymentsByStaticId.set(staticId, set);
+  }
+  set.add(attackerId);
 };
 
 /**

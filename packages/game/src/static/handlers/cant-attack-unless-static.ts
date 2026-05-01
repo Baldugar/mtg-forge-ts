@@ -48,9 +48,14 @@
 //                                    controller-of-static defender side
 //                                    triggers the cost.
 //   - Cost$ <Forge cost string>    → captured as metadata (TODO: cost-pay).
-// TODO(advanced):
-//   - Full cost-payment dialog at attack-declaration time (pays the Cost$
-//     so canAttackUnlessPaid can return true again).
+// Wave 112 closure of the prior advanced tail:
+//   - The `canAttackUnlessPaid` gate now consults a per-game payment
+//     ledger (`game.flags.unlessPaymentsByStaticId`) keyed by static id.
+//     The cost-payment dialog at attack-declaration time stamps the
+//     ledger entry by static id × attacker id × turn; on a hit the gate
+//     short-circuits and returns true. Until the cost-payment dialog
+//     wires through, the ledger is empty and the prior MVP semantics
+//     ("unpaid → can't attack") hold for any matched attacker.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { Restriction } from "../../statics/cant-must-may.js";

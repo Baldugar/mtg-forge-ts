@@ -39,13 +39,14 @@
 //                                relaxes the haste rejection only when
 //                                the declared defender matches. Empty
 //                                / undefined → match any defender.
-// TODO(advanced):
-//   - Cost$ <Forge cost string> — the "may attack as though haste if
-//                                 controller pays {N}" form (Exert-
-//                                 cost cousin); the cost-payment
-//                                 dialog at attack-declaration is wired
-//                                 by Wave 70.D's CantAttackUnless
-//                                 follow-up.
+// Wave 112 closure of the prior advanced tail:
+//   - `Cost$ <Forge cost string>` — the "may attack as though haste if
+//     controller pays {N}" form (Exert-cost cousin) is now parsed onto
+//     the payload as `costText` so the future attack-declaration cost-
+//     payment dialog (the Wave 70.D CantAttackUnless follow-up) can
+//     read it without re-parsing the static. The MVP gate continues to
+//     fire unconditionally on a card-match for back-compat — until the
+//     cost-payment dialog lands, the cost is treated as "always paid".
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -64,6 +65,13 @@ export interface CanAttackIfHastePayload {
   readonly defenderSeatMatches: (seat: PlayerSeat) => boolean;
   /** True iff the declared planeswalker-defender (a card id) matches ValidTarget$. */
   readonly defenderCardMatches: (cardId: EntityId, game: Game) => boolean;
+  /**
+   * Wave 112 — Forge `Cost$ <cost string>` (e.g. "1", "Exert<1/CARDNAME>").
+   * undefined when omitted (the canonical free-of-charge haste shape).
+   * The future cost-payment dialog at attack-declaration time reads this
+   * field; the MVP gate fires unconditionally on a card-match.
+   */
+  readonly costText: string | undefined;
 }
 
 export class CanAttackIfHasteStaticHandler extends StaticHandler {
@@ -87,11 +95,15 @@ export class CanAttackIfHasteStaticHandler extends StaticHandler {
         ? () => true
         : buildCardIdPredicate(validTargetRaw, ctx.sourceCardId, ctx.controllerSeat);
 
+    // Wave 112 — Cost$ surface for the future cost-payment dialog.
+    const costText = literalRaw(params.Cost);
+
     const payload: CanAttackIfHastePayload = {
       kind: "canAttackIfHaste",
       cardMatches: (cardId, game) => cardPred(cardId, game),
       defenderSeatMatches: (seat) => seatPred(seat),
       defenderCardMatches: (cardId, game) => cardDefenderPred(cardId, game),
+      costText,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

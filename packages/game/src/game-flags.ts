@@ -158,6 +158,17 @@ export interface GameFlags {
   // not the slot was touched). null when no replacement is mid-flight.
   // Not snapshotted: the slot is only meaningful inside an apply() boundary.
   activeReplacementIntent: unknown;
+  // Wave 112 — payment ledger for "Unless" cost statics (CantAttackUnless,
+  // CantBlockUnless, OptionalAttackCost, CanAttackIfHaste with Cost$).
+  // Keyed by static-id (Wave 70.D and friends are keyed by the
+  // StaticAbility's `id`). The set value records the (attacker / blocker)
+  // EntityIds that have already paid the static's Cost$ THIS turn. The
+  // attack-declaration / block-declaration cost-payment dialog stamps
+  // entries in here; the helpers (`canAttackUnlessPaid`, `canBlockUnlessPaid`)
+  // consult the ledger and short-circuit to "paid" on a hit. Reset on
+  // TurnEnded — payments don't roll over between turns (matches Forge:
+  // Propaganda is paid each turn the attack is declared).
+  unlessPaymentsByStaticId: Map<EntityId, Set<EntityId>>;
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -217,4 +228,6 @@ export const createDefaultFlags = (): GameFlags => ({
   loyaltyActivationsThisTurn: new Map(),
   // Wave 56 — replacement-intent side channel. Default null (no apply() in flight).
   activeReplacementIntent: null,
+  // Wave 112 — Unless-cost payment ledger; default empty.
+  unlessPaymentsByStaticId: new Map(),
 });

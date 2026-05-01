@@ -77,6 +77,41 @@ export const assignsCombatDamageAsUnblocked = (game: Game, attackerId: EntityId)
 };
 
 /**
+ * Wave 112 — Detailed lookup for the combat-handler. Returns the
+ * matched static's payload metadata so the consumer can honor
+ * `Optional$ True` (controller MAY decline) and `CombatDamage$ N`
+ * (route a fixed value instead of the attacker's full power) without
+ * re-walking the registry.
+ *
+ * Returns the FIRST matching payload (Forge layering: the active gates
+ * stack but the routing decision is a single "as if unblocked" event;
+ * the first match wins for the override + optional fields). When no
+ * match is in force, returns null — equivalent to
+ * `assignsCombatDamageAsUnblocked` returning false.
+ */
+export interface AsUnblockedRouting {
+  /** Whether the controller MAY decline the routing (Forge `Optional$ True`). */
+  readonly optional: boolean;
+  /**
+   * Fixed damage to route instead of the attacker's full power, if any
+   * (Forge `CombatDamage$ N`). undefined → use attacker's full power.
+   */
+  readonly combatDamageOverride: number | undefined;
+}
+export const asUnblockedRoutingFor = (game: Game, attackerId: EntityId): AsUnblockedRouting | null => {
+  const statics = game.staticEffectRegistry.byMode("AssignCombatDamageAsUnblocked");
+  for (const s of statics) {
+    const payload = s.describe() as AssignCombatDamageAsUnblockedPayload;
+    if (!payload.cardMatches(attackerId, game)) continue;
+    return {
+      optional: payload.optional,
+      combatDamageOverride: payload.combatDamageOverride,
+    };
+  }
+  return null;
+};
+
+/**
  * True iff the (blockerId, attackerId) pairing should ignore the
  * attacker's landwalk keyword (CR 702.13). The block-restrictions
  * module's landwalk loop calls this gate before rejecting; on a match
