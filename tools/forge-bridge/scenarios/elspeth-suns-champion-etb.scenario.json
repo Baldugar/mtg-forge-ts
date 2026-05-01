@@ -1,0 +1,27 @@
+{
+  "id": "elspeth-suns-champion-etb",
+  "description": "Elspeth, Sun's Champion ETB; loyalty abilities + emblem registered.",
+  "seed": 119,
+  "cards": {
+    "Elspeth, Sun's Champion": "Name:Elspeth, Sun's Champion\nManaCost:4 W W\nTypes:Legendary Planeswalker Elspeth\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenAmount$ 3 | TokenScript$ w_1_1_soldier | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create three 1/1 white Soldier creature tokens.\nA:AB$ DestroyAll | Cost$ SubCounter<3/LOYALTY> | ValidCards$ Creature.powerGE4 | Planeswalker$ True | SpellDescription$ Destroy all creatures with power 4 or greater.\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Emblem — Elspeth, Sun's Champion | Image$ emblem_elspeth_suns_champion | StaticAbilities$ STFlying | Planeswalker$ True | Ultimate$ True | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Creatures you control get +2/+2 and have flying.\"\nSVar:STFlying:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ Battlefield | AddKeyword$ Flying | AddPower$ 2 | AddToughness$ 2 | Description$ Creatures you control get +2/+2 and have flying.\nOracle:[+1]: Create three 1/1 white Soldier creature tokens.\\n[-3]: Destroy all creatures with power 4 or greater.\\n[-7]: You get an emblem with \"Creatures you control get +2/+2 and have flying.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Elspeth, Sun's Champion"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Elspeth, Sun's Champion",
+      "controller": 0
+    }
+  ]
+}

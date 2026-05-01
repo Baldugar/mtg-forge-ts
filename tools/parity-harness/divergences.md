@@ -179,9 +179,9 @@ shared events on both sides:
 
 ```bash
 node tools/parity-harness/run-parity.mjs
-# Expect:
-#   full-match:  29
-#   mvp-known:   1
+# Expect (M6):
+#   full-match:  70
+#   mvp-known:   10
 #   unknown:     0
 ```
 
@@ -189,3 +189,98 @@ The vitest gate (`packages/game/test/parity/parity.test.ts`) refuses
 any `unknown-divergence` and accepts `match` or `mvp-known` per
 scenario; `pnpm --filter @mtg-forge-ts/game test parity` is the
 machine-verifiable seal.
+
+## Milestone 6 — cohort expansion (30 → 80 scenarios)
+
+M6 widens the parity cohort with Tier 2 edge cases (clone-family
+co-residence, anthem-layer interactions, hideaway, planeswalker
+loyalty seeds, miracle/flashback, hideaway, equip, adventure cards,
+delve/affinity, Tarmogoyf with seeded graveyards) and Tier 3 popular
+cards (Brainstorm, Path to Exile, Swords to Plowshares, Thoughtseize,
+Fatal Push, Dark Ritual, Stoneforge Mystic, Snapcaster Mage, Tatyova,
+Goblin Guide, Manamorphose, Krark-Clan Ironworks, Delver of Secrets,
+Murderous Rider, Mosswort Bridge, Unicycle, Krark's Thumb, Mirri
+Weatherlight, Phantasmal Image, Phyrexian Metamorph, Sakashima the
+Imposter, Worship, Sigarda Host of Herons, Painter's Servant, Lotus
+Bloom, Smuggler's Copter, Stolen Identity, Lilana Veil, Jace TMS,
+Elspeth Sun's Champion, Invasion of Ikoria, Doubling-Season ×
+Elspeth co-residence, Aurelia × Soul Warden co-residence, Humility ×
+Anthem layer test, Worship × Soul Warden co-residence, Painter's
+Servant × Honor co-residence, Tarmogoyf with graveyards, Multi-anthem
+stack).
+
+### Aggregate this run (post-M6)
+
+- **80 scenarios** (up from 30).
+- **70 full match** (87.5%).
+- **10 mvp-known** (12.5%). Distribution:
+  - 5× `bridge-counter-event-not-captured` (Jace TMS, Liliana Veil,
+    Elspeth Sun's Champion, Invasion of Ikoria, Doubling-Season ×
+    Elspeth co-residence) — bridge V2 doesn't subscribe to
+    `GameEventCounterAdded`, so Forge silently swallows loyalty / +1+1
+    counter placements while TS emits a discrete `CounterAdded`.
+  - 4× `ts-runner-shallow` (rest-in-peace-etb, history-of-benalia-etb,
+    mosswort-bridge-etb, aurelia-soul-warden-coresidence) — Forge fires
+    `SpellCast`/`StackItemResolved` from triggered abilities the TS
+    runner hasn't fanned out yet (single-action runner limit).
+  - 1× `shallow-trigger-fanout` (snapcaster-mage-etb) — TS fires
+    Snapcaster's ETB-flashback trigger as `AbilityActivated`; Forge
+    bridge skips the trigger fan-out under the cast.
+- **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+### New M6 buckets
+
+- **`bridge-counter-event-not-captured`** (TS-only `CounterAdded`):
+  Bridge V2 doesn't subscribe to `GameEventCounterAdded`. Counter
+  placements (planeswalker loyalty seeds, +1/+1 ETB counters, charge
+  counters, hideaway counters etc.) are silent on the Java side until
+  the bridge listener is added. Engine-side, the TS counters are
+  applied correctly — the divergence is purely capture-side.
+- **`ReplacementApplied` stripped as engine-internal**: TS-only
+  marker fired when a replacement effect is consulted (often a no-op
+  identity replace, e.g. Mosswort Bridge's hideaway-replacement
+  returns the original moveTo). Forge has no
+  `GameEventReplacementApplied` analog; the replacement is applied
+  silently inside the move pipeline. M6 strips it at the
+  `isEngineInternal` boundary.
+
+### Real engine bugs surfaced — none
+
+No M6 scenario landed in `real-divergence-investigate`. Every
+divergence maps to either a known bridge capture gap or a known TS
+runner gap. Follow-on work is therefore pure infrastructure
+(bridge counter-event subscription, TS runner trigger fan-out), not
+engine bug-fixing.
+
+### Per-scenario detail (post-M6, mvp-known only)
+
+| Scenario | TS-only kinds | Java-only kinds | Class |
+| --- | --- | --- | --- |
+| `rest-in-peace-etb` | — | SpellCast, StackItemResolved | ts-runner-shallow |
+| `history-of-benalia-etb` | — | SpellCast, StackItemResolved | ts-runner-shallow |
+| `mosswort-bridge-etb` | — | SpellCast, StackItemResolved | ts-runner-shallow |
+| `aurelia-soul-warden-coresidence` | — | SpellCast, LifeTotalChanged, StackItemResolved | ts-runner-shallow |
+| `invasion-of-ikoria-etb` | CounterAdded | — | bridge-counter-event-not-captured |
+| `elspeth-suns-champion-etb` | CounterAdded | — | bridge-counter-event-not-captured |
+| `liliana-veil-etb` | CounterAdded | — | bridge-counter-event-not-captured |
+| `jace-mind-sculptor-etb` | CounterAdded | — | bridge-counter-event-not-captured |
+| `doubling-season-elspeth-coresidence` | CounterAdded | — | bridge-counter-event-not-captured |
+| `snapcaster-mage-etb` | AbilityActivated, StackItemResolved | — | shallow-trigger-fanout / no-stack-drain |
+
+### Follow-on work (post-M6, NOT in this dispatch)
+
+1. **Bridge: subscribe to `GameEventCounterAdded`** — closes the 5
+   bridge-counter-event-not-captured rows. Touches
+   `tools/forge-bridge/src/main/java/forge/bridge/BridgeRunner.java`'s
+   listener registry.
+2. **TS runner: fan out triggered abilities under headline action** —
+   closes the 4 ts-runner-shallow rows. Touches
+   `packages/game/test/golden/runner.ts` (or wherever the TS golden
+   runner lives) so a non-trivial spell drains its triggered-ability
+   stack symmetrically with Bridge V2.
+3. **Bridge: surface ETB-trigger fan-out under SpellCast** — closes
+   the snapcaster-mage row. The TS engine fires Snapcaster's
+   flashback-grant ETB trigger as a discrete `AbilityActivated`;
+   Forge needs to either (a) fold it into the parent SpellCast
+   payload or (b) emit it as a separate event the bridge subscribes
+   to. Today the bridge captures only the headline cast.

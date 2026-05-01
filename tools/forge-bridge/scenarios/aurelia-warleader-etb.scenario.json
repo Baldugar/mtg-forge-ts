@@ -1,0 +1,27 @@
+{
+  "id": "aurelia-warleader-etb",
+  "description": "Aurelia, the Warleader ETB; flying/vigilance/haste + Attacks trigger.",
+  "seed": 107,
+  "cards": {
+    "Aurelia, the Warleader": "Name:Aurelia, the Warleader\nManaCost:2 R R W W\nTypes:Legendary Creature Angel\nPT:3/4\nK:Flying\nK:Vigilance\nK:Haste\nT:Mode$ Attacks | ValidCard$ Creature.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | FirstAttack$ True | TriggerDescription$ Whenever CARDNAME attacks for the first time each turn, untap all creatures you control. After this phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nOracle:Flying, vigilance, haste\\nWhenever Aurelia, the Warleader attacks for the first time each turn, untap all creatures you control. After this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aurelia, the Warleader"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aurelia, the Warleader",
+      "controller": 0
+    }
+  ]
+}

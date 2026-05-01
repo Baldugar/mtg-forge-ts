@@ -1,0 +1,27 @@
+{
+  "id": "gilded-drake-etb",
+  "description": "Gilded Drake ETB; control-exchange trigger registered.",
+  "seed": 99,
+  "cards": {
+    "Gilded Drake": "Name:Gilded Drake\nManaCost:1 U\nTypes:Creature Drake\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExchange | TriggerDescription$ When CARDNAME enters, exchange control of CARDNAME and up to one target creature an opponent controls. If you don't or can't make an exchange, sacrifice CARDNAME. This ability still resolves if its target becomes illegal.\nSVar:TrigExchange:DB$ ExchangeControl | Defined$ Self | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | TargetMin$ 0 | TargetMax$ 1 | CantFizzle$ True | SubAbility$ DBSacSelf\nSVar:DBSacSelf:DB$ Sacrifice | ConditionDefined$ Self | ConditionPresent$ Card.YouCtrl\nOracle:Flying\\nWhen Gilded Drake enters, exchange control of Gilded Drake and up to one target creature an opponent controls. If you don't or can't make an exchange, sacrifice Gilded Drake. This ability still resolves if its target becomes illegal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Gilded Drake"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gilded Drake",
+      "controller": 0
+    }
+  ]
+}

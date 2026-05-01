@@ -1,0 +1,27 @@
+{
+  "id": "phyrexian-metamorph-etb",
+  "description": "Phyrexian Metamorph ETB; Clone+Artifact replacement.",
+  "seed": 97,
+  "cards": {
+    "Phyrexian Metamorph": "Name:Phyrexian Metamorph\nManaCost:3 UP\nTypes:Artifact Creature Phyrexian Shapeshifter\nPT:0/0\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other,Artifact.Other | AddTypes$ Artifact | SpellDescription$ You may have CARDNAME enter as a copy of any artifact or creature on the battlefield, except it's an artifact in addition to its other types.\nOracle:({U/P} can be paid with either {U} or 2 life.)\\nYou may have Phyrexian Metamorph enter as a copy of any artifact or creature on the battlefield, except it's an artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phyrexian Metamorph"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phyrexian Metamorph",
+      "controller": 0
+    }
+  ]
+}

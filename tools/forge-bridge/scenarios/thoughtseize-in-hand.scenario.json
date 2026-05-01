@@ -1,0 +1,22 @@
+{
+  "id": "thoughtseize-in-hand",
+  "description": "Thoughtseize minted into hand (Discard reveal-you-choose mode parse).",
+  "seed": 125,
+  "cards": {
+    "Thoughtseize": "Name:Thoughtseize\nManaCost:B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player | NumCards$ 1 | DiscardValid$ Card.nonLand | Mode$ RevealYouChoose | SubAbility$ DBLoseLife | SpellDescription$ Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2\nOracle:Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Thoughtseize"],
+      "battlefield": [],
+      "manaPool": ["B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

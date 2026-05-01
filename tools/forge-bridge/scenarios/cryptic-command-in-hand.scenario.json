@@ -1,0 +1,22 @@
+{
+  "id": "cryptic-command-in-hand",
+  "description": "Cryptic Command minted into hand (Charm modal parse).",
+  "seed": 118,
+  "cards": {
+    "Cryptic Command": "Name:Cryptic Command\nManaCost:1 U U U\nTypes:Instant\nA:SP$ Charm | Choices$ DBCounter,DBReturn,DBTapAll,DBDraw | CharmNum$ 2\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent | AILogic$ Good | SpellDescription$ Return target permanent to its owner's hand.\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.OppCtrl | AILogic$ AtLeast3 | SpellDescription$ Tap all creatures your opponents control.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Choose two —\\n• Counter target spell.\\n• Return target permanent to its owner's hand.\\n• Tap all creatures your opponents control.\\n• Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Cryptic Command"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

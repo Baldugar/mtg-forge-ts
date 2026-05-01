@@ -1,0 +1,27 @@
+{
+  "id": "tatyova-etb",
+  "description": "Tatyova, Benthic Druid ETB; Landfall trigger registered.",
+  "seed": 130,
+  "cards": {
+    "Tatyova, Benthic Druid": "Name:Tatyova, Benthic Druid\nManaCost:3 G U\nTypes:Legendary Creature Merfolk Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigGainLife | TriggerDescription$ Landfall — Whenever a land you control enters, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Landfall — Whenever a land you control enters, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tatyova, Benthic Druid"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tatyova, Benthic Druid",
+      "controller": 0
+    }
+  ]
+}

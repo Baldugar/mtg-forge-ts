@@ -1,0 +1,27 @@
+{
+  "id": "lotus-bloom-etb",
+  "description": "Lotus Bloom ETB; Suspend keyword + sacrificial mana activation registered.",
+  "seed": 112,
+  "cards": {
+    "Lotus Bloom": "Name:Lotus Bloom\nManaCost:no cost\nTypes:Artifact\nK:Suspend:3:0\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | Amount$ 3 | AILogic$ BlackLotus | SpellDescription$ Add three mana of any one color.\nOracle:Suspend 3—{0} (Rather than cast this card from your hand, pay {0} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\\n{T}, Sacrifice Lotus Bloom: Add three mana of any one color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Lotus Bloom"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lotus Bloom",
+      "controller": 0
+    }
+  ]
+}

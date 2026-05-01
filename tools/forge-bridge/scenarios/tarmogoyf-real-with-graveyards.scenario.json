@@ -1,0 +1,30 @@
+{
+  "id": "tarmogoyf-real-with-graveyards",
+  "description": "Tarmogoyf with Lightning Bolt + Wrath of God in graveyards (instant + sorcery card types).",
+  "seed": 144,
+  "cards": {
+    "Tarmogoyf": "Name:Tarmogoyf\nManaCost:1 G\nTypes:Creature Lhurgoyf\nPT:*/1+*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ CARDNAME's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.\nSVar:X:Count$ValidGraveyard Card$CardTypes\nSVar:Y:SVar$X/Plus.1\nOracle:Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Wrath of God": "Name:Wrath of God\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures.\nOracle:Destroy all creatures. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tarmogoyf"],
+      "battlefield": [],
+      "graveyard": ["Lightning Bolt", "Wrath of God"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tarmogoyf",
+      "controller": 0
+    }
+  ]
+}

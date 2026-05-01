@@ -1,0 +1,32 @@
+{
+  "id": "worship-soul-warden-coresidence",
+  "description": "Worship in play; Soul Warden ETBs alongside it.",
+  "seed": 142,
+  "cards": {
+    "Worship": "Name:Worship\nManaCost:3 W\nTypes:Enchantment\nR:Event$ LifeReduced | ActiveZones$ Battlefield | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | IsPresent$ Creature.YouCtrl | ReplaceWith$ ReduceLoss | Description$ If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nOracle:If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Soul Warden"],
+      "battlefield": [
+        {
+          "card": "Worship"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Soul Warden",
+      "controller": 0
+    }
+  ]
+}

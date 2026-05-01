@@ -136,6 +136,15 @@ function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
       case "CardTargeted":
       case "CrimeCommitted":
       case "CardDrawn":
+      // M6: TS-only `ReplacementApplied` is the engine's self-reflective
+      // marker that a replacement effect was consulted (often a no-op
+      // identity replace, e.g. Mosswort Bridge's hideaway-replacement
+      // returns the original moveTo unchanged). Forge has no
+      // GameEventReplacementApplied counterpart — the replacement is
+      // applied silently inside the move pipeline. Strip on the TS side
+      // so the Bridge→Battlefield zone-move (which already matches)
+      // remains the only signal.
+      case "ReplacementApplied":
         return true;
       default:
         return false;
@@ -198,6 +207,14 @@ export type DivergenceClass =
   // doesn't yet emit (because the TS runner is still single-action).
   // These Java-only events get bucketed as a known-TS-runner-gap.
   | "ts-runner-shallow"
+  // M6: Bridge V2 doesn't emit `GameEventCounterAdded` — counter
+  // application happens silently inside the move/ability pipeline. The
+  // TS engine emits a discrete `CounterAdded` for every counter touch
+  // (loyalty placement, +1/+1, charge, hideaway, etc.). Until the
+  // bridge subscribes to the counter event, classify TS-only
+  // CounterAdded as a known bridge capture gap rather than a real
+  // engine divergence.
+  | "bridge-counter-event-not-captured"
   | "real-divergence-investigate";
 
 /**
@@ -241,6 +258,18 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // every cohort scenario but keep the classifier for safety.
   ["SpellCast", "bridge-action-skipped"],
   ["CardChangedZone", "bridge-action-skipped"],
+  // M6: TS-only AbilityActivated (when not aliased to a Java SpellCast)
+  // means the bridge fired the headline cast but skipped the trigger
+  // fan-out from the resolved permanent — e.g. Snapcaster Mage's ETB
+  // trigger isn't surfaced by the bridge's stack-driving loop. Bucket
+  // as the existing shallow-trigger-fanout limit.
+  ["AbilityActivated", "shallow-trigger-fanout"],
+  // M6: TS-only CounterAdded — bridge V2 doesn't capture
+  // GameEventCounterAdded yet. Counter placements (loyalty for
+  // planeswalkers, +1/+1 for ETB-counter creatures, hideaway etc.)
+  // are silent on the Java side until the bridge subscribes to the
+  // event. Classify as a known bridge capture gap.
+  ["CounterAdded", "bridge-counter-event-not-captured"],
 ]);
 
 /**
@@ -461,6 +490,7 @@ export function aggregateReports(reports: readonly ParityReport[]): AggregateRep
     "no-stack-drain": 0,
     "bridge-action-skipped": 0,
     "ts-runner-shallow": 0,
+    "bridge-counter-event-not-captured": 0,
     "real-divergence-investigate": 0,
   };
   let fullMatch = 0;

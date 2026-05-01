@@ -1,0 +1,22 @@
+{
+  "id": "fatal-push-in-hand",
+  "description": "Fatal Push minted into hand (Destroy + Revolt SVar parse).",
+  "seed": 126,
+  "cards": {
+    "Fatal Push": "Name:Fatal Push\nManaCost:B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature | AITgts$ Creature.cmcLEX | ConditionDefined$ Targeted | ConditionPresent$ Creature.cmcLEX | ConditionCompare$ EQ1 | SpellDescription$ Destroy target creature if it has mana value 2 or less. Revolt — Destroy that creature if it has mana value 4 or less instead if a permanent you controlled left the battlefield this turn.\nSVar:X:Count$Revolt.4.2\nOracle:Destroy target creature if it has mana value 2 or less.\\nRevolt — Destroy that creature if it has mana value 4 or less instead if a permanent you controlled left the battlefield this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Fatal Push"],
+      "battlefield": [],
+      "manaPool": ["B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

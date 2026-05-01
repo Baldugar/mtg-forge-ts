@@ -1,0 +1,27 @@
+{
+  "id": "unicycle-etb",
+  "description": "Unicycle ETB; Equip + Crew keyword + EquippedBy static.",
+  "seed": 137,
+  "cards": {
+    "Unicycle": "Name:Unicycle\nManaCost:2\nTypes:Artifact Equipment Vehicle\nPT:3/1\nK:First Strike\nK:Haste\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ First Strike & Haste | Description$ Equipped creature has first strike and haste.\nK:Equip:1\nK:Crew:1\nOracle:First strike, haste\\nEquipped creature has first strike and haste.\\nEquip {1}\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Unicycle"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Unicycle",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "humility-anthem-layer-test",
+  "description": "Glorious Anthem + Grizzly Bears in play; Humility ETBs and resets to 1/1 — anthem still adds +1/+1.",
+  "seed": 141,
+  "cards": {
+    "Glorious Anthem": "Name:Glorious Anthem\nManaCost:1 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:Creatures you control get +1/+1.\n",
+    "Humility": "Name:Humility\nManaCost:2 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature | SetPower$ 1 | SetToughness$ 1 | RemoveAllAbilities$ True | Description$ All creatures lose all abilities and have base power and toughness 1/1.\nOracle:All creatures lose all abilities and have base power and toughness 1/1.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Humility"],
+      "battlefield": [
+        {
+          "card": "Glorious Anthem"
+        },
+        {
+          "card": "Grizzly Bears"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Humility",
+      "controller": 0
+    }
+  ]
+}

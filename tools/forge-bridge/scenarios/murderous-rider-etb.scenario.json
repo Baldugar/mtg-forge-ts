@@ -1,0 +1,27 @@
+{
+  "id": "murderous-rider-etb",
+  "description": "Murderous Rider ETB; Lifelink + Dies-replacement to library bottom.",
+  "seed": 135,
+  "cards": {
+    "Murderous Rider": "Name:Murderous Rider\nManaCost:1 B B\nTypes:Creature Zombie Knight\nPT:2/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME dies, put it on the bottom of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nAlternateMode:Adventure\nOracle:Lifelink\\nWhen Murderous Rider dies, put it on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Murderous Rider"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Murderous Rider",
+      "controller": 0
+    }
+  ]
+}

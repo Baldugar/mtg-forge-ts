@@ -1,0 +1,22 @@
+{
+  "id": "swords-to-plowshares-in-hand",
+  "description": "Swords to Plowshares minted into hand (ChangeZone + GainLife subability parse).",
+  "seed": 124,
+  "cards": {
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBGainLife | SpellDescription$ Exile target creature.\nSVar:DBGainLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X | SpellDescription$ Its controller gains life equal to its power.\nSVar:X:Targeted$CardPower\nOracle:Exile target creature. Its controller gains life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Swords to Plowshares"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

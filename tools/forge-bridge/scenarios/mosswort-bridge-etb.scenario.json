@@ -1,0 +1,27 @@
+{
+  "id": "mosswort-bridge-etb",
+  "description": "Mosswort Bridge ETB; Hideaway + ETBTapped replacement registered.",
+  "seed": 136,
+  "cards": {
+    "Mosswort Bridge": "Name:Mosswort Bridge\nManaCost:no cost\nTypes:Land\nK:Hideaway:4\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:Hideaway 4 (When this permanent enters, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\\nMosswort Bridge enters tapped.\\n{T}: Add {G}.\\n{G}, {T}: You may play the exiled card without paying its mana cost if creatures you control have total power 10 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Mosswort Bridge"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mosswort Bridge",
+      "controller": 0
+    }
+  ]
+}

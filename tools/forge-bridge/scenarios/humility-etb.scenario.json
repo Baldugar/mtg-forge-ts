@@ -1,0 +1,32 @@
+{
+  "id": "humility-etb",
+  "description": "Humility ETB alongside Serra Angel; layer-6 SetPower/SetToughness/RemoveAllAbilities static activates.",
+  "seed": 102,
+  "cards": {
+    "Humility": "Name:Humility\nManaCost:2 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature | SetPower$ 1 | SetToughness$ 1 | RemoveAllAbilities$ True | Description$ All creatures lose all abilities and have base power and toughness 1/1.\nOracle:All creatures lose all abilities and have base power and toughness 1/1.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Humility"],
+      "battlefield": [
+        {
+          "card": "Serra Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Humility",
+      "controller": 0
+    }
+  ]
+}

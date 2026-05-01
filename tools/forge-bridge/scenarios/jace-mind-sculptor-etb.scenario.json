@@ -1,0 +1,27 @@
+{
+  "id": "jace-mind-sculptor-etb",
+  "description": "Jace, the Mind Sculptor ETB; +2/+0/-1/-12 loyalty abilities.",
+  "seed": 121,
+  "cards": {
+    "Jace, the Mind Sculptor": "Name:Jace, the Mind Sculptor\nManaCost:2 U U\nTypes:Legendary Planeswalker Jace\nLoyalty:3\nA:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | ValidTgts$ Player | DigNum$ 1 | ChangeNum$ Any | DestinationZone$ Library | LibraryPosition2$ 0 | Planeswalker$ True | SpellDescription$ Look at the top card of target player's library. You may put that card on the bottom of that player's library.\nA:AB$ Draw | Cost$ AddCounter<0/LOYALTY> | NumCards$ 3 | SubAbility$ DBChangeZone | Planeswalker$ True | SpellDescription$ Draw three cards, then put two cards from your hand on top of your library in any order.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeType$ Card | ChangeNum$ 2 | LibraryPosition$ 0 | Mandatory$ True\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature | Planeswalker$ True | SpellDescription$ Return target creature to its owner's hand.\nOracle:[+2]: Look at the top card of target player's library. You may put that card on the bottom of that player's library.\\n[0]: Draw three cards, then put two cards from your hand on top of your library in any order.\\n[-1]: Return target creature to its owner's hand.\\n[-12]: Exile all cards from target player's library, then that player shuffles their hand into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Jace, the Mind Sculptor"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Jace, the Mind Sculptor",
+      "controller": 0
+    }
+  ]
+}

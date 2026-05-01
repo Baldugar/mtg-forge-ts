@@ -1,0 +1,32 @@
+{
+  "id": "worship-etb",
+  "description": "Worship ETB; LifeReduced replacement registered.",
+  "seed": 103,
+  "cards": {
+    "Worship": "Name:Worship\nManaCost:3 W\nTypes:Enchantment\nR:Event$ LifeReduced | ActiveZones$ Battlefield | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | IsPresent$ Creature.YouCtrl | ReplaceWith$ ReduceLoss | Description$ If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nOracle:If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Worship"],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Worship",
+      "controller": 0
+    }
+  ]
+}
