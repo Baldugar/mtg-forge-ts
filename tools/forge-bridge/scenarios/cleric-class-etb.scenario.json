@@ -1,0 +1,27 @@
+{
+  "id": "cleric-class-etb",
+  "description": "Cleric Class ETB; Class keyword + level 2/3 ability registry + GainLife replace.",
+  "seed": 176,
+  "cards": {
+    "Cleric Class": "Name:Cleric Class\nManaCost:W\nTypes:Enchantment Class\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ReplaceGainLife | Description$ If you would gain life, you gain that much life plus 1 instead.\nSVar:ReplaceGainLife:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Plus.1\nK:Class:2:3 W:AddTrigger$ TriggerLife\nSVar:TriggerLife:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nK:Class:3:4 W:AddTrigger$ TriggerClassLevel\nSVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 3 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigReanimate | Secondary$ True | TriggerDescription$ When this Class becomes level 3, return target creature card from your graveyard to the battlefield. You gain life equal to its toughness.\nSVar:TrigReanimate:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature from your graveyard | Origin$ Graveyard | Destination$ Battlefield | RememberTargets$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$CardToughness\nSVar:PlayMain1:True\nDeckHas:Ability$Counters|Graveyard\nDeckNeeds:Ability$LifeGain\nOracle:(Gain the next level as a sorcery to add its ability.)\\nIf you would gain life, you gain that much life plus 1 instead.\\n{3}{W}: Level 2\\nWhenever you gain life, put a +1/+1 counter on target creature you control.\\n{4}{W}: Level 3\\nWhen this Class becomes level 3, return target creature card from your graveyard to the battlefield. You gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Cleric Class"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cleric Class",
+      "controller": 0
+    }
+  ]
+}

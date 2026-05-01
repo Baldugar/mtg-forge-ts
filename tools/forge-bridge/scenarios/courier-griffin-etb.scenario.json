@@ -1,0 +1,27 @@
+{
+  "id": "courier-griffin-etb",
+  "description": "Courier Griffin ETB; flying + ETB life-gain trigger.",
+  "seed": 189,
+  "cards": {
+    "Courier Griffin": "Name:Courier Griffin\nManaCost:3 W\nTypes:Creature Griffin\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Courier Griffin enters, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Courier Griffin"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Courier Griffin",
+      "controller": 0
+    }
+  ]
+}

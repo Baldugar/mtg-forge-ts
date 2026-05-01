@@ -1,0 +1,27 @@
+{
+  "id": "vorinclex-etb",
+  "description": "Vorinclex, Monstrous Raider ETB; AddCounter doubler + opponent-half replacement.",
+  "seed": 161,
+  "cards": {
+    "Vorinclex, Monstrous Raider": "Name:Vorinclex, Monstrous Raider\nManaCost:4 G G\nTypes:Legendary Creature Phyrexian Praetor\nPT:6/6\nK:Trample\nK:Haste\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidSource$ You | ValidObject$ Permanent.inZoneBattlefield,Player | ReplaceWith$ DoubleCounters | Description$ If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.\nSVar:DoubleCounters:DB$ ReplaceCounter | ValidSource$ You | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Twice\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidSource$ Opponent | ValidObject$ Permanent.inZoneBattlefield,Player | ReplaceWith$ HalfCounters | Description$ If an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.\nSVar:HalfCounters:DB$ ReplaceCounter | ValidSource$ Opponent | Amount$ Y\nSVar:Y:ReplaceCount$CounterNum/HalfDown\nOracle:Trample, haste\\nIf you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.\\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Vorinclex, Monstrous Raider"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vorinclex, Monstrous Raider",
+      "controller": 0
+    }
+  ]
+}

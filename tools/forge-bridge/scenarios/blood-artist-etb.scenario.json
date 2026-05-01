@@ -1,0 +1,27 @@
+{
+  "id": "blood-artist-etb",
+  "description": "Blood Artist ETB; Self/Creature.Other dies-trigger registered.",
+  "seed": 186,
+  "cards": {
+    "Blood Artist": "Name:Blood Artist\nManaCost:1 B\nTypes:Creature Vampire\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another creature dies, target player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever Blood Artist or another creature dies, target player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Blood Artist"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Blood Artist",
+      "controller": 0
+    }
+  ]
+}

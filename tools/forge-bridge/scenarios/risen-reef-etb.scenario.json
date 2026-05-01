@@ -1,0 +1,27 @@
+{
+  "id": "risen-reef-etb",
+  "description": "Risen Reef ETB; Self+Elemental.Other ETB trigger with PeekAndReveal chain.",
+  "seed": 180,
+  "cards": {
+    "Risen Reef": "Name:Risen Reef\nManaCost:1 G U\nTypes:Creature Elemental\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Elemental.Other+YouCtrl | Execute$ TrigPeek | TriggerDescription$ Whenever CARDNAME or another Elemental you control enters, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. If you don't put the card onto the battlefield, put it into your hand.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 1 | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Optional$ True | ForgetChanged$ True | Origin$ Library | Destination$ Battlefield | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ GE1 | Tapped$ True | SubAbility$ DBHand\nSVar:DBHand:DB$ ChangeZone | Origin$ Library | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Risen Reef or another Elemental you control enters, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. If you don't put the card onto the battlefield, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Risen Reef"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Risen Reef",
+      "controller": 0
+    }
+  ]
+}

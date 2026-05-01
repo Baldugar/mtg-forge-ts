@@ -1,0 +1,27 @@
+{
+  "id": "bonecrusher-giant-with-bolt-coresidence",
+  "description": "Bonecrusher Giant in play with Lightning Bolt in hand; locks BecomesTarget trigger setup.",
+  "seed": 195,
+  "cards": {
+    "Bonecrusher Giant": "Name:Bonecrusher Giant\nManaCost:2 R\nTypes:Creature Giant\nPT:4/3\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Spell | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ When CARDNAME becomes the target of a spell, CARDNAME deals 2 damage to that spell's controller.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ 2\nAlternateMode:Adventure\nOracle:Whenever Bonecrusher Giant becomes the target of a spell, Bonecrusher Giant deals 2 damage to that spell's controller.\n\nALTERNATE\n\nName:Stomp\nManaCost:1 R\nTypes:Instant Adventure\nA:SP$ Effect | StaticAbilities$ STCantPrevent | AILogic$ Burn | SubAbility$ DBDamage | SpellDescription$ Damage can't be prevented this turn. CARDNAME deals 2 damage to any target.\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | NoPrevention$ True\nOracle:Damage can't be prevented this turn. Stomp deals 2 damage to any target.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Lightning Bolt"],
+      "battlefield": [
+        {
+          "card": "Bonecrusher Giant"
+        }
+      ],
+      "manaPool": ["R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

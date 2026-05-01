@@ -1,0 +1,27 @@
+{
+  "id": "anointed-procession-etb",
+  "description": "Anointed Procession ETB; CreateToken replacement registry registers the doubler.",
+  "seed": 149,
+  "cards": {
+    "Anointed Procession": "Name:Anointed Procession\nManaCost:3 W\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Card.YouCtrl | ReplaceWith$ DoubleToken | EffectOnly$ True | Description$ If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.\nSVar:DoubleToken:DB$ ReplaceToken | Type$ Amount\nDeckNeeds:Ability$Token\nOracle:If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Anointed Procession"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Anointed Procession",
+      "controller": 0
+    }
+  ]
+}

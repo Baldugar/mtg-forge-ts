@@ -1,0 +1,27 @@
+{
+  "id": "stasis-etb",
+  "description": "Stasis ETB; BeginPhase Untap skip replacement + upkeep sacrifice trigger.",
+  "seed": 160,
+  "cards": {
+    "Stasis": "Name:Stasis\nManaCost:1 U\nTypes:Enchantment\nR:Event$ BeginPhase | ActiveZones$ Battlefield | Phase$ Untap | Skip$ True | Description$ Players skip their untap steps.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ U\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Players skip their untap steps.\\nAt the beginning of your upkeep, sacrifice Stasis unless you pay {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Stasis"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Stasis",
+      "controller": 0
+    }
+  ]
+}

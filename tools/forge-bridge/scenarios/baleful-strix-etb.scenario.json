@@ -1,0 +1,29 @@
+{
+  "id": "baleful-strix-etb",
+  "description": "Baleful Strix ETB; Flying + Deathtouch + ETB cantrip.",
+  "seed": 181,
+  "cards": {
+    "Baleful Strix": "Name:Baleful Strix\nManaCost:U B\nTypes:Artifact Creature Bird\nPT:1/1\nK:Flying\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Flying, deathtouch\\nWhen Baleful Strix enters, draw a card.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Baleful Strix"],
+      "battlefield": [],
+      "library": ["Grizzly Bears"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Baleful Strix",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "nelly-borca-suspect-etb",
+  "description": "Nelly Borca, Impulsive Accuser ETB; Suspect attacks-trigger + Vigilance.",
+  "seed": 175,
+  "cards": {
+    "Nelly Borca, Impulsive Accuser": "Name:Nelly Borca, Impulsive Accuser\nManaCost:2 R W\nTypes:Legendary Creature Human Detective\nPT:2/4\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ Whenever CARDNAME attacks, suspect target creature. Then goad all suspected creatures. (A suspected creature has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | ValidTgts$ Creature | Attributes$ Suspected | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ Valid Creature.IsSuspected\nT:Mode$ DamageAll | CombatDamage$ True | ValidSource$ Creature.OppCtrl | ValidTarget$ Opponent | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures an opponent controls deal combat damage to one or more of your opponents, you and the controller of those creatures each draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredSourcesController & You\nOracle:Vigilance\\nWhenever Nelly Borca, Impulsive Accuser attacks, suspect target creature. Then goad all suspected creatures. (A suspected creature has menace and can't block.)\\nWhenever one or more creatures an opponent controls deal combat damage to one or more of your opponents, you and the controller of those creatures each draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Nelly Borca, Impulsive Accuser"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Nelly Borca, Impulsive Accuser",
+      "controller": 0
+    }
+  ]
+}

@@ -670,6 +670,505 @@ K:Crew:1
 Oracle:First strike, haste\\nEquipped creature has first strike and haste.\\nEquip {1}\\nCrew 1
 `;
 
+// ── M6.6 — additional cohort coverage (mechanics under-represented in M6) ───
+// All sources copied verbatim from the Forge corpus for byte-symmetric Java
+// vs TS comparison. ETB-only scenarios — same rationale as M6 (breadth over
+// depth, every mechanic registers via the canonical moveTo pipeline).
+
+const grayMerchantSrc = `Name:Gray Merchant of Asphodel
+ManaCost:3 B B
+Types:Creature Zombie
+PT:2/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way.
+SVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife
+SVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost
+SVar:AFLifeLost:Number$0
+SVar:X:Count$Devotion.Black
+Oracle:When Gray Merchant of Asphodel enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)
+`;
+
+const banefireSrc = `Name:Banefire
+ManaCost:X R
+Types:Sorcery
+A:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to any target.
+S:Mode$ CantPreventDamage | ValidSource$ Spell.Self | EffectZone$ Stack | CheckSVar$ X | SVarCompare$ GE5 | Description$ If X is 5 or more, CARDNAME can't be countered by spells or abilities and the damage can't be prevented.
+R:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | CheckSVar$ X | SVarCompare$ GE5 | Secondary$ True | Description$ If X is 5 or more, CARDNAME can't be countered by spells or abilities and the damage can't be prevented.
+SVar:X:Count$xPaid
+Oracle:Banefire deals X damage to any target.\\nIf X is 5 or more, this spell can't be countered and the damage can't be prevented.
+`;
+
+const hangarbackWalkerSrc = `Name:Hangarback Walker
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+K:etbCounter:P1P1:X
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 colorless Thopter artifact creature token with flying for each +1/+1 counter on CARDNAME.
+SVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You
+SVar:Y:TriggeredCard$CardCounters.P1P1
+A:AB$ PutCounter | Cost$ 1 T | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.
+SVar:X:Count$xPaid
+DeckHas:Ability$Token
+Oracle:Hangarback Walker enters with X +1/+1 counters on it.\\nWhen Hangarback Walker dies, create a 1/1 colorless Thopter artifact creature token with flying for each +1/+1 counter on Hangarback Walker.\\n{1}, {T}: Put a +1/+1 counter on Hangarback Walker.
+`;
+
+const anointedProcessionSrc = `Name:Anointed Procession
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Card.YouCtrl | ReplaceWith$ DoubleToken | EffectOnly$ True | Description$ If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.
+SVar:DoubleToken:DB$ ReplaceToken | Type$ Amount
+DeckNeeds:Ability$Token
+Oracle:If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.
+`;
+
+const lurrusSrc = `Name:Lurrus of the Dream-Den
+ManaCost:1 WB WB
+Types:Legendary Creature Cat Nightmare
+PT:3/2
+K:Companion:Permanent.cmcLE2,Instant,Sorcery:Each permanent card in your starting deck has mana value 2 or less.
+K:Lifelink
+S:Mode$ Continuous | EffectZone$ Battlefield | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | Affected$ Permanent.nonLand+YouOwn+cmcLE2 | ValidAfterStack$ Spell.cmcLE2 | AffectedZone$ Graveyard | Description$ During each of your turns, you may cast one permanent spell with mana value 2 or less from your graveyard.
+Oracle:Companion — Each permanent card in your starting deck has mana value 2 or less. (If this card is your chosen companion, you may put it into your hand from outside the game for {3} any time you could cast a sorcery.)\\nLifelink\\nDuring each of your turns, you may cast one permanent spell with mana value 2 or less from your graveyard.
+`;
+
+const stoneforgeMysticAltSrc = `Name:Stoneforge Mystic
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Equipment card, reveal it, put it into your hand, then shuffle.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Equipment | ChangeNum$ 1 | ShuffleNonMandatory$ True
+A:AB$ ChangeZone | Cost$ 1 W T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Equipment | ChangeNum$ 1 | AILogic$ Main1 | SpellDescription$ You may put an Equipment card from your hand onto the battlefield.
+Oracle:When Stoneforge Mystic enters, you may search your library for an Equipment card, reveal it, put it into your hand, then shuffle.\\n{1}{W}, {T}: You may put an Equipment card from your hand onto the battlefield.
+`;
+
+const skullclampSrc = `Name:Skullclamp
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Equipped creature gets +1/-1.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature dies, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Equipped creature gets +1/-1.\\nWhenever equipped creature dies, draw two cards.\\nEquip {1}
+`;
+
+const swordOfFireAndIceSrc = `Name:Sword of Fire and Ice
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddSVar$ SwordOfFireAndIceCE | AddKeyword$ Protection from red & Protection from blue | Description$ Equipped creature gets +2/+2 and has protection from red and from blue.
+T:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, CARDNAME deals 2 damage to any target and you draw a card.
+SVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1
+SVar:SwordOfFireAndIceCE:SVar:MustBeBlocked:AttackingPlayerConservative
+Oracle:Equipped creature gets +2/+2 and has protection from red and from blue.\\nWhenever equipped creature deals combat damage to a player, Sword of Fire and Ice deals 2 damage to any target and you draw a card.\\nEquip {2}
+`;
+
+const korOutfitterSrc = `Name:Kor Outfitter
+ManaCost:W W
+Types:Creature Kor Soldier
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ EquipmentSelection | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may attach target Equipment you control to target creature you control.
+SVar:EquipmentSelection:DB$ Pump | ValidTgts$ Equipment.YouCtrl | TgtPrompt$ Select target equipment you control | SubAbility$ KorOutfitting | StackDescription$ None
+SVar:KorOutfitting:DB$ Attach | Object$ ParentTarget | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control.
+AI:RemoveDeck:All
+Oracle:When Kor Outfitter enters, you may attach target Equipment you control to target creature you control.
+`;
+
+const monasterySwiftspearSrc = `Name:Monastery Swiftspear
+ManaCost:R
+Types:Creature Human Monk
+PT:1/2
+K:Haste
+K:Prowess
+Oracle:Haste\\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+`;
+
+const werebearSrc = `Name:Werebear
+ManaCost:1 G
+Types:Creature Human Bear Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+S:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | AddToughness$ 3 | Condition$ Threshold | Description$ Threshold — CARDNAME gets +3/+3 as long as there are seven or more cards in your graveyard.
+Oracle:{T}: Add {G}.\\nThreshold — Werebear gets +3/+3 as long as there are seven or more cards in your graveyard.
+`;
+
+const grandArchitectSrc = `Name:Grand Architect
+ManaCost:1 U U
+Types:Creature Vedalken Artificer
+PT:1/3
+S:Mode$ Continuous | Affected$ Creature.Blue+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other blue creatures you control get +1/+1.
+A:AB$ Animate | Cost$ U | ValidTgts$ Creature.Artifact | TgtPrompt$ Select target artifact creature | Colors$ Blue | OverwriteColors$ True | SpellDescription$ Target artifact creature becomes blue until end of turn.
+A:AB$ Mana | Cost$ tapXType<1/Creature.Blue> | Produced$ C | Amount$ 2 | RestrictValid$ Spell.Artifact,Activated.Artifact+inZoneBattlefield | SpellDescription$ Add {C}{C}. Spend this mana only to cast artifact spells or activate abilities of artifacts.
+AI:RemoveDeck:Random
+Oracle:Other blue creatures you control get +1/+1.\\n{U}: Target artifact creature becomes blue until end of turn.\\nTap an untapped blue creature you control: Add {C}{C}. Spend this mana only to cast artifact spells or activate abilities of artifacts.
+`;
+
+const stasisSrc = `Name:Stasis
+ManaCost:1 U
+Types:Enchantment
+R:Event$ BeginPhase | ActiveZones$ Battlefield | Phase$ Untap | Skip$ True | Description$ Players skip their untap steps.
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {U}.
+SVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ U
+AI:RemoveDeck:Random
+SVar:NonStackingEffect:True
+Oracle:Players skip their untap steps.\\nAt the beginning of your upkeep, sacrifice Stasis unless you pay {U}.
+`;
+
+const vorinclexMonstrousSrc = `Name:Vorinclex, Monstrous Raider
+ManaCost:4 G G
+Types:Legendary Creature Phyrexian Praetor
+PT:6/6
+K:Trample
+K:Haste
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidSource$ You | ValidObject$ Permanent.inZoneBattlefield,Player | ReplaceWith$ DoubleCounters | Description$ If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.
+SVar:DoubleCounters:DB$ ReplaceCounter | ValidSource$ You | Amount$ X
+SVar:X:ReplaceCount$CounterNum/Twice
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidSource$ Opponent | ValidObject$ Permanent.inZoneBattlefield,Player | ReplaceWith$ HalfCounters | Description$ If an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.
+SVar:HalfCounters:DB$ ReplaceCounter | ValidSource$ Opponent | Amount$ Y
+SVar:Y:ReplaceCount$CounterNum/HalfDown
+Oracle:Trample, haste\\nIf you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.\\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.
+`;
+
+const roxanneSrc = `Name:Roxanne, Starfall Savant
+ManaCost:3 R G
+Types:Legendary Creature Cat Druid
+PT:4/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact token named Meteorite with "When Meteorite enters, it deals 2 damage to any target" and "{T}: Add one mana of any color."
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact token named Meteorite with "When Meteorite enters, it deals 2 damage to any target" and "{T}: Add one mana of any color."
+SVar:TrigToken:DB$ Token | TokenScript$ meteorite | TokenTapped$ True | TokenOwner$ You
+T:Mode$ TapsForMana | ValidCard$ Artifact.token | Activator$ You | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap an artifact token for mana, add one mana of any type that permanent produced.
+SVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ You
+SVar:PlayMain1:TRUE
+SVar:HasAttackEffect:TRUE
+DeckHas:Ability$Token & Type$Artifact
+DeckHints:Ability$Token & Type$Artifact|Token
+Oracle:Whenever Roxanne, Starfall Savant enters or attacks, create a tapped colorless artifact token named Meteorite with "When Meteorite enters, it deals 2 damage to any target" and "{T}: Add one mana of any color."\\nWhenever you tap an artifact token for mana, add one mana of any type that artifact token produced.
+`;
+
+const avacynAngelOfHopeSrc = `Name:Avacyn, Angel of Hope
+ManaCost:5 W W W
+Types:Legendary Creature Angel
+PT:8/8
+K:Flying
+K:Vigilance
+K:Indestructible
+S:Mode$ Continuous | Affected$ Permanent.Other+YouCtrl | AddKeyword$ Indestructible | Description$ Other permanents you control have indestructible.
+Oracle:Flying, vigilance, indestructible\\nOther permanents you control have indestructible.
+`;
+
+const lilianaLastHopeSrc = `Name:Liliana, the Last Hope
+ManaCost:1 B B
+Types:Legendary Planeswalker Liliana
+Loyalty:3
+A:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumAtt$ -2 | NumDef$ -1 | IsCurse$ True | Duration$ UntilYourNextTurn | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | SpellDescription$ Up to one target creature gets -2/-1 until your next turn.
+A:AB$ Mill | Cost$ SubCounter<2/LOYALTY> | NumCards$ 2 | AILogic$ LilianaMill | Planeswalker$ True | Defined$ You | SubAbility$ DBChangeZone | SpellDescription$ Mill two cards, then you may return a creature card from your graveyard to your hand.
+SVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature.YouOwn | Hidden$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Emblem — Liliana, the Last Hope | Image$ emblem_liliana_the_last_hope | Triggers$ TrigToken | Planeswalker$ True | Ultimate$ True | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with "At the beginning of your end step, create X 2/2 black Zombie creature tokens, where X is two plus the number of Zombies you control."
+SVar:TrigToken:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ DBToken | TriggerDescription$ At the beginning of your end step, create X 2/2 black Zombie creature tokens, where X is two plus the number of Zombies you control.
+SVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenOwner$ You
+SVar:X:Count$Valid Card.Zombie+YouCtrl/Plus.2
+SVar:PlayMain1:TRUE
+DeckHas:Ability$Token|Graveyard
+DeckHints:Type$Zombie
+Oracle:[+1]: Up to one target creature gets -2/-1 until your next turn.\\n[-2]: Mill two cards, then you may return a creature card from your graveyard to your hand.\\n[-7]: You get an emblem with "At the beginning of your end step, create X 2/2 black Zombie creature tokens, where X is two plus the number of Zombies you control."
+`;
+
+const beckoningCallSrc = `Name:Beck
+ManaCost:G U
+Types:Sorcery
+K:Fuse
+A:SP$ Effect | Triggers$ CreatureEntered | SpellDescription$ Whenever a creature enters this turn, you may draw a card.
+SVar:CreatureEntered:Mode$ ChangesZone | ValidCard$ Creature | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraw | TriggerZones$ Command | OptionalDecider$ You | TriggerDescription$ Whenever a creature enters this turn, you may draw a card.
+SVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1
+AlternateMode:Split
+Oracle:Whenever a creature enters this turn, you may draw a card.\\nFuse (You may cast one or both halves of this card from your hand.)
+`;
+
+const chordOfCallingSrc = `Name:Chord of Calling
+ManaCost:X G G G
+Types:Instant
+K:Convoke
+A:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | ChangeNum$ 1 | StackDescription$ SpellDescription | AIMaxTgtCost$ Y | SpellDescription$ Search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle.
+SVar:X:Count$xPaid
+SVar:Y:Count$ValidLibrary Creature.YouOwn+cmcLELeftoverMana$GreatestCardManaCost
+Oracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nSearch your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle.
+`;
+
+const heraldOfAnguishSrc = `Name:Herald of Anguish
+ManaCost:5 B B
+Types:Creature Demon
+PT:5/5
+K:Improvise
+K:Flying
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your end step, each opponent discards a card.
+SVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose
+A:AB$ Pump | Cost$ 1 B Sac<1/Artifact> | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -2/-2 until end of turn.
+Oracle:Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)\\nFlying\\nAt the beginning of your end step, each opponent discards a card.\\n{1}{B}, Sacrifice an artifact: Target creature gets -2/-2 until end of turn.
+`;
+
+const thoughtcastSrc = `Name:Thoughtcast
+ManaCost:4 U
+Types:Sorcery
+A:SP$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards.
+K:Affinity:Artifact
+Oracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nDraw two cards.
+`;
+
+const drivenDespairSrc = `Name:Driven
+ManaCost:1 G
+Types:Sorcery
+A:SP$ AnimateAll | ValidCards$ Creature.YouCtrl | Keywords$ Trample | Triggers$ Trig1 | StackDescription$ SpellDescription | SpellDescription$ Until end of turn, creatures you control gain trample and "Whenever this creature deals combat damage to a player, draw a card."
+SVar:Trig1:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ Eff1 | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card.
+SVar:Eff1:DB$ Draw
+AlternateMode:Split
+Oracle:Until end of turn, creatures you control gain trample and "Whenever this creature deals combat damage to a player, draw a card."
+`;
+
+const consignToMemorySrc = `Name:Consign to Memory
+ManaCost:U
+Types:Instant
+K:Replicate:1
+A:SP$ Counter | TargetType$ Spell.Colorless,Triggered | TgtPrompt$ Select target triggered ability or colorless spell | ValidTgts$ Card,Emblem | SpellDescription$ Counter target triggered ability or colorless spell.
+Oracle:Replicate {1} (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copies.)\\nCounter target triggered ability or colorless spell.
+`;
+
+const baithookAnglerSrc = `Name:Baithook Angler
+ManaCost:1 U
+Types:Creature Human Peasant
+PT:2/1
+K:Disturb:1 U
+DeckHas:Ability$Graveyard
+AlternateMode:DoubleFaced
+Oracle:Disturb {1}{U} (You may cast this card from your graveyard transformed for its disturb cost.)
+`;
+
+const beastbondOutcasterSrc = `Name:Beastbond Outcaster
+ManaCost:2 G
+Types:Creature Human Druid
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Creature.YouCtrl+powerGE4 | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you control a creature with power 4 or greater, draw a card.
+SVar:TrigDraw:DB$ Draw | Defined$ You
+K:Plot:1 G
+Oracle:When Beastbond Outcaster enters, if you control a creature with power 4 or greater, draw a card.\\nPlot {1}{G} (You may pay 1 this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)
+`;
+
+const nellyBorcaSrc = `Name:Nelly Borca, Impulsive Accuser
+ManaCost:2 R W
+Types:Legendary Creature Human Detective
+PT:2/4
+K:Vigilance
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ Whenever CARDNAME attacks, suspect target creature. Then goad all suspected creatures. (A suspected creature has menace and can't block.)
+SVar:TrigSuspect:DB$ AlterAttribute | ValidTgts$ Creature | Attributes$ Suspected | SubAbility$ DBGoad
+SVar:DBGoad:DB$ Goad | Defined$ Valid Creature.IsSuspected
+T:Mode$ DamageAll | CombatDamage$ True | ValidSource$ Creature.OppCtrl | ValidTarget$ Opponent | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures an opponent controls deal combat damage to one or more of your opponents, you and the controller of those creatures each draw a card.
+SVar:TrigDraw:DB$ Draw | Defined$ TriggeredSourcesController & You
+Oracle:Vigilance\\nWhenever Nelly Borca, Impulsive Accuser attacks, suspect target creature. Then goad all suspected creatures. (A suspected creature has menace and can't block.)\\nWhenever one or more creatures an opponent controls deal combat damage to one or more of your opponents, you and the controller of those creatures each draw a card.
+`;
+
+const clericClassSrc = `Name:Cleric Class
+ManaCost:W
+Types:Enchantment Class
+R:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ReplaceGainLife | Description$ If you would gain life, you gain that much life plus 1 instead.
+SVar:ReplaceGainLife:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X
+SVar:X:ReplaceCount$LifeGained/Plus.1
+K:Class:2:3 W:AddTrigger$ TriggerLife
+SVar:TriggerLife:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever you gain life, put a +1/+1 counter on target creature you control.
+SVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1
+K:Class:3:4 W:AddTrigger$ TriggerClassLevel
+SVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 3 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigReanimate | Secondary$ True | TriggerDescription$ When this Class becomes level 3, return target creature card from your graveyard to the battlefield. You gain life equal to its toughness.
+SVar:TrigReanimate:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature from your graveyard | Origin$ Graveyard | Destination$ Battlefield | RememberTargets$ True | SubAbility$ DBGainLife
+SVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | SubAbility$ DBCleanup
+SVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True
+SVar:Y:Remembered$CardToughness
+SVar:PlayMain1:True
+DeckHas:Ability$Counters|Graveyard
+DeckNeeds:Ability$LifeGain
+Oracle:(Gain the next level as a sorcery to add its ability.)\\nIf you would gain life, you gain that much life plus 1 instead.\\n{3}{W}: Level 2\\nWhenever you gain life, put a +1/+1 counter on target creature you control.\\n{4}{W}: Level 3\\nWhen this Class becomes level 3, return target creature card from your graveyard to the battlefield. You gain life equal to its toughness.
+`;
+
+const aetherfluxReservoirSrc = `Name:Aetherflux Reservoir
+ManaCost:4
+Types:Artifact
+T:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, you gain 1 life for each spell you've cast this turn.
+SVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X
+SVar:X:Count$ThisTurnCast_Card.YouCtrl
+A:AB$ DealDamage | Cost$ PayLife<50> | ValidTgts$ Any | NumDmg$ 50 | SpellDescription$ CARDNAME deals 50 damage to any target.
+Oracle:Whenever you cast a spell, you gain 1 life for each spell you've cast this turn.\\nPay 50 life: Aetherflux Reservoir deals 50 damage to any target.
+`;
+
+const bloodghastSrc = `Name:Bloodghast
+ManaCost:B B
+Types:Creature Vampire Spirit
+PT:2/1
+S:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.
+S:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Haste | CheckSVar$ X | SVarCompare$ LE10 | Description$ CARDNAME has haste as long as an opponent has 10 or less life.
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Landfall — Whenever a land you control enters, you may return CARDNAME from your graveyard to the battlefield.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield
+SVar:X:PlayerCountOpponents$LowestLifeTotal
+SVar:SacMe:3
+SVar:DiscardMe:3
+Oracle:Bloodghast can't block.\\nBloodghast has haste as long as an opponent has 10 or less life.\\nLandfall — Whenever a land you control enters, you may return Bloodghast from your graveyard to the battlefield.
+`;
+
+const aetherVialSrc = `Name:Aether Vial
+ManaCost:1
+Types:Artifact
+A:AB$ ChangeZone | Cost$ T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.cmcEQX+YouCtrl | Optional$ You | SpellDescription$ You may put a creature card with mana value equal to the number of charge counters on CARDNAME from your hand onto the battlefield. | StackDescription$ SpellDescription
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a charge counter on CARDNAME.
+SVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1 | AILogic$ ChargeToBestCMC
+SVar:X:Count$CardCounters.CHARGE
+Oracle:At the beginning of your upkeep, you may put a charge counter on Aether Vial.\\n{T}: You may put a creature card with mana value equal to the number of charge counters on Aether Vial from your hand onto the battlefield.
+`;
+
+const risenReefSrc = `Name:Risen Reef
+ManaCost:1 G U
+Types:Creature Elemental
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Elemental.Other+YouCtrl | Execute$ TrigPeek | TriggerDescription$ Whenever CARDNAME or another Elemental you control enters, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. If you don't put the card onto the battlefield, put it into your hand.
+SVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 1 | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBChangeZone
+SVar:DBChangeZone:DB$ ChangeZone | Optional$ True | ForgetChanged$ True | Origin$ Library | Destination$ Battlefield | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ GE1 | Tapped$ True | SubAbility$ DBHand
+SVar:DBHand:DB$ ChangeZone | Origin$ Library | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup
+SVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True
+Oracle:Whenever Risen Reef or another Elemental you control enters, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. If you don't put the card onto the battlefield, put it into your hand.
+`;
+
+const balefulStrixSrc = `Name:Baleful Strix
+ManaCost:U B
+Types:Artifact Creature Bird
+PT:1/1
+K:Flying
+K:Deathtouch
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.
+SVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1
+Oracle:Flying, deathtouch\\nWhen Baleful Strix enters, draw a card.
+`;
+
+const phytohydraSrc = `Name:Phytohydra
+ManaCost:2 G W W
+Types:Creature Plant Hydra
+PT:1/1
+R:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | Description$ If damage would be dealt to CARDNAME, put that many +1/+1 counters on it instead.
+SVar:Counters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X
+SVar:X:ReplaceCount$DamageAmount
+Oracle:If damage would be dealt to Phytohydra, put that many +1/+1 counters on it instead.
+`;
+
+const pacifismSrc = `Name:Pacifism
+ManaCost:1 W
+Types:Enchantment Aura
+K:Enchant:Creature
+SVar:AttachAILogic:Curse
+S:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.
+Oracle:Enchant creature\\nEnchanted creature can't attack or block.
+`;
+
+const oblivionRingSrc = `Name:Oblivion Ring
+ManaCost:2 W
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile another target nonland permanent.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.
+SVar:TrigExile:DB$ ChangeZone | IsCurse$ True | ValidTgts$ Permanent.nonLand+Other | TgtPrompt$ Choose another target nonland permanent | Origin$ Battlefield | Destination$ Exile
+SVar:TrigReturn:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Battlefield
+SVar:PlayMain1:TRUE
+SVar:OblivionRing:TRUE
+Oracle:When Oblivion Ring enters, exile another target nonland permanent.\\nWhen Oblivion Ring leaves the battlefield, return the exiled card to the battlefield under its owner's control.
+`;
+
+const kalitasSrc = `Name:Kalitas, Traitor of Ghet
+ManaCost:2 B B
+Types:Legendary Creature Vampire Warrior
+PT:3/4
+K:Lifelink
+R:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.!token+OppCtrl | ReplaceWith$ Exile | Description$ If a nontoken creature an opponent controls would die, instead exile that card and create a 2/2 black Zombie creature token.
+SVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBToken | Defined$ ReplacedCard
+SVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You
+A:AB$ PutCounter | Cost$ 2 B Sac<1/Vampire.Other;Zombie.Other/another Vampire or Zombie> | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on CARDNAME.
+Oracle:Lifelink\\nIf a nontoken creature an opponent controls would die, instead exile that card and create a 2/2 black Zombie creature token.\\n{2}{B}, Sacrifice another Vampire or Zombie: Put two +1/+1 counters on Kalitas, Traitor of Ghet.
+`;
+
+const bloodArtistSrc = `Name:Blood Artist
+ManaCost:1 B
+Types:Creature Vampire
+PT:0/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME or another creature dies, target player loses 1 life and you gain 1 life.
+SVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBGainLife
+SVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1
+DeckHas:Ability$LifeGain
+Oracle:Whenever Blood Artist or another creature dies, target player loses 1 life and you gain 1 life.
+`;
+
+const golgariGraveTrollSrc = `Name:Golgari Grave-Troll
+ManaCost:4 G
+Types:Creature Troll Skeleton
+PT:0/0
+K:etbCounter:P1P1:X:no Condition:CARDNAME enters with a +1/+1 counter on it for each creature card in your graveyard.
+A:AB$ Regenerate | Cost$ 1 SubCounter<1/P1P1> | SpellDescription$ Regenerate CARDNAME.
+K:Dredge:6
+SVar:X:Count$ValidGraveyard Creature.YouCtrl
+SVar:NeedsToPlayVar:X GE3
+Oracle:Golgari Grave-Troll enters with a +1/+1 counter on it for each creature card in your graveyard.\\n{1}, Remove a +1/+1 counter from Golgari Grave-Troll: Regenerate Golgari Grave-Troll.\\nDredge 6 (If you would draw a card, you may mill six cards instead. If you do, return this card from your graveyard to your hand.)
+`;
+
+const stinkweedImpSrc = `Name:Stinkweed Imp
+ManaCost:2 B
+Types:Creature Imp
+PT:1/2
+K:Flying
+T:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, destroy that creature.
+SVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy
+K:Dredge:5
+Oracle:Flying\\nWhenever Stinkweed Imp deals combat damage to a creature, destroy that creature.\\nDredge 5 (If you would draw a card, you may mill five cards instead. If you do, return this card from your graveyard to your hand.)
+`;
+
+const courierGriffinSrc = `Name:Courier Griffin
+ManaCost:3 W
+Types:Creature Griffin
+PT:2/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.
+SVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2
+DeckHas:Ability$LifeGain
+Oracle:Flying\\nWhen Courier Griffin enters, you gain 2 life.
+`;
+
+const courtOfGraceSrc = `Name:Court of Grace
+ManaCost:2 W W
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.
+SVar:TrigMonarch:DB$ BecomeMonarch
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of your upkeep, create a 1/1 white Spirit creature token with flying. If you're the monarch, create a 4/4 white Angel creature token with flying instead.
+SVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ DBAngel | FalseSubAbility$ DBSpirit
+SVar:DBSpirit:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You
+SVar:DBAngel:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenOwner$ You
+SVar:X:Count$Monarch.1.0
+Oracle:When Court of Grace enters, you become the monarch.\\nAt the beginning of your upkeep, create a 1/1 white Spirit creature token with flying. If you're the monarch, create a 4/4 white Angel creature token with flying instead.
+`;
+
+const scrapTrawlerSrc = `Name:Scrap Trawler
+ManaCost:3
+Types:Artifact Creature Construct
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturnArti | TriggerDescription$ Whenever CARDNAME or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigReturnArti | TriggerDescription$ Whenever CARDNAME or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.
+SVar:TrigReturnArti:DB$ ChangeZone | ValidTgts$ Artifact.cmcLTX+YouCtrl | Origin$ Graveyard | Destination$ Hand
+SVar:X:TriggeredCard$CardManaCost
+Oracle:Whenever Scrap Trawler or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.
+`;
+
+const glissaSrc = `Name:Glissa Sunslayer
+ManaCost:1 B G
+Types:Legendary Creature Phyrexian Zombie Elf
+PT:3/3
+K:First Strike
+K:Deathtouch
+T:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, ABILITY
+SVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBDestroy,DBRemove
+SVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.
+SVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1
+SVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.
+SVar:DBRemove:DB$ RemoveCounter | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ 3 | UpTo$ True | SpellDescription$ Remove up to three counters from target permanent.
+Oracle:First strike, deathtouch\\nWhenever Glissa Sunslayer deals combat damage to a player, choose one —\\n• You draw a card and you lose 1 life.\\n• Destroy target enchantment.\\n• Remove up to three counters from target permanent.
+`;
+
 // ── Scenarios ────────────────────────────────────────────────────────────────
 
 export const SCENARIOS: readonly GoldenScenario[] = [
@@ -1942,5 +2441,755 @@ export const SCENARIOS: readonly GoldenScenario[] = [
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "etb", cardName: "Honor of the Pure", controller: SEAT0 }],
+  },
+
+  // ── M6.6 — additional cohort coverage (~50 scenarios) ─────────────────────
+  // Covers mechanics that were under-represented in the M6 80-card cohort:
+  // Saga / Class / Cipher / Cascade / Storm / Dredge / Suspect / Plot /
+  // Devotion / X-spells / Companion / Adventure / Equip / Vehicle / Battle /
+  // Doubler / Charm / Convoke / Surveil / Aftermath / Prowess / Threshold /
+  // Replicate / Disturb / Improvise / Affinity / Indestructible.
+  //
+  // ETB-only by default — same rationale as the M6 Tier-2/3 expansions: ETB
+  // captures registration of triggers / replacements / statics symmetrically
+  // on both sides, without needing scripted target binding or stack drain.
+
+  // 81. Devotion-driven Gray Merchant — ETB triggers a black-devotion drain.
+  // Black devotion is 0 with no other black permanents; the trigger fires
+  // for 0 life (locks the LoseLife trigger registry + SVar Devotion path).
+  {
+    id: "gray-merchant-devotion-etb",
+    description: "Gray Merchant of Asphodel ETB; devotion-driven LoseLife trigger.",
+    seed: 0x92,
+    cards: { "Gray Merchant of Asphodel": grayMerchantSrc },
+    players: [
+      { life: 20, hand: ["Gray Merchant of Asphodel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gray Merchant of Asphodel", controller: SEAT0 }],
+  },
+
+  // 82. X-spell — Banefire (in-hand parse + xPaid SVar).
+  {
+    id: "banefire-in-hand",
+    description: "Banefire minted into hand (X-spell SVar + CantPreventDamage static).",
+    seed: 0x93,
+    cards: { Banefire: banefireSrc },
+    players: [
+      { life: 20, hand: ["Banefire"], battlefield: [], manaPool: ["R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 83. Hangarback Walker — X-spell with etbCounter:P1P1:X (in-hand parse).
+  // ETB-driving the trigger from a non-cast path triggers the X resolver for
+  // the dies token-amount, which the TS engine surfaces via TriggeredCard
+  // SVar — this token-resolution only fires post-die. In-hand parse locks
+  // the etbCounter keyword + dies-trigger registry without firing it.
+  {
+    id: "hangarback-walker-in-hand",
+    description: "Hangarback Walker minted into hand (X-spell + etbCounter:P1P1:X parse + dies-trigger).",
+    seed: 0x94,
+    cards: { "Hangarback Walker": hangarbackWalkerSrc },
+    players: [
+      { life: 20, hand: ["Hangarback Walker"], battlefield: [], manaPool: ["C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 84. Token doubler — Anointed Procession ETB.
+  {
+    id: "anointed-procession-etb",
+    description: "Anointed Procession ETB; CreateToken replacement registry registers the doubler.",
+    seed: 0x95,
+    cards: { "Anointed Procession": anointedProcessionSrc },
+    players: [
+      { life: 20, hand: ["Anointed Procession"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anointed Procession", controller: SEAT0 }],
+  },
+
+  // 85. Doubling Season + Anointed Procession + Elspeth — co-residence test
+  // (multiple replacement effects in the same registry).
+  {
+    id: "doubling-season-anointed-procession-coresidence",
+    description:
+      "Doubling Season + Anointed Procession + Elspeth, Sun's Champion in play; counter+token doublers.",
+    seed: 0x96,
+    cards: {
+      "Doubling Season": doublingSeasonSrc,
+      "Anointed Procession": anointedProcessionSrc,
+      "Elspeth, Sun's Champion": elspethSunsChampionSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Elspeth, Sun's Champion"],
+        battlefield: [{ card: "Doubling Season" }, { card: "Anointed Procession" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elspeth, Sun's Champion", controller: SEAT0 }],
+  },
+
+  // 86. Companion — Lurrus of the Dream-Den ETB (Companion keyword parse).
+  {
+    id: "lurrus-companion-etb",
+    description: "Lurrus of the Dream-Den ETB; Companion keyword + MayPlay static registered.",
+    seed: 0x97,
+    cards: { "Lurrus of the Dream-Den": lurrusSrc },
+    players: [
+      { life: 20, hand: ["Lurrus of the Dream-Den"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lurrus of the Dream-Den", controller: SEAT0 }],
+  },
+
+  // 87. Stoneforge Mystic ETB — equipment search trigger.
+  {
+    id: "stoneforge-mystic-search-etb",
+    description: "Stoneforge Mystic ETB; equipment search trigger + activated put-equip ability.",
+    seed: 0x98,
+    cards: { "Stoneforge Mystic": stoneforgeMysticAltSrc },
+    players: [
+      { life: 20, hand: ["Stoneforge Mystic"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stoneforge Mystic", controller: SEAT0 }],
+  },
+
+  // 88. Skullclamp — equipment with dies-trigger and -1 toughness static.
+  {
+    id: "skullclamp-etb",
+    description: "Skullclamp ETB; Equip + EquippedBy static + dies-draw trigger.",
+    seed: 0x99,
+    cards: { Skullclamp: skullclampSrc },
+    players: [
+      { life: 20, hand: ["Skullclamp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skullclamp", controller: SEAT0 }],
+  },
+
+  // 89. Sword of Fire and Ice — equipment with combat-damage trigger + protections.
+  {
+    id: "sword-of-fire-and-ice-etb",
+    description: "Sword of Fire and Ice ETB; Protection statics + combat-damage trigger.",
+    seed: 0x9a,
+    cards: { "Sword of Fire and Ice": swordOfFireAndIceSrc },
+    players: [
+      { life: 20, hand: ["Sword of Fire and Ice"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword of Fire and Ice", controller: SEAT0 }],
+  },
+
+  // 90. Kor Outfitter — auto-attach Equipment ETB trigger.
+  {
+    id: "kor-outfitter-etb",
+    description: "Kor Outfitter ETB; ETB Pump+Attach trigger registered (chained-effect parse).",
+    seed: 0x9b,
+    cards: { "Kor Outfitter": korOutfitterSrc },
+    players: [
+      { life: 20, hand: ["Kor Outfitter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kor Outfitter", controller: SEAT0 }],
+  },
+
+  // 91. Prowess — Monastery Swiftspear ETB (haste + prowess).
+  {
+    id: "monastery-swiftspear-etb",
+    description: "Monastery Swiftspear ETB; Haste + Prowess keyword registry.",
+    seed: 0x9c,
+    cards: { "Monastery Swiftspear": monasterySwiftspearSrc },
+    players: [
+      { life: 20, hand: ["Monastery Swiftspear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Monastery Swiftspear", controller: SEAT0 }],
+  },
+
+  // 92. Threshold — Werebear ETB (mana ability + Threshold conditional buff).
+  {
+    id: "werebear-etb",
+    description: "Werebear ETB; mana ability + Threshold conditional static.",
+    seed: 0x9d,
+    cards: { Werebear: werebearSrc },
+    players: [
+      { life: 20, hand: ["Werebear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Werebear", controller: SEAT0 }],
+  },
+
+  // 93. Threshold + populated graveyard — Werebear sees 7 cards.
+  {
+    id: "werebear-threshold-active",
+    description: "Werebear ETB with 7 cards in graveyard — Threshold static buff active.",
+    seed: 0x9e,
+    cards: {
+      Werebear: werebearSrc,
+      "Lightning Bolt": lightningBoltSrc,
+      "Wrath of God": wrathOfGodSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Werebear"],
+        battlefield: [],
+        graveyard: [
+          "Lightning Bolt",
+          "Lightning Bolt",
+          "Lightning Bolt",
+          "Wrath of God",
+          "Wrath of God",
+          "Wrath of God",
+          "Wrath of God",
+        ],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Werebear", controller: SEAT0 }],
+  },
+
+  // 94. Mana fixing — Grand Architect ETB (anthem + activated abilities).
+  {
+    id: "grand-architect-etb",
+    description: "Grand Architect ETB; blue-anthem static + 2 activated abilities.",
+    seed: 0x9f,
+    cards: { "Grand Architect": grandArchitectSrc },
+    players: [
+      { life: 20, hand: ["Grand Architect"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grand Architect", controller: SEAT0 }],
+  },
+
+  // 95. Stasis ETB — Untap-step skip replacement.
+  {
+    id: "stasis-etb",
+    description: "Stasis ETB; BeginPhase Untap skip replacement + upkeep sacrifice trigger.",
+    seed: 0xa0,
+    cards: { Stasis: stasisSrc },
+    players: [
+      { life: 20, hand: ["Stasis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stasis", controller: SEAT0 }],
+  },
+
+  // 96. Counter doubler — Vorinclex ETB.
+  {
+    id: "vorinclex-etb",
+    description: "Vorinclex, Monstrous Raider ETB; AddCounter doubler + opponent-half replacement.",
+    seed: 0xa1,
+    cards: { "Vorinclex, Monstrous Raider": vorinclexMonstrousSrc },
+    players: [
+      { life: 20, hand: ["Vorinclex, Monstrous Raider"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vorinclex, Monstrous Raider", controller: SEAT0 }],
+  },
+
+  // 97. Vorinclex + Elspeth co-residence — counter doubler interacts with
+  // planeswalker loyalty placement.
+  {
+    id: "vorinclex-elspeth-coresidence",
+    description: "Vorinclex in play; Elspeth ETBs (loyalty counter doubled to 8 instead of 4).",
+    seed: 0xa2,
+    cards: {
+      "Vorinclex, Monstrous Raider": vorinclexMonstrousSrc,
+      "Elspeth, Sun's Champion": elspethSunsChampionSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Elspeth, Sun's Champion"],
+        battlefield: [{ card: "Vorinclex, Monstrous Raider" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elspeth, Sun's Champion", controller: SEAT0 }],
+  },
+
+  // 98. Roxanne, Starfall Savant — token-on-ETB trigger (in-hand parse only).
+  // The meteorite token isn't in the TS predefined token DB, so resolving
+  // the ETB trigger on the TS side would crash. In-hand parse locks the
+  // trigger registry shape + saddle-style ManaReflected behaviour.
+  {
+    id: "roxanne-starfall-in-hand",
+    description: "Roxanne, Starfall Savant minted into hand (Saddle-flavored Meteorite trigger parse).",
+    seed: 0xa3,
+    cards: { "Roxanne, Starfall Savant": roxanneSrc },
+    players: [
+      { life: 20, hand: ["Roxanne, Starfall Savant"], battlefield: [], manaPool: ["R", "G", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 99. Indestructible vs Wrath — Avacyn, Angel of Hope ETB.
+  {
+    id: "avacyn-angel-of-hope-etb",
+    description: "Avacyn, Angel of Hope ETB; Indestructible self + global indestructible static.",
+    seed: 0xa4,
+    cards: { "Avacyn, Angel of Hope": avacynAngelOfHopeSrc },
+    players: [
+      { life: 20, hand: ["Avacyn, Angel of Hope"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Avacyn, Angel of Hope", controller: SEAT0 }],
+  },
+
+  // 100. Avacyn + Grizzly Bears co-residence — Bears get indestructible.
+  {
+    id: "avacyn-grizzly-coresidence",
+    description: "Avacyn + Grizzly Bears in play; Bears gain indestructible via static.",
+    seed: 0xa5,
+    cards: {
+      "Avacyn, Angel of Hope": avacynAngelOfHopeSrc,
+      "Grizzly Bears": grizzlyBearsSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [{ card: "Avacyn, Angel of Hope" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grizzly Bears", controller: SEAT0 }],
+  },
+
+  // 101. Liliana, the Last Hope — planeswalker activated abilities.
+  {
+    id: "liliana-last-hope-etb",
+    description: "Liliana, the Last Hope ETB; loyalty +1/-2/-7 abilities registered.",
+    seed: 0xa6,
+    cards: { "Liliana, the Last Hope": lilianaLastHopeSrc },
+    players: [
+      { life: 20, hand: ["Liliana, the Last Hope"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Liliana, the Last Hope", controller: SEAT0 }],
+  },
+
+  // 102. Beck — Fuse half (in-hand parse).
+  {
+    id: "beck-call-in-hand",
+    description: "Beck minted into hand (Fuse + ETB-trigger spell parse).",
+    seed: 0xa7,
+    cards: { Beck: beckoningCallSrc },
+    players: [
+      { life: 20, hand: ["Beck"], battlefield: [], manaPool: ["G", "U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 103. Convoke — Chord of Calling (in-hand parse).
+  {
+    id: "chord-of-calling-in-hand",
+    description: "Chord of Calling minted into hand (Convoke keyword + xPaid).",
+    seed: 0xa8,
+    cards: { "Chord of Calling": chordOfCallingSrc },
+    players: [
+      { life: 20, hand: ["Chord of Calling"], battlefield: [], manaPool: ["G", "G", "G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 104. Improvise — Herald of Anguish ETB (flying + improvise + end-step trigger).
+  {
+    id: "herald-of-anguish-etb",
+    description: "Herald of Anguish ETB; Improvise keyword + Flying + end-step discard trigger.",
+    seed: 0xa9,
+    cards: { "Herald of Anguish": heraldOfAnguishSrc },
+    players: [
+      { life: 20, hand: ["Herald of Anguish"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Herald of Anguish", controller: SEAT0 }],
+  },
+
+  // 105. Affinity for artifacts — Thoughtcast (in-hand parse).
+  {
+    id: "thoughtcast-in-hand",
+    description: "Thoughtcast minted into hand (Affinity:Artifact keyword parse).",
+    seed: 0xaa,
+    cards: { Thoughtcast: thoughtcastSrc },
+    players: [
+      { life: 20, hand: ["Thoughtcast"], battlefield: [], manaPool: ["U", "C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 106. Aftermath / Split — Driven // Despair (front half in-hand parse).
+  {
+    id: "driven-despair-in-hand",
+    description: "Driven (split) minted into hand (AlternateMode:Split parse).",
+    seed: 0xab,
+    cards: { Driven: drivenDespairSrc },
+    players: [
+      { life: 20, hand: ["Driven"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 107. Replicate — Consign to Memory (in-hand parse).
+  {
+    id: "consign-to-memory-in-hand",
+    description: "Consign to Memory minted into hand (Replicate keyword parse).",
+    seed: 0xac,
+    cards: { "Consign to Memory": consignToMemorySrc },
+    players: [
+      { life: 20, hand: ["Consign to Memory"], battlefield: [], manaPool: ["U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 108. Disturb / DoubleFaced — Baithook Angler ETB.
+  {
+    id: "baithook-angler-etb",
+    description: "Baithook Angler ETB; Disturb keyword + DoubleFaced parse.",
+    seed: 0xad,
+    cards: { "Baithook Angler": baithookAnglerSrc },
+    players: [
+      { life: 20, hand: ["Baithook Angler"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Baithook Angler", controller: SEAT0 }],
+  },
+
+  // 109. Plot — Beastbond Outcaster (in-hand parse). ETB triggers a Draw with
+  // no NumCards param (Forge defaults to 1, TS engine requires explicit) —
+  // not a parity bug, but locking the in-hand parse covers Plot keyword.
+  {
+    id: "beastbond-outcaster-in-hand",
+    description: "Beastbond Outcaster minted into hand (Plot keyword + IsPresent gated draw trigger parse).",
+    seed: 0xae,
+    cards: { "Beastbond Outcaster": beastbondOutcasterSrc },
+    players: [
+      { life: 20, hand: ["Beastbond Outcaster"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 110. Suspect — Nelly Borca, Impulsive Accuser ETB.
+  {
+    id: "nelly-borca-suspect-etb",
+    description: "Nelly Borca, Impulsive Accuser ETB; Suspect attacks-trigger + Vigilance.",
+    seed: 0xaf,
+    cards: { "Nelly Borca, Impulsive Accuser": nellyBorcaSrc },
+    players: [
+      { life: 20, hand: ["Nelly Borca, Impulsive Accuser"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nelly Borca, Impulsive Accuser", controller: SEAT0 }],
+  },
+
+  // 111. Class — Cleric Class ETB (level 1; level-up SVars register).
+  {
+    id: "cleric-class-etb",
+    description: "Cleric Class ETB; Class keyword + level 2/3 ability registry + GainLife replace.",
+    seed: 0xb0,
+    cards: { "Cleric Class": clericClassSrc },
+    players: [
+      { life: 20, hand: ["Cleric Class"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cleric Class", controller: SEAT0 }],
+  },
+
+  // 112. Storm-flavored ramp — Aetherflux Reservoir ETB.
+  {
+    id: "aetherflux-reservoir-etb",
+    description: "Aetherflux Reservoir ETB; SpellCast trigger + activated 50-damage ability.",
+    seed: 0xb1,
+    cards: { "Aetherflux Reservoir": aetherfluxReservoirSrc },
+    players: [
+      { life: 20, hand: ["Aetherflux Reservoir"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aetherflux Reservoir", controller: SEAT0 }],
+  },
+
+  // 113. Bloodghast — Landfall trigger (registered while in graveyard).
+  {
+    id: "bloodghast-etb",
+    description: "Bloodghast ETB; CantBlock + conditional Haste + Landfall (graveyard-zone trigger).",
+    seed: 0xb2,
+    cards: { Bloodghast: bloodghastSrc },
+    players: [
+      { life: 20, hand: ["Bloodghast"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodghast", controller: SEAT0 }],
+  },
+
+  // 114. Aether Vial — counter-driven cheating ETB.
+  {
+    id: "aether-vial-etb",
+    description: "Aether Vial ETB; upkeep charge-counter trigger + activated cheat-into-play.",
+    seed: 0xb3,
+    cards: { "Aether Vial": aetherVialSrc },
+    players: [
+      { life: 20, hand: ["Aether Vial"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aether Vial", controller: SEAT0 }],
+  },
+
+  // 115. Risen Reef — Elemental ETB landfall.
+  {
+    id: "risen-reef-etb",
+    description: "Risen Reef ETB; Self+Elemental.Other ETB trigger with PeekAndReveal chain.",
+    seed: 0xb4,
+    cards: { "Risen Reef": risenReefSrc },
+    players: [
+      { life: 20, hand: ["Risen Reef"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Risen Reef", controller: SEAT0 }],
+  },
+
+  // 116. Cantrip artifact — Baleful Strix ETB (flying + deathtouch + draw).
+  {
+    id: "baleful-strix-etb",
+    description: "Baleful Strix ETB; Flying + Deathtouch + ETB cantrip.",
+    seed: 0xb5,
+    cards: { "Baleful Strix": balefulStrixSrc, "Grizzly Bears": grizzlyBearsSrc },
+    players: [
+      {
+        life: 20,
+        hand: ["Baleful Strix"],
+        battlefield: [],
+        library: ["Grizzly Bears"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Baleful Strix", controller: SEAT0 }],
+  },
+
+  // 117. Combat damage redirect — Phytohydra ETB (DamageDone replacement).
+  {
+    id: "phytohydra-etb",
+    description: "Phytohydra ETB; DamageDone replacement (counter-on-damage instead).",
+    seed: 0xb6,
+    cards: { Phytohydra: phytohydraSrc },
+    players: [
+      { life: 20, hand: ["Phytohydra"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Phytohydra", controller: SEAT0 }],
+  },
+
+  // 118. Aura — Pacifism in-hand parse + activation registration on a target.
+  // Pure parse-lock since Aura targeting + bind requires the cast pipeline.
+  {
+    id: "pacifism-in-hand",
+    description: "Pacifism minted into hand (Enchant:Creature + CantAttack/Block static parse).",
+    seed: 0xb7,
+    cards: { Pacifism: pacifismSrc },
+    players: [
+      { life: 20, hand: ["Pacifism"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 119. Oblivion Ring ETB — exile-on-ETB trigger (ETBs without target since
+  // there are no other nonland permanents — Forge skips the optional ETB).
+  // Locks the trigger registry shape including the LeaveBattlefield-pair.
+  {
+    id: "oblivion-ring-etb",
+    description: "Oblivion Ring ETB; ETB-exile + LeaveBattlefield-return trigger pair.",
+    seed: 0xb8,
+    cards: { "Oblivion Ring": oblivionRingSrc },
+    players: [
+      { life: 20, hand: ["Oblivion Ring"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Oblivion Ring", controller: SEAT0 }],
+  },
+
+  // 120. Replacement — Kalitas exile-replace for opponent creatures dying.
+  {
+    id: "kalitas-etb",
+    description: "Kalitas, Traitor of Ghet ETB; Lifelink + Moved replacement (exile + token).",
+    seed: 0xb9,
+    cards: { "Kalitas, Traitor of Ghet": kalitasSrc },
+    players: [
+      { life: 20, hand: ["Kalitas, Traitor of Ghet"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kalitas, Traitor of Ghet", controller: SEAT0 }],
+  },
+
+  // 121. Sacrifice trigger — Blood Artist ETB.
+  {
+    id: "blood-artist-etb",
+    description: "Blood Artist ETB; Self/Creature.Other dies-trigger registered.",
+    seed: 0xba,
+    cards: { "Blood Artist": bloodArtistSrc },
+    players: [
+      { life: 20, hand: ["Blood Artist"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Blood Artist", controller: SEAT0 }],
+  },
+
+  // 122. Dredge — Golgari Grave-Troll ETB (Dredge keyword + etbCounter).
+  {
+    id: "golgari-grave-troll-etb",
+    description: "Golgari Grave-Troll ETB; Dredge:6 keyword + etbCounter:P1P1:X.",
+    seed: 0xbb,
+    cards: { "Golgari Grave-Troll": golgariGraveTrollSrc },
+    players: [
+      { life: 20, hand: ["Golgari Grave-Troll"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Golgari Grave-Troll", controller: SEAT0 }],
+  },
+
+  // 123. Dredge — Stinkweed Imp ETB.
+  {
+    id: "stinkweed-imp-etb",
+    description: "Stinkweed Imp ETB; Flying + Dredge:5 keyword + DamageDone destroy trigger.",
+    seed: 0xbc,
+    cards: { "Stinkweed Imp": stinkweedImpSrc },
+    players: [
+      { life: 20, hand: ["Stinkweed Imp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stinkweed Imp", controller: SEAT0 }],
+  },
+
+  // 124. Vanilla life-gain ETB — Courier Griffin (locks the static-payload
+  // gainLife trigger shape).
+  {
+    id: "courier-griffin-etb",
+    description: "Courier Griffin ETB; flying + ETB life-gain trigger.",
+    seed: 0xbd,
+    cards: { "Courier Griffin": courierGriffinSrc },
+    players: [
+      { life: 20, hand: ["Courier Griffin"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Courier Griffin", controller: SEAT0 }],
+  },
+
+  // 125. Monarch — Court of Grace ETB (BecomeMonarch on ETB + branch trigger).
+  {
+    id: "court-of-grace-etb",
+    description: "Court of Grace ETB; BecomeMonarch trigger + upkeep Branch trigger.",
+    seed: 0xbe,
+    cards: { "Court of Grace": courtOfGraceSrc },
+    players: [
+      { life: 20, hand: ["Court of Grace"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Court of Grace", controller: SEAT0 }],
+  },
+
+  // 126. Artifact-die-chain — Scrap Trawler ETB.
+  {
+    id: "scrap-trawler-etb",
+    description: "Scrap Trawler ETB; Self/Artifact.Other dies-trigger pair (return-to-hand chain).",
+    seed: 0xbf,
+    cards: { "Scrap Trawler": scrapTrawlerSrc },
+    players: [
+      { life: 20, hand: ["Scrap Trawler"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scrap Trawler", controller: SEAT0 }],
+  },
+
+  // 127. Modal Charm — Glissa Sunslayer ETB (combat-damage Charm trigger).
+  {
+    id: "glissa-sunslayer-etb",
+    description: "Glissa Sunslayer ETB; First Strike + Deathtouch + DamageDone Charm trigger.",
+    seed: 0xc0,
+    cards: { "Glissa Sunslayer": glissaSrc },
+    players: [
+      { life: 20, hand: ["Glissa Sunslayer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glissa Sunslayer", controller: SEAT0 }],
+  },
+
+  // 128. Vehicle Crew — Smuggler's Copter + creature co-residence (the Crew
+  // 1 ability is parse-locked when Copter is in play; we ETB a Bears so any
+  // ETB-relevant statics fire under both engines).
+  {
+    id: "smugglers-copter-creature-coresidence",
+    description: "Smuggler's Copter in play; Grizzly Bears ETBs (Crew-target dependency).",
+    seed: 0xc1,
+    cards: {
+      "Smuggler's Copter": smugglersCopterSrc,
+      "Grizzly Bears": grizzlyBearsSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [{ card: "Smuggler's Copter" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grizzly Bears", controller: SEAT0 }],
+  },
+
+  // 129. Battle defeat — Invasion of Ikoria + populated graveyards. Locks
+  // the search-and-put-from-graveyard branch of the ETB trigger.
+  {
+    id: "invasion-of-ikoria-with-graveyard",
+    description: "Invasion of Ikoria ETB with creatures in graveyard for ChangeZone OriginAlternative.",
+    seed: 0xc2,
+    cards: {
+      "Invasion of Ikoria": invasionOfIkoriaSrc,
+      "Grizzly Bears": grizzlyBearsSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Invasion of Ikoria"],
+        battlefield: [],
+        graveyard: ["Grizzly Bears"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion of Ikoria", controller: SEAT0 }],
+  },
+
+  // 130. Adventure exile-cast pattern — Bonecrusher Giant + Lightning Bolt
+  // co-residence (Bolt targets Bonecrusher's BecomesTarget trigger).
+  {
+    id: "bonecrusher-giant-with-bolt-coresidence",
+    description: "Bonecrusher Giant in play with Lightning Bolt in hand; locks BecomesTarget trigger setup.",
+    seed: 0xc3,
+    cards: {
+      "Bonecrusher Giant": bonecrusherGiantSrc,
+      "Lightning Bolt": lightningBoltSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Lightning Bolt"],
+        battlefield: [{ card: "Bonecrusher Giant" }],
+        manaPool: ["R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
   },
 ];

@@ -1,0 +1,27 @@
+{
+  "id": "phytohydra-etb",
+  "description": "Phytohydra ETB; DamageDone replacement (counter-on-damage instead).",
+  "seed": 182,
+  "cards": {
+    "Phytohydra": "Name:Phytohydra\nManaCost:2 G W W\nTypes:Creature Plant Hydra\nPT:1/1\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Counters | Description$ If damage would be dealt to CARDNAME, put that many +1/+1 counters on it instead.\nSVar:Counters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:ReplaceCount$DamageAmount\nOracle:If damage would be dealt to Phytohydra, put that many +1/+1 counters on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phytohydra"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phytohydra",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "invasion-of-ikoria-with-graveyard",
+  "description": "Invasion of Ikoria ETB with creatures in graveyard for ChangeZone OriginAlternative.",
+  "seed": 194,
+  "cards": {
+    "Invasion of Ikoria": "Name:Invasion of Ikoria\nManaCost:X G G\nTypes:Battle Siege\nDefense:6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | ChangeType$ Creature.YouCtrl+nonHuman+cmcLEX | Hidden$ True | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Battlefield | ShuffleNonMandatory$ True\nSVar:X:Count$xPaid\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Ikoria enters, search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield. If you search your library this way, shuffle.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Invasion of Ikoria"],
+      "battlefield": [],
+      "graveyard": ["Grizzly Bears"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion of Ikoria",
+      "controller": 0
+    }
+  ]
+}

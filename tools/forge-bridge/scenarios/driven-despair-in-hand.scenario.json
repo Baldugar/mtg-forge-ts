@@ -1,0 +1,22 @@
+{
+  "id": "driven-despair-in-hand",
+  "description": "Driven (split) minted into hand (AlternateMode:Split parse).",
+  "seed": 171,
+  "cards": {
+    "Driven": "Name:Driven\nManaCost:1 G\nTypes:Sorcery\nA:SP$ AnimateAll | ValidCards$ Creature.YouCtrl | Keywords$ Trample | Triggers$ Trig1 | StackDescription$ SpellDescription | SpellDescription$ Until end of turn, creatures you control gain trample and \"Whenever this creature deals combat damage to a player, draw a card.\"\nSVar:Trig1:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ Eff1 | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card.\nSVar:Eff1:DB$ Draw\nAlternateMode:Split\nOracle:Until end of turn, creatures you control gain trample and \"Whenever this creature deals combat damage to a player, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Driven"],
+      "battlefield": [],
+      "manaPool": ["G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

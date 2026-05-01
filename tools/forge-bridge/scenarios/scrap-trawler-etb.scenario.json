@@ -1,0 +1,27 @@
+{
+  "id": "scrap-trawler-etb",
+  "description": "Scrap Trawler ETB; Self/Artifact.Other dies-trigger pair (return-to-hand chain).",
+  "seed": 191,
+  "cards": {
+    "Scrap Trawler": "Name:Scrap Trawler\nManaCost:3\nTypes:Artifact Creature Construct\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturnArti | TriggerDescription$ Whenever CARDNAME or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigReturnArti | TriggerDescription$ Whenever CARDNAME or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.\nSVar:TrigReturnArti:DB$ ChangeZone | ValidTgts$ Artifact.cmcLTX+YouCtrl | Origin$ Graveyard | Destination$ Hand\nSVar:X:TriggeredCard$CardManaCost\nOracle:Whenever Scrap Trawler or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Scrap Trawler"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Scrap Trawler",
+      "controller": 0
+    }
+  ]
+}

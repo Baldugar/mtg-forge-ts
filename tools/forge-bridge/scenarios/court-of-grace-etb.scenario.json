@@ -1,0 +1,27 @@
+{
+  "id": "court-of-grace-etb",
+  "description": "Court of Grace ETB; BecomeMonarch trigger + upkeep Branch trigger.",
+  "seed": 190,
+  "cards": {
+    "Court of Grace": "Name:Court of Grace\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBranch | TriggerDescription$ At the beginning of your upkeep, create a 1/1 white Spirit creature token with flying. If you're the monarch, create a 4/4 white Angel creature token with flying instead.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ DBAngel | FalseSubAbility$ DBSpirit\nSVar:DBSpirit:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:DBAngel:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenOwner$ You\nSVar:X:Count$Monarch.1.0\nOracle:When Court of Grace enters, you become the monarch.\\nAt the beginning of your upkeep, create a 1/1 white Spirit creature token with flying. If you're the monarch, create a 4/4 white Angel creature token with flying instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Court of Grace"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Court of Grace",
+      "controller": 0
+    }
+  ]
+}

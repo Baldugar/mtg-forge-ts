@@ -1,0 +1,27 @@
+{
+  "id": "glissa-sunslayer-etb",
+  "description": "Glissa Sunslayer ETB; First Strike + Deathtouch + DamageDone Charm trigger.",
+  "seed": 192,
+  "cards": {
+    "Glissa Sunslayer": "Name:Glissa Sunslayer\nManaCost:1 B G\nTypes:Legendary Creature Phyrexian Zombie Elf\nPT:3/3\nK:First Strike\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDraw,DBDestroy,DBRemove\nSVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBRemove:DB$ RemoveCounter | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ 3 | UpTo$ True | SpellDescription$ Remove up to three counters from target permanent.\nOracle:First strike, deathtouch\\nWhenever Glissa Sunslayer deals combat damage to a player, choose one —\\n• You draw a card and you lose 1 life.\\n• Destroy target enchantment.\\n• Remove up to three counters from target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Glissa Sunslayer"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Glissa Sunslayer",
+      "controller": 0
+    }
+  ]
+}

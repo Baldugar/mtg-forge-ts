@@ -1,0 +1,22 @@
+{
+  "id": "roxanne-starfall-in-hand",
+  "description": "Roxanne, Starfall Savant minted into hand (Saddle-flavored Meteorite trigger parse).",
+  "seed": 163,
+  "cards": {
+    "Roxanne, Starfall Savant": "Name:Roxanne, Starfall Savant\nManaCost:3 R G\nTypes:Legendary Creature Cat Druid\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact token named Meteorite with \"When Meteorite enters, it deals 2 damage to any target\" and \"{T}: Add one mana of any color.\"\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact token named Meteorite with \"When Meteorite enters, it deals 2 damage to any target\" and \"{T}: Add one mana of any color.\"\nSVar:TrigToken:DB$ Token | TokenScript$ meteorite | TokenTapped$ True | TokenOwner$ You\nT:Mode$ TapsForMana | ValidCard$ Artifact.token | Activator$ You | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap an artifact token for mana, add one mana of any type that permanent produced.\nSVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ You\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Ability$Token & Type$Artifact|Token\nOracle:Whenever Roxanne, Starfall Savant enters or attacks, create a tapped colorless artifact token named Meteorite with \"When Meteorite enters, it deals 2 damage to any target\" and \"{T}: Add one mana of any color.\"\\nWhenever you tap an artifact token for mana, add one mana of any type that artifact token produced.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Roxanne, Starfall Savant"],
+      "battlefield": [],
+      "manaPool": ["R", "G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

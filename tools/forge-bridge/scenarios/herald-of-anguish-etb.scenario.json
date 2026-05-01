@@ -1,0 +1,27 @@
+{
+  "id": "herald-of-anguish-etb",
+  "description": "Herald of Anguish ETB; Improvise keyword + Flying + end-step discard trigger.",
+  "seed": 169,
+  "cards": {
+    "Herald of Anguish": "Name:Herald of Anguish\nManaCost:5 B B\nTypes:Creature Demon\nPT:5/5\nK:Improvise\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your end step, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose\nA:AB$ Pump | Cost$ 1 B Sac<1/Artifact> | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -2/-2 until end of turn.\nOracle:Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)\\nFlying\\nAt the beginning of your end step, each opponent discards a card.\\n{1}{B}, Sacrifice an artifact: Target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Herald of Anguish"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Herald of Anguish",
+      "controller": 0
+    }
+  ]
+}

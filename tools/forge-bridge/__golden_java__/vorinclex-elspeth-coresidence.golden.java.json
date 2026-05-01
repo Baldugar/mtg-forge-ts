@@ -1,0 +1,42 @@
+{
+  "scenarioId": "vorinclex-elspeth-coresidence",
+  "seed": 162,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CounterAdded",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Elspeth, Sun's Champion",
+        "counterType": "loyalty",
+        "amount": 8,
+        "removed": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Elspeth, Sun's Champion",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Vorinclex, Monstrous Raider",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}

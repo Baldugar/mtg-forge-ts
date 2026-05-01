@@ -1,0 +1,22 @@
+{
+  "id": "hangarback-walker-in-hand",
+  "description": "Hangarback Walker minted into hand (X-spell + etbCounter:P1P1:X parse + dies-trigger).",
+  "seed": 148,
+  "cards": {
+    "Hangarback Walker": "Name:Hangarback Walker\nManaCost:X X\nTypes:Artifact Creature Construct\nPT:0/0\nK:etbCounter:P1P1:X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 colorless Thopter artifact creature token with flying for each +1/+1 counter on CARDNAME.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nSVar:Y:TriggeredCard$CardCounters.P1P1\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:Hangarback Walker enters with X +1/+1 counters on it.\\nWhen Hangarback Walker dies, create a 1/1 colorless Thopter artifact creature token with flying for each +1/+1 counter on Hangarback Walker.\\n{1}, {T}: Put a +1/+1 counter on Hangarback Walker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Hangarback Walker"],
+      "battlefield": [],
+      "manaPool": ["C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

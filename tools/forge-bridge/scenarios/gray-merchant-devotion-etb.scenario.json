@@ -1,0 +1,27 @@
+{
+  "id": "gray-merchant-devotion-etb",
+  "description": "Gray Merchant of Asphodel ETB; devotion-driven LoseLife trigger.",
+  "seed": 146,
+  "cards": {
+    "Gray Merchant of Asphodel": "Name:Gray Merchant of Asphodel\nManaCost:3 B B\nTypes:Creature Zombie\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\nSVar:X:Count$Devotion.Black\nOracle:When Gray Merchant of Asphodel enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Gray Merchant of Asphodel"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gray Merchant of Asphodel",
+      "controller": 0
+    }
+  ]
+}

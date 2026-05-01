@@ -1,0 +1,27 @@
+{
+  "id": "werebear-etb",
+  "description": "Werebear ETB; mana ability + Threshold conditional static.",
+  "seed": 157,
+  "cards": {
+    "Werebear": "Name:Werebear\nManaCost:1 G\nTypes:Creature Human Bear Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | AddToughness$ 3 | Condition$ Threshold | Description$ Threshold — CARDNAME gets +3/+3 as long as there are seven or more cards in your graveyard.\nOracle:{T}: Add {G}.\\nThreshold — Werebear gets +3/+3 as long as there are seven or more cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Werebear"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Werebear",
+      "controller": 0
+    }
+  ]
+}

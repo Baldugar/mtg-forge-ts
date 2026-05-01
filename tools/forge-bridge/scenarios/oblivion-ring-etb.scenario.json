@@ -1,0 +1,27 @@
+{
+  "id": "oblivion-ring-etb",
+  "description": "Oblivion Ring ETB; ETB-exile + LeaveBattlefield-return trigger pair.",
+  "seed": 184,
+  "cards": {
+    "Oblivion Ring": "Name:Oblivion Ring\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile another target nonland permanent.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | IsCurse$ True | ValidTgts$ Permanent.nonLand+Other | TgtPrompt$ Choose another target nonland permanent | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When Oblivion Ring enters, exile another target nonland permanent.\\nWhen Oblivion Ring leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Oblivion Ring"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Oblivion Ring",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "bloodghast-etb",
+  "description": "Bloodghast ETB; CantBlock + conditional Haste + Landfall (graveyard-zone trigger).",
+  "seed": 178,
+  "cards": {
+    "Bloodghast": "Name:Bloodghast\nManaCost:B B\nTypes:Creature Vampire Spirit\nPT:2/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Haste | CheckSVar$ X | SVarCompare$ LE10 | Description$ CARDNAME has haste as long as an opponent has 10 or less life.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Landfall — Whenever a land you control enters, you may return CARDNAME from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:PlayerCountOpponents$LowestLifeTotal\nSVar:SacMe:3\nSVar:DiscardMe:3\nOracle:Bloodghast can't block.\\nBloodghast has haste as long as an opponent has 10 or less life.\\nLandfall — Whenever a land you control enters, you may return Bloodghast from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Bloodghast"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bloodghast",
+      "controller": 0
+    }
+  ]
+}

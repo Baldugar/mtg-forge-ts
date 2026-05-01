@@ -1,0 +1,38 @@
+{
+  "id": "werebear-threshold-active",
+  "description": "Werebear ETB with 7 cards in graveyard — Threshold static buff active.",
+  "seed": 158,
+  "cards": {
+    "Werebear": "Name:Werebear\nManaCost:1 G\nTypes:Creature Human Bear Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | AddToughness$ 3 | Condition$ Threshold | Description$ Threshold — CARDNAME gets +3/+3 as long as there are seven or more cards in your graveyard.\nOracle:{T}: Add {G}.\\nThreshold — Werebear gets +3/+3 as long as there are seven or more cards in your graveyard.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Wrath of God": "Name:Wrath of God\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures.\nOracle:Destroy all creatures. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Werebear"],
+      "battlefield": [],
+      "graveyard": [
+        "Lightning Bolt",
+        "Lightning Bolt",
+        "Lightning Bolt",
+        "Wrath of God",
+        "Wrath of God",
+        "Wrath of God",
+        "Wrath of God"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Werebear",
+      "controller": 0
+    }
+  ]
+}

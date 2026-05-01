@@ -1,0 +1,27 @@
+{
+  "id": "aetherflux-reservoir-etb",
+  "description": "Aetherflux Reservoir ETB; SpellCast trigger + activated 50-damage ability.",
+  "seed": 177,
+  "cards": {
+    "Aetherflux Reservoir": "Name:Aetherflux Reservoir\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, you gain 1 life for each spell you've cast this turn.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ThisTurnCast_Card.YouCtrl\nA:AB$ DealDamage | Cost$ PayLife<50> | ValidTgts$ Any | NumDmg$ 50 | SpellDescription$ CARDNAME deals 50 damage to any target.\nOracle:Whenever you cast a spell, you gain 1 life for each spell you've cast this turn.\\nPay 50 life: Aetherflux Reservoir deals 50 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aetherflux Reservoir"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aetherflux Reservoir",
+      "controller": 0
+    }
+  ]
+}

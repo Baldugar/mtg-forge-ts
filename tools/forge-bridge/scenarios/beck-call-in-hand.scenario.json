@@ -1,0 +1,22 @@
+{
+  "id": "beck-call-in-hand",
+  "description": "Beck minted into hand (Fuse + ETB-trigger spell parse).",
+  "seed": 167,
+  "cards": {
+    "Beck": "Name:Beck\nManaCost:G U\nTypes:Sorcery\nK:Fuse\nA:SP$ Effect | Triggers$ CreatureEntered | SpellDescription$ Whenever a creature enters this turn, you may draw a card.\nSVar:CreatureEntered:Mode$ ChangesZone | ValidCard$ Creature | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraw | TriggerZones$ Command | OptionalDecider$ You | TriggerDescription$ Whenever a creature enters this turn, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAlternateMode:Split\nOracle:Whenever a creature enters this turn, you may draw a card.\\nFuse (You may cast one or both halves of this card from your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Beck"],
+      "battlefield": [],
+      "manaPool": ["G", "U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

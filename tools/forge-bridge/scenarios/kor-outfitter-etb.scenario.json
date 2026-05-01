@@ -1,0 +1,27 @@
+{
+  "id": "kor-outfitter-etb",
+  "description": "Kor Outfitter ETB; ETB Pump+Attach trigger registered (chained-effect parse).",
+  "seed": 155,
+  "cards": {
+    "Kor Outfitter": "Name:Kor Outfitter\nManaCost:W W\nTypes:Creature Kor Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ EquipmentSelection | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may attach target Equipment you control to target creature you control.\nSVar:EquipmentSelection:DB$ Pump | ValidTgts$ Equipment.YouCtrl | TgtPrompt$ Select target equipment you control | SubAbility$ KorOutfitting | StackDescription$ None\nSVar:KorOutfitting:DB$ Attach | Object$ ParentTarget | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control.\nAI:RemoveDeck:All\nOracle:When Kor Outfitter enters, you may attach target Equipment you control to target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Kor Outfitter"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Kor Outfitter",
+      "controller": 0
+    }
+  ]
+}

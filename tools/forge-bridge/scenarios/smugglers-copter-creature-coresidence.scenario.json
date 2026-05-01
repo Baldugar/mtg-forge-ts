@@ -1,0 +1,32 @@
+{
+  "id": "smugglers-copter-creature-coresidence",
+  "description": "Smuggler's Copter in play; Grizzly Bears ETBs (Crew-target dependency).",
+  "seed": 193,
+  "cards": {
+    "Smuggler's Copter": "Name:Smuggler's Copter\nManaCost:2\nTypes:Artifact Vehicle\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ Whenever CARDNAME attacks or blocks, you may draw a card. If you do, discard a card.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigLoot | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<1/You>\nK:Crew:1\nOracle:Flying\\nWhenever Smuggler's Copter attacks or blocks, you may draw a card. If you do, discard a card.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Grizzly Bears"],
+      "battlefield": [
+        {
+          "card": "Smuggler's Copter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Grizzly Bears",
+      "controller": 0
+    }
+  ]
+}

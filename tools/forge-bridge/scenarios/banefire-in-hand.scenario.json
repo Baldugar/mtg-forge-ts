@@ -1,0 +1,22 @@
+{
+  "id": "banefire-in-hand",
+  "description": "Banefire minted into hand (X-spell SVar + CantPreventDamage static).",
+  "seed": 147,
+  "cards": {
+    "Banefire": "Name:Banefire\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to any target.\nS:Mode$ CantPreventDamage | ValidSource$ Spell.Self | EffectZone$ Stack | CheckSVar$ X | SVarCompare$ GE5 | Description$ If X is 5 or more, CARDNAME can't be countered by spells or abilities and the damage can't be prevented.\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | CheckSVar$ X | SVarCompare$ GE5 | Secondary$ True | Description$ If X is 5 or more, CARDNAME can't be countered by spells or abilities and the damage can't be prevented.\nSVar:X:Count$xPaid\nOracle:Banefire deals X damage to any target.\\nIf X is 5 or more, this spell can't be countered and the damage can't be prevented.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Banefire"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

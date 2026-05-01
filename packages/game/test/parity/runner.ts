@@ -221,6 +221,12 @@ export type DivergenceClass =
   // CounterAdded as a known bridge capture gap rather than a real
   // engine divergence.
   | "bridge-counter-event-not-captured"
+  // M6.6: bridge V2 doesn't subscribe to a handful of Forge "engine-state"
+  // events (Class level changes, monarchy, day/night, energy, ring, etc.).
+  // The TS engine emits discrete events for these state transitions; the
+  // Java side has them too but the bridge's listener doesn't subscribe.
+  // Same root cause as the counter-event gap, distinct event family.
+  | "bridge-engine-state-event-not-captured"
   | "real-divergence-investigate";
 
 /**
@@ -276,6 +282,12 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // are silent on the Java side until the bridge subscribes to the
   // event. Classify as a known bridge capture gap.
   ["CounterAdded", "bridge-counter-event-not-captured"],
+  // M6.6: Class-keyword level changes; bridge doesn't subscribe to
+  // `GameEventClassLevelGained` (or whichever Forge event represents this).
+  ["ClassLevelGained", "bridge-engine-state-event-not-captured"],
+  // M6.6: Monarchy state change; bridge doesn't subscribe to
+  // `GameEventMonarchChanged` analog.
+  ["BecameMonarch", "bridge-engine-state-event-not-captured"],
 ]);
 
 /**
@@ -497,6 +509,7 @@ export function aggregateReports(reports: readonly ParityReport[]): AggregateRep
     "bridge-action-skipped": 0,
     "ts-runner-shallow": 0,
     "bridge-counter-event-not-captured": 0,
+    "bridge-engine-state-event-not-captured": 0,
     "real-divergence-investigate": 0,
   };
   let fullMatch = 0;

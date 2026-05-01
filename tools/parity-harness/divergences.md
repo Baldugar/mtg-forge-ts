@@ -284,3 +284,91 @@ engine bug-fixing.
    Forge needs to either (a) fold it into the parent SpellCast
    payload or (b) emit it as a separate event the bridge subscribes
    to. Today the bridge captures only the headline cast.
+
+## Milestone 6.6 — cohort expansion (80 → 130 scenarios)
+
+M6.6 widens the cohort with 50 additional scenarios covering mechanics
+under-represented in the M6 set: Devotion (Gray Merchant), X-spells
+(Banefire, Hangarback Walker), Token doublers (Anointed Procession +
+Doubling Season co-residence), Companion (Lurrus), Equip + activated
+(Stoneforge Mystic, Skullclamp, Sword of Fire and Ice, Kor Outfitter),
+Prowess (Monastery Swiftspear), Threshold (Werebear with populated
+graveyard), Mana fixing (Grand Architect), Untap-step gating (Stasis),
+Counter doubler (Vorinclex + Elspeth co-residence), Token-on-ETB
+(Roxanne Starfall Savant), Indestructible vs Wrath (Avacyn + Bears
+co-residence), Planeswalker -2/ult (Liliana, the Last Hope),
+Aftermath/Split (Driven // Despair), Convoke (Chord of Calling),
+Improvise (Herald of Anguish), Affinity (Thoughtcast), Replicate
+(Consign to Memory), Disturb (Baithook Angler), Plot (Beastbond
+Outcaster), Suspect (Nelly Borca), Class level-up chain (Cleric Class),
+Storm-flavored (Aetherflux Reservoir), Landfall (Bloodghast),
+Counter-driven cheating (Aether Vial), Elemental ETB (Risen Reef),
+Cantrip artifact (Baleful Strix), Damage redirect (Phytohydra),
+Aura (Pacifism), Exile-replace (Oblivion Ring + Kalitas), Sacrifice
+trigger (Blood Artist), Dredge (Golgari Grave-Troll, Stinkweed Imp),
+Vanilla life-gain ETB (Courier Griffin), Monarch (Court of Grace),
+Artifact die-chain (Scrap Trawler), Modal Charm-on-damage (Glissa
+Sunslayer), Vehicle co-residence (Smuggler's Copter + Bears), Battle
+defeat with graveyard target (Invasion of Ikoria), Adventure target
+(Bonecrusher Giant + Bolt co-residence).
+
+### Aggregate this run (post-M6.6)
+
+- **130 scenarios** (up from 80).
+- **126 full-match** (97%).
+- **4 mvp-known** (3%). Distribution:
+  - 1× `bridge-counter-event-not-captured` (cleric-class-etb's
+    Class-keyword-driven counter at level 1 not captured by the
+    bridge's CounterAdded subscription path, same family as the M6
+    rows; closes once bridge tracks ClassLevelGained too).
+  - 2× `bridge-engine-state-event-not-captured` (`court-of-grace-etb`
+    fires `BecameMonarch`; `cleric-class-etb` fires `ClassLevelGained`).
+    New M6.6 bucket — bridge V2 doesn't subscribe to a handful of Forge
+    "engine-state" events (monarchy, Class-level changes, day/night,
+    energy, ring-tempts-you, etc.). The TS engine surfaces these as
+    discrete events; the Java side has equivalents but the bridge
+    listener doesn't subscribe.
+  - 2× `shallow-trigger-fanout` + 2× `no-stack-drain`
+    (`kor-outfitter-etb`, `oblivion-ring-etb`) — Forge skips the
+    ETB-target-trigger fan-out under the headline ETB when the
+    attached/exile target choice is empty (no equipment to attach,
+    no nonland permanent to exile). The TS engine fires the trigger
+    anyway as `AbilityActivated` + `StackItemResolved`. Same family
+    as M6 snapcaster-mage; not an engine bug.
+
+### Real engine bugs surfaced — none
+
+No M6.6 scenario landed in `real-divergence-investigate`. Every
+divergence maps to a documented bridge capture gap or known Forge
+behaviour. Hard contract held.
+
+### New M6.6 bucket
+
+- **`bridge-engine-state-event-not-captured`** (TS-only `ClassLevelGained`,
+  `BecameMonarch`, prospective `DayNightChanged`, `EnergyChanged` etc.):
+  Same root cause as `bridge-counter-event-not-captured`. Bridge's
+  `BridgeRunner.java` listener registry doesn't subscribe to these
+  Forge engine-state events. Engine-side, the TS state changes apply
+  correctly — the divergence is purely capture-side.
+
+### Follow-on work (post-M6.6, NOT in this dispatch)
+
+1. **Bridge: subscribe to engine-state events** — closes the 2 (and
+   any future) `bridge-engine-state-event-not-captured` rows. The
+   exhaustive list to add:
+   - `GameEventClassLevelGained` (or scrape the level changes from
+     the existing zone-move stream — Class is a permanent counter).
+   - `GameEventMonarchChanged` (whatever Forge calls the monarchy
+     transition signal).
+   - Day/night, energy, ring-tempts-you, dungeon — not in this
+     cohort but candidates for future expansion.
+2. **TS runner: drop the optional-no-target trigger fan-out** —
+   closes the kor-outfitter / oblivion-ring rows. When a triggered
+   ability has no legal target (no equipment to attach, no nonland
+   permanent to exile), the TS runner fires the trigger anyway and
+   it resolves as a no-op `AbilityActivated` + `StackItemResolved`.
+   Forge skips the fan-out entirely. Either (a) suppress the TS
+   trigger fire when there are no legal targets, or (b) strip the
+   no-op trigger pair on the TS side at the parity-classifier
+   boundary. Option (b) needs a discriminator the trigger metadata
+   doesn't currently carry.
