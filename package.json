@@ -24,7 +24,8 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "lint:determinism": "tsx tools/lint-rules/check-determinism.mts",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "smoke": "pnpm --filter @mtg-forge-ts/dsl-validator scan -- --smoke --cap 0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",
