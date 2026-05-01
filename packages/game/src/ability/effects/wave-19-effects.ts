@@ -126,13 +126,40 @@ effectRegistry.register(RemoveFromCombatEffect);
 // Forge `SP$ DigMultiple` — variant of Dig: dig N times. MVP: each iteration
 // reveals the top `DigNum` cards and either adds them to hand or leaves them.
 // Mirror Dig for params (DigNum, ChangeNum, DestinationZone).
+//
+// Wave 85 — wires the canonical `ChangeNum$` / `DestinationZone$` ladder
+// (mirrors Dig for the per-iteration shape). Each of the `Repeat` rounds
+// peels the top `DigNum` cards, walks `ChangeNum` of them off to the
+// destination via game.action.moveTo (so zone-change triggers + replacements
+// engage), and leaves the rest on top in original order. Remembered ids are
+// still populated for back-compat. Destination defaults to "Hand"; the
+// destToZone helper mirrors dig.ts's switch table.
+const dmDestToZone = (dest: string): ZoneType => {
+  switch (dest.toLowerCase()) {
+    case "hand":
+      return ZoneType.Hand;
+    case "graveyard":
+      return ZoneType.Graveyard;
+    case "exile":
+      return ZoneType.Exile;
+    case "battlefield":
+      return ZoneType.Battlefield;
+    case "library":
+      return ZoneType.Library;
+    default:
+      return ZoneType.Hand;
+  }
+};
+
 export class DigMultipleEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "DigMultiple";
 
-  // biome-ignore lint/correctness/useYield: stub records dug ids on remembered
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const repeat = hasParam(sa, "Repeat") ? evaluateParamNumber(sa, "Repeat", game) : 1;
     const digNum = hasParam(sa, "DigNum") ? evaluateParamNumber(sa, "DigNum", game) : 1;
+    const changeNum = hasParam(sa, "ChangeNum") ? evaluateParamNumber(sa, "ChangeNum", game) : 0;
+    const destStr = hasParam(sa, "DestinationZone") ? evaluateParamRaw(sa, "DestinationZone") : "Hand";
+    const destZone = dmDestToZone(destStr);
     const seat = sa.controllerSeat;
     const player = game.getPlayer(seat);
     const lib = player.zones.get(ZoneType.Library);
@@ -140,14 +167,21 @@ export class DigMultipleEffect extends SpellAbilityEffect {
     for (let i = 0; i < repeat; i++) {
       const ids = lib.toArray().slice(0, digNum);
       if (ids.length === 0) break;
-      // MVP: surface the dug cards on `remembered` so callers can introspect.
-      // The full chooser ladder (DestinationZone$, ChangeNum$ etc.) is SP4.
       const source = game.cards.get(sa.sourceCardId);
       if (source) {
         for (const id of ids) source.remembered.push(id);
       }
+      // Move the first `changeNum` peeked cards to the destination zone.
+      // The remaining cards stay on top of the library in their original
+      // order (no reordering decision yielded — RestRandomOrder is left
+      // for SP4 once the order-cards decision is wired here).
+      const moveCount = Math.min(changeNum, ids.length);
+      for (let j = 0; j < moveCount; j++) {
+        const cid = ids[j];
+        if (cid === undefined) continue;
+        yield* game.action.moveTo(cid, destZone, { toSeat: seat, cause: "dig" });
+      }
     }
-    // TODO(advanced): full ChangeNum / RestRandomOrder / DestinationZone wiring.
   }
 }
 effectRegistry.register(DigMultipleEffect);

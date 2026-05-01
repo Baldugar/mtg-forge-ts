@@ -18,15 +18,24 @@ import {
   CounterType,
   DEFAULT_PAPER_CARD_FLAGS,
   GameStateIntegrityError,
+  Layer,
   TypeLine,
   ZoneType,
   mkEvent,
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
-import type { CardDefinition, DecisionResponse, EntityId, PaperCard, PlayerSeat } from "@mtg-forge-ts/core";
+import type {
+  CardDefinition,
+  ContinuousEffect,
+  DecisionResponse,
+  EntityId,
+  PaperCard,
+  PlayerSeat,
+} from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import { captureCopiable } from "../../copy/capture.js";
 import type { Game } from "../../game.js";
+import type { Layer6KeywordGrant } from "../../layers/keyword-layer.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -420,17 +429,44 @@ effectRegistry.register(EarthbendEffect);
 
 // 8. Airbend ------------------------------------------------------------------
 // Companion to Earthbend — Forge's `DB$ Airbend` taps target creatures or
-// grants +1/+0 + flying until end of turn (varies by card). MVP: tap.
+// grants +1/+0 + flying until end of turn (varies by card).
+//
+// Wave 85 — alongside the canonical tap (the "lift" subset of Airbend
+// cards), grant Flying as a Layer 6 kw-grant on each target with an
+// untilEndOfTurn duration. Mirrors the AddKeywords$ pipeline used by
+// CopyPermanentEffect (single-target shape). The grant is recorded
+// against the source ability id so observers can correlate the lift
+// to its origin. The keyword exits on TurnEnded via the registry's
+// duration evaluator (no manual cleanup hook needed — the Layer 6
+// store evicts the grant when its duration expires).
 export class AirbendEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Airbend";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     for (const id of sa.targets) {
       const card = game.cards.get(id);
-      if (!card || card.tapped) continue;
-      yield* game.action.tap(id);
+      if (!card) continue;
+      if (!card.tapped) {
+        yield* game.action.tap(id);
+      }
+      // Grant Flying until end of turn via Layer 6 kw-grant.
+      const ts = game.newEntityId();
+      const grant: Layer6KeywordGrant = {
+        keyword: "Flying",
+        sourceAbilityId: sa.sourceCardId,
+        timestamp: ts,
+        targetCardIdFn: () => id,
+      };
+      const ce: ContinuousEffect = {
+        id: game.newEntityId(),
+        sourceCardId: sa.sourceCardId,
+        timestamp: ts,
+        layer: Layer.L6_Ability,
+        duration: { kind: "untilEndOfTurn" },
+        payload: { kind: "kw-grant", effect: grant },
+      };
+      game.continuousEffectRegistry.register(ce);
     }
-    // TODO(advanced): grant Flying via continuous effect for Airbend lift cards.
   }
 }
 effectRegistry.register(AirbendEffect);

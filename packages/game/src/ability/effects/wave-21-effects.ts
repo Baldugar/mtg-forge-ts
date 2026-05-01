@@ -187,16 +187,38 @@ effectRegistry.register(StoreSVarEffect);
 
 // 5. EndTurn ------------------------------------------------------------------
 // Forge `SP$ EndTurn` (Time Stop family; CR 723.4) — end the current turn
-// immediately: skip remaining phases, exile everything on the stack. MVP:
-// flip a turn-end intent flag so the engine's turn loop honors it.
+// immediately: skip remaining phases, exile everything on the stack.
+//
+// Wave 85 — exile every other stack item (CR 723.4 — "exile all spells
+// and abilities on the stack, including the spell that caused the turn
+// to end"). The MVP ducked this and only flipped the intent flag. Now
+// we walk `game.sharedZones.stack`, pop everything, and emit a canonical
+// `StackItemCountered` pulse per popped item with reason "endTurn" so
+// any `whenever a spell is countered` triggers can fire — and any
+// observer mirroring the stack (snapshot, transcript replayers) drops
+// the items in lockstep. The current EndTurn effect itself sits on
+// the stack but is being resolved (already popped) by the time we
+// reach this resolver, so we don't need a self-skip filter.
 export class EndTurnEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "EndTurn";
 
-  // biome-ignore lint/correctness/useYield: pure flag mutation
-  override *resolve(_sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+  override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     (game as { endTurnRequested?: boolean }).endTurnRequested = true;
-    // TODO(advanced): exile every stack item except this effect; jump
-    // directly to the cleanup step; emit TurnEndedByEffect.
+    const stack = game.sharedZones.stack;
+    // Snapshot stack-item ids before mutation for the canonical pulse; tag
+    // the source-effect id so observers can correlate the wipe to the
+    // EndTurn resolver.
+    const remaining = stack.toArray().map((it) => it.id);
+    while (!stack.isEmpty()) stack.pop();
+    for (const stackItemId of remaining) {
+      yield {
+        kind: "event",
+        event: mkEvent("StackItemCountered", game.turn, game.phase, {
+          stackItemId,
+          byEffectId: sa.sourceCardId,
+        }),
+      };
+    }
   }
 }
 effectRegistry.register(EndTurnEffect);
@@ -844,18 +866,22 @@ effectRegistry.register(AlterAttributeEffect);
 // 20. BidLife ----------------------------------------------------------------
 // Forge `SP$ BidLife` (Lim-Dûl's Vault, etc.) — bid life amounts; high bidder
 // wins the auction. MVP: deterministic — controller bids 1; opponent passes;
-// controller pays 1 life via direct mutation.
+// controller pays 1 life.
+//
+// Wave 85 — route the life payment through `game.action.changeLife` so the
+// canonical LifeChanged + LifeLost events fire (and any "whenever you
+// lose life" / "whenever life total changes" triggers + replacements
+// engage). The MVP wrote `player.life` directly, which silenced both
+// triggers (the LifeChange replacement chain skipped) and the snapshot
+// pipeline. Pass `cause: "effect"` to mirror the closest sibling
+// (initiative-tracker pays opponents -5 with the same tag).
 export class BidLifeEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "BidLife";
 
-  // biome-ignore lint/correctness/useYield: pure mutation MVP
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    const player = game.getPlayer(sa.controllerSeat);
-    player.life = Math.max(0, player.life - 1);
+    yield* game.action.changeLife(sa.controllerSeat, -1, { cause: "effect" });
     const source = game.cards.get(sa.sourceCardId);
     if (source) source.remembered.push(sa.sourceCardId);
-    // TODO(advanced): bidding decision loop with both players; route life
-    // payment through game.action.loseLife so triggers fire.
   }
 }
 effectRegistry.register(BidLifeEffect);

@@ -364,17 +364,58 @@ effectRegistry.register(MeldEffect);
 // Forge `SP$ GainControlVariant` — variant of GainControl with conditions
 // (e.g. only if a creature has summoning sickness). MVP: route through
 // game.action.controlChange for each target.
+//
+// Wave 85 — honour `Until$ EOT` / `Until$ YourNextTurn` by passing the
+// canonical `until` option to changeControl. The
+// ControlChangeLedger then auto-records the prior controller and
+// emits a reverting ControlChanged when the duration evaluator fires
+// (see GameAction.changeControl). When `Until$` is absent the change
+// remains permanent (legacy MVP behavior — Forge cards omitting Until$
+// canonically intend permanent control transfers).
 export class GainControlVariantEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "GainControlVariant";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const untilRaw = hasParam(sa, "Until") ? evaluateParamRaw(sa, "Until").trim() : "";
+    const until = resolveUntilDuration(untilRaw, sa.controllerSeat, game.turn);
     for (const id of sa.targets) {
-      yield* game.action.changeControl(id, sa.controllerSeat, sa.sourceCardId);
+      if (until === undefined) {
+        yield* game.action.changeControl(id, sa.controllerSeat, sa.sourceCardId);
+      } else {
+        yield* game.action.changeControl(id, sa.controllerSeat, {
+          sourceId: sa.sourceCardId,
+          until,
+        });
+      }
     }
-    // TODO(advanced): full Condition$ DSL — gating + Until$ duration.
   }
 }
 effectRegistry.register(GainControlVariantEffect);
+
+// Wave 85 — Until$ → EffectDuration helper. Honours the two corpus-common
+// forms; unrecognised tokens fall through to `undefined` (= permanent).
+const resolveUntilDuration = (
+  raw: string,
+  forSeat: PlayerSeat,
+  registeredAtTurn: number,
+):
+  | { kind: "untilEndOfTurn" }
+  | { kind: "untilEndOfYourNextTurn"; forSeat: PlayerSeat; registeredAtTurn: number }
+  | undefined => {
+  const t = raw.toLowerCase().replace(/[\s_]/g, "");
+  if (t === "endofturn" || t === "eot" || t === "untileot" || t === "untilendofturn") {
+    return { kind: "untilEndOfTurn" };
+  }
+  if (
+    t === "yournextturn" ||
+    t === "untilyournextturn" ||
+    t === "endofyournextturn" ||
+    t === "untilendofyournextturn"
+  ) {
+    return { kind: "untilEndOfYourNextTurn", forSeat, registeredAtTurn };
+  }
+  return undefined;
+};
 
 // 11. UnlockDoor (effect form) ------------------------------------------------
 // Forge `SP$ UnlockDoor` (Outlaws of Thunder Junction) — unlock a door on a

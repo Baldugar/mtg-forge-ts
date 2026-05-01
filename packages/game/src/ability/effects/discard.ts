@@ -89,6 +89,15 @@ export class DiscardEffect extends SpellAbilityEffect {
         // this with a token list (e.g. RememberedCards, TargetedCard); we
         // honour an explicit comma-separated EntityId list here. Each id
         // must be present in the discarder's hand; unknown ids are filtered.
+        //
+        // Wave 85 — resolves the token forms RememberedCards / TargetedCard
+        // alongside the literal-id form. RememberedCards expands to the
+        // source card's `remembered` array (the canonical scratch buffer
+        // populated by SP$ Reveal / SP$ Dig / SP$ ChooseCard etc.).
+        // TargetedCard expands to the SA's `targets` (the resolved
+        // ValidTgts$). Both expansions are intersected with `handCards`
+        // so any id outside the discarder's hand is dropped (matches the
+        // literal-id branch's invariant).
         const definedRaw = hasParam(sa, "DefinedCards") ? evaluateParamRaw(sa, "DefinedCards") : "";
         const handSet = new Set(handCards);
         const ids: EntityId[] = [];
@@ -96,13 +105,27 @@ export class DiscardEffect extends SpellAbilityEffect {
           .split(",")
           .map((s) => s.trim())
           .filter((s) => s !== "")) {
+          if (tok === "RememberedCards" || tok === "Remembered") {
+            const source = game.cards.get(sa.sourceCardId);
+            if (!source) continue;
+            for (const r of source.remembered) {
+              if (typeof r === "number" && handSet.has(r as unknown as EntityId)) {
+                ids.push(r as unknown as EntityId);
+              }
+            }
+            continue;
+          }
+          if (tok === "TargetedCard" || tok === "Targeted") {
+            for (const t of sa.targets) {
+              if (handSet.has(t)) ids.push(t);
+            }
+            continue;
+          }
           const num = Number.parseInt(tok, 10);
           if (!Number.isFinite(num)) continue;
           const candidate = num as unknown as EntityId;
           if (handSet.has(candidate)) ids.push(candidate);
         }
-        // TODO(advanced): resolve token forms (RememberedCards / TargetedCard)
-        // through the Defined-resolver pipeline once available.
         toDiscard = ids;
         break;
       }
