@@ -1,0 +1,27 @@
+{
+  "id": "smugglers-copter-m68-etb",
+  "description": "Smuggler's Copter ETB; Crew + AttacksOrBlocksTrigger (loot).",
+  "seed": 234,
+  "cards": {
+    "Smuggler's Copter": "Name:Smuggler's Copter\nManaCost:2\nTypes:Artifact Vehicle\nPT:3/3\nK:Flying\nK:Crew:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ When this attacks or blocks, draw + discard.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose\nOracle:Vehicle 3/3 with Crew 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Smuggler's Copter"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Smuggler's Copter",
+      "controller": 0
+    }
+  ]
+}

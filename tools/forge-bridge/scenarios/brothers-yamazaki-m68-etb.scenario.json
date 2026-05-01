@@ -1,0 +1,27 @@
+{
+  "id": "brothers-yamazaki-m68-etb",
+  "description": "Brothers Yamazaki ETB; legend-rule exemption (1/1 Goblin twins).",
+  "seed": 258,
+  "cards": {
+    "Brothers Yamazaki": "Name:Brothers Yamazaki\nManaCost:1 R R\nTypes:Legendary Creature Human Samurai\nPT:2/1\nK:Bushido:1\nS:Mode$ Continuous | Affected$ Creature.Self | AddPower$ 2 | AddToughness$ 2 | Condition$ AnotherBYExists | Description$ +2/+2 if another Brothers Yamazaki exists.\nSVar:AnotherBYExists:Count$Valid Creature.namedBrothersYamazaki+Other\nOracle:Twin legends.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Brothers Yamazaki"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Brothers Yamazaki",
+      "controller": 0
+    }
+  ]
+}

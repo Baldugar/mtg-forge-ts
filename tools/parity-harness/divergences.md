@@ -440,3 +440,104 @@ re-ran parity end-to-end against the rebuilt Java goldens.
 No M6.7 scenario landed in `real-divergence-investigate`. Every
 divergence maps to a documented bridge capture gap or known Forge
 behaviour. Hard contract held.
+
+## Milestone 6.8 — first real engine bug fix + expand to ~190
+
+M6.8 fixes the first real engine bug surfaced through the parity
+testing flow (CR 603.10c violation on triggered abilities with no legal
+target) and expands the cohort from 159 → 188 scenarios. The fix is in
+`packages/game/src/triggers/trigger-target-probe.ts` + a wire-up in
+`trigger-registry.ts`.
+
+### Aggregate this run (post-M6.8)
+
+- **188 scenarios** (up from 159).
+- **181 full-match** (96.3%).
+- **7 mvp-known** (3.7%). Distribution:
+  - 3× `shallow-trigger-fanout` + 3× `no-stack-drain`
+    (`cleric-class-etb`, `knight-of-the-white-orchid-etb`,
+    `sand-strangler-etb`) — three of the original five M6.7 rows
+    remain because their gating mechanism is *not* `ValidTgts$` empty
+    set:
+      - `cleric-class-etb`: the AbilityActivated/StackItemResolved
+        come from the Class-keyword's Level-counter watcher, which
+        runs as a no-op resolver; this is a separate trigger-shape
+        not covered by the M6.8 probe (no `executeKey`, no parsed
+        `ValidTgts$`).
+      - `knight-of-the-white-orchid-etb`: Forge skips because the
+        trigger has `CheckSVar$ Y SVarCompare$ GTX` and the SVar
+        comparison fails when no opponent has more lands. The TS
+        ChangesZoneTrigger doesn't honour `CheckSVar$` yet — separate
+        gating mechanism, not target-legality.
+      - `sand-strangler-etb`: Forge skips because `Desert$ True`
+        gates the trigger to require controlling a Desert. The TS
+        ChangesZoneTrigger doesn't honour `Desert$` yet — separate
+        gating mechanism.
+  - 1× `bridge-counter-event-not-captured` (`cleric-class-etb`'s
+    Class-keyword level-1 counter, same family as M6 rows).
+  - 1× `ts-runner-shallow` (`murderous-redcap-etb`) — Forge fires
+    the Persist-revive damage trigger on a different cycle.
+  - 1× `bridge-action-skipped` (`tilted-animar-etb`) — fake card
+    name; Forge can't find it so Java side is empty.
+- **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+### What M6.8 changed
+
+1. **Real engine bug fix — CR 603.10c skip path.** Before M6.8, TS
+   triggered abilities with explicit `ValidTgts$` would fire even when
+   there was no legal target on the battlefield, queuing as a no-op
+   `AbilityActivated` + `StackItemResolved` pair on the stack and
+   resolving without effect. Forge correctly skips the trigger fire in
+   `SpellAbility.setupTargets()` (returning `false` from `chooseTargetsFor`
+   bubbles through `PlaySpellAbility#playSpellAbility` → `prerequisitesMet
+   = false` → `WrappedAbility` is rolled back without ever reaching the
+   stack). Per CR 603.10c: "If a triggered ability requires a target
+   chosen from among a set of possible targets and there is no possible
+   target, the ability won't trigger."
+
+   The TS fix lives in `packages/game/src/triggers/trigger-target-probe.ts`.
+   After a trigger passes `matches() / interveningIf / suppression /
+   DisableTriggers`, the probe walks the source card's `Execute$` SVar
+   chain (parent + nested `subAbility` + `SubAbility$ <svarRef>`),
+   gathers every literal `ValidTgts$` clause, and counts legal targets
+   on the live battlefield via `cardMatchesFilter`. If any required
+   step has zero candidates, the trigger is dropped before being
+   queued onto the pending list. The probe is wired into
+   `TriggerRegistry.onEvent()` after the existing gates; non-data-driven
+   triggers (keyword-spawned, replacement-spawned, hand-built) without
+   an `executeKey` stamp pass through unchanged.
+
+   `ChangesZoneTrigger` now stamps `executeKey` onto its built
+   `TriggeredAbility` so the probe can locate the trigger's
+   `Execute$` SVar without matching by trigger id.
+
+   **Closes:** `kor-outfitter-etb` and `oblivion-ring-etb` from the
+   M6.7 list of five `shallow-trigger-fanout` / `no-stack-drain`
+   rows. The remaining three rows are gated by mechanisms outside
+   the target-legality probe (`CheckSVar$`, `Desert$`, Class-keyword
+   watchers) and are documented separately above.
+
+2. **Cohort expansion: +29 scenarios** (159 → 188). Mechanics added:
+   Bonecrusher Adventure, Lotus Bloom Suspend, Beastbond Outcaster
+   Plot, Smuggler's Copter (m68), Smothering Tithe (Treasure trigger),
+   Witch's Oven (Food token), Aetherworks Marvel (Energy on death),
+   Glacial Ray Splice, Beck/Call Conspire (m68), Lurrus Companion,
+   Doubling Season + Anointed Procession (m68 co-residence),
+   Stolen Identity Cipher (m68), Driven // Despair Aftermath (m68),
+   Goblin Bombardment storm-flavored, Maelstrom Wanderer Cascade x2
+   (m68), Auspicious Starrix Mutate, Reckless Stormseeker
+   Daybound, Tireless Tracker landfall→Clue, Invasion of Ikoria
+   battle, Mosswood Dreadknight Trample/Menace, Stoneforge Mystic
+   no-targets ETB (CR 603.10c probe target), Glacial Chasm
+   Cumulative upkeep, Cryptic Command modal Charm (m68), Rite of
+   Replication Kicker, Aurelia Warleader (m68), Brothers Yamazaki
+   legend-rule (m68), Mer-Ek Nightblade Outlast, Vorinclex +
+   Doubling Season co-residence, Consign to Memory Replicate (m68).
+
+### Real engine bugs surfaced — first one CLOSED
+
+The M6.8 dispatch is the first time the parity-testing flow has
+identified a real CR-rule violation in the TS engine and closed it
+through a code fix rather than a documentation change. This is the
+testing infrastructure's intended terminal step: drive scenarios →
+diff against Forge → identify the engine bug → fix → re-validate.

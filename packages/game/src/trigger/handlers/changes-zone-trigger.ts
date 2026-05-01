@@ -51,8 +51,13 @@ import { TriggerHandler } from "../trigger-handler.js";
 // duck-types at line ~91-92 of priority-orchestrator.ts. Core does not carry
 // StackItemResolver (avoiding a core→game circular import) so we extend
 // locally and cast to TriggeredAbility on return.
+//
+// `executeKey` is the SVar name this trigger's Execute$ resolves to. Stamped
+// here so the trigger-registry's M6.8 target-legality probe can walk the
+// chain without re-parsing the AST. CR 603.10c skip path.
 type TriggeredAbilityWithResolver = TriggeredAbility & {
   readonly resolver: StackItemResolver | null;
+  readonly executeKey: string;
 };
 
 // ---------------------------------------------------------------------------
@@ -105,6 +110,11 @@ export class ChangesZoneTrigger extends TriggerHandler {
       timestamp: 0, // populated by activateTriggersFromDefinition if needed
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,
+      // M6.8 — stamped for the trigger-registry's CR 603.10c target-legality
+      // probe. The probe walks svars[executeKey].ability's effect chain
+      // looking for ValidTgts$ steps to skip the trigger fire if no legal
+      // target exists.
+      executeKey,
 
       matches(event: GameEvent): boolean {
         if (event.kind !== "CardChangedZone") return false;

@@ -1,0 +1,27 @@
+{
+  "id": "reckless-stormseeker-etb",
+  "description": "Reckless Stormseeker ETB; Day-night transform-flavored parse.",
+  "seed": 248,
+  "cards": {
+    "Reckless Stormseeker": "Name:Reckless Stormseeker\nManaCost:1 R R\nTypes:Creature Human Werewolf\nPT:3/3\nK:Daybound\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Daybound pump.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ 1 | KW$ Haste\nOracle:Daybound parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Reckless Stormseeker"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reckless Stormseeker",
+      "controller": 0
+    }
+  ]
+}

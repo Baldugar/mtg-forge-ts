@@ -1,0 +1,27 @@
+{
+  "id": "stoneforge-mystic-no-targets-etb",
+  "description": "Stoneforge Mystic ETB without Equipment in library; CR 603.10c skip path.",
+  "seed": 252,
+  "cards": {
+    "Stoneforge Mystic": "Name:Stoneforge Mystic\nManaCost:1 W\nTypes:Creature Kor Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ ETB tutor Equipment.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Equipment tutor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Stoneforge Mystic"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Stoneforge Mystic",
+      "controller": 0
+    }
+  ]
+}

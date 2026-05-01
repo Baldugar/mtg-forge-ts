@@ -1,0 +1,21 @@
+{
+  "id": "auspicious-starrix-in-hand",
+  "description": "Auspicious Starrix in hand; Mutate:5G keyword + ETB-mill trigger.",
+  "seed": 247,
+  "cards": {
+    "Auspicious Starrix": "Name:Auspicious Starrix\nManaCost:4 G\nTypes:Creature Beast\nPT:5/5\nK:Mutate:3 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Self-mill 4.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nOracle:Mutate parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Auspicious Starrix"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

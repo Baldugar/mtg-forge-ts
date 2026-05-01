@@ -1,0 +1,27 @@
+{
+  "id": "lurrus-dream-den-etb",
+  "description": "Lurrus of the Dream-Den ETB; Companion + Lifelink + replay-trigger.",
+  "seed": 241,
+  "cards": {
+    "Lurrus of the Dream-Den": "Name:Lurrus of the Dream-Den\nManaCost:1 W B\nTypes:Legendary Creature Cat Nightmare\nPT:3/2\nK:Lifelink\nK:Companion\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Replay placeholder.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Companion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Lurrus of the Dream-Den"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lurrus of the Dream-Den",
+      "controller": 0
+    }
+  ]
+}

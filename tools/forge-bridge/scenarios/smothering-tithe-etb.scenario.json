@@ -1,0 +1,27 @@
+{
+  "id": "smothering-tithe-etb",
+  "description": "Smothering Tithe ETB; opponent-draws → Treasure replacement-style trigger.",
+  "seed": 235,
+  "cards": {
+    "Smothering Tithe": "Name:Smothering Tithe\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ Drawn | ValidPlayer$ Opponent | Execute$ TrigToken | OptionalDecider$ ValidPlayer | UnlessCost$ 2 | UnlessPayer$ ValidPlayer | TriggerZones$ Battlefield | TriggerDescription$ Treasure on opponent draw.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You\nOracle:Treasure on opponent draw.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Smothering Tithe"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Smothering Tithe",
+      "controller": 0
+    }
+  ]
+}

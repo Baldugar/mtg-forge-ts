@@ -1,0 +1,27 @@
+{
+  "id": "aetherworks-marvel-etb",
+  "description": "Aetherworks Marvel ETB; energy on creature death + activated cast.",
+  "seed": 237,
+  "cards": {
+    "Aetherworks Marvel": "Name:Aetherworks Marvel\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Energy on creature death.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nOracle:Energy on creature death.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aetherworks Marvel"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aetherworks Marvel",
+      "controller": 0
+    }
+  ]
+}

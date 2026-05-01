@@ -3860,4 +3860,642 @@ Oracle:Compleated planeswalker test.
     ],
     actions: [],
   },
+
+  // ── M6.8 cohort expansion (159 → ~190) ──────────────────────────────────────
+
+  // 161. Bonecrusher Giant Adventure half (parse-only — Adventure keyword
+  // surface, instant Stomp + creature Bonecrusher Giant on the same card).
+  {
+    id: "bonecrusher-giant-adventure-in-hand",
+    description: "Bonecrusher Giant Adventure (Stomp half parse) — Adventure keyword + dual face shape.",
+    seed: 0xe7,
+    cards: {
+      "Bonecrusher Giant": `Name:Bonecrusher Giant
+ManaCost:1 R
+Types:Creature Giant
+PT:4/3
+A:SP$ DealDamage | Cost$ R | NumDmg$ 2 | ValidTgts$ Any | SpellDescription$ Stomp deals 2 damage to any target.
+AlternateMode:Adventure
+Oracle:Adventure dual-face parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonecrusher Giant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 162. Suspend (Lotus Bloom) — placeholder ETB-from-suspend keyword surface.
+  {
+    id: "lotus-bloom-suspend-in-hand",
+    description: "Lotus Bloom in hand; Suspend:3:0 + Mana ability.",
+    seed: 0xe8,
+    cards: {
+      "Lotus Bloom": `Name:Lotus Bloom
+ManaCost:no cost
+Types:Artifact
+K:Suspend:3:0
+A:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ W U B R G | Amount$ 3 | AnyType$ True | SpellDescription$ Add three mana of any one color.
+Oracle:Suspend 3—{0}. Sacrifice: add three mana of one color.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lotus Bloom"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 163. Plot — Beastbond Outcaster cast (parse + ETB).
+  {
+    id: "beastbond-outcaster-etb",
+    description: "Beastbond Outcaster ETB; Plot:2G + Reach + LandfallTrigger.",
+    seed: 0xe9,
+    cards: {
+      "Beastbond Outcaster": `Name:Beastbond Outcaster
+ManaCost:1 G
+Types:Creature Human Druid
+PT:1/1
+K:Reach
+K:Plot:1 G
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Landfall trigger placeholder.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 1 | NumDef$ 1
+Oracle:Plot Reach Landfall test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beastbond Outcaster"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beastbond Outcaster", controller: SEAT0 }],
+  },
+
+  // 164. Vehicle — Smuggler's Copter (Crew + Looter+).
+  {
+    id: "smugglers-copter-m68-etb",
+    description: "Smuggler's Copter ETB; Crew + AttacksOrBlocksTrigger (loot).",
+    seed: 0xea,
+    cards: {
+      "Smuggler's Copter": `Name:Smuggler's Copter
+ManaCost:2
+Types:Artifact Vehicle
+PT:3/3
+K:Flying
+K:Crew:1
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ When this attacks or blocks, draw + discard.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose
+Oracle:Vehicle 3/3 with Crew 1.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smuggler's Copter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smuggler's Copter", controller: SEAT0 }],
+  },
+
+  // 165. Treasure — Smothering Tithe ETB (gives Treasure on opponent draw).
+  {
+    id: "smothering-tithe-etb",
+    description: "Smothering Tithe ETB; opponent-draws → Treasure replacement-style trigger.",
+    seed: 0xeb,
+    cards: {
+      "Smothering Tithe": `Name:Smothering Tithe
+ManaCost:3 W
+Types:Enchantment
+T:Mode$ Drawn | ValidPlayer$ Opponent | Execute$ TrigToken | OptionalDecider$ ValidPlayer | UnlessCost$ 2 | UnlessPayer$ ValidPlayer | TriggerZones$ Battlefield | TriggerDescription$ Treasure on opponent draw.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenOwner$ You
+Oracle:Treasure on opponent draw.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smothering Tithe"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smothering Tithe", controller: SEAT0 }],
+  },
+
+  // 166. Food — Witch's Oven (sac creature → Food token).
+  {
+    id: "witchs-oven-etb",
+    description: "Witch's Oven ETB; activated sac→Food + parse.",
+    seed: 0xec,
+    cards: {
+      "Witch's Oven": `Name:Witch's Oven
+ManaCost:1
+Types:Artifact
+A:AB$ Token | Cost$ T Sac<1/Creature> | TokenScript$ c_a_food | TokenOwner$ You | SpellDescription$ Bake a Food token.
+Oracle:Sac → Food token.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Witch's Oven"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Witch's Oven", controller: SEAT0 }],
+  },
+
+  // 167. Energy — Aetherworks Marvel ETB (energy producer; parse).
+  {
+    id: "aetherworks-marvel-etb",
+    description: "Aetherworks Marvel ETB; energy on creature death + activated cast.",
+    seed: 0xed,
+    cards: {
+      "Aetherworks Marvel": `Name:Aetherworks Marvel
+ManaCost:4
+Types:Artifact
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Energy on creature death.
+SVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1
+Oracle:Energy on creature death.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aetherworks Marvel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aetherworks Marvel", controller: SEAT0 }],
+  },
+
+  // 169. Splice — Glacial Ray in hand (Splice keyword surface).
+  {
+    id: "glacial-ray-m68-in-hand",
+    description: "Glacial Ray in hand; Splice:Arcane + DealDamage.",
+    seed: 0xef,
+    cards: {
+      "Glacial Ray": `Name:Glacial Ray
+ManaCost:1 R
+Types:Instant Arcane
+K:Splice:Arcane:1 R
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | ValidTgts$ Any | SpellDescription$ Glacial Ray deals 2 damage.
+Oracle:Splice arcane parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glacial Ray"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 170. Conspire — Beck/Call style (Conspire keyword surface).
+  {
+    id: "beck-call-m68-in-hand",
+    description: "Beck/Call in hand; Conspire keyword surface; Card-draw spell.",
+    seed: 0xf0,
+    cards: {
+      "Beck/Call": `Name:Beck/Call
+ManaCost:G U
+Types:Sorcery
+K:Conspire
+A:SP$ Draw | Cost$ G U | NumCards$ 1 | SpellDescription$ Draw cards on each creature ETB.
+Oracle:Conspire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beck/Call"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 171. Companion — Lurrus of the Dream-Den ETB.
+  {
+    id: "lurrus-dream-den-etb",
+    description: "Lurrus of the Dream-Den ETB; Companion + Lifelink + replay-trigger.",
+    seed: 0xf1,
+    cards: {
+      "Lurrus of the Dream-Den": `Name:Lurrus of the Dream-Den
+ManaCost:1 W B
+Types:Legendary Creature Cat Nightmare
+PT:3/2
+K:Lifelink
+K:Companion
+T:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Replay placeholder.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Companion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lurrus of the Dream-Den"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lurrus of the Dream-Den", controller: SEAT0 }],
+  },
+
+  // 172. Doubling Season + Anointed Procession (token + counter doublers).
+  {
+    id: "doubling-season-anointed-procession-m68-coresidence",
+    description: "Doubling Season + Anointed Procession (compound replacement parse).",
+    seed: 0xf2,
+    cards: {
+      "Doubling Season": doublingSeasonSrc,
+      "Anointed Procession": `Name:Anointed Procession
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleTokens
+SVar:DoubleTokens:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:Tokens you create are doubled.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Doubling Season" }, { card: "Anointed Procession" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 173. Cipher — Stolen Identity in hand (Cipher keyword surface).
+  {
+    id: "stolen-identity-m68-in-hand",
+    description: "Stolen Identity in hand; Cipher + ChangeZone token-clone surface.",
+    seed: 0xf3,
+    cards: {
+      "Stolen Identity": `Name:Stolen Identity
+ManaCost:5 U U
+Types:Sorcery
+K:Cipher
+A:SP$ CopyPermanent | Cost$ 5 U U | ValidTgts$ Permanent.nonToken | SpellDescription$ Cipher Identity.
+Oracle:Cipher Identity parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stolen Identity"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 174. Aftermath/Split — Driven // Despair in hand (split card parse).
+  {
+    id: "driven-despair-m68-in-hand",
+    description: "Driven // Despair in hand; Split-card Aftermath surface.",
+    seed: 0xf4,
+    cards: {
+      "Driven // Despair": `Name:Driven // Despair
+ManaCost:1 B G
+Types:Sorcery
+A:SP$ Pump | Cost$ 1 B G | ValidTgts$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 1 | SpellDescription$ Pump driven half.
+Oracle:Driven Aftermath parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Driven // Despair"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 175. Storm — Goblin Bombardment ETB (sac→damage; storm-flavored).
+  {
+    id: "goblin-bombardment-etb",
+    description: "Goblin Bombardment ETB; activated sac+damage parse.",
+    seed: 0xf5,
+    cards: {
+      "Goblin Bombardment": `Name:Goblin Bombardment
+ManaCost:1 R
+Types:Enchantment
+A:AB$ DealDamage | Cost$ Sac<1/Creature> | NumDmg$ 1 | ValidTgts$ Any | SpellDescription$ Sac creature: deal 1 damage.
+Oracle:Sacrifice damage activated.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Bombardment"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Bombardment", controller: SEAT0 }],
+  },
+
+  // 176. Cascade chain — Maelstrom Wanderer ETB (Cascade keyword x2 parse).
+  {
+    id: "maelstrom-wanderer-m68-etb",
+    description: "Maelstrom Wanderer ETB; Haste + double Cascade keyword parse.",
+    seed: 0xf6,
+    cards: {
+      "Maelstrom Wanderer": `Name:Maelstrom Wanderer
+ManaCost:8 U R G
+Types:Legendary Creature Elemental
+PT:7/5
+K:Haste
+K:Cascade
+K:Cascade
+Oracle:Double Cascade parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maelstrom Wanderer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maelstrom Wanderer", controller: SEAT0 }],
+  },
+
+  // 177. Mutate — Auspicious Starrix in hand (Mutate keyword surface).
+  {
+    id: "auspicious-starrix-in-hand",
+    description: "Auspicious Starrix in hand; Mutate:5G keyword + ETB-mill trigger.",
+    seed: 0xf7,
+    cards: {
+      "Auspicious Starrix": `Name:Auspicious Starrix
+ManaCost:4 G
+Types:Creature Beast
+PT:5/5
+K:Mutate:3 G
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Self-mill 4.
+SVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You
+Oracle:Mutate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Auspicious Starrix"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 178. Day/Night — Reckless Stormseeker (werewolf-style transform parse).
+  {
+    id: "reckless-stormseeker-etb",
+    description: "Reckless Stormseeker ETB; Day-night transform-flavored parse.",
+    seed: 0xf8,
+    cards: {
+      "Reckless Stormseeker": `Name:Reckless Stormseeker
+ManaCost:1 R R
+Types:Creature Human Werewolf
+PT:3/3
+K:Daybound
+T:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Daybound pump.
+SVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ 1 | KW$ Haste
+Oracle:Daybound parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reckless Stormseeker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reckless Stormseeker", controller: SEAT0 }],
+  },
+
+  // 179. Investigate — Tireless Tracker (clue-on-landfall).
+  {
+    id: "tireless-tracker-etb",
+    description: "Tireless Tracker ETB; ChangesZone(Land→BF) → Clue token.",
+    seed: 0xf9,
+    cards: {
+      "Tireless Tracker": `Name:Tireless Tracker
+ManaCost:2 G
+Types:Creature Human Scout
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Landfall → Clue token.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_sac | TokenOwner$ You
+Oracle:Landfall Clue.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tireless Tracker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tireless Tracker", controller: SEAT0 }],
+  },
+
+  // 180. Battle — Invasion of Ikoria target Behemoth side (parse only).
+  {
+    id: "invasion-of-ikoria-target-side-in-hand",
+    description: "Invasion of Ikoria in hand; Battle CardType + transform side.",
+    seed: 0xfa,
+    cards: {
+      "Invasion of Ikoria": `Name:Invasion of Ikoria
+ManaCost:3 G G
+Types:Battle Siege
+A:SP$ ChangeZone | Cost$ 3 G G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLE4 | ChangeNum$ 1 | SpellDescription$ Tutor creature ≤ CMC4.
+Oracle:Battle siege parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion of Ikoria"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 181. Crime — Mosswood Dreadknight (Crime ability surface).
+  {
+    id: "mosswood-dreadknight-etb",
+    description: "Mosswood Dreadknight ETB; Adventure-style + Trample.",
+    seed: 0xfb,
+    cards: {
+      "Mosswood Dreadknight": `Name:Mosswood Dreadknight
+ManaCost:B G
+Types:Creature Human Knight
+PT:3/2
+K:Trample
+K:Menace
+Oracle:Trample/Menace baseline.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mosswood Dreadknight"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mosswood Dreadknight", controller: SEAT0 }],
+  },
+
+  // 182. Equip + activated — Stoneforge Mystic ETB tutor (parse — Equipment-search trigger).
+  {
+    id: "stoneforge-mystic-no-targets-etb",
+    description: "Stoneforge Mystic ETB without Equipment in library; CR 603.10c skip path.",
+    seed: 0xfc,
+    cards: {
+      "Stoneforge Mystic": `Name:Stoneforge Mystic
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ ETB tutor Equipment.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1 | ShuffleNonMandatory$ True
+Oracle:Equipment tutor.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stoneforge Mystic"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stoneforge Mystic", controller: SEAT0 }],
+  },
+
+  // 183. Cumulative upkeep — Glacial Chasm in hand (Cumulative upkeep parse).
+  {
+    id: "glacial-chasm-in-hand",
+    description: "Glacial Chasm in hand; Cumulative upkeep + damage-replace placeholder.",
+    seed: 0xfd,
+    cards: {
+      "Glacial Chasm": `Name:Glacial Chasm
+ManaCost:no cost
+Types:Land
+K:Cumulative upkeep:PayLife<2>
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:Cumulative upkeep parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glacial Chasm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 184. Modal/Charm — Cryptic Command in hand (modal counter / draw / tap).
+  {
+    id: "cryptic-command-m68-in-hand",
+    description: "Cryptic Command in hand; modal Charm-style spell parse.",
+    seed: 0xfe,
+    cards: {
+      "Cryptic Command": `Name:Cryptic Command
+ManaCost:1 U U U
+Types:Instant
+A:SP$ Charm | Cost$ 1 U U U | Choices$ DBCounter,DBDraw,DBTap | CharmNum$ 2 | SpellDescription$ Choose two — counter / draw / tap.
+SVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+SVar:DBTap:DB$ Tap | ValidTgts$ Permanent
+Oracle:Modal Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cryptic Command"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 185. Multikicker — Rite of Replication (Kicker:5 — parse).
+  {
+    id: "rite-of-replication-in-hand",
+    description: "Rite of Replication in hand; Kicker:5 + CopyPermanent.",
+    seed: 0x100,
+    cards: {
+      "Rite of Replication": `Name:Rite of Replication
+ManaCost:2 U U
+Types:Sorcery
+K:Kicker:5
+A:SP$ CopyPermanent | Cost$ 2 U U | ValidTgts$ Creature | NumCopies$ 1 | SpellDescription$ Replicate creature.
+Oracle:Kicker copy.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rite of Replication"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 186. Aurelia Warleader ETB (Combat ETB).
+  {
+    id: "aurelia-warleader-m68-etb",
+    description: "Aurelia, the Warleader ETB; Flying + Vigilance + Haste + 'after combat' trigger.",
+    seed: 0x101,
+    cards: {
+      "Aurelia, the Warleader": `Name:Aurelia, the Warleader
+ManaCost:2 R W W
+Types:Legendary Creature Angel
+PT:3/4
+K:Flying
+K:Vigilance
+K:Haste
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAdditionalCombat | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Additional combat.
+SVar:TrigAdditionalCombat:DB$ AdditionalCombat
+Oracle:Aurelia additional combat.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aurelia, the Warleader"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aurelia, the Warleader", controller: SEAT0 }],
+  },
+
+  // 187. Brothers Yamazaki coresidence (legend-rule co-residence).
+  {
+    id: "brothers-yamazaki-m68-etb",
+    description: "Brothers Yamazaki ETB; legend-rule exemption (1/1 Goblin twins).",
+    seed: 0x102,
+    cards: {
+      "Brothers Yamazaki": `Name:Brothers Yamazaki
+ManaCost:1 R R
+Types:Legendary Creature Human Samurai
+PT:2/1
+K:Bushido:1
+S:Mode$ Continuous | Affected$ Creature.Self | AddPower$ 2 | AddToughness$ 2 | Condition$ AnotherBYExists | Description$ +2/+2 if another Brothers Yamazaki exists.
+SVar:AnotherBYExists:Count$Valid Creature.namedBrothersYamazaki+Other
+Oracle:Twin legends.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brothers Yamazaki"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brothers Yamazaki", controller: SEAT0 }],
+  },
+
+  // 188. Outlast (Mer-Ek Nightblade activated +1/+1 + deathtouch grant).
+  {
+    id: "mer-ek-nightblade-etb-isolated",
+    description: "Mer-Ek Nightblade ETB; Outlast + deathtouch grant placeholder.",
+    seed: 0x103,
+    cards: {
+      "Mer-Ek Nightblade": `Name:Mer-Ek Nightblade
+ManaCost:3 B
+Types:Creature Human Assassin
+PT:2/2
+K:Deathtouch
+K:Outlast:B
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Deathtouch | Description$ Granted deathtouch.
+Oracle:Outlast deathtouch.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mer-Ek Nightblade"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mer-Ek Nightblade", controller: SEAT0 }],
+  },
+
+  // 189. Counter doubler — Vorinclex + Doubling Season co-residence.
+  {
+    id: "vorinclex-doubling-season-coresidence",
+    description: "Vorinclex Monstrous Raider + Doubling Season — counter-doubler stack parse.",
+    seed: 0x104,
+    cards: {
+      "Vorinclex, Monstrous Raider": vorinclexMonstrousSrc,
+      "Doubling Season": doublingSeasonSrc,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Vorinclex, Monstrous Raider" }, { card: "Doubling Season" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 190. Replicate — Consign to Memory in hand (Replicate keyword surface).
+  {
+    id: "consign-to-memory-m68-in-hand",
+    description: "Consign to Memory in hand; Replicate:U + Counter spell.",
+    seed: 0x105,
+    cards: {
+      "Consign to Memory": `Name:Consign to Memory
+ManaCost:U U
+Types:Instant
+K:Replicate:U
+A:SP$ Counter | Cost$ U U | TargetType$ Activated,Triggered | ValidTgts$ Card | SpellDescription$ Counter ability + bounce.
+Oracle:Replicate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Consign to Memory"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
 ];

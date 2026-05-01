@@ -1,0 +1,27 @@
+{
+  "id": "aurelia-warleader-m68-etb",
+  "description": "Aurelia, the Warleader ETB; Flying + Vigilance + Haste + 'after combat' trigger.",
+  "seed": 257,
+  "cards": {
+    "Aurelia, the Warleader": "Name:Aurelia, the Warleader\nManaCost:2 R W W\nTypes:Legendary Creature Angel\nPT:3/4\nK:Flying\nK:Vigilance\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAdditionalCombat | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Additional combat.\nSVar:TrigAdditionalCombat:DB$ AdditionalCombat\nOracle:Aurelia additional combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aurelia, the Warleader"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aurelia, the Warleader",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "cryptic-command-m68-in-hand",
+  "description": "Cryptic Command in hand; modal Charm-style spell parse.",
+  "seed": 254,
+  "cards": {
+    "Cryptic Command": "Name:Cryptic Command\nManaCost:1 U U U\nTypes:Instant\nA:SP$ Charm | Cost$ 1 U U U | Choices$ DBCounter,DBDraw,DBTap | CharmNum$ 2 | SpellDescription$ Choose two — counter / draw / tap.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nSVar:DBTap:DB$ Tap | ValidTgts$ Permanent\nOracle:Modal Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Cryptic Command"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

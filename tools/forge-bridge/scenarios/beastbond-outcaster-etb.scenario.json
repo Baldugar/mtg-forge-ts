@@ -1,0 +1,27 @@
+{
+  "id": "beastbond-outcaster-etb",
+  "description": "Beastbond Outcaster ETB; Plot:2G + Reach + LandfallTrigger.",
+  "seed": 233,
+  "cards": {
+    "Beastbond Outcaster": "Name:Beastbond Outcaster\nManaCost:1 G\nTypes:Creature Human Druid\nPT:1/1\nK:Reach\nK:Plot:1 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Landfall trigger placeholder.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 1 | NumDef$ 1\nOracle:Plot Reach Landfall test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Beastbond Outcaster"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Beastbond Outcaster",
+      "controller": 0
+    }
+  ]
+}

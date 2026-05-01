@@ -33,6 +33,7 @@ import type { Game } from "../game.js";
 import { gatherPanharmoniconHits } from "../statics/cant-must-may-extras.js";
 import { isTriggerDisabled } from "../statics/wave70j-rule-gates.js";
 import type { PendingTrigger } from "./pending-trigger.js";
+import { triggerHasNoLegalTarget } from "./trigger-target-probe.js";
 
 export type SuppressionFilter = (
   trigger: TriggeredAbility | DelayedTrigger,
@@ -107,6 +108,20 @@ export class TriggerRegistry {
       // pending list.
       if (isTriggerDisabled(this.game, t, event)) continue;
       if (t.interveningIf && !t.interveningIf(event, this.game)) continue;
+      // M6.8 — CR 603.10c. A triggered ability with explicit targets and
+      // no legal target on fire doesn't trigger at all. Forge enforces this
+      // via SpellAbility.setupTargets() returning false inside
+      // PlaySpellAbility, which makes the trigger never reach the stack.
+      // We mirror that behaviour here so optional ETB target-triggers
+      // (Kor Outfitter / Oblivion Ring / Knight of the White Orchid /
+      // Cleric Class / Sand Strangler) don't surface a no-op
+      // AbilityActivated + StackItemResolved pair when no eligible
+      // candidate exists. The probe is conservative: it only skips when
+      // the trigger has a parsed Execute$ chain with at least one
+      // ValidTgts$ step that enumerates to zero candidates. Hand-built
+      // / keyword-spawned triggers without an AST handle pass through
+      // unchanged.
+      if (triggerHasNoLegalTarget(this.game, t)) continue;
       const lki = t.captureLki ? (t.captureLki(event, this.game) as LastKnownInfo | null) : null;
       const sourceCtl = this.resolveSourceController(t);
       // Wave 104 — Panharmonicon multiplier (Mondrak / Yarok / Glory
