@@ -39,8 +39,15 @@
 //                                          color. Defaults: Mod=1,
 //                                          Color=any (matches every
 //                                          queried color).
-// TODO(advanced):
-//   - Combined player+card filter (rare, no corpus instances today).
+// Wave 107 — retired the stale "Combined player+card filter"
+// TODO(advanced) tail. The Wave 78 grammar already supports both
+// scopes in a single static (a Devotion line with both ValidPlayer$
+// and ValidCard$ present): `hasPlayerScope` and `hasCardScope` are
+// independent flags read by the gate helper, so a static carrying
+// both predicates contributes its player-amount once for the matched
+// seat AND its card-mod for every matched permanent. The corpus
+// sweep at Wave 107 confirms no current line uses both at once, but
+// the implementation already routes correctly if a future line does.
 import type { Color, EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import { Color as ColorEnum } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";

@@ -29,9 +29,12 @@
 // MVP scope:
 //   - ValidCard$ <filter>      → cardMatchesFilter (Wave 32 grammar).
 //   - Card.Self short-circuit  → sourceCardId === cardId.
-// TODO(advanced):
-//   - ExceptionType$ <filter>  (carve-out for specific damage types);
-//     not yet observed in the corpus for InfectDamage.
+// Wave 107 — retired the stale "ExceptionType$" TODO(advanced) tail. A
+// corpus sweep at Wave 107 against Forge's res/cardsfolder confirmed
+// no InfectDamage static line uses ExceptionType$; the corpus carries
+// only the bare ValidCard$ form. Forge's StaticAbilityInfectDamage
+// likewise does not branch on an ExceptionType$ param. The Wave 32
+// grammar via cardMatchesFilter is the durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

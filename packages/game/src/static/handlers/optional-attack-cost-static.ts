@@ -57,8 +57,14 @@
 //     trigger when the Exert cost is paid; this static-mode handler is
 //     the registration side that the future cost-payment integration
 //     will read).
-//   - Multi-trigger forms ("Trigger$ TrigA, TrigB") — accepted as a
-//     single literal today; Forge spells these as separate statics.
+// Wave 107 — closes the prior multi-trigger form TODO(advanced) tail.
+// `triggerSVar` is now a tuple shape: when the corpus carries
+// `Trigger$ TrigA & TrigB` (Forge's `&`-separator for multi-trigger
+// statics) we split on `&` (and the `,` legacy separator) and expose
+// both keys via `triggerSVarsAll`. The legacy single-string slot
+// (`triggerSVar`) keeps the first key for back-compat with the
+// existing Wave 18 Exerted dispatcher; the cost-payment integration
+// can iterate `triggerSVarsAll` once it lands.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { Restriction } from "../../statics/cant-must-may.js";
@@ -77,8 +83,20 @@ export interface OptionalAttackCostPayload {
   readonly cardMatches: (cardId: EntityId, game: Game) => boolean;
   /** Forge cost string (e.g. "Exert<1/CARDNAME>", "1", "Sac<1/Land>"). undefined when omitted. */
   readonly costText: string | undefined;
-  /** Forge Trigger$ SVar key (resolved by the cost-payment integration). undefined when omitted. */
+  /**
+   * First Forge Trigger$ SVar key (resolved by the cost-payment integration).
+   * undefined when omitted. Back-compat slot that mirrors the pre-Wave-107
+   * single-key shape. Iterate `triggerSVarsAll` for the full list when the
+   * corpus carries a `Trigger$ TrigA & TrigB` multi-trigger form.
+   */
   readonly triggerSVar: string | undefined;
+  /**
+   * Wave 107 — full Trigger$ multi-trigger list. Single-trigger forms
+   * resolve to a one-element array; the `&`-separator (Forge canonical)
+   * and the `,`-separator (corpus legacy) both split into independent
+   * keys. Empty when Trigger$ is omitted.
+   */
+  readonly triggerSVarsAll: readonly string[];
   /** UI description text, surfaced by the attack-declaration dialog. undefined when omitted. */
   readonly description: string | undefined;
 }
@@ -91,7 +109,18 @@ export class OptionalAttackCostStaticHandler extends StaticHandler {
     const validRaw = literalRaw(params.ValidCard) ?? "Card.Self";
     const cardPred = buildCardIdPredicate(validRaw, ctx.sourceCardId, ctx.controllerSeat);
     const costText = literalRaw(params.Cost);
-    const triggerSVar = literalRaw(params.Trigger);
+    const triggerRaw = literalRaw(params.Trigger);
+    // Wave 107 — split on Forge's `&` separator (and the `,` legacy form)
+    // for multi-trigger statics. Single-trigger lines resolve to a
+    // one-element array; absent Trigger$ resolves to an empty array.
+    const triggerSVarsAll: readonly string[] =
+      triggerRaw === undefined || triggerRaw.length === 0
+        ? []
+        : triggerRaw
+            .split(/[&,]/)
+            .map((t) => t.trim())
+            .filter((t) => t.length > 0);
+    const triggerSVar = triggerSVarsAll[0];
     const description = literalRaw(params.Description);
 
     const payload: OptionalAttackCostPayload = {
@@ -99,6 +128,7 @@ export class OptionalAttackCostStaticHandler extends StaticHandler {
       cardMatches: (cardId, game) => cardPred(cardId, game),
       costText,
       triggerSVar,
+      triggerSVarsAll,
       description,
     };
 

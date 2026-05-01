@@ -37,11 +37,27 @@ const PREVENT_MODES = ["PreventAllDamage", "PreventAllDamageBy", "PreventAllDama
  * wouldPreventDamage) lets the AI evaluator and combat-handler pre-flight
  * checks query prevention permissibility without re-walking the registry.
  */
-export const canDamageBePrevented = (game: Game, sourceId: EntityId): boolean => {
+export const canDamageBePrevented = (
+  game: Game,
+  sourceId: EntityId,
+  ctx?: {
+    readonly targetKind: "creature" | "player" | "planeswalker" | "battle";
+    readonly targetId: EntityId | PlayerSeat;
+    readonly isCombat: boolean;
+  },
+): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantPreventDamage");
   for (const s of statics) {
     const payload = s.describe() as CantPreventDamagePayload;
-    if (payload.sourceMatches(sourceId, game)) return false;
+    // Wave 107 — when full event context is available, use the
+    // ValidTarget$/Combat$ aware match; otherwise fall back to the
+    // legacy source-only probe (preserves the AI evaluator and
+    // combat-handler pre-flight call sites).
+    if (ctx) {
+      if (payload.matchesEvent(sourceId, ctx.targetKind, ctx.targetId, ctx.isCombat, game)) return false;
+    } else {
+      if (payload.sourceMatches(sourceId, game)) return false;
+    }
   }
   return true;
 };
@@ -69,7 +85,9 @@ export const wouldPreventDamage = (
   // active CantPreventDamage static, the prevention loop is bypassed and
   // damage flows normally. Mirrors Forge's StaticAbilityCantPreventDamage
   // short-circuit at the prevention consultation site.
-  if (!canDamageBePrevented(game, sourceId)) return false;
+  // Wave 107 — forward the full event context so the CantPreventDamage
+  // ValidTarget$ / Combat$ sub-filters can scope the gate correctly.
+  if (!canDamageBePrevented(game, sourceId, { targetKind, targetId, isCombat })) return false;
   for (const mode of PREVENT_MODES) {
     const statics = game.staticEffectRegistry.byMode(mode);
     for (const s of statics) {

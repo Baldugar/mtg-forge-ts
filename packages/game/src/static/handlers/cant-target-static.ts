@@ -44,12 +44,18 @@
 // canonical "battlefield only" default holds when AffectedZone$ is
 // omitted.
 //
-// TODO(advanced):
-//   - SourceCanOnlyTarget$ — Enthralling Hold's narrow choose-clause
-//     constraint at cast-time.
-//   - Hexproof / Shroud-keyword sub-shapes — already handled by the
-//     restriction.shroud/hexproof slots on TargetRestriction; CantTarget
-//     here covers the bespoke text shapes that DON'T grant the keyword.
+// Wave 107 — retired the stale tail.
+//   - The "Hexproof / Shroud-keyword sub-shapes" item was already a
+//     no-op (those route through TargetRestriction's hexproof/shroud
+//     slots rather than CantTarget; the comment's own caveat already
+//     said "already handled"). Removed from the TODO list.
+//   - The "SourceCanOnlyTarget$ — Enthralling Hold's narrow
+//     choose-clause" follow-up is a cast-time choose-clause hook on a
+//     single corpus card (Enthralling Hold). Forge implements it
+//     inline on the cast pipeline rather than via the CantTarget
+//     static modality, so it does not belong here. The Wave 32
+//     ValidTarget$ + ValidSource$ + Activator$ + ValidSA$ matrix is
+//     the durable contract for this static.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";

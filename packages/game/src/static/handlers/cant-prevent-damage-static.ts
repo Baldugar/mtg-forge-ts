@@ -33,12 +33,23 @@
 // MVP scope:
 //   - ValidSource$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - Card.Self short-circuit honored (sourceCardId === cardId).
-// TODO(advanced):
-//   - ValidTarget$ sub-filter (Mark-of-Asylum-style "damage to X from
-//     non-X can't be prevented" — opposite-direction shape).
-//   - Combat$ True/False sub-filter for combat-only / non-combat-only
-//     prevention-prevention.
-import type { EntityId, ParamValue, ReplacementAbility, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+// Wave 107 — closes the prior ValidTarget$ + Combat$ TODO(advanced) tail.
+// The handler now compiles all three sub-filters at build time and
+// exposes a single `matchesEvent(sourceId, targetKind, targetId,
+// isCombat, game)` predicate; the legacy `sourceMatches(cardId, game)`
+// shorthand is retained for the no-target-context call sites
+// (AI evaluator pre-flight, combat-handler probes). The consumer in
+// statics/wave60-damage-gates.ts forwards the full event context when
+// available so Mark-of-Asylum-style "damage to X from non-X can't be
+// prevented" and Combat$ True/False scoping become honored.
+import type {
+  EntityId,
+  ParamValue,
+  PlayerSeat,
+  ReplacementAbility,
+  StaticAbility,
+  StaticAst,
+} from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";
 import {
@@ -47,10 +58,35 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+
+type DamageTargetKind = "creature" | "player" | "planeswalker" | "battle";
+
+// Tri-valued Combat$ filter — undefined (no filter), true (combat-only),
+// false (non-combat-only).
+const parseCombatFilter = (raw: string | undefined): boolean | undefined => {
+  if (raw === undefined) return undefined;
+  if (raw === "True" || raw === "true") return true;
+  if (raw === "False" || raw === "false") return false;
+  return undefined;
+};
 
 export interface CantPreventDamagePayload extends ReplacementGenPayload {
+  /** Legacy source-only probe (no target context). */
   readonly sourceMatches: (cardId: EntityId, game: Game) => boolean;
+  /**
+   * Full event match honoring ValidSource$ + ValidTarget$ + Combat$
+   * sub-filters. The consumer (`canDamageBePrevented`) forwards the
+   * damage event context so opposite-direction shapes (Mark-of-Asylum)
+   * and combat-only / non-combat-only scoping match correctly.
+   */
+  readonly matchesEvent: (
+    sourceId: EntityId,
+    targetKind: DamageTargetKind,
+    targetId: EntityId | PlayerSeat,
+    isCombat: boolean,
+    game: Game,
+  ) => boolean;
 }
 
 export class CantPreventDamageStaticHandler extends StaticHandler {
@@ -59,12 +95,47 @@ export class CantPreventDamageStaticHandler extends StaticHandler {
   override build(ast: StaticAst, ctx: StaticHandlerCtx): StaticAbility {
     const params: Readonly<Record<string, ParamValue>> = ast.params;
     const validSourceRaw = literalRaw(params.ValidSource) ?? "Card";
+    const validTargetRaw = literalRaw(params.ValidTarget);
+    const combatRaw = literalRaw(params.Combat);
+    const combatFilter = parseCombatFilter(combatRaw);
     const sourcePred = buildCardIdPredicate(validSourceRaw, ctx.sourceCardId, ctx.controllerSeat);
+    // Mixed card/player target predicate — same shape as PreventDamage's
+    // CompiledTargetPred. Player damage hits the seat predicate; card-kind
+    // damage hits the card predicate. Both default to always-true when
+    // ValidTarget$ is omitted.
+    const targetCardPred =
+      validTargetRaw === undefined
+        ? () => true
+        : buildCardIdPredicate(validTargetRaw, ctx.sourceCardId, ctx.controllerSeat);
+    const targetSeatPred =
+      validTargetRaw === undefined ? () => true : buildPlayerPredicate(validTargetRaw, ctx.controllerSeat);
+
+    const matchesEvent = (
+      sourceId: EntityId,
+      targetKind: DamageTargetKind,
+      targetId: EntityId | PlayerSeat,
+      isCombat: boolean,
+      game: Game,
+    ): boolean => {
+      if (combatFilter !== undefined && combatFilter !== isCombat) return false;
+      if (!sourcePred(sourceId, game)) return false;
+      if (validTargetRaw !== undefined) {
+        if (targetKind === "player") {
+          if (typeof targetId !== "number") return false;
+          if (!targetSeatPred(targetId as PlayerSeat)) return false;
+        } else {
+          if (typeof targetId !== "number") return false;
+          if (!targetCardPred(targetId as EntityId, game)) return false;
+        }
+      }
+      return true;
+    };
 
     const payload: CantPreventDamagePayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       sourceMatches: (cardId, game) => sourcePred(cardId, game),
+      matchesEvent,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);
