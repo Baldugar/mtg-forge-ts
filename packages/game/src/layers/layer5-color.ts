@@ -19,6 +19,16 @@ import { ColorSet } from "@mtg-forge-ts/core";
 import { type DepNode, resolveDependencyOrder } from "./dependency-resolver.js";
 
 // Wave 47 — Layer 5 carries optional per-card scoping. See Layer 4 doc-comment.
+//
+// Wave 99 — `colorsFn` is an optional dynamic-resolution callback for
+// effects whose color value is named symbolically (e.g. ChosenColor /
+// ChosenColors stamped on the source card). When set, `colorsFn()` is
+// invoked at apply-time to resolve the actual ColorSet from live game
+// state; the static `colors` field is used as a fallback when the
+// callback returns null (for the snapshot/restore path that may not
+// have seen the chooser yet). This closes the prior TODO(advanced) for
+// "ChosenColor SVar into a live colors fn" — Painter's Servant and
+// similar SVar-driven color statics resolve through this hook.
 export type ColorChangeEffect =
   | {
       readonly kind: "set";
@@ -28,6 +38,7 @@ export type ColorChangeEffect =
       readonly sourceAbilityId: EntityId | null;
       readonly dependsOn?: readonly string[];
       readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
+      readonly colorsFn?: () => ColorSet | null;
     }
   | {
       readonly kind: "add";
@@ -37,6 +48,7 @@ export type ColorChangeEffect =
       readonly sourceAbilityId: EntityId | null;
       readonly dependsOn?: readonly string[];
       readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
+      readonly colorsFn?: () => ColorSet | null;
     }
   | {
       readonly kind: "remove";
@@ -46,6 +58,7 @@ export type ColorChangeEffect =
       readonly sourceAbilityId: EntityId | null;
       readonly dependsOn?: readonly string[];
       readonly appliesToCardIdFn?: (cardId: EntityId) => boolean;
+      readonly colorsFn?: () => ColorSet | null;
     };
 
 const subtract = (a: ColorSet, b: ColorSet): ColorSet => ColorSet.fromJSON(a.toJSON() & ~b.toJSON());
@@ -86,15 +99,20 @@ export const applyLayer5Color = (
     ...resolveDependencyOrder(normals).map((n) => n.raw as ColorChangeEffect),
   ];
   for (const e of ordered) {
+    // Wave 99 — Resolve dynamic colors at apply-time when `colorsFn` is
+    // present. Falls back to the static `colors` field when the callback
+    // returns null (e.g. ChosenColor SVar before the chooser fires).
+    const dyn = e.colorsFn !== undefined ? e.colorsFn() : null;
+    const live = dyn ?? e.colors;
     switch (e.kind) {
       case "set":
-        target.colors = e.colors;
+        target.colors = live;
         break;
       case "add":
-        target.colors = target.colors.union(e.colors);
+        target.colors = target.colors.union(live);
         break;
       case "remove":
-        target.colors = subtract(target.colors, e.colors);
+        target.colors = subtract(target.colors, live);
         break;
       default: {
         const _: never = e;

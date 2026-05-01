@@ -121,10 +121,9 @@ export interface GameFlags {
   // Wave 60.G — per-seat counter of pending additional untap steps queued
   // for the matched player's NEXT untap step (CR 502 / Awakening Zone /
   // Time Vault analogues). Stamped at static-activation time by the
-  // AdditionalUntapStep handler; consumed at the END of the canonical
-  // untap-step turn-based actions, where each consumption performs a
-  // second untap-all loop. MVP ordering is "right-after-normal-untap";
-  // CR 502.2's "before normal untap" precise ordering is TODO(advanced).
+  // AdditionalUntapStep handler; consumed at the START of the canonical
+  // untap-step turn-based actions (Wave 99 — CR 502.2 ordering: extra
+  // untap loops run BEFORE the normal untap pass).
   // Reset on TurnEnded — a leftover counter does not roll over to the
   // next turn (matches Forge: the static stamps once per activation +
   // re-activation in the next turn re-stamps; the counter is per-turn).

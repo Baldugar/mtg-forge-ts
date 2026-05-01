@@ -146,17 +146,28 @@ const computeYouRolledThisTurn = (ast: SVarExpressionAst, ctx: SvarContext): num
   return n;
 };
 
-// Doors — TODO(advanced). Rooms (DSK / Doctor Who) carry an "unlocked"
-// chapter-style state on the source card; tracking lives on a future Room
-// subsystem. For MVP we read defensively from card slots; absent slots
-// yield 0.
+// Doors — Wave 99 closes the prior TODO(advanced). The Rooms primitive
+// landed via `card.unlockedDoors: Set<string>` (Wave 22 UnlockDoorEffect
+// stamps the door id on the source card; the FullyUnlockTrigger gate at
+// Wave 98 reads the same slot). Each open door contributes 1 to
+// UnlockedDoors; DistinctUnlockedDoors counts cards with at least one
+// open door. Legacy `number`-shape slots are still tolerated for
+// fixtures that haven't migrated.
+const probeUnlockedDoorCount = (c: { readonly id: unknown }): number => {
+  const probe = c as unknown as { unlockedDoors?: Set<string> | number };
+  const v = probe.unlockedDoors;
+  if (v === undefined) return 0;
+  if (typeof v === "number") return v;
+  // Set<string> — canonical Wave 22+ shape.
+  return v.size;
+};
+
 const computeUnlockedDoors = (_ast: SVarExpressionAst, ctx: SvarContext): number => {
   if (ctx.controller === undefined) return 0;
   let total = 0;
   for (const c of ctx.game.cards.values()) {
     if (c.controllerSeat !== ctx.controller) continue;
-    const probe = c as unknown as { unlockedDoors?: number };
-    if (typeof probe.unlockedDoors === "number") total += probe.unlockedDoors;
+    total += probeUnlockedDoorCount(c);
   }
   return total;
 };
@@ -164,12 +175,11 @@ const computeUnlockedDoors = (_ast: SVarExpressionAst, ctx: SvarContext): number
 const computeDistinctUnlockedDoors = (_ast: SVarExpressionAst, ctx: SvarContext): number => {
   if (ctx.controller === undefined) return 0;
   // Distinct = number of cards with at least one unlocked door (rather
-  // than the sum). TODO(advanced) once the Rooms primitive lands.
+  // than the sum).
   let n = 0;
   for (const c of ctx.game.cards.values()) {
     if (c.controllerSeat !== ctx.controller) continue;
-    const probe = c as unknown as { unlockedDoors?: number };
-    if (typeof probe.unlockedDoors === "number" && probe.unlockedDoors > 0) n += 1;
+    if (probeUnlockedDoorCount(c) > 0) n += 1;
   }
   return n;
 };

@@ -252,6 +252,17 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     base.types.add(CARDTYPE_CREATURE);
   }
 
+  // Wave 60.I / Wave 99 — Crew static (CR 702.122) "is a creature
+  // without crewing". Closes the prior TODO(advanced): static-form
+  // Vehicles (a small published group, e.g. cards that grant a Vehicle
+  // creature-status without a Crew activation) read `crewStaticActive`
+  // here so the type-derivation path adds Creature to the type line
+  // without requiring a Crew payment. Cleared on static deactivate;
+  // additive only (the Vehicle keeps Artifact + Vehicle subtype).
+  if (card.crewStaticActive === true) {
+    base.types.add(CARDTYPE_CREATURE);
+  }
+
   // Wave 45 — ChangeText (CR 612). Apply each text-change rule on top of
   // the populated characteristics. Wave 98 — rules-text rewrite path is
   // now wired in alongside the color-set / subtype-set swaps, so any

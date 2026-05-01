@@ -609,12 +609,12 @@ export class Card {
   firebendingCost: string | undefined = undefined;
   enlist: boolean | undefined = undefined;
   ravenous: boolean | undefined = undefined;
-  // Wave 60.I — Crew static (CR 702.122 — rare static-form Vehicle "is a
-  // creature without crewing"). Stamped by an active `S:Mode$ Crew |
-  // ValidCard$ Card.Self` on activate; cleared on deactivate. The
-  // type-derivation path consults the slot to add Creature to the type
-  // line without requiring a Crew activation; full Continuous AddType
-  // synthesis is // TODO(advanced).
+  // Wave 60.I / Wave 99 — Crew static (CR 702.122 — rare static-form
+  // Vehicle "is a creature without crewing"). Stamped by an active
+  // `S:Mode$ Crew | ValidCard$ Card.Self` on activate; cleared on
+  // deactivate. The type-derivation path in
+  // layers/base-characteristics.ts adds Creature to the type line when
+  // this slot is true (Wave 99 closure of the prior TODO(advanced)).
   crewStaticActive: boolean | undefined = undefined;
   // Wave 71 — Suspect (CR 701.58 / Murders at Karlov Manor). Stamped to
   // true when a creature becomes suspected (CR 701.58a — "It has menace

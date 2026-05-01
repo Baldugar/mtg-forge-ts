@@ -197,12 +197,38 @@ export const attackRequirementsFor = (game: Game, attackerId: EntityId): AttackR
             }
           }
         } else if (tok.startsWith("Battle")) {
+          // "Battle.YouCtrl" / "Battle.OppCtrl" / "Battle".
           for (const c of game.cards.values()) {
             const chars = game.layerEngine.computeCharacteristics(c.id);
-            if (chars.types.has(CardType.Battle)) battles.add(c.id);
+            if (!chars.types.has(CardType.Battle)) continue;
+            if (tok === "Battle") {
+              battles.add(c.id);
+            } else if (tok === "Battle.YouCtrl") {
+              if (c.controllerSeat === staticCtrl) battles.add(c.id);
+            } else if (tok === "Battle.OppCtrl") {
+              if (c.controllerSeat !== staticCtrl) battles.add(c.id);
+            } else if (tok === "Battle.NotYouProtect") {
+              // Wave 99 — Battles whose protector is NOT the static
+              // controller. Rare carve-out (Forge uses this for "attack
+              // an enemy battle"). Falls back to OppCtrl semantics when
+              // protectorSeat is undefined.
+              const protector = (c as unknown as { protectorSeat?: PlayerSeat }).protectorSeat;
+              if (protector !== undefined ? protector !== staticCtrl : c.controllerSeat !== staticCtrl) {
+                battles.add(c.id);
+              }
+            }
+          }
+        } else if (tok === "Player.YouCtrl" || tok === "Player.You") {
+          // Wave 99 — alias for "You" (Forge accepts both spellings).
+          seats.add(staticCtrl);
+        } else if (tok === "Player.OppCtrl" || tok === "Player.Opp") {
+          // Wave 99 — alias for "Opponent".
+          for (const p of game.players) {
+            if (p.seat !== staticCtrl) seats.add(p.seat);
           }
         }
-        // Other tokens fall through (conservative reject — TODO(advanced)).
+        // Other tokens fall through (conservative reject — additional
+        // shapes can be added here as Forge cards are imported).
       }
     }
 

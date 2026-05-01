@@ -30,10 +30,11 @@
 // plumbing (Bolas's Citadel revealing the topdeck card to its
 // controller) is a downstream pipeline concern: when the cast pipeline
 // asks "what cards can this player cast?", it should iterate the
-// MayBeCastBy-permitted set. The legal-action enumerator already
-// queries the gate for hand cards; library-top / opponent-hand
-// iteration is // TODO(advanced) and lands when the cast surface
-// expands beyond hand-only enumeration.
+// MayBeCastBy-permitted set. Wave 99 closure — the legal-action
+// enumerator now iterates the seat's hand AND every other seat's hand
+// (Sen Triplets shape) AND library-top / Exile, all gated through
+// mayBeCastBy. The remaining surface (graveyard / face-down exile)
+// lands as cards demand it.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

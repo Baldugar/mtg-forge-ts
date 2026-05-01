@@ -127,13 +127,16 @@ export const enumerateLegalActions = (game: Game, seat: PlayerSeat): readonly Pr
   // Keeps the standard timing + cantCast filter — the gate only relaxes
   // the zone-source restriction, not the rule-of-law checks.
   //
-  // Zones to iterate: Library (top card only — Bolas's Citadel shape) and
-  // Exile (Knowledge Pool / Mind's Dilation shape). Opponents' hands are
-  // // TODO(advanced) — Sen Triplets requires sequencing the "target
-  // opponent" choice ahead of the cast surface enumeration; today the
-  // hand-only iteration above covers the most common case where the
-  // gated player IS the seat asked to enumerate (the Sen Triplets caster
-  // is the Sen Triplets controller, not the opponent).
+  // Zones to iterate: Library (top card only — Bolas's Citadel shape),
+  // Exile (Knowledge Pool / Mind's Dilation shape), and — Wave 99 closure
+  // — every OPPONENT's Hand (Sen Triplets shape). The MayBeCastBy gate
+  // already encodes the "target opponent" filter (the static is
+  // re-stamped each turn against the chosen opponent), so we can iterate
+  // every opponent's hand uniformly and let `mayBeCastBy(...)` reject
+  // mismatched seats. This produces zero false positives when no
+  // opponent-hand-shaped MayBeCastBy is active (the registry walk in
+  // `mayBeCastBy` returns false on no match), and lights up the Sen
+  // Triplets cast surface when one is.
   const enumerateMayBeCastFromZone = (zone: ZoneType, candidateIds: readonly EntityId[]): void => {
     for (const cardId of candidateIds) {
       const card = game.cards.get(cardId);
@@ -161,6 +164,17 @@ export const enumerateLegalActions = (game: Game, seat: PlayerSeat): readonly Pr
   const exile = player.zones.get(ZoneType.Exile);
   if (exile !== undefined) {
     enumerateMayBeCastFromZone(ZoneType.Exile, exile.toArray());
+  }
+
+  // Wave 99 — Opponents' hands (Sen Triplets shape). Iterate every
+  // OTHER seat's hand and re-run the MayBeCastBy gate; the registry
+  // walk in `mayBeCastBy` rejects entries that don't grant `seat`
+  // permission, so this is safe to fire unconditionally.
+  for (const opp of game.players) {
+    if (opp.seat === seat) continue;
+    const oppHand = opp.zones.get(ZoneType.Hand);
+    if (oppHand === undefined) continue;
+    enumerateMayBeCastFromZone(ZoneType.Hand, oppHand.toArray());
   }
 
   // Activated abilities on controlled permanents — SP2 stub.

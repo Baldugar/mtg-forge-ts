@@ -338,21 +338,25 @@ export class PhaseHandler {
       // the untap loop below honors implicitly since phased-in permanents
       // that were phased out last turn carry their tapped state unchanged.
       yield* processPhasingOnUntap(game, active);
+      // Wave 99 — CR 502.2 ordering: additional untap steps run BEFORE
+      // the normal untap loop. Closes the prior TODO(advanced). This is
+      // observable in two ways:
+      //   - "at the beginning of the untap step" triggers see the extra
+      //     loop's events FIRST.
+      //   - permanents tapped during the extra loop's resolution can
+      //     still be untapped by the canonical loop that follows.
+      // Forge's StaticAbilityAdditionalUntap routes the extra loops
+      // through the same untap-all path; we mirror by running consume
+      // -then-untap-pass in a loop that drains the per-seat counter
+      // before falling through to the canonical untap pass.
+      while (consumePendingAdditionalUntap(game, active)) {
+        yield* this.runUntapPass(active);
+      }
       // Untap all permanents the active player controls. SP1 simplification:
       // iterate the active player's battlefield; control-change effects
       // mean SP2 will need to scan all battlefields for controllerSeat
       // matches instead.
       yield* this.runUntapPass(active);
-      // Wave 60.G — AdditionalUntapStep consumption (CR 502; Awakening
-      // Zone / Time Vault analogues). After the canonical untap pass,
-      // drain the pending counter, performing one extra untap-all loop
-      // per consumed entry. MVP ordering: right-after-normal-untap.
-      // CR 502.2's "before normal untap" precise ordering is
-      // TODO(advanced) — observable to triggers that fire "at the
-      // beginning of the untap step" only, not to the untap action itself.
-      while (consumePendingAdditionalUntap(game, active)) {
-        yield* this.runUntapPass(active);
-      }
     } else if (step === Phase.Draw) {
       // Wave 60.G — SkipDraw gate (CR 504.1, The Abyss-shape). Suppress
       // the draw turn-based action; the step shell (priority window) is

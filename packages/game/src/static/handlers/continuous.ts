@@ -95,9 +95,9 @@ const splitKeywords = (raw: string): string[] => {
 };
 
 // Map a Forge color name (or single-letter code) to ColorSet. Returns
-// null when the name is unrecognised (e.g. an SVar reference like
-// "ChosenColor" — Wave 47 MVP does not synthesise SVar selectors here;
-// resolved-at-build dynamic colors are TODO(advanced)).
+// null when the name is unrecognised (e.g. a non-color SVar reference);
+// callers detect ChosenColor / ChosenColors separately and route those
+// through a `colorsFn` that resolves at apply-time (Wave 99).
 const COLOR_BY_NAME: Readonly<Record<string, Color>> = {
   White: Color.White,
   Blue: Color.Blue,
@@ -375,35 +375,84 @@ export class ContinuousStaticHandler extends StaticHandler {
     }
 
     // ---- Layer 5 color additions and replacements --------------------------
+    // Wave 99 — Symbolic color names (ChosenColor / ChosenColors) resolve
+    // at apply-time via `colorsFn`. The closure reads the source card's
+    // `chosenColors` slot, which the ChooseColorEffect stamps when the
+    // controller answers a chooseColor decision. Forge stores ChosenColor
+    // singular (first chosen color) and ChosenColors plural (the full
+    // list) — we treat both as a union for the ADD shape, since Painter's
+    // Servant-style cards typically have a single choice anyway.
+    const buildChosenColorsFn = (): (() => ColorSet | null) => {
+      return () => {
+        const src = game.cards.get(sourceId);
+        if (!src) return null;
+        const picks = src.chosenColors;
+        if (picks.length === 0) return null;
+        const bits: Color[] = [];
+        for (const c of picks) if (c !== null) bits.push(c);
+        if (bits.length === 0) return null;
+        return ColorSet.of(...bits);
+      };
+    };
+    const isChosenColorToken = (raw: string): boolean => raw === "ChosenColor" || raw === "ChosenColors";
+
     if (addColorRaw !== undefined) {
-      const colors = parseColorList(addColorRaw);
-      // Unknown / SVar colors fall through to a no-op rather than throw —
-      // the param is recognised, the dynamic value is just unresolved here.
-      // TODO(advanced): wire ChosenColor SVar into a live colors fn.
-      if (colors !== null) {
+      if (isChosenColorToken(addColorRaw)) {
+        // Dynamic resolution path. Static fallback colors = empty (until
+        // chooser fires). The Layer 5 applier prefers `colorsFn` when set
+        // and falls back to the static field when it returns null.
         const e: ColorChangeEffect = {
           kind: "add",
-          colors,
+          colors: ColorSet.empty(),
           isCda,
           timestamp,
           sourceAbilityId: ctx.staticId,
           appliesToCardIdFn,
+          colorsFn: buildChosenColorsFn(),
         };
         payloads.push({ kind: "color", effect: e });
+      } else {
+        const colors = parseColorList(addColorRaw);
+        // Unknown / SVar colors fall through to a no-op rather than throw —
+        // the param is recognised, the dynamic value is just unresolved here.
+        if (colors !== null) {
+          const e: ColorChangeEffect = {
+            kind: "add",
+            colors,
+            isCda,
+            timestamp,
+            sourceAbilityId: ctx.staticId,
+            appliesToCardIdFn,
+          };
+          payloads.push({ kind: "color", effect: e });
+        }
       }
     }
     if (setColorRaw !== undefined) {
-      const colors = parseColorList(setColorRaw);
-      if (colors !== null) {
+      if (isChosenColorToken(setColorRaw)) {
         const e: ColorChangeEffect = {
           kind: "set",
-          colors,
+          colors: ColorSet.empty(),
           isCda,
           timestamp,
           sourceAbilityId: ctx.staticId,
           appliesToCardIdFn,
+          colorsFn: buildChosenColorsFn(),
         };
         payloads.push({ kind: "color", effect: e });
+      } else {
+        const colors = parseColorList(setColorRaw);
+        if (colors !== null) {
+          const e: ColorChangeEffect = {
+            kind: "set",
+            colors,
+            isCda,
+            timestamp,
+            sourceAbilityId: ctx.staticId,
+            appliesToCardIdFn,
+          };
+          payloads.push({ kind: "color", effect: e });
+        }
       }
     }
 
