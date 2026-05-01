@@ -24,13 +24,18 @@
 // Pure rule override consulted by block validation. Mirrors the Wave
 // 60.A / 60.H / 70.D / 70.E gate pattern: walk the registry per-query.
 //
-// MVP scope:
+// Scope:
 //   - ValidBlocker$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - ValidAttacker$ <filter> — same grammar; defaults to "Card" (any).
-// TODO(advanced):
-//   - ValidKeyword$ <filter> (Forge supports per-keyword-instance
-//     filtering, e.g. "only ignore islandwalk"). MVP ignores all
-//     landwalks uniformly when the gate matches.
+//
+// Wave 108 — retired the stale "ValidKeyword$" TODO(advanced) tail. A
+// corpus sweep at Wave 108 against Forge's res/cardsfolder confirmed
+// no IgnoreLandwalk static line uses a per-keyword-instance filter
+// (every corpus shape ignores all landwalk variants uniformly when
+// the blocker/attacker pair matches). Forge's
+// StaticAbilityIgnoreLandwalk likewise does not branch on a
+// ValidKeyword$ param. The blocker+attacker filter pair is the
+// durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

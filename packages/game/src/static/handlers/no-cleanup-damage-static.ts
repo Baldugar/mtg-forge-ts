@@ -31,11 +31,17 @@
 // (clearsDamageInCleanup in wave70i-loyalty-gates.ts) walks the registry
 // per-query.
 //
-// MVP scope:
+// Scope:
 //   - ValidCard$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - Card.Self short-circuit honored.
-// TODO(advanced):
-//   - Source-conditional sub-filters (NoCleanupDamageFromSource$ X).
+//
+// Wave 108 — retired the stale "NoCleanupDamageFromSource$" TODO(advanced)
+// tail. A corpus sweep at Wave 108 against Forge's res/cardsfolder
+// confirmed no NoCleanupDamage static line uses a source-conditional
+// sub-filter (the "marked damage stays" mechanic is uniformly tied to
+// the affected creature, not to a particular damage source). Forge's
+// StaticAbilityNoCleanupDamage likewise does not branch on a
+// FromSource$ param. The ValidCard$ filter is the durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

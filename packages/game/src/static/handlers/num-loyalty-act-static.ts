@@ -35,14 +35,22 @@
 // The gate consumer (effectiveMaxLoyaltyActivations in
 // wave70i-loyalty-gates.ts) walks the registry per-query.
 //
-// MVP scope:
+// Scope:
 //   - ValidCard$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - NumActivations$ N — non-negative integer literal; defaults to 1
 //     when the param is omitted (matches Forge's default for the
 //     Carth-shape "+1 activation" stamp).
-// TODO(advanced):
-//   - Conditional sub-params (e.g. only when the planeswalker has
-//     starting loyalty >= K, or only on the controlling player's turn).
+//
+// Wave 108 — retired the stale "conditional sub-params" TODO(advanced)
+// tail. A corpus sweep at Wave 108 against Forge's res/cardsfolder
+// confirmed no NumLoyaltyAct static line carries a conditional gate
+// (every corpus card stamps the +N activation unconditionally; Carth /
+// Chain Veil / Oath of Teferi all activate continuously while on the
+// battlefield, with controller-side scoping handled via ValidCard$
+// rather than a turn-side conditional). Forge's
+// StaticAbilityNumLoyaltyAct likewise does not branch on a turn-side
+// or starting-loyalty conditional. The ValidCard$ + NumActivations$
+// pair is the durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

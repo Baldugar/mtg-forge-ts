@@ -23,14 +23,18 @@
 // Routing: ruleChanging per MODE_TO_CATEGORY (overrides the canonical
 // surveil count rather than gating an action).
 //
-// MVP scope:
+// Scope:
 //   - ValidPlayer$ <filter>  → buildPlayerPredicate (You / Opponent /
 //                              Player / Any, Wave 50 grammar).
 //   - Amount$ N              → integer additive modifier; defaults
 //                              to 1 when omitted.
-// TODO(advanced):
-//   - X-expression parsing on Amount$ for SVar-driven modifiers (the
-//     corpus contains only literal integers today).
+//
+// Wave 108 — retired the stale "X-expression Amount$" TODO(advanced)
+// tail. A corpus sweep at Wave 108 against Forge's res/cardsfolder
+// confirmed every SurveilNum static line uses a literal integer in
+// Amount$ (no SVar-driven dynamic modifier exists in printed cards).
+// Forge's StaticAbilitySurveilNum reads the param via getInteger
+// directly. The literal-integer Amount$ is the durable contract.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import {
   StaticHandler,

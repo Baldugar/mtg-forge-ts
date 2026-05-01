@@ -19,10 +19,16 @@
 //                                 cost is unpayable for the matched seat;
 //                                 SP4-scope follow-up — MVP gates the
 //                                 effect path).
-//   - damageColorOverride    → action/game-action.ts damage (future:
-//                                 stamp the DamageDealt event payload's
-//                                 color slot once that schema lands.
-//                                 TODO(advanced) — see static handler).
+//   - damageColorOverride    → action/game-action.ts damage path; the
+//                                 helper is consulted at the consumer
+//                                 site (CoP:Red, protection-from-color
+//                                 target gates) rather than via a
+//                                 first-class color slot on the
+//                                 DamageDealt event. Wave 108 retired
+//                                 the prior "future event-color slot"
+//                                 narrative tail (no corpus consumer
+//                                 needs the field; the helper is the
+//                                 durable contract).
 //
 // Why standalone helpers (not methods on Game / Game.flags): mirrors
 // Wave 60.A / 60.H / 70.D / 70.E / 70.F / 70.I / 70.J / 70.K / 70.M /

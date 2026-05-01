@@ -36,12 +36,18 @@
 // (positive permission gate, registry-walk shape — same shape as
 // CanAttackIfHaste / CanAttackDefender / CanBlockIfReach).
 //
-// MVP scope:
+// Scope:
 //   - ValidCard$ <filter>     — Wave 32 grammar via cardMatchesFilter.
 //   - Card.Self short-circuit honored.
-// TODO(advanced):
-//   - Trigger$ TrigDealDamage sub-param (some Glorybringer-shape variants
-//     fire a trigger on attack-without-tapping); MVP just suppresses tap.
+//
+// Wave 108 — retired the stale "Trigger$ TrigDealDamage" TODO(advanced)
+// tail. A corpus sweep at Wave 108 against Forge's res/cardsfolder
+// confirmed no AttackVigilance static line carries a Trigger$ param
+// (Glorybringer-shape "deals damage on exert" cards model the trigger
+// as a separate T:Mode$ Attacks line, not as a sub-param of the
+// vigilance static). Forge's StaticAbilityAttackVigilance likewise
+// does not branch on a Trigger$ param. The ValidCard$ filter is the
+// durable contract.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {

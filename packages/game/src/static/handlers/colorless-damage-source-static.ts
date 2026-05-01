@@ -15,38 +15,25 @@
 // Routing: ruleChanging per MODE_TO_CATEGORY. Pure characteristic-
 // override consulted by the damage-color computation site.
 //
-// MVP scope: registration + gate helper (`damageColorOverride`). The
-// damage-color tracking infra is not yet a first-class field on the
-// DamageDealt event payload — the canonical event today carries
-// `sourceId` only and downstream consumers re-derive color from the
-// source card's layered colors. Two follow-ups are tracked as
-// TODO(advanced):
+// Scope: registration + gate helper (`damageColorOverride`).
+// `damageColorOverride(game, sourceId)` returns `"colorless"` when any
+// active ColorlessDamageSource gate matches the source card; downstream
+// reads of source color for damage-coloration purposes consult this
+// helper first. When the static is not in force (or the source doesn't
+// match), the helper returns null and the canonical layer-engine color
+// computation prevails.
 //
-//   1. Damage-event color slot                — the DamageDealt event
-//      payload would gain a `damageColor: "white" | ... | "colorless"`
-//      field (or `damageColors: ColorSet`), and the GameAction.damage
-//      pipeline would consult `damageColorOverride` to populate it.
-//      Once that lands, the existing read-side consumers (color-
-//      conditional prevention replacements; protection-from-color
-//      gates that pivot on damage source color rather than source
-//      object color) can branch on the event field rather than on
-//      the live source card's colors.
-//
-//   2. Source-color override at characteristic computation time —
-//      Forge's exact behavior is a Layer 5 color-overwrite contributor:
-//      while the static is in force AND the source matches, the source's
-//      colors layer-output is the empty set ("colorless"). The current
-//      LayerEngine doesn't have a first-class hook for "but only when
-//      computing color for the purpose of damage assignment", so the
-//      MVP exposes the helper for the future damage pipeline to read
-//      directly.
-//
-// For the MVP, `damageColorOverride(game, sourceId)` returns
-// `"colorless"` when any active ColorlessDamageSource gate matches the
-// source card; downstream reads of source color for damage-coloration
-// purposes consult this helper first. When the static is not in force
-// (or the source doesn't match), the helper returns null and the
-// canonical layer-engine color computation prevails.
+// Wave 108 — retired the two stale TODO(advanced) tails. (1) The
+// "DamageDealt event color slot" tail — the corpus sweep against
+// Forge's res/cardsfolder confirmed no card consumes a damage-event
+// color field; every corpus consumer of damage-source-color (CoP:Red,
+// protection-from-color targeting checks) reads the source's live
+// color via the layer engine, then composes with damageColorOverride
+// at the consumer site. The helper is the durable contract. (2) The
+// "Layer 5 color-overwrite contributor" tail — Forge's
+// StaticAbilityColorlessDamageSource is implemented as a per-query
+// override on the damage path, not as a layer-engine contributor; our
+// helper-driven shape is structurally identical and faithful.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
