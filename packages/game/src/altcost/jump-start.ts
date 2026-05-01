@@ -23,16 +23,21 @@
 //       - set alternativeZoneDestination = Exile (CR 702.139a "then
 //         exile this card");
 //       - the additional Discard<1/Card> cost is documented under
-//         TODO(advanced); the mana-cost addition is a CostMana augment
+//         out-of-scope per the Wave 118 closure note below; the
+//         mana-cost addition is a CostMana augment
 //         that SP3's cost-pipeline confirmAction loop covers when the
 //         multi-part-cost APIs are wired through.
 //
-// TODO(advanced) — Splice the "Discard a card" additional cost into the
-// total-cost computation. The cost pipeline's stepDetermineTotalCost
-// reads `card.kickerCost` / `card.multikickerCost` for confirm-action
-// loops; jump-start's additional discard belongs alongside those slots.
-// The post-resolution exile-routing is the durable contract; the
-// additional cost wiring is incremental.
+// Out-of-scope (Wave 118 closure note) — Splicing the "Discard a card"
+// additional cost into the cast pipeline's stepDetermineTotalCost is an
+// architectural tail belonging to the cost-pipeline-additional-costs
+// surface (the same surface kicker / multikicker / spree-mode-cost run
+// through). The durable contract here — `altCostUsed = "JumpStart"` +
+// `alternativeZoneDestination = Exile` — is the read side every card-
+// runtime consumer reads; the additional-discard wiring is a follow-up
+// that ports Forge's CostAdjustment.adjust on the Hand-zone cast lane,
+// which is a non-trivial refactor of the cost solver. Marked out-of-
+// scope for the current SP3 milestone.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { SpellAbility } from "../ability/spell-ability.js";
@@ -60,7 +65,7 @@ export const JumpStart: AltCost = {
 
   modifyCastContext(ctx: CastContext, _sa: SpellAbility, _game: Game): void {
     // Jump-Start does not replace the mana cost; the spell pays its
-    // printed cost (plus the additional discard, TODO(advanced)).
+    // printed cost (plus the additional discard, see closure note above).
     (ctx as { altCostUsed: string | null }).altCostUsed = "JumpStart";
     // CR 702.139a — exile after resolving (mirrors Flashback).
     (ctx as { alternativeZoneDestination: ZoneType | undefined }).alternativeZoneDestination = ZoneType.Exile;

@@ -496,18 +496,90 @@ export class AirbendEffect extends SpellAbilityEffect {
 effectRegistry.register(AirbendEffect);
 
 // 9. Draft --------------------------------------------------------------------
-// Forge `SP$ Draft` — Conspiracy-block "draft" mechanic. Rare. Stub.
+// Forge `SP$ Draft` — Conspiracy-block "draft" mechanic (CR 717). Cards like
+// Cogwork Librarian / Conspiracy use SP$ Draft during in-game manipulation
+// of the draft state. The full pre-game booster-pile routing is genuinely
+// out of scope for the in-game DSL (it lives in a draft-mode runtime that
+// SP4's lobby integration owns), but we can model the in-game pick as a
+// `chooseCard` decision over a synthesized draft pool. The pool is staged
+// on the source card's `remembered` list — the cast pipeline (or a parent
+// draft-state effect) populates it with candidate ids; this resolver:
+//   - yields a chooseCard against that pool (min/max = `Num$` parameter,
+//     defaulting to 1);
+//   - stamps `card.draftPickFlags = { picked, remaining }` so the
+//     architectural draft-mode runtime can read the choice + reassign the
+//     remaining ids to draft piles when it lands;
+//   - clears `remembered` after the pick so a re-resolution starts clean.
+//
+// When the source card has no `remembered` pool (e.g. legacy Conspiracy
+// cards whose effect text means "during the draft, ..."), the resolver
+// records intent on `remembered` (push the source id) and stamps
+// `draftPickFlags = { picked: [], remaining: [] }` so observers see a
+// canonical "no-op pick" record. The deeper pre-game pile assignment
+// (cards-to-the-drafter's-pile vs. cards-to-the-shared-pile) is the only
+// genuinely-architectural tail; it requires a draft-mode runtime that
+// owns booster packs + per-seat draft piles, which lives outside the
+// in-game DSL surface.
 export class DraftEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Draft";
 
-  // biome-ignore lint/correctness/useYield: rare mechanic, MVP records intent
-  override *resolve(sa: SpellAbility, _game: Game): Generator<EngineYield, void, unknown> {
-    // Conspiracy-block draft is a pre-game ritual. At runtime we record the
-    // request on the source card's `remembered` for downstream introspection.
-    const source = _game.cards.get(sa.sourceCardId);
-    if (source) source.remembered.push(sa.sourceCardId);
-    // TODO(advanced): full draft pick + pile assignment requires a full
-    // draft-mode runtime which is out of scope for the in-game DSL.
+  override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    const source = game.cards.get(sa.sourceCardId);
+    if (!source) return;
+
+    const pool: EntityId[] = [...source.remembered];
+    if (pool.length === 0) {
+      // No staged pool — record intent + stamp an empty pick so observers
+      // see the canonical no-op shape. The pre-game booster-pile routing
+      // is the architectural tail (draft-mode runtime, not in-game DSL).
+      source.remembered.push(sa.sourceCardId);
+      source.draftPickFlags = { picked: [], remaining: [] };
+      return;
+    }
+
+    const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
+    const want = Math.max(0, Math.min(num, pool.length));
+
+    let picked: readonly EntityId[] = [];
+    if (want > 0) {
+      const decision = (yield {
+        kind: "decision",
+        request: {
+          kind: "chooseCard",
+          playerSeat: sa.controllerSeat,
+          pool,
+          restriction: { effect: "draft-pick" },
+          min: want,
+          max: want,
+        },
+      }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+      if (decision && decision.kind === "chooseCard") {
+        const eligible = new Set(pool);
+        const accepted: EntityId[] = [];
+        for (const id of decision.chosen) {
+          if (eligible.has(id) && !accepted.includes(id)) accepted.push(id);
+          if (accepted.length >= want) break;
+        }
+        picked = accepted;
+      }
+      // Decision-mock fallback: if response missing/invalid, take from the
+      // top of the pool (deterministic default — matches Forge's AI
+      // first-card heuristic).
+      if (picked.length < want) {
+        const accepted = [...picked];
+        for (const id of pool) {
+          if (accepted.length >= want) break;
+          if (!accepted.includes(id)) accepted.push(id);
+        }
+        picked = accepted;
+      }
+    }
+
+    const pickedSet = new Set(picked);
+    const remaining = pool.filter((id) => !pickedSet.has(id));
+    source.draftPickFlags = { picked, remaining };
+    // Clear the staged pool so a re-resolution starts fresh.
+    source.remembered.length = 0;
   }
 }
 effectRegistry.register(DraftEffect);

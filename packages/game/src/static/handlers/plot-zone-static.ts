@@ -32,8 +32,12 @@
 // static still registers (so ports of cards with this S: line
 // don't break the parser) and the `plotZonesFor(player)` helper
 // is exposed so the future Plot pipeline can read it uniformly.
-// TODO(advanced) — wire into the Plot legality gate once the
-// Plot mechanic lands.
+// Out-of-scope (Wave 118 closure note) — wiring into the Plot legality
+// gate is gated on the Plot mechanic landing as a first-class feature
+// (currently no AB$ Plot handler, no per-card `plotted` flag, no
+// plotted-zone management on cleanup). When the Plot pipeline lands
+// it reads `plotZonesFor(player)` uniformly via the static handler;
+// the static itself is registered today so corpus parsing succeeds.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import {

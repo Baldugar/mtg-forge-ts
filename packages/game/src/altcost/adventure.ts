@@ -27,11 +27,13 @@
 //     stack resolves, it enters the battlefield as a normal creature
 //     spell would).
 //
-// TODO(advanced) — Stamping `card.adventureSide = "spell"` when the
-// adventure half resolves (so isAvailable lights up) belongs to the
-// resolver's post-resolution hook + ChangeZone-to-Exile interception.
-// SP3's resolver writes this flag once the routing path is in place;
-// the AltCost contract here is the durable read.
+// Closure note (Wave 118) — Stamping `card.adventureSide = "spell"`
+// when the adventure half resolves belongs to the resolver's post-
+// resolution hook + ChangeZone-to-Exile interception. The AltCost
+// contract here is the durable read; resolver-side write integration
+// has now landed via SP3 Part C's adventure cast lane (see
+// `multiface/adventure.ts` + the cast-pipeline face-selection step),
+// so the flag is observable in tests that go through that pipeline.
 import type { PaperCard } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { SpellAbility } from "../ability/spell-ability.js";

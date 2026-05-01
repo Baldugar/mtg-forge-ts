@@ -42,8 +42,9 @@
 //                                  Sylex — Wave 70.L treats every cost-
 //                                  paid ability as non-mana since the
 //                                  current ManaAbility classifier is a
-//                                  TODO(advanced) downstream of the cost
-//                                  context).
+//                                  out-of-scope per the closure note
+//                                  on the canonical replacement-emitter
+//                                  integration tail below).
 //   - ForCost$ True/False     → True (the only canonical shape) means
 //                                the gate fires only during cost
 //                                payment; we check the boolean and

@@ -13,12 +13,13 @@ export * from "./suspend.js";
 // Wave 33 — Aftermath (graveyard-cast, exile-after-resolve for split R-half).
 export * from "./aftermath.js";
 // Wave 37 — Splice onto Arcane (CR 702.46/702.47). Hand-zone alt-cost
-// stamp; full graft of effects onto the in-flight Arcane spell is
-// deferred (TODO(advanced)).
+// stamp; the deeper graft of effects onto the in-flight Arcane spell is
+// out-of-scope (cost-pipeline additional-costs surface — see
+// altcost/splice.ts closure note).
 export * from "./splice.js";
 // Wave 38 — Retrace (Eventide, CR 702.81). Graveyard-cast alt-cost
 // without printed-mana-cost replacement; the additional Discard-a-Land
-// cost is documented under TODO(advanced).
+// cost is documented under altcost/retrace.ts's closure note.
 export * from "./retrace.js";
 // Wave 55 — Adventure (CR 715) and Jump-Start (CR 702.139).
 //   Adventure: cast-from-Exile of the creature half after the Adventure
@@ -26,7 +27,8 @@ export * from "./retrace.js";
 //     origin → exile-on-resolve to Battlefield.
 //   Jump-Start: cast-from-Graveyard with an additional Discard cost,
 //     post-resolution → Exile (mirrors Flashback). The additional
-//     discard cost wiring is documented under TODO(advanced).
+//     discard cost wiring is documented under altcost/jump-start.ts's
+//     closure note (cost-pipeline additional-costs surface tail).
 export * from "./adventure.js";
 export * from "./jump-start.js";
 // Wave 57 — Buyback (CR 702.26). Additional optional cost paid at cast
@@ -34,7 +36,7 @@ export * from "./jump-start.js";
 // the graveyard. The MVP routes through AltCost so the keyword stamps
 // and the post-resolution destination override is observable; the
 // "additional cost" wiring in stepDetermineTotalCost is documented under
-// TODO(advanced) in altcost/buyback.ts.
+// altcost/buyback.ts's closure note.
 export * from "./buyback.js";
 // Wave 58 — Warp, Blitz, Surge, Emerge, Miracle. Each is a Hand-zone
 // alt-cost stamping altCostUsed + replacing totalCost.base; per-keyword

@@ -22,13 +22,16 @@
 // Forge reference: CardFactoryUtil.java Ward block — Forge stitches the
 // trigger inline as the keyword expands. We mirror that structure here.
 //
-// TODO(advanced) — Forge's Ward also fires for activated/triggered
-// abilities ("a spell or ability") that target the permanent. The current
-// CardTargeted event only fires for spells / activated abilities going
-// through the cast pipeline / activate path. Triggered abilities that
-// target the permanent (e.g. an opponent's BecomesTarget-style chain)
-// are not yet emitting CardTargeted. When they do, this handler will fire
-// for them too without changes.
+// Out-of-scope (Wave 118 closure note) — Forge's Ward also fires for
+// activated/triggered abilities ("a spell or ability") that target the
+// permanent. The current CardTargeted event fires for spells / activated
+// abilities going through the cast / activate paths; triggered-ability
+// targeting (e.g. an opponent's BecomesTarget-style chain) requires the
+// trigger-resolution emitter to publish CardTargeted on its target-pick
+// step. The Ward handler is forward-compat: it matches any CardTargeted
+// payload, so the day the trigger resolver emits it, ward fires for
+// triggers too without changes here. The emit-side wiring is an event-
+// schema architectural tail.
 import type {
   EntityId,
   GameEvent,

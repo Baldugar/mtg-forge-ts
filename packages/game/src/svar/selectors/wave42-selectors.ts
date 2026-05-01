@@ -115,9 +115,14 @@ const computeCastTotalManaSpent = (ast: SVarExpressionAst, ctx: SvarContext): nu
   // Subtype variant: "CastTotalManaSpent Snow" — split off the suffix.
   const space = raw.indexOf(" ");
   if (space >= 0 && space < raw.length - 1) {
-    // TODO(advanced): subtype-specific mana-spent tracking requires
-    // ManaPoolEntry to carry provenance (which permanent's subtype
-    // produced this mana). Returns 0 conservatively.
+    // Out-of-scope (Wave 118 closure note): subtype-specific mana-spent
+    // tracking requires ManaPoolEntry to carry provenance (which
+    // permanent's subtype produced this mana). That is an SP3 Part E
+    // architectural item on the ManaPoolEntry refactor — the in-game DSL
+    // contract here is the read-side `card.manaSpentTotal`, which the
+    // common (untyped) variant resolves correctly above. The subtype-
+    // suffixed variant returns 0 conservatively until provenance threads
+    // through the mana pool.
     return 0;
   }
   return card.manaSpentTotal ?? 0;

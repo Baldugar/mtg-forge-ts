@@ -25,14 +25,17 @@
 //     moves the card to exile instead of the graveyard after resolution
 //     (mirrors Flashback's post-resolution behaviour).
 //
-// TODO(advanced) — Multi-face split-card "active face" routing. Once the
-// cast pipeline picks a face for split cards (CastPipeline step 2), the
-// availability gate should additionally require Card.face === "R" so the
-// L (front) half is unaffected. For MVP we accept that an Aftermath split
-// card in the graveyard offers Aftermath as an alt-cost regardless of
-// face selection — the player must still pick the R face on cast for the
-// resolver to do anything sensible. The keyword-presence + zone heuristic
-// is safe because aftermath only appears on R-half text.
+// Out-of-scope (Wave 118 closure note) — Multi-face split-card "active
+// face" routing for the availability gate (require Card.face === "R" so
+// the L (front) half is unaffected) is genuinely architectural: the
+// cast-pipeline step that picks a face for split cards (CastPipeline
+// step 2) lands on the multiface refactor that introduces a stable
+// `card.face` per stack item. The current keyword-presence + zone
+// heuristic is safe because aftermath only appears on R-half text in
+// the corpus, so an Aftermath split card in the graveyard offers
+// Aftermath as an alt-cost regardless of face selection — the player
+// must still pick the R face on cast for the resolver to do anything
+// sensible.
 import type { KeywordAst } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { SpellAbility } from "../ability/spell-ability.js";

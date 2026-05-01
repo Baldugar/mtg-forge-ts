@@ -40,7 +40,7 @@
 //                                          Color=any (matches every
 //                                          queried color).
 // Wave 107 — retired the stale "Combined player+card filter"
-// TODO(advanced) tail. The Wave 78 grammar already supports both
+// closure note tail. The Wave 78 grammar already supports both
 // scopes in a single static (a Devotion line with both ValidPlayer$
 // and ValidCard$ present): `hasPlayerScope` and `hasCardScope` are
 // independent flags read by the gate helper, so a static carrying

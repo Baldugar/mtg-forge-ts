@@ -669,6 +669,20 @@ export class Card {
         readonly svarName: string;
       }>
     | undefined = undefined;
+  // Wave 118 — DraftEffect (SP$ Draft, CR 717 Conspiracy-block). Set by
+  // DraftEffect.resolve when the card resolves a `SP$ Draft` SA against a
+  // synthesized in-game draft pool (the source card's `remembered` list,
+  // representing the pile of candidate cards the cast pipeline staged for
+  // the draft pick). Holds the entity ids the controller picked plus the
+  // ids that were left for downstream pile-assignment. Read by tests and
+  // by the (architectural) draft-mode runtime when it lands; the in-game
+  // DSL surface is observable via this slot. Cleared on deactivate.
+  draftPickFlags:
+    | {
+        readonly picked: readonly EntityId[];
+        readonly remaining: readonly EntityId[];
+      }
+    | undefined = undefined;
   // Audit I-14 — CR 613.7 timestamp. Each Card carries a creation-order
   // timestamp consumed by the layer engine for tiebreaks among continuous
   // effects with the same timestamp. EntityId is monotonic at issue time

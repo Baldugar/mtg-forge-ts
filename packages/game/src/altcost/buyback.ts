@@ -14,7 +14,7 @@
 // alternative to the mana cost). The MVP wires it through the AltCost
 // surface anyway so the keyword stamps and the post-resolution routing
 // to Hand is observable for tests; the proper "additional cost" hook in
-// stepDetermineTotalCost is documented under TODO(advanced) below.
+// stepDetermineTotalCost is documented under the closure note below.
 //
 // isAvailable:
 //   - Card must be in the Hand zone (the cast originates there).
@@ -31,11 +31,14 @@
 //     routes the card back to its owner's hand after resolution.
 //   - Stamps `card.buybackPaid = true` for SVar conditional reads.
 //
-// TODO(advanced) — the cost-solver gate that adds buyback as an additive
-// optional cost (rather than a replacement) lives in the cast pipeline's
-// stepDetermineTotalCost. The MVP path here patches totalCost.base
-// directly; the precise "mana + buyback" sum is left to follow-up work
-// in the cost solver.
+// Out-of-scope (Wave 118 closure note) — the cost-solver gate that adds
+// buyback as a structurally-modeled "additional optional cost" (rather
+// than the literal-string concatenation done here) lives in the cast
+// pipeline's stepDetermineTotalCost. The MVP path here patches
+// totalCost.base directly with the additive sum, which the cost solver
+// tolerates today; the structurally-correct "mana + buyback" cost-AST
+// merge is a follow-up that ports Forge's CostAdjustment.adjust onto the
+// cost-pipeline additional-costs surface.
 import type { KeywordAst, ParamValue } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { SpellAbility } from "../ability/spell-ability.js";

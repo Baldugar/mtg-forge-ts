@@ -21,8 +21,10 @@
 //                         on a card; CanExhaust grants permission to
 //                         re-activate. The static still registers and
 //                         the helper is exposed so the future Exhaust
-//                         pipeline can read it uniformly.
-//                         TODO(advanced).
+//                         pipeline can read it uniformly. (Out-of-scope
+//                         per the closure note on can-exhaust-static.ts —
+//                         Exhaust mechanic is not yet a first-class
+//                         feature in this engine.)
 //   - ignoresShroud   → target/enumeration.ts (analogous to Wave 70.K
 //                         IgnoreHexproof bypass — when a static
 //                         matches the activator and the would-be
@@ -68,10 +70,9 @@ export const canAdaptAgain = (game: Game, cardId: EntityId): boolean => {
  * mechanic). False (the canonical default) iff no matching static is
  * in force.
  *
- * Read-side wiring is TODO(advanced) until Exhaust lands as a
- * keyword + activation gate; the static still registers and the
- * helper is exposed so the future Exhaust pipeline can read it
- * uniformly.
+ * Read-side wiring is out-of-scope until Exhaust lands as a first-class
+ * keyword + activation gate; the static still registers and the helper
+ * is exposed so the future Exhaust pipeline can read it uniformly.
  *
  * Forge equivalent: StaticAbilityExhaust.anyWithExhaust(...).
  */

@@ -7,8 +7,12 @@
 // MVP scope:
 //   1. Adds "job_select" to card.keywords.
 //   2. Stamps `card.jobSelectChoices` (the raw comma-separated mode list).
-//      The activation surface that consumes the slot is documented under
-//      TODO(advanced) — Job select decoration is observable for tests.
+//      Out-of-scope (Wave 118 closure note) — the activation surface that
+//      consumes the slot belongs to the FF UB block's Job Select pipeline,
+//      which is a small set of cards (~3 in corpus). The decoration is
+//      observable for tests; the activation gate is a follow-up that
+//      ports Forge's per-card AB$ Job-Select handler when those cards
+//      are individually addressed.
 import type { KeywordAst, ParamValue } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";

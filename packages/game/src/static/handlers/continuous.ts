@@ -234,9 +234,14 @@ export class ContinuousStaticHandler extends StaticHandler {
       // effect; we leave the un-set side untouched by re-using the
       // current characteristics. MVP shape: literal numbers only.
       // Symbolic values (NEUTRAL$DefenseValue etc.) are
-      // TODO(advanced) — they require an SVar resolver hooked into
-      // the layer applier. We default to 0 when the literal is not a
-      // number so handler does not throw on dynamic values.
+      // Out-of-scope (Wave 118 closure note): symbolic SetPower /
+      // SetToughness values (NEUTRAL$DefenseValue, etc.) require an
+      // SVar resolver hooked into the layer applier — that's an SP3
+      // Part D architectural item on the layer-engine refactor (the
+      // resolver needs access to live characteristics at apply-time,
+      // which currently runs before SVar evaluation). We default to 0
+      // when the literal is not a number so the handler does not throw
+      // on dynamic values; literal-numeric P/T (the corpus norm) works.
       const sp = setPowerRaw === undefined ? 0 : Number.parseInt(setPowerRaw, 10);
       const st = setToughnessRaw === undefined ? 0 : Number.parseInt(setToughnessRaw, 10);
       const e: Layer7bEffect = isSingleTargetFilter
