@@ -122,24 +122,25 @@ export const canSearchLibrary = (game: Game, seat: PlayerSeat): boolean => {
  * sacrifice clause likewise consult this gate before declaring the cost
  * payable.
  *
- * The optional `byPlayer` parameter is accepted for forward compatibility
- * with the CantSacrificeBy$ sub-param (TODO(advanced) — Sigarda's "except
- * by you" carve-out). MVP ignores it; all matched cards are gated
- * regardless of the sacrificing player.
+ * Wave 105 closure of the prior CantSacrificeBy$ TODO(advanced): when
+ * `byPlayer` is supplied (the seat performing the sacrifice), each
+ * matched static's `carveOutMatches` predicate is consulted; if it
+ * returns true, the static does NOT block this sacrifice (Sigarda's
+ * "except by you" carve-out — Sigarda's controller can still sacrifice
+ * their own creatures, but opponent-driven sacrifice triggers are
+ * blocked). When `byPlayer` is omitted (legacy callers), the carve-out
+ * cannot fire and the gate uniformly blocks (preserves prior behavior).
  */
-export const canBeSacrificed = (
-  game: Game,
-  cardId: EntityId,
-  // Forward-compat slot for CantSacrificeBy$ sub-param (Sigarda's
-  // "except by you" carve-out). MVP ignores it; renamed to `_byPlayer`
-  // to avoid TS6133 unused-parameter complaints while keeping the
-  // public 3-arity signature stable for callers.
-  _byPlayer?: PlayerSeat,
-): boolean => {
+export const canBeSacrificed = (game: Game, cardId: EntityId, byPlayer?: PlayerSeat): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantSacrifice");
   for (const s of statics) {
     const payload = s.describe() as CantSacrificePayload;
-    if (payload.cardMatches(cardId, game)) return false;
+    if (!payload.cardMatches(cardId, game)) continue;
+    // Wave 105 — CantSacrificeBy$ carve-out. The static does NOT block
+    // when the sacrificing seat is exempted. We need an explicit seat
+    // (legacy callers omit byPlayer → carve-out cannot fire).
+    if (byPlayer !== undefined && payload.carveOutMatches?.(byPlayer)) continue;
+    return false;
   }
   return true;
 };

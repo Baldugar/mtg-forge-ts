@@ -8,11 +8,13 @@
 // Routing: cantMustMay static, restriction kind = minMaxBlocker. The
 // payload field on Restriction holds { min, max }; consumers cast.
 //
-// Wave 50 MVP — registration + describe() shape. Plumbing block-count
-// enforcement against an active combat declaration is `// TODO(advanced)`
-// for the combat-handler block-restriction layer; the current
-// validateBlockDeclarations sweep already handles menace's 2+ minimum,
-// and cards needing arbitrary min/max are not in the SP3 flagship corpus.
+// Wave 50 — registration + describe() shape. Wave 105 closure of the
+// prior TODO(advanced): the combat-handler validator
+// (validateBlockDeclarations) now walks active MinMaxBlocker statics
+// per-attacker and rejects block declarations whose blocker set falls
+// below `min` (when any blocker was declared — "if able" gate) or
+// exceeds `max`. Tromokratis ("must be blocked by 3+ if able") and
+// Coalition Honor Guard analogues are honored.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Restriction } from "../../statics/cant-must-may.js";
 import {

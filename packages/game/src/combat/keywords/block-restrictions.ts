@@ -231,5 +231,43 @@ export const validateBlockDeclarations = (
       if (!result.legal) results.push(result);
     }
   }
+  // Wave 105 closure of the prior MinMaxBlocker TODO(advanced): walk the
+  // active MinMaxBlocker statics. For each matched attacker, the set of
+  // blockers declared against it must satisfy [min, max]. Set-level
+  // shape (not per-pairing): a Tromokratis with min=3 rejects 0/1/2-
+  // blocker declarations but stays valid when blockers === 0 (i.e.,
+  // the attacker is unblocked — CR 509.1g "must be blocked by at least
+  // N if able"; "if able" = if any are declared, ≥N must be).
+  const minMaxStatics = game.staticEffectRegistry.byMode("MinMaxBlocker");
+  if (minMaxStatics.length > 0) {
+    for (const s of minMaxStatics) {
+      const r = s.describe() as {
+        readonly subjectFilter?: (id: EntityId, game: Game) => boolean;
+        readonly payload?: { readonly min: number; readonly max: number };
+      };
+      const subj = r.subjectFilter;
+      const payload = r.payload;
+      if (!subj || !payload) continue;
+      for (const [attackerId, blockers] of byAttacker.entries()) {
+        if (!subj(attackerId, game)) continue;
+        const n = blockers.length;
+        // CR 509.1g — "if able" gate: zero blockers means unblocked,
+        // which is legal. The min only fires when ≥1 blocker was
+        // declared (otherwise the attacker simply isn't being blocked).
+        if (n > 0 && n < payload.min) {
+          results.push({
+            legal: false,
+            reason: `MinMaxBlocker min ${payload.min} not met (${n} declared)`,
+          });
+        }
+        if (n > payload.max) {
+          results.push({
+            legal: false,
+            reason: `MinMaxBlocker max ${payload.max} exceeded (${n} declared)`,
+          });
+        }
+      }
+    }
+  }
   return results;
 };

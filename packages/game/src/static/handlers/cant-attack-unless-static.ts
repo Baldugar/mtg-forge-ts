@@ -39,14 +39,18 @@
 //
 // MVP scope:
 //   - ValidCard$ <filter>          → cardMatchesFilter (Wave 32 grammar).
-//   - Target$ <player/pw filter>   → currently surfaced on payload only;
-//                                    the combat sweep filters on subjectId.
+//   - Target$ <player/pw filter>   → Wave 105: applied at the
+//                                    `canAttackUnlessPaid` helper. Default
+//                                    is "all defenders" (the cantAttack
+//                                    restriction surfaces uniformly).
+//                                    Propaganda's "attacking you" carve-
+//                                    out maps Target$ You → only the
+//                                    controller-of-static defender side
+//                                    triggers the cost.
 //   - Cost$ <Forge cost string>    → captured as metadata (TODO: cost-pay).
 // TODO(advanced):
-//   - Full cost-payment dialog at attack-declaration time.
-//   - Target$ filter applied at the validation site (currently the MVP
-//     denies attack to ANY defender on a match — the unless-cost is
-//     unpaid so the carve-out doesn't fire either way).
+//   - Full cost-payment dialog at attack-declaration time (pays the Cost$
+//     so canAttackUnlessPaid can return true again).
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { Restriction } from "../../statics/cant-must-may.js";

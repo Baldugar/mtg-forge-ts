@@ -52,7 +52,8 @@ export class Player {
   // active `S:Mode$ StartingHandSizeMod | ValidPlayer$ <filter> |
   // Amount$ +/-N` statics on activate. The game-start drawing logic
   // (drawStartingHand / mulligan) reads this when computing the
-  // effective opening hand size; mid-game changes are no-ops. Multiple
+  // effective opening hand size via `effectiveStartingHandSize(player,
+  // rules)` (Wave 105 — game-start integration helper). Multiple
   // active statics stack additively. Default 0.
   startingHandSizeMod = 0;
   // Audit I-12 — per-seat loss flag, set by SbaEngine.markPlayerLost when
@@ -138,3 +139,27 @@ export class Player {
     };
   }
 }
+
+/**
+ * Wave 105 — Game-start helper. Returns the effective opening hand size
+ * for `player` after layering active `S:Mode$ StartingHandSizeMod` statics
+ * onto the rules-default starting hand size. Closes the prior
+ * starting-hand-size-mod TODO(advanced) for game-start integration.
+ *
+ * Inputs:
+ *   - `baseStartingHandSize` is the rules-default (typically 7 from
+ *     `GameRules.startingHandSize`). Pass it explicitly so the helper has
+ *     no hidden coupling to a specific rules accessor.
+ *   - `player.startingHandSizeMod` is the per-player accumulator stamped
+ *     by `StartingHandSizeModStaticHandler` on every active static-match.
+ *     Multiple active statics stack additively.
+ *
+ * Floor: the canonical CR contract caps the minimum at 0 — a player can
+ * never have a negative opening-hand-size requirement, so the result is
+ * `Math.max(0, base + mod)`. (Yawgmoth's-Bargain-style emblem with
+ * Amount$ -7 reduces a 7-card opening hand to zero, not to -7.)
+ */
+export const effectiveStartingHandSize = (player: Player, baseStartingHandSize: number): number => {
+  const mod = player.startingHandSizeMod ?? 0;
+  return Math.max(0, baseStartingHandSize + mod);
+};

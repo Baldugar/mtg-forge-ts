@@ -19,9 +19,12 @@
 //   (`drawStartingHand` / `mulligan` / similar) consults the field
 //   when computing the effective opening hand size.
 //
-//   Since the canonical game-start path is not yet a single function
-//   in our codebase (most tests stage hands directly), the MVP-scope
-//   contract is: stamp the field. Game-start integration → TODO(advanced).
+//   Wave 105 closure of the prior TODO(advanced) for game-start
+//   integration: `effectiveStartingHandSize(player, base)` (player.ts)
+//   layers the per-player accumulator onto the rules-default starting
+//   hand size with a floor at 0. Game-start drawing logic should call
+//   that helper rather than reading `rules.startingHandSize` directly,
+//   so emblems / commanders / mulligan-modifiers compose correctly.
 //
 // Routing: ruleChanging category. The static stamps a per-player slot
 // that the game-start drawing logic reads. The describe() payload

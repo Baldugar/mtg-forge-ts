@@ -27,13 +27,25 @@
 // MVP scope:
 //   - ValidCard$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - Card.Self short-circuit honored (sourceCardId === cardId).
+//   - Wave 105 — CantSacrificeBy$ <player-filter> — "except by you" carve-out.
+//     The sacrifice call site (GameAction.sacrifice / canBeSacrificed) passes
+//     the sacrificing seat to the gate; if the seat matches the carve-out
+//     filter, the gate does NOT fire (Sigarda lets you sacrifice your own
+//     creatures normally, but blocks sacrifice triggered by spells/abilities
+//     an opponent controls). Default empty → gate fires for every player.
 // TODO(advanced):
-//   - CantSacrificeBy$ <player-filter>     — "except by you" carve-out.
 //   - ValidCause$ <SpellAbility filter>    — Sigarda's "spells/abilities
 //                                            opponents control" sub-clause.
 //   - ForCost$ True/False                  — distinguishes cost-driven
 //                                            vs. effect-driven sacrifice.
-import type { EntityId, ParamValue, ReplacementAbility, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import type {
+  EntityId,
+  ParamValue,
+  PlayerSeat,
+  ReplacementAbility,
+  StaticAbility,
+  StaticAst,
+} from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import type { ReplacementGenPayload } from "../../statics/replacement-generating.js";
 import {
@@ -42,10 +54,16 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface CantSacrificePayload extends ReplacementGenPayload {
   readonly cardMatches: (cardId: EntityId, game: Game) => boolean;
+  /**
+   * Wave 105 — true iff the sacrificing seat is exempted by the static's
+   * `CantSacrificeBy$` filter (the gate does NOT fire for that seat). Default
+   * always-false (no carve-out → gate fires for every player).
+   */
+  readonly carveOutMatches: (seat: PlayerSeat) => boolean;
 }
 
 export class CantSacrificeStaticHandler extends StaticHandler {
@@ -56,10 +74,20 @@ export class CantSacrificeStaticHandler extends StaticHandler {
     const validCardRaw = literalRaw(params.ValidCard) ?? "Card";
     const cardPred = buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
 
+    // Wave 105 — CantSacrificeBy$ carve-out. When absent, no seat is
+    // exempted (the carveOutMatches predicate returns false for every
+    // seat → the gate fires uniformly).
+    const carveOutRaw = literalRaw(params.CantSacrificeBy);
+    const carveOutPred =
+      carveOutRaw !== undefined && carveOutRaw.length > 0
+        ? buildPlayerPredicate(carveOutRaw, ctx.controllerSeat)
+        : () => false;
+
     const payload: CantSacrificePayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       cardMatches: (cardId, game) => cardPred(cardId, game),
+      carveOutMatches: carveOutPred,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

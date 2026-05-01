@@ -73,23 +73,87 @@ export const canBeTargetedBy = (game: Game, cardId: EntityId, ctx: TargetingCont
  * treats the Unless cost as unpaid by default — so "false" means the
  * attack is gated until full cost-payment integration lands.
  *
- * The optional `defenderHint` reserved for forward-compat with the
- * Target$ filter (Propaganda's "attacking you" carve-out). Renamed to
- * `_defenderHint` to suppress TS6133 unused-parameter complaints
- * while keeping the public 3-arity signature stable.
+ * Wave 105 closure of the prior Target$ TODO(advanced): when `defenderHint`
+ * is supplied AND the static carries a `Target$` filter, the gate fires
+ * only when the hinted defender matches the filter (Propaganda's
+ * "attacking you" — the cost applies only to attacks targeting You; an
+ * attack targeting an opponent's planeswalker bypasses the gate).
+ * `defenderHint` is a `PlayerSeat` for player-defenders or an `EntityId`
+ * for planeswalker / battle defenders. When omitted, the gate fires
+ * uniformly (preserves prior behaviour for callers that don't yet thread
+ * a defender hint).
+ *
+ * Filter shapes recognised on Target$ (the ones the corpus uses):
+ *   - "You"  / "Player.YouCtrl"   → only the static's controller as the
+ *                                    defender player. The classic
+ *                                    Propaganda shape.
+ *   - "Opponent" / "Player.Opponent" / "Player.OppCtrl"
+ *                                  → only an opponent of the static's
+ *                                    controller as the defender player.
+ *   - Any other token              → conservative fallback: the gate
+ *                                    fires uniformly (same as no
+ *                                    `defenderHint`).
  */
 export const canAttackUnlessPaid = (
   game: Game,
   attackerId: EntityId,
-  _defenderHint?: EntityId | PlayerSeat,
+  defenderHint?: EntityId | PlayerSeat,
 ): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantAttackUnless");
   for (const s of statics) {
     const r = s.describe() as Restriction;
     const payload = r.payload as CantAttackUnlessPayload | undefined;
     if (payload === undefined || payload.kind !== "cantAttackUnlessExtended") continue;
-    if (payload.cardMatches(attackerId, game)) return false;
+    if (!payload.cardMatches(attackerId, game)) continue;
+    // Wave 105 — Target$ filter narrows the defender side. Skip the
+    // narrowing when the static's controller is null (the carve-out is
+    // controller-relative; without a controller we fall back to firing
+    // uniformly).
+    if (
+      payload.targetFilterRaw !== undefined &&
+      defenderHint !== undefined &&
+      s.controllerSeatAtReg !== null
+    ) {
+      const matches = matchesDefenderFilter(payload.targetFilterRaw, defenderHint, s.controllerSeatAtReg);
+      if (!matches) continue;
+    }
+    return false;
   }
+  return true;
+};
+
+/**
+ * Wave 105 — minimal Target$ defender-filter resolver for
+ * CantAttackUnless. Recognises the canonical "You" / "Opponent" /
+ * "Player.{YouCtrl,OppCtrl}" tokens. A card-id defender (planeswalker /
+ * battle) is treated as belonging to its controller — we don't attempt
+ * the full Wave 32 filter grammar against arbitrary card-id defenders
+ * here (the corpus shape is "attacking you" only); any unrecognised
+ * shape returns true (gate fires uniformly).
+ */
+const matchesDefenderFilter = (
+  raw: string,
+  defenderHint: EntityId | PlayerSeat,
+  staticControllerSeat: PlayerSeat,
+): boolean => {
+  // PlayerSeat narrowing: numeric primitive (mkPlayerSeat brand) — both
+  // seat ids and entity ids are numeric brands so we can't discriminate
+  // by typeof; the consumer convention is "PlayerSeat for player
+  // defenders, EntityId for planeswalker/battle defenders". We rely on
+  // the runtime caller to pass the correct branded value.
+  const seatToCheck: PlayerSeat = defenderHint as PlayerSeat;
+  if (raw === "You" || raw === "Player.YouCtrl" || raw === "Player.You") {
+    return seatToCheck === staticControllerSeat;
+  }
+  if (
+    raw === "Opponent" ||
+    raw === "Player.Opponent" ||
+    raw === "Player.OppCtrl" ||
+    raw === "Player.NonActive"
+  ) {
+    return seatToCheck !== staticControllerSeat;
+  }
+  // Unrecognised → fail-open (gate fires uniformly).
   return true;
 };
 

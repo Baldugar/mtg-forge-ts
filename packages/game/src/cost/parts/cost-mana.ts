@@ -177,6 +177,22 @@ export const CostMana: CostPart = {
       // pips are NOT counted as spend (CR 107.1f) — they pay life.
       const priorTotal = sourceCard.manaSpentTotal ?? 0;
       sourceCard.manaSpentTotal = priorTotal + plan.consumed.length;
+      // Wave 105 — Adamant (CR 702.137a): "If at least three mana of the
+      // same color was spent to cast this spell, …". The per-color bucket
+      // built above already tells us how many pips of each chromatic color
+      // were spent. If any chromatic bucket reached ≥3, stamp the matching
+      // color into `adamantColor` so the conditions.ts evaluator
+      // (`Count$Adamant`) flips to true. Multiple qualifying colors keep
+      // the FIRST encountered (Forge's behavior — the printed Adamant
+      // clause names a specific color so only one slot needs to be live;
+      // the corpus has no card with two simultaneous Adamant clauses on
+      // different colors). Colorless pips do NOT satisfy Adamant.
+      for (const [col, count] of byColor) {
+        if (col !== null && count >= 3) {
+          sourceCard.adamantColor = col;
+          break;
+        }
+      }
     }
     for (const [col, amount] of byColor) {
       yield ctx.game.emitEvent(

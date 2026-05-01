@@ -35,10 +35,11 @@
 //   - Spectacle      : source card.spectacleCast === true
 //   - Freerunning    : source card.freerunningCast === true
 //
-// Flags whose state-tracking is not yet wired (Adamant, Bargain, Surge,
-// Spectacle, Freerunning) read defensively from card slots that handlers
-// stamp on payment; until those handlers exist the slot is undefined and
-// the evaluator returns false (= elseValue branch). Documented per-evaluator.
+// Flags whose state-tracking is not yet wired (Bargain, Spectacle,
+// Freerunning) read defensively from card slots that handlers stamp on
+// payment; until those handlers exist the slot is undefined and the
+// evaluator returns false (= elseValue branch). Documented per-evaluator.
+// Adamant (Wave 105) and Surge (Wave 104) are now fully wired.
 import type { SVarExpressionAst } from "@mtg-forge-ts/core";
 import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { Card } from "../../card.js";
@@ -146,11 +147,24 @@ const evalSpellmastery: FlagEvaluator = (ctx) => {
 };
 
 // Heroic is normally a trigger condition (T:Mode$ SpellCast | TargetsValid$
-// Card.Self), not a static gate. If it appears as a Count$ flag, treat as
-// always true so the surrounding effect computes its "thenValue" branch.
-// TODO(advanced): a trigger-aware Heroic that knows whether the spell currently
-// resolving targeted Self — out of scope for the SVar layer.
-const evalHeroic: FlagEvaluator = () => true;
+// Card.Self), not a static gate. The Forge-printed shape "the spell that
+// triggered this targeted me" is exactly what the trigger context already
+// records — `triggerContext.objects` is the set of cast-spell targets
+// captured at trigger fire-time. Wave 105 closure of the prior
+// TODO(advanced): when the SVar evaluator runs inside a trigger
+// resolution AND the trigger context carries a target list, we honor it
+// — Heroic fires only when the source card id is among those targets.
+// When no trigger context is supplied (the SVar is being read outside a
+// trigger fire — e.g. an effect computing a thenValue branch
+// independently), fall back to true to preserve the prior
+// always-thenValue contract; that keeps Wave-51 ternaries that don't
+// thread trigger context through working unchanged.
+const evalHeroic: FlagEvaluator = (ctx) => {
+  const tc = ctx.triggerContext;
+  if (!tc || tc.objects === undefined) return true;
+  if (ctx.sourceCardId === undefined) return true;
+  return tc.objects.includes(ctx.sourceCardId);
+};
 
 const evalKicked: FlagEvaluator = (ctx) => {
   if (ctx.sourceCardId === undefined) return false;
@@ -181,11 +195,13 @@ const evalBargain: FlagEvaluator = (ctx) => {
   return card?.bargainPaid === true;
 };
 
-// TODO(advanced): Adamant requires "spent 3 mana of the same color" tracking
-// at cost-payment time; the cost handler hasn't been wired yet so the slot
-// remains undefined → returns false. The Wave 51 ternary still works
-// (selecting elseValue), and once the Adamant cost-tracker handler stamps
-// `card.adamantColor`, this flips on automatically.
+// Wave 105 closure of the prior TODO(advanced): Adamant IS wired through
+// CostMana.pay (cost/parts/cost-mana.ts), which buckets each consumed pool
+// entry by color and stamps `card.adamantColor` whenever a chromatic bucket
+// reaches ≥3 pips (Phyrexian pips and colorless pips are correctly excluded
+// — Phyrexian pips pay life per CR 107.1f, colorless does not satisfy
+// Adamant). At Count$Adamant evaluation the slot is already live; no
+// trigger-time work needed.
 const evalAdamant: FlagEvaluator = (ctx) => {
   if (ctx.sourceCardId === undefined) return false;
   const card = ctx.game.cards.get(ctx.sourceCardId);
