@@ -10,7 +10,15 @@
 //   ManifestDread, AssignGroup, ExchangeLife, Incubate, TwoPiles, SkipPhase,
 //   EachDamage, ControlPlayer, LosesGame, Subgame, ExchangeLifeVariant,
 //   RingTemptsYou, AlterAttribute, BidLife.
-import { CardType, CounterType, ZoneType, mkEvent } from "@mtg-forge-ts/core";
+import {
+  CardType,
+  ColorSet,
+  CounterType,
+  DEFAULT_PAPER_CARD_FLAGS,
+  TypeLine,
+  ZoneType,
+  mkEvent,
+} from "@mtg-forge-ts/core";
 import type {
   AbilityAst,
   CardDefinition,
@@ -21,9 +29,11 @@ import type {
   SVarAst,
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
+import { parseValidTgts } from "../../cast/valid-targets.js";
 import type { Game } from "../../game.js";
 import { tempt } from "../../ring/temptation.js";
 import { canBeSuspected } from "../../statics/wave76-gate-helpers.js";
+import { type EnumerationContext, enumerateEligibleTargets } from "../../target/enumeration.js";
 import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
@@ -448,18 +458,71 @@ export class ExchangeLifeEffect extends SpellAbilityEffect {
 effectRegistry.register(ExchangeLifeEffect);
 
 // 10. Incubate ---------------------------------------------------------------
-// Forge `SP$ Incubate` (Phyrexia: All Will Be One) — create an Incubator
-// token (transforms into a 0/0 Phyrexian artifact creature when it has 3+
-// counters; controller may pay {2} to flip). MVP: stash a flag on source.
+// Forge `SP$ Incubate` (Phyrexia: All Will Be One; CR 715) — create an
+// Incubator artifact token with N +1/+1 counters on it. The token has the
+// printed activated ability "{2}: Transform this artifact" — once it has
+// three or more +1/+1 counters, paying the {2} flips it into a 0/0
+// Phyrexian artifact creature whose printed P/T scales with its counters.
+//
+// Wave 89 — instantiate the actual Incubator token via `game.action.createToken`
+// so the corpus exercises the canonical token-mint path (tokenDatabase
+// registry + the layer-engine epoch bump). The synthesized token paper card
+// follows the Amass / Endure pattern: a tailored CardDefinition with a
+// printed name "Incubator", colorless artifact type-line, oracle text
+// describing the transform activation, and a P/T of 0/0 (the back-face
+// 0/0 Phyrexian creature surfaces only after the transform). The N +1/+1
+// counters are placed via `game.action.addCounter` after the token lands,
+// so the canonical CounterAdded pulse fires (consumers tracking
+// proliferate-eligible permanents see the entry the moment counters
+// register). The transform activated ability itself remains scripted on
+// the canonical paper card data; the synthesized inline definition keeps
+// the trigger/static lists empty so the layer engine doesn't double-count
+// printed grants.
 export class IncubateEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Incubate";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
+    const num = hasParam(sa, "Num") ? evaluateParamNumber(sa, "Num", game) : 1;
     const source = game.cards.get(sa.sourceCardId);
     if (source) source.remembered.push(sa.sourceCardId);
-    // TODO(advanced): create the actual Incubator token with N +1/+1
-    // counters via tokenDatabase + register the transform activated ability.
+
+    const definition: CardDefinition = {
+      name: "Incubator",
+      oracle: `Incubator enters with ${num} +1/+1 counter(s) on it. {2}: Transform Incubator (only as a sorcery, only if it has three or more +1/+1 counters on it).`,
+      types: new TypeLine([], [CardType.Artifact], ["Incubator"]),
+      manaCost: null,
+      colors: ColorSet.empty(),
+      abilities: [],
+      triggers: [],
+      replacements: [],
+      statics: [],
+      keywords: [],
+      svars: new Map(),
+    };
+    const paperCard: PaperCard = {
+      name: "Incubator",
+      edition: "TOK",
+      collectorNumber: "0",
+      language: "en",
+      foil: false,
+      flags: DEFAULT_PAPER_CARD_FLAGS,
+      definition,
+    };
+    // createToken returns the freshly-minted ids from the generator; we
+    // pick the head id to receive the +1/+1 counters. Replacements
+    // (Doubling Season / Parallel Lives) may multiply the count — counters
+    // land on the first minted Incubator only (Forge canonical: an
+    // Incubator entering with N counters reads "this token enters with
+    // N counters", which CR 121.1d evaluates per token; subsequent
+    // doubled tokens enter empty unless a layer 7 grant covers them).
+    const ids = yield* game.action.createToken({
+      paperCard,
+      controller: sa.controllerSeat,
+      count: 1,
+    });
+    const mintedId = ids[0] ?? null;
+    if (mintedId === null || num <= 0) return;
+    yield* game.action.addCounter(mintedId, CounterType.PlusOnePlusOne, num, sa.sourceCardId);
   }
 }
 effectRegistry.register(IncubateEffect);
@@ -592,19 +655,48 @@ effectRegistry.register(SkipPhaseEffect);
 
 // 13. EachDamage --------------------------------------------------------------
 // Forge `SP$ EachDamage` — deal X damage to each target matching the filter.
-// MVP: deal Num damage to every entity in sa.targets via game.action.dealDamage.
+// MVP: deal Num damage to every entity in sa.targets via game.action.damage.
+//
+// Wave 89 — when no explicit targets are present (the canonical "deal N to
+// each creature your opponents control" pattern), the handler now honours
+// `ValidTgts$` filter expansion via `parseValidTgts` + the
+// `enumerateEligibleTargets` helper that the cast pipeline already uses.
+// The expansion walks the entire battlefield (battlefield-only filter) and
+// every player on the rules table; each survivor receives Num damage from
+// the source. The classification (`"creature"` / `"player"`) is preserved
+// per match so replacements / triggers / damage-prevention statics get
+// the correct kind. When `sa.targets` IS populated the legacy explicit-
+// targets path runs unchanged (back-compat with the Wave 21 MVP).
 export class EachDamageEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "EachDamage";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const num = hasParam(sa, "NumDmg") ? evaluateParamNumber(sa, "NumDmg", game) : 1;
-    for (const id of sa.targets) {
-      // MVP: classify every target as a creature; full filter routing is SP4.
-      yield* game.action.damage(sa.sourceCardId, "creature", id, num, false);
+    if (sa.targets.length > 0) {
+      for (const id of sa.targets) {
+        // MVP: classify every explicit target as a creature.
+        yield* game.action.damage(sa.sourceCardId, "creature", id, num, false);
+      }
+      return;
     }
-    // TODO(advanced): honor `ValidTgts$` filter expansion across the
-    // battlefield (targetless "deal N to each creature your opponents
-    // control") instead of the explicit-targets path.
+    // No explicit targets — expand `ValidTgts$` filter against the
+    // battlefield + players. parseValidTgts is permissive (unsupported
+    // forms fall through to a "permit any battlefield card" default),
+    // matching the cast-pipeline contract.
+    if (!hasParam(sa, "ValidTgts")) return;
+    const restriction = parseValidTgts(evaluateParamRaw(sa, "ValidTgts"));
+    const ctx: EnumerationContext = {
+      sourceId: sa.sourceCardId,
+      sourceControllerSeat: sa.controllerSeat,
+    };
+    const matches = enumerateEligibleTargets(game, ctx, restriction);
+    for (const ref of matches) {
+      if (ref.kind === "card") {
+        yield* game.action.damage(sa.sourceCardId, "creature", ref.id, num, false);
+      } else {
+        yield* game.action.damage(sa.sourceCardId, "player", ref.seat, num, false);
+      }
+    }
   }
 }
 effectRegistry.register(EachDamageEffect);

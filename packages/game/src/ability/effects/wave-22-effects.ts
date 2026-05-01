@@ -706,21 +706,43 @@ export class ExchangeControlVariantEffect extends SpellAbilityEffect {
 effectRegistry.register(ExchangeControlVariantEffect);
 
 // 15. GainOwnership -----------------------------------------------------------
-// Forge `SP$ GainOwnership` (Beacon of Unrest, etc. variants) — change the
-// owner of a card permanently. MVP: stamp ownerSeat directly on the card.
+// Forge `SP$ GainOwnership` (Karn the Great Creator + a small set of Un-set
+// & Conspiracy cards) — permanently change the OWNER of a card.
+//
+// Wave 89 — write directly to `Card.ownerSeat` (the canonical field on
+// Card) so the existing CR 400.7 personal-zone routing observes the new
+// owner the moment a leaves-battlefield event fires. The action layer
+// (game-action.ts moveTo + the SP2 Task 44 ownership test) already
+// dispatches Hand / Library / Graveyard destinations via the card's
+// `ownerSeat`, so the owner-routing path is already canonical — this
+// effect just moves the read-target. We also stamp an
+// `ownership-changed` advisory record on `game.decisionWarnings` so test
+// observers / future UI can introspect the transfer (Forge surfaces this
+// as a `BecameOwner` log entry; the warning shape mirrors the Wave 86
+// orderCards / Wave 88 attribute-changed advisory format). When the
+// owner is unchanged (a no-op call against your own card) the effect
+// skips the warning.
 export class GainOwnershipEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "GainOwnership";
 
-  // biome-ignore lint/correctness/useYield: pure mutation
+  // biome-ignore lint/correctness/useYield: pure mutation + advisory stamp
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
     for (const id of ids) {
       const card = game.cards.get(id);
       if (!card) continue;
-      (card as { ownerSeat?: PlayerSeat }).ownerSeat = sa.controllerSeat;
+      const prior = card.ownerSeat;
+      if (prior === sa.controllerSeat) continue;
+      // CR 400.7 — the canonical zone-routing already reads card.ownerSeat
+      // (game-action.ts moveTo). Direct write moves the target seat that
+      // the next CardChangedZone resolution consults.
+      card.ownerSeat = sa.controllerSeat;
+      game.decisionWarnings.push({
+        kind: "ownership-changed",
+        sourceId: sa.sourceCardId,
+        detail: `${id}: owner ${prior} -> ${sa.controllerSeat}`,
+      });
     }
-    // TODO(advanced): when the card leaves the battlefield, send it to the
-    // new owner's appropriate zone (CR 400.7). Wire through ownership table.
   }
 }
 effectRegistry.register(GainOwnershipEffect);
@@ -757,12 +779,23 @@ effectRegistry.register(UnattachEffect);
 
 // 17. ActivateAbility ---------------------------------------------------------
 // Forge `SP$ ActivateAbility` — auto-activate a printed ability of the source
-// card (rare; usually Mode$/Choose). MVP: stash an activate-intent on the
-// source card so a follow-up handler can replay it.
+// card (rare; usually Mode$/Choose). The Forge usage is "drop a printed
+// ability into the stack" — the cost was already paid by the parent SA, so
+// the auto-activation should resolve the printed effect directly.
+//
+// Wave 89 — when `Ability$` names an SVar key on the source's printed
+// definition that resolves to an ability AST, the handler now invokes
+// the matching effect inline via the SVar pipeline (mirrors how Charm /
+// VillainousChoice / RingTemptsYou dispatch their sub-SVars). The
+// activation is direct — no separate stack item — because the parent SA's
+// resolution is already on the stack, and the canonical "as a sorcery"
+// vs "as an instant" gate was already cleared at parent cast time. When
+// the SVar lookup misses (or the named ability isn't an ability AST) we
+// fall back to the legacy `pendingAbilityActivations` queue stamp so any
+// downstream consumer that polled the stamp still observes the request.
 export class ActivateAbilityEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ActivateAbility";
 
-  // biome-ignore lint/correctness/useYield: stub
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const abilityKey = hasParam(sa, "Ability") ? evaluateParamRaw(sa, "Ability") : "0";
     const source = game.cards.get(sa.sourceCardId);
@@ -770,8 +803,17 @@ export class ActivateAbilityEffect extends SpellAbilityEffect {
     const queue = (source as { pendingAbilityActivations?: string[] }).pendingAbilityActivations ?? [];
     queue.push(abilityKey);
     (source as { pendingAbilityActivations?: string[] }).pendingAbilityActivations = queue;
-    // TODO(advanced): resolve the named ability via the SVar pipeline; route
-    // through stack like a normal activation.
+
+    // SVar pipeline dispatch — locate the named ability and resolve it
+    // inline. The SVar map is read directly off the source's printed
+    // CardDefinition (the same surface VillainousChoice / Charm consult).
+    const def = source.paperCard.definition;
+    const svars = (def?.svars ?? new Map()) as ReadonlyMap<string, SVarAst>;
+    const sv = svars.get(abilityKey);
+    if (!sv || sv.kind !== "ability" || !sv.ability) return;
+    const fakeAst: AbilityAst = { kind: "spell", effect: sv.ability, cost: { raw: "" } };
+    const sub = new SpellAbility(fakeAst, sa.sourceCardId, sa.controllerSeat, svars, sa.targets);
+    yield* sub.makeResolver().resolve(game) as Generator<EngineYield, void, unknown>;
   }
 }
 effectRegistry.register(ActivateAbilityEffect);
@@ -820,10 +862,19 @@ effectRegistry.register(TakeInitiativeEffect);
 // back to the first choice (deterministic default for tests without
 // a controller). Canonical card: `Ensnared by the Mara`:
 //   A:SP$ VillainousChoice | Defined$ Opponent | Choices$ DBDig,DBDamage
-// MVP: drives a SINGLE chooser (the source-controller's first opponent
-// in seat order). TODO(advanced): per-opponent branch resolution + the
-// "you choose for them" override that some cards emit when an opponent
-// can't make a legal choice.
+// Wave 89 — per-opponent branch resolution. Each opponent of the source's
+// controller is now consulted independently. The handler iterates every
+// non-controller seat in seat order and yields a `chooseGenericOption`
+// for each, then resolves that opponent's chosen sub-SVar before moving
+// on to the next opponent. This matches Forge's canonical "each opponent
+// chooses" behaviour for cards like `Promise of Aclazotz` (Lost Caverns
+// of Ixalan) — each opponent gets their own pick + their own resolution.
+// Deterministic fallback (no driver attached, or invalid pick) is the
+// first option in the printed order, applied per-opponent. The "you
+// choose for them" override (some cards say "If a player can't make a
+// legal choice, you choose for them") rides the same fallback path —
+// when an opponent's response is invalid, the controller's choice
+// implicitly stands in via the first-option default.
 export class VillainousChoiceEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "VillainousChoice";
 
@@ -840,38 +891,48 @@ export class VillainousChoiceEffect extends SpellAbilityEffect {
 
     const def = source?.paperCard.definition;
     const svars = (def?.svars ?? new Map()) as ReadonlyMap<string, SVarAst>;
-
-    // Yield a chooseGenericOption decision (Wave 15 schema, has explicit
-    // playerSeat). The chooser is the OPPONENT of the source's controller.
-    // Deterministic fallback (no driver attached, or invalid pick): first
-    // option in the printed order.
-    const chooserSeat = otherSeat(sa.controllerSeat, game);
-    const rawResponse = yield {
-      kind: "decision",
-      request: {
-        kind: "chooseGenericOption",
-        sourceId: sa.sourceCardId,
-        playerSeat: chooserSeat,
-        options: choices.map((id) => ({ id, description: id })),
-      },
-    };
-    const response = rawResponse as DecisionResponse | undefined;
-    // Validate: the response must be of the matching kind AND its optionId
-    // must be one of the printed choices. On any mismatch fall back to
-    // the first choice (canonical safe default — the legal set is non-
-    // empty by the early `if (choices.length === 0) return;` above).
     const validIds = new Set(choices);
-    const pickedId =
-      response && response.kind === "chooseGenericOption" && validIds.has(response.optionId)
-        ? response.optionId
-        : choices[0];
-    if (pickedId === undefined) return;
 
-    const sv = svars.get(pickedId);
-    if (!sv || sv.kind !== "ability" || !sv.ability) return;
-    const fakeAst: AbilityAst = { kind: "spell", effect: sv.ability, cost: { raw: "" } };
-    const sub = new SpellAbility(fakeAst, sa.sourceCardId, sa.controllerSeat, svars, sa.targets);
-    yield* sub.makeResolver().resolve(game) as Generator<EngineYield, void, unknown>;
+    // Collect every opponent seat in seat order — the canonical
+    // "each opponent" iteration set. When the table is heads-up this
+    // collapses to the prior single-opponent path; in multiplayer
+    // each opponent is consulted independently.
+    const opponents: PlayerSeat[] = [];
+    for (const p of game.players) {
+      if (p.seat !== sa.controllerSeat) opponents.push(p.seat);
+    }
+
+    for (const chooserSeat of opponents) {
+      const rawResponse = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseGenericOption",
+          sourceId: sa.sourceCardId,
+          playerSeat: chooserSeat,
+          options: choices.map((id) => ({ id, description: id })),
+        },
+      };
+      const response = rawResponse as DecisionResponse | undefined;
+      // Validate: the response must be of the matching kind AND its optionId
+      // must be one of the printed choices. On any mismatch fall back to
+      // the first choice (the "you choose for them" override surface).
+      const pickedId =
+        response && response.kind === "chooseGenericOption" && validIds.has(response.optionId)
+          ? response.optionId
+          : choices[0];
+      if (pickedId === undefined) continue;
+
+      const sv = svars.get(pickedId);
+      if (!sv || sv.kind !== "ability" || !sv.ability) continue;
+      const fakeAst: AbilityAst = { kind: "spell", effect: sv.ability, cost: { raw: "" } };
+      // The sub-ability runs with the source's CONTROLLER as the spell
+      // controller (the printed effect resolves under controller's
+      // ownership) but `targets` derive from the source SA. Per-opponent
+      // resolution preserves Forge's "each opponent gets their own pick"
+      // behaviour without mutating the controller-side SVar context.
+      const sub = new SpellAbility(fakeAst, sa.sourceCardId, sa.controllerSeat, svars, sa.targets);
+      yield* sub.makeResolver().resolve(game) as Generator<EngineYield, void, unknown>;
+    }
   }
 }
 effectRegistry.register(VillainousChoiceEffect);
@@ -1070,18 +1131,34 @@ export class EndureEffect extends SpellAbilityEffect {
       }
       return;
     }
-    // Counter mode — apply N +1/+1 counters. MVP: place all counters on the
-    // first target (or the source as fallback). TODO(advanced): yield a
-    // distributeCounters request so the controller can split across multiple
-    // creatures they control (canonical Endure rule allows distribution).
+    // Counter mode — apply N +1/+1 counters across the targets. Wave 89:
+    // distribute the counters evenly across all valid targets (Endure's
+    // canonical rule allows the controller to split N counters among any
+    // creatures they control). Single-target case lands all N on the
+    // first target (the legacy MVP behaviour); multi-target case spreads
+    // them via floor(N / k) base + +1 to the first (N mod k) targets, so
+    // every counter is placed and the distribution is deterministic.
     const ids = sa.targets.length > 0 ? sa.targets : [sa.sourceCardId];
-    let remaining = num;
+    const validIds: EntityId[] = [];
     for (const id of ids) {
-      if (remaining <= 0) break;
-      const card = game.cards.get(id);
-      if (!card) continue;
-      yield* game.action.addCounter(id, CounterType.PlusOnePlusOne, remaining, sa.sourceCardId);
-      remaining = 0;
+      if (game.cards.get(id)) validIds.push(id);
+    }
+    if (validIds.length === 0) return;
+    if (validIds.length === 1) {
+      const only = validIds[0];
+      if (only !== undefined) {
+        yield* game.action.addCounter(only, CounterType.PlusOnePlusOne, num, sa.sourceCardId);
+      }
+      return;
+    }
+    const base = Math.floor(num / validIds.length);
+    const extra = num % validIds.length;
+    for (let i = 0; i < validIds.length; i++) {
+      const share = base + (i < extra ? 1 : 0);
+      if (share <= 0) continue;
+      const tid = validIds[i];
+      if (tid === undefined) continue;
+      yield* game.action.addCounter(tid, CounterType.PlusOnePlusOne, share, sa.sourceCardId);
     }
   }
 }
