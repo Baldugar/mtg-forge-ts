@@ -93,9 +93,62 @@ export const wouldPreventDamage = (
     for (const s of statics) {
       const payload = s.describe() as PreventDamagePayload;
       if (payload.matchesEvent(sourceId, targetKind, targetId, isCombat, game)) {
-        return true;
+        // Wave 111 — full prevention only when the matched static omits
+        // PreventionEffect$ (canonical Fog/Holy-Day shape). When a
+        // shield-count is set, the matched static prevents UP TO N rather
+        // than the full event; the consumer should call
+        // `applyPreventionShields` to compute the surviving damage.
+        if (payload.preventionEffect === undefined) return true;
       }
     }
   }
   return false;
+};
+
+/**
+ * Wave 111 — apply `PreventionEffect$ N` shields against the actual
+ * damage amount. Returns the surviving damage after walking every
+ * matching static; full-prevention statics short-circuit to 0.
+ *
+ * Semantics match Forge's StaticAbilityPreventDamage shield application:
+ *
+ * - Each matching static with `preventionEffect = N >= 0` prevents up
+ *   to `N` damage (subtracts from the running total, clamped at 0).
+ * - Each matching static with `preventionEffect = N < 0` "prevents all
+ *   but |N|" — clamps the running total to `min(actualDamage, |N|)`
+ *   (Ajani-Steadfast emblem shape). The most-restrictive clamp wins.
+ * - A matching static with `preventionEffect === undefined` is full
+ *   prevention; surviving damage is 0 regardless of shields applied.
+ *
+ * When no static matches the event, returns `actualDamage` unchanged.
+ *
+ * Consumed by GameAction.damage when `wouldPreventDamage` returns false
+ * but matching shield statics may still partially-prevent the event.
+ */
+export const applyPreventionShields = (
+  game: Game,
+  sourceId: EntityId,
+  targetKind: "creature" | "player" | "planeswalker" | "battle",
+  targetId: EntityId | PlayerSeat,
+  isCombat: boolean,
+  actualDamage: number,
+): number => {
+  if (!canDamageBePrevented(game, sourceId, { targetKind, targetId, isCombat })) return actualDamage;
+  let remaining = actualDamage;
+  for (const mode of PREVENT_MODES) {
+    const statics = game.staticEffectRegistry.byMode(mode);
+    for (const s of statics) {
+      const payload = s.describe() as PreventDamagePayload;
+      if (!payload.matchesEvent(sourceId, targetKind, targetId, isCombat, game)) continue;
+      if (payload.preventionEffect === undefined) return 0;
+      if (payload.preventionEffect >= 0) {
+        remaining = Math.max(0, remaining - payload.preventionEffect);
+      } else {
+        // Negative literal "-N" → keep up to |N|, prevent the rest.
+        remaining = Math.min(remaining, -payload.preventionEffect);
+      }
+      if (remaining === 0) return 0;
+    }
+  }
+  return remaining;
 };

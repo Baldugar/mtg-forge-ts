@@ -156,9 +156,13 @@ export interface DeclaredBlockerForCap {
 
 /**
  * True iff the declared blocker set violates any active BlockRestrict
- * cap. Same shape as exceedsAttackerCap. The MVP counts each declared
- * blocker entry once per matching cap; the per-defender-allotment form
- * (Mirri "each opponent can't block with more than one") is // TODO.
+ * cap. Same shape as exceedsAttackerCap.
+ *
+ * Wave 111 — `perDefenderAllotment` BlockRestrict statics (Mirri-shape
+ * "each opponent can't block with more than one") count blockers
+ * PER defender bucket and test each bucket independently against
+ * `maxBlockers` (CR 509.1g). The default cap shape sums blockers
+ * cumulatively across all matched defenders.
  */
 export const exceedsBlockerCap = (
   game: Game,
@@ -173,6 +177,27 @@ export const exceedsBlockerCap = (
     // exceedsAttackerCap). Skip statics whose presence-of-X requirement is
     // unsatisfied at query time.
     if (!payload.isPresentSatisfied(game)) continue;
+    if (payload.perDefenderAllotment) {
+      // Wave 111 — per-defender allotment. Bucket by defender (seat for
+      // player defenders, "card:<id>" for planeswalker / battle defenders);
+      // overflow = ANY bucket exceeds maxBlockers.
+      const buckets = new Map<string, number>();
+      for (const d of declared) {
+        if (payload.hasDefenderFilter) {
+          if (d.defender.kind === "player") {
+            if (!payload.defenderSeatMatches(d.defender.seat)) continue;
+          } else {
+            if (!payload.defenderCardMatches(d.defender.id, game)) continue;
+          }
+        }
+        const bucketKey = d.defender.kind === "player" ? `seat:${d.defender.seat}` : `card:${d.defender.id}`;
+        buckets.set(bucketKey, (buckets.get(bucketKey) ?? 0) + 1);
+      }
+      for (const count of buckets.values()) {
+        if (count > payload.maxBlockers) return { payload, count };
+      }
+      continue;
+    }
     let count = 0;
     for (const d of declared) {
       if (payload.hasDefenderFilter) {

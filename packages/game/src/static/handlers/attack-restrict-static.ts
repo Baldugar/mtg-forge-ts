@@ -53,9 +53,14 @@
 // query time so the cap only activates while the IsPresent$ board state
 // holds (canonical Forge "as long as …" semantics).
 //
-// TODO(advanced):
-//   - Multi-defender filter ("ValidDefender$ You,Planeswalker.YouCtrl")
-//     accepted as a single literal today.
+// Wave 111 — closes the prior multi-defender TODO(advanced). The shared
+// `buildDefenderFilter` helper now splits comma-OR `ValidDefender$` lists
+// into a seat-lane (You / Opponent / Player.YouCtrl / etc.) and a
+// card-lane (Card.Self / Planeswalker.YouCtrl / Battle.* / etc.); the
+// returned predicate fires true on either lane match. Mirri-shape
+// "ValidDefender$ You,Planeswalker.YouCtrl" caps now scope the count
+// against either an attacking-you player OR an attacking-your-planeswalker
+// card, matching Forge's `ValidDefender$` OR grammar.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -64,12 +69,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import {
-  buildCardIdPredicate,
-  buildIsPresentGate,
-  buildPlayerPredicate,
-  literalRaw,
-} from "./restriction-helpers.js";
+import { buildDefenderFilter, buildIsPresentGate, literalRaw } from "./restriction-helpers.js";
 
 export interface AttackRestrictPayload {
   readonly kind: "attackRestrict";
@@ -109,12 +109,16 @@ export class AttackRestrictStaticHandler extends StaticHandler {
     const validDefenderRaw = literalRaw(params.ValidDefender);
 
     const hasDefenderFilter = validDefenderRaw !== undefined && validDefenderRaw.length > 0;
-    const seatPred = hasDefenderFilter
-      ? buildPlayerPredicate(extractSeatToken(validDefenderRaw), ctx.controllerSeat)
-      : (_seat: PlayerSeat): boolean => true;
-    const cardDefenderPred = hasDefenderFilter
-      ? buildCardIdPredicate(validDefenderRaw, ctx.sourceCardId, ctx.controllerSeat)
-      : (_cardId: EntityId, _game: Game): boolean => true;
+    // Wave 111 — comma-OR multi-defender support. The shared filter splits
+    // tokens into seat-lane and card-lane predicates; either-lane match
+    // returns true (Forge `ValidDefender$` is OR-shaped across commas).
+    const defenderFilter = buildDefenderFilter(
+      hasDefenderFilter ? validDefenderRaw : undefined,
+      ctx.sourceCardId,
+      ctx.controllerSeat,
+    );
+    const seatPred = defenderFilter.seatMatches;
+    const cardDefenderPred = defenderFilter.cardMatches;
 
     const presentGate = buildIsPresentGate(params, {
       sourceCardId: ctx.sourceCardId,
@@ -157,20 +161,6 @@ const parseAttackerCount = (raw: string | undefined): number => {
   const n = Number.parseInt(raw, 10);
   if (Number.isFinite(n) && n > 0) return n;
   return Number.POSITIVE_INFINITY;
-};
-
-/**
- * Extract the seat-typed token from a comma-separated ValidDefender$
- * filter. Recognises "Opponent" / "You" / "Any" / "Player". Returns
- * undefined (= match any seat) when no recognisable token is present.
- */
-const extractSeatToken = (raw: string | undefined): string | undefined => {
-  if (raw === undefined || raw.length === 0) return undefined;
-  for (const part of raw.split(",")) {
-    const t = part.trim();
-    if (t === "Opponent" || t === "You" || t === "Any" || t === "Player") return t;
-  }
-  return undefined;
 };
 
 staticHandlerRegistry.register(AttackRestrictStaticHandler);

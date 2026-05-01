@@ -46,11 +46,17 @@
 // unsatisfied (e.g. "as long as CARDNAME is tapped, no more than N
 // creatures can block …").
 //
-// TODO(advanced):
-//   - Per-defender allotment ("each opponent can't block with more than
-//     one" — needs per-seat counting at validation time, not a single
-//     cumulative cap).
-//   - Multi-defender filter union accepted as one literal today.
+// Wave 111 — closes the prior multi-defender TODO(advanced). The shared
+// `buildDefenderFilter` helper splits comma-OR `ValidDefender$` lists into
+// a seat-lane and card-lane predicate symmetrically with AttackRestrict
+// (`You,Planeswalker.YouCtrl` filters now scope blocker counts against
+// either an attacking-you defender OR an attacking-your-planeswalker
+// defender). The Mirri-shape "each opponent can't block with more than
+// one" form (per-defender allotment — count is summed PER seat rather
+// than cumulatively across all matched seats) is now also wired: the
+// `perDefenderAllotment` flag on the payload signals to `exceedsBlockerCap`
+// that the count must be re-tallied per defender-seat / defender-card,
+// matching CR 509.1g semantics for "each <player>" caps.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -59,12 +65,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import {
-  buildCardIdPredicate,
-  buildIsPresentGate,
-  buildPlayerPredicate,
-  literalRaw,
-} from "./restriction-helpers.js";
+import { buildDefenderFilter, buildIsPresentGate, literalRaw } from "./restriction-helpers.js";
 
 export interface BlockRestrictPayload {
   readonly kind: "blockRestrict";
@@ -83,6 +84,19 @@ export interface BlockRestrictPayload {
    * so the cap only fires while the IsPresent$ shape holds.
    */
   readonly isPresentSatisfied: (game: Game) => boolean;
+  /**
+   * Wave 111 — Mirri-shape per-defender allotment flag. When true, the
+   * `exceedsBlockerCap` consumer counts blockers PER defender-seat /
+   * defender-card and tests each bucket against `maxBlockers` independently
+   * (CR 509.1g semantics for "each opponent can't block with more than N
+   * creatures"). When false (the default cap shape) blockers are summed
+   * cumulatively across all matched defenders.
+   *
+   * Triggered by `EachOpponent$ True` on the static, or by the canonical
+   * Mirri shape `ValidDefender$ Opponent` (which Forge interprets as
+   * per-opponent allotment for blocker caps in CR 509.1g).
+   */
+  readonly perDefenderAllotment: boolean;
 }
 
 export class BlockRestrictStaticHandler extends StaticHandler {
@@ -95,12 +109,39 @@ export class BlockRestrictStaticHandler extends StaticHandler {
     const validDefenderRaw = literalRaw(params.ValidDefender);
 
     const hasDefenderFilter = validDefenderRaw !== undefined && validDefenderRaw.length > 0;
-    const seatPred = hasDefenderFilter
-      ? buildPlayerPredicate(extractSeatToken(validDefenderRaw), ctx.controllerSeat)
-      : (_seat: PlayerSeat): boolean => true;
-    const cardDefenderPred = hasDefenderFilter
-      ? buildCardIdPredicate(validDefenderRaw, ctx.sourceCardId, ctx.controllerSeat)
-      : (_cardId: EntityId, _game: Game): boolean => true;
+    // Wave 111 — comma-OR multi-defender support. Symmetric with
+    // AttackRestrict.
+    const defenderFilter = buildDefenderFilter(
+      hasDefenderFilter ? validDefenderRaw : undefined,
+      ctx.sourceCardId,
+      ctx.controllerSeat,
+    );
+    const seatPred = defenderFilter.seatMatches;
+    const cardDefenderPred = defenderFilter.cardMatches;
+    // Wave 111 — Mirri-shape per-defender allotment. Forge encodes this
+    // either via `EachOpponent$ True` (explicit) or via the canonical
+    // `ValidDefender$ Opponent` BlockRestrict shape (where CR 509.1g's
+    // "each opponent" interpretation applies). When the static's
+    // ValidDefender$ literal is exactly `Opponent` (or one of its
+    // canonical aliases) without other tokens, we treat it as
+    // per-opponent allotment.
+    const eachOpponentRaw = literalRaw(params.EachOpponent);
+    const eachOpponentExplicit = eachOpponentRaw?.toLowerCase() === "true";
+    const isOpponentOnlyFilter =
+      hasDefenderFilter &&
+      validDefenderRaw !== undefined &&
+      (() => {
+        const tokens = validDefenderRaw
+          .split(",")
+          .map((t) => t.trim())
+          .filter((t) => t.length > 0);
+        if (tokens.length !== 1) return false;
+        const t = tokens[0];
+        return (
+          t === "Opponent" || t === "Player.Opponent" || t === "Player.OppCtrl" || t === "Player.NonActive"
+        );
+      })();
+    const perDefenderAllotment = eachOpponentExplicit || isOpponentOnlyFilter;
 
     const presentGate = buildIsPresentGate(params, {
       sourceCardId: ctx.sourceCardId,
@@ -114,6 +155,7 @@ export class BlockRestrictStaticHandler extends StaticHandler {
       defenderCardMatches: (cardId, game) => cardDefenderPred(cardId, game),
       hasDefenderFilter,
       isPresentSatisfied: (game) => presentGate(game),
+      perDefenderAllotment,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);
@@ -136,15 +178,6 @@ const parseBlockerCount = (raw: string | undefined): number => {
   const n = Number.parseInt(raw, 10);
   if (Number.isFinite(n) && n > 0) return n;
   return Number.POSITIVE_INFINITY;
-};
-
-const extractSeatToken = (raw: string | undefined): string | undefined => {
-  if (raw === undefined || raw.length === 0) return undefined;
-  for (const part of raw.split(",")) {
-    const t = part.trim();
-    if (t === "Opponent" || t === "You" || t === "Any" || t === "Player") return t;
-  }
-  return undefined;
 };
 
 staticHandlerRegistry.register(BlockRestrictStaticHandler);

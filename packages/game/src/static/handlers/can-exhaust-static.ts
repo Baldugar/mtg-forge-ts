@@ -39,10 +39,14 @@
 //     matched player's own turn (Elvish Refueler's "During your turn"
 //     clause). Reuses Wave 50 buildPlayerPredicate grammar against
 //     `game.activePlayerSeat`.
-// TODO(advanced):
-//   - CheckSVar$ + SVarCompare$ — the per-turn activation count
-//     gate. Elvish Refueler's full fidelity needs the SVar reader
-//     (Count$ThisTurnActivated_Activated.Exhaust+YouCtrl).
+// Wave 111 — closes the prior CheckSVar$ + SVarCompare$ TODO(advanced).
+// The handler now wires the shared `buildCheckSVarGate` helper into the
+// payload as a per-query thunk. Elvish Refueler's "as long as you haven't
+// activated an exhaust ability this turn" gate maps to
+// `CheckSVar$ <key> | SVarCompare$ LT1` — the gate is satisfied while the
+// per-turn activation counter is below the threshold and lapses when it
+// crosses (Forge canonical). When neither param is set the gate returns
+// always-true (no guard, back-compat).
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -51,7 +55,7 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCheckSVarGate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 export interface CanExhaustPayload {
   readonly kind: "canExhaust";
@@ -63,6 +67,15 @@ export interface CanExhaustPayload {
    * to honor "during your turn"-style clauses.
    */
   readonly turnMatches: (game: Game) => boolean;
+  /**
+   * Wave 111 — `CheckSVar$ + SVarCompare$` per-turn activation gate.
+   * Returns true iff the gate is currently satisfied. Always-true when
+   * the static omits both params (no guard). The runtime exhaust gate
+   * AND-combines this with `playerMatches` and `turnMatches` so
+   * Elvish-Refueler-shape "while you haven't yet activated …" clauses
+   * lapse the modifier mid-turn.
+   */
+  readonly checkSVarSatisfied: (game: Game) => boolean;
 }
 
 export class CanExhaustStaticHandler extends StaticHandler {
@@ -74,11 +87,14 @@ export class CanExhaustStaticHandler extends StaticHandler {
     const playerTurnRaw = literalRaw(params.PlayerTurn);
     const seatPred = buildPlayerPredicate(validPlayerRaw, ctx.controllerSeat);
     const turnPred = buildPlayerPredicate(playerTurnRaw, ctx.controllerSeat);
+    // Wave 111 — CheckSVar$ + SVarCompare$ per-turn activation gate.
+    const checkSVarSatisfied = buildCheckSVarGate(params, ctx.controllerSeat);
 
     const payload: CanExhaustPayload = {
       kind: "canExhaust",
       playerMatches: (seat) => seatPred(seat),
       turnMatches: (game) => turnPred(game.activePlayer),
+      checkSVarSatisfied,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

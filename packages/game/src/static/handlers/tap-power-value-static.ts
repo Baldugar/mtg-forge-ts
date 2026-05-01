@@ -53,17 +53,23 @@
 //     "Activated.Crew+Vehicle" — we parse the activation kind tag
 //     (Crew / Saddle / Station) and an optional source-type carve-out
 //     (Vehicle / Mount / etc.).
-// TODO(advanced):
-//   - ValidSA$ shapes that use full Forge grammar (e.g.
-//     "Activated.Crew+Vehicle.cmcEQ3"); we only honor the first
-//     leading-segment tag-and-type today, not deeper card-filter chains
-//     on the source.
-//   - Multiple stacking modifiers: handled additively (Forge sums
-//     getMod across all matching statics; useToughness short-circuits
-//     before the sum). Already implemented per-static; the helper
-//     aggregates.
+// Wave 111 — closes the prior ValidSA$ filter-chain TODO(advanced). Each
+// `Activated.<tag>+<type>+<...>` alt now keeps the leading activation tag
+// (Crew / Saddle / Station) as before, but the "everything after the
+// activation tag" tail is reassembled into a Wave-32 cardMatchesFilter
+// expression and tested against the activating source card. This unlocks
+// Forge's full ValidSA$ filter grammar — e.g. "Activated.Crew+Vehicle.cmcEQ3"
+// matches Crew activations on a Vehicle whose mana value is 3, and
+// "Activated.Saddle+Mount+nonLegendary" matches Saddle activations on a
+// non-legendary Mount. The leading single-segment "+Vehicle" form remains
+// honored unchanged (the pure activation+type fast path).
+//
+// Multiple stacking modifiers: handled additively (Forge sums getMod
+// across all matching statics; useToughness short-circuits before the sum).
+// Already implemented per-static; the helper aggregates.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
+import { cardMatchesFilter } from "../../trigger/card-filter.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
@@ -98,15 +104,30 @@ export interface TapPowerValuePayload {
 interface ParsedSaAlt {
   /** Required activation kind tag (Crew / Saddle / Station). */
   readonly kind: "Crew" | "Saddle" | "Station";
-  /** Optional source-type carve-out (e.g. "Vehicle", "Mount"). */
-  readonly sourceType: string | undefined;
+  /**
+   * Optional source filter expression (Wave 32 cardMatchesFilter grammar).
+   * Wave 111 — when present, the activating source card must satisfy this
+   * filter for the alt to match. Built by reassembling everything after the
+   * leading activation tag back into a Forge filter expression like
+   * "Vehicle.cmcEQ3" or "Mount+nonLegendary". When undefined, the alt
+   * matches on activation tag alone (the pure-tag fast path used by
+   * ValidSA$ literals like "Activated.Station").
+   */
+  readonly sourceFilter: string | undefined;
 }
 
 /**
  * Parse `ValidSA$` into a list of alternative match shapes. Each alt
  * looks like `Activated.Crew+Vehicle` (or `Activated.Saddle+Mount`,
- * `Activated.Station`). Returns an empty list when the param is
- * undefined — caller treats that as "match any activation kind".
+ * `Activated.Station`, `Activated.Crew+Vehicle.cmcEQ3`). Returns an
+ * empty list when the param is undefined — caller treats that as
+ * "match any activation kind".
+ *
+ * Wave 111 — full Forge filter-chain support: anything after the leading
+ * `Activated.<tag>+` is reassembled into a cardMatchesFilter expression
+ * and tested against the activating source card at match time. The
+ * leading-segment-only fast path is preserved for the dominant corpus
+ * shape (no `.` chain after the type).
  */
 const parseValidSA = (raw: string | undefined): readonly ParsedSaAlt[] => {
   if (raw === undefined || raw.length === 0) return [];
@@ -118,47 +139,51 @@ const parseValidSA = (raw: string | undefined): readonly ParsedSaAlt[] => {
     // Spell / Triggered TapPowerValue shapes (none exist in corpus).
     if (!trimmed.startsWith("Activated.")) continue;
     const tail = trimmed.slice("Activated.".length);
-    // Split on '+' — first segment is the activation tag, anything
-    // after is the source-type carve-out (we honor the first; deeper
-    // filter chains are TODO(advanced)).
+    // Split on '+' — first segment is the activation tag; the rest is
+    // reassembled back into the Forge cardMatchesFilter expression that
+    // describes the source.
     const plusIx = tail.indexOf("+");
     const tag = plusIx === -1 ? tail : tail.slice(0, plusIx);
-    const sourceType = plusIx === -1 ? undefined : tail.slice(plusIx + 1).split("+")[0];
+    const sourceFilter = plusIx === -1 ? undefined : tail.slice(plusIx + 1);
     if (tag !== "Crew" && tag !== "Saddle" && tag !== "Station") continue;
-    out.push({ kind: tag, sourceType });
+    out.push({
+      kind: tag,
+      sourceFilter: sourceFilter !== undefined && sourceFilter.length > 0 ? sourceFilter : undefined,
+    });
   }
   return out;
 };
 
 /**
- * Test whether the activating source's effective type set (from the
- * layer engine) contains the carve-out type. Loose substring match
- * keeps this aligned with the simple Forge `+<Type>` grammar.
+ * Wave 111 — test whether the activating source card matches the parsed
+ * `sourceFilter` chain. The chain is the everything-after the leading
+ * activation tag of a ValidSA$ alt (e.g. "Vehicle.cmcEQ3"). Routes
+ * through `cardMatchesFilter` (Wave 32 grammar) so deeper Forge filter
+ * chains (cmcEQ / nonLegendary / colored / +<Subtype>+<Predicate>) all
+ * resolve uniformly. Empty / undefined filter returns true (the
+ * leading-tag-only fast path).
  */
-const sourceMatchesType = (game: Game, sourceId: EntityId, sourceType: string): boolean => {
+const sourceMatchesFilter = (
+  game: Game,
+  sourceId: EntityId,
+  sourceFilter: string | undefined,
+  controllerSeat: PlayerSeat,
+): boolean => {
+  if (sourceFilter === undefined || sourceFilter.length === 0) return true;
   const card = game.cards.get(sourceId);
   if (!card) return false;
-  const chars = game.layerEngine.computeCharacteristics(sourceId);
-  // Layered subtypes (Mount / Vehicle / Spacecraft) — most matches land here.
-  if (chars.subtypes.has(sourceType)) return true;
-  // Layered card types (rare for this filter, but defensive).
-  // chars.types is Set<CardType> — compare via string coercion since
-  // sourceType arrives as plain literal.
-  for (const t of chars.types) {
-    if ((t as unknown as string) === sourceType) return true;
-  }
-  return false;
+  return cardMatchesFilter(card, sourceFilter, { sourceCardId: sourceId, controllerSeat });
 };
 
 const buildSAPredicate = (
   alts: readonly ParsedSaAlt[],
+  controllerSeat: PlayerSeat,
 ): ((ctx: TapPowerValueSaContext, game: Game) => boolean) => {
   if (alts.length === 0) return () => true;
   return (ctx, game) => {
     for (const alt of alts) {
       if (alt.kind !== ctx.saKind) continue;
-      if (alt.sourceType === undefined) return true;
-      if (sourceMatchesType(game, ctx.activatingSourceId, alt.sourceType)) return true;
+      if (sourceMatchesFilter(game, ctx.activatingSourceId, alt.sourceFilter, controllerSeat)) return true;
     }
     return false;
   };
@@ -182,7 +207,7 @@ export class TapPowerValueStaticHandler extends StaticHandler {
 
     const cardPred = buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
     const saAlts = parseValidSA(validSARaw);
-    const saPred = buildSAPredicate(saAlts);
+    const saPred = buildSAPredicate(saAlts, ctx.controllerSeat);
     const { useToughness, mod } = parseValueParam(valueRaw);
 
     const payload: TapPowerValuePayload = {

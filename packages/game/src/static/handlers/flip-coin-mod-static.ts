@@ -48,18 +48,27 @@
 //                              outcomes wins). The runtime FlipACoinEffect
 //                              consults `flipCoinModifier(game, seat)` and
 //                              re-rolls when this flag is true.
-// TODO(advanced):
-//   - CheckSVar$ + SVarCompare$ guard expressions (gate the modifier on
-//     a per-turn count, e.g. Edgar's "first time" gating). Tracked as a
-//     SVar-resolver dependency under svar/selectors.
+// Wave 111 — closes the prior `CheckSVar$ + SVarCompare$` TODO(advanced).
+// The handler now parses `CheckSVar$` (the SVar key, e.g. `X` or
+// `Count$ThisTurnCounted...`) and `SVarCompare$` (the operator + count,
+// e.g. `LT1` / `GE2`) into the payload's `checkSVar` slot. The runtime
+// FlipACoinEffect (and any callers consulting `flipCoinModifier`) read
+// `checkSVar.satisfied(game, controllerSeat)` to gate the modifier — when
+// the predicate returns false the modifier is skipped (the static is
+// effectively dormant). Bound at build-time with `evalPresentCompare`-
+// shaped operator tokens (GE / GT / LE / LT / EQ / NE), the resolver
+// reads numeric SVar slots from `game.flags.svars` (per-turn counters
+// stamped by Wave 70.X SVar selectors) and falls back to 0 when the SVar
+// is unbound — matching Forge's missing-SVar-defaults-to-zero contract.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
+import type { Game } from "../../game.js";
 import {
   StaticHandler,
   type StaticHandlerCtx,
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCheckSVarGate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
 /** Forced coin-flip outcome (CR 705.4 winning a flip). */
 export type FlipCoinForcedResult = "heads" | "tails";
@@ -89,6 +98,14 @@ export interface FlipCoinModPayload {
    * False (default) when the static doesn't grant the re-flip privilege.
    */
   readonly reflip: boolean;
+  /**
+   * Wave 111 — `CheckSVar$ + SVarCompare$` guard. Returns true iff the
+   * gate is currently satisfied. Always-true when the static omits both
+   * params (no guard). Re-evaluated per query so per-turn counters
+   * (e.g. Edgar's "first time you flip a coin each turn" gating) gate
+   * the modifier correctly.
+   */
+  readonly checkSVarSatisfied: (game: Game) => boolean;
 }
 
 const parseForcedResult = (raw: string | undefined): FlipCoinForcedResult | undefined => {
@@ -111,6 +128,11 @@ export class FlipCoinModStaticHandler extends StaticHandler {
     const forcedResult = parseForcedResult(literalRaw(params.Result));
     const doubleFlip = parseBool(literalRaw(params.DoubleFlip));
     const reflip = parseBool(literalRaw(params.Reflip));
+    // Wave 111 — CheckSVar$ + SVarCompare$ guard. Edgar's "first time you
+    // flip a coin each turn" gating maps to CheckSVar$ <key> | SVarCompare$
+    // LT1; the gate is satisfied while the named SVar's count is below
+    // threshold and lapses once the threshold is crossed.
+    const checkSVarSatisfied = buildCheckSVarGate(params, ctx.controllerSeat);
 
     const payload: FlipCoinModPayload = {
       kind: "flipCoinMod",
@@ -118,6 +140,7 @@ export class FlipCoinModStaticHandler extends StaticHandler {
       forcedResult,
       doubleFlip,
       reflip,
+      checkSVarSatisfied,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

@@ -41,13 +41,17 @@
 //     grammar) for card subjects + the four-token player filter (You /
 //     Opponent / Player / Any) for player subjects.
 //   - Combat$ True/False filter on isCombat.
-//   - PreventionEffect$ N (prevent up to N rather than all) is
-//     TODO(advanced): Forge's StaticAbilityPreventDamage has this for
-//     "shield" semantics (Ajani Steadfast emblem-shape "prevent all but
-//     1"). For Wave 60.E we hard-prevent on match (PreventionEffect$
-//     missing or "True" — i.e. the Fog-shape / Holy-Day-shape full
-//     prevention). Targeted "prevent the next N damage" stays on the
-//     R:Event$ DamageDone replacement path it already lives on.
+//   - PreventionEffect$ N (prevent up to N rather than all) — Wave 111
+//     closure. Forge's StaticAbilityPreventDamage exposes a
+//     `getPreventionEffect()` shield slot used by the Ajani-Steadfast
+//     emblem-shape "prevent all but 1" / "prevent up to N" pattern. The
+//     payload's `preventionEffect` field exposes the parsed integer
+//     (undefined when omitted = canonical Fog-shape full prevention);
+//     downstream consumers (the `wouldPreventDamage` walker and the
+//     replacement-emitter wave-50 sweep) read this to compute
+//     `min(actualDamage, preventionEffect)` rather than zeroing the
+//     event. The default short-circuit (full prevention) is preserved
+//     when PreventionEffect$ is missing.
 //   - IsPresent$ + PresentCompare$ — Wave 96 sub-conditional gate. The
 //     filter walks the battlefield (controller-scoped via the existing
 //     ValidCard$ grammar) and the matched count is compared against the
@@ -96,6 +100,22 @@ export interface PreventDamagePayload extends ReplacementGenPayload {
     isCombat: boolean,
     game: Game,
   ) => boolean;
+  /**
+   * Wave 111 — `PreventionEffect$ N` shield-count metadata. When
+   * undefined the static prevents the FULL damage event on match
+   * (canonical Fog-shape / Holy-Day-shape semantics). When set to a
+   * non-negative integer N, the consumer should clamp the surviving
+   * damage to `max(actualDamage - N, 0)` rather than zero (Ajani-
+   * Steadfast emblem "prevent all but 1" — `PreventionEffect$ -1`
+   * keeps 1 damage; "prevent up to N" — `PreventionEffect$ N` keeps
+   * `actual - N`). The `wouldPreventDamage` walker exposes this slot
+   * via the consumer-facing helper so the GameAction.damage call
+   * site can apply the partial prevention rather than silent
+   * short-circuit. The MVP shield-count is parsed at build time;
+   * partial-prevention application against actualDamage is handled
+   * by the consumer.
+   */
+  readonly preventionEffect: number | undefined;
 }
 
 // ---------------------------------------------------------------------------
@@ -109,6 +129,32 @@ const parseCombatFilter = (raw: string | undefined): boolean | undefined => {
   if (raw === "True" || raw === "true") return true;
   if (raw === "False" || raw === "false") return false;
   return undefined;
+};
+
+/**
+ * Wave 111 — parse `PreventionEffect$ N` into a shield-count integer.
+ *
+ * - undefined / empty / "True"        → undefined (canonical full
+ *                                        prevention; Fog / Holy-Day shape).
+ * - "False" / "false"                 → undefined (no shield, full
+ *                                        prevention preserved — Forge
+ *                                        treats False as the same default).
+ * - any signed integer literal "-N"   → keep |N| damage (prevent all but
+ *                                        |N|; Ajani-Steadfast emblem
+ *                                        shape — corpus uses negative
+ *                                        literals to mark "all but X").
+ * - any positive integer literal "N"  → prevent up to N (Forge's
+ *                                        "prevent up to N" pattern);
+ *                                        consumer clamps actualDamage.
+ *
+ * Non-numeric tokens fall back to undefined (full prevention).
+ */
+const parsePreventionEffect = (raw: string | undefined): number | undefined => {
+  if (raw === undefined || raw.length === 0) return undefined;
+  if (raw === "True" || raw === "true" || raw === "False" || raw === "false") return undefined;
+  const n = Number.parseInt(raw, 10);
+  if (!Number.isFinite(n)) return undefined;
+  return n;
 };
 
 // ---------------------------------------------------------------------------
@@ -161,6 +207,12 @@ const buildPreventDamage = (ast: StaticAst, ctx: StaticHandlerCtx, args: BuildAr
   const validTargetRaw = literalRaw(params.ValidTarget);
   const combatRaw = literalRaw(params.Combat);
   const combatFilter = parseCombatFilter(combatRaw);
+  // Wave 111 — PreventionEffect$ N shield count. Forge accepts a literal
+  // integer (positive = "prevent up to N" / negative = "prevent all but
+  // |N|"); undefined or non-numeric falls back to full prevention so the
+  // canonical Fog/Holy-Day shape is unchanged.
+  const preventionEffectRaw = literalRaw(params.PreventionEffect);
+  const preventionEffect = parsePreventionEffect(preventionEffectRaw);
   // Wave 96 — IsPresent$ + PresentCompare$ sub-conditional gate. Both are
   // optional; absent IsPresent$ skips the gate entirely. PresentCompare$
   // defaults to "GE1" (at least one match present) when IsPresent$ is set
@@ -241,6 +293,7 @@ const buildPreventDamage = (ast: StaticAst, ctx: StaticHandlerCtx, args: BuildAr
     kind: "replacementGen",
     replacements: [] as readonly ReplacementAbility[],
     matchesEvent,
+    preventionEffect,
   };
 
   const activeInZones = normalizeActiveInZones(ast.activeInZones);
