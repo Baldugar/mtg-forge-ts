@@ -1,10 +1,11 @@
-# Divergence catalog — M2 cohort (post-Bridge V2 + TS runner V2 + M4.5)
+# Divergence catalog — M2 cohort (post-Bridge V2 + TS runner V2 + M4.5 + M5)
 
 Per-scenario divergence classification produced by the M4 parity harness
 (`packages/game/test/parity/runner.ts`) on the M2 30-scenario cohort,
 captured against the V2 bridge (`forge-bridge-v2-0.2.0`) and the V2 TS
 golden runner (Testing M2.5 — stack-drain symmetric with Bridge V2),
-with the M4.5 alias-map and engine-internal-stripping fixes applied.
+with the M4.5 alias-map and engine-internal-stripping fixes applied,
+and M5's DealDamage target-kind discrimination fix landed.
 
 No scenario landed in `real-divergence-investigate`, so there are no
 real bugs to chase from this cohort.
@@ -17,12 +18,62 @@ real bugs to chase from this cohort.
 - **unknown-divergence** — TS or Java has events not explained by an
   MVP bucket. **Treat as a real parity bug.** Currently zero of these.
 
-## Aggregate this run (post-M4.5)
+## Aggregate this run (post-M5)
 
 - 30 scenarios.
-- **28 full match** (93%). Up from 16 (post-V2 + M2.5).
-- **2 mvp-known** (7%). Both tagged `ts-runner-shallow`.
+- **29 full match** (97%). Up from 28 (post-M4.5), 16 (post-V2 + M2.5).
+- **1 mvp-known** (3%). `rest-in-peace-etb`, tagged `ts-runner-shallow`.
 - **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+## What M5 changed
+
+M4.5 surfaced one real engine bug via parity testing (the rest were
+classified bridge-MVP gaps). M5 fixes that bug.
+
+**DealDamageEffect target-kind discrimination.** Pre-M5, the effect
+discriminated player-vs-creature recipients by probing
+`game.cards.get(targetId)` — if the lookup returned a card it routed as
+creature damage, otherwise player damage. Card IDs and player seats are
+both branded numbers from the same allocation pool, so when a player
+seat (typically 0 or 1) numerically collided with an existing cardId
+(cards allocate from low integers too) the probe false-positively
+matched the colliding card and player damage was silently routed as
+creature damage. The `double-lightning-bolt` parity scenario hit this
+directly: Lightning Bolt #2's cardId was 1, the player target's seat
+was also 1, both bolts resolved as "creature damage" and no
+`LifeChanged` event fired on the TS side.
+
+**Fix:** SpellAbility now carries a discriminated `targetRefs:
+readonly { kind: "card" | "player"; ... }[]` array bound at cast time
+from the `chooseCastTargets` decision. DealDamageEffect consults
+`targetRefs` first and routes by explicit kind, falling back to the
+legacy `game.cards.get(id)` probe only for synthesized SpellAbilities
+(keyword handlers, splice fan-out) that haven't been migrated yet.
+
+**Closed scenario:** `double-lightning-bolt` now full-match (was
+`mvp-known: ts-runner-shallow`).
+
+## Residual 1 mvp-known
+
+Rest in Peace's static-replacement install fires a Forge-side
+`SpellCast(description: null) + StackItemResolved(hasFizzled: false)`
+pair. Forge routes the static-installation through the same trigger
+machinery as a real cast / resolution, even though no spell actually
+hit the stack. The TS engine's static-installation path is silent —
+equivalent to "trigger fires but produces no events." Both behaviours
+are CR-faithful; this is a pure event-emission style difference.
+
+Decision (M5): leave the divergence as documented `mvp-known:
+ts-runner-shallow` rather than (a) emitting matching synthetic events
+on the TS side or (b) stripping the Java install pair as
+engine-internal. Path (a) would pollute the TS event stream with
+trigger-shaped events that have no resolver / payload. Path (b) needs
+a discriminator the bridge doesn't surface (the install-trigger pair
+is structurally identical to a real null-description SpellCast +
+resolution — and other matched scenarios like `shivan-dragon-firebreathing`
+also emit `description: null` SpellCasts that we DO want to match).
+The cost of either path exceeds the parity-signal gained from closing
+one scenario.
 
 ## What M4.5 changed
 
@@ -59,12 +110,11 @@ Three fixes converted 12 mvp-known scenarios into full matches:
    The runner now only patches when `stackItem.targets === null`,
    trusting the pipeline's binding otherwise.
 
-## Residual 2 mvp-known
+## Residual 1 mvp-known (table)
 
 | Scenario | Java-only kinds | Why |
 | --- | --- | --- |
-| `rest-in-peace-etb` | `SpellCast`, `StackItemResolved` (`ts-runner-shallow`) | Forge fires the ETB-installed trigger even with empty graveyards (the trigger does nothing but still queues / resolves). The TS engine's static-installation path is silent — equivalent to "trigger fires but produces no events." Both behaviours are CR-faithful; this is a pure event-emission style difference and not worth altering either side. |
-| `double-lightning-bolt` | `LifeTotalChanged` (`ts-runner-shallow`) | Pre-existing TS engine quirk: when a SpellAbility's bound target seat collides numerically with an existing cardId (here seat 1 vs Lightning Bolt #2's id 1), `DealDamageEffect` looks up `game.cards.get(targetId)` to discriminate player vs creature and false-positive matches the colliding card. Both bolts then resolve as "creature damage" rather than player damage, so no LifeChanged event is emitted on the TS side. The single-target variant `lightning-bolt-target-player` works because the player's seat (1) doesn't collide with the only card's id (0). Documented for a future engine pass that adds explicit target-kind metadata to SpellAbility (out of scope for M4.5). |
+| `rest-in-peace-etb` | `SpellCast`, `StackItemResolved` (`ts-runner-shallow`) | Forge fires the ETB-installed trigger even with empty graveyards (the trigger does nothing but still queues / resolves). The TS engine's static-installation path is silent — equivalent to "trigger fires but produces no events." Both behaviours are CR-faithful; this is a pure event-emission style difference and not worth altering either side. M5 evaluated emitting a synthetic SpellCast/StackItemResolved on the TS side or stripping the Java install pair; both paths cost more than they gain. |
 
 ## Cross-side kind aliases
 
@@ -122,7 +172,7 @@ shared events on both sides:
 | `settle-the-wreckage-in-hand` | match | |
 | `stone-rain-cast` | match | Land destroy → shared `CardChangedZone(BF→GY)`; CardDestroyed stripped. |
 | `giant-spider-etb` | match | |
-| `double-lightning-bolt` | mvp-known | TS-side player-target seat-vs-cardId collision; doc'd. |
+| `double-lightning-bolt` | match | M5 — DealDamage now routes by `sa.targetRefs` discriminator instead of `game.cards.get(id)` probe; player target with seat colliding cardId no longer misroutes as creature damage. |
 | `soul-warden-angel-chain` | match | |
 
 ## How to verify the report
@@ -130,8 +180,8 @@ shared events on both sides:
 ```bash
 node tools/parity-harness/run-parity.mjs
 # Expect:
-#   full-match:  28
-#   mvp-known:   2
+#   full-match:  29
+#   mvp-known:   1
 #   unknown:     0
 ```
 

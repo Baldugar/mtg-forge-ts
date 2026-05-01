@@ -18,7 +18,7 @@
 // override individual steps without reimplementing the dispatch.
 import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@mtg-forge-ts/core";
 import { CardType, Color, IllegalDecisionError, ManaCost, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
-import { SpellAbility } from "../ability/spell-ability.js";
+import { SpellAbility, type SpellAbilityTargetRef } from "../ability/spell-ability.js";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { CostPartReceipt, CostPaymentContext } from "../cost/parts/cost-part.js";
 import { parseCostString, payCost, undoCost } from "../cost/parts/cost-payment.js";
@@ -1598,6 +1598,15 @@ export class CastPipeline {
       const targets: EntityId[] = rawTargets.map((ref) =>
         ref.kind === "card" ? ref.id : (ref.seat as unknown as EntityId),
       );
+      // M5 — preserve the discriminated kind for effects that care.
+      // DealDamageEffect uses this to disambiguate player vs creature
+      // recipients without probing game.cards (which false-positives
+      // when a seat numerically collides with a cardId).
+      const targetRefsForSa: readonly SpellAbilityTargetRef[] = rawTargets.map((ref) =>
+        ref.kind === "card"
+          ? ({ kind: "card", id: ref.id } as const)
+          : ({ kind: "player", seat: ref.seat } as const),
+      );
       // Wave 10 — propagate alt-cost-driven tags (Overload, Bestow) onto the
       // bound SpellAbility so resolve-time effect handlers can branch.
       // Without this, ctx.overloaded / ctx.bestowed would be lost when the
@@ -1618,6 +1627,7 @@ export class CastPipeline {
         ctx.xValue,
         undefined,
         tags,
+        targetRefsForSa,
       );
       const baseResolver = boundSa.makeResolver();
 
@@ -1668,6 +1678,7 @@ export class CastPipeline {
                 ctx.xValue,
                 undefined,
                 tags,
+                targetRefsForSa,
               );
               const innerResolver = innerSa.makeResolver();
               yield* innerResolver.resolve(gameUnknown) as Generator<unknown, void, unknown>;

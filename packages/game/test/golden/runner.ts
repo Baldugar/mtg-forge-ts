@@ -41,7 +41,7 @@ import {
   mkEvent,
   mkPlayerSeat,
 } from "@mtg-forge-ts/core";
-import { SpellAbility } from "../../src/ability/spell-ability.js";
+import { SpellAbility, type SpellAbilityTargetRef } from "../../src/ability/spell-ability.js";
 import { GameAction } from "../../src/action/game-action.js";
 import { Card } from "../../src/card.js";
 import type { CastProposal } from "../../src/cast/cast-pipeline.js";
@@ -521,12 +521,23 @@ function runCast(
     const card = ctx.game.cards.get(id);
     const saTemplate = card?.spellAbilities[0];
     if (saTemplate) {
+      // M5 — preserve target-kind discriminator for effects that route
+      // by recipient flavour (DealDamage etc).
+      const targetRef = action.target;
+      const targetRefsBound: readonly SpellAbilityTargetRef[] =
+        targetRef.kind === "card"
+          ? [{ kind: "card", id: targetId } as const]
+          : [{ kind: "player", seat: targetRef.seat } as const];
       const bound = new SpellAbility(
         saTemplate.ast,
         saTemplate.sourceCardId,
         saTemplate.controllerSeat,
         saTemplate.svars,
         [targetId],
+        undefined,
+        undefined,
+        undefined,
+        targetRefsBound,
       );
       const patched: StackItem = { ...stackItem, resolver: bound.makeResolver() };
       ctx.game.sharedZones.stack.pop();

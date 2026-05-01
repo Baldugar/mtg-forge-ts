@@ -70,6 +70,40 @@ export class DealDamageEffect extends SpellAbilityEffect {
       return;
     }
 
+    // ---- M5 — kind-discriminated target path ------------------------
+    // When the cast pipeline binds targets via chooseCastTargets, it
+    // populates `sa.targetRefs` with discriminated kind metadata. Prefer
+    // that path over the legacy `game.cards.get(id)` probe — the probe
+    // false-positives when a player seat (small integer like 0/1)
+    // numerically collides with a cardId (cards are entity-id-allocated
+    // from the same numeric pool starting at 0/1/2/...). This is the
+    // root cause of the parity-harness `double-lightning-bolt` divergence
+    // (seat 1 collided with the second Bolt's cardId 1, both bolts
+    // resolved as creature damage, no LifeChanged event emitted).
+    if (sa.targetRefs.length > 0) {
+      const splitTargets = isTrue(
+        hasParam(sa, "DivideOnResolution") ? evaluateParamRaw(sa, "DivideOnResolution") : undefined,
+      );
+      const perRecipient = splitTargets ? Math.floor(totalAmount / sa.targetRefs.length) : totalAmount;
+      const damaged: EntityId[] = [];
+      for (const ref of sa.targetRefs) {
+        if (ref.kind === "card") {
+          yield* game.action.damage(sa.sourceCardId, "creature", ref.id, perRecipient, false);
+          damaged.push(ref.id);
+        } else {
+          yield* game.action.damage(
+            sa.sourceCardId,
+            "player",
+            ref.seat as unknown as EntityId,
+            perRecipient,
+            false,
+          );
+        }
+      }
+      this.maybeStampRemembered(sa, game, damaged);
+      return;
+    }
+
     // ---- Recipients --------------------------------------------------
     let targets: readonly EntityId[] = sa.targets;
     if (sa.targets.length === 0 && hasParam(sa, "Defined")) {

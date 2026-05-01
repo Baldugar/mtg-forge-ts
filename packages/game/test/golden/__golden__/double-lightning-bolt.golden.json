@@ -48,10 +48,31 @@
       "phase": "Untap",
       "payload": {
         "sourceId": 0,
-        "targetKind": "creature",
+        "targetKind": "player",
         "targetId": 1,
         "amount": 3,
         "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "oldLife": 20,
+        "newLife": 17,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "amount": 3
       }
     },
     {
@@ -120,10 +141,31 @@
       "phase": "Untap",
       "payload": {
         "sourceId": 1,
-        "targetKind": "creature",
+        "targetKind": "player",
         "targetId": 1,
         "amount": 3,
         "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "oldLife": 17,
+        "newLife": 14,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "amount": 3
       }
     },
     {
@@ -149,7 +191,7 @@
     }
   ],
   "finalState": {
-    "lifeTotals": [20, 20],
+    "lifeTotals": [20, 14],
     "handSizes": [0, 0],
     "battlefield": [],
     "graveyards": [["Lightning Bolt", "Lightning Bolt"], []],
