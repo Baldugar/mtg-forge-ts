@@ -9,9 +9,11 @@
 // packages/core/src/abilities/static-ability-mode.ts). The describe()
 // returns a Restriction whose kind is `optionalCost`; the payload field
 // carries the cost string and the card/seat predicates so cast-pipeline
-// can offer the option in stepChooseAltCosts. Wave-50 MVP — registration
-// + payload shape; full integration into the cast-time optional-cost
-// menu is `// TODO(advanced)`.
+// can offer the option in stepChooseAltCosts. Wave 106 — closed the
+// prior `// TODO(advanced)` tail: `gatherOptionalCosts(game, cardId,
+// casterSeat)` (statics/cant-must-may-extras.ts) is the canonical
+// collector that the cast-pipeline consults at stepChooseAltCosts; the
+// payload shape registered here feeds it directly.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Restriction } from "../../statics/cant-must-may.js";
 import {

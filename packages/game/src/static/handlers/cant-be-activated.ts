@@ -10,11 +10,20 @@
 // existing `cantActivate` RestrictionKind already exists; this handler
 // hooks into it.
 //
-// MVP scope: ValidSA$ Mana / Loyalty / Activated discrimination is `//
-// TODO(advanced)` — the SP3 priority orchestrator does not yet enumerate
-// activated abilities (legal-action-enumerator stops at castSpell), so
-// the discrimination has no consumer to feed yet. Recording the param on
-// the static for downstream readers.
+// Wave 106 — closed the prior `// TODO(advanced)` for ValidSA$ kind
+// discrimination. The payload now exposes a `matchesAbilityKind(kind)`
+// predicate alongside the raw `validSAKind` string. The predicate
+// honors the canonical Forge tokens — "Mana" (CR 605.1 mana abilities),
+// "Loyalty" (CR 606.4 planeswalker activations), and "Activated"
+// (every activated kind, the catch-all). When ValidSA$ is absent the
+// predicate is permissive (matches every kind), preserving Linvala's
+// "all activated abilities" / Pithing-Needle "named permanent's
+// activations" semantics. The legal-action-enumerator wiring still
+// lives in SP3 (the enumerator currently stops at castSpell — see
+// priority/legal-action-enumerator.ts SP3 WIRING comment); when it
+// lights up the activated-ability branch, it consults this predicate
+// against each enumerated ability's kind to suppress the matching
+// subset.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Restriction } from "../../statics/cant-must-may.js";
 import {
@@ -25,9 +34,44 @@ import {
 } from "../static-handler.js";
 import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
+/**
+ * Activated-ability kinds the cantActivate gate may target. Mirrors
+ * Forge's StaticAbilityCantBeActivated token enumeration.
+ */
+export type CantActivateAbilityKind = "Mana" | "Loyalty" | "Activated" | "NonMana";
+
 export interface CantBeActivatedAuxPayload {
+  /** Raw ValidSA$ filter string (preserved for diagnostic / replay surfaces). */
   readonly validSAKind: string | undefined;
+  /**
+   * True iff an activated ability of the given kind is suppressed by this
+   * gate. Permissive (always-true) when ValidSA$ is absent. The "Activated"
+   * token is a catch-all; "Mana" / "Loyalty" target their narrower kinds;
+   * "NonMana" matches every kind except "Mana".
+   */
+  readonly matchesAbilityKind: (kind: CantActivateAbilityKind) => boolean;
 }
+
+const buildAbilityKindMatcher = (raw: string | undefined): ((kind: CantActivateAbilityKind) => boolean) => {
+  if (raw === undefined || raw.length === 0) return () => true;
+  // Comma-OR alternatives: any matches the union.
+  if (raw.includes(",")) {
+    const tokens = raw
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+    const matchers = tokens.map(buildAbilityKindMatcher);
+    return (kind) => matchers.some((m) => m(kind));
+  }
+  if (raw === "Activated") return () => true;
+  if (raw === "Mana") return (kind) => kind === "Mana";
+  if (raw === "Loyalty") return (kind) => kind === "Loyalty";
+  if (raw === "NonMana") return (kind) => kind !== "Mana";
+  // Conservative reject for unrecognised tokens (matches Wave-50
+  // fail-closed default for the player predicate). Future Forge tokens
+  // (Triggered, Spell, etc.) flow through the same shape.
+  return () => false;
+};
 
 export class CantBeActivatedStaticHandler extends StaticHandler {
   static override readonly mode = "CantBeActivated" as const;
@@ -41,12 +85,13 @@ export class CantBeActivatedStaticHandler extends StaticHandler {
     const cardPred = buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
     const seatPred = buildPlayerPredicate(activatorRaw, ctx.controllerSeat);
 
+    const matchesAbilityKind = buildAbilityKindMatcher(validSARaw);
     const restriction: Restriction = {
       sourceStaticId: ctx.staticId,
       kind: "cantActivate",
       subjectFilter: (id, game) => cardPred(id as EntityId, game),
       auxFilter: (seat) => seatPred(seat as PlayerSeat),
-      payload: { validSAKind: validSARaw } satisfies CantBeActivatedAuxPayload,
+      payload: { validSAKind: validSARaw, matchesAbilityKind } satisfies CantBeActivatedAuxPayload,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

@@ -291,7 +291,10 @@ describe("Wave 100 — buildPlayerPredicate recognises Player.YouCtrl / OppCtrl 
   });
 
   it("unrecognised aliases still fail-closed (Wave 50 contract)", () => {
-    const pred = buildPlayerPredicate("Player.controllingThis", seat0);
+    // Wave 106 — `Player.controllingThis` is now recognised (folded
+    // onto YouCtrl), so the fail-closed default is exercised through
+    // an unknown placeholder token instead.
+    const pred = buildPlayerPredicate("Player.UnknownAlias", seat0);
     expect(pred(seat0)).toBe(false);
     expect(pred(seat1)).toBe(false);
   });

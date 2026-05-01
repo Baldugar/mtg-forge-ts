@@ -49,6 +49,11 @@ import {
 import { sweepEndOfCombat, sweepEndOfTurnWarpExile } from "../statics/wave65-combat-gates.js";
 import { shouldUntapDuringStep } from "../statics/wave70f-combat-gates.js";
 import { clearsDamageInCleanup } from "../statics/wave70i-loyalty-gates.js";
+import {
+  isPhaseOrderReversed,
+  isTurnOrderReversed,
+  nextActiveSeatInTurnOrder,
+} from "../statics/wave70p-gate-helpers.js";
 import { playerHasManaBurn, shardSurvivesEmpty } from "../statics/wave73-unspent-mana.js";
 import { noteTurnEnd, tryUpkeepTransition } from "./day-night-tracker.js";
 import { PhaseSequence } from "./phase-sequence.js";
@@ -85,6 +90,24 @@ export class PhaseHandler {
       // next one.
       if (this.game.isTerminal()) return;
       this.game.turn += 1;
+      // Wave 106 — closes the prior TurnReversed TODO(advanced) at the
+      // consumer side. The default SP1 driver pre-seeds one turn per
+      // seat in seat order (run-game.ts) and lets the queue drain to
+      // terminate cleanly — a no-op refill here would loop forever.
+      // We ONLY auto-refill when an active TurnReversed static covers
+      // the just-finished active seat AND the queue is empty: that
+      // case is the canonical Topsy-Turvy shape (3+-player tables
+      // with a reversed-direction static that should rotate around
+      // the table backwards). The reversed-direction next seat is
+      // resolved via `nextActiveSeatInTurnOrder`. Tests / drivers
+      // that want strict "drain & stop" semantics simply don't
+      // register a TurnReversed static — the gate is opt-in.
+      if (this.turnQueue.length === 0 && isTurnOrderReversed(this.game, turn.activePlayer)) {
+        const nextSeat = nextActiveSeatInTurnOrder(this.game, turn.activePlayer);
+        if (nextSeat !== undefined) {
+          this.turnQueue.push({ activePlayer: nextSeat, isExtra: false });
+        }
+      }
     }
   }
 
@@ -94,7 +117,16 @@ export class PhaseHandler {
     // game.emitEvent so ContinuousEffectRegistry.onEvent sees them and
     // can expire untilEndOfTurn / untilEndOfYourNextTurn effects.
     yield game.emitEvent(mkEvent("TurnStarted", game.turn, game.phase, { activeSeat: turn.activePlayer }));
-    const steps = this.phaseSequence.getSteps();
+    // Wave 106 — closes the prior PhaseReversed TODO(advanced) at the
+    // consumer side. Topsy-Turvy-shape statics flip the phase order for
+    // the matching seat's turn. We resolve the gate ONCE per turn (the
+    // active player and registry shape don't change mid-turn under SP1's
+    // emission contract); when set, we walk the phase sequence in
+    // reverse order. Each step's turn-based actions and priority window
+    // remain canonical for that step — only the iteration direction
+    // flips.
+    const stepsBase = this.phaseSequence.getSteps();
+    const steps = isPhaseOrderReversed(game, turn.activePlayer) ? [...stepsBase].reverse() : stepsBase;
     for (const step of steps) {
       game.phase = step;
       yield* this.runStep(step);

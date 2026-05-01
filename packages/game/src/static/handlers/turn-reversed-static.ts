@@ -20,11 +20,14 @@
 // Routing: ruleChanging per MODE_TO_CATEGORY. Pure rule override
 // consulted by the turn-advance path.
 //
-// MVP scope: registration + helper. The consumer wiring (turn-order
-// reversal at PhaseHandler.advanceActiveSeat / equivalent) is a
-// TODO(advanced) — the engine's multi-player turn-order machinery is
-// SP4 scope. The handler stamps the gate so future wiring reads it
-// uniformly via `isTurnOrderReversed(game)`.
+// Wave 106 — closes the prior consumer-side TODO(advanced). The
+// PhaseHandler.run loop now consults `nextActiveSeatInTurnOrder`
+// (statics/wave70p-gate-helpers.ts) when the turn queue empties; on
+// match the next-seat advance walks seat order BACKWARDS (CR 103.7
+// reversed). The gate is opt-in — drivers without a TurnReversed
+// static observe the prior "drain queue & stop" semantics unchanged
+// (the canonical SP1 round-robin shape). Multi-table behavior in
+// future SP4 turn-order changes layers on top of this primitive.
 import type { ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import {
   StaticHandler,

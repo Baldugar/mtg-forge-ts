@@ -100,10 +100,10 @@ export const canChangeDayTimeTo = (game: Game, proposed: DayNightState): boolean
 
 /**
  * True iff turn order is reversed for the matching seat (CR 103.7).
- * Forward-compat read for SP4 turn-order machinery — current MVP
- * registration is a no-op at the consumer side; future wiring of
- * PhaseHandler.advanceActiveSeat reads this helper to flip the
- * direction.
+ * Wave 106 closure of the prior consumer-side TODO(advanced): the
+ * PhaseHandler now consults `nextActiveSeatInTurnOrder` (below) when
+ * refilling the turn queue, which uses this gate to flip the seat
+ * advance direction.
  *
  * Returns true when ANY active TurnReversed static covers the given
  * seat; the gate is symmetric (both directions reverse together) so
@@ -119,6 +119,32 @@ export const isTurnOrderReversed = (game: Game, seat: PlayerSeat): boolean => {
     if (payload.playerMatches(seat)) return true;
   }
   return false;
+};
+
+/**
+ * Wave 106 — Compute the seat that should hold priority next, given the
+ * just-finished turn's active seat. Walks the player roster in seat
+ * order and returns:
+ *   - the next seat (mod player count) when no TurnReversed static
+ *     covers the just-finished active seat — the canonical CR 103.7
+ *     forward direction;
+ *   - the previous seat (mod player count) when an active TurnReversed
+ *     static matches — Topsy Turvy + 3+-player corpus shape.
+ *
+ * Defensively returns the same seat when only one live player remains
+ * (the loser-elimination path will be invoked separately by the SBA
+ * loop) and `undefined` when there are no players (an error condition
+ * the caller handles by terminating the run).
+ */
+export const nextActiveSeatInTurnOrder = (game: Game, justFinished: PlayerSeat): PlayerSeat | undefined => {
+  const players = game.players;
+  if (players.length === 0) return undefined;
+  const idx = players.findIndex((p) => p.seat === justFinished);
+  if (idx < 0) return players[0]?.seat;
+  const reversed = isTurnOrderReversed(game, justFinished);
+  const len = players.length;
+  const nextIdx = reversed ? (idx - 1 + len) % len : (idx + 1) % len;
+  return players[nextIdx]?.seat;
 };
 
 /**

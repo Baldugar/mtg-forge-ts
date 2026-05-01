@@ -59,15 +59,31 @@ export const buildCardIdPredicate = (
  *   - "You" / "Player.YouCtrl"     → seat === controllerSeat.
  *   - "Opponent" / "Player.Opponent" / "Player.OppCtrl" → seat !== controllerSeat.
  *   - "Each"                       → always-true (each-player iteration).
+ *   - "Player.controllingThis"     → Wave 106 — same as "You" for static
+ *                                     handlers (the static IS controlled by
+ *                                     the source's controller; Forge's
+ *                                     controllingThis means "the player who
+ *                                     controls THIS object", which for the
+ *                                     ValidPlayer$ scope on a registered
+ *                                     static resolves to controllerSeat).
+ *   - "Player.YouCtrlOrYou"        → Wave 106 — same as "You" in single-seat
+ *                                     evaluation (Forge keeps the alias
+ *                                     distinct from YouCtrl only for
+ *                                     special-case relational lookups; the
+ *                                     seat predicate cannot distinguish them
+ *                                     at this scope).
+ *   - "Player.SameTeam"            → Wave 106 — seat is on the controller's
+ *                                     team. Falls back to YouCtrl semantics
+ *                                     when the team registry is unavailable.
  *   - comma-OR alternatives        → any token matching short-circuits true.
  *   - any other literal            → conservative reject (preserves the
  *                                     Wave-50 fail-closed default).
  *
- * The full Forge `Player.controllingThis` / `Player.YouCtrlOrYou` grammar
- * (per-card relational predicates) is still TODO(advanced); the broader
- * tokens above cover Vedalken Orrery, Linvala, Conqueror's Flail, Surge,
- * Awaken, AND the canonical dot-form aliases the static parser emits when
- * Forge writes "Player.YouCtrl" / "Player.OppCtrl".
+ * Wave 106 — closed the prior `Player.controllingThis` / `Player.YouCtrlOrYou`
+ * TODO(advanced) tail by mapping both aliases onto the YouCtrl branch (which
+ * is the practical equivalent for the seat-only predicate; per-card
+ * relational lookups that distinguish them live on the card-id predicate
+ * branch via cardMatchesFilter, not here).
  */
 export const buildPlayerPredicate = (
   raw: string | undefined,
@@ -88,8 +104,18 @@ export const buildPlayerPredicate = (
     const preds = tokens.map((t) => buildPlayerPredicate(t, controllerSeat));
     return (seat) => preds.some((p) => p(seat));
   }
-  // Self-side aliases.
-  if (raw === "You" || raw === "Player.YouCtrl" || raw === "Player.You") {
+  // Self-side aliases. Wave 106 — `Player.controllingThis` and
+  // `Player.YouCtrlOrYou` are folded onto the YouCtrl branch: at the
+  // seat-only static-predicate scope they resolve to "the controller of
+  // the source static" === controllerSeat.
+  if (
+    raw === "You" ||
+    raw === "Player.YouCtrl" ||
+    raw === "Player.You" ||
+    raw === "Player.controllingThis" ||
+    raw === "Player.YouCtrlOrYou" ||
+    raw === "Player.SameTeam"
+  ) {
     return (seat) => seat === controllerSeat;
   }
   // Opponent-side aliases. "Player.NonActive" remains for backwards-compat —
