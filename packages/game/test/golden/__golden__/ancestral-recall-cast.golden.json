@@ -1,0 +1,91 @@
+{
+  "scenarioId": "ancestral-recall-cast",
+  "seed": 87,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": 2,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "payerSeat": 0
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 5,
+        "cardId": 4,
+        "controllerSeat": 0
+      }
+    },
+    {
+      "kind": "CardDrawn",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "cardId": 0
+      }
+    },
+    {
+      "kind": "CardDrawn",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "cardId": 1
+      }
+    },
+    {
+      "kind": "CardDrawn",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "cardId": 2
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 5,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 4,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [20, 20],
+    "handSizes": [3, 0],
+    "battlefield": [],
+    "graveyards": [["Ancestral Recall"], []],
+    "stackSize": 0
+  }
+}
