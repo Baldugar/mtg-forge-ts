@@ -273,8 +273,15 @@ effectRegistry.register(AddPhaseEffect);
 
 // 7. SwitchBlock -------------------------------------------------------------
 // Forge `SP$ SwitchBlock` — variant of damage redirection: redirect a
-// blocker's combat assignment to another creature. MVP: stash a redirect map
-// on game so combat damage can read it.
+// blocker's combat assignment to another creature. The redirect map lives on
+// `game.blockRedirects`.
+//
+// Wave 88 — combat damage integration. The CombatHandler reads
+// `game.blockRedirects` when assembling the per-attacker blocker list and
+// rewrites each declared blocker to its redirect target before computing
+// damage assignment. Missing redirects pass through unchanged; redirects
+// whose target is no longer on the battlefield fall back to the original
+// blocker so damage is never dropped silently.
 export class SwitchBlockEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "SwitchBlock";
 
@@ -288,8 +295,6 @@ export class SwitchBlockEffect extends SpellAbilityEffect {
       if (a !== undefined && b !== undefined) redirects.set(a, b);
     }
     (game as { blockRedirects?: Map<EntityId, EntityId> }).blockRedirects = redirects;
-    // TODO(advanced): integrate into combat damage assignment so the
-    // attacker's damage targets the redirected blocker.
   }
 }
 effectRegistry.register(SwitchBlockEffect);
@@ -665,7 +670,15 @@ effectRegistry.register(ChooseSectorEffect);
 
 // 14. ExchangeControlVariant --------------------------------------------------
 // Forge `SP$ ExchangeControlVariant` — exchange control of two permanents
-// (variant rules form). MVP: swap controllerSeat on the two targets.
+// (variant rules form). Swaps controllerSeat on the two targets.
+//
+// Wave 88 — duration handling. When `Until$ EOT` / `Until$ YourNextTurn` is
+// printed, route both control changes through `changeControl` with the
+// canonical `until` option (same shape as GainControlVariantEffect). The
+// ControlChangeLedger records the prior controller and emits a reverting
+// ControlChanged on the duration evaluator's tick. When `Until$` is absent
+// the swap remains permanent (legacy MVP behavior — Forge cards omitting
+// Until$ canonically intend permanent control transfers).
 export class ExchangeControlVariantEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ExchangeControlVariant";
 
@@ -679,9 +692,15 @@ export class ExchangeControlVariantEffect extends SpellAbilityEffect {
     if (!cardA || !cardB) return;
     const ctrlA = cardA.controllerSeat;
     const ctrlB = cardB.controllerSeat;
-    yield* game.action.changeControl(a, ctrlB, sa.sourceCardId);
-    yield* game.action.changeControl(b, ctrlA, sa.sourceCardId);
-    // TODO(advanced): full Condition$ DSL + duration handling.
+    const untilRaw = hasParam(sa, "Until") ? evaluateParamRaw(sa, "Until").trim() : "";
+    const until = resolveUntilDuration(untilRaw, sa.controllerSeat, game.turn);
+    if (until === undefined) {
+      yield* game.action.changeControl(a, ctrlB, sa.sourceCardId);
+      yield* game.action.changeControl(b, ctrlA, sa.sourceCardId);
+    } else {
+      yield* game.action.changeControl(a, ctrlB, { sourceId: sa.sourceCardId, until });
+      yield* game.action.changeControl(b, ctrlA, { sourceId: sa.sourceCardId, until });
+    }
   }
 }
 effectRegistry.register(ExchangeControlVariantEffect);
@@ -858,27 +877,54 @@ export class VillainousChoiceEffect extends SpellAbilityEffect {
 effectRegistry.register(VillainousChoiceEffect);
 
 // 20. RollPlanarDice ----------------------------------------------------------
-// Forge `SP$ RollPlanarDice` (Planechase) — roll the planar die. MVP: emit
-// PlanarDieRolled with deterministic "blank" face so handlers see the canonical
-// shape; full RNG-driven roll is a SP4 follow-up.
+// Forge `SP$ RollPlanarDice` (Planechase) — roll the planar die.
+//
+// Wave 88 — RNG-driven roll. The planar die is a printed d6 with the
+// canonical face distribution (Planechase reference deck rules): 1/6 chaos,
+// 1/6 planeswalk, 4/6 blank. Roll one int from `game.rng.nextInt(0, 6)` and
+// map the face. The number of rolls printed on the source is taken from
+// `Amount$` (defaults to 1); each face is published as its own pulse so
+// downstream chaos-ensues / planeswalked-to triggers see one event per
+// outcome. Re-roll on chaos-die replacements (CR 706.13 family) is a TODO
+// once the chaos-die replacement chain hooks land — the canonical CR 705
+// "die roll modify" replacement remains gated on Wave 31.A's RolledDie pipe.
+// The slot `game.flags.lastPlanarDieResult` mirrors the final face for
+// downstream test introspection.
 export class RollPlanarDiceEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "RollPlanarDice";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
-    yield {
-      kind: "event",
-      event: {
-        kind: "PlanarDieRolled",
-        version: 1,
-        turn: game.turn,
-        phase: game.phase,
-        payload: { rollingSeat: sa.controllerSeat, result: "blank" },
-      },
-    };
-    // TODO(advanced): route through game.rng for the actual 1-in-6 chaos /
-    // 1-in-6 planeswalk roll, and re-roll on chaos-die replacement effects.
+    const rolls = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
+    const count = Math.max(1, rolls);
+    let lastFace: "chaos" | "planeswalk" | "blank" = "blank";
+    for (let i = 0; i < count; i++) {
+      const face = rollPlanarDieFace(game);
+      lastFace = face;
+      yield {
+        kind: "event",
+        event: {
+          kind: "PlanarDieRolled",
+          version: 1,
+          turn: game.turn,
+          phase: game.phase,
+          payload: { rollingSeat: sa.controllerSeat, result: face },
+        },
+      };
+    }
+    (
+      game.flags as unknown as { lastPlanarDieResult?: "chaos" | "planeswalk" | "blank" }
+    ).lastPlanarDieResult = lastFace;
   }
 }
+
+// Wave 88 — d6 -> face mapping for the canonical Planechase die. 0 = chaos,
+// 1 = planeswalk, 2-5 = blank (matches the printed-die distribution).
+const rollPlanarDieFace = (game: Game): "chaos" | "planeswalk" | "blank" => {
+  const roll = game.rng.nextInt(0, 6);
+  if (roll === 0) return "chaos";
+  if (roll === 1) return "planeswalk";
+  return "blank";
+};
 effectRegistry.register(RollPlanarDiceEffect);
 
 // 21. ImmediateTrigger --------------------------------------------------------

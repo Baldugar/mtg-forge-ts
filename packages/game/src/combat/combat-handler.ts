@@ -405,7 +405,24 @@ export class CombatHandler {
       if (isPhasedOut(this.game, attackerId)) continue;
       const power = attackerPower(this.game, attackerId);
       if (power <= 0) continue;
-      const blockers = this.state.blockerOrdering.get(attackerId) ?? [];
+      const rawBlockers = this.state.blockerOrdering.get(attackerId) ?? [];
+      // Wave 88 — SwitchBlock redirect (CR 706.13 family). Cards like
+      // `SP$ SwitchBlock` stash a per-blocker redirect map on
+      // `game.blockRedirects`; rewrite the ordered blocker list so the
+      // attacker's combat damage flows to the redirected creature
+      // instead of the originally-declared blocker. Missing redirects
+      // pass through unchanged. Redirected entries that no longer point
+      // to a known card fall back to the original blocker so we never
+      // drop damage on the floor.
+      const blockRedirects = (this.game as { blockRedirects?: Map<EntityId, EntityId> }).blockRedirects;
+      const blockers: readonly EntityId[] =
+        blockRedirects === undefined || blockRedirects.size === 0
+          ? rawBlockers
+          : rawBlockers.map((id) => {
+              const target = blockRedirects.get(id);
+              if (target === undefined) return id;
+              return this.game.cards.has(target) ? target : id;
+            });
       // Wave 70.F — AssignCombatDamageAsUnblocked (CR 510). When an
       // active static matches this attacker, treat the blocked branch as
       // if no blockers existed: damage routes to the declared defender

@@ -870,15 +870,39 @@ export class AlterAttributeEffect extends SpellAbilityEffect {
     // Legacy single-attribute / numeric path.
     const attr = hasParam(sa, "Attribute") ? evaluateParamRaw(sa, "Attribute") : "default";
     const delta = hasParam(sa, "Amount") ? evaluateParamNumber(sa, "Amount", game) : 1;
+    let anyChanged = false;
     for (const id of ids) {
       const card = game.cards.get(id);
       if (!card) continue;
       const attrs = (card as { attributes?: Map<string, number> }).attributes ?? new Map<string, number>();
-      attrs.set(attr, (attrs.get(attr) ?? 0) + delta);
+      const before = attrs.get(attr) ?? 0;
+      const after = before + delta;
+      attrs.set(attr, after);
       (card as { attributes?: Map<string, number> }).attributes = attrs;
+      if (before !== after) {
+        anyChanged = true;
+        // Wave 88 — surface the change for attribute-watching observers via
+        // decisionWarnings. A dedicated AttributeChanged engine event is
+        // gated on the trigger-mode taxonomy growing the kind, but the
+        // decision-warning channel already gives tests + the snapshot
+        // pipeline a way to introspect "this attribute moved from N to M
+        // by source X". Stamp once per id+attribute change with a
+        // `attribute-changed` discriminator.
+        game.decisionWarnings.push({
+          kind: "attribute-changed",
+          sourceId: sa.sourceCardId,
+          detail: `${id}:${attr}:${before}->${after}`,
+        });
+      }
     }
-    // TODO(advanced): publish an AttributeChanged event for any
-    // attribute-watching trigger.
+    // Wave 88 — bump the layer engine epoch on numeric attribute changes
+    // so any downstream layered grants gated on `attributes.get(attr)`
+    // (e.g. ring-level scaling, "for each rage counter on" triggers)
+    // re-pull rather than read the cached value. The legacy path
+    // mutated in-place without a recompute hint.
+    if (anyChanged) {
+      game.layerEngine.bumpEpoch("alter-attribute");
+    }
   }
 }
 effectRegistry.register(AlterAttributeEffect);

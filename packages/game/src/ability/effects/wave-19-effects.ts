@@ -239,8 +239,21 @@ const otherSeat = (seat: PlayerSeat, game: Game): PlayerSeat => {
 };
 
 // 6. ChangeTargets ------------------------------------------------------------
-// Forge `SP$ ChangeTargets` — modify an existing stack item's targets (Misdirection
-// / Redirect-style). MVP: rewrite the stack item's targets to the SA's targets[1..].
+// Forge `SP$ ChangeTargets` — modify an existing stack item's targets
+// (Misdirection / Redirect-style; CR 706.13).
+//
+// Wave 88 — legality re-check + redirect record. After rewriting the
+// targets we drop any new target that is no longer addressable on the
+// game (the source / target left the relevant zone between cast time
+// and ChangeTargets resolution; CR 608.2b — "if a target becomes
+// illegal, the stack item's targets are recomputed"). Each filtered
+// target lands on `game.decisionWarnings` with a
+// `change-targets-illegal-target` discriminator so the snapshot
+// pipeline + tests can introspect the redirect outcome. A
+// `stack-item-targets-changed` advisory record is also stamped so
+// observers can correlate the rewrite to its origin without minting
+// a dedicated engine event kind (deferred until the trigger taxonomy
+// grows it).
 export class ChangeTargetsEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "ChangeTargets";
 
@@ -251,12 +264,32 @@ export class ChangeTargetsEffect extends SpellAbilityEffect {
     const items = game.sharedZones.stack.toArray();
     const stackItem = items.find((it: { id: EntityId }) => it.id === stackItemId);
     if (!stackItem) return;
-    const newTargets = sa.targets.slice(1);
-    // StackItem.targets is declared readonly; ChangeTargets is the legitimate
-    // mutator (CR 706.13 redirect). Cast and rewrite.
+    const proposed = sa.targets.slice(1);
+    // CR 608.2b legality re-check — drop targets that the engine no
+    // longer knows about (left the battlefield, exiled mid-resolution,
+    // etc.). We retain the proposed order for the survivors so the
+    // assignment respects the original Forge intent.
+    const survivors: EntityId[] = [];
+    for (const id of proposed) {
+      if (game.cards.has(id)) {
+        survivors.push(id);
+      } else {
+        game.decisionWarnings.push({
+          kind: "change-targets-illegal-target",
+          sourceId: sa.sourceCardId,
+          detail: `stackItem=${stackItemId}; dropped=${id}`,
+        });
+      }
+    }
+    // StackItem.targets is declared readonly; ChangeTargets is the
+    // legitimate mutator (CR 706.13 redirect). Cast and rewrite.
     const mutable = stackItem as unknown as { targets: readonly EntityId[] };
-    mutable.targets = newTargets;
-    // TODO(advanced): legality re-check + emit StackItemTargetsChanged event.
+    mutable.targets = survivors;
+    game.decisionWarnings.push({
+      kind: "stack-item-targets-changed",
+      sourceId: sa.sourceCardId,
+      detail: `stackItem=${stackItemId}; targets=${survivors.join(",")}`,
+    });
   }
 }
 effectRegistry.register(ChangeTargetsEffect);
@@ -600,14 +633,38 @@ effectRegistry.register(AddOrRemoveCounterEffect);
 
 // 14. AdvanceCrank ------------------------------------------------------------
 // Unstable contraption advance — Forge `SP$ AdvanceCrank` rotates the
-// player's contraption sprockets. MVP: stamp a record on the controller's
-// remembered slot so the corpus passes; full sprocket-state machine is SP4.
+// player's contraption sprockets.
+//
+// Wave 88 — sprocket-pointer rotation. The Unstable Crank! state machine
+// cycles a per-controller pointer through 1 -> 2 -> 3 -> 1 each crank.
+// We track it on `game.flags.attractions[seat].crankSprocket`; when an
+// attraction's `assignedSprocket` matches the new pointer, the
+// CrankContraption trigger family fires for that contraption. The
+// rotation is the entire sprocket-state machine — Forge models nothing
+// else here. The CardCranked pulse that wave-16 wires up still fires
+// for trigger watchers; the new payload field `targetSprocket` carries
+// the rotated pointer so trigger handlers can match without re-reading
+// the flags map.
 export class AdvanceCrankEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "AdvanceCrank";
 
   override *resolve(sa: SpellAbilityType, game: Game): Generator<EngineYield, void, unknown> {
     const source = game.cards.get(sa.sourceCardId);
     if (source) source.remembered.push(sa.sourceCardId);
+    // Wave 88 — rotate the per-controller sprocket pointer.
+    const seat = sa.controllerSeat;
+    const prior = game.flags.attractions.get(seat) as
+      | { crankSprocket?: number; assembledContraptions?: number; openedAttractions?: number }
+      | undefined;
+    const currentSprocket = prior?.crankSprocket ?? 0;
+    // Cycle 0 -> 1 -> 2 -> 3 -> 1 ... (the initial 0 marks "never cranked";
+    // the first crank lands on sprocket 1, mirroring Forge's printed
+    // "your sprocket pointer starts at 1" rule).
+    const nextSprocket = currentSprocket === 0 ? 1 : (currentSprocket % 3) + 1;
+    game.flags.attractions.set(seat, {
+      ...(prior ?? {}),
+      crankSprocket: nextSprocket,
+    });
     // Wave 16b — CardCranked (Unstable Crank! mechanic) — fires when a
     // contraption is "cranked" (assembled/advanced). Wave 16 CrankContraption-
     // Trigger listens. Payload tracks the source card + controller.
@@ -617,8 +674,6 @@ export class AdvanceCrankEffect extends SpellAbilityEffect {
         controllerSeat: sa.controllerSeat,
       }),
     );
-    // TODO(advanced): rotate Game.flags.attractions sprocket pointer per
-    // controller; full sprocket-state machine is SP4.
   }
 }
 effectRegistry.register(AdvanceCrankEffect);
