@@ -96,7 +96,7 @@ export class EncoreEffect extends SpellAbilityEffect {
       matches(event) {
         if (event.kind !== "StepStarted") return false;
         const p = (event as unknown as { payload?: { step?: string } }).payload;
-        if (p?.step !== "End") return false;
+        if (p?.step !== "EndStep" && p?.step !== "End") return false;
         for (const tid of spawnedIds) {
           const t = game.cards.get(tid);
           if (!t) continue;

@@ -196,7 +196,7 @@ export class MobilizeKeywordHandler extends KeywordHandler {
             matches(event) {
               if (event.kind !== "StepStarted") return false;
               const p = (event as unknown as { payload?: { step?: string } }).payload;
-              if (p?.step !== "End") return false;
+              if (p?.step !== "EndStep" && p?.step !== "End") return false;
               // Drive the sacrifices eagerly. Mirrors EffectEffect /
               // FogEffect's "tear-down on match" pattern. Each call
               // self-guards against missing cards.

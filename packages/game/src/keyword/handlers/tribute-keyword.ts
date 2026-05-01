@@ -21,20 +21,24 @@
 //      to the chosen opponent. On confirm: addCounter +1/+1 N + stamp
 //      tributePaid = true. On decline: stamp tributePaid = false.
 //
-// TODO(advanced) — fire the alternate trigger encoded on the source as
-// a Conditional Trigger gated on Count$Tribute via sub-SVar dispatch.
-// The data side already round-trips `tributePaid`; what's missing is
-// a triggered-ability matcher reading the flag, which lives in the
-// Wave 51 SVar selector pack and is a pure read-side wire-up.
+// Wave 94 — alternate-trigger dispatch closed via sub-SVar lookup.
+// On decline (`tributePaid = false`), if the source carries an
+// `AltTribute` SVar of kind="ability", the handler synthesizes a
+// SpellAbility from its EffectInvocation and yields* its resolver.
+// Mirrors RepeatEachEffect's sub-SVar pattern; the SBA sweep on the
+// next priority window picks up any side-effects.
 import type {
+  AbilityAst,
   EntityId,
   GameEvent,
   KeywordAst,
   ParamValue,
   PlayerSeat,
+  SVarAst,
   TriggeredAbility,
 } from "@mtg-forge-ts/core";
 import { CounterType, ZoneType } from "@mtg-forge-ts/core";
+import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -158,9 +162,31 @@ export class TributeKeywordHandler extends KeywordHandler {
             yield* g.action.addCounter(sourceCardId, CounterType.PlusOnePlusOne, n, sourceCardId);
           } else {
             self.tributePaid = false;
-            // TODO(advanced) — fire the alternate trigger encoded on the
-            // source as a Conditional Trigger gated on Count$Tribute via
-            // sub-SVar dispatch.
+            // Wave 94 — fire the alternate trigger encoded on the source
+            // as an `AltTribute` SVar (kind="ability"). Builds a fakeAst
+            // over the SVar's EffectInvocation, instantiates a
+            // SpellAbility, and yields* its resolver. Graceful no-op when
+            // the SVar is missing.
+            const svars =
+              (self.paperCard.definition?.svars as ReadonlyMap<string, SVarAst> | undefined) ?? new Map();
+            const sv = svars.get("AltTribute");
+            if (sv && sv.kind === "ability" && sv.ability) {
+              const fakeAst: AbilityAst = {
+                kind: "spell",
+                effect: sv.ability,
+                cost: { raw: "" },
+              };
+              // Default targets = [self] so sub-abilities written as
+              // `Defined$ Self` (via sa.targets) resolve cleanly.
+              const subSa = new SpellAbility(
+                fakeAst,
+                sourceCardId,
+                self.controllerSeat ?? controllerSeat,
+                svars,
+                [sourceCardId] as readonly EntityId[],
+              );
+              yield* subSa.makeResolver().resolve(g);
+            }
           }
         },
       },

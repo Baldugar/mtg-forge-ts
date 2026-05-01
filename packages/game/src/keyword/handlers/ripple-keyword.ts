@@ -19,11 +19,13 @@
 //      the top N then moves them to the bottom of the library. The
 //      free-cast leg of the same-name cards is deferred (TODO advanced).
 //
-// TODO(advanced) — Casting the same-named cards without paying their
-// mana cost is the same plumbing as Cascade's free-cast (see
-// Cascade's FreeCastPipeline subclass). Wave 39 stamps the trigger and
-// the reveal; the free-cast loop lands when the per-card iterative free-
-// cast pipeline is widened to non-cascade callers.
+// Wave 94 — Closes the free-cast tail. After revealing the top N, for
+// each revealed card with the same name as the source we yield a
+// confirmAction; on confirm we route through `game.action.castCopyOf`
+// (Wave 64 unified free-cast helper, also used by Cipher / Demonstrate /
+// Replicate). Cards that were free-cast are NOT placed at the bottom of
+// the library on the bottom-place tail (the cast pipeline will route
+// them through the normal post-resolution destination).
 import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
 import { ZoneType, mkEvent } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
@@ -113,15 +115,41 @@ export class RippleKeywordHandler extends KeywordHandler {
             }),
           };
 
-          // 3. TODO(advanced) — for each revealed card with same name as
-          // self, yield a confirmAction → free-cast via FreeCastPipeline.
-          // Wave 39 leaves the matched cards in declared order on bottom;
-          // the free-cast leg lands when the iterative free-cast pipeline
-          // is widened to non-cascade callers.
+          // 3. Wave 94 — for each revealed card with the same name as
+          // the source, offer a free-cast via castCopyOf. Track which
+          // ids were cast so we don't bottom them after.
+          const sourceCard = g.cards.get(sourceCardId);
+          const sourceName = sourceCard?.paperCard.name;
+          const castIds = new Set<EntityId>();
+          if (sourceName !== undefined) {
+            for (const rid of revealedIds) {
+              const rc = g.cards.get(rid);
+              if (!rc) continue;
+              if (rc.paperCard.name !== sourceName) continue;
+              const offer = (yield {
+                kind: "decision",
+                request: {
+                  kind: "confirmAction",
+                  sourceId: sourceCardId,
+                  prompt: `Cast ${sourceName} (revealed by Ripple) without paying its mana cost?`,
+                },
+              }) as { readonly kind?: string; readonly confirmed?: boolean } | undefined;
+              if (offer?.kind === "confirmAction" && offer.confirmed === true) {
+                castIds.add(rid);
+                yield* g.action.castCopyOf(rid, {
+                  controllerSeat,
+                  newTargets: true,
+                  freecast: true,
+                });
+              }
+            }
+          }
 
-          // 4. Place the revealed slice at the bottom of the library in
-          // declared order. (CR 702.79: "in any order" — MVP keeps order.)
+          // 4. Place the remaining revealed slice at the bottom of the
+          // library in declared order. (CR 702.79: "in any order" — MVP
+          // keeps order.) Cards that were free-cast are not bottomed.
           for (const id of revealedIds) {
+            if (castIds.has(id)) continue;
             library.add(id);
           }
         },

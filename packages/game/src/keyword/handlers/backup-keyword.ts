@@ -12,13 +12,27 @@
 //   1. Adds "backup" to card.keywords.
 //   2. Stamps `card.backupAmount = N`.
 //   3. ETB trigger: yield chooseCard for a battlefield creature
-//      (auto-pick first eligible — full chooseCard decision is
-//      TODO(advanced)). On resolve: addCounter(P1P1, N). Granting the
-//      listed abilities until end of turn is documented under
-//      TODO(advanced); the listed abilities are encoded as inline
-//      AbilityAst lines on the source.
-import type { EntityId, GameEvent, KeywordAst, ParamValue, TriggeredAbility } from "@mtg-forge-ts/core";
+//      On resolve: addCounter(P1P1, N), then dispatch the source's
+//      `BackupGrant` SVar (kind="ability") on the chosen target.
+//
+// Wave 94 — closes the "grant listed abilities until end of turn" tail.
+// The source's listed abilities are encoded as a `BackupGrant` SVar of
+// kind="ability" on the PaperCard.definition.svars. When the chosen
+// target is not the source itself (CR 702.165a — "If that's another
+// creature ..."), we synthesize a SpellAbility from the SVar's
+// EffectInvocation and yield* its resolver. The resolver is responsible
+// for any layer 6/7 grant + UEoT scoping — Backup just routes to it.
+import type {
+  AbilityAst,
+  EntityId,
+  GameEvent,
+  KeywordAst,
+  ParamValue,
+  SVarAst,
+  TriggeredAbility,
+} from "@mtg-forge-ts/core";
 import { CardType, CounterType, ZoneType } from "@mtg-forge-ts/core";
+import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -102,11 +116,31 @@ export class BackupKeywordHandler extends KeywordHandler {
           if (target === undefined) return;
 
           yield* g.action.addCounter(target, CounterType.PlusOnePlusOne, n, sourceCardId);
-          // TODO(advanced) — when target !== sourceCardId, grant the
-          // source's listed abilities to the chosen creature until end
-          // of turn (Layer 6/7 grants via sub-SVar dispatch — pending
-          // sub-SVar wiring on keyword handlers).
-          void (target === sourceCardId);
+
+          // Wave 94 — when target !== sourceCardId, dispatch the source's
+          // `BackupGrant` SVar (kind="ability") with the chosen target as
+          // the spell-ability's target list. The dispatched SA is
+          // responsible for performing the layer-6/7 grant + UEoT scoping.
+          // Mirrors RepeatEachEffect's sub-SVar pattern.
+          if (target !== sourceCardId) {
+            const self = g.cards.get(sourceCardId);
+            if (self) {
+              const svars =
+                (self.paperCard.definition?.svars as ReadonlyMap<string, SVarAst> | undefined) ?? new Map();
+              const sv = svars.get("BackupGrant");
+              if (sv && sv.kind === "ability" && sv.ability) {
+                const fakeAst: AbilityAst = {
+                  kind: "spell",
+                  effect: sv.ability,
+                  cost: { raw: "" },
+                };
+                const subSa = new SpellAbility(fakeAst, sourceCardId, controllerSeat, svars, [
+                  target,
+                ] as readonly EntityId[]);
+                yield* subSa.makeResolver().resolve(g);
+              }
+            }
+          }
         },
       },
     };

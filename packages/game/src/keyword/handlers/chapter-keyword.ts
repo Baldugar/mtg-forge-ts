@@ -34,20 +34,25 @@
 //      card.sagaFinalChapterResolved = true so the SBA engine
 //      (sba/saga-class.ts) sacrifices the saga at the next sweep.
 //
-// Per-chapter SVar dispatch (resolving DB1..DBN as their printed
-// chapter abilities) is TODO(advanced); the count + final-chapter flag
-// is enough for the SBA-driven sacrifice path and exercises ~all
-// Saga corpus cards as the durable contract.
+// Wave 94 — per-chapter SVar dispatch (resolving DB1..DBN as their printed
+// chapter abilities) is now closed: when the CounterAdded watcher fires,
+// it looks up the SVar named `sagaChapterSVars[total - 1]` on the source
+// card's PaperCard.definition.svars (mirrors RepeatEachEffect's pattern)
+// and yields the synthesized SpellAbility's resolver. The final-chapter
+// flag is still set so the SBA sweep handles sacrifice on top of this.
 import type {
+  AbilityAst,
   EntityId,
   GameEvent,
   KeywordAst,
   ParamValue,
   PhaseStep,
   PlayerSeat,
+  SVarAst,
   TriggeredAbility,
 } from "@mtg-forge-ts/core";
 import { CounterType, ZoneType } from "@mtg-forge-ts/core";
+import { SpellAbility } from "../../ability/spell-ability.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
@@ -197,11 +202,11 @@ export class ChapterKeywordHandler extends KeywordHandler {
     // Trigger 3 — CounterAdded watcher: detect final-chapter resolution.
     // When the new total of Lore counters on this Saga equals N, stamp
     // sagaFinalChapterResolved = true so the next SBA sweep sacrifices.
-    // TODO(advanced) — also dispatch the per-chapter SVar (DB1..DBN) at
-    // matching counts so the printed chapter abilities resolve. The
-    // count + flag is the durable contract for ~all Saga corpus cards;
-    // per-chapter ability resolution lands when SVar resolution from a
-    // synthesized SpellAbility name is wired up.
+    // Wave 94 — also dispatch the per-chapter SVar (DB1..DBN) at the
+    // matching count so each printed chapter ability resolves once. The
+    // SVar name lives at `sagaChapterSVars[total - 1]`; we look it up on
+    // the source's PaperCard.definition.svars (kind="ability"), build a
+    // SpellAbility from its EffectInvocation, and yield* its resolver.
     const watcherId = game.newEntityId();
     const watcher: TriggeredAbilityWithResolver = {
       id: watcherId,
@@ -218,18 +223,53 @@ export class ChapterKeywordHandler extends KeywordHandler {
         return p.counterType === (CounterType.Lore as string);
       },
       resolver: {
-        // biome-ignore lint/correctness/useYield: pure data-flag mutation; SBA sweep observes
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
           const g = gameUnknown as Game;
           const c = g.cards.get(sourceCardId);
           if (!c) return;
           const total = c.counters.get(CounterType.Lore) ?? 0;
           const target = c.sagaChapterCount ?? 0;
+
+          // Wave 94 — per-chapter SVar dispatch. Look up the chapter
+          // ability for this lore count (1-based: total=1 → svars[0]).
+          // Mirrors RepeatEachEffect's pattern: build a fakeAst over
+          // the SVar's EffectInvocation, instantiate a SpellAbility,
+          // and yield* its resolver. Guards against missing/stale SVar
+          // entries (graceful no-op on lookup failure).
+          const svarNames = c.sagaChapterSVars ?? [];
+          if (total >= 1 && total <= svarNames.length) {
+            const svarName = svarNames[total - 1];
+            const svars =
+              (c.paperCard.definition?.svars as ReadonlyMap<string, SVarAst> | undefined) ?? new Map();
+            if (svarName !== undefined) {
+              const sv = svars.get(svarName);
+              if (sv && sv.kind === "ability" && sv.ability) {
+                const fakeAst: AbilityAst = {
+                  kind: "spell",
+                  effect: sv.ability,
+                  cost: { raw: "" },
+                };
+                // Default the SA's target list to the source card so
+                // sub-abilities written as `Defined$ Self` (read via
+                // sa.targets) resolve. SVar authors that need a different
+                // target shape can splice their own AST.
+                const subSa = new SpellAbility(
+                  fakeAst,
+                  sourceCardId,
+                  c.controllerSeat ?? controllerSeat,
+                  svars,
+                  [sourceCardId] as readonly EntityId[],
+                );
+                yield* subSa.makeResolver().resolve(g);
+              }
+            }
+          }
+
           if (target > 0 && total >= target) {
             c.sagaFinalChapterResolved = true;
           }
-          // Pure data mutation; the SBA sweep on next priority-window
-          // opening picks up the flag.
+          // Pure data mutation tail (the SBA sweep on next priority-
+          // window opening picks up sagaFinalChapterResolved).
           return;
         },
       },

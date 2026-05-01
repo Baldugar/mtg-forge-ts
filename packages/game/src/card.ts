@@ -526,6 +526,11 @@ export class Card {
   backupAmount: number | undefined = undefined;
   tributeAmount: number | undefined = undefined;
   tributePaid: boolean | undefined = undefined;
+  // Wave 94 — Tempting Offer per-opponent confirm-loop counter. Set by
+  // TemptingOfferKeywordHandler.runOffer to the number of opponents who
+  // chose to copy the offering. Read by Count$TemptingOfferAccepted SVar
+  // selectors and any printed conditional triggers.
+  temptingOfferAcceptedCount: number | undefined = undefined;
   amplifyAmount: number | undefined = undefined;
   mobilizeAmount: number | undefined = undefined;
   reconfigureCost: string | undefined = undefined;
