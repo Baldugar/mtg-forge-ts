@@ -32,6 +32,7 @@
 import type { EntityId, GameEvent, PlayerSeat, TriggeredAbility } from "@mtg-forge-ts/core";
 import type { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import type { CantAttackPayload } from "../static/handlers/cant-attack.js";
 import type { CantBlockUnlessPayload } from "../static/handlers/cant-block-unless-static.js";
 import type { DisableTriggersPayload } from "../static/handlers/disable-triggers-static.js";
 import type { IgnoreLegendRulePayload } from "../static/handlers/ignore-legend-rule-static.js";
@@ -54,6 +55,26 @@ export const isExemptFromLegendRule = (game: Game, cardId: EntityId): boolean =>
     if (payload.cardMatches(cardId, game)) return true;
   }
   return false;
+};
+
+/**
+ * Wave 104 — read-side accessor: returns the UnlessCost$ text for the
+ * first active CantAttack static matching `attackerId`, or undefined
+ * if none / no cost is registered. Mirrors `cantBlockUnlessPaidCostText`
+ * on the attack side: the validateAttackDeclarations sweep already
+ * denies on a match (treating the unless-cost as unpaid), so this
+ * helper exists for diagnostic UI surfacing and for the future
+ * cost-payment dialog at attack-declaration time.
+ */
+export const cantAttackUnlessPaidCostText = (game: Game, attackerId: EntityId): string | undefined => {
+  const statics = game.staticEffectRegistry.byMode("CantAttack");
+  for (const s of statics) {
+    const restriction = s.describe() as Restriction;
+    if (!restriction.subjectFilter(attackerId, game)) continue;
+    const payload = restriction.payload as CantAttackPayload | undefined;
+    if (payload?.costText !== undefined) return payload.costText;
+  }
+  return undefined;
 };
 
 /**
@@ -137,7 +158,10 @@ const triggerMode = (trigger: TriggeredAbility): string | undefined => {
  *   3. Destination$     — event's toZone == static's destination (zone-change only)
  *   4. ValidCause$      — event's cause card matches the predicate
  *   5. ValidCard$       — trigger's source card matches the predicate
- *   6. ValidTrigger$    — annotation pattern (TODO(advanced) deeper pattern check)
+ *   6. ValidTrigger$    — annotation pattern (Wave 104 — comma-OR token
+ *                          alternatives via triggerAnnotationTokens; the
+ *                          single-literal raw form is preserved for legacy
+ *                          payload readers)
  *
  * MVP semantics: for Hushwing-shape statics (ValidCause$ Creature +
  * ValidMode$ ChangesZone,ChangesZoneAll + Destination$ Battlefield),
@@ -192,18 +216,20 @@ export const isTriggerDisabled = (game: Game, trigger: TriggeredAbility, event: 
     if (p.triggerSourceMatches !== undefined) {
       if (!p.triggerSourceMatches(triggerSrcId, game)) continue;
     }
-    // 6. ValidTrigger$ — exact-match annotation surface (MVP). The
-    // Forge "Triggered.Ward" / "Triggered.Custom" surface is exposed
-    // via the trigger's ast.params.Triggered (when present); we
-    // duck-type the read.
-    if (p.triggerAnnotationRaw !== undefined) {
+    // 6. ValidTrigger$ — annotation token match. Wave 104 broadens the
+    // single-literal MVP to a comma-OR alternatives set: when Forge
+    // writes "ValidTrigger$ Triggered.Ward,Triggered.Custom", any
+    // token match fires the gate. The trigger's ast.params.Triggered
+    // (when present) is duck-typed off the trigger object.
+    if (p.triggerAnnotationTokens !== undefined) {
       const ast = (
         trigger as unknown as {
           ast?: { params?: Readonly<Record<string, { kind?: string; raw?: string }>> };
         }
       ).ast;
       const triggered = ast?.params?.Triggered?.raw;
-      if (triggered !== p.triggerAnnotationRaw) continue;
+      if (triggered === undefined) continue;
+      if (!p.triggerAnnotationTokens.has(triggered)) continue;
     }
     return true;
   }

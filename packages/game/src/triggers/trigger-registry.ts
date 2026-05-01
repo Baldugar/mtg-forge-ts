@@ -30,6 +30,7 @@ import type {
 } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
+import { gatherPanharmoniconHits } from "../statics/cant-must-may-extras.js";
 import { isTriggerDisabled } from "../statics/wave70j-rule-gates.js";
 import type { PendingTrigger } from "./pending-trigger.js";
 
@@ -108,16 +109,33 @@ export class TriggerRegistry {
       if (t.interveningIf && !t.interveningIf(event, this.game)) continue;
       const lki = t.captureLki ? (t.captureLki(event, this.game) as LastKnownInfo | null) : null;
       const sourceCtl = this.resolveSourceController(t);
-      this.pending.push({
-        id: this.game.newEntityId(),
-        triggerId: t.id,
-        sourceCardId: t.sourceCardId,
-        event,
-        lki,
-        sourceControllerAtFire: sourceCtl,
-        firedAtTurn: this.game.turn,
-        firedAtPhase: this.game.phase,
-      });
+      // Wave 104 — Panharmonicon multiplier (Mondrak / Yarok / Glory
+      // Dominus). Gather every active Panharmonicon static whose
+      // ValidCard$ matches THIS trigger's source AND whose ValidEvent$
+      // matches the event kind; sum `additionalFires` across hits and
+      // push N+1 PendingTrigger entries (1 base + N additional). Each
+      // copy is an independent PendingTrigger with its own EntityId so
+      // priority ordering / APNAP scheduling sees N+1 distinct entries
+      // and the controller can stack them in any order they choose
+      // (CR 603.2c). The multiplier consults the gate AFTER suppression
+      // / DisableTriggers / interveningIf so a disabled trigger never
+      // multiplies; mirrors Forge's StaticAbilityPanharmonicon ordering.
+      let additionalFires = 0;
+      const panhits = gatherPanharmoniconHits(this.game, t.sourceCardId, event.kind);
+      for (const h of panhits) additionalFires += h.additionalFires;
+      const totalFires = 1 + additionalFires;
+      for (let i = 0; i < totalFires; i++) {
+        this.pending.push({
+          id: this.game.newEntityId(),
+          triggerId: t.id,
+          sourceCardId: t.sourceCardId,
+          event,
+          lki,
+          sourceControllerAtFire: sourceCtl,
+          firedAtTurn: this.game.turn,
+          firedAtPhase: this.game.phase,
+        });
+      }
     }
   }
 

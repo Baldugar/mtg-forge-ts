@@ -192,9 +192,13 @@ const evalAdamant: FlagEvaluator = (ctx) => {
   return card?.adamantColor !== undefined;
 };
 
-// TODO(advanced): Surge requires "another spell cast this turn before this
-// one" cost-time tracking. Until the surge cost handler stamps the slot,
-// this returns false (elseValue branch).
+// Wave 104 closure of the prior TODO(advanced): Surge IS wired through
+// `altcost/surge.ts` (Wave 58). Surge.modifyCastContext stamps
+// `card.surgePaid = true` when the alt-cost was paid; surge availability
+// itself reads `controllerCastSpellsThisTurn(card, game) >= 1` against
+// `game.flags.spellsCastThisTurn`. So at Count$Surged time the slot is
+// authoritative — `card.surgePaid` reflects whether THIS spell was cast
+// for its surge cost. The selector mirrors the Wave 58 wiring directly.
 const evalSurged: FlagEvaluator = (ctx) => {
   if (ctx.sourceCardId === undefined) return false;
   const card = ctx.game.cards.get(ctx.sourceCardId);

@@ -119,6 +119,15 @@ export interface DisableTriggersPayload {
   readonly triggerSourceMatches: ((cardId: EntityId, game: Game) => boolean) | undefined;
   /** Trigger-annotation pattern (e.g. "Triggered.Ward"). undefined → any annotation. */
   readonly triggerAnnotationRaw: string | undefined;
+  /**
+   * Wave 104 — exploded comma-OR token set parsed from `triggerAnnotationRaw`
+   * for cheap pattern-match consultation. When the raw value carries
+   * comma-separated alternatives (e.g. "Triggered.Ward,Triggered.Custom"),
+   * the gate fires on ANY token match; otherwise the single literal is
+   * the only alternative. undefined when no ValidTrigger$ filter was
+   * supplied (treated as "any annotation").
+   */
+  readonly triggerAnnotationTokens: ReadonlySet<string> | undefined;
 }
 
 const splitCsv = (raw: string | undefined): ReadonlySet<string> | undefined => {
@@ -185,6 +194,13 @@ export class DisableTriggersStaticHandler extends StaticHandler {
     const destinations = parseZoneSet(literalRaw(params.Destination));
     const origins = parseZoneSet(literalRaw(params.Origin));
     const triggerAnnotationRaw = literalRaw(params.ValidTrigger);
+    // Wave 104 — broaden ValidTrigger$ from a single exact-match literal to
+    // a comma-OR alternatives set. Mirrors the Wave 100 ValidMode$ /
+    // Origin$ / Destination$ shape: when Forge writes
+    // "ValidTrigger$ Triggered.Ward,Triggered.Custom", any token match
+    // fires the gate. The literal-equality check is preserved for the
+    // single-token case (the dominant corpus shape today).
+    const triggerAnnotationTokens = splitCsv(triggerAnnotationRaw);
 
     const payload: DisableTriggersPayload = {
       kind: "disableTriggers",
@@ -195,6 +211,7 @@ export class DisableTriggersStaticHandler extends StaticHandler {
       origins,
       triggerSourceMatches,
       triggerAnnotationRaw,
+      triggerAnnotationTokens,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

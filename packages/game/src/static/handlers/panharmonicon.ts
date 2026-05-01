@@ -11,14 +11,17 @@
 // gatherTriggerMultipliers(game, sourceCardId, eventKind) to compute the
 // fire count.
 //
-// Wave 50 MVP — registration only. The describe() payload carries the
-// ValidCard$/ValidEvent$ filters and the multiplier (default 2 — fires
-// "an additional time"). Wiring trigger-fire-count into the trigger
-// scheduler is `// TODO(advanced)` — the SP3 trigger-stack scheduler
-// resolves each TriggerAst once per event; the multiplier hook needs a
-// new fire-count pass that this static makes possible but doesn't
-// install. Cards using Panharmonicon-static won't crash; their triggers
-// just fire the default once until the scheduler hook lands.
+// Wave 104 closure of the prior Wave-50 TODO(advanced): the trigger
+// registry's onEvent path now consults `gatherPanharmoniconHits` AFTER
+// the suppression / DisableTriggers / interveningIf gates and pushes
+// N+1 PendingTrigger entries (1 base + N additional, where N is the
+// sum of `additionalFires` across all matching Panharmonicon statics).
+// Each copy is an independent PendingTrigger with its own EntityId so
+// APNAP / priority ordering observes N+1 distinct entries and the
+// controller can stack them in any order (CR 603.2c). The describe()
+// payload carries the ValidCard$/ValidEvent$ filters and the multiplier
+// (default 1 — fires "an additional time"); cards using a higher
+// Amount$ value (Hosit Hat-Maker) push that many extra entries.
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import {
   StaticHandler,

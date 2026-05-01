@@ -351,22 +351,23 @@ export * from "./can-adapt-static.js";
 export * from "./can-exhaust-static.js";
 export * from "./ignore-shroud-static.js";
 export * from "./cant-exile-static.js";
-// Wave 76 — final batch of forward-compat-stub static modes from the
-// long-tail enum. All four target mechanics (Suspect / Venture /
-// Plot / Radiation counter) aren't yet ported, so the handlers
-// register and snapshot correctly while their consumers are left
-// TODO(advanced) until the underlying mechanic infra lands. The
-// query helpers (wave76-gate-helpers.ts) are exposed today so the
-// future pipelines can read them uniformly.
-//   - CantBeSuspected   (~1 card — Suspect mechanic, MOM block)
-//   - CantVenture       (~1 card — Venture / Dungeon mechanic,
-//                          AFR / CLB sets)
-//   - PlotZone          (~1 card — Plot mechanic, MKM block;
-//                          augments the canonical "plot from
-//                          hand" zone restriction)
-//   - GainLifeRadiation (~1 card — Radiation counter mechanic,
-//                          PIP set; layers a life-gain on the
-//                          canonical Radiation counter add path)
+// Wave 76 — long-tail static modes. Wave 102 / 103 / 104 closures:
+//   - CantBeSuspected   (Wave 102 wired) — Suspect transition site
+//                          consults `canBeSuspected` and silently
+//                          rejects matched cards (no CardSuspected
+//                          event).
+//   - CantVenture       (Wave 103 wired) — `advanceUndercityRoom`
+//                          consults `canVenture` and short-circuits
+//                          the AFR Initiative dungeon advance for
+//                          the matched seat.
+//   - PlotZone          (forward-compat stub) — Plot mechanic isn't
+//                          yet ported; helper resolves correctly so
+//                          the future plot-legality call site has a
+//                          uniform read-side hook.
+//   - GainLifeRadiation (forward-compat stub) — Radiation counter
+//                          mechanic isn't yet ported; helper sums
+//                          Amount$ across matching statics and is
+//                          exposed for the future Radiation pipeline.
 export * from "./cant-be-suspected-static.js";
 export * from "./cant-venture-static.js";
 export * from "./plot-zone-static.js";

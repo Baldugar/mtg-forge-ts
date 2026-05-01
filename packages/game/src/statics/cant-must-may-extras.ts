@@ -77,8 +77,10 @@ export const shouldGrantFlash = (game: Game, cardId: EntityId, casterSeat: Playe
  * entries whose ValidCard$ matches `triggerSourceId` and whose
  * ValidEvent$ matches (or is undefined) `eventKind`. The trigger
  * scheduler totals up `additionalFires` from each match to compute the
- * fire-count multiplier. Wave-50 MVP — readers exist; the consumer is
- * `// TODO(advanced)`.
+ * fire-count multiplier. Wave 104 closes the prior Wave-50 TODO: the
+ * consumer (`triggers/trigger-registry.ts` onEvent) now sums
+ * `additionalFires` across all matching hits and pushes N+1 distinct
+ * PendingTrigger entries per matched event.
  */
 export const gatherPanharmoniconHits = (
   game: Game,

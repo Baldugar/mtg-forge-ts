@@ -9,10 +9,12 @@
 //                      Filter on NewLevel$ N matches the level reached
 //                      after the transition.
 //   RoomEntered     — Duskmourn: House of Horror. Fires when a Room
-//                      is fully unlocked. Stub today — Rooms aren't
-//                      fully wired. Registered so card text parses
-//                      cleanly. TODO(advanced) — emit on the Room
-//                      unlock pipeline.
+//                      is fully unlocked. Wave 104 closure of the
+//                      prior TODO(advanced): the Room unlock pipeline
+//                      (`ability/effects/wave-22-effects.ts`
+//                      UnlockDoorEffect) emits both the partial-unlock
+//                      pulse and the fully-unlocked transition; this
+//                      handler matches both via `fullyUnlocked` filter.
 //   TakesInitiative — CR 716.1, fires when a player takes the
 //                      Initiative. Matches BecameInitiative event.
 //   Adapted          — CR 702.130, fires when an Adapt activated
@@ -142,9 +144,13 @@ triggerHandlerRegistry.register(ClassLevelGainedTrigger);
 // Forge T:Mode$ RoomEntered — Duskmourn: House of Horror. Fires when
 // a Room (split-card variant) is fully unlocked.
 //
-// MVP: registered so card text parses cleanly. The underlying Room
-// unlock pipeline is TODO(advanced) — when a Room emits the
-// RoomEntered event, this handler picks it up automatically.
+// Wave 104 closure of the prior TODO(advanced): the Room unlock
+// pipeline lives in `ability/effects/wave-22-effects.ts`
+// UnlockDoorEffect — it emits a RoomEntered event with
+// `fullyUnlocked: true` on the final-door transition and
+// `fullyUnlocked: false` on each intermediate partial unlock. This
+// handler picks up the fully-unlocked transition by default; cards
+// that watch partial unlocks read the `fullyUnlocked: false` pulse.
 export class RoomEnteredTrigger extends TriggerHandler {
   static override readonly mode = "RoomEntered";
 
