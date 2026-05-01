@@ -9,6 +9,7 @@
 import { mkEvent } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
 import type { Game } from "../../game.js";
+import { flipCoinModifier } from "../../statics/wave78-gate-helpers.js";
 import { evaluateSVarAsAbility } from "../../svar/ability-eval.js";
 import type { SvarContext } from "../../svar/context.js";
 import { effectRegistry } from "../effect-registry.js";
@@ -20,8 +21,36 @@ export class FlipACoinEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "FlipACoin";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    // Flip: 0 → tails, 1 → heads (nextInt(0,2) is uniform over {0,1}).
-    const isHeads = game.rng.nextInt(0, 2) === 1;
+    // Wave 78 — consult any active FlipCoinMod static for this player.
+    // Edgar / Krark's-Thumb-shape statics override the canonical CR 705
+    // random-outcome flow:
+    //   - forced-heads / forced-tails → result is dictated, no RNG draw.
+    //   - double-flip-pick            → flip 2 coins, take whichever
+    //                                    is heads (controller-preferred);
+    //                                    falls back to tails iff both
+    //                                    are tails.
+    const mod = flipCoinModifier(game, sa.controllerSeat);
+    let isHeads: boolean;
+    switch (mod.mode) {
+      case "forced-heads":
+        isHeads = true;
+        break;
+      case "forced-tails":
+        isHeads = false;
+        break;
+      case "double-flip-pick": {
+        const a = game.rng.nextInt(0, 2) === 1;
+        const b = game.rng.nextInt(0, 2) === 1;
+        // "Pick the better result" — Krark's Thumb chooses heads when
+        // either coin came up heads (heads being the canonical "win").
+        isHeads = a || b;
+        break;
+      }
+      default:
+        // Flip: 0 → tails, 1 → heads (nextInt(0,2) is uniform over {0,1}).
+        isHeads = game.rng.nextInt(0, 2) === 1;
+        break;
+    }
 
     yield game.emitEvent(
       mkEvent("FlipCoin", game.turn, game.phase, {

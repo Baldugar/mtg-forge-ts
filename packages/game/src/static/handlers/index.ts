@@ -390,3 +390,20 @@ export * from "./gain-life-radiation-static.js";
 export * from "./wither-damage-static.js";
 export * from "./infect-damage-static.js";
 export * from "./surveil-num-static.js";
+// Wave 78 — final three enum-defined static modes (closing the
+// StaticAbilityMode enum):
+//   - BlockTapped      (~1 card — Masako the Humorless; matched
+//                        creatures may block while tapped, bypassing
+//                        the canonical CR 509.1a tapped-blocker
+//                        rejection.)
+//   - FlipCoinMod      (~1-2 cards — Edgar, King of Figaro /
+//                        Krark's Thumb shape; modifies coin-flip
+//                        outcomes for the matched player. Forced-
+//                        heads / forced-tails / double-flip-pick.)
+//   - Devotion         (~few cards — Altar of the Pantheon shape;
+//                        modifies the Wave 42 Count$Devotion calc
+//                        by adding per-player or per-card pip
+//                        increments.)
+export * from "./block-tapped-static.js";
+export * from "./flip-coin-mod-static.js";
+export * from "./devotion-static.js";

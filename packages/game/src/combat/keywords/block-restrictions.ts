@@ -21,6 +21,7 @@ import type { Game } from "../../game.js";
 import { isBlockingRestricted } from "../../statics/cant-must-may-extras.js";
 import { ignoresLandWalk } from "../../statics/wave70f-combat-gates.js";
 import { canBlockIfReach } from "../../statics/wave70p-gate-helpers.js";
+import { canBlockWhileTapped } from "../../statics/wave78-gate-helpers.js";
 import { attackerPower, hasKeyword } from "../damage-assignment-helpers.js";
 import { hasProtectionFrom } from "./protection.js";
 
@@ -92,6 +93,16 @@ export const isBlockLegal = (
   // both the attacker (subject) and the blocker (auxFilter).
   if (isBlockingRestricted(game, attacker, blocker)) {
     return { legal: false, reason: "static block restriction" };
+  }
+
+  // Wave 78 — CR 509.1a — a tapped creature can't be declared as a
+  // blocker. The BlockTapped static (Masako the Humorless shape)
+  // bypasses this rejection: when an active static matches the
+  // declared blocker, the rejection is suppressed and the block stands
+  // even if `card.tapped === true`.
+  const blockerCard = game.cards.get(blocker);
+  if (blockerCard?.tapped === true && !canBlockWhileTapped(game, blocker)) {
+    return { legal: false, reason: "tapped creatures can't block" };
   }
 
   // Flying (CR 702.9): attacker with flying can only be blocked by a

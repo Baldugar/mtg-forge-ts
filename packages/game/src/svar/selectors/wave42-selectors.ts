@@ -22,6 +22,7 @@
 import type { EntityId, PlayerSeat, SVarExpressionAst } from "@mtg-forge-ts/core";
 import { CardType, Color, ZoneType } from "@mtg-forge-ts/core";
 import type { Card } from "../../card.js";
+import { devotionModifierFor } from "../../statics/wave78-gate-helpers.js";
 import { cardMatchesFilter } from "../../trigger/card-filter.js";
 import type { SvarContext } from "../context.js";
 import { countArgRegistry } from "./count.js";
@@ -75,6 +76,10 @@ const countDevotionTo = (target: Color, ctx: SvarContext): number => {
       }
     }
   }
+  // Wave 78 — Devotion static modifier (Altar of the Pantheon shape).
+  // Adds per-player or per-card pip increments on top of the canonical
+  // CR 700.5 symbol count.
+  total += devotionModifierFor(ctx.game, controller, target);
   return total;
 };
 
