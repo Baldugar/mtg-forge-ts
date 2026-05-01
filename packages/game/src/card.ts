@@ -326,8 +326,17 @@ export class Card {
   // controller looks at the top N cards of their library, exiles one face
   // down, and shuffles the rest to the bottom. `hideawayCard` (set on the
   // Hideaway permanent) points at the chosen exiled card; `hideawayHost`
-  // (set on the exiled card) is the back-pointer. The conditional free-cast
-  // ability is card-specific — see TODO(advanced) in hideaway-keyword.
+  // (set on the exiled card) is the back-pointer. The conditional
+  // free-cast ability is card-specific — each Hideaway card has its own
+  // activation condition (e.g. "at the beginning of your upkeep, if you
+  // have 7 or more lands, you may cast the exiled card without paying
+  // its mana cost"). Those abilities are represented as separate
+  // triggered/static rules in the card's AST and read these slots to
+  // identify the exiled card; the keyword's portion ends at
+  // exile-and-stamp. Wave 103 — retired the stale "see TODO(advanced)
+  // in hideaway-keyword" reference: hideaway-keyword.ts no longer
+  // carries an advanced tail (the per-card free-cast surface lives
+  // outside the keyword).
   hideawayCard: EntityId | undefined = undefined;
   hideawayHost: EntityId | undefined = undefined;
   // Wave 37 — Sunburst (CR 702.43). Set of mana colors actually spent to
@@ -452,8 +461,11 @@ export class Card {
   // total chapter count parsed from `K:Chapter:N:DB1,DB2,...,DBN`. Used by
   // the CounterAdded watcher to detect when the final-chapter trigger has
   // resolved (Lore counter == N). The names slot stores the SVar keys for
-  // chapters I..N; Wave-52 dispatch is TODO(advanced) — count + flag is
-  // enough for the SBA sacrifice path.
+  // chapters I..N. Wave 94 closed the prior "Wave-52 dispatch is
+  // TODO(advanced)" tail: the CounterAdded watcher now resolves the
+  // SVar named `sagaChapterSVars[total - 1]` and yields the synthesized
+  // SpellAbility, so each chapter's printed effect fires in turn (in
+  // addition to the SBA sacrifice path on the final chapter).
   sagaChapterCount: number | undefined = undefined;
   sagaChapterSVars: readonly string[] | undefined = undefined;
   // Wave 57 — Cipher (CR 702.97). Stamped on a creature when an encoded
@@ -476,10 +488,14 @@ export class Card {
   // Wave 61.E — Awaken animation flag (CR 702.112a). Stamped on the
   // chosen land when the awaken sub-effect resolves; the layer engine
   // reads it to add CardType.Creature + Elemental subtype + base 0/0
-  // P/T + Haste on top of the land's regular characteristics. Persists
-  // for the rest of the game per CR 702.112a (no EOT bound). Flag name
-  // mirrors crewedUntilEot/stationedUntilEot for symmetry; full Layer 4
-  // / 7b / 6 hooks driven off this slot are TODO(advanced).
+  // P/T on top of the land's regular characteristics. Persists for
+  // the rest of the game per CR 702.112a (no EOT bound). Flag name
+  // mirrors crewedUntilEot/stationedUntilEot for symmetry. Wave 103 —
+  // Layer 4 type-add + Layer 7b base-PT zeroing now wired in
+  // `layers/base-characteristics.ts`. The Layer 6 Haste-grant ships
+  // separately (Forge models it as a static-grant on the awoken land);
+  // a downstream reader scanning the type-line / P/T already observes
+  // the canonical creature shape today.
   awakenAnimatedUntilEot?: boolean;
   // Wave 58 — Niche keyword cleanup batch 2. Each slot is set/cleared by
   // its corresponding KeywordHandler / AltCost. All `T | undefined =

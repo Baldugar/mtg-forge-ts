@@ -13,11 +13,14 @@
 // and the AlterAttribute lane in `wave-21-effects.ts` consult
 // `canBeSuspected` at the application call site, silently
 // rejecting matched cards and skipping the CardSuspected event).
-// Venture/Dungeon, Plot, and Radiation remain forward-compat
-// stubs — the Forge mechanics haven't been ported yet, but the
-// helpers register and resolve correctly so static-registry
-// snapshots stay consistent and the future mechanic pipelines
-// have a uniform read-side hook.
+// Wave 103 — Venture IS wired through the AFR Initiative dungeon
+// (the only Venture surface ported): `advanceUndercityRoom`
+// consults `canVenture` and short-circuits silently when the
+// ValidPlayer$ filter matches the venturing seat. Plot and
+// Radiation remain forward-compat stubs — the Forge mechanics
+// haven't been ported yet, but the helpers register and resolve
+// correctly so static-registry snapshots stay consistent and the
+// future mechanic pipelines have a uniform read-side hook.
 //
 // Why standalone helpers (not methods on Game / Game.flags):
 // mirrors the established Wave 60 / 70 / 74 / 75 pattern. The
@@ -57,9 +60,13 @@ export const canBeSuspected = (game: Game, cardId: EntityId): boolean => {
  * Venture mechanic). False iff any active CantVenture static
  * matches the candidate player — the venture is rejected silently.
  *
- * Forward-compat stub: the Venture / Dungeon mechanic isn't yet
- * wired. The helper resolves correctly today; the future Venture
- * pipeline will read it at the venture-resolution call site.
+ * Wave 103 — read-side wiring: `dnd/initiative-tracker.ts`'s
+ * `advanceUndercityRoom` consults this helper before each
+ * dungeon-advance pulse. When the gate refuses, the dungeon does
+ * NOT advance and no UndercityRoomEntered event is emitted. The
+ * AFR Initiative dungeon is the only Venture surface ported
+ * today; the broader "Venture into the Dungeon" choice
+ * (multi-dungeon — AFR / Baldur's Gate) lands with SP4.
  *
  * Forge equivalent: StaticAbilityCantVenture.cantVenture(...).
  */

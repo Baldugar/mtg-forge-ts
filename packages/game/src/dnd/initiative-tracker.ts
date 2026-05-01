@@ -57,6 +57,7 @@ import {
 } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../action/engine-yield.js";
 import type { Game } from "../game.js";
+import { canVenture } from "../statics/wave76-gate-helpers.js";
 
 /**
  * Wave 45 / Wave 70.B — Undercity dungeon room sequence (CR 906.4c). Forge's
@@ -81,8 +82,20 @@ export const UNDERCITY_ROOMS: readonly string[] = [
  * Advance the Undercity dungeon by one room (mod 9). Returns the new
  * room index (1..9) and the corresponding name. Caller routes the
  * UndercityRoomEntered event through the engine pipeline.
+ *
+ * Wave 103 — closes the prior wave76 `cant-venture-static.ts` /
+ * `wave76-gate-helpers.ts` TODO(advanced) tail. An active CantVenture
+ * static (`S:Mode$ CantVenture | ValidPlayer$ <filter>`) silently
+ * rejects the venture: the dungeon does NOT advance, no
+ * UndercityRoomEntered event is emitted, and `game.flags.undercityRoom`
+ * stays at its prior value. Mirrors Forge's
+ * `StaticAbilityCantVenture.cantVenture(...)` short-circuit.
  */
 export const advanceUndercityRoom = (game: Game, seat: PlayerSeat): readonly GameEvent[] => {
+  // Wave 103 — silently reject the venture if any active CantVenture
+  // static matches the venturing player. The dungeon stays put; no
+  // event is emitted (mirrors the SkipUntap / CantPhaseIn no-op shape).
+  if (!canVenture(game, seat)) return [];
   const prior = game.flags.undercityRoom;
   const next = (prior % UNDERCITY_ROOMS.length) + 1;
   game.flags.undercityRoom = next;
@@ -223,25 +236,27 @@ const collectOpponentCreatures = (game: Game, seat: PlayerSeat): readonly Entity
 };
 
 /**
- * Find the top basic land in `seat`'s library. Used by Secret Entrance
- * (search library for a basic land card). MVP: pick the first basic the
- * library scan finds. Forge's actual flow yields a chooseCard request
- * over the full library; documented as TODO(advanced) since the
- * decision-driven path needs the full library scanned + revealed.
+ * Wave 103 — collect every basic-land card in `seat`'s library. Used
+ * by the Secret Entrance room as the eligible pool for the
+ * `chooseCard` decision request (mirrors Forge's "search your library
+ * for a basic land card" + reveal flow). The caller treats `[0]` as
+ * the deterministic fallback when the decision provider returns no
+ * chosen ids (snapshot replay parity, headless tests).
  */
-const findBasicLandInLibrary = (game: Game, seat: PlayerSeat): EntityId | undefined => {
+const collectBasicLandsInLibrary = (game: Game, seat: PlayerSeat): readonly EntityId[] => {
   const player = game.getPlayer(seat);
   const library = player.zones.get(ZoneType.Library);
-  if (!library) return undefined;
+  if (!library) return [];
+  const out: EntityId[] = [];
   for (const id of library.toArray()) {
     const card = game.cards.get(id);
     if (!card) continue;
     const chars = game.layerEngine.computeCharacteristics(id);
     if (!chars.types.has(CardType.Land)) continue;
     if (!chars.supertypes.has(Supertype.Basic)) continue;
-    return id;
+    out.push(id);
   }
-  return undefined;
+  return out;
 };
 
 /**
@@ -304,12 +319,41 @@ export function* applyUndercityRoomEffect(
 ): Generator<EngineYield, void, unknown> {
   switch (room) {
     case 1: {
-      // Secret Entrance — search basic land + reveal + put into hand,
-      // then shuffle. MVP: scan library deterministically (decision-driven
-      // search-and-reveal is TODO(advanced)).
-      const found = findBasicLandInLibrary(game, seat);
-      if (found !== undefined) {
-        yield* game.action.moveTo(found, ZoneType.Hand, { toSeat: seat, cause: "effect" });
+      // Secret Entrance — search library for a basic land card, reveal it,
+      // put it into hand, then shuffle. Wave 103: decision-driven
+      // `chooseCard` request over the eligible pool of basic lands in
+      // the venturing player's library. The first match is the
+      // deterministic fallback so snapshot replays / headless tests
+      // resolve when the decision provider returns nothing. The
+      // shuffle ALWAYS fires (even on no-match) — Forge's printed
+      // text says "search your library, … then shuffle" and the
+      // shuffle is unconditional.
+      const eligible = collectBasicLandsInLibrary(game, seat);
+      if (eligible.length > 0) {
+        const decision = (yield {
+          kind: "decision",
+          request: {
+            kind: "chooseCard",
+            playerSeat: seat,
+            pool: eligible,
+            restriction: { effect: "undercity-secret-entrance" },
+            min: 1,
+            max: 1,
+          },
+        }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+        const eligibleSet = new Set(eligible);
+        let target: EntityId | undefined = eligible[0];
+        if (decision && decision.kind === "chooseCard") {
+          for (const id of decision.chosen) {
+            if (eligibleSet.has(id)) {
+              target = id;
+              break;
+            }
+          }
+        }
+        if (target !== undefined) {
+          yield* game.action.moveTo(target, ZoneType.Hand, { toSeat: seat, cause: "effect" });
+        }
       }
       yield* game.action.shuffle(seat);
       return;
@@ -460,22 +504,47 @@ export function* applyUndercityRoomEffect(
     case 9: {
       // Throne of the Dead Three — reveal top 10 of `seat`'s library; put
       // a creature card from among them onto the battlefield with three
-      // +1/+1 counters on it; the rest are shuffled back. MVP scans the
-      // top 10 deterministically and picks the first creature; the
-      // hexproof-until-next-turn pump and the "may" wording are
-      // TODO(advanced) — Wave 56's decision pipeline can drive the chooser
-      // request and the chained Pump sub-ability once the trigger flow
-      // here grows beyond the MVP single-yield shape.
+      // +1/+1 counters on it; the rest are shuffled back. Wave 103:
+      // decision-driven `chooseCard` request over the eligible pool of
+      // creature cards in the top 10. The first match is the
+      // deterministic fallback so snapshot replays / headless tests
+      // resolve when the decision provider returns nothing. The shuffle
+      // always fires (Forge's printed text shuffles unconditionally
+      // after the put-onto-battlefield step). The hexproof-until-next-
+      // turn pump remains as a TODO(advanced) — Forge's printed
+      // ability includes a chained Pump sub-effect that this MVP
+      // single-yield shape doesn't surface.
       const player = game.getPlayer(seat);
       const library = player.zones.get(ZoneType.Library);
       if (library === undefined) return;
       const topIds = library.toArray().slice(0, 10);
-      let chosen: EntityId | undefined;
+      const eligible: EntityId[] = [];
       for (const id of topIds) {
         const chars = game.layerEngine.computeCharacteristics(id);
-        if (chars.types.has(CardType.Creature)) {
-          chosen = id;
-          break;
+        if (chars.types.has(CardType.Creature)) eligible.push(id);
+      }
+      let chosen: EntityId | undefined;
+      if (eligible.length > 0) {
+        const decision = (yield {
+          kind: "decision",
+          request: {
+            kind: "chooseCard",
+            playerSeat: seat,
+            pool: eligible,
+            restriction: { effect: "undercity-throne" },
+            min: 1,
+            max: 1,
+          },
+        }) as { readonly kind: "chooseCard"; readonly chosen: readonly EntityId[] } | undefined;
+        const eligibleSet = new Set(eligible);
+        chosen = eligible[0];
+        if (decision && decision.kind === "chooseCard") {
+          for (const id of decision.chosen) {
+            if (eligibleSet.has(id)) {
+              chosen = id;
+              break;
+            }
+          }
         }
       }
       if (chosen !== undefined) {

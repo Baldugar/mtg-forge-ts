@@ -20,14 +20,15 @@
 // replacements list is empty; the gate is enforced at the future
 // venture call site rather than via a derived replacement chain.
 //
-// MVP scope: forward-compat stub. Our codebase has no Venture /
-// Dungeon mechanic infra yet — there is no per-player
-// `currentDungeon` slot, no AB$ Venture handler, no Dungeon AST
-// node. The static still registers (so ports of cards with this
-// S: line don't break the parser) and the `canVenture` helper is
-// exposed so the future Venture pipeline can read it uniformly.
-// TODO(advanced) — wire into the venture-resolution gate once the
-// Venture mechanic lands.
+// Wave 103 — `canVenture` is now consulted by
+// `dnd/initiative-tracker.ts:advanceUndercityRoom` (the AFR
+// Initiative dungeon, the only Venture-mechanic surface ported
+// today). When ValidPlayer$ matches the venturing seat,
+// `advanceUndercityRoom` short-circuits silently — no dungeon
+// advance, no UndercityRoomEntered event. Cards using the full
+// "Venture into the Dungeon" mechanic (multi-dungeon choice from
+// AFR / Baldur's Gate) remain on the SP4 milestone; the gate's
+// shape and read-side contract are durable today.
 import type {
   ParamValue,
   PlayerSeat,

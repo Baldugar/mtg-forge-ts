@@ -263,6 +263,27 @@ export const deriveBaseCharacteristics = (card: Card): Characteristics => {
     base.types.add(CARDTYPE_CREATURE);
   }
 
+  // Wave 103 — Awaken animation (CR 702.112a). When the awaken
+  // sub-effect resolves on a target land, `awakenAnimatedUntilEot`
+  // is stamped true and the land "becomes a 0/0 Elemental creature
+  // with haste. It's still a land." Closes the Layer 4 type-add +
+  // Layer 7b base-PT portion of the prior TODO(advanced): we add
+  // CardType.Creature to the type set, append "Elemental" as a
+  // subtype, and pin base power/toughness to 0/0 (override the land's
+  // null/null baseline). The Haste-grant (Layer 6) ships in a
+  // follow-up — Forge models awaken's haste through a static-grant
+  // that the keyword scaffold currently registers as an inert
+  // Layer 7c slot; the durable contract here is the type-line +
+  // P/T derivation that downstream readers (combat enumeration,
+  // SBA toughness scan, target filters like "Creature.YouCtrl")
+  // observe correctly.
+  if (card.awakenAnimatedUntilEot === true) {
+    base.types.add(CARDTYPE_CREATURE);
+    base.subtypes.add("Elemental");
+    base.power = 0;
+    base.toughness = 0;
+  }
+
   // Wave 45 — ChangeText (CR 612). Apply each text-change rule on top of
   // the populated characteristics. Wave 98 — rules-text rewrite path is
   // now wired in alongside the color-set / subtype-set swaps, so any
