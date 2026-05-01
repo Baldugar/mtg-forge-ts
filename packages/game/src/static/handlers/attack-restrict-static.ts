@@ -46,11 +46,14 @@
 //                                            against the declared defender
 //                                            (when defender is a planeswalker
 //                                            or battle).
+// Wave 110 — closes the prior `IsPresent$` TODO(advanced) tail. The shared
+// `buildIsPresentGate` helper now wires the Mirri-shape "as long as <filter>
+// is present" sub-conditional into the AttackRestrict gate; the
+// `exceedsAttackerCap` consumer skips statics whose gate is unsatisfied at
+// query time so the cap only activates while the IsPresent$ board state
+// holds (canonical Forge "as long as …" semantics).
+//
 // TODO(advanced):
-//   - IsPresent$ conditional gating (Mirri-shape "as long as CARDNAME is
-//     tapped, …" — Wave 70.H MVP treats the static as always-active when
-//     registered; the Mirri form lives via Continuous AddStaticAbility$
-//     on the AbilityFactory side).
 //   - Multi-defender filter ("ValidDefender$ You,Planeswalker.YouCtrl")
 //     accepted as a single literal today.
 import type { EntityId, ParamValue, PlayerSeat, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
@@ -61,7 +64,12 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import {
+  buildCardIdPredicate,
+  buildIsPresentGate,
+  buildPlayerPredicate,
+  literalRaw,
+} from "./restriction-helpers.js";
 
 export interface AttackRestrictPayload {
   readonly kind: "attackRestrict";
@@ -80,6 +88,15 @@ export interface AttackRestrictPayload {
   readonly defenderCardMatches: (cardId: EntityId, game: Game) => boolean;
   /** Has any defender filter at all (false → unconditional cap). */
   readonly hasDefenderFilter: boolean;
+  /**
+   * Wave 110 — true iff the static's `IsPresent$` sub-conditional gate is
+   * currently satisfied. Defaults to always-true when no IsPresent$ is set.
+   * Re-evaluated per query so mid-turn board-state changes (Mirri tapping/
+   * untapping) gate the cap correctly. The `exceedsAttackerCap` consumer
+   * skips statics whose gate is unsatisfied so the cap only fires while
+   * the IsPresent$ shape holds.
+   */
+  readonly isPresentSatisfied: (game: Game) => boolean;
 }
 
 export class AttackRestrictStaticHandler extends StaticHandler {
@@ -99,12 +116,18 @@ export class AttackRestrictStaticHandler extends StaticHandler {
       ? buildCardIdPredicate(validDefenderRaw, ctx.sourceCardId, ctx.controllerSeat)
       : (_cardId: EntityId, _game: Game): boolean => true;
 
+    const presentGate = buildIsPresentGate(params, {
+      sourceCardId: ctx.sourceCardId,
+      controllerSeat: ctx.controllerSeat,
+    });
+
     const payload: AttackRestrictPayload = {
       kind: "attackRestrict",
       maxAttackers,
       defenderSeatMatches: (seat) => seatPred(seat),
       defenderCardMatches: (cardId, game) => cardDefenderPred(cardId, game),
       hasDefenderFilter,
+      isPresentSatisfied: (game) => presentGate(game),
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

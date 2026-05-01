@@ -41,7 +41,7 @@ import type { EntityId, PlayerSeat } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { CanAdaptPayload } from "../static/handlers/can-adapt-static.js";
 import type { CanExhaustPayload } from "../static/handlers/can-exhaust-static.js";
-import type { CantExilePayload } from "../static/handlers/cant-exile-static.js";
+import type { CantExilePayload, ExileCause } from "../static/handlers/cant-exile-static.js";
 import type { IgnoreShroudPayload } from "../static/handlers/ignore-shroud-static.js";
 
 /**
@@ -123,12 +123,22 @@ export const ignoresShroud = (game: Game, activatorSeat: PlayerSeat, targetId?: 
  * Forge equivalent: StaticAbilityCantExile.cantExile(...) returning
  * a non-null gating static.
  */
-export const canBeExiled = (game: Game, cardId: EntityId): boolean => {
+export const canBeExiled = (game: Game, cardId: EntityId, cause?: ExileCause): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantExile");
   for (const s of statics) {
     const payload = s.describe() as CantExilePayload;
     if (!payload || payload.kind !== "replacementGen") continue;
-    if (payload.cardMatches(cardId, game)) return false;
+    if (!payload.cardMatches(cardId, game)) continue;
+    // Wave 110 — ValidCause$ + ForCost$ sub-conditional gate. When a
+    // cause is supplied, the static fires only when the cause matches
+    // the static's filters (The Master, Multiplied: only your own
+    // triggered abilities are blocked; opp-driven exiles still work).
+    // When no cause is supplied (legacy callers), the gate falls back
+    // to the always-fire shape — matches pre-Wave-110 behavior.
+    if (cause !== undefined && payload.causeMatches !== undefined) {
+      if (!payload.causeMatches(cause, payload.staticControllerSeat)) continue;
+    }
+    return false;
   }
   return true;
 };

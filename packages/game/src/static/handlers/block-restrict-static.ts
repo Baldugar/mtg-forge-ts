@@ -40,6 +40,12 @@
 //                                        declared attacker has a defender
 //                                        matching the filter (read at
 //                                        the validator site).
+// Wave 110 — closes the prior `IsPresent$` TODO(advanced) tail by wiring
+// the shared `buildIsPresentGate` helper symmetrically with AttackRestrict.
+// The `exceedsBlockerCap` consumer skips statics whose IsPresent$ gate is
+// unsatisfied (e.g. "as long as CARDNAME is tapped, no more than N
+// creatures can block …").
+//
 // TODO(advanced):
 //   - Per-defender allotment ("each opponent can't block with more than
 //     one" — needs per-seat counting at validation time, not a single
@@ -53,7 +59,12 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
+import {
+  buildCardIdPredicate,
+  buildIsPresentGate,
+  buildPlayerPredicate,
+  literalRaw,
+} from "./restriction-helpers.js";
 
 export interface BlockRestrictPayload {
   readonly kind: "blockRestrict";
@@ -65,6 +76,13 @@ export interface BlockRestrictPayload {
   readonly defenderCardMatches: (cardId: EntityId, game: Game) => boolean;
   /** Has any defender filter (false → cap applies to total blockers). */
   readonly hasDefenderFilter: boolean;
+  /**
+   * Wave 110 — true iff the static's `IsPresent$` sub-conditional gate is
+   * currently satisfied. Defaults to always-true when no IsPresent$ is set.
+   * The `exceedsBlockerCap` consumer skips statics whose gate is unsatisfied
+   * so the cap only fires while the IsPresent$ shape holds.
+   */
+  readonly isPresentSatisfied: (game: Game) => boolean;
 }
 
 export class BlockRestrictStaticHandler extends StaticHandler {
@@ -84,12 +102,18 @@ export class BlockRestrictStaticHandler extends StaticHandler {
       ? buildCardIdPredicate(validDefenderRaw, ctx.sourceCardId, ctx.controllerSeat)
       : (_cardId: EntityId, _game: Game): boolean => true;
 
+    const presentGate = buildIsPresentGate(params, {
+      sourceCardId: ctx.sourceCardId,
+      controllerSeat: ctx.controllerSeat,
+    });
+
     const payload: BlockRestrictPayload = {
       kind: "blockRestrict",
       maxBlockers,
       defenderSeatMatches: (seat) => seatPred(seat),
       defenderCardMatches: (cardId, game) => cardDefenderPred(cardId, game),
       hasDefenderFilter,
+      isPresentSatisfied: (game) => presentGate(game),
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

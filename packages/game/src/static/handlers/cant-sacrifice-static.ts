@@ -33,11 +33,27 @@
 //     filter, the gate does NOT fire (Sigarda lets you sacrifice your own
 //     creatures normally, but blocks sacrifice triggered by spells/abilities
 //     an opponent controls). Default empty → gate fires for every player.
-// TODO(advanced):
-//   - ValidCause$ <SpellAbility filter>    — Sigarda's "spells/abilities
-//                                            opponents control" sub-clause.
-//   - ForCost$ True/False                  — distinguishes cost-driven
-//                                            vs. effect-driven sacrifice.
+// Wave 110 — closes the prior `ValidCause$` and `ForCost$` TODO(advanced)
+// tail. Sigarda, Host of Herons' canonical "spells and abilities your
+// opponents control can't cause you to sacrifice creatures" shape now
+// threads the cause's controller seat + cost-vs-effect classification
+// through the gate. The pattern mirrors Wave 97's CantDiscard /
+// Wave 96's CantPayLife sub-filter wiring:
+//
+//   - ValidCause$ SpellAbility.OppCtrl  → match only opp-driven sacrifice
+//                                          requests.
+//   - ValidCause$ SpellAbility.YouCtrl  → match only own-driven sacrifice
+//                                          requests.
+//   - ValidCause$ Triggered             → match only triggered-ability
+//                                          driven sacrifices.
+//   - ForCost$ True                     → only cost-driven sacrifices
+//                                          (Madness/Cumulative-Upkeep shape).
+//   - ForCost$ False                    → only effect-driven sacrifices.
+//
+// The `canBeSacrificed` consumer threads an optional `SacrificeCause`
+// payload (carrying both the cause-controller-seat and the cost-mode
+// flag); when omitted, behavior matches pre-Wave-110 (no ValidCause / no
+// ForCost gating — the gate fires uniformly).
 import type {
   EntityId,
   ParamValue,
@@ -56,6 +72,22 @@ import {
 } from "../static-handler.js";
 import { buildCardIdPredicate, buildPlayerPredicate, literalRaw } from "./restriction-helpers.js";
 
+/**
+ * Wave 110 — sacrifice-cause classification a caller threads through to
+ * the gate. `kind === "cost"` for cost-payment sacrifices (Madness /
+ * Cumulative-Upkeep / generic sac-cost lane); `kind === "effect"` for
+ * effect-driven sacrifices (a resolving spell/ability instructing
+ * "sacrifice a creature"); `kind === "triggered"` for triggered-ability
+ * driven sacrifices. `causeControllerSeat` is the seat controlling the
+ * spell / ability that initiated the sacrifice; when absent, the gate's
+ * ValidCause$ controller-scoped tokens are conservatively treated as
+ * non-matching (the gate falls back to ForCost$-only filtering).
+ */
+export interface SacrificeCause {
+  readonly kind: "cost" | "effect" | "triggered";
+  readonly causeControllerSeat?: PlayerSeat;
+}
+
 export interface CantSacrificePayload extends ReplacementGenPayload {
   readonly cardMatches: (cardId: EntityId, game: Game) => boolean;
   /**
@@ -64,6 +96,21 @@ export interface CantSacrificePayload extends ReplacementGenPayload {
    * always-false (no carve-out → gate fires for every player).
    */
   readonly carveOutMatches: (seat: PlayerSeat) => boolean;
+  /**
+   * Wave 110 — true iff the sacrifice's cause classification matches the
+   * static's ValidCause$ + ForCost$ filters. When both filters are absent
+   * (the canonical pre-Wave-110 shape) this returns true for any cause —
+   * the gate fires uniformly. The static-controller seat is passed in so
+   * "OppCtrl" / "YouCtrl" tokens resolve relative to the controller of
+   * Sigarda (or whichever card stamped the static).
+   */
+  readonly causeMatches: (cause: SacrificeCause, staticControllerSeat: PlayerSeat) => boolean;
+  /**
+   * Wave 110 — the static's controller seat at registration time, surfaced
+   * for the gate consumer so the OppCtrl/YouCtrl tokens in `causeMatches`
+   * resolve from the same seat the static was registered under.
+   */
+  readonly staticControllerSeat: PlayerSeat;
 }
 
 export class CantSacrificeStaticHandler extends StaticHandler {
@@ -83,11 +130,68 @@ export class CantSacrificeStaticHandler extends StaticHandler {
         ? buildPlayerPredicate(carveOutRaw, ctx.controllerSeat)
         : () => false;
 
+    // Wave 110 — ValidCause$ + ForCost$ sub-filters. Mirrors the
+    // CantDiscard / CantPayLife pattern.
+    const validCauseRaw = literalRaw(params.ValidCause);
+    const forCostRaw = literalRaw(params.ForCost);
+    let forCostMode: "costOnly" | "effectOnly" | "both" = "both";
+    if (forCostRaw !== undefined) {
+      forCostMode = forCostRaw.toLowerCase() === "false" ? "effectOnly" : "costOnly";
+    }
+    const causeTokens =
+      validCauseRaw === undefined
+        ? undefined
+        : validCauseRaw
+            .split(",")
+            .map((s) => s.trim())
+            .filter((s) => s.length > 0);
+
+    const causeMatches = (cause: SacrificeCause, staticCtrl: PlayerSeat): boolean => {
+      // ForCost$ gate.
+      if (forCostMode === "costOnly" && cause.kind !== "cost") return false;
+      if (forCostMode === "effectOnly" && cause.kind === "cost") return false;
+      // ValidCause$ gate.
+      if (causeTokens === undefined || causeTokens.length === 0) return true;
+      for (const tok of causeTokens) {
+        // Bare "SpellAbility" matches any controller.
+        if (tok === "SpellAbility") return true;
+        if (
+          tok === "SpellAbility.OppCtrl" &&
+          cause.causeControllerSeat !== undefined &&
+          cause.causeControllerSeat !== staticCtrl
+        ) {
+          return true;
+        }
+        if (tok === "SpellAbility.YouCtrl" && cause.causeControllerSeat === staticCtrl) {
+          return true;
+        }
+        if (tok === "Triggered" && cause.kind === "triggered") return true;
+        if (
+          tok === "Triggered.OppCtrl" &&
+          cause.kind === "triggered" &&
+          cause.causeControllerSeat !== undefined &&
+          cause.causeControllerSeat !== staticCtrl
+        ) {
+          return true;
+        }
+        if (
+          tok === "Triggered.YouCtrl" &&
+          cause.kind === "triggered" &&
+          cause.causeControllerSeat === staticCtrl
+        ) {
+          return true;
+        }
+      }
+      return false;
+    };
+
     const payload: CantSacrificePayload = {
       kind: "replacementGen",
       replacements: [] as readonly ReplacementAbility[],
       cardMatches: (cardId, game) => cardPred(cardId, game),
       carveOutMatches: carveOutPred,
+      causeMatches,
+      staticControllerSeat: ctx.controllerSeat,
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

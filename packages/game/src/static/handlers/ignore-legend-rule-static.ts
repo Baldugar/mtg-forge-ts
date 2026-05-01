@@ -45,11 +45,12 @@
 //   - ValidCard$ <filter> — Wave 32 grammar via cardMatchesFilter.
 //   - Card.Self short-circuit honored (rare for this mode but valid).
 //   - Default (no filter) → exempts every card (Mirror Gallery).
-// TODO(advanced):
-//   - IsPresent$ + PresentCompare$ conditional gate (Brothers Yamazaki:
-//     "the rule doesn't apply ONLY when there are exactly two of them").
-//     The MVP simplification accepts the static unconditionally; a
-//     follow-up wave can add presence-conditional activation.
+// Wave 110 — closes the prior `IsPresent$ + PresentCompare$` TODO(advanced)
+// tail. Brothers Yamazaki's "the rule doesn't apply ONLY when there are
+// exactly two of them" shape now wires the shared `buildIsPresentGate`
+// helper. The `isExemptFromLegendRule` consumer skips statics whose gate
+// is unsatisfied, so the legend-rule SBA fires normally when only one
+// Brothers Yamazaki is on the battlefield (the carve-out vanishes).
 import type { EntityId, ParamValue, StaticAbility, StaticAst } from "@mtg-forge-ts/core";
 import type { Game } from "../../game.js";
 import {
@@ -58,11 +59,19 @@ import {
   normalizeActiveInZones,
   staticHandlerRegistry,
 } from "../static-handler.js";
-import { buildCardIdPredicate, literalRaw } from "./restriction-helpers.js";
+import { buildCardIdPredicate, buildIsPresentGate, literalRaw } from "./restriction-helpers.js";
 
 export interface IgnoreLegendRulePayload {
   readonly kind: "ignoreLegendRule";
   readonly cardMatches: (cardId: EntityId, game: Game) => boolean;
+  /**
+   * Wave 110 — true iff the static's `IsPresent$` sub-conditional gate is
+   * currently satisfied. Defaults to always-true when no IsPresent$ is set.
+   * Brothers Yamazaki's shape (IsPresent$ Permanent.namedBrothers Yamazaki
+   * + PresentCompare$ EQ2) gates the carve-out on exactly two copies being
+   * present — the gate consumer skips statics whose gate is unsatisfied.
+   */
+  readonly isPresentSatisfied: (game: Game) => boolean;
 }
 
 export class IgnoreLegendRuleStaticHandler extends StaticHandler {
@@ -76,9 +85,15 @@ export class IgnoreLegendRuleStaticHandler extends StaticHandler {
     const validCardRaw = literalRaw(params.ValidCard);
     const cardPred = buildCardIdPredicate(validCardRaw, ctx.sourceCardId, ctx.controllerSeat);
 
+    const presentGate = buildIsPresentGate(params, {
+      sourceCardId: ctx.sourceCardId,
+      controllerSeat: ctx.controllerSeat,
+    });
+
     const payload: IgnoreLegendRulePayload = {
       kind: "ignoreLegendRule",
       cardMatches: (cardId, game) => cardPred(cardId, game),
+      isPresentSatisfied: (game) => presentGate(game),
     };
 
     const activeInZones = normalizeActiveInZones(ast.activeInZones);

@@ -21,7 +21,7 @@ import type { CantGainLifePayload } from "../static/handlers/cant-gain-life-stat
 import type { CantPlayLandPayload } from "../static/handlers/cant-play-land-static.js";
 import type { CantPutCounterPayload } from "../static/handlers/cant-put-counter-static.js";
 import type { CantRegeneratePayload } from "../static/handlers/cant-regenerate-static.js";
-import type { CantSacrificePayload } from "../static/handlers/cant-sacrifice-static.js";
+import type { CantSacrificePayload, SacrificeCause } from "../static/handlers/cant-sacrifice-static.js";
 import type { CantSearchLibraryPayload } from "../static/handlers/cant-search-library-static.js";
 import type { CantTransformPayload } from "../static/handlers/cant-transform-static.js";
 import { isRestricted } from "./cant-must-may.js";
@@ -131,7 +131,12 @@ export const canSearchLibrary = (game: Game, seat: PlayerSeat): boolean => {
  * blocked). When `byPlayer` is omitted (legacy callers), the carve-out
  * cannot fire and the gate uniformly blocks (preserves prior behavior).
  */
-export const canBeSacrificed = (game: Game, cardId: EntityId, byPlayer?: PlayerSeat): boolean => {
+export const canBeSacrificed = (
+  game: Game,
+  cardId: EntityId,
+  byPlayer?: PlayerSeat,
+  cause?: SacrificeCause,
+): boolean => {
   const statics = game.staticEffectRegistry.byMode("CantSacrifice");
   for (const s of statics) {
     const payload = s.describe() as CantSacrificePayload;
@@ -140,6 +145,15 @@ export const canBeSacrificed = (game: Game, cardId: EntityId, byPlayer?: PlayerS
     // when the sacrificing seat is exempted. We need an explicit seat
     // (legacy callers omit byPlayer → carve-out cannot fire).
     if (byPlayer !== undefined && payload.carveOutMatches?.(byPlayer)) continue;
+    // Wave 110 — ValidCause$ + ForCost$ sub-conditional gate. When a
+    // cause is supplied, the static fires only when the cause matches
+    // the static's filters; otherwise the gate skips the static (it
+    // doesn't apply to this sacrifice). When no cause is supplied
+    // (legacy callers), the gate falls back to the always-fire shape
+    // (matches pre-Wave-110 behavior — no sub-filter gating).
+    if (cause !== undefined && payload.causeMatches !== undefined) {
+      if (!payload.causeMatches(cause, payload.staticControllerSeat)) continue;
+    }
     return false;
   }
   return true;

@@ -52,6 +52,11 @@ export const isExemptFromLegendRule = (game: Game, cardId: EntityId): boolean =>
   const statics = game.staticEffectRegistry.byMode("IgnoreLegendRule");
   for (const s of statics) {
     const payload = s.describe() as IgnoreLegendRulePayload;
+    // Wave 110 — IsPresent$ sub-conditional gate. Brothers Yamazaki's
+    // exemption only applies when EQ2 copies are on the battlefield; if the
+    // gate is unsatisfied the carve-out vanishes and the legend-rule SBA
+    // fires normally on the matched bucket.
+    if (!payload.isPresentSatisfied(game)) continue;
     if (payload.cardMatches(cardId, game)) return true;
   }
   return false;

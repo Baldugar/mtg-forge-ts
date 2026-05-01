@@ -118,6 +118,11 @@ export const exceedsAttackerCap = (
   for (const s of statics) {
     const payload = s.describe() as AttackRestrictPayload;
     if (payload.kind !== "attackRestrict") continue;
+    // Wave 110 — IsPresent$ sub-conditional gate. Skip statics whose
+    // presence-of-X requirement is unsatisfied at query time (Mirri-shape
+    // "as long as CARDNAME is tapped" — the cap only fires while the
+    // IsPresent$ filter is met).
+    if (!payload.isPresentSatisfied(game)) continue;
     let count = 0;
     for (const d of declared) {
       if (payload.hasDefenderFilter) {
@@ -164,6 +169,10 @@ export const exceedsBlockerCap = (
   for (const s of statics) {
     const payload = s.describe() as BlockRestrictPayload;
     if (payload.kind !== "blockRestrict") continue;
+    // Wave 110 — IsPresent$ sub-conditional gate (symmetric with
+    // exceedsAttackerCap). Skip statics whose presence-of-X requirement is
+    // unsatisfied at query time.
+    if (!payload.isPresentSatisfied(game)) continue;
     let count = 0;
     for (const d of declared) {
       if (payload.hasDefenderFilter) {
