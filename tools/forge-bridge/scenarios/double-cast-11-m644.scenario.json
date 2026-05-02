@@ -1,0 +1,48 @@
+{
+  "id": "double-cast-11-m644",
+  "description": "Double-cast 11 — two demon creatures cast same turn.",
+  "seed": 51141,
+  "cards": {
+    "DblC-11-A M644": "Name:DblC-11-A M644\nManaCost:1 G\nTypes:Creature Demon\nPT:2/1\nOracle:DblC-11-A M644 test.\n",
+    "DblC-11-B M644": "Name:DblC-11-B M644\nManaCost:1 G\nTypes:Creature Phoenix\nPT:1/2\nOracle:DblC-11-B M644 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "DblC-11-A M644",
+        "DblC-11-B M644"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "G",
+        "C",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "DblC-11-A M644",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "DblC-11-B M644",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
