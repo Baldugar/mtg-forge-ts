@@ -1,0 +1,49 @@
+{
+  "id": "furnace-rath-myside-1cre-opp1-4-m652",
+  "description": "M6.52 — Furnace of Rath ETB with 1 of mine + 1 opp.",
+  "seed": 54468,
+  "cards": {
+    "Furnace of Rath": "Name:Furnace of Rath\nManaCost:3 R R\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card | ValidTarget$ Any | ReplaceWith$ DBDouble | Description$ Double.\nSVar:DBDouble:DB$ ReplaceDamage | Multiplier$ 2\nOracle:Furnace of Rath parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furnace of Rath"
+      ],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": [
+        "R",
+        "R",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Furnace of Rath",
+      "controller": 0
+    }
+  ]
+}
