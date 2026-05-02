@@ -573,8 +573,18 @@ function runCast(
   }
   const stackItem = step.value as StackItem | null;
   if (stackItem === null) {
-    // Inspect the events buffer for a CastAbort / CostPaymentFailed event
-    // payload to surface the underlying reason rather than a generic null.
+    // M6.21 — the cast pipeline returns null when an unrecoverable error
+    // routes through abort() (e.g. CR 117.4 unpayable cost). The abort
+    // path already emitted a `CastAborted` event into the bus. For golden
+    // capture, that is the intended terminal outcome (parity with Forge's
+    // BridgeCastFailed). Return early with no StackItem so downstream
+    // resolve/SBA passes are skipped — the recorded events are exactly the
+    // ones the engine fired up to the abort.
+    const aborted = ctx.pendingEvents.some((e) => e.kind === "CastAborted");
+    if (aborted) {
+      return;
+    }
+    // Otherwise this is a real bug — surface details.
     const aborts = ctx.pendingEvents
       .filter((e) => e.kind === "CastAborted" || e.kind.includes("Failed") || e.kind === "CardChangedZone")
       .map((e) => `${e.kind}:${JSON.stringify(e.payload)}`);

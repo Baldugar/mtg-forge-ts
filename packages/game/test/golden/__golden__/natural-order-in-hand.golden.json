@@ -4,43 +4,13 @@
   "engineVersion": "ts-m2-0.1.0",
   "events": [
     {
-      "kind": "CostPaid",
-      "turn": 1,
-      "phase": "Untap",
-      "payload": {
-        "stackItemId": 0,
-        "payerSeat": 0
-      }
-    },
-    {
-      "kind": "SpellCast",
-      "turn": 1,
-      "phase": "Untap",
-      "payload": {
-        "stackItemId": 1,
-        "cardId": 0,
-        "controllerSeat": 0
-      }
-    },
-    {
-      "kind": "StackItemResolved",
-      "turn": 1,
-      "phase": "Untap",
-      "payload": {
-        "stackItemId": 1,
-        "fizzled": false
-      }
-    },
-    {
-      "kind": "CardChangedZone",
+      "kind": "CastAborted",
       "turn": 1,
       "phase": "Untap",
       "payload": {
         "cardId": 0,
-        "fromZone": "Hand",
-        "toZone": "Graveyard",
-        "fromSeat": 0,
-        "toSeat": 0
+        "playerSeat": 0,
+        "reason": "cast-pipeline.stepPayCosts: cost part 'Sacrifice' (raw \"Sac<1/Creature.Green>\") not payable — CR 117.4 (the action is illegal)"
       }
     }
   ],
@@ -50,14 +20,12 @@
       20
     ],
     "handSizes": [
-      0,
+      1,
       0
     ],
     "battlefield": [],
     "graveyards": [
-      [
-        "Natural Order"
-      ],
+      [],
       []
     ],
     "stackSize": 0

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // CostSacrifice — payment of a sacrifice cost ("Sac <filter>" / "Sacrifice
-// <filter>" syntax).
+// <filter>" / "Sac<N/Filter>" syntax).
 //
 // MVP self-sac support (Wave 17b): when the filter resolves to the source
 // card itself ("CARDNAME", "Self", or "this token") we drive
@@ -9,18 +9,47 @@
 // Food / Clue / Blood) all sacrifice the source token to themselves; this
 // covers their cost without pulling in the full target-filter grammar.
 //
-// Other sacrifice filters (Sac<Creature>, Sac<Artifact.YouCtrl>, …) still
-// throw NotImplemented — Part D wires the target-selection decision yield.
+// M6.21 — Bracket form `Sac<N/Filter>`. CR 117.4 ("If a cost can't be
+// paid, you can't take that action"): canPay/pay must verify the
+// sacrificing player has at least N legal sacrifice targets matching the
+// filter on their battlefield. When the pool is short, the cast aborts via
+// the cast-pipeline catch path (which calls undoCost on partial receipts
+// and emits CastAborted). Mirrors Forge's CostSacrifice.canPay which
+// returns `getMaxAmountX(...) >= amount`.
+//
+// MVP target selection: with no controller decision-yield wired yet, when
+// the filter is non-self we sacrifice the *first* legal candidate
+// deterministically. This is a placeholder — Part D adds the proper
+// target-selection decision yield. The engine-correctness bit is the
+// canPay precheck + pay-time hard fail when no legal target exists.
+import { CardType, Color, ZoneType } from "@mtg-forge-ts/core";
+import type { EntityId } from "@mtg-forge-ts/core";
 import type { EngineYield } from "../../action/engine-yield.js";
+import type { Game } from "../../game.js";
 import { costPartRegistry } from "./cost-part-registry.js";
 import type { CostPart, CostPartReceipt, CostPaymentContext } from "./cost-part.js";
 
 const SAC_RE = /^sac(?:rifice)?\s+(.+)$/i;
+const SAC_BRACKET_RE = /^Sac<(\d+)\/([^>]+)>$/i;
 
-function parseSacFilter(raw: string): string {
-  const m = SAC_RE.exec(raw);
-  if (!m || !m[1]) throw new Error(`CostSacrifice: cannot parse filter from "${raw}"`);
-  return m[1].trim();
+interface ParsedSac {
+  /** Number of permanents that must be sacrificed. */
+  readonly amount: number;
+  /** Filter token (e.g. "Creature", "Creature.Green", "CARDNAME"). */
+  readonly filter: string;
+}
+
+function parseSac(raw: string): ParsedSac {
+  const bracket = SAC_BRACKET_RE.exec(raw);
+  if (bracket?.[1] && bracket[2]) {
+    return { amount: Number.parseInt(bracket[1], 10), filter: bracket[2].trim() };
+  }
+  const space = SAC_RE.exec(raw);
+  if (space?.[1]) {
+    // Bare "Sac Creature" / "Sacrifice Creature" defaults to amount 1.
+    return { amount: 1, filter: space[1].trim() };
+  }
+  throw new Error(`CostSacrifice: cannot parse filter from "${raw}"`);
 }
 
 /**
@@ -50,14 +79,83 @@ const isSelfFilter = (filter: string): boolean => {
 
 interface SelfSacReceipt {
   readonly self: true;
-  readonly cardId: import("@mtg-forge-ts/core").EntityId;
+  readonly cardId: EntityId;
+}
+
+interface FilteredSacReceipt {
+  readonly self: false;
+  readonly cardIds: readonly EntityId[];
+}
+
+/**
+ * Find legal sacrifice targets for a non-self filter. Mirrors Forge's
+ * CostSacrifice.getMaxAmountX scope: payer's battlefield, filter applied
+ * via type+colour tokens. MVP supports the canonical `<Type>` and
+ * `<Type>.<Quality>` forms (e.g. "Creature", "Creature.Green",
+ * "Artifact.YouCtrl"). Everything matches by lowercase string compare.
+ */
+function findLegalSacTargets(filter: string, game: Game, payerSeat: number): readonly EntityId[] {
+  const tokens = filter.split(".").map((t) => t.trim().toLowerCase());
+  const baseType = tokens[0] ?? "card";
+  const qualifiers = tokens.slice(1);
+
+  const out: EntityId[] = [];
+  for (const [id, card] of game.cards) {
+    if (card.zone !== ZoneType.Battlefield) continue;
+    if (card.controllerSeat !== payerSeat) continue;
+    const chars = game.layerEngine.computeCharacteristics(id);
+    if (baseType !== "permanent" && baseType !== "card") {
+      if (baseType === "creature" && !chars.types.has(CardType.Creature)) continue;
+      if (baseType === "artifact" && !chars.types.has(CardType.Artifact)) continue;
+      if (baseType === "enchantment" && !chars.types.has(CardType.Enchantment)) continue;
+      if (baseType === "land" && !chars.types.has(CardType.Land)) continue;
+      if (baseType === "planeswalker" && !chars.types.has(CardType.Planeswalker)) continue;
+    }
+    let qualifierFail = false;
+    for (const q of qualifiers) {
+      if (q === "youctrl") {
+        // Already enforced by payerSeat gate above — true by construction.
+        continue;
+      }
+      if (q === "opponentctrl") {
+        // payerSeat-controlled cards never satisfy OpponentCtrl.
+        qualifierFail = true;
+        break;
+      }
+      // Colour qualifiers — match against the layered ColorSet.
+      if (q === "green" || q === "white" || q === "blue" || q === "black" || q === "red") {
+        const want =
+          q === "green"
+            ? Color.Green
+            : q === "white"
+              ? Color.White
+              : q === "blue"
+                ? Color.Blue
+                : q === "black"
+                  ? Color.Black
+                  : Color.Red;
+        if (!chars.colors.has(want)) {
+          qualifierFail = true;
+          break;
+        }
+      }
+      // Unrecognised qualifier — be conservative and keep the candidate.
+      // (Forge would do a strict ValidCard parse; for the cost-canPay
+      // gate, false negatives are worse than false positives — a wrong
+      // include is corrected by Forge's actual sacrifice resolution
+      // when a real target-selection UI lands.)
+    }
+    if (qualifierFail) continue;
+    out.push(id);
+  }
+  return out;
 }
 
 export const CostSacrifice: CostPart = {
   handlerKey: "Sacrifice",
 
   canPay(ctx: CostPaymentContext): boolean {
-    const filter = parseSacFilter(ctx.raw);
+    const { amount, filter } = parseSac(ctx.raw);
     // Self-sac: payable as long as the source card still exists in a zone
     // we can locate. The replacement chain on the actual sacrifice may
     // still prevent it (Indestructible-on-sac), but that surfaces inside
@@ -66,13 +164,15 @@ export const CostSacrifice: CostPart = {
       const card = ctx.game.cards.get(ctx.sourceCardId);
       return card !== undefined;
     }
-    // Non-self sacrifice cost remains MVP-stub: we don't check target
-    // grammar here — the caller surfaces the NotImplemented in pay().
-    return true;
+    // Filter form (Sac<N/Creature>, Sac<1/Creature.Green>, Sacrifice
+    // Creature, …). CR 117.4 — verify the legal sacrifice pool meets
+    // the required amount.
+    const legal = findLegalSacTargets(filter, ctx.game, ctx.payerSeat);
+    return legal.length >= amount;
   },
 
   *pay(ctx: CostPaymentContext): Generator<EngineYield, CostPartReceipt, unknown> {
-    const filter = parseSacFilter(ctx.raw);
+    const { amount, filter } = parseSac(ctx.raw);
     if (isSelfFilter(filter)) {
       // Drive the canonical sacrifice mutator on the source card itself.
       // The mutator emits CardSacrificed and routes the follow-up moveTo
@@ -85,9 +185,31 @@ export const CostSacrifice: CostPart = {
         payload: receipt,
       };
     }
-    throw new Error(
-      `CostSacrifice.pay: sacrifice target selection for filter "${filter}" is deferred to Part D — requires target filter grammar`,
-    );
+
+    // Filter form — locate legal targets and hard-fail when the pool is
+    // short. CR 117.4: an unpayable cost makes the action illegal; the
+    // cast pipeline's try/catch converts the throw into a CastAborted
+    // (matching Forge's BridgeCastFailed on the bridge side).
+    const legal = findLegalSacTargets(filter, ctx.game, ctx.payerSeat);
+    if (legal.length < amount) {
+      throw new Error(
+        `CostSacrifice.pay: cannot sacrifice ${amount} matching "${filter}" — only ${legal.length} legal target(s) controlled by payer (CR 117.4 — cost unpayable)`,
+      );
+    }
+    // MVP target selection: take the first `amount` legal candidates.
+    // Part D will replace this with a controller decision-yield; for the
+    // cost-correctness fix the deterministic pick suffices because the
+    // important behaviour (failure when pool is empty) is fully covered.
+    const chosen = legal.slice(0, amount);
+    for (const cardId of chosen) {
+      yield* ctx.game.action.sacrifice(cardId, { sourceId: ctx.sourceCardId });
+    }
+    const receipt: FilteredSacReceipt = { self: false, cardIds: chosen };
+    return {
+      handlerKey: "Sacrifice",
+      raw: ctx.raw,
+      payload: receipt,
+    };
   },
 
   undo(receipt: CostPartReceipt, _ctx: CostPaymentContext): void {
@@ -101,7 +223,7 @@ export const CostSacrifice: CostPart = {
     // which the existing payCost flow forbids by ordering sacrifice last.
     void receipt;
     throw new Error(
-      "CostSacrifice.undo: self-sacrifice is non-reversible; callers must order Sacrifice last in the cost plan",
+      "CostSacrifice.undo: sacrifice is non-reversible; callers must order Sacrifice last in the cost plan",
     );
   },
 };

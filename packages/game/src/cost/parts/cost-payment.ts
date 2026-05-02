@@ -41,6 +41,14 @@ const MANA_SYMBOL_RE = /^[0-9XYZWUBRGCS/\s]+$/;
 const LIFE_RE = /^(\d+)\s+life$/i;
 // Matches either "Sac <filter>" or "Sacrifice <filter>" (case-insensitive).
 const SAC_RE = /^sac(?:rifice)?\s+(.+)$/i;
+// M6.21 — Forge's bracket form `Sac<N/Filter>` (e.g. `Sac<1/Creature>`,
+// `Sac<1/Creature.Green>`). Forge's Cost.parseCostPart routes both forms
+// through `CostSacrifice` (with amount "1" and type "Creature").
+// Mirror that here so cost strings like Natural Order's
+// `Sac<1/Creature.Green>` and Diabolic Intent's `Sac<1/Creature>` parse
+// successfully and route to CostSacrifice.canPay/pay (which now properly
+// fail when the legal sacrifice pool is empty — CR 117.4).
+const SAC_BRACKET_RE = /^Sac<\d+\/[^>]+>$/i;
 // Matches "Discard" (bare) or "Discard CARDNAME" / "Discard <self>" — MVP:
 // self-discard only (source card). Type-targeted discard is Part D.
 const DISCARD_RE = /^discard(?:\s+(?:cardname|self|this\s+card))?$/i;
@@ -182,7 +190,7 @@ export const parseCostString = (raw: string): CostPlan => {
       parts.push({ handlerKey: "PayLife", raw: seg });
       continue;
     }
-    if (SAC_RE.test(seg)) {
+    if (SAC_RE.test(seg) || SAC_BRACKET_RE.test(seg)) {
       parts.push({ handlerKey: "Sacrifice", raw: seg });
       continue;
     }

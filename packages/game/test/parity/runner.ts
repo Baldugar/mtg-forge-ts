@@ -103,8 +103,33 @@ export function normalizeTrace(
     stream.push(...trace.events);
   }
 
+  // M6.21 — Java-side: when the bridge captures the optimistic
+  // `CardChangedZone(Hand→Stack)` zone-move that Forge's cast pipeline
+  // performs *before* cost-payment (CR 601.2c → 601.2h sequence), and the
+  // cost subsequently fails (`BridgeCastFailed`), Forge logically rewinds
+  // the move (the spell never actually existed on the stack). The TS
+  // engine fails the cost-payment precheck before any zone-move (CR 117.4
+  // pre-rejection). To make these traces parity-equivalent, strip the
+  // pre-rewind Hand→Stack zone-move when a BridgeCastFailed follows in
+  // the same trace.
+  let filtered: GoldenEvent[] = stream;
+  if (side === "java") {
+    const hasBridgeCastFailed = stream.some((e) => e.kind === "BridgeCastFailed");
+    if (hasBridgeCastFailed) {
+      filtered = stream.filter((e) => {
+        if (e.kind !== "CardChangedZone") return true;
+        const p = (e.payload ?? {}) as Record<string, unknown>;
+        const fromZone = typeof p.fromZone === "string" ? p.fromZone : "";
+        const toZone = typeof p.toZone === "string" ? p.toZone : "";
+        // Drop the optimistic Hand→Stack pre-payment move that the bridge
+        // captured before the cast was rewound.
+        return !(fromZone === "Hand" && toZone === "Stack");
+      });
+    }
+  }
+
   const out: NormalizedEvent[] = [];
-  for (const e of stream) {
+  for (const e of filtered) {
     if (isEngineInternal(e, side)) continue;
     out.push(projectEvent(e, side, tsCardNamesById));
   }
@@ -426,6 +451,13 @@ const KIND_ALIASES: ReadonlyArray<readonly [string, string]> = [
   // Bridge V2 — Forge fires `GameEventCardTapped` (bridge kind
   // `CardTappedChanged`); TS emits `CardTapped`.
   ["CardTapped", "CardTappedChanged"],
+  // M6.21 — TS `CastAborted` (cast pipeline catch path, after CR 117.4
+  // unpayable-cost rejection) corresponds to Forge's bridge-emitted
+  // `BridgeCastFailed` (the bridge synthesises this when its cast loop
+  // raises). Both signal "the cast was rejected before resolving"; alias
+  // so cost-unpayable scenarios register as shared parity rather than as
+  // a TS-only abort + Java-only bridge-skip pair.
+  ["CastAborted", "BridgeCastFailed"],
 ];
 
 export interface ParityReport {

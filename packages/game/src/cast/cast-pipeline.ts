@@ -20,6 +20,7 @@ import type { EntityId, ModeOption, NamedOption, PlayerSeat, ZoneType } from "@m
 import { CardType, Color, IllegalDecisionError, ManaCost, ZoneType as Zt, mkEvent } from "@mtg-forge-ts/core";
 import { SpellAbility, type SpellAbilityTargetRef } from "../ability/spell-ability.js";
 import type { EngineYield } from "../action/engine-yield.js";
+import { costPartRegistry } from "../cost/parts/cost-part-registry.js";
 import type { CostPartReceipt, CostPaymentContext } from "../cost/parts/cost-part.js";
 import { parseCostString, payCost, undoCost } from "../cost/parts/cost-payment.js";
 import type { Game } from "../game.js";
@@ -1524,6 +1525,29 @@ export class CastPipeline {
         }),
       };
       return;
+    }
+
+    // M6.21 — CR 117.4 precheck. Before draining the mana pool /
+    // committing other receipts, verify each non-mana cost part is
+    // payable (mana payability is checked inside CostMana.pay during the
+    // actual drain). If any part returns canPay()===false, abort the
+    // cast BEFORE any state mutation happens. This mirrors Forge's
+    // CostPayment.canPayAdditionalCosts gate — a Natural Order cast with
+    // an empty battlefield must reject before consuming mana, so the
+    // refunded-mana / spent-mana sequence both sides observe matches.
+    for (const { handlerKey, raw } of plan.parts) {
+      // Mana cost payability is checked inside CostMana.pay (which has
+      // the live mana pool + cost-mod statics resolved); skipping the
+      // precheck for Mana avoids double-walking the pool.
+      if (handlerKey === "Mana") continue;
+      const part = costPartRegistry.lookup(handlerKey);
+      if (!part) continue;
+      const partCtx: CostPaymentContext = { ...costCtx, raw };
+      if (!part.canPay(partCtx)) {
+        throw new Error(
+          `cast-pipeline.stepPayCosts: cost part '${handlerKey}' (raw "${raw}") not payable — CR 117.4 (the action is illegal)`,
+        );
+      }
     }
 
     // Drive real payment. payCost throws if mana is insufficient; run()

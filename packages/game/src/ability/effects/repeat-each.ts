@@ -47,6 +47,11 @@ export class RepeatEachEffect extends SpellAbilityEffect {
     };
 
     // Determine iteration count.
+    // Forge semantics (RepeatEachEffect.java): the loop body only runs when
+    // an iteration source (RepeatCards / RepeatPlayers / RepeatSpellAbilities
+    // / DefinedCards / RepeatTargeted / RepeatTypesFrom) is supplied AND the
+    // resolved collection is non-empty. With no source set the effect is a
+    // no-op (CR 700-style "do nothing if nothing to iterate over").
     let iterCount = 0;
 
     if (hasParam(sa, "RepeatPlayers")) {
@@ -78,8 +83,11 @@ export class RepeatEachEffect extends SpellAbilityEffect {
         iterCount++;
       }
     } else {
-      // Default: run once.
-      iterCount = 1;
+      // No iteration source set — Forge's RepeatEachEffect simply falls
+      // through and does nothing. (Its inner `if (repeatCards != null && !
+      // repeatCards.isEmpty())` etc. all skip.) Returning here keeps parity
+      // with Java: empty iteration source = zero sub-ability resolutions.
+      return;
     }
 
     // Run the sub-ability once per match.

@@ -159,7 +159,10 @@ describe("CostSacrifice", () => {
     expect(CostSacrifice.handlerKey).toBe("Sacrifice");
   });
 
-  it("canPay returns true (M4 stub — no grammar check)", () => {
+  it("canPay returns false when payer controls no legal sacrifice targets (CR 117.4)", () => {
+    // M6.21 — CostSacrifice.canPay now mirrors Forge: with an empty
+    // battlefield no creature can be sacrificed, so the cost is
+    // unpayable and the cast must be rejected.
     const game = makeGame();
     const seat = mkPlayerSeat(0);
     const ctx: CostPaymentContext = {
@@ -168,10 +171,10 @@ describe("CostSacrifice", () => {
       sourceCardId: mkEntityId(1),
       raw: "Sac Creature",
     };
-    expect(CostSacrifice.canPay(ctx)).toBe(true);
+    expect(CostSacrifice.canPay(ctx)).toBe(false);
   });
 
-  it("pay throws NotImplemented (deferred to Part D)", () => {
+  it("pay throws when no legal sacrifice target is available (cost unpayable)", () => {
     const game = makeGame();
     const seat = mkPlayerSeat(0);
     const ctx: CostPaymentContext = {
@@ -180,7 +183,7 @@ describe("CostSacrifice", () => {
       sourceCardId: mkEntityId(1),
       raw: "Sac Creature",
     };
-    expect(() => driveGenerator(CostSacrifice.pay(ctx))).toThrow(/deferred to Part D/);
+    expect(() => driveGenerator(CostSacrifice.pay(ctx))).toThrow(/cost unpayable/);
   });
 });
 
