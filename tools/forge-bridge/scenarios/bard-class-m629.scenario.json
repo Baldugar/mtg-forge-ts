@@ -1,0 +1,29 @@
+{
+  "id": "bard-class-m629",
+  "description": "Bard Class M629 ETB.",
+  "seed": 45066,
+  "cards": {
+    "Bard Class M629": "Name:Bard Class M629\nManaCost:1 R G\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEntered\nK:Class:1:R G\nK:Class:2:1 R G\nK:Class:3:2 R G\nSVar:TrigEntered:DB$ Token | TokenScript$ rg_1_1_human_bard | TokenAmount$ 1\nOracle:BCM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bard Class M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bard Class M629",
+      "controller": 0
+    }
+  ]
+}

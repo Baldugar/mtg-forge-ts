@@ -1,0 +1,29 @@
+{
+  "id": "sword-of-light-and-shadow-m629",
+  "description": "Sword Light Shadow M629 M629 ETB.",
+  "seed": 45233,
+  "cards": {
+    "Sword Light Shadow M629 M629": "Name:Sword Light Shadow M629 M629\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | CombatDamage$ True | Execute$ TrigGainReturn\nSVar:TrigGainReturn:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouCtrl\nOracle:SLSMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword Light Shadow M629 M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword Light Shadow M629 M629",
+      "controller": 0
+    }
+  ]
+}

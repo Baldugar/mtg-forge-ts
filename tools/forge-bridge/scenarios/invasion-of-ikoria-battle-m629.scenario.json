@@ -1,0 +1,29 @@
+{
+  "id": "invasion-of-ikoria-battle-m629",
+  "description": "Invasion Ikoria M629 ETB.",
+  "seed": 45076,
+  "cards": {
+    "Invasion Ikoria M629": "Name:Invasion Ikoria M629\nManaCost:5 G\nTypes:Battle Siege\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPlace\nDefense:5\nSVar:TrigPlace:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1\nOracle:IIM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Ikoria M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion Ikoria M629",
+      "controller": 0
+    }
+  ]
+}

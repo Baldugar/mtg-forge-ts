@@ -1,0 +1,29 @@
+{
+  "id": "banisher-priest-m629",
+  "description": "Banisher Priest M629 ETB.",
+  "seed": 45241,
+  "cards": {
+    "Banisher Priest M629": "Name:Banisher Priest M629\nManaCost:1 W W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.OppCtrl\nOracle:BPM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banisher Priest M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Banisher Priest M629",
+      "controller": 0
+    }
+  ]
+}

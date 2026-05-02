@@ -1,0 +1,29 @@
+{
+  "id": "sword-of-fire-and-ice-m629",
+  "description": "Sword Fire Ice M629 M629 ETB.",
+  "seed": 45232,
+  "cards": {
+    "Sword Fire Ice M629 M629": "Name:Sword Fire Ice M629 M629\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | CombatDamage$ True | Execute$ TrigDmgDraw\nSVar:TrigDmgDraw:DB$ DealDamage | NumDmg$ 2 | DefinedTarget$ Any | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:SFIMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword Fire Ice M629 M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword Fire Ice M629 M629",
+      "controller": 0
+    }
+  ]
+}

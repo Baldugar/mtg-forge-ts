@@ -1,0 +1,29 @@
+{
+  "id": "bristly-bill-mount-m629",
+  "description": "Bristly Bill M629 ETB.",
+  "seed": 45121,
+  "cards": {
+    "Bristly Bill M629": "Name:Bristly Bill M629\nManaCost:1 G\nTypes:Legendary Creature Boar Mount\nPT:2/2\nK:Saddle:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCntr\nSVar:TrigCntr:DB$ PutCounter | Defined$ Land.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:BBM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bristly Bill M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bristly Bill M629",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "hypnotic-specter-m629",
+  "description": "Hypnotic Specter M629 ETB.",
+  "seed": 45192,
+  "cards": {
+    "Hypnotic Specter M629": "Name:Hypnotic Specter M629\nManaCost:1 B B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | Mode$ Random\nOracle:HSM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypnotic Specter M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Hypnotic Specter M629",
+      "controller": 0
+    }
+  ]
+}

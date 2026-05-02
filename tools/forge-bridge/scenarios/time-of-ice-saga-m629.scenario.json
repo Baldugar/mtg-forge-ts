@@ -1,0 +1,29 @@
+{
+  "id": "time-of-ice-saga-m629",
+  "description": "Time of Ice M629 ETB.",
+  "seed": 45059,
+  "cards": {
+    "Time of Ice M629": "Name:Time of Ice M629\nManaCost:3 U\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigTap\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 4 | Execute$ TrigBounce\nSVar:TrigTap:DB$ TapAll | ValidCards$ Creature.OpponentCtrl\nSVar:TrigBounce:DB$ ChangeZoneAll | ChangeType$ Creature.tapped | Origin$ Battlefield | Destination$ Hand\nOracle:ToIM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time of Ice M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Time of Ice M629",
+      "controller": 0
+    }
+  ]
+}

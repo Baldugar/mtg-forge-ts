@@ -1,0 +1,29 @@
+{
+  "id": "restoration-angel-m629",
+  "description": "Restoration Angel M629 ETB.",
+  "seed": 45250,
+  "cards": {
+    "Restoration Angel M629": "Name:Restoration Angel M629\nManaCost:3 W\nTypes:Creature Angel\nPT:3/4\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.YouCtrl+nonAngel+Other | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ TargetedCard\nOracle:RAM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restoration Angel M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Restoration Angel M629",
+      "controller": 0
+    }
+  ]
+}

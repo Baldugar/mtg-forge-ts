@@ -1,0 +1,29 @@
+{
+  "id": "farhaven-elf-m629",
+  "description": "Farhaven Elf M629 ETB.",
+  "seed": 45213,
+  "cards": {
+    "Farhaven Elf M629": "Name:Farhaven Elf M629\nManaCost:2 G\nTypes:Creature Elf\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ BasicLand | ChangeNum$ 1 | Tapped$ True\nOracle:FEM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farhaven Elf M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Farhaven Elf M629",
+      "controller": 0
+    }
+  ]
+}

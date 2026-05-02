@@ -1,0 +1,29 @@
+{
+  "id": "dark-confidant-m629",
+  "description": "Dark Confidant M629 ETB.",
+  "seed": 45189,
+  "cards": {
+    "Dark Confidant M629": "Name:Dark Confidant M629\nManaCost:1 B\nTypes:Creature Human Wizard\nPT:2/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigReveal\nSVar:TrigReveal:DB$ RevealHand | Defined$ TopOfLibrary | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | References$ X\nSVar:X:Reveal$Cmc\nOracle:DCM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Confidant M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Dark Confidant M629",
+      "controller": 0
+    }
+  ]
+}

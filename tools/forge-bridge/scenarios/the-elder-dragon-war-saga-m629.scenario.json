@@ -1,0 +1,29 @@
+{
+  "id": "the-elder-dragon-war-saga-m629",
+  "description": "Elder Dragon War M629 ETB.",
+  "seed": 45065,
+  "cards": {
+    "Elder Dragon War M629": "Name:Elder Dragon War M629\nManaCost:3 R\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDmgAll\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDmgAll\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigTokDragon\nSVar:TrigDmgAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.OppCtrl\nSVar:TrigTokDragon:DB$ Token | TokenScript$ r_4_4_dragon_flying | TokenAmount$ 1\nOracle:EDWM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Dragon War M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Elder Dragon War M629",
+      "controller": 0
+    }
+  ]
+}

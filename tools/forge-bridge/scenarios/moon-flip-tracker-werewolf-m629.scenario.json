@@ -1,0 +1,29 @@
+{
+  "id": "moon-flip-tracker-werewolf-m629",
+  "description": "Moonflip Tracker M629 ETB.",
+  "seed": 45088,
+  "cards": {
+    "Moonflip Tracker M629": "Name:Moonflip Tracker M629\nManaCost:2 G\nTypes:Creature Werewolf\nPT:3/2\nK:Daybound\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land | ChangeNum$ 1\nOracle:MTM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonflip Tracker M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Moonflip Tracker M629",
+      "controller": 0
+    }
+  ]
+}

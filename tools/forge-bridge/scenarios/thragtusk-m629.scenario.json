@@ -1,0 +1,29 @@
+{
+  "id": "thragtusk-m629",
+  "description": "Thragtusk M629 ETB.",
+  "seed": 45251,
+  "cards": {
+    "Thragtusk M629": "Name:Thragtusk M629\nManaCost:4 G\nTypes:Creature Beast\nPT:5/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 5\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_beast\nOracle:TM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thragtusk M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Thragtusk M629",
+      "controller": 0
+    }
+  ]
+}

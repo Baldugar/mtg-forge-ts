@@ -1,0 +1,29 @@
+{
+  "id": "history-of-benalia-saga2-m629",
+  "description": "History of Benalia M629 ETB.",
+  "seed": 45062,
+  "cards": {
+    "History of Benalia M629": "Name:History of Benalia M629\nManaCost:1 W W\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigTokKnight\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigKnightAnthem\nSVar:TrigTokKnight:DB$ Token | TokenScript$ w_2_2_knight | TokenAmount$ 1\nSVar:TrigKnightAnthem:DB$ PumpAll | ValidCards$ Knight.YouCtrl | NumAtt$ +2 | NumDef$ +1\nOracle:HoBM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "History of Benalia M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "History of Benalia M629",
+      "controller": 0
+    }
+  ]
+}

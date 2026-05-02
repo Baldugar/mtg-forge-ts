@@ -1,0 +1,29 @@
+{
+  "id": "land-tax-m629",
+  "description": "Land Tax M629 ETB.",
+  "seed": 45246,
+  "cards": {
+    "Land Tax M629": "Name:Land Tax M629\nManaCost:W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ BasicLand | ChangeNum$ 3\nOracle:LTM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Land Tax M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Land Tax M629",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "metallic-mimic-m629",
+  "description": "Metallic Mimic M629 ETB.",
+  "seed": 45263,
+  "cards": {
+    "Metallic Mimic M629": "Name:Metallic Mimic M629\nManaCost:2\nTypes:Artifact Creature Shapeshifter\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose\nSVar:TrigChoose:DB$ ChooseType\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+ChosenType | ReplaceWith$ DBETB\nSVar:DBETB:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1\nOracle:MMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metallic Mimic M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Metallic Mimic M629",
+      "controller": 0
+    }
+  ]
+}

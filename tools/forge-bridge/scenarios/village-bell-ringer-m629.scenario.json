@@ -1,0 +1,29 @@
+{
+  "id": "village-bell-ringer-m629",
+  "description": "Village Bell Ringer M629 ETB.",
+  "seed": 45332,
+  "cards": {
+    "Village Bell Ringer M629": "Name:Village Bell Ringer M629\nManaCost:2 W\nTypes:Creature Human Scout\nPT:1/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nOracle:VBRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Village Bell Ringer M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Village Bell Ringer M629",
+      "controller": 0
+    }
+  ]
+}

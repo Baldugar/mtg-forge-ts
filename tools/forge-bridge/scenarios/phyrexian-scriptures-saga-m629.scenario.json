@@ -1,0 +1,29 @@
+{
+  "id": "phyrexian-scriptures-saga-m629",
+  "description": "Phyrexian Scriptures M629 ETB.",
+  "seed": 45058,
+  "cards": {
+    "Phyrexian Scriptures M629": "Name:Phyrexian Scriptures M629\nManaCost:2 B\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigCntr\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDestroy\nSVar:TrigCntr:DB$ PutCounter | Defined$ Creature.YouCtrl | CounterType$ M1M1 | CounterNum$ 1\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.nonArtifact\nOracle:PSM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Scriptures M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phyrexian Scriptures M629",
+      "controller": 0
+    }
+  ]
+}

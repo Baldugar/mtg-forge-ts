@@ -1,0 +1,29 @@
+{
+  "id": "siege-rhino-m629",
+  "description": "Siege Rhino M629 ETB.",
+  "seed": 45253,
+  "cards": {
+    "Siege Rhino M629": "Name:Siege Rhino M629\nManaCost:1 W B G\nTypes:Creature Rhino Warrior\nPT:4/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 3 | Defined$ Player.Opponent | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | LifeAmount$ 3\nOracle:SRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siege Rhino M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Siege Rhino M629",
+      "controller": 0
+    }
+  ]
+}

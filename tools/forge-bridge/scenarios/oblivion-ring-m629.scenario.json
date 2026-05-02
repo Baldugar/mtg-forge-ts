@@ -1,0 +1,29 @@
+{
+  "id": "oblivion-ring-m629",
+  "description": "Oblivion Ring M629 ETB.",
+  "seed": 45240,
+  "cards": {
+    "Oblivion Ring M629": "Name:Oblivion Ring M629\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl+nonLand | RememberChanged$ True\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:ORM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oblivion Ring M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Oblivion Ring M629",
+      "controller": 0
+    }
+  ]
+}

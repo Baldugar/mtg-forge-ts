@@ -1,0 +1,29 @@
+{
+  "id": "binding-the-old-gods-saga-m629",
+  "description": "Binding the Old Gods M629 ETB.",
+  "seed": 45064,
+  "cards": {
+    "Binding the Old Gods M629": "Name:Binding the Old Gods M629\nManaCost:2 B G\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDestroy\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigSearch\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigPump\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl+nonCreature+nonLand\nSVar:TrigSearch:DB$ ChangeZone | ChangeType$ Forest | Origin$ Library | Destination$ Battlefield\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nOracle:BtOGM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Binding the Old Gods M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Binding the Old Gods M629",
+      "controller": 0
+    }
+  ]
+}

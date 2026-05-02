@@ -1,0 +1,29 @@
+{
+  "id": "welcome-to-skys-end-m629",
+  "description": "Welcome to Skys End M629 ETB.",
+  "seed": 45056,
+  "cards": {
+    "Welcome to Skys End M629": "Name:Welcome to Skys End M629\nManaCost:1 W\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigTok\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigTok\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigChoose\nSVar:TrigTok:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenAmount$ 1\nSVar:TrigChoose:DB$ ChooseCard | ValidTgts$ Creature.YouCtrl\nOracle:WtSEM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Welcome to Skys End M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Welcome to Skys End M629",
+      "controller": 0
+    }
+  ]
+}

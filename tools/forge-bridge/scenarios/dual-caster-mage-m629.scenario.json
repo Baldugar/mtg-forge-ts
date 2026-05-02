@@ -1,0 +1,29 @@
+{
+  "id": "dual-caster-mage-m629",
+  "description": "Dual Caster Mage M629 ETB.",
+  "seed": 45336,
+  "cards": {
+    "Dual Caster Mage M629": "Name:Dual Caster Mage M629\nManaCost:1 R R\nTypes:Creature Human Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCopy\nSVar:TrigCopy:DB$ CopySpell | TargetType$ Spell | ValidTgts$ Card.Instant,Card.Sorcery\nOracle:DCMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dual Caster Mage M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Dual Caster Mage M629",
+      "controller": 0
+    }
+  ]
+}

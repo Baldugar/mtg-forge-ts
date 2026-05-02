@@ -1,0 +1,29 @@
+{
+  "id": "elspeth-conquers-death-saga-m629",
+  "description": "Elspeth Conquers Death M629 ETB.",
+  "seed": 45063,
+  "cards": {
+    "Elspeth Conquers Death M629": "Name:Elspeth Conquers Death M629\nManaCost:3 W W\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigExile\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigReturn\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.OppCtrl+cmcGE3\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouCtrl\nOracle:ECDM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elspeth Conquers Death M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Elspeth Conquers Death M629",
+      "controller": 0
+    }
+  ]
+}

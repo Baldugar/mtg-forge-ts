@@ -1,0 +1,29 @@
+{
+  "id": "sun-titan-werewolf-dayflip-m629",
+  "description": "Sun Titan Daybound M629 ETB.",
+  "seed": 45087,
+  "cards": {
+    "Sun Titan Daybound M629": "Name:Sun Titan Daybound M629\nManaCost:4 W W\nTypes:Creature Giant\nPT:6/6\nK:Vigilance\nK:Daybound\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Permanent.YouCtrl+cmcLE3\nOracle:STDM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sun Titan Daybound M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sun Titan Daybound M629",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "smugglers-copter-m629",
+  "description": "Smugglers Copter M629 ETB.",
+  "seed": 45114,
+  "cards": {
+    "Smugglers Copter M629": "Name:Smugglers Copter M629\nManaCost:2\nTypes:Artifact Vehicle\nPT:3/3\nK:Crew:1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLootAttacks\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLootETB\nSVar:TrigLootAttacks:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:TrigLootETB:DB$ Effect\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:SCM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smugglers Copter M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Smugglers Copter M629",
+      "controller": 0
+    }
+  ]
+}

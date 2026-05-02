@@ -1,0 +1,29 @@
+{
+  "id": "pestermite-m629",
+  "description": "Pestermite M629 ETB.",
+  "seed": 45330,
+  "cards": {
+    "Pestermite M629": "Name:Pestermite M629\nManaCost:2 U\nTypes:Creature Faerie Rogue\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap\nSVar:TrigUntap:DB$ Tap | TargetType$ Permanent | ValidTgts$ Permanent\nOracle:PM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pestermite M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Pestermite M629",
+      "controller": 0
+    }
+  ]
+}

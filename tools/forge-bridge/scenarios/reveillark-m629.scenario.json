@@ -1,0 +1,29 @@
+{
+  "id": "reveillark-m629",
+  "description": "Reveillark M629 ETB.",
+  "seed": 45252,
+  "cards": {
+    "Reveillark M629": "Name:Reveillark M629\nManaCost:4 W\nTypes:Creature Elemental\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature | ValidTgts$ Creature.powerLE2\nOracle:RM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reveillark M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reveillark M629",
+      "controller": 0
+    }
+  ]
+}

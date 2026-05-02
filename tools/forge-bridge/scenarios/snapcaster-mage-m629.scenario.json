@@ -1,0 +1,29 @@
+{
+  "id": "snapcaster-mage-m629",
+  "description": "Snapcaster Mage M629 ETB.",
+  "seed": 45176,
+  "cards": {
+    "Snapcaster Mage M629": "Name:Snapcaster Mage M629\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGrant\nSVar:TrigGrant:DB$ Pump | TargetType$ Card | ValidTgts$ Card.Instant+inZoneGraveyard,Card.Sorcery+inZoneGraveyard | KW$ Flashback\nOracle:SMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snapcaster Mage M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Snapcaster Mage M629",
+      "controller": 0
+    }
+  ]
+}

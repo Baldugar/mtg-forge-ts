@@ -1,0 +1,29 @@
+{
+  "id": "goldvein-hydra-mount-m629",
+  "description": "Goldvein Hydra M629 ETB.",
+  "seed": 45120,
+  "cards": {
+    "Goldvein Hydra M629": "Name:Goldvein Hydra M629\nManaCost:X G\nTypes:Creature Hydra Mount\nPT:0/0\nK:Saddle:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCntr\nSVar:TrigCntr:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | References$ X\nSVar:X:Count$xPaid\nOracle:GHM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldvein Hydra M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goldvein Hydra M629",
+      "controller": 0
+    }
+  ]
+}

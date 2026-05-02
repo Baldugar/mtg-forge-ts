@@ -1,0 +1,29 @@
+{
+  "id": "wood-elves-m629",
+  "description": "Wood Elves M629 ETB.",
+  "seed": 45212,
+  "cards": {
+    "Wood Elves M629": "Name:Wood Elves M629\nManaCost:2 G\nTypes:Creature Elf Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ 1 | TgtPrompt$ Choose forest\nOracle:WEM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wood Elves M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wood Elves M629",
+      "controller": 0
+    }
+  ]
+}

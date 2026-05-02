@@ -367,6 +367,12 @@ const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   ["BridgeActivateFailed", "bridge-action-skipped"],
   ["BridgeTargetNotFound", "bridge-action-skipped"],
   ["BridgeUnsupported", "bridge-action-skipped"],
+  // M6.29 — Java-only `CounterRemoved` for battles taking damage (bridge
+  // captures the defense-counter decrement when damage lands; the TS
+  // golden runner doesn't yet emit the symmetric removal kind for this
+  // path). Same family as Java-only CounterAdded — a TS-runner gap, not
+  // an engine bug.
+  ["CounterRemoved", "ts-runner-shallow"],
 ]);
 
 /**
@@ -417,6 +423,13 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // umbrella is bridge-skipped, not engine-internal yet.)
   ["CardMilled", "bridge-action-skipped"],
   ["TokenCreated", "bridge-action-skipped"],
+  // M6.29 — TS-only `CardsUntappedAll` umbrella. The TS engine emits one
+  // top-level event when an `UntapAll` effect resolves; Forge fans out
+  // per-card `CardTappedChanged` events instead and never aggregates.
+  // Same family as `CardMilled` / `TokenCreated` — Forge has no
+  // GameEventCardsUntappedAll the bridge can subscribe to, so the
+  // umbrella has no Java counterpart. The per-card moves match.
+  ["CardsUntappedAll", "bridge-action-skipped"],
   // M6: TS-only CounterAdded — bridge V2 doesn't capture
   // GameEventCounterAdded yet. Counter placements (loyalty for
   // planeswalkers, +1/+1 for ETB-counter creatures, hideaway etc.)

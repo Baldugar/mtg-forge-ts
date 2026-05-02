@@ -1,0 +1,29 @@
+{
+  "id": "rancor-m629",
+  "description": "Rancor M629 M629 ETB.",
+  "seed": 45238,
+  "cards": {
+    "Rancor M629 M629": "Name:Rancor M629 M629\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant Creature\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddKeyword$ Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nOracle:RMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rancor M629 M629"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rancor M629 M629",
+      "controller": 0
+    }
+  ]
+}
