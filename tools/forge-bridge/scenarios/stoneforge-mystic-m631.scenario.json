@@ -1,0 +1,29 @@
+{
+  "id": "stoneforge-mystic-m631",
+  "description": "Stoneforge Mystic M631 M631 ETB.",
+  "seed": 49765,
+  "cards": {
+    "Stoneforge Mystic M631 M631": "Name:Stoneforge Mystic M631 M631\nManaCost:1 W\nTypes:Creature Kor Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1\nOracle:SMMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stoneforge Mystic M631 M631"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Stoneforge Mystic M631 M631",
+      "controller": 0
+    }
+  ]
+}

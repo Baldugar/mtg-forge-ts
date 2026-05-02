@@ -61380,4 +61380,6326 @@ Oracle:KBTMM parse.
     ],
     actions: [{ kind: "etb", cardName: "Kozilek Butcher Truth M630 M630", controller: SEAT0 }],
   },
+
+  // 2785. Sword Feast Famine M631 M631 ETB.
+  {
+    id: "sword-of-feast-and-famine-m631",
+    description: "Sword Feast Famine M631 M631 ETB.",
+    seed: 0xc15e,
+    cards: {
+      "Sword Feast Famine M631 M631": `Name:Sword Feast Famine M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from black & Protection from green
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigUntap | TriggerDescription$ Untap all lands.
+SVar:TrigUntap:DB$ UntapAll | ValidCards$ Land.YouCtrl
+Oracle:SFFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Feast Famine M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Feast Famine M631 M631", controller: SEAT0 }],
+  },
+
+  // 2786. Sword Fire Ice M631 M631 ETB.
+  {
+    id: "sword-of-fire-and-ice-m631",
+    description: "Sword Fire Ice M631 M631 ETB.",
+    seed: 0xc15f,
+    cards: {
+      "Sword Fire Ice M631 M631": `Name:Sword Fire Ice M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from red & Protection from blue
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigBolt
+SVar:TrigBolt:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Any
+Oracle:SFIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Fire Ice M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Fire Ice M631 M631", controller: SEAT0 }],
+  },
+
+  // 2787. Sword Light Shadow M631 M631 ETB.
+  {
+    id: "sword-of-light-and-shadow-m631",
+    description: "Sword Light Shadow M631 M631 ETB.",
+    seed: 0xc160,
+    cards: {
+      "Sword Light Shadow M631 M631": `Name:Sword Light Shadow M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 3
+Oracle:SLSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Light Shadow M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Light Shadow M631 M631", controller: SEAT0 }],
+  },
+
+  // 2788. Sword Body Mind M631 M631 ETB.
+  {
+    id: "sword-of-body-and-mind-m631",
+    description: "Sword Body Mind M631 M631 ETB.",
+    seed: 0xc161,
+    cards: {
+      "Sword Body Mind M631 M631": `Name:Sword Body Mind M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from green & Protection from blue
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenAmount$ 1
+Oracle:SBMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Body Mind M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Body Mind M631 M631", controller: SEAT0 }],
+  },
+
+  // 2789. Sword War Peace M631 M631 ETB.
+  {
+    id: "sword-of-war-and-peace-m631",
+    description: "Sword War Peace M631 M631 ETB.",
+    seed: 0xc162,
+    cards: {
+      "Sword War Peace M631 M631": `Name:Sword War Peace M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from red & Protection from white
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmgPlus
+SVar:TrigDmgPlus:DB$ DealDamage | NumDmg$ 1 | Defined$ TriggeredTarget
+Oracle:SWPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword War Peace M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword War Peace M631 M631", controller: SEAT0 }],
+  },
+
+  // 2790. Sword Truth Justice M631 M631 ETB.
+  {
+    id: "sword-of-truth-and-justice-m631",
+    description: "Sword Truth Justice M631 M631 ETB.",
+    seed: 0xc163,
+    cards: {
+      "Sword Truth Justice M631 M631": `Name:Sword Truth Justice M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from artifacts & Protection from blue
+Oracle:STJMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Truth Justice M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Truth Justice M631 M631", controller: SEAT0 }],
+  },
+
+  // 2791. Sword Hearth Home M631 M631 ETB.
+  {
+    id: "sword-of-hearth-and-home-m631",
+    description: "Sword Hearth Home M631 M631 ETB.",
+    seed: 0xc164,
+    cards: {
+      "Sword Hearth Home M631 M631": `Name:Sword Hearth Home M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from green & Protection from white
+Oracle:SHHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Hearth Home M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Hearth Home M631 M631", controller: SEAT0 }],
+  },
+
+  // 2792. Skullclamp M631 M631 ETB.
+  {
+    id: "skullclamp-m631",
+    description: "Skullclamp M631 M631 ETB.",
+    seed: 0xc165,
+    cards: {
+      "Skullclamp M631 M631": `Name:Skullclamp M631 M631
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ -1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.AttachedBy | Execute$ TrigDraw | TriggerDescription$ Draw two when wearer dies.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:SMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skullclamp M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skullclamp M631 M631", controller: SEAT0 }],
+  },
+
+  // 2793. Umezawas Jitte M631 M631 ETB.
+  {
+    id: "umezawas-jitte-m631",
+    description: "Umezawas Jitte M631 M631 ETB.",
+    seed: 0xc166,
+    cards: {
+      "Umezawas Jitte M631 M631": `Name:Umezawas Jitte M631 M631
+ManaCost:2
+Types:Legendary Artifact Equipment
+K:Equip:2
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | CombatDamage$ True | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2
+Oracle:UJMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Umezawas Jitte M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Umezawas Jitte M631 M631", controller: SEAT0 }],
+  },
+
+  // 2794. Scytheclaw M631 M631 ETB.
+  {
+    id: "scytheclaw-m631",
+    description: "Scytheclaw M631 M631 ETB.",
+    seed: 0xc167,
+    cards: {
+      "Scytheclaw M631 M631": `Name:Scytheclaw M631 M631
+ManaCost:5
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Deathtouch
+Oracle:SMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scytheclaw M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scytheclaw M631 M631", controller: SEAT0 }],
+  },
+
+  // 2795. Loxodon Warhammer M631 M631 ETB.
+  {
+    id: "loxodon-warhammer-m631",
+    description: "Loxodon Warhammer M631 M631 ETB.",
+    seed: 0xc168,
+    cards: {
+      "Loxodon Warhammer M631 M631": `Name:Loxodon Warhammer M631 M631
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:3
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 3 | AddKeyword$ Trample & Lifelink
+Oracle:LWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Loxodon Warhammer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Loxodon Warhammer M631 M631", controller: SEAT0 }],
+  },
+
+  // 2796. Bonesplitter M631 M631 ETB.
+  {
+    id: "bonesplitter-m631",
+    description: "Bonesplitter M631 M631 ETB.",
+    seed: 0xc169,
+    cards: {
+      "Bonesplitter M631 M631": `Name:Bonesplitter M631 M631
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2
+Oracle:BMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonesplitter M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bonesplitter M631 M631", controller: SEAT0 }],
+  },
+
+  // 2797. Embercleave M631 M631 ETB.
+  {
+    id: "embercleave-m631",
+    description: "Embercleave M631 M631 ETB.",
+    seed: 0xc16a,
+    cards: {
+      "Embercleave M631 M631": `Name:Embercleave M631 M631
+ManaCost:4 R R
+Types:Legendary Artifact Equipment
+K:Flash
+K:Equip:3
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddKeyword$ Double Strike & Trample
+Oracle:EMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Embercleave M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Embercleave M631 M631", controller: SEAT0 }],
+  },
+
+  // 2798. Maul Skyclaves M631 M631 ETB.
+  {
+    id: "maul-of-the-skyclaves-m631",
+    description: "Maul Skyclaves M631 M631 ETB.",
+    seed: 0xc16b,
+    cards: {
+      "Maul Skyclaves M631 M631": `Name:Maul Skyclaves M631 M631
+ManaCost:1 W
+Types:Artifact Equipment
+K:Equip:3
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Flying & First Strike & Lifelink
+Oracle:MSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maul Skyclaves M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maul Skyclaves M631 M631", controller: SEAT0 }],
+  },
+
+  // 2799. Argentum Armor M631 M631 ETB.
+  {
+    id: "argentum-armor-m631",
+    description: "Argentum Armor M631 M631 ETB.",
+    seed: 0xc16c,
+    cards: {
+      "Argentum Armor M631 M631": `Name:Argentum Armor M631 M631
+ManaCost:6
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 6 | AddToughness$ 6
+Oracle:AAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Argentum Armor M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Argentum Armor M631 M631", controller: SEAT0 }],
+  },
+
+  // 2800. Smugglers Copter M631 M631 ETB.
+  {
+    id: "smugglers-copter-m631",
+    description: "Smugglers Copter M631 M631 ETB.",
+    seed: 0xc16d,
+    cards: {
+      "Smugglers Copter M631 M631": `Name:Smugglers Copter M631 M631
+ManaCost:2
+Types:Artifact Vehicle
+PT:3/3
+K:Flying
+K:Crew:1
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoot
+SVar:TrigLoot:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 1
+Oracle:SCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smugglers Copter M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smugglers Copter M631 M631", controller: SEAT0 }],
+  },
+
+  // 2801. Heart Kiran M631 M631 ETB.
+  {
+    id: "heart-of-kiran-m631",
+    description: "Heart Kiran M631 M631 ETB.",
+    seed: 0xc16e,
+    cards: {
+      "Heart Kiran M631 M631": `Name:Heart Kiran M631 M631
+ManaCost:2
+Types:Legendary Artifact Vehicle
+PT:4/4
+K:Flying
+K:Vigilance
+K:Crew:3
+Oracle:HKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heart Kiran M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heart Kiran M631 M631", controller: SEAT0 }],
+  },
+
+  // 2802. Skysovereign Consul Flagship M631 M631 ETB.
+  {
+    id: "skysovereign-consul-flagship-m631",
+    description: "Skysovereign Consul Flagship M631 M631 ETB.",
+    seed: 0xc16f,
+    cards: {
+      "Skysovereign Consul Flagship M631 M631": `Name:Skysovereign Consul Flagship M631 M631
+ManaCost:6
+Types:Legendary Artifact Vehicle
+PT:6/5
+K:Flying
+K:Crew:3
+Oracle:SCFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skysovereign Consul Flagship M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skysovereign Consul Flagship M631 M631", controller: SEAT0 }],
+  },
+
+  // 2803. Aetherflux Frigate M631 M631 ETB.
+  {
+    id: "aetherflux-frigate-m631",
+    description: "Aetherflux Frigate M631 M631 ETB.",
+    seed: 0xc170,
+    cards: {
+      "Aetherflux Frigate M631 M631": `Name:Aetherflux Frigate M631 M631
+ManaCost:5
+Types:Artifact Vehicle
+PT:4/4
+K:Flying
+K:Crew:2
+Oracle:AFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aetherflux Frigate M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aetherflux Frigate M631 M631", controller: SEAT0 }],
+  },
+
+  // 2804. Fleetwheel Cruiser M631 M631 ETB.
+  {
+    id: "fleetwheel-cruiser-m631",
+    description: "Fleetwheel Cruiser M631 M631 ETB.",
+    seed: 0xc171,
+    cards: {
+      "Fleetwheel Cruiser M631 M631": `Name:Fleetwheel Cruiser M631 M631
+ManaCost:4
+Types:Artifact Vehicle
+PT:5/3
+K:Trample
+K:Haste
+K:Crew:2
+Oracle:FCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fleetwheel Cruiser M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fleetwheel Cruiser M631 M631", controller: SEAT0 }],
+  },
+
+  // 2805. Renegade Freighter M631 M631 ETB.
+  {
+    id: "renegade-freighter-m631",
+    description: "Renegade Freighter M631 M631 ETB.",
+    seed: 0xc172,
+    cards: {
+      "Renegade Freighter M631 M631": `Name:Renegade Freighter M631 M631
+ManaCost:3
+Types:Artifact Vehicle
+PT:4/3
+K:Crew:2
+Oracle:RFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Renegade Freighter M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Renegade Freighter M631 M631", controller: SEAT0 }],
+  },
+
+  // 2806. Cultivator Vehicle M631 M631 ETB.
+  {
+    id: "cultivator-of-blades-vehicle-m631",
+    description: "Cultivator Vehicle M631 M631 ETB.",
+    seed: 0xc173,
+    cards: {
+      "Cultivator Vehicle M631 M631": `Name:Cultivator Vehicle M631 M631
+ManaCost:5
+Types:Artifact Vehicle
+PT:5/5
+K:Crew:3
+Oracle:CVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cultivator Vehicle M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cultivator Vehicle M631 M631", controller: SEAT0 }],
+  },
+
+  // 2807. Aradara Express M631 M631 ETB.
+  {
+    id: "aradara-express-m631",
+    description: "Aradara Express M631 M631 ETB.",
+    seed: 0xc174,
+    cards: {
+      "Aradara Express M631 M631": `Name:Aradara Express M631 M631
+ManaCost:6
+Types:Artifact Vehicle
+PT:7/5
+K:Crew:4
+Oracle:AEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aradara Express M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aradara Express M631 M631", controller: SEAT0 }],
+  },
+
+  // 2808. Consulate Dreadnought M631 M631 ETB.
+  {
+    id: "consulate-dreadnought-m631",
+    description: "Consulate Dreadnought M631 M631 ETB.",
+    seed: 0xc175,
+    cards: {
+      "Consulate Dreadnought M631 M631": `Name:Consulate Dreadnought M631 M631
+ManaCost:1
+Types:Artifact Vehicle
+PT:7/11
+K:Trample
+K:Crew:8
+Oracle:CDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Consulate Dreadnought M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Consulate Dreadnought M631 M631", controller: SEAT0 }],
+  },
+
+  // 2809. Weatherlight M631 M631 ETB.
+  {
+    id: "weatherlight-m631",
+    description: "Weatherlight M631 M631 ETB.",
+    seed: 0xc176,
+    cards: {
+      "Weatherlight M631 M631": `Name:Weatherlight M631 M631
+ManaCost:4
+Types:Legendary Artifact Vehicle
+PT:4/5
+K:Flying
+K:Crew:3
+Oracle:WMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Weatherlight M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Weatherlight M631 M631", controller: SEAT0 }],
+  },
+
+  // 2810. Roxanne Starfall Savant M631 M631 ETB.
+  {
+    id: "roxanne-starfall-savant-m631",
+    description: "Roxanne Starfall Savant M631 M631 ETB.",
+    seed: 0xc177,
+    cards: {
+      "Roxanne Starfall Savant M631 M631": `Name:Roxanne Starfall Savant M631 M631
+ManaCost:1 R G
+Types:Legendary Creature Cat Druid
+PT:2/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_construct | TokenAmount$ 1
+Oracle:RSSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Roxanne Starfall Savant M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Roxanne Starfall Savant M631 M631", controller: SEAT0 }],
+  },
+
+  // 2811. Intrepid Paleontologist M631 M631 ETB.
+  {
+    id: "intrepid-paleontologist-m631",
+    description: "Intrepid Paleontologist M631 M631 ETB.",
+    seed: 0xc178,
+    cards: {
+      "Intrepid Paleontologist M631 M631": `Name:Intrepid Paleontologist M631 M631
+ManaCost:1 G
+Types:Creature Human Druid
+PT:2/2
+Oracle:IPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Intrepid Paleontologist M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Intrepid Paleontologist M631 M631", controller: SEAT0 }],
+  },
+
+  // 2812. Aerie Auxiliary M631 M631 ETB.
+  {
+    id: "aerie-auxiliary-m631",
+    description: "Aerie Auxiliary M631 M631 ETB.",
+    seed: 0xc179,
+    cards: {
+      "Aerie Auxiliary M631 M631": `Name:Aerie Auxiliary M631 M631
+ManaCost:2 W
+Types:Creature Human Soldier
+PT:3/3
+K:Saddle:2
+Oracle:AAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aerie Auxiliary M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aerie Auxiliary M631 M631", controller: SEAT0 }],
+  },
+
+  // 2813. Hardbristle Bandit M631 M631 ETB.
+  {
+    id: "hardbristle-bandit-m631",
+    description: "Hardbristle Bandit M631 M631 ETB.",
+    seed: 0xc17a,
+    cards: {
+      "Hardbristle Bandit M631 M631": `Name:Hardbristle Bandit M631 M631
+ManaCost:1 R
+Types:Creature Boar Warrior
+PT:2/2
+K:Saddle:2
+Oracle:HBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hardbristle Bandit M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hardbristle Bandit M631 M631", controller: SEAT0 }],
+  },
+
+  // 2814. Hard Hitting Hog M631 M631 ETB.
+  {
+    id: "hard-hitting-hog-m631",
+    description: "Hard Hitting Hog M631 M631 ETB.",
+    seed: 0xc17b,
+    cards: {
+      "Hard Hitting Hog M631 M631": `Name:Hard Hitting Hog M631 M631
+ManaCost:2 R
+Types:Creature Boar
+PT:3/2
+K:Saddle:2
+Oracle:HHHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hard Hitting Hog M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hard Hitting Hog M631 M631", controller: SEAT0 }],
+  },
+
+  // 2815. Caustic Bronco M631 M631 ETB.
+  {
+    id: "caustic-bronco-m631",
+    description: "Caustic Bronco M631 M631 ETB.",
+    seed: 0xc17c,
+    cards: {
+      "Caustic Bronco M631 M631": `Name:Caustic Bronco M631 M631
+ManaCost:1 B
+Types:Creature Horse
+PT:2/2
+K:Saddle:2
+Oracle:CBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Caustic Bronco M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Caustic Bronco M631 M631", controller: SEAT0 }],
+  },
+
+  // 2816. Highspall Duster M631 M631 ETB.
+  {
+    id: "highspall-duster-m631",
+    description: "Highspall Duster M631 M631 ETB.",
+    seed: 0xc17d,
+    cards: {
+      "Highspall Duster M631 M631": `Name:Highspall Duster M631 M631
+ManaCost:3 W
+Types:Creature Cat Beast
+PT:3/3
+K:Saddle:2
+Oracle:HDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Highspall Duster M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Highspall Duster M631 M631", controller: SEAT0 }],
+  },
+
+  // 2817. Mountain Stomper Mount M631 M631 ETB.
+  {
+    id: "mountain-stomper-mount-m631",
+    description: "Mountain Stomper Mount M631 M631 ETB.",
+    seed: 0xc17e,
+    cards: {
+      "Mountain Stomper Mount M631 M631": `Name:Mountain Stomper Mount M631 M631
+ManaCost:3 G
+Types:Creature Beast Mount
+PT:4/4
+K:Saddle:3
+Oracle:MSMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mountain Stomper Mount M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mountain Stomper Mount M631 M631", controller: SEAT0 }],
+  },
+
+  // 2818. Sea Gate Restoration M631 M631 ETB.
+  {
+    id: "sea-gate-restoration-m631",
+    description: "Sea Gate Restoration M631 M631 ETB.",
+    seed: 0xc17f,
+    cards: {
+      "Sea Gate Restoration M631 M631": `Name:Sea Gate Restoration M631 M631
+ManaCost:X U U U
+Types:Sorcery
+A:SP$ Draw | Cost$ X U U U | NumCards$ X | References$ X
+SVar:X:Count$xPaid
+Oracle:SGRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sea Gate Restoration M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sea Gate Restoration M631 M631", controller: SEAT0 }],
+  },
+
+  // 2819. Valki God Lies M631 M631 ETB.
+  {
+    id: "valki-god-of-lies-m631",
+    description: "Valki God Lies M631 M631 ETB.",
+    seed: 0xc180,
+    cards: {
+      "Valki God Lies M631 M631": `Name:Valki God Lies M631 M631
+ManaCost:1 B
+Types:Legendary Creature God
+PT:2/1
+Oracle:VGLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Valki God Lies M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Valki God Lies M631 M631", controller: SEAT0 }],
+  },
+
+  // 2820. Agadeem Awakening M631 M631 ETB.
+  {
+    id: "agadeem-awakening-m631",
+    description: "Agadeem Awakening M631 M631 ETB.",
+    seed: 0xc181,
+    cards: {
+      "Agadeem Awakening M631 M631": `Name:Agadeem Awakening M631 M631
+ManaCost:X B B B
+Types:Sorcery
+A:SP$ ChangeZoneAll | Cost$ X B B B | ChangeType$ Creature.cmcLEX | Origin$ Graveyard | Destination$ Battlefield | References$ X
+SVar:X:Count$xPaid
+Oracle:AAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Agadeem Awakening M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Agadeem Awakening M631 M631", controller: SEAT0 }],
+  },
+
+  // 2821. Shatterskull Smashing M631 M631 ETB.
+  {
+    id: "shatterskull-smashing-m631",
+    description: "Shatterskull Smashing M631 M631 ETB.",
+    seed: 0xc182,
+    cards: {
+      "Shatterskull Smashing M631 M631": `Name:Shatterskull Smashing M631 M631
+ManaCost:X R R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ X R R | NumDmg$ X | TargetType$ Creature,Planeswalker | NumTargets$ 2 | References$ X
+SVar:X:Count$xPaid
+Oracle:SSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shatterskull Smashing M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shatterskull Smashing M631 M631", controller: SEAT0 }],
+  },
+
+  // 2822. Emeria Shattered Skyclave M631 M631 ETB.
+  {
+    id: "emeria-shattered-skyclave-m631",
+    description: "Emeria Shattered Skyclave M631 M631 ETB.",
+    seed: 0xc183,
+    cards: {
+      "Emeria Shattered Skyclave M631 M631": `Name:Emeria Shattered Skyclave M631 M631
+ManaCost:3 W W
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 3 W W | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Permanent.cmcLE3
+Oracle:ESSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Emeria Shattered Skyclave M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Emeria Shattered Skyclave M631 M631", controller: SEAT0 }],
+  },
+
+  // 2823. Turntimber Symbiosis M631 M631 ETB.
+  {
+    id: "turntimber-symbiosis-m631",
+    description: "Turntimber Symbiosis M631 M631 ETB.",
+    seed: 0xc184,
+    cards: {
+      "Turntimber Symbiosis M631 M631": `Name:Turntimber Symbiosis M631 M631
+ManaCost:5 G G G
+Types:Sorcery
+A:SP$ Dig | Cost$ 5 G G G | DigNum$ 7 | DestinationZone$ Battlefield | ChangeType$ Creature | ChangeNum$ 1
+Oracle:TSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Turntimber Symbiosis M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Turntimber Symbiosis M631 M631", controller: SEAT0 }],
+  },
+
+  // 2824. Esika Gods Mistake M631 M631 ETB.
+  {
+    id: "esika-gods-mistake-m631",
+    description: "Esika Gods Mistake M631 M631 ETB.",
+    seed: 0xc185,
+    cards: {
+      "Esika Gods Mistake M631 M631": `Name:Esika Gods Mistake M631 M631
+ManaCost:G G
+Types:Legendary Creature God
+PT:1/4
+Oracle:EGMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esika Gods Mistake M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esika Gods Mistake M631 M631", controller: SEAT0 }],
+  },
+
+  // 2825. Birgi God Storytelling M631 M631 ETB.
+  {
+    id: "birgi-god-of-storytelling-m631",
+    description: "Birgi God Storytelling M631 M631 ETB.",
+    seed: 0xc186,
+    cards: {
+      "Birgi God Storytelling M631 M631": `Name:Birgi God Storytelling M631 M631
+ManaCost:2 R
+Types:Legendary Creature God
+PT:3/3
+Oracle:BGSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Birgi God Storytelling M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Birgi God Storytelling M631 M631", controller: SEAT0 }],
+  },
+
+  // 2826. Kazandu Mammoth M631 M631 ETB.
+  {
+    id: "kazandu-mammoth-m631",
+    description: "Kazandu Mammoth M631 M631 ETB.",
+    seed: 0xc187,
+    cards: {
+      "Kazandu Mammoth M631 M631": `Name:Kazandu Mammoth M631 M631
+ManaCost:1 G G
+Types:Creature Elephant
+PT:3/3
+Oracle:KMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kazandu Mammoth M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kazandu Mammoth M631 M631", controller: SEAT0 }],
+  },
+
+  // 2827. Beyeen Veil M631 M631 ETB.
+  {
+    id: "beyeen-veil-mdfc-m631",
+    description: "Beyeen Veil M631 M631 ETB.",
+    seed: 0xc188,
+    cards: {
+      "Beyeen Veil M631 M631": `Name:Beyeen Veil M631 M631
+ManaCost:1 U
+Types:Instant
+A:SP$ Pump | Cost$ 1 U | TargetType$ Creature | ValidTgts$ Creature.OppCtrl | NumAtt$ -2
+Oracle:BVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beyeen Veil M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beyeen Veil M631 M631", controller: SEAT0 }],
+  },
+
+  // 2828. Brazen Borrower Adv M631 M631 ETB.
+  {
+    id: "brazen-borrower-adv-m631",
+    description: "Brazen Borrower Adv M631 M631 ETB.",
+    seed: 0xc189,
+    cards: {
+      "Brazen Borrower Adv M631 M631": `Name:Brazen Borrower Adv M631 M631
+ManaCost:1 U U
+Types:Creature Faerie Rogue
+PT:3/1
+K:Flash
+K:Flying
+Oracle:BBAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brazen Borrower Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brazen Borrower Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2829. Bonecrusher Giant Adv M631 M631 ETB.
+  {
+    id: "bonecrusher-giant-adv-m631",
+    description: "Bonecrusher Giant Adv M631 M631 ETB.",
+    seed: 0xc18a,
+    cards: {
+      "Bonecrusher Giant Adv M631 M631": `Name:Bonecrusher Giant Adv M631 M631
+ManaCost:1 R R
+Types:Creature Giant
+PT:4/3
+Oracle:BGAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonecrusher Giant Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bonecrusher Giant Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2830. Lovestruck Beast Adv M631 M631 ETB.
+  {
+    id: "lovestruck-beast-adv-m631",
+    description: "Lovestruck Beast Adv M631 M631 ETB.",
+    seed: 0xc18b,
+    cards: {
+      "Lovestruck Beast Adv M631 M631": `Name:Lovestruck Beast Adv M631 M631
+ManaCost:1 G G
+Types:Creature Beast Noble
+PT:5/5
+Oracle:LBAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lovestruck Beast Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lovestruck Beast Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2831. Foulmire Knight Adv M631 M631 ETB.
+  {
+    id: "foulmire-knight-adv-m631",
+    description: "Foulmire Knight Adv M631 M631 ETB.",
+    seed: 0xc18c,
+    cards: {
+      "Foulmire Knight Adv M631 M631": `Name:Foulmire Knight Adv M631 M631
+ManaCost:B
+Types:Creature Zombie Knight
+PT:1/1
+K:Deathtouch
+Oracle:FKAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Foulmire Knight Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Foulmire Knight Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2832. Murderous Rider Adv M631 M631 ETB.
+  {
+    id: "murderous-rider-adv-m631",
+    description: "Murderous Rider Adv M631 M631 ETB.",
+    seed: 0xc18d,
+    cards: {
+      "Murderous Rider Adv M631 M631": `Name:Murderous Rider Adv M631 M631
+ManaCost:1 B B
+Types:Creature Zombie Knight
+PT:2/3
+K:Lifelink
+Oracle:MRAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murderous Rider Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Murderous Rider Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2833. Rimrock Knight Adv M631 M631 ETB.
+  {
+    id: "rimrock-knight-adv-m631",
+    description: "Rimrock Knight Adv M631 M631 ETB.",
+    seed: 0xc18e,
+    cards: {
+      "Rimrock Knight Adv M631 M631": `Name:Rimrock Knight Adv M631 M631
+ManaCost:1 R
+Types:Creature Dwarf Knight
+PT:3/1
+Oracle:RKAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rimrock Knight Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rimrock Knight Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2834. Beanstalk Giant Adv M631 M631 ETB.
+  {
+    id: "beanstalk-giant-adv-m631",
+    description: "Beanstalk Giant Adv M631 M631 ETB.",
+    seed: 0xc18f,
+    cards: {
+      "Beanstalk Giant Adv M631 M631": `Name:Beanstalk Giant Adv M631 M631
+ManaCost:5 G
+Types:Creature Giant Peasant
+PT:7/7
+Oracle:BGAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beanstalk Giant Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beanstalk Giant Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2835. Fae Wishes Adv M631 M631 ETB.
+  {
+    id: "fae-of-wishes-adv-m631",
+    description: "Fae Wishes Adv M631 M631 ETB.",
+    seed: 0xc190,
+    cards: {
+      "Fae Wishes Adv M631 M631": `Name:Fae Wishes Adv M631 M631
+ManaCost:1 U
+Types:Creature Faerie Wizard
+PT:1/4
+K:Flying
+Oracle:FWAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fae Wishes Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fae Wishes Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2836. Realm Cloaked Giant Adv M631 M631 ETB.
+  {
+    id: "realm-cloaked-giant-adv-m631",
+    description: "Realm Cloaked Giant Adv M631 M631 ETB.",
+    seed: 0xc191,
+    cards: {
+      "Realm Cloaked Giant Adv M631 M631": `Name:Realm Cloaked Giant Adv M631 M631
+ManaCost:5 W W
+Types:Creature Giant
+PT:7/7
+Oracle:RCGAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Realm Cloaked Giant Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Realm Cloaked Giant Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2837. Return Wildspeaker Adv M631 M631 ETB.
+  {
+    id: "return-of-the-wildspeaker-adv-m631",
+    description: "Return Wildspeaker Adv M631 M631 ETB.",
+    seed: 0xc192,
+    cards: {
+      "Return Wildspeaker Adv M631 M631": `Name:Return Wildspeaker Adv M631 M631
+ManaCost:3 G
+Types:Sorcery
+A:SP$ Draw | Cost$ 3 G | NumCards$ 3
+Oracle:RWAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Return Wildspeaker Adv M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Return Wildspeaker Adv M631 M631", controller: SEAT0 }],
+  },
+
+  // 2838. Auspicious Starrix M631 M631 ETB.
+  {
+    id: "auspicious-starrix-m631",
+    description: "Auspicious Starrix M631 M631 ETB.",
+    seed: 0xc193,
+    cards: {
+      "Auspicious Starrix M631 M631": `Name:Auspicious Starrix M631 M631
+ManaCost:3 G W
+Types:Creature Beast Elemental
+PT:5/5
+K:Mutate:3 G W
+Oracle:ASMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Auspicious Starrix M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Auspicious Starrix M631 M631", controller: SEAT0 }],
+  },
+
+  // 2839. Lore Drakkis M631 M631 ETB.
+  {
+    id: "lore-drakkis-m631",
+    description: "Lore Drakkis M631 M631 ETB.",
+    seed: 0xc194,
+    cards: {
+      "Lore Drakkis M631 M631": `Name:Lore Drakkis M631 M631
+ManaCost:U R
+Types:Creature Lizard Mutant
+PT:2/2
+K:Mutate:1 U R
+Oracle:LDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lore Drakkis M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lore Drakkis M631 M631", controller: SEAT0 }],
+  },
+
+  // 2840. Dirge Bat M631 M631 ETB.
+  {
+    id: "dirge-bat-m631",
+    description: "Dirge Bat M631 M631 ETB.",
+    seed: 0xc195,
+    cards: {
+      "Dirge Bat M631 M631": `Name:Dirge Bat M631 M631
+ManaCost:3 W B
+Types:Creature Bat
+PT:3/3
+K:Flying
+K:Mutate:2 W B
+Oracle:DBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dirge Bat M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dirge Bat M631 M631", controller: SEAT0 }],
+  },
+
+  // 2841. Nethroi Apex Death M631 M631 ETB.
+  {
+    id: "nethroi-apex-of-death-m631",
+    description: "Nethroi Apex Death M631 M631 ETB.",
+    seed: 0xc196,
+    cards: {
+      "Nethroi Apex Death M631 M631": `Name:Nethroi Apex Death M631 M631
+ManaCost:2 W B G
+Types:Legendary Creature Cat Nightmare Beast
+PT:5/5
+K:Deathtouch
+K:Lifelink
+K:Mutate:1 W B G
+Oracle:NADMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nethroi Apex Death M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nethroi Apex Death M631 M631", controller: SEAT0 }],
+  },
+
+  // 2842. Brokkos Apex Forever M631 M631 ETB.
+  {
+    id: "brokkos-apex-of-forever-m631",
+    description: "Brokkos Apex Forever M631 M631 ETB.",
+    seed: 0xc197,
+    cards: {
+      "Brokkos Apex Forever M631 M631": `Name:Brokkos Apex Forever M631 M631
+ManaCost:2 G U B
+Types:Legendary Creature Mutant Beast
+PT:6/6
+K:Trample
+K:Mutate:1 G U B
+Oracle:BAFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brokkos Apex Forever M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brokkos Apex Forever M631 M631", controller: SEAT0 }],
+  },
+
+  // 2843. Gemrazer M631 M631 ETB.
+  {
+    id: "gemrazer-m631",
+    description: "Gemrazer M631 M631 ETB.",
+    seed: 0xc198,
+    cards: {
+      "Gemrazer M631 M631": `Name:Gemrazer M631 M631
+ManaCost:1 R G
+Types:Creature Beast Mutant
+PT:4/4
+K:Reach
+K:Trample
+K:Mutate:2 R G
+Oracle:GMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gemrazer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gemrazer M631 M631", controller: SEAT0 }],
+  },
+
+  // 2844. Sea Dasher Octopus M631 M631 ETB.
+  {
+    id: "sea-dasher-octopus-m631",
+    description: "Sea Dasher Octopus M631 M631 ETB.",
+    seed: 0xc199,
+    cards: {
+      "Sea Dasher Octopus M631 M631": `Name:Sea Dasher Octopus M631 M631
+ManaCost:G U
+Types:Creature Octopus
+PT:1/2
+K:Flash
+K:Mutate:1 G U
+Oracle:SDOMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sea Dasher Octopus M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sea Dasher Octopus M631 M631", controller: SEAT0 }],
+  },
+
+  // 2845. Pouncing Shoreshark M631 M631 ETB.
+  {
+    id: "pouncing-shoreshark-m631",
+    description: "Pouncing Shoreshark M631 M631 ETB.",
+    seed: 0xc19a,
+    cards: {
+      "Pouncing Shoreshark M631 M631": `Name:Pouncing Shoreshark M631 M631
+ManaCost:2 G U
+Types:Creature Shark Beast
+PT:4/4
+K:Mutate:1 G U
+Oracle:PSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pouncing Shoreshark M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pouncing Shoreshark M631 M631", controller: SEAT0 }],
+  },
+
+  // 2846. Stolen Identity M631 M631 ETB.
+  {
+    id: "stolen-identity-cipher-m631",
+    description: "Stolen Identity M631 M631 ETB.",
+    seed: 0xc19b,
+    cards: {
+      "Stolen Identity M631 M631": `Name:Stolen Identity M631 M631
+ManaCost:5 U U
+Types:Sorcery
+A:SP$ CopyPermanent | Cost$ 5 U U | TargetType$ Creature,Artifact | NumCopies$ 1
+K:Cipher
+Oracle:SIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stolen Identity M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stolen Identity M631 M631", controller: SEAT0 }],
+  },
+
+  // 2847. Hidden Strings M631 M631 ETB.
+  {
+    id: "hidden-strings-m631",
+    description: "Hidden Strings M631 M631 ETB.",
+    seed: 0xc19c,
+    cards: {
+      "Hidden Strings M631 M631": `Name:Hidden Strings M631 M631
+ManaCost:1 U
+Types:Sorcery
+A:SP$ TapOrUntapAll | Cost$ 1 U
+K:Cipher
+Oracle:HSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hidden Strings M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hidden Strings M631 M631", controller: SEAT0 }],
+  },
+
+  // 2848. Last Thoughts M631 M631 ETB.
+  {
+    id: "last-thoughts-m631",
+    description: "Last Thoughts M631 M631 ETB.",
+    seed: 0xc19d,
+    cards: {
+      "Last Thoughts M631 M631": `Name:Last Thoughts M631 M631
+ManaCost:2 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 2 U | NumCards$ 1
+K:Cipher
+Oracle:LTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Last Thoughts M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Last Thoughts M631 M631", controller: SEAT0 }],
+  },
+
+  // 2849. Whispering Madness M631 M631 ETB.
+  {
+    id: "whispering-madness-m631",
+    description: "Whispering Madness M631 M631 ETB.",
+    seed: 0xc19e,
+    cards: {
+      "Whispering Madness M631 M631": `Name:Whispering Madness M631 M631
+ManaCost:2 U U
+Types:Sorcery
+A:SP$ DiscardEachPlayer | Cost$ 2 U U
+K:Cipher
+Oracle:WMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Whispering Madness M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Whispering Madness M631 M631", controller: SEAT0 }],
+  },
+
+  // 2850. Call Nightwing M631 M631 ETB.
+  {
+    id: "call-of-the-nightwing-m631",
+    description: "Call Nightwing M631 M631 ETB.",
+    seed: 0xc19f,
+    cards: {
+      "Call Nightwing M631 M631": `Name:Call Nightwing M631 M631
+ManaCost:1 U B
+Types:Sorcery
+A:SP$ Token | Cost$ 1 U B | TokenScript$ b_1_1_horror | TokenAmount$ 1
+K:Cipher
+Oracle:CNMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Call Nightwing M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Call Nightwing M631 M631", controller: SEAT0 }],
+  },
+
+  // 2851. Glacial Ray Splice M631 M631 ETB.
+  {
+    id: "glacial-ray-splice-m631",
+    description: "Glacial Ray Splice M631 M631 ETB.",
+    seed: 0xc1a0,
+    cards: {
+      "Glacial Ray Splice M631 M631": `Name:Glacial Ray Splice M631 M631
+ManaCost:1 R
+Types:Instant Arcane
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | ValidTgts$ Any
+K:Splice:Arcane:1 R
+Oracle:GRSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glacial Ray Splice M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glacial Ray Splice M631 M631", controller: SEAT0 }],
+  },
+
+  // 2852. Desperate Ritual M631 M631 ETB.
+  {
+    id: "desperate-ritual-splice-m631",
+    description: "Desperate Ritual M631 M631 ETB.",
+    seed: 0xc1a1,
+    cards: {
+      "Desperate Ritual M631 M631": `Name:Desperate Ritual M631 M631
+ManaCost:2 R
+Types:Instant Arcane
+A:SP$ Mana | Cost$ 2 R | Produced$ R | Amount$ 3
+K:Splice:Arcane:1 R
+Oracle:DRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Desperate Ritual M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Desperate Ritual M631 M631", controller: SEAT0 }],
+  },
+
+  // 2853. Goryos Vengeance M631 M631 ETB.
+  {
+    id: "goryos-vengeance-splice-m631",
+    description: "Goryos Vengeance M631 M631 ETB.",
+    seed: 0xc1a2,
+    cards: {
+      "Goryos Vengeance M631 M631": `Name:Goryos Vengeance M631 M631
+ManaCost:2 B
+Types:Instant Arcane
+A:SP$ ChangeZone | Cost$ 2 B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Legendary.YouOwn
+Oracle:GVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goryos Vengeance M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goryos Vengeance M631 M631", controller: SEAT0 }],
+  },
+
+  // 2854. Candles Glow M631 M631 ETB.
+  {
+    id: "candles-glow-splice-m631",
+    description: "Candles Glow M631 M631 ETB.",
+    seed: 0xc1a3,
+    cards: {
+      "Candles Glow M631 M631": `Name:Candles Glow M631 M631
+ManaCost:1 W
+Types:Instant Arcane
+A:SP$ PreventDamage | Cost$ 1 W | Amount$ 4 | ValidTgts$ Any
+K:Splice:Arcane:W
+Oracle:CGMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Candles Glow M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Candles Glow M631 M631", controller: SEAT0 }],
+  },
+
+  // 2855. Thoughts Ruin M631 M631 ETB.
+  {
+    id: "thoughts-of-ruin-splice-m631",
+    description: "Thoughts Ruin M631 M631 ETB.",
+    seed: 0xc1a4,
+    cards: {
+      "Thoughts Ruin M631 M631": `Name:Thoughts Ruin M631 M631
+ManaCost:3 R
+Types:Sorcery Arcane
+A:SP$ SacrificeAll | Cost$ 3 R | ValidCards$ Land
+K:Splice:Arcane:1 R R
+Oracle:TRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thoughts Ruin M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thoughts Ruin M631 M631", controller: SEAT0 }],
+  },
+
+  // 2856. Tendrils Agony M631 M631 ETB.
+  {
+    id: "tendrils-of-agony-storm-m631",
+    description: "Tendrils Agony M631 M631 ETB.",
+    seed: 0xc1a5,
+    cards: {
+      "Tendrils Agony M631 M631": `Name:Tendrils Agony M631 M631
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ LoseLife | Cost$ 2 B B | LifeAmount$ 2 | Defined$ Targeted | TargetType$ Player
+K:Storm
+Oracle:TAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tendrils Agony M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tendrils Agony M631 M631", controller: SEAT0 }],
+  },
+
+  // 2857. Grapeshot Storm M631 M631 ETB.
+  {
+    id: "grapeshot-storm-m631",
+    description: "Grapeshot Storm M631 M631 ETB.",
+    seed: 0xc1a6,
+    cards: {
+      "Grapeshot Storm M631 M631": `Name:Grapeshot Storm M631 M631
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 1 | ValidTgts$ Any
+K:Storm
+Oracle:GSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grapeshot Storm M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grapeshot Storm M631 M631", controller: SEAT0 }],
+  },
+
+  // 2858. Mind Greatness M631 M631 ETB.
+  {
+    id: "mind-greatness-storm-m631",
+    description: "Mind Greatness M631 M631 ETB.",
+    seed: 0xc1a7,
+    cards: {
+      "Mind Greatness M631 M631": `Name:Mind Greatness M631 M631
+ManaCost:4 U U
+Types:Sorcery
+A:SP$ Effect | Cost$ 4 U U | SpellDescription$ Cascade-style storm.
+K:Storm
+Oracle:MGMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mind Greatness M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mind Greatness M631 M631", controller: SEAT0 }],
+  },
+
+  // 2859. Empty Warrens M631 M631 ETB.
+  {
+    id: "empty-warrens-storm-m631",
+    description: "Empty Warrens M631 M631 ETB.",
+    seed: 0xc1a8,
+    cards: {
+      "Empty Warrens M631 M631": `Name:Empty Warrens M631 M631
+ManaCost:3 R
+Types:Sorcery
+A:SP$ Token | Cost$ 3 R | TokenScript$ r_1_1_goblin | TokenAmount$ 2
+K:Storm
+Oracle:EWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empty Warrens M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Empty Warrens M631 M631", controller: SEAT0 }],
+  },
+
+  // 2860. Brain Freeze M631 M631 ETB.
+  {
+    id: "brain-freeze-storm-m631",
+    description: "Brain Freeze M631 M631 ETB.",
+    seed: 0xc1a9,
+    cards: {
+      "Brain Freeze M631 M631": `Name:Brain Freeze M631 M631
+ManaCost:1 U
+Types:Instant
+A:SP$ Mill | Cost$ 1 U | NumCards$ 3 | Defined$ Targeted | TargetType$ Player | ValidTgts$ Player
+K:Storm
+Oracle:BFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brain Freeze M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brain Freeze M631 M631", controller: SEAT0 }],
+  },
+
+  // 2861. Temporal Fissure M631 M631 ETB.
+  {
+    id: "temporal-fissure-storm-m631",
+    description: "Temporal Fissure M631 M631 ETB.",
+    seed: 0xc1aa,
+    cards: {
+      "Temporal Fissure M631 M631": `Name:Temporal Fissure M631 M631
+ManaCost:3 U
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 3 U | Origin$ Battlefield | Destination$ Hand | TargetType$ NonlandPermanent | ValidTgts$ Permanent.nonLand
+K:Storm
+Oracle:TFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Temporal Fissure M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Temporal Fissure M631 M631", controller: SEAT0 }],
+  },
+
+  // 2862. Mind Burst M631 M631 ETB.
+  {
+    id: "mind-burst-storm-m631",
+    description: "Mind Burst M631 M631 ETB.",
+    seed: 0xc1ab,
+    cards: {
+      "Mind Burst M631 M631": `Name:Mind Burst M631 M631
+ManaCost:1 B
+Types:Sorcery
+A:SP$ Discard | Cost$ 1 B | NumCards$ 2 | Defined$ Opponent | Mode$ TgtChoose
+K:Storm
+Oracle:MBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mind Burst M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mind Burst M631 M631", controller: SEAT0 }],
+  },
+
+  // 2863. Chatterstorm M631 M631 ETB.
+  {
+    id: "chatterstorm-m631",
+    description: "Chatterstorm M631 M631 ETB.",
+    seed: 0xc1ac,
+    cards: {
+      "Chatterstorm M631 M631": `Name:Chatterstorm M631 M631
+ManaCost:1 G
+Types:Sorcery
+A:SP$ Token | Cost$ 1 G | TokenScript$ g_1_1_squirrel | TokenAmount$ 1
+K:Storm
+Oracle:CMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chatterstorm M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chatterstorm M631 M631", controller: SEAT0 }],
+  },
+
+  // 2864. Bloodbraid Elf Cascade M631 M631 ETB.
+  {
+    id: "bloodbraid-elf-cascade-m631",
+    description: "Bloodbraid Elf Cascade M631 M631 ETB.",
+    seed: 0xc1ad,
+    cards: {
+      "Bloodbraid Elf Cascade M631 M631": `Name:Bloodbraid Elf Cascade M631 M631
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:BECMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodbraid Elf Cascade M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodbraid Elf Cascade M631 M631", controller: SEAT0 }],
+  },
+
+  // 2865. Shardless Agent Cascade M631 M631 ETB.
+  {
+    id: "shardless-agent-cascade-m631",
+    description: "Shardless Agent Cascade M631 M631 ETB.",
+    seed: 0xc1ae,
+    cards: {
+      "Shardless Agent Cascade M631 M631": `Name:Shardless Agent Cascade M631 M631
+ManaCost:G U
+Types:Artifact Creature Human Rogue
+PT:2/2
+K:Cascade
+Oracle:SACMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shardless Agent Cascade M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shardless Agent Cascade M631 M631", controller: SEAT0 }],
+  },
+
+  // 2866. Maelstrom Wanderer Cascade M631 M631 ETB.
+  {
+    id: "maelstrom-wanderer-cascade-m631",
+    description: "Maelstrom Wanderer Cascade M631 M631 ETB.",
+    seed: 0xc1af,
+    cards: {
+      "Maelstrom Wanderer Cascade M631 M631": `Name:Maelstrom Wanderer Cascade M631 M631
+ManaCost:5 G U R
+Types:Legendary Creature Elemental
+PT:7/5
+K:Haste
+K:Cascade
+K:Cascade
+Oracle:MWCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maelstrom Wanderer Cascade M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maelstrom Wanderer Cascade M631 M631", controller: SEAT0 }],
+  },
+
+  // 2867. Bloodbraid Marauder M631 M631 ETB.
+  {
+    id: "bloodbraid-marauder-m631",
+    description: "Bloodbraid Marauder M631 M631 ETB.",
+    seed: 0xc1b0,
+    cards: {
+      "Bloodbraid Marauder M631 M631": `Name:Bloodbraid Marauder M631 M631
+ManaCost:3 R G
+Types:Creature Elf Berserker
+PT:4/3
+K:Trample
+K:Cascade
+Oracle:BMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodbraid Marauder M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodbraid Marauder M631 M631", controller: SEAT0 }],
+  },
+
+  // 2868. Throes Chaos M631 M631 ETB.
+  {
+    id: "throes-of-chaos-m631",
+    description: "Throes Chaos M631 M631 ETB.",
+    seed: 0xc1b1,
+    cards: {
+      "Throes Chaos M631 M631": `Name:Throes Chaos M631 M631
+ManaCost:4 R
+Types:Sorcery
+A:SP$ Effect | Cost$ 4 R | SpellDescription$ Cascade.
+K:Cascade
+Oracle:TCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Throes Chaos M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Throes Chaos M631 M631", controller: SEAT0 }],
+  },
+
+  // 2869. Enigma Thief M631 M631 ETB.
+  {
+    id: "enigma-thief-m631",
+    description: "Enigma Thief M631 M631 ETB.",
+    seed: 0xc1b2,
+    cards: {
+      "Enigma Thief M631 M631": `Name:Enigma Thief M631 M631
+ManaCost:4 U R
+Types:Creature Human Rogue
+PT:4/4
+K:Cascade
+Oracle:ETMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Enigma Thief M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Enigma Thief M631 M631", controller: SEAT0 }],
+  },
+
+  // 2870. Yidris Maelstrom Wielder M631 M631 ETB.
+  {
+    id: "yidris-maelstrom-wielder-m631",
+    description: "Yidris Maelstrom Wielder M631 M631 ETB.",
+    seed: 0xc1b3,
+    cards: {
+      "Yidris Maelstrom Wielder M631 M631": `Name:Yidris Maelstrom Wielder M631 M631
+ManaCost:2 B R G U
+Types:Legendary Creature Human Wizard
+PT:5/4
+K:Trample
+Oracle:YMWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yidris Maelstrom Wielder M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yidris Maelstrom Wielder M631 M631", controller: SEAT0 }],
+  },
+
+  // 2871. Imoti Celebrant Bounty M631 M631 ETB.
+  {
+    id: "imoti-celebrant-of-bounty-m631",
+    description: "Imoti Celebrant Bounty M631 M631 ETB.",
+    seed: 0xc1b4,
+    cards: {
+      "Imoti Celebrant Bounty M631 M631": `Name:Imoti Celebrant Bounty M631 M631
+ManaCost:2 G U
+Types:Legendary Creature Elf Druid
+PT:3/3
+Oracle:ICBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Imoti Celebrant Bounty M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Imoti Celebrant Bounty M631 M631", controller: SEAT0 }],
+  },
+
+  // 2872. Murderous Redcap M631 M631 ETB.
+  {
+    id: "murderous-redcap-persist-m631",
+    description: "Murderous Redcap M631 M631 ETB.",
+    seed: 0xc1b5,
+    cards: {
+      "Murderous Redcap M631 M631": `Name:Murderous Redcap M631 M631
+ManaCost:2 B R
+Types:Creature Goblin Assassin
+PT:2/2
+K:Persist
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Any
+Oracle:MRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murderous Redcap M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Murderous Redcap M631 M631", controller: SEAT0 }],
+  },
+
+  // 2873. Kitchen Finks M631 M631 ETB.
+  {
+    id: "kitchen-finks-m631",
+    description: "Kitchen Finks M631 M631 ETB.",
+    seed: 0xc1b6,
+    cards: {
+      "Kitchen Finks M631 M631": `Name:Kitchen Finks M631 M631
+ManaCost:1 G W
+Types:Creature Ouphe
+PT:3/2
+K:Persist
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 2
+Oracle:KFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kitchen Finks M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kitchen Finks M631 M631", controller: SEAT0 }],
+  },
+
+  // 2874. Puppeteer Clique M631 M631 ETB.
+  {
+    id: "puppeteer-clique-m631",
+    description: "Puppeteer Clique M631 M631 ETB.",
+    seed: 0xc1b7,
+    cards: {
+      "Puppeteer Clique M631 M631": `Name:Puppeteer Clique M631 M631
+ManaCost:3 U B
+Types:Creature Faerie Wizard
+PT:1/1
+K:Flash
+K:Flying
+K:Persist
+Oracle:PCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Puppeteer Clique M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Puppeteer Clique M631 M631", controller: SEAT0 }],
+  },
+
+  // 2875. Woodfall Primus M631 M631 ETB.
+  {
+    id: "woodfall-primus-m631",
+    description: "Woodfall Primus M631 M631 ETB.",
+    seed: 0xc1b8,
+    cards: {
+      "Woodfall Primus M631 M631": `Name:Woodfall Primus M631 M631
+ManaCost:5 G G G
+Types:Creature Treefolk Shaman
+PT:6/6
+K:Trample
+K:Persist
+Oracle:WPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Woodfall Primus M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Woodfall Primus M631 M631", controller: SEAT0 }],
+  },
+
+  // 2876. Safehold Elite M631 M631 ETB.
+  {
+    id: "safehold-elite-m631",
+    description: "Safehold Elite M631 M631 ETB.",
+    seed: 0xc1b9,
+    cards: {
+      "Safehold Elite M631 M631": `Name:Safehold Elite M631 M631
+ManaCost:G W
+Types:Creature Elf Warrior
+PT:2/2
+K:Persist
+Oracle:SEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Safehold Elite M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Safehold Elite M631 M631", controller: SEAT0 }],
+  },
+
+  // 2877. River Kelpie M631 M631 ETB.
+  {
+    id: "river-kelpie-m631",
+    description: "River Kelpie M631 M631 ETB.",
+    seed: 0xc1ba,
+    cards: {
+      "River Kelpie M631 M631": `Name:River Kelpie M631 M631
+ManaCost:2 U U
+Types:Creature Beast
+PT:3/3
+K:Persist
+Oracle:RKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["River Kelpie M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "River Kelpie M631 M631", controller: SEAT0 }],
+  },
+
+  // 2878. Heartmender M631 M631 ETB.
+  {
+    id: "heartmender-m631",
+    description: "Heartmender M631 M631 ETB.",
+    seed: 0xc1bb,
+    cards: {
+      "Heartmender M631 M631": `Name:Heartmender M631 M631
+ManaCost:3 W
+Types:Creature Elf Shaman
+PT:2/2
+K:Persist
+Oracle:HMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heartmender M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heartmender M631 M631", controller: SEAT0 }],
+  },
+
+  // 2879. Twilight Shepherd M631 M631 ETB.
+  {
+    id: "twilight-shepherd-m631",
+    description: "Twilight Shepherd M631 M631 ETB.",
+    seed: 0xc1bc,
+    cards: {
+      "Twilight Shepherd M631 M631": `Name:Twilight Shepherd M631 M631
+ManaCost:4 W W
+Types:Creature Spirit
+PT:5/5
+K:Flying
+K:Vigilance
+Oracle:TSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Twilight Shepherd M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Twilight Shepherd M631 M631", controller: SEAT0 }],
+  },
+
+  // 2880. Reckless Stormseeker M631 M631 ETB.
+  {
+    id: "reckless-stormseeker-day-m631",
+    description: "Reckless Stormseeker M631 M631 ETB.",
+    seed: 0xc1bd,
+    cards: {
+      "Reckless Stormseeker M631 M631": `Name:Reckless Stormseeker M631 M631
+ManaCost:2 R
+Types:Creature Human Werewolf
+PT:3/2
+K:Daybound
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste
+Oracle:RSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reckless Stormseeker M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reckless Stormseeker M631 M631", controller: SEAT0 }],
+  },
+
+  // 2881. Tovolar Dire Overlord M631 M631 ETB.
+  {
+    id: "tovolar-dire-overlord-m631",
+    description: "Tovolar Dire Overlord M631 M631 ETB.",
+    seed: 0xc1be,
+    cards: {
+      "Tovolar Dire Overlord M631 M631": `Name:Tovolar Dire Overlord M631 M631
+ManaCost:1 R G
+Types:Legendary Creature Human Werewolf
+PT:2/2
+K:Daybound
+Oracle:TDOMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tovolar Dire Overlord M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tovolar Dire Overlord M631 M631", controller: SEAT0 }],
+  },
+
+  // 2882. Arlinn Packs Hope M631 M631 ETB.
+  {
+    id: "arlinn-the-packs-hope-day-m631",
+    description: "Arlinn Packs Hope M631 M631 ETB.",
+    seed: 0xc1bf,
+    cards: {
+      "Arlinn Packs Hope M631 M631": `Name:Arlinn Packs Hope M631 M631
+ManaCost:2 G W
+Types:Legendary Planeswalker Arlinn
+Loyalty:4
+K:Daybound
+Oracle:APHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arlinn Packs Hope M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arlinn Packs Hope M631 M631", controller: SEAT0 }],
+  },
+
+  // 2883. Village Watch M631 M631 ETB.
+  {
+    id: "village-watch-night-m631",
+    description: "Village Watch M631 M631 ETB.",
+    seed: 0xc1c0,
+    cards: {
+      "Village Watch M631 M631": `Name:Village Watch M631 M631
+ManaCost:2 G
+Types:Creature Human Werewolf
+PT:1/1
+K:Daybound
+Oracle:VWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Village Watch M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Village Watch M631 M631", controller: SEAT0 }],
+  },
+
+  // 2884. Howlpack Piper M631 M631 ETB.
+  {
+    id: "howlpack-piper-m631",
+    description: "Howlpack Piper M631 M631 ETB.",
+    seed: 0xc1c1,
+    cards: {
+      "Howlpack Piper M631 M631": `Name:Howlpack Piper M631 M631
+ManaCost:2 G
+Types:Creature Human Werewolf
+PT:2/3
+K:Daybound
+Oracle:HPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Howlpack Piper M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Howlpack Piper M631 M631", controller: SEAT0 }],
+  },
+
+  // 2885. Jacks Rake M631 M631 ETB.
+  {
+    id: "jacks-rake-m631",
+    description: "Jacks Rake M631 M631 ETB.",
+    seed: 0xc1c2,
+    cards: {
+      "Jacks Rake M631 M631": `Name:Jacks Rake M631 M631
+ManaCost:1 R
+Types:Creature Human Werewolf
+PT:2/1
+K:Daybound
+Oracle:JRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jacks Rake M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jacks Rake M631 M631", controller: SEAT0 }],
+  },
+
+  // 2886. Kessig Prowler M631 M631 ETB.
+  {
+    id: "kessig-prowler-m631",
+    description: "Kessig Prowler M631 M631 ETB.",
+    seed: 0xc1c3,
+    cards: {
+      "Kessig Prowler M631 M631": `Name:Kessig Prowler M631 M631
+ManaCost:G
+Types:Creature Human Werewolf
+PT:1/2
+K:Daybound
+Oracle:KPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kessig Prowler M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kessig Prowler M631 M631", controller: SEAT0 }],
+  },
+
+  // 2887. Ulrich Krallenhorde M631 M631 ETB.
+  {
+    id: "ulrich-of-krallenhorde-m631",
+    description: "Ulrich Krallenhorde M631 M631 ETB.",
+    seed: 0xc1c4,
+    cards: {
+      "Ulrich Krallenhorde M631 M631": `Name:Ulrich Krallenhorde M631 M631
+ManaCost:2 R G W
+Types:Legendary Creature Human Werewolf
+PT:4/4
+K:Daybound
+Oracle:UKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ulrich Krallenhorde M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ulrich Krallenhorde M631 M631", controller: SEAT0 }],
+  },
+
+  // 2888. Tovolar Night Form M631 M631 ETB.
+  {
+    id: "tovolar-night-form-m631",
+    description: "Tovolar Night Form M631 M631 ETB.",
+    seed: 0xc1c5,
+    cards: {
+      "Tovolar Night Form M631 M631": `Name:Tovolar Night Form M631 M631
+ManaCost:1 R G
+Types:Legendary Creature Werewolf
+PT:3/3
+K:Trample
+K:Nightbound
+Oracle:TNFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tovolar Night Form M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tovolar Night Form M631 M631", controller: SEAT0 }],
+  },
+
+  // 2889. Arlinn Moons Fury M631 M631 ETB.
+  {
+    id: "arlinn-the-moons-fury-m631",
+    description: "Arlinn Moons Fury M631 M631 ETB.",
+    seed: 0xc1c6,
+    cards: {
+      "Arlinn Moons Fury M631 M631": `Name:Arlinn Moons Fury M631 M631
+ManaCost:2 G W
+Types:Legendary Planeswalker Arlinn
+Loyalty:4
+K:Nightbound
+Oracle:AMFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arlinn Moons Fury M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arlinn Moons Fury M631 M631", controller: SEAT0 }],
+  },
+
+  // 2890. Invasion Tarkir M631 M631 ETB.
+  {
+    id: "invasion-of-tarkir-m631",
+    description: "Invasion Tarkir M631 M631 ETB.",
+    seed: 0xc1c7,
+    cards: {
+      "Invasion Tarkir M631 M631": `Name:Invasion Tarkir M631 M631
+ManaCost:3 R
+Types:Battle
+K:Defense:5
+Oracle:ITMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Tarkir M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Tarkir M631 M631", controller: SEAT0 }],
+  },
+
+  // 2891. Invasion Zendikar M631 M631 ETB.
+  {
+    id: "invasion-of-zendikar-m631",
+    description: "Invasion Zendikar M631 M631 ETB.",
+    seed: 0xc1c8,
+    cards: {
+      "Invasion Zendikar M631 M631": `Name:Invasion Zendikar M631 M631
+ManaCost:5 G
+Types:Battle
+K:Defense:4
+Oracle:IZMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Zendikar M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Zendikar M631 M631", controller: SEAT0 }],
+  },
+
+  // 2892. Invasion Amonkhet M631 M631 ETB.
+  {
+    id: "invasion-of-amonkhet-m631",
+    description: "Invasion Amonkhet M631 M631 ETB.",
+    seed: 0xc1c9,
+    cards: {
+      "Invasion Amonkhet M631 M631": `Name:Invasion Amonkhet M631 M631
+ManaCost:5 W
+Types:Battle
+K:Defense:4
+Oracle:IAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Amonkhet M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Amonkhet M631 M631", controller: SEAT0 }],
+  },
+
+  // 2893. Invasion Kaladesh M631 M631 ETB.
+  {
+    id: "invasion-of-kaladesh-m631",
+    description: "Invasion Kaladesh M631 M631 ETB.",
+    seed: 0xc1ca,
+    cards: {
+      "Invasion Kaladesh M631 M631": `Name:Invasion Kaladesh M631 M631
+ManaCost:3 U
+Types:Battle
+K:Defense:5
+Oracle:IKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Kaladesh M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Kaladesh M631 M631", controller: SEAT0 }],
+  },
+
+  // 2894. Invasion Fiora M631 M631 ETB.
+  {
+    id: "invasion-of-fiora-m631",
+    description: "Invasion Fiora M631 M631 ETB.",
+    seed: 0xc1cb,
+    cards: {
+      "Invasion Fiora M631 M631": `Name:Invasion Fiora M631 M631
+ManaCost:4 W B
+Types:Battle
+K:Defense:4
+Oracle:IFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Fiora M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Fiora M631 M631", controller: SEAT0 }],
+  },
+
+  // 2895. Invasion Arcavios M631 M631 ETB.
+  {
+    id: "invasion-of-arcavios-m631",
+    description: "Invasion Arcavios M631 M631 ETB.",
+    seed: 0xc1cc,
+    cards: {
+      "Invasion Arcavios M631 M631": `Name:Invasion Arcavios M631 M631
+ManaCost:1 U U
+Types:Battle
+K:Defense:4
+Oracle:IAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Arcavios M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Arcavios M631 M631", controller: SEAT0 }],
+  },
+
+  // 2896. Invasion Ravnica M631 M631 ETB.
+  {
+    id: "invasion-of-ravnica-m631",
+    description: "Invasion Ravnica M631 M631 ETB.",
+    seed: 0xc1cd,
+    cards: {
+      "Invasion Ravnica M631 M631": `Name:Invasion Ravnica M631 M631
+ManaCost:5 W U
+Types:Battle
+K:Defense:4
+Oracle:IRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Ravnica M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Ravnica M631 M631", controller: SEAT0 }],
+  },
+
+  // 2897. Invasion Vryn M631 M631 ETB.
+  {
+    id: "invasion-of-vryn-m631",
+    description: "Invasion Vryn M631 M631 ETB.",
+    seed: 0xc1ce,
+    cards: {
+      "Invasion Vryn M631 M631": `Name:Invasion Vryn M631 M631
+ManaCost:1 U U
+Types:Battle
+K:Defense:4
+Oracle:IVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Vryn M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Vryn M631 M631", controller: SEAT0 }],
+  },
+
+  // 2898. Invasion Segovia M631 M631 ETB.
+  {
+    id: "invasion-of-segovia-m631",
+    description: "Invasion Segovia M631 M631 ETB.",
+    seed: 0xc1cf,
+    cards: {
+      "Invasion Segovia M631 M631": `Name:Invasion Segovia M631 M631
+ManaCost:5 G U
+Types:Battle
+K:Defense:4
+Oracle:ISMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Segovia M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Segovia M631 M631", controller: SEAT0 }],
+  },
+
+  // 2899. Invasion New Capenna M631 M631 ETB.
+  {
+    id: "invasion-of-new-capenna-m631",
+    description: "Invasion New Capenna M631 M631 ETB.",
+    seed: 0xc1d0,
+    cards: {
+      "Invasion New Capenna M631 M631": `Name:Invasion New Capenna M631 M631
+ManaCost:3 W B
+Types:Battle
+K:Defense:5
+Oracle:INCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion New Capenna M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion New Capenna M631 M631", controller: SEAT0 }],
+  },
+
+  // 2900. Lurrus Dream Den M631 M631 ETB.
+  {
+    id: "lurrus-of-the-dream-den-m631",
+    description: "Lurrus Dream Den M631 M631 ETB.",
+    seed: 0xc1d1,
+    cards: {
+      "Lurrus Dream Den M631 M631": `Name:Lurrus Dream Den M631 M631
+ManaCost:W B
+Types:Legendary Creature Cat Nightmare
+PT:3/2
+K:Lifelink
+K:Companion
+Oracle:LDDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lurrus Dream Den M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lurrus Dream Den M631 M631", controller: SEAT0 }],
+  },
+
+  // 2901. Yorion Sky Nomad M631 M631 ETB.
+  {
+    id: "yorion-sky-nomad-m631",
+    description: "Yorion Sky Nomad M631 M631 ETB.",
+    seed: 0xc1d2,
+    cards: {
+      "Yorion Sky Nomad M631 M631": `Name:Yorion Sky Nomad M631 M631
+ManaCost:5 W U
+Types:Legendary Creature Bird Serpent
+PT:4/5
+K:Flying
+K:Companion
+Oracle:YSNMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yorion Sky Nomad M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yorion Sky Nomad M631 M631", controller: SEAT0 }],
+  },
+
+  // 2902. Jegantha Wellspring M631 M631 ETB.
+  {
+    id: "jegantha-the-wellspring-m631",
+    description: "Jegantha Wellspring M631 M631 ETB.",
+    seed: 0xc1d3,
+    cards: {
+      "Jegantha Wellspring M631 M631": `Name:Jegantha Wellspring M631 M631
+ManaCost:2 R G W
+Types:Legendary Creature Elemental Elk
+PT:5/5
+K:Companion
+Oracle:JWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jegantha Wellspring M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jegantha Wellspring M631 M631", controller: SEAT0 }],
+  },
+
+  // 2903. Zirda Dawnwaker M631 M631 ETB.
+  {
+    id: "zirda-the-dawnwaker-m631",
+    description: "Zirda Dawnwaker M631 M631 ETB.",
+    seed: 0xc1d4,
+    cards: {
+      "Zirda Dawnwaker M631 M631": `Name:Zirda Dawnwaker M631 M631
+ManaCost:R W
+Types:Legendary Creature Elemental Fox
+PT:3/3
+K:Companion
+Oracle:ZDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zirda Dawnwaker M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zirda Dawnwaker M631 M631", controller: SEAT0 }],
+  },
+
+  // 2904. Umori Collector M631 M631 ETB.
+  {
+    id: "umori-the-collector-m631",
+    description: "Umori Collector M631 M631 ETB.",
+    seed: 0xc1d5,
+    cards: {
+      "Umori Collector M631 M631": `Name:Umori Collector M631 M631
+ManaCost:2 G B
+Types:Legendary Creature Ooze Mutant
+PT:4/5
+K:Companion
+Oracle:UCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Umori Collector M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Umori Collector M631 M631", controller: SEAT0 }],
+  },
+
+  // 2905. Kaheera Orphanguard M631 M631 ETB.
+  {
+    id: "kaheera-the-orphanguard-m631",
+    description: "Kaheera Orphanguard M631 M631 ETB.",
+    seed: 0xc1d6,
+    cards: {
+      "Kaheera Orphanguard M631 M631": `Name:Kaheera Orphanguard M631 M631
+ManaCost:1 G W
+Types:Legendary Creature Cat Beast
+PT:3/2
+K:Vigilance
+K:Companion
+Oracle:KOMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kaheera Orphanguard M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kaheera Orphanguard M631 M631", controller: SEAT0 }],
+  },
+
+  // 2906. Keruga Macrosage M631 M631 ETB.
+  {
+    id: "keruga-the-macrosage-m631",
+    description: "Keruga Macrosage M631 M631 ETB.",
+    seed: 0xc1d7,
+    cards: {
+      "Keruga Macrosage M631 M631": `Name:Keruga Macrosage M631 M631
+ManaCost:3 G U
+Types:Legendary Creature Dinosaur Hippo
+PT:5/4
+K:Companion
+Oracle:KMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Keruga Macrosage M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Keruga Macrosage M631 M631", controller: SEAT0 }],
+  },
+
+  // 2907. Gyruda Doom Depths M631 M631 ETB.
+  {
+    id: "gyruda-doom-of-depths-m631",
+    description: "Gyruda Doom Depths M631 M631 ETB.",
+    seed: 0xc1d8,
+    cards: {
+      "Gyruda Doom Depths M631 M631": `Name:Gyruda Doom Depths M631 M631
+ManaCost:2 U U B
+Types:Legendary Creature Kraken
+PT:6/6
+K:Companion
+Oracle:GDDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gyruda Doom Depths M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gyruda Doom Depths M631 M631", controller: SEAT0 }],
+  },
+
+  // 2908. Mosswort Bridge M631 M631 ETB.
+  {
+    id: "mosswort-bridge-m631",
+    description: "Mosswort Bridge M631 M631 ETB.",
+    seed: 0xc1d9,
+    cards: {
+      "Mosswort Bridge M631 M631": `Name:Mosswort Bridge M631 M631
+ManaCost:no cost
+Types:Land
+K:Hideaway:4
+K:CARDNAME enters tapped.
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:MBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mosswort Bridge M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mosswort Bridge M631 M631", controller: SEAT0 }],
+  },
+
+  // 2909. Windbrisk Heights M631 M631 ETB.
+  {
+    id: "windbrisk-heights-m631",
+    description: "Windbrisk Heights M631 M631 ETB.",
+    seed: 0xc1da,
+    cards: {
+      "Windbrisk Heights M631 M631": `Name:Windbrisk Heights M631 M631
+ManaCost:no cost
+Types:Land
+K:Hideaway:4
+K:CARDNAME enters tapped.
+A:AB$ Mana | Cost$ T | Produced$ W
+Oracle:WHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Windbrisk Heights M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Windbrisk Heights M631 M631", controller: SEAT0 }],
+  },
+
+  // 2910. Spinerock Knoll M631 M631 ETB.
+  {
+    id: "spinerock-knoll-m631",
+    description: "Spinerock Knoll M631 M631 ETB.",
+    seed: 0xc1db,
+    cards: {
+      "Spinerock Knoll M631 M631": `Name:Spinerock Knoll M631 M631
+ManaCost:no cost
+Types:Land
+K:Hideaway:4
+K:CARDNAME enters tapped.
+A:AB$ Mana | Cost$ T | Produced$ R
+Oracle:SKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spinerock Knoll M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spinerock Knoll M631 M631", controller: SEAT0 }],
+  },
+
+  // 2911. Howltooth Hollow M631 M631 ETB.
+  {
+    id: "howltooth-hollow-m631",
+    description: "Howltooth Hollow M631 M631 ETB.",
+    seed: 0xc1dc,
+    cards: {
+      "Howltooth Hollow M631 M631": `Name:Howltooth Hollow M631 M631
+ManaCost:no cost
+Types:Land
+K:Hideaway:4
+K:CARDNAME enters tapped.
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:HHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Howltooth Hollow M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Howltooth Hollow M631 M631", controller: SEAT0 }],
+  },
+
+  // 2912. Shelldock Isle M631 M631 ETB.
+  {
+    id: "shelldock-isle-m631",
+    description: "Shelldock Isle M631 M631 ETB.",
+    seed: 0xc1dd,
+    cards: {
+      "Shelldock Isle M631 M631": `Name:Shelldock Isle M631 M631
+ManaCost:no cost
+Types:Land
+K:Hideaway:4
+K:CARDNAME enters tapped.
+A:AB$ Mana | Cost$ T | Produced$ U
+Oracle:SIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shelldock Isle M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shelldock Isle M631 M631", controller: SEAT0 }],
+  },
+
+  // 2913. Sea Gate Wreckage M631 M631 ETB.
+  {
+    id: "sea-gate-wreckage-m631",
+    description: "Sea Gate Wreckage M631 M631 ETB.",
+    seed: 0xc1de,
+    cards: {
+      "Sea Gate Wreckage M631 M631": `Name:Sea Gate Wreckage M631 M631
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:SGWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sea Gate Wreckage M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sea Gate Wreckage M631 M631", controller: SEAT0 }],
+  },
+
+  // 2914. Valakut Awakening M631 M631 ETB.
+  {
+    id: "valakut-awakening-m631",
+    description: "Valakut Awakening M631 M631 ETB.",
+    seed: 0xc1df,
+    cards: {
+      "Valakut Awakening M631 M631": `Name:Valakut Awakening M631 M631
+ManaCost:1 R
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 R | Origin$ Hand | Destination$ Library | NumCards$ X | References$ X
+SVar:X:Count$Hand
+Oracle:VAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Valakut Awakening M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Valakut Awakening M631 M631", controller: SEAT0 }],
+  },
+
+  // 2915. Bala Ged Recovery M631 M631 ETB.
+  {
+    id: "bala-ged-recovery-m631",
+    description: "Bala Ged Recovery M631 M631 ETB.",
+    seed: 0xc1e0,
+    cards: {
+      "Bala Ged Recovery M631 M631": `Name:Bala Ged Recovery M631 M631
+ManaCost:2 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 2 G | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouOwn
+Oracle:BGRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bala Ged Recovery M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bala Ged Recovery M631 M631", controller: SEAT0 }],
+  },
+
+  // 2916. Wort Raidmother M631 M631 ETB.
+  {
+    id: "wort-the-raidmother-m631",
+    description: "Wort Raidmother M631 M631 ETB.",
+    seed: 0xc1e1,
+    cards: {
+      "Wort Raidmother M631 M631": `Name:Wort Raidmother M631 M631
+ManaCost:3 R G
+Types:Legendary Creature Goblin Shaman
+PT:3/3
+K:Conspire
+Oracle:WRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wort Raidmother M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wort Raidmother M631 M631", controller: SEAT0 }],
+  },
+
+  // 2917. Beck Call Conspire M631 M631 ETB.
+  {
+    id: "beck-call-conspire-m631",
+    description: "Beck Call Conspire M631 M631 ETB.",
+    seed: 0xc1e2,
+    cards: {
+      "Beck Call Conspire M631 M631": `Name:Beck Call Conspire M631 M631
+ManaCost:G U
+Types:Sorcery
+A:SP$ Effect | Cost$ G U | SpellDescription$ Beck/Call.
+K:Conspire
+Oracle:BCCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beck Call Conspire M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beck Call Conspire M631 M631", controller: SEAT0 }],
+  },
+
+  // 2918. Burn Trail M631 M631 ETB.
+  {
+    id: "burn-trail-m631",
+    description: "Burn Trail M631 M631 ETB.",
+    seed: 0xc1e3,
+    cards: {
+      "Burn Trail M631 M631": `Name:Burn Trail M631 M631
+ManaCost:3 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 3 R | NumDmg$ 3 | ValidTgts$ Any
+K:Conspire
+Oracle:BTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Burn Trail M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Burn Trail M631 M631", controller: SEAT0 }],
+  },
+
+  // 2919. Coiling Oracle Conspire M631 M631 ETB.
+  {
+    id: "coiling-oracle-conspire-m631",
+    description: "Coiling Oracle Conspire M631 M631 ETB.",
+    seed: 0xc1e4,
+    cards: {
+      "Coiling Oracle Conspire M631 M631": `Name:Coiling Oracle Conspire M631 M631
+ManaCost:G U
+Types:Creature Snake Elf Druid
+PT:1/1
+Oracle:COCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coiling Oracle Conspire M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coiling Oracle Conspire M631 M631", controller: SEAT0 }],
+  },
+
+  // 2920. Empyrial Archangel M631 M631 ETB.
+  {
+    id: "empyrial-archangel-m631",
+    description: "Empyrial Archangel M631 M631 ETB.",
+    seed: 0xc1e5,
+    cards: {
+      "Empyrial Archangel M631 M631": `Name:Empyrial Archangel M631 M631
+ManaCost:3 G W U
+Types:Creature Angel
+PT:5/8
+K:Flying
+Oracle:EAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empyrial Archangel M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Empyrial Archangel M631 M631", controller: SEAT0 }],
+  },
+
+  // 2921. Ink Eyes Servant Oni M631 M631 ETB.
+  {
+    id: "ink-eyes-servant-of-oni-m631",
+    description: "Ink Eyes Servant Oni M631 M631 ETB.",
+    seed: 0xc1e6,
+    cards: {
+      "Ink Eyes Servant Oni M631 M631": `Name:Ink Eyes Servant Oni M631 M631
+ManaCost:3 B B
+Types:Legendary Creature Rat Ninja
+PT:5/4
+K:Ninjutsu:1 B B
+Oracle:IESOMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ink Eyes Servant Oni M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ink Eyes Servant Oni M631 M631", controller: SEAT0 }],
+  },
+
+  // 2922. Ninja Deep Hours M631 M631 ETB.
+  {
+    id: "ninja-of-the-deep-hours-m631",
+    description: "Ninja Deep Hours M631 M631 ETB.",
+    seed: 0xc1e7,
+    cards: {
+      "Ninja Deep Hours M631 M631": `Name:Ninja Deep Hours M631 M631
+ManaCost:2 U
+Types:Creature Human Ninja
+PT:2/2
+K:Ninjutsu:1 U
+Oracle:NDHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ninja Deep Hours M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ninja Deep Hours M631 M631", controller: SEAT0 }],
+  },
+
+  // 2923. Mistblade Shinobi M631 M631 ETB.
+  {
+    id: "mistblade-shinobi-m631",
+    description: "Mistblade Shinobi M631 M631 ETB.",
+    seed: 0xc1e8,
+    cards: {
+      "Mistblade Shinobi M631 M631": `Name:Mistblade Shinobi M631 M631
+ManaCost:1 U
+Types:Creature Human Ninja
+PT:2/1
+K:Ninjutsu:U
+Oracle:MSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mistblade Shinobi M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mistblade Shinobi M631 M631", controller: SEAT0 }],
+  },
+
+  // 2924. Throat Slitter M631 M631 ETB.
+  {
+    id: "throat-slitter-m631",
+    description: "Throat Slitter M631 M631 ETB.",
+    seed: 0xc1e9,
+    cards: {
+      "Throat Slitter M631 M631": `Name:Throat Slitter M631 M631
+ManaCost:3 B
+Types:Creature Rat Ninja
+PT:2/2
+K:Ninjutsu:1 B B
+Oracle:TSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Throat Slitter M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Throat Slitter M631 M631", controller: SEAT0 }],
+  },
+
+  // 2925. Okiba Gang Shinobi M631 M631 ETB.
+  {
+    id: "okiba-gang-shinobi-m631",
+    description: "Okiba Gang Shinobi M631 M631 ETB.",
+    seed: 0xc1ea,
+    cards: {
+      "Okiba Gang Shinobi M631 M631": `Name:Okiba Gang Shinobi M631 M631
+ManaCost:3 B
+Types:Creature Rat Ninja
+PT:3/2
+K:Ninjutsu:1 B B
+Oracle:OGSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Okiba Gang Shinobi M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Okiba Gang Shinobi M631 M631", controller: SEAT0 }],
+  },
+
+  // 2926. Walker Secret Ways M631 M631 ETB.
+  {
+    id: "walker-of-secret-ways-m631",
+    description: "Walker Secret Ways M631 M631 ETB.",
+    seed: 0xc1eb,
+    cards: {
+      "Walker Secret Ways M631 M631": `Name:Walker Secret Ways M631 M631
+ManaCost:2 U
+Types:Creature Human Ninja
+PT:2/2
+K:Ninjutsu:1 U
+Oracle:WSWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Walker Secret Ways M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Walker Secret Ways M631 M631", controller: SEAT0 }],
+  },
+
+  // 2927. Hopeful Eidolon M631 M631 ETB.
+  {
+    id: "hopeful-eidolon-bestow-m631",
+    description: "Hopeful Eidolon M631 M631 ETB.",
+    seed: 0xc1ec,
+    cards: {
+      "Hopeful Eidolon M631 M631": `Name:Hopeful Eidolon M631 M631
+ManaCost:W
+Types:Enchantment Creature Spirit
+PT:1/1
+K:Lifelink
+K:Bestow:3 W
+Oracle:HEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hopeful Eidolon M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hopeful Eidolon M631 M631", controller: SEAT0 }],
+  },
+
+  // 2928. Nyxborn Shieldmate M631 M631 ETB.
+  {
+    id: "nyxborn-shieldmate-m631",
+    description: "Nyxborn Shieldmate M631 M631 ETB.",
+    seed: 0xc1ed,
+    cards: {
+      "Nyxborn Shieldmate M631 M631": `Name:Nyxborn Shieldmate M631 M631
+ManaCost:W
+Types:Enchantment Creature Human Soldier
+PT:1/1
+K:Bestow:1 W
+Oracle:NSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nyxborn Shieldmate M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nyxborn Shieldmate M631 M631", controller: SEAT0 }],
+  },
+
+  // 2929. Hero Iroas M631 M631 ETB.
+  {
+    id: "hero-of-iroas-m631",
+    description: "Hero Iroas M631 M631 ETB.",
+    seed: 0xc1ee,
+    cards: {
+      "Hero Iroas M631 M631": `Name:Hero Iroas M631 M631
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:2/2
+Oracle:HIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hero Iroas M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hero Iroas M631 M631", controller: SEAT0 }],
+  },
+
+  // 2930. Nyxborn Rollicker M631 M631 ETB.
+  {
+    id: "nyxborn-rollicker-m631",
+    description: "Nyxborn Rollicker M631 M631 ETB.",
+    seed: 0xc1ef,
+    cards: {
+      "Nyxborn Rollicker M631 M631": `Name:Nyxborn Rollicker M631 M631
+ManaCost:R
+Types:Enchantment Creature Satyr
+PT:1/1
+K:Bestow:1 R
+Oracle:NRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nyxborn Rollicker M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nyxborn Rollicker M631 M631", controller: SEAT0 }],
+  },
+
+  // 2931. Nyxborn Eidolon M631 M631 ETB.
+  {
+    id: "nyxborn-eidolon-m631",
+    description: "Nyxborn Eidolon M631 M631 ETB.",
+    seed: 0xc1f0,
+    cards: {
+      "Nyxborn Eidolon M631 M631": `Name:Nyxborn Eidolon M631 M631
+ManaCost:B
+Types:Enchantment Creature Spirit
+PT:1/1
+K:Bestow:2 B
+Oracle:NEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nyxborn Eidolon M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nyxborn Eidolon M631 M631", controller: SEAT0 }],
+  },
+
+  // 2932. Herald Torment M631 M631 ETB.
+  {
+    id: "herald-of-torment-m631",
+    description: "Herald Torment M631 M631 ETB.",
+    seed: 0xc1f1,
+    cards: {
+      "Herald Torment M631 M631": `Name:Herald Torment M631 M631
+ManaCost:1 B B
+Types:Enchantment Creature Demon
+PT:3/3
+K:Flying
+K:Bestow:3 B B
+Oracle:HTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Herald Torment M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Herald Torment M631 M631", controller: SEAT0 }],
+  },
+
+  // 2933. Wolfir Silverheart M631 M631 ETB.
+  {
+    id: "wolfir-silverheart-m631",
+    description: "Wolfir Silverheart M631 M631 ETB.",
+    seed: 0xc1f2,
+    cards: {
+      "Wolfir Silverheart M631 M631": `Name:Wolfir Silverheart M631 M631
+ManaCost:3 G W
+Types:Creature Wolf Warrior
+PT:4/4
+K:Soulbond
+Oracle:WSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wolfir Silverheart M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wolfir Silverheart M631 M631", controller: SEAT0 }],
+  },
+
+  // 2934. Pathbreaker Wurm M631 M631 ETB.
+  {
+    id: "pathbreaker-wurm-m631",
+    description: "Pathbreaker Wurm M631 M631 ETB.",
+    seed: 0xc1f3,
+    cards: {
+      "Pathbreaker Wurm M631 M631": `Name:Pathbreaker Wurm M631 M631
+ManaCost:5 G
+Types:Creature Wurm
+PT:5/4
+K:Trample
+K:Soulbond
+Oracle:PWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pathbreaker Wurm M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pathbreaker Wurm M631 M631", controller: SEAT0 }],
+  },
+
+  // 2935. Fencing Ace M631 M631 ETB.
+  {
+    id: "fencing-ace-m631",
+    description: "Fencing Ace M631 M631 ETB.",
+    seed: 0xc1f4,
+    cards: {
+      "Fencing Ace M631 M631": `Name:Fencing Ace M631 M631
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:1/1
+K:Double Strike
+K:Soulbond
+Oracle:FAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fencing Ace M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fencing Ace M631 M631", controller: SEAT0 }],
+  },
+
+  // 2936. Tandem Lookout M631 M631 ETB.
+  {
+    id: "tandem-lookout-m631",
+    description: "Tandem Lookout M631 M631 ETB.",
+    seed: 0xc1f5,
+    cards: {
+      "Tandem Lookout M631 M631": `Name:Tandem Lookout M631 M631
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:1/1
+K:Soulbond
+Oracle:TLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tandem Lookout M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tandem Lookout M631 M631", controller: SEAT0 }],
+  },
+
+  // 2937. Spirit Loop M631 M631 ETB.
+  {
+    id: "spirit-loop-soulbond-m631",
+    description: "Spirit Loop M631 M631 ETB.",
+    seed: 0xc1f6,
+    cards: {
+      "Spirit Loop M631 M631": `Name:Spirit Loop M631 M631
+ManaCost:1 W
+Types:Enchantment Aura
+A:SP$ Attach | Cost$ 1 W | TargetType$ Creature
+Oracle:SLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spirit Loop M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spirit Loop M631 M631", controller: SEAT0 }],
+  },
+
+  // 2938. Nightshade Peddler M631 M631 ETB.
+  {
+    id: "nightshade-peddler-m631",
+    description: "Nightshade Peddler M631 M631 ETB.",
+    seed: 0xc1f7,
+    cards: {
+      "Nightshade Peddler M631 M631": `Name:Nightshade Peddler M631 M631
+ManaCost:1 G
+Types:Creature Human Druid
+PT:1/1
+K:Soulbond
+Oracle:NPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nightshade Peddler M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nightshade Peddler M631 M631", controller: SEAT0 }],
+  },
+
+  // 2939. Abzan Falconer M631 M631 ETB.
+  {
+    id: "abzan-falconer-outlast-m631",
+    description: "Abzan Falconer M631 M631 ETB.",
+    seed: 0xc1f8,
+    cards: {
+      "Abzan Falconer M631 M631": `Name:Abzan Falconer M631 M631
+ManaCost:2 W
+Types:Creature Human Soldier
+PT:2/3
+K:Outlast:W
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Flying
+Oracle:AFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abzan Falconer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Abzan Falconer M631 M631", controller: SEAT0 }],
+  },
+
+  // 2940. Ainok Bond Kin M631 M631 ETB.
+  {
+    id: "ainok-bond-kin-outlast-m631",
+    description: "Ainok Bond Kin M631 M631 ETB.",
+    seed: 0xc1f9,
+    cards: {
+      "Ainok Bond Kin M631 M631": `Name:Ainok Bond Kin M631 M631
+ManaCost:2 W
+Types:Creature Hound Soldier
+PT:2/2
+K:Outlast:W
+Oracle:ABKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ainok Bond Kin M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ainok Bond Kin M631 M631", controller: SEAT0 }],
+  },
+
+  // 2941. Abzan Battle Priest M631 M631 ETB.
+  {
+    id: "abzan-battle-priest-m631",
+    description: "Abzan Battle Priest M631 M631 ETB.",
+    seed: 0xc1fa,
+    cards: {
+      "Abzan Battle Priest M631 M631": `Name:Abzan Battle Priest M631 M631
+ManaCost:3 W
+Types:Creature Human Cleric
+PT:3/2
+K:Outlast:W
+Oracle:ABPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abzan Battle Priest M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Abzan Battle Priest M631 M631", controller: SEAT0 }],
+  },
+
+  // 2942. Mer Ek Nightblade M631 M631 ETB.
+  {
+    id: "mer-ek-nightblade-m631",
+    description: "Mer Ek Nightblade M631 M631 ETB.",
+    seed: 0xc1fb,
+    cards: {
+      "Mer Ek Nightblade M631 M631": `Name:Mer Ek Nightblade M631 M631
+ManaCost:2 B B
+Types:Creature Orc Assassin
+PT:3/3
+K:Outlast:B
+Oracle:MENMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mer Ek Nightblade M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mer Ek Nightblade M631 M631", controller: SEAT0 }],
+  },
+
+  // 2943. Herald Anafenza M631 M631 ETB.
+  {
+    id: "herald-of-anafenza-m631",
+    description: "Herald Anafenza M631 M631 ETB.",
+    seed: 0xc1fc,
+    cards: {
+      "Herald Anafenza M631 M631": `Name:Herald Anafenza M631 M631
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:1/1
+K:Outlast:W
+Oracle:HAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Herald Anafenza M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Herald Anafenza M631 M631", controller: SEAT0 }],
+  },
+
+  // 2944. Tajic Legions Edge M631 M631 ETB.
+  {
+    id: "tajic-legions-edge-m631",
+    description: "Tajic Legions Edge M631 M631 ETB.",
+    seed: 0xc1fd,
+    cards: {
+      "Tajic Legions Edge M631 M631": `Name:Tajic Legions Edge M631 M631
+ManaCost:1 R W
+Types:Legendary Creature Human Soldier
+PT:3/2
+K:Haste
+K:Mentor
+Oracle:TLEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tajic Legions Edge M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tajic Legions Edge M631 M631", controller: SEAT0 }],
+  },
+
+  // 2945. Aurelia Exemplar Justice M631 M631 ETB.
+  {
+    id: "aurelia-exemplar-of-justice-m631",
+    description: "Aurelia Exemplar Justice M631 M631 ETB.",
+    seed: 0xc1fe,
+    cards: {
+      "Aurelia Exemplar Justice M631 M631": `Name:Aurelia Exemplar Justice M631 M631
+ManaCost:3 R W
+Types:Legendary Creature Angel
+PT:3/4
+K:Flying
+K:Mentor
+Oracle:AEJMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aurelia Exemplar Justice M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aurelia Exemplar Justice M631 M631", controller: SEAT0 }],
+  },
+
+  // 2946. Legion Warboss M631 M631 ETB.
+  {
+    id: "legion-warboss-m631",
+    description: "Legion Warboss M631 M631 ETB.",
+    seed: 0xc1ff,
+    cards: {
+      "Legion Warboss M631 M631": `Name:Legion Warboss M631 M631
+ManaCost:2 R
+Types:Creature Goblin Soldier
+PT:2/2
+K:Mentor
+Oracle:LWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Legion Warboss M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Legion Warboss M631 M631", controller: SEAT0 }],
+  },
+
+  // 2947. Sunhome Stalwart M631 M631 ETB.
+  {
+    id: "sunhome-stalwart-m631",
+    description: "Sunhome Stalwart M631 M631 ETB.",
+    seed: 0xc200,
+    cards: {
+      "Sunhome Stalwart M631 M631": `Name:Sunhome Stalwart M631 M631
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:2/1
+K:Mentor
+Oracle:SSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sunhome Stalwart M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sunhome Stalwart M631 M631", controller: SEAT0 }],
+  },
+
+  // 2948. Truefire Captain M631 M631 ETB.
+  {
+    id: "truefire-captain-m631",
+    description: "Truefire Captain M631 M631 ETB.",
+    seed: 0xc201,
+    cards: {
+      "Truefire Captain M631 M631": `Name:Truefire Captain M631 M631
+ManaCost:1 R W
+Types:Creature Human Soldier
+PT:3/3
+K:Mentor
+Oracle:TCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Truefire Captain M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Truefire Captain M631 M631", controller: SEAT0 }],
+  },
+
+  // 2949. Fleetfoot Panther M631 M631 ETB.
+  {
+    id: "fleetfoot-panther-m631",
+    description: "Fleetfoot Panther M631 M631 ETB.",
+    seed: 0xc202,
+    cards: {
+      "Fleetfoot Panther M631 M631": `Name:Fleetfoot Panther M631 M631
+ManaCost:2 G W
+Types:Creature Cat
+PT:3/3
+K:Flash
+Oracle:FPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fleetfoot Panther M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fleetfoot Panther M631 M631", controller: SEAT0 }],
+  },
+
+  // 2950. Thieving Magpie M631 M631 ETB.
+  {
+    id: "thieving-magpie-m631",
+    description: "Thieving Magpie M631 M631 ETB.",
+    seed: 0xc203,
+    cards: {
+      "Thieving Magpie M631 M631": `Name:Thieving Magpie M631 M631
+ManaCost:2 U U
+Types:Creature Bird
+PT:1/3
+K:Flying
+Oracle:TMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thieving Magpie M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thieving Magpie M631 M631", controller: SEAT0 }],
+  },
+
+  // 2951. Gladecover Scout M631 M631 ETB.
+  {
+    id: "gladecover-scout-m631",
+    description: "Gladecover Scout M631 M631 ETB.",
+    seed: 0xc204,
+    cards: {
+      "Gladecover Scout M631 M631": `Name:Gladecover Scout M631 M631
+ManaCost:G
+Types:Creature Elf Scout
+PT:1/1
+K:Hexproof
+Oracle:GSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gladecover Scout M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gladecover Scout M631 M631", controller: SEAT0 }],
+  },
+
+  // 2952. Scryb Ranger M631 M631 ETB.
+  {
+    id: "scryb-ranger-provoke-m631",
+    description: "Scryb Ranger M631 M631 ETB.",
+    seed: 0xc205,
+    cards: {
+      "Scryb Ranger M631 M631": `Name:Scryb Ranger M631 M631
+ManaCost:G
+Types:Creature Faerie Druid
+PT:1/1
+K:Flash
+K:Flying
+Oracle:SRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scryb Ranger M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scryb Ranger M631 M631", controller: SEAT0 }],
+  },
+
+  // 2953. Kishi Mon Cursed Blade M631 M631 ETB.
+  {
+    id: "kishi-mon-the-cursed-blade-m631",
+    description: "Kishi Mon Cursed Blade M631 M631 ETB.",
+    seed: 0xc206,
+    cards: {
+      "Kishi Mon Cursed Blade M631 M631": `Name:Kishi Mon Cursed Blade M631 M631
+ManaCost:2 R
+Types:Legendary Creature Spirit
+PT:2/2
+Oracle:KMCBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kishi Mon Cursed Blade M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kishi Mon Cursed Blade M631 M631", controller: SEAT0 }],
+  },
+
+  // 2954. Mizzium Mortars M631 M631 ETB.
+  {
+    id: "mizzium-mortars-m631",
+    description: "Mizzium Mortars M631 M631 ETB.",
+    seed: 0xc207,
+    cards: {
+      "Mizzium Mortars M631 M631": `Name:Mizzium Mortars M631 M631
+ManaCost:1 R R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 4 | TargetType$ Creature | ValidTgts$ Creature
+Oracle:MMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mizzium Mortars M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mizzium Mortars M631 M631", controller: SEAT0 }],
+  },
+
+  // 2955. Dictate Heliod M631 M631 ETB.
+  {
+    id: "dictate-of-heliod-m631",
+    description: "Dictate Heliod M631 M631 ETB.",
+    seed: 0xc208,
+    cards: {
+      "Dictate Heliod M631 M631": `Name:Dictate Heliod M631 M631
+ManaCost:3 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 2 | AddToughness$ 2
+Oracle:DHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dictate Heliod M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dictate Heliod M631 M631", controller: SEAT0 }],
+  },
+
+  // 2956. Chorus Tides M631 M631 ETB.
+  {
+    id: "chorus-of-the-tides-m631",
+    description: "Chorus Tides M631 M631 ETB.",
+    seed: 0xc209,
+    cards: {
+      "Chorus Tides M631 M631": `Name:Chorus Tides M631 M631
+ManaCost:3 U
+Types:Creature Spirit
+PT:3/3
+K:Flying
+Oracle:CTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chorus Tides M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chorus Tides M631 M631", controller: SEAT0 }],
+  },
+
+  // 2957. Solidarity Heroes M631 M631 ETB.
+  {
+    id: "solidarity-of-heroes-m631",
+    description: "Solidarity Heroes M631 M631 ETB.",
+    seed: 0xc20a,
+    cards: {
+      "Solidarity Heroes M631 M631": `Name:Solidarity Heroes M631 M631
+ManaCost:1 G
+Types:Instant
+A:SP$ Pump | Cost$ 1 G | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | NumAtt$ +0
+Oracle:SHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Solidarity Heroes M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Solidarity Heroes M631 M631", controller: SEAT0 }],
+  },
+
+  // 2958. Aerial Formation M631 M631 ETB.
+  {
+    id: "aerial-formation-strive-m631",
+    description: "Aerial Formation M631 M631 ETB.",
+    seed: 0xc20b,
+    cards: {
+      "Aerial Formation M631 M631": `Name:Aerial Formation M631 M631
+ManaCost:U
+Types:Instant
+A:SP$ Pump | Cost$ U | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | KW$ Flying
+Oracle:AFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aerial Formation M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aerial Formation M631 M631", controller: SEAT0 }],
+  },
+
+  // 2959. Generous Visitor M631 M631 ETB.
+  {
+    id: "generous-visitor-m631",
+    description: "Generous Visitor M631 M631 ETB.",
+    seed: 0xc20c,
+    cards: {
+      "Generous Visitor M631 M631": `Name:Generous Visitor M631 M631
+ManaCost:G
+Types:Creature Spirit
+PT:1/1
+K:Channel
+Oracle:GVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Generous Visitor M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Generous Visitor M631 M631", controller: SEAT0 }],
+  },
+
+  // 2960. Boseiju Who Endures M631 M631 ETB.
+  {
+    id: "boseiju-who-endures-m631",
+    description: "Boseiju Who Endures M631 M631 ETB.",
+    seed: 0xc20d,
+    cards: {
+      "Boseiju Who Endures M631 M631": `Name:Boseiju Who Endures M631 M631
+ManaCost:no cost
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ G
+K:Channel
+Oracle:BWEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boseiju Who Endures M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Boseiju Who Endures M631 M631", controller: SEAT0 }],
+  },
+
+  // 2961. Takenuma Abandoned Mire M631 M631 ETB.
+  {
+    id: "takenuma-abandoned-mire-m631",
+    description: "Takenuma Abandoned Mire M631 M631 ETB.",
+    seed: 0xc20e,
+    cards: {
+      "Takenuma Abandoned Mire M631 M631": `Name:Takenuma Abandoned Mire M631 M631
+ManaCost:no cost
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ B
+K:Channel
+Oracle:TAMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Takenuma Abandoned Mire M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Takenuma Abandoned Mire M631 M631", controller: SEAT0 }],
+  },
+
+  // 2962. Sokenzan Crucible Defiance M631 M631 ETB.
+  {
+    id: "sokenzan-crucible-of-defiance-m631",
+    description: "Sokenzan Crucible Defiance M631 M631 ETB.",
+    seed: 0xc20f,
+    cards: {
+      "Sokenzan Crucible Defiance M631 M631": `Name:Sokenzan Crucible Defiance M631 M631
+ManaCost:no cost
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ R
+K:Channel
+Oracle:SCDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sokenzan Crucible Defiance M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sokenzan Crucible Defiance M631 M631", controller: SEAT0 }],
+  },
+
+  // 2963. Eiganjo Seat Empire M631 M631 ETB.
+  {
+    id: "eiganjo-seat-of-the-empire-m631",
+    description: "Eiganjo Seat Empire M631 M631 ETB.",
+    seed: 0xc210,
+    cards: {
+      "Eiganjo Seat Empire M631 M631": `Name:Eiganjo Seat Empire M631 M631
+ManaCost:no cost
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ W
+K:Channel
+Oracle:ESEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Eiganjo Seat Empire M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Eiganjo Seat Empire M631 M631", controller: SEAT0 }],
+  },
+
+  // 2964. Beck Call Replicate M631 M631 ETB.
+  {
+    id: "beck-call-replicate-m631",
+    description: "Beck Call Replicate M631 M631 ETB.",
+    seed: 0xc211,
+    cards: {
+      "Beck Call Replicate M631 M631": `Name:Beck Call Replicate M631 M631
+ManaCost:G U
+Types:Sorcery
+A:SP$ Effect | Cost$ G U | SpellDescription$ Beck/Call.
+K:Replicate:G U
+Oracle:BCRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beck Call Replicate M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beck Call Replicate M631 M631", controller: SEAT0 }],
+  },
+
+  // 2965. Streetbreaker Wurm M631 M631 ETB.
+  {
+    id: "streetbreaker-wurm-m631",
+    description: "Streetbreaker Wurm M631 M631 ETB.",
+    seed: 0xc212,
+    cards: {
+      "Streetbreaker Wurm M631 M631": `Name:Streetbreaker Wurm M631 M631
+ManaCost:4 G
+Types:Creature Wurm
+PT:5/4
+Oracle:SWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Streetbreaker Wurm M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Streetbreaker Wurm M631 M631", controller: SEAT0 }],
+  },
+
+  // 2966. Tidewater Minion M631 M631 ETB.
+  {
+    id: "tidewater-minion-m631",
+    description: "Tidewater Minion M631 M631 ETB.",
+    seed: 0xc213,
+    cards: {
+      "Tidewater Minion M631 M631": `Name:Tidewater Minion M631 M631
+ManaCost:5 U
+Types:Creature Squid
+PT:0/0
+Oracle:TMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tidewater Minion M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tidewater Minion M631 M631", controller: SEAT0 }],
+  },
+
+  // 2967. Pyromatics M631 M631 ETB.
+  {
+    id: "pyromatics-replicate-m631",
+    description: "Pyromatics M631 M631 ETB.",
+    seed: 0xc214,
+    cards: {
+      "Pyromatics M631 M631": `Name:Pyromatics M631 M631
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 1 | TargetType$ Any | NumTargets$ 3 | ValidTgts$ Any
+K:Replicate:1 R
+Oracle:PMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pyromatics M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pyromatics M631 M631", controller: SEAT0 }],
+  },
+
+  // 2968. Surveilling Sprite M631 M631 ETB.
+  {
+    id: "surveilling-sprite-m631",
+    description: "Surveilling Sprite M631 M631 ETB.",
+    seed: 0xc215,
+    cards: {
+      "Surveilling Sprite M631 M631": `Name:Surveilling Sprite M631 M631
+ManaCost:1 U
+Types:Creature Faerie
+PT:1/1
+K:Flying
+Oracle:SSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surveilling Sprite M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Surveilling Sprite M631 M631", controller: SEAT0 }],
+  },
+
+  // 2969. Anointer Priest M631 M631 ETB.
+  {
+    id: "anointer-priest-m631",
+    description: "Anointer Priest M631 M631 ETB.",
+    seed: 0xc216,
+    cards: {
+      "Anointer Priest M631 M631": `Name:Anointer Priest M631 M631
+ManaCost:1 W
+Types:Creature Human Cleric
+PT:1/3
+K:Embalm:3 W
+Oracle:APMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anointer Priest M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anointer Priest M631 M631", controller: SEAT0 }],
+  },
+
+  // 2970. Winged Shepherd M631 M631 ETB.
+  {
+    id: "winged-shepherd-m631",
+    description: "Winged Shepherd M631 M631 ETB.",
+    seed: 0xc217,
+    cards: {
+      "Winged Shepherd M631 M631": `Name:Winged Shepherd M631 M631
+ManaCost:5 W
+Types:Creature Bird Cleric
+PT:4/3
+K:Flying
+K:Embalm:5 W
+Oracle:WSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Winged Shepherd M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Winged Shepherd M631 M631", controller: SEAT0 }],
+  },
+
+  // 2971. Sacred Cat M631 M631 ETB.
+  {
+    id: "sacred-cat-m631",
+    description: "Sacred Cat M631 M631 ETB.",
+    seed: 0xc218,
+    cards: {
+      "Sacred Cat M631 M631": `Name:Sacred Cat M631 M631
+ManaCost:W
+Types:Creature Cat
+PT:1/1
+K:Embalm:W
+Oracle:SCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sacred Cat M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sacred Cat M631 M631", controller: SEAT0 }],
+  },
+
+  // 2972. Honored Hydra M631 M631 ETB.
+  {
+    id: "honored-hydra-m631",
+    description: "Honored Hydra M631 M631 ETB.",
+    seed: 0xc219,
+    cards: {
+      "Honored Hydra M631 M631": `Name:Honored Hydra M631 M631
+ManaCost:4 G G
+Types:Creature Hydra
+PT:6/6
+K:Trample
+K:Eternalize:4 G G
+Oracle:HHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Honored Hydra M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Honored Hydra M631 M631", controller: SEAT0 }],
+  },
+
+  // 2973. Temmet Vizier Naktamun M631 M631 ETB.
+  {
+    id: "temmet-vizier-of-naktamun-m631",
+    description: "Temmet Vizier Naktamun M631 M631 ETB.",
+    seed: 0xc21a,
+    cards: {
+      "Temmet Vizier Naktamun M631 M631": `Name:Temmet Vizier Naktamun M631 M631
+ManaCost:1 W
+Types:Legendary Creature Human Cleric
+PT:1/1
+K:Embalm:3 W
+Oracle:TVNMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Temmet Vizier Naktamun M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Temmet Vizier Naktamun M631 M631", controller: SEAT0 }],
+  },
+
+  // 2974. Bloodwater Entity M631 M631 ETB.
+  {
+    id: "bloodwater-entity-m631",
+    description: "Bloodwater Entity M631 M631 ETB.",
+    seed: 0xc21b,
+    cards: {
+      "Bloodwater Entity M631 M631": `Name:Bloodwater Entity M631 M631
+ManaCost:1 U R
+Types:Creature Drake Wizard
+PT:2/2
+K:Flying
+Oracle:BEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodwater Entity M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodwater Entity M631 M631", controller: SEAT0 }],
+  },
+
+  // 2975. Adorned Pouncer M631 M631 ETB.
+  {
+    id: "adorned-pouncer-m631",
+    description: "Adorned Pouncer M631 M631 ETB.",
+    seed: 0xc21c,
+    cards: {
+      "Adorned Pouncer M631 M631": `Name:Adorned Pouncer M631 M631
+ManaCost:W
+Types:Creature Cat
+PT:1/1
+K:Double Strike
+K:Eternalize:4 W W
+Oracle:APMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Adorned Pouncer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Adorned Pouncer M631 M631", controller: SEAT0 }],
+  },
+
+  // 2976. Champion Wits M631 M631 ETB.
+  {
+    id: "champion-of-wits-m631",
+    description: "Champion Wits M631 M631 ETB.",
+    seed: 0xc21d,
+    cards: {
+      "Champion Wits M631 M631": `Name:Champion Wits M631 M631
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:1/2
+K:Eternalize:5 U U
+Oracle:CWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Champion Wits M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Champion Wits M631 M631", controller: SEAT0 }],
+  },
+
+  // 2977. Capsize Buyback M631 M631 ETB.
+  {
+    id: "capsize-buyback-m631",
+    description: "Capsize Buyback M631 M631 ETB.",
+    seed: 0xc21e,
+    cards: {
+      "Capsize Buyback M631 M631": `Name:Capsize Buyback M631 M631
+ManaCost:2 U U
+Types:Instant
+A:SP$ ChangeZone | Cost$ 2 U U | Origin$ Battlefield | Destination$ Hand | TargetType$ NonlandPermanent | ValidTgts$ Permanent.nonLand
+K:Buyback:3
+Oracle:CBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Capsize Buyback M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Capsize Buyback M631 M631", controller: SEAT0 }],
+  },
+
+  // 2978. Whispers Muse M631 M631 ETB.
+  {
+    id: "whispers-of-the-muse-m631",
+    description: "Whispers Muse M631 M631 ETB.",
+    seed: 0xc21f,
+    cards: {
+      "Whispers Muse M631 M631": `Name:Whispers Muse M631 M631
+ManaCost:U
+Types:Instant
+A:SP$ Draw | Cost$ U | NumCards$ 1
+K:Buyback:5
+Oracle:WMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Whispers Muse M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Whispers Muse M631 M631", controller: SEAT0 }],
+  },
+
+  // 2979. Disenchant Buyback M631 M631 ETB.
+  {
+    id: "disenchant-buyback-m631",
+    description: "Disenchant Buyback M631 M631 ETB.",
+    seed: 0xc220,
+    cards: {
+      "Disenchant Buyback M631 M631": `Name:Disenchant Buyback M631 M631
+ManaCost:1 W
+Types:Instant
+A:SP$ Destroy | Cost$ 1 W | TargetType$ Artifact,Enchantment
+K:Buyback:5
+Oracle:DBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Disenchant Buyback M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Disenchant Buyback M631 M631", controller: SEAT0 }],
+  },
+
+  // 2980. Fanning Flames M631 M631 ETB.
+  {
+    id: "fanning-the-flames-m631",
+    description: "Fanning Flames M631 M631 ETB.",
+    seed: 0xc221,
+    cards: {
+      "Fanning Flames M631 M631": `Name:Fanning Flames M631 M631
+ManaCost:X R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ X R | NumDmg$ X | ValidTgts$ Any | References$ X
+SVar:X:Count$xPaid
+K:Buyback:3
+Oracle:FFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fanning Flames M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fanning Flames M631 M631", controller: SEAT0 }],
+  },
+
+  // 2981. Snap Buyback M631 M631 ETB.
+  {
+    id: "snap-buyback-m631",
+    description: "Snap Buyback M631 M631 ETB.",
+    seed: 0xc222,
+    cards: {
+      "Snap Buyback M631 M631": `Name:Snap Buyback M631 M631
+ManaCost:1 U
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Hand | TargetType$ Creature | ValidTgts$ Creature
+Oracle:SBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snap Buyback M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snap Buyback M631 M631", controller: SEAT0 }],
+  },
+
+  // 2982. Driven Despair M631 M631 ETB.
+  {
+    id: "driven-despair-m631",
+    description: "Driven Despair M631 M631 ETB.",
+    seed: 0xc223,
+    cards: {
+      "Driven Despair M631 M631": `Name:Driven Despair M631 M631
+ManaCost:1 G
+Types:Sorcery
+A:SP$ Pump | Cost$ 1 G | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | NumAtt$ +0
+K:Aftermath
+Oracle:DDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Driven Despair M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Driven Despair M631 M631", controller: SEAT0 }],
+  },
+
+  // 2983. Onward Victory M631 M631 ETB.
+  {
+    id: "onward-victory-m631",
+    description: "Onward Victory M631 M631 ETB.",
+    seed: 0xc224,
+    cards: {
+      "Onward Victory M631 M631": `Name:Onward Victory M631 M631
+ManaCost:1 R
+Types:Sorcery
+A:SP$ Pump | Cost$ 1 R | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ +0
+K:Aftermath
+Oracle:OVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Onward Victory M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Onward Victory M631 M631", controller: SEAT0 }],
+  },
+
+  // 2984. Heaven Earth M631 M631 ETB.
+  {
+    id: "heaven-earth-m631",
+    description: "Heaven Earth M631 M631 ETB.",
+    seed: 0xc225,
+    cards: {
+      "Heaven Earth M631 M631": `Name:Heaven Earth M631 M631
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamageAll | Cost$ 1 R | NumDmg$ 2 | ValidCards$ Creature.withoutFlying
+K:Aftermath
+Oracle:HEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heaven Earth M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heaven Earth M631 M631", controller: SEAT0 }],
+  },
+
+  // 2985. Leave Chance M631 M631 ETB.
+  {
+    id: "leave-chance-m631",
+    description: "Leave Chance M631 M631 ETB.",
+    seed: 0xc226,
+    cards: {
+      "Leave Chance M631 M631": `Name:Leave Chance M631 M631
+ManaCost:1 W
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 W | Origin$ Battlefield | Destination$ Hand | TargetType$ NonlandPermanent
+K:Aftermath
+Oracle:LCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Leave Chance M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Leave Chance M631 M631", controller: SEAT0 }],
+  },
+
+  // 2986. Destined Lead M631 M631 ETB.
+  {
+    id: "destined-lead-m631",
+    description: "Destined Lead M631 M631 ETB.",
+    seed: 0xc227,
+    cards: {
+      "Destined Lead M631 M631": `Name:Destined Lead M631 M631
+ManaCost:B
+Types:Instant
+A:SP$ Pump | Cost$ B | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | NumAtt$ +0 | KW$ Indestructible
+K:Aftermath
+Oracle:DLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Destined Lead M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Destined Lead M631 M631", controller: SEAT0 }],
+  },
+
+  // 2987. Arcbound Ravager M631 M631 ETB.
+  {
+    id: "arcbound-ravager-m631",
+    description: "Arcbound Ravager M631 M631 ETB.",
+    seed: 0xc228,
+    cards: {
+      "Arcbound Ravager M631 M631": `Name:Arcbound Ravager M631 M631
+ManaCost:2
+Types:Artifact Creature Beast
+PT:0/0
+K:Modular:1
+Oracle:ARMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arcbound Ravager M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arcbound Ravager M631 M631", controller: SEAT0 }],
+  },
+
+  // 2988. Arcbound Worker M631 M631 ETB.
+  {
+    id: "arcbound-worker-m631",
+    description: "Arcbound Worker M631 M631 ETB.",
+    seed: 0xc229,
+    cards: {
+      "Arcbound Worker M631 M631": `Name:Arcbound Worker M631 M631
+ManaCost:1
+Types:Artifact Creature Construct
+PT:0/0
+K:Modular:1
+Oracle:AWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arcbound Worker M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arcbound Worker M631 M631", controller: SEAT0 }],
+  },
+
+  // 2989. Arcbound Stinger M631 M631 ETB.
+  {
+    id: "arcbound-stinger-m631",
+    description: "Arcbound Stinger M631 M631 ETB.",
+    seed: 0xc22a,
+    cards: {
+      "Arcbound Stinger M631 M631": `Name:Arcbound Stinger M631 M631
+ManaCost:2
+Types:Artifact Creature Insect
+PT:0/0
+K:Flying
+K:Modular:1
+Oracle:ASMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arcbound Stinger M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arcbound Stinger M631 M631", controller: SEAT0 }],
+  },
+
+  // 2990. Etched Oracle M631 M631 ETB.
+  {
+    id: "etched-oracle-m631",
+    description: "Etched Oracle M631 M631 ETB.",
+    seed: 0xc22b,
+    cards: {
+      "Etched Oracle M631 M631": `Name:Etched Oracle M631 M631
+ManaCost:4
+Types:Artifact Creature Wizard
+PT:0/0
+K:Sunburst
+Oracle:EOMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Etched Oracle M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Etched Oracle M631 M631", controller: SEAT0 }],
+  },
+
+  // 2991. Sunburst Engineer M631 M631 ETB.
+  {
+    id: "sunburst-engineer-m631",
+    description: "Sunburst Engineer M631 M631 ETB.",
+    seed: 0xc22c,
+    cards: {
+      "Sunburst Engineer M631 M631": `Name:Sunburst Engineer M631 M631
+ManaCost:5
+Types:Artifact Creature Construct
+PT:0/0
+K:Sunburst
+Oracle:SEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sunburst Engineer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sunburst Engineer M631 M631", controller: SEAT0 }],
+  },
+
+  // 2992. Batterskull M631 M631 ETB.
+  {
+    id: "batterskull-m631",
+    description: "Batterskull M631 M631 ETB.",
+    seed: 0xc22d,
+    cards: {
+      "Batterskull M631 M631": `Name:Batterskull M631 M631
+ManaCost:5
+Types:Artifact Equipment
+K:Equip:5
+K:Living Weapon
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Vigilance & Lifelink
+Oracle:BMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Batterskull M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Batterskull M631 M631", controller: SEAT0 }],
+  },
+
+  // 2993. Flayer Husk M631 M631 ETB.
+  {
+    id: "flayer-husk-m631",
+    description: "Flayer Husk M631 M631 ETB.",
+    seed: 0xc22e,
+    cards: {
+      "Flayer Husk M631 M631": `Name:Flayer Husk M631 M631
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:2
+K:Living Weapon
+Oracle:FHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flayer Husk M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Flayer Husk M631 M631", controller: SEAT0 }],
+  },
+
+  // 2994. Mortarpod M631 M631 ETB.
+  {
+    id: "mortarpod-m631",
+    description: "Mortarpod M631 M631 ETB.",
+    seed: 0xc22f,
+    cards: {
+      "Mortarpod M631 M631": `Name:Mortarpod M631 M631
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:2
+K:Living Weapon
+Oracle:MMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mortarpod M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mortarpod M631 M631", controller: SEAT0 }],
+  },
+
+  // 2995. Chord Calling Convoke M631 M631 ETB.
+  {
+    id: "chord-calling-convoke-m631",
+    description: "Chord Calling Convoke M631 M631 ETB.",
+    seed: 0xc230,
+    cards: {
+      "Chord Calling Convoke M631 M631": `Name:Chord Calling Convoke M631 M631
+ManaCost:X G G G
+Types:Instant
+A:SP$ ChangeZone | Cost$ X G G G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | ChangeNum$ 1 | References$ X
+SVar:X:Count$xPaid
+K:Convoke
+K:Flash
+Oracle:CCCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chord Calling Convoke M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chord Calling Convoke M631 M631", controller: SEAT0 }],
+  },
+
+  // 2996. Devoted Druid Convoke M631 M631 ETB.
+  {
+    id: "devoted-druid-convoke-m631",
+    description: "Devoted Druid Convoke M631 M631 ETB.",
+    seed: 0xc231,
+    cards: {
+      "Devoted Druid Convoke M631 M631": `Name:Devoted Druid Convoke M631 M631
+ManaCost:1 G
+Types:Creature Elf Druid
+PT:0/2
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1
+Oracle:DDCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoted Druid Convoke M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Devoted Druid Convoke M631 M631", controller: SEAT0 }],
+  },
+
+  // 2997. Frogmite Affinity M631 M631 ETB.
+  {
+    id: "frogmite-affinity-m631",
+    description: "Frogmite Affinity M631 M631 ETB.",
+    seed: 0xc232,
+    cards: {
+      "Frogmite Affinity M631 M631": `Name:Frogmite Affinity M631 M631
+ManaCost:4
+Types:Artifact Creature Frog
+PT:2/2
+K:Affinity:Artifact
+Oracle:FAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frogmite Affinity M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frogmite Affinity M631 M631", controller: SEAT0 }],
+  },
+
+  // 2998. Cranial Plating Affinity M631 M631 ETB.
+  {
+    id: "cranial-plating-affinity-m631",
+    description: "Cranial Plating Affinity M631 M631 ETB.",
+    seed: 0xc233,
+    cards: {
+      "Cranial Plating Affinity M631 M631": `Name:Cranial Plating Affinity M631 M631
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+K:Affinity:Artifact
+Oracle:CPAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cranial Plating Affinity M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cranial Plating Affinity M631 M631", controller: SEAT0 }],
+  },
+
+  // 2999. Myr Enforcer M631 M631 ETB.
+  {
+    id: "myr-enforcer-m631",
+    description: "Myr Enforcer M631 M631 ETB.",
+    seed: 0xc234,
+    cards: {
+      "Myr Enforcer M631 M631": `Name:Myr Enforcer M631 M631
+ManaCost:7
+Types:Artifact Creature Myr
+PT:4/4
+K:Affinity:Artifact
+Oracle:MEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Myr Enforcer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Myr Enforcer M631 M631", controller: SEAT0 }],
+  },
+
+  // 3000. Reverse Engineer M631 M631 ETB.
+  {
+    id: "reverse-engineer-improvise-m631",
+    description: "Reverse Engineer M631 M631 ETB.",
+    seed: 0xc235,
+    cards: {
+      "Reverse Engineer M631 M631": `Name:Reverse Engineer M631 M631
+ManaCost:4 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 4 U | NumCards$ 3
+K:Improvise
+Oracle:REMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reverse Engineer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reverse Engineer M631 M631", controller: SEAT0 }],
+  },
+
+  // 3001. Maverick Thopterist M631 M631 ETB.
+  {
+    id: "maverick-thopterist-m631",
+    description: "Maverick Thopterist M631 M631 ETB.",
+    seed: 0xc236,
+    cards: {
+      "Maverick Thopterist M631 M631": `Name:Maverick Thopterist M631 M631
+ManaCost:4 R
+Types:Creature Human Artificer
+PT:3/2
+K:Improvise
+Oracle:MTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maverick Thopterist M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maverick Thopterist M631 M631", controller: SEAT0 }],
+  },
+
+  // 3002. Fading Shade M631 M631 ETB.
+  {
+    id: "fading-shade-m631",
+    description: "Fading Shade M631 M631 ETB.",
+    seed: 0xc237,
+    cards: {
+      "Fading Shade M631 M631": `Name:Fading Shade M631 M631
+ManaCost:B
+Types:Creature Spirit
+PT:1/1
+K:Fading:3
+Oracle:FSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fading Shade M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fading Shade M631 M631", controller: SEAT0 }],
+  },
+
+  // 3003. Braids Cabal Minion M631 M631 ETB.
+  {
+    id: "braids-cabal-minion-fading-m631",
+    description: "Braids Cabal Minion M631 M631 ETB.",
+    seed: 0xc238,
+    cards: {
+      "Braids Cabal Minion M631 M631": `Name:Braids Cabal Minion M631 M631
+ManaCost:1 U
+Types:Creature Faerie
+PT:1/1
+K:Flying
+K:Fading:5
+Oracle:BCMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Braids Cabal Minion M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Braids Cabal Minion M631 M631", controller: SEAT0 }],
+  },
+
+  // 3004. Aether Shockwave M631 M631 ETB.
+  {
+    id: "aether-shockwave-m631",
+    description: "Aether Shockwave M631 M631 ETB.",
+    seed: 0xc239,
+    cards: {
+      "Aether Shockwave M631 M631": `Name:Aether Shockwave M631 M631
+ManaCost:4 W
+Types:Sorcery
+A:SP$ ReplaceTap | Cost$ 4 W
+Oracle:ASMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aether Shockwave M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aether Shockwave M631 M631", controller: SEAT0 }],
+  },
+
+  // 3005. Calciderm M631 M631 ETB.
+  {
+    id: "calciderm-vanishing-m631",
+    description: "Calciderm M631 M631 ETB.",
+    seed: 0xc23a,
+    cards: {
+      "Calciderm M631 M631": `Name:Calciderm M631 M631
+ManaCost:2 W W
+Types:Creature Beast
+PT:5/5
+K:Shroud
+K:Vanishing:4
+Oracle:CMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Calciderm M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Calciderm M631 M631", controller: SEAT0 }],
+  },
+
+  // 3006. Wingmate Roc M631 M631 ETB.
+  {
+    id: "wingmate-roc-m631",
+    description: "Wingmate Roc M631 M631 ETB.",
+    seed: 0xc23b,
+    cards: {
+      "Wingmate Roc M631 M631": `Name:Wingmate Roc M631 M631
+ManaCost:3 W W
+Types:Creature Bird
+PT:3/4
+K:Flying
+Oracle:WRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wingmate Roc M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wingmate Roc M631 M631", controller: SEAT0 }],
+  },
+
+  // 3007. Shorikai Genesis Engine M631 M631 ETB.
+  {
+    id: "shorikai-genesis-engine-m631",
+    description: "Shorikai Genesis Engine M631 M631 ETB.",
+    seed: 0xc23c,
+    cards: {
+      "Shorikai Genesis Engine M631 M631": `Name:Shorikai Genesis Engine M631 M631
+ManaCost:4
+Types:Legendary Artifact Vehicle
+PT:0/6
+K:Crew:2
+Oracle:SGEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shorikai Genesis Engine M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shorikai Genesis Engine M631 M631", controller: SEAT0 }],
+  },
+
+  // 3008. Parhelion II M631 M631 ETB.
+  {
+    id: "parhelion-ii-m631",
+    description: "Parhelion II M631 M631 ETB.",
+    seed: 0xc23d,
+    cards: {
+      "Parhelion II M631 M631": `Name:Parhelion II M631 M631
+ManaCost:5 W
+Types:Legendary Artifact Vehicle
+PT:5/5
+K:Flying
+K:Vigilance
+K:Crew:4
+Oracle:PIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Parhelion II M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Parhelion II M631 M631", controller: SEAT0 }],
+  },
+
+  // 3009. Plague Stinger M631 M631 ETB.
+  {
+    id: "plague-stinger-m631",
+    description: "Plague Stinger M631 M631 ETB.",
+    seed: 0xc23e,
+    cards: {
+      "Plague Stinger M631 M631": `Name:Plague Stinger M631 M631
+ManaCost:1 B
+Types:Creature Insect Horror
+PT:1/1
+K:Flying
+K:Infect
+Oracle:PSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plague Stinger M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plague Stinger M631 M631", controller: SEAT0 }],
+  },
+
+  // 3010. Blight Mamba M631 M631 ETB.
+  {
+    id: "blight-mamba-m631",
+    description: "Blight Mamba M631 M631 ETB.",
+    seed: 0xc23f,
+    cards: {
+      "Blight Mamba M631 M631": `Name:Blight Mamba M631 M631
+ManaCost:1 G
+Types:Creature Snake Horror
+PT:1/1
+K:Infect
+Oracle:BMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Blight Mamba M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Blight Mamba M631 M631", controller: SEAT0 }],
+  },
+
+  // 3011. Ichorclaw Myr M631 M631 ETB.
+  {
+    id: "ichorclaw-myr-m631",
+    description: "Ichorclaw Myr M631 M631 ETB.",
+    seed: 0xc240,
+    cards: {
+      "Ichorclaw Myr M631 M631": `Name:Ichorclaw Myr M631 M631
+ManaCost:2
+Types:Artifact Creature Myr
+PT:1/1
+K:Infect
+Oracle:IMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ichorclaw Myr M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ichorclaw Myr M631 M631", controller: SEAT0 }],
+  },
+
+  // 3012. Sublime Archangel M631 M631 ETB.
+  {
+    id: "sublime-archangel-m631",
+    description: "Sublime Archangel M631 M631 ETB.",
+    seed: 0xc241,
+    cards: {
+      "Sublime Archangel M631 M631": `Name:Sublime Archangel M631 M631
+ManaCost:2 W W
+Types:Creature Angel
+PT:4/3
+K:Flying
+Oracle:SAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sublime Archangel M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sublime Archangel M631 M631", controller: SEAT0 }],
+  },
+
+  // 3013. Rafiq Many M631 M631 ETB.
+  {
+    id: "rafiq-of-the-many-m631",
+    description: "Rafiq Many M631 M631 ETB.",
+    seed: 0xc242,
+    cards: {
+      "Rafiq Many M631 M631": `Name:Rafiq Many M631 M631
+ManaCost:G W U
+Types:Legendary Creature Human Knight
+PT:3/3
+K:Exalted
+Oracle:RMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rafiq Many M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rafiq Many M631 M631", controller: SEAT0 }],
+  },
+
+  // 3014. Finest Hour M631 M631 ETB.
+  {
+    id: "finest-hour-m631",
+    description: "Finest Hour M631 M631 ETB.",
+    seed: 0xc243,
+    cards: {
+      "Finest Hour M631 M631": `Name:Finest Hour M631 M631
+ManaCost:1 G W U
+Types:Enchantment
+S:Mode$ Continuous | Affected$ You | AddKeyword$ Exalted
+Oracle:FHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Finest Hour M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Finest Hour M631 M631", controller: SEAT0 }],
+  },
+
+  // 3015. Wall Omens M631 M631 ETB.
+  {
+    id: "wall-of-omens-m631",
+    description: "Wall Omens M631 M631 ETB.",
+    seed: 0xc244,
+    cards: {
+      "Wall Omens M631 M631": `Name:Wall Omens M631 M631
+ManaCost:1 W
+Types:Creature Wall
+PT:0/4
+K:Defender
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:WOMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wall Omens M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wall Omens M631 M631", controller: SEAT0 }],
+  },
+
+  // 3016. Wall Blossoms M631 M631 ETB.
+  {
+    id: "wall-of-blossoms-m631",
+    description: "Wall Blossoms M631 M631 ETB.",
+    seed: 0xc245,
+    cards: {
+      "Wall Blossoms M631 M631": `Name:Wall Blossoms M631 M631
+ManaCost:1 G
+Types:Creature Plant Wall
+PT:0/4
+K:Defender
+Oracle:WBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wall Blossoms M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wall Blossoms M631 M631", controller: SEAT0 }],
+  },
+
+  // 3017. Scatter Winds M631 M631 ETB.
+  {
+    id: "scatter-to-the-winds-m631",
+    description: "Scatter Winds M631 M631 ETB.",
+    seed: 0xc246,
+    cards: {
+      "Scatter Winds M631 M631": `Name:Scatter Winds M631 M631
+ManaCost:2 U
+Types:Instant
+A:SP$ Counter | Cost$ 2 U | TargetType$ Spell | ValidTgts$ Card
+K:Awaken:3:3 U
+Oracle:SWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scatter Winds M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scatter Winds M631 M631", controller: SEAT0 }],
+  },
+
+  // 3018. Sheer Drop M631 M631 ETB.
+  {
+    id: "sheer-drop-m631",
+    description: "Sheer Drop M631 M631 ETB.",
+    seed: 0xc247,
+    cards: {
+      "Sheer Drop M631 M631": `Name:Sheer Drop M631 M631
+ManaCost:3 W
+Types:Sorcery
+A:SP$ Destroy | Cost$ 3 W | TargetType$ Creature | ValidTgts$ Creature.tapped
+K:Awaken:3:5 W
+Oracle:SDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sheer Drop M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sheer Drop M631 M631", controller: SEAT0 }],
+  },
+
+  // 3019. Fiery Temper M631 M631 ETB.
+  {
+    id: "fiery-temper-m631",
+    description: "Fiery Temper M631 M631 ETB.",
+    seed: 0xc248,
+    cards: {
+      "Fiery Temper M631 M631": `Name:Fiery Temper M631 M631
+ManaCost:1 R R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 3 | ValidTgts$ Any
+K:Madness:R
+Oracle:FTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fiery Temper M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fiery Temper M631 M631", controller: SEAT0 }],
+  },
+
+  // 3020. Asylum Visitor M631 M631 ETB.
+  {
+    id: "asylum-visitor-m631",
+    description: "Asylum Visitor M631 M631 ETB.",
+    seed: 0xc249,
+    cards: {
+      "Asylum Visitor M631 M631": `Name:Asylum Visitor M631 M631
+ManaCost:1 B
+Types:Creature Vampire Wizard
+PT:3/1
+K:Madness:1 B
+Oracle:AVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Asylum Visitor M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Asylum Visitor M631 M631", controller: SEAT0 }],
+  },
+
+  // 3021. Pteramander M631 M631 ETB.
+  {
+    id: "pteramander-m631",
+    description: "Pteramander M631 M631 ETB.",
+    seed: 0xc24a,
+    cards: {
+      "Pteramander M631 M631": `Name:Pteramander M631 M631
+ManaCost:U
+Types:Creature Salamander Drake
+PT:1/1
+K:Flying
+Oracle:PMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pteramander M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pteramander M631 M631", controller: SEAT0 }],
+  },
+
+  // 3022. Fleecemane Lion M631 M631 ETB.
+  {
+    id: "fleecemane-lion-m631",
+    description: "Fleecemane Lion M631 M631 ETB.",
+    seed: 0xc24b,
+    cards: {
+      "Fleecemane Lion M631 M631": `Name:Fleecemane Lion M631 M631
+ManaCost:G W
+Types:Creature Cat
+PT:3/3
+Oracle:FLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fleecemane Lion M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fleecemane Lion M631 M631", controller: SEAT0 }],
+  },
+
+  // 3023. Polukranos World Eater M631 M631 ETB.
+  {
+    id: "polukranos-world-eater-m631",
+    description: "Polukranos World Eater M631 M631 ETB.",
+    seed: 0xc24c,
+    cards: {
+      "Polukranos World Eater M631 M631": `Name:Polukranos World Eater M631 M631
+ManaCost:2 G G
+Types:Legendary Creature Hydra
+PT:5/5
+Oracle:PWEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Polukranos World Eater M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Polukranos World Eater M631 M631", controller: SEAT0 }],
+  },
+
+  // 3024. Nessian Asp M631 M631 ETB.
+  {
+    id: "nessian-asp-m631",
+    description: "Nessian Asp M631 M631 ETB.",
+    seed: 0xc24d,
+    cards: {
+      "Nessian Asp M631 M631": `Name:Nessian Asp M631 M631
+ManaCost:5 G
+Types:Creature Snake
+PT:4/7
+K:Reach
+K:Tribute:2
+Oracle:NAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nessian Asp M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nessian Asp M631 M631", controller: SEAT0 }],
+  },
+
+  // 3025. Fanatic Xenagos M631 M631 ETB.
+  {
+    id: "fanatic-of-xenagos-m631",
+    description: "Fanatic Xenagos M631 M631 ETB.",
+    seed: 0xc24e,
+    cards: {
+      "Fanatic Xenagos M631 M631": `Name:Fanatic Xenagos M631 M631
+ManaCost:R G
+Types:Creature Centaur Berserker
+PT:4/4
+K:Trample
+K:Tribute:1
+Oracle:FXMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fanatic Xenagos M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fanatic Xenagos M631 M631", controller: SEAT0 }],
+  },
+
+  // 3026. Golgari Grave Troll M631 M631 ETB.
+  {
+    id: "golgari-grave-troll-m631",
+    description: "Golgari Grave Troll M631 M631 ETB.",
+    seed: 0xc24f,
+    cards: {
+      "Golgari Grave Troll M631 M631": `Name:Golgari Grave Troll M631 M631
+ManaCost:4 B G
+Types:Creature Troll Skeleton
+PT:0/0
+K:Dredge:6
+Oracle:GGTMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Golgari Grave Troll M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Golgari Grave Troll M631 M631", controller: SEAT0 }],
+  },
+
+  // 3027. Stinkweed Imp M631 M631 ETB.
+  {
+    id: "stinkweed-imp-m631",
+    description: "Stinkweed Imp M631 M631 ETB.",
+    seed: 0xc250,
+    cards: {
+      "Stinkweed Imp M631 M631": `Name:Stinkweed Imp M631 M631
+ManaCost:1 B
+Types:Creature Imp
+PT:1/2
+K:Flying
+K:Dredge:5
+Oracle:SIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stinkweed Imp M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stinkweed Imp M631 M631", controller: SEAT0 }],
+  },
+
+  // 3028. Den Protector M631 M631 ETB.
+  {
+    id: "den-protector-m631",
+    description: "Den Protector M631 M631 ETB.",
+    seed: 0xc251,
+    cards: {
+      "Den Protector M631 M631": `Name:Den Protector M631 M631
+ManaCost:1 G
+Types:Creature Human Warrior
+PT:2/1
+K:Megamorph:1 G
+Oracle:DPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Den Protector M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Den Protector M631 M631", controller: SEAT0 }],
+  },
+
+  // 3029. Soul Summons M631 M631 ETB.
+  {
+    id: "soul-summons-m631",
+    description: "Soul Summons M631 M631 ETB.",
+    seed: 0xc252,
+    cards: {
+      "Soul Summons M631 M631": `Name:Soul Summons M631 M631
+ManaCost:1 W
+Types:Sorcery
+A:SP$ Manifest | Cost$ 1 W | Amount$ 1
+Oracle:SSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Soul Summons M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Soul Summons M631 M631", controller: SEAT0 }],
+  },
+
+  // 3030. Goblin Trash Master M631 M631 ETB.
+  {
+    id: "goblin-trash-master-m631",
+    description: "Goblin Trash Master M631 M631 ETB.",
+    seed: 0xc253,
+    cards: {
+      "Goblin Trash Master M631 M631": `Name:Goblin Trash Master M631 M631
+ManaCost:2 R
+Types:Creature Goblin Rogue
+PT:3/2
+K:Squad:2 R
+Oracle:GTMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Trash Master M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Trash Master M631 M631", controller: SEAT0 }],
+  },
+
+  // 3031. Body Launderer M631 M631 ETB.
+  {
+    id: "body-launderer-m631",
+    description: "Body Launderer M631 M631 ETB.",
+    seed: 0xc254,
+    cards: {
+      "Body Launderer M631 M631": `Name:Body Launderer M631 M631
+ManaCost:2 B
+Types:Creature Vampire Rogue
+PT:2/3
+K:Casualty:2
+Oracle:BLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Body Launderer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Body Launderer M631 M631", controller: SEAT0 }],
+  },
+
+  // 3032. Yotian Frontliner M631 M631 ETB.
+  {
+    id: "yotian-frontliner-m631",
+    description: "Yotian Frontliner M631 M631 ETB.",
+    seed: 0xc255,
+    cards: {
+      "Yotian Frontliner M631 M631": `Name:Yotian Frontliner M631 M631
+ManaCost:1
+Types:Creature Soldier
+PT:1/1
+K:Backup:1
+Oracle:YFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yotian Frontliner M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yotian Frontliner M631 M631", controller: SEAT0 }],
+  },
+
+  // 3033. Mausoleum Secrets M631 M631 ETB.
+  {
+    id: "mausoleum-secrets-m631",
+    description: "Mausoleum Secrets M631 M631 ETB.",
+    seed: 0xc256,
+    cards: {
+      "Mausoleum Secrets M631 M631": `Name:Mausoleum Secrets M631 M631
+ManaCost:1 B
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Library | Destination$ Hand | ChangeType$ Creature.cmcLE2 | ChangeNum$ 1
+Oracle:MSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mausoleum Secrets M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mausoleum Secrets M631 M631", controller: SEAT0 }],
+  },
+
+  // 3034. Zoetic Glyph M631 M631 ETB.
+  {
+    id: "zoetic-glyph-reconfigure-m631",
+    description: "Zoetic Glyph M631 M631 ETB.",
+    seed: 0xc257,
+    cards: {
+      "Zoetic Glyph M631 M631": `Name:Zoetic Glyph M631 M631
+ManaCost:2
+Types:Artifact Creature Equipment
+PT:2/2
+K:Reconfigure:2
+Oracle:ZGMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zoetic Glyph M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zoetic Glyph M631 M631", controller: SEAT0 }],
+  },
+
+  // 3035. Warp Warrior M631 M631 ETB.
+  {
+    id: "warp-warrior-m631",
+    description: "Warp Warrior M631 M631 ETB.",
+    seed: 0xc258,
+    cards: {
+      "Warp Warrior M631 M631": `Name:Warp Warrior M631 M631
+ManaCost:2 W
+Types:Creature Soldier
+PT:3/2
+Oracle:WWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Warp Warrior M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Warp Warrior M631 M631", controller: SEAT0 }],
+  },
+
+  // 3036. Bonny Pall Spree M631 M631 ETB.
+  {
+    id: "bonny-pall-spree-m631",
+    description: "Bonny Pall Spree M631 M631 ETB.",
+    seed: 0xc259,
+    cards: {
+      "Bonny Pall Spree M631 M631": `Name:Bonny Pall Spree M631 M631
+ManaCost:4 G U
+Types:Legendary Creature Cephalid Pirate
+PT:6/6
+Oracle:BPSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonny Pall Spree M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bonny Pall Spree M631 M631", controller: SEAT0 }],
+  },
+
+  // 3037. History Benalia M631 M631 ETB.
+  {
+    id: "history-of-benalia-m631",
+    description: "History Benalia M631 M631 ETB.",
+    seed: 0xc25a,
+    cards: {
+      "History Benalia M631 M631": `Name:History Benalia M631 M631
+ManaCost:1 W W
+Types:Enchantment Saga
+K:Chapter:3:DBToken,DBToken,DBPump
+Oracle:HBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["History Benalia M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "History Benalia M631 M631", controller: SEAT0 }],
+  },
+
+  // 3038. Elspeth Conquers Death M631 M631 ETB.
+  {
+    id: "elspeth-conquers-death-m631",
+    description: "Elspeth Conquers Death M631 M631 ETB.",
+    seed: 0xc25b,
+    cards: {
+      "Elspeth Conquers Death M631 M631": `Name:Elspeth Conquers Death M631 M631
+ManaCost:3 W W
+Types:Enchantment Saga
+K:Chapter:3:DBExile,DBExile,DBExile
+Oracle:ECDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elspeth Conquers Death M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elspeth Conquers Death M631 M631", controller: SEAT0 }],
+  },
+
+  // 3039. Ranger Class M631 M631 ETB.
+  {
+    id: "ranger-class-m631",
+    description: "Ranger Class M631 M631 ETB.",
+    seed: 0xc25c,
+    cards: {
+      "Ranger Class M631 M631": `Name:Ranger Class M631 M631
+ManaCost:G
+Types:Enchantment Class
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 0
+Oracle:RCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ranger Class M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ranger Class M631 M631", controller: SEAT0 }],
+  },
+
+  // 3040. Monastery Swiftspear M631 M631 ETB.
+  {
+    id: "monastery-swiftspear-m631",
+    description: "Monastery Swiftspear M631 M631 ETB.",
+    seed: 0xc25d,
+    cards: {
+      "Monastery Swiftspear M631 M631": `Name:Monastery Swiftspear M631 M631
+ManaCost:R
+Types:Creature Human Monk
+PT:1/2
+K:Haste
+K:Prowess
+Oracle:MSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Monastery Swiftspear M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Monastery Swiftspear M631 M631", controller: SEAT0 }],
+  },
+
+  // 3041. Soul Scar Mage M631 M631 ETB.
+  {
+    id: "soul-scar-mage-m631",
+    description: "Soul Scar Mage M631 M631 ETB.",
+    seed: 0xc25e,
+    cards: {
+      "Soul Scar Mage M631 M631": `Name:Soul Scar Mage M631 M631
+ManaCost:R
+Types:Creature Human Wizard
+PT:1/2
+K:Prowess
+Oracle:SSMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Soul Scar Mage M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Soul Scar Mage M631 M631", controller: SEAT0 }],
+  },
+
+  // 3042. Crypt Ghast M631 M631 ETB.
+  {
+    id: "crypt-ghast-m631",
+    description: "Crypt Ghast M631 M631 ETB.",
+    seed: 0xc25f,
+    cards: {
+      "Crypt Ghast M631 M631": `Name:Crypt Ghast M631 M631
+ManaCost:3 B
+Types:Creature Spirit
+PT:2/2
+K:Extort
+Oracle:CGMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Crypt Ghast M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Crypt Ghast M631 M631", controller: SEAT0 }],
+  },
+
+  // 3043. Thrull Parasite M631 M631 ETB.
+  {
+    id: "thrull-parasite-m631",
+    description: "Thrull Parasite M631 M631 ETB.",
+    seed: 0xc260,
+    cards: {
+      "Thrull Parasite M631 M631": `Name:Thrull Parasite M631 M631
+ManaCost:1 B
+Types:Creature Thrull
+PT:1/1
+K:Extort
+Oracle:TPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thrull Parasite M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thrull Parasite M631 M631", controller: SEAT0 }],
+  },
+
+  // 3044. Pathrazer Ulamog M631 M631 ETB.
+  {
+    id: "pathrazer-of-ulamog-m631",
+    description: "Pathrazer Ulamog M631 M631 ETB.",
+    seed: 0xc261,
+    cards: {
+      "Pathrazer Ulamog M631 M631": `Name:Pathrazer Ulamog M631 M631
+ManaCost:11
+Types:Creature Eldrazi
+PT:9/9
+K:Annihilator:3
+Oracle:PUMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pathrazer Ulamog M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pathrazer Ulamog M631 M631", controller: SEAT0 }],
+  },
+
+  // 3045. Signal Pest M631 M631 ETB.
+  {
+    id: "signal-pest-m631",
+    description: "Signal Pest M631 M631 ETB.",
+    seed: 0xc262,
+    cards: {
+      "Signal Pest M631 M631": `Name:Signal Pest M631 M631
+ManaCost:1
+Types:Artifact Creature Pest
+PT:0/1
+K:Battle Cry
+Oracle:SPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Signal Pest M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Signal Pest M631 M631", controller: SEAT0 }],
+  },
+
+  // 3046. Coastal Discovery M631 M631 ETB.
+  {
+    id: "coastal-discovery-m631",
+    description: "Coastal Discovery M631 M631 ETB.",
+    seed: 0xc263,
+    cards: {
+      "Coastal Discovery M631 M631": `Name:Coastal Discovery M631 M631
+ManaCost:3 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 3 U | NumCards$ 2
+K:Awaken:2:5 U
+Oracle:CDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coastal Discovery M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coastal Discovery M631 M631", controller: SEAT0 }],
+  },
+
+  // 3047. Godo Bandit Warlord M631 M631 ETB.
+  {
+    id: "godo-bandit-warlord-m631",
+    description: "Godo Bandit Warlord M631 M631 ETB.",
+    seed: 0xc264,
+    cards: {
+      "Godo Bandit Warlord M631 M631": `Name:Godo Bandit Warlord M631 M631
+ManaCost:4 R R
+Types:Legendary Creature Human Barbarian
+PT:3/3
+Oracle:GBWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Godo Bandit Warlord M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Godo Bandit Warlord M631 M631", controller: SEAT0 }],
+  },
+
+  // 3048. Stoneforge Mystic M631 M631 ETB.
+  {
+    id: "stoneforge-mystic-m631",
+    description: "Stoneforge Mystic M631 M631 ETB.",
+    seed: 0xc265,
+    cards: {
+      "Stoneforge Mystic M631 M631": `Name:Stoneforge Mystic M631 M631
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1
+Oracle:SMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stoneforge Mystic M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stoneforge Mystic M631 M631", controller: SEAT0 }],
+  },
+
+  // 3049. Puresteel Paladin M631 M631 ETB.
+  {
+    id: "puresteel-paladin-m631",
+    description: "Puresteel Paladin M631 M631 ETB.",
+    seed: 0xc266,
+    cards: {
+      "Puresteel Paladin M631 M631": `Name:Puresteel Paladin M631 M631
+ManaCost:1 W
+Types:Creature Human Knight
+PT:2/2
+Oracle:PPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Puresteel Paladin M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Puresteel Paladin M631 M631", controller: SEAT0 }],
+  },
+
+  // 3050. Sigarda Host Herons M631 M631 ETB.
+  {
+    id: "sigarda-host-of-herons-m631",
+    description: "Sigarda Host Herons M631 M631 ETB.",
+    seed: 0xc267,
+    cards: {
+      "Sigarda Host Herons M631 M631": `Name:Sigarda Host Herons M631 M631
+ManaCost:2 G W
+Types:Legendary Creature Angel
+PT:4/5
+K:Flying
+Oracle:SHHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sigarda Host Herons M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sigarda Host Herons M631 M631", controller: SEAT0 }],
+  },
+
+  // 3051. Esika Chariot M631 M631 ETB.
+  {
+    id: "esika-chariot-m631",
+    description: "Esika Chariot M631 M631 ETB.",
+    seed: 0xc268,
+    cards: {
+      "Esika Chariot M631 M631": `Name:Esika Chariot M631 M631
+ManaCost:3 G
+Types:Legendary Artifact Vehicle
+PT:4/4
+K:Crew:4
+Oracle:ECMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esika Chariot M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esika Chariot M631 M631", controller: SEAT0 }],
+  },
+
+  // 3052. Surgehacker Mech M631 M631 ETB.
+  {
+    id: "surgehacker-mech-m631",
+    description: "Surgehacker Mech M631 M631 ETB.",
+    seed: 0xc269,
+    cards: {
+      "Surgehacker Mech M631 M631": `Name:Surgehacker Mech M631 M631
+ManaCost:5 R
+Types:Artifact Vehicle
+PT:5/4
+K:Crew:3
+Oracle:SMMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surgehacker Mech M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Surgehacker Mech M631 M631", controller: SEAT0 }],
+  },
+
+  // 3053. Mishras Juggernaut M631 M631 ETB.
+  {
+    id: "mishras-juggernaut-m631",
+    description: "Mishras Juggernaut M631 M631 ETB.",
+    seed: 0xc26a,
+    cards: {
+      "Mishras Juggernaut M631 M631": `Name:Mishras Juggernaut M631 M631
+ManaCost:5
+Types:Artifact Vehicle
+PT:5/4
+K:Trample
+K:Crew:3
+Oracle:MJMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishras Juggernaut M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishras Juggernaut M631 M631", controller: SEAT0 }],
+  },
+
+  // 3054. Bristly Bill Spine Piercer M631 M631 ETB.
+  {
+    id: "bristly-bill-spine-piercer-m631",
+    description: "Bristly Bill Spine Piercer M631 M631 ETB.",
+    seed: 0xc26b,
+    cards: {
+      "Bristly Bill Spine Piercer M631 M631": `Name:Bristly Bill Spine Piercer M631 M631
+ManaCost:2 G
+Types:Legendary Creature Boar Druid
+PT:3/3
+Oracle:BBSPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bristly Bill Spine Piercer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bristly Bill Spine Piercer M631 M631", controller: SEAT0 }],
+  },
+
+  // 3055. Malakir Rebirth M631 M631 ETB.
+  {
+    id: "malakir-rebirth-m631",
+    description: "Malakir Rebirth M631 M631 ETB.",
+    seed: 0xc26c,
+    cards: {
+      "Malakir Rebirth M631 M631": `Name:Malakir Rebirth M631 M631
+ManaCost:B
+Types:Instant
+A:SP$ Pump | Cost$ B | TargetType$ Creature | ValidTgts$ Creature | KW$ Indestructible
+Oracle:MRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Malakir Rebirth M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Malakir Rebirth M631 M631", controller: SEAT0 }],
+  },
+
+  // 3056. Jwari Disruption M631 M631 ETB.
+  {
+    id: "jwari-disruption-m631",
+    description: "Jwari Disruption M631 M631 ETB.",
+    seed: 0xc26d,
+    cards: {
+      "Jwari Disruption M631 M631": `Name:Jwari Disruption M631 M631
+ManaCost:1 U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U | TargetType$ Spell | ValidTgts$ Card
+Oracle:JDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jwari Disruption M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jwari Disruption M631 M631", controller: SEAT0 }],
+  },
+
+  // 3057. Khalni Ambush M631 M631 ETB.
+  {
+    id: "khalni-ambush-m631",
+    description: "Khalni Ambush M631 M631 ETB.",
+    seed: 0xc26e,
+    cards: {
+      "Khalni Ambush M631 M631": `Name:Khalni Ambush M631 M631
+ManaCost:1 G
+Types:Instant
+A:SP$ Pump | Cost$ 1 G | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | NumAtt$ +0
+Oracle:KAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Khalni Ambush M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Khalni Ambush M631 M631", controller: SEAT0 }],
+  },
+
+  // 3058. Spikefield Hazard M631 M631 ETB.
+  {
+    id: "spikefield-hazard-m631",
+    description: "Spikefield Hazard M631 M631 ETB.",
+    seed: 0xc26f,
+    cards: {
+      "Spikefield Hazard M631 M631": `Name:Spikefield Hazard M631 M631
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any
+Oracle:SHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spikefield Hazard M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spikefield Hazard M631 M631", controller: SEAT0 }],
+  },
+
+  // 3059. Song Creation M631 M631 ETB.
+  {
+    id: "song-of-creation-m631",
+    description: "Song Creation M631 M631 ETB.",
+    seed: 0xc270,
+    cards: {
+      "Song Creation M631 M631": `Name:Song Creation M631 M631
+ManaCost:2 R G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ You | AddKeyword$ ExtraDraw
+Oracle:SCMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Song Creation M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Song Creation M631 M631", controller: SEAT0 }],
+  },
+
+  // 3060. Invasion Belenon M631 M631 ETB.
+  {
+    id: "invasion-of-belenon-m631",
+    description: "Invasion Belenon M631 M631 ETB.",
+    seed: 0xc271,
+    cards: {
+      "Invasion Belenon M631 M631": `Name:Invasion Belenon M631 M631
+ManaCost:5 W
+Types:Battle
+K:Defense:6
+Oracle:IBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Belenon M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Belenon M631 M631", controller: SEAT0 }],
+  },
+
+  // 3061. Invasion Eldraine M631 M631 ETB.
+  {
+    id: "invasion-of-eldraine-m631",
+    description: "Invasion Eldraine M631 M631 ETB.",
+    seed: 0xc272,
+    cards: {
+      "Invasion Eldraine M631 M631": `Name:Invasion Eldraine M631 M631
+ManaCost:5 G
+Types:Battle
+K:Defense:5
+Oracle:IEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Eldraine M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Eldraine M631 M631", controller: SEAT0 }],
+  },
+
+  // 3062. Invasion Innistrad M631 M631 ETB.
+  {
+    id: "invasion-of-innistrad-m631",
+    description: "Invasion Innistrad M631 M631 ETB.",
+    seed: 0xc273,
+    cards: {
+      "Invasion Innistrad M631 M631": `Name:Invasion Innistrad M631 M631
+ManaCost:3 B
+Types:Battle
+K:Defense:5
+Oracle:IIMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Innistrad M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Innistrad M631 M631", controller: SEAT0 }],
+  },
+
+  // 3063. Invasion Ergamon M631 M631 ETB.
+  {
+    id: "invasion-of-ergamon-m631",
+    description: "Invasion Ergamon M631 M631 ETB.",
+    seed: 0xc274,
+    cards: {
+      "Invasion Ergamon M631 M631": `Name:Invasion Ergamon M631 M631
+ManaCost:3 R
+Types:Battle
+K:Defense:4
+Oracle:IEMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Ergamon M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Ergamon M631 M631", controller: SEAT0 }],
+  },
+
+  // 3064. Invasion Shandalar M631 M631 ETB.
+  {
+    id: "invasion-of-shandalar-m631",
+    description: "Invasion Shandalar M631 M631 ETB.",
+    seed: 0xc275,
+    cards: {
+      "Invasion Shandalar M631 M631": `Name:Invasion Shandalar M631 M631
+ManaCost:3 R
+Types:Battle
+K:Defense:5
+Oracle:ISMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Shandalar M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Shandalar M631 M631", controller: SEAT0 }],
+  },
+
+  // 3065. Captured Lagacs M631 M631 ETB.
+  {
+    id: "captured-by-lagacs-m631",
+    description: "Captured Lagacs M631 M631 ETB.",
+    seed: 0xc276,
+    cards: {
+      "Captured Lagacs M631 M631": `Name:Captured Lagacs M631 M631
+ManaCost:3 R G
+Types:Sorcery
+A:SP$ Effect | Cost$ 3 R G | SpellDescription$ Cascade trigger.
+K:Cascade
+Oracle:CLMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Captured Lagacs M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Captured Lagacs M631 M631", controller: SEAT0 }],
+  },
+
+  // 3066. Maelstrom Archangel M631 M631 ETB.
+  {
+    id: "maelstrom-archangel-m631",
+    description: "Maelstrom Archangel M631 M631 ETB.",
+    seed: 0xc277,
+    cards: {
+      "Maelstrom Archangel M631 M631": `Name:Maelstrom Archangel M631 M631
+ManaCost:2 W U B R G
+Types:Creature Angel
+PT:5/5
+K:Flying
+Oracle:MAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maelstrom Archangel M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maelstrom Archangel M631 M631", controller: SEAT0 }],
+  },
+
+  // 3067. Renewed Faith M631 M631 ETB.
+  {
+    id: "renewed-faith-persist-m631",
+    description: "Renewed Faith M631 M631 ETB.",
+    seed: 0xc278,
+    cards: {
+      "Renewed Faith M631 M631": `Name:Renewed Faith M631 M631
+ManaCost:2 W
+Types:Instant
+A:SP$ GainLife | Cost$ 2 W | LifeAmount$ 6
+Oracle:RFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Renewed Faith M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Renewed Faith M631 M631", controller: SEAT0 }],
+  },
+
+  // 3068. Snapdax Apex Hunt M631 M631 ETB.
+  {
+    id: "snapdax-apex-of-the-hunt-m631",
+    description: "Snapdax Apex Hunt M631 M631 ETB.",
+    seed: 0xc279,
+    cards: {
+      "Snapdax Apex Hunt M631 M631": `Name:Snapdax Apex Hunt M631 M631
+ManaCost:2 R W B
+Types:Legendary Creature Cat Dinosaur
+PT:4/4
+K:Double Strike
+K:Mutate:1 R W B
+Oracle:SAHMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snapdax Apex Hunt M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snapdax Apex Hunt M631 M631", controller: SEAT0 }],
+  },
+
+  // 3069. Illuna Apex Wishes M631 M631 ETB.
+  {
+    id: "illuna-apex-of-wishes-m631",
+    description: "Illuna Apex Wishes M631 M631 ETB.",
+    seed: 0xc27a,
+    cards: {
+      "Illuna Apex Wishes M631 M631": `Name:Illuna Apex Wishes M631 M631
+ManaCost:2 G U R
+Types:Legendary Creature Beast Dinosaur Elemental
+PT:6/6
+K:Flying
+K:Trample
+K:Mutate:1 G U R
+Oracle:IAWMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Illuna Apex Wishes M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Illuna Apex Wishes M631 M631", controller: SEAT0 }],
+  },
+
+  // 3070. Vadrok Apex Thunder M631 M631 ETB.
+  {
+    id: "vadrok-apex-of-thunder-m631",
+    description: "Vadrok Apex Thunder M631 M631 ETB.",
+    seed: 0xc27b,
+    cards: {
+      "Vadrok Apex Thunder M631 M631": `Name:Vadrok Apex Thunder M631 M631
+ManaCost:2 U R W
+Types:Legendary Creature Bird Dinosaur Beast
+PT:3/3
+K:Flying
+K:Mutate:1 U R W
+Oracle:VATMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vadrok Apex Thunder M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vadrok Apex Thunder M631 M631", controller: SEAT0 }],
+  },
+
+  // 3071. Paranoid Delusions M631 M631 ETB.
+  {
+    id: "paranoid-delusions-m631",
+    description: "Paranoid Delusions M631 M631 ETB.",
+    seed: 0xc27c,
+    cards: {
+      "Paranoid Delusions M631 M631": `Name:Paranoid Delusions M631 M631
+ManaCost:2 U
+Types:Sorcery
+A:SP$ Mill | Cost$ 2 U | NumCards$ 3 | Defined$ Targeted | TargetType$ Player | ValidTgts$ Player
+K:Cipher
+Oracle:PDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Paranoid Delusions M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Paranoid Delusions M631 M631", controller: SEAT0 }],
+  },
+
+  // 3072. Consuming Vortex M631 M631 ETB.
+  {
+    id: "consuming-vortex-splice-m631",
+    description: "Consuming Vortex M631 M631 ETB.",
+    seed: 0xc27d,
+    cards: {
+      "Consuming Vortex M631 M631": `Name:Consuming Vortex M631 M631
+ManaCost:1 U
+Types:Instant Arcane
+A:SP$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Hand | TargetType$ Creature | ValidTgts$ Creature
+K:Splice:Arcane:2 U
+Oracle:CVMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Consuming Vortex M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Consuming Vortex M631 M631", controller: SEAT0 }],
+  },
+
+  // 3073. Mind Spring M631 M631 ETB.
+  {
+    id: "mind-spring-storm-m631",
+    description: "Mind Spring M631 M631 ETB.",
+    seed: 0xc27e,
+    cards: {
+      "Mind Spring M631 M631": `Name:Mind Spring M631 M631
+ManaCost:X U U
+Types:Sorcery
+A:SP$ Draw | Cost$ X U U | NumCards$ X | References$ X
+SVar:X:Count$xPaid
+Oracle:MSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mind Spring M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mind Spring M631 M631", controller: SEAT0 }],
+  },
+
+  // 3074. Weaver Blossoms M631 M631 ETB.
+  {
+    id: "weaver-of-blossoms-m631",
+    description: "Weaver Blossoms M631 M631 ETB.",
+    seed: 0xc27f,
+    cards: {
+      "Weaver Blossoms M631 M631": `Name:Weaver Blossoms M631 M631
+ManaCost:G
+Types:Creature Human Werewolf
+PT:1/1
+K:Daybound
+Oracle:WBMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Weaver Blossoms M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Weaver Blossoms M631 M631", controller: SEAT0 }],
+  },
+
+  // 3075. Arlinn Kord Day M631 M631 ETB.
+  {
+    id: "arlinn-kord-day-m631",
+    description: "Arlinn Kord Day M631 M631 ETB.",
+    seed: 0xc280,
+    cards: {
+      "Arlinn Kord Day M631 M631": `Name:Arlinn Kord Day M631 M631
+ManaCost:2 R G
+Types:Legendary Planeswalker Arlinn
+Loyalty:3
+Oracle:AKDMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arlinn Kord Day M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arlinn Kord Day M631 M631", controller: SEAT0 }],
+  },
+
+  // 3076. Lutri Spellchaser M631 M631 ETB.
+  {
+    id: "lutri-the-spellchaser-m631",
+    description: "Lutri Spellchaser M631 M631 ETB.",
+    seed: 0xc281,
+    cards: {
+      "Lutri Spellchaser M631 M631": `Name:Lutri Spellchaser M631 M631
+ManaCost:U R
+Types:Legendary Creature Elemental Otter
+PT:3/2
+K:Companion
+Oracle:LSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lutri Spellchaser M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lutri Spellchaser M631 M631", controller: SEAT0 }],
+  },
+
+  // 3077. Obosh Preypiercer M631 M631 ETB.
+  {
+    id: "obosh-the-preypiercer-m631",
+    description: "Obosh Preypiercer M631 M631 ETB.",
+    seed: 0xc282,
+    cards: {
+      "Obosh Preypiercer M631 M631": `Name:Obosh Preypiercer M631 M631
+ManaCost:2 R R
+Types:Legendary Creature Elemental Boar
+PT:3/3
+K:Companion
+Oracle:OPMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Obosh Preypiercer M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Obosh Preypiercer M631 M631", controller: SEAT0 }],
+  },
+
+  // 3078. Mosswort Bridge Alt M631 M631 ETB.
+  {
+    id: "mosswort-bridge-2-m631",
+    description: "Mosswort Bridge Alt M631 M631 ETB.",
+    seed: 0xc283,
+    cards: {
+      "Mosswort Bridge Alt M631 M631": `Name:Mosswort Bridge Alt M631 M631
+ManaCost:no cost
+Types:Land
+K:Hideaway:4
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:MBAMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mosswort Bridge Alt M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mosswort Bridge Alt M631 M631", controller: SEAT0 }],
+  },
+
+  // 3079. Aven Wind Guide M631 M631 ETB.
+  {
+    id: "aven-wind-guide-m631",
+    description: "Aven Wind Guide M631 M631 ETB.",
+    seed: 0xc284,
+    cards: {
+      "Aven Wind Guide M631 M631": `Name:Aven Wind Guide M631 M631
+ManaCost:2 W U
+Types:Creature Bird Soldier
+PT:2/3
+K:Flying
+Oracle:AWGMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aven Wind Guide M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aven Wind Guide M631 M631", controller: SEAT0 }],
+  },
+
+  // 3080. Earthshaker Khenra M631 M631 ETB.
+  {
+    id: "earthshaker-khenra-m631",
+    description: "Earthshaker Khenra M631 M631 ETB.",
+    seed: 0xc285,
+    cards: {
+      "Earthshaker Khenra M631 M631": `Name:Earthshaker Khenra M631 M631
+ManaCost:1 R
+Types:Creature Jackal Warrior
+PT:2/1
+K:Haste
+K:Eternalize:5 R
+Oracle:EKMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Earthshaker Khenra M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Earthshaker Khenra M631 M631", controller: SEAT0 }],
+  },
+
+  // 3081. Claim Fame M631 M631 ETB.
+  {
+    id: "claim-fame-aftermath-m631",
+    description: "Claim Fame M631 M631 ETB.",
+    seed: 0xc286,
+    cards: {
+      "Claim Fame M631 M631": `Name:Claim Fame M631 M631
+ManaCost:B
+Types:Instant
+A:SP$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouOwn
+Oracle:CFMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Claim Fame M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Claim Fame M631 M631", controller: SEAT0 }],
+  },
+
+  // 3082. Never Return M631 M631 ETB.
+  {
+    id: "never-return-aftermath-m631",
+    description: "Never Return M631 M631 ETB.",
+    seed: 0xc287,
+    cards: {
+      "Never Return M631 M631": `Name:Never Return M631 M631
+ManaCost:1 B B
+Types:Sorcery
+A:SP$ Destroy | Cost$ 1 B B | TargetType$ Creature,Planeswalker
+Oracle:NRMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Never Return M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Never Return M631 M631", controller: SEAT0 }],
+  },
+
+  // 3083. Squee Goblin Nabob M631 M631 ETB.
+  {
+    id: "squee-goblin-nabob-m631",
+    description: "Squee Goblin Nabob M631 M631 ETB.",
+    seed: 0xc288,
+    cards: {
+      "Squee Goblin Nabob M631 M631": `Name:Squee Goblin Nabob M631 M631
+ManaCost:3 R
+Types:Legendary Creature Goblin
+PT:1/1
+Oracle:SGNMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Squee Goblin Nabob M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Squee Goblin Nabob M631 M631", controller: SEAT0 }],
+  },
+
+  // 3084. Chant Skifsang M631 M631 ETB.
+  {
+    id: "chant-of-the-skifsang-m631",
+    description: "Chant Skifsang M631 M631 ETB.",
+    seed: 0xc289,
+    cards: {
+      "Chant Skifsang M631 M631": `Name:Chant Skifsang M631 M631
+ManaCost:1 W
+Types:Sorcery
+A:SP$ Pump | Cost$ 1 W | TargetType$ Creature | ValidTgts$ Creature
+Oracle:CSMM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chant Skifsang M631 M631"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chant Skifsang M631 M631", controller: SEAT0 }],
+  },
 ];

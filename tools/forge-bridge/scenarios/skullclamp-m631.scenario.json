@@ -1,0 +1,29 @@
+{
+  "id": "skullclamp-m631",
+  "description": "Skullclamp M631 M631 ETB.",
+  "seed": 49509,
+  "cards": {
+    "Skullclamp M631 M631": "Name:Skullclamp M631 M631\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ -1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.AttachedBy | Execute$ TrigDraw | TriggerDescription$ Draw two when wearer dies.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:SMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullclamp M631 M631"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp M631 M631",
+      "controller": 0
+    }
+  ]
+}
