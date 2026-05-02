@@ -273,15 +273,46 @@ export class ChapterKeywordHandler extends KeywordHandler {
         const target = c.sagaChapterCount ?? 0;
         const svarNames = c.sagaChapterSVars ?? [];
         if (svarNames.length === 0 && target === 0) return false;
-        // M6.33 — Skip the watcher fan-out when we're inside the ETB
-        // counter-stamp window. Forge's K:Saga adds the lore counter via a
-        // CR 614 replacement effect during the moveTo BEFORE chapter
-        // triggers are observable; the chapter abilities fire only on the
-        // NEXT lore counter add (precombat main phase). Mirror Forge by
-        // suppressing the watcher's stack-going trigger during the ETB
-        // counter-stamping window. The watcher remains active for the
-        // post-ETB upkeep main1 add.
-        if ((c as unknown as { etbInProgress?: boolean }).etbInProgress === true) return false;
+        // M6.34 — Two cases for the watcher fire window during ETB:
+        //
+        // 1) Real Forge K:Chapter:N:DB1,...,DBN cards (history-of-benalia,
+        //    fable-of-the-mirror-breaker, etc.): Forge's CardFactoryUtil
+        //    generates per-chapter implicit Mode$ CounterAdded triggers.
+        //    These triggers fire on the ETB lore counter add and are
+        //    observable in the Java golden trace (SpellCast +
+        //    StackItemResolved for chapter I). The TS watcher is the
+        //    equivalent dispatch — it must fire on the ETB lore add too.
+        //
+        // 2) Synthetic test sagas with K:Chapter:N (no DBs) + explicit
+        //    T:Mode$ CounterAdded triggers (mending-of-dominaria-m627,
+        //    welcome-to-skys-end, etc.): Forge's CardFactoryUtil parser
+        //    throws on the missing DB list, so no implicit triggers
+        //    register; the explicit T: triggers ARE visible to ETB lore
+        //    add via the CR 614 replacement window. But on Java, the
+        //    visible chapter trigger is suppressed in the ETB window
+        //    (Forge CR 614 replacement applies BEFORE explicit triggers
+        //    register from the just-entered card). Java traces show only
+        //    CounterAdded + ZoneMove for these synthetic sagas. The TS
+        //    watcher must NOT fire when there's no SVar to dispatch (no
+        //    DBs) — its only side effect would be flipping
+        //    sagaFinalChapterResolved, which the SBA sweep handles
+        //    independently on the precombat-main lore tick.
+        //
+        // Gate: fire only when there's a chapter SVar to dispatch for the
+        // current lore total. Forge silently suppresses chapter triggers
+        // when the K:Chapter:N:DB1,DB2,... line names DBs that aren't
+        // actually defined on the card (synthetic test scenarios sometimes
+        // use placeholder DB names without SVar:DB1 entries).
+        if (svarNames.length === 0) return false;
+        const lore = c.counters.get(CounterType.Lore) ?? 0;
+        if (lore < 1 || lore > svarNames.length) return false;
+        const svarName = svarNames[lore - 1];
+        if (svarName === undefined) return false;
+        const cardSvars = c.paperCard.definition?.svars as ReadonlyMap<string, SVarAst> | undefined;
+        if (cardSvars !== undefined) {
+          const sv = cardSvars.get(svarName);
+          if (!sv || sv.kind !== "ability" || !sv.ability) return false;
+        }
         return true;
       },
       resolver: {

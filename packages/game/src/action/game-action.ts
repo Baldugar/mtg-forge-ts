@@ -764,6 +764,31 @@ export class GameAction {
         yield* this.addCounter(card.id, CT.Defense, n);
       }
     }
+    // M6.34 — Saga lore counter on ETB (CR 714.2b). Forge models this as a
+    // CR 614 replacement built from the `Saga` subtype alone — ChapterKeywordHandler
+    // stamps an etbCounterSpecs Lore=1 when a K:Chapter line is present, but
+    // Sagas without a parsed K:Chapter (e.g. synthetic test scenarios using
+    // raw `T:Mode$ CounterAdded NewCounterAmount$ N` triggers) still need the
+    // ETB lore counter. Mirror Forge by detecting the `Saga` subtype and
+    // adding 1 Lore counter when no etbCounterSpecs Lore entry already covers
+    // it. Skipped when the card already has Lore counters (idempotent on
+    // re-entry / blink).
+    const isSaga = def.types?.hasSubtype?.("Saga") === true;
+    if (isSaga && (card.counters.get(CT.Lore) ?? 0) === 0) {
+      // Only add if no etbCounterSpecs Lore entry will fire (the K:Chapter
+      // handler always stamps one; this branch covers the no-K:Chapter
+      // synthetic case).
+      const hasLoreSpec = (
+        (
+          card as unknown as {
+            etbCounterSpecs?: ReadonlyArray<{ readonly counterType: unknown }>;
+          }
+        ).etbCounterSpecs ?? []
+      ).some((s) => s.counterType === CT.Lore);
+      if (!hasLoreSpec) {
+        yield* this.addCounter(card.id, CT.Lore, 1);
+      }
+    }
     // M6.17 — etbCounter parser-extension keyword stamps. The
     // EtbCounterKeywordHandler stamps `card.etbCounterSpecs` with one
     // entry per `K:etbCounter:<TYPE>:<NUMBER>` line. Mirrors Forge's

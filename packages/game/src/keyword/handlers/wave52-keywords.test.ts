@@ -113,16 +113,11 @@ describe("Wave 52 — Chapter activate stamps slots + 3 triggers", () => {
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
 
-    // Locate the watcher (the CounterAdded matcher).
-    const watcher = card.triggeredAbilities.find((t) =>
-      t.matches({
-        kind: "CounterAdded",
-        version: 1,
-        turn: 1,
-        phase: "Main1" as never,
-        payload: { cardId: id, counterType: CounterType.Lore as string, amount: 1 },
-      } as never),
-    );
+    // M6.34 — index 2 (etb, main1, watcher). The matches() gate now
+    // consults card.counters for the lore-range check, so calling matches
+    // before stamping a counter would incorrectly return false; index by
+    // position to find the watcher (mirrors the does-not-flip test below).
+    const watcher = card.triggeredAbilities[2];
     expect(watcher).toBeDefined();
     if (!watcher) return;
 

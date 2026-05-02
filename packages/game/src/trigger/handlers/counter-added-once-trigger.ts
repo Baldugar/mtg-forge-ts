@@ -50,6 +50,12 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
   override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
     const validCard = getParamRaw(ast, "ValidCard") ?? "Card.Self";
     const counterType = getParamRaw(ast, "CounterType"); // optional filter
+    // M6.34 — NewCounterAmount filter (Forge `NewCounterAmount$ N`): fires only
+    // when the post-add total of the named counter equals N. Mirrors the
+    // CounterAddedTrigger filter for the same param name.
+    const newCounterAmountRaw = getParamRaw(ast, "NewCounterAmount");
+    const newCounterAmount =
+      newCounterAmountRaw !== undefined ? Number.parseInt(newCounterAmountRaw, 10) : undefined;
     const { game: ctxGame, sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = ast.effect.handlerKey;
 
@@ -78,8 +84,11 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
           amount: number;
         };
 
-        // Optional counter type filter.
-        if (counterType !== undefined && evCounterType !== counterType) return false;
+        // Optional counter type filter (case-insensitive — Forge writes
+        // LORE/P1P1/etc. while events use lowercase canonical names).
+        if (counterType !== undefined && evCounterType.toLowerCase() !== counterType.toLowerCase()) {
+          return false;
+        }
 
         // Predicate gate.
         let predicateOk = false;
@@ -93,6 +102,16 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
           }
         }
         if (!predicateOk) return false;
+
+        // M6.34 — NewCounterAmount filter. Fires only when post-add total
+        // of the matching counter equals N. Mirrors Forge's
+        // TriggerCounterAddedOnce#"newCounterAmount" param.
+        const cardsMap = (ctxGame as unknown as { cards?: Map<EntityId, unknown> }).cards;
+        if (newCounterAmount !== undefined) {
+          const c = cardsMap?.get(sourceCardId) as { counters?: ReadonlyMap<string, number> } | undefined;
+          const total = c?.counters?.get(evCounterType) ?? 0;
+          if (total !== newCounterAmount) return false;
+        }
 
         // Once-per-turn gate.
         const turn = currentTurn();
