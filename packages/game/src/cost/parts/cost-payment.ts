@@ -61,6 +61,18 @@ const EXILE_FROM_GRAVE_RE = /^ExileFromGrave<(\d+)\/(.+)>$/;
 const EXILE_FROM_TOP_RE = /^ExileFromTop<(\d+)\/(.+)>$/;
 // Wave 46 — counter / scalar cost prefixes.
 const ADD_COUNTER_RE = /^AddCounter<\d+\/[\w+\-/]+>$/;
+// M6.18 — `PayLife<N>` shorthand used in synthetic Vampiric Tutor / Imperial
+// Seal scenarios (Forge writes "Cost$ B PayLife<2>" for these as compact form
+// of "B, 2 life"). Forge's `Cost.java` parser walks tokens splitting on
+// whitespace and recognises the bracket syntax; mirror that here so the life
+// payment fires its LifeChanged event even when authored in the bracket
+// syntax rather than the standard "N life" form.
+// M6.19 — Also accept `PayLife<X>` / `PayLife<Y>` where the amount is a
+// SVar reference (Toxic Deluge X-cost: "Cost$ 2 B PayLife<X>"). Forge's
+// Cost.java accepts identifier amounts and resolves at pay-time via the
+// xPaid / xCounter machinery. CostPayLife reads card.xValueAtCast at
+// pay-time to resolve the actual life amount.
+const PAY_LIFE_BRACKET_RE = /^PayLife<(?:\d+|[A-Z][\w]*)>$/i;
 const SUB_COUNTER_RE = /^SubCounter<\d+\/[\w+\-/]+>$/;
 const PAY_ENERGY_RE = /^PayEnergy<\d+>$/;
 const MILL_RE = /^Mill<\d+(?:\/[^>]*)?>$/;
@@ -78,11 +90,78 @@ export interface CostPlan {
  * Parse a combined cost string (e.g. "R, T, 2 life") into a CostPlan.
  * Throws for unsupported cost segments.
  */
+// M6.18 — Forge cost strings can mix mana with non-mana tokens separated by
+// whitespace ("B PayLife<2>", "1 PayLife<3>"). Only refine when (a) a
+// segment contains an angle-bracket token like `Foo<...>` AND (b) at least
+// one preceding/trailing whitespace-separated mana token. Avoids breaking
+// space-separated multi-word costs like `Sac Creature` / `2 life` /
+// `Discard CARDNAME` where the space is internal to the cost.
+const ANGLE_BRACKET_RE = /\w+<[^>]*>/;
+const MANA_TOKEN_RE = /^[0-9XYZWUBRGCS/]+$/;
+
+const refineSegments = (segments: readonly string[]): readonly string[] => {
+  const out: string[] = [];
+  for (const seg of segments) {
+    // Only refine when segment has a bracket-form token mixed with at least
+    // one separate mana-only token. Skip pure mana, pure bracket, and
+    // pure-non-bracket multi-word costs.
+    if (!ANGLE_BRACKET_RE.test(seg)) {
+      out.push(seg);
+      continue;
+    }
+    const tokens = seg.split(/\s+/).filter((t) => t !== "");
+    if (tokens.length <= 1) {
+      out.push(seg);
+      continue;
+    }
+    // Need at least one mana-only token AND at least one bracket-form token
+    // to justify splitting. Otherwise keep the segment as-is.
+    let hasMana = false;
+    let hasBracket = false;
+    for (const tok of tokens) {
+      if (MANA_TOKEN_RE.test(tok)) hasMana = true;
+      if (/<[^>]*>/.test(tok)) hasBracket = true;
+    }
+    if (!hasMana || !hasBracket) {
+      out.push(seg);
+      continue;
+    }
+    // Split: aggregate consecutive mana tokens, emit bracket tokens
+    // independently, and group orphan non-mana / non-bracket tokens
+    // together (so "Sac Creature" stays atomic if it ever co-resides
+    // with bracket form — extremely rare, but defensive).
+    let buf: string[] = [];
+    let bufKind: "mana" | "other" | null = null;
+    const flush = (): void => {
+      if (buf.length > 0) {
+        out.push(buf.join(" "));
+        buf = [];
+        bufKind = null;
+      }
+    };
+    for (const tok of tokens) {
+      if (/<[^>]*>/.test(tok)) {
+        flush();
+        out.push(tok);
+        continue;
+      }
+      const kind: "mana" | "other" = MANA_TOKEN_RE.test(tok) ? "mana" : "other";
+      if (bufKind !== null && bufKind !== kind) flush();
+      buf.push(tok);
+      bufKind = kind;
+    }
+    flush();
+  }
+  return out;
+};
+
 export const parseCostString = (raw: string): CostPlan => {
-  const segments = raw
-    .split(",")
-    .map((s) => s.trim())
-    .filter((s) => s !== "");
+  const segments = refineSegments(
+    raw
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== ""),
+  );
 
   if (segments.length === 0) {
     return { parts: [] };
@@ -99,7 +178,7 @@ export const parseCostString = (raw: string): CostPlan => {
       parts.push({ handlerKey: "Untap", raw: seg });
       continue;
     }
-    if (LIFE_RE.test(seg)) {
+    if (LIFE_RE.test(seg) || PAY_LIFE_BRACKET_RE.test(seg)) {
       parts.push({ handlerKey: "PayLife", raw: seg });
       continue;
     }

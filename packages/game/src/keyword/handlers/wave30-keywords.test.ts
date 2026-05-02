@@ -130,8 +130,11 @@ describe("Wave 30 — Ninjutsu activate stamps keyword + spell ability", () => {
   });
 });
 
-describe("Wave 30 — Graft activate stamps keyword + ETB + watch triggers", () => {
-  it("stamps `graft` keyword and registers two triggered abilities", () => {
+describe("Wave 30 — Graft activate stamps keyword + ETB-counter spec + watch trigger", () => {
+  it("stamps `graft` keyword and registers a watch trigger (ETB counters via etbCounterSpecs)", () => {
+    // M6.19 — Graft's "enters with N +1/+1 counters" is now a CR 614
+    // replacement (etbCounterSpecs slot), not a triggered ability. Only
+    // the watch trigger remains as a TriggeredAbility.
     const game = mkGame();
     const id = mkEntityId(103);
     const card = new Card(id, paper, ALICE, ALICE, ZoneType.Battlefield);
@@ -141,12 +144,20 @@ describe("Wave 30 — Graft activate stamps keyword + ETB + watch triggers", () 
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
     expect(card.keywords?.has("graft")).toBe(true);
-    expect(card.triggeredAbilities?.length).toBe(2);
+    expect(card.triggeredAbilities?.length).toBe(1);
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{ amount: number }>;
+    };
+    expect(slot.etbCounterSpecs?.length).toBe(1);
+    expect(slot.etbCounterSpecs?.[0]?.amount).toBe(2);
   });
 });
 
-describe("Wave 30 — Modular activate stamps keyword + ETB + LTB triggers", () => {
-  it("stamps `modular` keyword and registers two triggered abilities", () => {
+describe("Wave 30 — Modular activate stamps keyword + ETB-counter spec + LTB trigger", () => {
+  it("stamps `modular` keyword and registers an LTB trigger (ETB counters via etbCounterSpecs)", () => {
+    // M6.19 — same family as Graft: Modular's ETB counters move to
+    // `etbCounterSpecs`; only the LTB transfer trigger remains as a
+    // TriggeredAbility.
     const game = mkGame();
     const id = mkEntityId(104);
     const card = new Card(id, paper, ALICE, ALICE, ZoneType.Battlefield);
@@ -156,7 +167,12 @@ describe("Wave 30 — Modular activate stamps keyword + ETB + LTB triggers", () 
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
     expect(card.keywords?.has("modular")).toBe(true);
-    expect(card.triggeredAbilities?.length).toBe(2);
+    expect(card.triggeredAbilities?.length).toBe(1);
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{ amount: number }>;
+    };
+    expect(slot.etbCounterSpecs?.length).toBe(1);
+    expect(slot.etbCounterSpecs?.[0]?.amount).toBe(3);
   });
 });
 

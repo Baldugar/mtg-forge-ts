@@ -64,7 +64,17 @@ export class SunburstKeywordHandler extends KeywordHandler {
       matches(event: GameEvent): boolean {
         if (event.kind !== "CardChangedZone") return false;
         const p = event.payload as { cardId: EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
+        if (p.cardId !== sourceCardId) return false;
+        if (p.toZone !== ZoneType.Battlefield) return false;
+        // M6.18 — Forge models Sunburst as a state-derived counter at ETB,
+        // not as a queue-then-no-op trigger. Without manaSpentColors there's
+        // nothing to count and Forge fires no event; gate the trigger so
+        // free-cast / etb-action paths (where mana wasn't tracked) don't
+        // surface a spurious AbilityActivated.
+        const self = game.cards.get(sourceCardId);
+        if (!self) return false;
+        const colorCount = self.manaSpentColors?.size ?? 0;
+        return colorCount > 0;
       },
       resolver: {
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {

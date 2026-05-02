@@ -47,31 +47,28 @@ export class ModularKeywordHandler extends KeywordHandler {
     const sourceCardId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
 
-    // ETB trigger.
-    const etbId = game.newEntityId();
-    const etb: TriggeredAbilityWithResolver = {
-      id: etbId,
-      kind: "triggered",
-      sourceCardId,
-      activeInZones: new Set([ZoneType.Battlefield]),
-      timestamp: 0,
-      controllerSeatAtReg: controllerSeat,
-      isDelayed: false,
-      matches(event: GameEvent): boolean {
-        if (event.kind !== "CardChangedZone") return false;
-        const p = event.payload as { cardId: EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
-      },
-      resolver: {
-        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
-          const g = gameUnknown as Game;
-          yield* g.action.addCounter(sourceCardId, CounterType.PlusOnePlusOne, safeN, sourceCardId);
-        },
-      },
+    // M6.19 — Modular's "enters with N +1/+1 counters" is a CR 614
+    // replacement effect in Forge (not a triggered ability that goes onto
+    // the stack). Mirror that by stamping an etbCounterSpecs entry on the
+    // card; applyEtbStamping consumes the slot synchronously inside the
+    // ETB pipeline (silent — no AbilityActivated, no SpellCast). This
+    // matches Forge's Modular replacement-effect emission of CounterAdded
+    // without a queued trigger.
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+      }>;
     };
+    if (!slot.etbCounterSpecs) slot.etbCounterSpecs = [];
+    slot.etbCounterSpecs.push({
+      counterType: CounterType.PlusOnePlusOne,
+      amount: safeN,
+      variable: false,
+    });
+
     if (!card.triggeredAbilities) card.triggeredAbilities = [];
-    card.triggeredAbilities.push(etb as unknown as TriggeredAbility);
-    game.triggerRegistry.register(etb as unknown as TriggeredAbility);
 
     // LTB trigger — when this dies (BF → graveyard), optionally transfer
     // counters to a target artifact creature.
@@ -91,9 +88,22 @@ export class ModularKeywordHandler extends KeywordHandler {
           fromZone: ZoneType;
           toZone: ZoneType;
         };
-        return (
-          p.cardId === sourceCardId && p.fromZone === ZoneType.Battlefield && p.toZone === ZoneType.Graveyard
-        );
+        if (p.cardId !== sourceCardId) return false;
+        if (p.fromZone !== ZoneType.Battlefield) return false;
+        if (p.toZone !== ZoneType.Graveyard) return false;
+        // M6.19 — CR 603.10c: Modular LTB targets `Creature.YouCtrl+Other+
+        // Artifact` (Forge's keyword grammar). With no eligible artifact
+        // creature on the battlefield, the trigger doesn't fire. Mirror
+        // Forge's keyword-level legality probe so we don't queue a no-op
+        // AbilityActivated/StackItemResolved.
+        for (const [id, c] of game.cards) {
+          if (id === sourceCardId) continue;
+          if (c.controllerSeat !== controllerSeat) continue;
+          if (c.zone !== ZoneType.Battlefield) continue;
+          const chars = game.layerEngine.computeCharacteristics(id);
+          if (chars.types.has(CardType.Artifact) && chars.types.has(CardType.Creature)) return true;
+        }
+        return false;
       },
       resolver: {
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {

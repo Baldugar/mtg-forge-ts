@@ -49,8 +49,24 @@ export class AscendKeywordHandler extends KeywordHandler {
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,
       matches(event: GameEvent): boolean {
-        // Fire on any CardChangedZone — the resolver re-checks the count.
-        return event.kind === "CardChangedZone";
+        // M6.18 — Forge models Ascend as a state-based check, not a queue-
+        // every-zone-move trigger. Mirror that by gating the trigger's match
+        // on (1) cityBlessing not yet gained AND (2) controller actually has
+        // 10+ permanents at the moment the event fires. Otherwise the
+        // trigger fires on every ETB / mill / discard and no-ops, producing
+        // spurious AbilityActivated + StackItemResolved events for cards
+        // like Storm Fleet Sprinter that just ETB into a single-permanent
+        // battlefield.
+        if (event.kind !== "CardChangedZone") return false;
+        if (game.flags.cityBlessing.has(controllerSeat)) return false;
+        let count = 0;
+        for (const c of game.cards.values()) {
+          if (c.zone !== ZoneType.Battlefield) continue;
+          if (c.controllerSeat !== controllerSeat) continue;
+          count++;
+          if (count >= 10) return true;
+        }
+        return false;
       },
       resolver: {
         // biome-ignore lint/correctness/useYield: cityBlessing stamp is synchronous

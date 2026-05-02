@@ -838,6 +838,28 @@ export class CastPipeline {
         paperAny.manaCost !== undefined
           ? (paperAny.manaCost ?? null)
           : (card.paperCard.definition?.manaCost ?? null);
+
+      // M6.18 — When the *spell* ability (SP$, not AB$) declares an explicit
+      // `Cost$` override (e.g. `A:SP$ ChangeZone | Cost$ B PayLife<2> | ...`
+      // for synthetic Vampiric Tutor), Forge uses the SA-level cost as the
+      // spell's full payment, not the card-level ManaCost: line. Mirror that
+      // here so additional non-mana costs (PayLife, Sacrifice, Discard)
+      // bundled into the spell's Cost$ actually fire alongside the mana
+      // payment. Skip AB$ abilities — Llanowar Elves' `A:AB$ Mana | Cost$ T`
+      // is its tap ability, NOT the cast cost; using it as the spell cost
+      // would make Llanowar cost {T} instead of {G}.
+      const firstSa = card.spellAbilities[0];
+      const isSpellSa = (firstSa?.ast as { kind?: string } | undefined)?.kind === "spell";
+      const saCostRaw =
+        isSpellSa && typeof firstSa?.ast?.cost?.raw === "string" && firstSa.ast.cost.raw.trim() !== ""
+          ? firstSa.ast.cost.raw.trim()
+          : "";
+      if (saCostRaw !== "") {
+        const baseRaw = (baseCost as { raw?: string } | null | undefined)?.raw;
+        if (baseRaw === undefined || saCostRaw !== baseRaw) {
+          baseCost = { raw: saCostRaw };
+        }
+      }
     }
 
     const costMods = this.game.staticEffectRegistry.byCategory("costModification");

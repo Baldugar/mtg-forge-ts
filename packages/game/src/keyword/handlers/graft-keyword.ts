@@ -47,31 +47,25 @@ export class GraftKeywordHandler extends KeywordHandler {
     const sourceCardId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
 
-    // ETB trigger — puts safeN +1/+1 counters on self.
-    const etbId = game.newEntityId();
-    const etb: TriggeredAbilityWithResolver = {
-      id: etbId,
-      kind: "triggered",
-      sourceCardId,
-      activeInZones: new Set([ZoneType.Battlefield]),
-      timestamp: 0,
-      controllerSeatAtReg: controllerSeat,
-      isDelayed: false,
-      matches(event: GameEvent): boolean {
-        if (event.kind !== "CardChangedZone") return false;
-        const p = event.payload as { cardId: EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
-      },
-      resolver: {
-        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
-          const g = gameUnknown as Game;
-          yield* g.action.addCounter(sourceCardId, CounterType.PlusOnePlusOne, safeN, sourceCardId);
-        },
-      },
+    // M6.19 — Graft's "enters with N +1/+1 counters" is a CR 614
+    // replacement effect in Forge, not a stack-going triggered ability.
+    // Mirror by stamping etbCounterSpecs; applyEtbStamping consumes the
+    // slot inside the ETB pipeline (silent — no AbilityActivated, no
+    // SpellCast). Forge's Graft emits CounterAdded only.
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+      }>;
     };
+    if (!slot.etbCounterSpecs) slot.etbCounterSpecs = [];
+    slot.etbCounterSpecs.push({
+      counterType: CounterType.PlusOnePlusOne,
+      amount: safeN,
+      variable: false,
+    });
     if (!card.triggeredAbilities) card.triggeredAbilities = [];
-    card.triggeredAbilities.push(etb as unknown as TriggeredAbility);
-    game.triggerRegistry.register(etb as unknown as TriggeredAbility);
 
     // Watch trigger — when ANOTHER creature enters under any controller,
     // optionally transfer a +1/+1 counter from self to it.
