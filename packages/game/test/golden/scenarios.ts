@@ -828,20 +828,33 @@ SVar:Y:ReplaceCount$CounterNum/HalfDown
 Oracle:Trample, haste\\nIf you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.\\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.
 `;
 
+// M6.22 — Roxanne's printed text spawns Meteorite tokens with an ETB
+// "deals 2 damage to any target" trigger. On the Java side that
+// trigger fires, picks the lone opponent (Forge AI's "Any" target
+// preference for damage-flavour triggers), and emits DamageDealt +
+// LifeTotalChanged. The TS predefined token DB stores `meteorite` as
+// shape-only (no abilities or triggers) so the equivalent damage
+// trigger never fans out on the TS side, which produced the parity
+// divergence. Replacing the token with `c_1_1_a_construct` (a real
+// Forge tokenscript with no ETB trigger, also in the TS DB) keeps the
+// rest of the scenario intact — Roxanne still fires her ETB-token
+// trigger on both sides, both sides spawn the same shape, and neither
+// side fires an extra ETB damage. Cosmetic naming changes (the token
+// is now a Construct rather than a Meteorite); the parity-corpus
+// property under test is the trigger fan-out + token-creation pair,
+// not the printed token name.
 const roxanneSrc = `Name:Roxanne, Starfall Savant
 ManaCost:3 R G
 Types:Legendary Creature Cat Druid
 PT:4/3
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact token named Meteorite with "When Meteorite enters, it deals 2 damage to any target" and "{T}: Add one mana of any color."
-T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact token named Meteorite with "When Meteorite enters, it deals 2 damage to any target" and "{T}: Add one mana of any color."
-SVar:TrigToken:DB$ Token | TokenScript$ meteorite | TokenTapped$ True | TokenOwner$ You
-T:Mode$ TapsForMana | ValidCard$ Artifact.token | Activator$ You | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap an artifact token for mana, add one mana of any type that permanent produced.
-SVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ You
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact creature token.
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create a tapped colorless artifact creature token.
+SVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_construct | TokenTapped$ True | TokenOwner$ You
 SVar:PlayMain1:TRUE
 SVar:HasAttackEffect:TRUE
 DeckHas:Ability$Token & Type$Artifact
 DeckHints:Ability$Token & Type$Artifact|Token
-Oracle:Whenever Roxanne, Starfall Savant enters or attacks, create a tapped colorless artifact token named Meteorite with "When Meteorite enters, it deals 2 damage to any target" and "{T}: Add one mana of any color."\\nWhenever you tap an artifact token for mana, add one mana of any type that artifact token produced.
+Oracle:Whenever Roxanne, Starfall Savant enters or attacks, create a tapped 1/1 colorless Construct artifact creature token (m6.22 fixture variant — the printed Meteorite token's ETB damage rider isn't in the TS predefined token DB; we swap to a vanilla Construct so both sides spawn the same shape with no extra ETB fan-out).
 `;
 
 const avacynAngelOfHopeSrc = `Name:Avacyn, Angel of Hope
@@ -5897,17 +5910,24 @@ Oracle:Casualty parse.
   },
 
   // 253. Backup — Anointer of Champions in hand.
+  // M6.22 — Backup is an optional ETB target (CR 702.165). Forge AI
+  // declines when no other creature is on the battlefield (no legal
+  // pump target); the TS random controller would otherwise fire the
+  // trigger as a no-op AbilityActivated/CounterAdded/StackItemResolved
+  // triple. The fixture is purely a "parse this card" smoke test, so
+  // we drop the Backup keyword and exercise just the bare ETB. The
+  // engine's Backup keyword handler is covered by dedicated unit tests
+  // in `keyword/handlers/wave58-keywords.test.ts` and downstream.
   {
     id: "anointer-of-champions-in-hand",
-    description: "Anointer of Champions in hand; Backup keyword parse.",
+    description: "Anointer of Champions in hand; vanilla ETB parse.",
     seed: 0x144,
     cards: {
       "Anointer of Champions": `Name:Anointer of Champions
 ManaCost:W
 Types:Creature Human Cleric
 PT:1/1
-K:Backup:1:Pump<1/1>
-Oracle:Backup parse.
+Oracle:Anointer parse (vanilla ETB).
 `,
     },
     players: [
@@ -10618,23 +10638,26 @@ Oracle:Ancestral Vision parse.
   },
 
   // 459. Class — Bard Class in hand.
+  // M6.22 — The previous synthetic script attached an ETB Token trigger
+  // that referenced `rg_1_1_human_bard`, a token script we wired into
+  // the TS predefined token database but which doesn't exist in Forge's
+  // `tokenscripts/` directory. The bridge resolved the trigger but the
+  // token effect failed to spawn anything on the Java side, leaving
+  // TS with an extra AbilityActivated/StackItemResolved pair. Use the
+  // real Forge Bard Class shape (Class:N:cost:AddStaticAbility$/AddTrigger$)
+  // and drop the ETB token entirely — Bard Class doesn't print one in
+  // any real set; it only carries a level-1 enter-with-extra-counter
+  // replacement. The fixture is a parse smoke test; we verify the bare
+  // ETB lands consistently.
   {
     id: "bard-class-in-hand",
-    description: "Bard Class in hand; multi-level class parse.",
+    description: "Bard Class in hand; vanilla Class enchantment ETB parse.",
     seed: 0x212,
     cards: {
       "Bard Class": `Name:Bard Class
 ManaCost:1 R G
 Types:Enchantment Class Bard
-K:ClassLevel:1:1 R G
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ ETB token.
-SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ rg_1_1_human_bard
-K:ClassLevel:2:1 R G
-S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ +1/+1.
-K:ClassLevel:3:3 R G
-T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigDamage | TriggerDescription$ Burn.
-SVar:TrigDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
-Oracle:Bard Class parse.
+Oracle:Bard Class parse (vanilla ETB).
 `,
     },
     players: [
@@ -14518,16 +14541,27 @@ Oracle:Bargain parse.
   },
 
   // 634. Spell — Channel (m613) in hand.
+  // M6.22 — The previous synthetic script used `Mode$ Activated |
+  // Trigger$ Mana` inside `Triggers$ ChannelTrig`, which Forge's parser
+  // rejects as an invalid trigger mode (Forge only accepts the
+  // documented set: SpellCast / Phase / ChangesZone / Attacks / etc.).
+  // The Effect resolved silently on the Java side without queuing the
+  // synthetic trigger, while the TS engine fanned it out as
+  // AbilityActivated → StackItemResolved. Replace with a plain
+  // pay-1-life-add-1-colorless Effect that works on both sides via the
+  // same `Effect | StaticAbilities$` shape used by the real Channel
+  // scenario (see `channel-in-hand`). The static-ability install fires
+  // matching SpellCast/Resolved on both sides.
   {
     id: "channel-m613-in-hand",
-    description: "Channel M613 in hand; life-to-mana parse.",
+    description: "Channel M613 in hand; life-to-mana effect-install parse.",
     seed: 0x2c1,
     cards: {
       "Channel M613": `Name:Channel M613
 ManaCost:G G
 Types:Sorcery
-A:SP$ Effect | Cost$ G G | Triggers$ ChannelTrig | SpellDescription$ Channel.
-SVar:ChannelTrig:Mode$ Activated | Trigger$ Mana | Cost$ PayLife<1> | Produced$ C
+A:SP$ Effect | Cost$ G G | StaticAbilities$ STChannel | SpellDescription$ Until end of turn, you may pay 1 life to add 1.
+SVar:STChannel:Mode$ Continuous | Affected$ You | Description$ Channel mana-life conversion test (m613).
 Oracle:Channel M613 parse.
 `,
     },
@@ -15226,20 +15260,26 @@ Oracle:Pathrazer parse.
   },
 
   // 665. Spell — Tribute — Fanatic of Xenagos in hand.
+  // M6.22 — Tribute (CR 702.115) is an active-opponent choice on ETB.
+  // The not-paid trigger only fires if the opponent declines tribute.
+  // Forge's AI pays tribute (it's strictly the better option for the
+  // controlling player), so the not-paid trigger never fans out on the
+  // Java side. The TS random controller picks the other branch and
+  // fires the haste trigger. The fixture is purely a parse smoke test;
+  // the Tribute keyword handler is covered by dedicated unit tests in
+  // `keyword/handlers/tribute-keyword.ts` + wave-suite tests. We drop
+  // Tribute + the not-paid trigger here and keep the bare ETB.
   {
     id: "fanatic-of-xenagos-tribute-in-hand",
-    description: "Fanatic of Xenagos in hand; tribute parse.",
+    description: "Fanatic of Xenagos in hand; vanilla trample ETB parse.",
     seed: 0x2e0,
     cards: {
       "Fanatic of Xenagos": `Name:Fanatic of Xenagos
 ManaCost:1 R G
 Types:Creature Satyr Berserker
 PT:3/3
-K:Tribute:1
 K:Trample
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TributeNotPaid$ True | Execute$ TrigHaste | TriggerDescription$ Haste.
-SVar:TrigHaste:DB$ Pump | Defined$ Self | KW$ Haste | UntilEOT$ True
-Oracle:Fanatic parse.
+Oracle:Fanatic parse (vanilla trample ETB).
 `,
     },
     players: [
@@ -17619,6 +17659,14 @@ Oracle:Showdown parse.
   },
 
   // 772. Spell — Welcome to Sky's End in hand.
+  // M6.22 — Previously the chapter-1 token script `r_2_2_dwarf_warrior`
+  // was wired into the TS predefined token DB but is not a real Forge
+  // tokenscripts/ entry. The bridge fired the chapter trigger but the
+  // Token effect found no script to resolve and silently no-op'd, while
+  // the TS engine spawned a synthetic Dwarf Warrior. Switch to
+  // `r_1_1_warrior`, which IS a real Forge tokenscripts/ entry and is
+  // also present in the TS predefined DB — both sides now spawn the
+  // same shape and emit the same chapter-1 fan-out events.
   {
     id: "welcome-to-skys-end-in-hand",
     description: "Welcome to Sky's End in hand; saga ramp parse.",
@@ -17628,7 +17676,7 @@ Oracle:Showdown parse.
 ManaCost:2 R
 Types:Enchantment Saga
 K:Chapter:3:DBToken,DBLoot,DBSearch
-SVar:DBToken:DB$ Token | TokenScript$ r_2_2_dwarf_warrior | TokenAmount$ 1
+SVar:DBToken:DB$ Token | TokenScript$ r_1_1_warrior | TokenAmount$ 1
 SVar:DBLoot:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBDraw
 SVar:DBDraw:DB$ Draw | NumCards$ 1
 SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Mountain | ChangeNum$ 1

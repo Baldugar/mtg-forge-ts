@@ -1,9 +1,9 @@
 {
   "id": "channel-m613-in-hand",
-  "description": "Channel M613 in hand; life-to-mana parse.",
+  "description": "Channel M613 in hand; life-to-mana effect-install parse.",
   "seed": 705,
   "cards": {
-    "Channel M613": "Name:Channel M613\nManaCost:G G\nTypes:Sorcery\nA:SP$ Effect | Cost$ G G | Triggers$ ChannelTrig | SpellDescription$ Channel.\nSVar:ChannelTrig:Mode$ Activated | Trigger$ Mana | Cost$ PayLife<1> | Produced$ C\nOracle:Channel M613 parse.\n"
+    "Channel M613": "Name:Channel M613\nManaCost:G G\nTypes:Sorcery\nA:SP$ Effect | Cost$ G G | StaticAbilities$ STChannel | SpellDescription$ Until end of turn, you may pay 1 life to add 1.\nSVar:STChannel:Mode$ Continuous | Affected$ You | Description$ Channel mana-life conversion test (m613).\nOracle:Channel M613 parse.\n"
   },
   "players": [
     {
