@@ -5139,7 +5139,7 @@ Types:Creature Zombie
 PT:2/4
 T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Devotion drain.
 SVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ DevotionB
-SVar:DevotionB:Count$DevotionB
+SVar:DevotionB:Count$Devotion.Black
 Oracle:Devotion parse.
 `,
     },

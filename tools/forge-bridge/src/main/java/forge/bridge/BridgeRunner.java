@@ -294,9 +294,29 @@ public final class BridgeRunner {
             // color) to the active caster so spells with arbitrary costs
             // have a non-zero chance of paying. The scenario-specified
             // manaPool takes precedence as its color profile.
-            List<Object> manaPool = MiniJson.asArrayOrEmpty(sp.get("manaPool"));
-            for (Object m : manaPool) {
-                addFloatingMana(p, manaColorFromName((String) m), rec);
+            //
+            // M6.19 — Skip mana-pool seeding entirely if no action requires
+            // a paid cost (i.e. only `etb`/`advancePhase`/`advanceToStep`/
+            // `resolveTopOfStack` actions). The synthetic Wastes that backs
+            // floating-mana globes (sourceCardForMana fallback) becomes a
+            // valid target for ETB triggers (Felidar Guardian flicker,
+            // Champion of the Parish tribal +Other, etc.) and inflates the
+            // Java trace beyond the TS golden's reality. Free-action-only
+            // scenarios don't need any mana, so skip the seeding.
+            boolean needsPaidCost = false;
+            for (Object actObj : MiniJson.asArrayOrEmpty(scenario.get("actions"))) {
+                Map<String, Object> act = MiniJson.asObject(actObj);
+                String kind = (String) act.get("kind");
+                if ("cast".equals(kind) || "activate".equals(kind)) {
+                    needsPaidCost = true;
+                    break;
+                }
+            }
+            if (needsPaidCost) {
+                List<Object> manaPool = MiniJson.asArrayOrEmpty(sp.get("manaPool"));
+                for (Object m : manaPool) {
+                    addFloatingMana(p, manaColorFromName((String) m), rec);
+                }
             }
         }
 
@@ -574,17 +594,36 @@ public final class BridgeRunner {
      */
     private static void drainStack(Game game) {
         int cap = 200;
+        int prevSize = -1;
         while (cap-- > 0) {
             game.getAction().checkStateEffects(false);
             if (game.isGameOver()) return;
             game.getStack().addAllTriggeredAbilitiesToStack();
-            if (game.getStack().isEmpty()) return;
+            int curSize = game.getStack().size();
+            if (curSize == 0) return;
             try {
                 game.getStack().resolveStack();
             } catch (Throwable t) {
-                // Resolution can throw on AI-controller paths that need
-                // user input. Stop the drain rather than burn the trace.
-                return;
+                // M6.19 — Resolution can throw on AI-controller paths that
+                // need user input (Gray Merchant's LoseLife → opponent
+                // life-loss optional, Channel's mana-X choice, etc.). The
+                // exception leaves the stack frozen mid-resolve. Try to
+                // unfreeze and continue rather than abort: that lets the
+                // outer loop pick up the now-resolved tail and emit the
+                // post-resolution events. If the stack didn't shrink at
+                // all, break to avoid infinite loop.
+                if (System.getenv("BRIDGE_DEBUG") != null) {
+                    System.err.println("drainStack threw: " + t.getClass().getSimpleName() + ": " + t.getMessage());
+                    t.printStackTrace(System.err);
+                }
+                try {
+                    game.getStack().unfreezeStack();
+                } catch (Throwable ignore) {}
+                int afterSize = game.getStack().size();
+                if (afterSize >= curSize && prevSize == curSize) {
+                    return;
+                }
+                prevSize = curSize;
             }
         }
     }
@@ -861,6 +900,14 @@ public final class BridgeRunner {
             if (loyalty != null && !loyalty.isEmpty() && types2.contains("Planeswalker")) {
                 sb.append("Loyalty:").append(loyalty).append('\n');
             }
+            // M6.20 — Battle types need a Defense:N line or CardFactory throws
+            // when materializing the card. Fallback to a default of 5 if the
+            // synthetic script doesn't supply one.
+            if (types2.contains("Battle")) {
+                String defense = face.getDefense();
+                if (defense == null || defense.isEmpty()) defense = "5";
+                sb.append("Defense:").append(defense).append('\n');
+            }
         }
         sb.append("Oracle:Bridge fallback - abilities stripped.\n");
         String[] lines = sb.toString().split("\n", -1);
@@ -886,8 +933,16 @@ public final class BridgeRunner {
      */
     private static PaperCard paperCardFromScript(String cardName, String script) {
         if (script == null || script.isEmpty()) return null;
+        // M6.20 — TS-side scenario scripts use a few shorthands (DevotionB,
+        // NumGY, etc.) that Forge's CardRules / AbilityUtils don't recognize.
+        // Pre-translate those to the canonical Forge spelling so resolution
+        // works on both sides. Also append `TriggerZones$ Battlefield` to
+        // ChangesZone triggers that watch self-care via `+Other` so Forge
+        // doesn't fire the trigger from Hand zone the way the TS engine
+        // (which tracks zones explicitly per-trigger) silently doesn't.
+        String translated = translateScenarioScript(script);
         // Split into lines; CardRules.Reader.readCard takes Iterable<String>.
-        String[] rawLines = script.split("\\r?\\n", -1);
+        String[] rawLines = translated.split("\\r?\\n", -1);
         List<String> lines = new ArrayList<>(rawLines.length);
         for (String line : rawLines) lines.add(line);
         CardRules.Reader reader = new CardRules.Reader();
@@ -902,6 +957,45 @@ public final class BridgeRunner {
         // helpers use for inline-defined cards. The edition only matters
         // for set-based queries the bridge never makes.
         return new PaperCard(rules, "USG", CardRarity.Common);
+    }
+
+    /**
+     * M6.20 — Bridge-side script translation. Maps TS-side scenario shortcuts
+     * to their Forge-canonical spellings so CardRules.Reader produces a card
+     * Forge can resolve at runtime. Each substitution is documented with the
+     * scenarios it unblocks.
+     */
+    private static String translateScenarioScript(String script) {
+        String s = script;
+        // Devotion shortcuts: DevotionW/U/B/R/G → Devotion.White/Blue/Black/Red/Green.
+        // Unblocks gray-merchant-of-asphodel-in-hand (Count$DevotionB).
+        s = s.replace("Count$DevotionW", "Count$Devotion.White");
+        s = s.replace("Count$DevotionU", "Count$Devotion.Blue");
+        s = s.replace("Count$DevotionB", "Count$Devotion.Black");
+        s = s.replace("Count$DevotionR", "Count$Devotion.Red");
+        s = s.replace("Count$DevotionG", "Count$Devotion.Green");
+        // Add TriggerZones$ Battlefield to ChangesZone triggers that
+        // watch for Self-care via "+Other" — without it, Forge fires the
+        // trigger from Hand zone on the source's own ETB. Detection: any
+        // T:Mode$ ChangesZone line containing "+Other" and not already
+        // having TriggerZones$.
+        StringBuilder sb = new StringBuilder();
+        for (String line : s.split("\\r?\\n", -1)) {
+            if (line.startsWith("T:Mode$ ChangesZone")
+                && (line.contains("+Other") || line.contains("Other+"))
+                && !line.contains("TriggerZones$")) {
+                int execIdx = line.indexOf("| Execute$");
+                if (execIdx > 0) {
+                    line = line.substring(0, execIdx) + "| TriggerZones$ Battlefield "
+                         + line.substring(execIdx);
+                } else {
+                    line = line + " | TriggerZones$ Battlefield";
+                }
+            }
+            if (sb.length() > 0) sb.append('\n');
+            sb.append(line);
+        }
+        return sb.toString();
     }
 
     private static Card findCardInZone(Player p, String name, ZoneType zone) {

@@ -3,7 +3,7 @@
   "description": "Gray Merchant of Asphodel in hand; Devotion drain parse.",
   "seed": 290,
   "cards": {
-    "Gray Merchant of Asphodel": "Name:Gray Merchant of Asphodel\nManaCost:3 B B\nTypes:Creature Zombie\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Devotion drain.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ DevotionB\nSVar:DevotionB:Count$DevotionB\nOracle:Devotion parse.\n"
+    "Gray Merchant of Asphodel": "Name:Gray Merchant of Asphodel\nManaCost:3 B B\nTypes:Creature Zombie\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Devotion drain.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ DevotionB\nSVar:DevotionB:Count$Devotion.Black\nOracle:Devotion parse.\n"
   },
   "players": [
     {
