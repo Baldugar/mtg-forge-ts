@@ -538,250 +538,36 @@ export function diffTraces(
   // the M2 cohort the bridge always emits name; we just need to match.)
   const tsCardNamesById = new Map<number, string>();
 
-  let tsNorm = normalizeTrace(tsTrace, "ts", tsCardNamesById);
-  let javaNorm = normalizeTrace(javaTrace, "java", new Map());
+  const tsNorm = normalizeTrace(tsTrace, "ts", tsCardNamesById);
+  const javaNorm = normalizeTrace(javaTrace, "java", new Map());
 
-  // M6.35 — Trigger-fanout normalization. The TS engine resolves some
-  // triggered abilities directly (without going through the stack)
-  // while emitting only the effect kind (CounterAdded for saga lore,
-  // LifeTotalChanged for keyword life-gain, DamageDealt for combat-
-  // effect triggers). Forge always routes triggered abilities through
-  // the stack and fires `GameEventSpellAbilityCast` +
-  // `GameEventSpellResolved` (captured as `SpellCast` +
-  // `StackItemResolved`). When the TS side has no `AbilityActivated`
-  // (no umbrella) but does have a real effect kind (CounterAdded,
-  // LifeTotalChanged, DamageDealt, CardChangedZone(null→Battlefield)
-  // for tokens), the Java-side's trigger umbrella is parity-equivalent
-  // to the TS side's effect-only emission. Strip the Java trigger
-  // umbrella when the TS side carries the effect.
-  const tsHasTriggerEffect = tsNorm.some(
-    (e) =>
-      e.kind === "CounterAdded" ||
-      e.kind === "LifeTotalChanged" ||
-      e.kind === "DamageDealt" ||
-      e.kind === "CardTappedChanged" ||
-      // Token creation: TS emits CardChangedZone(null→Battlefield) for
-      // the new token; the trigger umbrella is silent.
-      (e.kind === "CardChangedZone" && e.fromZone === null && e.toZone === "Battlefield"),
-  );
-  const tsHasAbilityActivated = tsNorm.some((e) => e.kind === "AbilityActivated");
-  if (tsHasTriggerEffect && !tsHasAbilityActivated) {
-    // Drop Java-side trigger SpellCast / StackItemResolved (umbrella
-    // events for the same trigger). The effect-only kind already shares
-    // on both sides.
-    javaNorm = javaNorm.filter((e) => {
-      if (e.kind !== "SpellCast" && e.kind !== "StackItemResolved") return true;
-      // Keep non-trigger casts (real spells).
-      const raw = (javaTrace.events ?? []).concat(javaTrace.setupEvents ?? []);
-      // Find the matching raw event by index — same kind, same position
-      // among kind-matches. We approximate: scan all raw events of this
-      // kind and check isTrigger flag on any.
-      const sameKind = raw.filter((re) => re.kind === e.kind);
-      // If ANY of the same-kind raw events were trigger-driven, treat
-      // them all as umbrella. Real spell-casts coexist with trigger
-      // casts only in multi-action scenarios; in the present mvp-known
-      // bucket every leftover scenario has exactly one ETB action so
-      // this approximation is safe.
-      const anyTrigger = sameKind.some((re) => {
-        const p = (re.payload ?? {}) as Record<string, unknown>;
-        return p.isTrigger === true;
-      });
-      return !anyTrigger;
-    });
-  }
-
-  // M6.35 — Java-side fold: LifeTotalChanged that pairs with a
-  // DamageDealt is parity-equivalent to TS's lone DamageDealt. The TS
-  // engine emits DamageDealt with the target's life delta folded into
-  // the same event payload; Forge fires GameEventPlayerDamaged AND
-  // GameEventPlayerLivesChanged for the same logical damage. Strip the
-  // sibling life event when both fire and TS has no LifeTotalChanged /
-  // LifeChanged.
-  const tsHasLifeChange = tsNorm.some(
-    (e) =>
-      e.kind === "LifeTotalChanged" ||
-      e.kind === "LifeChanged" ||
-      e.kind === "LifeLost" ||
-      e.kind === "LifeGained",
-  );
-  const javaHasDamage = javaNorm.some((e) => e.kind === "DamageDealt");
-  if (!tsHasLifeChange && javaHasDamage) {
-    javaNorm = javaNorm.filter((e) => e.kind !== "LifeTotalChanged");
-  }
-  // Symmetric: TS-side has DamageDealt + LifeTotalChanged but Java fires
-  // only DamageDealt (e.g. when Forge's combat damage path bypasses the
-  // PlayerLivesChanged broadcast). Don't actually need to strip, but
-  // keep here as a comment for posterity.
-
-  // M6.35 — Java-only `DamageDealt` from a triggered ability whose TS
-  // counterpart resolves to a no-op (DefinedTarget$ Any with no AI
-  // target chosen, or Player.Opponent on a player who's not eligible).
-  // The TS engine emits the trigger umbrella but skips the damage event;
-  // Forge resolves through the real damage pipeline and fires
-  // GameEventCardDamaged. When TS has the umbrella but no DamageDealt,
-  // strip the Java DamageDealt + any post-resolution
-  // CardChangedZone(Battlefield→Graveyard) of the source (Heartfire
-  // Immolator self-damage killing itself).
+  // M6.36 — All ten M6.35 normalizer strip-class folds were verified
+  // dead code via per-fold disabling probe (tools/parity-harness/
+  // probe-strips.ts). For every fold individually disabled, and for
+  // the union of all ten disabled simultaneously, parity remained at
+  // 3284/3284 = 100%. The strips overlapped with the divergence
+  // classifier's existing `mvp-known` buckets:
   //
-  // Generalised in M6.35 (post-Bridge-V5) to also cover modal-charm
-  // mismatches where TS picks one mode and Forge picks another. The
-  // TS golden has the umbrella + its chosen mode's effect; Forge has
-  // the umbrella + a different mode's effect. The umbrellas already
-  // alias as shared; the Java-only effect of the alternate mode is
-  // a documented AI-choice divergence, not an engine bug.
-  const tsHasDamage = tsNorm.some((e) => e.kind === "DamageDealt");
-  const tsHasLife = tsNorm.some(
-    (e) =>
-      e.kind === "LifeTotalChanged" ||
-      e.kind === "LifeChanged" ||
-      e.kind === "LifeGained" ||
-      e.kind === "LifeLost",
-  );
-  const tsHasCounter = tsNorm.some((e) => e.kind === "CounterAdded");
-  const tsHasUmbrella = tsNorm.some((e) => e.kind === "AbilityActivated");
-  if (!tsHasDamage && tsHasUmbrella) {
-    javaNorm = javaNorm.filter((e) => {
-      if (e.kind === "DamageDealt") return false;
-      // Strip post-trigger Battlefield→Graveyard self-move on the
-      // source card when its companion damage event was just stripped.
-      if (e.kind === "CardChangedZone" && e.fromZone === "Battlefield" && e.toZone === "Graveyard") {
-        // Only strip if TS doesn't also have a battlefield→graveyard
-        // event for the same card.
-        const tsHasBattlefieldToGraveyard = tsNorm.some(
-          (te) => te.kind === "CardChangedZone" && te.fromZone === "Battlefield" && te.toZone === "Graveyard",
-        );
-        if (!tsHasBattlefieldToGraveyard) return false;
-      }
-      return true;
-    });
-  }
-  // Modal-charm Java-only LifeTotalChanged: TS picked a different mode
-  // (e.g. Beza's Charm picked Token, Forge picked Life). Strip the
-  // Java effect when TS has the umbrella but no life event.
-  if (!tsHasLife && tsHasUmbrella) {
-    javaNorm = javaNorm.filter((e) => e.kind !== "LifeTotalChanged");
-  }
-  // Modal-trigger Java-only CounterAdded: TS resolved the trigger
-  // umbrella but emitted no counter (foreign-targeted PutCounter with
-  // no eligible target on the TS scenario runner's empty battlefield).
-  // The TS umbrella aliases to Java SpellCast — Java's CounterAdded is
-  // the trigger's effect on a target the TS didn't resolve. Strip.
-  if (!tsHasCounter && tsHasUmbrella) {
-    javaNorm = javaNorm.filter((e) => e.kind !== "CounterAdded");
-  }
-
-  // M6.35 — Java-side CardTappedChanged: fired by GameEventCardTapped
-  // for both tap and untap. TS's CardTapped event family covers the
-  // tap direction; an untap broadcast (e.g. UntapAll on a 0-creature
-  // battlefield) has no TS counterpart. Strip Java-side
-  // CardTappedChanged with `tapped=false` when TS has no analog.
-  const tsHasTapEvent = tsNorm.some(
-    (e) => e.kind === "CardTapped" || e.kind === "CardTappedChanged" || e.kind === "CardsUntappedAll",
-  );
-  if (!tsHasTapEvent) {
-    javaNorm = javaNorm.filter((e) => e.kind !== "CardTappedChanged");
-  }
-
-  // M6.35 — CounterRemoved is symmetric to CounterAdded: Forge fires
-  // GameEventCardCounters for both directions; the TS engine emits a
-  // discrete `CounterAdded` umbrella but doesn't always fire
-  // `CounterRemoved` for damage-removed defense counters on battles.
-  // When TS has CounterAdded but no CounterRemoved, drop the Java-side
-  // CounterRemoved that pairs with it.
-  const tsHasCounterRemoved = tsNorm.some((e) => e.kind === "CounterRemoved");
-  const tsHasCounterAdded = tsNorm.some((e) => e.kind === "CounterAdded");
-  if (!tsHasCounterRemoved && tsHasCounterAdded) {
-    javaNorm = javaNorm.filter((e) => e.kind !== "CounterRemoved");
-  }
-
-  // M6.35 — Java-side spurious `CardChangedZone` from a synthetic
-  // disturb / mutate state-shift that TS handles via a state-flip
-  // (CardStateChanged) without emitting a zone-move. Strip Java-side
-  // CardChangedZone events without a matching TS-side CardChangedZone.
-  // Only applies to the very narrow case where shared kinds is empty
-  // and the only Java events are CardChangedZone + cast/resolved
-  // umbrella (e.g. `spectral-arcanist-disturb-etb-m628`).
-  if (tsNorm.length === 0 && javaNorm.length > 0) {
-    javaNorm = javaNorm.filter(
-      (e) => e.kind !== "CardChangedZone" && e.kind !== "SpellCast" && e.kind !== "StackItemResolved",
-    );
-  }
-
-  // M6.35 — TS-only `CardsUntappedAll` umbrella: Forge fans out via
-  // per-card CardTappedChanged events instead. When TS emits the
-  // umbrella but the Java side has no untap targets to broadcast, drop
-  // the umbrella from TS.
-  const javaHasTapChange = javaNorm.some((e) => e.kind === "CardTappedChanged");
-  if (!javaHasTapChange) {
-    tsNorm = tsNorm.filter((e) => e.kind !== "CardsUntappedAll");
-  }
-
-  // M6.35 — TS-only `CounterAdded` for replacement-driven counter
-  // placement Forge folds into moveTo silently (saga lore counter,
-  // battle defense counter, planeswalker initial loyalty). The bridge's
-  // `synthesizeMissingCounters` covers most of these; the remaining
-  // gap is when Forge fires CounterAdded for the BASE saga lore counter
-  // but TS doubles it via Doubling Season (TS amount=2, Java amount=1).
-  // Both sides emit a CounterAdded for the saga so the kind-set already
-  // matches; the residual histogram divergence is only on the amount
-  // payload, which is below the kind-level granularity the parity
-  // classifier reports on. No additional stripping needed here.
-
-  // M6.35 — Bridge V5 trigger-fanout strip. The bridge's
-  // `synthesizeMissingTriggers` emits `SpellCast` + `StackItemResolved`
-  // pairs flagged `synthetic: true, isTrigger: true` whenever the
-  // scenario card script declared an ETB self-trigger but Forge's run
-  // didn't actually fire one (CheckSVar gating, malformed keyword
-  // scripts, no-op effects). The TS engine, in contrast, doesn't emit
-  // an `AbilityActivated`/`StackItemResolved` umbrella for triggers that
-  // resolve to a no-op (e.g. Acidic Slime ETB with no destroy targets,
-  // Baithook Angler with no flicker target). When the TS side has no
-  // matching umbrella AND no carrier effect kind (CounterAdded,
-  // LifeTotalChanged, DamageDealt, token zone-move), the Java synthetic
-  // pair is parity-equivalent to the TS side's silent no-op and should
-  // be stripped from comparison.
-  const tsHasUmbrellaKind = tsNorm.some(
-    (e) => e.kind === "AbilityActivated" || e.kind === "StackItemResolved",
-  );
-  const tsHasEffectCarrier = tsNorm.some(
-    (e) =>
-      e.kind === "CounterAdded" ||
-      e.kind === "CounterRemoved" ||
-      e.kind === "LifeTotalChanged" ||
-      e.kind === "LifeChanged" ||
-      e.kind === "LifeGained" ||
-      e.kind === "LifeLost" ||
-      e.kind === "DamageDealt" ||
-      e.kind === "CardTappedChanged" ||
-      e.kind === "CardTapped" ||
-      // Token creation: a null→Battlefield zone change.
-      (e.kind === "CardChangedZone" && e.fromZone === null && e.toZone === "Battlefield"),
-  );
-  if (!tsHasUmbrellaKind && !tsHasEffectCarrier) {
-    // Strip Java-side synthetic trigger umbrella events. Identify
-    // synthetic events by inspecting the raw Java payload's `synthetic`
-    // and `isTrigger` flags (only the bridge-V5 synthesis layer sets
-    // both); real Forge-fired SpellCast/StackItemResolved have neither.
-    const rawJava = (javaTrace.events ?? []).concat(javaTrace.setupEvents ?? []);
-    const syntheticKindCounts: Record<string, number> = {};
-    for (const re of rawJava) {
-      const p = (re.payload ?? {}) as Record<string, unknown>;
-      if (p.synthetic === true && p.isTrigger === true) {
-        syntheticKindCounts[re.kind] = (syntheticKindCounts[re.kind] ?? 0) + 1;
-      }
-    }
-    if (Object.keys(syntheticKindCounts).length > 0) {
-      // Drop one normalized event per synthetic raw event by kind.
-      javaNorm = javaNorm.filter((e) => {
-        const remaining = syntheticKindCounts[e.kind] ?? 0;
-        if (remaining > 0) {
-          syntheticKindCounts[e.kind] = remaining - 1;
-          return false;
-        }
-        return true;
-      });
-    }
-  }
+  //   - Java-only `LifeTotalChanged` / `CounterAdded` /
+  //     `CardTappedChanged` / `DamageDealt` / `SpellCast` /
+  //     `StackItemResolved` / `CardChangedZone` / `CounterRemoved` —
+  //     all classified `ts-runner-shallow` or `bridge-action-skipped`
+  //     in `JAVA_ONLY_KIND_CLASS` (see lines 331-376).
+  //   - TS-only `CardsUntappedAll` — classified `bridge-action-skipped`
+  //     in `TS_ONLY_KIND_CLASS` (line 432).
+  //
+  // The classifier already accepts these as known M3-MVP gaps; the
+  // M6.35 folds were redundant strips on top of recognised divergences.
+  // Per the M6.36 mandate (REAL fixes only, NO STRIPPING) we delete
+  // them entirely — the existing classifier semantics are the right
+  // and only place to register cross-engine divergence acknowledgment.
+  //
+  // The synthetic-isTrigger pair detection (former FOLD10) was the
+  // only diagnostic-class fold (it consulted bridge-emitted
+  // `synthetic: true, isTrigger: true` markers to suppress noise from
+  // bridge-V5 fan-out synthesis). The probe showed it too is
+  // redundant with the classifier; the synthetic markers are already
+  // visible to the classifier through the kind alone.
 
   const tsHist = histogramOf(tsNorm);
   const javaHist = histogramOf(javaNorm);
