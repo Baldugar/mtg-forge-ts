@@ -1,0 +1,100 @@
+{
+  "scenarioId": "bolt-at-creature-llanowar-elves-6-m653",
+  "seed": 54726,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 8
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Llanowar Elves (3)]",
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "sourceName": "Lightning Bolt",
+        "amount": 3,
+        "type": "Normal"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false,
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 1,
+        "fromZone": "Stack",
+        "toZone": "Graveyard"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "cardId": 3,
+        "fromZone": "Battlefield",
+        "toZone": "Graveyard"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 15
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Llanowar Elves",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}
