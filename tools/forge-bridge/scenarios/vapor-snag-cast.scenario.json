@@ -1,0 +1,23 @@
+{
+  "id": "vapor-snag-cast",
+  "description": "Vapor Snag in hand; bounce + ping parse.",
+  "seed": 987,
+  "cards": {
+    "Vapor Snag": "Name:Vapor Snag\nManaCost:U\nTypes:Instant\nA:SP$ ChangeZone | Cost$ U | TargetType$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBLose | SpellDescription$ Snag.\nSVar:DBLose:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ 1\nOracle:Vapor Snag parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vapor Snag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

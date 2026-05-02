@@ -1,0 +1,29 @@
+{
+  "id": "strip-mine-etb",
+  "description": "Strip Mine ETB; destroy land parse.",
+  "seed": 959,
+  "cards": {
+    "Strip Mine": "Name:Strip Mine\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Mana.\nA:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land | SpellDescription$ Strip.\nOracle:Strip Mine parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strip Mine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Strip Mine",
+      "controller": 0
+    }
+  ]
+}

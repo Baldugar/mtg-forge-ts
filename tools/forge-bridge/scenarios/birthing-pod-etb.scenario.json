@@ -1,0 +1,29 @@
+{
+  "id": "birthing-pod-etb",
+  "description": "Birthing Pod ETB; activate parse.",
+  "seed": 922,
+  "cards": {
+    "Birthing Pod": "Name:Birthing Pod\nManaCost:3 G/P\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 1 G/P T Sac<1/Creature.YouCtrl/sacrificed creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | SpellDescription$ Pod.\nOracle:Pod parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Birthing Pod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Birthing Pod",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "tendrils-of-agony-cast",
+  "description": "Tendrils of Agony cast; storm drain parse.",
+  "seed": 994,
+  "cards": {
+    "Tendrils of Agony": "Name:Tendrils of Agony\nManaCost:2 B B\nTypes:Sorcery\nK:Storm\nA:SP$ LoseLife | Cost$ 2 B B | LifeAmount$ 2 | Defined$ Player.Opponent | SubAbility$ DBGain | SpellDescription$ Tendrils.\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Tendrils parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tendrils of Agony"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B",
+        "B",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Tendrils of Agony",
+      "castingPlayer": 0
+    }
+  ]
+}

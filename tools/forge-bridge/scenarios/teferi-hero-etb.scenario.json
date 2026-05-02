@@ -1,0 +1,29 @@
+{
+  "id": "teferi-hero-etb",
+  "description": "Teferi, Hero of Dominaria ETB; planeswalker -3 turn parse.",
+  "seed": 891,
+  "cards": {
+    "Teferi, Hero of Dominaria": "Name:Teferi, Hero of Dominaria\nManaCost:3 W U\nTypes:Legendary Planeswalker Teferi\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumCards$ 1 | SpellDescription$ +1 draw.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent | SpellDescription$ -3 bounce.\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Triggers$ TrigEmblemDraw | SpellDescription$ -8 emblem draw.\nSVar:TrigEmblemDraw:Mode$ Phase | Phase$ End of Turn | Execute$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:Teferi parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi, Hero of Dominaria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Teferi, Hero of Dominaria",
+      "controller": 0
+    }
+  ]
+}

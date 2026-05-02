@@ -1,0 +1,29 @@
+{
+  "id": "snapcaster-mage-etb-v2",
+  "description": "Snapcaster Mage ETB; flashback grant parse.",
+  "seed": 914,
+  "cards": {
+    "Snapcaster Mage": "Name:Snapcaster Mage\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlashback | TriggerDescription$ Grant flashback.\nSVar:TrigFlashback:DB$ Pump | TargetType$ Card | ValidTgts$ Card.Instant+inZoneGraveyard,Card.Sorcery+inZoneGraveyard | KW$ Flashback\nOracle:Snapcaster parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snapcaster Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Snapcaster Mage",
+      "controller": 0
+    }
+  ]
+}

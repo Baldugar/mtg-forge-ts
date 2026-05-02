@@ -1,0 +1,35 @@
+{
+  "id": "aetherize-cast",
+  "description": "Aetherize cast; bounce attackers parse.",
+  "seed": 876,
+  "cards": {
+    "Aetherize": "Name:Aetherize\nManaCost:3 U\nTypes:Instant\nA:SP$ ChangeZoneAll | Cost$ 3 U | ChangeType$ Creature.attacking | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Bounce attackers.\nOracle:Aetherize parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aetherize"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Aetherize",
+      "castingPlayer": 0
+    }
+  ]
+}

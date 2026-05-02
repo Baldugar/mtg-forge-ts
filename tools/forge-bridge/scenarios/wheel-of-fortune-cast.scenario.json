@@ -1,0 +1,34 @@
+{
+  "id": "wheel-of-fortune-cast",
+  "description": "Wheel of Fortune cast; discard hand draw 7 parse.",
+  "seed": 898,
+  "cards": {
+    "Wheel of Fortune": "Name:Wheel of Fortune\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Discard | Cost$ 2 R | Mode$ Hand | Defined$ Player | SubAbility$ DBDraw | SpellDescription$ Wheel.\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ 7\nOracle:Wheel of Fortune parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wheel of Fortune"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Wheel of Fortune",
+      "castingPlayer": 0
+    }
+  ]
+}

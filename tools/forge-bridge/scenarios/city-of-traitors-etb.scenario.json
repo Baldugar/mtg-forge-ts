@@ -1,0 +1,29 @@
+{
+  "id": "city-of-traitors-etb",
+  "description": "City of Traitors ETB; sac on land trigger parse.",
+  "seed": 958,
+  "cards": {
+    "City of Traitors": "Name:City of Traitors\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ City.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Sac.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Card.Self\nOracle:City parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "City of Traitors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "City of Traitors",
+      "controller": 0
+    }
+  ]
+}

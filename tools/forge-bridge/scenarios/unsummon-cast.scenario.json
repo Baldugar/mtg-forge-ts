@@ -1,0 +1,32 @@
+{
+  "id": "unsummon-cast",
+  "description": "Unsummon cast; bounce creature parse.",
+  "seed": 986,
+  "cards": {
+    "Unsummon": "Name:Unsummon\nManaCost:U\nTypes:Instant\nA:SP$ ChangeZone | Cost$ U | TargetType$ Creature | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Unsummon.\nOracle:Unsummon parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unsummon"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Unsummon",
+      "castingPlayer": 0
+    }
+  ]
+}

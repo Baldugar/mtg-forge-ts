@@ -1,0 +1,32 @@
+{
+  "id": "vampiric-tutor-cast",
+  "description": "Vampiric Tutor cast; search+top parse.",
+  "seed": 916,
+  "cards": {
+    "Vampiric Tutor": "Name:Vampiric Tutor\nManaCost:B\nTypes:Instant\nA:SP$ ChangeZone | Cost$ B | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card | ChangeNum$ 1 | SubAbility$ DBLose | SpellDescription$ Vampiric.\nSVar:DBLose:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nOracle:Vampiric parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampiric Tutor"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Vampiric Tutor",
+      "castingPlayer": 0
+    }
+  ]
+}

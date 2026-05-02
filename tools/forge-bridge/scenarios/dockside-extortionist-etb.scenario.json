@@ -1,0 +1,29 @@
+{
+  "id": "dockside-extortionist-etb",
+  "description": "Dockside Extortionist ETB; treasures parse.",
+  "seed": 1064,
+  "cards": {
+    "Dockside Extortionist": "Name:Dockside Extortionist\nManaCost:1 R\nTypes:Creature Goblin Pirate\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Treasures.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ X | References$ X\nSVar:X:Count$Valid Artifact.OppCtrl,Enchantment.OppCtrl\nOracle:Dockside parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dockside Extortionist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Dockside Extortionist",
+      "controller": 0
+    }
+  ]
+}

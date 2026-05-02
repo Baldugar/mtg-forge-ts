@@ -1,0 +1,29 @@
+{
+  "id": "courser-of-kruphix-etb",
+  "description": "Courser of Kruphix ETB; reveal top + land play parse.",
+  "seed": 973,
+  "cards": {
+    "Courser of Kruphix": "Name:Courser of Kruphix\nManaCost:1 G G\nTypes:Enchantment Creature Centaur\nPT:2/4\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ You | MayLookAt$ TopLibrary | MayPlayLandFromTopLibrary$ True | Description$ Top.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGain | TriggerDescription$ Gain.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Courser parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Courser of Kruphix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Courser of Kruphix",
+      "controller": 0
+    }
+  ]
+}

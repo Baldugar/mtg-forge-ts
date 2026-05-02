@@ -1,0 +1,34 @@
+{
+  "id": "engulf-the-shore-cast",
+  "description": "Engulf the Shore cast; bounce all by tough parse.",
+  "seed": 991,
+  "cards": {
+    "Engulf the Shore": "Name:Engulf the Shore\nManaCost:1 U U\nTypes:Instant\nA:SP$ ChangeZoneAll | Cost$ 1 U U | ChangeType$ Creature.toughnessLEX | Origin$ Battlefield | Destination$ Hand | References$ X | SpellDescription$ Engulf.\nSVar:X:Count$Valid Land.Island+YouCtrl\nOracle:Engulf parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Engulf the Shore"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "U",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Engulf the Shore",
+      "castingPlayer": 0
+    }
+  ]
+}

@@ -485,6 +485,18 @@ const entries: readonly TokenEntry[] = [
     oracle: "",
   },
   {
+    // Esika's Chariot, Trail of Crumbs, Adventures in Forgotten Realms — green 2/2 Cat creature token.
+    id: "g_2_2_cat",
+    name: "Cat Token",
+    types: types("Creature Cat"),
+    pt: { power: "2", toughness: "2" },
+    colors: colorsOf(G),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
     id: "g_1_1_snake_deathtouch",
     name: "Snake Token",
     types: types("Creature Snake"),

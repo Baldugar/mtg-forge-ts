@@ -1,0 +1,33 @@
+{
+  "id": "mana-drain-cast",
+  "description": "Mana Drain cast; counter + mana parse.",
+  "seed": 936,
+  "cards": {
+    "Mana Drain": "Name:Mana Drain\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | SubAbility$ DBMana | SpellDescription$ Counter.\nSVar:DBMana:DB$ Mana | Defined$ You | Produced$ C | Amount$ 1\nOracle:Mana Drain parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Drain"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Mana Drain",
+      "castingPlayer": 0
+    }
+  ]
+}

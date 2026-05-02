@@ -1,0 +1,29 @@
+{
+  "id": "hardened-scales-etb",
+  "description": "Hardened Scales ETB; +1/+1 counter add+1 parse.",
+  "seed": 886,
+  "cards": {
+    "Hardened Scales": "Name:Hardened Scales\nManaCost:G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | CounterType$ P1P1 | ReplaceWith$ DBPlusOne | Description$ Plus one.\nSVar:DBPlusOne:DB$ ReplaceCounter | Add$ 1\nOracle:Hardened Scales parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hardened Scales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Hardened Scales",
+      "controller": 0
+    }
+  ]
+}

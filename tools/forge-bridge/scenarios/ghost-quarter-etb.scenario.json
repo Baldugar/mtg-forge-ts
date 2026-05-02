@@ -1,0 +1,29 @@
+{
+  "id": "ghost-quarter-etb",
+  "description": "Ghost Quarter ETB; destroy land + opp basic parse.",
+  "seed": 960,
+  "cards": {
+    "Ghost Quarter": "Name:Ghost Quarter\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Mana.\nA:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land | SpellDescription$ Quarter.\nOracle:Ghost Quarter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghost Quarter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ghost Quarter",
+      "controller": 0
+    }
+  ]
+}

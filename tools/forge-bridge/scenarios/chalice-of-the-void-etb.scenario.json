@@ -1,0 +1,29 @@
+{
+  "id": "chalice-of-the-void-etb",
+  "description": "Chalice of the Void ETB; counter X cmc parse.",
+  "seed": 1025,
+  "cards": {
+    "Chalice of the Void": "Name:Chalice of the Void\nManaCost:X X\nTypes:Artifact\nK:etbCounter:CHARGE:X\nT:Mode$ SpellCast | ValidCard$ Card.cmcEQX | TriggerZones$ Battlefield | Execute$ TrigCounter | References$ X | TriggerDescription$ Counter.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nSVar:X:Count$CardCounters.CHARGE\nOracle:Chalice parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chalice of the Void"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Chalice of the Void",
+      "controller": 0
+    }
+  ]
+}

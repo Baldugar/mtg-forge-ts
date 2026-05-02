@@ -1,0 +1,29 @@
+{
+  "id": "parallel-lives-etb",
+  "description": "Parallel Lives ETB; double tokens parse.",
+  "seed": 1061,
+  "cards": {
+    "Parallel Lives": "Name:Parallel Lives\nManaCost:3 G\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleTokens | Description$ Double.\nSVar:DoubleTokens:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:Parallel Lives parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parallel Lives"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Parallel Lives",
+      "controller": 0
+    }
+  ]
+}

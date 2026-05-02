@@ -1,0 +1,29 @@
+{
+  "id": "bloodthirsty-aerialist-etb",
+  "description": "Bloodthirsty Aerialist ETB; counter on lifegain trigger parse.",
+  "seed": 904,
+  "cards": {
+    "Bloodthirsty Aerialist": "Name:Bloodthirsty Aerialist\nManaCost:1 B\nTypes:Creature Vampire Soldier\nPT:1/1\nK:Flying\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ +1/+1.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Aerialist parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodthirsty Aerialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bloodthirsty Aerialist",
+      "controller": 0
+    }
+  ]
+}

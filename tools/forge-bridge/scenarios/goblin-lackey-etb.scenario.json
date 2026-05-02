@@ -1,0 +1,29 @@
+{
+  "id": "goblin-lackey-etb",
+  "description": "Goblin Lackey ETB; combat dmg trigger parse.",
+  "seed": 925,
+  "cards": {
+    "Goblin Lackey": "Name:Goblin Lackey\nManaCost:R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPut | TriggerDescription$ Put goblin from hand.\nSVar:TrigPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Goblin | ChangeNum$ 1\nOracle:Lackey parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Lackey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Lackey",
+      "controller": 0
+    }
+  ]
+}

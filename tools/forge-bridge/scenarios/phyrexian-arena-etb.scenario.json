@@ -1,0 +1,29 @@
+{
+  "id": "phyrexian-arena-etb",
+  "description": "Phyrexian Arena ETB; upkeep draw lose parse.",
+  "seed": 896,
+  "cards": {
+    "Phyrexian Arena": "Name:Phyrexian Arena\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw + lose.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBLose\nSVar:DBLose:DB$ LoseLife | LifeAmount$ 1\nOracle:Phyrexian Arena parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Arena"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phyrexian Arena",
+      "controller": 0
+    }
+  ]
+}

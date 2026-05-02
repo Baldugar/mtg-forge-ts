@@ -1,0 +1,29 @@
+{
+  "id": "spawning-pool-etb",
+  "description": "Spawning Pool ETB; manland regen parse.",
+  "seed": 1006,
+  "cards": {
+    "Spawning Pool": "Name:Spawning Pool\nManaCost:no cost\nTypes:Land\nK:CARDNAME enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Mana.\nA:AB$ Animate | Cost$ 1 B | Defined$ Self | Power$ 1 | Toughness$ 1 | Types$ Creature,Skeleton | SpellDescription$ Pool.\nOracle:Pool parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawning Pool"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Spawning Pool",
+      "controller": 0
+    }
+  ]
+}

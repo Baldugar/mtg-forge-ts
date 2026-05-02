@@ -1,0 +1,29 @@
+{
+  "id": "sylvan-library-etb",
+  "description": "Sylvan Library ETB; upkeep draw 2 parse.",
+  "seed": 897,
+  "cards": {
+    "Sylvan Library": "Name:Sylvan Library\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Two extra draws.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Sylvan Library parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Library"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sylvan Library",
+      "controller": 0
+    }
+  ]
+}

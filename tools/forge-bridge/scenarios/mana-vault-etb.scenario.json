@@ -1,0 +1,29 @@
+{
+  "id": "mana-vault-etb",
+  "description": "Mana Vault ETB; tap 3 don't untap parse.",
+  "seed": 1048,
+  "cards": {
+    "Mana Vault": "Name:Mana Vault\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | SpellDescription$ Vault.\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.Self | NoUntap$ True | Description$ NoUntap.\nOracle:Vault parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mana Vault",
+      "controller": 0
+    }
+  ]
+}

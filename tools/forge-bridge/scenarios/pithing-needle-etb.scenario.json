@@ -1,0 +1,29 @@
+{
+  "id": "pithing-needle-etb",
+  "description": "Pithing Needle ETB; no activate by name parse.",
+  "seed": 1032,
+  "cards": {
+    "Pithing Needle": "Name:Pithing Needle\nManaCost:1\nTypes:Artifact\nS:Mode$ CantBeActivated | EffectZone$ Battlefield | ValidAffected$ Card.namedX | References$ X | Description$ No.\nSVar:X:Count$ChosenName\nOracle:Pithing Needle parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pithing Needle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Pithing Needle",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "devoted-druid-etb",
+  "description": "Devoted Druid ETB; tap-mana, -1 untap parse.",
+  "seed": 910,
+  "cards": {
+    "Devoted Druid": "Name:Devoted Druid\nManaCost:1 G\nTypes:Creature Elf Druid\nPT:0/2\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add G.\nA:AB$ Untap | Cost$ AddCounter<1/M1M1/CARDNAME> | Defined$ Self | SpellDescription$ Untap.\nOracle:Devoted Druid parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devoted Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Devoted Druid",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "animate-dead-etb",
+  "description": "Animate Dead with creature in GY; reanimate aura parse.",
+  "seed": 902,
+  "cards": {
+    "Animate Dead": "Name:Animate Dead\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant creature card in a graveyard\nA:SP$ Attach | Cost$ 1 B | ValidTgts$ Creature.inZoneGraveyard\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -1 | Description$ -1 power.\nOracle:Animate Dead parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animate Dead"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Grizzly Bears"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

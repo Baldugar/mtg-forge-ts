@@ -1,0 +1,29 @@
+{
+  "id": "parhelion-ii-etb",
+  "description": "Parhelion II ETB; attack-token parse.",
+  "seed": 1058,
+  "cards": {
+    "Parhelion II": "Name:Parhelion II\nManaCost:6\nTypes:Legendary Artifact Vehicle\nPT:5/5\nK:Crew:4\nK:Flying\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Make tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_a_angel_flying_vigilance | TokenAmount$ 2 | TokenTapped$ True | TokenAttacking$ True\nOracle:Parhelion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parhelion II"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Parhelion II",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "splinter-twin-etb",
+  "description": "Splinter Twin in hand; aura parse.",
+  "seed": 879,
+  "cards": {
+    "Splinter Twin": "Name:Splinter Twin\nManaCost:2 R R\nTypes:Enchantment Aura\nK:Enchant creature\nA:SP$ Attach | Cost$ 2 R R | ValidTgts$ Creature\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddTrigger$ TrigCopy | Description$ Copy.\nSVar:TrigCopy:Mode$ Tapped | ValidCard$ Card.EnchantedBy | Execute$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Enchanted | Keywords$ Haste | AtEOT$ Exile\nOracle:Splinter Twin parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splinter Twin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

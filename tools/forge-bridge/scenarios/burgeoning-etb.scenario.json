@@ -1,0 +1,29 @@
+{
+  "id": "burgeoning-etb",
+  "description": "Burgeoning ETB; opp turn extra parse.",
+  "seed": 977,
+  "cards": {
+    "Burgeoning": "Name:Burgeoning\nManaCost:G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land | TriggerZones$ Battlefield | Execute$ TrigPut | TriggerDescription$ Burgeon.\nSVar:TrigPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1\nOracle:Burgeoning parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burgeoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Burgeoning",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pyrite-spellbomb-etb",
+  "description": "Pyrite Spellbomb ETB; activate damage parse.",
+  "seed": 953,
+  "cards": {
+    "Pyrite Spellbomb": "Name:Pyrite Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ DealDamage | Cost$ R Sac<1/CARDNAME> | NumDmg$ 2 | ValidTgts$ Creature,Player | SpellDescription$ Pyrite.\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw.\nOracle:Pyrite Spellbomb parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyrite Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Pyrite Spellbomb",
+      "controller": 0
+    }
+  ]
+}

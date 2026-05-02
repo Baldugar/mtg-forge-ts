@@ -1,0 +1,29 @@
+{
+  "id": "goblin-matron-etb",
+  "description": "Goblin Matron ETB; tutor goblin parse.",
+  "seed": 926,
+  "cards": {
+    "Goblin Matron": "Name:Goblin Matron\nManaCost:2 R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Tutor goblin.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Goblin | ChangeNum$ 1\nOracle:Matron parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Matron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Matron",
+      "controller": 0
+    }
+  ]
+}

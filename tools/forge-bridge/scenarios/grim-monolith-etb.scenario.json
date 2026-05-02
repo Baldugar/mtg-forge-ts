@@ -1,0 +1,29 @@
+{
+  "id": "grim-monolith-etb",
+  "description": "Grim Monolith ETB; tap 3 mana parse.",
+  "seed": 1049,
+  "cards": {
+    "Grim Monolith": "Name:Grim Monolith\nManaCost:2\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | SpellDescription$ Monolith.\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.Self | NoUntap$ True | Description$ NoUntap.\nOracle:Monolith parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Monolith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Grim Monolith",
+      "controller": 0
+    }
+  ]
+}

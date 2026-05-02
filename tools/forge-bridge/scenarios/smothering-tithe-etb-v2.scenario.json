@@ -1,0 +1,29 @@
+{
+  "id": "smothering-tithe-etb-v2",
+  "description": "Smothering Tithe ETB; tax with treasure parse.",
+  "seed": 1066,
+  "cards": {
+    "Smothering Tithe": "Name:Smothering Tithe\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ Drawn | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Tithe.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1 | UnlessCost$ 2 | UnlessPayer$ TriggeredPlayer\nOracle:Tithe parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smothering Tithe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Smothering Tithe",
+      "controller": 0
+    }
+  ]
+}

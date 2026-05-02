@@ -1,0 +1,29 @@
+{
+  "id": "ancient-tomb-etb",
+  "description": "Ancient Tomb ETB; pain land parse.",
+  "seed": 957,
+  "cards": {
+    "Ancient Tomb": "Name:Ancient Tomb\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SubAbility$ DBPain | SpellDescription$ Tomb.\nSVar:DBPain:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nOracle:Tomb parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ancient Tomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ancient Tomb",
+      "controller": 0
+    }
+  ]
+}

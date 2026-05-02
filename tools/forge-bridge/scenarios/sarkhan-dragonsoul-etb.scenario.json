@@ -1,0 +1,29 @@
+{
+  "id": "sarkhan-dragonsoul-etb",
+  "description": "Sarkhan, Dragonsoul ETB; planeswalker loyalty parse.",
+  "seed": 885,
+  "cards": {
+    "Sarkhan, Dragonsoul": "Name:Sarkhan, Dragonsoul\nManaCost:5 R R\nTypes:Legendary Planeswalker Sarkhan\nLoyalty:4\nA:AB$ DealDamage | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumDmg$ 1 | ValidTgts$ Creature,Player | SpellDescription$ +1.\nA:AB$ Token | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | TokenScript$ r_5_5_dragon | TokenAmount$ 1 | SpellDescription$ -3 dragon.\nA:AB$ DealDamage | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | NumDmg$ 5 | ValidTgts$ Creature,Player | SpellDescription$ -9.\nOracle:Sarkhan, Dragonsoul parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan, Dragonsoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sarkhan, Dragonsoul",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "cryptic-command-cast",
+  "description": "Cryptic Command cast; modal parse.",
+  "seed": 892,
+  "cards": {
+    "Cryptic Command": "Name:Cryptic Command\nManaCost:1 U U U\nTypes:Instant\nA:SP$ Charm | Cost$ 1 U U U | Choices$ DBCounter,DBBounce,DBTap,DBDraw | CharmNum$ 2 | SpellDescription$ Modal.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell\nSVar:DBBounce:DB$ ChangeZone | TargetType$ Permanent | Origin$ Battlefield | Destination$ Hand\nSVar:DBTap:DB$ TapAll | ValidCards$ Creature.OppCtrl\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:Cryptic Command parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptic Command"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "U",
+        "U",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Cryptic Command",
+      "castingPlayer": 0
+    }
+  ]
+}

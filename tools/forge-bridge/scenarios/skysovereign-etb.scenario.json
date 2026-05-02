@@ -1,0 +1,29 @@
+{
+  "id": "skysovereign-etb",
+  "description": "Skysovereign, Consul Flagship ETB; ETB damage parse.",
+  "seed": 1057,
+  "cards": {
+    "Skysovereign, Consul Flagship": "Name:Skysovereign, Consul Flagship\nManaCost:6\nTypes:Legendary Artifact Vehicle\nPT:6/5\nK:Crew:3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ ETB dmg.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Permanent,Player | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl,Player.Opponent\nOracle:Skysovereign parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skysovereign, Consul Flagship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skysovereign, Consul Flagship",
+      "controller": 0
+    }
+  ]
+}

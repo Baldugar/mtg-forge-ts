@@ -1,0 +1,29 @@
+{
+  "id": "talrand-sky-summoner-etb",
+  "description": "Talrand, Sky Summoner ETB; drake on inst/sorc parse.",
+  "seed": 1072,
+  "cards": {
+    "Talrand, Sky Summoner": "Name:Talrand, Sky Summoner\nManaCost:2 U U\nTypes:Legendary Creature Merfolk Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Instant,Card.Sorcery | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Drake.\nSVar:TrigToken:DB$ Token | TokenScript$ u_2_2_drake_flying | TokenAmount$ 1\nOracle:Talrand parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talrand, Sky Summoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Talrand, Sky Summoner",
+      "controller": 0
+    }
+  ]
+}

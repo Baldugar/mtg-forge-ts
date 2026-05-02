@@ -1,0 +1,29 @@
+{
+  "id": "deceiver-exarch-etb",
+  "description": "Deceiver Exarch ETB; untap permanent parse.",
+  "seed": 880,
+  "cards": {
+    "Deceiver Exarch": "Name:Deceiver Exarch\nManaCost:2 U\nTypes:Creature Cleric\nPT:1/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Untap permanent.\nSVar:TrigUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl,Permanent.YouCtrl\nOracle:Deceiver Exarch parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deceiver Exarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Deceiver Exarch",
+      "controller": 0
+    }
+  ]
+}

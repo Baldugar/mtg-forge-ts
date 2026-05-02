@@ -1,0 +1,29 @@
+{
+  "id": "archmage-emeritus-etb",
+  "description": "Archmage Emeritus ETB; magecraft draw parse.",
+  "seed": 1070,
+  "cards": {
+    "Archmage Emeritus": "Name:Archmage Emeritus\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Instant,Card.Sorcery | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Emeritus.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Emeritus parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archmage Emeritus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Archmage Emeritus",
+      "controller": 0
+    }
+  ]
+}

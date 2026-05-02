@@ -1,0 +1,29 @@
+{
+  "id": "mana-crypt-etb",
+  "description": "Mana Crypt ETB; tap pain mana parse.",
+  "seed": 1047,
+  "cards": {
+    "Mana Crypt": "Name:Mana Crypt\nManaCost:0\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Crypt.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Pain.\nSVar:TrigDmg:DB$ DealDamage | Defined$ You | NumDmg$ 3 | RandomTrigger$ True\nOracle:Mana Crypt parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Crypt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mana Crypt",
+      "controller": 0
+    }
+  ]
+}

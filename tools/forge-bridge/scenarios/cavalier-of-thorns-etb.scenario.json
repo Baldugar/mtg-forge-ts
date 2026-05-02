@@ -1,0 +1,29 @@
+{
+  "id": "cavalier-of-thorns-etb",
+  "description": "Cavalier of Thorns ETB; reveal+mill+land parse.",
+  "seed": 912,
+  "cards": {
+    "Cavalier of Thorns": "Name:Cavalier of Thorns\nManaCost:3 G G\nTypes:Creature Elemental Knight\nPT:5/6\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Mill 5.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Land | DestinationZone2$ Graveyard\nOracle:Cavalier of Thorns parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalier of Thorns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cavalier of Thorns",
+      "controller": 0
+    }
+  ]
+}

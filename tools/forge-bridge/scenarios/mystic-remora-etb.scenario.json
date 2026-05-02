@@ -1,0 +1,29 @@
+{
+  "id": "mystic-remora-etb",
+  "description": "Mystic Remora ETB; tax cumulative upkeep parse.",
+  "seed": 1068,
+  "cards": {
+    "Mystic Remora": "Name:Mystic Remora\nManaCost:U\nTypes:Enchantment\nK:Cumulative upkeep:1\nT:Mode$ SpellCast | ValidPlayer$ Opponent | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Remora.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ 4 | UnlessPayer$ TriggeredPlayer\nOracle:Remora parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Remora"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mystic Remora",
+      "controller": 0
+    }
+  ]
+}

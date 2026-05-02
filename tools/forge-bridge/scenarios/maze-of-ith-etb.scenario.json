@@ -1,0 +1,29 @@
+{
+  "id": "maze-of-ith-etb",
+  "description": "Maze of Ith ETB; untap attacker parse.",
+  "seed": 955,
+  "cards": {
+    "Maze of Ith": "Name:Maze of Ith\nManaCost:no cost\nTypes:Land\nA:AB$ Untap | Cost$ T | TargetType$ Creature | ValidTgts$ Creature.attacking | SubAbility$ DBNoCombat | SpellDescription$ Maze.\nSVar:DBNoCombat:DB$ Pump | Defined$ Targeted | KW$ HIDDEN CARDNAME deals no combat damage this turn\nOracle:Maze parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maze of Ith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Maze of Ith",
+      "controller": 0
+    }
+  ]
+}

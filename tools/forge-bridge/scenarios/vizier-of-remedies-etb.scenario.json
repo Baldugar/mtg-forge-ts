@@ -1,0 +1,29 @@
+{
+  "id": "vizier-of-remedies-etb",
+  "description": "Vizier of Remedies ETB; replace -1 counter parse.",
+  "seed": 911,
+  "cards": {
+    "Vizier of Remedies": "Name:Vizier of Remedies\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:2/3\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ M1M1 | ReplaceWith$ DBSkip | Description$ One fewer -1.\nSVar:DBSkip:DB$ ReplaceCounter | Add$ -1\nOracle:Vizier parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vizier of Remedies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vizier of Remedies",
+      "controller": 0
+    }
+  ]
+}

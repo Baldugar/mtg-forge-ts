@@ -1,0 +1,29 @@
+{
+  "id": "esper-sentinel-etb",
+  "description": "Esper Sentinel ETB; opp first noncreature tax parse.",
+  "seed": 1069,
+  "cards": {
+    "Esper Sentinel": "Name:Esper Sentinel\nManaCost:W\nTypes:Artifact Creature Human Advisor\nPT:1/1\nT:Mode$ SpellCast | ValidPlayer$ Opponent | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Sentinel.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ 1 | UnlessPayer$ TriggeredPlayer\nOracle:Sentinel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esper Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esper Sentinel",
+      "controller": 0
+    }
+  ]
+}

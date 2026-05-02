@@ -1,0 +1,29 @@
+{
+  "id": "esikas-chariot-etb",
+  "description": "Esika's Chariot ETB; tokens parse.",
+  "seed": 1059,
+  "cards": {
+    "Esika's Chariot": "Name:Esika's Chariot\nManaCost:3 G\nTypes:Legendary Artifact Vehicle\nPT:4/4\nK:Crew:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Cat tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenAmount$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ Copy a creature.\nSVar:TrigCopy:DB$ CopyPermanent | TargetType$ Creature | ValidTgts$ Creature.YouCtrl+nonLegendary+nonToken\nOracle:Esika's Chariot parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esika's Chariot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esika's Chariot",
+      "controller": 0
+    }
+  ]
+}

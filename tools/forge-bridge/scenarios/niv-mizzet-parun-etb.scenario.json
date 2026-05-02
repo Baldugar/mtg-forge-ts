@@ -1,0 +1,29 @@
+{
+  "id": "niv-mizzet-parun-etb",
+  "description": "Niv-Mizzet, Parun ETB; spell draw + ping parse.",
+  "seed": 1071,
+  "cards": {
+    "Niv-Mizzet, Parun": "Name:Niv-Mizzet, Parun\nManaCost:U U U R R R\nTypes:Legendary Creature Dragon Wizard\nPT:5/5\nK:Flying\nT:Mode$ SpellCast | ValidPlayer$ Player | ValidCard$ Card.Instant,Card.Sorcery | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Niv.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nT:Mode$ Drawn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Ping.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Creature,Player\nOracle:Niv-Mizzet parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niv-Mizzet, Parun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Niv-Mizzet, Parun",
+      "controller": 0
+    }
+  ]
+}

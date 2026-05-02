@@ -1,0 +1,27 @@
+{
+  "scenarioId": "disenchant-cast",
+  "seed": 944,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Disenchant",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "BridgeCastFailed",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "detail": "cast: Disenchant (cost-payment or target-binding rejected)"
+      }
+    }
+  ],
+  "setupEvents": []
+}

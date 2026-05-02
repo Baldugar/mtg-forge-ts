@@ -1,0 +1,29 @@
+{
+  "id": "anointed-procession-etb-v2",
+  "description": "Anointed Procession ETB; double tokens parse.",
+  "seed": 1060,
+  "cards": {
+    "Anointed Procession": "Name:Anointed Procession\nManaCost:3 W\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleTokens | Description$ Double.\nSVar:DoubleTokens:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:Procession parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anointed Procession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Anointed Procession",
+      "controller": 0
+    }
+  ]
+}

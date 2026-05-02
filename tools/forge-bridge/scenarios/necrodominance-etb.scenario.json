@@ -1,0 +1,29 @@
+{
+  "id": "necrodominance-etb",
+  "description": "Necrodominance ETB; replace draw with skip+lose life parse.",
+  "seed": 874,
+  "cards": {
+    "Necrodominance": "Name:Necrodominance\nManaCost:B B B\nTypes:Enchantment\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ You | SetMaxHandSize$ 5 | Description$ Max hand 5.\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DBLoseLife | Description$ Replace draw with lose life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Necrodominance parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrodominance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Necrodominance",
+      "controller": 0
+    }
+  ]
+}

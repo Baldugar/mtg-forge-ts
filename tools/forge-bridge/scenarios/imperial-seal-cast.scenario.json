@@ -1,0 +1,32 @@
+{
+  "id": "imperial-seal-cast",
+  "description": "Imperial Seal cast; sorcery vamp tutor parse.",
+  "seed": 918,
+  "cards": {
+    "Imperial Seal": "Name:Imperial Seal\nManaCost:B\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ B | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card | ChangeNum$ 1 | SubAbility$ DBLose | SpellDescription$ Imperial.\nSVar:DBLose:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nOracle:Imperial Seal parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imperial Seal"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Imperial Seal",
+      "castingPlayer": 0
+    }
+  ]
+}

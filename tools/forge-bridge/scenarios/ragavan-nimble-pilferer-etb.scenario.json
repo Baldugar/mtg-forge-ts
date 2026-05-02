@@ -1,0 +1,29 @@
+{
+  "id": "ragavan-nimble-pilferer-etb",
+  "description": "Ragavan, Nimble Pilferer ETB; treasure on damage parse.",
+  "seed": 1065,
+  "cards": {
+    "Ragavan, Nimble Pilferer": "Name:Ragavan, Nimble Pilferer\nManaCost:R\nTypes:Legendary Creature Monkey Pirate\nPT:2/1\nK:Dash:R\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Pilfer.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1 | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | DigNum$ 1 | DefinedPlayer$ Opponent | ChangeNum$ 1 | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | WithoutManaCost$ True\nOracle:Ragavan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ragavan, Nimble Pilferer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ragavan, Nimble Pilferer",
+      "controller": 0
+    }
+  ]
+}

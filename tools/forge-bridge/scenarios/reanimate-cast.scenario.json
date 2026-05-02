@@ -1,0 +1,32 @@
+{
+  "id": "reanimate-cast",
+  "description": "Reanimate cast; recur from GY parse.",
+  "seed": 901,
+  "cards": {
+    "Reanimate": "Name:Reanimate\nManaCost:B\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBLose | SpellDescription$ Reanimate.\nSVar:DBLose:DB$ LoseLife | Defined$ You | LifeAmount$ TargetCMC | References$ TargetCMC\nSVar:TargetCMC:Targeted$Valid Card | Property$ CardManaCost\nOracle:Reanimate parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reanimate"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "B"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Reanimate",
+      "castingPlayer": 0
+    }
+  ]
+}

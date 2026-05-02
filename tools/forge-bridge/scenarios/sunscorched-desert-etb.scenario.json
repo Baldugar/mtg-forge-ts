@@ -1,0 +1,29 @@
+{
+  "id": "sunscorched-desert-etb",
+  "description": "Sunscorched Desert ETB; ping opp parse.",
+  "seed": 1020,
+  "cards": {
+    "Sunscorched Desert": "Name:Sunscorched Desert\nManaCost:no cost\nTypes:Land Desert\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Ping.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Mana.\nOracle:Sunscorched parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunscorched Desert"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sunscorched Desert",
+      "controller": 0
+    }
+  ]
+}

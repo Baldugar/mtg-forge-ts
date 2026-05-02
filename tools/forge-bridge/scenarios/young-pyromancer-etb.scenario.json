@@ -1,0 +1,29 @@
+{
+  "id": "young-pyromancer-etb",
+  "description": "Young Pyromancer ETB; elemental on inst/sorc parse.",
+  "seed": 1073,
+  "cards": {
+    "Young Pyromancer": "Name:Young Pyromancer\nManaCost:1 R\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Instant,Card.Sorcery | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Elemental.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_elemental | TokenAmount$ 1\nOracle:Pyromancer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Young Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Young Pyromancer",
+      "controller": 0
+    }
+  ]
+}

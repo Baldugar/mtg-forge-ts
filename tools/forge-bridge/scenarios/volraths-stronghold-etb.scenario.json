@@ -1,0 +1,29 @@
+{
+  "id": "volraths-stronghold-etb",
+  "description": "Volrath's Stronghold ETB; return creature top parse.",
+  "seed": 966,
+  "cards": {
+    "Volrath's Stronghold": "Name:Volrath's Stronghold\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Mana.\nA:AB$ ChangeZone | Cost$ 1 B B T | TargetType$ Card | ValidTgts$ Creature.YouCtrl+inZoneGraveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Top.\nOracle:Stronghold parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volrath's Stronghold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Volrath's Stronghold",
+      "controller": 0
+    }
+  ]
+}

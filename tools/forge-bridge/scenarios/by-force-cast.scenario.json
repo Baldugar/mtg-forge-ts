@@ -1,0 +1,34 @@
+{
+  "id": "by-force-cast",
+  "description": "By Force cast; X-destroy artifacts parse.",
+  "seed": 949,
+  "cards": {
+    "By Force": "Name:By Force\nManaCost:X R\nTypes:Sorcery\nA:SP$ Destroy | Cost$ X R | TargetType$ Permanent | ValidTgts$ Artifact | TargetMin$ 1 | TargetMax$ X | References$ X | SpellDescription$ By Force.\nSVar:X:Count$xPaid\nOracle:By Force parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "By Force"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "By Force",
+      "castingPlayer": 0
+    }
+  ]
+}

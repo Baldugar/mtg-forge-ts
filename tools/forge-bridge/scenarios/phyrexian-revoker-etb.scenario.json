@@ -1,0 +1,29 @@
+{
+  "id": "phyrexian-revoker-etb",
+  "description": "Phyrexian Revoker ETB; pithing-style parse.",
+  "seed": 1033,
+  "cards": {
+    "Phyrexian Revoker": "Name:Phyrexian Revoker\nManaCost:2\nTypes:Artifact Creature Horror\nPT:2/1\nS:Mode$ CantBeActivated | EffectZone$ Battlefield | ValidAffected$ Card.namedX | References$ X | Description$ No.\nSVar:X:Count$ChosenName\nOracle:Revoker parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Revoker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phyrexian Revoker",
+      "controller": 0
+    }
+  ]
+}

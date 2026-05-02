@@ -1,0 +1,29 @@
+{
+  "id": "urzas-bauble-etb",
+  "description": "Urza's Bauble ETB; sac peek parse.",
+  "seed": 1023,
+  "cards": {
+    "Urza's Bauble": "Name:Urza's Bauble\nManaCost:0\nTypes:Artifact\nA:AB$ Reveal | Cost$ T Sac<1/CARDNAME> | RevealValid$ Random+inZoneHand | DefinedPlayer$ Player | SubAbility$ DBDraw | SpellDescription$ Urza's.\nSVar:DBDraw:DB$ Draw | NumCards$ 1 | Delay$ NextUpkeep\nOracle:Urza's Bauble parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Bauble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Urza's Bauble",
+      "controller": 0
+    }
+  ]
+}

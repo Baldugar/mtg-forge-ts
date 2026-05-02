@@ -1,0 +1,34 @@
+{
+  "id": "cultivate-cast",
+  "description": "Cultivate cast; ramp 2 lands parse.",
+  "seed": 893,
+  "cards": {
+    "Cultivate": "Name:Cultivate\nManaCost:2 G\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ 2 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True | SpellDescription$ One to BF.\nA:SP$ ChangeZone | Cost$ 2 G | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeNum$ 1 | SpellDescription$ One to hand.\nOracle:Cultivate parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cultivate"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "G",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Cultivate",
+      "castingPlayer": 0
+    }
+  ]
+}

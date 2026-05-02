@@ -1,0 +1,29 @@
+{
+  "id": "goldspan-dragon-etb",
+  "description": "Goldspan Dragon ETB; treasure on attack parse.",
+  "seed": 1063,
+  "cards": {
+    "Goldspan Dragon": "Name:Goldspan Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Treasure.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1\nOracle:Goldspan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldspan Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goldspan Dragon",
+      "controller": 0
+    }
+  ]
+}

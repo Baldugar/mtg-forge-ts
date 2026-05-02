@@ -1,0 +1,29 @@
+{
+  "id": "recruiter-of-the-guard-etb",
+  "description": "Recruiter of the Guard ETB; 2-tough tutor parse.",
+  "seed": 928,
+  "cards": {
+    "Recruiter of the Guard": "Name:Recruiter of the Guard\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Tutor 2-tough.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.toughnessLE2 | ChangeNum$ 1\nOracle:Recruiter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recruiter of the Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Recruiter of the Guard",
+      "controller": 0
+    }
+  ]
+}

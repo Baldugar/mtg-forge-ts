@@ -1,0 +1,29 @@
+{
+  "id": "heliod-sun-crowned-etb",
+  "description": "Heliod ETB; lifelink + counter trigger parse.",
+  "seed": 877,
+  "cards": {
+    "Heliod, Sun-Crowned": "Name:Heliod, Sun-Crowned\nManaCost:1 W W\nTypes:Legendary Enchantment Creature God\nPT:5/5\nK:Indestructible\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Lifelink | Description$ Lifelink.\nT:Mode$ LifeGained | ValidPlayer$ You | Execute$ TrigCounter | TriggerDescription$ Counter on creature.\nSVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:Heliod parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heliod, Sun-Crowned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Heliod, Sun-Crowned",
+      "controller": 0
+    }
+  ]
+}

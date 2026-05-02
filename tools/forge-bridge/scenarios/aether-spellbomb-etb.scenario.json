@@ -1,0 +1,29 @@
+{
+  "id": "aether-spellbomb-etb",
+  "description": "Aether Spellbomb ETB; activate bounce parse.",
+  "seed": 952,
+  "cards": {
+    "Aether Spellbomb": "Name:Aether Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ U Sac<1/CARDNAME> | TargetType$ Permanent | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Bounce.\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw.\nOracle:Aether Spellbomb parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aether Spellbomb",
+      "controller": 0
+    }
+  ]
+}

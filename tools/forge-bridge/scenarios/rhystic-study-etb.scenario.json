@@ -1,0 +1,29 @@
+{
+  "id": "rhystic-study-etb",
+  "description": "Rhystic Study ETB; tax draw parse.",
+  "seed": 1067,
+  "cards": {
+    "Rhystic Study": "Name:Rhystic Study\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Rhystic.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ 1 | UnlessPayer$ TriggeredPlayer\nOracle:Rhystic Study parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhystic Study"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rhystic Study",
+      "controller": 0
+    }
+  ]
+}

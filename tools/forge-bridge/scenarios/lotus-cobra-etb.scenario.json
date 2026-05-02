@@ -1,0 +1,29 @@
+{
+  "id": "lotus-cobra-etb",
+  "description": "Lotus Cobra ETB; landfall mana trigger parse.",
+  "seed": 971,
+  "cards": {
+    "Lotus Cobra": "Name:Lotus Cobra\nManaCost:1 G\nTypes:Creature Snake\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Landfall mana.\nSVar:TrigMana:DB$ Mana | Defined$ You | Produced$ Any | Amount$ 1\nOracle:Lotus Cobra parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lotus Cobra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lotus Cobra",
+      "controller": 0
+    }
+  ]
+}

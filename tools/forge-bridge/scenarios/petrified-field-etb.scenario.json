@@ -1,0 +1,29 @@
+{
+  "id": "petrified-field-etb",
+  "description": "Petrified Field ETB; return land parse.",
+  "seed": 968,
+  "cards": {
+    "Petrified Field": "Name:Petrified Field\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Mana.\nA:AB$ ChangeZone | Cost$ T Sac<1/CARDNAME> | TargetType$ Card | ValidTgts$ Land.YouCtrl+inZoneGraveyard | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Petrified.\nOracle:Petrified Field parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Petrified Field"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Petrified Field",
+      "controller": 0
+    }
+  ]
+}

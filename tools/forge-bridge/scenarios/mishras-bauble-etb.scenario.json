@@ -1,0 +1,29 @@
+{
+  "id": "mishras-bauble-etb",
+  "description": "Mishra's Bauble ETB; sac scry parse.",
+  "seed": 1022,
+  "cards": {
+    "Mishra's Bauble": "Name:Mishra's Bauble\nManaCost:0\nTypes:Artifact\nA:AB$ Reveal | Cost$ T Sac<1/CARDNAME> | RevealValid$ TopLibrary | DefinedPlayer$ Player | SubAbility$ DBDraw | SpellDescription$ Bauble.\nSVar:DBDraw:DB$ Draw | NumCards$ 1 | Delay$ NextUpkeep\nOracle:Bauble parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mishra's Bauble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mishra's Bauble",
+      "controller": 0
+    }
+  ]
+}

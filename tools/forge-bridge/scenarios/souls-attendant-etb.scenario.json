@@ -1,0 +1,29 @@
+{
+  "id": "souls-attendant-etb",
+  "description": "Soul's Attendant ETB; trigger on creature parse.",
+  "seed": 903,
+  "cards": {
+    "Soul's Attendant": "Name:Soul's Attendant\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigGain | TriggerDescription$ Gain 1.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Soul's Attendant parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul's Attendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Soul's Attendant",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "recurring-nightmare-etb",
+  "description": "Recurring Nightmare ETB; reanimator engine parse.",
+  "seed": 923,
+  "cards": {
+    "Recurring Nightmare": "Name:Recurring Nightmare\nManaCost:2 B\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ Sac<1/Creature> Return<1/Card.Self> | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.inZoneGraveyard | SpellDescription$ Recur.\nOracle:Recurring Nightmare parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recurring Nightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Recurring Nightmare",
+      "controller": 0
+    }
+  ]
+}

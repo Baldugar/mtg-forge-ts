@@ -1,0 +1,29 @@
+{
+  "id": "field-of-the-dead-etb",
+  "description": "Field of the Dead ETB; count distinct lands trigger parse.",
+  "seed": 881,
+  "cards": {
+    "Field of the Dead": "Name:Field of the Dead\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | CheckSVar$ DistinctLands | SVarCompare$ GE7 | Execute$ TrigZombie | TriggerDescription$ Make a 2/2 Zombie.\nSVar:DistinctLands:Count$ DistinctLandNamesYouCtrl\nSVar:TrigZombie:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add C.\nOracle:Field of the Dead parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Field of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Field of the Dead",
+      "controller": 0
+    }
+  ]
+}

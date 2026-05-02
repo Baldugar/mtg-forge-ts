@@ -1,0 +1,29 @@
+{
+  "id": "imperial-recruiter-etb",
+  "description": "Imperial Recruiter ETB; tutor 2-power creature parse.",
+  "seed": 927,
+  "cards": {
+    "Imperial Recruiter": "Name:Imperial Recruiter\nManaCost:2 R\nTypes:Creature Human\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Tutor.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.powerLE2 | ChangeNum$ 1\nOracle:Imperial Recruiter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imperial Recruiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Imperial Recruiter",
+      "controller": 0
+    }
+  ]
+}

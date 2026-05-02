@@ -1,0 +1,37 @@
+{
+  "id": "echo-of-eons-cast",
+  "description": "Echo of Eons cast; wheel flashback parse.",
+  "seed": 900,
+  "cards": {
+    "Echo of Eons": "Name:Echo of Eons\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Cost$ 4 U U | ChangeType$ Card.inZoneHand,Card.inZoneGraveyard | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw | SpellDescription$ Echo.\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ 7\nK:Flashback:3 U U\nOracle:Echo of Eons parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Echo of Eons"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "U",
+        "C",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Echo of Eons",
+      "castingPlayer": 0
+    }
+  ]
+}
