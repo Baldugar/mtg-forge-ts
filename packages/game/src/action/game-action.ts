@@ -361,6 +361,20 @@ export class GameAction {
     if (delta !== 0 && !canChangeLife(game, seat)) effectiveDelta = 0;
     else if (delta > 0 && !canGainLife(game, seat, srcId)) effectiveDelta = 0;
     else if (delta < 0 && !canLoseLife(game, seat, srcId)) effectiveDelta = 0;
+    // M6.17 — Forge's `Player#gainLife` / `loseLife` short-circuit when
+    // the requested amount is <= 0 (no event, no triggers). Mirror that
+    // here so we don't emit a no-op LifeChanged for original delta=0
+    // paths (Body Count GainLife $NumGY with empty graveyard, Aetherflux
+    // Reservoir cast-counter at 0).
+    //
+    // We only suppress when the *input* delta was already 0 — the Wave
+    // 70.E/M/O Cant-gates ABOVE rewrite a non-zero delta to 0 and still
+    // expect a LifeChanged(delta=0) emission so SBA bookkeeping stays
+    // consistent (CantGainLife test invariant). So the short-circuit
+    // applies only to the input-zero path, not the gate-rewrite path.
+    if (delta === 0) {
+      return;
+    }
     const intent: LifeChangeIntent = {
       kind: "lifeChange",
       seat,
@@ -736,6 +750,30 @@ export class GameAction {
       const n = Number.parseInt(def.defense, 10);
       if (Number.isFinite(n) && n > 0 && (card.counters.get(CT.Defense) ?? 0) === 0) {
         yield* this.addCounter(card.id, CT.Defense, n);
+      }
+    }
+    // M6.17 — etbCounter parser-extension keyword stamps. The
+    // EtbCounterKeywordHandler stamps `card.etbCounterSpecs` with one
+    // entry per `K:etbCounter:<TYPE>:<NUMBER>` line. Mirrors Forge's
+    // CR 614 replacement-effect application: silent (no AbilityActivated
+    // emission, addCounter still fires CounterAdded). Variable forms
+    // (`X`) read `card.xValueAtCast` set by the X-spell cost pipeline.
+    const etbSpecs = (
+      card as unknown as {
+        etbCounterSpecs?: ReadonlyArray<{
+          readonly counterType: import("@mtg-forge-ts/core").CounterType;
+          readonly amount: number;
+          readonly variable: boolean;
+        }>;
+      }
+    ).etbCounterSpecs;
+    if (etbSpecs && etbSpecs.length > 0) {
+      const xValue = (card as unknown as { xValueAtCast?: number }).xValueAtCast;
+      for (const spec of etbSpecs) {
+        const n = spec.variable ? (typeof xValue === "number" && xValue > 0 ? xValue : 0) : spec.amount;
+        if (n > 0) {
+          yield* this.addCounter(card.id, spec.counterType, n);
+        }
       }
     }
     // Battle Siege — choose a protector. Auto-pick when there is exactly

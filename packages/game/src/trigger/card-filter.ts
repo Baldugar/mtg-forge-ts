@@ -162,6 +162,75 @@ const cardMatchesAlt = (card: Card, alt: string, ctx: CardFilterCtx): boolean =>
       if (card.suspected !== true) return false;
       continue;
     }
+    // M6.17 — Forge `power<OP><N>` / `toughness<OP><N>` qualifiers.
+    // E.g. `Creature.YouCtrl+powerGE4` (Beastbond Outcaster). Mirrors
+    // forge.game.card.CardProperty's "power*", "toughness*" predicates.
+    // Compute via layerEngine when available so static buffs are applied
+    // (otherwise fall back to printed PT).
+    if (q.startsWith("power") && q.length > 5) {
+      const cmpRaw = q.slice(5);
+      if (cmpRaw.length >= 3) {
+        const op = cmpRaw.slice(0, 2);
+        const nRaw = cmpRaw.slice(2);
+        const n = Number.parseInt(nRaw, 10);
+        if (Number.isFinite(n)) {
+          const def = card.paperCard.definition;
+          const printedRaw = def?.pt?.power;
+          const printedNum = printedRaw === undefined ? 0 : Number.parseInt(String(printedRaw), 10);
+          const live = (card as unknown as { power?: number }).power;
+          const power = typeof live === "number" ? live : Number.isFinite(printedNum) ? printedNum : 0;
+          const ok =
+            op === "GE"
+              ? power >= n
+              : op === "GT"
+                ? power > n
+                : op === "LE"
+                  ? power <= n
+                  : op === "LT"
+                    ? power < n
+                    : op === "EQ"
+                      ? power === n
+                      : op === "NE"
+                        ? power !== n
+                        : false;
+          if (!ok) return false;
+          continue;
+        }
+      }
+      return false;
+    }
+    if (q.startsWith("toughness") && q.length > 9) {
+      const cmpRaw = q.slice(9);
+      if (cmpRaw.length >= 3) {
+        const op = cmpRaw.slice(0, 2);
+        const nRaw = cmpRaw.slice(2);
+        const n = Number.parseInt(nRaw, 10);
+        if (Number.isFinite(n)) {
+          const def = card.paperCard.definition;
+          const printedRaw = def?.pt?.toughness;
+          const printedNum = printedRaw === undefined ? 0 : Number.parseInt(String(printedRaw), 10);
+          const live = (card as unknown as { toughness?: number }).toughness;
+          const tough = typeof live === "number" ? live : Number.isFinite(printedNum) ? printedNum : 0;
+          const ok =
+            op === "GE"
+              ? tough >= n
+              : op === "GT"
+                ? tough > n
+                : op === "LE"
+                  ? tough <= n
+                  : op === "LT"
+                    ? tough < n
+                    : op === "EQ"
+                      ? tough === n
+                      : op === "NE"
+                        ? tough !== n
+                        : false;
+          if (!ok) return false;
+          continue;
+        }
+      }
+      return false;
+    }
     if (COLOR_NAMES.has(q)) {
       if (!cardHasColor(card, q)) return false;
       continue;

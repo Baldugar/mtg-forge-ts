@@ -51,7 +51,7 @@ import { CardType, ZoneType } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { SvarContext } from "../svar/context.js";
 import { evaluateSVar } from "../svar/index.js";
-import { cardMatchesFilter } from "../trigger/card-filter.js";
+import { cardMatchesFilter, evalPresentCompare } from "../trigger/card-filter.js";
 
 /**
  * Read a literal-kind ParamValue from an effect invocation, or undefined.
@@ -431,6 +431,44 @@ export function triggerFailsRequirements(game: Game, trigger: TriggeredAbility):
       }
     }
     if (count < 3) return true;
+  }
+
+  // M6.17 — Forge `IsPresent$ <ValidCard>` (CardTraitBase.java line 409).
+  // Counts cards in `PresentZone$` (default Battlefield) controlled by
+  // `PresentPlayer$` (default Any) matching the filter, then evaluates
+  // `PresentCompare$` (default GE1). If the predicate fails, the trigger
+  // doesn't queue. Beastbond Outcaster's
+  //   IsPresent$ Creature.YouCtrl+powerGE4
+  // is the parity driver — the 3/3 itself doesn't satisfy powerGE4 so the
+  // trigger never fires. Mirrors Forge's meetsCommonRequirements path.
+  const isPresent = getStringParam(params, "IsPresent");
+  if (isPresent !== undefined) {
+    const presentCompareRaw = getStringParam(params, "PresentCompare") ?? "GE1";
+    const presentPlayer = getStringParam(params, "PresentPlayer") ?? "Any";
+    const presentZoneRaw = getStringParam(params, "PresentZone");
+    const presentZone = presentZoneRaw
+      ? (ZONE_BY_TGT_ZONE[presentZoneRaw] ?? ZoneType.Battlefield)
+      : ZoneType.Battlefield;
+    const seat = sourceCard.controllerSeat;
+    let count = 0;
+    for (const card of game.cards.values()) {
+      if (card.zone !== presentZone) continue;
+      const isYou = card.controllerSeat === seat;
+      const isOpp = card.controllerSeat !== seat;
+      // PresentPlayer$ filter on raw seat.
+      if (presentPlayer === "You" && !isYou) continue;
+      if ((presentPlayer === "Opponent" || presentPlayer === "Opp") && !isOpp) continue;
+      // Default "Any" admits both.
+      if (
+        cardMatchesFilter(card, isPresent, {
+          sourceCardId: sourceCard.id,
+          controllerSeat: seat,
+        })
+      ) {
+        count++;
+      }
+    }
+    if (!evalPresentCompare(count, presentCompareRaw)) return true;
   }
 
   return false;

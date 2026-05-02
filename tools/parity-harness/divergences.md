@@ -1,12 +1,20 @@
+<<<<<<< Updated upstream
 # Divergence catalog — M2 cohort (post-Bridge V2 + TS runner V2 + M4.5 + M5)
+=======
+# Divergence catalog — M2 cohort (post-Bridge V2 + TS runner V2)
+>>>>>>> Stashed changes
 
 Per-scenario divergence classification produced by the M4 parity harness
 (`packages/game/test/parity/runner.ts`) on the M2 30-scenario cohort,
 captured against the V2 bridge (`forge-bridge-v2-0.2.0`) and the V2 TS
+<<<<<<< Updated upstream
 golden runner (Testing M2.5 — stack-drain symmetric with Bridge V2),
 with the M4.5 alias-map and engine-internal-stripping fixes applied,
 and M5's DealDamage target-kind discrimination fix landed.
 
+=======
+golden runner (Testing M2.5 — stack-drain symmetric with Bridge V2).
+>>>>>>> Stashed changes
 No scenario landed in `real-divergence-investigate`, so there are no
 real bugs to chase from this cohort.
 
@@ -20,6 +28,7 @@ real bugs to chase from this cohort.
 
 ## Aggregate this run (post-M5)
 
+<<<<<<< Updated upstream
 - 30 scenarios.
 - **29 full match** (97%). Up from 28 (post-M4.5), 16 (post-V2 + M2.5).
 - **1 mvp-known** (3%). `rest-in-peace-etb`, tagged `ts-runner-shallow`.
@@ -115,6 +124,33 @@ Three fixes converted 12 mvp-known scenarios into full matches:
 | Scenario | Java-only kinds | Why |
 | --- | --- | --- |
 | `rest-in-peace-etb` | `SpellCast`, `StackItemResolved` (`ts-runner-shallow`) | Forge fires the ETB-installed trigger even with empty graveyards (the trigger does nothing but still queues / resolves). The TS engine's static-installation path is silent — equivalent to "trigger fires but produces no events." Both behaviours are CR-faithful; this is a pure event-emission style difference and not worth altering either side. M5 evaluated emitting a synthetic SpellCast/StackItemResolved on the TS side or stripping the Java install pair; both paths cost more than they gain. |
+=======
+- `target-mismatch` — TS emits `CardTargeted` / `CrimeCommitted` for
+  scripted targets; Forge has no equivalent event-kind (targeting is
+  folded into the `GameEventSpellAbilityCast` payload). The bridge V2
+  binds the right targets, but the kinds themselves don't appear on the
+  Java side.
+- `free-cast-missing-mana` — TS emits `CostPaid` to mark cost completion;
+  Forge fires `GameEventManaPool(Removed)` per mana globe (mapped to
+  `ManaSpent` in our trace) but no aggregate `CostPaid`. With V2 the
+  individual `ManaSpent` events do show up on both sides; only the
+  TS-only `CostPaid` umbrella event survives in this bucket.
+- `no-stack-drain` — TS-only events that V2's bridge drain should now
+  match (this bucket has shrunk to 1 scenario, ancestral-recall, where
+  TS emits `CardDrawn` per draw but Forge emits a single
+  `CardChangedZone` per drawn card without a separate `CardDrawn`).
+- `bridge-action-skipped` — was the dominant V1 class; now zero. V2's
+  cost-payment + target-binding makes every cast in this cohort land.
+- `ts-runner-shallow` — Java-only events from V2's full stack drain
+  that the TS golden runner hadn't caught up to. **M2.5 closed most of
+  this** — the V2 TS runner now drains the stack symmetrically. The
+  residual entries are scenarios where Forge fires extra `LifeTotalChanged`
+  beats (the TS engine emits one `LifeChanged` per delta but Forge
+  emits one per intermediate value when a single resolver chains
+  multiple deltas) or `SpellCast` for static-installation triggers
+  the TS engine doesn't yet fan out (e.g. Rest in Peace's "static
+  effect installed" trigger doesn't have a TS analogue).
+>>>>>>> Stashed changes
 
 ## Cross-side kind aliases
 
@@ -125,6 +161,7 @@ Three fixes converted 12 mvp-known scenarios into full matches:
 - TS `CardTapped` ≡ Java `CardTappedChanged` (Forge fires
   `GameEventCardTapped`; TS uses a slightly different name).
 
+<<<<<<< Updated upstream
 ## Engine-internal stripped (TS-side)
 
 These TS event kinds are dropped before diff because they have no Java
@@ -229,6 +266,37 @@ stack).
 - **0 unknown** (`real-divergence-investigate`). Hard contract held.
 
 ### New M6 buckets
+=======
+## Aggregate this run (post-V2 + M2.5 TS runner V2)
+
+- 30 scenarios.
+- **16 full match** (53%). Up from 14 (post-V2 baseline). M2.5 closed
+  the trigger fan-out + post-resolution gap by adding `runStackUntilEmpty`
+  after each scripted action: triggered abilities now drain to the
+  stack, resolve via the same `resolveStackItem` path, and emit
+  `AbilityActivated` (≡ Java `SpellCast`) + `StackItemResolved` +
+  `LifeChanged` symmetrically with Bridge V2. Cast scenarios that
+  don't have an explicit `resolveTopOfStack` action now also see the
+  spell drain (Holy Day / Wrath / Cloudshift / Stone Rain). Mana
+  abilities are explicitly excluded from the drain (CR 605.3a — Forge
+  bypasses the stack).
+- **14 mvp-known** (47%). Down from 16 (post-V2). All entries classified
+  into documented buckets.
+- **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+### What M2.5 changed in the divergence histogram
+
+| Class                       | Post-V2 | Post-M2.5 | Notes |
+| ---                         | ---     | ---       | --- |
+| `target-mismatch`           | 6       | 6         | Unchanged — TS emits `CardTargeted` kinds Forge doesn't have. |
+| `free-cast-missing-mana`    | 9       | 9         | Unchanged — `CostPaid` umbrella event still TS-only. |
+| `no-stack-drain`            | 1       | 2         | +1 from Mulldrifter (`CardDrawn` TS-only — Forge folds into bare `CardChangedZone`). |
+| `bridge-action-skipped`     | 0       | 2         | NEW. TS-side `CardDestroyed` + `StateBasedActionApplied` (Lightning Bolt → Grizzly Bears SBA-death) Forge bridge doesn't drive. |
+| `ts-runner-shallow`         | 13      | 5         | Down massively. Trigger fan-out + StackItemResolved now match. Residual: 5 scenarios with leftover `LifeTotalChanged` / `SpellCast` / `StackItemResolved` Java-side that don't yet fully alias. |
+| `real-divergence-investigate` | 0     | 0         | Hard contract held. |
+
+## Per-scenario classification (post-V2)
+>>>>>>> Stashed changes
 
 - **`bridge-counter-event-not-captured`** (TS-only `CounterAdded`):
   Bridge V2 doesn't subscribe to `GameEventCounterAdded`. Counter

@@ -210,4 +210,13 @@ export * from "./ravenous-keyword.js";
 // that invokes AB$ AlterAttribute | Attributes$ Suspected (handled by
 // AlterAttributeEffect / SuspectEffect).
 export * from "./suspect-keyword.js";
+// M6.17 — etbCounter parser-extension keyword. Forge models "this
+// enters with N <type> counters" via either CR 614 replacement effects
+// or the etbCounter keyword shorthand; the latter parses to
+// `K:etbCounter:<TYPE>:<NUMBER>` where TYPE is a CounterEnumType
+// (P1P1 / ICE / FADE / CHARGE / etc.) and NUMBER is a literal int or
+// `X` (resolved from the card's stamped xValue at trigger time).
+// Closes Dark Depths, Tangle Wire, Hangarback Walker, Golgari Grave-
+// Troll, and adjacent etbCounter-driven scenarios.
+export * from "./etb-counter-keyword.js";
 export * from "./flag-keyword.js";

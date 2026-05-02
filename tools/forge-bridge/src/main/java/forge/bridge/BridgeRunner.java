@@ -611,24 +611,69 @@ public final class BridgeRunner {
         if (targets.isEmpty() && singleTarget != null) {
             targets.add(MiniJson.asObject(singleTarget));
         }
-        if (targets.isEmpty()) {
-            // Action specified no targets. If the SA needs them anyway,
-            // handlePlayingSpellAbility will reject via
-            // isTargetNumberValid(). That's fine — we don't fabricate.
-            return;
-        }
 
         SpellAbility sa = rootSa;
         int targetIdx = 0;
-        while (sa != null && targetIdx < targets.size()) {
+        while (sa != null) {
             if (sa.usesTargeting()) {
-                Map<String, Object> spec = targets.get(targetIdx++);
-                GameEntity ent = lookupTarget(game, spec, rec);
-                if (ent == null) return; // recorded as BridgeTargetNotFound
-                sa.getTargets().add(ent);
+                if (targetIdx < targets.size()) {
+                    Map<String, Object> spec = targets.get(targetIdx++);
+                    GameEntity ent = lookupTarget(game, spec, rec);
+                    if (ent == null) return; // recorded as BridgeTargetNotFound
+                    sa.getTargets().add(ent);
+                } else {
+                    // M6.17 — Scenario didn't supply a target for this step.
+                    // Forge's `handlePlayingSpellAbility` would call AI's
+                    // `chooseNewTargetsFor` here, but we need parity with
+                    // the TS scenario which marks its scripted "untargeted"
+                    // intent by omitting `target`. Walk the legal target
+                    // candidate set and pick the first one — opponent for
+                    // Player-shape filters (matches Tendrils/Time Stretch
+                    // intent), first eligible card otherwise. This gets the
+                    // cast onto the stack so cost-payment/resolution can
+                    // proceed; it's a parity-faithful equivalent of "AI
+                    // picks a default" without invoking the full AiCostDecision
+                    // / AiPlayDecision pipeline.
+                    GameEntity defaultTarget = pickDefaultTarget(game, sa);
+                    if (defaultTarget == null) return; // can't auto-bind
+                    sa.getTargets().add(defaultTarget);
+                }
             }
             sa = sa.getSubAbility();
         }
+    }
+
+    /**
+     * M6.17 — When the scenario omits a scripted target for a SA that
+     * requires one, pick a sensible default so cost-payment proceeds.
+     * Mirrors Forge's AI default: prefer opponent for Player-shape filters
+     * (Tendrils, Time Stretch), first eligible permanent / hand card for
+     * card-shape filters. Returns null when no legal target exists at all
+     * (the bridge then falls back to BridgeCastFailed).
+     */
+    private static GameEntity pickDefaultTarget(Game game, SpellAbility sa) {
+        forge.game.spellability.TargetRestrictions tgt = sa.getTargetRestrictions();
+        if (tgt == null) return null;
+        // Player-shape: pick first opponent.
+        Player activator = sa.getActivatingPlayer();
+        if (activator == null) activator = game.getPlayers().get(0);
+        boolean canTargetPlayer = tgt.canTgtPlayer();
+        if (canTargetPlayer) {
+            for (Player opp : activator.getOpponents()) {
+                if (sa.canTarget(opp)) return opp;
+            }
+            // No opponent legal — try self.
+            if (sa.canTarget(activator)) return activator;
+        }
+        // Card-shape: walk battlefield → graveyard → hand → exile.
+        for (ZoneType zt : new ZoneType[]{
+                ZoneType.Battlefield, ZoneType.Graveyard,
+                ZoneType.Hand, ZoneType.Exile, ZoneType.Library}) {
+            for (Card c : game.getCardsIn(zt)) {
+                if (sa.canTarget(c)) return c;
+            }
+        }
+        return null;
     }
 
     private static GameEntity lookupTarget(
