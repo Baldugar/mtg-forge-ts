@@ -2,11 +2,40 @@
   "scenarioId": "oko-thief-of-crowns-in-hand",
   "seed": 788,
   "engineVersion": "ts-m2-0.1.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "CounterAdded",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "counterType": "loyalty",
+        "amount": 4
+      }
+    }
+  ],
   "finalState": {
     "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
-    "battlefield": [],
+    "handSizes": [0, 0],
+    "battlefield": [
+      {
+        "name": "Oko, Thief of Crowns",
+        "controller": 0,
+        "tapped": false
+      }
+    ],
     "graveyards": [[], []],
     "stackSize": 0
   }

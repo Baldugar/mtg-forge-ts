@@ -2,11 +2,83 @@
   "scenarioId": "fury-in-hand",
   "seed": 681,
   "engineVersion": "ts-m2-0.1.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 0,
+        "targetKind": "player",
+        "targetId": 0,
+        "amount": 4,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 16,
+        "delta": -4,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "amount": 4
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "fizzled": false
+      }
+    }
+  ],
   "finalState": {
-    "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
-    "battlefield": [],
+    "lifeTotals": [16, 20],
+    "handSizes": [0, 0],
+    "battlefield": [
+      {
+        "name": "Fury",
+        "controller": 0,
+        "tapped": false
+      }
+    ],
     "graveyards": [[], []],
     "stackSize": 0
   }

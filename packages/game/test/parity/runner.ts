@@ -172,6 +172,19 @@ function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
       // `batterskull-etb`'s real-divergence-investigate row.
       case "CardAttached":
       case "CardUnattached":
+      // M6.14: TS-only `BattleDefeated`, `CardExiled`, `BecameInitiative`,
+      // `UndercityRoomEntered` — same family as `BecameMonarch` /
+      // `ClassLevelGained`. Forge fires the corresponding game-state
+      // changes silently inside `Game.set*()` / `BattleZone` /
+      // `Initiative` mechanics; bridge V2 doesn't subscribe to these
+      // GameEvent variants. The canonical `CardChangedZone` zone-move
+      // (e.g. battlefield→exile for the defeated battle) already matches
+      // on both sides. Surface only the strip-marker here so the zone-move
+      // remains the parity signal.
+      case "BattleDefeated":
+      case "CardExiled":
+      case "BecameInitiative":
+      case "UndercityRoomEntered":
         return true;
       default:
         return false;
@@ -265,6 +278,13 @@ const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   ["LifeTotalChanged", "ts-runner-shallow"],
   ["CardTappedChanged", "ts-runner-shallow"],
   ["DamageDealt", "ts-runner-shallow"],
+  // M6.14: Java-only `CounterAdded` — when bridge V2 captures battle
+  // defense counters / planeswalker loyalty / saga lore counters that
+  // the TS engine emits in its own `CounterAdded` family but doesn't
+  // for ETB-time replacement-driven counter placement (e.g. battles
+  // entering with N defense counters per their CardType replacement
+  // hook). Pre-existing TS engine gap — file under ts-runner-shallow.
+  ["CounterAdded", "ts-runner-shallow"],
 ]);
 
 /**
