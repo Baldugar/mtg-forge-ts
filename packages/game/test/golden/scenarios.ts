@@ -85093,4 +85093,2774 @@ Oracle:Hex18 M640 test.
     ],
     actions: [{ kind: "cast", cardName: "Hex18 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
   },
+
+  // 3546. Defender ETB 0 — defender wall entered.
+  {
+    id: "defender-etb-0-m641",
+    description: "Defender ETB 0 — defender wall entered.",
+    seed: 0xc5d0,
+    cards: {
+      "DefA0 M641": `Name:DefA0 M641
+ManaCost:1 W
+Types:Creature Wall
+PT:0/4
+K:Defender
+Oracle:DefA0 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA0 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA0 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3547. Defender ETB 1 — defender treefolk entered.
+  {
+    id: "defender-etb-1-m641",
+    description: "Defender ETB 1 — defender treefolk entered.",
+    seed: 0xc5d1,
+    cards: {
+      "DefA1 M641": `Name:DefA1 M641
+ManaCost:1 W
+Types:Creature Treefolk
+PT:0/4
+K:Defender
+Oracle:DefA1 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA1 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA1 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3548. Defender ETB 2 — defender plant entered.
+  {
+    id: "defender-etb-2-m641",
+    description: "Defender ETB 2 — defender plant entered.",
+    seed: 0xc5d2,
+    cards: {
+      "DefA2 M641": `Name:DefA2 M641
+ManaCost:1 W
+Types:Creature Plant
+PT:0/4
+K:Defender
+Oracle:DefA2 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA2 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA2 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3549. Defender ETB 3 — defender spirit entered.
+  {
+    id: "defender-etb-3-m641",
+    description: "Defender ETB 3 — defender spirit entered.",
+    seed: 0xc5d3,
+    cards: {
+      "DefA3 M641": `Name:DefA3 M641
+ManaCost:1 W
+Types:Creature Spirit
+PT:0/4
+K:Defender
+Oracle:DefA3 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA3 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA3 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3550. Defender ETB 4 — defender wizard entered.
+  {
+    id: "defender-etb-4-m641",
+    description: "Defender ETB 4 — defender wizard entered.",
+    seed: 0xc5d4,
+    cards: {
+      "DefA4 M641": `Name:DefA4 M641
+ManaCost:1 W
+Types:Creature Wizard
+PT:0/4
+K:Defender
+Oracle:DefA4 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA4 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA4 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3551. Defender ETB 5 — defender cleric entered.
+  {
+    id: "defender-etb-5-m641",
+    description: "Defender ETB 5 — defender cleric entered.",
+    seed: 0xc5d5,
+    cards: {
+      "DefA5 M641": `Name:DefA5 M641
+ManaCost:1 W
+Types:Creature Cleric
+PT:0/4
+K:Defender
+Oracle:DefA5 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA5 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA5 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3552. Defender ETB 6 — defender soldier entered.
+  {
+    id: "defender-etb-6-m641",
+    description: "Defender ETB 6 — defender soldier entered.",
+    seed: 0xc5d6,
+    cards: {
+      "DefA6 M641": `Name:DefA6 M641
+ManaCost:1 W
+Types:Creature Soldier
+PT:0/4
+K:Defender
+Oracle:DefA6 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA6 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA6 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3553. Defender ETB 7 — defender druid entered.
+  {
+    id: "defender-etb-7-m641",
+    description: "Defender ETB 7 — defender druid entered.",
+    seed: 0xc5d7,
+    cards: {
+      "DefA7 M641": `Name:DefA7 M641
+ManaCost:1 W
+Types:Creature Druid
+PT:0/4
+K:Defender
+Oracle:DefA7 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA7 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA7 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3554. Defender ETB 8 — defender knight entered.
+  {
+    id: "defender-etb-8-m641",
+    description: "Defender ETB 8 — defender knight entered.",
+    seed: 0xc5d8,
+    cards: {
+      "DefA8 M641": `Name:DefA8 M641
+ManaCost:1 W
+Types:Creature Knight
+PT:0/4
+K:Defender
+Oracle:DefA8 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA8 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA8 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3555. Defender ETB 9 — defender construct entered.
+  {
+    id: "defender-etb-9-m641",
+    description: "Defender ETB 9 — defender construct entered.",
+    seed: 0xc5d9,
+    cards: {
+      "DefA9 M641": `Name:DefA9 M641
+ManaCost:1 W
+Types:Creature Construct
+PT:0/4
+K:Defender
+Oracle:DefA9 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA9 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA9 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3556. Defender ETB 10 — defender golem entered.
+  {
+    id: "defender-etb-10-m641",
+    description: "Defender ETB 10 — defender golem entered.",
+    seed: 0xc5da,
+    cards: {
+      "DefA10 M641": `Name:DefA10 M641
+ManaCost:1 W
+Types:Creature Golem
+PT:0/4
+K:Defender
+Oracle:DefA10 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA10 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA10 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3557. Defender ETB 11 — defender elemental entered.
+  {
+    id: "defender-etb-11-m641",
+    description: "Defender ETB 11 — defender elemental entered.",
+    seed: 0xc5db,
+    cards: {
+      "DefA11 M641": `Name:DefA11 M641
+ManaCost:1 W
+Types:Creature Elemental
+PT:0/4
+K:Defender
+Oracle:DefA11 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA11 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA11 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3558. Defender ETB 12 — defender insect entered.
+  {
+    id: "defender-etb-12-m641",
+    description: "Defender ETB 12 — defender insect entered.",
+    seed: 0xc5dc,
+    cards: {
+      "DefA12 M641": `Name:DefA12 M641
+ManaCost:1 W
+Types:Creature Insect
+PT:0/4
+K:Defender
+Oracle:DefA12 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA12 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA12 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3559. Defender ETB 13 — defender snake entered.
+  {
+    id: "defender-etb-13-m641",
+    description: "Defender ETB 13 — defender snake entered.",
+    seed: 0xc5dd,
+    cards: {
+      "DefA13 M641": `Name:DefA13 M641
+ManaCost:1 W
+Types:Creature Snake
+PT:0/4
+K:Defender
+Oracle:DefA13 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA13 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA13 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3560. Defender ETB 14 — defender beast entered.
+  {
+    id: "defender-etb-14-m641",
+    description: "Defender ETB 14 — defender beast entered.",
+    seed: 0xc5de,
+    cards: {
+      "DefA14 M641": `Name:DefA14 M641
+ManaCost:1 W
+Types:Creature Beast
+PT:0/4
+K:Defender
+Oracle:DefA14 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA14 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA14 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3561. Defender ETB 15 — defender bear entered.
+  {
+    id: "defender-etb-15-m641",
+    description: "Defender ETB 15 — defender bear entered.",
+    seed: 0xc5df,
+    cards: {
+      "DefA15 M641": `Name:DefA15 M641
+ManaCost:1 W
+Types:Creature Bear
+PT:0/4
+K:Defender
+Oracle:DefA15 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA15 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA15 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3562. Defender ETB 16 — defender cat entered.
+  {
+    id: "defender-etb-16-m641",
+    description: "Defender ETB 16 — defender cat entered.",
+    seed: 0xc5e0,
+    cards: {
+      "DefA16 M641": `Name:DefA16 M641
+ManaCost:1 W
+Types:Creature Cat
+PT:0/4
+K:Defender
+Oracle:DefA16 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA16 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA16 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3563. Defender ETB 17 — defender hydra entered.
+  {
+    id: "defender-etb-17-m641",
+    description: "Defender ETB 17 — defender hydra entered.",
+    seed: 0xc5e1,
+    cards: {
+      "DefA17 M641": `Name:DefA17 M641
+ManaCost:1 W
+Types:Creature Hydra
+PT:0/4
+K:Defender
+Oracle:DefA17 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA17 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA17 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3564. Defender ETB 18 — defender dragon entered.
+  {
+    id: "defender-etb-18-m641",
+    description: "Defender ETB 18 — defender dragon entered.",
+    seed: 0xc5e2,
+    cards: {
+      "DefA18 M641": `Name:DefA18 M641
+ManaCost:1 W
+Types:Creature Dragon
+PT:0/4
+K:Defender
+Oracle:DefA18 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA18 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA18 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3565. Defender ETB 19 — defender demon entered.
+  {
+    id: "defender-etb-19-m641",
+    description: "Defender ETB 19 — defender demon entered.",
+    seed: 0xc5e3,
+    cards: {
+      "DefA19 M641": `Name:DefA19 M641
+ManaCost:1 W
+Types:Creature Demon
+PT:0/4
+K:Defender
+Oracle:DefA19 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DefA19 M641"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DefA19 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3566. Flash ETB 0 — flash spirit entered.
+  {
+    id: "flash-etb-0-m641",
+    description: "Flash ETB 0 — flash spirit entered.",
+    seed: 0xc5e4,
+    cards: {
+      "FlsB0 M641": `Name:FlsB0 M641
+ManaCost:1 U
+Types:Creature Spirit
+PT:2/2
+K:Flash
+Oracle:FlsB0 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB0 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB0 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3567. Flash ETB 1 — flash wizard entered.
+  {
+    id: "flash-etb-1-m641",
+    description: "Flash ETB 1 — flash wizard entered.",
+    seed: 0xc5e5,
+    cards: {
+      "FlsB1 M641": `Name:FlsB1 M641
+ManaCost:1 U
+Types:Creature Wizard
+PT:2/2
+K:Flash
+Oracle:FlsB1 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB1 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB1 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3568. Flash ETB 2 — flash cleric entered.
+  {
+    id: "flash-etb-2-m641",
+    description: "Flash ETB 2 — flash cleric entered.",
+    seed: 0xc5e6,
+    cards: {
+      "FlsB2 M641": `Name:FlsB2 M641
+ManaCost:1 U
+Types:Creature Cleric
+PT:2/2
+K:Flash
+Oracle:FlsB2 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB2 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB2 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3569. Flash ETB 3 — flash druid entered.
+  {
+    id: "flash-etb-3-m641",
+    description: "Flash ETB 3 — flash druid entered.",
+    seed: 0xc5e7,
+    cards: {
+      "FlsB3 M641": `Name:FlsB3 M641
+ManaCost:1 U
+Types:Creature Druid
+PT:2/2
+K:Flash
+Oracle:FlsB3 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB3 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB3 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3570. Flash ETB 4 — flash sphinx entered.
+  {
+    id: "flash-etb-4-m641",
+    description: "Flash ETB 4 — flash sphinx entered.",
+    seed: 0xc5e8,
+    cards: {
+      "FlsB4 M641": `Name:FlsB4 M641
+ManaCost:1 U
+Types:Creature Sphinx
+PT:2/2
+K:Flash
+Oracle:FlsB4 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB4 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB4 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3571. Flash ETB 5 — flash faerie entered.
+  {
+    id: "flash-etb-5-m641",
+    description: "Flash ETB 5 — flash faerie entered.",
+    seed: 0xc5e9,
+    cards: {
+      "FlsB5 M641": `Name:FlsB5 M641
+ManaCost:1 U
+Types:Creature Faerie
+PT:2/2
+K:Flash
+Oracle:FlsB5 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB5 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB5 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3572. Flash ETB 6 — flash drake entered.
+  {
+    id: "flash-etb-6-m641",
+    description: "Flash ETB 6 — flash drake entered.",
+    seed: 0xc5ea,
+    cards: {
+      "FlsB6 M641": `Name:FlsB6 M641
+ManaCost:1 U
+Types:Creature Drake
+PT:2/2
+K:Flash
+Oracle:FlsB6 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB6 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB6 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3573. Flash ETB 7 — flash snake entered.
+  {
+    id: "flash-etb-7-m641",
+    description: "Flash ETB 7 — flash snake entered.",
+    seed: 0xc5eb,
+    cards: {
+      "FlsB7 M641": `Name:FlsB7 M641
+ManaCost:1 U
+Types:Creature Snake
+PT:2/2
+K:Flash
+Oracle:FlsB7 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB7 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB7 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3574. Flash ETB 8 — flash cat entered.
+  {
+    id: "flash-etb-8-m641",
+    description: "Flash ETB 8 — flash cat entered.",
+    seed: 0xc5ec,
+    cards: {
+      "FlsB8 M641": `Name:FlsB8 M641
+ManaCost:1 U
+Types:Creature Cat
+PT:2/2
+K:Flash
+Oracle:FlsB8 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB8 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB8 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3575. Flash ETB 9 — flash bird entered.
+  {
+    id: "flash-etb-9-m641",
+    description: "Flash ETB 9 — flash bird entered.",
+    seed: 0xc5ed,
+    cards: {
+      "FlsB9 M641": `Name:FlsB9 M641
+ManaCost:1 U
+Types:Creature Bird
+PT:2/2
+K:Flash
+Oracle:FlsB9 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB9 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB9 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3576. Flash ETB 10 — flash insect entered.
+  {
+    id: "flash-etb-10-m641",
+    description: "Flash ETB 10 — flash insect entered.",
+    seed: 0xc5ee,
+    cards: {
+      "FlsB10 M641": `Name:FlsB10 M641
+ManaCost:1 U
+Types:Creature Insect
+PT:2/2
+K:Flash
+Oracle:FlsB10 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB10 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB10 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3577. Flash ETB 11 — flash vampire entered.
+  {
+    id: "flash-etb-11-m641",
+    description: "Flash ETB 11 — flash vampire entered.",
+    seed: 0xc5ef,
+    cards: {
+      "FlsB11 M641": `Name:FlsB11 M641
+ManaCost:1 U
+Types:Creature Vampire
+PT:2/2
+K:Flash
+Oracle:FlsB11 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB11 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB11 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3578. Flash ETB 12 — flash demon entered.
+  {
+    id: "flash-etb-12-m641",
+    description: "Flash ETB 12 — flash demon entered.",
+    seed: 0xc5f0,
+    cards: {
+      "FlsB12 M641": `Name:FlsB12 M641
+ManaCost:1 U
+Types:Creature Demon
+PT:2/2
+K:Flash
+Oracle:FlsB12 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB12 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB12 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3579. Flash ETB 13 — flash phoenix entered.
+  {
+    id: "flash-etb-13-m641",
+    description: "Flash ETB 13 — flash phoenix entered.",
+    seed: 0xc5f1,
+    cards: {
+      "FlsB13 M641": `Name:FlsB13 M641
+ManaCost:1 U
+Types:Creature Phoenix
+PT:2/2
+K:Flash
+Oracle:FlsB13 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB13 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB13 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3580. Flash ETB 14 — flash beast entered.
+  {
+    id: "flash-etb-14-m641",
+    description: "Flash ETB 14 — flash beast entered.",
+    seed: 0xc5f2,
+    cards: {
+      "FlsB14 M641": `Name:FlsB14 M641
+ManaCost:1 U
+Types:Creature Beast
+PT:2/2
+K:Flash
+Oracle:FlsB14 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB14 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB14 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3581. Flash ETB 15 — flash bear entered.
+  {
+    id: "flash-etb-15-m641",
+    description: "Flash ETB 15 — flash bear entered.",
+    seed: 0xc5f3,
+    cards: {
+      "FlsB15 M641": `Name:FlsB15 M641
+ManaCost:1 U
+Types:Creature Bear
+PT:2/2
+K:Flash
+Oracle:FlsB15 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB15 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB15 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3582. Flash ETB 16 — flash goblin entered.
+  {
+    id: "flash-etb-16-m641",
+    description: "Flash ETB 16 — flash goblin entered.",
+    seed: 0xc5f4,
+    cards: {
+      "FlsB16 M641": `Name:FlsB16 M641
+ManaCost:1 U
+Types:Creature Goblin
+PT:2/2
+K:Flash
+Oracle:FlsB16 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB16 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB16 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3583. Flash ETB 17 — flash elf entered.
+  {
+    id: "flash-etb-17-m641",
+    description: "Flash ETB 17 — flash elf entered.",
+    seed: 0xc5f5,
+    cards: {
+      "FlsB17 M641": `Name:FlsB17 M641
+ManaCost:1 U
+Types:Creature Elf
+PT:2/2
+K:Flash
+Oracle:FlsB17 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB17 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB17 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3584. Flash ETB 18 — flash knight entered.
+  {
+    id: "flash-etb-18-m641",
+    description: "Flash ETB 18 — flash knight entered.",
+    seed: 0xc5f6,
+    cards: {
+      "FlsB18 M641": `Name:FlsB18 M641
+ManaCost:1 U
+Types:Creature Knight
+PT:2/2
+K:Flash
+Oracle:FlsB18 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB18 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB18 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3585. Flash ETB 19 — flash soldier entered.
+  {
+    id: "flash-etb-19-m641",
+    description: "Flash ETB 19 — flash soldier entered.",
+    seed: 0xc5f7,
+    cards: {
+      "FlsB19 M641": `Name:FlsB19 M641
+ManaCost:1 U
+Types:Creature Soldier
+PT:2/2
+K:Flash
+Oracle:FlsB19 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FlsB19 M641"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FlsB19 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3586. Indestructible ETB 0 — indestructible angel entered.
+  {
+    id: "indestructible-etb-0-m641",
+    description: "Indestructible ETB 0 — indestructible angel entered.",
+    seed: 0xc5f8,
+    cards: {
+      "IndC0 M641": `Name:IndC0 M641
+ManaCost:3 W
+Types:Creature Angel
+PT:2/2
+K:Indestructible
+Oracle:IndC0 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC0 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC0 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3587. Indestructible ETB 1 — indestructible spirit entered.
+  {
+    id: "indestructible-etb-1-m641",
+    description: "Indestructible ETB 1 — indestructible spirit entered.",
+    seed: 0xc5f9,
+    cards: {
+      "IndC1 M641": `Name:IndC1 M641
+ManaCost:3 W
+Types:Creature Spirit
+PT:2/2
+K:Indestructible
+Oracle:IndC1 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC1 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC1 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3588. Indestructible ETB 2 — indestructible cleric entered.
+  {
+    id: "indestructible-etb-2-m641",
+    description: "Indestructible ETB 2 — indestructible cleric entered.",
+    seed: 0xc5fa,
+    cards: {
+      "IndC2 M641": `Name:IndC2 M641
+ManaCost:3 W
+Types:Creature Cleric
+PT:2/2
+K:Indestructible
+Oracle:IndC2 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC2 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC2 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3589. Indestructible ETB 3 — indestructible knight entered.
+  {
+    id: "indestructible-etb-3-m641",
+    description: "Indestructible ETB 3 — indestructible knight entered.",
+    seed: 0xc5fb,
+    cards: {
+      "IndC3 M641": `Name:IndC3 M641
+ManaCost:3 W
+Types:Creature Knight
+PT:2/2
+K:Indestructible
+Oracle:IndC3 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC3 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC3 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3590. Indestructible ETB 4 — indestructible soldier entered.
+  {
+    id: "indestructible-etb-4-m641",
+    description: "Indestructible ETB 4 — indestructible soldier entered.",
+    seed: 0xc5fc,
+    cards: {
+      "IndC4 M641": `Name:IndC4 M641
+ManaCost:3 W
+Types:Creature Soldier
+PT:2/2
+K:Indestructible
+Oracle:IndC4 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC4 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC4 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3591. Indestructible ETB 5 — indestructible wizard entered.
+  {
+    id: "indestructible-etb-5-m641",
+    description: "Indestructible ETB 5 — indestructible wizard entered.",
+    seed: 0xc5fd,
+    cards: {
+      "IndC5 M641": `Name:IndC5 M641
+ManaCost:3 W
+Types:Creature Wizard
+PT:2/2
+K:Indestructible
+Oracle:IndC5 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC5 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC5 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3592. Indestructible ETB 6 — indestructible druid entered.
+  {
+    id: "indestructible-etb-6-m641",
+    description: "Indestructible ETB 6 — indestructible druid entered.",
+    seed: 0xc5fe,
+    cards: {
+      "IndC6 M641": `Name:IndC6 M641
+ManaCost:3 W
+Types:Creature Druid
+PT:2/2
+K:Indestructible
+Oracle:IndC6 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC6 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC6 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3593. Indestructible ETB 7 — indestructible beast entered.
+  {
+    id: "indestructible-etb-7-m641",
+    description: "Indestructible ETB 7 — indestructible beast entered.",
+    seed: 0xc5ff,
+    cards: {
+      "IndC7 M641": `Name:IndC7 M641
+ManaCost:3 W
+Types:Creature Beast
+PT:2/2
+K:Indestructible
+Oracle:IndC7 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC7 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC7 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3594. Indestructible ETB 8 — indestructible bear entered.
+  {
+    id: "indestructible-etb-8-m641",
+    description: "Indestructible ETB 8 — indestructible bear entered.",
+    seed: 0xc600,
+    cards: {
+      "IndC8 M641": `Name:IndC8 M641
+ManaCost:3 W
+Types:Creature Bear
+PT:2/2
+K:Indestructible
+Oracle:IndC8 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC8 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC8 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3595. Indestructible ETB 9 — indestructible cat entered.
+  {
+    id: "indestructible-etb-9-m641",
+    description: "Indestructible ETB 9 — indestructible cat entered.",
+    seed: 0xc601,
+    cards: {
+      "IndC9 M641": `Name:IndC9 M641
+ManaCost:3 W
+Types:Creature Cat
+PT:2/2
+K:Indestructible
+Oracle:IndC9 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC9 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC9 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3596. Indestructible ETB 10 — indestructible sphinx entered.
+  {
+    id: "indestructible-etb-10-m641",
+    description: "Indestructible ETB 10 — indestructible sphinx entered.",
+    seed: 0xc602,
+    cards: {
+      "IndC10 M641": `Name:IndC10 M641
+ManaCost:3 W
+Types:Creature Sphinx
+PT:2/2
+K:Indestructible
+Oracle:IndC10 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC10 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC10 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3597. Indestructible ETB 11 — indestructible hydra entered.
+  {
+    id: "indestructible-etb-11-m641",
+    description: "Indestructible ETB 11 — indestructible hydra entered.",
+    seed: 0xc603,
+    cards: {
+      "IndC11 M641": `Name:IndC11 M641
+ManaCost:3 W
+Types:Creature Hydra
+PT:2/2
+K:Indestructible
+Oracle:IndC11 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC11 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC11 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3598. Indestructible ETB 12 — indestructible dragon entered.
+  {
+    id: "indestructible-etb-12-m641",
+    description: "Indestructible ETB 12 — indestructible dragon entered.",
+    seed: 0xc604,
+    cards: {
+      "IndC12 M641": `Name:IndC12 M641
+ManaCost:3 W
+Types:Creature Dragon
+PT:2/2
+K:Indestructible
+Oracle:IndC12 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC12 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC12 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3599. Indestructible ETB 13 — indestructible demon entered.
+  {
+    id: "indestructible-etb-13-m641",
+    description: "Indestructible ETB 13 — indestructible demon entered.",
+    seed: 0xc605,
+    cards: {
+      "IndC13 M641": `Name:IndC13 M641
+ManaCost:3 W
+Types:Creature Demon
+PT:2/2
+K:Indestructible
+Oracle:IndC13 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC13 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC13 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3600. Indestructible ETB 14 — indestructible phoenix entered.
+  {
+    id: "indestructible-etb-14-m641",
+    description: "Indestructible ETB 14 — indestructible phoenix entered.",
+    seed: 0xc606,
+    cards: {
+      "IndC14 M641": `Name:IndC14 M641
+ManaCost:3 W
+Types:Creature Phoenix
+PT:2/2
+K:Indestructible
+Oracle:IndC14 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC14 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC14 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3601. Indestructible ETB 15 — indestructible specter entered.
+  {
+    id: "indestructible-etb-15-m641",
+    description: "Indestructible ETB 15 — indestructible specter entered.",
+    seed: 0xc607,
+    cards: {
+      "IndC15 M641": `Name:IndC15 M641
+ManaCost:3 W
+Types:Creature Specter
+PT:2/2
+K:Indestructible
+Oracle:IndC15 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC15 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC15 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3602. Indestructible ETB 16 — indestructible wurm entered.
+  {
+    id: "indestructible-etb-16-m641",
+    description: "Indestructible ETB 16 — indestructible wurm entered.",
+    seed: 0xc608,
+    cards: {
+      "IndC16 M641": `Name:IndC16 M641
+ManaCost:3 W
+Types:Creature Wurm
+PT:2/2
+K:Indestructible
+Oracle:IndC16 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC16 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC16 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3603. Indestructible ETB 17 — indestructible treefolk entered.
+  {
+    id: "indestructible-etb-17-m641",
+    description: "Indestructible ETB 17 — indestructible treefolk entered.",
+    seed: 0xc609,
+    cards: {
+      "IndC17 M641": `Name:IndC17 M641
+ManaCost:3 W
+Types:Creature Treefolk
+PT:2/2
+K:Indestructible
+Oracle:IndC17 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC17 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC17 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3604. Indestructible ETB 18 — indestructible golem entered.
+  {
+    id: "indestructible-etb-18-m641",
+    description: "Indestructible ETB 18 — indestructible golem entered.",
+    seed: 0xc60a,
+    cards: {
+      "IndC18 M641": `Name:IndC18 M641
+ManaCost:3 W
+Types:Creature Golem
+PT:2/2
+K:Indestructible
+Oracle:IndC18 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC18 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC18 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3605. Indestructible ETB 19 — indestructible construct entered.
+  {
+    id: "indestructible-etb-19-m641",
+    description: "Indestructible ETB 19 — indestructible construct entered.",
+    seed: 0xc60b,
+    cards: {
+      "IndC19 M641": `Name:IndC19 M641
+ManaCost:3 W
+Types:Creature Construct
+PT:2/2
+K:Indestructible
+Oracle:IndC19 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndC19 M641"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "IndC19 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3606. Ward 1 ETB 0 — ward sphinx entered.
+  {
+    id: "ward1-etb-0-m641",
+    description: "Ward 1 ETB 0 — ward sphinx entered.",
+    seed: 0xc60c,
+    cards: {
+      "WrdD0 M641": `Name:WrdD0 M641
+ManaCost:2 U
+Types:Creature Sphinx
+PT:2/2
+K:Ward:1
+Oracle:WrdD0 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD0 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD0 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3607. Ward 1 ETB 1 — ward wizard entered.
+  {
+    id: "ward1-etb-1-m641",
+    description: "Ward 1 ETB 1 — ward wizard entered.",
+    seed: 0xc60d,
+    cards: {
+      "WrdD1 M641": `Name:WrdD1 M641
+ManaCost:2 U
+Types:Creature Wizard
+PT:2/2
+K:Ward:1
+Oracle:WrdD1 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD1 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD1 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3608. Ward 1 ETB 2 — ward spirit entered.
+  {
+    id: "ward1-etb-2-m641",
+    description: "Ward 1 ETB 2 — ward spirit entered.",
+    seed: 0xc60e,
+    cards: {
+      "WrdD2 M641": `Name:WrdD2 M641
+ManaCost:2 U
+Types:Creature Spirit
+PT:2/2
+K:Ward:1
+Oracle:WrdD2 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD2 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD2 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3609. Ward 1 ETB 3 — ward druid entered.
+  {
+    id: "ward1-etb-3-m641",
+    description: "Ward 1 ETB 3 — ward druid entered.",
+    seed: 0xc60f,
+    cards: {
+      "WrdD3 M641": `Name:WrdD3 M641
+ManaCost:2 U
+Types:Creature Druid
+PT:2/2
+K:Ward:1
+Oracle:WrdD3 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD3 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD3 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3610. Ward 1 ETB 4 — ward cleric entered.
+  {
+    id: "ward1-etb-4-m641",
+    description: "Ward 1 ETB 4 — ward cleric entered.",
+    seed: 0xc610,
+    cards: {
+      "WrdD4 M641": `Name:WrdD4 M641
+ManaCost:2 U
+Types:Creature Cleric
+PT:2/2
+K:Ward:1
+Oracle:WrdD4 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD4 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD4 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3611. Ward 1 ETB 5 — ward knight entered.
+  {
+    id: "ward1-etb-5-m641",
+    description: "Ward 1 ETB 5 — ward knight entered.",
+    seed: 0xc611,
+    cards: {
+      "WrdD5 M641": `Name:WrdD5 M641
+ManaCost:2 U
+Types:Creature Knight
+PT:2/2
+K:Ward:1
+Oracle:WrdD5 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD5 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD5 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3612. Ward 1 ETB 6 — ward cat entered.
+  {
+    id: "ward1-etb-6-m641",
+    description: "Ward 1 ETB 6 — ward cat entered.",
+    seed: 0xc612,
+    cards: {
+      "WrdD6 M641": `Name:WrdD6 M641
+ManaCost:2 U
+Types:Creature Cat
+PT:2/2
+K:Ward:1
+Oracle:WrdD6 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD6 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD6 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3613. Ward 1 ETB 7 — ward dragon entered.
+  {
+    id: "ward1-etb-7-m641",
+    description: "Ward 1 ETB 7 — ward dragon entered.",
+    seed: 0xc613,
+    cards: {
+      "WrdD7 M641": `Name:WrdD7 M641
+ManaCost:2 U
+Types:Creature Dragon
+PT:2/2
+K:Ward:1
+Oracle:WrdD7 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD7 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD7 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3614. Ward 1 ETB 8 — ward angel entered.
+  {
+    id: "ward1-etb-8-m641",
+    description: "Ward 1 ETB 8 — ward angel entered.",
+    seed: 0xc614,
+    cards: {
+      "WrdD8 M641": `Name:WrdD8 M641
+ManaCost:2 U
+Types:Creature Angel
+PT:2/2
+K:Ward:1
+Oracle:WrdD8 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD8 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD8 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3615. Ward 1 ETB 9 — ward demon entered.
+  {
+    id: "ward1-etb-9-m641",
+    description: "Ward 1 ETB 9 — ward demon entered.",
+    seed: 0xc615,
+    cards: {
+      "WrdD9 M641": `Name:WrdD9 M641
+ManaCost:2 U
+Types:Creature Demon
+PT:2/2
+K:Ward:1
+Oracle:WrdD9 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD9 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD9 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3616. Ward 1 ETB 10 — ward specter entered.
+  {
+    id: "ward1-etb-10-m641",
+    description: "Ward 1 ETB 10 — ward specter entered.",
+    seed: 0xc616,
+    cards: {
+      "WrdD10 M641": `Name:WrdD10 M641
+ManaCost:2 U
+Types:Creature Specter
+PT:2/2
+K:Ward:1
+Oracle:WrdD10 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD10 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD10 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3617. Ward 1 ETB 11 — ward phoenix entered.
+  {
+    id: "ward1-etb-11-m641",
+    description: "Ward 1 ETB 11 — ward phoenix entered.",
+    seed: 0xc617,
+    cards: {
+      "WrdD11 M641": `Name:WrdD11 M641
+ManaCost:2 U
+Types:Creature Phoenix
+PT:2/2
+K:Ward:1
+Oracle:WrdD11 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD11 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD11 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3618. Ward 1 ETB 12 — ward beast entered.
+  {
+    id: "ward1-etb-12-m641",
+    description: "Ward 1 ETB 12 — ward beast entered.",
+    seed: 0xc618,
+    cards: {
+      "WrdD12 M641": `Name:WrdD12 M641
+ManaCost:2 U
+Types:Creature Beast
+PT:2/2
+K:Ward:1
+Oracle:WrdD12 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD12 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD12 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3619. Ward 1 ETB 13 — ward bear entered.
+  {
+    id: "ward1-etb-13-m641",
+    description: "Ward 1 ETB 13 — ward bear entered.",
+    seed: 0xc619,
+    cards: {
+      "WrdD13 M641": `Name:WrdD13 M641
+ManaCost:2 U
+Types:Creature Bear
+PT:2/2
+K:Ward:1
+Oracle:WrdD13 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD13 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD13 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3620. Ward 1 ETB 14 — ward snake entered.
+  {
+    id: "ward1-etb-14-m641",
+    description: "Ward 1 ETB 14 — ward snake entered.",
+    seed: 0xc61a,
+    cards: {
+      "WrdD14 M641": `Name:WrdD14 M641
+ManaCost:2 U
+Types:Creature Snake
+PT:2/2
+K:Ward:1
+Oracle:WrdD14 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD14 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD14 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3621. Ward 1 ETB 15 — ward bird entered.
+  {
+    id: "ward1-etb-15-m641",
+    description: "Ward 1 ETB 15 — ward bird entered.",
+    seed: 0xc61b,
+    cards: {
+      "WrdD15 M641": `Name:WrdD15 M641
+ManaCost:2 U
+Types:Creature Bird
+PT:2/2
+K:Ward:1
+Oracle:WrdD15 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD15 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD15 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3622. Ward 1 ETB 16 — ward hydra entered.
+  {
+    id: "ward1-etb-16-m641",
+    description: "Ward 1 ETB 16 — ward hydra entered.",
+    seed: 0xc61c,
+    cards: {
+      "WrdD16 M641": `Name:WrdD16 M641
+ManaCost:2 U
+Types:Creature Hydra
+PT:2/2
+K:Ward:1
+Oracle:WrdD16 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD16 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD16 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3623. Ward 1 ETB 17 — ward centaur entered.
+  {
+    id: "ward1-etb-17-m641",
+    description: "Ward 1 ETB 17 — ward centaur entered.",
+    seed: 0xc61d,
+    cards: {
+      "WrdD17 M641": `Name:WrdD17 M641
+ManaCost:2 U
+Types:Creature Centaur
+PT:2/2
+K:Ward:1
+Oracle:WrdD17 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD17 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD17 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3624. Ward 1 ETB 18 — ward treefolk entered.
+  {
+    id: "ward1-etb-18-m641",
+    description: "Ward 1 ETB 18 — ward treefolk entered.",
+    seed: 0xc61e,
+    cards: {
+      "WrdD18 M641": `Name:WrdD18 M641
+ManaCost:2 U
+Types:Creature Treefolk
+PT:2/2
+K:Ward:1
+Oracle:WrdD18 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD18 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD18 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3625. Ward 1 ETB 19 — ward soldier entered.
+  {
+    id: "ward1-etb-19-m641",
+    description: "Ward 1 ETB 19 — ward soldier entered.",
+    seed: 0xc61f,
+    cards: {
+      "WrdD19 M641": `Name:WrdD19 M641
+ManaCost:2 U
+Types:Creature Soldier
+PT:2/2
+K:Ward:1
+Oracle:WrdD19 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WrdD19 M641"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WrdD19 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3626. Shroud ETB 0 — shroud spirit entered.
+  {
+    id: "shroud-etb-0-m641",
+    description: "Shroud ETB 0 — shroud spirit entered.",
+    seed: 0xc620,
+    cards: {
+      "ShrE0 M641": `Name:ShrE0 M641
+ManaCost:2 G
+Types:Creature Spirit
+PT:2/2
+K:Shroud
+Oracle:ShrE0 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE0 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE0 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3627. Shroud ETB 1 — shroud wizard entered.
+  {
+    id: "shroud-etb-1-m641",
+    description: "Shroud ETB 1 — shroud wizard entered.",
+    seed: 0xc621,
+    cards: {
+      "ShrE1 M641": `Name:ShrE1 M641
+ManaCost:2 G
+Types:Creature Wizard
+PT:2/2
+K:Shroud
+Oracle:ShrE1 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE1 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE1 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3628. Shroud ETB 2 — shroud druid entered.
+  {
+    id: "shroud-etb-2-m641",
+    description: "Shroud ETB 2 — shroud druid entered.",
+    seed: 0xc622,
+    cards: {
+      "ShrE2 M641": `Name:ShrE2 M641
+ManaCost:2 G
+Types:Creature Druid
+PT:2/2
+K:Shroud
+Oracle:ShrE2 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE2 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE2 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3629. Shroud ETB 3 — shroud cleric entered.
+  {
+    id: "shroud-etb-3-m641",
+    description: "Shroud ETB 3 — shroud cleric entered.",
+    seed: 0xc623,
+    cards: {
+      "ShrE3 M641": `Name:ShrE3 M641
+ManaCost:2 G
+Types:Creature Cleric
+PT:2/2
+K:Shroud
+Oracle:ShrE3 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE3 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE3 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3630. Shroud ETB 4 — shroud cat entered.
+  {
+    id: "shroud-etb-4-m641",
+    description: "Shroud ETB 4 — shroud cat entered.",
+    seed: 0xc624,
+    cards: {
+      "ShrE4 M641": `Name:ShrE4 M641
+ManaCost:2 G
+Types:Creature Cat
+PT:2/2
+K:Shroud
+Oracle:ShrE4 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE4 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE4 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3631. Shroud ETB 5 — shroud snake entered.
+  {
+    id: "shroud-etb-5-m641",
+    description: "Shroud ETB 5 — shroud snake entered.",
+    seed: 0xc625,
+    cards: {
+      "ShrE5 M641": `Name:ShrE5 M641
+ManaCost:2 G
+Types:Creature Snake
+PT:2/2
+K:Shroud
+Oracle:ShrE5 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE5 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE5 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3632. Shroud ETB 6 — shroud bird entered.
+  {
+    id: "shroud-etb-6-m641",
+    description: "Shroud ETB 6 — shroud bird entered.",
+    seed: 0xc626,
+    cards: {
+      "ShrE6 M641": `Name:ShrE6 M641
+ManaCost:2 G
+Types:Creature Bird
+PT:2/2
+K:Shroud
+Oracle:ShrE6 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE6 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE6 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3633. Shroud ETB 7 — shroud bear entered.
+  {
+    id: "shroud-etb-7-m641",
+    description: "Shroud ETB 7 — shroud bear entered.",
+    seed: 0xc627,
+    cards: {
+      "ShrE7 M641": `Name:ShrE7 M641
+ManaCost:2 G
+Types:Creature Bear
+PT:2/2
+K:Shroud
+Oracle:ShrE7 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE7 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE7 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3634. Shroud ETB 8 — shroud beast entered.
+  {
+    id: "shroud-etb-8-m641",
+    description: "Shroud ETB 8 — shroud beast entered.",
+    seed: 0xc628,
+    cards: {
+      "ShrE8 M641": `Name:ShrE8 M641
+ManaCost:2 G
+Types:Creature Beast
+PT:2/2
+K:Shroud
+Oracle:ShrE8 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE8 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE8 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3635. Shroud ETB 9 — shroud hydra entered.
+  {
+    id: "shroud-etb-9-m641",
+    description: "Shroud ETB 9 — shroud hydra entered.",
+    seed: 0xc629,
+    cards: {
+      "ShrE9 M641": `Name:ShrE9 M641
+ManaCost:2 G
+Types:Creature Hydra
+PT:2/2
+K:Shroud
+Oracle:ShrE9 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE9 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE9 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3636. Shroud ETB 10 — shroud dragon entered.
+  {
+    id: "shroud-etb-10-m641",
+    description: "Shroud ETB 10 — shroud dragon entered.",
+    seed: 0xc62a,
+    cards: {
+      "ShrE10 M641": `Name:ShrE10 M641
+ManaCost:2 G
+Types:Creature Dragon
+PT:2/2
+K:Shroud
+Oracle:ShrE10 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE10 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE10 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3637. Shroud ETB 11 — shroud sphinx entered.
+  {
+    id: "shroud-etb-11-m641",
+    description: "Shroud ETB 11 — shroud sphinx entered.",
+    seed: 0xc62b,
+    cards: {
+      "ShrE11 M641": `Name:ShrE11 M641
+ManaCost:2 G
+Types:Creature Sphinx
+PT:2/2
+K:Shroud
+Oracle:ShrE11 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE11 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE11 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3638. Shroud ETB 12 — shroud phoenix entered.
+  {
+    id: "shroud-etb-12-m641",
+    description: "Shroud ETB 12 — shroud phoenix entered.",
+    seed: 0xc62c,
+    cards: {
+      "ShrE12 M641": `Name:ShrE12 M641
+ManaCost:2 G
+Types:Creature Phoenix
+PT:2/2
+K:Shroud
+Oracle:ShrE12 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE12 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE12 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3639. Shroud ETB 13 — shroud specter entered.
+  {
+    id: "shroud-etb-13-m641",
+    description: "Shroud ETB 13 — shroud specter entered.",
+    seed: 0xc62d,
+    cards: {
+      "ShrE13 M641": `Name:ShrE13 M641
+ManaCost:2 G
+Types:Creature Specter
+PT:2/2
+K:Shroud
+Oracle:ShrE13 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE13 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE13 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3640. Shroud ETB 14 — shroud knight entered.
+  {
+    id: "shroud-etb-14-m641",
+    description: "Shroud ETB 14 — shroud knight entered.",
+    seed: 0xc62e,
+    cards: {
+      "ShrE14 M641": `Name:ShrE14 M641
+ManaCost:2 G
+Types:Creature Knight
+PT:2/2
+K:Shroud
+Oracle:ShrE14 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE14 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE14 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3641. Shroud ETB 15 — shroud soldier entered.
+  {
+    id: "shroud-etb-15-m641",
+    description: "Shroud ETB 15 — shroud soldier entered.",
+    seed: 0xc62f,
+    cards: {
+      "ShrE15 M641": `Name:ShrE15 M641
+ManaCost:2 G
+Types:Creature Soldier
+PT:2/2
+K:Shroud
+Oracle:ShrE15 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE15 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE15 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3642. Shroud ETB 16 — shroud centaur entered.
+  {
+    id: "shroud-etb-16-m641",
+    description: "Shroud ETB 16 — shroud centaur entered.",
+    seed: 0xc630,
+    cards: {
+      "ShrE16 M641": `Name:ShrE16 M641
+ManaCost:2 G
+Types:Creature Centaur
+PT:2/2
+K:Shroud
+Oracle:ShrE16 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE16 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE16 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3643. Shroud ETB 17 — shroud treefolk entered.
+  {
+    id: "shroud-etb-17-m641",
+    description: "Shroud ETB 17 — shroud treefolk entered.",
+    seed: 0xc631,
+    cards: {
+      "ShrE17 M641": `Name:ShrE17 M641
+ManaCost:2 G
+Types:Creature Treefolk
+PT:2/2
+K:Shroud
+Oracle:ShrE17 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE17 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE17 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3644. Shroud ETB 18 — shroud goblin entered.
+  {
+    id: "shroud-etb-18-m641",
+    description: "Shroud ETB 18 — shroud goblin entered.",
+    seed: 0xc632,
+    cards: {
+      "ShrE18 M641": `Name:ShrE18 M641
+ManaCost:2 G
+Types:Creature Goblin
+PT:2/2
+K:Shroud
+Oracle:ShrE18 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE18 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE18 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3645. Shroud ETB 19 — shroud elf entered.
+  {
+    id: "shroud-etb-19-m641",
+    description: "Shroud ETB 19 — shroud elf entered.",
+    seed: 0xc633,
+    cards: {
+      "ShrE19 M641": `Name:ShrE19 M641
+ManaCost:2 G
+Types:Creature Elf
+PT:2/2
+K:Shroud
+Oracle:ShrE19 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ShrE19 M641"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "ShrE19 M641", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3646. Soul Warden F2 0 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-0-m641",
+    description: "Soul Warden F2 0 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc634,
+    cards: {
+      "WardenF2-0 M641": `Name:WardenF2-0 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-0 M641 test.
+`,
+      "BearF2-0 M641": `Name:BearF2-0 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-0 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-0 M641"], battlefield: [{ card: "WardenF2-0 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-0 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3647. Soul Warden F2 1 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-1-m641",
+    description: "Soul Warden F2 1 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc635,
+    cards: {
+      "WardenF2-1 M641": `Name:WardenF2-1 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-1 M641 test.
+`,
+      "BearF2-1 M641": `Name:BearF2-1 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-1 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-1 M641"], battlefield: [{ card: "WardenF2-1 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-1 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3648. Soul Warden F2 2 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-2-m641",
+    description: "Soul Warden F2 2 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc636,
+    cards: {
+      "WardenF2-2 M641": `Name:WardenF2-2 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-2 M641 test.
+`,
+      "BearF2-2 M641": `Name:BearF2-2 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-2 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-2 M641"], battlefield: [{ card: "WardenF2-2 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-2 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3649. Soul Warden F2 3 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-3-m641",
+    description: "Soul Warden F2 3 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc637,
+    cards: {
+      "WardenF2-3 M641": `Name:WardenF2-3 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-3 M641 test.
+`,
+      "BearF2-3 M641": `Name:BearF2-3 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-3 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-3 M641"], battlefield: [{ card: "WardenF2-3 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-3 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3650. Soul Warden F2 4 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-4-m641",
+    description: "Soul Warden F2 4 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc638,
+    cards: {
+      "WardenF2-4 M641": `Name:WardenF2-4 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-4 M641 test.
+`,
+      "BearF2-4 M641": `Name:BearF2-4 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-4 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-4 M641"], battlefield: [{ card: "WardenF2-4 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-4 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3651. Soul Warden F2 5 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-5-m641",
+    description: "Soul Warden F2 5 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc639,
+    cards: {
+      "WardenF2-5 M641": `Name:WardenF2-5 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-5 M641 test.
+`,
+      "BearF2-5 M641": `Name:BearF2-5 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-5 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-5 M641"], battlefield: [{ card: "WardenF2-5 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-5 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3652. Soul Warden F2 6 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-6-m641",
+    description: "Soul Warden F2 6 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc63a,
+    cards: {
+      "WardenF2-6 M641": `Name:WardenF2-6 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-6 M641 test.
+`,
+      "BearF2-6 M641": `Name:BearF2-6 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-6 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-6 M641"], battlefield: [{ card: "WardenF2-6 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-6 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3653. Soul Warden F2 7 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-7-m641",
+    description: "Soul Warden F2 7 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc63b,
+    cards: {
+      "WardenF2-7 M641": `Name:WardenF2-7 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-7 M641 test.
+`,
+      "BearF2-7 M641": `Name:BearF2-7 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-7 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-7 M641"], battlefield: [{ card: "WardenF2-7 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-7 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3654. Soul Warden F2 8 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-8-m641",
+    description: "Soul Warden F2 8 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc63c,
+    cards: {
+      "WardenF2-8 M641": `Name:WardenF2-8 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-8 M641 test.
+`,
+      "BearF2-8 M641": `Name:BearF2-8 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-8 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-8 M641"], battlefield: [{ card: "WardenF2-8 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-8 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3655. Soul Warden F2 9 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-9-m641",
+    description: "Soul Warden F2 9 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc63d,
+    cards: {
+      "WardenF2-9 M641": `Name:WardenF2-9 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-9 M641 test.
+`,
+      "BearF2-9 M641": `Name:BearF2-9 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-9 M641 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BearF2-9 M641"], battlefield: [{ card: "WardenF2-9 M641" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-9 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3656. Soul Warden F2 10 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-10-m641",
+    description: "Soul Warden F2 10 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc63e,
+    cards: {
+      "WardenF2-10 M641": `Name:WardenF2-10 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-10 M641 test.
+`,
+      "BearF2-10 M641": `Name:BearF2-10 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-10 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-10 M641"],
+        battlefield: [{ card: "WardenF2-10 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-10 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3657. Soul Warden F2 11 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-11-m641",
+    description: "Soul Warden F2 11 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc63f,
+    cards: {
+      "WardenF2-11 M641": `Name:WardenF2-11 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-11 M641 test.
+`,
+      "BearF2-11 M641": `Name:BearF2-11 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-11 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-11 M641"],
+        battlefield: [{ card: "WardenF2-11 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-11 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3658. Soul Warden F2 12 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-12-m641",
+    description: "Soul Warden F2 12 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc640,
+    cards: {
+      "WardenF2-12 M641": `Name:WardenF2-12 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-12 M641 test.
+`,
+      "BearF2-12 M641": `Name:BearF2-12 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-12 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-12 M641"],
+        battlefield: [{ card: "WardenF2-12 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-12 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3659. Soul Warden F2 13 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-13-m641",
+    description: "Soul Warden F2 13 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc641,
+    cards: {
+      "WardenF2-13 M641": `Name:WardenF2-13 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-13 M641 test.
+`,
+      "BearF2-13 M641": `Name:BearF2-13 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-13 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-13 M641"],
+        battlefield: [{ card: "WardenF2-13 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-13 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3660. Soul Warden F2 14 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-14-m641",
+    description: "Soul Warden F2 14 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc642,
+    cards: {
+      "WardenF2-14 M641": `Name:WardenF2-14 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-14 M641 test.
+`,
+      "BearF2-14 M641": `Name:BearF2-14 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-14 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-14 M641"],
+        battlefield: [{ card: "WardenF2-14 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-14 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3661. Soul Warden F2 15 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-15-m641",
+    description: "Soul Warden F2 15 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc643,
+    cards: {
+      "WardenF2-15 M641": `Name:WardenF2-15 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-15 M641 test.
+`,
+      "BearF2-15 M641": `Name:BearF2-15 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-15 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-15 M641"],
+        battlefield: [{ card: "WardenF2-15 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-15 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3662. Soul Warden F2 16 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-16-m641",
+    description: "Soul Warden F2 16 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc644,
+    cards: {
+      "WardenF2-16 M641": `Name:WardenF2-16 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-16 M641 test.
+`,
+      "BearF2-16 M641": `Name:BearF2-16 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-16 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-16 M641"],
+        battlefield: [{ card: "WardenF2-16 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-16 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3663. Soul Warden F2 17 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-17-m641",
+    description: "Soul Warden F2 17 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc645,
+    cards: {
+      "WardenF2-17 M641": `Name:WardenF2-17 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-17 M641 test.
+`,
+      "BearF2-17 M641": `Name:BearF2-17 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-17 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-17 M641"],
+        battlefield: [{ card: "WardenF2-17 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-17 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3664. Soul Warden F2 18 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-18-m641",
+    description: "Soul Warden F2 18 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc646,
+    cards: {
+      "WardenF2-18 M641": `Name:WardenF2-18 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-18 M641 test.
+`,
+      "BearF2-18 M641": `Name:BearF2-18 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-18 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-18 M641"],
+        battlefield: [{ card: "WardenF2-18 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-18 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3665. Soul Warden F2 19 — cast a vanilla bear with warden out, life→21.
+  {
+    id: "soulwarden-creature-cast-f2-19-m641",
+    description: "Soul Warden F2 19 — cast a vanilla bear with warden out, life→21.",
+    seed: 0xc647,
+    cards: {
+      "WardenF2-19 M641": `Name:WardenF2-19 M641
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenF2-19 M641 test.
+`,
+      "BearF2-19 M641": `Name:BearF2-19 M641
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearF2-19 M641 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BearF2-19 M641"],
+        battlefield: [{ card: "WardenF2-19 M641" }],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BearF2-19 M641", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
 ];
