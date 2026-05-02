@@ -109,7 +109,47 @@ export class ChapterKeywordHandler extends KeywordHandler {
     const sourceCardId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
 
-    // Trigger 1 — ETB: stamp 1 Lore counter (CR 714.2b).
+    // M6.20 — CR 714.2b ("As a Saga enters the battlefield, its controller
+    // puts a lore counter on it.") is a replacement effect in Forge, NOT
+    // a triggered ability. Mirror by stamping `etbCounterSpecs`; the
+    // ETB pipeline (game-action.ts#applyEtbStamping) consumes the slot
+    // before any triggered ability would see the card. This eliminates
+    // the AbilityActivated/StackItemResolved pair the prior trigger-shaped
+    // implementation emitted on each Saga ETB.
+    //
+    // Forge reference: CardState.java:765-770 — for any Saga without
+    // Read-ahead, `sagaRep = CardFactoryUtil.makeEtbCounter("etbCounter:LORE:1", …)`
+    // is added to the card's replacement effect set.
+    //
+    // Read-ahead path (CR 714.4d): the counter amount is a controller
+    // choice in [1..finalChapterNr]. Forge encodes this as a separate
+    // replacement (`Read ahead` in CardFactoryUtil.java:2453-2468) with
+    // `UpTo$ True` + `UpToMin$ 1`. Since the TS etbCounterSpecs slot has
+    // no decision-yield consumer, Read-ahead Sagas keep a triggered
+    // ETB so the chooser can yield. The trigger is registered ALWAYS
+    // (handlers may apply Read ahead before or after Chapter — keyword
+    // line ordering is not guaranteed). The trigger's `matches` returns
+    // false when `card.readAhead !== true`, so non-Read-ahead Sagas
+    // never enqueue the trigger and stay silent.
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+      }>;
+    };
+    if (!slot.etbCounterSpecs) slot.etbCounterSpecs = [];
+    slot.etbCounterSpecs.push({
+      counterType: CounterType.Lore,
+      amount: 1,
+      variable: false,
+    });
+
+    // Trigger 1 — ETB Lore counter (Read-ahead branch only). The
+    // matches() gate keeps the trigger inert for non-Read-ahead Sagas.
+    // CR 714.4d — controller picks a chapter [1..N]; place that many
+    // Lore counters. The etbCounterSpecs slot already added 1 silently,
+    // so this trigger places (chosen - 1) ADDITIONAL counters when fired.
     const etbId = game.newEntityId();
     const etb: TriggeredAbilityWithResolver = {
       id: etbId,
@@ -122,7 +162,12 @@ export class ChapterKeywordHandler extends KeywordHandler {
       matches(event: GameEvent): boolean {
         if (event.kind !== "CardChangedZone") return false;
         const p = event.payload as { cardId: EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
+        if (p.cardId !== sourceCardId || p.toZone !== ZoneType.Battlefield) return false;
+        // Read-ahead gate — only fires when the Saga has Read ahead.
+        // Non-Read-ahead Sagas use etbCounterSpecs (silent replacement)
+        // exclusively; the trigger stays dormant.
+        const c = game.cards.get(sourceCardId);
+        return c?.readAhead === true;
       },
       resolver: {
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
@@ -130,35 +175,29 @@ export class ChapterKeywordHandler extends KeywordHandler {
           const c = g.cards.get(sourceCardId);
           if (!c) return;
           // Idempotency guard: if the Saga already has Lore counters
-          // (e.g. blink loop), do not double-stamp.
+          // beyond the bare etbCounterSpecs default (blink loop / re-entry
+          // stamp from a prior chapter advance), do not yield chooseNumber
+          // and do not add more. The presence of any Lore > 0 prior to
+          // this resolver firing means the etbCounterSpecs slot ALREADY
+          // ran and we're past the "as it enters" choice window.
           const existing = c.counters.get(CounterType.Lore) ?? 0;
           if (existing > 0) return;
-          // Wave 68 — Read ahead (CR 714.4d, Dominaria United): "As this
-          // Saga enters, choose a chapter and start with that many lore
-          // counters on it." When the keyword is stamped on this Saga,
-          // yield a chooseNumber decision (range 1..N) to the controller
-          // and place that many Lore counters instead of the default 1.
-          // The chosen value is a one-time pick at ETB; no need to persist.
           let amount = 1;
-          if (c.readAhead === true) {
-            const maxChapter = c.sagaChapterCount ?? 0;
-            if (maxChapter >= 1) {
-              const response = (yield {
-                kind: "decision",
-                request: {
-                  kind: "chooseNumber",
-                  sourceId: sourceCardId,
-                  min: 1,
-                  max: maxChapter,
-                },
-              }) as { readonly kind?: string; readonly chosen?: number } | undefined;
-              if (response && response.kind === "chooseNumber" && typeof response.chosen === "number") {
-                const chosen = response.chosen;
-                if (Number.isFinite(chosen) && chosen >= 1 && chosen <= maxChapter) {
-                  amount = Math.floor(chosen);
-                }
-                // Out-of-range or non-numeric responses fall back to 1
-                // (the default starting chapter).
+          const maxChapter = c.sagaChapterCount ?? 0;
+          if (maxChapter >= 1) {
+            const response = (yield {
+              kind: "decision",
+              request: {
+                kind: "chooseNumber",
+                sourceId: sourceCardId,
+                min: 1,
+                max: maxChapter,
+              },
+            }) as { readonly kind?: string; readonly chosen?: number } | undefined;
+            if (response && response.kind === "chooseNumber" && typeof response.chosen === "number") {
+              const chosen = response.chosen;
+              if (Number.isFinite(chosen) && chosen >= 1 && chosen <= maxChapter) {
+                amount = Math.floor(chosen);
               }
             }
           }
@@ -166,6 +205,9 @@ export class ChapterKeywordHandler extends KeywordHandler {
         },
       },
     };
+    if (!card.triggeredAbilities) card.triggeredAbilities = [];
+    card.triggeredAbilities.push(etb as unknown as TriggeredAbility);
+    game.triggerRegistry.register(etb as unknown as TriggeredAbility);
 
     // Trigger 2 — Main1 start on controller's turn: +1 Lore counter.
     // Forge's "after your draw step" turn-based action is modeled as a
@@ -276,10 +318,11 @@ export class ChapterKeywordHandler extends KeywordHandler {
     };
 
     if (!card.triggeredAbilities) card.triggeredAbilities = [];
-    card.triggeredAbilities.push(etb as unknown as TriggeredAbility);
+    // The ETB trigger (Read-ahead branch) is already pushed/registered
+    // above — it fires only when card.readAhead === true. Non-Read-ahead
+    // Sagas rely on etbCounterSpecs for the silent CR 714.2b counter add.
     card.triggeredAbilities.push(main1 as unknown as TriggeredAbility);
     card.triggeredAbilities.push(watcher as unknown as TriggeredAbility);
-    game.triggerRegistry.register(etb as unknown as TriggeredAbility);
     game.triggerRegistry.register(main1 as unknown as TriggeredAbility);
     game.triggerRegistry.register(watcher as unknown as TriggeredAbility);
   }

@@ -21,6 +21,15 @@
 //      to the chosen opponent. On confirm: addCounter +1/+1 N + stamp
 //      tributePaid = true. On decline: stamp tributePaid = false.
 //
+// M6.20 — Tribute remains a triggered ability (interactive chooser
+// requires decision yields, which the silent etbCounterSpecs slot does
+// not support). Forge splits this across a replacement-effect (silent
+// counter put when paid) and a trigger ("notTributed" alt branch); the
+// TS approach folds both into one trigger to keep the chooser yield
+// localised. Saga/Backup-style replacement conversion was applied where
+// applicable; Tribute stays trigger-shaped for now (deferred to a later
+// wave that introduces an interactive-replacement slot).
+//
 // Wave 94 — alternate-trigger dispatch closed via sub-SVar lookup.
 // On decline (`tributePaid = false`), if the source carries an
 // `AltTribute` SVar of kind="ability", the handler synthesizes a

@@ -19,7 +19,7 @@
 //      less than otherwise" wording in CR 714.2g is captured by the
 //      "start at chapter N" interpretation since starting deeper means
 //      fewer counters need to be added to reach chapter N.
-import type { KeywordAst } from "@mtg-forge-ts/core";
+import type { CounterType, KeywordAst } from "@mtg-forge-ts/core";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
@@ -33,6 +33,21 @@ export class ReadAheadKeywordHandler extends KeywordHandler {
     if (!card.keywords) card.keywords = new Set();
     card.keywords.add("read_ahead");
     card.readAhead = true;
+    // M6.20 — Saga's chapter-keyword stamps a default lore-counter
+    // etbCounterSpecs entry (CR 714.2b silent replacement). Read-ahead
+    // overrides this with an interactive chooseNumber yield (CR 714.4d).
+    // Strip the default lore entry so etbCounterSpecs doesn't pre-add a
+    // counter that would short-circuit the trigger's idempotency guard.
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+      }>;
+    };
+    if (slot.etbCounterSpecs && slot.etbCounterSpecs.length > 0) {
+      slot.etbCounterSpecs = slot.etbCounterSpecs.filter((s) => (s.counterType as string) !== "lore");
+    }
   }
 
   override deactivate(_ast: KeywordAst, ctx: KeywordActivationContext): void {

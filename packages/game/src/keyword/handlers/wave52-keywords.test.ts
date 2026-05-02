@@ -93,7 +93,14 @@ describe("Wave 52 — Chapter activate stamps slots + 3 triggers", () => {
     expect(card.keywords?.has("chapter")).toBe(true);
     expect(card.sagaChapterCount).toBe(3);
     expect(card.sagaChapterSVars).toEqual(["DBToken", "DBToken", "DBPump"]);
+    // M6.20 — Saga uses etbCounterSpecs (CR 714.2b replacement) for the
+    // silent default-1 lore counter. The ETB trigger is registered for
+    // Read-ahead Sagas (CR 714.4d) but its `matches` gates on
+    // card.readAhead and stays inert for non-Read-ahead Sagas.
     expect(card.triggeredAbilities?.length).toBe(3);
+    const slot = card as unknown as { etbCounterSpecs?: ReadonlyArray<{ counterType: string }> };
+    expect(slot.etbCounterSpecs?.length).toBe(1);
+    expect(slot.etbCounterSpecs?.[0]?.counterType).toBe(CounterType.Lore);
   });
 
   it("CounterAdded watcher flips sagaFinalChapterResolved when Lore == final chapter", () => {
@@ -142,6 +149,7 @@ describe("Wave 52 — Chapter activate stamps slots + 3 triggers", () => {
       { keyword: "chapter", params: { detail: { kind: "literal", raw: "3:DBA,DBB,DBC" } } },
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
+    // M6.20 — index 2 (etb, main1, watcher).
     const watcher = card.triggeredAbilities[2];
     if (!watcher) throw new Error("expected watcher trigger");
     card.counters.set(CounterType.Lore, 2);
