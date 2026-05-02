@@ -133,6 +133,20 @@ export function normalizeTrace(
  *     on both sides (the per-draw count differs but the kind is shared).
  */
 function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
+  if (side === "java") {
+    // M6.20 — Strip Java-side `CounterAdded` / `CardChangedZone` events for
+    // Forge's synthetic Initiative/Undercity dungeon emblem-card. Forge
+    // represents the Initiative state as a hidden `Undercity` Command-zone
+    // card with a `level` counter; the TS engine emits discrete
+    // `BecameInitiative` / `UndercityRoomEntered` events (already stripped
+    // on the TS side). Strip the Java mirror so the kinds align.
+    if (e.kind === "CounterAdded" || e.kind === "CardChangedZone") {
+      const payload = (e.payload ?? {}) as Record<string, unknown>;
+      const cardName = typeof payload.cardName === "string" ? payload.cardName : null;
+      if (cardName === "Undercity") return true;
+    }
+    return false;
+  }
   if (side === "ts") {
     switch (e.kind) {
       case "CardDestroyed":

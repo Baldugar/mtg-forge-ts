@@ -4277,6 +4277,7 @@ Oracle:Landfall Clue.
       "Invasion of Ikoria": `Name:Invasion of Ikoria
 ManaCost:3 G G
 Types:Battle Siege
+Defense:5
 A:SP$ ChangeZone | Cost$ 3 G G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLE4 | ChangeNum$ 1 | SpellDescription$ Tutor creature ≤ CMC4.
 Oracle:Battle siege parse.
 `,
