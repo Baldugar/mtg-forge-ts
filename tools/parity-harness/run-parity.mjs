@@ -51,10 +51,10 @@ mkdirSync(reportsDir, { recursive: true });
 const outPath = resolve(reportsDir, `parity-${ts}.md`);
 
 const lines = [];
-lines.push(`# Parity report`);
+lines.push("# Parity report");
 lines.push("");
 lines.push(`Generated: ${new Date().toISOString()}`);
-lines.push(`Cohort: M2 30-card golden set`);
+lines.push("Cohort: M2 30-card golden set");
 lines.push("");
 lines.push(`- Scenarios:        ${agg.totalScenarios}`);
 lines.push(`- Full-match:       ${agg.fullMatch}`);
@@ -64,16 +64,16 @@ if (missing.length > 0) {
   lines.push(`- Missing goldens:  ${missing.length}`);
 }
 lines.push("");
-lines.push(`## Divergence classes (count of scenarios touching each class)`);
+lines.push("## Divergence classes (count of scenarios touching each class)");
 lines.push("");
 for (const [cls, count] of Object.entries(agg.perClass)) {
   lines.push(`- \`${cls}\`: ${count}`);
 }
 lines.push("");
-lines.push(`## Per-scenario`);
+lines.push("## Per-scenario");
 lines.push("");
-lines.push(`| Scenario | Severity | TS-only kinds | Java-only kinds | Shared |`);
-lines.push(`| --- | --- | --- | --- | --- |`);
+lines.push("| Scenario | Severity | TS-only kinds | Java-only kinds | Shared |");
+lines.push("| --- | --- | --- | --- | --- |");
 for (const r of agg.perScenario) {
   const tsOnly =
     r.tsOnlyKinds.length === 0
@@ -88,12 +88,12 @@ for (const r of agg.perScenario) {
 }
 if (missing.length > 0) {
   lines.push("");
-  lines.push(`## Missing goldens`);
+  lines.push("## Missing goldens");
   lines.push("");
   for (const m of missing) lines.push(`- ${m}`);
 }
 
-writeFileSync(outPath, lines.join("\n") + "\n", "utf8");
+writeFileSync(outPath, `${lines.join("\n")}\n`, "utf8");
 
 // ── Console summary ─────────────────────────────────────────────────────────
 

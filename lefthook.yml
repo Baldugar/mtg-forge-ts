@@ -3,6 +3,12 @@ pre-commit:
   commands:
     biome:
       glob: "**/*.{ts,tsx,js,jsx,json}"
+      exclude:
+        - "tools/forge-bridge/__golden_java__/*"
+        - "tools/forge-bridge/__capture_logs__/*"
+        - "tools/forge-bridge/scenarios/*"
+        - "packages/game/test/golden/__golden__/*"
+        - "tools/parity-harness/reports/*"
       run: pnpm biome check --write {staged_files}
       stage_fixed: true
 commit-msg:

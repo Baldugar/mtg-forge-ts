@@ -34,9 +34,10 @@ const src = readFileSync(scenariosPath, "utf8");
 const constSources = new Map(); // const name → source content
 {
   const constRegex = /^const (\w+) = `([\s\S]*?)`;$/gm;
-  let m;
-  while ((m = constRegex.exec(src)) !== null) {
+  let m = constRegex.exec(src);
+  while (m !== null) {
     constSources.set(m[1], m[2]);
+    m = constRegex.exec(src);
   }
 }
 
@@ -63,9 +64,9 @@ const blocks = [];
       openIdx = i;
       id = null;
     }
-    const idMatch = line.match(/^    id: "([^"]+)",$/);
+    const idMatch = line.match(/^ {4}id: "([^"]+)",$/);
     if (idMatch) id = idMatch[1];
-    const descMatch = line.match(/^    description: "/);
+    const descMatch = line.match(/^ {4}description: "/);
     if (descMatch) descIdx = i;
     if (line === "  }," && openIdx !== -1 && id !== null) {
       blocks.push({ id, openIdx, closeIdx: i, descIdx });
@@ -250,7 +251,7 @@ for (let bi = inHandBlocks.length - 1; bi >= 0; bi--) {
 writeFileSync(scenariosPath, lines.join("\n"));
 
 console.log(`Converted: ${converted}`);
-console.log(`Skipped:`);
+console.log("Skipped:");
 for (const [reason, count] of Object.entries(skipReasons)) {
   console.log(`  ${reason}: ${count}`);
 }

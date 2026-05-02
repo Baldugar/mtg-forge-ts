@@ -2,6 +2,26 @@
   "scenarioId": "diabolic-intent-in-hand",
   "seed": 837,
   "engineVersion": "forge-bridge-v2-0.2.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Diabolic Intent",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "BridgeCastFailed",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "detail": "cast: Diabolic Intent (cost-payment or target-binding rejected)"
+      }
+    }
+  ],
   "setupEvents": []
 }

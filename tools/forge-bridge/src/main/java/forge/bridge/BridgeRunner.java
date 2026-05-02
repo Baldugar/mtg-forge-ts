@@ -35,6 +35,9 @@ import com.google.common.collect.Lists;
 import com.google.common.eventbus.Subscribe;
 
 import forge.ai.ComputerUtil;
+import forge.card.CardRarity;
+import forge.card.CardRules;
+import forge.card.ICardFace;
 import forge.card.MagicColor;
 import forge.gui.GuiBase;
 import forge.LobbyPlayer;
@@ -70,6 +73,7 @@ import forge.game.player.RegisteredPlayer;
 import forge.game.spellability.SpellAbility;
 import forge.game.zone.ZoneType;
 import forge.item.IPaperCard;
+import forge.item.PaperCard;
 import forge.localinstance.properties.ForgePreferences.FPref;
 import forge.model.FModel;
 
@@ -93,6 +97,20 @@ import java.util.Set;
 public final class BridgeRunner {
 
     private static boolean forgeInitialized = false;
+
+    // M6.16 — Scenario-scoped card cache. Each scenario JSON carries a
+    // `cards: { "Name": "scriptText" }` block (the same script syntax
+    // Forge's res/cardsfolder/*.txt uses). When the scenario specifies a
+    // synthetic / non-Forge name (e.g. "Aetherflux Reservoir M613",
+    // "Bloodbraid Berserker"), or a name with parse-stub script content
+    // that diverges from Forge's real card, we honor the scenario's
+    // card data — same way the TS engine does. Without this the bridge
+    // silently drops the cast/etb because Forge's CardDb has no entry
+    // for the name (root cause for ~340 of the 391 bridge-action-skipped
+    // scenarios in the M6.15 parity report).
+    //
+    // Cache lives only for the duration of a single scenario run.
+    private static final Map<String, PaperCard> scenarioCards = new LinkedHashMap<>();
 
     public static void main(String[] args) throws Exception {
         // Read stdin into a string; small payloads, no streaming needed.
@@ -198,6 +216,28 @@ public final class BridgeRunner {
     private static void runScenario(Map<String, Object> scenario, TraceRecorder rec) {
         Game game = newEmptyGame();
         game.subscribeToEvents(rec);
+
+        // M6.16 — Pre-load every card the scenario declares in its `cards`
+        // block. We turn each "Name": "scriptText" entry into a real
+        // PaperCard (CardRules.Reader → PaperCard) and cache it by name
+        // so addCardToZone uses scenario-script data in preference to
+        // Forge's CardDb. Without this, custom / parse-stub card names
+        // silently fail to load (no events, golden empty), which is what
+        // produced the 391-strong bridge-action-skipped bucket.
+        scenarioCards.clear();
+        Map<String, Object> cardsBlock = MiniJson.asObjectOrEmpty(scenario.get("cards"));
+        for (Map.Entry<String, Object> entry : cardsBlock.entrySet()) {
+            String cardName = entry.getKey();
+            Object scriptObj = entry.getValue();
+            if (!(scriptObj instanceof String)) continue;
+            try {
+                PaperCard pc = paperCardFromScript(cardName, (String) scriptObj);
+                if (pc != null) scenarioCards.put(cardName, pc);
+            } catch (Throwable t) {
+                rec.recordSynthetic("BridgeCardParseFailed",
+                    cardName + ": " + t.getClass().getSimpleName() + ": " + t.getMessage());
+            }
+        }
 
         // Players: list of two ScenarioPlayer. Apply life + battlefield + hand.
         List<Object> playersJson = MiniJson.asArray(scenario.get("players"));
@@ -703,16 +743,115 @@ public final class BridgeRunner {
     // ---------- Card-zone helpers ----------
 
     private static Card addCardToZone(String name, Player p, ZoneType zone) {
+        // M6.16 — Try Forge's CardDb first (it has full card scripts that
+        // can cast through ComputerUtil.handlePlayingSpellAbility cleanly).
+        // Fall back to the scenario-declared card script for names Forge
+        // doesn't know — synthetic / custom names that the previous bridge
+        // silently dropped (root cause of most bridge-action-skipped
+        // scenarios). The TS engine reads its card data from the scenario
+        // block, so that's the natural source of truth for unknown names.
         IPaperCard paper = FModel.getMagicDb().getCommonCards().getCard(name);
         if (paper == null) {
             StaticData.instance().attemptToLoadCard(name);
             paper = FModel.getMagicDb().getCommonCards().getCard(name);
         }
+        if (paper == null) {
+            paper = scenarioCards.get(name);
+        }
         if (paper == null) return null;
-        Card c = Card.fromPaperCard(paper, p);
+        Card c;
+        try {
+            c = Card.fromPaperCard(paper, p);
+        } catch (Throwable t) {
+            // M6.16 — A scenario's parse-stub card script may use TS-only
+            // ApiType / Trigger / Replacement names that Forge's CardFactory
+            // doesn't recognize (e.g. ReplaceTokenAmount). When materialization
+            // throws, retry with a stripped CardRules whose A:/T:/R:/S:
+            // lines are removed — preserves Name/Types/ManaCost/PT/K so the
+            // card still has zone identity and ETB events surface.
+            CardRules raw = paper.getRules();
+            CardRules stripped = stripRulesAbilities(raw, name);
+            if (stripped == null) return null;
+            PaperCard simplePaper = new PaperCard(stripped, "USG", CardRarity.Common);
+            try {
+                c = Card.fromPaperCard(simplePaper, p);
+            } catch (Throwable t2) {
+                return null;
+            }
+        }
         c.setGameTimestamp(p.getGame().getNextTimestamp());
         p.getZone(zone).add(c);
         return c;
+    }
+
+    /**
+     * M6.16 — Build a CardRules that retains only the structural lines
+     * (Name / Types / PT / ManaCost / Loyalty / Defense / K:keyword) and
+     * strips A:/T:/R:/S:/SVar:/Oracle:/etc. — used as a recovery path
+     * when Forge's CardFactory can't parse a scenario's parse-stub script.
+     * The card still has identity, type, P/T, and any keyword abilities
+     * Forge knows about; ETB / cost-payment / cast events still fire.
+     */
+    private static CardRules stripRulesAbilities(CardRules raw, String cardName) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name:").append(cardName).append('\n');
+        if (raw != null && raw.getMainPart() != null) {
+            ICardFace face = raw.getMainPart();
+            String types = face.getType() == null ? null : face.getType().toString();
+            String mc = face.getManaCost() == null ? null : face.getManaCost().toString();
+            if (types != null && !types.isEmpty()) sb.append("Types:").append(types).append('\n');
+            if (mc != null && !mc.isEmpty() && !"no cost".equals(mc)) sb.append("ManaCost:").append(mc).append('\n');
+            int pwr = face.getIntPower();
+            int tgh = face.getIntToughness();
+            String types2 = types == null ? "" : types;
+            if (types2.contains("Creature") && (pwr != 0 || tgh != 0)) {
+                sb.append("PT:").append(pwr).append('/').append(tgh).append('\n');
+            }
+            String loyalty = face.getInitialLoyalty();
+            if (loyalty != null && !loyalty.isEmpty() && types2.contains("Planeswalker")) {
+                sb.append("Loyalty:").append(loyalty).append('\n');
+            }
+        }
+        sb.append("Oracle:Bridge fallback - abilities stripped.\n");
+        String[] lines = sb.toString().split("\n", -1);
+        List<String> linesList = new ArrayList<>(lines.length);
+        for (String l : lines) linesList.add(l);
+        try {
+            return new CardRules.Reader().readCard(linesList, cardName);
+        } catch (Throwable t) {
+            return null;
+        }
+    }
+
+    /**
+     * M6.16 — Build a PaperCard from a scenario's inline script text.
+     * Mirrors what Forge's CardStorageReader.loadCard does for files in
+     * res/cardsfolder/<letter>/<name>.txt, but reads the script from a
+     * String rather than a file. Returns null if the script is unparseable.
+     *
+     * The PaperCard is built directly (no CardDb registration) so that
+     * the scenario's data takes precedence and we don't pollute the
+     * shared CardDb across scenarios. Card.fromPaperCard accepts any
+     * IPaperCard, so this works as a drop-in replacement.
+     */
+    private static PaperCard paperCardFromScript(String cardName, String script) {
+        if (script == null || script.isEmpty()) return null;
+        // Split into lines; CardRules.Reader.readCard takes Iterable<String>.
+        String[] rawLines = script.split("\\r?\\n", -1);
+        List<String> lines = new ArrayList<>(rawLines.length);
+        for (String line : rawLines) lines.add(line);
+        CardRules.Reader reader = new CardRules.Reader();
+        CardRules rules;
+        try {
+            rules = reader.readCard(lines, cardName);
+        } catch (Throwable t) {
+            return null;
+        }
+        if (rules == null) return null;
+        // Use a synthetic edition code; "PROXY" mirrors what AI test
+        // helpers use for inline-defined cards. The edition only matters
+        // for set-based queries the bridge never makes.
+        return new PaperCard(rules, "USG", CardRarity.Common);
     }
 
     private static Card findCardInZone(Player p, String name, ZoneType zone) {

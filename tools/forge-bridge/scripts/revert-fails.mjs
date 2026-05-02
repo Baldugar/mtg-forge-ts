@@ -15,7 +15,12 @@ const scenariosPath = resolve(repoRoot, "packages/game/test/golden/scenarios.ts"
 
 const failsPath = process.argv[2] ?? "/tmp/m614-fails.txt";
 const failsText = readFileSync(failsPath, "utf8");
-const failIds = new Set(failsText.split(/\r?\n/).map((s) => s.trim()).filter(Boolean));
+const failIds = new Set(
+  failsText
+    .split(/\r?\n/)
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
 
 const src = readFileSync(scenariosPath, "utf8");
 const lines = src.split("\n");
@@ -29,7 +34,7 @@ for (let i = 0; i < lines.length; i++) {
     openIdx = i;
     id = null;
   }
-  const idMatch = line.match(/^    id: "([^"]+)",$/);
+  const idMatch = line.match(/^ {4}id: "([^"]+)",$/);
   if (idMatch) id = idMatch[1];
   if (line === "  }," && openIdx !== -1 && id !== null && failIds.has(id)) {
     // walk this block and replace any non-empty actions: [...] line with actions: []

@@ -2,6 +2,46 @@
   "scenarioId": "tenured-inkcaster-connive-in-hand",
   "seed": 583,
   "engineVersion": "forge-bridge-v2-0.2.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Tenured Inkcaster",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[Tenured Inkcaster (3)]"
+      }
+    },
+    {
+      "kind": "CounterAdded",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Tenured Inkcaster",
+        "counterType": "p1p1",
+        "amount": 1,
+        "removed": false
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false
+      }
+    }
+  ],
   "setupEvents": []
 }

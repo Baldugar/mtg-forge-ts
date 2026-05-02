@@ -2,6 +2,26 @@
   "scenarioId": "tendrils-of-agony-in-hand",
   "seed": 397,
   "engineVersion": "forge-bridge-v2-0.2.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Tendrils of Agony",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "BridgeCastFailed",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "detail": "cast: Tendrils of Agony (cost-payment or target-binding rejected)"
+      }
+    }
+  ],
   "setupEvents": []
 }

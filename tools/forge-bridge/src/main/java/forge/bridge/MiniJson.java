@@ -58,6 +58,11 @@ final class MiniJson {
         return asArray(v);
     }
 
+    static Map<String, Object> asObjectOrEmpty(Object v) {
+        if (v == null) return new LinkedHashMap<>();
+        return asObject(v);
+    }
+
     private static final class Parser {
         final String s; int pos = 0;
         Parser(String s) { this.s = s; }
