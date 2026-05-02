@@ -1,14 +1,14 @@
 {
   "id": "tilted-animar-etb",
-  "description": "Tilted Animar ETB; Revolt-style ChangesZone(Battlefield→Any) trigger.",
+  "description": "Angelic Sleuth ETB; ChangesZone(Battlefield→Any) trigger gated on HasCounters.",
   "seed": 217,
   "cards": {
-    "Tilted Animar": "Name:Tilted Animar\nManaCost:1 U R\nTypes:Legendary Creature Elemental\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Revolt — Whenever a permanent you control leaves, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Revolt-style counter trigger.\n"
+    "Angelic Sleuth": "Name:Angelic Sleuth\nManaCost:2 W\nTypes:Creature Angel Advisor\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other+HasCounters | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever another permanent you control leaves the battlefield, if it had counters on it, investigate.\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue\nDeckHints:Ability$Counters\nOracle:Flying\\nWhenever another permanent you control leaves the battlefield, if it had counters on it, investigate.\n"
   },
   "players": [
     {
       "life": 20,
-      "hand": ["Tilted Animar"],
+      "hand": ["Angelic Sleuth"],
       "battlefield": []
     },
     {
@@ -20,7 +20,7 @@
   "actions": [
     {
       "kind": "etb",
-      "cardName": "Tilted Animar",
+      "cardName": "Angelic Sleuth",
       "controller": 0
     }
   ]

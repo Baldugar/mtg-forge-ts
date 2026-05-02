@@ -215,9 +215,28 @@ export class SbaEngine {
       case "sagaSacrificed":
         yield* this.game.action.sacrifice(action.cardId);
         return;
-      case "classGainLevel":
-        yield* this.game.action.addCounter(action.cardId, CounterType.Level, 1);
+      case "classGainLevel": {
+        // M6.9 — silent initialization to mirror Forge's `Card.classLevel = 1`
+        // default (set in the Card constructor; see forge-game/.../Card.java
+        // line 238). Forge does not fire `GameEventCounterAdded` for the
+        // level-1 default, and `setClassLevel` on level-up sets the field
+        // directly without going through the counter-add pipeline. We
+        // mutate the counter map and `card.classLevel` slot synchronously
+        // (no replacement chain, no `CounterAdded` event) so parity matches
+        // the Forge bridge's silent ETB. Real level-up activations still
+        // route through `addCounter` and emit `CounterAdded` (level 2+).
+        const card = this.game.cards.get(action.cardId);
+        if (card) {
+          const prev = card.counters.get(CounterType.Level) ?? 0;
+          if (prev === 0) {
+            card.counters.set(CounterType.Level, 1);
+            const prevLevel = card.classLevel ?? 0;
+            if (prevLevel < 1) card.classLevel = 1;
+            this.game.layerEngine.bumpEpoch("class-level-init");
+          }
+        }
         return;
+      }
       case "bestowAuraReverts":
         this.applyBestowAuraReverts(action.cardId);
         return;

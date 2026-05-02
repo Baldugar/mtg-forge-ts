@@ -4,7 +4,7 @@
 // interface itself uses mutable fields (engine mutates in place). `readonly`
 // is intentionally absent from the Map/Set fields so effect handlers can
 // mutate them without copy-on-write overhead.
-import type { EntityId, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
+import type { CounterType, EntityId, PhaseStep, PlayerSeat } from "@mtg-forge-ts/core";
 
 export interface GameFlags {
   dayNight: "day" | "night" | "neither";
@@ -177,6 +177,17 @@ export interface GameFlags {
   // TurnEnded — payments don't roll over between turns (matches Forge:
   // Propaganda is paid each turn the attack is declared).
   unlessPaymentsByStaticId: Map<EntityId, Set<EntityId>>;
+  // M6.9 — counter LKI snapshot at battlefield-leaving time. CR 122.6
+  // clears all counters off a permanent that leaves the battlefield;
+  // some triggers need to read the dying state's counters AFTER the
+  // clear (e.g. Persist's "if it had no -1/-1 counters" gate; Modular's
+  // "redistribute the +1/+1 counters that were on it"). The moveTo
+  // pipeline stamps `(cardId → counterMap snapshot)` here BEFORE
+  // clearing the live card's counters. Triggers running through the
+  // post-event resolver path read this slot to recover the dying
+  // state. Entries are cleared lazily — the next moveTo OFF the
+  // battlefield for the same cardId overwrites the prior entry.
+  countersAtLeaveBattlefield: Map<EntityId, ReadonlyMap<CounterType, number>>;
 }
 
 export const createDefaultFlags = (): GameFlags => ({
@@ -241,4 +252,6 @@ export const createDefaultFlags = (): GameFlags => ({
   activeReplacementIntent: null,
   // Wave 112 — Unless-cost payment ledger; default empty.
   unlessPaymentsByStaticId: new Map(),
+  // M6.9 — counter LKI snapshot for "left the battlefield" reads.
+  countersAtLeaveBattlefield: new Map(),
 });

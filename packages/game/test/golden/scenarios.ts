@@ -1362,13 +1362,20 @@ SVar:X:TriggerCount$DamageAmount
 Oracle:Damage redirect + activated first strike.
 `;
 
-const tiltedAnimarSrc = `Name:Tilted Animar
-ManaCost:1 U R
-Types:Legendary Creature Elemental
-PT:1/1
-T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Revolt — Whenever a permanent you control leaves, put a +1/+1 counter on CARDNAME.
-SVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
-Oracle:Revolt-style counter trigger.
+// M6.9 — replaced fake "Tilted Animar" with the real Angelic Sleuth so
+// the Forge bridge can resolve the card. Same trigger family
+// (ChangesZone leaving the battlefield) — surfaces the bookkeeping
+// path even if no permanent actually leaves during the seeded ETB.
+const tiltedAnimarSrc = `Name:Angelic Sleuth
+ManaCost:2 W
+Types:Creature Angel Advisor
+PT:2/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other+HasCounters | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever another permanent you control leaves the battlefield, if it had counters on it, investigate.
+SVar:TrigInvestigate:DB$ Investigate
+DeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue
+DeckHints:Ability$Counters
+Oracle:Flying\\nWhenever another permanent you control leaves the battlefield, if it had counters on it, investigate.
 `;
 
 const steppeLynxSrc = `Name:Steppe Lynx
@@ -3743,17 +3750,20 @@ export const SCENARIOS: readonly GoldenScenario[] = [
     actions: [{ kind: "etb", cardName: "Boros Reckoner", controller: SEAT0 }],
   },
 
-  // 152. Revolt — Tilted Animar ETB (ChangesZone Origin$Battlefield trigger).
+  // 152. Permanent-leaves trigger — Angelic Sleuth ETB (ChangesZone
+  // Battlefield→Any with HasCounters gate). M6.9 — replaced the prior
+  // fake "Tilted Animar" card with the real Angelic Sleuth so the Forge
+  // bridge can resolve the card and stop returning empty events.
   {
     id: "tilted-animar-etb",
-    description: "Tilted Animar ETB; Revolt-style ChangesZone(Battlefield→Any) trigger.",
+    description: "Angelic Sleuth ETB; ChangesZone(Battlefield→Any) trigger gated on HasCounters.",
     seed: 0xd9,
-    cards: { "Tilted Animar": tiltedAnimarSrc },
+    cards: { "Angelic Sleuth": tiltedAnimarSrc },
     players: [
-      { life: 20, hand: ["Tilted Animar"], battlefield: [] },
+      { life: 20, hand: ["Angelic Sleuth"], battlefield: [] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [{ kind: "etb", cardName: "Tilted Animar", controller: SEAT0 }],
+    actions: [{ kind: "etb", cardName: "Angelic Sleuth", controller: SEAT0 }],
   },
 
   // 153. Landfall — Steppe Lynx ETB (ChangesZone(Land→Battlefield) trigger).

@@ -37,25 +37,12 @@
 //      conditional triggers/statics that consult `card.classLevel >= N`
 //      stay synchronized with the live counter total without relying
 //      on the SBA sweep timing (closes the prior TODO(advanced)).
-import type {
-  EntityId,
-  GameEvent,
-  KeywordAst,
-  ParamValue,
-  SVarAst,
-  TriggeredAbility,
-} from "@mtg-forge-ts/core";
-import { CounterType, ZoneType } from "@mtg-forge-ts/core";
+import type { KeywordAst, ParamValue, SVarAst } from "@mtg-forge-ts/core";
+import { ZoneType } from "@mtg-forge-ts/core";
 import { SpellAbility } from "../../ability/spell-ability.js";
-import type { Game } from "../../game.js";
-import type { StackItemResolver } from "../../stack/stack-item.js";
 import { keywordHandlerRegistry } from "../keyword-handler-registry.js";
 import type { KeywordActivationContext } from "../keyword-handler.js";
 import { KeywordHandler } from "../keyword-handler.js";
-
-type TriggeredAbilityWithResolver = TriggeredAbility & {
-  readonly resolver: StackItemResolver | null;
-};
 
 /**
  * Parse the Class detail string. Form: "level:cost:flagAndKey" — the
@@ -98,54 +85,14 @@ export class ClassKeywordHandler extends KeywordHandler {
     // sba/saga-class.ts which adds Level=1 when the counter is 0).
     if (card.classLevel === undefined) card.classLevel = 1;
 
-    // Wave 113 — CounterAdded watcher: when a Level counter is added to
-    // this Class, bump card.classLevel = max(prev, total). Closes the
-    // prior TODO(advanced) so per-level static / trigger gates that read
-    // `card.classLevel >= N` agree with the live counter total without
-    // relying on the SBA sweep timing. Idempotent (registered once per
-    // activate) — the keyword handler activates once per zone-entry, so
-    // a single watcher per source card is correct. Mirrors chapter-keyword's
-    // Lore-counter watcher pattern.
-    if (card.classLevelWatcherRegistered !== true) {
-      card.classLevelWatcherRegistered = true;
-      const game = ctx.game;
-      const sourceCardId = ctx.sourceCardId;
-      const controllerSeat = ctx.controllerSeat;
-      const watcherId = game.newEntityId();
-      const watcher: TriggeredAbilityWithResolver = {
-        id: watcherId,
-        kind: "triggered",
-        sourceCardId,
-        activeInZones: new Set([ZoneType.Battlefield]),
-        timestamp: 0,
-        controllerSeatAtReg: controllerSeat,
-        isDelayed: false,
-        matches(event: GameEvent): boolean {
-          if (event.kind !== "CounterAdded") return false;
-          const p = event.payload as { cardId: EntityId; counterType: string };
-          if (p.cardId !== sourceCardId) return false;
-          return p.counterType === (CounterType.Level as string);
-        },
-        resolver: {
-          // biome-ignore lint/correctness/useYield: pure data-mutation watcher — bumps classLevel from the live Level counter total; no engine yields needed
-          *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
-            const g = gameUnknown as Game;
-            const c = g.cards.get(sourceCardId);
-            if (!c) return;
-            const total = c.counters.get(CounterType.Level) ?? 0;
-            const prev = c.classLevel ?? 1;
-            if (total > prev) {
-              c.classLevel = total;
-              g.layerEngine.bumpEpoch("class-level-bump");
-            }
-            return;
-          },
-        },
-      };
-      if (!card.triggeredAbilities) card.triggeredAbilities = [];
-      card.triggeredAbilities.push(watcher as unknown as TriggeredAbility);
-      game.triggerRegistry.register(watcher as unknown as TriggeredAbility);
-    }
+    // M6.9 — Wave 113's CounterAdded watcher is replaced by an inline
+    // sync inside game-action.ts#addCounter. Forge's setClassLevel
+    // (ClassLevelUpEffect#resolve) sets the field directly without a
+    // stack-going trigger; the watcher version surfaced as spurious
+    // AbilityActivated/StackItemResolved events on every Level-counter
+    // add (cleric-class-etb parity divergence). The inline path keeps
+    // card.classLevel in lockstep with the Level counter total and
+    // matches Forge's silent setClassLevel.
 
     const detailParam = ast.params?.detail as ParamValue | undefined;
     const detailRaw = detailParam && detailParam.kind === "literal" ? (detailParam.raw as string) : "";

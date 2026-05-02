@@ -27,6 +27,39 @@
       }
     },
     {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 0,
+        "targetKind": "player",
+        "targetId": 0,
+        "amount": 2,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 18,
+        "delta": -2,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "amount": 2
+      }
+    },
+    {
       "kind": "StackItemResolved",
       "turn": 1,
       "phase": "Untap",
@@ -37,7 +70,7 @@
     }
   ],
   "finalState": {
-    "lifeTotals": [20, 20],
+    "lifeTotals": [18, 20],
     "handSizes": [0, 0],
     "battlefield": [
       {

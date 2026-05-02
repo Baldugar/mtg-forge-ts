@@ -33,7 +33,7 @@ import type { Game } from "../game.js";
 import { gatherPanharmoniconHits } from "../statics/cant-must-may-extras.js";
 import { isTriggerDisabled } from "../statics/wave70j-rule-gates.js";
 import type { PendingTrigger } from "./pending-trigger.js";
-import { triggerHasNoLegalTarget } from "./trigger-target-probe.js";
+import { triggerFailsRequirements, triggerHasNoLegalTarget } from "./trigger-target-probe.js";
 
 export type SuppressionFilter = (
   trigger: TriggeredAbility | DelayedTrigger,
@@ -122,6 +122,13 @@ export class TriggerRegistry {
       // / keyword-spawned triggers without an AST handle pass through
       // unchanged.
       if (triggerHasNoLegalTarget(this.game, t)) continue;
+      // M6.9 — CR 603 + Forge `CardTraitBase#meetsCommonRequirements`. The
+      // probe consults the trigger's stamped raw param map and skips the
+      // fire when CheckSVar/SVarCompare or Desert/Threshold/Hellbent/
+      // Metalcraft fails. Mirrors Forge's `Trigger#requirementsCheck`.
+      // Knight of the White Orchid (CheckSVar$ Y SVarCompare$ GTX) and
+      // Sand Strangler (Desert$ True) are the M6.9 cohort drivers.
+      if (triggerFailsRequirements(this.game, t)) continue;
       const lki = t.captureLki ? (t.captureLki(event, this.game) as LastKnownInfo | null) : null;
       const sourceCtl = this.resolveSourceController(t);
       // Wave 104 — Panharmonicon multiplier (Mondrak / Yarok / Glory

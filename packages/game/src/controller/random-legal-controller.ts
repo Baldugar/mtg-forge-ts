@@ -187,7 +187,37 @@ export class RandomLegalController implements PlayerController {
         }
         return { kind: "chooseFace", face: this.rng.choose(req.options) };
       case "chooseCastTargets": {
-        const picked = req.legalTargets.slice(0, req.min);
+        // M6.9 — prefer player targets first when picking the minimum
+        // count from the legal-targets list. Mirrors Forge's AI heuristic
+        // for damage / damage-flavour triggers where the AI typically
+        // routes damage to a player rather than to a creature it
+        // controls. Without this preference, a damage trigger like
+        // Murderous Redcap's "deal X to any target" would pick the
+        // first card in the eligibility set (often the source card
+        // itself), forming a death-loop with the persist resurrection
+        // path. Order: players first (in eligibility order), then cards
+        // not equal to the source, then the source card last.
+        const sourceId = req.sourceId;
+        const order = (legalTargets: readonly unknown[]): unknown[] => {
+          const players: unknown[] = [];
+          const otherCards: unknown[] = [];
+          const selfCards: unknown[] = [];
+          for (const t of legalTargets) {
+            const tag = (t as { kind?: string })?.kind;
+            if (tag === "player") {
+              players.push(t);
+            } else if (tag === "card") {
+              const id = (t as { id?: number })?.id;
+              if (id === (sourceId as unknown as number)) selfCards.push(t);
+              else otherCards.push(t);
+            } else {
+              otherCards.push(t);
+            }
+          }
+          return [...players, ...otherCards, ...selfCards];
+        };
+        const ordered = order(req.legalTargets);
+        const picked = ordered.slice(0, req.min);
         if (req.divideX !== undefined && picked.length > 0) {
           const per = Math.floor(req.divideX.amount / picked.length);
           const rem = req.divideX.amount - per * picked.length;

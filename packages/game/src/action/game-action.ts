@@ -562,6 +562,12 @@ export class GameAction {
           // is local and synchronous since we're already inside the
           // canonical moveTo's onApplied callback.
           if (fromZone === Zt.Battlefield && final.toZone !== Zt.Battlefield && card.counters.size > 0) {
+            // M6.9 — snapshot counters BEFORE the clear so post-event
+            // triggers (Persist's `if it had no -1/-1 counters`, Modular's
+            // counter redistribution, etc.) can read the dying state
+            // without racing against CR 122.6's clear.
+            const snapshot = new Map<CounterType, number>(card.counters);
+            game.flags.countersAtLeaveBattlefield.set(final.cardId, snapshot);
             const clearIntent = {
               kind: "clearCountersOnZoneChange",
               cardId: final.cardId,
@@ -1276,6 +1282,25 @@ export class GameAction {
         if (card) {
           const current = card.counters.get(final.counterType) ?? 0;
           card.counters.set(final.counterType, current + final.amount);
+          // M6.9 — Class level synchronization. Forge's `setClassLevel(int)`
+          // sets `card.classLevel` directly without a stack-going trigger
+          // (see ClassLevelUpEffect#resolve). The TS engine models Class
+          // level via Level counters so static / restriction reads of
+          // `card.classLevel >= N` need the slot kept in lockstep with the
+          // counter total. Doing it inline here (on the apply callback
+          // that already mutates the counter) avoids the stack-bound
+          // CounterAdded watcher used in Wave 113 — which surfaced as
+          // spurious AbilityActivated/StackItemResolved events on every
+          // Level-counter add. The inline sync is functionally equivalent
+          // and matches Forge's silent setClassLevel.
+          if (card && final.counterType === CT.Level) {
+            const total = card.counters.get(CT.Level) ?? 0;
+            const prevLevel = card.classLevel ?? 1;
+            if (total > prevLevel) {
+              card.classLevel = total;
+              game.layerEngine.bumpEpoch("class-level-bump");
+            }
+          }
         }
         // Counters feed Layer 7d (P/T) and can gate other continuous
         // effects (e.g. "as long as CARDNAME has a +1/+1 counter on it").

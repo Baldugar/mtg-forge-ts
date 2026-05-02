@@ -48,6 +48,16 @@ export class PersistKeywordHandler extends KeywordHandler {
     const controllerSeat = ctx.controllerSeat;
     const triggerId = game.newEntityId();
 
+    // M6.9 — pre-zone-change -1/-1 snapshot captured by the matches()
+    // hook. CR 122.6 clears counters when a permanent leaves the
+    // battlefield, so by the time the resolver runs `card.counters`
+    // is empty. Reading the live state would let persist fire forever
+    // on a creature that already has -1/-1 (murderous-redcap-etb death
+    // loop). We snapshot at match-time (right before the trigger queues)
+    // so the resolver gate sees the dying state. Mirrors Forge's
+    // `TriggerChangesZone#performTest` LKI capture.
+    let hadM1M1AtFire = false;
+
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
       kind: "triggered",
@@ -64,9 +74,21 @@ export class PersistKeywordHandler extends KeywordHandler {
           fromZone: ZoneType;
           toZone: ZoneType;
         };
-        return (
-          p.cardId === sourceCardId && p.fromZone === ZoneType.Battlefield && p.toZone === ZoneType.Graveyard
-        );
+        const matched =
+          p.cardId === sourceCardId && p.fromZone === ZoneType.Battlefield && p.toZone === ZoneType.Graveyard;
+        if (matched) {
+          // M6.9 — read the pre-zone-change -1/-1 count from the LKI
+          // snapshot stamped by game-action.ts moveTo BEFORE CR 122.6
+          // clears the live counter map. Without this snapshot the
+          // resolver would always see counter-count = 0 (since it runs
+          // after the clear) and persist would re-fire on a permanent
+          // that already has -1/-1 counters, producing the
+          // murderous-redcap-etb death loop.
+          const snapshot = game.flags.countersAtLeaveBattlefield.get(sourceCardId);
+          const m1m1 = snapshot?.get(CounterType.MinusOneMinusOne) ?? 0;
+          hadM1M1AtFire = m1m1 > 0;
+        }
+        return matched;
       },
 
       resolver: {
@@ -74,9 +96,13 @@ export class PersistKeywordHandler extends KeywordHandler {
           const g = gameUnknown as Game;
           const self = g.cards.get(sourceCardId);
           if (!self) return;
-          // Card.counters persists across zone change (LKI capture).
-          const m1m1 = self.counters?.get(CounterType.MinusOneMinusOne) ?? 0;
-          if (m1m1 > 0) return; // "if it had no -1/-1 counters" — fail.
+          // M6.9 — read the pre-zone-change -1/-1 snapshot captured by
+          // matches() above. Live `self.counters` is empty after CR 122.6
+          // counter clear; using it would let persist fire forever on a
+          // creature that already has -1/-1 (murderous-redcap-etb death
+          // loop). Forge's persist trigger reads LKI at fire time so the
+          // counter check sees the dying state.
+          if (hadM1M1AtFire) return; // "if it had no -1/-1 counters" — fail.
           if (self.zone !== ZoneType.Graveyard) return; // raced; bail.
           // Clear counters: the returning permanent is a new object.
           if (self.counters) self.counters.clear();

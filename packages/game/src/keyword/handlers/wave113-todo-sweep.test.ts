@@ -204,11 +204,19 @@ describe("Wave 113 — Reconfigure not-a-creature override while attached", () =
 });
 
 // ---------------------------------------------------------------------
-// 3. Class — CounterAdded watcher bumps classLevel.
+// 3. Class — Inline classLevel sync via addCounter.
+//
+// M6.9 — Wave 113's CounterAdded watcher (a stack-going TriggeredAbility)
+// was replaced by an inline sync inside game-action.ts#addCounter so the
+// classLevel slot stays in lockstep with Level counters without surfacing
+// spurious AbilityActivated/StackItemResolved events on every
+// counter-add (which broke the cleric-class-etb parity scenario). This
+// test moves with the implementation: it now exercises addCounter's
+// onApplied hook directly rather than poking the obsolete watcher.
 // ---------------------------------------------------------------------
 
-describe("Wave 113 — Class CounterAdded watcher", () => {
-  it("watcher fires on Level CounterAdded and stamps classLevel", async () => {
+describe("Wave 113 → M6.9 — Class inline classLevel sync", () => {
+  it("addCounter(Level) bumps classLevel without firing a stack-going watcher", async () => {
     const { ClassKeywordHandler } = await import("./class-keyword.js");
     const game = mkGame();
     const sourceId = mkEntityId(11320);
@@ -227,35 +235,36 @@ describe("Wave 113 — Class CounterAdded watcher", () => {
       { game, sourceCardId: sourceId, controllerSeat: ALICE },
     );
     expect(source.classLevel).toBe(1);
-    expect(source.classLevelWatcherRegistered).toBe(true);
 
-    // Find the CounterAdded watcher (registered as the only triggered
-    // ability with activeInZones = {Battlefield} that doesn't match
-    // SpellCast / CardChangedZone — i.e. the watcher we just added).
-    // Easier: pull the last triggered ability registered.
-    const watcher = source.triggeredAbilities[source.triggeredAbilities.length - 1];
-    expect(watcher).toBeDefined();
-    if (!watcher) return;
+    // Drive Level counter adds via the canonical addCounter pipeline.
+    // The inline sync inside the apply callback should bump
+    // classLevel = max(prev, total). Seed an initial Level=1 counter
+    // (the SBA's default, simulated here) so subsequent activations
+    // produce level 2 / 3 transitions matching Forge.
+    {
+      const g = game.action.addCounter(sourceId, CounterType.Level, 1);
+      let s = g.next();
+      while (!s.done) s = g.next();
+    }
+    expect(source.counters.get(CounterType.Level)).toBe(1);
+    expect(source.classLevel).toBe(1);
 
-    // Manually drive: stamp Level=2 counter and fire the resolver.
-    source.counters.set(CounterType.Level, 2);
-    const resolver = (
-      watcher as unknown as {
-        resolver: { resolve: (g: Game) => Generator<unknown, void, unknown> };
-      }
-    ).resolver;
-    const gen = resolver.resolve(game);
-    let next = gen.next();
-    while (!next.done) next = gen.next();
+    // Level-up activation #1 (counter 1 → 2).
+    {
+      const g = game.action.addCounter(sourceId, CounterType.Level, 1);
+      let s = g.next();
+      while (!s.done) s = g.next();
+    }
+    expect(source.counters.get(CounterType.Level)).toBe(2);
     expect(source.classLevel).toBe(2);
 
-    // Bump again to 3, watcher fires again, slot stamps to 3.
-    source.counters.set(CounterType.Level, 3);
+    // Level-up activation #2 (counter 2 → 3).
     {
-      const gen2 = resolver.resolve(game);
-      let n = gen2.next();
-      while (!n.done) n = gen2.next();
+      const g = game.action.addCounter(sourceId, CounterType.Level, 1);
+      let s = g.next();
+      while (!s.done) s = g.next();
     }
+    expect(source.counters.get(CounterType.Level)).toBe(3);
     expect(source.classLevel).toBe(3);
   });
 });

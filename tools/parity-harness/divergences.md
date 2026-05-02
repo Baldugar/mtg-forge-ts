@@ -541,3 +541,129 @@ identified a real CR-rule violation in the TS engine and closed it
 through a code fix rather than a documentation change. This is the
 testing infrastructure's intended terminal step: drive scenarios →
 diff against Forge → identify the engine bug → fix → re-validate.
+
+## Milestone 6.9 — 100% parity reached (188/188 full-match)
+
+M6.9 closes every remaining `mvp-known` row from the M6.8 set with
+real engine fixes. End state: **188 full-match / 0 mvp-known / 0
+unknown.**
+
+### What M6.9 changed
+
+1. **Class-keyword level synchronization moved inline.** Wave 113's
+   CounterAdded watcher (a stack-going `TriggeredAbility`) was the
+   wrong shape — every Level-counter add surfaced a spurious
+   `AbilityActivated` + `StackItemResolved` pair the Java side never
+   fires. Forge's `ClassLevelUpEffect#resolve` calls
+   `Card.setClassLevel(int)` directly without queuing a trigger; we
+   mirror that now by syncing `card.classLevel = max(prev, total)`
+   inside `addCounter`'s onApplied callback. The watcher is gone,
+   the SBA initializer mutates `card.classLevel` and the Level
+   counter map synchronously without emitting `CounterAdded` (parity
+   with Forge's silent constructor-time level-1 default in
+   `Card.java:238`). **Closes:** `cleric-class-etb`.
+
+2. **CR 603 trigger requirement gate.** Extended
+   `trigger-target-probe.ts` with a `triggerFailsRequirements`
+   companion to `triggerHasNoLegalTarget`. Mirrors Forge's
+   `CardTraitBase#meetsCommonRequirements` (called from
+   `Trigger#requirementsCheck`): walks the trigger's stamped raw param
+   map and skips the fire when any requirement fails. Currently
+   honoured params: `CheckSVar / SVarCompare`, `Desert`, `Threshold`,
+   `Hellbent`, `Metalcraft`. The probe consults the SVar evaluator for
+   numeric comparators and checks `Player.hasDesert()` analog for the
+   Desert flag. The trigger handler stamps `triggerParams` onto the
+   built TriggeredAbility so the gate has access to the raw params
+   without re-parsing. **Closes:** `knight-of-the-white-orchid-etb`
+   (CheckSVar$ Y SVarCompare$ GTX), `sand-strangler-etb` (Desert$
+   True).
+
+3. **`PlayerCountOpponents` SVar selector.** Knight of the White
+   Orchid's `Y` SVar is `PlayerCountOpponents$HighestValid Land.YouCtrl`
+   — for each opponent, count "lands the opponent controls" and
+   return the max. Mirrors Forge's `playerXCount(opponents, s, ...)`
+   family with `Highest`/`Lowest`/sum aggregation. Wired into the
+   selector registry so `evaluateSVar` can resolve trigger gates that
+   reference it.
+
+4. **Trigger probe honours `TgtZone$` and `TargetMin$`.** The CR
+   603.10c skip path was over-eager: `Snapcaster Mage`'s ETB-flashback
+   trigger has `ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TgtZone$
+   Graveyard`, but the probe only walked the battlefield and so
+   reported zero candidates and skipped the trigger fire. Probe now
+   reads `TgtZone$` and walks the matching zone (Graveyard, Hand,
+   Exile, etc.). Probe also honours `TargetMin$ 0` (CR 601.2c "up to
+   N targets") so optional-target triggers like Gilded Drake's ETB
+   exchange fire even when no opponent's creature exists. **Closes:**
+   `gilded-drake-etb`, `snapcaster-mage-etb`.
+
+5. **Trigger resolver auto-target binding.** `ChangesZoneTrigger`'s
+   resolver now performs target enumeration when the trigger body's
+   `ValidTgts$` is a literal: ask the controller for a
+   `chooseCastTargets` decision, validate, bind onto the SpellAbility
+   before `makeResolver()` runs. Mirrors Forge's
+   `WrappedAbility#resolve` path which calls AI target selection
+   before the underlying effect fires. Without this, a damage trigger
+   like Murderous Redcap's ETB body would resolve with no target and
+   no damage would land. **Closes:** `murderous-redcap-etb` (in
+   tandem with the persist LKI fix below).
+
+6. **Persist LKI for -1/-1 counter at fire time.** Persist's "if it
+   had no -1/-1 counters" gate read live `card.counters` after the
+   `moveTo` Battlefield→Graveyard had already cleared the counter map
+   per CR 122.6 — so the second death after a successful persist saw
+   `m1m1 = 0` and re-resurrected, forming an infinite death loop on
+   any ETB-self-damage card with persist (Murderous Redcap targeting
+   itself). The fix: stamp a counter snapshot on
+   `game.flags.countersAtLeaveBattlefield` BEFORE the CR 122.6 clear
+   in `addCounter`'s onApplied. The persist trigger's `matches()`
+   reads the snapshot and stashes the pre-clear `m1m1` count in a
+   closure-scoped `hadM1M1AtFire`; the resolver consults the closure
+   variable instead of live state. Mirrors Forge's
+   `TriggerChangesZone#performTest` LKI capture.
+
+7. **Random controller prefers non-self targets for "Any".** When a
+   trigger body has `ValidTgts$ Any`, the random controller now sorts
+   the eligibility list players-first → other-cards → source-card-
+   last. Mirrors Forge's AI heuristic for damage-flavour triggers
+   (route damage to a player rather than a creature you control).
+   Without this preference, Murderous Redcap's ETB damage trigger
+   would pick the source card itself (first in the eligibility set)
+   and form a death loop with the persist resurrection path. The
+   policy is conservative: it changes target ordering but doesn't
+   exclude any legal target.
+
+8. **`tilted-animar-etb` scenario rewritten with a real card.** The
+   prior scenario's "Tilted Animar" was a fictional card; the Forge
+   bridge silently emitted no events because `CardFactory` couldn't
+   resolve the name. Replaced with `Angelic Sleuth` (real Forge card
+   with the same trigger family — `ChangesZone` Battlefield→Any with
+   a `Permanent.YouCtrl+Other+HasCounters` filter).
+
+### Real engine bugs surfaced (M6.9 batch — all closed)
+
+1. Class watcher fan-out (engine: wrong shape for level sync). Closed.
+2. CR 603 requirement gate not enforced (CheckSVar/Desert family). Closed.
+3. CR 603.10c probe missing TgtZone / TargetMin$ 0 awareness. Closed.
+4. Trigger resolver missing auto-target binding (parity-runner gap). Closed.
+5. Persist counter LKI not captured at fire time (CR 122.6 race). Closed.
+
+### Aggregate this run (post-M6.9)
+
+- **188 scenarios.**
+- **188 full-match (100%).**
+- **0 mvp-known.**
+- **0 unknown.**
+
+The hard contract holds: every TS divergence either matches Forge
+exactly or surfaces a real engine bug we close in the same dispatch.
+
+### How to verify
+
+```bash
+node tools/parity-harness/run-parity.mjs
+# Expect (M6.9):
+#   full-match:  188
+#   mvp-known:   0
+#   unknown:     0
+```

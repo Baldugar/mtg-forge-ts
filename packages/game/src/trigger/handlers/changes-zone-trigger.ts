@@ -34,12 +34,14 @@ import type {
   AbilityAst,
   EntityId,
   GameEvent,
+  PlayerSeat,
   SVarAst,
   TriggerAst,
   TriggeredAbility,
 } from "@mtg-forge-ts/core";
 import { ZoneType } from "@mtg-forge-ts/core";
-import { SpellAbility } from "../../ability/spell-ability.js";
+import { SpellAbility, type SpellAbilityTargetRef } from "../../ability/spell-ability.js";
+import { parseValidTgts } from "../../cast/valid-targets.js";
 import type { Game } from "../../game.js";
 import type { StackItemResolver } from "../../stack/stack-item.js";
 import { cardMatchesFilter } from "../card-filter.js";
@@ -55,9 +57,18 @@ import { TriggerHandler } from "../trigger-handler.js";
 // `executeKey` is the SVar name this trigger's Execute$ resolves to. Stamped
 // here so the trigger-registry's M6.8 target-legality probe can walk the
 // chain without re-parsing the AST. CR 603.10c skip path.
+//
+// `triggerParams` is the raw param map from the TriggerAst (CheckSVar$,
+// Desert$, OptionalDecider$, etc.). Stamped for M6.9's
+// trigger-requirement gate which mirrors Forge's
+// `CardTraitBase#meetsCommonRequirements`. The gate consults
+// CheckSVar/SVarCompare and Desert/Threshold/Hellbent/Metalcraft etc.
+// before queuing the trigger fire — same place Forge's
+// `Trigger#requirementsCheck` runs the predicate.
 type TriggeredAbilityWithResolver = TriggeredAbility & {
   readonly resolver: StackItemResolver | null;
   readonly executeKey: string;
+  readonly triggerParams: Readonly<Record<string, import("@mtg-forge-ts/core").ParamValue>>;
 };
 
 // ---------------------------------------------------------------------------
@@ -115,6 +126,13 @@ export class ChangesZoneTrigger extends TriggerHandler {
       // looking for ValidTgts$ steps to skip the trigger fire if no legal
       // target exists.
       executeKey,
+      // M6.9 — raw TriggerAst params stamped for the requirement gate.
+      // Mirrors Forge's `CardTraitBase#meetsCommonRequirements` which
+      // consults CheckSVar/SVarCompare/Desert/Threshold/Hellbent/Metalcraft
+      // before letting the trigger queue. The gate runs in
+      // trigger-target-probe.ts after the existing matches/interveningIf/
+      // suppression/DisableTriggers checks.
+      triggerParams: ast.params,
 
       matches(event: GameEvent): boolean {
         if (event.kind !== "CardChangedZone") return false;
@@ -161,6 +179,15 @@ export class ChangesZoneTrigger extends TriggerHandler {
 
       // Part E2 — resolver: look up the Execute$ SVar at resolve-time,
       // wrap its EffectInvocation in a SpellAbility, and drive it.
+      //
+      // M6.9 — when the effect's `ValidTgts$` requires a target, ask the
+      // controller to pick one via `chooseCastTargets` (same decision
+      // shape as `activateAbility` uses), then bind the chosen targets
+      // onto the SpellAbility before its makeResolver() runs. Mirrors
+      // Forge's `WrappedAbility#resolve` path which calls AI target
+      // selection before the underlying effect fires. Closes the
+      // murderous-redcap-etb parity gap (DealDamage with `ValidTgts$ Any`
+      // needs a real target for the damage to land).
       resolver: {
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
           const game = gameUnknown as Game;
@@ -188,12 +215,62 @@ export class ChangesZoneTrigger extends TriggerHandler {
             effect: sv.ability,
             cost: { raw: "" },
           };
+
+          // M6.9 — target enumeration for the trigger body. Read the
+          // first effect step's ValidTgts$ (if literal) and ask the
+          // controller for a chooseCastTargets decision. This is the
+          // parity-faithful equivalent of Forge's AI calling
+          // `chooseTargetsFor` during WrappedAbility resolution.
+          let targets: readonly EntityId[] = [];
+          let targetRefs: readonly SpellAbilityTargetRef[] = [];
+          const validTgtsParam = sv.ability.params?.ValidTgts;
+          if (validTgtsParam && validTgtsParam.kind === "literal" && validTgtsParam.raw) {
+            try {
+              const restriction = parseValidTgts(validTgtsParam.raw);
+              const enumerationCtx = {
+                sourceId: sourceCardId,
+                sourceControllerSeat: controllerSeat,
+              };
+              const eligible = game.targetSystem.enumerate(enumerationCtx, restriction);
+              if (eligible.length > 0 && restriction.maxTargets > 0) {
+                const response = (yield {
+                  kind: "decision",
+                  request: {
+                    kind: "chooseCastTargets",
+                    playerSeat: controllerSeat,
+                    sourceId: sourceCardId,
+                    legalTargets: eligible as readonly unknown[],
+                    min: restriction.minTargets,
+                    max: restriction.maxTargets,
+                  },
+                }) as {
+                  readonly kind: "chooseCastTargets";
+                  readonly targets: readonly {
+                    readonly kind: "card" | "player";
+                    readonly id?: EntityId;
+                    readonly seat?: PlayerSeat;
+                  }[];
+                };
+                const chosen = (response?.targets ?? []) as readonly SpellAbilityTargetRef[];
+                targetRefs = chosen;
+                targets = chosen.map((t) => (t.kind === "card" ? t.id : (t.seat as unknown as EntityId)));
+              }
+            } catch {
+              // parseValidTgts may throw on unparseable filters; fall back
+              // to no-target resolution (legacy MVP behaviour).
+            }
+          }
+
           const sa = new SpellAbility(
             fakeAst,
             sourceCardId,
             controllerSeat,
             svars,
-            [], // triggered abilities have no caster-selected targets at MVP
+            targets,
+            undefined,
+            undefined,
+            undefined,
+            targetRefs,
           );
           const innerResolver = sa.makeResolver();
           yield* innerResolver.resolve(game);
