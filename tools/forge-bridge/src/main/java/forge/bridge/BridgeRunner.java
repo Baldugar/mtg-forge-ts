@@ -788,20 +788,25 @@ public final class BridgeRunner {
     // ---------- Card-zone helpers ----------
 
     private static Card addCardToZone(String name, Player p, ZoneType zone) {
-        // M6.16 — Try Forge's CardDb first (it has full card scripts that
-        // can cast through ComputerUtil.handlePlayingSpellAbility cleanly).
-        // Fall back to the scenario-declared card script for names Forge
-        // doesn't know — synthetic / custom names that the previous bridge
-        // silently dropped (root cause of most bridge-action-skipped
-        // scenarios). The TS engine reads its card data from the scenario
-        // block, so that's the natural source of truth for unknown names.
-        IPaperCard paper = FModel.getMagicDb().getCommonCards().getCard(name);
+        // M6.18 — Scenario card scripts are now authoritative. The TS engine
+        // reads its card data from the scenario block; for parity, the bridge
+        // must use the same script so triggers / replacement effects /
+        // SubAbility chains line up. Falling back to Forge's CardDb only when
+        // the scenario block omits the card avoids the asymmetric trigger
+        // fan-out where the bridge fires real-card behavior the scenario's
+        // synthetic script doesn't model (Champion of the Parish tribal
+        // counter, Auspicious Starrix mutate trigger vs scenario ETB-mill,
+        // Felidar Guardian flicker vs scenario plain ETB, etc.) — and the
+        // converse where the scenario adds a synthetic ETB trigger the real
+        // card lacks (Surveilling Sprite scry, anointer / starrix / sprinter
+        // synthetic ETB triggers).
+        IPaperCard paper = scenarioCards.get(name);
         if (paper == null) {
-            StaticData.instance().attemptToLoadCard(name);
             paper = FModel.getMagicDb().getCommonCards().getCard(name);
-        }
-        if (paper == null) {
-            paper = scenarioCards.get(name);
+            if (paper == null) {
+                StaticData.instance().attemptToLoadCard(name);
+                paper = FModel.getMagicDb().getCommonCards().getCard(name);
+            }
         }
         if (paper == null) return null;
         Card c;

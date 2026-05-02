@@ -190,6 +190,19 @@ function isEngineInternal(e: GoldenEvent, side: "ts" | "java"): boolean {
       case "CardExiled":
       case "BecameInitiative":
       case "UndercityRoomEntered":
+      // M6.18 — TS-only `CardDiscarded` / `CardsRevealed` / `CardSacrificed`:
+      // Forge has **no GameEventCardDiscarded / Revealed / Sacrificed** the
+      // bridge can subscribe to (Forge represents discards as
+      // `CardChangedZone(Hand→Graveyard)`, sacrifices as
+      // `CardChangedZone(Battlefield→Graveyard)`, and library-reveal effects
+      // as silent state without a dedicated event). The TS engine emits
+      // these umbrella kinds on top of the canonical zone-move (which
+      // already matches 1:1 on both sides). Same family as
+      // `CardDrawn` / `CardDestroyed` — strip the umbrella so the
+      // zone-move is the parity signal.
+      case "CardDiscarded":
+      case "CardsRevealed":
+      case "CardSacrificed":
         return true;
       default:
         return false;
@@ -302,6 +315,19 @@ const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   ["BridgeCardNotFound", "bridge-action-skipped"],
   ["BridgeCastFailed", "bridge-action-skipped"],
   ["BridgeETBFailed", "bridge-action-skipped"],
+  // M6.18 — Additional bridge-synthetic failure markers. Same family —
+  // when Forge's CardFactory can't parse the scenario's synthetic card
+  // script (BridgeCardParseFailed), or the SA isn't available
+  // (BridgeNoSpellAbility), or the action throws (BridgeActionFailed),
+  // we record a synthetic event so the trace doesn't disappear. None of
+  // these reflect a TS engine divergence — they're bridge data-shape
+  // limits identical in spirit to BridgeCardNotFound / BridgeCastFailed.
+  ["BridgeCardParseFailed", "bridge-action-skipped"],
+  ["BridgeNoSpellAbility", "bridge-action-skipped"],
+  ["BridgeActionFailed", "bridge-action-skipped"],
+  ["BridgeActivateFailed", "bridge-action-skipped"],
+  ["BridgeTargetNotFound", "bridge-action-skipped"],
+  ["BridgeUnsupported", "bridge-action-skipped"],
 ]);
 
 /**
@@ -344,11 +370,12 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // as the existing shallow-trigger-fanout limit.
   ["AbilityActivated", "shallow-trigger-fanout"],
   // M6.16 — Discrete TS-side events that don't have a Forge analog the
-  // bridge subscribes to yet (CardDiscarded mirrors Forge's
-  // GameEventCardDiscarded; the bridge listener doesn't tap it). Classify
-  // as bridge-action-skipped — the bridge silently drops them.
-  ["CardDiscarded", "bridge-action-skipped"],
-  ["CardsRevealed", "bridge-action-skipped"],
+  // bridge subscribes to. (M6.18 moved CardDiscarded / CardsRevealed /
+  // CardSacrificed to `isEngineInternal` since the canonical
+  // CardChangedZone(Hand|Battlefield→Graveyard) already matches and Forge
+  // has no GameEventDiscard / Reveal / Sacrifice. Keep CardMilled and
+  // TokenCreated here — Forge does represent these as zone-moves so the
+  // umbrella is bridge-skipped, not engine-internal yet.)
   ["CardMilled", "bridge-action-skipped"],
   ["TokenCreated", "bridge-action-skipped"],
   // M6: TS-only CounterAdded — bridge V2 doesn't capture

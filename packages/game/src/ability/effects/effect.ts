@@ -204,6 +204,9 @@ export class EffectEffect extends SpellAbilityEffect {
     // compatibility for cards that use Effect purely as a wrapper.
     if (!hasHostContent) {
       yield* runSubAbility(sa, game);
+      // M6.18 — Mark the chain consumed so SpellAbility.makeResolver's
+      // post-effect chain runner doesn't double-run.
+      (sa as unknown as { __subAbilityHandled?: boolean }).__subAbilityHandled = true;
       return;
     }
 
@@ -354,6 +357,9 @@ export class EffectEffect extends SpellAbilityEffect {
 
     // ---- SubAbility$ chaining -------------------------------------------
     yield* runSubAbility(sa, game);
+    // M6.18 — Mark the chain consumed so SpellAbility.makeResolver's
+    // post-effect chain runner doesn't double-run.
+    (sa as unknown as { __subAbilityHandled?: boolean }).__subAbilityHandled = true;
   }
 }
 

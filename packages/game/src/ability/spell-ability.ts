@@ -7,6 +7,7 @@ import { ZoneType as ZoneTypeEnum } from "@mtg-forge-ts/core";
 import type { Game } from "../game.js";
 import type { StackItemResolver } from "../stack/stack-item.js";
 import { effectRegistry } from "./effect-registry.js";
+import { runSubAbilityChain } from "./sub-ability-chain.js";
 
 /** Default zones in which a regular AB$ (battlefield) ability is active. */
 const DEFAULT_ACTIVE_IN_ZONES: ReadonlySet<ZoneType> = new Set([ZoneTypeEnum.Battlefield]);
@@ -90,6 +91,17 @@ export class SpellAbility {
         }
         const effect = new cls();
         yield* effect.resolve(sa, game);
+        // M6.18 — Walk the SubAbility$ chain after the main effect resolves.
+        // Mirrors Forge's AbilityFactory.resolveSubAbilities (forge-game) which
+        // is invoked at end-of-resolution for every spell/ability so DBLife /
+        // DBDraw / DBChangeZone subs all run inline as part of the parent's
+        // resolution (CR 113.2 — these are not separate stack frames). Skip
+        // when the effect already consumed the chain (effect.ts EffectEffect
+        // runs runSubAbility itself for the SP$ Effect host wrapper) — guard
+        // by `__subAbilityHandled` set on `sa` after that path runs.
+        if ((sa as unknown as { __subAbilityHandled?: boolean }).__subAbilityHandled !== true) {
+          yield* runSubAbilityChain(sa, game);
+        }
       },
     };
   }

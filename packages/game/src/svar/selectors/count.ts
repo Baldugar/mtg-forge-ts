@@ -92,5 +92,24 @@ selectorRegistry.register("Count", (ast, ctx) => {
     const headFn = countArgRegistry.lookup(head);
     if (headFn) return headFn(ast, ctx);
   }
+  // M6.18 — Count$ManaCost returns the source card's converted mana cost.
+  // Mirrors Forge's `Count$CardManaCost` family — used for X-spells where
+  // X = the spell's own cost (Ad Nauseam: "lose life equal to revealed
+  // card's mana value"). The fallback hits when a SVar references the
+  // mana cost of a remembered/lki card and there's no specialized handler.
+  if (arg === "ManaCost" || arg === "CardManaCost") {
+    const card = ctx.game.cards.get(ctx.sourceCardId);
+    const def = card?.paperCard.definition;
+    const mc = def?.manaCost;
+    if (mc !== undefined && mc !== null) {
+      // Read symbol count via duck-typed shape — manaCost API varies by
+      // ManaCost wrapper class; fallback to literal string parse if needed.
+      const symbols = (mc as unknown as { symbols?: ReadonlyArray<unknown> }).symbols;
+      if (Array.isArray(symbols)) return symbols.length;
+      const cmc = (mc as unknown as { cmc?: number }).cmc;
+      if (typeof cmc === "number") return cmc;
+    }
+    return 0;
+  }
   throw new Error(`Count$ selector: unsupported arg '${arg}'`);
 });
