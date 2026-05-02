@@ -1,0 +1,37 @@
+{
+  "id": "pinger-cast-0-m632",
+  "description": "Pinger 0 cast — ETB deals 2 to opponent.",
+  "seed": 50110,
+  "cards": {
+    "Ping0 M632": "Name:Ping0 M632\nManaCost:2 R\nTypes:Creature Goblin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent\nOracle:Ping0 M632 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ping0 M632"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Ping0 M632",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "multi-bolt-chain-24-m632",
+  "description": "Multi-bolt chain 24 — two bolts at the opponent.",
+  "seed": 49944,
+  "cards": {
+    "Bolt24 M632": "Name:Bolt24 M632\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any\nOracle:Bolt24 M632 test.\n",
+    "Bolt24b M632": "Name:Bolt24b M632\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any\nOracle:Bolt24b M632 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bolt24 M632",
+        "Bolt24b M632"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Bolt24 M632",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "Bolt24b M632",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

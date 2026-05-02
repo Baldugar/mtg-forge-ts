@@ -1,0 +1,53 @@
+{
+  "id": "warden-bears-chain-18-m632",
+  "description": "Warden + bears chain 18 — Warden onfield, two bears ETB triggering life-gain.",
+  "seed": 49988,
+  "cards": {
+    "Warden18 M632": "Name:Warden18 M632\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Warden18 M632 test.\n",
+    "WB18a M632": "Name:WB18a M632\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:WB18a M632 test.\n",
+    "WB18b M632": "Name:WB18b M632\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:WB18b M632 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "WB18a M632",
+        "WB18b M632"
+      ],
+      "battlefield": [
+        {
+          "card": "Warden18 M632"
+        }
+      ],
+      "manaPool": [
+        "G",
+        "G",
+        "G",
+        "G"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "WB18a M632",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "WB18b M632",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

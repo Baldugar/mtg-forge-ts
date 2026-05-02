@@ -1,0 +1,59 @@
+{
+  "id": "pump-cast-chain-11-m632",
+  "description": "Pump cast chain 11 — two giant-growths on the same creature.",
+  "seed": 50071,
+  "cards": {
+    "PumpA11 M632": "Name:PumpA11 M632\nManaCost:G\nTypes:Instant\nA:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3\nOracle:PumpA11 M632 test.\n",
+    "PumpB11 M632": "Name:PumpB11 M632\nManaCost:G\nTypes:Instant\nA:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3\nOracle:PumpB11 M632 test.\n",
+    "Tgt11 M632": "Name:Tgt11 M632\nManaCost:1 G\nTypes:Creature Beast\nPT:2/2\nOracle:Tgt11 M632 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "PumpA11 M632",
+        "PumpB11 M632"
+      ],
+      "battlefield": [
+        {
+          "card": "Tgt11 M632"
+        }
+      ],
+      "manaPool": [
+        "G",
+        "G"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "PumpA11 M632",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Tgt11 M632"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "PumpB11 M632",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Tgt11 M632"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

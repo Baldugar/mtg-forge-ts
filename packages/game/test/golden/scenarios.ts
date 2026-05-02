@@ -67702,4 +67702,8394 @@ Oracle:CSMM parse.
     ],
     actions: [{ kind: "etb", cardName: "Chant Skifsang M631 M631", controller: SEAT0 }],
   },
+
+  // 3085. Multi-bolt chain 0 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-0-m632",
+    description: "Multi-bolt chain 0 — two bolts at the opponent.",
+    seed: 0xc300,
+    cards: {
+      "Bolt0 M632": `Name:Bolt0 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt0 M632 test.
+`,
+      "Bolt0b M632": `Name:Bolt0b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt0b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt0 M632", "Bolt0b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt0 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt0b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3086. Multi-bolt chain 1 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-1-m632",
+    description: "Multi-bolt chain 1 — two bolts at the opponent.",
+    seed: 0xc301,
+    cards: {
+      "Bolt1 M632": `Name:Bolt1 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt1 M632 test.
+`,
+      "Bolt1b M632": `Name:Bolt1b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt1b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt1 M632", "Bolt1b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt1 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt1b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3087. Multi-bolt chain 2 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-2-m632",
+    description: "Multi-bolt chain 2 — two bolts at the opponent.",
+    seed: 0xc302,
+    cards: {
+      "Bolt2 M632": `Name:Bolt2 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt2 M632 test.
+`,
+      "Bolt2b M632": `Name:Bolt2b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt2b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt2 M632", "Bolt2b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt2 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt2b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3088. Multi-bolt chain 3 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-3-m632",
+    description: "Multi-bolt chain 3 — two bolts at the opponent.",
+    seed: 0xc303,
+    cards: {
+      "Bolt3 M632": `Name:Bolt3 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt3 M632 test.
+`,
+      "Bolt3b M632": `Name:Bolt3b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt3b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt3 M632", "Bolt3b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt3 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt3b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3089. Multi-bolt chain 4 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-4-m632",
+    description: "Multi-bolt chain 4 — two bolts at the opponent.",
+    seed: 0xc304,
+    cards: {
+      "Bolt4 M632": `Name:Bolt4 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt4 M632 test.
+`,
+      "Bolt4b M632": `Name:Bolt4b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt4b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt4 M632", "Bolt4b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt4 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt4b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3090. Multi-bolt chain 5 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-5-m632",
+    description: "Multi-bolt chain 5 — two bolts at the opponent.",
+    seed: 0xc305,
+    cards: {
+      "Bolt5 M632": `Name:Bolt5 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt5 M632 test.
+`,
+      "Bolt5b M632": `Name:Bolt5b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt5b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt5 M632", "Bolt5b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt5 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt5b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3091. Multi-bolt chain 6 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-6-m632",
+    description: "Multi-bolt chain 6 — two bolts at the opponent.",
+    seed: 0xc306,
+    cards: {
+      "Bolt6 M632": `Name:Bolt6 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt6 M632 test.
+`,
+      "Bolt6b M632": `Name:Bolt6b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt6b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt6 M632", "Bolt6b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt6 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt6b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3092. Multi-bolt chain 7 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-7-m632",
+    description: "Multi-bolt chain 7 — two bolts at the opponent.",
+    seed: 0xc307,
+    cards: {
+      "Bolt7 M632": `Name:Bolt7 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt7 M632 test.
+`,
+      "Bolt7b M632": `Name:Bolt7b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt7b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt7 M632", "Bolt7b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt7 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt7b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3093. Multi-bolt chain 8 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-8-m632",
+    description: "Multi-bolt chain 8 — two bolts at the opponent.",
+    seed: 0xc308,
+    cards: {
+      "Bolt8 M632": `Name:Bolt8 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt8 M632 test.
+`,
+      "Bolt8b M632": `Name:Bolt8b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt8b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt8 M632", "Bolt8b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt8 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt8b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3094. Multi-bolt chain 9 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-9-m632",
+    description: "Multi-bolt chain 9 — two bolts at the opponent.",
+    seed: 0xc309,
+    cards: {
+      "Bolt9 M632": `Name:Bolt9 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt9 M632 test.
+`,
+      "Bolt9b M632": `Name:Bolt9b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt9b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt9 M632", "Bolt9b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bolt9 M632", castingPlayer: SEAT0, target: { kind: "player", seat: SEAT1 } },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt9b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3095. Multi-bolt chain 10 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-10-m632",
+    description: "Multi-bolt chain 10 — two bolts at the opponent.",
+    seed: 0xc30a,
+    cards: {
+      "Bolt10 M632": `Name:Bolt10 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt10 M632 test.
+`,
+      "Bolt10b M632": `Name:Bolt10b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt10b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt10 M632", "Bolt10b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt10 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt10b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3096. Multi-bolt chain 11 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-11-m632",
+    description: "Multi-bolt chain 11 — two bolts at the opponent.",
+    seed: 0xc30b,
+    cards: {
+      "Bolt11 M632": `Name:Bolt11 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt11 M632 test.
+`,
+      "Bolt11b M632": `Name:Bolt11b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt11b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt11 M632", "Bolt11b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt11 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt11b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3097. Multi-bolt chain 12 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-12-m632",
+    description: "Multi-bolt chain 12 — two bolts at the opponent.",
+    seed: 0xc30c,
+    cards: {
+      "Bolt12 M632": `Name:Bolt12 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt12 M632 test.
+`,
+      "Bolt12b M632": `Name:Bolt12b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt12b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt12 M632", "Bolt12b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt12 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt12b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3098. Multi-bolt chain 13 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-13-m632",
+    description: "Multi-bolt chain 13 — two bolts at the opponent.",
+    seed: 0xc30d,
+    cards: {
+      "Bolt13 M632": `Name:Bolt13 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt13 M632 test.
+`,
+      "Bolt13b M632": `Name:Bolt13b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt13b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt13 M632", "Bolt13b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt13 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt13b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3099. Multi-bolt chain 14 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-14-m632",
+    description: "Multi-bolt chain 14 — two bolts at the opponent.",
+    seed: 0xc30e,
+    cards: {
+      "Bolt14 M632": `Name:Bolt14 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt14 M632 test.
+`,
+      "Bolt14b M632": `Name:Bolt14b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt14b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt14 M632", "Bolt14b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt14 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt14b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3100. Multi-bolt chain 15 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-15-m632",
+    description: "Multi-bolt chain 15 — two bolts at the opponent.",
+    seed: 0xc30f,
+    cards: {
+      "Bolt15 M632": `Name:Bolt15 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt15 M632 test.
+`,
+      "Bolt15b M632": `Name:Bolt15b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt15b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt15 M632", "Bolt15b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt15 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt15b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3101. Multi-bolt chain 16 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-16-m632",
+    description: "Multi-bolt chain 16 — two bolts at the opponent.",
+    seed: 0xc310,
+    cards: {
+      "Bolt16 M632": `Name:Bolt16 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt16 M632 test.
+`,
+      "Bolt16b M632": `Name:Bolt16b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt16b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt16 M632", "Bolt16b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt16 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt16b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3102. Multi-bolt chain 17 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-17-m632",
+    description: "Multi-bolt chain 17 — two bolts at the opponent.",
+    seed: 0xc311,
+    cards: {
+      "Bolt17 M632": `Name:Bolt17 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt17 M632 test.
+`,
+      "Bolt17b M632": `Name:Bolt17b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt17b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt17 M632", "Bolt17b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt17 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt17b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3103. Multi-bolt chain 18 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-18-m632",
+    description: "Multi-bolt chain 18 — two bolts at the opponent.",
+    seed: 0xc312,
+    cards: {
+      "Bolt18 M632": `Name:Bolt18 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt18 M632 test.
+`,
+      "Bolt18b M632": `Name:Bolt18b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt18b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt18 M632", "Bolt18b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt18 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt18b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3104. Multi-bolt chain 19 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-19-m632",
+    description: "Multi-bolt chain 19 — two bolts at the opponent.",
+    seed: 0xc313,
+    cards: {
+      "Bolt19 M632": `Name:Bolt19 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt19 M632 test.
+`,
+      "Bolt19b M632": `Name:Bolt19b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt19b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt19 M632", "Bolt19b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt19 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt19b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3105. Multi-bolt chain 20 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-20-m632",
+    description: "Multi-bolt chain 20 — two bolts at the opponent.",
+    seed: 0xc314,
+    cards: {
+      "Bolt20 M632": `Name:Bolt20 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt20 M632 test.
+`,
+      "Bolt20b M632": `Name:Bolt20b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt20b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt20 M632", "Bolt20b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt20 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt20b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3106. Multi-bolt chain 21 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-21-m632",
+    description: "Multi-bolt chain 21 — two bolts at the opponent.",
+    seed: 0xc315,
+    cards: {
+      "Bolt21 M632": `Name:Bolt21 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt21 M632 test.
+`,
+      "Bolt21b M632": `Name:Bolt21b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt21b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt21 M632", "Bolt21b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt21 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt21b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3107. Multi-bolt chain 22 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-22-m632",
+    description: "Multi-bolt chain 22 — two bolts at the opponent.",
+    seed: 0xc316,
+    cards: {
+      "Bolt22 M632": `Name:Bolt22 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt22 M632 test.
+`,
+      "Bolt22b M632": `Name:Bolt22b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt22b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt22 M632", "Bolt22b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt22 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt22b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3108. Multi-bolt chain 23 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-23-m632",
+    description: "Multi-bolt chain 23 — two bolts at the opponent.",
+    seed: 0xc317,
+    cards: {
+      "Bolt23 M632": `Name:Bolt23 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt23 M632 test.
+`,
+      "Bolt23b M632": `Name:Bolt23b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt23b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt23 M632", "Bolt23b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt23 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt23b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3109. Multi-bolt chain 24 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-24-m632",
+    description: "Multi-bolt chain 24 — two bolts at the opponent.",
+    seed: 0xc318,
+    cards: {
+      "Bolt24 M632": `Name:Bolt24 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt24 M632 test.
+`,
+      "Bolt24b M632": `Name:Bolt24b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt24b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt24 M632", "Bolt24b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt24 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt24b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3110. Multi-bolt chain 25 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-25-m632",
+    description: "Multi-bolt chain 25 — two bolts at the opponent.",
+    seed: 0xc319,
+    cards: {
+      "Bolt25 M632": `Name:Bolt25 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt25 M632 test.
+`,
+      "Bolt25b M632": `Name:Bolt25b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt25b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt25 M632", "Bolt25b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt25 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt25b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3111. Multi-bolt chain 26 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-26-m632",
+    description: "Multi-bolt chain 26 — two bolts at the opponent.",
+    seed: 0xc31a,
+    cards: {
+      "Bolt26 M632": `Name:Bolt26 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt26 M632 test.
+`,
+      "Bolt26b M632": `Name:Bolt26b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt26b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt26 M632", "Bolt26b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt26 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt26b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3112. Multi-bolt chain 27 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-27-m632",
+    description: "Multi-bolt chain 27 — two bolts at the opponent.",
+    seed: 0xc31b,
+    cards: {
+      "Bolt27 M632": `Name:Bolt27 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt27 M632 test.
+`,
+      "Bolt27b M632": `Name:Bolt27b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt27b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt27 M632", "Bolt27b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt27 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt27b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3113. Multi-bolt chain 28 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-28-m632",
+    description: "Multi-bolt chain 28 — two bolts at the opponent.",
+    seed: 0xc31c,
+    cards: {
+      "Bolt28 M632": `Name:Bolt28 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt28 M632 test.
+`,
+      "Bolt28b M632": `Name:Bolt28b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt28b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt28 M632", "Bolt28b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt28 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt28b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3114. Multi-bolt chain 29 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-29-m632",
+    description: "Multi-bolt chain 29 — two bolts at the opponent.",
+    seed: 0xc31d,
+    cards: {
+      "Bolt29 M632": `Name:Bolt29 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt29 M632 test.
+`,
+      "Bolt29b M632": `Name:Bolt29b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt29b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt29 M632", "Bolt29b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt29 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt29b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3115. Multi-bolt chain 30 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-30-m632",
+    description: "Multi-bolt chain 30 — two bolts at the opponent.",
+    seed: 0xc31e,
+    cards: {
+      "Bolt30 M632": `Name:Bolt30 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt30 M632 test.
+`,
+      "Bolt30b M632": `Name:Bolt30b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt30b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt30 M632", "Bolt30b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt30 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt30b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3116. Multi-bolt chain 31 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-31-m632",
+    description: "Multi-bolt chain 31 — two bolts at the opponent.",
+    seed: 0xc31f,
+    cards: {
+      "Bolt31 M632": `Name:Bolt31 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt31 M632 test.
+`,
+      "Bolt31b M632": `Name:Bolt31b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt31b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt31 M632", "Bolt31b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt31 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt31b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3117. Multi-bolt chain 32 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-32-m632",
+    description: "Multi-bolt chain 32 — two bolts at the opponent.",
+    seed: 0xc320,
+    cards: {
+      "Bolt32 M632": `Name:Bolt32 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt32 M632 test.
+`,
+      "Bolt32b M632": `Name:Bolt32b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt32b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt32 M632", "Bolt32b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt32 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt32b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3118. Multi-bolt chain 33 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-33-m632",
+    description: "Multi-bolt chain 33 — two bolts at the opponent.",
+    seed: 0xc321,
+    cards: {
+      "Bolt33 M632": `Name:Bolt33 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt33 M632 test.
+`,
+      "Bolt33b M632": `Name:Bolt33b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt33b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt33 M632", "Bolt33b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt33 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt33b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3119. Multi-bolt chain 34 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-34-m632",
+    description: "Multi-bolt chain 34 — two bolts at the opponent.",
+    seed: 0xc322,
+    cards: {
+      "Bolt34 M632": `Name:Bolt34 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt34 M632 test.
+`,
+      "Bolt34b M632": `Name:Bolt34b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt34b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt34 M632", "Bolt34b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt34 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt34b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3120. Multi-bolt chain 35 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-35-m632",
+    description: "Multi-bolt chain 35 — two bolts at the opponent.",
+    seed: 0xc323,
+    cards: {
+      "Bolt35 M632": `Name:Bolt35 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt35 M632 test.
+`,
+      "Bolt35b M632": `Name:Bolt35b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt35b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt35 M632", "Bolt35b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt35 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt35b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3121. Multi-bolt chain 36 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-36-m632",
+    description: "Multi-bolt chain 36 — two bolts at the opponent.",
+    seed: 0xc324,
+    cards: {
+      "Bolt36 M632": `Name:Bolt36 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt36 M632 test.
+`,
+      "Bolt36b M632": `Name:Bolt36b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt36b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt36 M632", "Bolt36b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt36 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt36b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3122. Multi-bolt chain 37 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-37-m632",
+    description: "Multi-bolt chain 37 — two bolts at the opponent.",
+    seed: 0xc325,
+    cards: {
+      "Bolt37 M632": `Name:Bolt37 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt37 M632 test.
+`,
+      "Bolt37b M632": `Name:Bolt37b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt37b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt37 M632", "Bolt37b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt37 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt37b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3123. Multi-bolt chain 38 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-38-m632",
+    description: "Multi-bolt chain 38 — two bolts at the opponent.",
+    seed: 0xc326,
+    cards: {
+      "Bolt38 M632": `Name:Bolt38 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt38 M632 test.
+`,
+      "Bolt38b M632": `Name:Bolt38b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt38b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt38 M632", "Bolt38b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt38 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt38b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3124. Multi-bolt chain 39 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-39-m632",
+    description: "Multi-bolt chain 39 — two bolts at the opponent.",
+    seed: 0xc327,
+    cards: {
+      "Bolt39 M632": `Name:Bolt39 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt39 M632 test.
+`,
+      "Bolt39b M632": `Name:Bolt39b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt39b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt39 M632", "Bolt39b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt39 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt39b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3125. Multi-bolt chain 40 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-40-m632",
+    description: "Multi-bolt chain 40 — two bolts at the opponent.",
+    seed: 0xc328,
+    cards: {
+      "Bolt40 M632": `Name:Bolt40 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt40 M632 test.
+`,
+      "Bolt40b M632": `Name:Bolt40b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt40b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt40 M632", "Bolt40b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt40 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt40b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3126. Multi-bolt chain 41 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-41-m632",
+    description: "Multi-bolt chain 41 — two bolts at the opponent.",
+    seed: 0xc329,
+    cards: {
+      "Bolt41 M632": `Name:Bolt41 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt41 M632 test.
+`,
+      "Bolt41b M632": `Name:Bolt41b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt41b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt41 M632", "Bolt41b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt41 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt41b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3127. Multi-bolt chain 42 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-42-m632",
+    description: "Multi-bolt chain 42 — two bolts at the opponent.",
+    seed: 0xc32a,
+    cards: {
+      "Bolt42 M632": `Name:Bolt42 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt42 M632 test.
+`,
+      "Bolt42b M632": `Name:Bolt42b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt42b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt42 M632", "Bolt42b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt42 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt42b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3128. Multi-bolt chain 43 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-43-m632",
+    description: "Multi-bolt chain 43 — two bolts at the opponent.",
+    seed: 0xc32b,
+    cards: {
+      "Bolt43 M632": `Name:Bolt43 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt43 M632 test.
+`,
+      "Bolt43b M632": `Name:Bolt43b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt43b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt43 M632", "Bolt43b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt43 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt43b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3129. Multi-bolt chain 44 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-44-m632",
+    description: "Multi-bolt chain 44 — two bolts at the opponent.",
+    seed: 0xc32c,
+    cards: {
+      "Bolt44 M632": `Name:Bolt44 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt44 M632 test.
+`,
+      "Bolt44b M632": `Name:Bolt44b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt44b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt44 M632", "Bolt44b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt44 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt44b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3130. Multi-bolt chain 45 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-45-m632",
+    description: "Multi-bolt chain 45 — two bolts at the opponent.",
+    seed: 0xc32d,
+    cards: {
+      "Bolt45 M632": `Name:Bolt45 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt45 M632 test.
+`,
+      "Bolt45b M632": `Name:Bolt45b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt45b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt45 M632", "Bolt45b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt45 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt45b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3131. Multi-bolt chain 46 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-46-m632",
+    description: "Multi-bolt chain 46 — two bolts at the opponent.",
+    seed: 0xc32e,
+    cards: {
+      "Bolt46 M632": `Name:Bolt46 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt46 M632 test.
+`,
+      "Bolt46b M632": `Name:Bolt46b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt46b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt46 M632", "Bolt46b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt46 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt46b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3132. Multi-bolt chain 47 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-47-m632",
+    description: "Multi-bolt chain 47 — two bolts at the opponent.",
+    seed: 0xc32f,
+    cards: {
+      "Bolt47 M632": `Name:Bolt47 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt47 M632 test.
+`,
+      "Bolt47b M632": `Name:Bolt47b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt47b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt47 M632", "Bolt47b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt47 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt47b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3133. Multi-bolt chain 48 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-48-m632",
+    description: "Multi-bolt chain 48 — two bolts at the opponent.",
+    seed: 0xc330,
+    cards: {
+      "Bolt48 M632": `Name:Bolt48 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt48 M632 test.
+`,
+      "Bolt48b M632": `Name:Bolt48b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt48b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt48 M632", "Bolt48b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt48 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt48b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3134. Multi-bolt chain 49 — two bolts at the opponent.
+  {
+    id: "multi-bolt-chain-49-m632",
+    description: "Multi-bolt chain 49 — two bolts at the opponent.",
+    seed: 0xc331,
+    cards: {
+      "Bolt49 M632": `Name:Bolt49 M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt49 M632 test.
+`,
+      "Bolt49b M632": `Name:Bolt49b M632
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | TargetType$ Any
+Oracle:Bolt49b M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolt49 M632", "Bolt49b M632"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Bolt49 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "Bolt49b M632",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3135. Warden + bears chain 0 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-0-m632",
+    description: "Warden + bears chain 0 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc332,
+    cards: {
+      "Warden0 M632": `Name:Warden0 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden0 M632 test.
+`,
+      "WB0a M632": `Name:WB0a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB0a M632 test.
+`,
+      "WB0b M632": `Name:WB0b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB0b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB0a M632", "WB0b M632"],
+        battlefield: [{ card: "Warden0 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB0a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB0b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3136. Warden + bears chain 1 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-1-m632",
+    description: "Warden + bears chain 1 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc333,
+    cards: {
+      "Warden1 M632": `Name:Warden1 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden1 M632 test.
+`,
+      "WB1a M632": `Name:WB1a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB1a M632 test.
+`,
+      "WB1b M632": `Name:WB1b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB1b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB1a M632", "WB1b M632"],
+        battlefield: [{ card: "Warden1 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB1a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB1b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3137. Warden + bears chain 2 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-2-m632",
+    description: "Warden + bears chain 2 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc334,
+    cards: {
+      "Warden2 M632": `Name:Warden2 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden2 M632 test.
+`,
+      "WB2a M632": `Name:WB2a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB2a M632 test.
+`,
+      "WB2b M632": `Name:WB2b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB2b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB2a M632", "WB2b M632"],
+        battlefield: [{ card: "Warden2 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB2a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB2b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3138. Warden + bears chain 3 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-3-m632",
+    description: "Warden + bears chain 3 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc335,
+    cards: {
+      "Warden3 M632": `Name:Warden3 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden3 M632 test.
+`,
+      "WB3a M632": `Name:WB3a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB3a M632 test.
+`,
+      "WB3b M632": `Name:WB3b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB3b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB3a M632", "WB3b M632"],
+        battlefield: [{ card: "Warden3 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB3a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB3b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3139. Warden + bears chain 4 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-4-m632",
+    description: "Warden + bears chain 4 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc336,
+    cards: {
+      "Warden4 M632": `Name:Warden4 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden4 M632 test.
+`,
+      "WB4a M632": `Name:WB4a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB4a M632 test.
+`,
+      "WB4b M632": `Name:WB4b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB4b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB4a M632", "WB4b M632"],
+        battlefield: [{ card: "Warden4 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB4a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB4b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3140. Warden + bears chain 5 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-5-m632",
+    description: "Warden + bears chain 5 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc337,
+    cards: {
+      "Warden5 M632": `Name:Warden5 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden5 M632 test.
+`,
+      "WB5a M632": `Name:WB5a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB5a M632 test.
+`,
+      "WB5b M632": `Name:WB5b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB5b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB5a M632", "WB5b M632"],
+        battlefield: [{ card: "Warden5 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB5a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB5b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3141. Warden + bears chain 6 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-6-m632",
+    description: "Warden + bears chain 6 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc338,
+    cards: {
+      "Warden6 M632": `Name:Warden6 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden6 M632 test.
+`,
+      "WB6a M632": `Name:WB6a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB6a M632 test.
+`,
+      "WB6b M632": `Name:WB6b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB6b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB6a M632", "WB6b M632"],
+        battlefield: [{ card: "Warden6 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB6a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB6b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3142. Warden + bears chain 7 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-7-m632",
+    description: "Warden + bears chain 7 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc339,
+    cards: {
+      "Warden7 M632": `Name:Warden7 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden7 M632 test.
+`,
+      "WB7a M632": `Name:WB7a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB7a M632 test.
+`,
+      "WB7b M632": `Name:WB7b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB7b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB7a M632", "WB7b M632"],
+        battlefield: [{ card: "Warden7 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB7a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB7b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3143. Warden + bears chain 8 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-8-m632",
+    description: "Warden + bears chain 8 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc33a,
+    cards: {
+      "Warden8 M632": `Name:Warden8 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden8 M632 test.
+`,
+      "WB8a M632": `Name:WB8a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB8a M632 test.
+`,
+      "WB8b M632": `Name:WB8b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB8b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB8a M632", "WB8b M632"],
+        battlefield: [{ card: "Warden8 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB8a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB8b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3144. Warden + bears chain 9 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-9-m632",
+    description: "Warden + bears chain 9 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc33b,
+    cards: {
+      "Warden9 M632": `Name:Warden9 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden9 M632 test.
+`,
+      "WB9a M632": `Name:WB9a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB9a M632 test.
+`,
+      "WB9b M632": `Name:WB9b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB9b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB9a M632", "WB9b M632"],
+        battlefield: [{ card: "Warden9 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB9a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB9b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3145. Warden + bears chain 10 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-10-m632",
+    description: "Warden + bears chain 10 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc33c,
+    cards: {
+      "Warden10 M632": `Name:Warden10 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden10 M632 test.
+`,
+      "WB10a M632": `Name:WB10a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB10a M632 test.
+`,
+      "WB10b M632": `Name:WB10b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB10b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB10a M632", "WB10b M632"],
+        battlefield: [{ card: "Warden10 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB10a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB10b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3146. Warden + bears chain 11 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-11-m632",
+    description: "Warden + bears chain 11 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc33d,
+    cards: {
+      "Warden11 M632": `Name:Warden11 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden11 M632 test.
+`,
+      "WB11a M632": `Name:WB11a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB11a M632 test.
+`,
+      "WB11b M632": `Name:WB11b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB11b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB11a M632", "WB11b M632"],
+        battlefield: [{ card: "Warden11 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB11a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB11b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3147. Warden + bears chain 12 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-12-m632",
+    description: "Warden + bears chain 12 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc33e,
+    cards: {
+      "Warden12 M632": `Name:Warden12 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden12 M632 test.
+`,
+      "WB12a M632": `Name:WB12a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB12a M632 test.
+`,
+      "WB12b M632": `Name:WB12b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB12b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB12a M632", "WB12b M632"],
+        battlefield: [{ card: "Warden12 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB12a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB12b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3148. Warden + bears chain 13 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-13-m632",
+    description: "Warden + bears chain 13 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc33f,
+    cards: {
+      "Warden13 M632": `Name:Warden13 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden13 M632 test.
+`,
+      "WB13a M632": `Name:WB13a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB13a M632 test.
+`,
+      "WB13b M632": `Name:WB13b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB13b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB13a M632", "WB13b M632"],
+        battlefield: [{ card: "Warden13 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB13a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB13b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3149. Warden + bears chain 14 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-14-m632",
+    description: "Warden + bears chain 14 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc340,
+    cards: {
+      "Warden14 M632": `Name:Warden14 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden14 M632 test.
+`,
+      "WB14a M632": `Name:WB14a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB14a M632 test.
+`,
+      "WB14b M632": `Name:WB14b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB14b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB14a M632", "WB14b M632"],
+        battlefield: [{ card: "Warden14 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB14a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB14b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3150. Warden + bears chain 15 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-15-m632",
+    description: "Warden + bears chain 15 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc341,
+    cards: {
+      "Warden15 M632": `Name:Warden15 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden15 M632 test.
+`,
+      "WB15a M632": `Name:WB15a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB15a M632 test.
+`,
+      "WB15b M632": `Name:WB15b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB15b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB15a M632", "WB15b M632"],
+        battlefield: [{ card: "Warden15 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB15a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB15b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3151. Warden + bears chain 16 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-16-m632",
+    description: "Warden + bears chain 16 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc342,
+    cards: {
+      "Warden16 M632": `Name:Warden16 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden16 M632 test.
+`,
+      "WB16a M632": `Name:WB16a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB16a M632 test.
+`,
+      "WB16b M632": `Name:WB16b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB16b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB16a M632", "WB16b M632"],
+        battlefield: [{ card: "Warden16 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB16a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB16b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3152. Warden + bears chain 17 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-17-m632",
+    description: "Warden + bears chain 17 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc343,
+    cards: {
+      "Warden17 M632": `Name:Warden17 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden17 M632 test.
+`,
+      "WB17a M632": `Name:WB17a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB17a M632 test.
+`,
+      "WB17b M632": `Name:WB17b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB17b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB17a M632", "WB17b M632"],
+        battlefield: [{ card: "Warden17 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB17a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB17b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3153. Warden + bears chain 18 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-18-m632",
+    description: "Warden + bears chain 18 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc344,
+    cards: {
+      "Warden18 M632": `Name:Warden18 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden18 M632 test.
+`,
+      "WB18a M632": `Name:WB18a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB18a M632 test.
+`,
+      "WB18b M632": `Name:WB18b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB18b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB18a M632", "WB18b M632"],
+        battlefield: [{ card: "Warden18 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB18a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB18b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3154. Warden + bears chain 19 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-19-m632",
+    description: "Warden + bears chain 19 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc345,
+    cards: {
+      "Warden19 M632": `Name:Warden19 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden19 M632 test.
+`,
+      "WB19a M632": `Name:WB19a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB19a M632 test.
+`,
+      "WB19b M632": `Name:WB19b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB19b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB19a M632", "WB19b M632"],
+        battlefield: [{ card: "Warden19 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB19a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB19b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3155. Warden + bears chain 20 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-20-m632",
+    description: "Warden + bears chain 20 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc346,
+    cards: {
+      "Warden20 M632": `Name:Warden20 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden20 M632 test.
+`,
+      "WB20a M632": `Name:WB20a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB20a M632 test.
+`,
+      "WB20b M632": `Name:WB20b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB20b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB20a M632", "WB20b M632"],
+        battlefield: [{ card: "Warden20 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB20a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB20b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3156. Warden + bears chain 21 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-21-m632",
+    description: "Warden + bears chain 21 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc347,
+    cards: {
+      "Warden21 M632": `Name:Warden21 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden21 M632 test.
+`,
+      "WB21a M632": `Name:WB21a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB21a M632 test.
+`,
+      "WB21b M632": `Name:WB21b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB21b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB21a M632", "WB21b M632"],
+        battlefield: [{ card: "Warden21 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB21a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB21b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3157. Warden + bears chain 22 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-22-m632",
+    description: "Warden + bears chain 22 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc348,
+    cards: {
+      "Warden22 M632": `Name:Warden22 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden22 M632 test.
+`,
+      "WB22a M632": `Name:WB22a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB22a M632 test.
+`,
+      "WB22b M632": `Name:WB22b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB22b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB22a M632", "WB22b M632"],
+        battlefield: [{ card: "Warden22 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB22a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB22b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3158. Warden + bears chain 23 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-23-m632",
+    description: "Warden + bears chain 23 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc349,
+    cards: {
+      "Warden23 M632": `Name:Warden23 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden23 M632 test.
+`,
+      "WB23a M632": `Name:WB23a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB23a M632 test.
+`,
+      "WB23b M632": `Name:WB23b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB23b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB23a M632", "WB23b M632"],
+        battlefield: [{ card: "Warden23 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB23a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB23b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3159. Warden + bears chain 24 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-24-m632",
+    description: "Warden + bears chain 24 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc34a,
+    cards: {
+      "Warden24 M632": `Name:Warden24 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden24 M632 test.
+`,
+      "WB24a M632": `Name:WB24a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB24a M632 test.
+`,
+      "WB24b M632": `Name:WB24b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB24b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB24a M632", "WB24b M632"],
+        battlefield: [{ card: "Warden24 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB24a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB24b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3160. Warden + bears chain 25 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-25-m632",
+    description: "Warden + bears chain 25 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc34b,
+    cards: {
+      "Warden25 M632": `Name:Warden25 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden25 M632 test.
+`,
+      "WB25a M632": `Name:WB25a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB25a M632 test.
+`,
+      "WB25b M632": `Name:WB25b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB25b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB25a M632", "WB25b M632"],
+        battlefield: [{ card: "Warden25 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB25a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB25b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3161. Warden + bears chain 26 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-26-m632",
+    description: "Warden + bears chain 26 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc34c,
+    cards: {
+      "Warden26 M632": `Name:Warden26 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden26 M632 test.
+`,
+      "WB26a M632": `Name:WB26a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB26a M632 test.
+`,
+      "WB26b M632": `Name:WB26b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB26b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB26a M632", "WB26b M632"],
+        battlefield: [{ card: "Warden26 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB26a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB26b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3162. Warden + bears chain 27 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-27-m632",
+    description: "Warden + bears chain 27 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc34d,
+    cards: {
+      "Warden27 M632": `Name:Warden27 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden27 M632 test.
+`,
+      "WB27a M632": `Name:WB27a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB27a M632 test.
+`,
+      "WB27b M632": `Name:WB27b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB27b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB27a M632", "WB27b M632"],
+        battlefield: [{ card: "Warden27 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB27a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB27b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3163. Warden + bears chain 28 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-28-m632",
+    description: "Warden + bears chain 28 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc34e,
+    cards: {
+      "Warden28 M632": `Name:Warden28 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden28 M632 test.
+`,
+      "WB28a M632": `Name:WB28a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB28a M632 test.
+`,
+      "WB28b M632": `Name:WB28b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB28b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB28a M632", "WB28b M632"],
+        battlefield: [{ card: "Warden28 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB28a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB28b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3164. Warden + bears chain 29 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-29-m632",
+    description: "Warden + bears chain 29 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc34f,
+    cards: {
+      "Warden29 M632": `Name:Warden29 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden29 M632 test.
+`,
+      "WB29a M632": `Name:WB29a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB29a M632 test.
+`,
+      "WB29b M632": `Name:WB29b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB29b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB29a M632", "WB29b M632"],
+        battlefield: [{ card: "Warden29 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB29a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB29b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3165. Warden + bears chain 30 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-30-m632",
+    description: "Warden + bears chain 30 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc350,
+    cards: {
+      "Warden30 M632": `Name:Warden30 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden30 M632 test.
+`,
+      "WB30a M632": `Name:WB30a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB30a M632 test.
+`,
+      "WB30b M632": `Name:WB30b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB30b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB30a M632", "WB30b M632"],
+        battlefield: [{ card: "Warden30 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB30a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB30b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3166. Warden + bears chain 31 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-31-m632",
+    description: "Warden + bears chain 31 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc351,
+    cards: {
+      "Warden31 M632": `Name:Warden31 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden31 M632 test.
+`,
+      "WB31a M632": `Name:WB31a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB31a M632 test.
+`,
+      "WB31b M632": `Name:WB31b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB31b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB31a M632", "WB31b M632"],
+        battlefield: [{ card: "Warden31 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB31a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB31b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3167. Warden + bears chain 32 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-32-m632",
+    description: "Warden + bears chain 32 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc352,
+    cards: {
+      "Warden32 M632": `Name:Warden32 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden32 M632 test.
+`,
+      "WB32a M632": `Name:WB32a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB32a M632 test.
+`,
+      "WB32b M632": `Name:WB32b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB32b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB32a M632", "WB32b M632"],
+        battlefield: [{ card: "Warden32 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB32a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB32b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3168. Warden + bears chain 33 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-33-m632",
+    description: "Warden + bears chain 33 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc353,
+    cards: {
+      "Warden33 M632": `Name:Warden33 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden33 M632 test.
+`,
+      "WB33a M632": `Name:WB33a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB33a M632 test.
+`,
+      "WB33b M632": `Name:WB33b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB33b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB33a M632", "WB33b M632"],
+        battlefield: [{ card: "Warden33 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB33a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB33b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3169. Warden + bears chain 34 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-34-m632",
+    description: "Warden + bears chain 34 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc354,
+    cards: {
+      "Warden34 M632": `Name:Warden34 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden34 M632 test.
+`,
+      "WB34a M632": `Name:WB34a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB34a M632 test.
+`,
+      "WB34b M632": `Name:WB34b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB34b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB34a M632", "WB34b M632"],
+        battlefield: [{ card: "Warden34 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB34a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB34b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3170. Warden + bears chain 35 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-35-m632",
+    description: "Warden + bears chain 35 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc355,
+    cards: {
+      "Warden35 M632": `Name:Warden35 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden35 M632 test.
+`,
+      "WB35a M632": `Name:WB35a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB35a M632 test.
+`,
+      "WB35b M632": `Name:WB35b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB35b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB35a M632", "WB35b M632"],
+        battlefield: [{ card: "Warden35 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB35a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB35b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3171. Warden + bears chain 36 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-36-m632",
+    description: "Warden + bears chain 36 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc356,
+    cards: {
+      "Warden36 M632": `Name:Warden36 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden36 M632 test.
+`,
+      "WB36a M632": `Name:WB36a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB36a M632 test.
+`,
+      "WB36b M632": `Name:WB36b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB36b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB36a M632", "WB36b M632"],
+        battlefield: [{ card: "Warden36 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB36a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB36b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3172. Warden + bears chain 37 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-37-m632",
+    description: "Warden + bears chain 37 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc357,
+    cards: {
+      "Warden37 M632": `Name:Warden37 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden37 M632 test.
+`,
+      "WB37a M632": `Name:WB37a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB37a M632 test.
+`,
+      "WB37b M632": `Name:WB37b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB37b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB37a M632", "WB37b M632"],
+        battlefield: [{ card: "Warden37 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB37a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB37b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3173. Warden + bears chain 38 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-38-m632",
+    description: "Warden + bears chain 38 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc358,
+    cards: {
+      "Warden38 M632": `Name:Warden38 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden38 M632 test.
+`,
+      "WB38a M632": `Name:WB38a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB38a M632 test.
+`,
+      "WB38b M632": `Name:WB38b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB38b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB38a M632", "WB38b M632"],
+        battlefield: [{ card: "Warden38 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB38a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB38b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3174. Warden + bears chain 39 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-39-m632",
+    description: "Warden + bears chain 39 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc359,
+    cards: {
+      "Warden39 M632": `Name:Warden39 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden39 M632 test.
+`,
+      "WB39a M632": `Name:WB39a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB39a M632 test.
+`,
+      "WB39b M632": `Name:WB39b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB39b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB39a M632", "WB39b M632"],
+        battlefield: [{ card: "Warden39 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB39a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB39b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3175. Warden + bears chain 40 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-40-m632",
+    description: "Warden + bears chain 40 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc35a,
+    cards: {
+      "Warden40 M632": `Name:Warden40 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden40 M632 test.
+`,
+      "WB40a M632": `Name:WB40a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB40a M632 test.
+`,
+      "WB40b M632": `Name:WB40b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB40b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB40a M632", "WB40b M632"],
+        battlefield: [{ card: "Warden40 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB40a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB40b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3176. Warden + bears chain 41 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-41-m632",
+    description: "Warden + bears chain 41 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc35b,
+    cards: {
+      "Warden41 M632": `Name:Warden41 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden41 M632 test.
+`,
+      "WB41a M632": `Name:WB41a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB41a M632 test.
+`,
+      "WB41b M632": `Name:WB41b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB41b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB41a M632", "WB41b M632"],
+        battlefield: [{ card: "Warden41 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB41a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB41b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3177. Warden + bears chain 42 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-42-m632",
+    description: "Warden + bears chain 42 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc35c,
+    cards: {
+      "Warden42 M632": `Name:Warden42 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden42 M632 test.
+`,
+      "WB42a M632": `Name:WB42a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB42a M632 test.
+`,
+      "WB42b M632": `Name:WB42b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB42b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB42a M632", "WB42b M632"],
+        battlefield: [{ card: "Warden42 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB42a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB42b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3178. Warden + bears chain 43 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-43-m632",
+    description: "Warden + bears chain 43 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc35d,
+    cards: {
+      "Warden43 M632": `Name:Warden43 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden43 M632 test.
+`,
+      "WB43a M632": `Name:WB43a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB43a M632 test.
+`,
+      "WB43b M632": `Name:WB43b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB43b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB43a M632", "WB43b M632"],
+        battlefield: [{ card: "Warden43 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB43a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB43b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3179. Warden + bears chain 44 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-44-m632",
+    description: "Warden + bears chain 44 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc35e,
+    cards: {
+      "Warden44 M632": `Name:Warden44 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden44 M632 test.
+`,
+      "WB44a M632": `Name:WB44a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB44a M632 test.
+`,
+      "WB44b M632": `Name:WB44b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB44b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB44a M632", "WB44b M632"],
+        battlefield: [{ card: "Warden44 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB44a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB44b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3180. Warden + bears chain 45 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-45-m632",
+    description: "Warden + bears chain 45 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc35f,
+    cards: {
+      "Warden45 M632": `Name:Warden45 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden45 M632 test.
+`,
+      "WB45a M632": `Name:WB45a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB45a M632 test.
+`,
+      "WB45b M632": `Name:WB45b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB45b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB45a M632", "WB45b M632"],
+        battlefield: [{ card: "Warden45 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB45a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB45b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3181. Warden + bears chain 46 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-46-m632",
+    description: "Warden + bears chain 46 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc360,
+    cards: {
+      "Warden46 M632": `Name:Warden46 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden46 M632 test.
+`,
+      "WB46a M632": `Name:WB46a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB46a M632 test.
+`,
+      "WB46b M632": `Name:WB46b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB46b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB46a M632", "WB46b M632"],
+        battlefield: [{ card: "Warden46 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB46a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB46b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3182. Warden + bears chain 47 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-47-m632",
+    description: "Warden + bears chain 47 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc361,
+    cards: {
+      "Warden47 M632": `Name:Warden47 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden47 M632 test.
+`,
+      "WB47a M632": `Name:WB47a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB47a M632 test.
+`,
+      "WB47b M632": `Name:WB47b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB47b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB47a M632", "WB47b M632"],
+        battlefield: [{ card: "Warden47 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB47a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB47b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3183. Warden + bears chain 48 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-48-m632",
+    description: "Warden + bears chain 48 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc362,
+    cards: {
+      "Warden48 M632": `Name:Warden48 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden48 M632 test.
+`,
+      "WB48a M632": `Name:WB48a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB48a M632 test.
+`,
+      "WB48b M632": `Name:WB48b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB48b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB48a M632", "WB48b M632"],
+        battlefield: [{ card: "Warden48 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB48a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB48b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3184. Warden + bears chain 49 — Warden onfield, two bears ETB triggering life-gain.
+  {
+    id: "warden-bears-chain-49-m632",
+    description: "Warden + bears chain 49 — Warden onfield, two bears ETB triggering life-gain.",
+    seed: 0xc363,
+    cards: {
+      "Warden49 M632": `Name:Warden49 M632
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Warden49 M632 test.
+`,
+      "WB49a M632": `Name:WB49a M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB49a M632 test.
+`,
+      "WB49b M632": `Name:WB49b M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WB49b M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["WB49a M632", "WB49b M632"],
+        battlefield: [{ card: "Warden49 M632" }],
+        manaPool: ["G", "G", "G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WB49a M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "WB49b M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3185. Tap-mana chain 0 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-0-m632",
+    description: "Tap-mana chain 0 — two elves + a ring activate in sequence.",
+    seed: 0xc364,
+    cards: {
+      "Elf0a M632": `Name:Elf0a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf0a M632 test.
+`,
+      "Elf0b M632": `Name:Elf0b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf0b M632 test.
+`,
+      "Ring0 M632": `Name:Ring0 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring0 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf0a M632" }, { card: "Elf0b M632" }, { card: "Ring0 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf0a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf0b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring0 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3186. Tap-mana chain 1 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-1-m632",
+    description: "Tap-mana chain 1 — two elves + a ring activate in sequence.",
+    seed: 0xc365,
+    cards: {
+      "Elf1a M632": `Name:Elf1a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf1a M632 test.
+`,
+      "Elf1b M632": `Name:Elf1b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf1b M632 test.
+`,
+      "Ring1 M632": `Name:Ring1 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring1 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf1a M632" }, { card: "Elf1b M632" }, { card: "Ring1 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf1a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf1b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring1 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3187. Tap-mana chain 2 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-2-m632",
+    description: "Tap-mana chain 2 — two elves + a ring activate in sequence.",
+    seed: 0xc366,
+    cards: {
+      "Elf2a M632": `Name:Elf2a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf2a M632 test.
+`,
+      "Elf2b M632": `Name:Elf2b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf2b M632 test.
+`,
+      "Ring2 M632": `Name:Ring2 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring2 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf2a M632" }, { card: "Elf2b M632" }, { card: "Ring2 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf2a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf2b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring2 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3188. Tap-mana chain 3 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-3-m632",
+    description: "Tap-mana chain 3 — two elves + a ring activate in sequence.",
+    seed: 0xc367,
+    cards: {
+      "Elf3a M632": `Name:Elf3a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf3a M632 test.
+`,
+      "Elf3b M632": `Name:Elf3b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf3b M632 test.
+`,
+      "Ring3 M632": `Name:Ring3 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring3 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf3a M632" }, { card: "Elf3b M632" }, { card: "Ring3 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf3a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf3b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring3 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3189. Tap-mana chain 4 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-4-m632",
+    description: "Tap-mana chain 4 — two elves + a ring activate in sequence.",
+    seed: 0xc368,
+    cards: {
+      "Elf4a M632": `Name:Elf4a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf4a M632 test.
+`,
+      "Elf4b M632": `Name:Elf4b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf4b M632 test.
+`,
+      "Ring4 M632": `Name:Ring4 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring4 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf4a M632" }, { card: "Elf4b M632" }, { card: "Ring4 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf4a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf4b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring4 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3190. Tap-mana chain 5 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-5-m632",
+    description: "Tap-mana chain 5 — two elves + a ring activate in sequence.",
+    seed: 0xc369,
+    cards: {
+      "Elf5a M632": `Name:Elf5a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf5a M632 test.
+`,
+      "Elf5b M632": `Name:Elf5b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf5b M632 test.
+`,
+      "Ring5 M632": `Name:Ring5 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring5 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf5a M632" }, { card: "Elf5b M632" }, { card: "Ring5 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf5a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf5b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring5 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3191. Tap-mana chain 6 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-6-m632",
+    description: "Tap-mana chain 6 — two elves + a ring activate in sequence.",
+    seed: 0xc36a,
+    cards: {
+      "Elf6a M632": `Name:Elf6a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf6a M632 test.
+`,
+      "Elf6b M632": `Name:Elf6b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf6b M632 test.
+`,
+      "Ring6 M632": `Name:Ring6 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring6 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf6a M632" }, { card: "Elf6b M632" }, { card: "Ring6 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf6a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf6b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring6 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3192. Tap-mana chain 7 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-7-m632",
+    description: "Tap-mana chain 7 — two elves + a ring activate in sequence.",
+    seed: 0xc36b,
+    cards: {
+      "Elf7a M632": `Name:Elf7a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf7a M632 test.
+`,
+      "Elf7b M632": `Name:Elf7b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf7b M632 test.
+`,
+      "Ring7 M632": `Name:Ring7 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring7 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf7a M632" }, { card: "Elf7b M632" }, { card: "Ring7 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf7a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf7b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring7 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3193. Tap-mana chain 8 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-8-m632",
+    description: "Tap-mana chain 8 — two elves + a ring activate in sequence.",
+    seed: 0xc36c,
+    cards: {
+      "Elf8a M632": `Name:Elf8a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf8a M632 test.
+`,
+      "Elf8b M632": `Name:Elf8b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf8b M632 test.
+`,
+      "Ring8 M632": `Name:Ring8 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring8 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf8a M632" }, { card: "Elf8b M632" }, { card: "Ring8 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf8a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf8b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring8 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3194. Tap-mana chain 9 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-9-m632",
+    description: "Tap-mana chain 9 — two elves + a ring activate in sequence.",
+    seed: 0xc36d,
+    cards: {
+      "Elf9a M632": `Name:Elf9a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf9a M632 test.
+`,
+      "Elf9b M632": `Name:Elf9b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf9b M632 test.
+`,
+      "Ring9 M632": `Name:Ring9 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring9 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf9a M632" }, { card: "Elf9b M632" }, { card: "Ring9 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf9a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf9b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring9 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3195. Tap-mana chain 10 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-10-m632",
+    description: "Tap-mana chain 10 — two elves + a ring activate in sequence.",
+    seed: 0xc36e,
+    cards: {
+      "Elf10a M632": `Name:Elf10a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf10a M632 test.
+`,
+      "Elf10b M632": `Name:Elf10b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf10b M632 test.
+`,
+      "Ring10 M632": `Name:Ring10 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring10 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf10a M632" }, { card: "Elf10b M632" }, { card: "Ring10 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf10a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf10b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring10 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3196. Tap-mana chain 11 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-11-m632",
+    description: "Tap-mana chain 11 — two elves + a ring activate in sequence.",
+    seed: 0xc36f,
+    cards: {
+      "Elf11a M632": `Name:Elf11a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf11a M632 test.
+`,
+      "Elf11b M632": `Name:Elf11b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf11b M632 test.
+`,
+      "Ring11 M632": `Name:Ring11 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring11 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf11a M632" }, { card: "Elf11b M632" }, { card: "Ring11 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf11a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf11b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring11 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3197. Tap-mana chain 12 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-12-m632",
+    description: "Tap-mana chain 12 — two elves + a ring activate in sequence.",
+    seed: 0xc370,
+    cards: {
+      "Elf12a M632": `Name:Elf12a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf12a M632 test.
+`,
+      "Elf12b M632": `Name:Elf12b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf12b M632 test.
+`,
+      "Ring12 M632": `Name:Ring12 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring12 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf12a M632" }, { card: "Elf12b M632" }, { card: "Ring12 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf12a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf12b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring12 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3198. Tap-mana chain 13 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-13-m632",
+    description: "Tap-mana chain 13 — two elves + a ring activate in sequence.",
+    seed: 0xc371,
+    cards: {
+      "Elf13a M632": `Name:Elf13a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf13a M632 test.
+`,
+      "Elf13b M632": `Name:Elf13b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf13b M632 test.
+`,
+      "Ring13 M632": `Name:Ring13 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring13 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf13a M632" }, { card: "Elf13b M632" }, { card: "Ring13 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf13a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf13b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring13 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3199. Tap-mana chain 14 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-14-m632",
+    description: "Tap-mana chain 14 — two elves + a ring activate in sequence.",
+    seed: 0xc372,
+    cards: {
+      "Elf14a M632": `Name:Elf14a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf14a M632 test.
+`,
+      "Elf14b M632": `Name:Elf14b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf14b M632 test.
+`,
+      "Ring14 M632": `Name:Ring14 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring14 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf14a M632" }, { card: "Elf14b M632" }, { card: "Ring14 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf14a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf14b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring14 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3200. Tap-mana chain 15 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-15-m632",
+    description: "Tap-mana chain 15 — two elves + a ring activate in sequence.",
+    seed: 0xc373,
+    cards: {
+      "Elf15a M632": `Name:Elf15a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf15a M632 test.
+`,
+      "Elf15b M632": `Name:Elf15b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf15b M632 test.
+`,
+      "Ring15 M632": `Name:Ring15 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring15 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf15a M632" }, { card: "Elf15b M632" }, { card: "Ring15 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf15a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf15b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring15 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3201. Tap-mana chain 16 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-16-m632",
+    description: "Tap-mana chain 16 — two elves + a ring activate in sequence.",
+    seed: 0xc374,
+    cards: {
+      "Elf16a M632": `Name:Elf16a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf16a M632 test.
+`,
+      "Elf16b M632": `Name:Elf16b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf16b M632 test.
+`,
+      "Ring16 M632": `Name:Ring16 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring16 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf16a M632" }, { card: "Elf16b M632" }, { card: "Ring16 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf16a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf16b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring16 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3202. Tap-mana chain 17 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-17-m632",
+    description: "Tap-mana chain 17 — two elves + a ring activate in sequence.",
+    seed: 0xc375,
+    cards: {
+      "Elf17a M632": `Name:Elf17a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf17a M632 test.
+`,
+      "Elf17b M632": `Name:Elf17b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf17b M632 test.
+`,
+      "Ring17 M632": `Name:Ring17 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring17 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf17a M632" }, { card: "Elf17b M632" }, { card: "Ring17 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf17a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf17b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring17 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3203. Tap-mana chain 18 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-18-m632",
+    description: "Tap-mana chain 18 — two elves + a ring activate in sequence.",
+    seed: 0xc376,
+    cards: {
+      "Elf18a M632": `Name:Elf18a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf18a M632 test.
+`,
+      "Elf18b M632": `Name:Elf18b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf18b M632 test.
+`,
+      "Ring18 M632": `Name:Ring18 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring18 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf18a M632" }, { card: "Elf18b M632" }, { card: "Ring18 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf18a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf18b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring18 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3204. Tap-mana chain 19 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-19-m632",
+    description: "Tap-mana chain 19 — two elves + a ring activate in sequence.",
+    seed: 0xc377,
+    cards: {
+      "Elf19a M632": `Name:Elf19a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf19a M632 test.
+`,
+      "Elf19b M632": `Name:Elf19b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf19b M632 test.
+`,
+      "Ring19 M632": `Name:Ring19 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring19 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf19a M632" }, { card: "Elf19b M632" }, { card: "Ring19 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf19a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf19b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring19 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3205. Tap-mana chain 20 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-20-m632",
+    description: "Tap-mana chain 20 — two elves + a ring activate in sequence.",
+    seed: 0xc378,
+    cards: {
+      "Elf20a M632": `Name:Elf20a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf20a M632 test.
+`,
+      "Elf20b M632": `Name:Elf20b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf20b M632 test.
+`,
+      "Ring20 M632": `Name:Ring20 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring20 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf20a M632" }, { card: "Elf20b M632" }, { card: "Ring20 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf20a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf20b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring20 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3206. Tap-mana chain 21 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-21-m632",
+    description: "Tap-mana chain 21 — two elves + a ring activate in sequence.",
+    seed: 0xc379,
+    cards: {
+      "Elf21a M632": `Name:Elf21a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf21a M632 test.
+`,
+      "Elf21b M632": `Name:Elf21b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf21b M632 test.
+`,
+      "Ring21 M632": `Name:Ring21 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring21 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf21a M632" }, { card: "Elf21b M632" }, { card: "Ring21 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf21a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf21b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring21 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3207. Tap-mana chain 22 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-22-m632",
+    description: "Tap-mana chain 22 — two elves + a ring activate in sequence.",
+    seed: 0xc37a,
+    cards: {
+      "Elf22a M632": `Name:Elf22a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf22a M632 test.
+`,
+      "Elf22b M632": `Name:Elf22b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf22b M632 test.
+`,
+      "Ring22 M632": `Name:Ring22 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring22 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf22a M632" }, { card: "Elf22b M632" }, { card: "Ring22 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf22a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf22b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring22 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3208. Tap-mana chain 23 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-23-m632",
+    description: "Tap-mana chain 23 — two elves + a ring activate in sequence.",
+    seed: 0xc37b,
+    cards: {
+      "Elf23a M632": `Name:Elf23a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf23a M632 test.
+`,
+      "Elf23b M632": `Name:Elf23b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf23b M632 test.
+`,
+      "Ring23 M632": `Name:Ring23 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring23 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf23a M632" }, { card: "Elf23b M632" }, { card: "Ring23 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf23a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf23b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring23 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3209. Tap-mana chain 24 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-24-m632",
+    description: "Tap-mana chain 24 — two elves + a ring activate in sequence.",
+    seed: 0xc37c,
+    cards: {
+      "Elf24a M632": `Name:Elf24a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf24a M632 test.
+`,
+      "Elf24b M632": `Name:Elf24b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf24b M632 test.
+`,
+      "Ring24 M632": `Name:Ring24 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring24 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf24a M632" }, { card: "Elf24b M632" }, { card: "Ring24 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf24a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf24b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring24 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3210. Tap-mana chain 25 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-25-m632",
+    description: "Tap-mana chain 25 — two elves + a ring activate in sequence.",
+    seed: 0xc37d,
+    cards: {
+      "Elf25a M632": `Name:Elf25a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf25a M632 test.
+`,
+      "Elf25b M632": `Name:Elf25b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf25b M632 test.
+`,
+      "Ring25 M632": `Name:Ring25 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring25 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf25a M632" }, { card: "Elf25b M632" }, { card: "Ring25 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf25a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf25b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring25 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3211. Tap-mana chain 26 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-26-m632",
+    description: "Tap-mana chain 26 — two elves + a ring activate in sequence.",
+    seed: 0xc37e,
+    cards: {
+      "Elf26a M632": `Name:Elf26a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf26a M632 test.
+`,
+      "Elf26b M632": `Name:Elf26b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf26b M632 test.
+`,
+      "Ring26 M632": `Name:Ring26 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring26 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf26a M632" }, { card: "Elf26b M632" }, { card: "Ring26 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf26a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf26b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring26 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3212. Tap-mana chain 27 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-27-m632",
+    description: "Tap-mana chain 27 — two elves + a ring activate in sequence.",
+    seed: 0xc37f,
+    cards: {
+      "Elf27a M632": `Name:Elf27a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf27a M632 test.
+`,
+      "Elf27b M632": `Name:Elf27b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf27b M632 test.
+`,
+      "Ring27 M632": `Name:Ring27 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring27 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf27a M632" }, { card: "Elf27b M632" }, { card: "Ring27 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf27a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf27b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring27 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3213. Tap-mana chain 28 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-28-m632",
+    description: "Tap-mana chain 28 — two elves + a ring activate in sequence.",
+    seed: 0xc380,
+    cards: {
+      "Elf28a M632": `Name:Elf28a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf28a M632 test.
+`,
+      "Elf28b M632": `Name:Elf28b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf28b M632 test.
+`,
+      "Ring28 M632": `Name:Ring28 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring28 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf28a M632" }, { card: "Elf28b M632" }, { card: "Ring28 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf28a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf28b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring28 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3214. Tap-mana chain 29 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-29-m632",
+    description: "Tap-mana chain 29 — two elves + a ring activate in sequence.",
+    seed: 0xc381,
+    cards: {
+      "Elf29a M632": `Name:Elf29a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf29a M632 test.
+`,
+      "Elf29b M632": `Name:Elf29b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf29b M632 test.
+`,
+      "Ring29 M632": `Name:Ring29 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring29 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf29a M632" }, { card: "Elf29b M632" }, { card: "Ring29 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf29a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf29b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring29 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3215. Tap-mana chain 30 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-30-m632",
+    description: "Tap-mana chain 30 — two elves + a ring activate in sequence.",
+    seed: 0xc382,
+    cards: {
+      "Elf30a M632": `Name:Elf30a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf30a M632 test.
+`,
+      "Elf30b M632": `Name:Elf30b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf30b M632 test.
+`,
+      "Ring30 M632": `Name:Ring30 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring30 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf30a M632" }, { card: "Elf30b M632" }, { card: "Ring30 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf30a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf30b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring30 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3216. Tap-mana chain 31 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-31-m632",
+    description: "Tap-mana chain 31 — two elves + a ring activate in sequence.",
+    seed: 0xc383,
+    cards: {
+      "Elf31a M632": `Name:Elf31a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf31a M632 test.
+`,
+      "Elf31b M632": `Name:Elf31b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf31b M632 test.
+`,
+      "Ring31 M632": `Name:Ring31 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring31 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf31a M632" }, { card: "Elf31b M632" }, { card: "Ring31 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf31a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf31b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring31 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3217. Tap-mana chain 32 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-32-m632",
+    description: "Tap-mana chain 32 — two elves + a ring activate in sequence.",
+    seed: 0xc384,
+    cards: {
+      "Elf32a M632": `Name:Elf32a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf32a M632 test.
+`,
+      "Elf32b M632": `Name:Elf32b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf32b M632 test.
+`,
+      "Ring32 M632": `Name:Ring32 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring32 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf32a M632" }, { card: "Elf32b M632" }, { card: "Ring32 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf32a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf32b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring32 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3218. Tap-mana chain 33 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-33-m632",
+    description: "Tap-mana chain 33 — two elves + a ring activate in sequence.",
+    seed: 0xc385,
+    cards: {
+      "Elf33a M632": `Name:Elf33a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf33a M632 test.
+`,
+      "Elf33b M632": `Name:Elf33b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf33b M632 test.
+`,
+      "Ring33 M632": `Name:Ring33 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring33 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf33a M632" }, { card: "Elf33b M632" }, { card: "Ring33 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf33a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf33b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring33 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3219. Tap-mana chain 34 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-34-m632",
+    description: "Tap-mana chain 34 — two elves + a ring activate in sequence.",
+    seed: 0xc386,
+    cards: {
+      "Elf34a M632": `Name:Elf34a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf34a M632 test.
+`,
+      "Elf34b M632": `Name:Elf34b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf34b M632 test.
+`,
+      "Ring34 M632": `Name:Ring34 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring34 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf34a M632" }, { card: "Elf34b M632" }, { card: "Ring34 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf34a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf34b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring34 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3220. Tap-mana chain 35 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-35-m632",
+    description: "Tap-mana chain 35 — two elves + a ring activate in sequence.",
+    seed: 0xc387,
+    cards: {
+      "Elf35a M632": `Name:Elf35a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf35a M632 test.
+`,
+      "Elf35b M632": `Name:Elf35b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf35b M632 test.
+`,
+      "Ring35 M632": `Name:Ring35 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring35 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf35a M632" }, { card: "Elf35b M632" }, { card: "Ring35 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf35a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf35b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring35 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3221. Tap-mana chain 36 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-36-m632",
+    description: "Tap-mana chain 36 — two elves + a ring activate in sequence.",
+    seed: 0xc388,
+    cards: {
+      "Elf36a M632": `Name:Elf36a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf36a M632 test.
+`,
+      "Elf36b M632": `Name:Elf36b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf36b M632 test.
+`,
+      "Ring36 M632": `Name:Ring36 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring36 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf36a M632" }, { card: "Elf36b M632" }, { card: "Ring36 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf36a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf36b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring36 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3222. Tap-mana chain 37 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-37-m632",
+    description: "Tap-mana chain 37 — two elves + a ring activate in sequence.",
+    seed: 0xc389,
+    cards: {
+      "Elf37a M632": `Name:Elf37a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf37a M632 test.
+`,
+      "Elf37b M632": `Name:Elf37b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf37b M632 test.
+`,
+      "Ring37 M632": `Name:Ring37 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring37 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf37a M632" }, { card: "Elf37b M632" }, { card: "Ring37 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf37a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf37b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring37 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3223. Tap-mana chain 38 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-38-m632",
+    description: "Tap-mana chain 38 — two elves + a ring activate in sequence.",
+    seed: 0xc38a,
+    cards: {
+      "Elf38a M632": `Name:Elf38a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf38a M632 test.
+`,
+      "Elf38b M632": `Name:Elf38b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf38b M632 test.
+`,
+      "Ring38 M632": `Name:Ring38 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring38 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf38a M632" }, { card: "Elf38b M632" }, { card: "Ring38 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf38a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf38b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring38 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3224. Tap-mana chain 39 — two elves + a ring activate in sequence.
+  {
+    id: "tap-mana-chain-39-m632",
+    description: "Tap-mana chain 39 — two elves + a ring activate in sequence.",
+    seed: 0xc38b,
+    cards: {
+      "Elf39a M632": `Name:Elf39a M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf39a M632 test.
+`,
+      "Elf39b M632": `Name:Elf39b M632
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Elf39b M632 test.
+`,
+      "Ring39 M632": `Name:Ring39 M632
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2
+Oracle:Ring39 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Elf39a M632" }, { card: "Elf39b M632" }, { card: "Ring39 M632" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "activate", sourceCardName: "Elf39a M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Elf39b M632", activatingPlayer: SEAT0 },
+      { kind: "activate", sourceCardName: "Ring39 M632", activatingPlayer: SEAT0 },
+    ],
+  },
+
+  // 3225. Pump cast chain 0 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-0-m632",
+    description: "Pump cast chain 0 — two giant-growths on the same creature.",
+    seed: 0xc38c,
+    cards: {
+      "PumpA0 M632": `Name:PumpA0 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA0 M632 test.
+`,
+      "PumpB0 M632": `Name:PumpB0 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB0 M632 test.
+`,
+      "Tgt0 M632": `Name:Tgt0 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt0 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA0 M632", "PumpB0 M632"],
+        battlefield: [{ card: "Tgt0 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA0 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt0 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB0 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt0 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3226. Pump cast chain 1 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-1-m632",
+    description: "Pump cast chain 1 — two giant-growths on the same creature.",
+    seed: 0xc38d,
+    cards: {
+      "PumpA1 M632": `Name:PumpA1 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA1 M632 test.
+`,
+      "PumpB1 M632": `Name:PumpB1 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB1 M632 test.
+`,
+      "Tgt1 M632": `Name:Tgt1 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt1 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA1 M632", "PumpB1 M632"],
+        battlefield: [{ card: "Tgt1 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA1 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt1 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB1 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt1 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3227. Pump cast chain 2 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-2-m632",
+    description: "Pump cast chain 2 — two giant-growths on the same creature.",
+    seed: 0xc38e,
+    cards: {
+      "PumpA2 M632": `Name:PumpA2 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA2 M632 test.
+`,
+      "PumpB2 M632": `Name:PumpB2 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB2 M632 test.
+`,
+      "Tgt2 M632": `Name:Tgt2 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt2 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA2 M632", "PumpB2 M632"],
+        battlefield: [{ card: "Tgt2 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA2 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt2 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB2 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt2 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3228. Pump cast chain 3 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-3-m632",
+    description: "Pump cast chain 3 — two giant-growths on the same creature.",
+    seed: 0xc38f,
+    cards: {
+      "PumpA3 M632": `Name:PumpA3 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA3 M632 test.
+`,
+      "PumpB3 M632": `Name:PumpB3 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB3 M632 test.
+`,
+      "Tgt3 M632": `Name:Tgt3 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt3 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA3 M632", "PumpB3 M632"],
+        battlefield: [{ card: "Tgt3 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA3 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt3 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB3 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt3 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3229. Pump cast chain 4 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-4-m632",
+    description: "Pump cast chain 4 — two giant-growths on the same creature.",
+    seed: 0xc390,
+    cards: {
+      "PumpA4 M632": `Name:PumpA4 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA4 M632 test.
+`,
+      "PumpB4 M632": `Name:PumpB4 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB4 M632 test.
+`,
+      "Tgt4 M632": `Name:Tgt4 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt4 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA4 M632", "PumpB4 M632"],
+        battlefield: [{ card: "Tgt4 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA4 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt4 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB4 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt4 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3230. Pump cast chain 5 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-5-m632",
+    description: "Pump cast chain 5 — two giant-growths on the same creature.",
+    seed: 0xc391,
+    cards: {
+      "PumpA5 M632": `Name:PumpA5 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA5 M632 test.
+`,
+      "PumpB5 M632": `Name:PumpB5 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB5 M632 test.
+`,
+      "Tgt5 M632": `Name:Tgt5 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt5 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA5 M632", "PumpB5 M632"],
+        battlefield: [{ card: "Tgt5 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA5 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt5 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB5 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt5 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3231. Pump cast chain 6 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-6-m632",
+    description: "Pump cast chain 6 — two giant-growths on the same creature.",
+    seed: 0xc392,
+    cards: {
+      "PumpA6 M632": `Name:PumpA6 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA6 M632 test.
+`,
+      "PumpB6 M632": `Name:PumpB6 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB6 M632 test.
+`,
+      "Tgt6 M632": `Name:Tgt6 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt6 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA6 M632", "PumpB6 M632"],
+        battlefield: [{ card: "Tgt6 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA6 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt6 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB6 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt6 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3232. Pump cast chain 7 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-7-m632",
+    description: "Pump cast chain 7 — two giant-growths on the same creature.",
+    seed: 0xc393,
+    cards: {
+      "PumpA7 M632": `Name:PumpA7 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA7 M632 test.
+`,
+      "PumpB7 M632": `Name:PumpB7 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB7 M632 test.
+`,
+      "Tgt7 M632": `Name:Tgt7 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt7 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA7 M632", "PumpB7 M632"],
+        battlefield: [{ card: "Tgt7 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA7 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt7 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB7 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt7 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3233. Pump cast chain 8 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-8-m632",
+    description: "Pump cast chain 8 — two giant-growths on the same creature.",
+    seed: 0xc394,
+    cards: {
+      "PumpA8 M632": `Name:PumpA8 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA8 M632 test.
+`,
+      "PumpB8 M632": `Name:PumpB8 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB8 M632 test.
+`,
+      "Tgt8 M632": `Name:Tgt8 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt8 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA8 M632", "PumpB8 M632"],
+        battlefield: [{ card: "Tgt8 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA8 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt8 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB8 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt8 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3234. Pump cast chain 9 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-9-m632",
+    description: "Pump cast chain 9 — two giant-growths on the same creature.",
+    seed: 0xc395,
+    cards: {
+      "PumpA9 M632": `Name:PumpA9 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA9 M632 test.
+`,
+      "PumpB9 M632": `Name:PumpB9 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB9 M632 test.
+`,
+      "Tgt9 M632": `Name:Tgt9 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt9 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA9 M632", "PumpB9 M632"],
+        battlefield: [{ card: "Tgt9 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA9 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt9 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB9 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt9 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3235. Pump cast chain 10 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-10-m632",
+    description: "Pump cast chain 10 — two giant-growths on the same creature.",
+    seed: 0xc396,
+    cards: {
+      "PumpA10 M632": `Name:PumpA10 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA10 M632 test.
+`,
+      "PumpB10 M632": `Name:PumpB10 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB10 M632 test.
+`,
+      "Tgt10 M632": `Name:Tgt10 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt10 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA10 M632", "PumpB10 M632"],
+        battlefield: [{ card: "Tgt10 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA10 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt10 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB10 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt10 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3236. Pump cast chain 11 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-11-m632",
+    description: "Pump cast chain 11 — two giant-growths on the same creature.",
+    seed: 0xc397,
+    cards: {
+      "PumpA11 M632": `Name:PumpA11 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA11 M632 test.
+`,
+      "PumpB11 M632": `Name:PumpB11 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB11 M632 test.
+`,
+      "Tgt11 M632": `Name:Tgt11 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt11 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA11 M632", "PumpB11 M632"],
+        battlefield: [{ card: "Tgt11 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA11 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt11 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB11 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt11 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3237. Pump cast chain 12 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-12-m632",
+    description: "Pump cast chain 12 — two giant-growths on the same creature.",
+    seed: 0xc398,
+    cards: {
+      "PumpA12 M632": `Name:PumpA12 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA12 M632 test.
+`,
+      "PumpB12 M632": `Name:PumpB12 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB12 M632 test.
+`,
+      "Tgt12 M632": `Name:Tgt12 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt12 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA12 M632", "PumpB12 M632"],
+        battlefield: [{ card: "Tgt12 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA12 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt12 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB12 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt12 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3238. Pump cast chain 13 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-13-m632",
+    description: "Pump cast chain 13 — two giant-growths on the same creature.",
+    seed: 0xc399,
+    cards: {
+      "PumpA13 M632": `Name:PumpA13 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA13 M632 test.
+`,
+      "PumpB13 M632": `Name:PumpB13 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB13 M632 test.
+`,
+      "Tgt13 M632": `Name:Tgt13 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt13 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA13 M632", "PumpB13 M632"],
+        battlefield: [{ card: "Tgt13 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA13 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt13 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB13 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt13 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3239. Pump cast chain 14 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-14-m632",
+    description: "Pump cast chain 14 — two giant-growths on the same creature.",
+    seed: 0xc39a,
+    cards: {
+      "PumpA14 M632": `Name:PumpA14 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA14 M632 test.
+`,
+      "PumpB14 M632": `Name:PumpB14 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB14 M632 test.
+`,
+      "Tgt14 M632": `Name:Tgt14 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt14 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA14 M632", "PumpB14 M632"],
+        battlefield: [{ card: "Tgt14 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA14 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt14 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB14 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt14 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3240. Pump cast chain 15 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-15-m632",
+    description: "Pump cast chain 15 — two giant-growths on the same creature.",
+    seed: 0xc39b,
+    cards: {
+      "PumpA15 M632": `Name:PumpA15 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA15 M632 test.
+`,
+      "PumpB15 M632": `Name:PumpB15 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB15 M632 test.
+`,
+      "Tgt15 M632": `Name:Tgt15 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt15 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA15 M632", "PumpB15 M632"],
+        battlefield: [{ card: "Tgt15 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA15 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt15 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB15 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt15 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3241. Pump cast chain 16 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-16-m632",
+    description: "Pump cast chain 16 — two giant-growths on the same creature.",
+    seed: 0xc39c,
+    cards: {
+      "PumpA16 M632": `Name:PumpA16 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA16 M632 test.
+`,
+      "PumpB16 M632": `Name:PumpB16 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB16 M632 test.
+`,
+      "Tgt16 M632": `Name:Tgt16 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt16 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA16 M632", "PumpB16 M632"],
+        battlefield: [{ card: "Tgt16 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA16 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt16 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB16 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt16 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3242. Pump cast chain 17 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-17-m632",
+    description: "Pump cast chain 17 — two giant-growths on the same creature.",
+    seed: 0xc39d,
+    cards: {
+      "PumpA17 M632": `Name:PumpA17 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA17 M632 test.
+`,
+      "PumpB17 M632": `Name:PumpB17 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB17 M632 test.
+`,
+      "Tgt17 M632": `Name:Tgt17 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt17 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA17 M632", "PumpB17 M632"],
+        battlefield: [{ card: "Tgt17 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA17 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt17 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB17 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt17 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3243. Pump cast chain 18 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-18-m632",
+    description: "Pump cast chain 18 — two giant-growths on the same creature.",
+    seed: 0xc39e,
+    cards: {
+      "PumpA18 M632": `Name:PumpA18 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA18 M632 test.
+`,
+      "PumpB18 M632": `Name:PumpB18 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB18 M632 test.
+`,
+      "Tgt18 M632": `Name:Tgt18 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt18 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA18 M632", "PumpB18 M632"],
+        battlefield: [{ card: "Tgt18 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA18 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt18 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB18 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt18 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3244. Pump cast chain 19 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-19-m632",
+    description: "Pump cast chain 19 — two giant-growths on the same creature.",
+    seed: 0xc39f,
+    cards: {
+      "PumpA19 M632": `Name:PumpA19 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA19 M632 test.
+`,
+      "PumpB19 M632": `Name:PumpB19 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB19 M632 test.
+`,
+      "Tgt19 M632": `Name:Tgt19 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt19 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA19 M632", "PumpB19 M632"],
+        battlefield: [{ card: "Tgt19 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA19 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt19 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB19 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt19 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3245. Pump cast chain 20 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-20-m632",
+    description: "Pump cast chain 20 — two giant-growths on the same creature.",
+    seed: 0xc3a0,
+    cards: {
+      "PumpA20 M632": `Name:PumpA20 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA20 M632 test.
+`,
+      "PumpB20 M632": `Name:PumpB20 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB20 M632 test.
+`,
+      "Tgt20 M632": `Name:Tgt20 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt20 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA20 M632", "PumpB20 M632"],
+        battlefield: [{ card: "Tgt20 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA20 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt20 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB20 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt20 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3246. Pump cast chain 21 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-21-m632",
+    description: "Pump cast chain 21 — two giant-growths on the same creature.",
+    seed: 0xc3a1,
+    cards: {
+      "PumpA21 M632": `Name:PumpA21 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA21 M632 test.
+`,
+      "PumpB21 M632": `Name:PumpB21 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB21 M632 test.
+`,
+      "Tgt21 M632": `Name:Tgt21 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt21 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA21 M632", "PumpB21 M632"],
+        battlefield: [{ card: "Tgt21 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA21 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt21 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB21 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt21 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3247. Pump cast chain 22 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-22-m632",
+    description: "Pump cast chain 22 — two giant-growths on the same creature.",
+    seed: 0xc3a2,
+    cards: {
+      "PumpA22 M632": `Name:PumpA22 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA22 M632 test.
+`,
+      "PumpB22 M632": `Name:PumpB22 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB22 M632 test.
+`,
+      "Tgt22 M632": `Name:Tgt22 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt22 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA22 M632", "PumpB22 M632"],
+        battlefield: [{ card: "Tgt22 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA22 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt22 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB22 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt22 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3248. Pump cast chain 23 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-23-m632",
+    description: "Pump cast chain 23 — two giant-growths on the same creature.",
+    seed: 0xc3a3,
+    cards: {
+      "PumpA23 M632": `Name:PumpA23 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA23 M632 test.
+`,
+      "PumpB23 M632": `Name:PumpB23 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB23 M632 test.
+`,
+      "Tgt23 M632": `Name:Tgt23 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt23 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA23 M632", "PumpB23 M632"],
+        battlefield: [{ card: "Tgt23 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA23 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt23 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB23 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt23 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3249. Pump cast chain 24 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-24-m632",
+    description: "Pump cast chain 24 — two giant-growths on the same creature.",
+    seed: 0xc3a4,
+    cards: {
+      "PumpA24 M632": `Name:PumpA24 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA24 M632 test.
+`,
+      "PumpB24 M632": `Name:PumpB24 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB24 M632 test.
+`,
+      "Tgt24 M632": `Name:Tgt24 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt24 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA24 M632", "PumpB24 M632"],
+        battlefield: [{ card: "Tgt24 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA24 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt24 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB24 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt24 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3250. Pump cast chain 25 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-25-m632",
+    description: "Pump cast chain 25 — two giant-growths on the same creature.",
+    seed: 0xc3a5,
+    cards: {
+      "PumpA25 M632": `Name:PumpA25 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA25 M632 test.
+`,
+      "PumpB25 M632": `Name:PumpB25 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB25 M632 test.
+`,
+      "Tgt25 M632": `Name:Tgt25 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt25 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA25 M632", "PumpB25 M632"],
+        battlefield: [{ card: "Tgt25 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA25 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt25 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB25 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt25 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3251. Pump cast chain 26 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-26-m632",
+    description: "Pump cast chain 26 — two giant-growths on the same creature.",
+    seed: 0xc3a6,
+    cards: {
+      "PumpA26 M632": `Name:PumpA26 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA26 M632 test.
+`,
+      "PumpB26 M632": `Name:PumpB26 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB26 M632 test.
+`,
+      "Tgt26 M632": `Name:Tgt26 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt26 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA26 M632", "PumpB26 M632"],
+        battlefield: [{ card: "Tgt26 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA26 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt26 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB26 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt26 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3252. Pump cast chain 27 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-27-m632",
+    description: "Pump cast chain 27 — two giant-growths on the same creature.",
+    seed: 0xc3a7,
+    cards: {
+      "PumpA27 M632": `Name:PumpA27 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA27 M632 test.
+`,
+      "PumpB27 M632": `Name:PumpB27 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB27 M632 test.
+`,
+      "Tgt27 M632": `Name:Tgt27 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt27 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA27 M632", "PumpB27 M632"],
+        battlefield: [{ card: "Tgt27 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA27 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt27 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB27 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt27 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3253. Pump cast chain 28 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-28-m632",
+    description: "Pump cast chain 28 — two giant-growths on the same creature.",
+    seed: 0xc3a8,
+    cards: {
+      "PumpA28 M632": `Name:PumpA28 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA28 M632 test.
+`,
+      "PumpB28 M632": `Name:PumpB28 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB28 M632 test.
+`,
+      "Tgt28 M632": `Name:Tgt28 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt28 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA28 M632", "PumpB28 M632"],
+        battlefield: [{ card: "Tgt28 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA28 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt28 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB28 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt28 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3254. Pump cast chain 29 — two giant-growths on the same creature.
+  {
+    id: "pump-cast-chain-29-m632",
+    description: "Pump cast chain 29 — two giant-growths on the same creature.",
+    seed: 0xc3a9,
+    cards: {
+      "PumpA29 M632": `Name:PumpA29 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpA29 M632 test.
+`,
+      "PumpB29 M632": `Name:PumpB29 M632
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3
+Oracle:PumpB29 M632 test.
+`,
+      "Tgt29 M632": `Name:Tgt29 M632
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tgt29 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["PumpA29 M632", "PumpB29 M632"],
+        battlefield: [{ card: "Tgt29 M632" }],
+        manaPool: ["G", "G"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "PumpA29 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt29 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "PumpB29 M632",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Tgt29 M632" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3255. Mulldrifter 0 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-0-m632",
+    description: "Mulldrifter 0 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3aa,
+    cards: {
+      "Drift0 M632": `Name:Drift0 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift0 M632 test.
+`,
+      "LibBear0 M632": `Name:LibBear0 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear0 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift0 M632"],
+        battlefield: [],
+        library: ["LibBear0 M632", "LibBear0 M632", "LibBear0 M632", "LibBear0 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift0 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3256. Mulldrifter 1 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-1-m632",
+    description: "Mulldrifter 1 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3ab,
+    cards: {
+      "Drift1 M632": `Name:Drift1 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift1 M632 test.
+`,
+      "LibBear1 M632": `Name:LibBear1 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear1 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift1 M632"],
+        battlefield: [],
+        library: ["LibBear1 M632", "LibBear1 M632", "LibBear1 M632", "LibBear1 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift1 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3257. Mulldrifter 2 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-2-m632",
+    description: "Mulldrifter 2 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3ac,
+    cards: {
+      "Drift2 M632": `Name:Drift2 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift2 M632 test.
+`,
+      "LibBear2 M632": `Name:LibBear2 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear2 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift2 M632"],
+        battlefield: [],
+        library: ["LibBear2 M632", "LibBear2 M632", "LibBear2 M632", "LibBear2 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift2 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3258. Mulldrifter 3 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-3-m632",
+    description: "Mulldrifter 3 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3ad,
+    cards: {
+      "Drift3 M632": `Name:Drift3 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift3 M632 test.
+`,
+      "LibBear3 M632": `Name:LibBear3 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear3 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift3 M632"],
+        battlefield: [],
+        library: ["LibBear3 M632", "LibBear3 M632", "LibBear3 M632", "LibBear3 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift3 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3259. Mulldrifter 4 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-4-m632",
+    description: "Mulldrifter 4 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3ae,
+    cards: {
+      "Drift4 M632": `Name:Drift4 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift4 M632 test.
+`,
+      "LibBear4 M632": `Name:LibBear4 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear4 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift4 M632"],
+        battlefield: [],
+        library: ["LibBear4 M632", "LibBear4 M632", "LibBear4 M632", "LibBear4 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift4 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3260. Mulldrifter 5 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-5-m632",
+    description: "Mulldrifter 5 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3af,
+    cards: {
+      "Drift5 M632": `Name:Drift5 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift5 M632 test.
+`,
+      "LibBear5 M632": `Name:LibBear5 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear5 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift5 M632"],
+        battlefield: [],
+        library: ["LibBear5 M632", "LibBear5 M632", "LibBear5 M632", "LibBear5 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift5 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3261. Mulldrifter 6 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-6-m632",
+    description: "Mulldrifter 6 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b0,
+    cards: {
+      "Drift6 M632": `Name:Drift6 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift6 M632 test.
+`,
+      "LibBear6 M632": `Name:LibBear6 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear6 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift6 M632"],
+        battlefield: [],
+        library: ["LibBear6 M632", "LibBear6 M632", "LibBear6 M632", "LibBear6 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift6 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3262. Mulldrifter 7 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-7-m632",
+    description: "Mulldrifter 7 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b1,
+    cards: {
+      "Drift7 M632": `Name:Drift7 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift7 M632 test.
+`,
+      "LibBear7 M632": `Name:LibBear7 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear7 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift7 M632"],
+        battlefield: [],
+        library: ["LibBear7 M632", "LibBear7 M632", "LibBear7 M632", "LibBear7 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift7 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3263. Mulldrifter 8 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-8-m632",
+    description: "Mulldrifter 8 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b2,
+    cards: {
+      "Drift8 M632": `Name:Drift8 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift8 M632 test.
+`,
+      "LibBear8 M632": `Name:LibBear8 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear8 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift8 M632"],
+        battlefield: [],
+        library: ["LibBear8 M632", "LibBear8 M632", "LibBear8 M632", "LibBear8 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift8 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3264. Mulldrifter 9 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-9-m632",
+    description: "Mulldrifter 9 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b3,
+    cards: {
+      "Drift9 M632": `Name:Drift9 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift9 M632 test.
+`,
+      "LibBear9 M632": `Name:LibBear9 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear9 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift9 M632"],
+        battlefield: [],
+        library: ["LibBear9 M632", "LibBear9 M632", "LibBear9 M632", "LibBear9 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Drift9 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3265. Mulldrifter 10 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-10-m632",
+    description: "Mulldrifter 10 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b4,
+    cards: {
+      "Drift10 M632": `Name:Drift10 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift10 M632 test.
+`,
+      "LibBear10 M632": `Name:LibBear10 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear10 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift10 M632"],
+        battlefield: [],
+        library: ["LibBear10 M632", "LibBear10 M632", "LibBear10 M632", "LibBear10 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift10 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3266. Mulldrifter 11 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-11-m632",
+    description: "Mulldrifter 11 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b5,
+    cards: {
+      "Drift11 M632": `Name:Drift11 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift11 M632 test.
+`,
+      "LibBear11 M632": `Name:LibBear11 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear11 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift11 M632"],
+        battlefield: [],
+        library: ["LibBear11 M632", "LibBear11 M632", "LibBear11 M632", "LibBear11 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift11 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3267. Mulldrifter 12 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-12-m632",
+    description: "Mulldrifter 12 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b6,
+    cards: {
+      "Drift12 M632": `Name:Drift12 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift12 M632 test.
+`,
+      "LibBear12 M632": `Name:LibBear12 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear12 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift12 M632"],
+        battlefield: [],
+        library: ["LibBear12 M632", "LibBear12 M632", "LibBear12 M632", "LibBear12 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift12 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3268. Mulldrifter 13 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-13-m632",
+    description: "Mulldrifter 13 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b7,
+    cards: {
+      "Drift13 M632": `Name:Drift13 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift13 M632 test.
+`,
+      "LibBear13 M632": `Name:LibBear13 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear13 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift13 M632"],
+        battlefield: [],
+        library: ["LibBear13 M632", "LibBear13 M632", "LibBear13 M632", "LibBear13 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift13 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3269. Mulldrifter 14 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-14-m632",
+    description: "Mulldrifter 14 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b8,
+    cards: {
+      "Drift14 M632": `Name:Drift14 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift14 M632 test.
+`,
+      "LibBear14 M632": `Name:LibBear14 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear14 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift14 M632"],
+        battlefield: [],
+        library: ["LibBear14 M632", "LibBear14 M632", "LibBear14 M632", "LibBear14 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift14 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3270. Mulldrifter 15 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-15-m632",
+    description: "Mulldrifter 15 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3b9,
+    cards: {
+      "Drift15 M632": `Name:Drift15 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift15 M632 test.
+`,
+      "LibBear15 M632": `Name:LibBear15 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear15 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift15 M632"],
+        battlefield: [],
+        library: ["LibBear15 M632", "LibBear15 M632", "LibBear15 M632", "LibBear15 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift15 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3271. Mulldrifter 16 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-16-m632",
+    description: "Mulldrifter 16 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3ba,
+    cards: {
+      "Drift16 M632": `Name:Drift16 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift16 M632 test.
+`,
+      "LibBear16 M632": `Name:LibBear16 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear16 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift16 M632"],
+        battlefield: [],
+        library: ["LibBear16 M632", "LibBear16 M632", "LibBear16 M632", "LibBear16 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift16 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3272. Mulldrifter 17 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-17-m632",
+    description: "Mulldrifter 17 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3bb,
+    cards: {
+      "Drift17 M632": `Name:Drift17 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift17 M632 test.
+`,
+      "LibBear17 M632": `Name:LibBear17 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear17 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift17 M632"],
+        battlefield: [],
+        library: ["LibBear17 M632", "LibBear17 M632", "LibBear17 M632", "LibBear17 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift17 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3273. Mulldrifter 18 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-18-m632",
+    description: "Mulldrifter 18 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3bc,
+    cards: {
+      "Drift18 M632": `Name:Drift18 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift18 M632 test.
+`,
+      "LibBear18 M632": `Name:LibBear18 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear18 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift18 M632"],
+        battlefield: [],
+        library: ["LibBear18 M632", "LibBear18 M632", "LibBear18 M632", "LibBear18 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift18 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3274. Mulldrifter 19 cast — full pipeline + ETB draw 2.
+  {
+    id: "mulldrifter-cast-chain-19-m632",
+    description: "Mulldrifter 19 cast — full pipeline + ETB draw 2.",
+    seed: 0xc3bd,
+    cards: {
+      "Drift19 M632": `Name:Drift19 M632
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Drift19 M632 test.
+`,
+      "LibBear19 M632": `Name:LibBear19 M632
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibBear19 M632 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Drift19 M632"],
+        battlefield: [],
+        library: ["LibBear19 M632", "LibBear19 M632", "LibBear19 M632", "LibBear19 M632"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Drift19 M632", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3275. Pinger 0 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-0-m632",
+    description: "Pinger 0 cast — ETB deals 2 to opponent.",
+    seed: 0xc3be,
+    cards: {
+      "Ping0 M632": `Name:Ping0 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping0 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping0 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping0 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3276. Pinger 1 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-1-m632",
+    description: "Pinger 1 cast — ETB deals 2 to opponent.",
+    seed: 0xc3bf,
+    cards: {
+      "Ping1 M632": `Name:Ping1 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping1 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping1 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping1 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3277. Pinger 2 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-2-m632",
+    description: "Pinger 2 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c0,
+    cards: {
+      "Ping2 M632": `Name:Ping2 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping2 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping2 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping2 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3278. Pinger 3 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-3-m632",
+    description: "Pinger 3 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c1,
+    cards: {
+      "Ping3 M632": `Name:Ping3 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping3 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping3 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping3 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3279. Pinger 4 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-4-m632",
+    description: "Pinger 4 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c2,
+    cards: {
+      "Ping4 M632": `Name:Ping4 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping4 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping4 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping4 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3280. Pinger 5 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-5-m632",
+    description: "Pinger 5 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c3,
+    cards: {
+      "Ping5 M632": `Name:Ping5 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping5 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping5 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping5 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3281. Pinger 6 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-6-m632",
+    description: "Pinger 6 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c4,
+    cards: {
+      "Ping6 M632": `Name:Ping6 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping6 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping6 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping6 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3282. Pinger 7 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-7-m632",
+    description: "Pinger 7 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c5,
+    cards: {
+      "Ping7 M632": `Name:Ping7 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping7 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping7 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping7 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3283. Pinger 8 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-8-m632",
+    description: "Pinger 8 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c6,
+    cards: {
+      "Ping8 M632": `Name:Ping8 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping8 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping8 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping8 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3284. Pinger 9 cast — ETB deals 2 to opponent.
+  {
+    id: "pinger-cast-9-m632",
+    description: "Pinger 9 cast — ETB deals 2 to opponent.",
+    seed: 0xc3c7,
+    cards: {
+      "Ping9 M632": `Name:Ping9 M632
+ManaCost:2 R
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Ping9 M632 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ping9 M632"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Ping9 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
 ];

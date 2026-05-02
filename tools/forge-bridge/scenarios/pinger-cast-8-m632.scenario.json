@@ -1,0 +1,37 @@
+{
+  "id": "pinger-cast-8-m632",
+  "description": "Pinger 8 cast — ETB deals 2 to opponent.",
+  "seed": 50118,
+  "cards": {
+    "Ping8 M632": "Name:Ping8 M632\nManaCost:2 R\nTypes:Creature Goblin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent\nOracle:Ping8 M632 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ping8 M632"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Ping8 M632",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
