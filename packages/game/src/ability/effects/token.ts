@@ -216,6 +216,11 @@ export class TokenEffect extends SpellAbilityEffect {
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     const count = hasParam(sa, "TokenAmount") ? evaluateParamNumber(sa, "TokenAmount", game) : 1;
+    // M6.16 — Forge no-ops when count is 0 (X-cost tokens with X=0,
+    // count-by-board with no matches). The action layer rejects 0 with
+    // an IllegalDecisionError, so we early-return before hitting it
+    // rather than treating "no tokens" as a runtime failure.
+    if (count <= 0) return;
 
     // ---- Build the PaperCard (TokenScript$ vs inline form) -------------
     let paperCard: PaperCard;

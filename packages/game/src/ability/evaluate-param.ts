@@ -29,7 +29,19 @@ export const evaluateParamRaw = (sa: SpellAbility, key: string): string => {
   const pv = sa.ast.effect.params[key];
   if (!pv) throw new Error(`evaluateParamRaw: no param '${key}' on ${sa.handlerKey}`);
   if (pv.kind === "literal") return pv.raw;
-  throw new Error(`evaluateParamRaw: param '${key}' kind is '${pv.kind}', not 'literal'`);
+  // M6.16 — Some params (RepeatSubAbility$ DBReveal, AbilityName$ DBFoo,
+  // SubAbility$ DBBar) carry a SVar/sub-ability name as the raw value;
+  // the parser tags single-letter X/Y/Z and DB-prefixed names as
+  // 'svarRef' even when the param key wants the bare name. Allow that
+  // form to pass through as the SVar reference name — callers expect
+  // the printed text and look the SVar up themselves.
+  if (pv.kind === "svarRef") return pv.name;
+  // Likewise expressions that didn't classify cleanly (e.g. "All", "X-1")
+  // — surface the raw text so consumers can do their own parsing.
+  if (pv.kind === "expression") return pv.ast.raw ?? "";
+  throw new Error(
+    `evaluateParamRaw: param '${key}' kind is '${(pv as { kind: string }).kind}', not 'literal'`,
+  );
 };
 
 export const hasParam = (sa: SpellAbility, key: string): boolean => key in sa.ast.effect.params;

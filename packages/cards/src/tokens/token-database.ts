@@ -653,6 +653,152 @@ const entries: readonly TokenEntry[] = [
     // ctx.kind / source-type without any token-data change.
     oracle: "{T}: Add {C}. This mana can't be spent to cast a nonartifact spell.",
   },
+
+  // M6.16 — Tokens needed by previously-failing in-hand scenarios.
+  // Each is the canonical Forge tokenscript (kept as cosmetic shape only,
+  // matching the rest of this database). Cards needing these:
+  //   - Ajani, Nacatl Pariah → w_1_1_cat
+  //   - Avenger of Zendikar / Khalni Ambush → g_0_1_plant
+  //   - Bard Class           → rg_1_1_human_bard
+  //   - Batterskull          → c_0_0_germ
+  //   - Fable of the Mirror-Breaker → r_2_2_goblin_shaman_treasure
+  //   - Hornet Queen         → g_1_1_insect_flying_deathtouch
+  //   - Overlord of the Hauntwoods → c_a_forest
+  //   - Roxanne, Starfall Savant → meteorite
+  //   - Welcome to Sky's End → r_2_2_dwarf_warrior
+  //   - Wort, the Raidmother → r_1_1_goblin_warrior
+  {
+    id: "w_1_1_cat",
+    name: "Cat Token",
+    types: types("Creature Cat"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(W),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "g_0_1_plant",
+    name: "Plant Token",
+    types: types("Creature Plant"),
+    pt: { power: "0", toughness: "1" },
+    colors: colorsOf(G),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "rg_1_1_human_bard",
+    name: "Human Bard Token",
+    types: types("Creature Human Bard"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(R, G),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "c_0_0_germ",
+    name: "Germ Token",
+    types: types("Creature Germ"),
+    pt: { power: "0", toughness: "0" },
+    colors: ColorSet.empty(),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "r_2_2_goblin_shaman_treasure",
+    name: "Goblin Shaman Token",
+    // Fable of the Mirror-Breaker's day-side token: red 2/2 Goblin Shaman
+    // with an attack-trigger that creates a Treasure. We capture only the
+    // PT/types/colors here; the printed attack trigger lives outside the
+    // token database. (No card in scope reads token triggers off this
+    // entry yet.)
+    types: types("Creature Goblin Shaman"),
+    pt: { power: "2", toughness: "2" },
+    colors: colorsOf(R),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "Whenever this creature attacks, create a Treasure token.",
+  },
+  {
+    id: "g_1_1_insect_flying_deathtouch",
+    name: "Insect Token",
+    types: types("Creature Insect"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(G),
+    manaCost: null,
+    keywords: [kw("Flying"), kw("Deathtouch")],
+    abilities: [],
+    oracle: "Flying, deathtouch",
+  },
+  {
+    id: "c_a_forest",
+    // Overlord of the Hauntwoods's "create a colorless land token named
+    // Spirit Land that has 'T: Add one mana of any color'". We model the
+    // shape (Land subtype: Forest) here for token creation; the activated
+    // mana ability is not yet wired (no effect references it).
+    name: "Forest Token",
+    types: types("Land Forest"),
+    colors: ColorSet.empty(),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "meteorite",
+    // Roxanne, Starfall Savant: colorless artifact "Meteorite" with a
+    // mana-tap and a damage-on-ETB rider. Shape-only entry: no abilities.
+    name: "Meteorite Token",
+    types: types("Artifact"),
+    // Forge's meteorite tokenscript carries no PT (it's not a creature).
+    colors: ColorSet.empty(),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "r_2_2_dwarf_warrior",
+    name: "Dwarf Warrior Token",
+    types: types("Creature Dwarf Warrior"),
+    pt: { power: "2", toughness: "2" },
+    colors: colorsOf(R),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    id: "r_1_1_goblin_warrior",
+    name: "Goblin Warrior Token",
+    types: types("Creature Goblin Warrior"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(R),
+    manaCost: null,
+    keywords: [],
+    abilities: [],
+    oracle: "",
+  },
+  {
+    // Migratory Route, Wing Splicer, Storm-God's Oracle — white 1/1 Bird with flying.
+    id: "w_1_1_bird_flying",
+    name: "Bird Token",
+    types: types("Creature Bird"),
+    pt: { power: "1", toughness: "1" },
+    colors: colorsOf(W),
+    manaCost: null,
+    keywords: [kw("Flying")],
+    abilities: [],
+    oracle: "Flying",
+  },
 ];
 
 // ---------------------------------------------------------------------------

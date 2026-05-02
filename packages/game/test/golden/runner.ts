@@ -199,7 +199,27 @@ export function goldenPath(scenarioId: string): string {
  */
 export function writeGolden(scenarioId: string, trace: GoldenTrace): void {
   if (!existsSync(GOLDEN_DIR)) mkdirSync(GOLDEN_DIR, { recursive: true });
-  writeFileSync(goldenPath(scenarioId), serialise(trace), "utf8");
+  const path = goldenPath(scenarioId);
+  // M6.16 — Skip the rewrite when the on-disk content already matches
+  // the captured trace. Some goldens were originally hand-formatted in a
+  // compact pretty-print style different from JSON.stringify's default
+  // (e.g. arrays inlined on one line). Without this guard,
+  // UPDATE_GOLDENS=1 reformats every file in the corpus even when the
+  // semantic content didn't change. Compare semantically by re-parsing.
+  const fresh = serialise(trace);
+  if (existsSync(path)) {
+    try {
+      const existing = readFileSync(path, "utf8");
+      if (existing === fresh) return;
+      // Semantic compare — same JSON value, just different whitespace.
+      const a = JSON.parse(existing) as unknown;
+      const b = JSON.parse(fresh) as unknown;
+      if (JSON.stringify(a) === JSON.stringify(b)) return;
+    } catch {
+      // Fall through to overwrite on parse error.
+    }
+  }
+  writeFileSync(path, fresh, "utf8");
 }
 
 /** Read a golden trace from disk; returns null if missing. */
@@ -507,6 +527,44 @@ function runCast(
       }
       if (req.kind === "chooseMode") {
         step = gen.next({ kind: "chooseMode", chosenIndices: [0] });
+        continue;
+      }
+      // M6.16 — Default-driven decisions surfaced during cast pipeline:
+      //   - confirmAction → answer "no" so optional ETB reveals (Migratory
+      //     Route's Cohort/Domain prompts) skip rather than block.
+      //   - chooseConvokeImproviseTap → tap nothing (vanilla cast path);
+      //     scenarios that exercise convoke explicitly use a separate
+      //     scripted action.
+      //   - chooseSpreeModes → pick no extra modes (cast at base cost).
+      //   - chooseModes → mirror chooseMode fallback (first option).
+      if (req.kind === "confirmAction") {
+        step = gen.next({ kind: "confirmAction", confirmed: false });
+        continue;
+      }
+      if (req.kind === "chooseConvokeImproviseTap") {
+        // M6.16 — Tap every eligible helper. Most scenarios that exercise
+        // Convoke/Improvise put artifacts/creatures on the battlefield
+        // expecting them to be consumed; failing to tap leaves the cost
+        // unpayable. The pipeline already validates each id and rejects
+        // duplicates so passing the full list is safe.
+        const eligibleList = (
+          req as unknown as {
+            eligible?: ReadonlyArray<{ cardId: EntityId }>;
+          }
+        ).eligible;
+        const tapIds = (eligibleList ?? []).map((e) => e.cardId);
+        step = gen.next({ kind: "chooseConvokeImproviseTap", tapIds });
+        continue;
+      }
+      if (req.kind === "chooseSpreeModes") {
+        step = gen.next({ kind: "chooseSpreeModes", modeIds: [] });
+        continue;
+      }
+      if (req.kind === "chooseModes") {
+        const r = req as unknown as { modes?: ReadonlyArray<{ id: string }>; min?: number };
+        const min = r.min ?? 1;
+        const ids = (r.modes ?? []).slice(0, min).map((m) => m.id);
+        step = gen.next({ kind: "chooseModes", modeIds: ids });
         continue;
       }
       throw new Error(`golden runner: unhandled cast decision kind '${String(req.kind)}'`);

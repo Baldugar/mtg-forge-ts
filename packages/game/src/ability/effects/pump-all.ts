@@ -61,8 +61,12 @@ export class PumpAllEffect extends SpellAbilityEffect {
 
   // biome-ignore lint/correctness/useYield: ContinuousEffectRegistry.register is synchronous — no EngineYield to emit
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    const powerDelta = evaluateParamNumber(sa, "NumAtt", game);
-    const toughnessDelta = evaluateParamNumber(sa, "NumDef", game);
+    // M6.16 — Forge sometimes prints PumpAll with only NumDef$ (Toxic Deluge:
+    // -X/-X is encoded by listing NumDef$ -X and a synthetic NumAtt$ -X);
+    // older fixtures may omit one or both. Default missing deltas to 0
+    // rather than throwing.
+    const powerDelta = hasParam(sa, "NumAtt") ? evaluateParamNumber(sa, "NumAtt", game) : 0;
+    const toughnessDelta = hasParam(sa, "NumDef") ? evaluateParamNumber(sa, "NumDef", game) : 0;
 
     const matchingIds = filterMatchingCards(sa, game);
 

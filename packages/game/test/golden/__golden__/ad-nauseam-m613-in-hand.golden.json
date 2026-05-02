@@ -2,12 +2,84 @@
   "scenarioId": "ad-nauseam-m613-in-hand",
   "seed": 720,
   "engineVersion": "ts-m2-0.1.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": 4,
+        "amount": 2
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": null,
+        "amount": 3
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 0,
+        "payerSeat": 0
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 1,
+        "cardId": 0,
+        "controllerSeat": 0
+      }
+    },
+    {
+      "kind": "CardsRevealed",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "revealedBy": 0,
+        "revealedTo": "all",
+        "cardIds": [0],
+        "fromZone": "Hand"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 1,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    }
+  ],
   "finalState": {
     "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
+    "handSizes": [0, 0],
     "battlefield": [],
-    "graveyards": [[], []],
+    "graveyards": [["Ad Nauseam M613"], []],
     "stackSize": 0
   }
 }

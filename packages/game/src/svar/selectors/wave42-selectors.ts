@@ -83,18 +83,59 @@ const countDevotionTo = (target: Color, ctx: SvarContext): number => {
   return total;
 };
 
+// M6.16 — Forge ALSO writes single-letter compound forms like
+// `Count$DevotionB` (Gray Merchant of Asphodel), `Count$DevotionW`,
+// `Count$DevotionR/G`, `Count$DevotionToBlack`. Map each to the canonical
+// color the count refers to.
+const COLOR_BY_LETTER: Readonly<Record<string, Color>> = {
+  W: Color.White,
+  U: Color.Blue,
+  B: Color.Black,
+  R: Color.Red,
+  G: Color.Green,
+};
+
 const computeDevotion = (ast: SVarExpressionAst, ctx: SvarContext): number => {
   const raw = ast.args?.[0]?.raw ?? "";
-  // raw is e.g. "Devotion.Black" — strip the head.
+  // raw is e.g. "Devotion.Black" or "DevotionB" — strip the head.
   const dot = raw.indexOf(".");
-  if (dot < 0) return 0;
-  const colorName = raw.slice(dot + 1);
-  const color = COLOR_BY_NAME[colorName];
-  if (color === undefined) return 0;
-  return countDevotionTo(color, ctx);
+  if (dot >= 0) {
+    const colorName = raw.slice(dot + 1);
+    const color = COLOR_BY_NAME[colorName];
+    if (color !== undefined) return countDevotionTo(color, ctx);
+  }
+  // Single-letter suffix: DevotionB, DevotionG, DevotionWU (multicolor)…
+  const suffix = raw.startsWith("Devotion") ? raw.slice("Devotion".length) : "";
+  if (suffix.length === 1) {
+    const c = COLOR_BY_LETTER[suffix];
+    if (c !== undefined) return countDevotionTo(c, ctx);
+  }
+  // Multicolor (e.g. DevotionWU) — sum each letter's individual devotion;
+  // mirrors Forge's hybrid-aware "devotion to W AND U" reading.
+  if (suffix.length >= 2 && /^[WUBRG]+$/.test(suffix)) {
+    let total = 0;
+    for (const ch of suffix) {
+      const c = COLOR_BY_LETTER[ch];
+      if (c !== undefined) total += countDevotionTo(c, ctx);
+    }
+    return total;
+  }
+  // "DevotionToBlack" prose form.
+  const toMatch = /^DevotionTo([A-Z][a-z]+)$/.exec(raw);
+  if (toMatch) {
+    const cn = toMatch[1] ?? "";
+    const c = COLOR_BY_NAME[cn];
+    if (c !== undefined) return countDevotionTo(c, ctx);
+  }
+  return 0;
 };
 
 countArgRegistry.register("Devotion", computeDevotion);
+// Register single-letter Devotion shortcuts too, so the Count$ dispatcher's
+// "exact arg lookup" hits these without needing the head-split fallback.
+for (const letter of ["W", "U", "B", "R", "G"] as const) {
+  countArgRegistry.register(`Devotion${letter}`, computeDevotion);
+}
 
 // --- Cast total mana spent --------------------------------------------------
 
@@ -198,6 +239,12 @@ countArgRegistry.register("Storm", computeStorm);
 
 const ZONE_BY_VALID_SUFFIX: Readonly<Record<string, ZoneType>> = {
   Valid: ZoneType.Battlefield,
+  // M6.16 — `ValidPermanent` and `ValidPermanents` are Forge aliases for
+  // Valid (battlefield-scoped). Dockside Extortionist uses
+  // `Count$ValidPermanent.OppCtrl+Artifact`; Keruga uses
+  // `Count$ValidPermanents Card.YouCtrl`.
+  ValidPermanent: ZoneType.Battlefield,
+  ValidPermanents: ZoneType.Battlefield,
   ValidGraveyard: ZoneType.Graveyard,
   ValidExile: ZoneType.Exile,
   ValidHand: ZoneType.Hand,

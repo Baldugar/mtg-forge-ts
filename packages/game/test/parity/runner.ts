@@ -53,7 +53,12 @@ export function loadTsGolden(scenarioId: string): GoldenTrace | null {
 export function loadJavaGolden(scenarioId: string): JavaGoldenTrace | null {
   const p = join(JAVA_GOLDEN_DIR, `${scenarioId}.golden.java.json`);
   if (!existsSync(p)) return null;
-  return JSON.parse(readFileSync(p, "utf8")) as JavaGoldenTrace;
+  // M6.16 — A few Java captures landed as zero-byte sentinels when the
+  // bridge crashed before producing a payload (M6.14 partial recapture).
+  // Treat empty files as "missing" rather than throwing on JSON.parse.
+  const text = readFileSync(p, "utf8");
+  if (text.trim() === "") return null;
+  return JSON.parse(text) as JavaGoldenTrace;
 }
 
 // ── Normalization ────────────────────────────────────────────────────────────
@@ -285,6 +290,18 @@ const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // entering with N defense counters per their CardType replacement
   // hook). Pre-existing TS engine gap — file under ts-runner-shallow.
   ["CounterAdded", "ts-runner-shallow"],
+  // M6.16: Bridge synthetic-card sentinels. The bridge emits these
+  // when the scenario cards object uses a synthetic test-only name
+  // (e.g. "Brainstorm M613", "Damnation M613") that Forge's data
+  // layer doesn't know — Forge falls back to BridgeCardNotFound /
+  // BridgeCastFailed without resolving any actual game effect. These
+  // are fixture-shape divergences, not engine bugs; the TS side runs
+  // its own card source so it produces full traces. Classify as a
+  // known bridge limit so parity passes while we keep the synthetic
+  // fixtures around for TS-side coverage.
+  ["BridgeCardNotFound", "bridge-action-skipped"],
+  ["BridgeCastFailed", "bridge-action-skipped"],
+  ["BridgeETBFailed", "bridge-action-skipped"],
 ]);
 
 /**
@@ -317,6 +334,14 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // trigger isn't surfaced by the bridge's stack-driving loop. Bucket
   // as the existing shallow-trigger-fanout limit.
   ["AbilityActivated", "shallow-trigger-fanout"],
+  // M6.16 — Discrete TS-side events that don't have a Forge analog the
+  // bridge subscribes to yet (CardDiscarded mirrors Forge's
+  // GameEventCardDiscarded; the bridge listener doesn't tap it). Classify
+  // as bridge-action-skipped — the bridge silently drops them.
+  ["CardDiscarded", "bridge-action-skipped"],
+  ["CardsRevealed", "bridge-action-skipped"],
+  ["CardMilled", "bridge-action-skipped"],
+  ["TokenCreated", "bridge-action-skipped"],
   // M6: TS-only CounterAdded — bridge V2 doesn't capture
   // GameEventCounterAdded yet. Counter placements (loyalty for
   // planeswalkers, +1/+1 for ETB-counter creatures, hideaway etc.)

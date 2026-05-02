@@ -2,12 +2,105 @@
   "scenarioId": "body-count-in-hand",
   "seed": 323,
   "engineVersion": "ts-m2-0.1.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": 4,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": null,
+        "amount": 2
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 0,
+        "payerSeat": 0
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "cardId": 0,
+        "controllerSeat": 0
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 20,
+        "delta": 0,
+        "cause": "effect"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    }
+  ],
   "finalState": {
     "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
+    "handSizes": [0, 0],
     "battlefield": [],
-    "graveyards": [[], []],
+    "graveyards": [["Body Count"], []],
     "stackSize": 0
   }
 }

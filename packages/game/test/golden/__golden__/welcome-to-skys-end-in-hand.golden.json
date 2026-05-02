@@ -2,11 +2,95 @@
   "scenarioId": "welcome-to-skys-end-in-hand",
   "seed": 843,
   "engineVersion": "ts-m2-0.1.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 5,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "CounterAdded",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "counterType": "lore",
+        "amount": 1,
+        "sourceId": 0
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 5,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 7,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "TokenCreated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "controllerSeat": 0,
+        "tokenCardId": 8
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 7,
+        "fizzled": false
+      }
+    }
+  ],
   "finalState": {
     "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
-    "battlefield": [],
+    "handSizes": [0, 0],
+    "battlefield": [
+      {
+        "name": "Dwarf Warrior Token",
+        "controller": 0,
+        "tapped": false
+      },
+      {
+        "name": "Welcome to Sky's End",
+        "controller": 0,
+        "tapped": false
+      }
+    ],
     "graveyards": [[], []],
     "stackSize": 0
   }

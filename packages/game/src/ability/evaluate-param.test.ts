@@ -77,10 +77,23 @@ describe("evaluateParamRaw", () => {
     expect(evaluateParamRaw(sa, "ValidTgts")).toBe("Creature.YouCtrl");
   });
 
-  it("throws for a non-literal param", () => {
-    const ast = mkAst({ NumDmg: { kind: "expression", ast: { kind: "X" } } });
+  it("returns the SVar reference name for a svarRef param (M6.16)", () => {
+    // M6.16 — RepeatSubAbility$ DBReveal / SubAbility$ DBFoo / AbilityName$ X
+    // params arrive as `svarRef`; evaluateParamRaw returns the bare name so
+    // callers can look the SVar up themselves.
+    const ast = mkAst({ RepeatSubAbility: { kind: "svarRef", name: "DBReveal" } });
     const sa = new SpellAbility(ast, mkEntityId(1), mkPlayerSeat(0), new Map());
-    expect(() => evaluateParamRaw(sa, "NumDmg")).toThrow("not 'literal'");
+    expect(evaluateParamRaw(sa, "RepeatSubAbility")).toBe("DBReveal");
+  });
+
+  it("returns the raw expression text for an expression param (M6.16)", () => {
+    // Some Forge params (NumCards$ -X / NumAtt$ X+1) classify as expression
+    // when the parser detects the `$` form. evaluateParamRaw exposes the
+    // printed form so consumers (PumpAll's NumDef "-X") can do their own
+    // arithmetic without re-running classifyParamValue.
+    const ast = mkAst({ NumDmg: { kind: "expression", ast: { kind: "X", raw: "X-1" } } });
+    const sa = new SpellAbility(ast, mkEntityId(1), mkPlayerSeat(0), new Map());
+    expect(evaluateParamRaw(sa, "NumDmg")).toBe("X-1");
   });
 
   it("throws when the param key is missing", () => {

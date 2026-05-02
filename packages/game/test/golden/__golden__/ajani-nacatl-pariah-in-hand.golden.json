@@ -2,11 +2,64 @@
   "scenarioId": "ajani-nacatl-pariah-in-hand",
   "seed": 450,
   "engineVersion": "ts-m2-0.1.0",
-  "events": [],
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "TokenCreated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "controllerSeat": 0,
+        "tokenCardId": 4
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "fizzled": false
+      }
+    }
+  ],
   "finalState": {
     "lifeTotals": [20, 20],
-    "handSizes": [1, 0],
-    "battlefield": [],
+    "handSizes": [0, 0],
+    "battlefield": [
+      {
+        "name": "Ajani, Nacatl Pariah",
+        "controller": 0,
+        "tapped": false
+      },
+      {
+        "name": "Cat Token",
+        "controller": 0,
+        "tapped": false
+      }
+    ],
     "graveyards": [[], []],
     "stackSize": 0
   }

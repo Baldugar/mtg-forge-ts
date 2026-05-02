@@ -24,6 +24,7 @@ import { effectRegistry } from "../effect-registry.js";
 import { evaluateParamNumber, evaluateParamRaw, hasParam } from "../evaluate-param.js";
 import { SpellAbilityEffect } from "../spell-ability-effect.js";
 import type { SpellAbility } from "../spell-ability.js";
+import { DrawEffect } from "./draw.js";
 
 const resolveDiscarderSeat = (sa: SpellAbility): PlayerSeat => {
   if (sa.targets.length > 0) return sa.targets[0] as unknown as PlayerSeat;
@@ -39,13 +40,17 @@ const resolveDiscarderSeat = (sa: SpellAbility): PlayerSeat => {
 export class DiscardEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Discard";
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    const n = hasParam(sa, "NumCards") ? evaluateParamNumber(sa, "NumCards", game) : 1;
     const seat = resolveDiscarderSeat(sa);
     const player = game.getPlayer(seat);
     const hand = player.zones.get(ZoneType.Hand);
     if (!hand) return;
     const handCards = hand.toArray();
     if (handCards.length === 0) return;
+    // M6.16 — `NumCards$ All` is the Forge wildcard for whole-hand discard
+    // (Wheel of Fortune, Timetwister, Windfall). The SVar evaluator folds
+    // "All" → -1 sentinel; we expand it to hand.length here so caps apply.
+    let n = hasParam(sa, "NumCards") ? evaluateParamNumber(sa, "NumCards", game) : 1;
+    if (n < 0) n = handCards.length;
 
     const mode = hasParam(sa, "Mode") ? evaluateParamRaw(sa, "Mode").trim() : "Hand";
 
@@ -225,3 +230,29 @@ export class DiscardEffect extends SpellAbilityEffect {
 }
 
 effectRegistry.register(DiscardEffect);
+
+// M6.16 — `DiscardAll` is shorthand emitted by some Forge "wheel-shaped"
+// cards (Wheel of Fortune analogues, Cipher discard-and-draw effects).
+// Forge's canonical form is `SP$ Discard | NumCards$ All | Defined$ Each`,
+// but DiscardAll is registered as its own handler in some Forge corpus
+// branches. We provide a thin wrapper that delegates to DiscardEffect so
+// cards using either form resolve.
+class DiscardAllEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "DiscardAll";
+  override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    yield* new DiscardEffect().resolve(sa, game);
+  }
+}
+effectRegistry.register(DiscardAllEffect);
+
+// M6.16 — `DrawAll` is similarly a Forge synonym for `Draw` with
+// `Defined$ Player.Each`. We delegate to the standard DrawEffect path.
+// (DrawEffect currently draws for the controller; full multi-player
+// Defined$ resolution is out of scope for this fix.)
+class DrawAllEffect extends SpellAbilityEffect {
+  static override readonly handlerKey = "DrawAll";
+  override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    yield* new DrawEffect().resolve(sa, game);
+  }
+}
+effectRegistry.register(DrawAllEffect);

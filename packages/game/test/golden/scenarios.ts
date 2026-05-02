@@ -2995,7 +2995,7 @@ export const SCENARIOS: readonly GoldenScenario[] = [
       { life: 20, hand: ["Roxanne, Starfall Savant"], battlefield: [], manaPool: ["R", "G", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Roxanne, Starfall Savant", controller: SEAT0 }],
   },
 
   // 99. Indestructible vs Wrath — Avacyn, Angel of Hope ETB.
@@ -3147,7 +3147,7 @@ export const SCENARIOS: readonly GoldenScenario[] = [
       { life: 20, hand: ["Beastbond Outcaster"], battlefield: [], manaPool: ["G", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Beastbond Outcaster", controller: SEAT0 }],
   },
 
   // 110. Suspect — Nelly Borca, Impulsive Accuser ETB.
@@ -5147,7 +5147,7 @@ Oracle:Devotion parse.
       { life: 20, hand: ["Gray Merchant of Asphodel"], battlefield: [], manaPool: ["B", "B", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Gray Merchant of Asphodel", controller: SEAT0 }],
   },
 
   // 220. X-spell — Hangarback Walker in-hand (X-cost + ETB counter parse).
@@ -5191,7 +5191,7 @@ Oracle:Modal charm parse.
       { life: 20, hand: ["Cabaretti Charm"], battlefield: [], manaPool: ["R", "G", "W"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Cabaretti Charm", castingPlayer: SEAT0 }],
   },
 
   // 222. Phasing — Teferi's Veil in hand.
@@ -5829,7 +5829,7 @@ Oracle:Charm 4-mode pick 2.
       { life: 20, hand: ["Cryptic Command"], battlefield: [], manaPool: ["U", "U", "U", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Cryptic Command", castingPlayer: SEAT0 }],
   },
 
   // 250. Buyback — Capsize in hand.
@@ -5892,7 +5892,7 @@ Oracle:Casualty parse.
       { life: 20, hand: ["Body Count"], battlefield: [], manaPool: ["B", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Body Count", castingPlayer: SEAT0 }],
   },
 
   // 253. Backup — Anointer of Champions in hand.
@@ -6680,7 +6680,7 @@ Oracle:Adapt parse.
       { life: 20, hand: ["Migratory Route"], battlefield: [], manaPool: ["W", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Migratory Route", castingPlayer: SEAT0 }],
   },
 
   // 288. Disturb — Baithook Angler in hand.
@@ -7003,7 +7003,7 @@ Oracle:Wheel parse.
       { life: 20, hand: ["Wheel of Fortune"], battlefield: [], manaPool: ["R", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Wheel of Fortune", castingPlayer: SEAT0 }],
   },
 
   // ── M6.11 ──────────────────────────────────────────────────────────────────
@@ -7629,7 +7629,7 @@ Oracle:Ad Nauseam parse.
       { life: 20, hand: ["Ad Nauseam"], battlefield: [], manaPool: ["B", "B", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Ad Nauseam", castingPlayer: SEAT0 }],
   },
 
   // 329. Blink — Restoration Angel in hand.
@@ -7847,7 +7847,7 @@ Oracle:Avenger parse.
       },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Avenger of Zendikar", controller: SEAT0 }],
   },
 
   // 338. Tokens — Hornet Queen in hand.
@@ -7876,7 +7876,7 @@ Oracle:Hornet Queen parse.
       },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Hornet Queen", controller: SEAT0 }],
   },
 
   // 339. Modular — Arcbound Ravager in hand.
@@ -8306,7 +8306,7 @@ Oracle:FoF parse.
       { life: 20, hand: ["Fact or Fiction"], battlefield: [], manaPool: ["U", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Fact or Fiction", castingPlayer: SEAT0 }],
   },
 
   // 358. Multiplayer — Vow of Lightning in hand.
@@ -8537,7 +8537,7 @@ Oracle:Overlord parse.
       },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Overlord of the Hauntwoods", controller: SEAT0 }],
   },
 
   // 368. MKM — Detective's Phoenix in hand.
@@ -8840,7 +8840,7 @@ Oracle:Ajani parse.
       { life: 20, hand: ["Ajani, Nacatl Pariah"], battlefield: [], manaPool: ["W", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Ajani, Nacatl Pariah", controller: SEAT0 }],
   },
 
   // 380. DSK — Bloodletter of Aclazotz in hand.
@@ -9571,7 +9571,7 @@ Oracle:Toxic Deluge parse.
       { life: 20, hand: ["Toxic Deluge"], battlefield: [], manaPool: ["B", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Toxic Deluge", castingPlayer: SEAT0 }],
   },
 
   // 413. Sweeper — Anger of the Gods in hand.
@@ -10640,7 +10640,7 @@ Oracle:Bard Class parse.
       { life: 20, hand: ["Bard Class"], battlefield: [], manaPool: ["R", "G", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Bard Class", controller: SEAT0 }],
   },
 
   // 460. Class — Warlock Class in hand.
@@ -10774,7 +10774,7 @@ Oracle:Whispering Madness parse.
       { life: 20, hand: ["Whispering Madness"], battlefield: [], manaPool: ["U", "B", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Whispering Madness", castingPlayer: SEAT0 }],
   },
 
   // 466. Cascade — Maelstrom Wanderer in hand.
@@ -11035,7 +11035,7 @@ Oracle:Dockside Extortionist parse.
       { life: 20, hand: ["Dockside Extortionist"], battlefield: [], manaPool: ["R", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Dockside Extortionist", controller: SEAT0 }],
   },
 
   // 477. Food — Gilded Goose in hand.
@@ -11771,7 +11771,7 @@ Oracle:Wort parse.
       { life: 20, hand: ["Wort, the Raidmother"], battlefield: [], manaPool: ["R", "G", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Wort, the Raidmother", controller: SEAT0 }],
   },
 
   // 509. Convoke — Chord of Calling in hand.
@@ -14092,7 +14092,7 @@ Oracle:Atraxa parse.
       },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Atraxa, Grand Unifier", controller: SEAT0 }],
   },
 
   // 614. Spell — Fable of the Mirror-Breaker in hand.
@@ -14117,7 +14117,7 @@ Oracle:Fable parse.
       { life: 20, hand: ["Fable of the Mirror-Breaker"], battlefield: [], manaPool: ["R", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Fable of the Mirror-Breaker", controller: SEAT0 }],
   },
 
   // 615. Spell — Sunfall in hand.
@@ -14875,7 +14875,7 @@ Oracle:Ad Nauseam M613 parse.
       { life: 20, hand: ["Ad Nauseam M613"], battlefield: [], manaPool: ["B", "B", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Ad Nauseam M613", castingPlayer: SEAT0 }],
   },
 
   // 650. Spell — Children of Korlis in hand.
@@ -15000,7 +15000,7 @@ Oracle:Deluge M613 parse.
       { life: 20, hand: ["Toxic Deluge M613"], battlefield: [], manaPool: ["B", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Toxic Deluge M613", castingPlayer: SEAT0 }],
   },
 
   // 656. Spell — Vanquish the Horde in hand.
@@ -15696,7 +15696,7 @@ Oracle:Ringleader parse.
       { life: 20, hand: ["Goblin Ringleader"], battlefield: [], manaPool: ["R", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Goblin Ringleader", controller: SEAT0 }],
   },
 
   // 687. Spell — Muxus Goblin Grandee in hand.
@@ -16012,7 +16012,7 @@ Oracle:Wheel parse.
       { life: 20, hand: ["Wheel of Fortune"], battlefield: [], manaPool: ["R", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Wheel of Fortune", castingPlayer: SEAT0 }],
   },
 
   // 701. Spell — Timetwister in hand.
@@ -16034,7 +16034,7 @@ Oracle:Twister parse.
       { life: 20, hand: ["Timetwister"], battlefield: [], manaPool: ["U", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Timetwister", castingPlayer: SEAT0 }],
   },
 
   // 702. Spell — Time Walk in hand.
@@ -16626,7 +16626,7 @@ Oracle:Keruga parse.
       { life: 20, hand: ["Keruga, the Macrosage"], battlefield: [], manaPool: ["G", "U", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Keruga, the Macrosage", controller: SEAT0 }],
   },
 
   // 727. Spell — Gyruda Doom of Depths in hand.
@@ -16657,7 +16657,7 @@ Oracle:Gyruda parse.
       },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Gyruda, Doom of Depths", controller: SEAT0 }],
   },
 
   // 728. Spell — Jegantha the Wellspring in hand.
@@ -16945,7 +16945,7 @@ Oracle:Batterskull parse.
       { life: 20, hand: ["Batterskull"], battlefield: [], manaPool: ["C", "C", "C", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Batterskull", controller: SEAT0 }],
   },
 
   // 740. Spell — Birthing Pod in hand.
@@ -17070,7 +17070,7 @@ Oracle:Eureka parse.
       { life: 20, hand: ["Eureka"], battlefield: [], manaPool: ["G", "G", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "cast", cardName: "Eureka", castingPlayer: SEAT0 }],
   },
 
   // 746. Spell — Reanimate (m613) in hand.
@@ -17614,7 +17614,7 @@ Oracle:Showdown parse.
       { life: 20, hand: ["Showdown of the Skalds"], battlefield: [], manaPool: ["R", "W", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Showdown of the Skalds", controller: SEAT0 }],
   },
 
   // 772. Spell — Welcome to Sky's End in hand.
@@ -17638,7 +17638,7 @@ Oracle:Welcome to Sky's End parse.
       { life: 20, hand: ["Welcome to Sky's End"], battlefield: [], manaPool: ["R", "C", "C"] },
       { life: 20, hand: [], battlefield: [] },
     ],
-    actions: [],
+    actions: [{ kind: "etb", cardName: "Welcome to Sky's End", controller: SEAT0 }],
   },
 
   // 773. Spell — Vanishing Verse in hand.

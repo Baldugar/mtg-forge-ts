@@ -9,10 +9,13 @@
 //   - OppLifeTotal      : opponent's life total
 //   - RememberedSize    : ctx.sourceCard.remembered.length (74 corpus cards)
 //   - YourPoisonCounters: ctx.controller's poison counters
+//   - NumCardsInGraveyard / NumCardsInYourGraveyard / NumCardsInOppGraveyard
+//     : graveyard-size counts (Body Count Casualty, threshold cards)
 //
 // The arg lookup is case-sensitive — Forge always emits PascalCase. Cards
 // using forms not registered here still fall through to the original
 // "throw" path; cost-mod helpers wrap that in a try/catch returning 0.
+import { ZoneType } from "@mtg-forge-ts/core";
 import type { PlayerSeat, SVarExpressionAst } from "@mtg-forge-ts/core";
 import type { SvarContext } from "../context.js";
 import { countArgRegistry } from "./count.js";
@@ -50,3 +53,38 @@ countArgRegistry.register("OppLifeTotal", oppLifeTotal);
 countArgRegistry.register("RememberedSize", rememberedSize);
 countArgRegistry.register("RememberedNumber", rememberedSize); // alias used by some cards
 countArgRegistry.register("YourPoisonCounters", yourPoisonCounters);
+
+// M6.16 — Graveyard size counts. Body Count's Casualty SVar uses
+// Count$NumCardsInGraveyard (sum of both players' graveyards in Forge);
+// some cards specialize to "your graveyard" or "opponent's graveyard".
+const sumGraveyards = (ctx: SvarContext): number => {
+  let n = 0;
+  for (const card of ctx.game.cards.values()) {
+    if (card.zone === ZoneType.Graveyard) n += 1;
+  }
+  return n;
+};
+
+const yourGraveyardSize = (ctx: SvarContext): number => {
+  if (ctx.controller === undefined) return 0;
+  let n = 0;
+  for (const card of ctx.game.cards.values()) {
+    if (card.zone === ZoneType.Graveyard && card.controllerSeat === ctx.controller) n += 1;
+  }
+  return n;
+};
+
+const oppGraveyardSize = (ctx: SvarContext): number => {
+  if (ctx.controller === undefined) return 0;
+  let n = 0;
+  for (const card of ctx.game.cards.values()) {
+    if (card.zone === ZoneType.Graveyard && card.controllerSeat !== ctx.controller) n += 1;
+  }
+  return n;
+};
+
+countArgRegistry.register("NumCardsInGraveyard", (_ast, ctx) => sumGraveyards(ctx));
+countArgRegistry.register("NumCardsInYourGraveyard", (_ast, ctx) => yourGraveyardSize(ctx));
+countArgRegistry.register("NumCardsInOppGraveyard", (_ast, ctx) => oppGraveyardSize(ctx));
+// Threshold sentinel — Forge sometimes uses CardsInYourGraveyard.
+countArgRegistry.register("CardsInYourGraveyard", (_ast, ctx) => yourGraveyardSize(ctx));

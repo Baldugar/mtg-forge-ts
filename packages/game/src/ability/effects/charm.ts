@@ -26,6 +26,13 @@ export class CharmEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Charm";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
+    // M6.16 — Forge sometimes uses bare `Charm$ True` flags on legacy
+    // charm cards whose modes are stored as `Choices$ DBA,DBB,DBC` on
+    // their `A:` line; older fixtures may omit the explicit Choices$ list
+    // entirely. Without choices the modal dispatch has nothing to do; bail
+    // gracefully rather than throwing the un-actionable
+    // "no param 'Choices' on Charm" error.
+    if (!hasParam(sa, "Choices")) return;
     const choicesRaw = evaluateParamRaw(sa, "Choices");
     const choices = choicesRaw
       .split(",")
