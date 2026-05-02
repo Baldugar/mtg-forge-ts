@@ -1,0 +1,41 @@
+{
+  "id": "soul-warden-creature-cast-14-m646",
+  "description": "Soul Warden + GrizA-14 M646 cast — multi-trigger life-gain chain.",
+  "seed": 51354,
+  "cards": {
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "GrizA-14 M646": "Name:GrizA-14 M646\nManaCost:1 G\nTypes:Creature Druid\nPT:1/2\nOracle:GrizA-14 M646 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "GrizA-14 M646"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ],
+      "manaPool": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "GrizA-14 M646",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

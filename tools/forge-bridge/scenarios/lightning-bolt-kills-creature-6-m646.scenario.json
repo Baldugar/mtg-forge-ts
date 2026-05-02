@@ -1,0 +1,44 @@
+{
+  "id": "lightning-bolt-kills-creature-6-m646",
+  "description": "Lightning Bolt → opposing BltC-6 M646 (2/1) — damage + SBA dies chain.",
+  "seed": 51371,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "BltC-6 M646": "Name:BltC-6 M646\nManaCost:1 G\nTypes:Creature Goblin\nPT:2/1\nOracle:BltC-6 M646 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "BltC-6 M646"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "BltC-6 M646"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

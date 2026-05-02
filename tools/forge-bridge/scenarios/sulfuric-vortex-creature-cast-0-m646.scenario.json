@@ -1,0 +1,41 @@
+{
+  "id": "sulfuric-vortex-creature-cast-0-m646",
+  "description": "Sulfuric Vortex co-residence + VtxB-0 M646 cast — phase trigger latent.",
+  "seed": 51355,
+  "cards": {
+    "Sulfuric Vortex": "Name:Sulfuric Vortex\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ At the beginning of each player's upkeep, this deals 2 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer\nOracle:At the beginning of each player's upkeep, Sulfuric Vortex deals 2 damage to that player.\n",
+    "VtxB-0 M646": "Name:VtxB-0 M646\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:VtxB-0 M646 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "VtxB-0 M646"
+      ],
+      "battlefield": [
+        {
+          "card": "Sulfuric Vortex"
+        }
+      ],
+      "manaPool": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "VtxB-0 M646",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

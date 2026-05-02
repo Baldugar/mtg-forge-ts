@@ -1,0 +1,35 @@
+{
+  "id": "llanowar-elves-activate-4-with-vortex-buddy-m646",
+  "description": "Llanowar Elves activate (with-vortex-buddy) — {T}: Add {G}.",
+  "seed": 51413,
+  "cards": {
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Sulfuric Vortex": "Name:Sulfuric Vortex\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ At the beginning of each player's upkeep, this deals 2 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer\nOracle:At the beginning of each player's upkeep, Sulfuric Vortex deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        },
+        {
+          "card": "Sulfuric Vortex"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Llanowar Elves",
+      "activatingPlayer": 0
+    }
+  ]
+}

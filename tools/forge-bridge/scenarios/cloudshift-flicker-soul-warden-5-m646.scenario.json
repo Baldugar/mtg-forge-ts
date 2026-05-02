@@ -1,0 +1,48 @@
+{
+  "id": "cloudshift-flicker-soul-warden-5-m646",
+  "description": "Cloudshift flicker on Soul Warden — ETB re-fires after return.",
+  "seed": 51382,
+  "cards": {
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudshift"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        },
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Cloudshift",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Soul Warden"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

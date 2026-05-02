@@ -1,0 +1,35 @@
+{
+  "id": "sol-ring-activate-4-with-vortex-buddy-m646",
+  "description": "Sol Ring activate (with-vortex-buddy) — mana ability activation chain.",
+  "seed": 51403,
+  "cards": {
+    "Sol Ring": "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n",
+    "Sulfuric Vortex": "Name:Sulfuric Vortex\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ At the beginning of each player's upkeep, this deals 2 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer\nOracle:At the beginning of each player's upkeep, Sulfuric Vortex deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sol Ring"
+        },
+        {
+          "card": "Sulfuric Vortex"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Sol Ring",
+      "activatingPlayer": 0
+    }
+  ]
+}

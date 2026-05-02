@@ -1,0 +1,44 @@
+{
+  "id": "lightning-bolt-kills-creature-10-m646",
+  "description": "Lightning Bolt → opposing BltC-10 M646 (1/2) — damage + SBA dies chain.",
+  "seed": 51375,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "BltC-10 M646": "Name:BltC-10 M646\nManaCost:1 G\nTypes:Creature Cleric\nPT:1/2\nOracle:BltC-10 M646 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "BltC-10 M646"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "BltC-10 M646"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
