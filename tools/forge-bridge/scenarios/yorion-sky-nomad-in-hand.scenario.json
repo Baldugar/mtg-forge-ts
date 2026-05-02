@@ -1,0 +1,21 @@
+{
+  "id": "yorion-sky-nomad-in-hand",
+  "description": "Yorion, Sky Nomad in hand; Companion + Flicker ETB parse.",
+  "seed": 294,
+  "cards": {
+    "Yorion, Sky Nomad": "Name:Yorion, Sky Nomad\nManaCost:3 W U\nTypes:Legendary Creature Bird Serpent\nPT:4/5\nK:Flying\nK:Companion:DeckSize80\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBlink | TriggerDescription$ ETB blink trigger.\nSVar:TrigBlink:DB$ ChangeZone | Defined$ Permanent.YouCtrl+nonLand | Origin$ Battlefield | Destination$ Exile\nOracle:Companion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Yorion, Sky Nomad"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,42 @@
+{
+  "scenarioId": "vorinclex-liliana-coresidence",
+  "seed": 295,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CounterAdded",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Liliana, the Last Hope",
+        "counterType": "loyalty",
+        "amount": 6,
+        "removed": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Liliana, the Last Hope",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Vorinclex, Monstrous Raider",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}

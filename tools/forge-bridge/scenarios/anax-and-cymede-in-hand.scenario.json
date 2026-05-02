@@ -1,0 +1,22 @@
+{
+  "id": "anax-and-cymede-in-hand",
+  "description": "Anax and Cymede in hand; Heroic-style trigger parse.",
+  "seed": 337,
+  "cards": {
+    "Anax and Cymede": "Name:Anax and Cymede\nManaCost:1 R W\nTypes:Legendary Creature Human Soldier\nPT:3/2\nK:First Strike\nK:Vigilance\nT:Mode$ Targeted | ValidTarget$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Heroic.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 1 | KW$ Trample\nOracle:Heroic parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Anax and Cymede"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

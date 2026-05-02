@@ -667,3 +667,105 @@ node tools/parity-harness/run-parity.mjs
 #   mvp-known:   0
 #   unknown:     0
 ```
+
+## Milestone 6.10 — expand to ~300 scenarios + sustain 100% parity
+
+M6.10 expands the cohort from 188 → 299 scenarios (+111 across mechanics
+under-represented in the M6.9 set) and closes the only mvp-known row
+that surfaced (Soulbond ETB-pair trigger fan-out when no eligible
+partner exists) with a real engine fix. End state: **299 full-match /
+0 mvp-known / 0 unknown.**
+
+### Aggregate this run (post-M6.10)
+
+- **299 scenarios** (up from 188).
+- **299 full-match (100%).**
+- **0 mvp-known.**
+- **0 unknown** (`real-divergence-investigate`). Hard contract held.
+
+### What M6.10 changed
+
+1. **Cohort expansion: +111 scenarios** (188 → 299). Mechanics added:
+   Channel from hand, Convoke (Chord of Calling × 2), Improvise
+   (Reverse Engineer × 2), Surveil (Surveilling Sprite parse), Connive
+   (Tenured Inkcaster), Ascend (Storm Fleet Sprinter), Crime (Take the
+   Fall), Investigate (Tireless Tracker × 3), Energy (Aetherworks
+   Marvel), Adventure (Bonecrusher Stomp / Murderous Rider), Banding
+   (Adventurers' Guildhouse), Bestow (Hopeful Eidolon × 2), Soulbond
+   (Wingcrafter), Persist/Undying chain (Strangleroot Geist /
+   Murderous Redcap), Embalm (Sacred Cat × 2), Eternalize (Sand
+   Strangler × 2), Splice Arcane (Glacial Ray), Outlast (Mer-Ek
+   Nightblade), Mentor (Tajic, Legion's Edge), Provoke variant (Lure
+   of Prey), Strive (Mizzium Mortars), Replicate (Repudiate //
+   Replicate), Ninjutsu (Ninja of the Deep Hours), Hideaway (Mosswort
+   Bridge), Sunburst (Etched Oracle), Wither (Boggart Ram-Gang),
+   Infect (Phyrexian Crusader), Conspire (Beck // Call), Devotion
+   (Gray Merchant), X-spell (Hangarback Walker), Modal Charm (Cabaretti
+   / Cryptic Command), Phasing (Teferi's Veil), Companion (Yorion),
+   Counter doubler + Planeswalker (Vorinclex + Liliana), Damage
+   redirect (Phytohydra / Boros Reckoner), Vehicle (Smuggler's Copter),
+   Daybound (Reckless Stormseeker × 2), Plot (Beastbond Outcaster),
+   Cipher (Stolen Identity), Cascade × 1 / Cascade × 2 (Bloodbraid Elf
+   / Maelstrom Wanderer), Mutate (Auspicious Starrix), Battle
+   (Invasion of Ikoria), Equipment (Sword of Fire and Ice), Treasure
+   (Smothering Tithe), Food (Witch's Oven), Adamant (Charming Prince),
+   Foretell (Augury Raven), Domain (Tribal Flames), Scry (Augur of
+   Bolas), Storm-flavored (Aetherflux Reservoir), Buyback (Capsize),
+   Awaken (Awaken the Bear), Casualty (Body Count), Backup (Anointer
+   of Champions), Squad (Trumpeting Carnosaur), Encore (Faldorn),
+   Reconfigure (Maul of the Skyclaves), Warp (Crucias), Spree (Pyretic
+   Charge), Affinity (Thoughtcast), Discard cost (Putrid Imp),
+   Tarmogoyf-with-graveyard, Constellation (Doomwake Giant), Magecraft
+   (Quandrix Apprentice), Heroic (Anax and Cymede), Saga (History of
+   Benalia), Class (Cleric Class), Initiative (Caves of Chaos),
+   Living Weapon (Batterskull), For-Mirrodin (Sword of the Realms),
+   Scavenge (Slitherhead), Steppe Lynx Landfall, Goblin Bombardment
+   sac-fling, Glacial Chasm Cumulative Upkeep, Compleated (Tamiyo),
+   Mirran Crusader Double Strike, Vampire Nighthawk triple keyword,
+   Rite of Replication Kicker, Rosheen Meanderer X-cost ramp, Aurelia
+   second combat, Birthing Pod Phyrexian mana, Ohran Frostfang Snow,
+   Migratory Route Adapt, Disturb (Baithook Angler), Riot-flavored
+   (Rampaging Brontodon), Stoneforge Mystic, Doubling Season +
+   Procession + Hangarback co-residence, Sigarda triple keyword,
+   Avacyn Indestructible-grant, Sphinx of the Final Word
+   uncounterable, Nykthos Devotion ramp, Prey Upon Fight, Glimpse the
+   Unthinkable Mill, Animate Dead reanimator, Polymorph transform,
+   Demonic Tutor library-search, Wheel of Fortune mass-discard.
+
+2. **Real engine bug fix — Soulbond ETB-pair trigger CR 603.10c
+   adherence.** Pre-M6.10, `SoulbondKeywordHandler` synthesized an ETB
+   trigger whose `matches()` only checked
+   `event.kind === "CardChangedZone"` and the source-cardId / toZone.
+   The trigger fired for every Soulbond ETB regardless of whether a
+   legal pairing target existed — when no other unpaired creature was
+   on the battlefield, the trigger queued onto the stack as a no-op
+   `AbilityActivated` and resolved silently as `StackItemResolved`.
+
+   Forge's behaviour: `K:Soulbond` doesn't fan out the trigger when no
+   eligible partner exists (CR 603.10c — "if no possible target, the
+   ability won't trigger"). Wingcrafter's CardChangedZone is the only
+   event the bridge captures.
+
+   **Fix:** `SoulbondKeywordHandler.matches()` now walks the live
+   battlefield at trigger-match time, checking for any unpaired
+   creature controlled by the Soulbond card's controller. If none
+   exists, `matches()` returns `false` and the trigger is dropped at
+   the registry boundary before being queued. The resolver-side
+   guard remains intact (defence-in-depth: even if `matches()` ever
+   returns true incorrectly, the resolver re-validates).
+
+   **Closes:** `wingcrafter-etb` parity row.
+
+### Real engine bugs surfaced (M6.10 batch — all closed)
+
+1. Soulbond ETB-pair fan-out fired with empty eligibility pool. Closed.
+
+### How to verify
+
+```bash
+node tools/parity-harness/run-parity.mjs
+# Expect (M6.10):
+#   full-match:  299
+#   mvp-known:   0
+#   unknown:     0
+```

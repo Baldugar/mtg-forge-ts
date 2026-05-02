@@ -1,0 +1,22 @@
+{
+  "id": "aetherflux-reservoir-in-hand",
+  "description": "Aetherflux Reservoir in hand; SpellCast trigger parse.",
+  "seed": 319,
+  "cards": {
+    "Aetherflux Reservoir": "Name:Aetherflux Reservoir\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidPlayer$ You | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Cast trigger.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nA:AB$ DealDamage | Cost$ PayLife<50> | NumDmg$ 50 | ValidTgts$ Any | SpellDescription$ 50 damage.\nOracle:Storm flavored parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aetherflux Reservoir"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

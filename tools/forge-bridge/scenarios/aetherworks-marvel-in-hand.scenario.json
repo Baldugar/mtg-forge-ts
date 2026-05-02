@@ -1,0 +1,21 @@
+{
+  "id": "aetherworks-marvel-in-hand",
+  "description": "Aetherworks Marvel in hand; Energy trigger + activated parse.",
+  "seed": 270,
+  "cards": {
+    "Aetherworks Marvel": "Name:Aetherworks Marvel\nManaCost:4\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigEnergy | TriggerDescription$ Energy on permanent dies.\nSVar:TrigEnergy:DB$ ChangeCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Dig | Cost$ T SubCounter<6/ENERGY> | DigNum$ 6 | ChangeNum$ 1 | DestinationZone$ Battlefield | SpellDescription$ Energy spend.\nOracle:Whenever a permanent you control dies, you get energy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aetherworks Marvel"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

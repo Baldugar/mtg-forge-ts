@@ -1,0 +1,21 @@
+{
+  "id": "glacial-chasm-in-hand-m610",
+  "description": "Glacial Chasm in hand; Cumulative Upkeep + damage prevention parse.",
+  "seed": 347,
+  "cards": {
+    "Glacial Chasm": "Name:Glacial Chasm\nManaCost:no cost\nTypes:Land\nK:CumulativeUpkeep:PayLife<2>\nS:Mode$ Continuous | Affected$ You | AddKeyword$ CantAttack | Description$ Can't attack from Glacial Chasm.\nR:Event$ DamageDone | ValidTarget$ You | ReplaceWith$ Prevent | Description$ Prevent all damage to you.\nSVar:Prevent:DB$ ReplaceEffect | Prevent$ True\nOracle:Cumulative parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Glacial Chasm"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

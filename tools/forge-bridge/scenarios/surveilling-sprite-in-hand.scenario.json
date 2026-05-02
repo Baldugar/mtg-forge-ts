@@ -1,0 +1,22 @@
+{
+  "id": "surveilling-sprite-in-hand",
+  "description": "Surveilling Sprite in hand; Flying + Surveil 1 ETB trigger parse.",
+  "seed": 265,
+  "cards": {
+    "Surveilling Sprite": "Name:Surveilling Sprite\nManaCost:1 U\nTypes:Creature Faerie Rogue\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When this enters, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | SurveilNum$ 1\nOracle:Flying. When Surveilling Sprite enters, surveil 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Surveilling Sprite"],
+      "battlefield": [],
+      "manaPool": ["U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,30 @@
+{
+  "id": "reverse-engineer-with-artifacts-in-hand",
+  "description": "Reverse Engineer in hand alongside artifacts on battlefield; Improvise surface lock.",
+  "seed": 298,
+  "cards": {
+    "Reverse Engineer": "Name:Reverse Engineer\nManaCost:3 U U\nTypes:Sorcery\nK:Improvise\nA:SP$ Draw | Cost$ 3 U U | NumCards$ 3 | SpellDescription$ Improvise draw.\nOracle:Improvise parse.\n",
+    "Sol Ring": "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Reverse Engineer"],
+      "battlefield": [
+        {
+          "card": "Sol Ring"
+        },
+        {
+          "card": "Sol Ring"
+        }
+      ],
+      "manaPool": ["U", "U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

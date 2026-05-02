@@ -1,0 +1,32 @@
+{
+  "id": "vorinclex-liliana-coresidence",
+  "description": "Vorinclex Monstrous + Liliana, the Last Hope co-residence; counter doubler over loyalty.",
+  "seed": 295,
+  "cards": {
+    "Vorinclex, Monstrous Raider": "Name:Vorinclex, Monstrous Raider\nManaCost:4 G G\nTypes:Legendary Creature Phyrexian Praetor\nPT:6/6\nK:Trample\nK:Haste\nR:Event$ AddCounter | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DoubleAmount | Description$ Doubles counters on your permanents.\nSVar:DoubleAmount:DB$ ReplaceCounter | Multiplier$ 2\nOracle:Vorinclex doubles your counters.\n",
+    "Liliana, the Last Hope": "Name:Liliana, the Last Hope\nManaCost:1 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:3\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.OppCtrl | NumAtt$ -2 | NumDef$ -1 | SpellDescription$ Loyalty +1.\nA:AB$ Mill | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | NumCards$ 2 | Defined$ You | SpellDescription$ Loyalty -2.\nOracle:Liliana parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Liliana, the Last Hope"],
+      "battlefield": [
+        {
+          "card": "Vorinclex, Monstrous Raider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Liliana, the Last Hope",
+      "controller": 0
+    }
+  ]
+}

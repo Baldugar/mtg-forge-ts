@@ -1,0 +1,22 @@
+{
+  "id": "quandrix-apprentice-in-hand",
+  "description": "Quandrix Apprentice in hand; Magecraft +1+1 trigger parse.",
+  "seed": 336,
+  "cards": {
+    "Quandrix Apprentice": "Name:Quandrix Apprentice\nManaCost:G U\nTypes:Creature Fractal\nPT:0/0\nK:etbCounter:P1P1:2\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Instant,Card.Sorcery | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Magecraft.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Magecraft parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Quandrix Apprentice"],
+      "battlefield": [],
+      "manaPool": ["G", "U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "channel-in-hand",
+  "description": "Channel in hand; KaitoChannel cost-replace ability parse.",
+  "seed": 262,
+  "cards": {
+    "Channel": "Name:Channel\nManaCost:G G\nTypes:Sorcery\nA:SP$ Effect | Cost$ G G | StaticAbilities$ STChannel | SpellDescription$ Until end of turn, you may pay 1 life to add 1.\nSVar:STChannel:Mode$ Continuous | Affected$ You | Description$ Channel mana-life conversion test.\nOracle:Until end of turn, any time you could activate a mana ability, you may pay 1 life. If you do, add {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Channel"],
+      "battlefield": [],
+      "manaPool": ["G", "G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

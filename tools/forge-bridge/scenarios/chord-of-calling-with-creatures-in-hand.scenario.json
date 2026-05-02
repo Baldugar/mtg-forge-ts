@@ -1,0 +1,30 @@
+{
+  "id": "chord-of-calling-with-creatures-in-hand",
+  "description": "Chord of Calling in hand alongside creatures on battlefield; Convoke surface lock.",
+  "seed": 297,
+  "cards": {
+    "Chord of Calling": "Name:Chord of Calling\nManaCost:G G G X\nTypes:Instant\nK:Convoke\nA:SP$ ChangeZone | Cost$ G G G X | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | SpellDescription$ Convoke tutor.\nSVar:X:Count$xPaid\nOracle:Convoke parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Chord of Calling"],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        },
+        {
+          "card": "Grizzly Bears"
+        }
+      ],
+      "manaPool": ["G", "G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

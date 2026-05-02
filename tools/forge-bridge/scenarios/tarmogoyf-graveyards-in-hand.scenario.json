@@ -1,0 +1,27 @@
+{
+  "id": "tarmogoyf-graveyards-in-hand",
+  "description": "Tarmogoyf in hand; *X/*X+1 SVar with populated graveyard.",
+  "seed": 333,
+  "cards": {
+    "Tarmogoyf": "Name:Tarmogoyf\nManaCost:1 G\nTypes:Creature Lhurgoyf\nPT:*/1+*\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ TypesCount | SetToughness$ TypesCountP1 | Description$ Tarmogoyf static.\nSVar:TypesCount:Count$DifferentCardTypesAllGraveyards\nSVar:TypesCountP1:Count$DifferentCardTypesAllGraveyards/Plus.1\nOracle:Tarmogoyf parse.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Wrath of God": "Name:Wrath of God\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures.\nOracle:Destroy all creatures. They can't be regenerated.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Glorious Anthem": "Name:Glorious Anthem\nManaCost:1 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:Creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tarmogoyf"],
+      "battlefield": [],
+      "graveyard": ["Lightning Bolt", "Wrath of God", "Grizzly Bears", "Glorious Anthem"],
+      "manaPool": ["G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

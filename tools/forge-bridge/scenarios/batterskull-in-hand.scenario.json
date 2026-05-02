@@ -1,0 +1,22 @@
+{
+  "id": "batterskull-in-hand",
+  "description": "Batterskull in hand; Living Weapon + Equip + Bounce-on-pay parse.",
+  "seed": 342,
+  "cards": {
+    "Batterskull": "Name:Batterskull\nManaCost:5\nTypes:Artifact Equipment\nK:Living Weapon\nK:Equip:5\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Vigilance & Lifelink\nA:AB$ ChangeZone | Cost$ 3 | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nOracle:Living Weapon parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Batterskull"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

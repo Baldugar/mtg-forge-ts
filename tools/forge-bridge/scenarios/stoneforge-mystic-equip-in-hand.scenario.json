@@ -1,0 +1,22 @@
+{
+  "id": "stoneforge-mystic-equip-in-hand",
+  "description": "Stoneforge Mystic in hand; equip search trigger parse.",
+  "seed": 361,
+  "cards": {
+    "Stoneforge Mystic": "Name:Stoneforge Mystic\nManaCost:1 W\nTypes:Creature Kor Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigSearch | TriggerDescription$ Tutor equipment.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment\nOracle:SFM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Stoneforge Mystic"],
+      "battlefield": [],
+      "manaPool": ["W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

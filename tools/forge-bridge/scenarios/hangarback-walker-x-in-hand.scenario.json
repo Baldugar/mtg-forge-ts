@@ -1,0 +1,22 @@
+{
+  "id": "hangarback-walker-x-in-hand",
+  "description": "Hangarback Walker in hand; X cost + etbCounter:P1P1:X parse.",
+  "seed": 291,
+  "cards": {
+    "Hangarback Walker": "Name:Hangarback Walker\nManaCost:X X\nTypes:Artifact Creature Construct\nPT:0/0\nK:etbCounter:P1P1:X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Dies trigger - tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_1_1_a_thopter_flying\nSVar:X:Count$xPaid\nOracle:X-spell parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Hangarback Walker"],
+      "battlefield": [],
+      "manaPool": ["C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

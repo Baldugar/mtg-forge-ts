@@ -1,0 +1,22 @@
+{
+  "id": "sand-strangler-in-hand",
+  "description": "Sand Strangler in hand; Eternalize:5R + Desert ETB parse.",
+  "seed": 277,
+  "cards": {
+    "Sand Strangler": "Name:Sand Strangler\nManaCost:3 R\nTypes:Creature Human Warrior\nPT:3/3\nK:Eternalize:5 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Desert$ True | Execute$ TrigDamage | TriggerDescription$ Desert ETB damage.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Creature\nOracle:Eternalize parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sand Strangler"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

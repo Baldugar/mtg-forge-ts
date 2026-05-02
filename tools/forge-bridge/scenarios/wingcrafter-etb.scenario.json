@@ -1,0 +1,27 @@
+{
+  "id": "wingcrafter-etb",
+  "description": "Wingcrafter ETB; Soulbond ETB pair trigger registry.",
+  "seed": 274,
+  "cards": {
+    "Wingcrafter": "Name:Wingcrafter\nManaCost:U\nTypes:Creature Human Artificer\nPT:1/1\nK:Soulbond\nS:Mode$ Continuous | Affected$ Creature.PairedWith Card.Self | AddKeyword$ Flying | Description$ As long as this is paired, both have flying.\nOracle:Soulbond. Both have flying while paired.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Wingcrafter"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wingcrafter",
+      "controller": 0
+    }
+  ]
+}

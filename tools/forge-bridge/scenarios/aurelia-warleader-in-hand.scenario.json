@@ -1,0 +1,22 @@
+{
+  "id": "aurelia-warleader-in-hand",
+  "description": "Aurelia, the Warleader in hand; second-combat trigger parse.",
+  "seed": 355,
+  "cards": {
+    "Aurelia, the Warleader": "Name:Aurelia, the Warleader\nManaCost:2 R R W\nTypes:Legendary Creature Angel\nPT:3/4\nK:Flying\nK:Vigilance\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | OncePerTurn$ True | Execute$ TrigAdditional | TriggerZones$ Battlefield | TriggerDescription$ Additional combat phase trigger.\nSVar:TrigAdditional:DB$ AdditionalCombat | Defined$ You\nOracle:Aurelia parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aurelia, the Warleader"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "W", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

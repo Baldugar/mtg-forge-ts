@@ -1,0 +1,22 @@
+{
+  "id": "boros-reckoner-in-hand",
+  "description": "Boros Reckoner in hand; damage redirect parse.",
+  "seed": 338,
+  "cards": {
+    "Boros Reckoner": "Name:Boros Reckoner\nManaCost:R/W R/W R/W\nTypes:Creature Minotaur Wizard\nPT:3/3\nT:Mode$ DamageDone | ValidTarget$ Card.Self | Execute$ TrigRedirect | TriggerZones$ Battlefield | TriggerDescription$ Damage redirect.\nSVar:TrigRedirect:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any\nSVar:X:TriggerCount$DamageAmount\nOracle:Damage redirect parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Boros Reckoner"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "invasion-of-ikoria-in-hand",
+  "description": "Invasion of Ikoria in hand; Battle ETB + transform-on-defeat parse.",
+  "seed": 307,
+  "cards": {
+    "Invasion of Ikoria": "Name:Invasion of Ikoria\nManaCost:3 G\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ ETB tutor.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.cmcLE5\nOracle:Battle parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Invasion of Ikoria"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

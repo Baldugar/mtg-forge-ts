@@ -1,0 +1,22 @@
+{
+  "id": "phytohydra-in-hand",
+  "description": "Phytohydra in hand; damage redirect replacement parse.",
+  "seed": 296,
+  "cards": {
+    "Phytohydra": "Name:Phytohydra\nManaCost:3 G W\nTypes:Creature Plant Hydra\nPT:1/1\nR:Event$ DamageDone | ValidTarget$ Card.Self | ReplaceWith$ Counters | Description$ Damage replaces with counters.\nSVar:Counters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Damage redirect parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phytohydra"],
+      "battlefield": [],
+      "manaPool": ["G", "W", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

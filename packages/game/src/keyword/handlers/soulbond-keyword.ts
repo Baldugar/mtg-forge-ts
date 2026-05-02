@@ -63,7 +63,29 @@ export class SoulbondKeywordHandler extends KeywordHandler {
       matches(event: GameEvent): boolean {
         if (event.kind !== "CardChangedZone") return false;
         const p = event.payload as { cardId: EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
+        if (p.cardId !== sourceCardId || p.toZone !== ZoneType.Battlefield) return false;
+        // CR 702.94a — "you may pair this creature with another unpaired
+        // creature when either enters the battlefield". Forge mirrors
+        // CR 603.10c: a triggered ability with a target requirement
+        // doesn't trigger if no legal target exists. The Soulbond pair
+        // resolver yields a `chooseCard` with `min: 0` so the resolver
+        // could legally finish without pairing — but Forge still skips
+        // the trigger fire altogether when no eligible partner exists,
+        // because the "may" choice is an optional decider with an empty
+        // pool. Skip the fan-out at trigger-match time so the parity
+        // event stream agrees with Forge: no AbilityActivated +
+        // StackItemResolved no-op pair when there's nobody to pair with.
+        const self = ctx.game.cards.get(sourceCardId);
+        if (self?.pairedWith !== undefined) return false;
+        for (const [id, c] of ctx.game.cards) {
+          if (id === sourceCardId) continue;
+          if (c.controllerSeat !== controllerSeat) continue;
+          if (c.zone !== ZoneType.Battlefield) continue;
+          if (c.pairedWith !== undefined) continue;
+          const chars = ctx.game.layerEngine.computeCharacteristics(id);
+          if (chars.types.has(CardType.Creature)) return true;
+        }
+        return false;
       },
       resolver: {
         *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {

@@ -1,0 +1,22 @@
+{
+  "id": "doomwake-giant-in-hand",
+  "description": "Doomwake Giant in hand; Constellation trigger parse.",
+  "seed": 335,
+  "cards": {
+    "Doomwake Giant": "Name:Doomwake Giant\nManaCost:4 B\nTypes:Enchantment Creature Giant\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Constellation - 1/-1.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -1 | NumDef$ -1\nOracle:Constellation parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Doomwake Giant"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

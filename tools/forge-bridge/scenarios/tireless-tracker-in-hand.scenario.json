@@ -1,0 +1,21 @@
+{
+  "id": "tireless-tracker-in-hand",
+  "description": "Tireless Tracker in hand; Landfall→Clue trigger parse.",
+  "seed": 269,
+  "cards": {
+    "Tireless Tracker": "Name:Tireless Tracker\nManaCost:2 G\nTypes:Creature Human Scout\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigClue | TriggerZones$ Battlefield | TriggerDescription$ Landfall - Clue.\nSVar:TrigClue:DB$ Token | TokenScript$ c_a_clue_sac | TokenOwner$ You\nOracle:Whenever a land you control enters, investigate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tireless Tracker"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "charming-prince-in-hand",
+  "description": "Charming Prince in hand; ETB modal parse.",
+  "seed": 314,
+  "cards": {
+    "Charming Prince": "Name:Charming Prince\nManaCost:1 W\nTypes:Creature Human Noble\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ ETB modal.\nSVar:TrigCharm:DB$ GainLife | LifeAmount$ 3\nOracle:Modal ETB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Charming Prince"],
+      "battlefield": [],
+      "manaPool": ["W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
