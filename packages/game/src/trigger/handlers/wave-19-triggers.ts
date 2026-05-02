@@ -334,8 +334,21 @@ export class CounterAddedTrigger extends TriggerHandler {
         // synthesize the build context without a populated card map).
         const cardsMap = (game as unknown as { cards?: Map<EntityId, unknown> }).cards;
         if (cardsMap) {
-          const srcCard = cardsMap.get(sourceCardId) as { zone?: ZoneType } | undefined;
+          const srcCard = cardsMap.get(sourceCardId) as
+            | { zone?: ZoneType; etbInProgress?: boolean }
+            | undefined;
           if (srcCard && srcCard.zone !== ZoneType.Battlefield) return false;
+          // M6.33 — Skip CounterAdded triggers fired DURING the ETB
+          // counter-stamping window. Forge models ETB counter adds (CR
+          // 121-style etbCounter replacement: defense / loyalty / lore /
+          // fade / time) as CR 614 replacement effects applied during the
+          // moveTo BEFORE triggered abilities of the entering permanent
+          // register. The TS engine fires the CounterAdded event while
+          // the source card is already officially "on battlefield" —
+          // diverging from Forge. Use the etbInProgress flag set by
+          // GameAction.moveTo around applyEtbStamping to mirror Forge's
+          // not-yet-registered window.
+          if (srcCard?.etbInProgress === true) return false;
         }
         // ValidCard gate.
         let predicateOk = false;

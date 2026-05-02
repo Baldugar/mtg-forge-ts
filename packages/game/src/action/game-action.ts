@@ -703,7 +703,19 @@ export class GameAction {
     if (!moveOutcome.prevented && fromZone !== Zt.Battlefield) {
       const card = game.cards.get(cardId);
       if (card && card.zone === Zt.Battlefield) {
-        yield* this.applyEtbStamping(card);
+        // M6.33 — Set the etbInProgress flag so ETB-time CounterAdded
+        // triggers (NewCounterAmount$ chapter triggers, defense counter
+        // watchers, etc.) can detect they're firing during the ETB
+        // counter-stamp window — Forge models these counters as CR 614
+        // replacement effects applied DURING the moveTo (before triggers
+        // register), so chapter triggers never see them. Mirror by gating
+        // CounterAddedTrigger.matches() on !etbInProgress.
+        (card as unknown as { etbInProgress?: boolean }).etbInProgress = true;
+        try {
+          yield* this.applyEtbStamping(card);
+        } finally {
+          (card as unknown as { etbInProgress?: boolean }).etbInProgress = false;
+        }
       }
     }
   }

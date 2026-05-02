@@ -266,17 +266,22 @@ export class ChapterKeywordHandler extends KeywordHandler {
         // M6.33 — Stay inert when there's no work to do. The watcher exists
         // both to dispatch chapter SVars (DB1..DBN) and to flip
         // `sagaFinalChapterResolved` for the SBA sacrifice sweep. When a
-        // saga has neither chapter SVars NOR a chapter count (e.g. the
-        // synthetic test scaffolding uses `K:Chapter:N` with no DB names AND
-        // explicit `T:Mode$ CounterAdded` triggers handle the chapter abilities),
-        // the watcher would fire as a no-op stack item — diverging from
-        // Forge's silent CR 714.4 dispatch. Skip the fire entirely in that
-        // case so explicit chapter triggers carry the load alone.
+        // saga has neither chapter SVars NOR a chapter count, skip the
+        // fire entirely so explicit chapter triggers carry the load alone.
         const c = game.cards.get(sourceCardId);
         if (!c) return false;
         const target = c.sagaChapterCount ?? 0;
         const svarNames = c.sagaChapterSVars ?? [];
         if (svarNames.length === 0 && target === 0) return false;
+        // M6.33 — Skip the watcher fan-out when we're inside the ETB
+        // counter-stamp window. Forge's K:Saga adds the lore counter via a
+        // CR 614 replacement effect during the moveTo BEFORE chapter
+        // triggers are observable; the chapter abilities fire only on the
+        // NEXT lore counter add (precombat main phase). Mirror Forge by
+        // suppressing the watcher's stack-going trigger during the ETB
+        // counter-stamping window. The watcher remains active for the
+        // post-ETB upkeep main1 add.
+        if ((c as unknown as { etbInProgress?: boolean }).etbInProgress === true) return false;
         return true;
       },
       resolver: {
