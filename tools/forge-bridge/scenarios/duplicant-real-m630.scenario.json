@@ -1,0 +1,29 @@
+{
+  "id": "duplicant-real-m630",
+  "description": "Duplicant Real M630 ETB.",
+  "seed": 49155,
+  "cards": {
+    "Duplicant Real M630": "Name:Duplicant Real M630\nManaCost:6\nTypes:Artifact Creature Shapeshifter\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.OppCtrl\nOracle:DRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duplicant Real M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Duplicant Real M630",
+      "controller": 0
+    }
+  ]
+}

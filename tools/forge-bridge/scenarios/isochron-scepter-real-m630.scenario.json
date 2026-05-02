@@ -1,0 +1,29 @@
+{
+  "id": "isochron-scepter-real-m630",
+  "description": "Isochron Scepter Real M630 ETB.",
+  "seed": 49153,
+  "cards": {
+    "Isochron Scepter Real M630": "Name:Isochron Scepter Real M630\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Instant.cmcLE2 | ChangeNum$ 1\nA:AB$ Effect | Cost$ 2 T | Defined$ Imprinted | SpellDescription$ Cast copy.\nOracle:ISRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isochron Scepter Real M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Isochron Scepter Real M630",
+      "controller": 0
+    }
+  ]
+}

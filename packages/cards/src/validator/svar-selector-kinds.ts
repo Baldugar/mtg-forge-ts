@@ -61,6 +61,15 @@ export const KNOWN_SVAR_SELECTORS: ReadonlySet<string> = new Set([
   "FlashbackCost",
   "BuybackCost",
   "KickerCost",
+  // M6.30 — Multikicker / Imprint count selectors. Forge's
+  // `Count$TimesKicked` and `Count$Multikicker` both return the
+  // multikicker magnitude (number of times the optional cost was paid).
+  // `Count$ImprintedSize` returns the number of cards in the source's
+  // imprinted list (Chrome Mox, Isochron Scepter, Spellweaver Volute).
+  "TimesKicked",
+  "Multikicker",
+  "ImprintedSize",
+  "ImprintedNumber",
 ]);
 
 export const isKnownSvarSelector = (kind: string): boolean => KNOWN_SVAR_SELECTORS.has(kind);

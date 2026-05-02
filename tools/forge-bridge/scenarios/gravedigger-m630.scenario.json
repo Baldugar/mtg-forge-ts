@@ -1,0 +1,29 @@
+{
+  "id": "gravedigger-m630",
+  "description": "Gravedigger M630 M630 ETB.",
+  "seed": 49265,
+  "cards": {
+    "Gravedigger M630 M630": "Name:Gravedigger M630 M630\nManaCost:3 B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouOwn\nOracle:GMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravedigger M630 M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gravedigger M630 M630",
+      "controller": 0
+    }
+  ]
+}

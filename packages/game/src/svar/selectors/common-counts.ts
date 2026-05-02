@@ -88,3 +88,33 @@ countArgRegistry.register("NumCardsInYourGraveyard", (_ast, ctx) => yourGraveyar
 countArgRegistry.register("NumCardsInOppGraveyard", (_ast, ctx) => oppGraveyardSize(ctx));
 // Threshold sentinel — Forge sometimes uses CardsInYourGraveyard.
 countArgRegistry.register("CardsInYourGraveyard", (_ast, ctx) => yourGraveyardSize(ctx));
+
+// M6.30 — Multikicker / TimesKicked count selectors. Forge's
+// `Count$TimesKicked` (Everflowing Chalice's XKicked SVar, Apex Hawks etc.)
+// returns Card.getKickerMagnitude() — the number of times Multikicker was
+// paid as the source spell was cast. The TS cast pipeline stamps
+// `card.kickerCount` from the multikicker pay-loop (see cast-pipeline.ts
+// stepDetermineTotalCost). `Count$Multikicker` is the older form some
+// corpus scripts use; both alias to the same magnitude.
+const kickerMagnitude = (_ast: SVarExpressionAst, ctx: SvarContext): number => {
+  if (ctx.sourceCardId === undefined) return 0;
+  const card = ctx.game.cards.get(ctx.sourceCardId);
+  if (!card) return 0;
+  return card.kickerCount ?? 0;
+};
+countArgRegistry.register("TimesKicked", kickerMagnitude);
+countArgRegistry.register("Multikicker", kickerMagnitude);
+
+// M6.30 — Imprinted card count. Mirrors Forge's `Count$ImprintedSize`
+// (used by cards that branch on whether anything is imprinted, e.g. Chrome
+// Mox / Isochron Scepter / Spellweaver Volute). The TS engine stamps
+// `card.imprinted` (EntityId[]) at ChangeZone resolution when the SA
+// carries `Imprint$ True` (see ability/effects/change-zone.ts:stampSource).
+const imprintedSize = (_ast: SVarExpressionAst, ctx: SvarContext): number => {
+  if (ctx.sourceCardId === undefined) return 0;
+  const card = ctx.game.cards.get(ctx.sourceCardId);
+  if (!card) return 0;
+  return card.imprinted.length;
+};
+countArgRegistry.register("ImprintedSize", imprintedSize);
+countArgRegistry.register("ImprintedNumber", imprintedSize);

@@ -1,0 +1,29 @@
+{
+  "id": "pilgrims-eye-m630",
+  "description": "Pilgrims Eye M630 M630 ETB.",
+  "seed": 49474,
+  "cards": {
+    "Pilgrims Eye M630 M630": "Name:Pilgrims Eye M630 M630\nManaCost:3\nTypes:Artifact Creature Thopter\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ BasicLand | Tapped$ True | ChangeNum$ 1\nOracle:PEMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pilgrims Eye M630 M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Pilgrims Eye M630 M630",
+      "controller": 0
+    }
+  ]
+}

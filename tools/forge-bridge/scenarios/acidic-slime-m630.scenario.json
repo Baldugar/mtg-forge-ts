@@ -1,0 +1,29 @@
+{
+  "id": "acidic-slime-m630",
+  "description": "Acidic Slime M630 M630 ETB.",
+  "seed": 49402,
+  "cards": {
+    "Acidic Slime M630 M630": "Name:Acidic Slime M630 M630\nManaCost:3 G G\nTypes:Creature Ooze\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Land,Artifact,Enchantment\nOracle:ASMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acidic Slime M630 M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Acidic Slime M630 M630",
+      "controller": 0
+    }
+  ]
+}

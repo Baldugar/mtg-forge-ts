@@ -1,0 +1,29 @@
+{
+  "id": "pulse-tracker-real-m630",
+  "description": "Pulse Tracker M630 ETB.",
+  "seed": 49165,
+  "cards": {
+    "Pulse Tracker M630": "Name:Pulse Tracker M630\nManaCost:B\nTypes:Creature Vampire Rogue\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1\nOracle:PTM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pulse Tracker M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Pulse Tracker M630",
+      "controller": 0
+    }
+  ]
+}

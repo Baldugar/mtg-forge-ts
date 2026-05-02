@@ -1,0 +1,29 @@
+{
+  "id": "everflowing-chalice-real-m630",
+  "description": "Everflowing Chalice Real M630 ETB.",
+  "seed": 49160,
+  "cards": {
+    "Everflowing Chalice Real M630": "Name:Everflowing Chalice Real M630\nManaCost:0\nTypes:Artifact\nK:Multikicker:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharge\nSVar:TrigCharge:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ X | References$ X\nSVar:X:Count$Multikicker\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ Y | References$ Y\nSVar:Y:Count$CardCounters.CHARGE\nOracle:ECRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Everflowing Chalice Real M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Everflowing Chalice Real M630",
+      "controller": 0
+    }
+  ]
+}

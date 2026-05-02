@@ -1,0 +1,29 @@
+{
+  "id": "the-eldest-reborn-m630",
+  "description": "Eldest Reborn M630 M630 ETB.",
+  "seed": 49331,
+  "cards": {
+    "Eldest Reborn M630 M630": "Name:Eldest Reborn M630 M630\nManaCost:4 B\nTypes:Enchantment Saga\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigSac\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDiscard\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigReturn\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature,Planeswalker | Amount$ 1\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 1\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature\nOracle:ERMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eldest Reborn M630 M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Eldest Reborn M630 M630",
+      "controller": 0
+    }
+  ]
+}

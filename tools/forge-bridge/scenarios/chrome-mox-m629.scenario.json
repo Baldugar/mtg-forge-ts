@@ -3,7 +3,7 @@
   "description": "Chrome Mox M629 ETB.",
   "seed": 45228,
   "cards": {
-    "Chrome Mox M629": "Name:Chrome Mox M629\nManaCost:0\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Imprinted\nOracle:CMM parse.\n"
+    "Chrome Mox M629": "Name:Chrome Mox M629\nManaCost:0\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Imprint — exile a nonartifact, nonland card.\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Card.nonArtifact+nonLand | ChangeNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1\nOracle:CMM parse.\n"
   },
   "players": [
     {

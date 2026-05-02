@@ -1,0 +1,29 @@
+{
+  "id": "apex-hawks-real-m630",
+  "description": "Apex Hawks Real M630 ETB.",
+  "seed": 49163,
+  "cards": {
+    "Apex Hawks Real M630": "Name:Apex Hawks Real M630\nManaCost:1 W\nTypes:Creature Bird\nPT:2/2\nK:Multikicker:1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCntr\nSVar:TrigCntr:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | References$ X\nSVar:X:Count$TimesKicked\nOracle:AHRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Apex Hawks Real M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Apex Hawks Real M630",
+      "controller": 0
+    }
+  ]
+}

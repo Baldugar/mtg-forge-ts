@@ -1,0 +1,29 @@
+{
+  "id": "chrome-mox-real-m630",
+  "description": "Chrome Mox Real M630 ETB.",
+  "seed": 49152,
+  "cards": {
+    "Chrome Mox Real M630": "Name:Chrome Mox Real M630\nManaCost:0\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Card.nonArtifact+nonLand | ChangeNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1\nOracle:CMRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chrome Mox Real M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Chrome Mox Real M630",
+      "controller": 0
+    }
+  ]
+}

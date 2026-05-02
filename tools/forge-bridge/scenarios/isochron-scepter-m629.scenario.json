@@ -3,7 +3,7 @@
   "description": "Isochron Scepter M629 ETB.",
   "seed": 45335,
   "cards": {
-    "Isochron Scepter M629": "Name:Isochron Scepter M629\nManaCost:2\nTypes:Artifact\nA:AB$ Effect | Cost$ 2 T | Defined$ Imprinted | SpellDescription$ Cast copy.\nOracle:ISM parse.\n"
+    "Isochron Scepter M629": "Name:Isochron Scepter M629\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Imprint — exile an instant card with mana value 2 or less.\nSVar:TrigExile:DB$ ChangeZone | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Instant.cmcLE2 | ChangeNum$ 1\nA:AB$ Effect | Cost$ 2 T | Defined$ Imprinted | SpellDescription$ Cast copy.\nOracle:ISM parse.\n"
   },
   "players": [
     {

@@ -3,7 +3,7 @@
   "description": "Everflowing Chalice M629 ETB.",
   "seed": 45235,
   "cards": {
-    "Everflowing Chalice M629": "Name:Everflowing Chalice M629\nManaCost:X\nTypes:Artifact\nK:Multikicker:1\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | References$ X\nSVar:X:Count$xPaid\nOracle:ECM parse.\n"
+    "Everflowing Chalice M629": "Name:Everflowing Chalice M629\nManaCost:0\nTypes:Artifact\nK:Multikicker:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharge | TriggerDescription$ ETB with charge counters per kick.\nSVar:TrigCharge:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ X | References$ X\nSVar:X:Count$Multikicker\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ Y | References$ Y\nSVar:Y:Count$CardCounters.CHARGE\nOracle:ECM parse.\n"
   },
   "players": [
     {

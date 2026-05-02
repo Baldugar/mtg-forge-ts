@@ -1,0 +1,29 @@
+{
+  "id": "bloodhusk-ritualist-real-m630",
+  "description": "Bloodhusk Ritualist M630 ETB.",
+  "seed": 49162,
+  "cards": {
+    "Bloodhusk Ritualist M630": "Name:Bloodhusk Ritualist M630\nManaCost:2 B\nTypes:Creature Vampire Shaman Warrior\nPT:2/2\nK:Multikicker:B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Defined$ TargetedPlayer | NumCards$ X | References$ X\nSVar:X:Count$Multikicker\nOracle:BRM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodhusk Ritualist M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bloodhusk Ritualist M630",
+      "controller": 0
+    }
+  ]
+}

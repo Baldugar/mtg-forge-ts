@@ -1,0 +1,29 @@
+{
+  "id": "eternal-witness-m630",
+  "description": "Eternal Witness M630 M630 ETB.",
+  "seed": 49264,
+  "cards": {
+    "Eternal Witness M630 M630": "Name:Eternal Witness M630 M630\nManaCost:1 G G\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouOwn\nOracle:EWMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Witness M630 M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Eternal Witness M630 M630",
+      "controller": 0
+    }
+  ]
+}

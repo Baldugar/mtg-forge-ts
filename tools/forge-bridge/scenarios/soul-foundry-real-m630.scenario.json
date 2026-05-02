@@ -1,0 +1,29 @@
+{
+  "id": "soul-foundry-real-m630",
+  "description": "Soul Foundry M630 ETB.",
+  "seed": 49156,
+  "cards": {
+    "Soul Foundry M630": "Name:Soul Foundry M630\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImprint\nSVar:TrigImprint:DB$ ChangeZone | Imprint$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Creature | ChangeNum$ 1\nA:AB$ CopyPermanent | Cost$ X T | Defined$ Imprinted | NumCopies$ 1 | References$ X\nSVar:X:Count$xPaid\nOracle:SFM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Foundry M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Soul Foundry M630",
+      "controller": 0
+    }
+  ]
+}

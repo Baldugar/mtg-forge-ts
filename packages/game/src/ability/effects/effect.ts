@@ -109,6 +109,14 @@ const resolveRememberObjects = (raw: string, sa: SpellAbility, game: Game): read
     const src = game.cards.get(sa.sourceCardId);
     return src ? [...src.remembered] : [];
   }
+  // M6.30 — `Imprinted` token. Mirrors Forge's getDefinedCards("Imprinted")
+  // — Isochron Scepter / Chrome Mox build an Effect whose definedCards is
+  // the source card's imprinted EntityId list. Without this, the legacy
+  // Imprint cards' Effect-spawn paths silently dropped their references.
+  if (tok === "Imprinted") {
+    const src = game.cards.get(sa.sourceCardId);
+    return src ? [...src.imprinted] : [];
+  }
   return [];
 };
 

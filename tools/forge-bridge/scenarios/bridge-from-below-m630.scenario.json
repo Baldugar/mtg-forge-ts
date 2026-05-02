@@ -1,0 +1,29 @@
+{
+  "id": "bridge-from-below-m630",
+  "description": "Bridge Below M630 M630 ETB.",
+  "seed": 49426,
+  "cards": {
+    "Bridge Below M630 M630": "Name:Bridge Below M630 M630\nManaCost:B B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nOracle:BBMM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bridge Below M630 M630"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bridge Below M630 M630",
+      "controller": 0
+    }
+  ]
+}
