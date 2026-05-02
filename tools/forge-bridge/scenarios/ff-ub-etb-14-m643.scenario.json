@@ -1,0 +1,37 @@
+{
+  "id": "ff-ub-etb-14-m643",
+  "description": "FF UB 14 — dragon ETB scry 1.",
+  "seed": 50974,
+  "cards": {
+    "FfUB14 M643": "Name:FfUB14 M643\nManaCost:2 U\nTypes:Creature Dragon\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:FfUB14 M643 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "FfUB14 M643"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "FfUB14 M643",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

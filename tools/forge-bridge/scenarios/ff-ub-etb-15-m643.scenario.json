@@ -1,0 +1,37 @@
+{
+  "id": "ff-ub-etb-15-m643",
+  "description": "FF UB 15 — wizard ETB scry 1.",
+  "seed": 50975,
+  "cards": {
+    "FfUB15 M643": "Name:FfUB15 M643\nManaCost:2 U\nTypes:Creature Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:FfUB15 M643 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "FfUB15 M643"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "FfUB15 M643",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

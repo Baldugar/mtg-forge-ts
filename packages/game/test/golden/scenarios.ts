@@ -47435,7 +47435,7 @@ ManaCost:5 R
 Types:Battle Siege
 T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
 Defense:4
-SVar:TrigDmg:DB$ DealDamage | NumDmg$ 5 | DefinedTarget$ Creature.OppCtrl
+SVar:TrigDmg:DB$ DamageAll | ValidCards$ Creature,Planeswalker | NumDmg$ 3
 Oracle:IKM parse.
 `,
     },
@@ -91890,6 +91890,3536 @@ Oracle:BearF3-19 M642 test.
     ],
     actions: [
       { kind: "cast", cardName: "BearF3-19 M642", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3846. DSK Room 0 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-0-m643",
+    description: "DSK Room 0 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc6fc,
+    cards: {
+      "RoomA0 M643": `Name:RoomA0 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA0 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA0 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3847. DSK Room 1 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-1-m643",
+    description: "DSK Room 1 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc6fd,
+    cards: {
+      "RoomA1 M643": `Name:RoomA1 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA1 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA1 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3848. DSK Room 2 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-2-m643",
+    description: "DSK Room 2 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc6fe,
+    cards: {
+      "RoomA2 M643": `Name:RoomA2 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA2 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA2 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3849. DSK Room 3 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-3-m643",
+    description: "DSK Room 3 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc6ff,
+    cards: {
+      "RoomA3 M643": `Name:RoomA3 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA3 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA3 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3850. DSK Room 4 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-4-m643",
+    description: "DSK Room 4 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc700,
+    cards: {
+      "RoomA4 M643": `Name:RoomA4 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA4 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA4 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3851. DSK Room 5 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-5-m643",
+    description: "DSK Room 5 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc701,
+    cards: {
+      "RoomA5 M643": `Name:RoomA5 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA5 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA5 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3852. DSK Room 6 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-6-m643",
+    description: "DSK Room 6 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc702,
+    cards: {
+      "RoomA6 M643": `Name:RoomA6 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA6 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA6 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3853. DSK Room 7 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-7-m643",
+    description: "DSK Room 7 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc703,
+    cards: {
+      "RoomA7 M643": `Name:RoomA7 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA7 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA7 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3854. DSK Room 8 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-8-m643",
+    description: "DSK Room 8 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc704,
+    cards: {
+      "RoomA8 M643": `Name:RoomA8 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA8 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA8 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3855. DSK Room 9 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-9-m643",
+    description: "DSK Room 9 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc705,
+    cards: {
+      "RoomA9 M643": `Name:RoomA9 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA9 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RoomA9 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3856. DSK Room 10 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-10-m643",
+    description: "DSK Room 10 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc706,
+    cards: {
+      "RoomA10 M643": `Name:RoomA10 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA10 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA10 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA10 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3857. DSK Room 11 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-11-m643",
+    description: "DSK Room 11 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc707,
+    cards: {
+      "RoomA11 M643": `Name:RoomA11 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA11 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA11 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA11 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3858. DSK Room 12 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-12-m643",
+    description: "DSK Room 12 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc708,
+    cards: {
+      "RoomA12 M643": `Name:RoomA12 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA12 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA12 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA12 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3859. DSK Room 13 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-13-m643",
+    description: "DSK Room 13 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc709,
+    cards: {
+      "RoomA13 M643": `Name:RoomA13 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA13 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA13 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA13 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3860. DSK Room 14 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-14-m643",
+    description: "DSK Room 14 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc70a,
+    cards: {
+      "RoomA14 M643": `Name:RoomA14 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA14 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA14 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA14 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3861. DSK Room 15 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-15-m643",
+    description: "DSK Room 15 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc70b,
+    cards: {
+      "RoomA15 M643": `Name:RoomA15 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA15 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA15 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA15 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3862. DSK Room 16 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-16-m643",
+    description: "DSK Room 16 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc70c,
+    cards: {
+      "RoomA16 M643": `Name:RoomA16 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA16 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA16 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA16 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3863. DSK Room 17 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-17-m643",
+    description: "DSK Room 17 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc70d,
+    cards: {
+      "RoomA17 M643": `Name:RoomA17 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA17 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA17 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA17 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3864. DSK Room 18 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-18-m643",
+    description: "DSK Room 18 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc70e,
+    cards: {
+      "RoomA18 M643": `Name:RoomA18 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA18 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA18 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA18 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3865. DSK Room 19 — Room A unlock proxy ETB draws 1.
+  {
+    id: "room-fullunlock-19-m643",
+    description: "DSK Room 19 — Room A unlock proxy ETB draws 1.",
+    seed: 0xc70f,
+    cards: {
+      "RoomA19 M643": `Name:RoomA19 M643
+ManaCost:1 U
+Types:Enchantment Room
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RoomA19 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RoomA19 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RoomA19 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3866. FF UB 0 — goblin ETB scry 1.
+  {
+    id: "ff-ub-etb-0-m643",
+    description: "FF UB 0 — goblin ETB scry 1.",
+    seed: 0xc710,
+    cards: {
+      "FfUB0 M643": `Name:FfUB0 M643
+ManaCost:2 U
+Types:Creature Goblin
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB0 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB0 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3867. FF UB 1 — berserker ETB scry 1.
+  {
+    id: "ff-ub-etb-1-m643",
+    description: "FF UB 1 — berserker ETB scry 1.",
+    seed: 0xc711,
+    cards: {
+      "FfUB1 M643": `Name:FfUB1 M643
+ManaCost:2 U
+Types:Creature Berserker
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB1 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB1 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3868. FF UB 2 — warrior ETB scry 1.
+  {
+    id: "ff-ub-etb-2-m643",
+    description: "FF UB 2 — warrior ETB scry 1.",
+    seed: 0xc712,
+    cards: {
+      "FfUB2 M643": `Name:FfUB2 M643
+ManaCost:2 U
+Types:Creature Warrior
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB2 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB2 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3869. FF UB 3 — knight ETB scry 1.
+  {
+    id: "ff-ub-etb-3-m643",
+    description: "FF UB 3 — knight ETB scry 1.",
+    seed: 0xc713,
+    cards: {
+      "FfUB3 M643": `Name:FfUB3 M643
+ManaCost:2 U
+Types:Creature Knight
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB3 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB3 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3870. FF UB 4 — soldier ETB scry 1.
+  {
+    id: "ff-ub-etb-4-m643",
+    description: "FF UB 4 — soldier ETB scry 1.",
+    seed: 0xc714,
+    cards: {
+      "FfUB4 M643": `Name:FfUB4 M643
+ManaCost:2 U
+Types:Creature Soldier
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB4 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB4 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3871. FF UB 5 — vampire ETB scry 1.
+  {
+    id: "ff-ub-etb-5-m643",
+    description: "FF UB 5 — vampire ETB scry 1.",
+    seed: 0xc715,
+    cards: {
+      "FfUB5 M643": `Name:FfUB5 M643
+ManaCost:2 U
+Types:Creature Vampire
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB5 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB5 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3872. FF UB 6 — demon ETB scry 1.
+  {
+    id: "ff-ub-etb-6-m643",
+    description: "FF UB 6 — demon ETB scry 1.",
+    seed: 0xc716,
+    cards: {
+      "FfUB6 M643": `Name:FfUB6 M643
+ManaCost:2 U
+Types:Creature Demon
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB6 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB6 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3873. FF UB 7 — phoenix ETB scry 1.
+  {
+    id: "ff-ub-etb-7-m643",
+    description: "FF UB 7 — phoenix ETB scry 1.",
+    seed: 0xc717,
+    cards: {
+      "FfUB7 M643": `Name:FfUB7 M643
+ManaCost:2 U
+Types:Creature Phoenix
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB7 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB7 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3874. FF UB 8 — wraith ETB scry 1.
+  {
+    id: "ff-ub-etb-8-m643",
+    description: "FF UB 8 — wraith ETB scry 1.",
+    seed: 0xc718,
+    cards: {
+      "FfUB8 M643": `Name:FfUB8 M643
+ManaCost:2 U
+Types:Creature Wraith
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB8 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB8 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3875. FF UB 9 — spirit ETB scry 1.
+  {
+    id: "ff-ub-etb-9-m643",
+    description: "FF UB 9 — spirit ETB scry 1.",
+    seed: 0xc719,
+    cards: {
+      "FfUB9 M643": `Name:FfUB9 M643
+ManaCost:2 U
+Types:Creature Spirit
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB9 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB9 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3876. FF UB 10 — cat ETB scry 1.
+  {
+    id: "ff-ub-etb-10-m643",
+    description: "FF UB 10 — cat ETB scry 1.",
+    seed: 0xc71a,
+    cards: {
+      "FfUB10 M643": `Name:FfUB10 M643
+ManaCost:2 U
+Types:Creature Cat
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB10 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB10 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB10 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3877. FF UB 11 — bear ETB scry 1.
+  {
+    id: "ff-ub-etb-11-m643",
+    description: "FF UB 11 — bear ETB scry 1.",
+    seed: 0xc71b,
+    cards: {
+      "FfUB11 M643": `Name:FfUB11 M643
+ManaCost:2 U
+Types:Creature Bear
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB11 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB11 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB11 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3878. FF UB 12 — beast ETB scry 1.
+  {
+    id: "ff-ub-etb-12-m643",
+    description: "FF UB 12 — beast ETB scry 1.",
+    seed: 0xc71c,
+    cards: {
+      "FfUB12 M643": `Name:FfUB12 M643
+ManaCost:2 U
+Types:Creature Beast
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB12 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB12 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB12 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3879. FF UB 13 — hydra ETB scry 1.
+  {
+    id: "ff-ub-etb-13-m643",
+    description: "FF UB 13 — hydra ETB scry 1.",
+    seed: 0xc71d,
+    cards: {
+      "FfUB13 M643": `Name:FfUB13 M643
+ManaCost:2 U
+Types:Creature Hydra
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB13 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB13 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB13 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3880. FF UB 14 — dragon ETB scry 1.
+  {
+    id: "ff-ub-etb-14-m643",
+    description: "FF UB 14 — dragon ETB scry 1.",
+    seed: 0xc71e,
+    cards: {
+      "FfUB14 M643": `Name:FfUB14 M643
+ManaCost:2 U
+Types:Creature Dragon
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB14 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB14 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB14 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3881. FF UB 15 — wizard ETB scry 1.
+  {
+    id: "ff-ub-etb-15-m643",
+    description: "FF UB 15 — wizard ETB scry 1.",
+    seed: 0xc71f,
+    cards: {
+      "FfUB15 M643": `Name:FfUB15 M643
+ManaCost:2 U
+Types:Creature Wizard
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB15 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB15 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB15 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3882. FF UB 16 — druid ETB scry 1.
+  {
+    id: "ff-ub-etb-16-m643",
+    description: "FF UB 16 — druid ETB scry 1.",
+    seed: 0xc720,
+    cards: {
+      "FfUB16 M643": `Name:FfUB16 M643
+ManaCost:2 U
+Types:Creature Druid
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB16 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB16 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB16 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3883. FF UB 17 — cleric ETB scry 1.
+  {
+    id: "ff-ub-etb-17-m643",
+    description: "FF UB 17 — cleric ETB scry 1.",
+    seed: 0xc721,
+    cards: {
+      "FfUB17 M643": `Name:FfUB17 M643
+ManaCost:2 U
+Types:Creature Cleric
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB17 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB17 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB17 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3884. FF UB 18 — snake ETB scry 1.
+  {
+    id: "ff-ub-etb-18-m643",
+    description: "FF UB 18 — snake ETB scry 1.",
+    seed: 0xc722,
+    cards: {
+      "FfUB18 M643": `Name:FfUB18 M643
+ManaCost:2 U
+Types:Creature Snake
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB18 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB18 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB18 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3885. FF UB 19 — bird ETB scry 1.
+  {
+    id: "ff-ub-etb-19-m643",
+    description: "FF UB 19 — bird ETB scry 1.",
+    seed: 0xc723,
+    cards: {
+      "FfUB19 M643": `Name:FfUB19 M643
+ManaCost:2 U
+Types:Creature Bird
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry
+SVar:TrigScry:DB$ Scry | ScryNum$ 1
+Oracle:FfUB19 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FfUB19 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FfUB19 M643", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3886. Tribute ETB 0 — tribute knight entered.
+  {
+    id: "tribute-etb-0-m643",
+    description: "Tribute ETB 0 — tribute knight entered.",
+    seed: 0xc724,
+    cards: {
+      "TrbC1-0 M643": `Name:TrbC1-0 M643
+ManaCost:2 G
+Types:Creature Knight
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-0 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3887. Tribute ETB 1 — tribute soldier entered.
+  {
+    id: "tribute-etb-1-m643",
+    description: "Tribute ETB 1 — tribute soldier entered.",
+    seed: 0xc725,
+    cards: {
+      "TrbC1-1 M643": `Name:TrbC1-1 M643
+ManaCost:2 G
+Types:Creature Soldier
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-1 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3888. Tribute ETB 2 — tribute angel entered.
+  {
+    id: "tribute-etb-2-m643",
+    description: "Tribute ETB 2 — tribute angel entered.",
+    seed: 0xc726,
+    cards: {
+      "TrbC1-2 M643": `Name:TrbC1-2 M643
+ManaCost:2 G
+Types:Creature Angel
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-2 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3889. Tribute ETB 3 — tribute spirit entered.
+  {
+    id: "tribute-etb-3-m643",
+    description: "Tribute ETB 3 — tribute spirit entered.",
+    seed: 0xc727,
+    cards: {
+      "TrbC1-3 M643": `Name:TrbC1-3 M643
+ManaCost:2 G
+Types:Creature Spirit
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-3 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3890. Tribute ETB 4 — tribute cleric entered.
+  {
+    id: "tribute-etb-4-m643",
+    description: "Tribute ETB 4 — tribute cleric entered.",
+    seed: 0xc728,
+    cards: {
+      "TrbC1-4 M643": `Name:TrbC1-4 M643
+ManaCost:2 G
+Types:Creature Cleric
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-4 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3891. Tribute ETB 5 — tribute wizard entered.
+  {
+    id: "tribute-etb-5-m643",
+    description: "Tribute ETB 5 — tribute wizard entered.",
+    seed: 0xc729,
+    cards: {
+      "TrbC1-5 M643": `Name:TrbC1-5 M643
+ManaCost:2 G
+Types:Creature Wizard
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-5 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3892. Tribute ETB 6 — tribute druid entered.
+  {
+    id: "tribute-etb-6-m643",
+    description: "Tribute ETB 6 — tribute druid entered.",
+    seed: 0xc72a,
+    cards: {
+      "TrbC1-6 M643": `Name:TrbC1-6 M643
+ManaCost:2 G
+Types:Creature Druid
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-6 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3893. Tribute ETB 7 — tribute warrior entered.
+  {
+    id: "tribute-etb-7-m643",
+    description: "Tribute ETB 7 — tribute warrior entered.",
+    seed: 0xc72b,
+    cards: {
+      "TrbC1-7 M643": `Name:TrbC1-7 M643
+ManaCost:2 G
+Types:Creature Warrior
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-7 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3894. Tribute ETB 8 — tribute berserker entered.
+  {
+    id: "tribute-etb-8-m643",
+    description: "Tribute ETB 8 — tribute berserker entered.",
+    seed: 0xc72c,
+    cards: {
+      "TrbC1-8 M643": `Name:TrbC1-8 M643
+ManaCost:2 G
+Types:Creature Berserker
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-8 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3895. Tribute ETB 9 — tribute goblin entered.
+  {
+    id: "tribute-etb-9-m643",
+    description: "Tribute ETB 9 — tribute goblin entered.",
+    seed: 0xc72d,
+    cards: {
+      "TrbC1-9 M643": `Name:TrbC1-9 M643
+ManaCost:2 G
+Types:Creature Goblin
+PT:2/2
+K:Tribute:1
+Oracle:TrbC1-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TrbC1-9 M643"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TrbC1-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3896. Ingest ETB 0 — ingest vampire entered.
+  {
+    id: "ingest-etb-0-m643",
+    description: "Ingest ETB 0 — ingest vampire entered.",
+    seed: 0xc72e,
+    cards: {
+      "IngC2-0 M643": `Name:IngC2-0 M643
+ManaCost:1 U
+Types:Creature Vampire
+PT:1/1
+K:Ingest
+Oracle:IngC2-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-0 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3897. Ingest ETB 1 — ingest demon entered.
+  {
+    id: "ingest-etb-1-m643",
+    description: "Ingest ETB 1 — ingest demon entered.",
+    seed: 0xc72f,
+    cards: {
+      "IngC2-1 M643": `Name:IngC2-1 M643
+ManaCost:1 U
+Types:Creature Demon
+PT:1/1
+K:Ingest
+Oracle:IngC2-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-1 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3898. Ingest ETB 2 — ingest beast entered.
+  {
+    id: "ingest-etb-2-m643",
+    description: "Ingest ETB 2 — ingest beast entered.",
+    seed: 0xc730,
+    cards: {
+      "IngC2-2 M643": `Name:IngC2-2 M643
+ManaCost:1 U
+Types:Creature Beast
+PT:1/1
+K:Ingest
+Oracle:IngC2-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-2 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3899. Ingest ETB 3 — ingest bear entered.
+  {
+    id: "ingest-etb-3-m643",
+    description: "Ingest ETB 3 — ingest bear entered.",
+    seed: 0xc731,
+    cards: {
+      "IngC2-3 M643": `Name:IngC2-3 M643
+ManaCost:1 U
+Types:Creature Bear
+PT:1/1
+K:Ingest
+Oracle:IngC2-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-3 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3900. Ingest ETB 4 — ingest cat entered.
+  {
+    id: "ingest-etb-4-m643",
+    description: "Ingest ETB 4 — ingest cat entered.",
+    seed: 0xc732,
+    cards: {
+      "IngC2-4 M643": `Name:IngC2-4 M643
+ManaCost:1 U
+Types:Creature Cat
+PT:1/1
+K:Ingest
+Oracle:IngC2-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-4 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3901. Ingest ETB 5 — ingest sphinx entered.
+  {
+    id: "ingest-etb-5-m643",
+    description: "Ingest ETB 5 — ingest sphinx entered.",
+    seed: 0xc733,
+    cards: {
+      "IngC2-5 M643": `Name:IngC2-5 M643
+ManaCost:1 U
+Types:Creature Sphinx
+PT:1/1
+K:Ingest
+Oracle:IngC2-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-5 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3902. Ingest ETB 6 — ingest phoenix entered.
+  {
+    id: "ingest-etb-6-m643",
+    description: "Ingest ETB 6 — ingest phoenix entered.",
+    seed: 0xc734,
+    cards: {
+      "IngC2-6 M643": `Name:IngC2-6 M643
+ManaCost:1 U
+Types:Creature Phoenix
+PT:1/1
+K:Ingest
+Oracle:IngC2-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-6 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3903. Ingest ETB 7 — ingest hydra entered.
+  {
+    id: "ingest-etb-7-m643",
+    description: "Ingest ETB 7 — ingest hydra entered.",
+    seed: 0xc735,
+    cards: {
+      "IngC2-7 M643": `Name:IngC2-7 M643
+ManaCost:1 U
+Types:Creature Hydra
+PT:1/1
+K:Ingest
+Oracle:IngC2-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-7 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3904. Ingest ETB 8 — ingest dragon entered.
+  {
+    id: "ingest-etb-8-m643",
+    description: "Ingest ETB 8 — ingest dragon entered.",
+    seed: 0xc736,
+    cards: {
+      "IngC2-8 M643": `Name:IngC2-8 M643
+ManaCost:1 U
+Types:Creature Dragon
+PT:1/1
+K:Ingest
+Oracle:IngC2-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-8 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3905. Ingest ETB 9 — ingest snake entered.
+  {
+    id: "ingest-etb-9-m643",
+    description: "Ingest ETB 9 — ingest snake entered.",
+    seed: 0xc737,
+    cards: {
+      "IngC2-9 M643": `Name:IngC2-9 M643
+ManaCost:1 U
+Types:Creature Snake
+PT:1/1
+K:Ingest
+Oracle:IngC2-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IngC2-9 M643"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IngC2-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3906. Bushido ETB 0 — bushido knight entered.
+  {
+    id: "bushido-etb-0-m643",
+    description: "Bushido ETB 0 — bushido knight entered.",
+    seed: 0xc738,
+    cards: {
+      "BshC3-0 M643": `Name:BshC3-0 M643
+ManaCost:1 W
+Types:Creature Knight
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-0 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3907. Bushido ETB 1 — bushido soldier entered.
+  {
+    id: "bushido-etb-1-m643",
+    description: "Bushido ETB 1 — bushido soldier entered.",
+    seed: 0xc739,
+    cards: {
+      "BshC3-1 M643": `Name:BshC3-1 M643
+ManaCost:1 W
+Types:Creature Soldier
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-1 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3908. Bushido ETB 2 — bushido angel entered.
+  {
+    id: "bushido-etb-2-m643",
+    description: "Bushido ETB 2 — bushido angel entered.",
+    seed: 0xc73a,
+    cards: {
+      "BshC3-2 M643": `Name:BshC3-2 M643
+ManaCost:1 W
+Types:Creature Angel
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-2 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3909. Bushido ETB 3 — bushido spirit entered.
+  {
+    id: "bushido-etb-3-m643",
+    description: "Bushido ETB 3 — bushido spirit entered.",
+    seed: 0xc73b,
+    cards: {
+      "BshC3-3 M643": `Name:BshC3-3 M643
+ManaCost:1 W
+Types:Creature Spirit
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-3 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3910. Bushido ETB 4 — bushido cleric entered.
+  {
+    id: "bushido-etb-4-m643",
+    description: "Bushido ETB 4 — bushido cleric entered.",
+    seed: 0xc73c,
+    cards: {
+      "BshC3-4 M643": `Name:BshC3-4 M643
+ManaCost:1 W
+Types:Creature Cleric
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-4 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3911. Bushido ETB 5 — bushido wizard entered.
+  {
+    id: "bushido-etb-5-m643",
+    description: "Bushido ETB 5 — bushido wizard entered.",
+    seed: 0xc73d,
+    cards: {
+      "BshC3-5 M643": `Name:BshC3-5 M643
+ManaCost:1 W
+Types:Creature Wizard
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-5 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3912. Bushido ETB 6 — bushido druid entered.
+  {
+    id: "bushido-etb-6-m643",
+    description: "Bushido ETB 6 — bushido druid entered.",
+    seed: 0xc73e,
+    cards: {
+      "BshC3-6 M643": `Name:BshC3-6 M643
+ManaCost:1 W
+Types:Creature Druid
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-6 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3913. Bushido ETB 7 — bushido warrior entered.
+  {
+    id: "bushido-etb-7-m643",
+    description: "Bushido ETB 7 — bushido warrior entered.",
+    seed: 0xc73f,
+    cards: {
+      "BshC3-7 M643": `Name:BshC3-7 M643
+ManaCost:1 W
+Types:Creature Warrior
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-7 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3914. Bushido ETB 8 — bushido berserker entered.
+  {
+    id: "bushido-etb-8-m643",
+    description: "Bushido ETB 8 — bushido berserker entered.",
+    seed: 0xc740,
+    cards: {
+      "BshC3-8 M643": `Name:BshC3-8 M643
+ManaCost:1 W
+Types:Creature Berserker
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-8 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3915. Bushido ETB 9 — bushido goblin entered.
+  {
+    id: "bushido-etb-9-m643",
+    description: "Bushido ETB 9 — bushido goblin entered.",
+    seed: 0xc741,
+    cards: {
+      "BshC3-9 M643": `Name:BshC3-9 M643
+ManaCost:1 W
+Types:Creature Goblin
+PT:2/2
+K:Bushido:1
+Oracle:BshC3-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BshC3-9 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BshC3-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3916. Toxic ETB 0 — toxic knight entered.
+  {
+    id: "toxic-etb-0-m643",
+    description: "Toxic ETB 0 — toxic knight entered.",
+    seed: 0xc742,
+    cards: {
+      "TxcD1-0 M643": `Name:TxcD1-0 M643
+ManaCost:1 G
+Types:Creature Knight
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-0 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3917. Toxic ETB 1 — toxic soldier entered.
+  {
+    id: "toxic-etb-1-m643",
+    description: "Toxic ETB 1 — toxic soldier entered.",
+    seed: 0xc743,
+    cards: {
+      "TxcD1-1 M643": `Name:TxcD1-1 M643
+ManaCost:1 G
+Types:Creature Soldier
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-1 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3918. Toxic ETB 2 — toxic cleric entered.
+  {
+    id: "toxic-etb-2-m643",
+    description: "Toxic ETB 2 — toxic cleric entered.",
+    seed: 0xc744,
+    cards: {
+      "TxcD1-2 M643": `Name:TxcD1-2 M643
+ManaCost:1 G
+Types:Creature Cleric
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-2 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3919. Toxic ETB 3 — toxic wizard entered.
+  {
+    id: "toxic-etb-3-m643",
+    description: "Toxic ETB 3 — toxic wizard entered.",
+    seed: 0xc745,
+    cards: {
+      "TxcD1-3 M643": `Name:TxcD1-3 M643
+ManaCost:1 G
+Types:Creature Wizard
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-3 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3920. Toxic ETB 4 — toxic druid entered.
+  {
+    id: "toxic-etb-4-m643",
+    description: "Toxic ETB 4 — toxic druid entered.",
+    seed: 0xc746,
+    cards: {
+      "TxcD1-4 M643": `Name:TxcD1-4 M643
+ManaCost:1 G
+Types:Creature Druid
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-4 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3921. Toxic ETB 5 — toxic spirit entered.
+  {
+    id: "toxic-etb-5-m643",
+    description: "Toxic ETB 5 — toxic spirit entered.",
+    seed: 0xc747,
+    cards: {
+      "TxcD1-5 M643": `Name:TxcD1-5 M643
+ManaCost:1 G
+Types:Creature Spirit
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-5 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3922. Toxic ETB 6 — toxic angel entered.
+  {
+    id: "toxic-etb-6-m643",
+    description: "Toxic ETB 6 — toxic angel entered.",
+    seed: 0xc748,
+    cards: {
+      "TxcD1-6 M643": `Name:TxcD1-6 M643
+ManaCost:1 G
+Types:Creature Angel
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-6 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3923. Toxic ETB 7 — toxic cat entered.
+  {
+    id: "toxic-etb-7-m643",
+    description: "Toxic ETB 7 — toxic cat entered.",
+    seed: 0xc749,
+    cards: {
+      "TxcD1-7 M643": `Name:TxcD1-7 M643
+ManaCost:1 G
+Types:Creature Cat
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-7 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3924. Toxic ETB 8 — toxic beast entered.
+  {
+    id: "toxic-etb-8-m643",
+    description: "Toxic ETB 8 — toxic beast entered.",
+    seed: 0xc74a,
+    cards: {
+      "TxcD1-8 M643": `Name:TxcD1-8 M643
+ManaCost:1 G
+Types:Creature Beast
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-8 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3925. Toxic ETB 9 — toxic bear entered.
+  {
+    id: "toxic-etb-9-m643",
+    description: "Toxic ETB 9 — toxic bear entered.",
+    seed: 0xc74b,
+    cards: {
+      "TxcD1-9 M643": `Name:TxcD1-9 M643
+ManaCost:1 G
+Types:Creature Bear
+PT:1/1
+K:Toxic:1
+Oracle:TxcD1-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["TxcD1-9 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "TxcD1-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3926. Convoke ETB 0 — convoke centaur entered.
+  {
+    id: "convoke-etb-0-m643",
+    description: "Convoke ETB 0 — convoke centaur entered.",
+    seed: 0xc74c,
+    cards: {
+      "CnvD2-0 M643": `Name:CnvD2-0 M643
+ManaCost:2 W
+Types:Creature Centaur
+PT:2/2
+K:Convoke
+Oracle:CnvD2-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-0 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3927. Convoke ETB 1 — convoke treefolk entered.
+  {
+    id: "convoke-etb-1-m643",
+    description: "Convoke ETB 1 — convoke treefolk entered.",
+    seed: 0xc74d,
+    cards: {
+      "CnvD2-1 M643": `Name:CnvD2-1 M643
+ManaCost:2 W
+Types:Creature Treefolk
+PT:2/2
+K:Convoke
+Oracle:CnvD2-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-1 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3928. Convoke ETB 2 — convoke hydra entered.
+  {
+    id: "convoke-etb-2-m643",
+    description: "Convoke ETB 2 — convoke hydra entered.",
+    seed: 0xc74e,
+    cards: {
+      "CnvD2-2 M643": `Name:CnvD2-2 M643
+ManaCost:2 W
+Types:Creature Hydra
+PT:2/2
+K:Convoke
+Oracle:CnvD2-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-2 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3929. Convoke ETB 3 — convoke sphinx entered.
+  {
+    id: "convoke-etb-3-m643",
+    description: "Convoke ETB 3 — convoke sphinx entered.",
+    seed: 0xc74f,
+    cards: {
+      "CnvD2-3 M643": `Name:CnvD2-3 M643
+ManaCost:2 W
+Types:Creature Sphinx
+PT:2/2
+K:Convoke
+Oracle:CnvD2-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-3 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3930. Convoke ETB 4 — convoke phoenix entered.
+  {
+    id: "convoke-etb-4-m643",
+    description: "Convoke ETB 4 — convoke phoenix entered.",
+    seed: 0xc750,
+    cards: {
+      "CnvD2-4 M643": `Name:CnvD2-4 M643
+ManaCost:2 W
+Types:Creature Phoenix
+PT:2/2
+K:Convoke
+Oracle:CnvD2-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-4 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3931. Convoke ETB 5 — convoke specter entered.
+  {
+    id: "convoke-etb-5-m643",
+    description: "Convoke ETB 5 — convoke specter entered.",
+    seed: 0xc751,
+    cards: {
+      "CnvD2-5 M643": `Name:CnvD2-5 M643
+ManaCost:2 W
+Types:Creature Specter
+PT:2/2
+K:Convoke
+Oracle:CnvD2-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-5 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3932. Convoke ETB 6 — convoke dragon entered.
+  {
+    id: "convoke-etb-6-m643",
+    description: "Convoke ETB 6 — convoke dragon entered.",
+    seed: 0xc752,
+    cards: {
+      "CnvD2-6 M643": `Name:CnvD2-6 M643
+ManaCost:2 W
+Types:Creature Dragon
+PT:2/2
+K:Convoke
+Oracle:CnvD2-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-6 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3933. Convoke ETB 7 — convoke demon entered.
+  {
+    id: "convoke-etb-7-m643",
+    description: "Convoke ETB 7 — convoke demon entered.",
+    seed: 0xc753,
+    cards: {
+      "CnvD2-7 M643": `Name:CnvD2-7 M643
+ManaCost:2 W
+Types:Creature Demon
+PT:2/2
+K:Convoke
+Oracle:CnvD2-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-7 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3934. Convoke ETB 8 — convoke vampire entered.
+  {
+    id: "convoke-etb-8-m643",
+    description: "Convoke ETB 8 — convoke vampire entered.",
+    seed: 0xc754,
+    cards: {
+      "CnvD2-8 M643": `Name:CnvD2-8 M643
+ManaCost:2 W
+Types:Creature Vampire
+PT:2/2
+K:Convoke
+Oracle:CnvD2-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-8 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3935. Convoke ETB 9 — convoke snake entered.
+  {
+    id: "convoke-etb-9-m643",
+    description: "Convoke ETB 9 — convoke snake entered.",
+    seed: 0xc755,
+    cards: {
+      "CnvD2-9 M643": `Name:CnvD2-9 M643
+ManaCost:2 W
+Types:Creature Snake
+PT:2/2
+K:Convoke
+Oracle:CnvD2-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["CnvD2-9 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CnvD2-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3936. Improvise ETB 0 — improvise bird entered.
+  {
+    id: "improvise-etb-0-m643",
+    description: "Improvise ETB 0 — improvise bird entered.",
+    seed: 0xc756,
+    cards: {
+      "ImpD3-0 M643": `Name:ImpD3-0 M643
+ManaCost:2 U
+Types:Creature Bird
+PT:2/2
+K:Improvise
+Oracle:ImpD3-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-0 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3937. Improvise ETB 1 — improvise insect entered.
+  {
+    id: "improvise-etb-1-m643",
+    description: "Improvise ETB 1 — improvise insect entered.",
+    seed: 0xc757,
+    cards: {
+      "ImpD3-1 M643": `Name:ImpD3-1 M643
+ManaCost:2 U
+Types:Creature Insect
+PT:2/2
+K:Improvise
+Oracle:ImpD3-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-1 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3938. Improvise ETB 2 — improvise rat entered.
+  {
+    id: "improvise-etb-2-m643",
+    description: "Improvise ETB 2 — improvise rat entered.",
+    seed: 0xc758,
+    cards: {
+      "ImpD3-2 M643": `Name:ImpD3-2 M643
+ManaCost:2 U
+Types:Creature Rat
+PT:2/2
+K:Improvise
+Oracle:ImpD3-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-2 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3939. Improvise ETB 3 — improvise fish entered.
+  {
+    id: "improvise-etb-3-m643",
+    description: "Improvise ETB 3 — improvise fish entered.",
+    seed: 0xc759,
+    cards: {
+      "ImpD3-3 M643": `Name:ImpD3-3 M643
+ManaCost:2 U
+Types:Creature Fish
+PT:2/2
+K:Improvise
+Oracle:ImpD3-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-3 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3940. Improvise ETB 4 — improvise whale entered.
+  {
+    id: "improvise-etb-4-m643",
+    description: "Improvise ETB 4 — improvise whale entered.",
+    seed: 0xc75a,
+    cards: {
+      "ImpD3-4 M643": `Name:ImpD3-4 M643
+ManaCost:2 U
+Types:Creature Whale
+PT:2/2
+K:Improvise
+Oracle:ImpD3-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-4 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3941. Improvise ETB 5 — improvise frog entered.
+  {
+    id: "improvise-etb-5-m643",
+    description: "Improvise ETB 5 — improvise frog entered.",
+    seed: 0xc75b,
+    cards: {
+      "ImpD3-5 M643": `Name:ImpD3-5 M643
+ManaCost:2 U
+Types:Creature Frog
+PT:2/2
+K:Improvise
+Oracle:ImpD3-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-5 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3942. Improvise ETB 6 — improvise crab entered.
+  {
+    id: "improvise-etb-6-m643",
+    description: "Improvise ETB 6 — improvise crab entered.",
+    seed: 0xc75c,
+    cards: {
+      "ImpD3-6 M643": `Name:ImpD3-6 M643
+ManaCost:2 U
+Types:Creature Crab
+PT:2/2
+K:Improvise
+Oracle:ImpD3-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-6 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3943. Improvise ETB 7 — improvise octopus entered.
+  {
+    id: "improvise-etb-7-m643",
+    description: "Improvise ETB 7 — improvise octopus entered.",
+    seed: 0xc75d,
+    cards: {
+      "ImpD3-7 M643": `Name:ImpD3-7 M643
+ManaCost:2 U
+Types:Creature Octopus
+PT:2/2
+K:Improvise
+Oracle:ImpD3-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-7 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3944. Improvise ETB 8 — improvise drake entered.
+  {
+    id: "improvise-etb-8-m643",
+    description: "Improvise ETB 8 — improvise drake entered.",
+    seed: 0xc75e,
+    cards: {
+      "ImpD3-8 M643": `Name:ImpD3-8 M643
+ManaCost:2 U
+Types:Creature Drake
+PT:2/2
+K:Improvise
+Oracle:ImpD3-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-8 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3945. Improvise ETB 9 — improvise wolf entered.
+  {
+    id: "improvise-etb-9-m643",
+    description: "Improvise ETB 9 — improvise wolf entered.",
+    seed: 0xc75f,
+    cards: {
+      "ImpD3-9 M643": `Name:ImpD3-9 M643
+ManaCost:2 U
+Types:Creature Wolf
+PT:2/2
+K:Improvise
+Oracle:ImpD3-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["ImpD3-9 M643"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "ImpD3-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3946. Hexproof ETB 0 — hexproof spirit entered.
+  {
+    id: "hexproof-etb-0-m643",
+    description: "Hexproof ETB 0 — hexproof spirit entered.",
+    seed: 0xc760,
+    cards: {
+      "HexE1-0 M643": `Name:HexE1-0 M643
+ManaCost:1 G
+Types:Creature Spirit
+PT:2/2
+K:Hexproof
+Oracle:HexE1-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-0 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3947. Hexproof ETB 1 — hexproof wizard entered.
+  {
+    id: "hexproof-etb-1-m643",
+    description: "Hexproof ETB 1 — hexproof wizard entered.",
+    seed: 0xc761,
+    cards: {
+      "HexE1-1 M643": `Name:HexE1-1 M643
+ManaCost:1 G
+Types:Creature Wizard
+PT:2/2
+K:Hexproof
+Oracle:HexE1-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-1 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3948. Hexproof ETB 2 — hexproof warrior entered.
+  {
+    id: "hexproof-etb-2-m643",
+    description: "Hexproof ETB 2 — hexproof warrior entered.",
+    seed: 0xc762,
+    cards: {
+      "HexE1-2 M643": `Name:HexE1-2 M643
+ManaCost:1 G
+Types:Creature Warrior
+PT:2/2
+K:Hexproof
+Oracle:HexE1-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-2 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3949. Hexproof ETB 3 — hexproof soldier entered.
+  {
+    id: "hexproof-etb-3-m643",
+    description: "Hexproof ETB 3 — hexproof soldier entered.",
+    seed: 0xc763,
+    cards: {
+      "HexE1-3 M643": `Name:HexE1-3 M643
+ManaCost:1 G
+Types:Creature Soldier
+PT:2/2
+K:Hexproof
+Oracle:HexE1-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-3 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3950. Hexproof ETB 4 — hexproof knight entered.
+  {
+    id: "hexproof-etb-4-m643",
+    description: "Hexproof ETB 4 — hexproof knight entered.",
+    seed: 0xc764,
+    cards: {
+      "HexE1-4 M643": `Name:HexE1-4 M643
+ManaCost:1 G
+Types:Creature Knight
+PT:2/2
+K:Hexproof
+Oracle:HexE1-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-4 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3951. Hexproof ETB 5 — hexproof cleric entered.
+  {
+    id: "hexproof-etb-5-m643",
+    description: "Hexproof ETB 5 — hexproof cleric entered.",
+    seed: 0xc765,
+    cards: {
+      "HexE1-5 M643": `Name:HexE1-5 M643
+ManaCost:1 G
+Types:Creature Cleric
+PT:2/2
+K:Hexproof
+Oracle:HexE1-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-5 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3952. Hexproof ETB 6 — hexproof druid entered.
+  {
+    id: "hexproof-etb-6-m643",
+    description: "Hexproof ETB 6 — hexproof druid entered.",
+    seed: 0xc766,
+    cards: {
+      "HexE1-6 M643": `Name:HexE1-6 M643
+ManaCost:1 G
+Types:Creature Druid
+PT:2/2
+K:Hexproof
+Oracle:HexE1-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-6 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3953. Hexproof ETB 7 — hexproof beast entered.
+  {
+    id: "hexproof-etb-7-m643",
+    description: "Hexproof ETB 7 — hexproof beast entered.",
+    seed: 0xc767,
+    cards: {
+      "HexE1-7 M643": `Name:HexE1-7 M643
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+K:Hexproof
+Oracle:HexE1-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-7 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3954. Hexproof ETB 8 — hexproof bear entered.
+  {
+    id: "hexproof-etb-8-m643",
+    description: "Hexproof ETB 8 — hexproof bear entered.",
+    seed: 0xc768,
+    cards: {
+      "HexE1-8 M643": `Name:HexE1-8 M643
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+K:Hexproof
+Oracle:HexE1-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-8 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3955. Hexproof ETB 9 — hexproof cat entered.
+  {
+    id: "hexproof-etb-9-m643",
+    description: "Hexproof ETB 9 — hexproof cat entered.",
+    seed: 0xc769,
+    cards: {
+      "HexE1-9 M643": `Name:HexE1-9 M643
+ManaCost:1 G
+Types:Creature Cat
+PT:2/2
+K:Hexproof
+Oracle:HexE1-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HexE1-9 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HexE1-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3956. Indestructible ETB 0 — indestructible dragon entered.
+  {
+    id: "indestructible-etb-0-m643",
+    description: "Indestructible ETB 0 — indestructible dragon entered.",
+    seed: 0xc76a,
+    cards: {
+      "IndE2-0 M643": `Name:IndE2-0 M643
+ManaCost:2 W
+Types:Creature Dragon
+PT:3/3
+K:Indestructible
+Oracle:IndE2-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-0 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3957. Indestructible ETB 1 — indestructible demon entered.
+  {
+    id: "indestructible-etb-1-m643",
+    description: "Indestructible ETB 1 — indestructible demon entered.",
+    seed: 0xc76b,
+    cards: {
+      "IndE2-1 M643": `Name:IndE2-1 M643
+ManaCost:2 W
+Types:Creature Demon
+PT:3/3
+K:Indestructible
+Oracle:IndE2-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-1 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3958. Indestructible ETB 2 — indestructible vampire entered.
+  {
+    id: "indestructible-etb-2-m643",
+    description: "Indestructible ETB 2 — indestructible vampire entered.",
+    seed: 0xc76c,
+    cards: {
+      "IndE2-2 M643": `Name:IndE2-2 M643
+ManaCost:2 W
+Types:Creature Vampire
+PT:3/3
+K:Indestructible
+Oracle:IndE2-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-2 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3959. Indestructible ETB 3 — indestructible specter entered.
+  {
+    id: "indestructible-etb-3-m643",
+    description: "Indestructible ETB 3 — indestructible specter entered.",
+    seed: 0xc76d,
+    cards: {
+      "IndE2-3 M643": `Name:IndE2-3 M643
+ManaCost:2 W
+Types:Creature Specter
+PT:3/3
+K:Indestructible
+Oracle:IndE2-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-3 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3960. Indestructible ETB 4 — indestructible spider entered.
+  {
+    id: "indestructible-etb-4-m643",
+    description: "Indestructible ETB 4 — indestructible spider entered.",
+    seed: 0xc76e,
+    cards: {
+      "IndE2-4 M643": `Name:IndE2-4 M643
+ManaCost:2 W
+Types:Creature Spider
+PT:3/3
+K:Indestructible
+Oracle:IndE2-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-4 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3961. Indestructible ETB 5 — indestructible snake entered.
+  {
+    id: "indestructible-etb-5-m643",
+    description: "Indestructible ETB 5 — indestructible snake entered.",
+    seed: 0xc76f,
+    cards: {
+      "IndE2-5 M643": `Name:IndE2-5 M643
+ManaCost:2 W
+Types:Creature Snake
+PT:3/3
+K:Indestructible
+Oracle:IndE2-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-5 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3962. Indestructible ETB 6 — indestructible goblin entered.
+  {
+    id: "indestructible-etb-6-m643",
+    description: "Indestructible ETB 6 — indestructible goblin entered.",
+    seed: 0xc770,
+    cards: {
+      "IndE2-6 M643": `Name:IndE2-6 M643
+ManaCost:2 W
+Types:Creature Goblin
+PT:3/3
+K:Indestructible
+Oracle:IndE2-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-6 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3963. Indestructible ETB 7 — indestructible elf entered.
+  {
+    id: "indestructible-etb-7-m643",
+    description: "Indestructible ETB 7 — indestructible elf entered.",
+    seed: 0xc771,
+    cards: {
+      "IndE2-7 M643": `Name:IndE2-7 M643
+ManaCost:2 W
+Types:Creature Elf
+PT:3/3
+K:Indestructible
+Oracle:IndE2-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-7 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3964. Indestructible ETB 8 — indestructible phoenix entered.
+  {
+    id: "indestructible-etb-8-m643",
+    description: "Indestructible ETB 8 — indestructible phoenix entered.",
+    seed: 0xc772,
+    cards: {
+      "IndE2-8 M643": `Name:IndE2-8 M643
+ManaCost:2 W
+Types:Creature Phoenix
+PT:3/3
+K:Indestructible
+Oracle:IndE2-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-8 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3965. Indestructible ETB 9 — indestructible sphinx entered.
+  {
+    id: "indestructible-etb-9-m643",
+    description: "Indestructible ETB 9 — indestructible sphinx entered.",
+    seed: 0xc773,
+    cards: {
+      "IndE2-9 M643": `Name:IndE2-9 M643
+ManaCost:2 W
+Types:Creature Sphinx
+PT:3/3
+K:Indestructible
+Oracle:IndE2-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["IndE2-9 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "IndE2-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3966. Reach ETB 0 — reach spirit entered.
+  {
+    id: "reach-etb-0-m643",
+    description: "Reach ETB 0 — reach spirit entered.",
+    seed: 0xc774,
+    cards: {
+      "RchE3-0 M643": `Name:RchE3-0 M643
+ManaCost:1 G
+Types:Creature Spirit
+PT:1/3
+K:Reach
+Oracle:RchE3-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-0 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3967. Reach ETB 1 — reach wizard entered.
+  {
+    id: "reach-etb-1-m643",
+    description: "Reach ETB 1 — reach wizard entered.",
+    seed: 0xc775,
+    cards: {
+      "RchE3-1 M643": `Name:RchE3-1 M643
+ManaCost:1 G
+Types:Creature Wizard
+PT:1/3
+K:Reach
+Oracle:RchE3-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-1 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3968. Reach ETB 2 — reach warrior entered.
+  {
+    id: "reach-etb-2-m643",
+    description: "Reach ETB 2 — reach warrior entered.",
+    seed: 0xc776,
+    cards: {
+      "RchE3-2 M643": `Name:RchE3-2 M643
+ManaCost:1 G
+Types:Creature Warrior
+PT:1/3
+K:Reach
+Oracle:RchE3-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-2 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3969. Reach ETB 3 — reach soldier entered.
+  {
+    id: "reach-etb-3-m643",
+    description: "Reach ETB 3 — reach soldier entered.",
+    seed: 0xc777,
+    cards: {
+      "RchE3-3 M643": `Name:RchE3-3 M643
+ManaCost:1 G
+Types:Creature Soldier
+PT:1/3
+K:Reach
+Oracle:RchE3-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-3 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3970. Reach ETB 4 — reach knight entered.
+  {
+    id: "reach-etb-4-m643",
+    description: "Reach ETB 4 — reach knight entered.",
+    seed: 0xc778,
+    cards: {
+      "RchE3-4 M643": `Name:RchE3-4 M643
+ManaCost:1 G
+Types:Creature Knight
+PT:1/3
+K:Reach
+Oracle:RchE3-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-4 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3971. Reach ETB 5 — reach cleric entered.
+  {
+    id: "reach-etb-5-m643",
+    description: "Reach ETB 5 — reach cleric entered.",
+    seed: 0xc779,
+    cards: {
+      "RchE3-5 M643": `Name:RchE3-5 M643
+ManaCost:1 G
+Types:Creature Cleric
+PT:1/3
+K:Reach
+Oracle:RchE3-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-5 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3972. Reach ETB 6 — reach druid entered.
+  {
+    id: "reach-etb-6-m643",
+    description: "Reach ETB 6 — reach druid entered.",
+    seed: 0xc77a,
+    cards: {
+      "RchE3-6 M643": `Name:RchE3-6 M643
+ManaCost:1 G
+Types:Creature Druid
+PT:1/3
+K:Reach
+Oracle:RchE3-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-6 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3973. Reach ETB 7 — reach beast entered.
+  {
+    id: "reach-etb-7-m643",
+    description: "Reach ETB 7 — reach beast entered.",
+    seed: 0xc77b,
+    cards: {
+      "RchE3-7 M643": `Name:RchE3-7 M643
+ManaCost:1 G
+Types:Creature Beast
+PT:1/3
+K:Reach
+Oracle:RchE3-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-7 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3974. Reach ETB 8 — reach bear entered.
+  {
+    id: "reach-etb-8-m643",
+    description: "Reach ETB 8 — reach bear entered.",
+    seed: 0xc77c,
+    cards: {
+      "RchE3-8 M643": `Name:RchE3-8 M643
+ManaCost:1 G
+Types:Creature Bear
+PT:1/3
+K:Reach
+Oracle:RchE3-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-8 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3975. Reach ETB 9 — reach cat entered.
+  {
+    id: "reach-etb-9-m643",
+    description: "Reach ETB 9 — reach cat entered.",
+    seed: 0xc77d,
+    cards: {
+      "RchE3-9 M643": `Name:RchE3-9 M643
+ManaCost:1 G
+Types:Creature Cat
+PT:1/3
+K:Reach
+Oracle:RchE3-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchE3-9 M643"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchE3-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3976. Vigilance ETB 0 — vigilance knight entered.
+  {
+    id: "vigilance-etb-0-m643",
+    description: "Vigilance ETB 0 — vigilance knight entered.",
+    seed: 0xc77e,
+    cards: {
+      "VglF1-0 M643": `Name:VglF1-0 M643
+ManaCost:2 W
+Types:Creature Knight
+PT:2/3
+K:Vigilance
+Oracle:VglF1-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-0 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3977. Vigilance ETB 1 — vigilance soldier entered.
+  {
+    id: "vigilance-etb-1-m643",
+    description: "Vigilance ETB 1 — vigilance soldier entered.",
+    seed: 0xc77f,
+    cards: {
+      "VglF1-1 M643": `Name:VglF1-1 M643
+ManaCost:2 W
+Types:Creature Soldier
+PT:2/3
+K:Vigilance
+Oracle:VglF1-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-1 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3978. Vigilance ETB 2 — vigilance angel entered.
+  {
+    id: "vigilance-etb-2-m643",
+    description: "Vigilance ETB 2 — vigilance angel entered.",
+    seed: 0xc780,
+    cards: {
+      "VglF1-2 M643": `Name:VglF1-2 M643
+ManaCost:2 W
+Types:Creature Angel
+PT:2/3
+K:Vigilance
+Oracle:VglF1-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-2 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3979. Vigilance ETB 3 — vigilance spirit entered.
+  {
+    id: "vigilance-etb-3-m643",
+    description: "Vigilance ETB 3 — vigilance spirit entered.",
+    seed: 0xc781,
+    cards: {
+      "VglF1-3 M643": `Name:VglF1-3 M643
+ManaCost:2 W
+Types:Creature Spirit
+PT:2/3
+K:Vigilance
+Oracle:VglF1-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-3 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3980. Vigilance ETB 4 — vigilance cleric entered.
+  {
+    id: "vigilance-etb-4-m643",
+    description: "Vigilance ETB 4 — vigilance cleric entered.",
+    seed: 0xc782,
+    cards: {
+      "VglF1-4 M643": `Name:VglF1-4 M643
+ManaCost:2 W
+Types:Creature Cleric
+PT:2/3
+K:Vigilance
+Oracle:VglF1-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-4 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3981. Vigilance ETB 5 — vigilance wizard entered.
+  {
+    id: "vigilance-etb-5-m643",
+    description: "Vigilance ETB 5 — vigilance wizard entered.",
+    seed: 0xc783,
+    cards: {
+      "VglF1-5 M643": `Name:VglF1-5 M643
+ManaCost:2 W
+Types:Creature Wizard
+PT:2/3
+K:Vigilance
+Oracle:VglF1-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-5 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3982. Vigilance ETB 6 — vigilance druid entered.
+  {
+    id: "vigilance-etb-6-m643",
+    description: "Vigilance ETB 6 — vigilance druid entered.",
+    seed: 0xc784,
+    cards: {
+      "VglF1-6 M643": `Name:VglF1-6 M643
+ManaCost:2 W
+Types:Creature Druid
+PT:2/3
+K:Vigilance
+Oracle:VglF1-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-6 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3983. Vigilance ETB 7 — vigilance warrior entered.
+  {
+    id: "vigilance-etb-7-m643",
+    description: "Vigilance ETB 7 — vigilance warrior entered.",
+    seed: 0xc785,
+    cards: {
+      "VglF1-7 M643": `Name:VglF1-7 M643
+ManaCost:2 W
+Types:Creature Warrior
+PT:2/3
+K:Vigilance
+Oracle:VglF1-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-7 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3984. Vigilance ETB 8 — vigilance berserker entered.
+  {
+    id: "vigilance-etb-8-m643",
+    description: "Vigilance ETB 8 — vigilance berserker entered.",
+    seed: 0xc786,
+    cards: {
+      "VglF1-8 M643": `Name:VglF1-8 M643
+ManaCost:2 W
+Types:Creature Berserker
+PT:2/3
+K:Vigilance
+Oracle:VglF1-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-8 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3985. Vigilance ETB 9 — vigilance goblin entered.
+  {
+    id: "vigilance-etb-9-m643",
+    description: "Vigilance ETB 9 — vigilance goblin entered.",
+    seed: 0xc787,
+    cards: {
+      "VglF1-9 M643": `Name:VglF1-9 M643
+ManaCost:2 W
+Types:Creature Goblin
+PT:2/3
+K:Vigilance
+Oracle:VglF1-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglF1-9 M643"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglF1-9 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3986. Lifelink ETB 0 — lifelink vampire entered.
+  {
+    id: "lifelink-etb-0-m643",
+    description: "Lifelink ETB 0 — lifelink vampire entered.",
+    seed: 0xc788,
+    cards: {
+      "LfkF2-0 M643": `Name:LfkF2-0 M643
+ManaCost:1 W
+Types:Creature Vampire
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-0 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-0 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-0 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3987. Lifelink ETB 1 — lifelink demon entered.
+  {
+    id: "lifelink-etb-1-m643",
+    description: "Lifelink ETB 1 — lifelink demon entered.",
+    seed: 0xc789,
+    cards: {
+      "LfkF2-1 M643": `Name:LfkF2-1 M643
+ManaCost:1 W
+Types:Creature Demon
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-1 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-1 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-1 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3988. Lifelink ETB 2 — lifelink beast entered.
+  {
+    id: "lifelink-etb-2-m643",
+    description: "Lifelink ETB 2 — lifelink beast entered.",
+    seed: 0xc78a,
+    cards: {
+      "LfkF2-2 M643": `Name:LfkF2-2 M643
+ManaCost:1 W
+Types:Creature Beast
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-2 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-2 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-2 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3989. Lifelink ETB 3 — lifelink bear entered.
+  {
+    id: "lifelink-etb-3-m643",
+    description: "Lifelink ETB 3 — lifelink bear entered.",
+    seed: 0xc78b,
+    cards: {
+      "LfkF2-3 M643": `Name:LfkF2-3 M643
+ManaCost:1 W
+Types:Creature Bear
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-3 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-3 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-3 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3990. Lifelink ETB 4 — lifelink cat entered.
+  {
+    id: "lifelink-etb-4-m643",
+    description: "Lifelink ETB 4 — lifelink cat entered.",
+    seed: 0xc78c,
+    cards: {
+      "LfkF2-4 M643": `Name:LfkF2-4 M643
+ManaCost:1 W
+Types:Creature Cat
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-4 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-4 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-4 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3991. Lifelink ETB 5 — lifelink sphinx entered.
+  {
+    id: "lifelink-etb-5-m643",
+    description: "Lifelink ETB 5 — lifelink sphinx entered.",
+    seed: 0xc78d,
+    cards: {
+      "LfkF2-5 M643": `Name:LfkF2-5 M643
+ManaCost:1 W
+Types:Creature Sphinx
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-5 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-5 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-5 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3992. Lifelink ETB 6 — lifelink phoenix entered.
+  {
+    id: "lifelink-etb-6-m643",
+    description: "Lifelink ETB 6 — lifelink phoenix entered.",
+    seed: 0xc78e,
+    cards: {
+      "LfkF2-6 M643": `Name:LfkF2-6 M643
+ManaCost:1 W
+Types:Creature Phoenix
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-6 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-6 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-6 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3993. Lifelink ETB 7 — lifelink hydra entered.
+  {
+    id: "lifelink-etb-7-m643",
+    description: "Lifelink ETB 7 — lifelink hydra entered.",
+    seed: 0xc78f,
+    cards: {
+      "LfkF2-7 M643": `Name:LfkF2-7 M643
+ManaCost:1 W
+Types:Creature Hydra
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-7 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-7 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-7 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3994. Lifelink ETB 8 — lifelink dragon entered.
+  {
+    id: "lifelink-etb-8-m643",
+    description: "Lifelink ETB 8 — lifelink dragon entered.",
+    seed: 0xc790,
+    cards: {
+      "LfkF2-8 M643": `Name:LfkF2-8 M643
+ManaCost:1 W
+Types:Creature Dragon
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-8 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-8 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-8 M643", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3995. Lifelink ETB 9 — lifelink snake entered.
+  {
+    id: "lifelink-etb-9-m643",
+    description: "Lifelink ETB 9 — lifelink snake entered.",
+    seed: 0xc791,
+    cards: {
+      "LfkF2-9 M643": `Name:LfkF2-9 M643
+ManaCost:1 W
+Types:Creature Snake
+PT:2/2
+K:Lifelink
+Oracle:LfkF2-9 M643 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LfkF2-9 M643"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LfkF2-9 M643", castingPlayer: SEAT0 },
       { kind: "resolveTopOfStack" },
     ],
   },

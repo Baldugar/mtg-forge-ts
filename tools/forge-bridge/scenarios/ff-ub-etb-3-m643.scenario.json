@@ -1,0 +1,37 @@
+{
+  "id": "ff-ub-etb-3-m643",
+  "description": "FF UB 3 — knight ETB scry 1.",
+  "seed": 50963,
+  "cards": {
+    "FfUB3 M643": "Name:FfUB3 M643\nManaCost:2 U\nTypes:Creature Knight\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:FfUB3 M643 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "FfUB3 M643"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "FfUB3 M643",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

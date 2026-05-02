@@ -1,0 +1,37 @@
+{
+  "id": "ff-ub-etb-2-m643",
+  "description": "FF UB 2 — warrior ETB scry 1.",
+  "seed": 50962,
+  "cards": {
+    "FfUB2 M643": "Name:FfUB2 M643\nManaCost:2 U\nTypes:Creature Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:FfUB2 M643 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "FfUB2 M643"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "FfUB2 M643",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

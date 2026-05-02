@@ -1,0 +1,37 @@
+{
+  "id": "ff-ub-etb-4-m643",
+  "description": "FF UB 4 — soldier ETB scry 1.",
+  "seed": 50964,
+  "cards": {
+    "FfUB4 M643": "Name:FfUB4 M643\nManaCost:2 U\nTypes:Creature Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:FfUB4 M643 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "FfUB4 M643"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "FfUB4 M643",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "room-fullunlock-2-m643",
+  "description": "DSK Room 2 — Room A unlock proxy ETB draws 1.",
+  "seed": 50942,
+  "cards": {
+    "RoomA2 M643": "Name:RoomA2 M643\nManaCost:1 U\nTypes:Enchantment Room\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:RoomA2 M643 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "RoomA2 M643"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "U",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "RoomA2 M643",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
