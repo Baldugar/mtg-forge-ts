@@ -758,23 +758,62 @@ export class GameAction {
     // CR 614 replacement-effect application: silent (no AbilityActivated
     // emission, addCounter still fires CounterAdded). Variable forms
     // (`X`) read `card.xValueAtCast` set by the X-spell cost pipeline.
+    //
+    // M6.26 — extended with `condition` (Bloodthirst gates on
+    // "any opponent took damage this turn"; CR 702.53b X-variant supplies
+    // the max life-lost). M6.26 also widens the conversion to cover
+    // X-counter ETB triggers (Hangarback / Walking Ballista / Endless
+    // One) and the Dark Depths 10-ICE pattern. Static-replacement
+    // application for these mirrors Forge's `etbCounter` synth in
+    // `forge.game.card.CardFactory`.
     const etbSpecs = (
       card as unknown as {
         etbCounterSpecs?: ReadonlyArray<{
           readonly counterType: import("@mtg-forge-ts/core").CounterType;
           readonly amount: number;
           readonly variable: boolean;
+          readonly condition?: "bloodthirst";
         }>;
       }
     ).etbCounterSpecs;
     if (etbSpecs && etbSpecs.length > 0) {
       const xValue = (card as unknown as { xValueAtCast?: number }).xValueAtCast;
       for (const spec of etbSpecs) {
+        // Bloodthirst (CR 702.53a) — gate on any opponent dealt damage
+        // this turn. For K:Bloodthirst:X (CR 702.53b) the count is the
+        // max life-lost across opponents this turn (engine-tracked via
+        // changeLife → flags.lifeLostThisTurn).
+        if (spec.condition === "bloodthirst") {
+          let any = false;
+          let maxLost = 0;
+          for (const player of game.players) {
+            if (player.seat === card.controllerSeat) continue;
+            const lost = game.flags.lifeLostThisTurn.get(player.seat) ?? 0;
+            if (lost >= 1) any = true;
+            if (lost > maxLost) maxLost = lost;
+          }
+          if (!any) continue;
+          const n = spec.variable ? maxLost : spec.amount;
+          if (n > 0) {
+            yield* this.addCounter(card.id, spec.counterType, n);
+          }
+          continue;
+        }
         const n = spec.variable ? (typeof xValue === "number" && xValue > 0 ? xValue : 0) : spec.amount;
         if (n > 0) {
           yield* this.addCounter(card.id, spec.counterType, n);
         }
       }
+    }
+    // M6.26 — Tribute (CR 702.99a) static-replacement application. When
+    // the keyword handler stamped `card.tributeAmount` we run the
+    // opponent-choice-and-counter path here (mirrors Forge's Tribute as
+    // a CR 614 replacement that puts counters during ETB). This avoids
+    // queuing an `AbilityActivated` trigger and the corresponding
+    // `StackItemResolved`. The Tributed alt-trigger remains registered
+    // separately and reads `card.tributePaid`.
+    if (typeof card.tributeAmount === "number" && card.tributePaid === undefined) {
+      yield* this.applyTributeReplacement(card);
     }
     // Battle Siege — choose a protector. Auto-pick when there is exactly
     // one opponent (deterministic, no decision yield needed). Multi-
@@ -811,6 +850,79 @@ export class GameAction {
           if (fallback !== undefined) card.protectorSeat = fallback;
         }
       }
+    }
+  }
+
+  // M6.26 — Tribute (CR 702.99a) static-replacement application. Runs
+  // inline during ETB (no stack-going trigger) so the parity trace doesn't
+  // see a phantom AbilityActivated/StackItemResolved pair. Mirrors the
+  // single-yield interactive form previously hosted in
+  // TributeKeywordHandler's resolver, but routed through the replacement-
+  // chain path instead. The opponent's response is observed via
+  // confirmAction (MVP single-yield); single-opponent shortcut auto-asks.
+  // Sets `card.tributePaid = true|false` so the alt-`Tributed` trigger
+  // (which the keyword handler still registers) can fire when applicable.
+  private *applyTributeReplacement(card: Card): Generator<EngineYield, void, unknown> {
+    const game = this.game;
+    const n = card.tributeAmount ?? 0;
+    if (n <= 0) {
+      card.tributePaid = false;
+      return;
+    }
+    const oppSeats: PlayerSeat[] = [];
+    for (const p of game.players) {
+      if (p.seat !== card.controllerSeat) oppSeats.push(p.seat);
+    }
+    if (oppSeats.length === 0) {
+      card.tributePaid = false;
+      return;
+    }
+    let chosenOpp: PlayerSeat | undefined;
+    if (oppSeats.length === 1) {
+      chosenOpp = oppSeats[0];
+    } else {
+      const options = oppSeats.map((seat) => ({
+        id: `opp:${seat as unknown as number}`,
+        description: `Opponent ${(seat as unknown as number).toString()}`,
+      }));
+      const pickResp = yield {
+        kind: "decision",
+        request: {
+          kind: "chooseGenericOption",
+          sourceId: card.id,
+          playerSeat: card.controllerSeat,
+          options,
+        },
+      };
+      const r = pickResp as { kind: string; optionId?: string } | undefined;
+      if (r && r.kind === "chooseGenericOption" && typeof r.optionId === "string") {
+        const m = /^opp:(\d+)$/.exec(r.optionId);
+        if (m) {
+          const seatNum = Number.parseInt(m[1] as string, 10);
+          const candidate = oppSeats.find((s) => (s as unknown as number) === seatNum);
+          if (candidate !== undefined) chosenOpp = candidate;
+        }
+      }
+      if (chosenOpp === undefined) chosenOpp = oppSeats[0];
+    }
+    if (chosenOpp === undefined) {
+      card.tributePaid = false;
+      return;
+    }
+    void (chosenOpp as PlayerSeat);
+    const confirmResp = (yield {
+      kind: "decision",
+      request: {
+        kind: "confirmAction",
+        sourceId: card.id,
+        prompt: `Opponent: pay tribute (put ${n} +1/+1 counters)?`,
+      },
+    }) as { readonly kind: "confirmAction"; readonly confirmed: boolean } | undefined;
+    if (confirmResp?.confirmed === true) {
+      card.tributePaid = true;
+      yield* this.addCounter(card.id, CT.PlusOnePlusOne, n, card.id);
+    } else {
+      card.tributePaid = false;
     }
   }
 

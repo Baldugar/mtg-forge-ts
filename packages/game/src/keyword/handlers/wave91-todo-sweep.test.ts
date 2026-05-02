@@ -182,77 +182,67 @@ describe("Wave 91 — Read-ahead stale-TODO cleanup", () => {
 // numeric literals.
 // -----------------------------------------------------------------------
 
-describe("Wave 91 — Bloodthirst:X variable amount", () => {
-  it("X resolves to max opponent lifeLostThisTurn at trigger-resolve time", () => {
+describe("Wave 91 — Bloodthirst:X variable amount (M6.26 — static replacement)", () => {
+  it("X stamps a variable bloodthirst spec", () => {
     const game = mkGame();
     const sourceId = mkEntityId(9110);
     const source = new Card(sourceId, plainPaper, ALICE, ALICE, ZoneType.Battlefield);
     game.cards.set(sourceId, source);
 
-    // Bob lost 5 life this turn (e.g. damage taken).
-    game.flags.lifeLostThisTurn.set(BOB, 5);
-
     new BloodthirstKeywordHandler().activate(
       { keyword: "bloodthirst", params: { amount: { kind: "literal", raw: "X" } } },
       { game, sourceCardId: sourceId, controllerSeat: ALICE },
     );
-    const ta = source.triggeredAbilities[0];
-    expect(ta).toBeDefined();
-    if (!ta) return;
-    const resolver = (
-      ta as unknown as { resolver: { resolve: (g: Game) => Generator<unknown, void, unknown> } }
-    ).resolver;
-    const gen = resolver.resolve(game);
-    let next = gen.next();
-    while (!next.done) next = gen.next();
-    // X = max(5) = 5 +1/+1 counters.
-    expect(source.counters.get(CounterType.PlusOnePlusOne) ?? 0).toBe(5);
+    // M6.26: Bloodthirst now stamps an `etbCounterSpecs` slot consumed
+    // by `applyEtbStamping`. Verify the slot's shape: variable=true,
+    // condition="bloodthirst", counterType=PlusOnePlusOne. The
+    // condition is checked at apply-time against
+    // `game.flags.lifeLostThisTurn`.
+    const specs = (
+      source as unknown as {
+        etbCounterSpecs?: ReadonlyArray<{
+          readonly counterType: CounterType;
+          readonly amount: number;
+          readonly variable: boolean;
+          readonly condition?: string;
+        }>;
+      }
+    ).etbCounterSpecs;
+    expect(specs).toBeDefined();
+    expect(specs?.length).toBe(1);
+    const spec = specs?.[0];
+    expect(spec?.condition).toBe("bloodthirst");
+    expect(spec?.variable).toBe(true);
+    expect(spec?.counterType).toBe(CounterType.PlusOnePlusOne);
   });
 
-  it("X resolves to 0-no-counters when no opponent took damage (no-op)", () => {
-    const game = mkGame();
-    const sourceId = mkEntityId(9111);
-    const source = new Card(sourceId, plainPaper, ALICE, ALICE, ZoneType.Battlefield);
-    game.cards.set(sourceId, source);
-
-    // No opponent damage this turn.
-    new BloodthirstKeywordHandler().activate(
-      { keyword: "bloodthirst", params: { amount: { kind: "literal", raw: "X" } } },
-      { game, sourceCardId: sourceId, controllerSeat: ALICE },
-    );
-    const ta = source.triggeredAbilities[0];
-    if (!ta) return;
-    const resolver = (
-      ta as unknown as { resolver: { resolve: (g: Game) => Generator<unknown, void, unknown> } }
-    ).resolver;
-    const gen = resolver.resolve(game);
-    let next = gen.next();
-    while (!next.done) next = gen.next();
-    expect(source.counters.get(CounterType.PlusOnePlusOne) ?? 0).toBe(0);
-  });
-
-  it("literal N=3 still resolves to 3 (not damage-max) when opponent was hit", () => {
+  it("literal N=3 stamps a fixed bloodthirst spec with amount=3", () => {
     const game = mkGame();
     const sourceId = mkEntityId(9112);
     const source = new Card(sourceId, plainPaper, ALICE, ALICE, ZoneType.Battlefield);
     game.cards.set(sourceId, source);
 
-    // Bob lost 7 life this turn — but K:Bloodthirst:3 should still grant 3.
+    // Bob lost 7 life this turn — irrelevant for the spec stamp; the
+    // amount is fixed at 3 regardless.
     game.flags.lifeLostThisTurn.set(BOB, 7);
 
     new BloodthirstKeywordHandler().activate(
       { keyword: "bloodthirst", params: { amount: { kind: "literal", raw: "3" } } },
       { game, sourceCardId: sourceId, controllerSeat: ALICE },
     );
-    const ta = source.triggeredAbilities[0];
-    if (!ta) return;
-    const resolver = (
-      ta as unknown as { resolver: { resolve: (g: Game) => Generator<unknown, void, unknown> } }
-    ).resolver;
-    const gen = resolver.resolve(game);
-    let next = gen.next();
-    while (!next.done) next = gen.next();
-    expect(source.counters.get(CounterType.PlusOnePlusOne) ?? 0).toBe(3);
+    const specs = (
+      source as unknown as {
+        etbCounterSpecs?: ReadonlyArray<{
+          readonly amount: number;
+          readonly variable: boolean;
+          readonly condition?: string;
+        }>;
+      }
+    ).etbCounterSpecs;
+    const spec = specs?.[0];
+    expect(spec?.condition).toBe("bloodthirst");
+    expect(spec?.variable).toBe(false);
+    expect(spec?.amount).toBe(3);
   });
 });
 

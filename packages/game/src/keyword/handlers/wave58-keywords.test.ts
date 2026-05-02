@@ -271,7 +271,7 @@ describe("Wave 58 — Backup", () => {
 });
 
 describe("Wave 58 — Tribute", () => {
-  it("activate stamps keyword + 1 ETB trigger + tributeAmount", () => {
+  it("activate stamps keyword + tributeAmount (M6.26 — static replacement)", () => {
     const game = mkGame();
     const id = mkEntityId(5808);
     const card = new Card(id, paper, ALICE, ALICE, ZoneType.Battlefield);
@@ -282,7 +282,10 @@ describe("Wave 58 — Tribute", () => {
     );
     expect(card.keywords?.has("tribute")).toBe(true);
     expect(card.tributeAmount).toBe(2);
-    expect(card.triggeredAbilities?.length).toBe(1);
+    // M6.26: Tribute no longer registers a triggered ability. The
+    // interactive opt-in + counter-place runs through `applyEtbStamping`
+    // → `applyTributeReplacement` (CR 614 replacement).
+    expect(card.triggeredAbilities?.length ?? 0).toBe(0);
   });
 });
 

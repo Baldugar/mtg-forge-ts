@@ -1036,9 +1036,34 @@ function driveMoveTo(ctx: RunnerContext, cardId: EntityId, toZone: ZoneType): vo
       continue;
     }
     if (y.kind === "decision") {
-      const req = y.request as { kind?: string; replacementIds?: number[] };
+      const req = y.request as {
+        kind?: string;
+        replacementIds?: number[];
+        options?: ReadonlyArray<{ id: string }>;
+      };
       if (req.kind === "orderReplacements") {
         step = gen.next({ order: [...(req.replacementIds ?? [])] });
+        continue;
+      }
+      // M6.26 — Tribute (and any future static-replacement) interactive
+      // decisions surface here because they fire inside `applyEtbStamping`
+      // (no cast-pipeline driver). Default-driven responses mirror the
+      // cast-pipeline conventions used elsewhere in the runner:
+      //   - chooseGenericOption → first option (deterministic).
+      //   - confirmAction → "no" (matches the cast-pipeline default;
+      //     keeps optional triggers/replacements out of the trace).
+      //   - choosePlayer → first opponent (Battle protector default).
+      if (req.kind === "chooseGenericOption") {
+        const first = req.options?.[0]?.id;
+        step = gen.next({ kind: "chooseGenericOption", optionId: first ?? null });
+        continue;
+      }
+      if (req.kind === "confirmAction") {
+        step = gen.next({ kind: "confirmAction", confirmed: false });
+        continue;
+      }
+      if (req.kind === "choosePlayer") {
+        step = gen.next({ kind: "choosePlayer", chosen: [] });
         continue;
       }
       throw new Error(`golden runner: unhandled moveTo decision kind '${String(req.kind)}'`);

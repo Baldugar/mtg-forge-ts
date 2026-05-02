@@ -24,7 +24,7 @@ import type {
   TriggeredAbility,
   ZoneType,
 } from "@mtg-forge-ts/core";
-import { isStaticAbilityMode, paperCardKey } from "@mtg-forge-ts/core";
+import { CounterType as CT, isStaticAbilityMode, paperCardKey } from "@mtg-forge-ts/core";
 import { SpellAbility } from "./ability/spell-ability.js";
 import type { CopiableCharacteristics } from "./copy/copiable-characteristics.js";
 import type { Game } from "./game.js";
@@ -35,6 +35,51 @@ import { replacementHandlerRegistry } from "./replacement/index.js";
 import "./static/handlers/index.js";
 import { staticHandlerRegistry } from "./static/static-handler.js";
 import { triggerHandlerRegistry } from "./trigger/index.js";
+
+// M6.26 — counter-type shorthand resolver shared by the printed-trigger
+// static-replacement conversion (`tryConvertEtbCounterTriggerToStaticSpec`).
+// Mirrors the shorthand table in `etb-counter-keyword.ts`. Centralised
+// here so the static-spec conversion stays in `card.ts` (next to
+// `activateTriggersFromDefinition`) without re-importing the keyword
+// handler module (avoids a circular import when keywords depend on Card).
+const COUNTER_SHORTHAND_TRIGGER: Readonly<Record<string, CounterType>> = {
+  P1P1: CT.PlusOnePlusOne,
+  PLUSONEPLUSONE: CT.PlusOnePlusOne,
+  PLUS1PLUS1: CT.PlusOnePlusOne,
+  M1M1: CT.MinusOneMinusOne,
+  MINUSONEMINUSONE: CT.MinusOneMinusOne,
+  MINUS1MINUS1: CT.MinusOneMinusOne,
+  ICE: CT.Ice,
+  FADE: CT.Fade,
+  CHARGE: CT.Charge,
+  LOYALTY: CT.Loyalty,
+  TIME: CT.Time,
+  AGE: CT.Age,
+  STORAGE: CT.Storage,
+  HATCHLING: CT.Hatchling,
+  EGG: CT.Egg,
+  LEVEL: CT.Level,
+  PETAL: CT.Petal,
+  PUPA: CT.Pupa,
+  QUEST: CT.Quest,
+  STUN: CT.Stun,
+  GROWTH: CT.Growth,
+  POISON: CT.Poison,
+  MUSTER: CT.Muster,
+  STORY: CT.Story,
+};
+
+function resolveCounterTypeShorthand(raw: string): CounterType | null {
+  if (raw.length === 0) return null;
+  const upper = raw.toUpperCase();
+  const shorthand = COUNTER_SHORTHAND_TRIGGER[upper];
+  if (shorthand !== undefined) return shorthand;
+  const lower = raw.toLowerCase();
+  for (const v of Object.values(CT)) {
+    if (typeof v === "string" && v === lower) return v;
+  }
+  return null;
+}
 
 export class Card {
   tapped = false;
@@ -738,6 +783,21 @@ export class Card {
     if (!def) return;
     this.triggeredAbilities = [];
     for (const triggerAst of def.triggers as readonly TriggerAst[]) {
+      // M6.26 — Static-replacement conversion for printed
+      // `T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield |
+      // ValidCard$ Card.Self | Execute$ <SVar>` lines whose Execute$ SVar
+      // resolves to a `DB$ PutCounter | Defined$ Self` body. Forge models
+      // these as CR 614.2 replacement-effect application during ETB —
+      // counters are placed silently (no `AbilityActivated` /
+      // `StackItemResolved` fan-out). The TS engine previously registered
+      // them as ChangesZone triggers, which produced a stack-going trigger
+      // observable in the parity trace. Convert them to `etbCounterSpecs`
+      // entries so `applyEtbStamping` places the counters as part of the
+      // replacement-chain run, matching Forge's wire shape exactly.
+      // Covers Hangarback Walker, Walking Ballista, Endless One,
+      // Dark Depths (10-ICE on land ETB), and any other card whose
+      // printed text uses the canonical X-counter ETB recipe.
+      if (this.tryConvertEtbCounterTriggerToStaticSpec(triggerAst)) continue;
       const Cls = triggerHandlerRegistry.lookup(triggerAst.mode);
       if (!Cls) continue; // silently skip unknown modes
       const handler = new Cls();
@@ -751,6 +811,96 @@ export class Card {
       this.triggeredAbilities.push(ta);
       game.triggerRegistry.register(ta);
     }
+  }
+
+  /**
+   * M6.26 — Detect Forge's printed self-ETB-counter pattern
+   *
+   *   T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield
+   *     | ValidCard$ Card.Self | Execute$ <SVar>
+   *   SVar:<SVar>:DB$ PutCounter | CounterType$ <T> | CounterNum$ N|X
+   *                                | Defined$ Self [| References$ X]
+   *   SVar:X:Count$xPaid                    (only for the X-variant)
+   *
+   * and convert it to a static `etbCounterSpecs` entry. Returns `true`
+   * when the trigger AST matched and was consumed (caller must skip
+   * trigger registration); `false` otherwise (caller proceeds normally).
+   *
+   * Forge synthesises the equivalent slot in `forge.game.card.CardFactory`
+   * (the `etbCounter` extension and the printed-trigger fast-path); CR
+   * 614.2 supports both shapes interchangeably ("X enters with N counters
+   * on it" is replacement, regardless of whether the card text spells it
+   * out as a triggered ability or an etbCounter line). The TS engine's
+   * single-yield ETB pipeline benefits from running these as
+   * replacements: no stack pollution, fan-out matches Forge's bridge.
+   */
+  private tryConvertEtbCounterTriggerToStaticSpec(triggerAst: TriggerAst): boolean {
+    if (triggerAst.mode !== "ChangesZone") return false;
+    const params = triggerAst.params;
+    const literalRaw = (k: string): string | undefined => {
+      const pv = params[k];
+      if (!pv || pv.kind !== "literal") return undefined;
+      return pv.raw;
+    };
+    const origin = literalRaw("Origin");
+    const dest = literalRaw("Destination");
+    const valid = literalRaw("ValidCard");
+    if (origin !== "Any" || dest !== "Battlefield" || valid !== "Card.Self") return false;
+
+    // Resolve Execute$ SVar to its body.
+    const executeKey = triggerAst.effect.handlerKey;
+    if (!executeKey) return false;
+    const def = this.paperCard.definition;
+    if (!def) return false;
+    const svars = def.svars as ReadonlyMap<string, SVarAst>;
+    const sv = svars.get(executeKey);
+    if (!sv || sv.kind !== "ability" || !sv.ability) return false;
+    const body = sv.ability;
+    if (body.handlerKey !== "PutCounter") return false;
+    // Must target Self (the source card).
+    const definedRaw = body.params.Defined;
+    if (!definedRaw || definedRaw.kind !== "literal" || definedRaw.raw !== "Self") return false;
+    // Must have CounterType / CounterNum literals.
+    const ctRaw = body.params.CounterType;
+    if (!ctRaw || ctRaw.kind !== "literal") return false;
+    const numRaw = body.params.CounterNum;
+    if (!numRaw || numRaw.kind !== "literal") return false;
+
+    // Determine variability: CounterNum$ X with SVar:X:Count$xPaid →
+    // variable per cast-time X. Otherwise literal integer.
+    let variable = false;
+    let amount = 0;
+    const counterNum = numRaw.raw.trim();
+    if (counterNum.toUpperCase() === "X") {
+      const xSvar = svars.get("X");
+      if (xSvar?.raw && xSvar.raw.trim() === "Count$xPaid") {
+        variable = true;
+      } else {
+        // Unrecognised variable form — fall back to triggered-ability path.
+        return false;
+      }
+    } else {
+      const parsed = Number.parseInt(counterNum, 10);
+      if (!Number.isFinite(parsed) || parsed <= 0) return false;
+      amount = parsed;
+    }
+
+    // Resolve the counter type via the same shorthand map the
+    // EtbCounterKeywordHandler uses (P1P1, M1M1, ICE, etc.).
+    const counterType = resolveCounterTypeShorthand(ctRaw.raw.trim());
+    if (counterType === null) return false;
+
+    const slot = this as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+        readonly condition?: "bloodthirst";
+      }>;
+    };
+    if (!slot.etbCounterSpecs) slot.etbCounterSpecs = [];
+    slot.etbCounterSpecs.push({ counterType, amount, variable });
+    return true;
   }
 
   /**

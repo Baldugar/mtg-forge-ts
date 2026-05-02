@@ -199,7 +199,7 @@ describe("Wave 57 — Melee", () => {
 });
 
 describe("Wave 57 — Bloodthirst", () => {
-  it("activate stamps keyword + 1 ETB trigger", () => {
+  it("activate stamps keyword + an etbCounterSpec (M6.26 — static replacement)", () => {
     const game = mkGame();
     const id = mkEntityId(5707);
     const card = new Card(id, paper, ALICE, ALICE, ZoneType.Battlefield);
@@ -209,7 +209,18 @@ describe("Wave 57 — Bloodthirst", () => {
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
     expect(card.keywords?.has("bloodthirst")).toBe(true);
-    expect(card.triggeredAbilities?.length).toBe(1);
+    // M6.26: Bloodthirst no longer registers a triggered ability. The
+    // counter-place runs through `applyEtbStamping` (CR 614 replacement).
+    const specs = (
+      card as unknown as {
+        etbCounterSpecs?: ReadonlyArray<{ readonly condition?: string; readonly amount: number }>;
+      }
+    ).etbCounterSpecs;
+    expect(specs).toBeDefined();
+    expect(specs?.length).toBe(1);
+    const first = specs?.[0];
+    expect(first?.condition).toBe("bloodthirst");
+    expect(first?.amount).toBe(3);
   });
 });
 
