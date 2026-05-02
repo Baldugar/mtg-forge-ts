@@ -110269,4 +110269,212 @@ Oracle:Whenever another creature enters, you gain 1 life.
       ],
     };
   }),
+
+  // 4521-4555: M6.50 — Lightning Bolt on varied creature targets (burn-then-SBA chain).
+  ...Array.from({ length: 35 }, (_, i): GoldenScenario => {
+    type CreatureSpec = { name: string; pt: string; types: string };
+    const variants: CreatureSpec[] = [
+      { name: "BltM650-A", pt: "1/1", types: "Creature Bear" },
+      { name: "BltM650-B", pt: "2/2", types: "Creature Wolf" },
+      { name: "BltM650-C", pt: "3/3", types: "Creature Elephant" },
+      { name: "BltM650-D", pt: "1/2", types: "Creature Spirit" },
+      { name: "BltM650-E", pt: "2/1", types: "Creature Goblin" },
+      { name: "BltM650-F", pt: "0/3", types: "Creature Wall" },
+      { name: "BltM650-G", pt: "4/4", types: "Creature Dragon" },
+      { name: "BltM650-H", pt: "5/5", types: "Creature Giant" },
+      { name: "BltM650-I", pt: "1/3", types: "Creature Soldier" },
+      { name: "BltM650-J", pt: "3/2", types: "Creature Knight" },
+      { name: "BltM650-K", pt: "2/3", types: "Creature Beast" },
+      { name: "BltM650-L", pt: "1/4", types: "Creature Sphinx" },
+      { name: "BltM650-M", pt: "6/6", types: "Creature Hydra" },
+      { name: "BltM650-N", pt: "1/1", types: "Creature Elf Warrior" },
+      { name: "BltM650-O", pt: "2/4", types: "Creature Treefolk" },
+      { name: "BltM650-P", pt: "3/4", types: "Creature Angel" },
+      { name: "BltM650-Q", pt: "4/3", types: "Creature Demon" },
+      { name: "BltM650-R", pt: "1/5", types: "Creature Ooze" },
+      { name: "BltM650-S", pt: "5/4", types: "Creature Zombie" },
+      { name: "BltM650-T", pt: "2/2", types: "Creature Vampire" },
+      { name: "BltM650-U", pt: "3/3", types: "Creature Skeleton" },
+      { name: "BltM650-V", pt: "1/1", types: "Creature Dwarf" },
+      { name: "BltM650-W", pt: "2/2", types: "Creature Drake" },
+      { name: "BltM650-X", pt: "1/2", types: "Creature Kithkin" },
+      { name: "BltM650-Y", pt: "4/2", types: "Creature Ogre" },
+      { name: "BltM650-Z", pt: "1/1", types: "Creature Faerie" },
+      { name: "BltM650-AA", pt: "3/1", types: "Creature Berserker" },
+      { name: "BltM650-AB", pt: "2/2", types: "Creature Cat" },
+      { name: "BltM650-AC", pt: "1/3", types: "Creature Cleric" },
+      { name: "BltM650-AD", pt: "5/1", types: "Creature Avatar" },
+      { name: "BltM650-AE", pt: "2/3", types: "Creature Druid" },
+      { name: "BltM650-AF", pt: "3/3", types: "Creature Phoenix" },
+      { name: "BltM650-AG", pt: "1/1", types: "Creature Spider" },
+      { name: "BltM650-AH", pt: "4/4", types: "Creature Wurm" },
+      { name: "BltM650-AI", pt: "2/2", types: "Creature Hound" },
+    ];
+    const v = variants[i] ?? variants[0];
+    if (!v) throw new Error("variant undefined");
+    return {
+      id: `bolt-on-creature-${i}-m650`,
+      description: `M6.50 — Lightning Bolt → ${v.name} (${v.pt}) — burn-then-SBA chain.`,
+      seed: 0xd200 + i,
+      cards: {
+        "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+        [v.name]: `Name:${v.name}
+ManaCost:1 G
+Types:${v.types}
+PT:${v.pt}
+Oracle:${v.name} test.
+`,
+      },
+      players: [
+        { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+        { life: 20, hand: [], battlefield: [{ card: v.name }] },
+      ],
+      actions: [
+        {
+          kind: "cast",
+          cardName: "Lightning Bolt",
+          castingPlayer: SEAT0,
+          target: { kind: "card", name: v.name },
+        },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 4556-4585: M6.50 — Soul Warden ETB co-residence with varied other creatures.
+  ...Array.from({ length: 30 }, (_, i): GoldenScenario => {
+    type CreatureSpec = { name: string; src: string; cost: ManaPoolEntry[] };
+    const creatures: CreatureSpec[] = [
+      {
+        name: "Grizzly Bears",
+        src: "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        cost: ["G", "C"],
+      },
+      {
+        name: "Llanowar Elves",
+        src: "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+        cost: ["G"],
+      },
+      {
+        name: "Birds of Paradise",
+        src: "Name:Birds of Paradise\nManaCost:G\nTypes:Creature Bird\nPT:0/1\nK:Flying\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Flying. {T}: Add one mana of any color.\n",
+        cost: ["G"],
+      },
+      {
+        name: "Goblin Guide",
+        src: "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        cost: ["R"],
+      },
+      {
+        name: "Serra Angel",
+        src: "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+        cost: ["W", "W", "C", "C", "C"],
+      },
+      {
+        name: "Angel of Mercy",
+        src: "Name:Angel of Mercy\nManaCost:4 W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain | TriggerDescription$ When this enters, you gain 3 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 3\nOracle:Flying. When Angel of Mercy enters, you gain 3 life.\n",
+        cost: ["W", "C", "C", "C", "C"],
+      },
+    ];
+    const creature = creatures[i % creatures.length];
+    if (!creature) throw new Error("creature undefined");
+    const opCount = Math.floor(i / creatures.length); // 0..4
+    const opBattlefield: { card: string }[] = [];
+    if (opCount >= 1) opBattlefield.push({ card: "Soul Warden" });
+    if (opCount >= 2) opBattlefield.push({ card: "Grizzly Bears" });
+    if (opCount >= 3) opBattlefield.push({ card: "Llanowar Elves" });
+    if (opCount >= 4) opBattlefield.push({ card: "Birds of Paradise" });
+    return {
+      id: `soul-warden-coresid-${creature.name.toLowerCase().replace(/\s+/g, "-")}-${i}-m650`,
+      description: `M6.50 — Soul Warden bf + ${opCount} opp permanents; cast ${creature.name}.`,
+      seed: 0xd230 + i,
+      cards: {
+        "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+        [creature.name]: creature.src,
+        "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        "Llanowar Elves":
+          "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+        "Birds of Paradise":
+          "Name:Birds of Paradise\nManaCost:G\nTypes:Creature Bird\nPT:0/1\nK:Flying\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Flying. {T}: Add one mana of any color.\n",
+      },
+      players: [
+        {
+          life: 20,
+          hand: [creature.name],
+          battlefield: [{ card: "Soul Warden" }],
+          manaPool: creature.cost,
+        },
+        { life: 20, hand: [], battlefield: opBattlefield },
+      ],
+      actions: [
+        { kind: "cast", cardName: creature.name, castingPlayer: SEAT0 },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 4586-4610: M6.50 — Llanowar Elves activated mana ability sequences with varied co-residents.
+  ...Array.from({ length: 25 }, (_, i): GoldenScenario => {
+    type Setup = { resident: string; src: string };
+    const setups: Setup[] = [
+      {
+        resident: "Grizzly Bears",
+        src: "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+      },
+      {
+        resident: "Soul Warden",
+        src: "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+      },
+      {
+        resident: "Glorious Anthem",
+        src: "Name:Glorious Anthem\nManaCost:1 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:Creatures you control get +1/+1.\n",
+      },
+      {
+        resident: "Serra Angel",
+        src: "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+      },
+      {
+        resident: "Sol Ring",
+        src: "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n",
+      },
+    ];
+    const setup = setups[i % setups.length];
+    if (!setup) throw new Error("setup undefined");
+    return {
+      id: `llanowar-tap-coresid-${setup.resident.toLowerCase().replace(/\s+/g, "-")}-${i}-m650`,
+      description: `M6.50 — Llanowar Elves activated mana ability with ${setup.resident} co-resident.`,
+      seed: 0xd260 + i,
+      cards: {
+        "Llanowar Elves": `Name:Llanowar Elves
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+Oracle:{T}: Add {G}.
+`,
+        [setup.resident]: setup.src,
+      },
+      players: [
+        {
+          life: 20,
+          hand: [],
+          battlefield: [{ card: "Llanowar Elves" }, { card: setup.resident }],
+        },
+        { life: 20, hand: [], battlefield: [] },
+      ],
+      actions: [{ kind: "activate", sourceCardName: "Llanowar Elves", activatingPlayer: SEAT0 }],
+    };
+  }),
 ];

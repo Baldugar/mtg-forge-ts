@@ -1,0 +1,44 @@
+{
+  "id": "bolt-on-creature-9-m650",
+  "description": "M6.50 — Lightning Bolt → BltM650-J (3/2) — burn-then-SBA chain.",
+  "seed": 53769,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "BltM650-J": "Name:BltM650-J\nManaCost:1 G\nTypes:Creature Knight\nPT:3/2\nOracle:BltM650-J test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "BltM650-J"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "BltM650-J"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
