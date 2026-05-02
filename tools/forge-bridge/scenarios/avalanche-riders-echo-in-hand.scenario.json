@@ -1,0 +1,22 @@
+{
+  "id": "avalanche-riders-echo-in-hand",
+  "description": "Avalanche Riders in hand; echo upkeep parse.",
+  "seed": 590,
+  "cards": {
+    "Avalanche Riders": "Name:Avalanche Riders\nManaCost:2 R R\nTypes:Creature Human Nomad\nPT:2/2\nK:Echo:2 R R\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Destroy land on ETB.\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Land\nOracle:Avalanche Riders parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Avalanche Riders"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

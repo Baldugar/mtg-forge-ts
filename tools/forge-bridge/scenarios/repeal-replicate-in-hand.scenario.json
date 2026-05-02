@@ -1,0 +1,22 @@
+{
+  "id": "repeal-replicate-in-hand",
+  "description": "Repeal in hand; replicate bounce parse.",
+  "seed": 572,
+  "cards": {
+    "Repeal": "Name:Repeal\nManaCost:X U\nTypes:Instant\nA:SP$ ChangeZone | Cost$ X U | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent.nonLand+cmcLEX | SubAbility$ DBDraw | SpellDescription$ Repeal.\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nK:Replicate:X U\nOracle:Repeal parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Repeal"],
+      "battlefield": [],
+      "manaPool": ["U", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

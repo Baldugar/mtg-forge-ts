@@ -1,0 +1,22 @@
+{
+  "id": "akroan-crusader-heroic-in-hand",
+  "description": "Akroan Crusader in hand; heroic token parse.",
+  "seed": 673,
+  "cards": {
+    "Akroan Crusader": "Name:Akroan Crusader\nManaCost:R\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ SpellCast | TargetsValid$ Card.Self | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerDescription$ Heroic.\nSVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ r_1_1_soldier_haste\nOracle:Akroan Crusader parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Akroan Crusader"],
+      "battlefield": [],
+      "manaPool": ["R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

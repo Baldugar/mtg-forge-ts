@@ -10480,4 +10480,3346 @@ Oracle:Lightning Helix parse.
     ],
     actions: [],
   },
+
+  // ── M6.12: 150 new scenarios across priority mechanic gaps ───────────────
+
+  // 453. Saga — Phyrexian Scriptures in hand.
+  {
+    id: "phyrexian-scriptures-in-hand",
+    description: "Phyrexian Scriptures in hand; saga chapter parse.",
+    seed: 0x20c,
+    cards: {
+      "Phyrexian Scriptures": `Name:Phyrexian Scriptures
+ManaCost:2 B
+Types:Enchantment Saga
+K:Chapter:3:DBCounter,DBDestroy,DBExile
+SVar:DBCounter:DB$ PutCounter | CounterType$ M1M1 | CounterNum$ 1 | ValidTgts$ Creature
+SVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.nonArtifact
+SVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Exile
+Oracle:Phyrexian Scriptures saga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phyrexian Scriptures"], battlefield: [], manaPool: ["B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 454. Saga — The Mending of Dominaria in hand.
+  {
+    id: "mending-of-dominaria-in-hand",
+    description: "The Mending of Dominaria in hand; saga 4-chapter parse.",
+    seed: 0x20d,
+    cards: {
+      "The Mending of Dominaria": `Name:The Mending of Dominaria
+ManaCost:3 G G
+Types:Enchantment Saga
+K:Chapter:3:DBMill,DBReturn,DBLastChapter
+SVar:DBMill:DB$ Mill | NumCards$ 4
+SVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouOwn
+SVar:DBLastChapter:DB$ ChangeZoneAll | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBToken
+SVar:DBToken:DB$ Token | TokenAmount$ 1 | TokenScript$ b_2_2_zombie
+Oracle:Mending of Dominaria parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["The Mending of Dominaria"], battlefield: [], manaPool: ["G", "G", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 455. Saga — The Eldest Reborn in hand.
+  {
+    id: "eldest-reborn-in-hand",
+    description: "The Eldest Reborn in hand; saga discard-destroy-recur parse.",
+    seed: 0x20e,
+    cards: {
+      "The Eldest Reborn": `Name:The Eldest Reborn
+ManaCost:4 B
+Types:Enchantment Saga
+K:Chapter:3:DBDiscard,DBSacrifice,DBReturn
+SVar:DBDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose | Defined$ Player.Opponent
+SVar:DBSacrifice:DB$ Sacrifice | SacValid$ Creature,Planeswalker | Defined$ Player.Opponent
+SVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature
+Oracle:Eldest Reborn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["The Eldest Reborn"], battlefield: [], manaPool: ["B", "C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 456. Suspend — Rift Bolt in hand.
+  {
+    id: "rift-bolt-suspend-in-hand",
+    description: "Rift Bolt in hand; suspend 1 R parse.",
+    seed: 0x20f,
+    cards: {
+      "Rift Bolt": `Name:Rift Bolt
+ManaCost:2 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 2 R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ Bolt.
+K:Suspend:1:R
+Oracle:Rift Bolt parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rift Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 457. Suspend — Search for Tomorrow in hand.
+  {
+    id: "search-for-tomorrow-suspend-in-hand",
+    description: "Search for Tomorrow in hand; suspend 2 G parse.",
+    seed: 0x210,
+    cards: {
+      "Search for Tomorrow": `Name:Search for Tomorrow
+ManaCost:2 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 2 G | Origin$ Library | Destination$ Battlefield | ChangeType$ BasicLand | SpellDescription$ Search.
+K:Suspend:2:G
+Oracle:Search for Tomorrow parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Search for Tomorrow"], battlefield: [], manaPool: ["G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 458. Suspend — Ancestral Vision in hand.
+  {
+    id: "ancestral-vision-suspend-in-hand",
+    description: "Ancestral Vision in hand; suspend 4 U parse.",
+    seed: 0x211,
+    cards: {
+      "Ancestral Vision": `Name:Ancestral Vision
+ManaCost:no cost
+Types:Sorcery
+A:SP$ Draw | Cost$ 0 | NumCards$ 4 | SpellDescription$ Vision.
+K:Suspend:4:U
+Oracle:Ancestral Vision parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ancestral Vision"], battlefield: [], manaPool: ["U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 459. Class — Bard Class in hand.
+  {
+    id: "bard-class-in-hand",
+    description: "Bard Class in hand; multi-level class parse.",
+    seed: 0x212,
+    cards: {
+      "Bard Class": `Name:Bard Class
+ManaCost:1 R G
+Types:Enchantment Class Bard
+K:ClassLevel:1:1 R G
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ ETB token.
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ rg_1_1_human_bard
+K:ClassLevel:2:1 R G
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ +1/+1.
+K:ClassLevel:3:3 R G
+T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigDamage | TriggerDescription$ Burn.
+SVar:TrigDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:Bard Class parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bard Class"], battlefield: [], manaPool: ["R", "G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 460. Class — Warlock Class in hand.
+  {
+    id: "warlock-class-in-hand",
+    description: "Warlock Class in hand; level-up chain parse.",
+    seed: 0x213,
+    cards: {
+      "Warlock Class": `Name:Warlock Class
+ManaCost:1 B
+Types:Enchantment Class Warlock
+K:ClassLevel:1:1 B
+R:Event$ Moved | ValidCard$ Card.YouOwn | Destination$ Graveyard | ReplaceWith$ DBLife | Description$ Drain.
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ Player.Opponent
+K:ClassLevel:2:2 B B
+T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigDrain | TriggerDescription$ Drain end of turn.
+SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 2 | Defined$ Player.Opponent
+K:ClassLevel:3:3 B B
+S:Mode$ Continuous | Affected$ You | LifeTotalAdjust$ 5 | Description$ +5 life.
+Oracle:Warlock Class parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Warlock Class"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 461. Storm — Grapeshot in hand.
+  {
+    id: "grapeshot-storm-in-hand",
+    description: "Grapeshot in hand; storm copy-on-cast parse.",
+    seed: 0x214,
+    cards: {
+      Grapeshot: `Name:Grapeshot
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 1 | ValidTgts$ Any | SpellDescription$ Grapeshot.
+K:Storm
+Oracle:Grapeshot parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grapeshot"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 462. Storm — Tendrils of Agony in hand.
+  {
+    id: "tendrils-of-agony-in-hand-m612",
+    description: "Tendrils of Agony in hand; storm drain parse.",
+    seed: 0x215,
+    cards: {
+      "Tendrils of Agony": `Name:Tendrils of Agony
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ LoseLife | Cost$ 2 B B | LifeAmount$ 2 | Defined$ Player.Opponent | SubAbility$ DBLife | SpellDescription$ Tendrils.
+SVar:DBLife:DB$ GainLife | LifeAmount$ 2
+K:Storm
+Oracle:Tendrils parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tendrils of Agony"], battlefield: [], manaPool: ["B", "B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 463. Storm — Empty the Warrens in hand.
+  {
+    id: "empty-the-warrens-in-hand-m612",
+    description: "Empty the Warrens in hand; storm goblin token parse.",
+    seed: 0x216,
+    cards: {
+      "Empty the Warrens": `Name:Empty the Warrens
+ManaCost:3 R
+Types:Sorcery
+A:SP$ Token | Cost$ 3 R | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | SpellDescription$ Warrens.
+K:Storm
+Oracle:Empty the Warrens parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empty the Warrens"], battlefield: [], manaPool: ["R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 464. Cipher — Hidden Strings in hand.
+  {
+    id: "hidden-strings-cipher-in-hand",
+    description: "Hidden Strings in hand; cipher untap-twice parse.",
+    seed: 0x217,
+    cards: {
+      "Hidden Strings": `Name:Hidden Strings
+ManaCost:U U
+Types:Sorcery
+A:SP$ Untap | Cost$ U U | TargetType$ Card | ValidTgts$ Permanent | TgtPrompt$ Untap two | TargetMin$ 1 | TargetMax$ 2 | SpellDescription$ Strings.
+K:Cipher
+Oracle:Hidden Strings parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hidden Strings"], battlefield: [], manaPool: ["U", "U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 465. Cipher — Whispering Madness in hand.
+  {
+    id: "whispering-madness-cipher-in-hand",
+    description: "Whispering Madness in hand; cipher discard-and-draw parse.",
+    seed: 0x218,
+    cards: {
+      "Whispering Madness": `Name:Whispering Madness
+ManaCost:2 U B
+Types:Sorcery
+A:SP$ DiscardAll | Cost$ 2 U B | Defined$ Player | NumCards$ All | SubAbility$ DBDraw | SpellDescription$ Madness.
+SVar:DBDraw:DB$ DrawAll | NumCards$ Hand
+K:Cipher
+Oracle:Whispering Madness parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Whispering Madness"], battlefield: [], manaPool: ["U", "B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 466. Cascade — Maelstrom Wanderer in hand.
+  {
+    id: "maelstrom-wanderer-cascade-in-hand",
+    description: "Maelstrom Wanderer in hand; double cascade parse.",
+    seed: 0x219,
+    cards: {
+      "Maelstrom Wanderer": `Name:Maelstrom Wanderer
+ManaCost:5 U R G
+Types:Legendary Creature Elemental
+PT:7/5
+K:Haste
+K:Cascade
+K:Cascade
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Haste.
+Oracle:Maelstrom Wanderer parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Maelstrom Wanderer"],
+        battlefield: [],
+        manaPool: ["U", "R", "G", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 467. Cascade — Shardless Agent in hand.
+  {
+    id: "shardless-agent-cascade-in-hand",
+    description: "Shardless Agent in hand; cascade ETB creature parse.",
+    seed: 0x21a,
+    cards: {
+      "Shardless Agent": `Name:Shardless Agent
+ManaCost:G U
+Types:Artifact Creature Human Rogue
+PT:2/2
+K:Cascade
+Oracle:Shardless Agent parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shardless Agent"], battlefield: [], manaPool: ["G", "U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 468. Cascade — Bituminous Blast in hand.
+  {
+    id: "bituminous-blast-cascade-in-hand",
+    description: "Bituminous Blast in hand; cascade burn parse.",
+    seed: 0x21b,
+    cards: {
+      "Bituminous Blast": `Name:Bituminous Blast
+ManaCost:3 B R
+Types:Instant
+A:SP$ DealDamage | Cost$ 3 B R | NumDmg$ 4 | ValidTgts$ Creature | SpellDescription$ Blast.
+K:Cascade
+Oracle:Bituminous Blast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bituminous Blast"], battlefield: [], manaPool: ["B", "R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 469. Mutate — Brokkos, Apex of Forever in hand.
+  {
+    id: "brokkos-mutate-in-hand",
+    description: "Brokkos in hand; mutate cost parse.",
+    seed: 0x21c,
+    cards: {
+      "Brokkos, Apex of Forever": `Name:Brokkos, Apex of Forever
+ManaCost:2 G U B
+Types:Legendary Creature Elemental Beast
+PT:6/6
+K:Trample
+K:Mutate:2 G/U U/B B/G
+A:AB$ ChangeZone | Cost$ 1 G U B | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | SpellDescription$ Mutate from graveyard.
+Oracle:Brokkos parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brokkos, Apex of Forever"], battlefield: [], manaPool: ["G", "U", "B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 470. Mutate — Sea-Dasher Octopus in hand.
+  {
+    id: "sea-dasher-octopus-mutate-in-hand",
+    description: "Sea-Dasher Octopus in hand; flash mutate parse.",
+    seed: 0x21d,
+    cards: {
+      "Sea-Dasher Octopus": `Name:Sea-Dasher Octopus
+ManaCost:1 U
+Types:Creature Octopus
+PT:1/1
+K:Flash
+K:Mutate:G U
+T:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Draw on combat damage.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Sea-Dasher Octopus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sea-Dasher Octopus"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 471. Battle — Invasion of Tarkir in hand.
+  {
+    id: "invasion-of-tarkir-in-hand",
+    description: "Invasion of Tarkir in hand; battle siege parse.",
+    seed: 0x21e,
+    cards: {
+      "Invasion of Tarkir": `Name:Invasion of Tarkir
+ManaCost:5 R R
+Types:Battle Siege
+Defense:5
+A:SP$ DealDamage | Cost$ 5 R R | NumDmg$ 4 | ValidTgts$ Any | TargetMin$ 1 | TargetMax$ 3 | DivideOnResolution$ True | SpellDescription$ Tarkir.
+Oracle:Invasion of Tarkir parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Invasion of Tarkir"],
+        battlefield: [],
+        manaPool: ["R", "R", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 472. Battle — Invasion of Ikoria in hand.
+  {
+    id: "invasion-of-ikoria-in-hand-m612",
+    description: "Invasion of Ikoria in hand; battle search parse.",
+    seed: 0x21f,
+    cards: {
+      "Invasion of Ikoria": `Name:Invasion of Ikoria
+ManaCost:1 G
+Types:Battle Siege
+Defense:3
+A:SP$ ChangeZone | Cost$ 1 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLE2 | SpellDescription$ Ikoria.
+Oracle:Invasion of Ikoria parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion of Ikoria"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 473. Werewolf — Reckless Waif in hand.
+  {
+    id: "reckless-waif-in-hand",
+    description: "Reckless Waif in hand; werewolf day-night parse.",
+    seed: 0x220,
+    cards: {
+      "Reckless Waif": `Name:Reckless Waif
+ManaCost:R
+Types:Creature Human Werewolf
+PT:1/1
+K:Daybound
+Oracle:Reckless Waif parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reckless Waif"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 474. Werewolf — Tovolar's Huntmaster in hand.
+  {
+    id: "tovolars-huntmaster-in-hand",
+    description: "Tovolar's Huntmaster in hand; nightbound werewolf parse.",
+    seed: 0x221,
+    cards: {
+      "Tovolar's Huntmaster": `Name:Tovolar's Huntmaster
+ManaCost:5 G G
+Types:Creature Werewolf
+PT:6/6
+K:Nightbound
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Two wolves on ETB.
+SVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_2_2_wolf
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigUpkeep | TriggerDescription$ Wolf each upkeep.
+SVar:TrigUpkeep:DB$ Token | TokenAmount$ 1 | TokenScript$ g_2_2_wolf
+Oracle:Tovolar's Huntmaster parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Tovolar's Huntmaster"],
+        battlefield: [],
+        manaPool: ["G", "G", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 475. Investigate — Tireless Tracker (variant) in hand.
+  {
+    id: "tireless-tracker-investigate-in-hand",
+    description: "Tireless Tracker in hand; investigate trigger parse.",
+    seed: 0x222,
+    cards: {
+      "Tireless Tracker M612": `Name:Tireless Tracker M612
+ManaCost:2 G
+Types:Creature Human Scout
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigInvestigate | TriggerDescription$ Investigate on land ETB.
+SVar:TrigInvestigate:DB$ Investigate
+Oracle:Tireless Tracker M612 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tireless Tracker M612"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 476. Treasure — Dockside Extortionist in hand.
+  {
+    id: "dockside-extortionist-in-hand",
+    description: "Dockside Extortionist in hand; treasure ETB parse.",
+    seed: 0x223,
+    cards: {
+      "Dockside Extortionist": `Name:Dockside Extortionist
+ManaCost:1 R
+Types:Creature Goblin Pirate
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Treasure tokens equal to opp artifacts.
+SVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac
+SVar:X:Count$ValidPermanent.OppCtrl+Artifact
+Oracle:Dockside Extortionist parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dockside Extortionist"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 477. Food — Gilded Goose in hand.
+  {
+    id: "gilded-goose-food-in-hand",
+    description: "Gilded Goose in hand; food token parse.",
+    seed: 0x224,
+    cards: {
+      "Gilded Goose": `Name:Gilded Goose
+ManaCost:G
+Types:Creature Bird
+PT:0/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ Food on ETB.
+SVar:TrigFood:DB$ Token | TokenAmount$ 1 | TokenScript$ c_a_food_sac
+A:AB$ Mana | Cost$ T | Produced$ Any | ActivationLimit$ 1 | SpellDescription$ Add any.
+Oracle:Gilded Goose parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gilded Goose"], battlefield: [], manaPool: ["G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 478. Energy — Aetherworks Marvel in hand.
+  {
+    id: "aetherworks-marvel-in-hand-m612",
+    description: "Aetherworks Marvel in hand; energy counters parse.",
+    seed: 0x225,
+    cards: {
+      "Aetherworks Marvel": `Name:Aetherworks Marvel
+ManaCost:4
+Types:Legendary Artifact
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigEnergy | TriggerDescription$ Energy on permanent dies.
+SVar:TrigEnergy:DB$ PutCounter | CounterType$ ENERGY | CounterNum$ 1 | Defined$ You
+A:AB$ Dig | Cost$ T PayCounter<6/ENERGY> | DigNum$ 6 | ChangeNum$ 1 | DestinationZone$ Battlefield | SpellDescription$ Marvel.
+Oracle:Aetherworks Marvel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aetherworks Marvel"], battlefield: [], manaPool: ["C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 479. Plot — The Sweep of Seasons in hand.
+  {
+    id: "sweep-of-seasons-plot-in-hand",
+    description: "The Sweep of Seasons in hand; plot two-turn parse.",
+    seed: 0x226,
+    cards: {
+      "The Sweep of Seasons": `Name:The Sweep of Seasons
+ManaCost:3 G
+Types:Sorcery
+A:SP$ Token | Cost$ 3 G | TokenAmount$ 3 | TokenScript$ g_2_2_wolf | SpellDescription$ Sweep.
+K:Plot:1 G
+Oracle:Sweep of Seasons parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["The Sweep of Seasons"], battlefield: [], manaPool: ["G", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 480. Plot — Outcaster Trailblazer in hand.
+  {
+    id: "outcaster-trailblazer-plot-in-hand",
+    description: "Outcaster Trailblazer in hand; plot creature parse.",
+    seed: 0x227,
+    cards: {
+      "Outcaster Trailblazer": `Name:Outcaster Trailblazer
+ManaCost:2 G
+Types:Creature Centaur Scout
+PT:3/3
+K:Plot:1 G
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Draw on ETB.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Outcaster Trailblazer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Outcaster Trailblazer"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 481. Adventure — Murderous Rider in hand.
+  {
+    id: "murderous-rider-adventure-in-hand",
+    description: "Murderous Rider in hand; adventure half parse.",
+    seed: 0x228,
+    cards: {
+      "Murderous Rider": `Name:Murderous Rider
+ManaCost:1 B B
+Types:Creature Zombie Knight
+PT:2/3
+K:Lifelink
+AlternateMode:Adventure
+Oracle:Murderous Rider parse.
+
+ALTERNATE
+
+Name:Swift End
+ManaCost:1 B B
+Types:Instant Adventure
+A:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature,Planeswalker | SubAbility$ DBLife | SpellDescription$ End.
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 2
+Oracle:Swift End parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murderous Rider"], battlefield: [], manaPool: ["B", "B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 482. Adventure — Brazen Borrower in hand.
+  {
+    id: "brazen-borrower-adventure-in-hand",
+    description: "Brazen Borrower in hand; flash creature adventure parse.",
+    seed: 0x229,
+    cards: {
+      "Brazen Borrower": `Name:Brazen Borrower
+ManaCost:1 U U
+Types:Creature Faerie Rogue
+PT:3/1
+K:Flash
+K:Flying
+AlternateMode:Adventure
+Oracle:Brazen Borrower parse.
+
+ALTERNATE
+
+Name:Petty Theft
+ManaCost:1 U
+Types:Instant Adventure
+A:SP$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent.nonLand+OppCtrl | SpellDescription$ Theft.
+Oracle:Petty Theft parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brazen Borrower"], battlefield: [], manaPool: ["U", "U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 483. Banding — Sun Quan, Lord of Wu in hand.
+  {
+    id: "sun-quan-lord-of-wu-in-hand",
+    description: "Sun Quan, Lord of Wu in hand; banding grant parse.",
+    seed: 0x22a,
+    cards: {
+      "Sun Quan, Lord of Wu": `Name:Sun Quan, Lord of Wu
+ManaCost:3 U U
+Types:Legendary Creature Human Soldier
+PT:3/4
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Islandwalk | Description$ Islandwalk.
+K:Banding
+Oracle:Sun Quan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sun Quan, Lord of Wu"], battlefield: [], manaPool: ["U", "U", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 484. Banding — Mesa Pegasus in hand.
+  {
+    id: "mesa-pegasus-banding-in-hand",
+    description: "Mesa Pegasus in hand; banding small flier parse.",
+    seed: 0x22b,
+    cards: {
+      "Mesa Pegasus": `Name:Mesa Pegasus
+ManaCost:1 W
+Types:Creature Pegasus
+PT:1/1
+K:Flying
+K:Banding
+Oracle:Mesa Pegasus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mesa Pegasus"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 485. Bestow — Hopeful Eidolon in hand.
+  {
+    id: "hopeful-eidolon-bestow-in-hand",
+    description: "Hopeful Eidolon in hand; bestow aura/creature parse.",
+    seed: 0x22c,
+    cards: {
+      "Hopeful Eidolon": `Name:Hopeful Eidolon
+ManaCost:W
+Types:Enchantment Creature Spirit
+PT:1/1
+K:Lifelink
+K:Bestow:3 W
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Lifelink | Description$ Bestow grants.
+Oracle:Hopeful Eidolon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hopeful Eidolon"], battlefield: [], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 486. Bestow — Boon Satyr in hand.
+  {
+    id: "boon-satyr-bestow-in-hand",
+    description: "Boon Satyr in hand; flash bestow parse.",
+    seed: 0x22d,
+    cards: {
+      "Boon Satyr": `Name:Boon Satyr
+ManaCost:1 G G
+Types:Enchantment Creature Satyr
+PT:4/2
+K:Flash
+K:Bestow:1 G G G
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 4 | AddToughness$ 2 | Description$ +4/+2.
+Oracle:Boon Satyr parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boon Satyr"], battlefield: [], manaPool: ["G", "G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 487. Soulbond — Wingcrafter in hand.
+  {
+    id: "wingcrafter-soulbond-in-hand",
+    description: "Wingcrafter in hand; soulbond grant flying parse.",
+    seed: 0x22e,
+    cards: {
+      Wingcrafter: `Name:Wingcrafter
+ManaCost:U
+Types:Creature Human Wizard
+PT:1/1
+K:Soulbond
+S:Mode$ Continuous | Affected$ Creature.PairedWith Card.Self | AddKeyword$ Flying | Description$ Pair grants flying.
+Oracle:Wingcrafter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wingcrafter"], battlefield: [], manaPool: ["U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 488. Soulbond — Silverblade Paladin in hand.
+  {
+    id: "silverblade-paladin-soulbond-in-hand",
+    description: "Silverblade Paladin in hand; soulbond grant double strike parse.",
+    seed: 0x22f,
+    cards: {
+      "Silverblade Paladin": `Name:Silverblade Paladin
+ManaCost:1 W W
+Types:Creature Human Knight
+PT:2/2
+K:Double Strike
+K:Soulbond
+S:Mode$ Continuous | Affected$ Creature.PairedWith Card.Self | AddKeyword$ Double Strike | Description$ Pair grants ds.
+Oracle:Silverblade Paladin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Silverblade Paladin"], battlefield: [], manaPool: ["W", "W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 489. Persist — Murderous Redcap in hand.
+  {
+    id: "murderous-redcap-persist-in-hand",
+    description: "Murderous Redcap in hand; persist ETB damage parse.",
+    seed: 0x230,
+    cards: {
+      "Murderous Redcap": `Name:Murderous Redcap
+ManaCost:2 B R
+Types:Creature Goblin Assassin
+PT:2/2
+K:Persist
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ ETB damage.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Any
+Oracle:Murderous Redcap parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murderous Redcap"], battlefield: [], manaPool: ["B", "R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 490. Undying — Strangleroot Geist (variant) in hand.
+  {
+    id: "strangleroot-geist-m612-in-hand",
+    description: "Strangleroot Geist M612 in hand; undying haste parse.",
+    seed: 0x231,
+    cards: {
+      "Strangleroot Geist M612": `Name:Strangleroot Geist M612
+ManaCost:G G
+Types:Creature Spirit
+PT:2/1
+K:Haste
+K:Undying
+Oracle:Strangleroot Geist M612 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Strangleroot Geist M612"], battlefield: [], manaPool: ["G", "G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 491. Embalm — Anointed Procession beneficiary in hand.
+  {
+    id: "angel-of-sanctions-embalm-in-hand",
+    description: "Angel of Sanctions in hand; embalm exile parse.",
+    seed: 0x232,
+    cards: {
+      "Angel of Sanctions": `Name:Angel of Sanctions
+ManaCost:3 W W
+Types:Creature Angel
+PT:3/4
+K:Flying
+K:Embalm:5 W W
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Exile target.
+SVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Permanent.nonLand+OppCtrl
+Oracle:Angel of Sanctions parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Angel of Sanctions"], battlefield: [], manaPool: ["W", "W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 492. Eternalize — God-Pharaoh's Gift in hand.
+  {
+    id: "god-pharaohs-gift-in-hand",
+    description: "God-Pharaoh's Gift in hand; eternalize-on-trigger parse.",
+    seed: 0x233,
+    cards: {
+      "God-Pharaoh's Gift": `Name:God-Pharaoh's Gift
+ManaCost:7
+Types:Artifact
+T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigChange | TriggerDescription$ Return + zombify.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouOwn | RememberChanged$ True | SubAbility$ DBPump
+SVar:DBPump:DB$ Animate | Defined$ Remembered | Power$ 4 | Toughness$ 4 | Types$ Zombie
+Oracle:God-Pharaoh's Gift parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["God-Pharaoh's Gift"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 493. Splice — Goryo's Vengeance in hand.
+  {
+    id: "goryos-vengeance-splice-in-hand",
+    description: "Goryo's Vengeance in hand; splice arcane parse.",
+    seed: 0x234,
+    cards: {
+      "Goryo's Vengeance": `Name:Goryo's Vengeance
+ManaCost:1 B
+Types:Instant Arcane
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.Legendary | SpellDescription$ Goryo.
+K:Splice:Arcane:1 B
+Oracle:Goryo's Vengeance parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goryo's Vengeance"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 494. Outlast — Ainok Bond-Kin in hand.
+  {
+    id: "ainok-bond-kin-outlast-in-hand",
+    description: "Ainok Bond-Kin in hand; outlast +1/+1 parse.",
+    seed: 0x235,
+    cards: {
+      "Ainok Bond-Kin": `Name:Ainok Bond-Kin
+ManaCost:1 W
+Types:Creature Hound Soldier
+PT:2/2
+K:Outlast:W
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ First Strike | Description$ FS for +1/+1 creatures.
+Oracle:Ainok Bond-Kin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ainok Bond-Kin"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 495. Mentor — Aven Mindcensor (variant) in hand.
+  {
+    id: "tajic-blade-of-the-legion-mentor-in-hand",
+    description: "Tajic, Blade of the Legion in hand; mentor parse.",
+    seed: 0x236,
+    cards: {
+      "Tajic, Blade of the Legion": `Name:Tajic, Blade of the Legion
+ManaCost:2 R W
+Types:Legendary Creature Human Soldier
+PT:3/3
+K:Mentor
+K:Haste
+Oracle:Tajic parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tajic, Blade of the Legion"], battlefield: [], manaPool: ["R", "W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 496. Provoke — Krosan Vorine in hand.
+  {
+    id: "krosan-vorine-provoke-in-hand",
+    description: "Krosan Vorine in hand; provoke parse.",
+    seed: 0x237,
+    cards: {
+      "Krosan Vorine": `Name:Krosan Vorine
+ManaCost:3 G
+Types:Creature Cat Beast
+PT:2/2
+K:Provoke
+K:First Strike
+Oracle:Krosan Vorine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krosan Vorine"], battlefield: [], manaPool: ["G", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 497. Strive — Aurelia's Fury in hand.
+  {
+    id: "aurelias-fury-strive-in-hand",
+    description: "Aurelia's Fury in hand; strive multi-target X parse.",
+    seed: 0x238,
+    cards: {
+      "Aurelia's Fury": `Name:Aurelia's Fury
+ManaCost:X R W
+Types:Instant
+A:SP$ DealDamage | Cost$ X R W | NumDmg$ X | TargetMin$ 1 | TargetMax$ 99 | ValidTgts$ Creature,Player | SpellDescription$ Fury.
+SVar:X:Count$xPaid
+K:Strive:1
+Oracle:Aurelia's Fury parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aurelia's Fury"], battlefield: [], manaPool: ["R", "W", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 498. Strive — Phytoburst in hand.
+  {
+    id: "phytoburst-strive-in-hand",
+    description: "Phytoburst in hand; strive pump parse.",
+    seed: 0x239,
+    cards: {
+      Phytoburst: `Name:Phytoburst
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | NumAtt$ 5 | NumDef$ 5 | TargetType$ Card | ValidTgts$ Creature | TargetMin$ 1 | TargetMax$ 99 | SpellDescription$ Phytoburst.
+K:Strive:2 G
+Oracle:Phytoburst parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phytoburst"], battlefield: [], manaPool: ["G", "G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 499. Channel — Boseiju, Who Endures in hand.
+  {
+    id: "boseiju-who-endures-channel-in-hand",
+    description: "Boseiju, Who Endures in hand; channel destroy parse.",
+    seed: 0x23a,
+    cards: {
+      "Boseiju, Who Endures": `Name:Boseiju, Who Endures
+ManaCost:no cost
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add G.
+A:AB$ Destroy | Cost$ 1 G ChannelDiscard | TargetType$ Card | ValidTgts$ Land,Artifact,Enchantment.nonLegendary | SpellDescription$ Channel.
+K:Channel
+Oracle:Boseiju parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boseiju, Who Endures"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 500. Channel — Otawara, Soaring City in hand.
+  {
+    id: "otawara-soaring-city-channel-in-hand",
+    description: "Otawara, Soaring City in hand; channel bounce parse.",
+    seed: 0x23b,
+    cards: {
+      "Otawara, Soaring City": `Name:Otawara, Soaring City
+ManaCost:no cost
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add U.
+A:AB$ ChangeZone | Cost$ 2 U ChannelDiscard | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent.nonLand | SpellDescription$ Channel.
+K:Channel
+Oracle:Otawara parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Otawara, Soaring City"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 501. Replicate — Repeal in hand.
+  {
+    id: "repeal-replicate-in-hand",
+    description: "Repeal in hand; replicate bounce parse.",
+    seed: 0x23c,
+    cards: {
+      Repeal: `Name:Repeal
+ManaCost:X U
+Types:Instant
+A:SP$ ChangeZone | Cost$ X U | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent.nonLand+cmcLEX | SubAbility$ DBDraw | SpellDescription$ Repeal.
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+K:Replicate:X U
+Oracle:Repeal parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Repeal"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 502. Ninjutsu — Ingenious Infiltrator in hand.
+  {
+    id: "ingenious-infiltrator-ninjutsu-in-hand",
+    description: "Ingenious Infiltrator in hand; ninjutsu reveal-swap parse.",
+    seed: 0x23d,
+    cards: {
+      "Ingenious Infiltrator": `Name:Ingenious Infiltrator
+ManaCost:1 U B
+Types:Creature Human Ninja
+PT:2/3
+K:Ninjutsu:1 U B
+T:Mode$ DamageDoneOnce | ValidSource$ Ninja.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Ninja damage draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Ingenious Infiltrator parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ingenious Infiltrator"], battlefield: [], manaPool: ["U", "B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 503. Hideaway — Mosswort Bridge in hand.
+  {
+    id: "mosswort-bridge-hideaway-in-hand",
+    description: "Mosswort Bridge in hand; hideaway exile-conditional parse.",
+    seed: 0x23e,
+    cards: {
+      "Mosswort Bridge": `Name:Mosswort Bridge
+ManaCost:no cost
+Types:Land
+K:CARDNAME enters tapped.
+K:Hideaway
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add G.
+A:AB$ Effect | Cost$ G T | ConditionPresent$ Creature.YouCtrl+powerGE10 | StaticAbilities$ HiddenCast | SpellDescription$ Cast hidden.
+SVar:HiddenCast:Mode$ Continuous | EffectZone$ Command | AddPlayUntil$ ExiledMosswort | Description$ Cast.
+Oracle:Mosswort Bridge parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mosswort Bridge"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 504. Sunburst — Etched Oracle in hand.
+  {
+    id: "etched-oracle-sunburst-in-hand",
+    description: "Etched Oracle in hand; sunburst counters parse.",
+    seed: 0x23f,
+    cards: {
+      "Etched Oracle": `Name:Etched Oracle
+ManaCost:4
+Types:Artifact Creature Human Wizard
+PT:0/0
+K:Sunburst
+A:AB$ Draw | Cost$ 1 SubCounter<3/P1P1> T | NumCards$ 3 | SpellDescription$ Draw three.
+Oracle:Etched Oracle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Etched Oracle"], battlefield: [], manaPool: ["W", "U", "B", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 505. Wither — Boggart Ram-Gang in hand.
+  {
+    id: "boggart-ram-gang-wither-in-hand",
+    description: "Boggart Ram-Gang in hand; wither parse.",
+    seed: 0x240,
+    cards: {
+      "Boggart Ram-Gang": `Name:Boggart Ram-Gang
+ManaCost:R/G R/G R/G
+Types:Creature Goblin
+PT:3/3
+K:Haste
+K:Wither
+Oracle:Boggart Ram-Gang parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boggart Ram-Gang"], battlefield: [], manaPool: ["R", "G", "G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 506. Infect — Glistener Elf in hand.
+  {
+    id: "glistener-elf-infect-in-hand",
+    description: "Glistener Elf in hand; infect 1/1 parse.",
+    seed: 0x241,
+    cards: {
+      "Glistener Elf": `Name:Glistener Elf
+ManaCost:G
+Types:Creature Elf Warrior
+PT:1/1
+K:Infect
+Oracle:Glistener Elf parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glistener Elf"], battlefield: [], manaPool: ["G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 507. Infect — Plague Stinger in hand.
+  {
+    id: "plague-stinger-infect-in-hand",
+    description: "Plague Stinger in hand; flying infect parse.",
+    seed: 0x242,
+    cards: {
+      "Plague Stinger": `Name:Plague Stinger
+ManaCost:1 B
+Types:Creature Insect
+PT:1/1
+K:Flying
+K:Infect
+Oracle:Plague Stinger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plague Stinger"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 508. Conspire — Wort, the Raidmother in hand.
+  {
+    id: "wort-the-raidmother-conspire-in-hand",
+    description: "Wort, the Raidmother in hand; conspire-grant parse.",
+    seed: 0x243,
+    cards: {
+      "Wort, the Raidmother": `Name:Wort, the Raidmother
+ManaCost:3 R/G R/G
+Types:Legendary Creature Goblin Shaman
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Two goblin tokens.
+SVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin_warrior
+S:Mode$ Continuous | Affected$ Sorcery.YouOwn+inZoneStack | AddKeyword$ Conspire | Description$ Sorceries get conspire.
+Oracle:Wort parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wort, the Raidmother"], battlefield: [], manaPool: ["R", "G", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 509. Convoke — Chord of Calling in hand.
+  {
+    id: "chord-of-calling-convoke-in-hand",
+    description: "Chord of Calling in hand; convoke instant tutor parse.",
+    seed: 0x244,
+    cards: {
+      "Chord of Calling": `Name:Chord of Calling
+ManaCost:X G G G
+Types:Instant
+A:SP$ ChangeZone | Cost$ X G G G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | SpellDescription$ Chord.
+K:Convoke
+Oracle:Chord of Calling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chord of Calling"], battlefield: [], manaPool: ["G", "G", "G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 510. Improvise — Reverse Engineer in hand.
+  {
+    id: "reverse-engineer-improvise-in-hand",
+    description: "Reverse Engineer in hand; improvise draw parse.",
+    seed: 0x245,
+    cards: {
+      "Reverse Engineer": `Name:Reverse Engineer
+ManaCost:3 U U
+Types:Sorcery
+A:SP$ Draw | Cost$ 3 U U | NumCards$ 3 | SpellDescription$ Engineer.
+K:Improvise
+Oracle:Reverse Engineer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reverse Engineer"], battlefield: [], manaPool: ["U", "U", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 511. Surveil — Disinformation Campaign in hand.
+  {
+    id: "disinformation-campaign-surveil-in-hand",
+    description: "Disinformation Campaign in hand; surveil ETB parse.",
+    seed: 0x246,
+    cards: {
+      "Disinformation Campaign": `Name:Disinformation Campaign
+ManaCost:1 U B
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ Surveil 2 ETB.
+SVar:TrigSurveil:DB$ Surveil | Amount$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 1 | Defined$ Player.Opponent
+Oracle:Disinformation Campaign parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Disinformation Campaign"], battlefield: [], manaPool: ["U", "B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 512. Connive — Tenured Inkcaster in hand.
+  {
+    id: "tenured-inkcaster-connive-in-hand",
+    description: "Tenured Inkcaster in hand; connive ETB parse.",
+    seed: 0x247,
+    cards: {
+      "Tenured Inkcaster": `Name:Tenured Inkcaster
+ManaCost:2 B
+Types:Creature Human Wizard
+PT:2/3
+T:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigConnive | TriggerDescription$ Connive on combat damage.
+SVar:TrigConnive:DB$ Connive | Amount$ 1
+Oracle:Tenured Inkcaster parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tenured Inkcaster"], battlefield: [], manaPool: ["B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 513. Ascend — Storm the Vault in hand.
+  {
+    id: "storm-the-vault-ascend-in-hand",
+    description: "Storm the Vault in hand; ascend transform parse.",
+    seed: 0x248,
+    cards: {
+      "Storm the Vault": `Name:Storm the Vault
+ManaCost:3 U R
+Types:Enchantment
+K:Ascend
+T:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure | TriggerDescription$ Treasure on combat damage.
+SVar:TrigTreasure:DB$ Token | TokenAmount$ 1 | TokenScript$ c_a_treasure_sac
+Oracle:Storm the Vault parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Storm the Vault"], battlefield: [], manaPool: ["U", "R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 514. Crime — Caustic Bronco in hand.
+  {
+    id: "caustic-bronco-crime-in-hand",
+    description: "Caustic Bronco in hand; crime/discover parse.",
+    seed: 0x249,
+    cards: {
+      "Caustic Bronco": `Name:Caustic Bronco
+ManaCost:1 B
+Types:Creature Horse
+PT:3/2
+T:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerDescription$ Mill on damage.
+SVar:TrigMill:DB$ Dig | DigNum$ 1 | DestinationZone$ Exile | DestinationZone2$ Hand | RestRandomOrder$ True
+Oracle:Caustic Bronco parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Caustic Bronco"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 515. Modal — Esper Charm in hand.
+  {
+    id: "esper-charm-charm-in-hand",
+    description: "Esper Charm in hand; tri-mode charm parse.",
+    seed: 0x24a,
+    cards: {
+      "Esper Charm": `Name:Esper Charm
+ManaCost:W U B
+Types:Instant
+A:SP$ Charm | Cost$ W U B | Choices$ DBDestroy,DBDraw,DBDiscard | SpellDescription$ Esper Charm.
+SVar:DBDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Enchantment
+SVar:DBDraw:DB$ Draw | NumCards$ 2
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Defined$ Player.Opponent
+Oracle:Esper Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esper Charm"], battlefield: [], manaPool: ["W", "U", "B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 516. Phasing — Teferi's Realm in hand.
+  {
+    id: "teferis-realm-phasing-in-hand",
+    description: "Teferi's Realm in hand; phasing chooser parse.",
+    seed: 0x24b,
+    cards: {
+      "Teferi's Realm": `Name:Teferi's Realm
+ManaCost:2 U
+Types:Enchantment
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPhase | TriggerDescription$ Phase chooser.
+SVar:TrigPhase:DB$ Phases | Defined$ ValidPermanent.Land+OppCtrl
+Oracle:Teferi's Realm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Teferi's Realm"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 517. Graft — Vigean Graftmage in hand.
+  {
+    id: "vigean-graftmage-graft-in-hand",
+    description: "Vigean Graftmage in hand; graft counter transfer parse.",
+    seed: 0x24c,
+    cards: {
+      "Vigean Graftmage": `Name:Vigean Graftmage
+ManaCost:1 U
+Types:Creature Vedalken Druid Mutant
+PT:0/0
+K:Graft:2
+A:AB$ Untap | Cost$ 1 U | TargetType$ Card | ValidTgts$ Creature.YouCtrl+counters_GE1_P1P1 | TargetMin$ 1 | TargetMax$ 2 | SpellDescription$ Untap two.
+Oracle:Vigean Graftmage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vigean Graftmage"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 518. Soulshift — Kami of the Crescent Moon (variant) in hand.
+  {
+    id: "kami-of-the-painted-road-soulshift-in-hand",
+    description: "Kami of the Painted Road in hand; soulshift parse.",
+    seed: 0x24d,
+    cards: {
+      "Kami of the Painted Road": `Name:Kami of the Painted Road
+ManaCost:1 W W
+Types:Creature Spirit
+PT:2/2
+K:Soulshift:3
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Pseudo soulshift draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Kami of the Painted Road parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kami of the Painted Road"], battlefield: [], manaPool: ["W", "W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 519. Echo — Avalanche Riders in hand.
+  {
+    id: "avalanche-riders-echo-in-hand",
+    description: "Avalanche Riders in hand; echo upkeep parse.",
+    seed: 0x24e,
+    cards: {
+      "Avalanche Riders": `Name:Avalanche Riders
+ManaCost:2 R R
+Types:Creature Human Nomad
+PT:2/2
+K:Echo:2 R R
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Destroy land on ETB.
+SVar:TrigDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Land
+Oracle:Avalanche Riders parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Avalanche Riders"], battlefield: [], manaPool: ["R", "R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 520. Cumulative Upkeep — Phyrexian Soulgorger in hand.
+  {
+    id: "phyrexian-soulgorger-cumulative-in-hand",
+    description: "Phyrexian Soulgorger in hand; cumulative upkeep parse.",
+    seed: 0x24f,
+    cards: {
+      "Phyrexian Soulgorger": `Name:Phyrexian Soulgorger
+ManaCost:5
+Types:Artifact Creature Construct
+PT:8/8
+K:Cumulative Upkeep:Sac<1/Creature>
+Oracle:Phyrexian Soulgorger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phyrexian Soulgorger"], battlefield: [], manaPool: ["C", "C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 521. Dredge — Stinkweed Imp in hand.
+  {
+    id: "stinkweed-imp-dredge-in-hand",
+    description: "Stinkweed Imp in hand; dredge replacement parse.",
+    seed: 0x250,
+    cards: {
+      "Stinkweed Imp": `Name:Stinkweed Imp
+ManaCost:1 B
+Types:Creature Imp
+PT:1/2
+K:Flying
+T:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | Execute$ TrigDestroy | TriggerDescription$ Destroy on combat damage.
+SVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTarget
+K:Dredge:5
+Oracle:Stinkweed Imp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stinkweed Imp"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 522. Madness — Fiery Temper in hand.
+  {
+    id: "fiery-temper-madness-in-hand",
+    description: "Fiery Temper in hand; madness alt-cost parse.",
+    seed: 0x251,
+    cards: {
+      "Fiery Temper": `Name:Fiery Temper
+ManaCost:1 R R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ Temper.
+K:Madness:R
+Oracle:Fiery Temper parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fiery Temper"], battlefield: [], manaPool: ["R", "R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 523. Buyback — Capsize in hand.
+  {
+    id: "capsize-buyback-in-hand",
+    description: "Capsize in hand; buyback bounce parse.",
+    seed: 0x252,
+    cards: {
+      Capsize: `Name:Capsize
+ManaCost:1 U U
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 U U | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent | SpellDescription$ Capsize.
+K:Buyback:3
+Oracle:Capsize parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Capsize"], battlefield: [], manaPool: ["U", "U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 524. Flashback — Deep Analysis in hand.
+  {
+    id: "deep-analysis-flashback-in-hand",
+    description: "Deep Analysis in hand; flashback draw parse.",
+    seed: 0x253,
+    cards: {
+      "Deep Analysis": `Name:Deep Analysis
+ManaCost:3 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 3 U | NumCards$ 2 | SpellDescription$ Analysis.
+K:Flashback:1 U PayLife<3>
+Oracle:Deep Analysis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Deep Analysis"], battlefield: [], manaPool: ["U", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 525. Foretell — Cosmos Charger in hand.
+  {
+    id: "cosmos-charger-foretell-in-hand",
+    description: "Cosmos Charger in hand; foretell parse.",
+    seed: 0x254,
+    cards: {
+      "Cosmos Charger": `Name:Cosmos Charger
+ManaCost:1 W U
+Types:Creature Spirit Horse
+PT:2/3
+K:Flying
+S:Mode$ Continuous | Affected$ Card.YouOwn+isForetold | AddKeyword$ Foretell:0 | Description$ Foretold spells cost 0.
+K:Foretell:1 W U
+Oracle:Cosmos Charger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cosmos Charger"], battlefield: [], manaPool: ["W", "U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 526. Disturb — Baithook Angler (variant) in hand.
+  {
+    id: "shipwreck-marsh-disturb-in-hand",
+    description: "Cemetery Illuminator (disturb) in hand; disturb back parse.",
+    seed: 0x255,
+    cards: {
+      "Cemetery Illuminator": `Name:Cemetery Illuminator
+ManaCost:1 W U
+Types:Creature Spirit Cleric
+PT:3/2
+K:Flying
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDig | TriggerDescription$ Surveil 1 + exile.
+SVar:TrigDig:DB$ Surveil | Amount$ 1
+K:Disturb:2 W U
+Oracle:Cemetery Illuminator parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cemetery Illuminator"], battlefield: [], manaPool: ["W", "U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 527. Compleated PW — Tamiyo's Compleation (variant) in hand.
+  {
+    id: "ajani-sleeper-agent-compleated-in-hand",
+    description: "Ajani, Sleeper Agent in hand; compleated PW parse.",
+    seed: 0x256,
+    cards: {
+      "Ajani, Sleeper Agent": `Name:Ajani, Sleeper Agent
+ManaCost:1 G W
+Types:Legendary Planeswalker Ajani
+Loyalty:3
+A:AB$ PutCounter | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | CounterType$ P1P1 | CounterNum$ 2 | TargetType$ Card | ValidTgts$ Creature | SpellDescription$ +2.
+A:AB$ DealDamage | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ -3.
+A:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | StaticAbilities$ STEmblem | SpellDescription$ -6 emblem.
+SVar:STEmblem:Mode$ Continuous | EffectZone$ Command | AddKeyword$ Hexproof | Affected$ You
+K:Compleated:Phyrexian
+Oracle:Ajani, Sleeper Agent parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ajani, Sleeper Agent"], battlefield: [], manaPool: ["G", "W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 528. DFC — Delver of Secrets in hand.
+  {
+    id: "delver-of-secrets-dfc-in-hand",
+    description: "Delver of Secrets in hand; DFC transform parse.",
+    seed: 0x257,
+    cards: {
+      "Delver of Secrets": `Name:Delver of Secrets
+ManaCost:U
+Types:Creature Human Wizard
+PT:1/1
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigTransform | TriggerDescription$ Reveal-and-transform.
+SVar:TrigTransform:DB$ Dig | DigNum$ 1 | NoMove$ True | SubAbility$ DBTransform
+SVar:DBTransform:DB$ SetState | Mode$ Transform | ConditionDefined$ Remembered | ConditionPresent$ Card.Instant,Sorcery
+Oracle:Delver parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Delver of Secrets"], battlefield: [], manaPool: ["U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 529. DFC — Hanweir Garrison in hand.
+  {
+    id: "hanweir-garrison-dfc-in-hand",
+    description: "Hanweir Garrison in hand; DFC meld-eligible parse.",
+    seed: 0x258,
+    cards: {
+      "Hanweir Garrison": `Name:Hanweir Garrison
+ManaCost:2 R
+Types:Creature Human Soldier
+PT:2/3
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens on attack.
+SVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_human
+Oracle:Hanweir Garrison parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hanweir Garrison"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 530. Token — Krenko, Mob Boss in hand.
+  {
+    id: "krenko-mob-boss-in-hand-m612",
+    description: "Krenko, Mob Boss in hand; token-multiplier parse.",
+    seed: 0x259,
+    cards: {
+      "Krenko, Mob Boss": `Name:Krenko, Mob Boss
+ManaCost:2 R R
+Types:Legendary Creature Goblin Warrior
+PT:3/3
+A:AB$ Token | Cost$ T | TokenAmount$ X | TokenScript$ r_1_1_goblin | SpellDescription$ Goblin tokens equal goblins.
+SVar:X:Count$ValidPermanent.YouCtrl+Goblin
+Oracle:Krenko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krenko, Mob Boss"], battlefield: [], manaPool: ["R", "R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 531. Token — Avenger of Zendikar in hand.
+  {
+    id: "avenger-of-zendikar-in-hand-m612",
+    description: "Avenger of Zendikar in hand; plant-token ETB parse.",
+    seed: 0x25a,
+    cards: {
+      "Avenger of Zendikar": `Name:Avenger of Zendikar
+ManaCost:5 G G
+Types:Creature Elemental
+PT:5/5
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Plant tokens.
+SVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_0_1_plant
+SVar:X:Count$ValidPermanent.YouCtrl+Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigPump | TriggerDescription$ Pump on land ETB.
+SVar:TrigPump:DB$ PumpAll | NumAtt$ X | NumDef$ X | ValidCards$ Plant.YouCtrl
+Oracle:Avenger of Zendikar parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Avenger of Zendikar"],
+        battlefield: [],
+        manaPool: ["G", "G", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 532. Spell — Cyclonic Rift overload (variant) in hand.
+  {
+    id: "cyclonic-rift-m612-in-hand",
+    description: "Cyclonic Rift M612 in hand; overload variant parse.",
+    seed: 0x25b,
+    cards: {
+      "Cyclonic Rift M612": `Name:Cyclonic Rift M612
+ManaCost:1 U
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent.nonLand+OppCtrl | SpellDescription$ Rift small.
+A:SP$ ChangeZoneAll | Cost$ 6 U | ChangeType$ Permanent.nonLand+OppCtrl | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Rift overload.
+K:Overload:6 U
+Oracle:Cyclonic Rift M612 parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Cyclonic Rift M612"],
+        battlefield: [],
+        manaPool: ["U", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 533. Spell — Counterflux overload in hand.
+  {
+    id: "counterflux-overload-in-hand",
+    description: "Counterflux in hand; overload counter parse.",
+    seed: 0x25c,
+    cards: {
+      Counterflux: `Name:Counterflux
+ManaCost:U U R
+Types:Instant
+A:SP$ Counter | Cost$ U U R | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counterflux.
+A:SP$ CounterAll | Cost$ 2 U U R | ValidCards$ Card.OppCtrl+isInZoneStack | SpellDescription$ Overload.
+K:Overload:2 U U R
+Oracle:Counterflux parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Counterflux"], battlefield: [], manaPool: ["U", "U", "R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 534. Spell — Mizzium Mortars overload in hand.
+  {
+    id: "mizzium-mortars-overload-in-hand",
+    description: "Mizzium Mortars in hand; overload damage parse.",
+    seed: 0x25d,
+    cards: {
+      "Mizzium Mortars": `Name:Mizzium Mortars
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 4 | ValidTgts$ Creature | SpellDescription$ Mortars.
+A:SP$ DealDamageAll | Cost$ 5 R R | NumDmg$ 4 | ValidCards$ Creature.OppCtrl | SpellDescription$ Overload.
+K:Overload:5 R R
+Oracle:Mizzium Mortars parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mizzium Mortars"], battlefield: [], manaPool: ["R", "R", "C", "C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 535. Mill — Glimpse the Unthinkable in hand.
+  {
+    id: "glimpse-the-unthinkable-in-hand-m612",
+    description: "Glimpse the Unthinkable in hand; mill 10 parse.",
+    seed: 0x25e,
+    cards: {
+      "Glimpse the Unthinkable": `Name:Glimpse the Unthinkable
+ManaCost:U B
+Types:Sorcery
+A:SP$ Mill | Cost$ U B | NumCards$ 10 | Defined$ Player.Opponent | SpellDescription$ Glimpse.
+Oracle:Glimpse parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glimpse the Unthinkable"], battlefield: [], manaPool: ["U", "B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 536. Mill — Maddening Cacophony in hand.
+  {
+    id: "maddening-cacophony-in-hand",
+    description: "Maddening Cacophony in hand; kicker mill parse.",
+    seed: 0x25f,
+    cards: {
+      "Maddening Cacophony": `Name:Maddening Cacophony
+ManaCost:1 U
+Types:Sorcery
+A:SP$ Mill | Cost$ 1 U | NumCards$ 8 | ValidTgts$ Player | SpellDescription$ Cacophony.
+K:Kicker:3 U
+Oracle:Maddening Cacophony parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maddening Cacophony"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 537. Burn — Searing Blaze in hand.
+  {
+    id: "searing-blaze-landfall-in-hand",
+    description: "Searing Blaze in hand; landfall burn parse.",
+    seed: 0x260,
+    cards: {
+      "Searing Blaze": `Name:Searing Blaze
+ManaCost:R R
+Types:Instant
+A:SP$ DealDamage | Cost$ R R | NumDmg$ 1 | ValidTgts$ Player | SubAbility$ DBDmg2 | SpellDescription$ Blaze.
+SVar:DBDmg2:DB$ DealDamage | NumDmg$ 1 | TargetType$ Card | ValidTgts$ Creature.TargetedPlayerCtrl
+T:Mode$ Landfall | ValidPlayer$ You | Execute$ TrigBoost | TriggerDescription$ Landfall +2 dmg.
+SVar:TrigBoost:DB$ ChangeNumDmg | NumDmg$ 3
+Oracle:Searing Blaze parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Searing Blaze"], battlefield: [], manaPool: ["R", "R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 538. Burn — Skewer the Critics in hand.
+  {
+    id: "skewer-the-critics-spectacle-in-hand",
+    description: "Skewer the Critics in hand; spectacle alt-cost parse.",
+    seed: 0x261,
+    cards: {
+      "Skewer the Critics": `Name:Skewer the Critics
+ManaCost:2 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 2 R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ Skewer.
+K:Spectacle:R
+Oracle:Skewer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skewer the Critics"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 539. Spectacle — Light Up the Stage in hand.
+  {
+    id: "light-up-the-stage-spectacle-in-hand",
+    description: "Light Up the Stage in hand; spectacle exile-cast parse.",
+    seed: 0x262,
+    cards: {
+      "Light Up the Stage": `Name:Light Up the Stage
+ManaCost:2 R
+Types:Sorcery
+A:SP$ Dig | Cost$ 2 R | DigNum$ 2 | DestinationZone$ Exile | SpellDescription$ Stage.
+K:Spectacle:R
+Oracle:Light Up the Stage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Light Up the Stage"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 540. Awaken — Scatter to the Winds in hand.
+  {
+    id: "scatter-to-the-winds-awaken-in-hand",
+    description: "Scatter to the Winds in hand; awaken counter parse.",
+    seed: 0x263,
+    cards: {
+      "Scatter to the Winds": `Name:Scatter to the Winds
+ManaCost:2 U U
+Types:Instant
+A:SP$ Counter | Cost$ 2 U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Scatter.
+K:Awaken:3:5 U U
+Oracle:Scatter to the Winds parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scatter to the Winds"], battlefield: [], manaPool: ["U", "U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 541. Cast — Counterspell variant in hand.
+  {
+    id: "force-of-negation-in-hand-m612",
+    description: "Force of Negation in hand; alt-cast exile parse.",
+    seed: 0x264,
+    cards: {
+      "Force of Negation": `Name:Force of Negation
+ManaCost:1 U U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U U | TargetType$ Spell | ValidTgts$ Card.nonCreature | SpellDescription$ Force.
+A:SP$ Counter | Cost$ Exile<1/Card.YouOwn+inZoneHand+Blue+Other> | TargetType$ Spell | ValidTgts$ Card.nonCreature | ConditionPhases$ NotMain | SpellDescription$ Alt-cast.
+Oracle:Force of Negation parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force of Negation"], battlefield: [], manaPool: ["U", "U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 542. Cast — Force of Will in hand.
+  {
+    id: "force-of-will-in-hand-m612",
+    description: "Force of Will in hand; alt-pitch counter parse.",
+    seed: 0x265,
+    cards: {
+      "Force of Will": `Name:Force of Will
+ManaCost:3 U U
+Types:Instant
+A:SP$ Counter | Cost$ 3 U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Force.
+A:SP$ Counter | Cost$ Exile<1/Card.YouOwn+inZoneHand+Blue+Other> PayLife<1> | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Alt-cast.
+Oracle:Force of Will parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force of Will"], battlefield: [], manaPool: ["U", "U", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 543. Cast — Mox Diamond in hand.
+  {
+    id: "mox-diamond-in-hand",
+    description: "Mox Diamond in hand; ETB-discard alt-cost parse.",
+    seed: 0x266,
+    cards: {
+      "Mox Diamond": `Name:Mox Diamond
+ManaCost:0
+Types:Artifact
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ Discard land or sac.
+SVar:TrigDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose | DiscardValid$ Card.Land
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add any.
+Oracle:Mox Diamond parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Diamond"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 544. Cast — Lion's Eye Diamond in hand.
+  {
+    id: "lions-eye-diamond-in-hand",
+    description: "Lion's Eye Diamond in hand; sac-discard mana parse.",
+    seed: 0x267,
+    cards: {
+      "Lion's Eye Diamond": `Name:Lion's Eye Diamond
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T Sac<1/CARDNAME> DiscardHand | Produced$ Any | Amount$ 3 | SpellDescription$ LED.
+Oracle:LED parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lion's Eye Diamond"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 545. Tutor — Demonic Tutor in hand.
+  {
+    id: "demonic-tutor-in-hand-m612",
+    description: "Demonic Tutor in hand; tutor-any parse.",
+    seed: 0x268,
+    cards: {
+      "Demonic Tutor": `Name:Demonic Tutor
+ManaCost:1 B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | SpellDescription$ Tutor.
+Oracle:Demonic Tutor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Demonic Tutor"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 546. Tutor — Vampiric Tutor in hand.
+  {
+    id: "vampiric-tutor-in-hand-m612",
+    description: "Vampiric Tutor in hand; tutor-to-top parse.",
+    seed: 0x269,
+    cards: {
+      "Vampiric Tutor": `Name:Vampiric Tutor
+ManaCost:B
+Types:Instant
+A:SP$ ChangeZone | Cost$ B PayLife<2> | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card | ChangeNum$ 1 | SpellDescription$ Vampiric.
+Oracle:Vampiric Tutor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vampiric Tutor"], battlefield: [], manaPool: ["B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 547. Tutor — Mystical Tutor in hand.
+  {
+    id: "mystical-tutor-in-hand-m612",
+    description: "Mystical Tutor in hand; tutor-instant-or-sorcery-to-top parse.",
+    seed: 0x26a,
+    cards: {
+      "Mystical Tutor": `Name:Mystical Tutor
+ManaCost:U
+Types:Instant
+A:SP$ ChangeZone | Cost$ U | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Instant,Sorcery | ChangeNum$ 1 | SpellDescription$ Mystical.
+Oracle:Mystical Tutor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mystical Tutor"], battlefield: [], manaPool: ["U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 548. Tutor — Worldly Tutor in hand.
+  {
+    id: "worldly-tutor-in-hand-m612",
+    description: "Worldly Tutor in hand; tutor-creature-to-top parse.",
+    seed: 0x26b,
+    cards: {
+      "Worldly Tutor": `Name:Worldly Tutor
+ManaCost:G
+Types:Instant
+A:SP$ ChangeZone | Cost$ G | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Creature | ChangeNum$ 1 | SpellDescription$ Worldly.
+Oracle:Worldly Tutor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Worldly Tutor"], battlefield: [], manaPool: ["G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 549. Tutor — Enlightened Tutor in hand.
+  {
+    id: "enlightened-tutor-in-hand-m612",
+    description: "Enlightened Tutor in hand; tutor-art-or-ench parse.",
+    seed: 0x26c,
+    cards: {
+      "Enlightened Tutor": `Name:Enlightened Tutor
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Artifact,Enchantment | ChangeNum$ 1 | SpellDescription$ Enlightened.
+Oracle:Enlightened Tutor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Enlightened Tutor"], battlefield: [], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 550. Removal — Path to Exile in hand.
+  {
+    id: "path-to-exile-in-hand-m612",
+    description: "Path to Exile in hand; exile-with-comp parse.",
+    seed: 0x26d,
+    cards: {
+      "Path to Exile": `Name:Path to Exile
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBSearch | SpellDescription$ Path.
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ BasicLand | ChangeNum$ 1 | Defined$ TargetedController | Tapped$ True
+Oracle:Path to Exile parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Path to Exile"], battlefield: [], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 551. Removal — Swords to Plowshares in hand.
+  {
+    id: "swords-to-plowshares-in-hand-m612",
+    description: "Swords to Plowshares in hand; exile-with-life parse.",
+    seed: 0x26e,
+    cards: {
+      "Swords to Plowshares": `Name:Swords to Plowshares
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBLife | SpellDescription$ Swords.
+SVar:DBLife:DB$ GainLife | LifeAmount$ Y | Defined$ TargetedController
+SVar:Y:Targeted$CardPower
+Oracle:Swords parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swords to Plowshares"], battlefield: [], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 552. Removal — Doom Blade in hand.
+  {
+    id: "doom-blade-in-hand-m612",
+    description: "Doom Blade in hand; destroy non-black parse.",
+    seed: 0x26f,
+    cards: {
+      "Doom Blade": `Name:Doom Blade
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack | SpellDescription$ Doom Blade.
+Oracle:Doom Blade parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doom Blade"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 553. Removal — Heartless Act in hand.
+  {
+    id: "heartless-act-in-hand",
+    description: "Heartless Act in hand; destroy or remove counters parse.",
+    seed: 0x270,
+    cards: {
+      "Heartless Act": `Name:Heartless Act
+ManaCost:1 B
+Types:Instant
+A:SP$ Charm | Cost$ 1 B | Choices$ DBDestroy,DBRemove | SpellDescription$ Heartless Act.
+SVar:DBDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Creature.counters_EQ0_P1P1
+SVar:DBRemove:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 3 | TargetType$ Card | ValidTgts$ Creature
+Oracle:Heartless Act parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heartless Act"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 554. Removal — Anguished Unmaking in hand.
+  {
+    id: "anguished-unmaking-in-hand",
+    description: "Anguished Unmaking in hand; exile-life parse.",
+    seed: 0x271,
+    cards: {
+      "Anguished Unmaking": `Name:Anguished Unmaking
+ManaCost:1 W B
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 W B PayLife<3> | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Permanent.nonLand | SpellDescription$ Unmaking.
+Oracle:Unmaking parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anguished Unmaking"], battlefield: [], manaPool: ["W", "B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 555. Removal — Vindicate in hand.
+  {
+    id: "vindicate-in-hand",
+    description: "Vindicate in hand; destroy any permanent parse.",
+    seed: 0x272,
+    cards: {
+      Vindicate: `Name:Vindicate
+ManaCost:1 W B
+Types:Sorcery
+A:SP$ Destroy | Cost$ 1 W B | TargetType$ Card | ValidTgts$ Permanent | SpellDescription$ Vindicate.
+Oracle:Vindicate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vindicate"], battlefield: [], manaPool: ["W", "B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 556. Removal — Assassin's Trophy in hand.
+  {
+    id: "assassins-trophy-in-hand",
+    description: "Assassin's Trophy in hand; destroy permanent + ramp parse.",
+    seed: 0x273,
+    cards: {
+      "Assassin's Trophy": `Name:Assassin's Trophy
+ManaCost:B G
+Types:Instant
+A:SP$ Destroy | Cost$ B G | TargetType$ Card | ValidTgts$ Permanent.OppCtrl | SubAbility$ DBSearch | SpellDescription$ Trophy.
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ BasicLand | ChangeNum$ 1 | Defined$ TargetedController
+Oracle:Trophy parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Assassin's Trophy"], battlefield: [], manaPool: ["B", "G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 557. Burn — Galvanic Blast in hand.
+  {
+    id: "galvanic-blast-in-hand",
+    description: "Galvanic Blast in hand; metalcraft burn parse.",
+    seed: 0x274,
+    cards: {
+      "Galvanic Blast": `Name:Galvanic Blast
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 2 | ValidTgts$ Any | ConditionMetalcraft$ False | SpellDescription$ Blast.
+A:SP$ DealDamage | Cost$ R | NumDmg$ 4 | ValidTgts$ Any | ConditionMetalcraft$ True | SpellDescription$ Metalcraft.
+Oracle:Galvanic Blast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Galvanic Blast"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 558. Burn — Lava Spike in hand.
+  {
+    id: "lava-spike-in-hand-m612",
+    description: "Lava Spike in hand; player-only burn parse.",
+    seed: 0x275,
+    cards: {
+      "Lava Spike": `Name:Lava Spike
+ManaCost:R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Player | SpellDescription$ Spike.
+Oracle:Lava Spike parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lava Spike"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 559. Burn — Bonecrusher Giant Stomp half in hand.
+  {
+    id: "bonecrusher-stomp-half-in-hand",
+    description: "Stomp half adventure in hand parse.",
+    seed: 0x276,
+    cards: {
+      "Stomp Half": `Name:Stomp Half
+ManaCost:1 R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | ValidTgts$ Any | SpellDescription$ Stomp.
+Oracle:Stomp Half parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stomp Half"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 560. Burn — Searing Flesh in hand.
+  {
+    id: "fireblast-in-hand",
+    description: "Fireblast in hand; alt-pay sac mountain parse.",
+    seed: 0x277,
+    cards: {
+      Fireblast: `Name:Fireblast
+ManaCost:4 R R
+Types:Instant
+A:SP$ DealDamage | Cost$ 4 R R | NumDmg$ 4 | ValidTgts$ Any | SpellDescription$ Fireblast.
+A:SP$ DealDamage | Cost$ Sac<2/Mountain> | NumDmg$ 4 | ValidTgts$ Any | SpellDescription$ Alt-cast.
+Oracle:Fireblast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fireblast"], battlefield: [], manaPool: ["R", "R", "C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 561. Combat — Goblin Guide in hand.
+  {
+    id: "goblin-guide-in-hand",
+    description: "Goblin Guide in hand; haste 2/2 reveal parse.",
+    seed: 0x278,
+    cards: {
+      "Goblin Guide": `Name:Goblin Guide
+ManaCost:R
+Types:Creature Goblin Scout
+PT:2/2
+K:Haste
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Reveal.
+SVar:TrigReveal:DB$ Reveal | RevealNumber$ 1 | RevealLocation$ Library | Defined$ Player.Opponent
+Oracle:Goblin Guide parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Guide"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 562. Combat — Champion of the Parish in hand.
+  {
+    id: "champion-of-the-parish-in-hand",
+    description: "Champion of the Parish in hand; tribal +1/+1 parse.",
+    seed: 0x279,
+    cards: {
+      "Champion of the Parish": `Name:Champion of the Parish
+ManaCost:W
+Types:Creature Human Soldier
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Human.YouCtrl+Other | Execute$ TrigCounter | TriggerDescription$ +1/+1 on human ETB.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
+Oracle:Champion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Champion of the Parish"], battlefield: [], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 563. Combat — Thalia, Guardian of Thraben in hand.
+  {
+    id: "thalia-guardian-of-thraben-in-hand",
+    description: "Thalia, Guardian of Thraben in hand; tax-static parse.",
+    seed: 0x27a,
+    cards: {
+      "Thalia, Guardian of Thraben": `Name:Thalia, Guardian of Thraben
+ManaCost:1 W
+Types:Legendary Creature Human Soldier
+PT:2/1
+K:First Strike
+S:Mode$ RaiseCost | ValidCard$ Card.nonCreature | Type$ Spell | Amount$ 1 | Description$ Tax.
+Oracle:Thalia parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thalia, Guardian of Thraben"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 564. Combat — Stoneforge Mystic in hand.
+  {
+    id: "stoneforge-mystic-in-hand",
+    description: "Stoneforge Mystic in hand; tutor-equipment parse.",
+    seed: 0x27b,
+    cards: {
+      "Stoneforge Mystic": `Name:Stoneforge Mystic
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ Tutor equipment.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Artifact.Equipment | ChangeNum$ 1
+A:AB$ ChangeZone | Cost$ 1 W Sac<1/CARDNAME> | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact.Equipment | ChangeNum$ 1 | SpellDescription$ Cheat.
+Oracle:Stoneforge Mystic parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stoneforge Mystic"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 565. Combat — Hokori, Dust Drinker in hand.
+  {
+    id: "hokori-dust-drinker-in-hand",
+    description: "Hokori, Dust Drinker in hand; tap-down static parse.",
+    seed: 0x27c,
+    cards: {
+      "Hokori, Dust Drinker": `Name:Hokori, Dust Drinker
+ManaCost:2 W
+Types:Legendary Creature Spirit
+PT:1/1
+T:Mode$ Phase | Phase$ Untap | ValidPlayer$ You | Execute$ TrigUntap | TriggerDescription$ Skip untap.
+SVar:TrigUntap:DB$ SkipPhase | Phase$ Untap
+Oracle:Hokori parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hokori, Dust Drinker"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 566. Combat — Lord of Atlantis in hand.
+  {
+    id: "lord-of-atlantis-in-hand-m612",
+    description: "Lord of Atlantis in hand; tribal lord static parse.",
+    seed: 0x27d,
+    cards: {
+      "Lord of Atlantis": `Name:Lord of Atlantis
+ManaCost:U U
+Types:Creature Merfolk
+PT:2/2
+S:Mode$ Continuous | Affected$ Merfolk.Other | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Islandwalk | Description$ Lord static.
+Oracle:Lord parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lord of Atlantis"], battlefield: [], manaPool: ["U", "U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 567. Combat — Goblin King in hand.
+  {
+    id: "goblin-king-in-hand-m612",
+    description: "Goblin King in hand; goblin lord parse.",
+    seed: 0x27e,
+    cards: {
+      "Goblin King": `Name:Goblin King
+ManaCost:1 R R
+Types:Creature Goblin
+PT:2/2
+S:Mode$ Continuous | Affected$ Goblin.Other | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Mountainwalk | Description$ Goblin lord.
+Oracle:Goblin King parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin King"], battlefield: [], manaPool: ["R", "R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 568. Combat — Lord of the Undead in hand.
+  {
+    id: "lord-of-the-undead-in-hand",
+    description: "Lord of the Undead in hand; zombie lord parse.",
+    seed: 0x27f,
+    cards: {
+      "Lord of the Undead": `Name:Lord of the Undead
+ManaCost:1 B B
+Types:Creature Zombie
+PT:2/2
+S:Mode$ Continuous | Affected$ Zombie.Other | AddPower$ 1 | AddToughness$ 1 | Description$ Lord.
+A:AB$ ChangeZone | Cost$ 1 B T | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Zombie | SpellDescription$ Reanimate.
+Oracle:Lord of the Undead parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lord of the Undead"], battlefield: [], manaPool: ["B", "B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 569. Combat — Elvish Archdruid in hand.
+  {
+    id: "elvish-archdruid-in-hand-m612",
+    description: "Elvish Archdruid in hand; elf lord + mana parse.",
+    seed: 0x280,
+    cards: {
+      "Elvish Archdruid": `Name:Elvish Archdruid
+ManaCost:1 G G
+Types:Creature Elf Druid
+PT:2/2
+S:Mode$ Continuous | Affected$ Elf.Other | AddPower$ 1 | AddToughness$ 1 | Description$ Elf lord.
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Tap for elves.
+SVar:X:Count$ValidPermanent.YouCtrl+Elf
+Oracle:Elvish Archdruid parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Archdruid"], battlefield: [], manaPool: ["G", "G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 570. Combat — Drogskol Captain in hand.
+  {
+    id: "drogskol-captain-in-hand",
+    description: "Drogskol Captain in hand; spirit lord hexproof parse.",
+    seed: 0x281,
+    cards: {
+      "Drogskol Captain": `Name:Drogskol Captain
+ManaCost:W U
+Types:Creature Spirit Soldier
+PT:2/2
+K:Flying
+S:Mode$ Continuous | Affected$ Spirit.Other | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Hexproof | Description$ Spirit lord.
+Oracle:Drogskol Captain parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Drogskol Captain"], battlefield: [], manaPool: ["W", "U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 571. Combat — Cavern of Souls in hand.
+  {
+    id: "cavern-of-souls-in-hand-m612",
+    description: "Cavern of Souls in hand; uncounterable tribal parse.",
+    seed: 0x282,
+    cards: {
+      "Cavern of Souls": `Name:Cavern of Souls
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseType | TriggerDescription$ Choose creature type.
+SVar:TrigChooseType:DB$ ChooseType | Type$ Creature
+A:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add C.
+A:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ ChosenType | SpellDescription$ Add tribal.
+Oracle:Cavern parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cavern of Souls"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 572. Land — Mutavault in hand.
+  {
+    id: "mutavault-in-hand",
+    description: "Mutavault in hand; manland animate parse.",
+    seed: 0x283,
+    cards: {
+      Mutavault: `Name:Mutavault
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add C.
+A:AB$ Animate | Cost$ 1 | Power$ 2 | Toughness$ 2 | Types$ Creature,Changeling | Keywords$ Changeling | UntilEOT$ True | SpellDescription$ Animate 2/2.
+Oracle:Mutavault parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mutavault"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 573. Land — Wasteland in hand.
+  {
+    id: "wasteland-in-hand-m612",
+    description: "Wasteland in hand; sac to destroy land parse.",
+    seed: 0x284,
+    cards: {
+      Wasteland: `Name:Wasteland
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add C.
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Card | ValidTgts$ Land.nonBasic | SpellDescription$ Wasteland.
+Oracle:Wasteland parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wasteland"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 574. Land — Strip Mine in hand.
+  {
+    id: "strip-mine-in-hand-m612",
+    description: "Strip Mine in hand; sac to destroy any land parse.",
+    seed: 0x285,
+    cards: {
+      "Strip Mine": `Name:Strip Mine
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add C.
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Card | ValidTgts$ Land | SpellDescription$ Strip Mine.
+Oracle:Strip Mine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Strip Mine"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 575. Land — Ancient Tomb in hand.
+  {
+    id: "ancient-tomb-in-hand",
+    description: "Ancient Tomb in hand; pain land 2 colorless parse.",
+    seed: 0x286,
+    cards: {
+      "Ancient Tomb": `Name:Ancient Tomb
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SubAbility$ DBLife | SpellDescription$ Add CC.
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ You
+Oracle:Ancient Tomb parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ancient Tomb"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 576. Land — City of Brass in hand.
+  {
+    id: "city-of-brass-in-hand",
+    description: "City of Brass in hand; pain rainbow parse.",
+    seed: 0x287,
+    cards: {
+      "City of Brass": `Name:City of Brass
+ManaCost:no cost
+Types:Land
+T:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Pain.
+SVar:TrigDmg:DB$ LoseLife | LifeAmount$ 1 | Defined$ You
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add any.
+Oracle:City of Brass parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["City of Brass"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 577. Land — Mana Confluence in hand.
+  {
+    id: "mana-confluence-in-hand",
+    description: "Mana Confluence in hand; pain rainbow no-tap parse.",
+    seed: 0x288,
+    cards: {
+      "Mana Confluence": `Name:Mana Confluence
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T PayLife<1> | Produced$ Any | SpellDescription$ Add any.
+Oracle:Mana Confluence parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mana Confluence"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 578. Spell — Channel (variant) in hand.
+  {
+    id: "channel-of-power-m612-in-hand",
+    description: "Channel of Power M612 in hand; channel ramp variant parse.",
+    seed: 0x289,
+    cards: {
+      "Channel of Power M612": `Name:Channel of Power M612
+ManaCost:no cost
+Types:Sorcery
+A:SP$ Mana | Cost$ X PayLife<X> | Produced$ C | Amount$ X | SpellDescription$ Channel.
+SVar:X:Count$xPaid
+Oracle:Channel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Channel of Power M612"], battlefield: [], manaPool: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 579. Spell — Bloodbraid Berserker in hand.
+  {
+    id: "bloodbraid-berserker-in-hand",
+    description: "Bloodbraid Berserker in hand; cascade/haste parse.",
+    seed: 0x28a,
+    cards: {
+      "Bloodbraid Berserker": `Name:Bloodbraid Berserker
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/3
+K:Haste
+K:Cascade
+Oracle:Bloodbraid Berserker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodbraid Berserker"], battlefield: [], manaPool: ["R", "G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 580. Spell — Bloodghast in hand.
+  {
+    id: "bloodghast-in-hand-m612",
+    description: "Bloodghast in hand; landfall recur parse.",
+    seed: 0x28b,
+    cards: {
+      Bloodghast: `Name:Bloodghast
+ManaCost:B B
+Types:Creature Vampire Spirit
+PT:2/1
+K:Haste:Card.Self+oppHasLifeLE10
+T:Mode$ Landfall | ValidPlayer$ You | Execute$ TrigReturn | TriggerDescription$ Landfall return.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Card.Self
+Oracle:Bloodghast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodghast"], battlefield: [], manaPool: ["B", "B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 581. Spell — Reassembling Skeleton in hand.
+  {
+    id: "reassembling-skeleton-in-hand",
+    description: "Reassembling Skeleton in hand; recursive return parse.",
+    seed: 0x28c,
+    cards: {
+      "Reassembling Skeleton": `Name:Reassembling Skeleton
+ManaCost:1 B
+Types:Creature Skeleton Warrior
+PT:1/1
+A:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | ActivationZone$ Graveyard | SpellDescription$ Return.
+Oracle:Reassembling Skeleton parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reassembling Skeleton"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 582. Spell — Bloodsoaked Champion in hand.
+  {
+    id: "bloodsoaked-champion-in-hand",
+    description: "Bloodsoaked Champion in hand; raid + return parse.",
+    seed: 0x28d,
+    cards: {
+      "Bloodsoaked Champion": `Name:Bloodsoaked Champion
+ManaCost:B
+Types:Creature Human Warrior
+PT:2/1
+A:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | ActivationZone$ Graveyard | ConditionRaid$ True | SpellDescription$ Raid return.
+Oracle:Bloodsoaked Champion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodsoaked Champion"], battlefield: [], manaPool: ["B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 583. Spell — Gravecrawler in hand.
+  {
+    id: "gravecrawler-in-hand",
+    description: "Gravecrawler in hand; recur from gy with zombie parse.",
+    seed: 0x28e,
+    cards: {
+      Gravecrawler: `Name:Gravecrawler
+ManaCost:B
+Types:Creature Zombie
+PT:2/1
+S:Mode$ CantBlock | ValidCard$ Card.Self | Description$ Can't block.
+A:AB$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | ActivationZone$ Graveyard | ConditionPresent$ Zombie.YouCtrl | SpellDescription$ Recur.
+Oracle:Gravecrawler parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gravecrawler"], battlefield: [], manaPool: ["B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 584. Spell — Nether Traitor in hand.
+  {
+    id: "nether-traitor-in-hand",
+    description: "Nether Traitor in hand; haste recur shadow parse.",
+    seed: 0x28f,
+    cards: {
+      "Nether Traitor": `Name:Nether Traitor
+ManaCost:B B
+Types:Creature Spirit
+PT:1/1
+K:Haste
+K:Shadow
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Return self.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self
+Oracle:Nether Traitor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nether Traitor"], battlefield: [], manaPool: ["B", "B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 585. Spell — Squee, Goblin Nabob in hand.
+  {
+    id: "squee-goblin-nabob-in-hand",
+    description: "Squee, Goblin Nabob in hand; recur from hand parse.",
+    seed: 0x290,
+    cards: {
+      "Squee, Goblin Nabob": `Name:Squee, Goblin Nabob
+ManaCost:3 R
+Types:Legendary Creature Goblin
+PT:1/1
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigReturn | TriggerDescription$ Recur.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Card.Self+inZoneGraveyard
+Oracle:Squee parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Squee, Goblin Nabob"], battlefield: [], manaPool: ["R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 586. Spell — Yawgmoth's Will in hand.
+  {
+    id: "yawgmoths-will-m612-in-hand",
+    description: "Yawgmoth's Will M612 in hand; play-from-graveyard parse.",
+    seed: 0x291,
+    cards: {
+      "Yawgmoth's Will M612": `Name:Yawgmoth's Will M612
+ManaCost:2 B
+Types:Sorcery
+A:SP$ Effect | Cost$ 2 B | StaticAbilities$ STPlay | SpellDescription$ Will.
+SVar:STPlay:Mode$ Continuous | EffectZone$ Command | AddPlayUntil$ EndOfTurn | Affected$ Card.YouOwn+inZoneGraveyard | Description$ Play.
+Oracle:Yawgmoth's Will M612 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yawgmoth's Will M612"], battlefield: [], manaPool: ["B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 587. Spell — Past in Flames in hand.
+  {
+    id: "past-in-flames-in-hand",
+    description: "Past in Flames in hand; flashback all parse.",
+    seed: 0x292,
+    cards: {
+      "Past in Flames": `Name:Past in Flames
+ManaCost:3 R
+Types:Sorcery
+A:SP$ Effect | Cost$ 3 R | StaticAbilities$ STFlash | SpellDescription$ Flashback all.
+SVar:STFlash:Mode$ Continuous | EffectZone$ Command | AddKeyword$ Flashback | Affected$ Card.YouOwn+inZoneGraveyard+Instant,Sorcery
+K:Flashback:4 R
+Oracle:Past in Flames parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Past in Flames"], battlefield: [], manaPool: ["R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 588. Spell — Living Death in hand.
+  {
+    id: "living-death-in-hand-m612",
+    description: "Living Death in hand; mass exchange parse.",
+    seed: 0x293,
+    cards: {
+      "Living Death": `Name:Living Death
+ManaCost:3 B
+Types:Sorcery
+A:SP$ ChangeZoneAll | Cost$ 3 B | ChangeType$ Creature | Origin$ Battlefield | Destination$ Graveyard | SubAbility$ DBReturn | SpellDescription$ Living Death.
+SVar:DBReturn:DB$ ChangeZoneAll | ChangeType$ Creature | Origin$ Graveyard | Destination$ Battlefield
+Oracle:Living Death parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Living Death"], battlefield: [], manaPool: ["B", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 589. Spell — Reanimate in hand.
+  {
+    id: "reanimate-in-hand-m612",
+    description: "Reanimate in hand; reanimate any cmc parse.",
+    seed: 0x294,
+    cards: {
+      Reanimate: `Name:Reanimate
+ManaCost:B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBLife | SpellDescription$ Reanimate.
+SVar:DBLife:DB$ LoseLife | LifeAmount$ X | Defined$ You
+SVar:X:Targeted$CardManaCost
+Oracle:Reanimate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reanimate"], battlefield: [], manaPool: ["B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 590. Spell — Animate Dead in hand.
+  {
+    id: "animate-dead-in-hand-m612",
+    description: "Animate Dead in hand; aura reanimate parse.",
+    seed: 0x295,
+    cards: {
+      "Animate Dead": `Name:Animate Dead
+ManaCost:1 B
+Types:Enchantment Aura
+K:Enchant Creature card in any graveyard
+A:SP$ Attach | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.inZoneGraveyard | AILogic$ Reanimate | SpellDescription$ Animate.
+Oracle:Animate Dead parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Animate Dead"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 591. Spell — Necromancy in hand.
+  {
+    id: "necromancy-in-hand",
+    description: "Necromancy in hand; flash reanimate parse.",
+    seed: 0x296,
+    cards: {
+      Necromancy: `Name:Necromancy
+ManaCost:2 B
+Types:Enchantment Aura
+K:Flash
+K:Enchant Creature card in any graveyard
+A:SP$ Attach | Cost$ 2 B | TargetType$ Card | ValidTgts$ Creature.inZoneGraveyard | AILogic$ Reanimate | SpellDescription$ Necromancy.
+Oracle:Necromancy parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Necromancy"], battlefield: [], manaPool: ["B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 592. Spell — Show and Tell in hand.
+  {
+    id: "show-and-tell-in-hand",
+    description: "Show and Tell in hand; both-cheat parse.",
+    seed: 0x297,
+    cards: {
+      "Show and Tell": `Name:Show and Tell
+ManaCost:2 U
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 2 U | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent.nonLand | ChangeNum$ 1 | Defined$ Player | SpellDescription$ Show and Tell.
+Oracle:Show and Tell parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Show and Tell"], battlefield: [], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 593. Spell — Sneak Attack in hand.
+  {
+    id: "sneak-attack-in-hand",
+    description: "Sneak Attack in hand; cheat-sac creature parse.",
+    seed: 0x298,
+    cards: {
+      "Sneak Attack": `Name:Sneak Attack
+ManaCost:2 R
+Types:Enchantment
+A:AB$ ChangeZone | Cost$ R | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBHaste | SpellDescription$ Sneak.
+SVar:DBHaste:DB$ Animate | Defined$ Remembered | Keywords$ Haste | UntilEOT$ True | SubAbility$ DBSac
+SVar:DBSac:DB$ Sacrifice | SacValid$ Card.IsRemembered | TriggerPhases$ EndOfTurn
+Oracle:Sneak Attack parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sneak Attack"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 594. Spell — Through the Breach in hand.
+  {
+    id: "through-the-breach-in-hand",
+    description: "Through the Breach in hand; alt-pitch cheat parse.",
+    seed: 0x299,
+    cards: {
+      "Through the Breach": `Name:Through the Breach
+ManaCost:3 R R
+Types:Instant Arcane
+A:SP$ ChangeZone | Cost$ 3 R R | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBSac | SpellDescription$ Through the Breach.
+SVar:DBSac:DB$ Sacrifice | SacValid$ Card.IsRemembered | TriggerPhases$ EndOfTurn
+A:SP$ ChangeZone | Cost$ Exile<1/Card.YouOwn+inZoneHand+Other> | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | SpellDescription$ Alt-cast.
+Oracle:Through the Breach parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Through the Breach"], battlefield: [], manaPool: ["R", "R", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 595. Spell — Goryo's Vengeance variant in hand.
+  {
+    id: "goryos-vengeance-m612-in-hand",
+    description: "Goryo's Vengeance M612 in hand; legend-only reanimate parse.",
+    seed: 0x29a,
+    cards: {
+      "Goryo's Vengeance M612": `Name:Goryo's Vengeance M612
+ManaCost:1 B
+Types:Instant Arcane
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.Legendary | SpellDescription$ Goryo.
+K:Splice:Arcane:1 B
+Oracle:Goryo M612 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goryo's Vengeance M612"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 596. Spell — Heliod, Sun-Crowned in hand.
+  {
+    id: "heliod-sun-crowned-in-hand-m612",
+    description: "Heliod, Sun-Crowned in hand; god-static lifelink parse.",
+    seed: 0x29b,
+    cards: {
+      "Heliod, Sun-Crowned": `Name:Heliod, Sun-Crowned
+ManaCost:1 W W
+Types:Legendary Enchantment Creature God
+PT:5/5
+K:Indestructible
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+counters_GE1_P1P1 | AddKeyword$ Lifelink | Description$ Lifelink.
+T:Mode$ LifeGained | ValidPlayer$ You | Execute$ TrigCounter | TriggerDescription$ +1/+1 on lifegain.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetType$ Card | ValidTgts$ Creature.YouCtrl
+Oracle:Heliod parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heliod, Sun-Crowned"], battlefield: [], manaPool: ["W", "W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 597. Spell — Walking Ballista in hand.
+  {
+    id: "walking-ballista-in-hand",
+    description: "Walking Ballista in hand; X 0/0 + ping parse.",
+    seed: 0x29c,
+    cards: {
+      "Walking Ballista": `Name:Walking Ballista
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+K:etbCounter:P1P1:X
+A:AB$ DealDamage | Cost$ SubCounter<1/P1P1> | NumDmg$ 1 | ValidTgts$ Creature,Player | SpellDescription$ Ping.
+Oracle:Walking Ballista parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Walking Ballista"], battlefield: [], manaPool: ["C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 598. Spell — Hangarback Walker in hand.
+  {
+    id: "hangarback-walker-in-hand-m612",
+    description: "Hangarback Walker in hand; X+thopters parse.",
+    seed: 0x29d,
+    cards: {
+      "Hangarback Walker": `Name:Hangarback Walker
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+K:etbCounter:P1P1:X
+A:AB$ PutCounter | Cost$ 1 T | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self | SpellDescription$ Charge.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Thopters on death.
+SVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_1_1_a_thopter_flying
+SVar:X:Count$CardCounters.P1P1
+Oracle:Hangarback Walker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hangarback Walker"], battlefield: [], manaPool: ["C", "C", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 599. Spell — Endless One in hand.
+  {
+    id: "endless-one-in-hand",
+    description: "Endless One in hand; X cmc 0/0 etb-counters parse.",
+    seed: 0x29e,
+    cards: {
+      "Endless One": `Name:Endless One
+ManaCost:X
+Types:Creature Eldrazi
+PT:0/0
+K:etbCounter:P1P1:X
+Oracle:Endless One parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Endless One"], battlefield: [], manaPool: ["C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 600. Spell — Fleecemane Lion in hand.
+  {
+    id: "fleecemane-lion-monstrous-in-hand",
+    description: "Fleecemane Lion in hand; monstrous activation parse.",
+    seed: 0x29f,
+    cards: {
+      "Fleecemane Lion": `Name:Fleecemane Lion
+ManaCost:G W
+Types:Creature Cat
+PT:3/3
+A:AB$ PutCounter | Cost$ 3 G W | CounterType$ MONSTROUS | CounterNum$ 1 | MonstrosityNum$ 1 | Defined$ Self | SpellDescription$ Monstrous.
+S:Mode$ Continuous | Affected$ Card.Self+isMonstrous | AddKeyword$ Hexproof & Indestructible | Description$ Hex+Indes.
+Oracle:Fleecemane Lion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fleecemane Lion"], battlefield: [], manaPool: ["G", "W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 601. Spell — Polukranos, World Eater in hand.
+  {
+    id: "polukranos-monstrous-in-hand",
+    description: "Polukranos, World Eater in hand; monstrous fight parse.",
+    seed: 0x2a0,
+    cards: {
+      "Polukranos, World Eater": `Name:Polukranos, World Eater
+ManaCost:2 G G
+Types:Legendary Creature Hydra
+PT:5/5
+A:AB$ PutCounter | Cost$ X X G | CounterType$ MONSTROUS | CounterNum$ 1 | MonstrosityNum$ X | Defined$ Self | SubAbility$ DBDmg | SpellDescription$ Monstrous.
+SVar:DBDmg:DB$ DealDamage | NumDmg$ X | ValidTgts$ Creature.OppCtrl | TargetMin$ 1 | TargetMax$ 99 | DivideOnResolution$ True
+SVar:X:Count$xPaid
+Oracle:Polukranos parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Polukranos, World Eater"], battlefield: [], manaPool: ["G", "G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 602. Spell — Heroic — Akroan Crusader in hand.
+  {
+    id: "akroan-crusader-heroic-in-hand",
+    description: "Akroan Crusader in hand; heroic token parse.",
+    seed: 0x2a1,
+    cards: {
+      "Akroan Crusader": `Name:Akroan Crusader
+ManaCost:R
+Types:Creature Human Soldier
+PT:1/1
+T:Mode$ SpellCast | TargetsValid$ Card.Self | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerDescription$ Heroic.
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ r_1_1_soldier_haste
+Oracle:Akroan Crusader parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Akroan Crusader"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
 ];

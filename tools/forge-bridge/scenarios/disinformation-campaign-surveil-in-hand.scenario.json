@@ -1,0 +1,22 @@
+{
+  "id": "disinformation-campaign-surveil-in-hand",
+  "description": "Disinformation Campaign in hand; surveil ETB parse.",
+  "seed": 582,
+  "cards": {
+    "Disinformation Campaign": "Name:Disinformation Campaign\nManaCost:1 U B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ Surveil 2 ETB.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 1 | Defined$ Player.Opponent\nOracle:Disinformation Campaign parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Disinformation Campaign"],
+      "battlefield": [],
+      "manaPool": ["U", "B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "through-the-breach-in-hand",
+  "description": "Through the Breach in hand; alt-pitch cheat parse.",
+  "seed": 665,
+  "cards": {
+    "Through the Breach": "Name:Through the Breach\nManaCost:3 R R\nTypes:Instant Arcane\nA:SP$ ChangeZone | Cost$ 3 R R | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBSac | SpellDescription$ Through the Breach.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Card.IsRemembered | TriggerPhases$ EndOfTurn\nA:SP$ ChangeZone | Cost$ Exile<1/Card.YouOwn+inZoneHand+Other> | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | SpellDescription$ Alt-cast.\nOracle:Through the Breach parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Through the Breach"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

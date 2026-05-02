@@ -1,0 +1,22 @@
+{
+  "id": "god-pharaohs-gift-in-hand",
+  "description": "God-Pharaoh's Gift in hand; eternalize-on-trigger parse.",
+  "seed": 563,
+  "cards": {
+    "God-Pharaoh's Gift": "Name:God-Pharaoh's Gift\nManaCost:7\nTypes:Artifact\nT:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigChange | TriggerDescription$ Return + zombify.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouOwn | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Animate | Defined$ Remembered | Power$ 4 | Toughness$ 4 | Types$ Zombie\nOracle:God-Pharaoh's Gift parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["God-Pharaoh's Gift"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

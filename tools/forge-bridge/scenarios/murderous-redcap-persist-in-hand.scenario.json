@@ -1,0 +1,22 @@
+{
+  "id": "murderous-redcap-persist-in-hand",
+  "description": "Murderous Redcap in hand; persist ETB damage parse.",
+  "seed": 560,
+  "cards": {
+    "Murderous Redcap": "Name:Murderous Redcap\nManaCost:2 B R\nTypes:Creature Goblin Assassin\nPT:2/2\nK:Persist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ ETB damage.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | ValidTgts$ Any\nOracle:Murderous Redcap parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Murderous Redcap"],
+      "battlefield": [],
+      "manaPool": ["B", "R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

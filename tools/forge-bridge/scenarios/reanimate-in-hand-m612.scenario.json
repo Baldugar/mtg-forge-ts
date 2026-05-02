@@ -1,0 +1,22 @@
+{
+  "id": "reanimate-in-hand-m612",
+  "description": "Reanimate in hand; reanimate any cmc parse.",
+  "seed": 660,
+  "cards": {
+    "Reanimate": "Name:Reanimate\nManaCost:B\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBLife | SpellDescription$ Reanimate.\nSVar:DBLife:DB$ LoseLife | LifeAmount$ X | Defined$ You\nSVar:X:Targeted$CardManaCost\nOracle:Reanimate parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Reanimate"],
+      "battlefield": [],
+      "manaPool": ["B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

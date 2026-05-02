@@ -1,0 +1,22 @@
+{
+  "id": "squee-goblin-nabob-in-hand",
+  "description": "Squee, Goblin Nabob in hand; recur from hand parse.",
+  "seed": 656,
+  "cards": {
+    "Squee, Goblin Nabob": "Name:Squee, Goblin Nabob\nManaCost:3 R\nTypes:Legendary Creature Goblin\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigReturn | TriggerDescription$ Recur.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Card.Self+inZoneGraveyard\nOracle:Squee parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Squee, Goblin Nabob"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

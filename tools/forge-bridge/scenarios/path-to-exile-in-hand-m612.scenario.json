@@ -1,0 +1,22 @@
+{
+  "id": "path-to-exile-in-hand-m612",
+  "description": "Path to Exile in hand; exile-with-comp parse.",
+  "seed": 621,
+  "cards": {
+    "Path to Exile": "Name:Path to Exile\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBSearch | SpellDescription$ Path.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ BasicLand | ChangeNum$ 1 | Defined$ TargetedController | Tapped$ True\nOracle:Path to Exile parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Path to Exile"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

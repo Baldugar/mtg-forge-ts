@@ -1,0 +1,22 @@
+{
+  "id": "nether-traitor-in-hand",
+  "description": "Nether Traitor in hand; haste recur shadow parse.",
+  "seed": 655,
+  "cards": {
+    "Nether Traitor": "Name:Nether Traitor\nManaCost:B B\nTypes:Creature Spirit\nPT:1/1\nK:Haste\nK:Shadow\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Return self.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self\nOracle:Nether Traitor parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Nether Traitor"],
+      "battlefield": [],
+      "manaPool": ["B", "B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

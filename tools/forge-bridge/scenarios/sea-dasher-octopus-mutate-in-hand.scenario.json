@@ -1,0 +1,22 @@
+{
+  "id": "sea-dasher-octopus-mutate-in-hand",
+  "description": "Sea-Dasher Octopus in hand; flash mutate parse.",
+  "seed": 541,
+  "cards": {
+    "Sea-Dasher Octopus": "Name:Sea-Dasher Octopus\nManaCost:1 U\nTypes:Creature Octopus\nPT:1/1\nK:Flash\nK:Mutate:G U\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Draw on combat damage.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Sea-Dasher Octopus parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sea-Dasher Octopus"],
+      "battlefield": [],
+      "manaPool": ["U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

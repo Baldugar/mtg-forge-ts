@@ -1,0 +1,22 @@
+{
+  "id": "searing-blaze-landfall-in-hand",
+  "description": "Searing Blaze in hand; landfall burn parse.",
+  "seed": 608,
+  "cards": {
+    "Searing Blaze": "Name:Searing Blaze\nManaCost:R R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R R | NumDmg$ 1 | ValidTgts$ Player | SubAbility$ DBDmg2 | SpellDescription$ Blaze.\nSVar:DBDmg2:DB$ DealDamage | NumDmg$ 1 | TargetType$ Card | ValidTgts$ Creature.TargetedPlayerCtrl\nT:Mode$ Landfall | ValidPlayer$ You | Execute$ TrigBoost | TriggerDescription$ Landfall +2 dmg.\nSVar:TrigBoost:DB$ ChangeNumDmg | NumDmg$ 3\nOracle:Searing Blaze parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Searing Blaze"],
+      "battlefield": [],
+      "manaPool": ["R", "R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

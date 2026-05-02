@@ -1,0 +1,22 @@
+{
+  "id": "warlock-class-in-hand",
+  "description": "Warlock Class in hand; level-up chain parse.",
+  "seed": 531,
+  "cards": {
+    "Warlock Class": "Name:Warlock Class\nManaCost:1 B\nTypes:Enchantment Class Warlock\nK:ClassLevel:1:1 B\nR:Event$ Moved | ValidCard$ Card.YouOwn | Destination$ Graveyard | ReplaceWith$ DBLife | Description$ Drain.\nSVar:DBLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ Player.Opponent\nK:ClassLevel:2:2 B B\nT:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigDrain | TriggerDescription$ Drain end of turn.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 2 | Defined$ Player.Opponent\nK:ClassLevel:3:3 B B\nS:Mode$ Continuous | Affected$ You | LifeTotalAdjust$ 5 | Description$ +5 life.\nOracle:Warlock Class parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Warlock Class"],
+      "battlefield": [],
+      "manaPool": ["B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

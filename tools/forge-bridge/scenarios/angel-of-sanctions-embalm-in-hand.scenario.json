@@ -1,0 +1,22 @@
+{
+  "id": "angel-of-sanctions-embalm-in-hand",
+  "description": "Angel of Sanctions in hand; embalm exile parse.",
+  "seed": 562,
+  "cards": {
+    "Angel of Sanctions": "Name:Angel of Sanctions\nManaCost:3 W W\nTypes:Creature Angel\nPT:3/4\nK:Flying\nK:Embalm:5 W W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Exile target.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Permanent.nonLand+OppCtrl\nOracle:Angel of Sanctions parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Angel of Sanctions"],
+      "battlefield": [],
+      "manaPool": ["W", "W", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

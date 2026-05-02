@@ -1,0 +1,22 @@
+{
+  "id": "hanweir-garrison-dfc-in-hand",
+  "description": "Hanweir Garrison in hand; DFC meld-eligible parse.",
+  "seed": 600,
+  "cards": {
+    "Hanweir Garrison": "Name:Hanweir Garrison\nManaCost:2 R\nTypes:Creature Human Soldier\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens on attack.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_human\nOracle:Hanweir Garrison parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Hanweir Garrison"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

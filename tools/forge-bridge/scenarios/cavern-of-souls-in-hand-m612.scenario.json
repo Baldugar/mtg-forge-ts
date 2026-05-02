@@ -1,0 +1,22 @@
+{
+  "id": "cavern-of-souls-in-hand-m612",
+  "description": "Cavern of Souls in hand; uncounterable tribal parse.",
+  "seed": 642,
+  "cards": {
+    "Cavern of Souls": "Name:Cavern of Souls\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseType | TriggerDescription$ Choose creature type.\nSVar:TrigChooseType:DB$ ChooseType | Type$ Creature\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add C.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ ChosenType | SpellDescription$ Add tribal.\nOracle:Cavern parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Cavern of Souls"],
+      "battlefield": [],
+      "manaPool": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

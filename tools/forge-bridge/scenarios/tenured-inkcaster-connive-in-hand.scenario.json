@@ -1,0 +1,22 @@
+{
+  "id": "tenured-inkcaster-connive-in-hand",
+  "description": "Tenured Inkcaster in hand; connive ETB parse.",
+  "seed": 583,
+  "cards": {
+    "Tenured Inkcaster": "Name:Tenured Inkcaster\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigConnive | TriggerDescription$ Connive on combat damage.\nSVar:TrigConnive:DB$ Connive | Amount$ 1\nOracle:Tenured Inkcaster parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tenured Inkcaster"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

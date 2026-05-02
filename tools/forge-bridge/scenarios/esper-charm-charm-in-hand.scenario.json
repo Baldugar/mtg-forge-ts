@@ -1,0 +1,22 @@
+{
+  "id": "esper-charm-charm-in-hand",
+  "description": "Esper Charm in hand; tri-mode charm parse.",
+  "seed": 586,
+  "cards": {
+    "Esper Charm": "Name:Esper Charm\nManaCost:W U B\nTypes:Instant\nA:SP$ Charm | Cost$ W U B | Choices$ DBDestroy,DBDraw,DBDiscard | SpellDescription$ Esper Charm.\nSVar:DBDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Enchantment\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Defined$ Player.Opponent\nOracle:Esper Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Esper Charm"],
+      "battlefield": [],
+      "manaPool": ["W", "U", "B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

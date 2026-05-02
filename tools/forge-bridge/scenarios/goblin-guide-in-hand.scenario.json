@@ -1,0 +1,22 @@
+{
+  "id": "goblin-guide-in-hand",
+  "description": "Goblin Guide in hand; haste 2/2 reveal parse.",
+  "seed": 632,
+  "cards": {
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Reveal.\nSVar:TrigReveal:DB$ Reveal | RevealNumber$ 1 | RevealLocation$ Library | Defined$ Player.Opponent\nOracle:Goblin Guide parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Goblin Guide"],
+      "battlefield": [],
+      "manaPool": ["R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

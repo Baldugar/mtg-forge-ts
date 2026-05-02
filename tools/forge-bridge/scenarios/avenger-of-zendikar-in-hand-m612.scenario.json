@@ -1,0 +1,22 @@
+{
+  "id": "avenger-of-zendikar-in-hand-m612",
+  "description": "Avenger of Zendikar in hand; plant-token ETB parse.",
+  "seed": 602,
+  "cards": {
+    "Avenger of Zendikar": "Name:Avenger of Zendikar\nManaCost:5 G G\nTypes:Creature Elemental\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Plant tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_0_1_plant\nSVar:X:Count$ValidPermanent.YouCtrl+Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigPump | TriggerDescription$ Pump on land ETB.\nSVar:TrigPump:DB$ PumpAll | NumAtt$ X | NumDef$ X | ValidCards$ Plant.YouCtrl\nOracle:Avenger of Zendikar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Avenger of Zendikar"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

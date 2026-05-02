@@ -1,0 +1,22 @@
+{
+  "id": "bloodghast-in-hand-m612",
+  "description": "Bloodghast in hand; landfall recur parse.",
+  "seed": 651,
+  "cards": {
+    "Bloodghast": "Name:Bloodghast\nManaCost:B B\nTypes:Creature Vampire Spirit\nPT:2/1\nK:Haste:Card.Self+oppHasLifeLE10\nT:Mode$ Landfall | ValidPlayer$ You | Execute$ TrigReturn | TriggerDescription$ Landfall return.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Card.Self\nOracle:Bloodghast parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Bloodghast"],
+      "battlefield": [],
+      "manaPool": ["B", "B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

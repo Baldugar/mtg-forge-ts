@@ -1,0 +1,22 @@
+{
+  "id": "sneak-attack-in-hand",
+  "description": "Sneak Attack in hand; cheat-sac creature parse.",
+  "seed": 664,
+  "cards": {
+    "Sneak Attack": "Name:Sneak Attack\nManaCost:2 R\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ R | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBHaste | SpellDescription$ Sneak.\nSVar:DBHaste:DB$ Animate | Defined$ Remembered | Keywords$ Haste | UntilEOT$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Card.IsRemembered | TriggerPhases$ EndOfTurn\nOracle:Sneak Attack parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sneak Attack"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "wort-the-raidmother-conspire-in-hand",
+  "description": "Wort, the Raidmother in hand; conspire-grant parse.",
+  "seed": 579,
+  "cards": {
+    "Wort, the Raidmother": "Name:Wort, the Raidmother\nManaCost:3 R/G R/G\nTypes:Legendary Creature Goblin Shaman\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Two goblin tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin_warrior\nS:Mode$ Continuous | Affected$ Sorcery.YouOwn+inZoneStack | AddKeyword$ Conspire | Description$ Sorceries get conspire.\nOracle:Wort parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Wort, the Raidmother"],
+      "battlefield": [],
+      "manaPool": ["R", "G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

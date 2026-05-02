@@ -1,0 +1,22 @@
+{
+  "id": "living-death-in-hand-m612",
+  "description": "Living Death in hand; mass exchange parse.",
+  "seed": 659,
+  "cards": {
+    "Living Death": "Name:Living Death\nManaCost:3 B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Cost$ 3 B | ChangeType$ Creature | Origin$ Battlefield | Destination$ Graveyard | SubAbility$ DBReturn | SpellDescription$ Living Death.\nSVar:DBReturn:DB$ ChangeZoneAll | ChangeType$ Creature | Origin$ Graveyard | Destination$ Battlefield\nOracle:Living Death parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Living Death"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

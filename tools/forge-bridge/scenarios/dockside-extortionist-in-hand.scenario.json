@@ -1,0 +1,22 @@
+{
+  "id": "dockside-extortionist-in-hand",
+  "description": "Dockside Extortionist in hand; treasure ETB parse.",
+  "seed": 547,
+  "cards": {
+    "Dockside Extortionist": "Name:Dockside Extortionist\nManaCost:1 R\nTypes:Creature Goblin Pirate\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Treasure tokens equal to opp artifacts.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_a_treasure_sac\nSVar:X:Count$ValidPermanent.OppCtrl+Artifact\nOracle:Dockside Extortionist parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Dockside Extortionist"],
+      "battlefield": [],
+      "manaPool": ["R", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

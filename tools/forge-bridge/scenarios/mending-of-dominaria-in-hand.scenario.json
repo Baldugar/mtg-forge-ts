@@ -1,0 +1,22 @@
+{
+  "id": "mending-of-dominaria-in-hand",
+  "description": "The Mending of Dominaria in hand; saga 4-chapter parse.",
+  "seed": 525,
+  "cards": {
+    "The Mending of Dominaria": "Name:The Mending of Dominaria\nManaCost:3 G G\nTypes:Enchantment Saga\nK:Chapter:3:DBMill,DBReturn,DBLastChapter\nSVar:DBMill:DB$ Mill | NumCards$ 4\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouOwn\nSVar:DBLastChapter:DB$ ChangeZoneAll | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ 1 | TokenScript$ b_2_2_zombie\nOracle:Mending of Dominaria parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["The Mending of Dominaria"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

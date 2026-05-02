@@ -1,0 +1,22 @@
+{
+  "id": "swords-to-plowshares-in-hand-m612",
+  "description": "Swords to Plowshares in hand; exile-with-life parse.",
+  "seed": 622,
+  "cards": {
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBLife | SpellDescription$ Swords.\nSVar:DBLife:DB$ GainLife | LifeAmount$ Y | Defined$ TargetedController\nSVar:Y:Targeted$CardPower\nOracle:Swords parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Swords to Plowshares"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

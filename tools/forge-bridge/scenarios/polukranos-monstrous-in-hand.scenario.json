@@ -1,0 +1,22 @@
+{
+  "id": "polukranos-monstrous-in-hand",
+  "description": "Polukranos, World Eater in hand; monstrous fight parse.",
+  "seed": 672,
+  "cards": {
+    "Polukranos, World Eater": "Name:Polukranos, World Eater\nManaCost:2 G G\nTypes:Legendary Creature Hydra\nPT:5/5\nA:AB$ PutCounter | Cost$ X X G | CounterType$ MONSTROUS | CounterNum$ 1 | MonstrosityNum$ X | Defined$ Self | SubAbility$ DBDmg | SpellDescription$ Monstrous.\nSVar:DBDmg:DB$ DealDamage | NumDmg$ X | ValidTgts$ Creature.OppCtrl | TargetMin$ 1 | TargetMax$ 99 | DivideOnResolution$ True\nSVar:X:Count$xPaid\nOracle:Polukranos parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Polukranos, World Eater"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

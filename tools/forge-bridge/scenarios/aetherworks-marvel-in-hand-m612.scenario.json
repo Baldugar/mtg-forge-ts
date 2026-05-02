@@ -1,0 +1,22 @@
+{
+  "id": "aetherworks-marvel-in-hand-m612",
+  "description": "Aetherworks Marvel in hand; energy counters parse.",
+  "seed": 549,
+  "cards": {
+    "Aetherworks Marvel": "Name:Aetherworks Marvel\nManaCost:4\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Permanent.YouCtrl+Other | Execute$ TrigEnergy | TriggerDescription$ Energy on permanent dies.\nSVar:TrigEnergy:DB$ PutCounter | CounterType$ ENERGY | CounterNum$ 1 | Defined$ You\nA:AB$ Dig | Cost$ T PayCounter<6/ENERGY> | DigNum$ 6 | ChangeNum$ 1 | DestinationZone$ Battlefield | SpellDescription$ Marvel.\nOracle:Aetherworks Marvel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aetherworks Marvel"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

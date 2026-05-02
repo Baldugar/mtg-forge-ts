@@ -1,0 +1,22 @@
+{
+  "id": "stinkweed-imp-dredge-in-hand",
+  "description": "Stinkweed Imp in hand; dredge replacement parse.",
+  "seed": 592,
+  "cards": {
+    "Stinkweed Imp": "Name:Stinkweed Imp\nManaCost:1 B\nTypes:Creature Imp\nPT:1/2\nK:Flying\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | Execute$ TrigDestroy | TriggerDescription$ Destroy on combat damage.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTarget\nK:Dredge:5\nOracle:Stinkweed Imp parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Stinkweed Imp"],
+      "battlefield": [],
+      "manaPool": ["B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

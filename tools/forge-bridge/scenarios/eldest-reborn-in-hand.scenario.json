@@ -1,0 +1,22 @@
+{
+  "id": "eldest-reborn-in-hand",
+  "description": "The Eldest Reborn in hand; saga discard-destroy-recur parse.",
+  "seed": 526,
+  "cards": {
+    "The Eldest Reborn": "Name:The Eldest Reborn\nManaCost:4 B\nTypes:Enchantment Saga\nK:Chapter:3:DBDiscard,DBSacrifice,DBReturn\nSVar:DBDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose | Defined$ Player.Opponent\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Creature,Planeswalker | Defined$ Player.Opponent\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature\nOracle:Eldest Reborn parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["The Eldest Reborn"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

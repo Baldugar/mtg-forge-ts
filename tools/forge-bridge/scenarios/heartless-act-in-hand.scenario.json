@@ -1,0 +1,22 @@
+{
+  "id": "heartless-act-in-hand",
+  "description": "Heartless Act in hand; destroy or remove counters parse.",
+  "seed": 624,
+  "cards": {
+    "Heartless Act": "Name:Heartless Act\nManaCost:1 B\nTypes:Instant\nA:SP$ Charm | Cost$ 1 B | Choices$ DBDestroy,DBRemove | SpellDescription$ Heartless Act.\nSVar:DBDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Creature.counters_EQ0_P1P1\nSVar:DBRemove:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 3 | TargetType$ Card | ValidTgts$ Creature\nOracle:Heartless Act parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Heartless Act"],
+      "battlefield": [],
+      "manaPool": ["B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

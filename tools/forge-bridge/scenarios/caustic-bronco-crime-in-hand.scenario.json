@@ -1,0 +1,22 @@
+{
+  "id": "caustic-bronco-crime-in-hand",
+  "description": "Caustic Bronco in hand; crime/discover parse.",
+  "seed": 585,
+  "cards": {
+    "Caustic Bronco": "Name:Caustic Bronco\nManaCost:1 B\nTypes:Creature Horse\nPT:3/2\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerDescription$ Mill on damage.\nSVar:TrigMill:DB$ Dig | DigNum$ 1 | DestinationZone$ Exile | DestinationZone2$ Hand | RestRandomOrder$ True\nOracle:Caustic Bronco parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Caustic Bronco"],
+      "battlefield": [],
+      "manaPool": ["B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

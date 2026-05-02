@@ -1,0 +1,22 @@
+{
+  "id": "outcaster-trailblazer-plot-in-hand",
+  "description": "Outcaster Trailblazer in hand; plot creature parse.",
+  "seed": 551,
+  "cards": {
+    "Outcaster Trailblazer": "Name:Outcaster Trailblazer\nManaCost:2 G\nTypes:Creature Centaur Scout\nPT:3/3\nK:Plot:1 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Draw on ETB.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Outcaster Trailblazer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Outcaster Trailblazer"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

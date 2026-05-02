@@ -1,0 +1,22 @@
+{
+  "id": "phyrexian-scriptures-in-hand",
+  "description": "Phyrexian Scriptures in hand; saga chapter parse.",
+  "seed": 524,
+  "cards": {
+    "Phyrexian Scriptures": "Name:Phyrexian Scriptures\nManaCost:2 B\nTypes:Enchantment Saga\nK:Chapter:3:DBCounter,DBDestroy,DBExile\nSVar:DBCounter:DB$ PutCounter | CounterType$ M1M1 | CounterNum$ 1 | ValidTgts$ Creature\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.nonArtifact\nSVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Exile\nOracle:Phyrexian Scriptures saga parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phyrexian Scriptures"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

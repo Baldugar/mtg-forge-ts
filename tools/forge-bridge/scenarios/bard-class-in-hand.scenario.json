@@ -1,0 +1,22 @@
+{
+  "id": "bard-class-in-hand",
+  "description": "Bard Class in hand; multi-level class parse.",
+  "seed": 530,
+  "cards": {
+    "Bard Class": "Name:Bard Class\nManaCost:1 R G\nTypes:Enchantment Class Bard\nK:ClassLevel:1:1 R G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ ETB token.\nSVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ rg_1_1_human_bard\nK:ClassLevel:2:1 R G\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ +1/+1.\nK:ClassLevel:3:3 R G\nT:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | Execute$ TrigDamage | TriggerDescription$ Burn.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent\nOracle:Bard Class parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Bard Class"],
+      "battlefield": [],
+      "manaPool": ["R", "G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "city-of-brass-in-hand",
+  "description": "City of Brass in hand; pain rainbow parse.",
+  "seed": 647,
+  "cards": {
+    "City of Brass": "Name:City of Brass\nManaCost:no cost\nTypes:Land\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Pain.\nSVar:TrigDmg:DB$ LoseLife | LifeAmount$ 1 | Defined$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add any.\nOracle:City of Brass parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["City of Brass"],
+      "battlefield": [],
+      "manaPool": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

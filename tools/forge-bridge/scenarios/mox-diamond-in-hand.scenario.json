@@ -1,0 +1,22 @@
+{
+  "id": "mox-diamond-in-hand",
+  "description": "Mox Diamond in hand; ETB-discard alt-cost parse.",
+  "seed": 614,
+  "cards": {
+    "Mox Diamond": "Name:Mox Diamond\nManaCost:0\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ Discard land or sac.\nSVar:TrigDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose | DiscardValid$ Card.Land\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add any.\nOracle:Mox Diamond parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Mox Diamond"],
+      "battlefield": [],
+      "manaPool": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

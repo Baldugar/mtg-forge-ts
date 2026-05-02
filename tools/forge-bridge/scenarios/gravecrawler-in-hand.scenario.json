@@ -1,0 +1,22 @@
+{
+  "id": "gravecrawler-in-hand",
+  "description": "Gravecrawler in hand; recur from gy with zombie parse.",
+  "seed": 654,
+  "cards": {
+    "Gravecrawler": "Name:Gravecrawler\nManaCost:B\nTypes:Creature Zombie\nPT:2/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ Can't block.\nA:AB$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | ActivationZone$ Graveyard | ConditionPresent$ Zombie.YouCtrl | SpellDescription$ Recur.\nOracle:Gravecrawler parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Gravecrawler"],
+      "battlefield": [],
+      "manaPool": ["B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

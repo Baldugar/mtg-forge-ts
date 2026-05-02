@@ -1,0 +1,22 @@
+{
+  "id": "teferis-realm-phasing-in-hand",
+  "description": "Teferi's Realm in hand; phasing chooser parse.",
+  "seed": 587,
+  "cards": {
+    "Teferi's Realm": "Name:Teferi's Realm\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPhase | TriggerDescription$ Phase chooser.\nSVar:TrigPhase:DB$ Phases | Defined$ ValidPermanent.Land+OppCtrl\nOracle:Teferi's Realm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Teferi's Realm"],
+      "battlefield": [],
+      "manaPool": ["U", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "tovolars-huntmaster-in-hand",
+  "description": "Tovolar's Huntmaster in hand; nightbound werewolf parse.",
+  "seed": 545,
+  "cards": {
+    "Tovolar's Huntmaster": "Name:Tovolar's Huntmaster\nManaCost:5 G G\nTypes:Creature Werewolf\nPT:6/6\nK:Nightbound\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Two wolves on ETB.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_2_2_wolf\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigUpkeep | TriggerDescription$ Wolf each upkeep.\nSVar:TrigUpkeep:DB$ Token | TokenAmount$ 1 | TokenScript$ g_2_2_wolf\nOracle:Tovolar's Huntmaster parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tovolar's Huntmaster"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

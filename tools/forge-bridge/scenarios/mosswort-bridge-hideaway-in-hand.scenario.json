@@ -1,0 +1,22 @@
+{
+  "id": "mosswort-bridge-hideaway-in-hand",
+  "description": "Mosswort Bridge in hand; hideaway exile-conditional parse.",
+  "seed": 574,
+  "cards": {
+    "Mosswort Bridge": "Name:Mosswort Bridge\nManaCost:no cost\nTypes:Land\nK:CARDNAME enters tapped.\nK:Hideaway\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add G.\nA:AB$ Effect | Cost$ G T | ConditionPresent$ Creature.YouCtrl+powerGE10 | StaticAbilities$ HiddenCast | SpellDescription$ Cast hidden.\nSVar:HiddenCast:Mode$ Continuous | EffectZone$ Command | AddPlayUntil$ ExiledMosswort | Description$ Cast.\nOracle:Mosswort Bridge parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Mosswort Bridge"],
+      "battlefield": [],
+      "manaPool": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

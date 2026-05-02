@@ -1,0 +1,22 @@
+{
+  "id": "gilded-goose-food-in-hand",
+  "description": "Gilded Goose in hand; food token parse.",
+  "seed": 548,
+  "cards": {
+    "Gilded Goose": "Name:Gilded Goose\nManaCost:G\nTypes:Creature Bird\nPT:0/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFood | TriggerDescription$ Food on ETB.\nSVar:TrigFood:DB$ Token | TokenAmount$ 1 | TokenScript$ c_a_food_sac\nA:AB$ Mana | Cost$ T | Produced$ Any | ActivationLimit$ 1 | SpellDescription$ Add any.\nOracle:Gilded Goose parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Gilded Goose"],
+      "battlefield": [],
+      "manaPool": ["G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
