@@ -1,0 +1,22 @@
+{
+  "id": "skullclamp-in-hand",
+  "description": "Skullclamp in hand; cheap-equip + LTB-draw 2 parse.",
+  "seed": 505,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Pump.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Draw 2 on death.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Skullclamp parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Skullclamp"],
+      "battlefield": [],
+      "manaPool": ["C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

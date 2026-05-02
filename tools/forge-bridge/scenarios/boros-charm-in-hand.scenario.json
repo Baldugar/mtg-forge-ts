@@ -1,0 +1,22 @@
+{
+  "id": "boros-charm-in-hand",
+  "description": "Boros Charm in hand; modal-3-modes parse.",
+  "seed": 480,
+  "cards": {
+    "Boros Charm": "Name:Boros Charm\nManaCost:R W\nTypes:Instant\nA:SP$ Charm | Cost$ R W | Choices$ DBBurn,DBPump,DBProtect | SpellDescription$ Boros Charm.\nSVar:DBBurn:DB$ DealDamage | NumDmg$ 4 | ValidTgts$ Player\nSVar:DBPump:DB$ Pump | TargetType$ Card | ValidTgts$ Permanent.YouCtrl | KW$ Indestructible\nSVar:DBProtect:DB$ Pump | TargetType$ Card | ValidTgts$ Creature.YouCtrl | KW$ Double Strike\nOracle:Boros Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Boros Charm"],
+      "battlefield": [],
+      "manaPool": ["R", "W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

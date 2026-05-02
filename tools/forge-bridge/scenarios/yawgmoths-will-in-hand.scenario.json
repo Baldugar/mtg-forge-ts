@@ -1,0 +1,22 @@
+{
+  "id": "yawgmoths-will-in-hand",
+  "description": "Yawgmoth's Will in hand; play-from-graveyard parse.",
+  "seed": 465,
+  "cards": {
+    "Yawgmoth's Will": "Name:Yawgmoth's Will\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Effect | Cost$ 2 B | StaticAbilities$ STPlay | RememberObjects$ You | SpellDescription$ Y-Will.\nSVar:STPlay:Mode$ Continuous | EffectZone$ Command | MayPlay$ True | Affected$ Card.YouOwn+inGraveyard\nOracle:Y-Will parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Yawgmoth's Will"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

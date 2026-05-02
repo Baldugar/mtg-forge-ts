@@ -1,0 +1,22 @@
+{
+  "id": "restoration-angel-in-hand",
+  "description": "Restoration Angel in hand; flash + ETB-blink parse.",
+  "seed": 400,
+  "cards": {
+    "Restoration Angel": "Name:Restoration Angel\nManaCost:3 W\nTypes:Creature Angel\nPT:3/4\nK:Flying\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBlink | OptionalDecider$ You | TriggerDescription$ Blink target on ETB.\nSVar:TrigBlink:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl+nonAngel | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Resto parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Restoration Angel"],
+      "battlefield": [],
+      "manaPool": ["W", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

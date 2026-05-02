@@ -1,0 +1,22 @@
+{
+  "id": "tangle-wire-in-hand",
+  "description": "Tangle Wire in hand; fade-counter tap-trigger parse.",
+  "seed": 392,
+  "cards": {
+    "Tangle Wire": "Name:Tangle Wire\nManaCost:3\nTypes:Artifact\nK:etbCounter:FADE:4\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ Player | Execute$ TrigTap | TriggerDescription$ Tap permanents.\nSVar:TrigTap:DB$ Tap | TargetType$ Card | ValidTgts$ Permanent.YouCtrl | Amount$ X\nSVar:X:Count$CardCounters.FADE\nOracle:Tangle Wire parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tangle Wire"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

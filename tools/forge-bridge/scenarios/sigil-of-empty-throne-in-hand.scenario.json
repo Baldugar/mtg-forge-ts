@@ -1,0 +1,22 @@
+{
+  "id": "sigil-of-empty-throne-in-hand",
+  "description": "Sigil of the Empty Throne in hand; angel-token-on-enchantment trigger parse.",
+  "seed": 423,
+  "cards": {
+    "Sigil of the Empty Throne": "Name:Sigil of the Empty Throne\nManaCost:5 W\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerDescription$ Angel token on enchantment-cast.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenAmount$ 1\nOracle:Sigil parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sigil of the Empty Throne"],
+      "battlefield": [],
+      "manaPool": ["W", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

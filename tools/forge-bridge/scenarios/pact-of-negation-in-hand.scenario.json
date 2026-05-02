@@ -1,0 +1,21 @@
+{
+  "id": "pact-of-negation-in-hand",
+  "description": "Pact of Negation in hand; alt-cost free counter parse.",
+  "seed": 458,
+  "cards": {
+    "Pact of Negation": "Name:Pact of Negation\nManaCost:no cost\nTypes:Instant\nA:SP$ Counter | Cost$ 0 | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Free counter; pact pay next upkeep.\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ You | Execute$ TrigPact | TriggerDescription$ Pay or lose.\nSVar:TrigPact:DB$ LoseGame\nOracle:Pact of Negation parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Pact of Negation"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

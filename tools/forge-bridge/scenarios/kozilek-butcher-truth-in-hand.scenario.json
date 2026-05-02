@@ -1,0 +1,22 @@
+{
+  "id": "kozilek-butcher-truth-in-hand",
+  "description": "Kozilek, Butcher of Truth in hand; Annihilator + cast-draw parse.",
+  "seed": 381,
+  "cards": {
+    "Kozilek, Butcher of Truth": "Name:Kozilek, Butcher of Truth\nManaCost:10\nTypes:Legendary Creature Eldrazi\nPT:12/12\nK:Annihilator:4\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Draw 4 on cast.\nSVar:TrigDraw:DB$ Draw | NumCards$ 4\nOracle:Kozilek parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Kozilek, Butcher of Truth"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "ulamog-infinite-gyre-in-hand",
+  "description": "Ulamog, the Infinite Gyre in hand; indestructible + Annihilator parse.",
+  "seed": 380,
+  "cards": {
+    "Ulamog, the Infinite Gyre": "Name:Ulamog, the Infinite Gyre\nManaCost:11\nTypes:Legendary Creature Eldrazi\nPT:10/10\nK:Indestructible\nK:Annihilator:4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ Shuffle on death.\nSVar:TrigShuffle:DB$ ChangeZoneAll | ChangeType$ Card.OwnedByYou | Origin$ Graveyard | Destination$ Library\nOracle:Ulamog parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Ulamog, the Infinite Gyre"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "grave-titan-in-hand",
+  "description": "Grave Titan in hand; deathtouch + ETB-zombies trigger parse.",
+  "seed": 474,
+  "cards": {
+    "Grave Titan": "Name:Grave Titan\nManaCost:4 B B\nTypes:Creature Giant\nPT:6/6\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Zombie tokens ETB.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken\nOracle:Grave Titan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Grave Titan"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

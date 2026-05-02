@@ -1,0 +1,22 @@
+{
+  "id": "primeval-titan-in-hand",
+  "description": "Primeval Titan in hand; ETB-and-attack-search-lands parse.",
+  "seed": 476,
+  "cards": {
+    "Primeval Titan": "Name:Primeval Titan\nManaCost:4 G G\nTypes:Creature Giant\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Search 2 lands.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 2 | Tapped$ True\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSearch\nOracle:Primeval Titan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Primeval Titan"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

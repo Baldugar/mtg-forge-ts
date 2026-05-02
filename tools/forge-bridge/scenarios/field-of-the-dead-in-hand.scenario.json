@@ -1,0 +1,21 @@
+{
+  "id": "field-of-the-dead-in-hand",
+  "description": "Field of the Dead in hand; landfall-zombie token trigger parse.",
+  "seed": 385,
+  "cards": {
+    "Field of the Dead": "Name:Field of the Dead\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Land+YouCtrl | Execute$ TrigToken | CheckSVar$ DistinctLands | SVarCompare$ GE7 | TriggerDescription$ Zombie token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nSVar:DistinctLands:Count$Valid Land.YouCtrl\nOracle:Field of the Dead parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Field of the Dead"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "sylvan-library-in-hand",
+  "description": "Sylvan Library in hand; draw-3-pay-or-return parse.",
+  "seed": 504,
+  "cards": {
+    "Sylvan Library": "Name:Sylvan Library\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Draw two extra.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Sylvan Library parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sylvan Library"],
+      "battlefield": [],
+      "manaPool": ["G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

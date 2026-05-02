@@ -1,0 +1,22 @@
+{
+  "id": "vaultborn-tyrant-in-hand",
+  "description": "Vaultborn Tyrant (OTJ) in hand; ETB-life-draw + recur parse.",
+  "seed": 440,
+  "cards": {
+    "Vaultborn Tyrant": "Name:Vaultborn Tyrant\nManaCost:5 G G\nTypes:Creature Dinosaur\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain | TriggerDescription$ Gain 6 life and draw card.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 6 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:Vaultborn parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Vaultborn Tyrant"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

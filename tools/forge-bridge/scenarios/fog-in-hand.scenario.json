@@ -1,0 +1,22 @@
+{
+  "id": "fog-in-hand",
+  "description": "Fog in hand; prevent combat damage parse.",
+  "seed": 418,
+  "cards": {
+    "Fog": "Name:Fog\nManaCost:G\nTypes:Instant\nA:SP$ Effect | Cost$ G | ReplacementEffects$ RPrevent | SpellDescription$ Prevent combat damage.\nSVar:RPrevent:Event$ DamageDone | IsCombat$ True | PreventionEffect$ True\nOracle:Fog parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Fog"],
+      "battlefield": [],
+      "manaPool": ["G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

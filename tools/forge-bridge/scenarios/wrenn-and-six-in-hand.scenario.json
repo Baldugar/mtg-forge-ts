@@ -1,0 +1,22 @@
+{
+  "id": "wrenn-and-six-in-hand",
+  "description": "Wrenn and Six in hand; planeswalker land-recur + retrace parse.",
+  "seed": 520,
+  "cards": {
+    "Wrenn and Six": "Name:Wrenn and Six\nManaCost:R G\nTypes:Legendary Planeswalker Wrenn\nLoyalty:3\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Origin$ Graveyard | Destination$ Hand | ChangeType$ Land | SpellDescription$ +1.\nA:AB$ DealDamage | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | NumDmg$ 1 | ValidTgts$ Creature.nonFlying,Planeswalker | SpellDescription$ -1.\nOracle:Wrenn parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Wrenn and Six"],
+      "battlefield": [],
+      "manaPool": ["R", "G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

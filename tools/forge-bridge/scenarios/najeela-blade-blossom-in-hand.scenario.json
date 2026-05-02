@@ -1,0 +1,22 @@
+{
+  "id": "najeela-blade-blossom-in-hand",
+  "description": "Najeela, the Blade-Blossom in hand; extra combat trigger parse.",
+  "seed": 383,
+  "cards": {
+    "Najeela, the Blade-Blossom": "Name:Najeela, the Blade-Blossom\nManaCost:2 R W\nTypes:Legendary Creature Human Warrior\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Warrior | Execute$ TrigToken | TriggerDescription$ Warrior token on attack.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_warrior | TokenAmount$ 1\nA:AB$ AdditionalCombat | Cost$ W U B R G | ActivationLimit$ 1 | SpellDescription$ Extra combat.\nOracle:Najeela parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Najeela, the Blade-Blossom"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

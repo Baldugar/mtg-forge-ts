@@ -1,0 +1,22 @@
+{
+  "id": "tifa-lockhart-in-hand",
+  "description": "Tifa Lockhart (FF UB) in hand; double strike conditional parse.",
+  "seed": 444,
+  "cards": {
+    "Tifa Lockhart": "Name:Tifa Lockhart\nManaCost:1 R W\nTypes:Legendary Creature Human Warrior Hero\nPT:2/3\nK:First Strike\nS:Mode$ Continuous | Affected$ Card.Self | CheckSVar$ Equips | SVarCompare$ GE1 | AddKeyword$ Double Strike | Description$ Equip → DS.\nSVar:Equips:Count$Valid Equipment.YouCtrl\nOracle:Tifa parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tifa Lockhart"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

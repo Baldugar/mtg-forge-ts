@@ -1,0 +1,22 @@
+{
+  "id": "hornet-queen-in-hand",
+  "description": "Hornet Queen in hand; ETB-flying-deathtouch tokens parse.",
+  "seed": 409,
+  "cards": {
+    "Hornet Queen": "Name:Hornet Queen\nManaCost:4 G G\nTypes:Creature Insect\nPT:2/2\nK:Flying\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Hornet tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_insect_flying_deathtouch | TokenAmount$ 4\nOracle:Hornet Queen parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Hornet Queen"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

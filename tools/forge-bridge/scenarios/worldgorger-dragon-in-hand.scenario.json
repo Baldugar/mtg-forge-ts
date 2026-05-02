@@ -1,0 +1,22 @@
+{
+  "id": "worldgorger-dragon-in-hand",
+  "description": "Worldgorger Dragon in hand; ETB-exile-all + LTB-return parse.",
+  "seed": 384,
+  "cards": {
+    "Worldgorger Dragon": "Name:Worldgorger Dragon\nManaCost:5 R R\nTypes:Creature Dragon\nPT:7/7\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Exile your other permanents.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Permanent.YouCtrl+Other | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Return exiled permanents.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Worldgorger parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Worldgorger Dragon"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

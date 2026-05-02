@@ -1,0 +1,22 @@
+{
+  "id": "channel-m611-in-hand",
+  "description": "Channel in hand; convert-life-to-mana parse.",
+  "seed": 503,
+  "cards": {
+    "Channel": "Name:Channel\nManaCost:G G\nTypes:Sorcery\nA:SP$ Effect | Cost$ G G | StaticAbilities$ STMana | SpellDescription$ Channel.\nSVar:STMana:Mode$ Continuous | EffectZone$ Command | AddAbility$ ABMana\nSVar:ABMana:AB$ Mana | Cost$ PayLife<1> | Produced$ C\nOracle:Channel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Channel"],
+      "battlefield": [],
+      "manaPool": ["G", "G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

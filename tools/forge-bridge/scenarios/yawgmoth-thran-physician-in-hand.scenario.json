@@ -1,0 +1,22 @@
+{
+  "id": "yawgmoth-thran-physician-in-hand",
+  "description": "Yawgmoth in hand; pay-life + proliferate-style activated parse.",
+  "seed": 403,
+  "cards": {
+    "Yawgmoth, Thran Physician": "Name:Yawgmoth, Thran Physician\nManaCost:2 B B\nTypes:Legendary Creature Human Cleric\nPT:2/4\nA:AB$ DealDamage | Cost$ PayLife<1> Sac<1/Creature> | NumDmg$ 1 | ValidTgts$ Creature.OppCtrl | SubAbility$ DBProliferate | SpellDescription$ Yawg.\nSVar:DBProliferate:DB$ Draw | NumCards$ 1\nOracle:Yawgmoth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Yawgmoth, Thran Physician"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

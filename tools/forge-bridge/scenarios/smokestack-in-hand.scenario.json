@@ -1,0 +1,22 @@
+{
+  "id": "smokestack-in-hand",
+  "description": "Smokestack in hand; soot-counter sacrifice trigger parse.",
+  "seed": 391,
+  "cards": {
+    "Smokestack": "Name:Smokestack\nManaCost:4\nTypes:Artifact\nA:AB$ PutCounter | Cost$ T | CounterType$ SOOT | CounterNum$ 1 | Defined$ Self | SpellDescription$ Soot counter.\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ You | Execute$ TrigSac | TriggerDescription$ Players sacrifice.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent | Amount$ X | Defined$ Player\nSVar:X:Count$CardCounters.SOOT\nOracle:Smokestack parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Smokestack"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

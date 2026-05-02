@@ -1,0 +1,22 @@
+{
+  "id": "nadu-winged-wisdom-in-hand",
+  "description": "Nadu, Winged Wisdom (MH3) in hand; target-trigger draw + land parse.",
+  "seed": 435,
+  "cards": {
+    "Nadu, Winged Wisdom": "Name:Nadu, Winged Wisdom\nManaCost:G W U\nTypes:Legendary Creature Bird Spirit\nPT:3/4\nK:Flying\nT:Mode$ Targeted | ValidCard$ Creature.YouCtrl | Execute$ TrigReveal | OncePerTargeted$ True | TriggerDescription$ Reveal land or +1/+1.\nSVar:TrigReveal:DB$ Reveal | NumCards$ 1 | SubAbility$ DBPlay\nSVar:DBPlay:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1\nOracle:Nadu parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Nadu, Winged Wisdom"],
+      "battlefield": [],
+      "manaPool": ["G", "W", "U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

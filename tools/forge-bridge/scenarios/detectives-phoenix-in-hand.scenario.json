@@ -1,0 +1,22 @@
+{
+  "id": "detectives-phoenix-in-hand",
+  "description": "Detective's Phoenix (MKM) in hand; flying + recursion parse.",
+  "seed": 439,
+  "cards": {
+    "Detective's Phoenix": "Name:Detective's Phoenix\nManaCost:1 R\nTypes:Creature Phoenix Detective\nPT:2/1\nK:Flying\nK:Haste\nT:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | CheckSVar$ AttackedThis | SVarCompare$ GE1 | Execute$ TrigRet | TriggerDescription$ Return on attack.\nSVar:TrigRet:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:AttackedThis:Count$thisTurnAttacked\nOracle:Phoenix parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Detective's Phoenix"],
+      "battlefield": [],
+      "manaPool": ["R", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "bitterblossom-in-hand",
+  "description": "Bitterblossom in hand; upkeep-faerie-token + life-loss parse.",
+  "seed": 407,
+  "cards": {
+    "Bitterblossom": "Name:Bitterblossom\nManaCost:1 B\nTypes:Tribal Enchantment Faerie\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ You | Execute$ TrigToken | TriggerDescription$ Faerie token + life-loss.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_faerie_rogue_flying | TokenAmount$ 1 | SubAbility$ DBLife\nSVar:DBLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Bitterblossom parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Bitterblossom"],
+      "battlefield": [],
+      "manaPool": ["B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "innkeepers-talent-in-hand",
+  "description": "Innkeeper's Talent (FDN) in hand; Class-style enchantment parse.",
+  "seed": 437,
+  "cards": {
+    "Innkeeper's Talent": "Name:Innkeeper's Talent\nManaCost:G\nTypes:Enchantment Class\nS:Mode$ Continuous | Affected$ Card.Self | Description$ Class.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ +1/+1 counter.\nSVar:TrigCounter:DB$ PutCounter | TargetType$ Card | CounterType$ P1P1 | CounterNum$ 1 | ValidTgts$ Creature.YouCtrl\nOracle:Innkeeper's Talent parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Innkeeper's Talent"],
+      "battlefield": [],
+      "manaPool": ["G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

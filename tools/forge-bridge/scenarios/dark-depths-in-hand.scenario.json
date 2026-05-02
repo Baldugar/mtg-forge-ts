@@ -1,0 +1,21 @@
+{
+  "id": "dark-depths-in-hand",
+  "description": "Dark Depths in hand; etbCounter ice + remove-counter ability parse.",
+  "seed": 389,
+  "cards": {
+    "Dark Depths": "Name:Dark Depths\nManaCost:no cost\nTypes:Snow Legendary Land\nK:etbCounter:ICE:10\nA:AB$ RemoveCounter | Cost$ 3 | CounterType$ ICE | CounterNum$ 1 | SpellDescription$ Remove ice counter.\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ You | CheckSVar$ NoIce | SVarCompare$ EQ0 | Execute$ TrigToken | TriggerDescription$ Marit Lage if no ice.\nSVar:TrigToken:DB$ Token | TokenScript$ b_20_20_marit_lage_indestructible_flying\nSVar:NoIce:Count$CardCounters.ICE\nOracle:Dark Depths parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Dark Depths"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

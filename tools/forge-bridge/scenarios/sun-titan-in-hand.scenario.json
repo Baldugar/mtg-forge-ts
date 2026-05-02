@@ -1,0 +1,22 @@
+{
+  "id": "sun-titan-in-hand",
+  "description": "Sun Titan in hand; ETB-and-attack-recur trigger parse.",
+  "seed": 472,
+  "cards": {
+    "Sun Titan": "Name:Sun Titan\nManaCost:4 W W\nTypes:Creature Giant\nPT:6/6\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRet | TriggerDescription$ Recur cmc<=3.\nSVar:TrigRet:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Permanent.cmcLE3+YouCtrl\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRet\nOracle:Sun Titan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sun Titan"],
+      "battlefield": [],
+      "manaPool": ["W", "W", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

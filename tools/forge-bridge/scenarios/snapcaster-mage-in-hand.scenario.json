@@ -1,0 +1,22 @@
+{
+  "id": "snapcaster-mage-in-hand",
+  "description": "Snapcaster Mage in hand; ETB-flashback trigger parse.",
+  "seed": 519,
+  "cards": {
+    "Snapcaster Mage": "Name:Snapcaster Mage\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlashback | TriggerDescription$ Grant flashback.\nSVar:TrigFlashback:DB$ Effect | StaticAbilities$ STFlash\nSVar:STFlash:Mode$ Continuous | EffectZone$ Command | AddKeyword$ Flashback | Affected$ Card.YouOwn+inGraveyard\nOracle:Snapcaster parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Snapcaster Mage"],
+      "battlefield": [],
+      "manaPool": ["U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

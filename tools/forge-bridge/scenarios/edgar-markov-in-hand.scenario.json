@@ -1,0 +1,22 @@
+{
+  "id": "edgar-markov-in-hand",
+  "description": "Edgar Markov in hand; eminence + bloodthirst trigger parse.",
+  "seed": 374,
+  "cards": {
+    "Edgar Markov": "Name:Edgar Markov\nManaCost:3 R W B\nTypes:Legendary Creature Vampire Knight\nPT:4/4\nK:Flying\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.Vampire | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerDescription$ Vampire token trigger.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_vampire | TokenAmount$ 1\nOracle:Edgar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Edgar Markov"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

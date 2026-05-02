@@ -1,0 +1,22 @@
+{
+  "id": "emrakul-aeons-torn-in-hand",
+  "description": "Emrakul, the Aeons Torn in hand; flying/protection/extra-turn parse.",
+  "seed": 379,
+  "cards": {
+    "Emrakul, the Aeons Torn": "Name:Emrakul, the Aeons Torn\nManaCost:15\nTypes:Legendary Creature Eldrazi\nPT:15/15\nK:Flying\nK:Trample\nK:Annihilator:6\nK:Protection:Card.colored:from colored spells\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigExtraTurn | TriggerDescription$ Extra turn on cast.\nSVar:TrigExtraTurn:DB$ AddTurn | NumTurns$ 1\nOracle:Emrakul parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Emrakul, the Aeons Torn"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

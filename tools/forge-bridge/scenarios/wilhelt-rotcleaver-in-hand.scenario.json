@@ -1,0 +1,22 @@
+{
+  "id": "wilhelt-rotcleaver-in-hand",
+  "description": "Wilhelt, the Rotcleaver in hand; zombie sac-and-recur parse.",
+  "seed": 509,
+  "cards": {
+    "Wilhelt, the Rotcleaver": "Name:Wilhelt, the Rotcleaver\nManaCost:1 U B\nTypes:Legendary Creature Zombie Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Zombie.YouCtrl | Execute$ TrigToken | TriggerDescription$ Zombie token on zombie death.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1 | TokenTapped$ True\nOracle:Wilhelt parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Wilhelt, the Rotcleaver"],
+      "battlefield": [],
+      "manaPool": ["U", "B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

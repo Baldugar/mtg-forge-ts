@@ -1,0 +1,22 @@
+{
+  "id": "phlage-titan-fires-fury-in-hand",
+  "description": "Phlage (MH3) in hand; cast/escape damage trigger parse.",
+  "seed": 445,
+  "cards": {
+    "Phlage, Titan of Fire's Fury": "Name:Phlage, Titan of Fire's Fury\nManaCost:1 R W\nTypes:Legendary Creature Elemental Avatar\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Damage 3 + life 3.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 3\nK:Escape:5 R W, Exile three other cards from your graveyard.\nOracle:Phlage parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phlage, Titan of Fire's Fury"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

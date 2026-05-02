@@ -1,0 +1,22 @@
+{
+  "id": "roxanne-starfall-savant-in-hand",
+  "description": "Roxanne, Starfall Savant (OTJ) in hand; Treasure-on-meteor parse.",
+  "seed": 447,
+  "cards": {
+    "Roxanne, Starfall Savant": "Name:Roxanne, Starfall Savant\nManaCost:2 R G\nTypes:Legendary Creature Cat Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigToken | TriggerDescription$ Meteor token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_meteor | TokenAmount$ 1\nA:AB$ Sacrifice | Cost$ T | SacValid$ Meteor | SubAbility$ DBDmg | SpellDescription$ Sac meteor.\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any\nOracle:Roxanne parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Roxanne, Starfall Savant"],
+      "battlefield": [],
+      "manaPool": ["R", "G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

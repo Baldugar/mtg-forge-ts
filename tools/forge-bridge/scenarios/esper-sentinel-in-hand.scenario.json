@@ -1,0 +1,22 @@
+{
+  "id": "esper-sentinel-in-hand",
+  "description": "Esper Sentinel in hand; opponent-noncreature-cast trigger parse.",
+  "seed": 420,
+  "cards": {
+    "Esper Sentinel": "Name:Esper Sentinel\nManaCost:W\nTypes:Artifact Creature Human Soldier\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | Execute$ TrigDraw | TriggerDescription$ Pay or draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Sentinel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Esper Sentinel"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

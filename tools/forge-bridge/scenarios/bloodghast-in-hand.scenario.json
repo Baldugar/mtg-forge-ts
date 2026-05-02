@@ -1,0 +1,22 @@
+{
+  "id": "bloodghast-in-hand",
+  "description": "Bloodghast in hand; landfall + haste-on-low-life parse.",
+  "seed": 496,
+  "cards": {
+    "Bloodghast": "Name:Bloodghast\nManaCost:B B\nTypes:Creature Vampire Spirit\nPT:2/1\nK:Haste:Player.life:LE10\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigRet | TriggerDescription$ Landfall.\nSVar:TrigRet:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nOracle:Bloodghast parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Bloodghast"],
+      "battlefield": [],
+      "manaPool": ["B", "B"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

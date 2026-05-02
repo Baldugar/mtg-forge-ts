@@ -1,0 +1,22 @@
+{
+  "id": "eidolon-great-revel-in-hand",
+  "description": "Eidolon of the Great Revel in hand; cmc<=3-cast-burn trigger parse.",
+  "seed": 489,
+  "cards": {
+    "Eidolon of the Great Revel": "Name:Eidolon of the Great Revel\nManaCost:R R\nTypes:Enchantment Creature Spirit\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.cmcLE3 | ValidActivatingPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ Burn 2 on cmcLE3 cast.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredActivator\nOracle:Eidolon parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Eidolon of the Great Revel"],
+      "battlefield": [],
+      "manaPool": ["R", "R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

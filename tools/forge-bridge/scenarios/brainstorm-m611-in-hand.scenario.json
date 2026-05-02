@@ -1,0 +1,22 @@
+{
+  "id": "brainstorm-m611-in-hand",
+  "description": "Brainstorm in hand; draw-3-put-2-back parse.",
+  "seed": 469,
+  "cards": {
+    "Brainstorm": "Name:Brainstorm\nManaCost:U\nTypes:Instant\nA:SP$ Draw | Cost$ U | NumCards$ 3 | SubAbility$ DBReturn | SpellDescription$ Brainstorm.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeType$ Card | ChangeNum$ 2 | LibraryPosition$ 0\nOracle:Brainstorm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Brainstorm"],
+      "battlefield": [],
+      "manaPool": ["U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

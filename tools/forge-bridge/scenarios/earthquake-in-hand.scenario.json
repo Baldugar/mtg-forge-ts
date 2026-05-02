@@ -1,0 +1,22 @@
+{
+  "id": "earthquake-in-hand",
+  "description": "Earthquake in hand; X-damage to all non-flying parse.",
+  "seed": 494,
+  "cards": {
+    "Earthquake": "Name:Earthquake\nManaCost:X R\nTypes:Sorcery\nA:SP$ DamageAll | Cost$ X R | ValidCards$ Creature.nonFlying | ValidPlayers$ Player | NumDmg$ X | SpellDescription$ Earthquake.\nSVar:X:Count$xPaid\nOracle:Earthquake parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Earthquake"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

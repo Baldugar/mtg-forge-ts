@@ -1,0 +1,21 @@
+{
+  "id": "maze-of-ith-in-hand",
+  "description": "Maze of Ith in hand; untap-and-prevent-damage activated parse.",
+  "seed": 386,
+  "cards": {
+    "Maze of Ith": "Name:Maze of Ith\nManaCost:no cost\nTypes:Land\nA:AB$ Untap | Cost$ T | TargetType$ Card | ValidTgts$ Creature.attacking | SubAbility$ DBPrevent | SpellDescription$ Untap and prevent.\nSVar:DBPrevent:DB$ Effect | ReplacementEffects$ RDamage\nSVar:RDamage:Event$ DamageDone | ValidSource$ TriggeredSource | PreventionEffect$ True\nOracle:Maze of Ith parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Maze of Ith"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

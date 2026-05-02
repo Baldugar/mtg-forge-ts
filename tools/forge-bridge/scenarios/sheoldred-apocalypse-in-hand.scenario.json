@@ -1,0 +1,22 @@
+{
+  "id": "sheoldred-apocalypse-in-hand",
+  "description": "Sheoldred, the Apocalypse in hand; draw-life trigger parse.",
+  "seed": 507,
+  "cards": {
+    "Sheoldred, the Apocalypse": "Name:Sheoldred, the Apocalypse\nManaCost:2 B B\nTypes:Legendary Creature Phyrexian Praetor\nPT:4/5\nK:Deathtouch\nT:Mode$ Drawn | ValidPlayer$ You | Execute$ TrigGain | TriggerDescription$ Gain 2 on draw.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 2\nT:Mode$ Drawn | ValidPlayer$ Opponent | Execute$ TrigDmg | TriggerDescription$ Dmg 2 on opp draw.\nSVar:TrigDmg:DB$ LoseLife | LifeAmount$ 2 | Defined$ TriggeredPlayer\nOracle:Sheoldred parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sheoldred, the Apocalypse"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

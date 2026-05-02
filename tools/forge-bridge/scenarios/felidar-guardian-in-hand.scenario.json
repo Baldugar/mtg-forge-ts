@@ -1,0 +1,22 @@
+{
+  "id": "felidar-guardian-in-hand",
+  "description": "Felidar Guardian in hand; ETB-flicker parse.",
+  "seed": 401,
+  "cards": {
+    "Felidar Guardian": "Name:Felidar Guardian\nManaCost:2 W\nTypes:Creature Cat Beast\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | OptionalDecider$ You | TriggerDescription$ ETB flicker.\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Permanent.YouCtrl+Other | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Felidar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Felidar Guardian"],
+      "battlefield": [],
+      "manaPool": ["W", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

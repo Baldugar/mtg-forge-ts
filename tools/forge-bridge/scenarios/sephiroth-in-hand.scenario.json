@@ -1,0 +1,22 @@
+{
+  "id": "sephiroth-in-hand",
+  "description": "Sephiroth (FF UB) in hand; Flying + lifelink + Masamune parse.",
+  "seed": 449,
+  "cards": {
+    "Sephiroth": "Name:Sephiroth\nManaCost:3 B B\nTypes:Legendary Creature Human Soldier Villain\nPT:5/5\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | Execute$ TrigDrain | TriggerDescription$ Drain on death.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | LifeAmount$ 1\nOracle:Sephiroth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sephiroth"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

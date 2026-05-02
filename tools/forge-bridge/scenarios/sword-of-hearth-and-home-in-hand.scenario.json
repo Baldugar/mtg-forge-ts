@@ -1,0 +1,22 @@
+{
+  "id": "sword-of-hearth-and-home-in-hand",
+  "description": "Sword of Hearth and Home in hand; pro-G/W + flicker trigger parse.",
+  "seed": 421,
+  "cards": {
+    "Sword of Hearth and Home": "Name:Sword of Hearth and Home\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from green & Protection from white | Description$ Pump + protection.\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigBlink | TriggerDescription$ Blink + Land.\nSVar:TrigBlink:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl+Other\nOracle:Hearth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sword of Hearth and Home"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

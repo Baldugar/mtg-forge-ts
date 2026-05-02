@@ -1,0 +1,22 @@
+{
+  "id": "steppe-lynx-m611-in-hand",
+  "description": "Steppe Lynx in hand; landfall +2/+2 parse.",
+  "seed": 497,
+  "cards": {
+    "Steppe Lynx": "Name:Steppe Lynx\nManaCost:W\nTypes:Creature Cat\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigPump | TriggerDescription$ Landfall pump.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2\nOracle:Steppe Lynx parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Steppe Lynx"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "court-of-vantress-in-hand",
+  "description": "Court of Vantress in hand; monarch + scry trigger parse.",
+  "seed": 430,
+  "cards": {
+    "Court of Vantress": "Name:Court of Vantress\nManaCost:2 U U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ Become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch | Defined$ You\nT:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ You | Execute$ TrigScry | TriggerDescription$ Scry 2 + tutor if monarch.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nOracle:Court of Vantress parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Court of Vantress"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

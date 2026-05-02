@@ -1,0 +1,22 @@
+{
+  "id": "korvold-fae-cursed-king-in-hand",
+  "description": "Korvold, Fae-Cursed King in hand; sac-trigger draw + counter parse.",
+  "seed": 402,
+  "cards": {
+    "Korvold, Fae-Cursed King": "Name:Korvold, Fae-Cursed King\nManaCost:2 B R G\nTypes:Legendary Creature Dragon Noble\nPT:4/4\nK:Flying\nT:Mode$ Sacrificed | ValidPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Sac trigger.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Korvold parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Korvold, Fae-Cursed King"],
+      "battlefield": [],
+      "manaPool": ["B", "R", "G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

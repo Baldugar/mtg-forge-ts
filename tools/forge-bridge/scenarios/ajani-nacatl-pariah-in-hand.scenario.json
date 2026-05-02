@@ -1,0 +1,22 @@
+{
+  "id": "ajani-nacatl-pariah-in-hand",
+  "description": "Ajani, Nacatl Pariah (MH3) in hand; flip-walker + token parse.",
+  "seed": 450,
+  "cards": {
+    "Ajani, Nacatl Pariah": "Name:Ajani, Nacatl Pariah\nManaCost:1 W\nTypes:Legendary Creature Cat Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Cat token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat | TokenAmount$ 1\nOracle:Ajani parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Ajani, Nacatl Pariah"],
+      "battlefield": [],
+      "manaPool": ["W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "elvish-archdruid-in-hand",
+  "description": "Elvish Archdruid in hand; elf lord + tap-mana parse.",
+  "seed": 500,
+  "cards": {
+    "Elvish Archdruid": "Name:Elvish Archdruid\nManaCost:1 G G\nTypes:Creature Elf Druid\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Elf+Other | AddPower$ 1 | AddToughness$ 1 | Description$ Elf anthem.\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Tap for elves.\nSVar:X:Count$Valid Creature.Elf+YouCtrl\nOracle:Archdruid parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Elvish Archdruid"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

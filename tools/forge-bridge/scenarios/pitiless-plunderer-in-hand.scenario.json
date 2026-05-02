@@ -1,0 +1,22 @@
+{
+  "id": "pitiless-plunderer-in-hand",
+  "description": "Pitiless Plunderer in hand; treasure-on-death trigger parse.",
+  "seed": 404,
+  "cards": {
+    "Pitiless Plunderer": "Name:Pitiless Plunderer\nManaCost:3 B\nTypes:Creature Human Pirate\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | Execute$ TrigToken | TriggerDescription$ Treasure token on creature death.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac\nOracle:Plunderer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Pitiless Plunderer"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

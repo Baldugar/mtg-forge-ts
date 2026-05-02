@@ -1,0 +1,22 @@
+{
+  "id": "souls-attendant-in-hand",
+  "description": "Soul's Attendant in hand; ETB-life trigger parse.",
+  "seed": 487,
+  "cards": {
+    "Soul's Attendant": "Name:Soul's Attendant\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | Execute$ TrigLife | TriggerDescription$ ETB life.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1\nOracle:Soul's Attendant parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Soul's Attendant"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

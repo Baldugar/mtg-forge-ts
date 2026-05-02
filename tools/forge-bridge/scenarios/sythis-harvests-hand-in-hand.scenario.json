@@ -1,0 +1,22 @@
+{
+  "id": "sythis-harvests-hand-in-hand",
+  "description": "Sythis, Harvest's Hand in hand; enchantment-cast trigger parse.",
+  "seed": 422,
+  "cards": {
+    "Sythis, Harvest's Hand": "Name:Sythis, Harvest's Hand\nManaCost:G W\nTypes:Legendary Enchantment Creature Nymph\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | Execute$ TrigDraw | TriggerDescription$ Enchantment ETB triggers.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nOracle:Sythis parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sythis, Harvest's Hand"],
+      "battlefield": [],
+      "manaPool": ["G", "W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

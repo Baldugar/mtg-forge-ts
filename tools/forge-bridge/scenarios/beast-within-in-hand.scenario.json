@@ -1,0 +1,22 @@
+{
+  "id": "beast-within-in-hand",
+  "description": "Beast Within in hand; destroy + 3/3 token parse.",
+  "seed": 511,
+  "cards": {
+    "Beast Within": "Name:Beast Within\nManaCost:2 G\nTypes:Instant\nA:SP$ Destroy | Cost$ 2 G | TargetType$ Card | ValidTgts$ Permanent | SubAbility$ DBToken | SpellDescription$ Destroy and create 3/3.\nSVar:DBToken:DB$ Token | TokenScript$ g_3_3_beast | TokenAmount$ 1 | TokenOwner$ TargetedController\nOracle:Beast Within parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Beast Within"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

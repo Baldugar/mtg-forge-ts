@@ -1,0 +1,22 @@
+{
+  "id": "frost-titan-in-hand",
+  "description": "Frost Titan in hand; pay-or-counter-target trigger parse.",
+  "seed": 473,
+  "cards": {
+    "Frost Titan": "Name:Frost Titan\nManaCost:4 U U\nTypes:Creature Giant\nPT:6/6\nT:Mode$ Targeted | ValidCard$ Card.Self | Execute$ TrigPay | TriggerDescription$ Pay or counter.\nSVar:TrigPay:DB$ Counter | TargetType$ Spell,Ability | ValidTgts$ Card | UnlessCost$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Tap on ETB.\nSVar:TrigTap:DB$ Tap | TargetType$ Card | ValidTgts$ Permanent.OppCtrl\nOracle:Frost Titan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Frost Titan"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

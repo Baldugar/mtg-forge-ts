@@ -1,0 +1,22 @@
+{
+  "id": "inferno-titan-in-hand",
+  "description": "Inferno Titan in hand; ETB-3-damage-divided trigger parse.",
+  "seed": 475,
+  "cards": {
+    "Inferno Titan": "Name:Inferno Titan\nManaCost:4 R R\nTypes:Creature Giant\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ ETB-3 damage divided.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | DividedAsYouChoose$ True | ValidTgts$ Any\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg\nOracle:Inferno Titan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Inferno Titan"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
