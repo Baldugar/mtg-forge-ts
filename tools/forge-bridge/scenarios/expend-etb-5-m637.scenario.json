@@ -1,0 +1,36 @@
+{
+  "id": "expend-etb-5-m637",
+  "description": "Expend ETB 5 — haste squirrel pumps self on entry.",
+  "seed": 50381,
+  "cards": {
+    "Expend5 M637": "Name:Expend5 M637\nManaCost:1 R\nTypes:Creature Squirrel\nPT:2/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump\nSVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self\nOracle:Expend5 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expend5 M637"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Expend5 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

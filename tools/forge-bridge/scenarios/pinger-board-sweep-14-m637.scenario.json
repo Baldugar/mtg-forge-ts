@@ -1,0 +1,48 @@
+{
+  "id": "pinger-board-sweep-14-m637",
+  "description": "Board sweep 14 — pinger cast with three creatures already in play.",
+  "seed": 50365,
+  "cards": {
+    "BdPing14 M637": "Name:BdPing14 M637\nManaCost:2 R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent\nOracle:BdPing14 M637 test.\n",
+    "Ent14 M637": "Name:Ent14 M637\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:Ent14 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "BdPing14 M637"
+      ],
+      "battlefield": [
+        {
+          "card": "Ent14 M637"
+        },
+        {
+          "card": "Ent14 M637"
+        },
+        {
+          "card": "Ent14 M637"
+        }
+      ],
+      "manaPool": [
+        "R",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "BdPing14 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

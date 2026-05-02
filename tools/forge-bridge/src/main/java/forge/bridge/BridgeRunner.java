@@ -1088,9 +1088,19 @@ public final class BridgeRunner {
         // — picking index 0 from there would re-cast Shivan Dragon, not its
         // firebreathing. We skip Spell-typed entries so abilityIndex 0
         // means "first activated ability".
+        //
+        // M6.38 — Also skip `isLandAbility()`: for lands, the play-as-land
+        // SA is a `LandAbility extends AbilityStatic` (NOT `isSpell()`),
+        // so the prior filter let it leak through at index 0. Activating
+        // it on a card already in play calls `LandAbility.resolve()` →
+        // `playLandNoCheck()` → fires `GameEventLandPlayed` even though
+        // the card is already on the battlefield. The TS engine has no
+        // such phantom-land-play emission. Filter parallel to `isSpell()`
+        // so abilityIndex 0 is the first true activated ability for
+        // lands like Cabal Coffers / Nykthos / Mishra's Workshop.
         List<SpellAbility> sas = new ArrayList<>();
         for (SpellAbility s : src.getSpellAbilities()) {
-            if (s == null || s.isSpell()) continue;
+            if (s == null || s.isSpell() || s.isLandAbility()) continue;
             sas.add(s);
         }
         if (idx >= sas.size()) {

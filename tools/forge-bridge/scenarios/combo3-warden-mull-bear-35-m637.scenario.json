@@ -1,0 +1,63 @@
+{
+  "id": "combo3-warden-mull-bear-35-m637",
+  "description": "Combo3 35 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+  "seed": 50211,
+  "cards": {
+    "WardenC35 M637": "Name:WardenC35 M637\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:WardenC35 M637 test.\n",
+    "MullC35 M637": "Name:MullC35 M637\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:MullC35 M637 test.\n",
+    "BearC35 M637": "Name:BearC35 M637\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:BearC35 M637 test.\n",
+    "LibC35 M637": "Name:LibC35 M637\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:LibC35 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "MullC35 M637",
+        "BearC35 M637"
+      ],
+      "battlefield": [
+        {
+          "card": "WardenC35 M637"
+        }
+      ],
+      "library": [
+        "LibC35 M637",
+        "LibC35 M637",
+        "LibC35 M637",
+        "LibC35 M637"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "MullC35 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "BearC35 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

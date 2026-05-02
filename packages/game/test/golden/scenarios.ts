@@ -76092,4 +76092,8249 @@ Oracle:Ping9 M632 test.
     ],
     actions: [{ kind: "cast", cardName: "Ping9 M632", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
   },
+
+  // 3285. Combo3 0 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-0-m637",
+    description: "Combo3 0 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc400,
+    cards: {
+      "WardenC0 M637": `Name:WardenC0 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC0 M637 test.
+`,
+      "MullC0 M637": `Name:MullC0 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC0 M637 test.
+`,
+      "BearC0 M637": `Name:BearC0 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC0 M637 test.
+`,
+      "LibC0 M637": `Name:LibC0 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC0 M637", "BearC0 M637"],
+        battlefield: [{ card: "WardenC0 M637" }],
+        library: ["LibC0 M637", "LibC0 M637", "LibC0 M637", "LibC0 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3286. Combo3 1 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-1-m637",
+    description: "Combo3 1 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc401,
+    cards: {
+      "WardenC1 M637": `Name:WardenC1 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC1 M637 test.
+`,
+      "MullC1 M637": `Name:MullC1 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC1 M637 test.
+`,
+      "BearC1 M637": `Name:BearC1 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC1 M637 test.
+`,
+      "LibC1 M637": `Name:LibC1 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC1 M637", "BearC1 M637"],
+        battlefield: [{ card: "WardenC1 M637" }],
+        library: ["LibC1 M637", "LibC1 M637", "LibC1 M637", "LibC1 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3287. Combo3 2 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-2-m637",
+    description: "Combo3 2 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc402,
+    cards: {
+      "WardenC2 M637": `Name:WardenC2 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC2 M637 test.
+`,
+      "MullC2 M637": `Name:MullC2 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC2 M637 test.
+`,
+      "BearC2 M637": `Name:BearC2 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC2 M637 test.
+`,
+      "LibC2 M637": `Name:LibC2 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC2 M637", "BearC2 M637"],
+        battlefield: [{ card: "WardenC2 M637" }],
+        library: ["LibC2 M637", "LibC2 M637", "LibC2 M637", "LibC2 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3288. Combo3 3 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-3-m637",
+    description: "Combo3 3 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc403,
+    cards: {
+      "WardenC3 M637": `Name:WardenC3 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC3 M637 test.
+`,
+      "MullC3 M637": `Name:MullC3 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC3 M637 test.
+`,
+      "BearC3 M637": `Name:BearC3 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC3 M637 test.
+`,
+      "LibC3 M637": `Name:LibC3 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC3 M637", "BearC3 M637"],
+        battlefield: [{ card: "WardenC3 M637" }],
+        library: ["LibC3 M637", "LibC3 M637", "LibC3 M637", "LibC3 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3289. Combo3 4 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-4-m637",
+    description: "Combo3 4 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc404,
+    cards: {
+      "WardenC4 M637": `Name:WardenC4 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC4 M637 test.
+`,
+      "MullC4 M637": `Name:MullC4 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC4 M637 test.
+`,
+      "BearC4 M637": `Name:BearC4 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC4 M637 test.
+`,
+      "LibC4 M637": `Name:LibC4 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC4 M637", "BearC4 M637"],
+        battlefield: [{ card: "WardenC4 M637" }],
+        library: ["LibC4 M637", "LibC4 M637", "LibC4 M637", "LibC4 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3290. Combo3 5 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-5-m637",
+    description: "Combo3 5 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc405,
+    cards: {
+      "WardenC5 M637": `Name:WardenC5 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC5 M637 test.
+`,
+      "MullC5 M637": `Name:MullC5 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC5 M637 test.
+`,
+      "BearC5 M637": `Name:BearC5 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC5 M637 test.
+`,
+      "LibC5 M637": `Name:LibC5 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC5 M637", "BearC5 M637"],
+        battlefield: [{ card: "WardenC5 M637" }],
+        library: ["LibC5 M637", "LibC5 M637", "LibC5 M637", "LibC5 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3291. Combo3 6 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-6-m637",
+    description: "Combo3 6 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc406,
+    cards: {
+      "WardenC6 M637": `Name:WardenC6 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC6 M637 test.
+`,
+      "MullC6 M637": `Name:MullC6 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC6 M637 test.
+`,
+      "BearC6 M637": `Name:BearC6 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC6 M637 test.
+`,
+      "LibC6 M637": `Name:LibC6 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC6 M637", "BearC6 M637"],
+        battlefield: [{ card: "WardenC6 M637" }],
+        library: ["LibC6 M637", "LibC6 M637", "LibC6 M637", "LibC6 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3292. Combo3 7 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-7-m637",
+    description: "Combo3 7 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc407,
+    cards: {
+      "WardenC7 M637": `Name:WardenC7 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC7 M637 test.
+`,
+      "MullC7 M637": `Name:MullC7 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC7 M637 test.
+`,
+      "BearC7 M637": `Name:BearC7 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC7 M637 test.
+`,
+      "LibC7 M637": `Name:LibC7 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC7 M637", "BearC7 M637"],
+        battlefield: [{ card: "WardenC7 M637" }],
+        library: ["LibC7 M637", "LibC7 M637", "LibC7 M637", "LibC7 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3293. Combo3 8 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-8-m637",
+    description: "Combo3 8 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc408,
+    cards: {
+      "WardenC8 M637": `Name:WardenC8 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC8 M637 test.
+`,
+      "MullC8 M637": `Name:MullC8 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC8 M637 test.
+`,
+      "BearC8 M637": `Name:BearC8 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC8 M637 test.
+`,
+      "LibC8 M637": `Name:LibC8 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC8 M637", "BearC8 M637"],
+        battlefield: [{ card: "WardenC8 M637" }],
+        library: ["LibC8 M637", "LibC8 M637", "LibC8 M637", "LibC8 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3294. Combo3 9 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-9-m637",
+    description: "Combo3 9 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc409,
+    cards: {
+      "WardenC9 M637": `Name:WardenC9 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC9 M637 test.
+`,
+      "MullC9 M637": `Name:MullC9 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC9 M637 test.
+`,
+      "BearC9 M637": `Name:BearC9 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC9 M637 test.
+`,
+      "LibC9 M637": `Name:LibC9 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC9 M637", "BearC9 M637"],
+        battlefield: [{ card: "WardenC9 M637" }],
+        library: ["LibC9 M637", "LibC9 M637", "LibC9 M637", "LibC9 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3295. Combo3 10 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-10-m637",
+    description: "Combo3 10 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc40a,
+    cards: {
+      "WardenC10 M637": `Name:WardenC10 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC10 M637 test.
+`,
+      "MullC10 M637": `Name:MullC10 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC10 M637 test.
+`,
+      "BearC10 M637": `Name:BearC10 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC10 M637 test.
+`,
+      "LibC10 M637": `Name:LibC10 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC10 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC10 M637", "BearC10 M637"],
+        battlefield: [{ card: "WardenC10 M637" }],
+        library: ["LibC10 M637", "LibC10 M637", "LibC10 M637", "LibC10 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3296. Combo3 11 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-11-m637",
+    description: "Combo3 11 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc40b,
+    cards: {
+      "WardenC11 M637": `Name:WardenC11 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC11 M637 test.
+`,
+      "MullC11 M637": `Name:MullC11 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC11 M637 test.
+`,
+      "BearC11 M637": `Name:BearC11 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC11 M637 test.
+`,
+      "LibC11 M637": `Name:LibC11 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC11 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC11 M637", "BearC11 M637"],
+        battlefield: [{ card: "WardenC11 M637" }],
+        library: ["LibC11 M637", "LibC11 M637", "LibC11 M637", "LibC11 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3297. Combo3 12 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-12-m637",
+    description: "Combo3 12 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc40c,
+    cards: {
+      "WardenC12 M637": `Name:WardenC12 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC12 M637 test.
+`,
+      "MullC12 M637": `Name:MullC12 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC12 M637 test.
+`,
+      "BearC12 M637": `Name:BearC12 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC12 M637 test.
+`,
+      "LibC12 M637": `Name:LibC12 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC12 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC12 M637", "BearC12 M637"],
+        battlefield: [{ card: "WardenC12 M637" }],
+        library: ["LibC12 M637", "LibC12 M637", "LibC12 M637", "LibC12 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3298. Combo3 13 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-13-m637",
+    description: "Combo3 13 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc40d,
+    cards: {
+      "WardenC13 M637": `Name:WardenC13 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC13 M637 test.
+`,
+      "MullC13 M637": `Name:MullC13 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC13 M637 test.
+`,
+      "BearC13 M637": `Name:BearC13 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC13 M637 test.
+`,
+      "LibC13 M637": `Name:LibC13 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC13 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC13 M637", "BearC13 M637"],
+        battlefield: [{ card: "WardenC13 M637" }],
+        library: ["LibC13 M637", "LibC13 M637", "LibC13 M637", "LibC13 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3299. Combo3 14 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-14-m637",
+    description: "Combo3 14 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc40e,
+    cards: {
+      "WardenC14 M637": `Name:WardenC14 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC14 M637 test.
+`,
+      "MullC14 M637": `Name:MullC14 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC14 M637 test.
+`,
+      "BearC14 M637": `Name:BearC14 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC14 M637 test.
+`,
+      "LibC14 M637": `Name:LibC14 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC14 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC14 M637", "BearC14 M637"],
+        battlefield: [{ card: "WardenC14 M637" }],
+        library: ["LibC14 M637", "LibC14 M637", "LibC14 M637", "LibC14 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3300. Combo3 15 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-15-m637",
+    description: "Combo3 15 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc40f,
+    cards: {
+      "WardenC15 M637": `Name:WardenC15 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC15 M637 test.
+`,
+      "MullC15 M637": `Name:MullC15 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC15 M637 test.
+`,
+      "BearC15 M637": `Name:BearC15 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC15 M637 test.
+`,
+      "LibC15 M637": `Name:LibC15 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC15 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC15 M637", "BearC15 M637"],
+        battlefield: [{ card: "WardenC15 M637" }],
+        library: ["LibC15 M637", "LibC15 M637", "LibC15 M637", "LibC15 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC15 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC15 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3301. Combo3 16 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-16-m637",
+    description: "Combo3 16 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc410,
+    cards: {
+      "WardenC16 M637": `Name:WardenC16 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC16 M637 test.
+`,
+      "MullC16 M637": `Name:MullC16 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC16 M637 test.
+`,
+      "BearC16 M637": `Name:BearC16 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC16 M637 test.
+`,
+      "LibC16 M637": `Name:LibC16 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC16 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC16 M637", "BearC16 M637"],
+        battlefield: [{ card: "WardenC16 M637" }],
+        library: ["LibC16 M637", "LibC16 M637", "LibC16 M637", "LibC16 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC16 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC16 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3302. Combo3 17 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-17-m637",
+    description: "Combo3 17 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc411,
+    cards: {
+      "WardenC17 M637": `Name:WardenC17 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC17 M637 test.
+`,
+      "MullC17 M637": `Name:MullC17 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC17 M637 test.
+`,
+      "BearC17 M637": `Name:BearC17 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC17 M637 test.
+`,
+      "LibC17 M637": `Name:LibC17 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC17 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC17 M637", "BearC17 M637"],
+        battlefield: [{ card: "WardenC17 M637" }],
+        library: ["LibC17 M637", "LibC17 M637", "LibC17 M637", "LibC17 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC17 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC17 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3303. Combo3 18 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-18-m637",
+    description: "Combo3 18 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc412,
+    cards: {
+      "WardenC18 M637": `Name:WardenC18 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC18 M637 test.
+`,
+      "MullC18 M637": `Name:MullC18 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC18 M637 test.
+`,
+      "BearC18 M637": `Name:BearC18 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC18 M637 test.
+`,
+      "LibC18 M637": `Name:LibC18 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC18 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC18 M637", "BearC18 M637"],
+        battlefield: [{ card: "WardenC18 M637" }],
+        library: ["LibC18 M637", "LibC18 M637", "LibC18 M637", "LibC18 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC18 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC18 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3304. Combo3 19 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-19-m637",
+    description: "Combo3 19 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc413,
+    cards: {
+      "WardenC19 M637": `Name:WardenC19 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC19 M637 test.
+`,
+      "MullC19 M637": `Name:MullC19 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC19 M637 test.
+`,
+      "BearC19 M637": `Name:BearC19 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC19 M637 test.
+`,
+      "LibC19 M637": `Name:LibC19 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC19 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC19 M637", "BearC19 M637"],
+        battlefield: [{ card: "WardenC19 M637" }],
+        library: ["LibC19 M637", "LibC19 M637", "LibC19 M637", "LibC19 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC19 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC19 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3305. Combo3 20 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-20-m637",
+    description: "Combo3 20 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc414,
+    cards: {
+      "WardenC20 M637": `Name:WardenC20 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC20 M637 test.
+`,
+      "MullC20 M637": `Name:MullC20 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC20 M637 test.
+`,
+      "BearC20 M637": `Name:BearC20 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC20 M637 test.
+`,
+      "LibC20 M637": `Name:LibC20 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC20 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC20 M637", "BearC20 M637"],
+        battlefield: [{ card: "WardenC20 M637" }],
+        library: ["LibC20 M637", "LibC20 M637", "LibC20 M637", "LibC20 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC20 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC20 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3306. Combo3 21 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-21-m637",
+    description: "Combo3 21 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc415,
+    cards: {
+      "WardenC21 M637": `Name:WardenC21 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC21 M637 test.
+`,
+      "MullC21 M637": `Name:MullC21 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC21 M637 test.
+`,
+      "BearC21 M637": `Name:BearC21 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC21 M637 test.
+`,
+      "LibC21 M637": `Name:LibC21 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC21 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC21 M637", "BearC21 M637"],
+        battlefield: [{ card: "WardenC21 M637" }],
+        library: ["LibC21 M637", "LibC21 M637", "LibC21 M637", "LibC21 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC21 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC21 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3307. Combo3 22 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-22-m637",
+    description: "Combo3 22 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc416,
+    cards: {
+      "WardenC22 M637": `Name:WardenC22 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC22 M637 test.
+`,
+      "MullC22 M637": `Name:MullC22 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC22 M637 test.
+`,
+      "BearC22 M637": `Name:BearC22 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC22 M637 test.
+`,
+      "LibC22 M637": `Name:LibC22 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC22 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC22 M637", "BearC22 M637"],
+        battlefield: [{ card: "WardenC22 M637" }],
+        library: ["LibC22 M637", "LibC22 M637", "LibC22 M637", "LibC22 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC22 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC22 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3308. Combo3 23 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-23-m637",
+    description: "Combo3 23 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc417,
+    cards: {
+      "WardenC23 M637": `Name:WardenC23 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC23 M637 test.
+`,
+      "MullC23 M637": `Name:MullC23 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC23 M637 test.
+`,
+      "BearC23 M637": `Name:BearC23 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC23 M637 test.
+`,
+      "LibC23 M637": `Name:LibC23 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC23 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC23 M637", "BearC23 M637"],
+        battlefield: [{ card: "WardenC23 M637" }],
+        library: ["LibC23 M637", "LibC23 M637", "LibC23 M637", "LibC23 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC23 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC23 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3309. Combo3 24 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-24-m637",
+    description: "Combo3 24 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc418,
+    cards: {
+      "WardenC24 M637": `Name:WardenC24 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC24 M637 test.
+`,
+      "MullC24 M637": `Name:MullC24 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC24 M637 test.
+`,
+      "BearC24 M637": `Name:BearC24 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC24 M637 test.
+`,
+      "LibC24 M637": `Name:LibC24 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC24 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC24 M637", "BearC24 M637"],
+        battlefield: [{ card: "WardenC24 M637" }],
+        library: ["LibC24 M637", "LibC24 M637", "LibC24 M637", "LibC24 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC24 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC24 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3310. Combo3 25 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-25-m637",
+    description: "Combo3 25 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc419,
+    cards: {
+      "WardenC25 M637": `Name:WardenC25 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC25 M637 test.
+`,
+      "MullC25 M637": `Name:MullC25 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC25 M637 test.
+`,
+      "BearC25 M637": `Name:BearC25 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC25 M637 test.
+`,
+      "LibC25 M637": `Name:LibC25 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC25 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC25 M637", "BearC25 M637"],
+        battlefield: [{ card: "WardenC25 M637" }],
+        library: ["LibC25 M637", "LibC25 M637", "LibC25 M637", "LibC25 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC25 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC25 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3311. Combo3 26 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-26-m637",
+    description: "Combo3 26 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc41a,
+    cards: {
+      "WardenC26 M637": `Name:WardenC26 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC26 M637 test.
+`,
+      "MullC26 M637": `Name:MullC26 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC26 M637 test.
+`,
+      "BearC26 M637": `Name:BearC26 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC26 M637 test.
+`,
+      "LibC26 M637": `Name:LibC26 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC26 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC26 M637", "BearC26 M637"],
+        battlefield: [{ card: "WardenC26 M637" }],
+        library: ["LibC26 M637", "LibC26 M637", "LibC26 M637", "LibC26 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC26 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC26 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3312. Combo3 27 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-27-m637",
+    description: "Combo3 27 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc41b,
+    cards: {
+      "WardenC27 M637": `Name:WardenC27 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC27 M637 test.
+`,
+      "MullC27 M637": `Name:MullC27 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC27 M637 test.
+`,
+      "BearC27 M637": `Name:BearC27 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC27 M637 test.
+`,
+      "LibC27 M637": `Name:LibC27 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC27 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC27 M637", "BearC27 M637"],
+        battlefield: [{ card: "WardenC27 M637" }],
+        library: ["LibC27 M637", "LibC27 M637", "LibC27 M637", "LibC27 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC27 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC27 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3313. Combo3 28 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-28-m637",
+    description: "Combo3 28 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc41c,
+    cards: {
+      "WardenC28 M637": `Name:WardenC28 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC28 M637 test.
+`,
+      "MullC28 M637": `Name:MullC28 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC28 M637 test.
+`,
+      "BearC28 M637": `Name:BearC28 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC28 M637 test.
+`,
+      "LibC28 M637": `Name:LibC28 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC28 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC28 M637", "BearC28 M637"],
+        battlefield: [{ card: "WardenC28 M637" }],
+        library: ["LibC28 M637", "LibC28 M637", "LibC28 M637", "LibC28 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC28 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC28 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3314. Combo3 29 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-29-m637",
+    description: "Combo3 29 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc41d,
+    cards: {
+      "WardenC29 M637": `Name:WardenC29 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC29 M637 test.
+`,
+      "MullC29 M637": `Name:MullC29 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC29 M637 test.
+`,
+      "BearC29 M637": `Name:BearC29 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC29 M637 test.
+`,
+      "LibC29 M637": `Name:LibC29 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC29 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC29 M637", "BearC29 M637"],
+        battlefield: [{ card: "WardenC29 M637" }],
+        library: ["LibC29 M637", "LibC29 M637", "LibC29 M637", "LibC29 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC29 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC29 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3315. Combo3 30 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-30-m637",
+    description: "Combo3 30 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc41e,
+    cards: {
+      "WardenC30 M637": `Name:WardenC30 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC30 M637 test.
+`,
+      "MullC30 M637": `Name:MullC30 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC30 M637 test.
+`,
+      "BearC30 M637": `Name:BearC30 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC30 M637 test.
+`,
+      "LibC30 M637": `Name:LibC30 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC30 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC30 M637", "BearC30 M637"],
+        battlefield: [{ card: "WardenC30 M637" }],
+        library: ["LibC30 M637", "LibC30 M637", "LibC30 M637", "LibC30 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC30 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC30 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3316. Combo3 31 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-31-m637",
+    description: "Combo3 31 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc41f,
+    cards: {
+      "WardenC31 M637": `Name:WardenC31 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC31 M637 test.
+`,
+      "MullC31 M637": `Name:MullC31 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC31 M637 test.
+`,
+      "BearC31 M637": `Name:BearC31 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC31 M637 test.
+`,
+      "LibC31 M637": `Name:LibC31 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC31 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC31 M637", "BearC31 M637"],
+        battlefield: [{ card: "WardenC31 M637" }],
+        library: ["LibC31 M637", "LibC31 M637", "LibC31 M637", "LibC31 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC31 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC31 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3317. Combo3 32 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-32-m637",
+    description: "Combo3 32 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc420,
+    cards: {
+      "WardenC32 M637": `Name:WardenC32 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC32 M637 test.
+`,
+      "MullC32 M637": `Name:MullC32 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC32 M637 test.
+`,
+      "BearC32 M637": `Name:BearC32 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC32 M637 test.
+`,
+      "LibC32 M637": `Name:LibC32 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC32 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC32 M637", "BearC32 M637"],
+        battlefield: [{ card: "WardenC32 M637" }],
+        library: ["LibC32 M637", "LibC32 M637", "LibC32 M637", "LibC32 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC32 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC32 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3318. Combo3 33 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-33-m637",
+    description: "Combo3 33 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc421,
+    cards: {
+      "WardenC33 M637": `Name:WardenC33 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC33 M637 test.
+`,
+      "MullC33 M637": `Name:MullC33 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC33 M637 test.
+`,
+      "BearC33 M637": `Name:BearC33 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC33 M637 test.
+`,
+      "LibC33 M637": `Name:LibC33 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC33 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC33 M637", "BearC33 M637"],
+        battlefield: [{ card: "WardenC33 M637" }],
+        library: ["LibC33 M637", "LibC33 M637", "LibC33 M637", "LibC33 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC33 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC33 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3319. Combo3 34 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-34-m637",
+    description: "Combo3 34 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc422,
+    cards: {
+      "WardenC34 M637": `Name:WardenC34 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC34 M637 test.
+`,
+      "MullC34 M637": `Name:MullC34 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC34 M637 test.
+`,
+      "BearC34 M637": `Name:BearC34 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC34 M637 test.
+`,
+      "LibC34 M637": `Name:LibC34 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC34 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC34 M637", "BearC34 M637"],
+        battlefield: [{ card: "WardenC34 M637" }],
+        library: ["LibC34 M637", "LibC34 M637", "LibC34 M637", "LibC34 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC34 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC34 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3320. Combo3 35 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-35-m637",
+    description: "Combo3 35 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc423,
+    cards: {
+      "WardenC35 M637": `Name:WardenC35 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC35 M637 test.
+`,
+      "MullC35 M637": `Name:MullC35 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC35 M637 test.
+`,
+      "BearC35 M637": `Name:BearC35 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC35 M637 test.
+`,
+      "LibC35 M637": `Name:LibC35 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC35 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC35 M637", "BearC35 M637"],
+        battlefield: [{ card: "WardenC35 M637" }],
+        library: ["LibC35 M637", "LibC35 M637", "LibC35 M637", "LibC35 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC35 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC35 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3321. Combo3 36 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-36-m637",
+    description: "Combo3 36 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc424,
+    cards: {
+      "WardenC36 M637": `Name:WardenC36 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC36 M637 test.
+`,
+      "MullC36 M637": `Name:MullC36 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC36 M637 test.
+`,
+      "BearC36 M637": `Name:BearC36 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC36 M637 test.
+`,
+      "LibC36 M637": `Name:LibC36 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC36 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC36 M637", "BearC36 M637"],
+        battlefield: [{ card: "WardenC36 M637" }],
+        library: ["LibC36 M637", "LibC36 M637", "LibC36 M637", "LibC36 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC36 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC36 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3322. Combo3 37 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-37-m637",
+    description: "Combo3 37 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc425,
+    cards: {
+      "WardenC37 M637": `Name:WardenC37 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC37 M637 test.
+`,
+      "MullC37 M637": `Name:MullC37 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC37 M637 test.
+`,
+      "BearC37 M637": `Name:BearC37 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC37 M637 test.
+`,
+      "LibC37 M637": `Name:LibC37 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC37 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC37 M637", "BearC37 M637"],
+        battlefield: [{ card: "WardenC37 M637" }],
+        library: ["LibC37 M637", "LibC37 M637", "LibC37 M637", "LibC37 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC37 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC37 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3323. Combo3 38 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-38-m637",
+    description: "Combo3 38 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc426,
+    cards: {
+      "WardenC38 M637": `Name:WardenC38 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC38 M637 test.
+`,
+      "MullC38 M637": `Name:MullC38 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC38 M637 test.
+`,
+      "BearC38 M637": `Name:BearC38 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC38 M637 test.
+`,
+      "LibC38 M637": `Name:LibC38 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC38 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC38 M637", "BearC38 M637"],
+        battlefield: [{ card: "WardenC38 M637" }],
+        library: ["LibC38 M637", "LibC38 M637", "LibC38 M637", "LibC38 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC38 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC38 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3324. Combo3 39 — Warden + Mulldrifter cast + Bear cast (3 ETBs).
+  {
+    id: "combo3-warden-mull-bear-39-m637",
+    description: "Combo3 39 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+    seed: 0xc427,
+    cards: {
+      "WardenC39 M637": `Name:WardenC39 M637
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:WardenC39 M637 test.
+`,
+      "MullC39 M637": `Name:MullC39 M637
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:MullC39 M637 test.
+`,
+      "BearC39 M637": `Name:BearC39 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearC39 M637 test.
+`,
+      "LibC39 M637": `Name:LibC39 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:LibC39 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["MullC39 M637", "BearC39 M637"],
+        battlefield: [{ card: "WardenC39 M637" }],
+        library: ["LibC39 M637", "LibC39 M637", "LibC39 M637", "LibC39 M637"],
+        manaPool: ["U", "C", "C", "C", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "MullC39 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "BearC39 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3325. Annihilator 0 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-0-m637",
+    description: "Annihilator 0 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc428,
+    cards: {
+      "Eldrazi0 M637": `Name:Eldrazi0 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi0 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3326. Annihilator 1 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-1-m637",
+    description: "Annihilator 1 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc429,
+    cards: {
+      "Eldrazi1 M637": `Name:Eldrazi1 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi1 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3327. Annihilator 2 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-2-m637",
+    description: "Annihilator 2 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc42a,
+    cards: {
+      "Eldrazi2 M637": `Name:Eldrazi2 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi2 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3328. Annihilator 3 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-3-m637",
+    description: "Annihilator 3 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc42b,
+    cards: {
+      "Eldrazi3 M637": `Name:Eldrazi3 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi3 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3329. Annihilator 4 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-4-m637",
+    description: "Annihilator 4 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc42c,
+    cards: {
+      "Eldrazi4 M637": `Name:Eldrazi4 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi4 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3330. Annihilator 5 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-5-m637",
+    description: "Annihilator 5 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc42d,
+    cards: {
+      "Eldrazi5 M637": `Name:Eldrazi5 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi5 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3331. Annihilator 6 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-6-m637",
+    description: "Annihilator 6 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc42e,
+    cards: {
+      "Eldrazi6 M637": `Name:Eldrazi6 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi6 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3332. Annihilator 7 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-7-m637",
+    description: "Annihilator 7 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc42f,
+    cards: {
+      "Eldrazi7 M637": `Name:Eldrazi7 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi7 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3333. Annihilator 8 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-8-m637",
+    description: "Annihilator 8 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc430,
+    cards: {
+      "Eldrazi8 M637": `Name:Eldrazi8 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi8 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3334. Annihilator 9 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-9-m637",
+    description: "Annihilator 9 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc431,
+    cards: {
+      "Eldrazi9 M637": `Name:Eldrazi9 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi9 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3335. Annihilator 10 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-10-m637",
+    description: "Annihilator 10 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc432,
+    cards: {
+      "Eldrazi10 M637": `Name:Eldrazi10 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi10 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi10 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3336. Annihilator 11 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-11-m637",
+    description: "Annihilator 11 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc433,
+    cards: {
+      "Eldrazi11 M637": `Name:Eldrazi11 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi11 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi11 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3337. Annihilator 12 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-12-m637",
+    description: "Annihilator 12 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc434,
+    cards: {
+      "Eldrazi12 M637": `Name:Eldrazi12 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi12 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi12 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3338. Annihilator 13 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-13-m637",
+    description: "Annihilator 13 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc435,
+    cards: {
+      "Eldrazi13 M637": `Name:Eldrazi13 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi13 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi13 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3339. Annihilator 14 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-14-m637",
+    description: "Annihilator 14 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc436,
+    cards: {
+      "Eldrazi14 M637": `Name:Eldrazi14 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi14 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi14 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3340. Annihilator 15 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-15-m637",
+    description: "Annihilator 15 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc437,
+    cards: {
+      "Eldrazi15 M637": `Name:Eldrazi15 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi15 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi15 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi15 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3341. Annihilator 16 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-16-m637",
+    description: "Annihilator 16 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc438,
+    cards: {
+      "Eldrazi16 M637": `Name:Eldrazi16 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi16 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi16 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi16 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3342. Annihilator 17 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-17-m637",
+    description: "Annihilator 17 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc439,
+    cards: {
+      "Eldrazi17 M637": `Name:Eldrazi17 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi17 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi17 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi17 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3343. Annihilator 18 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-18-m637",
+    description: "Annihilator 18 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc43a,
+    cards: {
+      "Eldrazi18 M637": `Name:Eldrazi18 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi18 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi18 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi18 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3344. Annihilator 19 ETB — keyword-bearing eldrazi entered (no attack triggers).
+  {
+    id: "annihilator-etb-19-m637",
+    description: "Annihilator 19 ETB — keyword-bearing eldrazi entered (no attack triggers).",
+    seed: 0xc43b,
+    cards: {
+      "Eldrazi19 M637": `Name:Eldrazi19 M637
+ManaCost:8
+Types:Creature Eldrazi
+PT:6/6
+K:Annihilator:1
+Oracle:Eldrazi19 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eldrazi19 M637"],
+        battlefield: [],
+        manaPool: ["C", "C", "C", "C", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eldrazi19 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3345. Frenzy 0 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-0-m637",
+    description: "Frenzy 0 ETB — frenzy creature entered.",
+    seed: 0xc43c,
+    cards: {
+      "Frenzied0 M637": `Name:Frenzied0 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied0 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3346. Frenzy 1 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-1-m637",
+    description: "Frenzy 1 ETB — frenzy creature entered.",
+    seed: 0xc43d,
+    cards: {
+      "Frenzied1 M637": `Name:Frenzied1 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied1 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3347. Frenzy 2 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-2-m637",
+    description: "Frenzy 2 ETB — frenzy creature entered.",
+    seed: 0xc43e,
+    cards: {
+      "Frenzied2 M637": `Name:Frenzied2 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied2 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3348. Frenzy 3 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-3-m637",
+    description: "Frenzy 3 ETB — frenzy creature entered.",
+    seed: 0xc43f,
+    cards: {
+      "Frenzied3 M637": `Name:Frenzied3 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied3 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3349. Frenzy 4 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-4-m637",
+    description: "Frenzy 4 ETB — frenzy creature entered.",
+    seed: 0xc440,
+    cards: {
+      "Frenzied4 M637": `Name:Frenzied4 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied4 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3350. Frenzy 5 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-5-m637",
+    description: "Frenzy 5 ETB — frenzy creature entered.",
+    seed: 0xc441,
+    cards: {
+      "Frenzied5 M637": `Name:Frenzied5 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied5 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3351. Frenzy 6 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-6-m637",
+    description: "Frenzy 6 ETB — frenzy creature entered.",
+    seed: 0xc442,
+    cards: {
+      "Frenzied6 M637": `Name:Frenzied6 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied6 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3352. Frenzy 7 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-7-m637",
+    description: "Frenzy 7 ETB — frenzy creature entered.",
+    seed: 0xc443,
+    cards: {
+      "Frenzied7 M637": `Name:Frenzied7 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied7 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3353. Frenzy 8 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-8-m637",
+    description: "Frenzy 8 ETB — frenzy creature entered.",
+    seed: 0xc444,
+    cards: {
+      "Frenzied8 M637": `Name:Frenzied8 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied8 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3354. Frenzy 9 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-9-m637",
+    description: "Frenzy 9 ETB — frenzy creature entered.",
+    seed: 0xc445,
+    cards: {
+      "Frenzied9 M637": `Name:Frenzied9 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied9 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3355. Frenzy 10 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-10-m637",
+    description: "Frenzy 10 ETB — frenzy creature entered.",
+    seed: 0xc446,
+    cards: {
+      "Frenzied10 M637": `Name:Frenzied10 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied10 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied10 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3356. Frenzy 11 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-11-m637",
+    description: "Frenzy 11 ETB — frenzy creature entered.",
+    seed: 0xc447,
+    cards: {
+      "Frenzied11 M637": `Name:Frenzied11 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied11 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied11 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3357. Frenzy 12 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-12-m637",
+    description: "Frenzy 12 ETB — frenzy creature entered.",
+    seed: 0xc448,
+    cards: {
+      "Frenzied12 M637": `Name:Frenzied12 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied12 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied12 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3358. Frenzy 13 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-13-m637",
+    description: "Frenzy 13 ETB — frenzy creature entered.",
+    seed: 0xc449,
+    cards: {
+      "Frenzied13 M637": `Name:Frenzied13 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied13 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied13 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3359. Frenzy 14 ETB — frenzy creature entered.
+  {
+    id: "frenzy-etb-14-m637",
+    description: "Frenzy 14 ETB — frenzy creature entered.",
+    seed: 0xc44a,
+    cards: {
+      "Frenzied14 M637": `Name:Frenzied14 M637
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Frenzy:2
+Oracle:Frenzied14 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied14 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Frenzied14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3360. Boast 0 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-0-m637",
+    description: "Boast 0 ETB — boast-style ability creature entered.",
+    seed: 0xc44b,
+    cards: {
+      "Boaster0 M637": `Name:Boaster0 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster0 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3361. Boast 1 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-1-m637",
+    description: "Boast 1 ETB — boast-style ability creature entered.",
+    seed: 0xc44c,
+    cards: {
+      "Boaster1 M637": `Name:Boaster1 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster1 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3362. Boast 2 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-2-m637",
+    description: "Boast 2 ETB — boast-style ability creature entered.",
+    seed: 0xc44d,
+    cards: {
+      "Boaster2 M637": `Name:Boaster2 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster2 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3363. Boast 3 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-3-m637",
+    description: "Boast 3 ETB — boast-style ability creature entered.",
+    seed: 0xc44e,
+    cards: {
+      "Boaster3 M637": `Name:Boaster3 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster3 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3364. Boast 4 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-4-m637",
+    description: "Boast 4 ETB — boast-style ability creature entered.",
+    seed: 0xc44f,
+    cards: {
+      "Boaster4 M637": `Name:Boaster4 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster4 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3365. Boast 5 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-5-m637",
+    description: "Boast 5 ETB — boast-style ability creature entered.",
+    seed: 0xc450,
+    cards: {
+      "Boaster5 M637": `Name:Boaster5 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster5 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3366. Boast 6 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-6-m637",
+    description: "Boast 6 ETB — boast-style ability creature entered.",
+    seed: 0xc451,
+    cards: {
+      "Boaster6 M637": `Name:Boaster6 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster6 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3367. Boast 7 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-7-m637",
+    description: "Boast 7 ETB — boast-style ability creature entered.",
+    seed: 0xc452,
+    cards: {
+      "Boaster7 M637": `Name:Boaster7 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster7 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3368. Boast 8 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-8-m637",
+    description: "Boast 8 ETB — boast-style ability creature entered.",
+    seed: 0xc453,
+    cards: {
+      "Boaster8 M637": `Name:Boaster8 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster8 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3369. Boast 9 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-9-m637",
+    description: "Boast 9 ETB — boast-style ability creature entered.",
+    seed: 0xc454,
+    cards: {
+      "Boaster9 M637": `Name:Boaster9 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster9 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3370. Boast 10 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-10-m637",
+    description: "Boast 10 ETB — boast-style ability creature entered.",
+    seed: 0xc455,
+    cards: {
+      "Boaster10 M637": `Name:Boaster10 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster10 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster10 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3371. Boast 11 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-11-m637",
+    description: "Boast 11 ETB — boast-style ability creature entered.",
+    seed: 0xc456,
+    cards: {
+      "Boaster11 M637": `Name:Boaster11 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster11 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster11 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3372. Boast 12 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-12-m637",
+    description: "Boast 12 ETB — boast-style ability creature entered.",
+    seed: 0xc457,
+    cards: {
+      "Boaster12 M637": `Name:Boaster12 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster12 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster12 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3373. Boast 13 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-13-m637",
+    description: "Boast 13 ETB — boast-style ability creature entered.",
+    seed: 0xc458,
+    cards: {
+      "Boaster13 M637": `Name:Boaster13 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster13 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster13 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3374. Boast 14 ETB — boast-style ability creature entered.
+  {
+    id: "boast-etb-14-m637",
+    description: "Boast 14 ETB — boast-style ability creature entered.",
+    seed: 0xc459,
+    cards: {
+      "Boaster14 M637": `Name:Boaster14 M637
+ManaCost:2 R
+Types:Creature Human Berserker
+PT:2/2
+A:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ 2 | NumDef$ 0 | ActivationLimit$ 1 | PrecostDesc$ Boast — | SpellDescription$ Self gets +2/+0
+Oracle:Boaster14 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boaster14 M637"], battlefield: [], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Boaster14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3375. Devoid 0 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-0-m637",
+    description: "Devoid 0 ETB — devoid creature entered (colorless).",
+    seed: 0xc45a,
+    cards: {
+      "Devoid0 M637": `Name:Devoid0 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid0 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3376. Devoid 1 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-1-m637",
+    description: "Devoid 1 ETB — devoid creature entered (colorless).",
+    seed: 0xc45b,
+    cards: {
+      "Devoid1 M637": `Name:Devoid1 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid1 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3377. Devoid 2 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-2-m637",
+    description: "Devoid 2 ETB — devoid creature entered (colorless).",
+    seed: 0xc45c,
+    cards: {
+      "Devoid2 M637": `Name:Devoid2 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid2 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3378. Devoid 3 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-3-m637",
+    description: "Devoid 3 ETB — devoid creature entered (colorless).",
+    seed: 0xc45d,
+    cards: {
+      "Devoid3 M637": `Name:Devoid3 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid3 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3379. Devoid 4 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-4-m637",
+    description: "Devoid 4 ETB — devoid creature entered (colorless).",
+    seed: 0xc45e,
+    cards: {
+      "Devoid4 M637": `Name:Devoid4 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid4 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3380. Devoid 5 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-5-m637",
+    description: "Devoid 5 ETB — devoid creature entered (colorless).",
+    seed: 0xc45f,
+    cards: {
+      "Devoid5 M637": `Name:Devoid5 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid5 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3381. Devoid 6 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-6-m637",
+    description: "Devoid 6 ETB — devoid creature entered (colorless).",
+    seed: 0xc460,
+    cards: {
+      "Devoid6 M637": `Name:Devoid6 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid6 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3382. Devoid 7 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-7-m637",
+    description: "Devoid 7 ETB — devoid creature entered (colorless).",
+    seed: 0xc461,
+    cards: {
+      "Devoid7 M637": `Name:Devoid7 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid7 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3383. Devoid 8 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-8-m637",
+    description: "Devoid 8 ETB — devoid creature entered (colorless).",
+    seed: 0xc462,
+    cards: {
+      "Devoid8 M637": `Name:Devoid8 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid8 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3384. Devoid 9 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-9-m637",
+    description: "Devoid 9 ETB — devoid creature entered (colorless).",
+    seed: 0xc463,
+    cards: {
+      "Devoid9 M637": `Name:Devoid9 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid9 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3385. Devoid 10 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-10-m637",
+    description: "Devoid 10 ETB — devoid creature entered (colorless).",
+    seed: 0xc464,
+    cards: {
+      "Devoid10 M637": `Name:Devoid10 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid10 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid10 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3386. Devoid 11 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-11-m637",
+    description: "Devoid 11 ETB — devoid creature entered (colorless).",
+    seed: 0xc465,
+    cards: {
+      "Devoid11 M637": `Name:Devoid11 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid11 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid11 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3387. Devoid 12 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-12-m637",
+    description: "Devoid 12 ETB — devoid creature entered (colorless).",
+    seed: 0xc466,
+    cards: {
+      "Devoid12 M637": `Name:Devoid12 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid12 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid12 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3388. Devoid 13 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-13-m637",
+    description: "Devoid 13 ETB — devoid creature entered (colorless).",
+    seed: 0xc467,
+    cards: {
+      "Devoid13 M637": `Name:Devoid13 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid13 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid13 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3389. Devoid 14 ETB — devoid creature entered (colorless).
+  {
+    id: "devoid-etb-14-m637",
+    description: "Devoid 14 ETB — devoid creature entered (colorless).",
+    seed: 0xc468,
+    cards: {
+      "Devoid14 M637": `Name:Devoid14 M637
+ManaCost:1 U
+Types:Creature Eldrazi Drone
+PT:2/2
+K:Devoid
+Oracle:Devoid14 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devoid14 M637"], battlefield: [], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Devoid14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3390. Cabal Coffers tap 0 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-0-m637",
+    description: "Cabal Coffers tap 0 — tap for B per swamp controlled.",
+    seed: 0xc469,
+    cards: {
+      "CabCoffer0 M637": `Name:CabCoffer0 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer0 M637 test.
+`,
+      "Swp0 M637": `Name:Swp0 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer0 M637" }, { card: "Swp0 M637" }, { card: "Swp0 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer0 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3391. Cabal Coffers tap 1 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-1-m637",
+    description: "Cabal Coffers tap 1 — tap for B per swamp controlled.",
+    seed: 0xc46a,
+    cards: {
+      "CabCoffer1 M637": `Name:CabCoffer1 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer1 M637 test.
+`,
+      "Swp1 M637": `Name:Swp1 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer1 M637" }, { card: "Swp1 M637" }, { card: "Swp1 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer1 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3392. Cabal Coffers tap 2 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-2-m637",
+    description: "Cabal Coffers tap 2 — tap for B per swamp controlled.",
+    seed: 0xc46b,
+    cards: {
+      "CabCoffer2 M637": `Name:CabCoffer2 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer2 M637 test.
+`,
+      "Swp2 M637": `Name:Swp2 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer2 M637" }, { card: "Swp2 M637" }, { card: "Swp2 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer2 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3393. Cabal Coffers tap 3 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-3-m637",
+    description: "Cabal Coffers tap 3 — tap for B per swamp controlled.",
+    seed: 0xc46c,
+    cards: {
+      "CabCoffer3 M637": `Name:CabCoffer3 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer3 M637 test.
+`,
+      "Swp3 M637": `Name:Swp3 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer3 M637" }, { card: "Swp3 M637" }, { card: "Swp3 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer3 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3394. Cabal Coffers tap 4 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-4-m637",
+    description: "Cabal Coffers tap 4 — tap for B per swamp controlled.",
+    seed: 0xc46d,
+    cards: {
+      "CabCoffer4 M637": `Name:CabCoffer4 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer4 M637 test.
+`,
+      "Swp4 M637": `Name:Swp4 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer4 M637" }, { card: "Swp4 M637" }, { card: "Swp4 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer4 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3395. Cabal Coffers tap 5 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-5-m637",
+    description: "Cabal Coffers tap 5 — tap for B per swamp controlled.",
+    seed: 0xc46e,
+    cards: {
+      "CabCoffer5 M637": `Name:CabCoffer5 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer5 M637 test.
+`,
+      "Swp5 M637": `Name:Swp5 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer5 M637" }, { card: "Swp5 M637" }, { card: "Swp5 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer5 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3396. Cabal Coffers tap 6 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-6-m637",
+    description: "Cabal Coffers tap 6 — tap for B per swamp controlled.",
+    seed: 0xc46f,
+    cards: {
+      "CabCoffer6 M637": `Name:CabCoffer6 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer6 M637 test.
+`,
+      "Swp6 M637": `Name:Swp6 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer6 M637" }, { card: "Swp6 M637" }, { card: "Swp6 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer6 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3397. Cabal Coffers tap 7 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-7-m637",
+    description: "Cabal Coffers tap 7 — tap for B per swamp controlled.",
+    seed: 0xc470,
+    cards: {
+      "CabCoffer7 M637": `Name:CabCoffer7 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer7 M637 test.
+`,
+      "Swp7 M637": `Name:Swp7 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer7 M637" }, { card: "Swp7 M637" }, { card: "Swp7 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer7 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3398. Cabal Coffers tap 8 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-8-m637",
+    description: "Cabal Coffers tap 8 — tap for B per swamp controlled.",
+    seed: 0xc471,
+    cards: {
+      "CabCoffer8 M637": `Name:CabCoffer8 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer8 M637 test.
+`,
+      "Swp8 M637": `Name:Swp8 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer8 M637" }, { card: "Swp8 M637" }, { card: "Swp8 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer8 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3399. Cabal Coffers tap 9 — tap for B per swamp controlled.
+  {
+    id: "cabal-coffers-tap-9-m637",
+    description: "Cabal Coffers tap 9 — tap for B per swamp controlled.",
+    seed: 0xc472,
+    cards: {
+      "CabCoffer9 M637": `Name:CabCoffer9 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.YouCtrl+Swamp
+Oracle:CabCoffer9 M637 test.
+`,
+      "Swp9 M637": `Name:Swp9 M637
+ManaCost:no cost
+Types:Land Swamp
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Swp9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "CabCoffer9 M637" }, { card: "Swp9 M637" }, { card: "Swp9 M637" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "CabCoffer9 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3400. Nykthos devotion tap 0 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-0-m637",
+    description: "Nykthos devotion tap 0 — first ability tapped for C.",
+    seed: 0xc473,
+    cards: {
+      "NykX0 M637": `Name:NykX0 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX0 M637 test.
+`,
+      "NykCr0 M637": `Name:NykCr0 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX0 M637" }, { card: "NykCr0 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX0 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3401. Nykthos devotion tap 1 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-1-m637",
+    description: "Nykthos devotion tap 1 — first ability tapped for C.",
+    seed: 0xc474,
+    cards: {
+      "NykX1 M637": `Name:NykX1 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX1 M637 test.
+`,
+      "NykCr1 M637": `Name:NykCr1 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX1 M637" }, { card: "NykCr1 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX1 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3402. Nykthos devotion tap 2 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-2-m637",
+    description: "Nykthos devotion tap 2 — first ability tapped for C.",
+    seed: 0xc475,
+    cards: {
+      "NykX2 M637": `Name:NykX2 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX2 M637 test.
+`,
+      "NykCr2 M637": `Name:NykCr2 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX2 M637" }, { card: "NykCr2 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX2 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3403. Nykthos devotion tap 3 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-3-m637",
+    description: "Nykthos devotion tap 3 — first ability tapped for C.",
+    seed: 0xc476,
+    cards: {
+      "NykX3 M637": `Name:NykX3 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX3 M637 test.
+`,
+      "NykCr3 M637": `Name:NykCr3 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX3 M637" }, { card: "NykCr3 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX3 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3404. Nykthos devotion tap 4 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-4-m637",
+    description: "Nykthos devotion tap 4 — first ability tapped for C.",
+    seed: 0xc477,
+    cards: {
+      "NykX4 M637": `Name:NykX4 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX4 M637 test.
+`,
+      "NykCr4 M637": `Name:NykCr4 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX4 M637" }, { card: "NykCr4 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX4 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3405. Nykthos devotion tap 5 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-5-m637",
+    description: "Nykthos devotion tap 5 — first ability tapped for C.",
+    seed: 0xc478,
+    cards: {
+      "NykX5 M637": `Name:NykX5 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX5 M637 test.
+`,
+      "NykCr5 M637": `Name:NykCr5 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX5 M637" }, { card: "NykCr5 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX5 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3406. Nykthos devotion tap 6 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-6-m637",
+    description: "Nykthos devotion tap 6 — first ability tapped for C.",
+    seed: 0xc479,
+    cards: {
+      "NykX6 M637": `Name:NykX6 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX6 M637 test.
+`,
+      "NykCr6 M637": `Name:NykCr6 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX6 M637" }, { card: "NykCr6 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX6 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3407. Nykthos devotion tap 7 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-7-m637",
+    description: "Nykthos devotion tap 7 — first ability tapped for C.",
+    seed: 0xc47a,
+    cards: {
+      "NykX7 M637": `Name:NykX7 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX7 M637 test.
+`,
+      "NykCr7 M637": `Name:NykCr7 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX7 M637" }, { card: "NykCr7 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX7 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3408. Nykthos devotion tap 8 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-8-m637",
+    description: "Nykthos devotion tap 8 — first ability tapped for C.",
+    seed: 0xc47b,
+    cards: {
+      "NykX8 M637": `Name:NykX8 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX8 M637 test.
+`,
+      "NykCr8 M637": `Name:NykCr8 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX8 M637" }, { card: "NykCr8 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX8 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3409. Nykthos devotion tap 9 — first ability tapped for C.
+  {
+    id: "nykthos-devotion-tap-9-m637",
+    description: "Nykthos devotion tap 9 — first ability tapped for C.",
+    seed: 0xc47c,
+    cards: {
+      "NykX9 M637": `Name:NykX9 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Any | Amount$ X | References$ X
+SVar:X:Count$DevotionMono
+Oracle:NykX9 M637 test.
+`,
+      "NykCr9 M637": `Name:NykCr9 M637
+ManaCost:G G
+Types:Creature Elf
+PT:2/2
+Oracle:NykCr9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "NykX9 M637" }, { card: "NykCr9 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "NykX9 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3410. Mishra's Workshop tap 0 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-0-m637",
+    description: "Mishra's Workshop tap 0 — produce 3 colorless restricted to artifact.",
+    seed: 0xc47d,
+    cards: {
+      "Wshop0 M637": `Name:Wshop0 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop0 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop0 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3411. Mishra's Workshop tap 1 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-1-m637",
+    description: "Mishra's Workshop tap 1 — produce 3 colorless restricted to artifact.",
+    seed: 0xc47e,
+    cards: {
+      "Wshop1 M637": `Name:Wshop1 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop1 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop1 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3412. Mishra's Workshop tap 2 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-2-m637",
+    description: "Mishra's Workshop tap 2 — produce 3 colorless restricted to artifact.",
+    seed: 0xc47f,
+    cards: {
+      "Wshop2 M637": `Name:Wshop2 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop2 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop2 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3413. Mishra's Workshop tap 3 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-3-m637",
+    description: "Mishra's Workshop tap 3 — produce 3 colorless restricted to artifact.",
+    seed: 0xc480,
+    cards: {
+      "Wshop3 M637": `Name:Wshop3 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop3 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop3 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3414. Mishra's Workshop tap 4 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-4-m637",
+    description: "Mishra's Workshop tap 4 — produce 3 colorless restricted to artifact.",
+    seed: 0xc481,
+    cards: {
+      "Wshop4 M637": `Name:Wshop4 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop4 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop4 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3415. Mishra's Workshop tap 5 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-5-m637",
+    description: "Mishra's Workshop tap 5 — produce 3 colorless restricted to artifact.",
+    seed: 0xc482,
+    cards: {
+      "Wshop5 M637": `Name:Wshop5 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop5 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop5 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3416. Mishra's Workshop tap 6 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-6-m637",
+    description: "Mishra's Workshop tap 6 — produce 3 colorless restricted to artifact.",
+    seed: 0xc483,
+    cards: {
+      "Wshop6 M637": `Name:Wshop6 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop6 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop6 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3417. Mishra's Workshop tap 7 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-7-m637",
+    description: "Mishra's Workshop tap 7 — produce 3 colorless restricted to artifact.",
+    seed: 0xc484,
+    cards: {
+      "Wshop7 M637": `Name:Wshop7 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop7 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop7 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3418. Mishra's Workshop tap 8 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-8-m637",
+    description: "Mishra's Workshop tap 8 — produce 3 colorless restricted to artifact.",
+    seed: 0xc485,
+    cards: {
+      "Wshop8 M637": `Name:Wshop8 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop8 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop8 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3419. Mishra's Workshop tap 9 — produce 3 colorless restricted to artifact.
+  {
+    id: "mishra-workshop-tap-9-m637",
+    description: "Mishra's Workshop tap 9 — produce 3 colorless restricted to artifact.",
+    seed: 0xc486,
+    cards: {
+      "Wshop9 M637": `Name:Wshop9 M637
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Wshop9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: [], battlefield: [{ card: "Wshop9 M637" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "activate", sourceCardName: "Wshop9 M637", activatingPlayer: SEAT0 }],
+  },
+
+  // 3420. Storm full count 0 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-0-m637",
+    description: "Storm full count 0 — five bolts then a storm sorcery.",
+    seed: 0xc487,
+    cards: {
+      "LBStorm0 M637": `Name:LBStorm0 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm0 M637 test.
+`,
+      "StormGr0 M637": `Name:StormGr0 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm0 M637",
+          "LBStorm0 M637",
+          "LBStorm0 M637",
+          "LBStorm0 M637",
+          "LBStorm0 M637",
+          "StormGr0 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm0 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm0 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm0 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm0 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm0 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr0 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3421. Storm full count 1 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-1-m637",
+    description: "Storm full count 1 — five bolts then a storm sorcery.",
+    seed: 0xc488,
+    cards: {
+      "LBStorm1 M637": `Name:LBStorm1 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm1 M637 test.
+`,
+      "StormGr1 M637": `Name:StormGr1 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm1 M637",
+          "LBStorm1 M637",
+          "LBStorm1 M637",
+          "LBStorm1 M637",
+          "LBStorm1 M637",
+          "StormGr1 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm1 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm1 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm1 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm1 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm1 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr1 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3422. Storm full count 2 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-2-m637",
+    description: "Storm full count 2 — five bolts then a storm sorcery.",
+    seed: 0xc489,
+    cards: {
+      "LBStorm2 M637": `Name:LBStorm2 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm2 M637 test.
+`,
+      "StormGr2 M637": `Name:StormGr2 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm2 M637",
+          "LBStorm2 M637",
+          "LBStorm2 M637",
+          "LBStorm2 M637",
+          "LBStorm2 M637",
+          "StormGr2 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm2 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm2 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm2 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm2 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm2 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr2 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3423. Storm full count 3 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-3-m637",
+    description: "Storm full count 3 — five bolts then a storm sorcery.",
+    seed: 0xc48a,
+    cards: {
+      "LBStorm3 M637": `Name:LBStorm3 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm3 M637 test.
+`,
+      "StormGr3 M637": `Name:StormGr3 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm3 M637",
+          "LBStorm3 M637",
+          "LBStorm3 M637",
+          "LBStorm3 M637",
+          "LBStorm3 M637",
+          "StormGr3 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm3 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm3 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm3 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm3 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm3 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr3 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3424. Storm full count 4 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-4-m637",
+    description: "Storm full count 4 — five bolts then a storm sorcery.",
+    seed: 0xc48b,
+    cards: {
+      "LBStorm4 M637": `Name:LBStorm4 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm4 M637 test.
+`,
+      "StormGr4 M637": `Name:StormGr4 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm4 M637",
+          "LBStorm4 M637",
+          "LBStorm4 M637",
+          "LBStorm4 M637",
+          "LBStorm4 M637",
+          "StormGr4 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm4 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm4 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm4 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm4 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm4 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr4 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3425. Storm full count 5 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-5-m637",
+    description: "Storm full count 5 — five bolts then a storm sorcery.",
+    seed: 0xc48c,
+    cards: {
+      "LBStorm5 M637": `Name:LBStorm5 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm5 M637 test.
+`,
+      "StormGr5 M637": `Name:StormGr5 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm5 M637",
+          "LBStorm5 M637",
+          "LBStorm5 M637",
+          "LBStorm5 M637",
+          "LBStorm5 M637",
+          "StormGr5 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm5 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm5 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm5 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm5 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm5 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr5 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3426. Storm full count 6 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-6-m637",
+    description: "Storm full count 6 — five bolts then a storm sorcery.",
+    seed: 0xc48d,
+    cards: {
+      "LBStorm6 M637": `Name:LBStorm6 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm6 M637 test.
+`,
+      "StormGr6 M637": `Name:StormGr6 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm6 M637",
+          "LBStorm6 M637",
+          "LBStorm6 M637",
+          "LBStorm6 M637",
+          "LBStorm6 M637",
+          "StormGr6 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm6 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm6 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm6 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm6 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm6 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr6 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3427. Storm full count 7 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-7-m637",
+    description: "Storm full count 7 — five bolts then a storm sorcery.",
+    seed: 0xc48e,
+    cards: {
+      "LBStorm7 M637": `Name:LBStorm7 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm7 M637 test.
+`,
+      "StormGr7 M637": `Name:StormGr7 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm7 M637",
+          "LBStorm7 M637",
+          "LBStorm7 M637",
+          "LBStorm7 M637",
+          "LBStorm7 M637",
+          "StormGr7 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm7 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm7 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm7 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm7 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm7 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr7 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3428. Storm full count 8 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-8-m637",
+    description: "Storm full count 8 — five bolts then a storm sorcery.",
+    seed: 0xc48f,
+    cards: {
+      "LBStorm8 M637": `Name:LBStorm8 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm8 M637 test.
+`,
+      "StormGr8 M637": `Name:StormGr8 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm8 M637",
+          "LBStorm8 M637",
+          "LBStorm8 M637",
+          "LBStorm8 M637",
+          "LBStorm8 M637",
+          "StormGr8 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm8 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm8 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm8 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm8 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm8 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr8 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3429. Storm full count 9 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-9-m637",
+    description: "Storm full count 9 — five bolts then a storm sorcery.",
+    seed: 0xc490,
+    cards: {
+      "LBStorm9 M637": `Name:LBStorm9 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm9 M637 test.
+`,
+      "StormGr9 M637": `Name:StormGr9 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm9 M637",
+          "LBStorm9 M637",
+          "LBStorm9 M637",
+          "LBStorm9 M637",
+          "LBStorm9 M637",
+          "StormGr9 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm9 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm9 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm9 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm9 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm9 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr9 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3430. Storm full count 10 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-10-m637",
+    description: "Storm full count 10 — five bolts then a storm sorcery.",
+    seed: 0xc491,
+    cards: {
+      "LBStorm10 M637": `Name:LBStorm10 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm10 M637 test.
+`,
+      "StormGr10 M637": `Name:StormGr10 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr10 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm10 M637",
+          "LBStorm10 M637",
+          "LBStorm10 M637",
+          "LBStorm10 M637",
+          "LBStorm10 M637",
+          "StormGr10 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm10 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm10 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm10 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm10 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm10 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr10 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3431. Storm full count 11 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-11-m637",
+    description: "Storm full count 11 — five bolts then a storm sorcery.",
+    seed: 0xc492,
+    cards: {
+      "LBStorm11 M637": `Name:LBStorm11 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm11 M637 test.
+`,
+      "StormGr11 M637": `Name:StormGr11 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr11 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm11 M637",
+          "LBStorm11 M637",
+          "LBStorm11 M637",
+          "LBStorm11 M637",
+          "LBStorm11 M637",
+          "StormGr11 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm11 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm11 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm11 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm11 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm11 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr11 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3432. Storm full count 12 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-12-m637",
+    description: "Storm full count 12 — five bolts then a storm sorcery.",
+    seed: 0xc493,
+    cards: {
+      "LBStorm12 M637": `Name:LBStorm12 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm12 M637 test.
+`,
+      "StormGr12 M637": `Name:StormGr12 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr12 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm12 M637",
+          "LBStorm12 M637",
+          "LBStorm12 M637",
+          "LBStorm12 M637",
+          "LBStorm12 M637",
+          "StormGr12 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm12 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm12 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm12 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm12 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm12 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr12 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3433. Storm full count 13 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-13-m637",
+    description: "Storm full count 13 — five bolts then a storm sorcery.",
+    seed: 0xc494,
+    cards: {
+      "LBStorm13 M637": `Name:LBStorm13 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm13 M637 test.
+`,
+      "StormGr13 M637": `Name:StormGr13 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr13 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm13 M637",
+          "LBStorm13 M637",
+          "LBStorm13 M637",
+          "LBStorm13 M637",
+          "LBStorm13 M637",
+          "StormGr13 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm13 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm13 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm13 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm13 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm13 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr13 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3434. Storm full count 14 — five bolts then a storm sorcery.
+  {
+    id: "storm-full-count-14-m637",
+    description: "Storm full count 14 — five bolts then a storm sorcery.",
+    seed: 0xc495,
+    cards: {
+      "LBStorm14 M637": `Name:LBStorm14 M637
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | ValidTgts$ Any | TargetType$ Any
+Oracle:LBStorm14 M637 test.
+`,
+      "StormGr14 M637": `Name:StormGr14 M637
+ManaCost:1 R R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 2 | ValidTgts$ Any | TargetType$ Any
+Oracle:StormGr14 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [
+          "LBStorm14 M637",
+          "LBStorm14 M637",
+          "LBStorm14 M637",
+          "LBStorm14 M637",
+          "LBStorm14 M637",
+          "StormGr14 M637",
+        ],
+        battlefield: [],
+        manaPool: ["R", "R", "R", "R", "R", "R", "R", "R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "LBStorm14 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm14 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm14 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm14 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "LBStorm14 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+      {
+        kind: "cast",
+        cardName: "StormGr14 M637",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3435. Cascade chain 0 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-0-m637",
+    description: "Cascade chain 0 — outer cascade, library has another cascade.",
+    seed: 0xc496,
+    cards: {
+      "CascadeOuter0 M637": `Name:CascadeOuter0 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter0 M637 test.
+`,
+      "CascInner0 M637": `Name:CascInner0 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner0 M637 test.
+`,
+      "Fill0 M637": `Name:Fill0 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter0 M637"],
+        battlefield: [],
+        library: ["Fill0 M637", "CascInner0 M637", "Fill0 M637", "Fill0 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3436. Cascade chain 1 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-1-m637",
+    description: "Cascade chain 1 — outer cascade, library has another cascade.",
+    seed: 0xc497,
+    cards: {
+      "CascadeOuter1 M637": `Name:CascadeOuter1 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter1 M637 test.
+`,
+      "CascInner1 M637": `Name:CascInner1 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner1 M637 test.
+`,
+      "Fill1 M637": `Name:Fill1 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter1 M637"],
+        battlefield: [],
+        library: ["Fill1 M637", "CascInner1 M637", "Fill1 M637", "Fill1 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3437. Cascade chain 2 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-2-m637",
+    description: "Cascade chain 2 — outer cascade, library has another cascade.",
+    seed: 0xc498,
+    cards: {
+      "CascadeOuter2 M637": `Name:CascadeOuter2 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter2 M637 test.
+`,
+      "CascInner2 M637": `Name:CascInner2 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner2 M637 test.
+`,
+      "Fill2 M637": `Name:Fill2 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter2 M637"],
+        battlefield: [],
+        library: ["Fill2 M637", "CascInner2 M637", "Fill2 M637", "Fill2 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3438. Cascade chain 3 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-3-m637",
+    description: "Cascade chain 3 — outer cascade, library has another cascade.",
+    seed: 0xc499,
+    cards: {
+      "CascadeOuter3 M637": `Name:CascadeOuter3 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter3 M637 test.
+`,
+      "CascInner3 M637": `Name:CascInner3 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner3 M637 test.
+`,
+      "Fill3 M637": `Name:Fill3 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter3 M637"],
+        battlefield: [],
+        library: ["Fill3 M637", "CascInner3 M637", "Fill3 M637", "Fill3 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3439. Cascade chain 4 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-4-m637",
+    description: "Cascade chain 4 — outer cascade, library has another cascade.",
+    seed: 0xc49a,
+    cards: {
+      "CascadeOuter4 M637": `Name:CascadeOuter4 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter4 M637 test.
+`,
+      "CascInner4 M637": `Name:CascInner4 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner4 M637 test.
+`,
+      "Fill4 M637": `Name:Fill4 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter4 M637"],
+        battlefield: [],
+        library: ["Fill4 M637", "CascInner4 M637", "Fill4 M637", "Fill4 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3440. Cascade chain 5 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-5-m637",
+    description: "Cascade chain 5 — outer cascade, library has another cascade.",
+    seed: 0xc49b,
+    cards: {
+      "CascadeOuter5 M637": `Name:CascadeOuter5 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter5 M637 test.
+`,
+      "CascInner5 M637": `Name:CascInner5 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner5 M637 test.
+`,
+      "Fill5 M637": `Name:Fill5 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter5 M637"],
+        battlefield: [],
+        library: ["Fill5 M637", "CascInner5 M637", "Fill5 M637", "Fill5 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3441. Cascade chain 6 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-6-m637",
+    description: "Cascade chain 6 — outer cascade, library has another cascade.",
+    seed: 0xc49c,
+    cards: {
+      "CascadeOuter6 M637": `Name:CascadeOuter6 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter6 M637 test.
+`,
+      "CascInner6 M637": `Name:CascInner6 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner6 M637 test.
+`,
+      "Fill6 M637": `Name:Fill6 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter6 M637"],
+        battlefield: [],
+        library: ["Fill6 M637", "CascInner6 M637", "Fill6 M637", "Fill6 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3442. Cascade chain 7 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-7-m637",
+    description: "Cascade chain 7 — outer cascade, library has another cascade.",
+    seed: 0xc49d,
+    cards: {
+      "CascadeOuter7 M637": `Name:CascadeOuter7 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter7 M637 test.
+`,
+      "CascInner7 M637": `Name:CascInner7 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner7 M637 test.
+`,
+      "Fill7 M637": `Name:Fill7 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter7 M637"],
+        battlefield: [],
+        library: ["Fill7 M637", "CascInner7 M637", "Fill7 M637", "Fill7 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3443. Cascade chain 8 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-8-m637",
+    description: "Cascade chain 8 — outer cascade, library has another cascade.",
+    seed: 0xc49e,
+    cards: {
+      "CascadeOuter8 M637": `Name:CascadeOuter8 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter8 M637 test.
+`,
+      "CascInner8 M637": `Name:CascInner8 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner8 M637 test.
+`,
+      "Fill8 M637": `Name:Fill8 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter8 M637"],
+        battlefield: [],
+        library: ["Fill8 M637", "CascInner8 M637", "Fill8 M637", "Fill8 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3444. Cascade chain 9 — outer cascade, library has another cascade.
+  {
+    id: "cascade-cast-deep-9-m637",
+    description: "Cascade chain 9 — outer cascade, library has another cascade.",
+    seed: 0xc49f,
+    cards: {
+      "CascadeOuter9 M637": `Name:CascadeOuter9 M637
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:CascadeOuter9 M637 test.
+`,
+      "CascInner9 M637": `Name:CascInner9 M637
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/2
+K:Cascade
+Oracle:CascInner9 M637 test.
+`,
+      "Fill9 M637": `Name:Fill9 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Fill9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["CascadeOuter9 M637"],
+        battlefield: [],
+        library: ["Fill9 M637", "CascInner9 M637", "Fill9 M637", "Fill9 M637"],
+        manaPool: ["R", "G", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "CascadeOuter9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3445. Anthem + bears chain 0 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-0-m637",
+    description: "Anthem + bears chain 0 — two bears cast under anthem.",
+    seed: 0xc4a0,
+    cards: {
+      "Anth0 M637": `Name:Anth0 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth0 M637 test.
+`,
+      "Bx0 M637": `Name:Bx0 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx0 M637", "Bx0 M637"],
+        battlefield: [{ card: "Anth0 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3446. Anthem + bears chain 1 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-1-m637",
+    description: "Anthem + bears chain 1 — two bears cast under anthem.",
+    seed: 0xc4a1,
+    cards: {
+      "Anth1 M637": `Name:Anth1 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth1 M637 test.
+`,
+      "Bx1 M637": `Name:Bx1 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx1 M637", "Bx1 M637"],
+        battlefield: [{ card: "Anth1 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3447. Anthem + bears chain 2 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-2-m637",
+    description: "Anthem + bears chain 2 — two bears cast under anthem.",
+    seed: 0xc4a2,
+    cards: {
+      "Anth2 M637": `Name:Anth2 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth2 M637 test.
+`,
+      "Bx2 M637": `Name:Bx2 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx2 M637", "Bx2 M637"],
+        battlefield: [{ card: "Anth2 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3448. Anthem + bears chain 3 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-3-m637",
+    description: "Anthem + bears chain 3 — two bears cast under anthem.",
+    seed: 0xc4a3,
+    cards: {
+      "Anth3 M637": `Name:Anth3 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth3 M637 test.
+`,
+      "Bx3 M637": `Name:Bx3 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx3 M637", "Bx3 M637"],
+        battlefield: [{ card: "Anth3 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3449. Anthem + bears chain 4 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-4-m637",
+    description: "Anthem + bears chain 4 — two bears cast under anthem.",
+    seed: 0xc4a4,
+    cards: {
+      "Anth4 M637": `Name:Anth4 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth4 M637 test.
+`,
+      "Bx4 M637": `Name:Bx4 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx4 M637", "Bx4 M637"],
+        battlefield: [{ card: "Anth4 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3450. Anthem + bears chain 5 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-5-m637",
+    description: "Anthem + bears chain 5 — two bears cast under anthem.",
+    seed: 0xc4a5,
+    cards: {
+      "Anth5 M637": `Name:Anth5 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth5 M637 test.
+`,
+      "Bx5 M637": `Name:Bx5 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx5 M637", "Bx5 M637"],
+        battlefield: [{ card: "Anth5 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3451. Anthem + bears chain 6 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-6-m637",
+    description: "Anthem + bears chain 6 — two bears cast under anthem.",
+    seed: 0xc4a6,
+    cards: {
+      "Anth6 M637": `Name:Anth6 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth6 M637 test.
+`,
+      "Bx6 M637": `Name:Bx6 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx6 M637", "Bx6 M637"],
+        battlefield: [{ card: "Anth6 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3452. Anthem + bears chain 7 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-7-m637",
+    description: "Anthem + bears chain 7 — two bears cast under anthem.",
+    seed: 0xc4a7,
+    cards: {
+      "Anth7 M637": `Name:Anth7 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth7 M637 test.
+`,
+      "Bx7 M637": `Name:Bx7 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx7 M637", "Bx7 M637"],
+        battlefield: [{ card: "Anth7 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3453. Anthem + bears chain 8 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-8-m637",
+    description: "Anthem + bears chain 8 — two bears cast under anthem.",
+    seed: 0xc4a8,
+    cards: {
+      "Anth8 M637": `Name:Anth8 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth8 M637 test.
+`,
+      "Bx8 M637": `Name:Bx8 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx8 M637", "Bx8 M637"],
+        battlefield: [{ card: "Anth8 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3454. Anthem + bears chain 9 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-9-m637",
+    description: "Anthem + bears chain 9 — two bears cast under anthem.",
+    seed: 0xc4a9,
+    cards: {
+      "Anth9 M637": `Name:Anth9 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth9 M637 test.
+`,
+      "Bx9 M637": `Name:Bx9 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx9 M637", "Bx9 M637"],
+        battlefield: [{ card: "Anth9 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3455. Anthem + bears chain 10 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-10-m637",
+    description: "Anthem + bears chain 10 — two bears cast under anthem.",
+    seed: 0xc4aa,
+    cards: {
+      "Anth10 M637": `Name:Anth10 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth10 M637 test.
+`,
+      "Bx10 M637": `Name:Bx10 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx10 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx10 M637", "Bx10 M637"],
+        battlefield: [{ card: "Anth10 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3456. Anthem + bears chain 11 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-11-m637",
+    description: "Anthem + bears chain 11 — two bears cast under anthem.",
+    seed: 0xc4ab,
+    cards: {
+      "Anth11 M637": `Name:Anth11 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth11 M637 test.
+`,
+      "Bx11 M637": `Name:Bx11 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx11 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx11 M637", "Bx11 M637"],
+        battlefield: [{ card: "Anth11 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3457. Anthem + bears chain 12 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-12-m637",
+    description: "Anthem + bears chain 12 — two bears cast under anthem.",
+    seed: 0xc4ac,
+    cards: {
+      "Anth12 M637": `Name:Anth12 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth12 M637 test.
+`,
+      "Bx12 M637": `Name:Bx12 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx12 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx12 M637", "Bx12 M637"],
+        battlefield: [{ card: "Anth12 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3458. Anthem + bears chain 13 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-13-m637",
+    description: "Anthem + bears chain 13 — two bears cast under anthem.",
+    seed: 0xc4ad,
+    cards: {
+      "Anth13 M637": `Name:Anth13 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth13 M637 test.
+`,
+      "Bx13 M637": `Name:Bx13 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx13 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx13 M637", "Bx13 M637"],
+        battlefield: [{ card: "Anth13 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3459. Anthem + bears chain 14 — two bears cast under anthem.
+  {
+    id: "anthem-bears-cast-14-m637",
+    description: "Anthem + bears chain 14 — two bears cast under anthem.",
+    seed: 0xc4ae,
+    cards: {
+      "Anth14 M637": `Name:Anth14 M637
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:Anth14 M637 test.
+`,
+      "Bx14 M637": `Name:Bx14 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bx14 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bx14 M637", "Bx14 M637"],
+        battlefield: [{ card: "Anth14 M637" }],
+        manaPool: ["G", "C", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Bx14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+      { kind: "cast", cardName: "Bx14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3460. Board sweep 0 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-0-m637",
+    description: "Board sweep 0 — pinger cast with three creatures already in play.",
+    seed: 0xc4af,
+    cards: {
+      "BdPing0 M637": `Name:BdPing0 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing0 M637 test.
+`,
+      "Ent0 M637": `Name:Ent0 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent0 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing0 M637"],
+        battlefield: [{ card: "Ent0 M637" }, { card: "Ent0 M637" }, { card: "Ent0 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3461. Board sweep 1 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-1-m637",
+    description: "Board sweep 1 — pinger cast with three creatures already in play.",
+    seed: 0xc4b0,
+    cards: {
+      "BdPing1 M637": `Name:BdPing1 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing1 M637 test.
+`,
+      "Ent1 M637": `Name:Ent1 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent1 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing1 M637"],
+        battlefield: [{ card: "Ent1 M637" }, { card: "Ent1 M637" }, { card: "Ent1 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3462. Board sweep 2 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-2-m637",
+    description: "Board sweep 2 — pinger cast with three creatures already in play.",
+    seed: 0xc4b1,
+    cards: {
+      "BdPing2 M637": `Name:BdPing2 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing2 M637 test.
+`,
+      "Ent2 M637": `Name:Ent2 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent2 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing2 M637"],
+        battlefield: [{ card: "Ent2 M637" }, { card: "Ent2 M637" }, { card: "Ent2 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3463. Board sweep 3 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-3-m637",
+    description: "Board sweep 3 — pinger cast with three creatures already in play.",
+    seed: 0xc4b2,
+    cards: {
+      "BdPing3 M637": `Name:BdPing3 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing3 M637 test.
+`,
+      "Ent3 M637": `Name:Ent3 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent3 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing3 M637"],
+        battlefield: [{ card: "Ent3 M637" }, { card: "Ent3 M637" }, { card: "Ent3 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3464. Board sweep 4 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-4-m637",
+    description: "Board sweep 4 — pinger cast with three creatures already in play.",
+    seed: 0xc4b3,
+    cards: {
+      "BdPing4 M637": `Name:BdPing4 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing4 M637 test.
+`,
+      "Ent4 M637": `Name:Ent4 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent4 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing4 M637"],
+        battlefield: [{ card: "Ent4 M637" }, { card: "Ent4 M637" }, { card: "Ent4 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3465. Board sweep 5 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-5-m637",
+    description: "Board sweep 5 — pinger cast with three creatures already in play.",
+    seed: 0xc4b4,
+    cards: {
+      "BdPing5 M637": `Name:BdPing5 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing5 M637 test.
+`,
+      "Ent5 M637": `Name:Ent5 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent5 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing5 M637"],
+        battlefield: [{ card: "Ent5 M637" }, { card: "Ent5 M637" }, { card: "Ent5 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3466. Board sweep 6 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-6-m637",
+    description: "Board sweep 6 — pinger cast with three creatures already in play.",
+    seed: 0xc4b5,
+    cards: {
+      "BdPing6 M637": `Name:BdPing6 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing6 M637 test.
+`,
+      "Ent6 M637": `Name:Ent6 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent6 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing6 M637"],
+        battlefield: [{ card: "Ent6 M637" }, { card: "Ent6 M637" }, { card: "Ent6 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3467. Board sweep 7 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-7-m637",
+    description: "Board sweep 7 — pinger cast with three creatures already in play.",
+    seed: 0xc4b6,
+    cards: {
+      "BdPing7 M637": `Name:BdPing7 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing7 M637 test.
+`,
+      "Ent7 M637": `Name:Ent7 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent7 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing7 M637"],
+        battlefield: [{ card: "Ent7 M637" }, { card: "Ent7 M637" }, { card: "Ent7 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3468. Board sweep 8 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-8-m637",
+    description: "Board sweep 8 — pinger cast with three creatures already in play.",
+    seed: 0xc4b7,
+    cards: {
+      "BdPing8 M637": `Name:BdPing8 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing8 M637 test.
+`,
+      "Ent8 M637": `Name:Ent8 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent8 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing8 M637"],
+        battlefield: [{ card: "Ent8 M637" }, { card: "Ent8 M637" }, { card: "Ent8 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3469. Board sweep 9 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-9-m637",
+    description: "Board sweep 9 — pinger cast with three creatures already in play.",
+    seed: 0xc4b8,
+    cards: {
+      "BdPing9 M637": `Name:BdPing9 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing9 M637 test.
+`,
+      "Ent9 M637": `Name:Ent9 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent9 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing9 M637"],
+        battlefield: [{ card: "Ent9 M637" }, { card: "Ent9 M637" }, { card: "Ent9 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3470. Board sweep 10 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-10-m637",
+    description: "Board sweep 10 — pinger cast with three creatures already in play.",
+    seed: 0xc4b9,
+    cards: {
+      "BdPing10 M637": `Name:BdPing10 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing10 M637 test.
+`,
+      "Ent10 M637": `Name:Ent10 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent10 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing10 M637"],
+        battlefield: [{ card: "Ent10 M637" }, { card: "Ent10 M637" }, { card: "Ent10 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3471. Board sweep 11 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-11-m637",
+    description: "Board sweep 11 — pinger cast with three creatures already in play.",
+    seed: 0xc4ba,
+    cards: {
+      "BdPing11 M637": `Name:BdPing11 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing11 M637 test.
+`,
+      "Ent11 M637": `Name:Ent11 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent11 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing11 M637"],
+        battlefield: [{ card: "Ent11 M637" }, { card: "Ent11 M637" }, { card: "Ent11 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3472. Board sweep 12 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-12-m637",
+    description: "Board sweep 12 — pinger cast with three creatures already in play.",
+    seed: 0xc4bb,
+    cards: {
+      "BdPing12 M637": `Name:BdPing12 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing12 M637 test.
+`,
+      "Ent12 M637": `Name:Ent12 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent12 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing12 M637"],
+        battlefield: [{ card: "Ent12 M637" }, { card: "Ent12 M637" }, { card: "Ent12 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3473. Board sweep 13 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-13-m637",
+    description: "Board sweep 13 — pinger cast with three creatures already in play.",
+    seed: 0xc4bc,
+    cards: {
+      "BdPing13 M637": `Name:BdPing13 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing13 M637 test.
+`,
+      "Ent13 M637": `Name:Ent13 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent13 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing13 M637"],
+        battlefield: [{ card: "Ent13 M637" }, { card: "Ent13 M637" }, { card: "Ent13 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3474. Board sweep 14 — pinger cast with three creatures already in play.
+  {
+    id: "pinger-board-sweep-14-m637",
+    description: "Board sweep 14 — pinger cast with three creatures already in play.",
+    seed: 0xc4bd,
+    cards: {
+      "BdPing14 M637": `Name:BdPing14 M637
+ManaCost:2 R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent
+Oracle:BdPing14 M637 test.
+`,
+      "Ent14 M637": `Name:Ent14 M637
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Ent14 M637 test.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["BdPing14 M637"],
+        battlefield: [{ card: "Ent14 M637" }, { card: "Ent14 M637" }, { card: "Ent14 M637" }],
+        manaPool: ["R", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "BdPing14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3475. Forage ETB 0 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-0-m637",
+    description: "Forage ETB 0 — beast that gains 1 on entry.",
+    seed: 0xc4be,
+    cards: {
+      "Forage0 M637": `Name:Forage0 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage0 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3476. Forage ETB 1 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-1-m637",
+    description: "Forage ETB 1 — beast that gains 1 on entry.",
+    seed: 0xc4bf,
+    cards: {
+      "Forage1 M637": `Name:Forage1 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage1 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3477. Forage ETB 2 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-2-m637",
+    description: "Forage ETB 2 — beast that gains 1 on entry.",
+    seed: 0xc4c0,
+    cards: {
+      "Forage2 M637": `Name:Forage2 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage2 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3478. Forage ETB 3 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-3-m637",
+    description: "Forage ETB 3 — beast that gains 1 on entry.",
+    seed: 0xc4c1,
+    cards: {
+      "Forage3 M637": `Name:Forage3 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage3 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3479. Forage ETB 4 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-4-m637",
+    description: "Forage ETB 4 — beast that gains 1 on entry.",
+    seed: 0xc4c2,
+    cards: {
+      "Forage4 M637": `Name:Forage4 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage4 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3480. Forage ETB 5 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-5-m637",
+    description: "Forage ETB 5 — beast that gains 1 on entry.",
+    seed: 0xc4c3,
+    cards: {
+      "Forage5 M637": `Name:Forage5 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage5 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3481. Forage ETB 6 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-6-m637",
+    description: "Forage ETB 6 — beast that gains 1 on entry.",
+    seed: 0xc4c4,
+    cards: {
+      "Forage6 M637": `Name:Forage6 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage6 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3482. Forage ETB 7 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-7-m637",
+    description: "Forage ETB 7 — beast that gains 1 on entry.",
+    seed: 0xc4c5,
+    cards: {
+      "Forage7 M637": `Name:Forage7 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage7 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3483. Forage ETB 8 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-8-m637",
+    description: "Forage ETB 8 — beast that gains 1 on entry.",
+    seed: 0xc4c6,
+    cards: {
+      "Forage8 M637": `Name:Forage8 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage8 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3484. Forage ETB 9 — beast that gains 1 on entry.
+  {
+    id: "forage-etb-9-m637",
+    description: "Forage ETB 9 — beast that gains 1 on entry.",
+    seed: 0xc4c7,
+    cards: {
+      "Forage9 M637": `Name:Forage9 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Forage9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage9 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Forage9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3485. Expend ETB 0 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-0-m637",
+    description: "Expend ETB 0 — haste squirrel pumps self on entry.",
+    seed: 0xc4c8,
+    cards: {
+      "Expend0 M637": `Name:Expend0 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend0 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3486. Expend ETB 1 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-1-m637",
+    description: "Expend ETB 1 — haste squirrel pumps self on entry.",
+    seed: 0xc4c9,
+    cards: {
+      "Expend1 M637": `Name:Expend1 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend1 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3487. Expend ETB 2 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-2-m637",
+    description: "Expend ETB 2 — haste squirrel pumps self on entry.",
+    seed: 0xc4ca,
+    cards: {
+      "Expend2 M637": `Name:Expend2 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend2 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3488. Expend ETB 3 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-3-m637",
+    description: "Expend ETB 3 — haste squirrel pumps self on entry.",
+    seed: 0xc4cb,
+    cards: {
+      "Expend3 M637": `Name:Expend3 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend3 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3489. Expend ETB 4 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-4-m637",
+    description: "Expend ETB 4 — haste squirrel pumps self on entry.",
+    seed: 0xc4cc,
+    cards: {
+      "Expend4 M637": `Name:Expend4 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend4 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3490. Expend ETB 5 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-5-m637",
+    description: "Expend ETB 5 — haste squirrel pumps self on entry.",
+    seed: 0xc4cd,
+    cards: {
+      "Expend5 M637": `Name:Expend5 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend5 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3491. Expend ETB 6 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-6-m637",
+    description: "Expend ETB 6 — haste squirrel pumps self on entry.",
+    seed: 0xc4ce,
+    cards: {
+      "Expend6 M637": `Name:Expend6 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend6 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3492. Expend ETB 7 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-7-m637",
+    description: "Expend ETB 7 — haste squirrel pumps self on entry.",
+    seed: 0xc4cf,
+    cards: {
+      "Expend7 M637": `Name:Expend7 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend7 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3493. Expend ETB 8 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-8-m637",
+    description: "Expend ETB 8 — haste squirrel pumps self on entry.",
+    seed: 0xc4d0,
+    cards: {
+      "Expend8 M637": `Name:Expend8 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend8 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3494. Expend ETB 9 — haste squirrel pumps self on entry.
+  {
+    id: "expend-etb-9-m637",
+    description: "Expend ETB 9 — haste squirrel pumps self on entry.",
+    seed: 0xc4d1,
+    cards: {
+      "Expend9 M637": `Name:Expend9 M637
+ManaCost:1 R
+Types:Creature Squirrel
+PT:2/1
+K:Haste
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | NumAtt$ 1 | NumDef$ 0 | Defined$ Self
+Oracle:Expend9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend9 M637"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Expend9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3495. Offspring ETB 0 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-0-m637",
+    description: "Offspring ETB 0 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d2,
+    cards: {
+      "Offspring0 M637": `Name:Offspring0 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring0 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring0 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring0 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3496. Offspring ETB 1 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-1-m637",
+    description: "Offspring ETB 1 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d3,
+    cards: {
+      "Offspring1 M637": `Name:Offspring1 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring1 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring1 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring1 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3497. Offspring ETB 2 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-2-m637",
+    description: "Offspring ETB 2 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d4,
+    cards: {
+      "Offspring2 M637": `Name:Offspring2 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring2 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring2 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring2 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3498. Offspring ETB 3 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-3-m637",
+    description: "Offspring ETB 3 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d5,
+    cards: {
+      "Offspring3 M637": `Name:Offspring3 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring3 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring3 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring3 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3499. Offspring ETB 4 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-4-m637",
+    description: "Offspring ETB 4 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d6,
+    cards: {
+      "Offspring4 M637": `Name:Offspring4 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring4 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring4 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring4 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3500. Offspring ETB 5 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-5-m637",
+    description: "Offspring ETB 5 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d7,
+    cards: {
+      "Offspring5 M637": `Name:Offspring5 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring5 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring5 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring5 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3501. Offspring ETB 6 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-6-m637",
+    description: "Offspring ETB 6 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d8,
+    cards: {
+      "Offspring6 M637": `Name:Offspring6 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring6 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring6 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring6 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3502. Offspring ETB 7 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-7-m637",
+    description: "Offspring ETB 7 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4d9,
+    cards: {
+      "Offspring7 M637": `Name:Offspring7 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring7 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring7 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring7 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3503. Offspring ETB 8 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-8-m637",
+    description: "Offspring ETB 8 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4da,
+    cards: {
+      "Offspring8 M637": `Name:Offspring8 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring8 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring8 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring8 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3504. Offspring ETB 9 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-9-m637",
+    description: "Offspring ETB 9 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4db,
+    cards: {
+      "Offspring9 M637": `Name:Offspring9 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring9 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring9 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring9 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3505. Offspring ETB 10 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-10-m637",
+    description: "Offspring ETB 10 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4dc,
+    cards: {
+      "Offspring10 M637": `Name:Offspring10 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring10 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring10 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring10 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3506. Offspring ETB 11 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-11-m637",
+    description: "Offspring ETB 11 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4dd,
+    cards: {
+      "Offspring11 M637": `Name:Offspring11 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring11 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring11 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring11 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3507. Offspring ETB 12 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-12-m637",
+    description: "Offspring ETB 12 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4de,
+    cards: {
+      "Offspring12 M637": `Name:Offspring12 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring12 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring12 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring12 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3508. Offspring ETB 13 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-13-m637",
+    description: "Offspring ETB 13 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4df,
+    cards: {
+      "Offspring13 M637": `Name:Offspring13 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring13 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring13 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring13 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 3509. Offspring ETB 14 — beast creates a 1/1 saproling token on entry.
+  {
+    id: "offspring-etb-14-m637",
+    description: "Offspring ETB 14 — beast creates a 1/1 saproling token on entry.",
+    seed: 0xc4e0,
+    cards: {
+      "Offspring14 M637": `Name:Offspring14 M637
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling
+Oracle:Offspring14 M637 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Offspring14 M637"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Offspring14 M637", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
 ];

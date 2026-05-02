@@ -1,0 +1,46 @@
+{
+  "id": "cascade-cast-deep-1-m637",
+  "description": "Cascade chain 1 — outer cascade, library has another cascade.",
+  "seed": 50327,
+  "cards": {
+    "CascadeOuter1 M637": "Name:CascadeOuter1 M637\nManaCost:2 R G\nTypes:Creature Elf Berserker\nPT:3/2\nK:Haste\nK:Cascade\nOracle:CascadeOuter1 M637 test.\n",
+    "CascInner1 M637": "Name:CascInner1 M637\nManaCost:1 R\nTypes:Creature Goblin\nPT:2/2\nK:Cascade\nOracle:CascInner1 M637 test.\n",
+    "Fill1 M637": "Name:Fill1 M637\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:Fill1 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "CascadeOuter1 M637"
+      ],
+      "battlefield": [],
+      "library": [
+        "Fill1 M637",
+        "CascInner1 M637",
+        "Fill1 M637",
+        "Fill1 M637"
+      ],
+      "manaPool": [
+        "R",
+        "G",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "CascadeOuter1 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

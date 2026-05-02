@@ -1,0 +1,63 @@
+{
+  "id": "combo3-warden-mull-bear-8-m637",
+  "description": "Combo3 8 — Warden + Mulldrifter cast + Bear cast (3 ETBs).",
+  "seed": 50184,
+  "cards": {
+    "WardenC8 M637": "Name:WardenC8 M637\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:WardenC8 M637 test.\n",
+    "MullC8 M637": "Name:MullC8 M637\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:MullC8 M637 test.\n",
+    "BearC8 M637": "Name:BearC8 M637\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:BearC8 M637 test.\n",
+    "LibC8 M637": "Name:LibC8 M637\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:LibC8 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "MullC8 M637",
+        "BearC8 M637"
+      ],
+      "battlefield": [
+        {
+          "card": "WardenC8 M637"
+        }
+      ],
+      "library": [
+        "LibC8 M637",
+        "LibC8 M637",
+        "LibC8 M637",
+        "LibC8 M637"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "MullC8 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "BearC8 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

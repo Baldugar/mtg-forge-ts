@@ -1,0 +1,37 @@
+{
+  "id": "forage-etb-6-m637",
+  "description": "Forage ETB 6 — beast that gains 1 on entry.",
+  "seed": 50372,
+  "cards": {
+    "Forage6 M637": "Name:Forage6 M637\nManaCost:2 G\nTypes:Creature Beast\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Forage6 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forage6 M637"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "G",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Forage6 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

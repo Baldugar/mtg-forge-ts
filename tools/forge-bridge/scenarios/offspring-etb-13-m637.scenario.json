@@ -1,0 +1,37 @@
+{
+  "id": "offspring-etb-13-m637",
+  "description": "Offspring ETB 13 — beast creates a 1/1 saproling token on entry.",
+  "seed": 50399,
+  "cards": {
+    "Offspring13 M637": "Name:Offspring13 M637\nManaCost:2 G\nTypes:Creature Beast\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ g_1_1_saproling\nOracle:Offspring13 M637 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Offspring13 M637"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "G",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Offspring13 M637",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
