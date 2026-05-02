@@ -129,13 +129,37 @@ export class RevealEffect extends SpellAbilityEffect {
     const seat = sa.controllerSeat;
     const ids: EntityId[] = [];
 
-    if (hasParam(sa, "RevealDefined")) {
-      const def = evaluateParamRaw(sa, "RevealDefined").trim();
-      if (def === "Self") ids.push(sa.sourceCardId);
-      else if (def === "Targeted") {
+    // M6.19 — Forge accepts both `RevealDefined$` (Reveal-effect specific) and
+    // the generic `Defined$` parameter for the source list. Honour both so
+    // scripts authored either way work.
+    const definedRaw = hasParam(sa, "RevealDefined")
+      ? evaluateParamRaw(sa, "RevealDefined").trim()
+      : hasParam(sa, "Defined")
+        ? evaluateParamRaw(sa, "Defined").trim()
+        : "";
+
+    if (definedRaw !== "") {
+      if (definedRaw === "Self") ids.push(sa.sourceCardId);
+      else if (definedRaw === "Targeted") {
         for (const t of sa.targets) ids.push(t);
+      } else if (definedRaw === "TopOfLibrary") {
+        // M6.19 — Forge `Defined$ TopOfLibrary` resolves to the top card of
+        // the controller's library. Used by Ad Nauseam, Future Sight,
+        // Mind's Desire and other library-peek effects. With an empty
+        // library the list is empty and the reveal no-ops.
+        const player = game.getPlayer(seat);
+        const lib = player.zones.get(ZoneType.Library);
+        const top = lib?.peekAt(0);
+        if (typeof top === "number") ids.push(top);
+      } else if (definedRaw === "Remembered") {
+        const src = game.cards.get(sa.sourceCardId);
+        if (src) {
+          for (const r of src.remembered) {
+            if (typeof r === "number") ids.push(r);
+          }
+        }
       } else {
-        // Fallback: reveal source.
+        // Unknown defined → fallback to source.
         ids.push(sa.sourceCardId);
       }
     } else if (hasParam(sa, "RevealValid")) {
