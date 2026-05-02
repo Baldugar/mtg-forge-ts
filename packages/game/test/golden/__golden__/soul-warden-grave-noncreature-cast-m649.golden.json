@@ -1,0 +1,119 @@
+{
+  "scenarioId": "soul-warden-grave-noncreature-cast-m649",
+  "seed": 53558,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "CrimeCommitted",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "sourceCardId": 2,
+        "victimSeat": 1
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "color": 8,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 2,
+        "payerSeat": 0
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "cardId": 2,
+        "controllerSeat": 0
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 2,
+        "targetKind": "player",
+        "targetId": 1,
+        "amount": 3,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "oldLife": 20,
+        "newLife": 17,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "amount": 3
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      20,
+      17
+    ],
+    "handSizes": [
+      0,
+      0
+    ],
+    "battlefield": [],
+    "graveyards": [
+      [
+        "Lightning Bolt",
+        "Soul Warden"
+      ],
+      []
+    ],
+    "stackSize": 0
+  }
+}

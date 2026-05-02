@@ -1,0 +1,41 @@
+{
+  "id": "witness-cast-grave-only-7-m649",
+  "description": "M6.49 — Eternal Witness cast — graveyard [Cloudshift].",
+  "seed": 53591,
+  "cards": {
+    "Eternal Witness": "Name:Eternal Witness\nManaCost:1 G G\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl\nOracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.\n",
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Witness"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Cloudshift"
+      ],
+      "manaPool": [
+        "G",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Eternal Witness",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

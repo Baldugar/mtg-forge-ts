@@ -1,0 +1,40 @@
+{
+  "id": "soul-warden-library-cast-plains-vanilla-19-m649",
+  "description": "M6.49 — Soul Warden in library fires when Plains Vanilla ETBs.",
+  "seed": 53635,
+  "cards": {
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Plains Vanilla": "Name:Plains Vanilla\nManaCost:1 W\nTypes:Creature Spirit\nPT:1/2\nOracle:Vanilla\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plains Vanilla"
+      ],
+      "battlefield": [],
+      "library": [
+        "Soul Warden"
+      ],
+      "manaPool": [
+        "W",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Plains Vanilla",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

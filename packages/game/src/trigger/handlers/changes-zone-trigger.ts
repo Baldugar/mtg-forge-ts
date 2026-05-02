@@ -111,13 +111,57 @@ export class ChangesZoneTrigger extends TriggerHandler {
     // The TriggerAst.effect.handlerKey holds this name (see trigger-line.ts).
     const executeKey = ast.effect.handlerKey;
 
+    // M6.49 — host-zone gate per Forge `TriggerChangesZone.correctZones()` +
+    // `TriggerReplacementBase.zonesCheck()`. Forge's `validHostZones` semantics:
+    //   1. If `Origin` contains `Battlefield` (leave-the-battlefield) and not
+    //      static → activeInZones = {Battlefield}. The trigger captures LKI
+    //      on leave; zonesCheck handled by Forge via card-copy.
+    //   2. Else if `ValidCard` contains "Self" AND (no Origin OR Origin=="Any")
+    //      → activeInZones = {Destination}.
+    //   3. Otherwise → validHostZones stays null (trigger fires from ANY host
+    //      zone). This is the Soul-Warden / Suture-Priest / global-watcher
+    //      shape: `Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other`
+    //      with the host card potentially in graveyard, library, etc.
+    //      Mirrors Forge bug-for-bug: Soul Warden in graveyard/library DOES
+    //      fire its life-gain trigger when another creature ETBs (witnessed
+    //      by parity captures mulldrifter-cast-lib-{4,6}-m648 and
+    //      witness-cast-grave-{5,6}-m647).
+    //
+    // Hand exclusion: Forge's `addCardToZone(... Hand)` bypasses
+    // `GameAction.moveTo`, so triggers on hand-resident cards aren't entered
+    // into `activeTriggers` until the next `resetActiveTriggers` call (which
+    // happens at setup-end / phase boundaries / cast pipeline). The TS
+    // pre-mint registers triggers immediately even for hand-resident cards
+    // (M6.5, to support setup-bf cards that go through hand briefly). So we
+    // exclude Hand from the global-watcher activeInZones to prevent
+    // hand-resident triggers from observing setup-time ETB events that
+    // Forge wouldn't fire on.
+    const isLeaveBattlefield = originRaw.split(",").includes("Battlefield");
+    const validContainsSelf = validRaw.split(/[,+.]/).includes("Self");
+    let activeInZones: ReadonlySet<ZoneType>;
+    if (isLeaveBattlefield) {
+      activeInZones = new Set([ZoneType.Battlefield]);
+    } else if (validContainsSelf && (originRaw === "Any" || !ast.params.Origin)) {
+      // Self-trigger ETB shape: active in the destination zone only.
+      const destZones = destRaw === "Any" ? Object.values(ZoneType) : destRaw.split(",");
+      activeInZones = new Set(
+        destZones.filter((z) => Object.values(ZoneType).includes(z as ZoneType)) as ZoneType[],
+      );
+      if (activeInZones.size === 0) activeInZones = new Set([ZoneType.Battlefield]);
+    } else {
+      // Global watcher (no zone restriction). Active in all zones EXCEPT Hand
+      // (see "Hand exclusion" above). Mirrors Forge's lazy-resetActiveTriggers
+      // behavior: Soul-Warden-in-hand at setup-time hasn't been activated by
+      // a resetActiveTriggers call yet, so it doesn't observe the
+      // setup-time ETBs of other creatures.
+      activeInZones = new Set((Object.values(ZoneType) as ZoneType[]).filter((z) => z !== ZoneType.Hand));
+    }
+
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
       kind: "triggered",
       sourceCardId,
-      // ChangesZone triggers are active while on the battlefield (default).
-      // CR 603.6d: triggers on cards in other zones are handled separately.
-      activeInZones: new Set([ZoneType.Battlefield]),
+      activeInZones,
       timestamp: 0, // populated by activateTriggersFromDefinition if needed
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,

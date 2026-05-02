@@ -1,0 +1,41 @@
+{
+  "id": "witness-cast-grave-only-3-m649",
+  "description": "M6.49 — Eternal Witness cast — graveyard [Swords to Plowshares].",
+  "seed": 53587,
+  "cards": {
+    "Eternal Witness": "Name:Eternal Witness\nManaCost:1 G G\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl\nOracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.\n",
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nOracle:Exile target creature. Its controller gains life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Witness"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Swords to Plowshares"
+      ],
+      "manaPool": [
+        "G",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Eternal Witness",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

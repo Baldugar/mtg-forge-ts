@@ -1,0 +1,45 @@
+{
+  "id": "mulldrifter-cast-lib-2-m649",
+  "description": "M6.49 — Mulldrifter cast — library [Cloudshift,Holy Day] — ETB-draw-2 chain.",
+  "seed": 53570,
+  "cards": {
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n",
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\n",
+    "Holy Day": "Name:Holy Day\nManaCost:W\nTypes:Instant\nA:SP$ Effect | Cost$ W | Triggers$ DamagePrev | SpellDescription$ Prevent all combat damage that would be dealt this turn.\nSVar:DamagePrev:Mode$ ReplaceEffect | EventType$ DamageDone | ActiveZones$ Command | ReplaceWith$ NoOp | Description$ Prevent damage\nSVar:NoOp:DB$ Pump\nOracle:Prevent all combat damage that would be dealt this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter"
+      ],
+      "battlefield": [],
+      "library": [
+        "Cloudshift",
+        "Holy Day"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Mulldrifter",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

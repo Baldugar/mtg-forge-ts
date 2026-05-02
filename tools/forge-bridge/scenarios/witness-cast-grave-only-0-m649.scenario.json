@@ -1,0 +1,41 @@
+{
+  "id": "witness-cast-grave-only-0-m649",
+  "description": "M6.49 — Eternal Witness cast — graveyard [Lightning Bolt].",
+  "seed": 53584,
+  "cards": {
+    "Eternal Witness": "Name:Eternal Witness\nManaCost:1 G G\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl\nOracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Witness"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Lightning Bolt"
+      ],
+      "manaPool": [
+        "G",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Eternal Witness",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

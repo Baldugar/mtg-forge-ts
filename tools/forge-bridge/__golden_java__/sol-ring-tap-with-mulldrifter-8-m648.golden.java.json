@@ -4,11 +4,21 @@
   "engineVersion": "forge-bridge-v2-0.2.0",
   "events": [
     {
-      "kind": "BridgeCardNotFound",
+      "kind": "CardTappedChanged",
       "turn": 1,
       "phase": "Main1",
       "payload": {
-        "detail": "activate: Sol Ring"
+        "cardName": "Sol Ring",
+        "tapped": true
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "description": "{T}: Add {C}{C}.",
+        "isManaAbility": true
       }
     }
   ],
@@ -43,6 +53,28 @@
         "stackIndex": 0,
         "description": null,
         "isTrigger": true
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Grizzly Bears",
+        "cardId": 3,
+        "fromZone": "Library",
+        "toZone": "Hand"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Grizzly Bears",
+        "cardId": 4,
+        "fromZone": "Library",
+        "toZone": "Hand"
       }
     },
     {

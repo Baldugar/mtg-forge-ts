@@ -1,0 +1,45 @@
+{
+  "id": "mulldrifter-cast-lib-1-m649",
+  "description": "M6.49 — Mulldrifter cast — library [Path to Exile,Swords to Plowshares] — ETB-draw-2 chain.",
+  "seed": 53569,
+  "cards": {
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n",
+    "Path to Exile": "Name:Path to Exile\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nOracle:Exile target creature. Its controller may search their library for a basic land card.\n",
+    "Swords to Plowshares": "Name:Swords to Plowshares\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nOracle:Exile target creature. Its controller gains life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter"
+      ],
+      "battlefield": [],
+      "library": [
+        "Path to Exile",
+        "Swords to Plowshares"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Mulldrifter",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

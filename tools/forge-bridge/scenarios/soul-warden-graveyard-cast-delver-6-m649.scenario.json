@@ -1,0 +1,39 @@
+{
+  "id": "soul-warden-graveyard-cast-delver-6-m649",
+  "description": "M6.49 — Soul Warden in graveyard fires when Delver ETBs.",
+  "seed": 53622,
+  "cards": {
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Delver": "Name:Delver\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nOracle:1/1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delver"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Soul Warden"
+      ],
+      "manaPool": [
+        "U"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Delver",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

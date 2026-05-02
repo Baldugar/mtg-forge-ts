@@ -1,0 +1,45 @@
+{
+  "id": "mulldrifter-cast-lib-3-m649",
+  "description": "M6.49 — Mulldrifter cast — library [Stone Rain,Fatal Push] — ETB-draw-2 chain.",
+  "seed": 53571,
+  "cards": {
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n",
+    "Stone Rain": "Name:Stone Rain\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Destroy | Cost$ 2 R | TargetType$ Card | ValidTgts$ Land | SpellDescription$ Destroy target land.\nOracle:Destroy target land.\n",
+    "Fatal Push": "Name:Fatal Push\nManaCost:B\nTypes:Instant\nA:SP$ Destroy | Cost$ B | TargetType$ Card | ValidTgts$ Creature.cmcLE2 | SpellDescription$ Destroy target creature with mana value 2 or less.\nOracle:Destroy target creature with mana value 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter"
+      ],
+      "battlefield": [],
+      "library": [
+        "Stone Rain",
+        "Fatal Push"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Mulldrifter",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

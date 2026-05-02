@@ -1,0 +1,41 @@
+{
+  "id": "witness-cast-grave-only-8-m649",
+  "description": "M6.49 — Eternal Witness cast — graveyard [Wrath of God].",
+  "seed": 53592,
+  "cards": {
+    "Eternal Witness": "Name:Eternal Witness\nManaCost:1 G G\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl\nOracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.\n",
+    "Wrath of God": "Name:Wrath of God\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures.\nOracle:Destroy all creatures. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Witness"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Wrath of God"
+      ],
+      "manaPool": [
+        "G",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Eternal Witness",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

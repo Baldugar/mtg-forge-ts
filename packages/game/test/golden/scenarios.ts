@@ -15,7 +15,7 @@
 //   5. Re-run without the env var; the test must pass deterministically.
 
 import { mkPlayerSeat } from "@mtg-forge-ts/core";
-import type { GoldenScenario } from "./types.js";
+import type { GoldenScenario, ManaPoolEntry } from "./types.js";
 
 const SEAT0 = mkPlayerSeat(0);
 const SEAT1 = mkPlayerSeat(1);
@@ -107965,10 +107965,21 @@ T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.S
 SVar:TrigDraw:DB$ Draw | NumCards$ 2
 Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
 `,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
     },
     players: [
       { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
-      { life: 20, hand: [], battlefield: [{ card: "Mulldrifter" }] },
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Mulldrifter" }],
+        library: ["Grizzly Bears", "Grizzly Bears"],
+      },
     ],
     actions: [
       {
@@ -108220,9 +108231,20 @@ T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.S
 SVar:TrigDraw:DB$ Draw | NumCards$ 2
 Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
 `,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
     },
     players: [
-      { life: 20, hand: [], battlefield: [{ card: "Sol Ring" }, { card: "Mulldrifter" }] },
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Sol Ring" }, { card: "Mulldrifter" }],
+        library: ["Grizzly Bears", "Grizzly Bears"],
+      },
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "activate", sourceCardName: "Sol Ring", activatingPlayer: SEAT0 }],
@@ -108502,9 +108524,20 @@ T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.S
 SVar:TrigDraw:DB$ Draw | NumCards$ 2
 Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
 `,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
     },
     players: [
-      { life: 20, hand: [], battlefield: [{ card: "Llanowar Elves" }, { card: "Mulldrifter" }] },
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Llanowar Elves" }, { card: "Mulldrifter" }],
+        library: ["Grizzly Bears", "Grizzly Bears"],
+      },
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "activate", sourceCardName: "Llanowar Elves", activatingPlayer: SEAT0 }],
@@ -109487,4 +109520,753 @@ Oracle:2/2
     ],
     actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // M6.49 — Soul Warden in graveyard / library global-watcher scenarios.
+  // Verifies the new ChangesZoneTrigger correctZones() port: Soul Warden's
+  // `Creature.Other` ETB-watcher trigger fires from any zone (other than
+  // Hand, which Forge gates via lazy resetActiveTriggers).
+  // ─────────────────────────────────────────────────────────────────────────
+
+  // 4471. Soul Warden in graveyard, cast Grizzly Bears — life-gain fires.
+  {
+    id: "soul-warden-grave-cast-grizzly-m649",
+    description: "Soul Warden in graveyard fires when Grizzly Bears ETBs (cross-zone watcher).",
+    seed: 0xd132,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4472. Soul Warden in library, cast Grizzly Bears — life-gain fires.
+  {
+    id: "soul-warden-lib-cast-grizzly-m649",
+    description: "Soul Warden in library fires when Grizzly Bears ETBs.",
+    seed: 0xd133,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [],
+        library: ["Soul Warden"],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4473. Two Soul Wardens in graveyard, cast Grizzly Bears — both fire.
+  {
+    id: "soul-warden-double-grave-cast-grizzly-m649",
+    description: "Two Soul Wardens in graveyard, both fire when Grizzly Bears ETBs.",
+    seed: 0xd134,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [],
+        graveyard: ["Soul Warden", "Soul Warden"],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4474. Soul Warden split graveyard+library, cast creature — both fire.
+  {
+    id: "soul-warden-grave-and-lib-m649",
+    description: "Soul Warden in graveyard AND another in library, both fire on creature ETB.",
+    seed: 0xd135,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        library: ["Soul Warden"],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4475. Soul Warden in graveyard does NOT fire when non-creature spell resolves.
+  {
+    id: "soul-warden-grave-noncreature-cast-m649",
+    description: "Soul Warden in graveyard does NOT fire on Lightning Bolt resolve (no creature ETB).",
+    seed: 0xd136,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Lightning Bolt"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        manaPool: ["R"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "player", seat: SEAT1 },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4476. Soul Warden in graveyard, cast Mulldrifter — both Soul Warden + Mulldrifter triggers fire.
+  {
+    id: "soul-warden-grave-cast-mulldrifter-m649",
+    description: "Soul Warden in graveyard fires when Mulldrifter ETBs; Mulldrifter draws two.",
+    seed: 0xd137,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        library: ["Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4477. Three Soul Wardens (gy+lib+lib) cast Grizzly Bears — all three fire.
+  {
+    id: "soul-warden-triple-grave-lib-m649",
+    description: "Three Soul Wardens (1 gy + 2 lib) all fire when Grizzly Bears ETBs.",
+    seed: 0xd138,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        library: ["Soul Warden", "Soul Warden"],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4478. Witness in hand, cast it; Soul Warden in graveyard fires.
+  {
+    id: "witness-cast-with-soul-warden-grave-m649",
+    description: "Eternal Witness cast; Soul Warden in graveyard fires its life-gain trigger.",
+    seed: 0xd139,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4479. Soul Warden bf + another in graveyard, cast Grizzly Bears — both fire.
+  {
+    id: "soul-warden-bf-and-grave-cast-grizzly-m649",
+    description: "Soul Warden on battlefield AND in graveyard; both fire on creature ETB.",
+    seed: 0xd13a,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [{ card: "Soul Warden" }],
+        graveyard: ["Soul Warden"],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4480. Opp Soul Warden in graveyard - does it fire on our creature?
+  {
+    id: "opp-soul-warden-grave-our-grizzly-m649",
+    description: "Opponent's Soul Warden in graveyard fires when we ETB Grizzly Bears (their life-gain).",
+    seed: 0xd13b,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Grizzly Bears"],
+        battlefield: [],
+        manaPool: ["G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [], graveyard: ["Soul Warden"] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Grizzly Bears", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // M6.49 — Mulldrifter library variations with new draw chains.
+  // ─────────────────────────────────────────────────────────────────────────
+
+  // 4481-4490: Mulldrifter library permutations.
+  ...Array.from({ length: 10 }, (_, i): GoldenScenario => {
+    const libCombos = [
+      ["Lightning Bolt", "Counterspell"],
+      ["Path to Exile", "Swords to Plowshares"],
+      ["Cloudshift", "Holy Day"],
+      ["Stone Rain", "Fatal Push"],
+      ["Wrath of God", "Holy Day"],
+      ["Brainstorm", "Negate"],
+      ["Ancestral Recall", "Lightning Bolt"],
+      ["Manamorphose", "Lightning Bolt"],
+      ["Giant Growth", "Wrath of God"],
+      ["Dark Ritual", "Holy Day"],
+    ];
+    const lib = libCombos[i] ?? ["Lightning Bolt", "Counterspell"];
+    const cardSrcs: Record<string, string> = {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      Counterspell: `Name:Counterspell
+ManaCost:U U
+Types:Instant
+A:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.
+Oracle:Counter target spell.
+`,
+      "Path to Exile": `Name:Path to Exile
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.
+Oracle:Exile target creature. Its controller may search their library for a basic land card.
+`,
+      "Swords to Plowshares": `Name:Swords to Plowshares
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.
+Oracle:Exile target creature. Its controller gains life equal to its power.
+`,
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Holy Day": `Name:Holy Day
+ManaCost:W
+Types:Instant
+A:SP$ Effect | Cost$ W | Triggers$ DamagePrev | SpellDescription$ Prevent all combat damage that would be dealt this turn.
+SVar:DamagePrev:Mode$ ReplaceEffect | EventType$ DamageDone | ActiveZones$ Command | ReplaceWith$ NoOp | Description$ Prevent damage
+SVar:NoOp:DB$ Pump
+Oracle:Prevent all combat damage that would be dealt this turn.
+`,
+      "Stone Rain": `Name:Stone Rain
+ManaCost:2 R
+Types:Sorcery
+A:SP$ Destroy | Cost$ 2 R | TargetType$ Card | ValidTgts$ Land | SpellDescription$ Destroy target land.
+Oracle:Destroy target land.
+`,
+      "Fatal Push": `Name:Fatal Push
+ManaCost:B
+Types:Instant
+A:SP$ Destroy | Cost$ B | TargetType$ Card | ValidTgts$ Creature.cmcLE2 | SpellDescription$ Destroy target creature with mana value 2 or less.
+Oracle:Destroy target creature with mana value 2 or less.
+`,
+      "Wrath of God": `Name:Wrath of God
+ManaCost:2 W W
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures.
+Oracle:Destroy all creatures. They can't be regenerated.
+`,
+      Brainstorm: `Name:Brainstorm
+ManaCost:U
+Types:Instant
+A:SP$ Draw | Cost$ U | NumCards$ 3 | SpellDescription$ Draw three cards.
+Oracle:Draw three cards, then put two cards from your hand on top of your library in any order.
+`,
+      Negate: `Name:Negate
+ManaCost:1 U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U | TargetType$ Spell | ValidTgts$ Card.nonCreature | SpellDescription$ Counter target noncreature spell.
+Oracle:Counter target noncreature spell.
+`,
+      "Ancestral Recall": `Name:Ancestral Recall
+ManaCost:U
+Types:Instant
+A:SP$ Draw | Cost$ U | NumCards$ 3 | SpellDescription$ Target player draws three cards.
+Oracle:Target player draws three cards.
+`,
+      Manamorphose: `Name:Manamorphose
+ManaCost:1 RG
+Types:Instant
+A:SP$ Mana | Cost$ 1 RG | Produced$ Combo $ U $ B | SpellDescription$ Add two mana in any combination of colors. Draw a card.
+Oracle:Add two mana in any combination of colors. Draw a card.
+`,
+      "Giant Growth": `Name:Giant Growth
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Card | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3 | SpellDescription$ Target creature gets +3/+3 until end of turn.
+Oracle:Target creature gets +3/+3 until end of turn.
+`,
+      "Dark Ritual": `Name:Dark Ritual
+ManaCost:B
+Types:Instant
+A:SP$ Mana | Cost$ B | Produced$ B | Amount$ 3 | SpellDescription$ Add BBB.
+Oracle:Add {B}{B}{B}.
+`,
+    };
+    const cards: Record<string, string> = { Mulldrifter: cardSrcs.Mulldrifter as string };
+    for (const c of lib) {
+      const src = cardSrcs[c];
+      if (src) cards[c] = src;
+    }
+    return {
+      id: `mulldrifter-cast-lib-${i}-m649`,
+      description: `M6.49 — Mulldrifter cast — library [${lib.join(",")}] — ETB-draw-2 chain.`,
+      seed: 0xd140 + i,
+      cards,
+      players: [
+        {
+          life: 20,
+          hand: ["Mulldrifter"],
+          battlefield: [],
+          library: lib,
+          manaPool: ["U", "C", "C", "C", "C"],
+        },
+        { life: 20, hand: [], battlefield: [] },
+      ],
+      actions: [
+        { kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 4491-4500: Eternal Witness graveyard returns variations.
+  ...Array.from({ length: 10 }, (_, i): GoldenScenario => {
+    const targets = [
+      "Lightning Bolt",
+      "Counterspell",
+      "Path to Exile",
+      "Swords to Plowshares",
+      "Holy Day",
+      "Brainstorm",
+      "Negate",
+      "Cloudshift",
+      "Wrath of God",
+      "Giant Growth",
+    ];
+    const tgt = targets[i] ?? "Lightning Bolt";
+    const cardSrcs: Record<string, string> = {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      Counterspell: `Name:Counterspell
+ManaCost:U U
+Types:Instant
+A:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.
+Oracle:Counter target spell.
+`,
+      "Path to Exile": `Name:Path to Exile
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.
+Oracle:Exile target creature. Its controller may search their library for a basic land card.
+`,
+      "Swords to Plowshares": `Name:Swords to Plowshares
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.
+Oracle:Exile target creature. Its controller gains life equal to its power.
+`,
+      "Holy Day": `Name:Holy Day
+ManaCost:W
+Types:Instant
+A:SP$ Effect | Cost$ W | Triggers$ DamagePrev | SpellDescription$ Prevent all combat damage that would be dealt this turn.
+SVar:DamagePrev:Mode$ ReplaceEffect | EventType$ DamageDone | ActiveZones$ Command | ReplaceWith$ NoOp | Description$ Prevent damage
+SVar:NoOp:DB$ Pump
+Oracle:Prevent all combat damage that would be dealt this turn.
+`,
+      Brainstorm: `Name:Brainstorm
+ManaCost:U
+Types:Instant
+A:SP$ Draw | Cost$ U | NumCards$ 3 | SpellDescription$ Draw three cards.
+Oracle:Draw three cards, then put two cards from your hand on top of your library in any order.
+`,
+      Negate: `Name:Negate
+ManaCost:1 U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U | TargetType$ Spell | ValidTgts$ Card.nonCreature | SpellDescription$ Counter target noncreature spell.
+Oracle:Counter target noncreature spell.
+`,
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Wrath of God": `Name:Wrath of God
+ManaCost:2 W W
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures.
+Oracle:Destroy all creatures. They can't be regenerated.
+`,
+      "Giant Growth": `Name:Giant Growth
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | TargetType$ Card | ValidTgts$ Creature | NumAtt$ 3 | NumDef$ 3 | SpellDescription$ Target creature gets +3/+3 until end of turn.
+Oracle:Target creature gets +3/+3 until end of turn.
+`,
+    };
+    const cards: Record<string, string> = { "Eternal Witness": cardSrcs["Eternal Witness"] as string };
+    const tgtSrc = cardSrcs[tgt];
+    if (tgtSrc) cards[tgt] = tgtSrc;
+    return {
+      id: `witness-cast-grave-only-${i}-m649`,
+      description: `M6.49 — Eternal Witness cast — graveyard [${tgt}].`,
+      seed: 0xd150 + i,
+      cards,
+      players: [
+        {
+          life: 20,
+          hand: ["Eternal Witness"],
+          battlefield: [],
+          graveyard: [tgt],
+          manaPool: ["G", "G", "C"],
+        },
+        { life: 20, hand: [], battlefield: [] },
+      ],
+      actions: [
+        { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
+
+  // 4501-4520: Soul Warden + creature ETB combos (varied creatures).
+  ...Array.from({ length: 20 }, (_, i): GoldenScenario => {
+    type CreatureSpec = { name: string; src: string; cost: ManaPoolEntry[] };
+    const creatures: CreatureSpec[] = [
+      {
+        name: "Grizzly Bears",
+        src: "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+        cost: ["G", "C"],
+      },
+      {
+        name: "Serra Angel",
+        src: "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+        cost: ["W", "W", "C", "C", "C"],
+      },
+      {
+        name: "Birds of Paradise",
+        src: "Name:Birds of Paradise\nManaCost:G\nTypes:Creature Bird\nPT:0/1\nK:Flying\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Flying. {T}: Add one mana of any color.\n",
+        cost: ["G"],
+      },
+      {
+        name: "Llanowar Elves",
+        src: "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+        cost: ["G"],
+      },
+      {
+        name: "Tarmogoyf",
+        src: `Name:Tarmogoyf\nManaCost:1 G\nTypes:Creature Lhurgoyf\nPT:0/1\nOracle:Tarmogoyf's power and toughness are based on graveyard.\n`,
+        cost: ["G", "C"],
+      },
+      {
+        name: "Goblin Guide",
+        src: "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+        cost: ["R"],
+      },
+      {
+        name: "Delver",
+        src: "Name:Delver\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nOracle:1/1\n",
+        cost: ["U"],
+      },
+      {
+        name: "Angel of Mercy",
+        src: "Name:Angel of Mercy\nManaCost:4 W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGain | TriggerDescription$ When this enters, you gain 3 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 3\nOracle:Flying. When Angel of Mercy enters, you gain 3 life.\n",
+        cost: ["W", "C", "C", "C", "C"],
+      },
+      {
+        name: "Tarmogoyf Real",
+        src: `Name:Tarmogoyf Real\nManaCost:1 G\nTypes:Creature Lhurgoyf\nPT:0/1\nOracle:Tarmogoyf's power and toughness are based on graveyard.\n`,
+        cost: ["G", "C"],
+      },
+      {
+        name: "Plains Vanilla",
+        src: "Name:Plains Vanilla\nManaCost:1 W\nTypes:Creature Spirit\nPT:1/2\nOracle:Vanilla\n",
+        cost: ["W", "C"],
+      },
+    ];
+    const creature = creatures[i % creatures.length] ?? creatures[0];
+    if (!creature) throw new Error("creature undefined");
+    const inGrave = i < 10;
+    const zoneLabel = inGrave ? "graveyard" : "library";
+    const zone: { graveyard?: string[]; library?: string[] } = inGrave
+      ? { graveyard: ["Soul Warden"] }
+      : { library: ["Soul Warden"] };
+    return {
+      id: `soul-warden-${zoneLabel}-cast-${creature.name.toLowerCase().replace(/\s+/g, "-")}-${i}-m649`,
+      description: `M6.49 — Soul Warden in ${zoneLabel} fires when ${creature.name} ETBs.`,
+      seed: 0xd170 + i,
+      cards: {
+        "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+        [creature.name]: creature.src,
+      },
+      players: [
+        {
+          life: 20,
+          hand: [creature.name],
+          battlefield: [],
+          ...zone,
+          manaPool: creature.cost,
+        },
+        { life: 20, hand: [], battlefield: [] },
+      ],
+      actions: [
+        { kind: "cast", cardName: creature.name, castingPlayer: SEAT0 },
+        { kind: "resolveTopOfStack" },
+      ],
+    };
+  }),
 ];
