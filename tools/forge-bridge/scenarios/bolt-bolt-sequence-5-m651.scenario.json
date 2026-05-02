@@ -1,0 +1,53 @@
+{
+  "id": "bolt-bolt-sequence-5-m651",
+  "description": "M6.51 — Two Lightning Bolts cast same turn against opp (M651Storm-5).",
+  "seed": 54021,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt",
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R",
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    },
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
