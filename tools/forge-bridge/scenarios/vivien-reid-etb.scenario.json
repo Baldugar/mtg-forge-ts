@@ -1,0 +1,29 @@
+{
+  "id": "vivien-reid-etb",
+  "description": "Vivien Reid ETB; tutor/destroy parse.",
+  "seed": 1394,
+  "cards": {
+    "Vivien Reid": "Name:Vivien Reid\nManaCost:3 G G\nTypes:Legendary Planeswalker Vivien\nLoyalty:5\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 4 | ChangeNum$ 1 | ChangeValid$ Creature,Land | Planeswalker$ True\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Enchantment,Creature.Flying | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Vivien Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Vivien parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivien Reid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vivien Reid",
+      "controller": 0
+    }
+  ]
+}

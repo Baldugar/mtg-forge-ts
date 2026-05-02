@@ -1,0 +1,29 @@
+{
+  "id": "matter-reshaper-etb",
+  "description": "Matter Reshaper ETB; reveal top parse.",
+  "seed": 1543,
+  "cards": {
+    "Matter Reshaper": "Name:Matter Reshaper\nManaCost:3\nTypes:Creature Eldrazi\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Reshaper.\nSVar:TrigReveal:DB$ Dig | DigNum$ 1 | RevealedNum$ 1 | NoChangeNum$ 0 | OptionalDecider$ You | DestinationZone$ Battlefield | ChangeValid$ Card.cmcLE3\nOracle:Reshaper parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Matter Reshaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Matter Reshaper",
+      "controller": 0
+    }
+  ]
+}

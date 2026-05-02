@@ -1,0 +1,29 @@
+{
+  "id": "jace-the-mind-sculptor-etb",
+  "description": "Jace, the Mind Sculptor ETB; modal walker parse.",
+  "seed": 1376,
+  "cards": {
+    "Jace, the Mind Sculptor": "Name:Jace, the Mind Sculptor\nManaCost:2 U U\nTypes:Legendary Planeswalker Jace\nLoyalty:3\nA:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | DigNum$ 1 | DefinedPlayer$ TargetedPlayer | ChangeNum$ 1 | DestinationZone$ Library | LibraryPosition$ -1 | Planeswalker$ True\nA:AB$ Draw | Cost$ AddCounter<0/LOYALTY> | NumCards$ 3 | Planeswalker$ True\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Origin$ Battlefield | Destination$ Library | TargetType$ Creature | LibraryPosition$ 0 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<12/LOYALTY> | Triggers$ TrigUlt | Planeswalker$ True | Ultimate$ True\nSVar:TrigUlt:Mode$ Always | Execute$ DBExile\nSVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Card.YouDontCtrl | Origin$ Library,Hand,Graveyard,Battlefield | Destination$ Exile\nOracle:JTMS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, the Mind Sculptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Jace, the Mind Sculptor",
+      "controller": 0
+    }
+  ]
+}

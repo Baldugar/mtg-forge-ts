@@ -1,0 +1,29 @@
+{
+  "id": "wrenn-and-six-etb",
+  "description": "Wrenn and Six ETB; land return + retrace emblem parse.",
+  "seed": 1383,
+  "cards": {
+    "Wrenn and Six": "Name:Wrenn and Six\nManaCost:R G\nTypes:Legendary Planeswalker Wrenn\nLoyalty:3\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Graveyard | Destination$ Hand | ChangeType$ Land | ChangeNum$ 1 | Planeswalker$ True\nA:AB$ DealDamage | Cost$ SubCounter<1/LOYALTY> | NumDmg$ 1 | TargetType$ Creature,Planeswalker | ValidTgts$ Creature,Planeswalker | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Wrenn Emblem | StaticAbilities$ STRetrace | Planeswalker$ True | Ultimate$ True\nSVar:STRetrace:Mode$ Continuous | Affected$ Card.Instant.YouCtrl,Card.Sorcery.YouCtrl | MayPlay$ True | MayPlayWithFlash$ True\nOracle:W6 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrenn and Six"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wrenn and Six",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "jin-gitaxias-progress-tyrant-etb",
+  "description": "Jin-Gitaxias, Progress Tyrant ETB; sweep parse.",
+  "seed": 1590,
+  "cards": {
+    "Jin-Gitaxias, Progress Tyrant": "Name:Jin-Gitaxias, Progress Tyrant\nManaCost:5 U U\nTypes:Legendary Creature Phyrexian Praetor\nPT:5/5\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tyrant.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -3 | NumDef$ -3\nOracle:Jin Tyrant parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jin-Gitaxias, Progress Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Jin-Gitaxias, Progress Tyrant",
+      "controller": 0
+    }
+  ]
+}

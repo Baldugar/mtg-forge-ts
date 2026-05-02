@@ -1,0 +1,29 @@
+{
+  "id": "nicol-bolas-planeswalker-etb",
+  "description": "Nicol Bolas, Planeswalker ETB; discard kill ult parse.",
+  "seed": 1386,
+  "cards": {
+    "Nicol Bolas, Planeswalker": "Name:Nicol Bolas, Planeswalker\nManaCost:4 U B B R\nTypes:Legendary Planeswalker Bolas\nLoyalty:5\nA:AB$ Discard | Cost$ AddCounter<3/LOYALTY> | NumCards$ 1 | Defined$ Opponent | Planeswalker$ True\nA:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | Planeswalker$ True\nA:AB$ ChangeZoneAll | Cost$ SubCounter<9/LOYALTY> | ChangeType$ Permanent.OppCtrl | Origin$ Battlefield | Destination$ Exile | Planeswalker$ True | Ultimate$ True\nOracle:Bolas parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nicol Bolas, Planeswalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Nicol Bolas, Planeswalker",
+      "controller": 0
+    }
+  ]
+}

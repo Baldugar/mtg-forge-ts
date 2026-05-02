@@ -1,0 +1,29 @@
+{
+  "id": "aetherflux-reservoir-etb-v2",
+  "description": "Aetherflux Reservoir ETB v2; storm life parse.",
+  "seed": 1571,
+  "cards": {
+    "Aetherflux Reservoir v2": "Name:Aetherflux Reservoir v2\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ Storm.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ X | References$ X\nSVar:X:Count$ThisTurnCast_Card.YouOwn\nA:AB$ DealDamage | Cost$ PayLife<50> | NumDmg$ 50 | TargetType$ Creature,Player\nOracle:Reservoir parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aetherflux Reservoir v2"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aetherflux Reservoir v2",
+      "controller": 0
+    }
+  ]
+}

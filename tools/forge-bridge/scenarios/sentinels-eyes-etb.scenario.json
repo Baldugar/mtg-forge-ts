@@ -1,0 +1,29 @@
+{
+  "id": "sentinels-eyes-etb",
+  "description": "Sentinel's Eyes ETB; vigilance lifelink parse.",
+  "seed": 1520,
+  "cards": {
+    "Sentinel's Eyes": "Name:Sentinel's Eyes\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nA:SP$ Attach | Cost$ W\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance & Lifelink | Description$ Eyes.\nOracle:Eyes parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sentinel's Eyes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sentinel's Eyes",
+      "controller": 0
+    }
+  ]
+}

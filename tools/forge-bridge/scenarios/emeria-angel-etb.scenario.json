@@ -1,0 +1,29 @@
+{
+  "id": "emeria-angel-etb",
+  "description": "Emeria Angel ETB; bird token landfall parse.",
+  "seed": 1528,
+  "cards": {
+    "Emeria Angel": "Name:Emeria Angel\nManaCost:3 W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Emeria.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_bird_flying | TokenAmount$ 1\nOracle:Emeria parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emeria Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Emeria Angel",
+      "controller": 0
+    }
+  ]
+}

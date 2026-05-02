@@ -1,0 +1,29 @@
+{
+  "id": "prized-amalgam-etb",
+  "description": "Prized Amalgam ETB; recur on zombie ETB parse.",
+  "seed": 1421,
+  "cards": {
+    "Prized Amalgam": "Name:Prized Amalgam\nManaCost:3 U B\nTypes:Creature Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Zombie.YouCtrl+Other | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Amalgam.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | Tapped$ True\nOracle:Amalgam parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prized Amalgam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Prized Amalgam",
+      "controller": 0
+    }
+  ]
+}

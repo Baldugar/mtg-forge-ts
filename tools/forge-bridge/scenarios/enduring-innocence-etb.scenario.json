@@ -1,0 +1,29 @@
+{
+  "id": "enduring-innocence-etb",
+  "description": "Enduring Innocence ETB; lifelink draw parse.",
+  "seed": 1300,
+  "cards": {
+    "Enduring Innocence": "Name:Enduring Innocence\nManaCost:1 W\nTypes:Enchantment Creature Spirit\nPT:1/1\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+powerLE2 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Innocence.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Innocence parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Innocence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Enduring Innocence",
+      "controller": 0
+    }
+  ]
+}

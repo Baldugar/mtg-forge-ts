@@ -1,0 +1,23 @@
+{
+  "id": "bant-charm-in-hand",
+  "description": "Bant Charm in hand; modal parse.",
+  "seed": 1347,
+  "cards": {
+    "Bant Charm": "Name:Bant Charm\nManaCost:G W U\nTypes:Instant\nA:SP$ Charm | Cost$ G W U | Choices$ DBDestroyArt,DBDestroyCreature,DBCounter\nSVar:DBDestroyArt:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Artifact\nSVar:DBDestroyCreature:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | TargetType$ Creature\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Instant\nOracle:Bant Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bant Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

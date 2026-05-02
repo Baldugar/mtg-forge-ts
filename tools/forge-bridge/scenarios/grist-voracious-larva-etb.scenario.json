@@ -1,0 +1,29 @@
+{
+  "id": "grist-voracious-larva-etb",
+  "description": "Grist, Voracious Larva ETB; insect creature parse.",
+  "seed": 1284,
+  "cards": {
+    "Grist, Voracious Larva": "Name:Grist, Voracious Larva\nManaCost:B G\nTypes:Legendary Creature Insect\nPT:1/1\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigToken | TriggerDescription$ Grist.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_insect | TokenAmount$ 1\nOracle:Grist parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grist, Voracious Larva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Grist, Voracious Larva",
+      "controller": 0
+    }
+  ]
+}

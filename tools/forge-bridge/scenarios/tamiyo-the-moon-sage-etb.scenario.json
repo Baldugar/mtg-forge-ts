@@ -1,0 +1,29 @@
+{
+  "id": "tamiyo-the-moon-sage-etb",
+  "description": "Tamiyo, the Moon Sage ETB; tap & draw parse.",
+  "seed": 1399,
+  "cards": {
+    "Tamiyo, the Moon Sage": "Name:Tamiyo, the Moon Sage\nManaCost:3 U U\nTypes:Legendary Planeswalker Tamiyo\nLoyalty:4\nA:AB$ Tap | Cost$ AddCounter<1/LOYALTY> | TargetType$ Permanent | ValidTgts$ Permanent | Planeswalker$ True\nA:AB$ Draw | Cost$ SubCounter<2/LOYALTY> | NumCards$ X | References$ X | Planeswalker$ True\nSVar:X:Count$Valid Permanent.tapped+OppCtrl\nA:AB$ Effect | Cost$ SubCounter<5/LOYALTY> | Name$ Tamiyo Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Tamiyo parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tamiyo, the Moon Sage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tamiyo, the Moon Sage",
+      "controller": 0
+    }
+  ]
+}

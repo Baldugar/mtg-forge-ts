@@ -1,0 +1,29 @@
+{
+  "id": "edgewall-innkeeper-etb",
+  "description": "Edgewall Innkeeper ETB; adventure draw parse.",
+  "seed": 1427,
+  "cards": {
+    "Edgewall Innkeeper": "Name:Edgewall Innkeeper\nManaCost:G\nTypes:Creature Human Peasant\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Adventurer.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Edgewall.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Edgewall parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edgewall Innkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Edgewall Innkeeper",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "urabrask-the-hidden-etb",
+  "description": "Urabrask the Hidden ETB; haste / opp ETB tap parse.",
+  "seed": 1588,
+  "cards": {
+    "Urabrask the Hidden": "Name:Urabrask the Hidden\nManaCost:3 R R\nTypes:Legendary Creature Phyrexian Praetor\nPT:4/4\nK:Haste\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Haste.\nR:Event$ Moved | ValidCard$ Creature.OppCtrl | Destination$ Battlefield | ReplaceWith$ ETBTap | Description$ Tap.\nSVar:ETBTap:DB$ Tap | Defined$ ReplacedCard\nOracle:Urabrask parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urabrask the Hidden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Urabrask the Hidden",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "cruel-celebrant-etb",
+  "description": "Cruel Celebrant ETB; drain parse.",
+  "seed": 1410,
+  "cards": {
+    "Cruel Celebrant": "Name:Cruel Celebrant\nManaCost:W B\nTypes:Creature Vampire\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl,Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Cruel.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nOracle:Cruel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cruel Celebrant",
+      "controller": 0
+    }
+  ]
+}

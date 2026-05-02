@@ -1,0 +1,29 @@
+{
+  "id": "the-wandering-emperor-etb",
+  "description": "The Wandering Emperor ETB; flash modal parse.",
+  "seed": 1384,
+  "cards": {
+    "The Wandering Emperor": "Name:The Wandering Emperor\nManaCost:2 W\nTypes:Legendary Planeswalker Wanderer\nLoyalty:3\nK:Flash\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | TargetType$ Creature | NumAtt$ 1 | KW$ Lifelink | Planeswalker$ True\nA:AB$ Token | Cost$ SubCounter<1/LOYALTY> | TokenScript$ w_2_2_samurai_vigilance | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.tapped | Planeswalker$ True\nOracle:Emperor parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wandering Emperor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "The Wandering Emperor",
+      "controller": 0
+    }
+  ]
+}

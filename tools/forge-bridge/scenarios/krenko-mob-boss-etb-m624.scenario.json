@@ -1,0 +1,29 @@
+{
+  "id": "krenko-mob-boss-etb-m624",
+  "description": "Krenko, Mob Boss ETB; tap goblins for tokens parse.",
+  "seed": 1480,
+  "cards": {
+    "Krenko, Mob Boss": "Name:Krenko, Mob Boss\nManaCost:2 R R\nTypes:Legendary Creature Goblin Warrior\nPT:3/3\nA:AB$ Token | Cost$ T | TokenScript$ r_1_1_goblin | TokenAmount$ X | References$ X\nSVar:X:Count$YourGoblins\nOracle:Krenko parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krenko, Mob Boss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Krenko, Mob Boss",
+      "controller": 0
+    }
+  ]
+}

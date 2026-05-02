@@ -1,0 +1,29 @@
+{
+  "id": "curiosity-etb",
+  "description": "Curiosity ETB; draw on dmg parse.",
+  "seed": 1517,
+  "cards": {
+    "Curiosity": "Name:Curiosity\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nA:SP$ Attach | Cost$ U\nT:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Curiosity.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ SourceController\nOracle:Curiosity parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curiosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Curiosity",
+      "controller": 0
+    }
+  ]
+}

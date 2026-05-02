@@ -1,0 +1,29 @@
+{
+  "id": "teferi-hero-of-dominaria-etb",
+  "description": "Teferi, Hero of Dominaria ETB; +1 untap-draw + emblem ult parse.",
+  "seed": 1382,
+  "cards": {
+    "Teferi, Hero of Dominaria": "Name:Teferi, Hero of Dominaria\nManaCost:3 W U\nTypes:Legendary Planeswalker Teferi\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | SubAbility$ DBUntap | Planeswalker$ True\nSVar:DBUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Land.YouCtrl,Permanent.YouCtrl | Amount$ 2\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Origin$ Battlefield | Destination$ Library | TargetType$ Permanent | LibraryPosition$ -1 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Teferi Emblem | Triggers$ TrigEm | Planeswalker$ True | Ultimate$ True\nSVar:TrigEm:Mode$ DrawnCard | ValidPlayer$ You | Execute$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent\nOracle:Teferi parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi, Hero of Dominaria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Teferi, Hero of Dominaria",
+      "controller": 0
+    }
+  ]
+}

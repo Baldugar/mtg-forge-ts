@@ -1,0 +1,29 @@
+{
+  "id": "saheeli-rai-etb",
+  "description": "Saheeli Rai ETB; scry/copy parse.",
+  "seed": 1397,
+  "cards": {
+    "Saheeli Rai": "Name:Saheeli Rai\nManaCost:1 U R\nTypes:Legendary Planeswalker Saheeli\nLoyalty:3\nA:AB$ Scry | Cost$ AddCounter<1/LOYALTY> | ScryNum$ 1 | SubAbility$ DBDmg | Planeswalker$ True\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 1 | DefinedTarget$ TargetedPlayer\nA:AB$ CopyPermanent | Cost$ SubCounter<2/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Creature | NumCopies$ 1 | Keywords$ Haste | AtEOT$ Exile | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Saheeli Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Saheeli parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saheeli Rai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Saheeli Rai",
+      "controller": 0
+    }
+  ]
+}

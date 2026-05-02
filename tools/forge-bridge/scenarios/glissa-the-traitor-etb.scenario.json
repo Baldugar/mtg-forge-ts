@@ -1,0 +1,29 @@
+{
+  "id": "glissa-the-traitor-etb",
+  "description": "Glissa the Traitor ETB; recur on creature dies parse.",
+  "seed": 1478,
+  "cards": {
+    "Glissa the Traitor": "Name:Glissa the Traitor\nManaCost:B G B\nTypes:Legendary Creature Zombie Elf\nPT:3/3\nK:Deathtouch\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigRecur | TriggerDescription$ Glissa.\nSVar:TrigRecur:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Artifact\nOracle:Glissa parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glissa the Traitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Glissa the Traitor",
+      "controller": 0
+    }
+  ]
+}

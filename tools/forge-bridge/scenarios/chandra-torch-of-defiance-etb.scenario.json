@@ -1,0 +1,29 @@
+{
+  "id": "chandra-torch-of-defiance-etb",
+  "description": "Chandra, Torch of Defiance ETB; impulse parse.",
+  "seed": 1395,
+  "cards": {
+    "Chandra, Torch of Defiance": "Name:Chandra, Torch of Defiance\nManaCost:2 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:4\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone$ Exile | Planeswalker$ True\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Produced$ R | Amount$ 2 | Planeswalker$ True\nA:AB$ DealDamage | Cost$ SubCounter<3/LOYALTY> | NumDmg$ 4 | TargetType$ Creature,Player | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Chandra Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Chandra parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Torch of Defiance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Chandra, Torch of Defiance",
+      "controller": 0
+    }
+  ]
+}

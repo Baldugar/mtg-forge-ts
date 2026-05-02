@@ -1,0 +1,29 @@
+{
+  "id": "sheoldred-whispering-one-etb",
+  "description": "Sheoldred, Whispering One ETB; return / sac parse.",
+  "seed": 1585,
+  "cards": {
+    "Sheoldred, Whispering One": "Name:Sheoldred, Whispering One\nManaCost:5 B B\nTypes:Legendary Creature Phyrexian Praetor\nPT:6/6\nK:Swampwalk\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Sheoldred.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouCtrl\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Opp sac.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | SacValid$ Creature\nOracle:Sheoldred parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheoldred, Whispering One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sheoldred, Whispering One",
+      "controller": 0
+    }
+  ]
+}

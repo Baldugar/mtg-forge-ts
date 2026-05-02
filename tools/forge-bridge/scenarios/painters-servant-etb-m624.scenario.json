@@ -1,0 +1,29 @@
+{
+  "id": "painters-servant-etb-m624",
+  "description": "Painter's Servant ETB; chosen color all cards parse.",
+  "seed": 1564,
+  "cards": {
+    "Painter's Servant": "Name:Painter's Servant\nManaCost:2\nTypes:Artifact Creature Scarecrow\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ Painter.\nSVar:TrigChoose:DB$ ChooseColor | Defined$ You\nS:Mode$ Continuous | Affected$ Card | AddColor$ ChosenColor | Description$ Servant.\nOracle:Painter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Painter's Servant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Painter's Servant",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "cloudshift-on-etb-creature",
+  "description": "Cloudshift in hand alongside Mulldrifter; flicker parse.",
+  "seed": 1370,
+  "cards": {
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | SubAbility$ DBReturn\nSVar:DBReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ DBPhaseReturn\nSVar:DBPhaseReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield\nOracle:Cloudshift parse.\n",
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudshift"
+      ],
+      "battlefield": [
+        {
+          "card": "Mulldrifter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

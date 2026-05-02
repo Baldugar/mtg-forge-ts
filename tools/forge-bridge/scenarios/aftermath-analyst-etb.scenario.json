@@ -1,0 +1,29 @@
+{
+  "id": "aftermath-analyst-etb",
+  "description": "Aftermath Analyst ETB; sac to return lands parse.",
+  "seed": 1290,
+  "cards": {
+    "Aftermath Analyst": "Name:Aftermath Analyst\nManaCost:1 G\nTypes:Creature Human Druid\nPT:2/3\nA:AB$ ChangeZoneAll | Cost$ 2 G ExileFromGrave<1/CARDNAME> | ChangeType$ Land.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ All lands back.\nOracle:Analyst parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aftermath Analyst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aftermath Analyst",
+      "controller": 0
+    }
+  ]
+}

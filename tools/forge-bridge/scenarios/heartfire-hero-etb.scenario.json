@@ -1,0 +1,29 @@
+{
+  "id": "heartfire-hero-etb",
+  "description": "Heartfire Hero ETB; valiant trigger parse.",
+  "seed": 1296,
+  "cards": {
+    "Heartfire Hero": "Name:Heartfire Hero\nManaCost:R\nTypes:Creature Mouse Warrior\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Heartfire.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any | References$ X\nSVar:X:Count$CardPower\nOracle:Heartfire parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartfire Hero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Heartfire Hero",
+      "controller": 0
+    }
+  ]
+}

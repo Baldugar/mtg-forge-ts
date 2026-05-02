@@ -1,0 +1,29 @@
+{
+  "id": "sword-of-light-and-shadow-etb",
+  "description": "Sword of Light and Shadow ETB; pro+recur+life parse.",
+  "seed": 1508,
+  "cards": {
+    "Sword of Light and Shadow": "Name:Sword of Light and Shadow\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black | Description$ SoLS.\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ Life recur.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBRecur\nSVar:DBRecur:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature\nOracle:SoLS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Light and Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword of Light and Shadow",
+      "controller": 0
+    }
+  ]
+}

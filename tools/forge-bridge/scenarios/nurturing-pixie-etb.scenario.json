@@ -1,0 +1,29 @@
+{
+  "id": "nurturing-pixie-etb",
+  "description": "Nurturing Pixie ETB; return permanent parse.",
+  "seed": 1293,
+  "cards": {
+    "Nurturing Pixie": "Name:Nurturing Pixie\nManaCost:1 W\nTypes:Creature Faerie Wizard\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Pixie.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl\nOracle:Pixie parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nurturing Pixie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Nurturing Pixie",
+      "controller": 0
+    }
+  ]
+}

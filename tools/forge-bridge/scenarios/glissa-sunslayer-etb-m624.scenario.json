@@ -1,0 +1,29 @@
+{
+  "id": "glissa-sunslayer-etb-m624",
+  "description": "Glissa Sunslayer ETB; double strike deathtouch parse.",
+  "seed": 1593,
+  "cards": {
+    "Glissa Sunslayer": "Name:Glissa Sunslayer\nManaCost:B G\nTypes:Legendary Creature Phyrexian Elf Warrior\nPT:3/3\nK:Double Strike\nK:Deathtouch\nT:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigChoice | TriggerDescription$ Glissa.\nSVar:TrigChoice:DB$ Charm | Choices$ DBDraw,DBCounter,DBCounterRem\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nSVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetType$ Creature\nSVar:DBCounterRem:DB$ RemoveCounter | TargetType$ Permanent | CounterType$ Any | CounterNum$ 1\nOracle:Glissa Sunslayer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glissa Sunslayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Glissa Sunslayer",
+      "controller": 0
+    }
+  ]
+}

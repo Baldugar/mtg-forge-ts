@@ -1,0 +1,29 @@
+{
+  "id": "ghost-quarter-etb-m624",
+  "description": "Ghost Quarter ETB; sac destroy land + basic parse.",
+  "seed": 1547,
+  "cards": {
+    "Ghost Quarter": "Name:Ghost Quarter\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C\nA:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | SubAbility$ DBSearch\nSVar:DBSearch:DB$ ChangeZone | DefinedPlayer$ TargetedController | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1\nOracle:Ghost Quarter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghost Quarter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ghost Quarter",
+      "controller": 0
+    }
+  ]
+}

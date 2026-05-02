@@ -1,0 +1,23 @@
+{
+  "id": "dimir-charm-in-hand",
+  "description": "Dimir Charm in hand; modal parse.",
+  "seed": 1357,
+  "cards": {
+    "Dimir Charm": "Name:Dimir Charm\nManaCost:U B\nTypes:Instant\nA:SP$ Charm | Cost$ U B | Choices$ DBCounter,DBKill,DBMill\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Sorcery\nSVar:DBKill:DB$ Destroy | TargetType$ Creature | ValidTgts$ Creature.powerLE2\nSVar:DBMill:DB$ Dig | DigNum$ 3 | DefinedPlayer$ Player\nOracle:Dimir Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dimir Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

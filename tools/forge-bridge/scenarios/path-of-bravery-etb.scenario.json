@@ -1,0 +1,29 @@
+{
+  "id": "path-of-bravery-etb",
+  "description": "Path of Bravery ETB; conditional anthem parse.",
+  "seed": 1515,
+  "cards": {
+    "Path of Bravery": "Name:Path of Bravery\nManaCost:1 W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.attacking+YouCtrl | AddPower$ 1 | AddToughness$ 1 | CheckSVar$ X | SVarCompare$ GE20 | References$ X | Description$ Path.\nSVar:X:Count$YourLifeTotal\nOracle:Path parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of Bravery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Path of Bravery",
+      "controller": 0
+    }
+  ]
+}

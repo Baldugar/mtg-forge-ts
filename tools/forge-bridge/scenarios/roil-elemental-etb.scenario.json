@@ -1,0 +1,29 @@
+{
+  "id": "roil-elemental-etb",
+  "description": "Roil Elemental ETB; steal on landfall parse.",
+  "seed": 1527,
+  "cards": {
+    "Roil Elemental": "Name:Roil Elemental\nManaCost:3 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSteal | TriggerDescription$ Roil.\nSVar:TrigSteal:DB$ GainControl | TargetType$ Creature | ValidTgts$ Creature\nOracle:Roil parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roil Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Roil Elemental",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "path-to-exile-in-hand-v2",
+  "description": "Path to Exile in hand v2; exile basic parse.",
+  "seed": 1463,
+  "cards": {
+    "Path to Exile v2": "Name:Path to Exile v2\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | TargetType$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBSearch\nSVar:DBSearch:DB$ ChangeZone | DefinedPlayer$ TargetedController | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1 | Tapped$ True\nOracle:Path parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path to Exile v2"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

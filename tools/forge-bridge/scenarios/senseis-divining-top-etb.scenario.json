@@ -1,0 +1,29 @@
+{
+  "id": "senseis-divining-top-etb",
+  "description": "Sensei's Divining Top ETB; scry / draw parse.",
+  "seed": 1573,
+  "cards": {
+    "Sensei's Divining Top": "Name:Sensei's Divining Top\nManaCost:1\nTypes:Artifact\nA:AB$ Scry | Cost$ T | ScryNum$ 3 | NoMove$ True\nA:AB$ Draw | Cost$ 1 | NumCards$ 1 | SubAbility$ DBLib\nSVar:DBLib:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | Defined$ Self | LibraryPosition$ 0\nOracle:Top parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sensei's Divining Top"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sensei's Divining Top",
+      "controller": 0
+    }
+  ]
+}

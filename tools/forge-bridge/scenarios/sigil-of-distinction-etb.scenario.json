@@ -1,0 +1,29 @@
+{
+  "id": "sigil-of-distinction-etb",
+  "description": "Sigil of Distinction ETB; X counters equip parse.",
+  "seed": 1519,
+  "cards": {
+    "Sigil of Distinction": "Name:Sigil of Distinction\nManaCost:X\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Distinction.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ X | Defined$ Self | References$ X\nSVar:X:Count$xPaid\nA:AB$ Attach | Cost$ RemoveCounter<1/CHARGE> | TargetType$ Creature\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ X | AddToughness$ X | References$ X | Description$ Distinction.\nOracle:Distinction parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigil of Distinction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sigil of Distinction",
+      "controller": 0
+    }
+  ]
+}

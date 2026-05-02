@@ -1,0 +1,29 @@
+{
+  "id": "sheoldred-the-apocalypse-etb",
+  "description": "Sheoldred, the Apocalypse ETB; draw life trigger parse.",
+  "seed": 1591,
+  "cards": {
+    "Sheoldred, the Apocalypse": "Name:Sheoldred, the Apocalypse\nManaCost:2 B B\nTypes:Legendary Creature Phyrexian Praetor\nPT:4/5\nK:Deathtouch\nT:Mode$ DrawnCard | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ You draw.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 2\nT:Mode$ DrawnCard | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigLose | TriggerDescription$ Opp draw.\nSVar:TrigLose:DB$ LoseLife | LifeAmount$ 2 | Defined$ TriggeredPlayer\nOracle:Sheoldred parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheoldred, the Apocalypse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sheoldred, the Apocalypse",
+      "controller": 0
+    }
+  ]
+}

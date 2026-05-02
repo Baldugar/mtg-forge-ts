@@ -1,0 +1,29 @@
+{
+  "id": "steppe-lynx-etb-m624",
+  "description": "Steppe Lynx ETB; landfall pump parse.",
+  "seed": 1531,
+  "cards": {
+    "Steppe Lynx": "Name:Steppe Lynx\nManaCost:W\nTypes:Creature Cat\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Lynx.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2\nOracle:Lynx parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steppe Lynx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Steppe Lynx",
+      "controller": 0
+    }
+  ]
+}

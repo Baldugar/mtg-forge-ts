@@ -1,0 +1,29 @@
+{
+  "id": "disruptor-flute-etb",
+  "description": "Disruptor Flute ETB; name lock parse.",
+  "seed": 1596,
+  "cards": {
+    "Disruptor Flute": "Name:Disruptor Flute\nManaCost:1\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ Flute.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ You | Choices$ Card.nonLand\nS:Mode$ CantBeCast | ValidCard$ Card.namedChosen | Description$ Flute lock.\nOracle:Flute parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disruptor Flute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Disruptor Flute",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "cultivator-colossus-etb",
+  "description": "Cultivator Colossus ETB; lands from hand parse.",
+  "seed": 1332,
+  "cards": {
+    "Cultivator Colossus": "Name:Cultivator Colossus\nManaCost:4 G G\nTypes:Creature Plant Beast\nPT:1/1\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Colossus.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 6 | NumDef$ 6\nOracle:Colossus parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cultivator Colossus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cultivator Colossus",
+      "controller": 0
+    }
+  ]
+}

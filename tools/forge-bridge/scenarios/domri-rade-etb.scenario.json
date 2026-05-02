@@ -1,0 +1,29 @@
+{
+  "id": "domri-rade-etb",
+  "description": "Domri Rade ETB; fight modal parse.",
+  "seed": 1392,
+  "cards": {
+    "Domri Rade": "Name:Domri Rade\nManaCost:1 R G\nTypes:Legendary Planeswalker Domri\nLoyalty:2\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Creature | Planeswalker$ True\nA:AB$ Fight | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | Defined$ Targeted | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Domri Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Domri parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Domri Rade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Domri Rade",
+      "controller": 0
+    }
+  ]
+}

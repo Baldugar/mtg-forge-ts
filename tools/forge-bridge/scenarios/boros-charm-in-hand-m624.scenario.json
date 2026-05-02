@@ -1,0 +1,23 @@
+{
+  "id": "boros-charm-in-hand-m624",
+  "description": "Boros Charm in hand; modal parse.",
+  "seed": 1348,
+  "cards": {
+    "Boros Charm": "Name:Boros Charm\nManaCost:R W\nTypes:Instant\nA:SP$ Charm | Cost$ R W | Choices$ DBDmg,DBIndestructible,DBDoubleStrike\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 4 | TargetType$ Player | ValidTgts$ Player\nSVar:DBIndestructible:DB$ Effect | StaticAbilities$ STIndest\nSVar:STIndest:Mode$ Continuous | Affected$ Permanent.YouCtrl | AddKeyword$ Indestructible\nSVar:DBDoubleStrike:DB$ Pump | TargetType$ Creature | KW$ Double Strike\nOracle:Boros Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boros Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

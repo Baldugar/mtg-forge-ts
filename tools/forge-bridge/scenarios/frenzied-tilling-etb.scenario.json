@@ -1,0 +1,29 @@
+{
+  "id": "frenzied-tilling-etb",
+  "description": "Frenzied Tilling ETB; landfall search parse.",
+  "seed": 1521,
+  "cards": {
+    "Frenzied Tilling": "Name:Frenzied Tilling\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCount | TriggerDescription$ Land.\nSVar:TrigCount:DB$ PutCounterAll | CounterType$ P1P1 | CounterNum$ 1 | ValidCards$ Creature.YouCtrl\nOracle:Tilling parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frenzied Tilling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Frenzied Tilling",
+      "controller": 0
+    }
+  ]
+}

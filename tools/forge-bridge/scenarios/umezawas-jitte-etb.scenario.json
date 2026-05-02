@@ -1,0 +1,29 @@
+{
+  "id": "umezawas-jitte-etb",
+  "description": "Umezawa's Jitte ETB; counter equip parse.",
+  "seed": 1509,
+  "cards": {
+    "Umezawa's Jitte": "Name:Umezawa's Jitte\nManaCost:2\nTypes:Legendary Artifact Equipment\nK:Equip:2\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.AttachedBy | ValidTarget$ Player,Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Jitte.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 2 | Defined$ Self\nA:AB$ PumpAll | Cost$ RemoveCounter<1/CHARGE> | ValidCards$ Creature.AttachedBy | NumAtt$ 2 | NumDef$ 2\nA:AB$ Pump | Cost$ RemoveCounter<1/CHARGE> | TargetType$ Creature | NumAtt$ -1 | NumDef$ -1\nA:AB$ GainLife | Cost$ RemoveCounter<1/CHARGE> | LifeAmount$ 2\nOracle:Jitte parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umezawa's Jitte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Umezawa's Jitte",
+      "controller": 0
+    }
+  ]
+}

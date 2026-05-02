@@ -1,0 +1,29 @@
+{
+  "id": "ral-storm-conduit-etb",
+  "description": "Ral, Storm Conduit ETB; trigger ping / scry parse.",
+  "seed": 1389,
+  "cards": {
+    "Ral, Storm Conduit": "Name:Ral, Storm Conduit\nManaCost:2 U R\nTypes:Legendary Planeswalker Ral\nLoyalty:4\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Instant,Card.Sorcery | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Storm.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player\nA:AB$ Scry | Cost$ AddCounter<2/LOYALTY> | ScryNum$ 1 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Ral Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Ral parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ral, Storm Conduit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ral, Storm Conduit",
+      "controller": 0
+    }
+  ]
+}

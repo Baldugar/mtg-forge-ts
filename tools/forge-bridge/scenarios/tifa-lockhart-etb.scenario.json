@@ -1,0 +1,29 @@
+{
+  "id": "tifa-lockhart-etb",
+  "description": "Tifa Lockhart ETB; double-strike combat trigger parse.",
+  "seed": 1304,
+  "cards": {
+    "Tifa Lockhart": "Name:Tifa Lockhart\nManaCost:1 R W\nTypes:Legendary Creature Human Monk\nPT:3/3\nK:Double Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tifa.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 0\nOracle:Tifa parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tifa Lockhart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tifa Lockhart",
+      "controller": 0
+    }
+  ]
+}

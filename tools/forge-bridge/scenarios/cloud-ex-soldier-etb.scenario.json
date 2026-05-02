@@ -1,0 +1,29 @@
+{
+  "id": "cloud-ex-soldier-etb",
+  "description": "Cloud, Ex-SOLDIER ETB; weapon parse.",
+  "seed": 1302,
+  "cards": {
+    "Cloud, Ex-SOLDIER": "Name:Cloud, Ex-SOLDIER\nManaCost:1 W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Cloud.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 1\nOracle:Cloud parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloud, Ex-SOLDIER"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cloud, Ex-SOLDIER",
+      "controller": 0
+    }
+  ]
+}

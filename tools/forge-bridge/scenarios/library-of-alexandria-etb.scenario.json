@@ -1,0 +1,29 @@
+{
+  "id": "library-of-alexandria-etb",
+  "description": "Library of Alexandria ETB; conditional draw parse.",
+  "seed": 1555,
+  "cards": {
+    "Library of Alexandria": "Name:Library of Alexandria\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C\nA:AB$ Draw | Cost$ T | NumCards$ 1 | CheckSVar$ X | SVarCompare$ EQ7 | References$ X\nSVar:X:Count$InYourHand\nOracle:Library parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Library of Alexandria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Library of Alexandria",
+      "controller": 0
+    }
+  ]
+}

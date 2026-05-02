@@ -1,0 +1,29 @@
+{
+  "id": "phyrexian-obliterator-etb",
+  "description": "Phyrexian Obliterator ETB; sac trigger parse.",
+  "seed": 1476,
+  "cards": {
+    "Phyrexian Obliterator": "Name:Phyrexian Obliterator\nManaCost:B B B B\nTypes:Creature Horror\nPT:5/5\nK:Trample\nT:Mode$ DamageDone | ValidTarget$ Card.Self | ValidSource$ Creature | Execute$ TrigSac | TriggerDescription$ Obl.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TargetedController | SacValid$ Permanent | Amount$ X | References$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Obliterator parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Obliterator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phyrexian Obliterator",
+      "controller": 0
+    }
+  ]
+}

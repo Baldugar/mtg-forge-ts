@@ -1,0 +1,29 @@
+{
+  "id": "urza-lord-high-artificer-etb",
+  "description": "Urza, Lord High Artificer ETB; thopter mana parse.",
+  "seed": 1577,
+  "cards": {
+    "Urza, Lord High Artificer": "Name:Urza, Lord High Artificer\nManaCost:2 U U\nTypes:Legendary Creature Human Artificer\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Urza.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ U | Amount$ X | References$ X\nSVar:X:Count$YourArtifacts\nOracle:Urza Lord parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza, Lord High Artificer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Urza, Lord High Artificer",
+      "controller": 0
+    }
+  ]
+}

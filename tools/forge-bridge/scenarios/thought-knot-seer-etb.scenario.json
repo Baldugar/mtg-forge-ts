@@ -1,0 +1,29 @@
+{
+  "id": "thought-knot-seer-etb",
+  "description": "Thought-Knot Seer ETB; exile from hand parse.",
+  "seed": 1542,
+  "cards": {
+    "Thought-Knot Seer": "Name:Thought-Knot Seer\nManaCost:3\nTypes:Creature Eldrazi\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ TKS.\nSVar:TrigPeek:DB$ Reveal | NumCards$ All | Defined$ TargetedPlayer | RevealValid$ Card.nonLand | TargetType$ Player | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeNum$ 1 | Defined$ Targeted\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Leaves.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ Opponent\nOracle:TKS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thought-Knot Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Thought-Knot Seer",
+      "controller": 0
+    }
+  ]
+}

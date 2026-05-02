@@ -1,0 +1,29 @@
+{
+  "id": "garruk-wildspeaker-etb",
+  "description": "Garruk Wildspeaker ETB; beast token + overrun parse.",
+  "seed": 1378,
+  "cards": {
+    "Garruk Wildspeaker": "Name:Garruk Wildspeaker\nManaCost:2 G G\nTypes:Legendary Planeswalker Garruk\nLoyalty:3\nA:AB$ Untap | Cost$ AddCounter<1/LOYALTY> | TargetType$ Land | ValidTgts$ Land.YouCtrl | Amount$ 2 | Planeswalker$ True\nA:AB$ Token | Cost$ SubCounter<1/LOYALTY> | TokenScript$ g_3_3_beast | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ PumpAll | Cost$ SubCounter<4/LOYALTY> | ValidCards$ Creature.YouCtrl | NumAtt$ 3 | NumDef$ 3 | KW$ Trample | Planeswalker$ True | Ultimate$ True\nOracle:Garruk parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk Wildspeaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Garruk Wildspeaker",
+      "controller": 0
+    }
+  ]
+}

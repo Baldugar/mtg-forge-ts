@@ -1,0 +1,29 @@
+{
+  "id": "bastion-of-remembrance-etb",
+  "description": "Bastion of Remembrance ETB; party trigger parse.",
+  "seed": 1415,
+  "cards": {
+    "Bastion of Remembrance": "Name:Bastion of Remembrance\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Bastion.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Drain.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nOracle:Bastion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bastion of Remembrance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bastion of Remembrance",
+      "controller": 0
+    }
+  ]
+}

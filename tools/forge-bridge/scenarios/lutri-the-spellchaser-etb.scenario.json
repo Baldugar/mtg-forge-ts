@@ -1,0 +1,29 @@
+{
+  "id": "lutri-the-spellchaser-etb",
+  "description": "Lutri, the Spellchaser ETB; copy spell parse.",
+  "seed": 1446,
+  "cards": {
+    "Lutri, the Spellchaser": "Name:Lutri, the Spellchaser\nManaCost:U R\nTypes:Legendary Creature Elemental Otter\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ Lutri.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ Stack | TargetType$ Spell | ValidTgts$ Card.Instant,Card.Sorcery\nOracle:Lutri parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lutri, the Spellchaser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lutri, the Spellchaser",
+      "controller": 0
+    }
+  ]
+}

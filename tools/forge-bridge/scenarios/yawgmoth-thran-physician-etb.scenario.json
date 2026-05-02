@@ -1,0 +1,29 @@
+{
+  "id": "yawgmoth-thran-physician-etb",
+  "description": "Yawgmoth, Thran Physician ETB; -1/-1 + draw parse.",
+  "seed": 1327,
+  "cards": {
+    "Yawgmoth, Thran Physician": "Name:Yawgmoth, Thran Physician\nManaCost:2 B B\nTypes:Legendary Creature Human Cleric\nPT:2/4\nA:AB$ DealDamage | Cost$ PayLife<1> Sac<1/Creature> | NumDmg$ 1 | DefinedDmg$ TargetedCreature | TargetType$ Creature | ValidTgts$ Creature.OppCtrl | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:Yawgmoth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yawgmoth, Thran Physician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Yawgmoth, Thran Physician",
+      "controller": 0
+    }
+  ]
+}

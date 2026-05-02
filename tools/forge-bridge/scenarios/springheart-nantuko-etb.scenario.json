@@ -1,0 +1,29 @@
+{
+  "id": "springheart-nantuko-etb",
+  "description": "Springheart Nantuko ETB; landfall copy parse.",
+  "seed": 1599,
+  "cards": {
+    "Springheart Nantuko": "Name:Springheart Nantuko\nManaCost:1 G\nTypes:Creature Insect Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Nantuko.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self | NumCopies$ 1 | UnlessCost$ 2 | UnlessPayer$ TriggeredPlayer\nOracle:Nantuko parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Springheart Nantuko"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Springheart Nantuko",
+      "controller": 0
+    }
+  ]
+}

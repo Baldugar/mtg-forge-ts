@@ -1,0 +1,29 @@
+{
+  "id": "wood-elves-etb",
+  "description": "Wood Elves ETB; forest search parse.",
+  "seed": 1329,
+  "cards": {
+    "Wood Elves": "Name:Wood Elves\nManaCost:2 G\nTypes:Creature Elf Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Wood Elves.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ 1\nOracle:Wood Elves parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wood Elves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wood Elves",
+      "controller": 0
+    }
+  ]
+}

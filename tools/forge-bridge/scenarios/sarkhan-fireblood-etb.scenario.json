@@ -1,0 +1,29 @@
+{
+  "id": "sarkhan-fireblood-etb",
+  "description": "Sarkhan, Fireblood ETB; rummage dragon mana parse.",
+  "seed": 1402,
+  "cards": {
+    "Sarkhan, Fireblood": "Name:Sarkhan, Fireblood\nManaCost:1 R R\nTypes:Legendary Planeswalker Sarkhan\nLoyalty:3\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | SubAbility$ DBDisc | Planeswalker$ True\nSVar:DBDisc:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose\nA:AB$ Mana | Cost$ SubCounter<2/LOYALTY> | Produced$ Any | Amount$ 2 | RestrictValid$ Card.Dragon | Planeswalker$ True\nA:AB$ Token | Cost$ SubCounter<7/LOYALTY> | TokenScript$ r_4_4_dragon_flying | TokenAmount$ 3 | Planeswalker$ True | Ultimate$ True\nOracle:Sarkhan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan, Fireblood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sarkhan, Fireblood",
+      "controller": 0
+    }
+  ]
+}

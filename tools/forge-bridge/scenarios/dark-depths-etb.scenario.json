@@ -1,0 +1,29 @@
+{
+  "id": "dark-depths-etb",
+  "description": "Dark Depths ETB; counter on ETB parse.",
+  "seed": 1365,
+  "cards": {
+    "Dark Depths": "Name:Dark Depths\nTypes:Legendary Snow Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Depths.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ ICE | CounterNum$ 10 | Defined$ Self\nA:AB$ Token | Cost$ 0 | TokenScript$ b_20_20_marit_lage_lege_indest_flying | TokenAmount$ 1 | PrecostDesc$ When Dark Depths has no ice counters,\nOracle:Depths parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Depths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Dark Depths",
+      "controller": 0
+    }
+  ]
+}

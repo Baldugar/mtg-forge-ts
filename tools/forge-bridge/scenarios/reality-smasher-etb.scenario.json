@@ -1,0 +1,29 @@
+{
+  "id": "reality-smasher-etb",
+  "description": "Reality Smasher ETB; haste discard tax parse.",
+  "seed": 1541,
+  "cards": {
+    "Reality Smasher": "Name:Reality Smasher\nManaCost:4\nTypes:Creature Eldrazi\nPT:5/5\nK:Haste\nK:Trample\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Card.Spell | Execute$ TrigDisc | TriggerDescription$ Smasher.\nSVar:TrigDisc:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose | Defined$ TargetedController\nOracle:Smasher parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reality Smasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reality Smasher",
+      "controller": 0
+    }
+  ]
+}

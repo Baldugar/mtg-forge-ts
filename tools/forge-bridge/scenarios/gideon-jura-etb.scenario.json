@@ -1,0 +1,29 @@
+{
+  "id": "gideon-jura-etb",
+  "description": "Gideon Jura ETB; taunt block parse.",
+  "seed": 1393,
+  "cards": {
+    "Gideon Jura": "Name:Gideon Jura\nManaCost:3 W W\nTypes:Legendary Planeswalker Gideon\nLoyalty:6\nA:AB$ Effect | Cost$ AddCounter<2/LOYALTY> | Name$ Gideon Taunt | StaticAbilities$ STAttack | Planeswalker$ True\nSVar:STAttack:Mode$ MustAttack | ValidCreature$ Creature.OppCtrl | MustAttack$ Card.Self\nA:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.tapped | Planeswalker$ True\nA:AB$ Animate | Cost$ SubCounter<0/LOYALTY> | Defined$ Self | Power$ 6 | Toughness$ 6 | Types$ Creature,Human,Soldier | Planeswalker$ True\nOracle:Gideon parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon Jura"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gideon Jura",
+      "controller": 0
+    }
+  ]
+}

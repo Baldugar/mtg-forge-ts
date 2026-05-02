@@ -1,0 +1,29 @@
+{
+  "id": "overlord-of-the-hauntwoods-etb",
+  "description": "Overlord of the Hauntwoods ETB; impending parse.",
+  "seed": 1298,
+  "cards": {
+    "Overlord of the Hauntwoods": "Name:Overlord of the Hauntwoods\nManaCost:3 G G\nTypes:Enchantment Creature Spirit\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Hauntwoods.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_beast | TokenAmount$ 1\nOracle:Hauntwoods parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overlord of the Hauntwoods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Overlord of the Hauntwoods",
+      "controller": 0
+    }
+  ]
+}

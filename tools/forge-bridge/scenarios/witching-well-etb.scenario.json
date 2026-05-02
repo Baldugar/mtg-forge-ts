@@ -1,0 +1,29 @@
+{
+  "id": "witching-well-etb",
+  "description": "Witching Well ETB; scry parse.",
+  "seed": 1429,
+  "cards": {
+    "Witching Well": "Name:Witching Well\nManaCost:U\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ Well.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nA:AB$ Draw | Cost$ 4 U Sac<1/CARDNAME> | NumCards$ 2\nOracle:Well parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witching Well"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Witching Well",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-charm-in-hand",
+  "description": "Rakdos Charm in hand; modal parse.",
+  "seed": 1358,
+  "cards": {
+    "Rakdos Charm": "Name:Rakdos Charm\nManaCost:B R\nTypes:Instant\nA:SP$ Charm | Cost$ B R | Choices$ DBExileGY,DBSacAll,DBDmg\nSVar:DBExileGY:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile\nSVar:DBSacAll:DB$ SacrificeAll | ValidCards$ Creature.OppCtrl\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 1 | DefinedPlayer$ Each\nOracle:Rakdos Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

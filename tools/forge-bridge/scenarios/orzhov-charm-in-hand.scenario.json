@@ -1,0 +1,23 @@
+{
+  "id": "orzhov-charm-in-hand",
+  "description": "Orzhov Charm in hand; modal parse.",
+  "seed": 1359,
+  "cards": {
+    "Orzhov Charm": "Name:Orzhov Charm\nManaCost:W B\nTypes:Instant\nA:SP$ Charm | Cost$ W B | Choices$ DBReturn,DBKill,DBExileLife\nSVar:DBReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Creature\nSVar:DBKill:DB$ Destroy | TargetType$ Creature | ValidTgts$ Creature\nSVar:DBExileLife:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature\nOracle:Orzhov Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orzhov Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

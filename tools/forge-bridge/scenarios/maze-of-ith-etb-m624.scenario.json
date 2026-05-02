@@ -1,0 +1,29 @@
+{
+  "id": "maze-of-ith-etb-m624",
+  "description": "Maze of Ith ETB; untap creature parse.",
+  "seed": 1556,
+  "cards": {
+    "Maze of Ith": "Name:Maze of Ith\nTypes:Land\nA:AB$ Untap | Cost$ T | TargetType$ Creature | ValidTgts$ Creature.attacking | SubAbility$ DBPrev\nSVar:DBPrev:DB$ EffectPrevent | Amount$ All | Defined$ Targeted\nOracle:Maze parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maze of Ith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Maze of Ith",
+      "controller": 0
+    }
+  ]
+}

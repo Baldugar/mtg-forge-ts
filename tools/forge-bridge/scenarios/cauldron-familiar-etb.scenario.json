@@ -1,0 +1,29 @@
+{
+  "id": "cauldron-familiar-etb",
+  "description": "Cauldron Familiar ETB; recur drain parse.",
+  "seed": 1417,
+  "cards": {
+    "Cauldron Familiar": "Name:Cauldron Familiar\nManaCost:B\nTypes:Creature Cat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Familiar.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ ChangeZone | Cost$ Sac<1/Food> | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self\nOracle:Familiar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cauldron Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cauldron Familiar",
+      "controller": 0
+    }
+  ]
+}

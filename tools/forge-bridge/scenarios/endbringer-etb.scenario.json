@@ -1,0 +1,29 @@
+{
+  "id": "endbringer-etb",
+  "description": "Endbringer ETB; multimodal parse.",
+  "seed": 1544,
+  "cards": {
+    "Endbringer": "Name:Endbringer\nManaCost:5\nTypes:Creature Eldrazi\nPT:5/5\nS:Mode$ Continuous | Affected$ Card.Self | AddHiddenKeyword$ CARDNAME doesn't untap during your untap step.\nT:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Untap.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nA:AB$ DealDamage | Cost$ T | NumDmg$ 1 | TargetType$ Creature,Player\nA:AB$ Tap | Cost$ T | TargetType$ Creature\nA:AB$ Draw | Cost$ T | NumCards$ 1\nOracle:Endbringer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Endbringer",
+      "controller": 0
+    }
+  ]
+}

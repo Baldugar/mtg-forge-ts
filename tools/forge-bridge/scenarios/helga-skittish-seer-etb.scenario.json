@@ -1,0 +1,29 @@
+{
+  "id": "helga-skittish-seer-etb",
+  "description": "Helga, Skittish Seer ETB; spell cast trigger parse.",
+  "seed": 1295,
+  "cards": {
+    "Helga, Skittish Seer": "Name:Helga, Skittish Seer\nManaCost:1 G U\nTypes:Legendary Creature Dwarf Druid\nPT:0/3\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Creature | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Helga.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self\nOracle:Helga parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Helga, Skittish Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Helga, Skittish Seer",
+      "controller": 0
+    }
+  ]
+}

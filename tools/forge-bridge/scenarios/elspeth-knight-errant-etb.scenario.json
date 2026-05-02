@@ -1,0 +1,29 @@
+{
+  "id": "elspeth-knight-errant-etb",
+  "description": "Elspeth, Knight-Errant ETB; emblem ult parse.",
+  "seed": 1379,
+  "cards": {
+    "Elspeth, Knight-Errant": "Name:Elspeth, Knight-Errant\nManaCost:2 W W\nTypes:Legendary Planeswalker Elspeth\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ w_1_1_soldier | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | TargetType$ Creature | NumAtt$ 3 | KW$ Flying | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Elspeth Emblem | StaticAbilities$ STIndest | Planeswalker$ True | Ultimate$ True\nSVar:STIndest:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Indestructible\nOracle:Elspeth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elspeth, Knight-Errant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Elspeth, Knight-Errant",
+      "controller": 0
+    }
+  ]
+}

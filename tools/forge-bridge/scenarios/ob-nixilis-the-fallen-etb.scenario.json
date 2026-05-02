@@ -1,0 +1,29 @@
+{
+  "id": "ob-nixilis-the-fallen-etb",
+  "description": "Ob Nixilis, the Fallen ETB; landfall counter loss life parse.",
+  "seed": 1529,
+  "cards": {
+    "Ob Nixilis, the Fallen": "Name:Ob Nixilis, the Fallen\nManaCost:3 B B\nTypes:Legendary Creature Demon\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Ob.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 4 | Defined$ Self | SubAbility$ DBLife\nSVar:DBLife:DB$ LoseLife | LifeAmount$ 4 | Defined$ Opponent\nOracle:Ob parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ob Nixilis, the Fallen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ob Nixilis, the Fallen",
+      "controller": 0
+    }
+  ]
+}

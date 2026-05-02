@@ -1,0 +1,29 @@
+{
+  "id": "karametra-god-of-harvests-etb",
+  "description": "Karametra, God of Harvests ETB; cast trigger search parse.",
+  "seed": 1322,
+  "cards": {
+    "Karametra, God of Harvests": "Name:Karametra, God of Harvests\nManaCost:3 G W\nTypes:Legendary Enchantment Creature God\nPT:6/7\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Creature | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Karametra.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains,Forest | Tapped$ True | ChangeNum$ 1\nOracle:Karametra parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karametra, God of Harvests"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Karametra, God of Harvests",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "saheeli-the-gifted-etb",
+  "description": "Saheeli, the Gifted ETB; copy parse.",
+  "seed": 1605,
+  "cards": {
+    "Saheeli, the Gifted": "Name:Saheeli, the Gifted\nManaCost:1 U R\nTypes:Legendary Planeswalker Saheeli\nLoyalty:3\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Produced$ C | Amount$ 1 | Planeswalker$ True\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ c_a_servo | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ CopyPermanent | Cost$ SubCounter<7/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Creature | NumCopies$ 1 | Planeswalker$ True | Ultimate$ True\nOracle:Saheeli Gifted parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saheeli, the Gifted"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Saheeli, the Gifted",
+      "controller": 0
+    }
+  ]
+}

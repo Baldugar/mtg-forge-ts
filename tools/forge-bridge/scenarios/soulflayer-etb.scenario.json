@@ -1,0 +1,29 @@
+{
+  "id": "soulflayer-etb",
+  "description": "Soulflayer ETB; delve grant kw parse.",
+  "seed": 1422,
+  "cards": {
+    "Soulflayer": "Name:Soulflayer\nManaCost:5 B B\nTypes:Creature Demon\nPT:4/4\nK:Delve\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Soulflayer.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying & Trample & Lifelink\nOracle:Soulflayer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulflayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Soulflayer",
+      "controller": 0
+    }
+  ]
+}

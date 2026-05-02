@@ -1,0 +1,29 @@
+{
+  "id": "aether-vial-etb-v3",
+  "description": "Aether Vial ETB v3; counter activate parse.",
+  "seed": 1574,
+  "cards": {
+    "Aether Vial v3": "Name:Aether Vial v3\nManaCost:1\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | OptionalDecider$ You | TriggerDescription$ Vial.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | Defined$ Self\nA:AB$ ChangeZone | Cost$ T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | ChangeNum$ 1 | References$ X\nSVar:X:Count$CardCounters.CHARGE\nOracle:Vial parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Vial v3"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aether Vial v3",
+      "controller": 0
+    }
+  ]
+}

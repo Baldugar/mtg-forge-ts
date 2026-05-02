@@ -1,0 +1,29 @@
+{
+  "id": "goblin-piledriver-etb",
+  "description": "Goblin Piledriver ETB; +2/+0 per goblin parse.",
+  "seed": 1483,
+  "cards": {
+    "Goblin Piledriver": "Name:Goblin Piledriver\nManaCost:R R\nTypes:Creature Goblin Warrior\nPT:1/2\nK:Protection from blue\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | References$ X | CharacteristicDefining$ True | Description$ Piledriver.\nSVar:X:Count$YourGoblins/Times.2/Minus.2\nOracle:Piledriver parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Piledriver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Piledriver",
+      "controller": 0
+    }
+  ]
+}

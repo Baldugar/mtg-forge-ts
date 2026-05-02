@@ -1,0 +1,29 @@
+{
+  "id": "sephiroth-fabled-soldier-etb",
+  "description": "Sephiroth, Fabled SOLDIER ETB; flying lifelink parse.",
+  "seed": 1303,
+  "cards": {
+    "Sephiroth, Fabled SOLDIER": "Name:Sephiroth, Fabled SOLDIER\nManaCost:2 B B\nTypes:Legendary Creature Human Soldier Villain\nPT:4/4\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Sephiroth.\nSVar:TrigDmg:DB$ LoseLife | LifeAmount$ 2 | Defined$ Opponent\nOracle:Sephiroth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sephiroth, Fabled SOLDIER"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sephiroth, Fabled SOLDIER",
+      "controller": 0
+    }
+  ]
+}

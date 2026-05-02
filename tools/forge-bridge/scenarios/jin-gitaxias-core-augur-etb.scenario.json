@@ -1,0 +1,29 @@
+{
+  "id": "jin-gitaxias-core-augur-etb",
+  "description": "Jin-Gitaxias, Core Augur ETB; flash discard 7 parse.",
+  "seed": 1587,
+  "cards": {
+    "Jin-Gitaxias, Core Augur": "Name:Jin-Gitaxias, Core Augur\nManaCost:8 U U U\nTypes:Legendary Creature Phyrexian Wizard\nPT:5/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw 7.\nSVar:TrigDraw:DB$ Draw | NumCards$ 7\nOracle:Jin parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jin-Gitaxias, Core Augur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Jin-Gitaxias, Core Augur",
+      "controller": 0
+    }
+  ]
+}

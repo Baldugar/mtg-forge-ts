@@ -1,0 +1,23 @@
+{
+  "id": "gruul-charm-in-hand",
+  "description": "Gruul Charm in hand; modal parse.",
+  "seed": 1360,
+  "cards": {
+    "Gruul Charm": "Name:Gruul Charm\nManaCost:R G\nTypes:Instant\nA:SP$ Charm | Cost$ R G | Choices$ DBDmg,DBNoBlock,DBControlSwap\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 3 | DefinedDmg$ All | ValidTgts$ Creature.Flying\nSVar:DBNoBlock:DB$ Effect | StaticAbilities$ STNoBlock\nSVar:STNoBlock:Mode$ CantBlock | ValidCard$ Creature.OppCtrl\nSVar:DBControlSwap:DB$ Pump | TargetType$ Creature | KW$ Trample\nOracle:Gruul Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gruul Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "karn-the-great-creator-etb",
+  "description": "Karn, the Great Creator ETB; wishboard parse.",
+  "seed": 1579,
+  "cards": {
+    "Karn, the Great Creator": "Name:Karn, the Great Creator\nManaCost:4\nTypes:Legendary Planeswalker Karn\nLoyalty:5\nA:AB$ Animate | Cost$ AddCounter<1/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact.nonCreature | Power$ X | Toughness$ X | References$ X | Planeswalker$ True\nSVar:X:Targeted$CardManaCost\nA:AB$ ChangeZone | Cost$ SubCounter<2/LOYALTY> | Origin$ Sideboard | Destination$ Hand | ChangeType$ Card.Artifact | ChangeNum$ 1 | Planeswalker$ True\nOracle:Karn Creator parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karn, the Great Creator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Karn, the Great Creator",
+      "controller": 0
+    }
+  ]
+}

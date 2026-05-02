@@ -1,0 +1,29 @@
+{
+  "id": "fanatic-of-xenagos-etb",
+  "description": "Fanatic of Xenagos ETB; tribute parse.",
+  "seed": 1341,
+  "cards": {
+    "Fanatic of Xenagos": "Name:Fanatic of Xenagos\nManaCost:1 R G\nTypes:Creature Centaur Berserker\nPT:2/2\nK:Tribute:2\nT:Mode$ Tributed | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tribute.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2\nOracle:Xenagos parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fanatic of Xenagos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Fanatic of Xenagos",
+      "controller": 0
+    }
+  ]
+}

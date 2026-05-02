@@ -1,0 +1,29 @@
+{
+  "id": "tibalt-cosmic-impostor-etb",
+  "description": "Tibalt, Cosmic Impostor ETB; exile cast parse.",
+  "seed": 1405,
+  "cards": {
+    "Tibalt, Cosmic Impostor": "Name:Tibalt, Cosmic Impostor\nManaCost:6 B R\nTypes:Legendary Planeswalker Tibalt\nLoyalty:5\nA:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | DigNum$ 1 | DefinedPlayer$ Each | DestinationZone$ Exile | ChangeNum$ 0 | Planeswalker$ True\nA:AB$ Play | Cost$ SubCounter<3/LOYALTY> | Defined$ Targeted | TargetType$ Card | Origin$ Exile | WithoutManaCost$ True | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Tibalt Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Tibalt parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tibalt, Cosmic Impostor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tibalt, Cosmic Impostor",
+      "controller": 0
+    }
+  ]
+}

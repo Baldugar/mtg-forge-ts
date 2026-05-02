@@ -1,0 +1,29 @@
+{
+  "id": "kozilek-butcher-of-truth-etb",
+  "description": "Kozilek, Butcher of Truth ETB; annihilator parse.",
+  "seed": 1313,
+  "cards": {
+    "Kozilek, Butcher of Truth": "Name:Kozilek, Butcher of Truth\nManaCost:10\nTypes:Legendary Creature Eldrazi\nPT:12/12\nK:Annihilator:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Draw 4.\nSVar:TrigDraw:DB$ Draw | NumCards$ 4\nOracle:Kozilek parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kozilek, Butcher of Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Kozilek, Butcher of Truth",
+      "controller": 0
+    }
+  ]
+}

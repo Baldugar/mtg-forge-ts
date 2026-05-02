@@ -1,0 +1,29 @@
+{
+  "id": "thopter-foundry-etb",
+  "description": "Thopter Foundry ETB; sac art -> thopter parse.",
+  "seed": 1567,
+  "cards": {
+    "Thopter Foundry": "Name:Thopter Foundry\nManaCost:W U B\nTypes:Artifact\nA:AB$ Token | Cost$ 1 Sac<1/Artifact> | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1 | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nOracle:Foundry parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thopter Foundry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Thopter Foundry",
+      "controller": 0
+    }
+  ]
+}

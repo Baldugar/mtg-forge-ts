@@ -1,0 +1,29 @@
+{
+  "id": "bonecrusher-giant-etb-m624",
+  "description": "Bonecrusher Giant ETB; adventure parse.",
+  "seed": 1425,
+  "cards": {
+    "Bonecrusher Giant": "Name:Bonecrusher Giant\nManaCost:1 R\nTypes:Creature Giant\nPT:4/3\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Card.Spell | Execute$ TrigDmg | TriggerDescription$ Stomp.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | DefinedTarget$ TargetedController\nAlternateMode:Adventure\nOracle:Bonecrusher parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bonecrusher Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bonecrusher Giant",
+      "controller": 0
+    }
+  ]
+}

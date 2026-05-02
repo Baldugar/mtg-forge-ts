@@ -1,0 +1,29 @@
+{
+  "id": "embercleave-etb",
+  "description": "Embercleave ETB; flash auto-attach parse.",
+  "seed": 1510,
+  "cards": {
+    "Embercleave": "Name:Embercleave\nManaCost:4 R R\nTypes:Legendary Artifact Equipment\nK:Flash\nK:Equip:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ Embercleave.\nSVar:TrigAttach:DB$ Attach | TargetType$ Creature | ValidTgts$ Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddKeyword$ Double Strike & Trample | Description$ Cleave.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | References$ X\nSVar:X:Count$YourAttackers\nOracle:Cleave parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embercleave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Embercleave",
+      "controller": 0
+    }
+  ]
+}

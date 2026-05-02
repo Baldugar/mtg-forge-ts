@@ -1,0 +1,29 @@
+{
+  "id": "scute-swarm-etb",
+  "description": "Scute Swarm ETB; copy on landfall parse.",
+  "seed": 1525,
+  "cards": {
+    "Scute Swarm": "Name:Scute Swarm\nManaCost:1 G\nTypes:Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Scute.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_insect | TokenAmount$ 1 | TokenSourceName$ Scute Swarm\nOracle:Scute parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scute Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Scute Swarm",
+      "controller": 0
+    }
+  ]
+}

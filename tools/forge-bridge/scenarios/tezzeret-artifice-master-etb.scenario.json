@@ -1,0 +1,29 @@
+{
+  "id": "tezzeret-artifice-master-etb",
+  "description": "Tezzeret, Artifice Master ETB; thopter draw emblem parse.",
+  "seed": 1580,
+  "cards": {
+    "Tezzeret, Artifice Master": "Name:Tezzeret, Artifice Master\nManaCost:4 U\nTypes:Legendary Planeswalker Tezzeret\nLoyalty:5\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ Draw | Cost$ SubCounter<3/LOYALTY> | NumCards$ 1 | UnlessCost$ 0 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Tezz Emblem | Triggers$ TrigEm | Planeswalker$ True | Ultimate$ True\nSVar:TrigEm:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_5_5_thopter_flying | TokenAmount$ 1\nOracle:Tezz Artifice parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret, Artifice Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tezzeret, Artifice Master",
+      "controller": 0
+    }
+  ]
+}

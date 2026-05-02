@@ -1,0 +1,29 @@
+{
+  "id": "field-of-the-dead-etb-m624",
+  "description": "Field of the Dead ETB; landfall zombie parse.",
+  "seed": 1548,
+  "cards": {
+    "Field of the Dead": "Name:Field of the Dead\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | CheckSVar$ X | SVarCompare$ GE7 | References$ X | TriggerDescription$ Field.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nSVar:X:Count$DifferentCardName_Land.YouCtrl\nOracle:Field parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Field of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Field of the Dead",
+      "controller": 0
+    }
+  ]
+}

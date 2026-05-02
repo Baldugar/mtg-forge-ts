@@ -1,0 +1,29 @@
+{
+  "id": "aerith-gainsborough-etb",
+  "description": "Aerith Gainsborough ETB; heal draw parse.",
+  "seed": 1305,
+  "cards": {
+    "Aerith Gainsborough": "Name:Aerith Gainsborough\nManaCost:1 G W\nTypes:Legendary Creature Human Cleric\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLife | TriggerDescription$ Aerith.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 3\nOracle:Aerith parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aerith Gainsborough"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aerith Gainsborough",
+      "controller": 0
+    }
+  ]
+}

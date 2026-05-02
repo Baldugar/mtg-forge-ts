@@ -1,0 +1,29 @@
+{
+  "id": "sarkhan-vol-etb",
+  "description": "Sarkhan Vol ETB; haste / token / control parse.",
+  "seed": 1404,
+  "cards": {
+    "Sarkhan Vol": "Name:Sarkhan Vol\nManaCost:2 R G\nTypes:Legendary Planeswalker Sarkhan\nLoyalty:4\nA:AB$ PumpAll | Cost$ AddCounter<1/LOYALTY> | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 1 | KW$ Haste | Planeswalker$ True\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ r_4_4_dragon_flying | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ ExchangeControl | Cost$ SubCounter<6/LOYALTY> | TargetType$ Creature | Defined$ Opponent | Planeswalker$ True | Ultimate$ True\nOracle:Sarkhan Vol parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan Vol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sarkhan Vol",
+      "controller": 0
+    }
+  ]
+}

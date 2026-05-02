@@ -1,0 +1,29 @@
+{
+  "id": "phlage-titan-etb",
+  "description": "Phlage, Titan of Fire's Fury ETB; bolt parse.",
+  "seed": 1280,
+  "cards": {
+    "Phlage, Titan of Fire's Fury": "Name:Phlage, Titan of Fire's Fury\nManaCost:1 R W\nTypes:Legendary Creature Elemental Incarnation\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Phlage.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 3\nOracle:Phlage parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phlage, Titan of Fire's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phlage, Titan of Fire's Fury",
+      "controller": 0
+    }
+  ]
+}

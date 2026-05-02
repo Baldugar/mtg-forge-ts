@@ -1,0 +1,29 @@
+{
+  "id": "lurrus-of-the-dream-den-etb",
+  "description": "Lurrus of the Dream-Den ETB; recur permanent parse.",
+  "seed": 1437,
+  "cards": {
+    "Lurrus of the Dream-Den": "Name:Lurrus of the Dream-Den\nManaCost:1 W B\nTypes:Legendary Creature Cat Nightmare\nPT:3/2\nK:Lifelink\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ All | AddHiddenKeyword$ Companion.\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCast | TriggerDescription$ Lurrus.\nSVar:TrigCast:DB$ Effect | Triggers$ TrigOnce\nSVar:TrigOnce:Mode$ Always\nOracle:Lurrus parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurrus of the Dream-Den"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lurrus of the Dream-Den",
+      "controller": 0
+    }
+  ]
+}

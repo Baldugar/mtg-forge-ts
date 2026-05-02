@@ -1,0 +1,29 @@
+{
+  "id": "gravecrawler-etb",
+  "description": "Gravecrawler ETB; recur from grave if zombie parse.",
+  "seed": 1420,
+  "cards": {
+    "Gravecrawler": "Name:Gravecrawler\nManaCost:B\nTypes:Creature Zombie\nPT:2/1\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | MayPlayWithoutCost$ True | EffectZone$ Graveyard | Description$ Cast from grave.\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ All | AddHiddenKeyword$ CARDNAME can't block.\nOracle:Gravecrawler parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravecrawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gravecrawler",
+      "controller": 0
+    }
+  ]
+}

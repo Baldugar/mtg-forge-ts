@@ -1,0 +1,29 @@
+{
+  "id": "beza-the-bounding-spring-etb",
+  "description": "Beza, the Bounding Spring ETB; modal parse.",
+  "seed": 1600,
+  "cards": {
+    "Beza, the Bounding Spring": "Name:Beza, the Bounding Spring\nManaCost:2 W U\nTypes:Legendary Creature Otter Cleric\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Beza.\nSVar:TrigCharm:DB$ Charm | Choices$ DBLife,DBToken,DBDraw\nSVar:DBLife:DB$ GainLife | LifeAmount$ 4\nSVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 2\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:Beza parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beza, the Bounding Spring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Beza, the Bounding Spring",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "veteran-explorer-etb",
+  "description": "Veteran Explorer ETB; sac ramp parse.",
+  "seed": 1328,
+  "cards": {
+    "Veteran Explorer": "Name:Veteran Explorer\nManaCost:G\nTypes:Creature Human Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Explorer.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 2 | Tapped$ True\nOracle:Explorer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Veteran Explorer",
+      "controller": 0
+    }
+  ]
+}

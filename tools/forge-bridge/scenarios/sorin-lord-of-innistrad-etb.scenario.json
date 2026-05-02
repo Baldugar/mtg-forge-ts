@@ -1,0 +1,29 @@
+{
+  "id": "sorin-lord-of-innistrad-etb",
+  "description": "Sorin, Lord of Innistrad ETB; vampire emblem ult parse.",
+  "seed": 1380,
+  "cards": {
+    "Sorin, Lord of Innistrad": "Name:Sorin, Lord of Innistrad\nManaCost:2 W B\nTypes:Legendary Planeswalker Sorin\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ b_1_1_vampire_lifelink | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<2/LOYALTY> | Triggers$ TrigPump | Planeswalker$ True\nSVar:TrigPump:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 0\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Sorin Emblem | StaticAbilities$ STBoost | Planeswalker$ True | Ultimate$ True\nSVar:STBoost:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 0\nOracle:Sorin parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sorin, Lord of Innistrad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sorin, Lord of Innistrad",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "golgari-charm-in-hand",
+  "description": "Golgari Charm in hand; modal parse.",
+  "seed": 1355,
+  "cards": {
+    "Golgari Charm": "Name:Golgari Charm\nManaCost:B G\nTypes:Instant\nA:SP$ Charm | Cost$ B G | Choices$ DBPumpAll,DBDestroyEnch,DBRegen\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1\nSVar:DBDestroyEnch:DB$ DestroyAll | ValidCards$ Enchantment\nSVar:DBRegen:DB$ Effect | StaticAbilities$ STRegen\nSVar:STRegen:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Indestructible\nOracle:Golgari Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golgari Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

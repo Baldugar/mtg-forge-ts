@@ -1,0 +1,29 @@
+{
+  "id": "tezzeret-the-schemer-etb",
+  "description": "Tezzeret the Schemer ETB; etherium / dmg parse.",
+  "seed": 1396,
+  "cards": {
+    "Tezzeret the Schemer": "Name:Tezzeret the Schemer\nManaCost:2 U B\nTypes:Legendary Planeswalker Tezzeret\nLoyalty:5\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_a_etherium_cell | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | NumDmg$ 5 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Tezzeret Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Tezzeret parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret the Schemer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tezzeret the Schemer",
+      "controller": 0
+    }
+  ]
+}

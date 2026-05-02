@@ -1,0 +1,29 @@
+{
+  "id": "restoration-angel-flicker",
+  "description": "Restoration Angel ETB; flicker target parse.",
+  "seed": 1371,
+  "cards": {
+    "Restoration Angel": "Name:Restoration Angel\nManaCost:3 W\nTypes:Creature Angel\nPT:3/4\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Resto.\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.YouCtrl+Other+nonAngel | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield\nOracle:Resto parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restoration Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Restoration Angel",
+      "controller": 0
+    }
+  ]
+}

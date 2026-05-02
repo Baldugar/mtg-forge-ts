@@ -1,0 +1,29 @@
+{
+  "id": "hangarback-walker-etb",
+  "description": "Hangarback Walker ETB; XX counters parse.",
+  "seed": 1457,
+  "cards": {
+    "Hangarback Walker": "Name:Hangarback Walker\nManaCost:X X\nTypes:Artifact Creature Construct\nPT:0/0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Walker.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ Y | References$ Y\nSVar:Y:Count$CardCounters.P1P1\nOracle:Hangarback parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hangarback Walker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Hangarback Walker",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "bloodghast-etb-m624",
+  "description": "Bloodghast ETB; landfall return parse.",
+  "seed": 1419,
+  "cards": {
+    "Bloodghast": "Name:Bloodghast\nManaCost:B B\nTypes:Creature Vampire Spirit\nPT:2/1\nK:Haste:You have ten or less life\nT:Mode$ ChangesZone | Origin$ Library,Hand,Stack | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Bloodghast.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self\nOracle:Bloodghast parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodghast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bloodghast",
+      "controller": 0
+    }
+  ]
+}

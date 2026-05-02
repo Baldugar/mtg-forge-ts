@@ -1,0 +1,29 @@
+{
+  "id": "venser-the-sojourner-etb",
+  "description": "Venser, the Sojourner ETB; flicker walker parse.",
+  "seed": 1401,
+  "cards": {
+    "Venser, the Sojourner": "Name:Venser, the Sojourner\nManaCost:3 W U\nTypes:Legendary Planeswalker Venser\nLoyalty:3\nA:AB$ ChangeZone | Cost$ AddCounter<2/LOYALTY> | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | Planeswalker$ True\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield\nA:AB$ PumpAll | Cost$ SubCounter<1/LOYALTY> | ValidCards$ Creature.YouCtrl | KW$ Unblockable | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Venser Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Venser parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venser, the Sojourner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Venser, the Sojourner",
+      "controller": 0
+    }
+  ]
+}

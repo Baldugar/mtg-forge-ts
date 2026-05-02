@@ -1,0 +1,29 @@
+{
+  "id": "sigardas-aid-etb",
+  "description": "Sigarda's Aid ETB; flash equip parse.",
+  "seed": 1513,
+  "cards": {
+    "Sigarda's Aid": "Name:Sigarda's Aid\nManaCost:W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Card.Equipment+YouCtrl,Card.Aura+YouCtrl | AddKeyword$ Flash | Description$ Sigarda.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Equipment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | TriggerDescription$ Trigger.\nSVar:TrigAttach:DB$ Attach | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | Defined$ TriggeredCard\nOracle:Sigarda parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigarda's Aid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sigarda's Aid",
+      "controller": 0
+    }
+  ]
+}

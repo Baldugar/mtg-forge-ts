@@ -1,0 +1,29 @@
+{
+  "id": "vorinclex-monstrous-raider-etb",
+  "description": "Vorinclex, Monstrous Raider ETB; counter doubler parse.",
+  "seed": 1589,
+  "cards": {
+    "Vorinclex, Monstrous Raider": "Name:Vorinclex, Monstrous Raider\nManaCost:5 G G\nTypes:Legendary Creature Phyrexian Praetor\nPT:6/6\nK:Trample\nK:Haste\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleAdd | Description$ Vor self.\nSVar:DoubleAdd:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ReplaceWith$ HalveAdd | Description$ Vor opp.\nSVar:HalveAdd:DB$ ReplaceCounter | Multiplier$ 0.5 | RoundDown$ True\nOracle:Vorinclex Raider parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vorinclex, Monstrous Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vorinclex, Monstrous Raider",
+      "controller": 0
+    }
+  ]
+}

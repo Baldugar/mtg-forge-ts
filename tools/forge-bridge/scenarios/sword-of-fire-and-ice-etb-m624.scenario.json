@@ -1,0 +1,29 @@
+{
+  "id": "sword-of-fire-and-ice-etb-m624",
+  "description": "Sword of Fire and Ice ETB; pro + draw + dmg parse.",
+  "seed": 1507,
+  "cards": {
+    "Sword of Fire and Ice": "Name:Sword of Fire and Ice\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from red & Protection from blue | Description$ SoFI.\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature,Player\nOracle:SoFI parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of Fire and Ice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword of Fire and Ice",
+      "controller": 0
+    }
+  ]
+}

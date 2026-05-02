@@ -1,0 +1,29 @@
+{
+  "id": "karn-scion-of-urza-etb",
+  "description": "Karn, Scion of Urza ETB; reveal exile parse.",
+  "seed": 1578,
+  "cards": {
+    "Karn, Scion of Urza": "Name:Karn, Scion of Urza\nManaCost:4\nTypes:Legendary Planeswalker Karn\nLoyalty:5\nA:AB$ Reveal | Cost$ AddCounter<1/LOYALTY> | NumCards$ 2 | RevealValid$ Card | Planeswalker$ True\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Origin$ Exile | Destination$ Hand | Defined$ Targeted | TargetType$ Card | Planeswalker$ True\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ c_a_construct_x | TokenAmount$ 1 | Planeswalker$ True\nOracle:Karn Scion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karn, Scion of Urza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Karn, Scion of Urza",
+      "controller": 0
+    }
+  ]
+}

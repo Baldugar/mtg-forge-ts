@@ -1,0 +1,29 @@
+{
+  "id": "brimaz-king-of-oreskos-etb",
+  "description": "Brimaz, King of Oreskos ETB; cat tokens parse.",
+  "seed": 1323,
+  "cards": {
+    "Brimaz, King of Oreskos": "Name:Brimaz, King of Oreskos\nManaCost:1 W W\nTypes:Legendary Creature Cat Soldier\nPT:3/4\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Brimaz.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat_soldier_vigilance | TokenAmount$ 1\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigToken\nOracle:Brimaz parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brimaz, King of Oreskos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Brimaz, King of Oreskos",
+      "controller": 0
+    }
+  ]
+}

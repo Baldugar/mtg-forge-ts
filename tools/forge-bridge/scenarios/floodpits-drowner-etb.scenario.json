@@ -1,0 +1,29 @@
+{
+  "id": "floodpits-drowner-etb",
+  "description": "Floodpits Drowner ETB; tap target parse.",
+  "seed": 1307,
+  "cards": {
+    "Floodpits Drowner": "Name:Floodpits Drowner\nManaCost:1 U\nTypes:Creature Merfolk\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Drowner.\nSVar:TrigTap:DB$ Tap | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl\nOracle:Drowner parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Floodpits Drowner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Floodpits Drowner",
+      "controller": 0
+    }
+  ]
+}

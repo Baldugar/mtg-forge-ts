@@ -1,0 +1,29 @@
+{
+  "id": "sword-of-the-meek-etb",
+  "description": "Sword of the Meek ETB; equip return parse.",
+  "seed": 1566,
+  "cards": {
+    "Sword of the Meek": "Name:Sword of the Meek\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.AttachedBy+powerLE1 | AddPower$ 1 | AddToughness$ 2 | Description$ Meek.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+powerEQ1 | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Meek.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self\nOracle:Meek parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword of the Meek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword of the Meek",
+      "controller": 0
+    }
+  ]
+}

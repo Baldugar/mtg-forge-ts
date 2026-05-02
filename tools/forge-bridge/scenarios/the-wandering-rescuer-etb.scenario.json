@@ -1,0 +1,29 @@
+{
+  "id": "the-wandering-rescuer-etb",
+  "description": "The Wandering Rescuer ETB; flash protect parse.",
+  "seed": 1594,
+  "cards": {
+    "The Wandering Rescuer": "Name:The Wandering Rescuer\nManaCost:1 W W\nTypes:Legendary Creature Human Samurai\nPT:4/4\nK:Flash\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Rescuer.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible\nOracle:Rescuer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wandering Rescuer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "The Wandering Rescuer",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "necrodominance-etb-m624",
+  "description": "Necrodominance ETB; max hand replacement parse.",
+  "seed": 1281,
+  "cards": {
+    "Necrodominance": "Name:Necrodominance\nManaCost:B B B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ 5 | Description$ Max hand 5.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ End-step skull.\nSVar:TrigDraw:DB$ Skip | Defined$ You | Phase$ Discard\nOracle:Necrodominance parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrodominance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Necrodominance",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ob-nixilis-reignited-etb",
+  "description": "Ob Nixilis Reignited ETB; draw kill emblem parse.",
+  "seed": 1398,
+  "cards": {
+    "Ob Nixilis Reignited": "Name:Ob Nixilis Reignited\nManaCost:3 B B\nTypes:Legendary Planeswalker Ob Nixilis\nLoyalty:5\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | SubAbility$ DBLife | Planeswalker$ True\nSVar:DBLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ You\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | TargetType$ Creature | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Ob Emblem | StaticAbilities$ STDmg | Planeswalker$ True | Ultimate$ True\nSVar:STDmg:Mode$ Continuous | Affected$ Player.Opponent | Description$ Lose 1 each step.\nOracle:Ob Nixilis parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ob Nixilis Reignited"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ob Nixilis Reignited",
+      "controller": 0
+    }
+  ]
+}

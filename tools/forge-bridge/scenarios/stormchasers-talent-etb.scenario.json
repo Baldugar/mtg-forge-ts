@@ -1,0 +1,29 @@
+{
+  "id": "stormchasers-talent-etb",
+  "description": "Stormchaser's Talent ETB; class parse.",
+  "seed": 1297,
+  "cards": {
+    "Stormchaser's Talent": "Name:Stormchaser's Talent\nManaCost:U\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Talent.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 1\nOracle:Talent parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormchaser's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Stormchaser's Talent",
+      "controller": 0
+    }
+  ]
+}

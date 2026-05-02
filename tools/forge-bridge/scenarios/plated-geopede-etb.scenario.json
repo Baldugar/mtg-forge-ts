@@ -1,0 +1,29 @@
+{
+  "id": "plated-geopede-etb",
+  "description": "Plated Geopede ETB; landfall +2/+2 parse.",
+  "seed": 1532,
+  "cards": {
+    "Plated Geopede": "Name:Plated Geopede\nManaCost:1 R\nTypes:Creature Insect\nPT:1/2\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Geopede.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2\nOracle:Geopede parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plated Geopede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Plated Geopede",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "forbidden-orchard-etb",
+  "description": "Forbidden Orchard ETB; gift opponent token parse.",
+  "seed": 1561,
+  "cards": {
+    "Forbidden Orchard": "Name:Forbidden Orchard\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Card.YouCtrl\nT:Mode$ TapsForMana | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Orchard.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_spirit | TokenAmount$ 1 | TokenOwner$ Opponent\nOracle:Orchard parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forbidden Orchard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Forbidden Orchard",
+      "controller": 0
+    }
+  ]
+}

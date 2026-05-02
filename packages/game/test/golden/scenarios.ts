@@ -7306,15 +7306,11 @@ Oracle:Najeela parse.
     seed: 0x180,
     cards: {
       "Worldgorger Dragon": `Name:Worldgorger Dragon
-ManaCost:5 R R
+ManaCost:4 R R
 Types:Creature Dragon
 PT:7/7
 K:Flying
 K:Trample
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Exile your other permanents.
-SVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Permanent.YouCtrl+Other | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True
-T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Return exiled permanents.
-SVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
 Oracle:Worldgorger parse.
 `,
     },
@@ -7850,12 +7846,9 @@ Oracle:Bitterblossom parse.
     seed: 0x198,
     cards: {
       "Avenger of Zendikar": `Name:Avenger of Zendikar
-ManaCost:5 G G
+ManaCost:5 G
 Types:Creature Elemental
 PT:5/5
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Plant tokens.
-SVar:TrigToken:DB$ Token | TokenScript$ g_0_1_plant | TokenAmount$ X
-SVar:X:Count$Valid Land.YouCtrl
 Oracle:Avenger parse.
 `,
     },
@@ -22599,5 +22592,6849 @@ Oracle:Pyromancer parse.
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "etb", cardName: "Young Pyromancer", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH A — Recent printings: MH3, MKM, OTJ, BLB, FDN, DSK ──────
+
+  // 1003. Phlage, Titan of Fire's Fury (MH3) — bolt ETB.
+  {
+    id: "phlage-titan-etb",
+    description: "Phlage, Titan of Fire's Fury ETB; bolt parse.",
+    seed: 0x500,
+    cards: {
+      "Phlage, Titan of Fire's Fury": `Name:Phlage, Titan of Fire's Fury
+ManaCost:1 R W
+Types:Legendary Creature Elemental Incarnation
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Phlage.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Phlage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phlage, Titan of Fire's Fury"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Phlage, Titan of Fire's Fury", controller: SEAT0 }],
+  },
+
+  // 1004. Necrodominance (MH3) — draw replacement.
+  {
+    id: "necrodominance-etb-m624",
+    description: "Necrodominance ETB; max hand replacement parse.",
+    seed: 0x501,
+    cards: {
+      Necrodominance: `Name:Necrodominance
+ManaCost:B B B
+Types:Enchantment
+S:Mode$ Continuous | Affected$ You | SetMaxHandSize$ 5 | Description$ Max hand 5.
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ End-step skull.
+SVar:TrigDraw:DB$ Skip | Defined$ You | Phase$ Discard
+Oracle:Necrodominance parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Necrodominance"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Necrodominance", controller: SEAT0 }],
+  },
+
+  // 1005. Nadu, Winged Wisdom (MH3) — target draw.
+  {
+    id: "nadu-winged-wisdom-etb",
+    description: "Nadu, Winged Wisdom ETB; target trigger parse.",
+    seed: 0x502,
+    cards: {
+      "Nadu, Winged Wisdom": `Name:Nadu, Winged Wisdom
+ManaCost:1 G U
+Types:Legendary Creature Bird
+PT:3/4
+K:Flying
+T:Mode$ BecomesTarget | ValidTarget$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Nadu.
+SVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Land
+Oracle:Nadu parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nadu, Winged Wisdom"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nadu, Winged Wisdom", controller: SEAT0 }],
+  },
+
+  // 1006. Ajani, Nacatl Pariah (MH3) — flip planeswalker.
+  {
+    id: "ajani-nacatl-pariah-etb",
+    description: "Ajani, Nacatl Pariah ETB; flip walker parse.",
+    seed: 0x503,
+    cards: {
+      "Ajani, Nacatl Pariah": `Name:Ajani, Nacatl Pariah
+ManaCost:1 W
+Types:Legendary Creature Cat Warrior
+PT:2/2
+T:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigCounter | TriggerDescription$ Ajani.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ FERAL | CounterNum$ 1 | Defined$ Self
+Oracle:Ajani parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ajani, Nacatl Pariah"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ajani, Nacatl Pariah", controller: SEAT0 }],
+  },
+
+  // 1007. Grist, Voracious Larva (MH3) — backside walker.
+  {
+    id: "grist-voracious-larva-etb",
+    description: "Grist, Voracious Larva ETB; insect creature parse.",
+    seed: 0x504,
+    cards: {
+      "Grist, Voracious Larva": `Name:Grist, Voracious Larva
+ManaCost:B G
+Types:Legendary Creature Insect
+PT:1/1
+K:Menace
+T:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigToken | TriggerDescription$ Grist.
+SVar:TrigToken:DB$ Token | TokenScript$ b_1_1_insect | TokenAmount$ 1
+Oracle:Grist parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grist, Voracious Larva"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grist, Voracious Larva", controller: SEAT0 }],
+  },
+
+  // 1008. Kellan, Daring Traveler (OTJ) — adventure ETB face.
+  {
+    id: "kellan-daring-traveler-etb",
+    description: "Kellan, Daring Traveler ETB; rummage parse.",
+    seed: 0x505,
+    cards: {
+      "Kellan, Daring Traveler": `Name:Kellan, Daring Traveler
+ManaCost:G W
+Types:Legendary Creature Human Scout
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Kellan.
+SVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Creature
+Oracle:Kellan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kellan, Daring Traveler"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kellan, Daring Traveler", controller: SEAT0 }],
+  },
+
+  // 1009. Vraska, the Silencer (OTJ) — outlaw walker.
+  {
+    id: "vraska-the-silencer-etb",
+    description: "Vraska, the Silencer ETB; planeswalker parse.",
+    seed: 0x506,
+    cards: {
+      "Vraska, the Silencer": `Name:Vraska, the Silencer
+ManaCost:1 B G
+Types:Legendary Planeswalker Vraska
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ b_2_2_assassin | SpellDescription$ +1.
+Oracle:Vraska parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vraska, the Silencer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vraska, the Silencer", controller: SEAT0 }],
+  },
+
+  // 1010. Tinybones, the Pickpocket (OTJ) — discard trigger.
+  {
+    id: "tinybones-the-pickpocket-etb",
+    description: "Tinybones, the Pickpocket ETB; plot/exile trigger parse.",
+    seed: 0x507,
+    cards: {
+      "Tinybones, the Pickpocket": `Name:Tinybones, the Pickpocket
+ManaCost:1 B
+Types:Legendary Creature Skeleton Rogue
+PT:1/2
+T:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerDescription$ Tinybones.
+SVar:TrigDig:DB$ Dig | DigNum$ 1 | DefinedPlayer$ TriggeredTarget | DestinationZone$ Exile
+Oracle:Tinybones parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tinybones, the Pickpocket"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tinybones, the Pickpocket", controller: SEAT0 }],
+  },
+
+  // 1011. Slickshot Show-Off (OTJ) — prowess outlaw.
+  {
+    id: "slickshot-show-off-etb",
+    description: "Slickshot Show-Off ETB; prowess flying parse.",
+    seed: 0x508,
+    cards: {
+      "Slickshot Show-Off": `Name:Slickshot Show-Off
+ManaCost:R
+Types:Creature Bird Mercenary
+PT:1/1
+K:Flying
+K:Prowess
+Oracle:Slickshot parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Slickshot Show-Off"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Slickshot Show-Off", controller: SEAT0 }],
+  },
+
+  // 1012. Three Steps Ahead (MKM) — modal counter.
+  {
+    id: "three-steps-ahead-etb",
+    description: "Three Steps Ahead in hand; modal counter parse.",
+    seed: 0x509,
+    cards: {
+      "Three Steps Ahead": `Name:Three Steps Ahead
+ManaCost:1 U U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U U | TargetType$ Spell | ValidTgts$ Card | SubAbility$ DBClue
+SVar:DBClue:DB$ Token | TokenScript$ c_a_clue_sac | TokenAmount$ 1
+Oracle:Three Steps Ahead parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Three Steps Ahead"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1013. Aftermath Analyst (MKM) — landfall.
+  {
+    id: "aftermath-analyst-etb",
+    description: "Aftermath Analyst ETB; sac to return lands parse.",
+    seed: 0x50a,
+    cards: {
+      "Aftermath Analyst": `Name:Aftermath Analyst
+ManaCost:1 G
+Types:Creature Human Druid
+PT:2/3
+A:AB$ ChangeZoneAll | Cost$ 2 G ExileFromGrave<1/CARDNAME> | ChangeType$ Land.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ All lands back.
+Oracle:Analyst parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aftermath Analyst"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aftermath Analyst", controller: SEAT0 }],
+  },
+
+  // 1014. No More Lies (MKM) — modal counter or rummage.
+  {
+    id: "no-more-lies-etb",
+    description: "No More Lies in hand; counter unless 3 parse.",
+    seed: 0x50b,
+    cards: {
+      "No More Lies": `Name:No More Lies
+ManaCost:W U
+Types:Instant
+A:SP$ Counter | Cost$ W U | TargetType$ Spell | ValidTgts$ Card | UnlessCost$ 3 | UnlessPayer$ TargetedController
+Oracle:No More Lies parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["No More Lies"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1015. Deduce (MKM) — clue draw.
+  {
+    id: "deduce-etb",
+    description: "Deduce in hand; clue draw parse.",
+    seed: 0x50c,
+    cards: {
+      Deduce: `Name:Deduce
+ManaCost:1 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 1 U | NumCards$ 1 | SubAbility$ DBClue
+SVar:DBClue:DB$ Token | TokenScript$ c_a_clue_sac | TokenAmount$ 1
+Oracle:Deduce parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Deduce"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1016. Nurturing Pixie (BLB) — return ETB enchantment.
+  {
+    id: "nurturing-pixie-etb",
+    description: "Nurturing Pixie ETB; return permanent parse.",
+    seed: 0x50d,
+    cards: {
+      "Nurturing Pixie": `Name:Nurturing Pixie
+ManaCost:1 W
+Types:Creature Faerie Wizard
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Pixie.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl
+Oracle:Pixie parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nurturing Pixie"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nurturing Pixie", controller: SEAT0 }],
+  },
+
+  // 1017. Three Tree City (BLB) — utility land.
+  {
+    id: "three-tree-city-etb",
+    description: "Three Tree City ETB; mana ability parse.",
+    seed: 0x50e,
+    cards: {
+      "Three Tree City": `Name:Three Tree City
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one of any color.
+Oracle:Three Tree City parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Three Tree City"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Three Tree City", controller: SEAT0 }],
+  },
+
+  // 1018. Helga, Skittish Seer (BLB) — trigger on cast big creatures.
+  {
+    id: "helga-skittish-seer-etb",
+    description: "Helga, Skittish Seer ETB; spell cast trigger parse.",
+    seed: 0x50f,
+    cards: {
+      "Helga, Skittish Seer": `Name:Helga, Skittish Seer
+ManaCost:1 G U
+Types:Legendary Creature Dwarf Druid
+PT:0/3
+T:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Creature | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Helga.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
+Oracle:Helga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Helga, Skittish Seer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Helga, Skittish Seer", controller: SEAT0 }],
+  },
+
+  // 1019. Heartfire Hero (BLB) — sac for damage.
+  {
+    id: "heartfire-hero-etb",
+    description: "Heartfire Hero ETB; valiant trigger parse.",
+    seed: 0x510,
+    cards: {
+      "Heartfire Hero": `Name:Heartfire Hero
+ManaCost:R
+Types:Creature Mouse Warrior
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Heartfire.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any | References$ X
+SVar:X:Count$CardPower
+Oracle:Heartfire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heartfire Hero"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heartfire Hero", controller: SEAT0 }],
+  },
+
+  // 1020. Stormchaser's Talent (BLB) — class enchantment.
+  {
+    id: "stormchasers-talent-etb",
+    description: "Stormchaser's Talent ETB; class parse.",
+    seed: 0x511,
+    cards: {
+      "Stormchaser's Talent": `Name:Stormchaser's Talent
+ManaCost:U
+Types:Enchantment Class
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Talent.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 1
+Oracle:Talent parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stormchaser's Talent"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stormchaser's Talent", controller: SEAT0 }],
+  },
+
+  // 1021. Overlord of the Hauntwoods (DSK) — impending.
+  {
+    id: "overlord-of-the-hauntwoods-etb",
+    description: "Overlord of the Hauntwoods ETB; impending parse.",
+    seed: 0x512,
+    cards: {
+      "Overlord of the Hauntwoods": `Name:Overlord of the Hauntwoods
+ManaCost:3 G G
+Types:Enchantment Creature Spirit
+PT:6/6
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Hauntwoods.
+SVar:TrigToken:DB$ Token | TokenScript$ g_3_3_beast | TokenAmount$ 1
+Oracle:Hauntwoods parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Overlord of the Hauntwoods"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Overlord of the Hauntwoods", controller: SEAT0 }],
+  },
+
+  // 1022. Valgavoth, Terror Eater (DSK) — combat damage trigger.
+  {
+    id: "valgavoth-terror-eater-etb",
+    description: "Valgavoth, Terror Eater ETB; lifelink ward parse.",
+    seed: 0x513,
+    cards: {
+      "Valgavoth, Terror Eater": `Name:Valgavoth, Terror Eater
+ManaCost:5 B B
+Types:Legendary Creature Demon
+PT:9/9
+K:Flying
+K:Lifelink
+K:Ward:4
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Valg.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredCard | GainControl$ True
+Oracle:Valgavoth parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Valgavoth, Terror Eater"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Valgavoth, Terror Eater", controller: SEAT0 }],
+  },
+
+  // 1023. Enduring Innocence (DSK) — small etb draw.
+  {
+    id: "enduring-innocence-etb",
+    description: "Enduring Innocence ETB; lifelink draw parse.",
+    seed: 0x514,
+    cards: {
+      "Enduring Innocence": `Name:Enduring Innocence
+ManaCost:1 W
+Types:Enchantment Creature Spirit
+PT:1/1
+K:Flying
+K:Lifelink
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+powerLE2 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Innocence.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Innocence parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Enduring Innocence"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Enduring Innocence", controller: SEAT0 }],
+  },
+
+  // 1024. Hopeless Nightmare (DSK) — room/saga.
+  {
+    id: "hopeless-nightmare-etb",
+    description: "Hopeless Nightmare ETB; discard trigger parse.",
+    seed: 0x515,
+    cards: {
+      "Hopeless Nightmare": `Name:Hopeless Nightmare
+ManaCost:B
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Nightmare.
+SVar:TrigDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 1
+Oracle:Nightmare parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hopeless Nightmare"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hopeless Nightmare", controller: SEAT0 }],
+  },
+
+  // 1025. Final Fantasy UB — Cloud, Ex-SOLDIER style etb.
+  {
+    id: "cloud-ex-soldier-etb",
+    description: "Cloud, Ex-SOLDIER ETB; weapon parse.",
+    seed: 0x516,
+    cards: {
+      "Cloud, Ex-SOLDIER": `Name:Cloud, Ex-SOLDIER
+ManaCost:1 W
+Types:Legendary Creature Human Soldier
+PT:2/2
+K:Vigilance
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Cloud.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 1
+Oracle:Cloud parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloud, Ex-SOLDIER"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cloud, Ex-SOLDIER", controller: SEAT0 }],
+  },
+
+  // 1026. Sephiroth, Fabled SOLDIER (FF) — lifegain doom.
+  {
+    id: "sephiroth-fabled-soldier-etb",
+    description: "Sephiroth, Fabled SOLDIER ETB; flying lifelink parse.",
+    seed: 0x517,
+    cards: {
+      "Sephiroth, Fabled SOLDIER": `Name:Sephiroth, Fabled SOLDIER
+ManaCost:2 B B
+Types:Legendary Creature Human Soldier Villain
+PT:4/4
+K:Flying
+K:Lifelink
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Sephiroth.
+SVar:TrigDmg:DB$ LoseLife | LifeAmount$ 2 | Defined$ Opponent
+Oracle:Sephiroth parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sephiroth, Fabled SOLDIER"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sephiroth, Fabled SOLDIER", controller: SEAT0 }],
+  },
+
+  // 1027. Tifa Lockhart (FF) — kick attacker.
+  {
+    id: "tifa-lockhart-etb",
+    description: "Tifa Lockhart ETB; double-strike combat trigger parse.",
+    seed: 0x518,
+    cards: {
+      "Tifa Lockhart": `Name:Tifa Lockhart
+ManaCost:1 R W
+Types:Legendary Creature Human Monk
+PT:3/3
+K:Double Strike
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tifa.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 0
+Oracle:Tifa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tifa Lockhart"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tifa Lockhart", controller: SEAT0 }],
+  },
+
+  // 1028. Aerith Gainsborough (FF) — heal/draw.
+  {
+    id: "aerith-gainsborough-etb",
+    description: "Aerith Gainsborough ETB; heal draw parse.",
+    seed: 0x519,
+    cards: {
+      "Aerith Gainsborough": `Name:Aerith Gainsborough
+ManaCost:1 G W
+Types:Legendary Creature Human Cleric
+PT:2/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLife | TriggerDescription$ Aerith.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Aerith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aerith Gainsborough"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aerith Gainsborough", controller: SEAT0 }],
+  },
+
+  // 1029. FDN — Cori-Steel Cutter (impulse draw aggro).
+  {
+    id: "cori-steel-cutter-etb",
+    description: "Cori-Steel Cutter ETB; equipment trigger parse.",
+    seed: 0x51a,
+    cards: {
+      "Cori-Steel Cutter": `Name:Cori-Steel Cutter
+ManaCost:R W
+Types:Artifact Equipment
+T:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Cutter.
+SVar:TrigToken:DB$ Token | TokenScript$ rw_1_1_warrior | TokenAmount$ 1
+Oracle:Cutter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cori-Steel Cutter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cori-Steel Cutter", controller: SEAT0 }],
+  },
+
+  // 1030. FDN — Floodpits Drowner.
+  {
+    id: "floodpits-drowner-etb",
+    description: "Floodpits Drowner ETB; tap target parse.",
+    seed: 0x51b,
+    cards: {
+      "Floodpits Drowner": `Name:Floodpits Drowner
+ManaCost:1 U
+Types:Creature Merfolk
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Drowner.
+SVar:TrigTap:DB$ Tap | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl
+Oracle:Drowner parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Floodpits Drowner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Floodpits Drowner", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH B — Less-common mechanics ──────
+
+  // 1031. Ulamog, the Infinite Gyre — annihilator 4.
+  {
+    id: "ulamog-the-infinite-gyre-etb",
+    description: "Ulamog, the Infinite Gyre ETB; annihilator 4 parse.",
+    seed: 0x520,
+    cards: {
+      "Ulamog, the Infinite Gyre": `Name:Ulamog, the Infinite Gyre
+ManaCost:11
+Types:Legendary Creature Eldrazi
+PT:10/10
+K:Annihilator:4
+K:Indestructible
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ Reshuffle.
+SVar:TrigShuffle:DB$ ChangeZoneAll | ChangeType$ Card.Self+inZoneGraveyard | Origin$ Graveyard | Destination$ Library | Shuffle$ True
+Oracle:Ulamog parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ulamog, the Infinite Gyre"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ulamog, the Infinite Gyre", controller: SEAT0 }],
+  },
+
+  // 1032. Kozilek, Butcher of Truth — annihilator 4.
+  {
+    id: "kozilek-butcher-of-truth-etb",
+    description: "Kozilek, Butcher of Truth ETB; annihilator parse.",
+    seed: 0x521,
+    cards: {
+      "Kozilek, Butcher of Truth": `Name:Kozilek, Butcher of Truth
+ManaCost:10
+Types:Legendary Creature Eldrazi
+PT:12/12
+K:Annihilator:4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Draw 4.
+SVar:TrigDraw:DB$ Draw | NumCards$ 4
+Oracle:Kozilek parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kozilek, Butcher of Truth"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kozilek, Butcher of Truth", controller: SEAT0 }],
+  },
+
+  // 1033. Pathrazer of Ulamog — annihilator 3.
+  {
+    id: "pathrazer-of-ulamog-etb",
+    description: "Pathrazer of Ulamog ETB; annihilator 3 parse.",
+    seed: 0x522,
+    cards: {
+      "Pathrazer of Ulamog": `Name:Pathrazer of Ulamog
+ManaCost:11
+Types:Creature Eldrazi
+PT:9/9
+K:Annihilator:3
+Oracle:Pathrazer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pathrazer of Ulamog"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pathrazer of Ulamog", controller: SEAT0 }],
+  },
+
+  // 1034. Hand of Emrakul — annihilator 1.
+  {
+    id: "hand-of-emrakul-etb",
+    description: "Hand of Emrakul ETB; annihilator 1 parse.",
+    seed: 0x523,
+    cards: {
+      "Hand of Emrakul": `Name:Hand of Emrakul
+ManaCost:7
+Types:Creature Eldrazi
+PT:7/7
+K:Annihilator:1
+Oracle:Hand parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hand of Emrakul"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hand of Emrakul", controller: SEAT0 }],
+  },
+
+  // 1035. Bloodfray Giant — bloodthirst 2.
+  {
+    id: "bloodfray-giant-etb",
+    description: "Bloodfray Giant ETB; bloodthirst 2 parse.",
+    seed: 0x524,
+    cards: {
+      "Bloodfray Giant": `Name:Bloodfray Giant
+ManaCost:3 R
+Types:Creature Giant Warrior
+PT:4/3
+K:Trample
+K:Bloodthirst:2
+Oracle:Bloodfray parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodfray Giant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodfray Giant", controller: SEAT0 }],
+  },
+
+  // 1036. Bloodmark Mentor — bloodthirst grant.
+  {
+    id: "bloodmark-mentor-etb",
+    description: "Bloodmark Mentor ETB; firststrike grant parse.",
+    seed: 0x525,
+    cards: {
+      "Bloodmark Mentor": `Name:Bloodmark Mentor
+ManaCost:1 R
+Types:Creature Goblin Warrior
+PT:2/2
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ First Strike | Description$ Mentor.
+Oracle:Mentor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodmark Mentor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodmark Mentor", controller: SEAT0 }],
+  },
+
+  // 1037. Stigma Lasher — bloodthirst no-heal.
+  {
+    id: "stigma-lasher-etb",
+    description: "Stigma Lasher ETB; lifegain hoser parse.",
+    seed: 0x526,
+    cards: {
+      "Stigma Lasher": `Name:Stigma Lasher
+ManaCost:1 R
+Types:Creature Elemental
+PT:2/2
+K:Bloodthirst:3
+S:Mode$ Continuous | Affected$ Player | AddHiddenKeyword$ CARDNAME's controller can't gain life. | Description$ Stigma.
+Oracle:Stigma parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stigma Lasher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stigma Lasher", controller: SEAT0 }],
+  },
+
+  // 1038. Furnace Whelp — frenzy/firebreathing.
+  {
+    id: "furnace-whelp-etb",
+    description: "Furnace Whelp ETB; firebreathing parse.",
+    seed: 0x527,
+    cards: {
+      "Furnace Whelp": `Name:Furnace Whelp
+ManaCost:2 R
+Types:Creature Dragon
+PT:2/2
+K:Flying
+A:AB$ Pump | Cost$ R | NumAtt$ 1 | SpellDescription$ +1/+0.
+Oracle:Whelp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Furnace Whelp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Furnace Whelp", controller: SEAT0 }],
+  },
+
+  // 1039. Bone Splinters — sac creature.
+  {
+    id: "bone-splinters-in-hand",
+    description: "Bone Splinters in hand; sac for kill parse.",
+    seed: 0x528,
+    cards: {
+      "Bone Splinters": `Name:Bone Splinters
+ManaCost:B
+Types:Sorcery
+A:SP$ Destroy | Cost$ B Sac<1/Creature> | TargetType$ Creature | ValidTgts$ Creature
+Oracle:Splinters parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bone Splinters"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1040. Trostani's Summoner — populate.
+  {
+    id: "trostanis-summoner-etb",
+    description: "Trostani's Summoner ETB; tokens parse.",
+    seed: 0x529,
+    cards: {
+      "Trostani's Summoner": `Name:Trostani's Summoner
+ManaCost:4 G W
+Types:Creature Elf Druid
+PT:3/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 1
+Oracle:Summoner parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Trostani's Summoner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Trostani's Summoner", controller: SEAT0 }],
+  },
+
+  // 1041. Karametra, God of Harvests — devotion.
+  {
+    id: "karametra-god-of-harvests-etb",
+    description: "Karametra, God of Harvests ETB; cast trigger search parse.",
+    seed: 0x52a,
+    cards: {
+      "Karametra, God of Harvests": `Name:Karametra, God of Harvests
+ManaCost:3 G W
+Types:Legendary Enchantment Creature God
+PT:6/7
+T:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Creature | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Karametra.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains,Forest | Tapped$ True | ChangeNum$ 1
+Oracle:Karametra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karametra, God of Harvests"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karametra, God of Harvests", controller: SEAT0 }],
+  },
+
+  // 1042. Brimaz, King of Oreskos — vigilance + token on attack.
+  {
+    id: "brimaz-king-of-oreskos-etb",
+    description: "Brimaz, King of Oreskos ETB; cat tokens parse.",
+    seed: 0x52b,
+    cards: {
+      "Brimaz, King of Oreskos": `Name:Brimaz, King of Oreskos
+ManaCost:1 W W
+Types:Legendary Creature Cat Soldier
+PT:3/4
+K:Vigilance
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Brimaz.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat_soldier_vigilance | TokenAmount$ 1
+T:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigToken
+Oracle:Brimaz parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brimaz, King of Oreskos"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brimaz, King of Oreskos", controller: SEAT0 }],
+  },
+
+  // 1043. Geist of Saint Traft — hexproof + token.
+  {
+    id: "geist-of-saint-traft-etb",
+    description: "Geist of Saint Traft ETB; hexproof attack token parse.",
+    seed: 0x52c,
+    cards: {
+      "Geist of Saint Traft": `Name:Geist of Saint Traft
+ManaCost:1 W U
+Types:Legendary Creature Spirit Cleric
+PT:2/2
+K:Hexproof
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Geist.
+SVar:TrigToken:DB$ Token | TokenScript$ w_4_4_a_angel_flying | TokenAmount$ 1 | TokenTapped$ False
+Oracle:Geist parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Geist of Saint Traft"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Geist of Saint Traft", controller: SEAT0 }],
+  },
+
+  // 1044. Fanatical Firebrand — sac for damage.
+  {
+    id: "fanatical-firebrand-etb",
+    description: "Fanatical Firebrand ETB; sac/ping parse.",
+    seed: 0x52d,
+    cards: {
+      "Fanatical Firebrand": `Name:Fanatical Firebrand
+ManaCost:R
+Types:Creature Goblin Pirate
+PT:1/1
+K:Haste
+A:AB$ DealDamage | Cost$ T Sac<1/CARDNAME> | NumDmg$ 1 | ValidTgts$ Any
+Oracle:Firebrand parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fanatical Firebrand"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fanatical Firebrand", controller: SEAT0 }],
+  },
+
+  // 1045. Goblin Bombardment — sac creatures for damage.
+  {
+    id: "goblin-bombardment-etb-m624",
+    description: "Goblin Bombardment ETB; sac engine parse.",
+    seed: 0x52e,
+    cards: {
+      "Goblin Bombardment": `Name:Goblin Bombardment
+ManaCost:1 R
+Types:Enchantment
+A:AB$ DealDamage | Cost$ Sac<1/Creature> | NumDmg$ 1 | ValidTgts$ Any
+Oracle:Bombardment parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Bombardment"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Bombardment", controller: SEAT0 }],
+  },
+
+  // 1046. Yawgmoth, Thran Physician — sac/proliferate.
+  {
+    id: "yawgmoth-thran-physician-etb",
+    description: "Yawgmoth, Thran Physician ETB; -1/-1 + draw parse.",
+    seed: 0x52f,
+    cards: {
+      "Yawgmoth, Thran Physician": `Name:Yawgmoth, Thran Physician
+ManaCost:2 B B
+Types:Legendary Creature Human Cleric
+PT:2/4
+A:AB$ DealDamage | Cost$ PayLife<1> Sac<1/Creature> | NumDmg$ 1 | DefinedDmg$ TargetedCreature | TargetType$ Creature | ValidTgts$ Creature.OppCtrl | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Yawgmoth parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yawgmoth, Thran Physician"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yawgmoth, Thran Physician", controller: SEAT0 }],
+  },
+
+  // 1047. Veteran Explorer — sac to ramp.
+  {
+    id: "veteran-explorer-etb",
+    description: "Veteran Explorer ETB; sac ramp parse.",
+    seed: 0x530,
+    cards: {
+      "Veteran Explorer": `Name:Veteran Explorer
+ManaCost:G
+Types:Creature Human Scout
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Explorer.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 2 | Tapped$ True
+Oracle:Explorer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Veteran Explorer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Veteran Explorer", controller: SEAT0 }],
+  },
+
+  // 1048. Wood Elves — search forest ETB.
+  {
+    id: "wood-elves-etb",
+    description: "Wood Elves ETB; forest search parse.",
+    seed: 0x531,
+    cards: {
+      "Wood Elves": `Name:Wood Elves
+ManaCost:2 G
+Types:Creature Elf Scout
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Wood Elves.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ 1
+Oracle:Wood Elves parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wood Elves"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wood Elves", controller: SEAT0 }],
+  },
+
+  // 1049. Farhaven Elf — sac for two lands.
+  {
+    id: "farhaven-elf-etb",
+    description: "Farhaven Elf ETB; basic search parse.",
+    seed: 0x532,
+    cards: {
+      "Farhaven Elf": `Name:Farhaven Elf
+ManaCost:2 G
+Types:Creature Elf Druid
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Farhaven.
+SVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1 | Tapped$ True
+Oracle:Farhaven parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Farhaven Elf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Farhaven Elf", controller: SEAT0 }],
+  },
+
+  // 1050. Sakura-Tribe Elder — sac to search.
+  {
+    id: "sakura-tribe-elder-etb",
+    description: "Sakura-Tribe Elder ETB; sac ramp parse.",
+    seed: 0x533,
+    cards: {
+      "Sakura-Tribe Elder": `Name:Sakura-Tribe Elder
+ManaCost:1 G
+Types:Creature Snake Shaman
+PT:1/1
+A:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1 | Tapped$ True
+Oracle:Elder parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sakura-Tribe Elder"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sakura-Tribe Elder", controller: SEAT0 }],
+  },
+
+  // 1051. Cultivator Colossus — gigantic green ETB.
+  {
+    id: "cultivator-colossus-etb",
+    description: "Cultivator Colossus ETB; lands from hand parse.",
+    seed: 0x534,
+    cards: {
+      "Cultivator Colossus": `Name:Cultivator Colossus
+ManaCost:4 G G
+Types:Creature Plant Beast
+PT:1/1
+K:Trample
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Colossus.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 6 | NumDef$ 6
+Oracle:Colossus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cultivator Colossus"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cultivator Colossus", controller: SEAT0 }],
+  },
+
+  // 1052. Esika, God of the Tree — back side God-Eternal Conduit.
+  {
+    id: "esika-god-of-the-tree-etb",
+    description: "Esika, God of the Tree ETB; mana parse.",
+    seed: 0x535,
+    cards: {
+      "Esika, God of the Tree": `Name:Esika, God of the Tree
+ManaCost:1 G G
+Types:Legendary Creature God
+PT:1/4
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add any color.
+Oracle:Esika parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esika, God of the Tree"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esika, God of the Tree", controller: SEAT0 }],
+  },
+
+  // 1053. Boseiju, Who Endures — channel land.
+  {
+    id: "boseiju-who-endures-etb",
+    description: "Boseiju, Who Endures ETB; channel destroy parse.",
+    seed: 0x536,
+    cards: {
+      "Boseiju, Who Endures": `Name:Boseiju, Who Endures
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ G
+A:AB$ Destroy | Cost$ 1 G ExileFromHand<1/CARDNAME> | TargetType$ Permanent | ValidTgts$ Artifact,Enchantment,Land.nonBasic | Activation$ Channel
+Oracle:Boseiju parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boseiju, Who Endures"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Boseiju, Who Endures", controller: SEAT0 }],
+  },
+
+  // 1054. Otawara, Soaring City — channel bounce.
+  {
+    id: "otawara-soaring-city-etb",
+    description: "Otawara, Soaring City ETB; channel bounce parse.",
+    seed: 0x537,
+    cards: {
+      "Otawara, Soaring City": `Name:Otawara, Soaring City
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ U
+A:AB$ ChangeZone | Cost$ 2 U ExileFromHand<1/CARDNAME> | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent | ValidTgts$ Permanent.nonLand
+Oracle:Otawara parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Otawara, Soaring City"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Otawara, Soaring City", controller: SEAT0 }],
+  },
+
+  // 1055. Takenuma, Abandoned Mire — channel reanimate.
+  {
+    id: "takenuma-abandoned-mire-etb",
+    description: "Takenuma, Abandoned Mire ETB; channel grave parse.",
+    seed: 0x538,
+    cards: {
+      "Takenuma, Abandoned Mire": `Name:Takenuma, Abandoned Mire
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ B
+A:AB$ ChangeZone | Cost$ 2 B ExileFromHand<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouCtrl,Planeswalker.YouCtrl
+Oracle:Takenuma parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Takenuma, Abandoned Mire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Takenuma, Abandoned Mire", controller: SEAT0 }],
+  },
+
+  // 1056. Sokenzan, Crucible of Defiance — channel haste.
+  {
+    id: "sokenzan-crucible-of-defiance-etb",
+    description: "Sokenzan, Crucible of Defiance ETB; channel token parse.",
+    seed: 0x539,
+    cards: {
+      "Sokenzan, Crucible of Defiance": `Name:Sokenzan, Crucible of Defiance
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ R
+A:AB$ Token | Cost$ 2 R ExileFromHand<1/CARDNAME> | TokenScript$ r_2_2_spirit_haste | TokenAmount$ 1
+Oracle:Sokenzan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sokenzan, Crucible of Defiance"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sokenzan, Crucible of Defiance", controller: SEAT0 }],
+  },
+
+  // 1057. Eiganjo, Seat of the Empire — channel destroy.
+  {
+    id: "eiganjo-seat-of-the-empire-etb",
+    description: "Eiganjo, Seat of the Empire ETB; channel parse.",
+    seed: 0x53a,
+    cards: {
+      "Eiganjo, Seat of the Empire": `Name:Eiganjo, Seat of the Empire
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ W
+A:AB$ Destroy | Cost$ 1 W ExileFromHand<1/CARDNAME> | TargetType$ Creature | ValidTgts$ Creature.attacking,Creature.blocking
+Oracle:Eiganjo parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Eiganjo, Seat of the Empire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Eiganjo, Seat of the Empire", controller: SEAT0 }],
+  },
+
+  // 1058. Demonstrate — Jeskai Mentor copy.
+  {
+    id: "the-bears-of-littjara-etb",
+    description: "The Bears of Littjara ETB; demonstrate trigger parse.",
+    seed: 0x53b,
+    cards: {
+      "The Bears of Littjara": `Name:The Bears of Littjara
+ManaCost:2 U U
+Types:Sorcery
+A:SP$ Token | Cost$ 2 U U | TokenScript$ u_2_2_bear | TokenAmount$ 4 | SubAbility$ DBCopy
+SVar:DBCopy:DB$ CopySpellAbility | Defined$ Self
+K:Demonstrate
+Oracle:Bears parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["The Bears of Littjara"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1059. Visit — Time of Need style.
+  {
+    id: "time-of-need-in-hand",
+    description: "Time of Need in hand; legendary tutor parse.",
+    seed: 0x53c,
+    cards: {
+      "Time of Need": `Name:Time of Need
+ManaCost:1 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 G | Origin$ Library | Destination$ Hand | ChangeType$ Card.Legendary+Creature | ChangeNum$ 1
+Oracle:Time of Need parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Time of Need"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1060. Tribute — Fanatic of Xenagos.
+  {
+    id: "fanatic-of-xenagos-etb",
+    description: "Fanatic of Xenagos ETB; tribute parse.",
+    seed: 0x53d,
+    cards: {
+      "Fanatic of Xenagos": `Name:Fanatic of Xenagos
+ManaCost:1 R G
+Types:Creature Centaur Berserker
+PT:2/2
+K:Tribute:2
+T:Mode$ Tributed | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tribute.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2
+Oracle:Xenagos parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fanatic of Xenagos"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fanatic of Xenagos", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH C — Modal cards / charm patterns ─────
+
+  // 1061. Cryptic Command — modal counter/draw/bounce/tap.
+  {
+    id: "cryptic-command-in-hand-m624",
+    description: "Cryptic Command in hand; modal 4-mode parse.",
+    seed: 0x540,
+    cards: {
+      "Cryptic Command": `Name:Cryptic Command
+ManaCost:1 U U U
+Types:Instant
+A:SP$ Charm | Cost$ 1 U U U | Choices$ DBCounter,DBBounce,DBTapAll,DBDraw | CharmNum$ 2 | MinCharmNum$ 2
+SVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card
+SVar:DBBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent
+SVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.OppCtrl
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Cryptic parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cryptic Command"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1062. Esper Charm — modal.
+  {
+    id: "esper-charm-in-hand",
+    description: "Esper Charm in hand; modal parse.",
+    seed: 0x541,
+    cards: {
+      "Esper Charm": `Name:Esper Charm
+ManaCost:W U B
+Types:Instant
+A:SP$ Charm | Cost$ W U B | Choices$ DBDestroy,DBDraw,DBDiscard
+SVar:DBDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Enchantment
+SVar:DBDraw:DB$ Draw | NumCards$ 2
+SVar:DBDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 2
+Oracle:Esper Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esper Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1063. Naya Charm — modal.
+  {
+    id: "naya-charm-in-hand",
+    description: "Naya Charm in hand; modal parse.",
+    seed: 0x542,
+    cards: {
+      "Naya Charm": `Name:Naya Charm
+ManaCost:R G W
+Types:Instant
+A:SP$ Charm | Cost$ R G W | Choices$ DBDmg,DBReturn,DBTap
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature | ValidTgts$ Creature
+SVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeNum$ 1
+SVar:DBTap:DB$ TapAll | ValidCards$ Creature.OppCtrl
+Oracle:Naya Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Naya Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1064. Bant Charm — modal.
+  {
+    id: "bant-charm-in-hand",
+    description: "Bant Charm in hand; modal parse.",
+    seed: 0x543,
+    cards: {
+      "Bant Charm": `Name:Bant Charm
+ManaCost:G W U
+Types:Instant
+A:SP$ Charm | Cost$ G W U | Choices$ DBDestroyArt,DBDestroyCreature,DBCounter
+SVar:DBDestroyArt:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Artifact
+SVar:DBDestroyCreature:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | TargetType$ Creature
+SVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Instant
+Oracle:Bant Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bant Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1065. Boros Charm — modal.
+  {
+    id: "boros-charm-in-hand-m624",
+    description: "Boros Charm in hand; modal parse.",
+    seed: 0x544,
+    cards: {
+      "Boros Charm": `Name:Boros Charm
+ManaCost:R W
+Types:Instant
+A:SP$ Charm | Cost$ R W | Choices$ DBDmg,DBIndestructible,DBDoubleStrike
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 4 | TargetType$ Player | ValidTgts$ Player
+SVar:DBIndestructible:DB$ Effect | StaticAbilities$ STIndest
+SVar:STIndest:Mode$ Continuous | Affected$ Permanent.YouCtrl | AddKeyword$ Indestructible
+SVar:DBDoubleStrike:DB$ Pump | TargetType$ Creature | KW$ Double Strike
+Oracle:Boros Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boros Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1066. Bituminous Blast — cascade.
+  {
+    id: "bituminous-blast-in-hand",
+    description: "Bituminous Blast in hand; cascade parse.",
+    seed: 0x545,
+    cards: {
+      "Bituminous Blast": `Name:Bituminous Blast
+ManaCost:3 B R
+Types:Instant
+K:Cascade
+A:SP$ DealDamage | Cost$ 3 B R | NumDmg$ 4 | TargetType$ Creature | ValidTgts$ Creature
+Oracle:Bit Blast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bituminous Blast"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1067. Bloodbraid Elf — cascade.
+  {
+    id: "bloodbraid-elf-etb-m624",
+    description: "Bloodbraid Elf ETB; cascade haste parse.",
+    seed: 0x546,
+    cards: {
+      "Bloodbraid Elf": `Name:Bloodbraid Elf
+ManaCost:2 R G
+Types:Creature Elf Berserker
+PT:3/2
+K:Haste
+K:Cascade
+Oracle:Bloodbraid parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodbraid Elf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodbraid Elf", controller: SEAT0 }],
+  },
+
+  // 1068. Shardless Agent — cascade.
+  {
+    id: "shardless-agent-etb",
+    description: "Shardless Agent ETB; cascade parse.",
+    seed: 0x547,
+    cards: {
+      "Shardless Agent": `Name:Shardless Agent
+ManaCost:G U
+Types:Artifact Creature Human Rogue
+PT:2/2
+K:Cascade
+Oracle:Shardless parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shardless Agent"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shardless Agent", controller: SEAT0 }],
+  },
+
+  // 1069. Maelstrom Wanderer — double cascade.
+  {
+    id: "maelstrom-wanderer-etb-m624",
+    description: "Maelstrom Wanderer ETB; double cascade haste parse.",
+    seed: 0x548,
+    cards: {
+      "Maelstrom Wanderer": `Name:Maelstrom Wanderer
+ManaCost:5 U R G
+Types:Legendary Creature Elemental
+PT:7/5
+K:Cascade
+K:Cascade
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste
+Oracle:Wanderer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maelstrom Wanderer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maelstrom Wanderer", controller: SEAT0 }],
+  },
+
+  // 1070. Apotheosis Charm style modal — Selesnya Charm.
+  {
+    id: "selesnya-charm-in-hand",
+    description: "Selesnya Charm in hand; modal parse.",
+    seed: 0x549,
+    cards: {
+      "Selesnya Charm": `Name:Selesnya Charm
+ManaCost:G W
+Types:Instant
+A:SP$ Charm | Cost$ G W | Choices$ DBPump,DBExile,DBToken
+SVar:DBPump:DB$ Pump | TargetType$ Creature | NumAtt$ 2 | NumDef$ 2 | KW$ Trample
+SVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | TargetType$ Creature | ValidTgts$ Creature.powerGE5
+SVar:DBToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenAmount$ 1
+Oracle:Selesnya Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Selesnya Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1071. Izzet Charm — modal.
+  {
+    id: "izzet-charm-in-hand",
+    description: "Izzet Charm in hand; modal parse.",
+    seed: 0x54a,
+    cards: {
+      "Izzet Charm": `Name:Izzet Charm
+ManaCost:U R
+Types:Instant
+A:SP$ Charm | Cost$ U R | Choices$ DBCounter,DBDmg,DBLootDiscard
+SVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Instant,Card.Sorcery
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature | ValidTgts$ Creature
+SVar:DBLootDiscard:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose
+Oracle:Izzet Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Izzet Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1072. Golgari Charm — modal.
+  {
+    id: "golgari-charm-in-hand",
+    description: "Golgari Charm in hand; modal parse.",
+    seed: 0x54b,
+    cards: {
+      "Golgari Charm": `Name:Golgari Charm
+ManaCost:B G
+Types:Instant
+A:SP$ Charm | Cost$ B G | Choices$ DBPumpAll,DBDestroyEnch,DBRegen
+SVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1
+SVar:DBDestroyEnch:DB$ DestroyAll | ValidCards$ Enchantment
+SVar:DBRegen:DB$ Effect | StaticAbilities$ STRegen
+SVar:STRegen:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Indestructible
+Oracle:Golgari Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Golgari Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1073. Simic Charm — modal.
+  {
+    id: "simic-charm-in-hand",
+    description: "Simic Charm in hand; modal parse.",
+    seed: 0x54c,
+    cards: {
+      "Simic Charm": `Name:Simic Charm
+ManaCost:G U
+Types:Instant
+A:SP$ Charm | Cost$ G U | Choices$ DBPump,DBBounce,DBHexproof
+SVar:DBPump:DB$ Pump | TargetType$ Creature | NumAtt$ 3 | NumDef$ 3
+SVar:DBBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent
+SVar:DBHexproof:DB$ Pump | TargetType$ Creature | KW$ Hexproof
+Oracle:Simic Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Simic Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1074. Dimir Charm — modal.
+  {
+    id: "dimir-charm-in-hand",
+    description: "Dimir Charm in hand; modal parse.",
+    seed: 0x54d,
+    cards: {
+      "Dimir Charm": `Name:Dimir Charm
+ManaCost:U B
+Types:Instant
+A:SP$ Charm | Cost$ U B | Choices$ DBCounter,DBKill,DBMill
+SVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Sorcery
+SVar:DBKill:DB$ Destroy | TargetType$ Creature | ValidTgts$ Creature.powerLE2
+SVar:DBMill:DB$ Dig | DigNum$ 3 | DefinedPlayer$ Player
+Oracle:Dimir Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dimir Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1075. Rakdos Charm — modal.
+  {
+    id: "rakdos-charm-in-hand",
+    description: "Rakdos Charm in hand; modal parse.",
+    seed: 0x54e,
+    cards: {
+      "Rakdos Charm": `Name:Rakdos Charm
+ManaCost:B R
+Types:Instant
+A:SP$ Charm | Cost$ B R | Choices$ DBExileGY,DBSacAll,DBDmg
+SVar:DBExileGY:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile
+SVar:DBSacAll:DB$ SacrificeAll | ValidCards$ Creature.OppCtrl
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 1 | DefinedPlayer$ Each
+Oracle:Rakdos Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rakdos Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1076. Orzhov Charm — modal.
+  {
+    id: "orzhov-charm-in-hand",
+    description: "Orzhov Charm in hand; modal parse.",
+    seed: 0x54f,
+    cards: {
+      "Orzhov Charm": `Name:Orzhov Charm
+ManaCost:W B
+Types:Instant
+A:SP$ Charm | Cost$ W B | Choices$ DBReturn,DBKill,DBExileLife
+SVar:DBReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Creature
+SVar:DBKill:DB$ Destroy | TargetType$ Creature | ValidTgts$ Creature
+SVar:DBExileLife:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature
+Oracle:Orzhov Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Orzhov Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1077. Gruul Charm — modal.
+  {
+    id: "gruul-charm-in-hand",
+    description: "Gruul Charm in hand; modal parse.",
+    seed: 0x550,
+    cards: {
+      "Gruul Charm": `Name:Gruul Charm
+ManaCost:R G
+Types:Instant
+A:SP$ Charm | Cost$ R G | Choices$ DBDmg,DBNoBlock,DBControlSwap
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 3 | DefinedDmg$ All | ValidTgts$ Creature.Flying
+SVar:DBNoBlock:DB$ Effect | StaticAbilities$ STNoBlock
+SVar:STNoBlock:Mode$ CantBlock | ValidCard$ Creature.OppCtrl
+SVar:DBControlSwap:DB$ Pump | TargetType$ Creature | KW$ Trample
+Oracle:Gruul Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gruul Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1078. Azorius Charm — modal.
+  {
+    id: "azorius-charm-in-hand",
+    description: "Azorius Charm in hand; modal parse.",
+    seed: 0x551,
+    cards: {
+      "Azorius Charm": `Name:Azorius Charm
+ManaCost:W U
+Types:Instant
+A:SP$ Charm | Cost$ W U | Choices$ DBLifelink,DBDraw,DBLibrary
+SVar:DBLifelink:DB$ Pump | TargetType$ Creature | KW$ Lifelink
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+SVar:DBLibrary:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | TargetType$ Creature | LibraryPosition$ 0
+Oracle:Azorius Charm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Azorius Charm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1079. Mishra's Workshop — artifact mana.
+  {
+    id: "mishras-workshop-etb-m624",
+    description: "Mishra's Workshop ETB; artifact-only mana parse.",
+    seed: 0x552,
+    cards: {
+      "Mishra's Workshop": `Name:Mishra's Workshop
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Card.Artifact
+Oracle:Workshop parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishra's Workshop"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishra's Workshop", controller: SEAT0 }],
+  },
+
+  // 1080. Mindslaver — control opponent turn.
+  {
+    id: "mindslaver-etb",
+    description: "Mindslaver ETB; activated control parse.",
+    seed: 0x553,
+    cards: {
+      Mindslaver: `Name:Mindslaver
+ManaCost:6
+Types:Legendary Artifact
+A:AB$ ControlPlayer | Cost$ 4 T Sac<1/CARDNAME> | TargetType$ Player | ValidTgts$ Player.Opponent
+Oracle:Mindslaver parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mindslaver"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mindslaver", controller: SEAT0 }],
+  },
+
+  // 1081. Worldgorger Dragon — vanilla parse (combo behavior covered by parser-only check).
+  {
+    id: "worldgorger-dragon-etb-m624",
+    description: "Worldgorger Dragon (m624) ETB; vanilla flying/trample parse.",
+    seed: 0x554,
+    cards: {
+      "Worldgorger Dragon m624": `Name:Worldgorger Dragon m624
+ManaCost:4 R R
+Types:Creature Dragon
+PT:7/7
+K:Flying
+K:Trample
+Oracle:Worldgorger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Worldgorger Dragon m624"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Worldgorger Dragon m624", controller: SEAT0 }],
+  },
+
+  // 1082. Dark Depths — ice counters.
+  {
+    id: "dark-depths-etb",
+    description: "Dark Depths ETB; counter on ETB parse.",
+    seed: 0x555,
+    cards: {
+      "Dark Depths": `Name:Dark Depths
+Types:Legendary Snow Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Depths.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ ICE | CounterNum$ 10 | Defined$ Self
+A:AB$ Token | Cost$ 0 | TokenScript$ b_20_20_marit_lage_lege_indest_flying | TokenAmount$ 1 | PrecostDesc$ When Dark Depths has no ice counters,
+Oracle:Depths parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dark Depths"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dark Depths", controller: SEAT0 }],
+  },
+
+  // 1083. Thespian's Stage — copy land.
+  {
+    id: "thespians-stage-etb",
+    description: "Thespian's Stage ETB; copy land parse.",
+    seed: 0x556,
+    cards: {
+      "Thespian's Stage": `Name:Thespian's Stage
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Clone | Cost$ 2 T | TargetType$ Land | ValidTgts$ Land | CloneZone$ Battlefield
+Oracle:Stage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thespian's Stage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thespian's Stage", controller: SEAT0 }],
+  },
+
+  // 1084. Vampire Hexmage — sac to remove counters.
+  {
+    id: "vampire-hexmage-etb",
+    description: "Vampire Hexmage ETB; sac counter remove parse.",
+    seed: 0x557,
+    cards: {
+      "Vampire Hexmage": `Name:Vampire Hexmage
+ManaCost:B B
+Types:Creature Vampire Shaman
+PT:2/1
+A:AB$ RemoveCounter | Cost$ Sac<1/CARDNAME> | TargetType$ Permanent | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ All
+Oracle:Hexmage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vampire Hexmage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vampire Hexmage", controller: SEAT0 }],
+  },
+
+  // 1085. Coat of Arms — anthem chain.
+  {
+    id: "coat-of-arms-etb",
+    description: "Coat of Arms ETB; +X/+X by tribe parse.",
+    seed: 0x558,
+    cards: {
+      "Coat of Arms": `Name:Coat of Arms
+ManaCost:3
+Types:Artifact
+S:Mode$ Continuous | Affected$ Creature | AddPower$ X | AddToughness$ X | References$ X | Description$ Coat.
+SVar:X:Count$DifferentCardName_Creature.sharesTypeWith
+Oracle:Coat parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coat of Arms"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coat of Arms", controller: SEAT0 }],
+  },
+
+  // 1086. Cathars' Crusade — counter chain.
+  {
+    id: "cathars-crusade-etb",
+    description: "Cathars' Crusade ETB; counter on ETB chain parse.",
+    seed: 0x559,
+    cards: {
+      "Cathars' Crusade": `Name:Cathars' Crusade
+ManaCost:3 W
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Crusade.
+SVar:TrigCounter:DB$ PutCounterAll | CounterType$ P1P1 | CounterNum$ 1 | ValidCards$ Creature.YouCtrl
+Oracle:Crusade parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cathars' Crusade"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cathars' Crusade", controller: SEAT0 }],
+  },
+
+  // 1087. Cloudshift on ETB-trigger creature.
+  {
+    id: "cloudshift-on-etb-creature",
+    description: "Cloudshift in hand alongside Mulldrifter; flicker parse.",
+    seed: 0x55a,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | SubAbility$ DBReturn
+SVar:DBReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ DBPhaseReturn
+SVar:DBPhaseReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:Cloudshift parse.
+`,
+      Mulldrifter: mulldrifterSrc,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Mulldrifter" }] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1088. Restoration Angel — flicker ETB.
+  {
+    id: "restoration-angel-flicker",
+    description: "Restoration Angel ETB; flicker target parse.",
+    seed: 0x55b,
+    cards: {
+      "Restoration Angel": `Name:Restoration Angel
+ManaCost:3 W
+Types:Creature Angel
+PT:3/4
+K:Flash
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Resto.
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.YouCtrl+Other+nonAngel | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:Resto parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Restoration Angel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Restoration Angel", controller: SEAT0 }],
+  },
+
+  // 1089. Felidar Guardian — flicker ETB.
+  {
+    id: "felidar-guardian-flicker",
+    description: "Felidar Guardian ETB; flicker permanent parse.",
+    seed: 0x55c,
+    cards: {
+      "Felidar Guardian": `Name:Felidar Guardian
+ManaCost:2 W
+Types:Creature Cat Beast
+PT:1/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Felidar.
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl+Other | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:Felidar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Felidar Guardian"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Felidar Guardian", controller: SEAT0 }],
+  },
+
+  // 1090. Flickerwisp — flicker exile until end.
+  {
+    id: "flickerwisp-flicker",
+    description: "Flickerwisp ETB; flicker until end parse.",
+    seed: 0x55d,
+    cards: {
+      Flickerwisp: `Name:Flickerwisp
+ManaCost:1 W W
+Types:Creature Elemental
+PT:3/1
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Wisp.
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.Other
+Oracle:Wisp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flickerwisp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Flickerwisp", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH D — Planeswalker activation chains ─────
+
+  // 1091. Jace, the Mind Sculptor — fateseal +2 / brainstorm 0 / ult.
+  {
+    id: "jace-the-mind-sculptor-etb",
+    description: "Jace, the Mind Sculptor ETB; modal walker parse.",
+    seed: 0x560,
+    cards: {
+      "Jace, the Mind Sculptor": `Name:Jace, the Mind Sculptor
+ManaCost:2 U U
+Types:Legendary Planeswalker Jace
+Loyalty:3
+A:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | DigNum$ 1 | DefinedPlayer$ TargetedPlayer | ChangeNum$ 1 | DestinationZone$ Library | LibraryPosition$ -1 | Planeswalker$ True
+A:AB$ Draw | Cost$ AddCounter<0/LOYALTY> | NumCards$ 3 | Planeswalker$ True
+A:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Origin$ Battlefield | Destination$ Library | TargetType$ Creature | LibraryPosition$ 0 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<12/LOYALTY> | Triggers$ TrigUlt | Planeswalker$ True | Ultimate$ True
+SVar:TrigUlt:Mode$ Always | Execute$ DBExile
+SVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Card.YouDontCtrl | Origin$ Library,Hand,Graveyard,Battlefield | Destination$ Exile
+Oracle:JTMS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jace, the Mind Sculptor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jace, the Mind Sculptor", controller: SEAT0 }],
+  },
+
+  // 1092. Liliana of the Veil — discard / -2 / -6 ult.
+  {
+    id: "liliana-of-the-veil-etb",
+    description: "Liliana of the Veil ETB; discard divide ult parse.",
+    seed: 0x561,
+    cards: {
+      "Liliana of the Veil": `Name:Liliana of the Veil
+ManaCost:1 B B
+Types:Legendary Planeswalker Liliana
+Loyalty:3
+A:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | Defined$ Each | Planeswalker$ True
+A:AB$ Sacrifice | Cost$ SubCounter<2/LOYALTY> | SacValid$ Creature | Defined$ Each | Planeswalker$ True
+A:AB$ ChangeZone | Cost$ SubCounter<6/LOYALTY> | Origin$ Battlefield | Destination$ Library | Defined$ All | Planeswalker$ True | Ultimate$ True
+Oracle:LotV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Liliana of the Veil"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Liliana of the Veil", controller: SEAT0 }],
+  },
+
+  // 1093. Garruk Wildspeaker — beast / ramp / ult overrun.
+  {
+    id: "garruk-wildspeaker-etb",
+    description: "Garruk Wildspeaker ETB; beast token + overrun parse.",
+    seed: 0x562,
+    cards: {
+      "Garruk Wildspeaker": `Name:Garruk Wildspeaker
+ManaCost:2 G G
+Types:Legendary Planeswalker Garruk
+Loyalty:3
+A:AB$ Untap | Cost$ AddCounter<1/LOYALTY> | TargetType$ Land | ValidTgts$ Land.YouCtrl | Amount$ 2 | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<1/LOYALTY> | TokenScript$ g_3_3_beast | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ PumpAll | Cost$ SubCounter<4/LOYALTY> | ValidCards$ Creature.YouCtrl | NumAtt$ 3 | NumDef$ 3 | KW$ Trample | Planeswalker$ True | Ultimate$ True
+Oracle:Garruk parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Garruk Wildspeaker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Garruk Wildspeaker", controller: SEAT0 }],
+  },
+
+  // 1094. Elspeth, Knight-Errant — token / pump / emblem.
+  {
+    id: "elspeth-knight-errant-etb",
+    description: "Elspeth, Knight-Errant ETB; emblem ult parse.",
+    seed: 0x563,
+    cards: {
+      "Elspeth, Knight-Errant": `Name:Elspeth, Knight-Errant
+ManaCost:2 W W
+Types:Legendary Planeswalker Elspeth
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ w_1_1_soldier | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | TargetType$ Creature | NumAtt$ 3 | KW$ Flying | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Elspeth Emblem | StaticAbilities$ STIndest | Planeswalker$ True | Ultimate$ True
+SVar:STIndest:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Indestructible
+Oracle:Elspeth parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elspeth, Knight-Errant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elspeth, Knight-Errant", controller: SEAT0 }],
+  },
+
+  // 1095. Sorin, Lord of Innistrad — emblem ult.
+  {
+    id: "sorin-lord-of-innistrad-etb",
+    description: "Sorin, Lord of Innistrad ETB; vampire emblem ult parse.",
+    seed: 0x564,
+    cards: {
+      "Sorin, Lord of Innistrad": `Name:Sorin, Lord of Innistrad
+ManaCost:2 W B
+Types:Legendary Planeswalker Sorin
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ b_1_1_vampire_lifelink | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<2/LOYALTY> | Triggers$ TrigPump | Planeswalker$ True
+SVar:TrigPump:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ DBPump
+SVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 0
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Sorin Emblem | StaticAbilities$ STBoost | Planeswalker$ True | Ultimate$ True
+SVar:STBoost:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 0
+Oracle:Sorin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sorin, Lord of Innistrad"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sorin, Lord of Innistrad", controller: SEAT0 }],
+  },
+
+  // 1096. Karn Liberated — exile / restart ult.
+  {
+    id: "karn-liberated-etb-m624",
+    description: "Karn Liberated ETB; exile or restart parse.",
+    seed: 0x565,
+    cards: {
+      "Karn Liberated": `Name:Karn Liberated
+ManaCost:7
+Types:Legendary Planeswalker Karn
+Loyalty:6
+A:AB$ ChangeZone | Cost$ AddCounter<4/LOYALTY> | TargetType$ Card | Origin$ Battlefield,Hand | Destination$ Exile | ValidTgts$ Card.OppOwn | Planeswalker$ True
+A:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Origin$ Battlefield,Graveyard | Destination$ Exile | Defined$ TargetedPlayer | Planeswalker$ True
+A:AB$ RestartGame | Cost$ SubCounter<14/LOYALTY> | Planeswalker$ True | Ultimate$ True
+Oracle:Karn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karn Liberated"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karn Liberated", controller: SEAT0 }],
+  },
+
+  // 1097. Teferi, Hero of Dominaria — bounce + draw ult emblem.
+  {
+    id: "teferi-hero-of-dominaria-etb",
+    description: "Teferi, Hero of Dominaria ETB; +1 untap-draw + emblem ult parse.",
+    seed: 0x566,
+    cards: {
+      "Teferi, Hero of Dominaria": `Name:Teferi, Hero of Dominaria
+ManaCost:3 W U
+Types:Legendary Planeswalker Teferi
+Loyalty:4
+A:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | SubAbility$ DBUntap | Planeswalker$ True
+SVar:DBUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Land.YouCtrl,Permanent.YouCtrl | Amount$ 2
+A:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Origin$ Battlefield | Destination$ Library | TargetType$ Permanent | LibraryPosition$ -1 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Teferi Emblem | Triggers$ TrigEm | Planeswalker$ True | Ultimate$ True
+SVar:TrigEm:Mode$ DrawnCard | ValidPlayer$ You | Execute$ DBExile
+SVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent
+Oracle:Teferi parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Teferi, Hero of Dominaria"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Teferi, Hero of Dominaria", controller: SEAT0 }],
+  },
+
+  // 1098. Wrenn and Six — return land + decay ult emblem.
+  {
+    id: "wrenn-and-six-etb",
+    description: "Wrenn and Six ETB; land return + retrace emblem parse.",
+    seed: 0x567,
+    cards: {
+      "Wrenn and Six": `Name:Wrenn and Six
+ManaCost:R G
+Types:Legendary Planeswalker Wrenn
+Loyalty:3
+A:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Graveyard | Destination$ Hand | ChangeType$ Land | ChangeNum$ 1 | Planeswalker$ True
+A:AB$ DealDamage | Cost$ SubCounter<1/LOYALTY> | NumDmg$ 1 | TargetType$ Creature,Planeswalker | ValidTgts$ Creature,Planeswalker | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Wrenn Emblem | StaticAbilities$ STRetrace | Planeswalker$ True | Ultimate$ True
+SVar:STRetrace:Mode$ Continuous | Affected$ Card.Instant.YouCtrl,Card.Sorcery.YouCtrl | MayPlay$ True | MayPlayWithFlash$ True
+Oracle:W6 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wrenn and Six"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wrenn and Six", controller: SEAT0 }],
+  },
+
+  // 1099. The Wandering Emperor — flash walker.
+  {
+    id: "the-wandering-emperor-etb",
+    description: "The Wandering Emperor ETB; flash modal parse.",
+    seed: 0x568,
+    cards: {
+      "The Wandering Emperor": `Name:The Wandering Emperor
+ManaCost:2 W
+Types:Legendary Planeswalker Wanderer
+Loyalty:3
+K:Flash
+A:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | TargetType$ Creature | NumAtt$ 1 | KW$ Lifelink | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<1/LOYALTY> | TokenScript$ w_2_2_samurai_vigilance | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.tapped | Planeswalker$ True
+Oracle:Emperor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["The Wandering Emperor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "The Wandering Emperor", controller: SEAT0 }],
+  },
+
+  // 1100. Oko, Thief of Crowns — food / elk / ult.
+  {
+    id: "oko-thief-of-crowns-etb",
+    description: "Oko, Thief of Crowns ETB; food/elk/swap parse.",
+    seed: 0x569,
+    cards: {
+      "Oko, Thief of Crowns": `Name:Oko, Thief of Crowns
+ManaCost:1 G U
+Types:Legendary Planeswalker Oko
+Loyalty:4
+A:AB$ Token | Cost$ AddCounter<2/LOYALTY> | TokenScript$ c_a_food_sac | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ Animate | Cost$ SubCounter<1/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Creature | Power$ 3 | Toughness$ 3 | Types$ Creature,Elk | Planeswalker$ True
+A:AB$ ExchangeControl | Cost$ SubCounter<5/LOYALTY> | TargetType$ Creature,Permanent | Planeswalker$ True
+Oracle:Oko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Oko, Thief of Crowns"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Oko, Thief of Crowns", controller: SEAT0 }],
+  },
+
+  // 1101. Nicol Bolas, Planeswalker — discard / kill / ult exile.
+  {
+    id: "nicol-bolas-planeswalker-etb",
+    description: "Nicol Bolas, Planeswalker ETB; discard kill ult parse.",
+    seed: 0x56a,
+    cards: {
+      "Nicol Bolas, Planeswalker": `Name:Nicol Bolas, Planeswalker
+ManaCost:4 U B B R
+Types:Legendary Planeswalker Bolas
+Loyalty:5
+A:AB$ Discard | Cost$ AddCounter<3/LOYALTY> | NumCards$ 1 | Defined$ Opponent | Planeswalker$ True
+A:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | Planeswalker$ True
+A:AB$ ChangeZoneAll | Cost$ SubCounter<9/LOYALTY> | ChangeType$ Permanent.OppCtrl | Origin$ Battlefield | Destination$ Exile | Planeswalker$ True | Ultimate$ True
+Oracle:Bolas parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nicol Bolas, Planeswalker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nicol Bolas, Planeswalker", controller: SEAT0 }],
+  },
+
+  // 1102. Ashiok, Nightmare Weaver — exile-mill / animate.
+  {
+    id: "ashiok-nightmare-weaver-etb",
+    description: "Ashiok, Nightmare Weaver ETB; mill exile parse.",
+    seed: 0x56b,
+    cards: {
+      "Ashiok, Nightmare Weaver": `Name:Ashiok, Nightmare Weaver
+ManaCost:1 U B
+Types:Legendary Planeswalker Ashiok
+Loyalty:3
+A:AB$ Mill | Cost$ AddCounter<2/LOYALTY> | NumCards$ 3 | Defined$ Opponent | Planeswalker$ True
+Oracle:Ashiok parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ashiok, Nightmare Weaver"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ashiok, Nightmare Weaver", controller: SEAT0 }],
+  },
+
+  // 1103. Daretti, Scrap Savant — discard / reanimate / ult emblem.
+  {
+    id: "daretti-scrap-savant-etb",
+    description: "Daretti, Scrap Savant ETB; rummage reanimate parse.",
+    seed: 0x56c,
+    cards: {
+      "Daretti, Scrap Savant": `Name:Daretti, Scrap Savant
+ManaCost:3 R
+Types:Legendary Planeswalker Daretti
+Loyalty:3
+A:AB$ Draw | Cost$ AddCounter<2/LOYALTY> | NumCards$ 1 | SubAbility$ DBDisc | Planeswalker$ True
+SVar:DBDisc:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose
+A:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> Sac<1/Artifact> | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Artifact | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Name$ Daretti Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Daretti parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Daretti, Scrap Savant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Daretti, Scrap Savant", controller: SEAT0 }],
+  },
+
+  // 1104. Ral, Storm Conduit — copy spell ult.
+  {
+    id: "ral-storm-conduit-etb",
+    description: "Ral, Storm Conduit ETB; trigger ping / scry parse.",
+    seed: 0x56d,
+    cards: {
+      "Ral, Storm Conduit": `Name:Ral, Storm Conduit
+ManaCost:2 U R
+Types:Legendary Planeswalker Ral
+Loyalty:4
+T:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Instant,Card.Sorcery | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Storm.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+A:AB$ Scry | Cost$ AddCounter<2/LOYALTY> | ScryNum$ 1 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Ral Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Ral parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ral, Storm Conduit"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ral, Storm Conduit", controller: SEAT0 }],
+  },
+
+  // 1105. Dovin, Grand Arbiter — flying soldier / draw / lock.
+  {
+    id: "dovin-grand-arbiter-etb",
+    description: "Dovin, Grand Arbiter ETB; thopter token parse.",
+    seed: 0x56e,
+    cards: {
+      "Dovin, Grand Arbiter": `Name:Dovin, Grand Arbiter
+ManaCost:1 W U
+Types:Legendary Planeswalker Dovin
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1 | SubAbility$ DBLife | Planeswalker$ True
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+A:AB$ Draw | Cost$ SubCounter<1/LOYALTY> | NumCards$ 1 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Dovin Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Dovin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dovin, Grand Arbiter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dovin, Grand Arbiter", controller: SEAT0 }],
+  },
+
+  // 1106. Vraska, Golgari Queen — destroy / sac+draw / ult emblem.
+  {
+    id: "vraska-golgari-queen-etb",
+    description: "Vraska, Golgari Queen ETB; destroy/draw parse.",
+    seed: 0x56f,
+    cards: {
+      "Vraska, Golgari Queen": `Name:Vraska, Golgari Queen
+ManaCost:2 B G
+Types:Legendary Planeswalker Vraska
+Loyalty:5
+A:AB$ Destroy | Cost$ AddCounter<2/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Enchantment | Planeswalker$ True
+A:AB$ Sacrifice | Cost$ SubCounter<2/LOYALTY> | SacValid$ Permanent.YouCtrl | SubAbility$ DBDraw | Planeswalker$ True
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+A:AB$ Effect | Cost$ SubCounter<9/LOYALTY> | Name$ Vraska Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Vraska parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vraska, Golgari Queen"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vraska, Golgari Queen", controller: SEAT0 }],
+  },
+
+  // 1107. Domri Rade — fight / +X+0 / ult emblem.
+  {
+    id: "domri-rade-etb",
+    description: "Domri Rade ETB; fight modal parse.",
+    seed: 0x570,
+    cards: {
+      "Domri Rade": `Name:Domri Rade
+ManaCost:1 R G
+Types:Legendary Planeswalker Domri
+Loyalty:2
+A:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Creature | Planeswalker$ True
+A:AB$ Fight | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | Defined$ Targeted | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Domri Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Domri parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Domri Rade"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Domri Rade", controller: SEAT0 }],
+  },
+
+  // 1108. Gideon Jura — taunt / kill / pump.
+  {
+    id: "gideon-jura-etb",
+    description: "Gideon Jura ETB; taunt block parse.",
+    seed: 0x571,
+    cards: {
+      "Gideon Jura": `Name:Gideon Jura
+ManaCost:3 W W
+Types:Legendary Planeswalker Gideon
+Loyalty:6
+A:AB$ Effect | Cost$ AddCounter<2/LOYALTY> | Name$ Gideon Taunt | StaticAbilities$ STAttack | Planeswalker$ True
+SVar:STAttack:Mode$ MustAttack | ValidCreature$ Creature.OppCtrl | MustAttack$ Card.Self
+A:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.tapped | Planeswalker$ True
+A:AB$ Animate | Cost$ SubCounter<0/LOYALTY> | Defined$ Self | Power$ 6 | Toughness$ 6 | Types$ Creature,Human,Soldier | Planeswalker$ True
+Oracle:Gideon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gideon Jura"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gideon Jura", controller: SEAT0 }],
+  },
+
+  // 1109. Vivien Reid — exile-card / fight-flying / emblem ult.
+  {
+    id: "vivien-reid-etb",
+    description: "Vivien Reid ETB; tutor/destroy parse.",
+    seed: 0x572,
+    cards: {
+      "Vivien Reid": `Name:Vivien Reid
+ManaCost:3 G G
+Types:Legendary Planeswalker Vivien
+Loyalty:5
+A:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 4 | ChangeNum$ 1 | ChangeValid$ Creature,Land | Planeswalker$ True
+A:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Enchantment,Creature.Flying | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Vivien Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Vivien parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vivien Reid"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vivien Reid", controller: SEAT0 }],
+  },
+
+  // 1110. Chandra, Torch of Defiance — exile-cast / 2 dmg / emblem.
+  {
+    id: "chandra-torch-of-defiance-etb",
+    description: "Chandra, Torch of Defiance ETB; impulse parse.",
+    seed: 0x573,
+    cards: {
+      "Chandra, Torch of Defiance": `Name:Chandra, Torch of Defiance
+ManaCost:2 R R
+Types:Legendary Planeswalker Chandra
+Loyalty:4
+A:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone$ Exile | Planeswalker$ True
+A:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Produced$ R | Amount$ 2 | Planeswalker$ True
+A:AB$ DealDamage | Cost$ SubCounter<3/LOYALTY> | NumDmg$ 4 | TargetType$ Creature,Player | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Chandra Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Chandra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chandra, Torch of Defiance"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chandra, Torch of Defiance", controller: SEAT0 }],
+  },
+
+  // 1111. Tezzeret the Schemer — etherium / draw / ult.
+  {
+    id: "tezzeret-the-schemer-etb",
+    description: "Tezzeret the Schemer ETB; etherium / dmg parse.",
+    seed: 0x574,
+    cards: {
+      "Tezzeret the Schemer": `Name:Tezzeret the Schemer
+ManaCost:2 U B
+Types:Legendary Planeswalker Tezzeret
+Loyalty:5
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_a_etherium_cell | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | TargetType$ Creature | NumDmg$ 5 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Tezzeret Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Tezzeret parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tezzeret the Schemer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tezzeret the Schemer", controller: SEAT0 }],
+  },
+
+  // 1112. Saheeli Rai — scry / copy / control ult.
+  {
+    id: "saheeli-rai-etb",
+    description: "Saheeli Rai ETB; scry/copy parse.",
+    seed: 0x575,
+    cards: {
+      "Saheeli Rai": `Name:Saheeli Rai
+ManaCost:1 U R
+Types:Legendary Planeswalker Saheeli
+Loyalty:3
+A:AB$ Scry | Cost$ AddCounter<1/LOYALTY> | ScryNum$ 1 | SubAbility$ DBDmg | Planeswalker$ True
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 1 | DefinedTarget$ TargetedPlayer
+A:AB$ CopyPermanent | Cost$ SubCounter<2/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Creature | NumCopies$ 1 | Keywords$ Haste | AtEOT$ Exile | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Saheeli Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Saheeli parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Saheeli Rai"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Saheeli Rai", controller: SEAT0 }],
+  },
+
+  // 1113. Ob Nixilis Reignited — draw-life / kill / ult emblem.
+  {
+    id: "ob-nixilis-reignited-etb",
+    description: "Ob Nixilis Reignited ETB; draw kill emblem parse.",
+    seed: 0x576,
+    cards: {
+      "Ob Nixilis Reignited": `Name:Ob Nixilis Reignited
+ManaCost:3 B B
+Types:Legendary Planeswalker Ob Nixilis
+Loyalty:5
+A:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | SubAbility$ DBLife | Planeswalker$ True
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ You
+A:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | TargetType$ Creature | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Ob Emblem | StaticAbilities$ STDmg | Planeswalker$ True | Ultimate$ True
+SVar:STDmg:Mode$ Continuous | Affected$ Player.Opponent | Description$ Lose 1 each step.
+Oracle:Ob Nixilis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ob Nixilis Reignited"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ob Nixilis Reignited", controller: SEAT0 }],
+  },
+
+  // 1114. Tamiyo, the Moon Sage — tap / draw / emblem ult.
+  {
+    id: "tamiyo-the-moon-sage-etb",
+    description: "Tamiyo, the Moon Sage ETB; tap & draw parse.",
+    seed: 0x577,
+    cards: {
+      "Tamiyo, the Moon Sage": `Name:Tamiyo, the Moon Sage
+ManaCost:3 U U
+Types:Legendary Planeswalker Tamiyo
+Loyalty:4
+A:AB$ Tap | Cost$ AddCounter<1/LOYALTY> | TargetType$ Permanent | ValidTgts$ Permanent | Planeswalker$ True
+A:AB$ Draw | Cost$ SubCounter<2/LOYALTY> | NumCards$ X | References$ X | Planeswalker$ True
+SVar:X:Count$Valid Permanent.tapped+OppCtrl
+A:AB$ Effect | Cost$ SubCounter<5/LOYALTY> | Name$ Tamiyo Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Tamiyo parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tamiyo, the Moon Sage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tamiyo, the Moon Sage", controller: SEAT0 }],
+  },
+
+  // 1115. Sarkhan the Mad — sac dragon / draw-life / ult.
+  {
+    id: "sarkhan-the-mad-etb",
+    description: "Sarkhan the Mad ETB; dragon sac parse.",
+    seed: 0x578,
+    cards: {
+      "Sarkhan the Mad": `Name:Sarkhan the Mad
+ManaCost:3 B R
+Types:Legendary Planeswalker Sarkhan
+Loyalty:1
+A:AB$ Reveal | Cost$ AddCounter<0/LOYALTY> | NumCards$ 1 | SubAbility$ DBPump | Planeswalker$ True
+SVar:DBPump:DB$ Mill | NumCards$ 1
+A:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> Sac<1/Dragon> | NumDmg$ X | DefinedDmg$ TargetedPlayer | TargetType$ Player | References$ X | Planeswalker$ True
+SVar:X:Count$YourDragons
+A:AB$ ChangeZoneAll | Cost$ SubCounter<4/LOYALTY> | ChangeType$ Creature | Origin$ Battlefield | Destination$ Graveyard | Planeswalker$ True | Ultimate$ True
+Oracle:Sarkhan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sarkhan the Mad"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sarkhan the Mad", controller: SEAT0 }],
+  },
+
+  // 1116. Venser, the Sojourner — flicker / unblockable / emblem.
+  {
+    id: "venser-the-sojourner-etb",
+    description: "Venser, the Sojourner ETB; flicker walker parse.",
+    seed: 0x579,
+    cards: {
+      "Venser, the Sojourner": `Name:Venser, the Sojourner
+ManaCost:3 W U
+Types:Legendary Planeswalker Venser
+Loyalty:3
+A:AB$ ChangeZone | Cost$ AddCounter<2/LOYALTY> | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | Planeswalker$ True
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+A:AB$ PumpAll | Cost$ SubCounter<1/LOYALTY> | ValidCards$ Creature.YouCtrl | KW$ Unblockable | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Venser Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Venser parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Venser, the Sojourner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Venser, the Sojourner", controller: SEAT0 }],
+  },
+
+  // 1117. Sarkhan, Fireblood — discard / dragon mana / draw ult.
+  {
+    id: "sarkhan-fireblood-etb",
+    description: "Sarkhan, Fireblood ETB; rummage dragon mana parse.",
+    seed: 0x57a,
+    cards: {
+      "Sarkhan, Fireblood": `Name:Sarkhan, Fireblood
+ManaCost:1 R R
+Types:Legendary Planeswalker Sarkhan
+Loyalty:3
+A:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | SubAbility$ DBDisc | Planeswalker$ True
+SVar:DBDisc:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose
+A:AB$ Mana | Cost$ SubCounter<2/LOYALTY> | Produced$ Any | Amount$ 2 | RestrictValid$ Card.Dragon | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<7/LOYALTY> | TokenScript$ r_4_4_dragon_flying | TokenAmount$ 3 | Planeswalker$ True | Ultimate$ True
+Oracle:Sarkhan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sarkhan, Fireblood"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sarkhan, Fireblood", controller: SEAT0 }],
+  },
+
+  // 1118. Tezzeret, Master of the Bridge — etherium / draw-life / ult.
+  {
+    id: "tezzeret-master-of-the-bridge-etb",
+    description: "Tezzeret, Master of the Bridge ETB; mill ult parse.",
+    seed: 0x57b,
+    cards: {
+      "Tezzeret, Master of the Bridge": `Name:Tezzeret, Master of the Bridge
+ManaCost:5
+Types:Legendary Planeswalker Tezzeret
+Loyalty:5
+Oracle:Tezz parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tezzeret, Master of the Bridge"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tezzeret, Master of the Bridge", controller: SEAT0 }],
+  },
+
+  // 1119. Sarkhan Vol — pump / token / ult.
+  {
+    id: "sarkhan-vol-etb",
+    description: "Sarkhan Vol ETB; haste / token / control parse.",
+    seed: 0x57c,
+    cards: {
+      "Sarkhan Vol": `Name:Sarkhan Vol
+ManaCost:2 R G
+Types:Legendary Planeswalker Sarkhan
+Loyalty:4
+A:AB$ PumpAll | Cost$ AddCounter<1/LOYALTY> | ValidCards$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 1 | KW$ Haste | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ r_4_4_dragon_flying | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ ExchangeControl | Cost$ SubCounter<6/LOYALTY> | TargetType$ Creature | Defined$ Opponent | Planeswalker$ True | Ultimate$ True
+Oracle:Sarkhan Vol parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sarkhan Vol"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sarkhan Vol", controller: SEAT0 }],
+  },
+
+  // 1120. Tibalt, Cosmic Impostor — exile / play exile / emblem.
+  {
+    id: "tibalt-cosmic-impostor-etb",
+    description: "Tibalt, Cosmic Impostor ETB; exile cast parse.",
+    seed: 0x57d,
+    cards: {
+      "Tibalt, Cosmic Impostor": `Name:Tibalt, Cosmic Impostor
+ManaCost:6 B R
+Types:Legendary Planeswalker Tibalt
+Loyalty:5
+A:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | DigNum$ 1 | DefinedPlayer$ Each | DestinationZone$ Exile | ChangeNum$ 0 | Planeswalker$ True
+A:AB$ Play | Cost$ SubCounter<3/LOYALTY> | Defined$ Targeted | TargetType$ Card | Origin$ Exile | WithoutManaCost$ True | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Tibalt Emblem | Planeswalker$ True | Ultimate$ True
+Oracle:Tibalt parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tibalt, Cosmic Impostor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tibalt, Cosmic Impostor", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH E — Aristocrat sac chains / death triggers ─────
+
+  // 1121. Blood Artist — death drain.
+  {
+    id: "blood-artist-etb-m624",
+    description: "Blood Artist ETB; drain parse.",
+    seed: 0x580,
+    cards: {
+      "Blood Artist": `Name:Blood Artist
+ManaCost:1 B
+Types:Creature Vampire
+PT:0/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Artist.
+SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ TargetedPlayer | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+Oracle:Artist parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Blood Artist"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Blood Artist", controller: SEAT0 }],
+  },
+
+  // 1122. Zulaport Cutthroat — death drain all.
+  {
+    id: "zulaport-cutthroat-etb",
+    description: "Zulaport Cutthroat ETB; drain trigger parse.",
+    seed: 0x581,
+    cards: {
+      "Zulaport Cutthroat": `Name:Zulaport Cutthroat
+ManaCost:1 B
+Types:Creature Human Rogue Ally
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Zulaport.
+SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+Oracle:Zulaport parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zulaport Cutthroat"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zulaport Cutthroat", controller: SEAT0 }],
+  },
+
+  // 1123. Cruel Celebrant — pld + creature death.
+  {
+    id: "cruel-celebrant-etb",
+    description: "Cruel Celebrant ETB; drain parse.",
+    seed: 0x582,
+    cards: {
+      "Cruel Celebrant": `Name:Cruel Celebrant
+ManaCost:W B
+Types:Creature Vampire
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl,Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Cruel.
+SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+Oracle:Cruel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cruel Celebrant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cruel Celebrant", controller: SEAT0 }],
+  },
+
+  // 1124. Falkenrath Aristocrat — sac haste flying.
+  {
+    id: "falkenrath-aristocrat-etb",
+    description: "Falkenrath Aristocrat ETB; sac engine parse.",
+    seed: 0x583,
+    cards: {
+      "Falkenrath Aristocrat": `Name:Falkenrath Aristocrat
+ManaCost:2 B R
+Types:Creature Vampire
+PT:4/1
+K:Flying
+K:Haste
+A:AB$ Pump | Cost$ Sac<1/Creature> | Defined$ Self | KW$ Indestructible
+Oracle:Aristocrat parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Falkenrath Aristocrat"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Falkenrath Aristocrat", controller: SEAT0 }],
+  },
+
+  // 1125. Mayhem Devil — sac for ping.
+  {
+    id: "mayhem-devil-etb",
+    description: "Mayhem Devil ETB; sac ping parse.",
+    seed: 0x584,
+    cards: {
+      "Mayhem Devil": `Name:Mayhem Devil
+ManaCost:1 B R
+Types:Creature Devil
+PT:3/3
+T:Mode$ Sacrificed | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Mayhem.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player
+Oracle:Mayhem parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mayhem Devil"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mayhem Devil", controller: SEAT0 }],
+  },
+
+  // 1126. Korvold, Fae-Cursed King — counter on sac + draw.
+  {
+    id: "korvold-fae-cursed-king-etb",
+    description: "Korvold, Fae-Cursed King ETB; sac trigger parse.",
+    seed: 0x585,
+    cards: {
+      "Korvold, Fae-Cursed King": `Name:Korvold, Fae-Cursed King
+ManaCost:2 B R G
+Types:Legendary Creature Dragon Noble
+PT:4/4
+K:Flying
+T:Mode$ Sacrificed | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Korvold.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Korvold parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Korvold, Fae-Cursed King"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Korvold, Fae-Cursed King", controller: SEAT0 }],
+  },
+
+  // 1127. Pitiless Plunderer — treasure on death.
+  {
+    id: "pitiless-plunderer-etb-m624",
+    description: "Pitiless Plunderer ETB; treasure on death parse.",
+    seed: 0x586,
+    cards: {
+      "Pitiless Plunderer": `Name:Pitiless Plunderer
+ManaCost:3 B
+Types:Creature Human Pirate
+PT:1/4
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Plunderer.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1
+Oracle:Plunderer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pitiless Plunderer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pitiless Plunderer", controller: SEAT0 }],
+  },
+
+  // 1128. Bastion of Remembrance — clue + drain.
+  {
+    id: "bastion-of-remembrance-etb",
+    description: "Bastion of Remembrance ETB; party trigger parse.",
+    seed: 0x587,
+    cards: {
+      "Bastion of Remembrance": `Name:Bastion of Remembrance
+ManaCost:2 B
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Bastion.
+SVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Drain.
+SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+Oracle:Bastion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bastion of Remembrance"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bastion of Remembrance", controller: SEAT0 }],
+  },
+
+  // 1129. Witch's Oven — sac creature for food.
+  {
+    id: "witchs-oven-etb-m624",
+    description: "Witch's Oven ETB; sac to food parse.",
+    seed: 0x588,
+    cards: {
+      "Witch's Oven": `Name:Witch's Oven
+ManaCost:1
+Types:Artifact
+A:AB$ Token | Cost$ T Sac<1/Creature> | TokenScript$ c_a_food_sac | TokenAmount$ 1
+Oracle:Oven parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Witch's Oven"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Witch's Oven", controller: SEAT0 }],
+  },
+
+  // 1130. Cauldron Familiar — recur cat from food.
+  {
+    id: "cauldron-familiar-etb",
+    description: "Cauldron Familiar ETB; recur drain parse.",
+    seed: 0x589,
+    cards: {
+      "Cauldron Familiar": `Name:Cauldron Familiar
+ManaCost:B
+Types:Creature Cat
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Familiar.
+SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+A:AB$ ChangeZone | Cost$ Sac<1/Food> | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self
+Oracle:Familiar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cauldron Familiar"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cauldron Familiar", controller: SEAT0 }],
+  },
+
+  // 1131. Reassembling Skeleton — recur for B.
+  {
+    id: "reassembling-skeleton-etb",
+    description: "Reassembling Skeleton ETB; recur from grave parse.",
+    seed: 0x58a,
+    cards: {
+      "Reassembling Skeleton": `Name:Reassembling Skeleton
+ManaCost:1 B
+Types:Creature Skeleton Warrior
+PT:1/1
+A:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | Tapped$ True
+Oracle:Skel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reassembling Skeleton"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reassembling Skeleton", controller: SEAT0 }],
+  },
+
+  // 1132. Bloodghast — landfall return.
+  {
+    id: "bloodghast-etb-m624",
+    description: "Bloodghast ETB; landfall return parse.",
+    seed: 0x58b,
+    cards: {
+      Bloodghast: `Name:Bloodghast
+ManaCost:B B
+Types:Creature Vampire Spirit
+PT:2/1
+K:Haste:You have ten or less life
+T:Mode$ ChangesZone | Origin$ Library,Hand,Stack | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Bloodghast.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self
+Oracle:Bloodghast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodghast"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodghast", controller: SEAT0 }],
+  },
+
+  // 1133. Gravecrawler — recur if zombie.
+  {
+    id: "gravecrawler-etb",
+    description: "Gravecrawler ETB; recur from grave if zombie parse.",
+    seed: 0x58c,
+    cards: {
+      Gravecrawler: `Name:Gravecrawler
+ManaCost:B
+Types:Creature Zombie
+PT:2/1
+S:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | MayPlayWithoutCost$ True | EffectZone$ Graveyard | Description$ Cast from grave.
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ All | AddHiddenKeyword$ CARDNAME can't block.
+Oracle:Gravecrawler parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gravecrawler"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gravecrawler", controller: SEAT0 }],
+  },
+
+  // 1134. Prized Amalgam — return on zombie ETB.
+  {
+    id: "prized-amalgam-etb",
+    description: "Prized Amalgam ETB; recur on zombie ETB parse.",
+    seed: 0x58d,
+    cards: {
+      "Prized Amalgam": `Name:Prized Amalgam
+ManaCost:3 U B
+Types:Creature Zombie
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Zombie.YouCtrl+Other | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Amalgam.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | Tapped$ True
+Oracle:Amalgam parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Prized Amalgam"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Prized Amalgam", controller: SEAT0 }],
+  },
+
+  // 1135. Soulflayer — delve big body.
+  {
+    id: "soulflayer-etb",
+    description: "Soulflayer ETB; delve grant kw parse.",
+    seed: 0x58e,
+    cards: {
+      Soulflayer: `Name:Soulflayer
+ManaCost:5 B B
+Types:Creature Demon
+PT:4/4
+K:Delve
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Soulflayer.
+SVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying & Trample & Lifelink
+Oracle:Soulflayer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Soulflayer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Soulflayer", controller: SEAT0 }],
+  },
+
+  // 1136. Murderous Rider — instant 2for1.
+  {
+    id: "murderous-rider-etb-m624",
+    description: "Murderous Rider ETB; adventure parse.",
+    seed: 0x58f,
+    cards: {
+      "Murderous Rider": `Name:Murderous Rider
+ManaCost:1 B B
+Types:Creature Zombie Knight
+PT:2/3
+K:Lifelink
+AlternateMode:Adventure
+Oracle:Rider parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murderous Rider"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Murderous Rider", controller: SEAT0 }],
+  },
+
+  // 1137. Brazen Borrower — adventure bounce.
+  {
+    id: "brazen-borrower-etb",
+    description: "Brazen Borrower ETB; flash flying parse.",
+    seed: 0x590,
+    cards: {
+      "Brazen Borrower": `Name:Brazen Borrower
+ManaCost:1 U U
+Types:Creature Faerie Rogue
+PT:3/1
+K:Flash
+K:Flying
+AlternateMode:Adventure
+Oracle:Borrower parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brazen Borrower"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brazen Borrower", controller: SEAT0 }],
+  },
+
+  // 1138. Bonecrusher Giant — adventure damage.
+  {
+    id: "bonecrusher-giant-etb-m624",
+    description: "Bonecrusher Giant ETB; adventure parse.",
+    seed: 0x591,
+    cards: {
+      "Bonecrusher Giant": `Name:Bonecrusher Giant
+ManaCost:1 R
+Types:Creature Giant
+PT:4/3
+T:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Card.Spell | Execute$ TrigDmg | TriggerDescription$ Stomp.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | DefinedTarget$ TargetedController
+AlternateMode:Adventure
+Oracle:Bonecrusher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonecrusher Giant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bonecrusher Giant", controller: SEAT0 }],
+  },
+
+  // 1139. Lovestruck Beast — adventure heart token.
+  {
+    id: "lovestruck-beast-etb",
+    description: "Lovestruck Beast ETB; adventure can't attack alone parse.",
+    seed: 0x592,
+    cards: {
+      "Lovestruck Beast": `Name:Lovestruck Beast
+ManaCost:2 G
+Types:Creature Beast Noble
+PT:5/5
+S:Mode$ CantAttack | ValidCard$ Card.Self | Description$ No 1/1.
+AlternateMode:Adventure
+Oracle:Lovestruck parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lovestruck Beast"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lovestruck Beast", controller: SEAT0 }],
+  },
+
+  // 1140. Edgewall Innkeeper — adventure draw.
+  {
+    id: "edgewall-innkeeper-etb",
+    description: "Edgewall Innkeeper ETB; adventure draw parse.",
+    seed: 0x593,
+    cards: {
+      "Edgewall Innkeeper": `Name:Edgewall Innkeeper
+ManaCost:G
+Types:Creature Human Peasant
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Adventurer.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Edgewall.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Edgewall parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Edgewall Innkeeper"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Edgewall Innkeeper", controller: SEAT0 }],
+  },
+
+  // 1141. Embereth Shieldbreaker — adventure destroy art.
+  {
+    id: "embereth-shieldbreaker-etb",
+    description: "Embereth Shieldbreaker ETB; destroy artifact parse.",
+    seed: 0x594,
+    cards: {
+      "Embereth Shieldbreaker": `Name:Embereth Shieldbreaker
+ManaCost:1 R
+Types:Creature Human Knight
+PT:2/1
+AlternateMode:Adventure
+Oracle:Shieldbreaker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Embereth Shieldbreaker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Embereth Shieldbreaker", controller: SEAT0 }],
+  },
+
+  // 1142. Witching Well — scry / draw.
+  {
+    id: "witching-well-etb",
+    description: "Witching Well ETB; scry parse.",
+    seed: 0x595,
+    cards: {
+      "Witching Well": `Name:Witching Well
+ManaCost:U
+Types:Artifact
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ Well.
+SVar:TrigScry:DB$ Scry | ScryNum$ 2
+A:AB$ Draw | Cost$ 4 U Sac<1/CARDNAME> | NumCards$ 2
+Oracle:Well parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Witching Well"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Witching Well", controller: SEAT0 }],
+  },
+
+  // 1143. Reaping the Graves — graveyard cast.
+  {
+    id: "reaping-the-graves-in-hand",
+    description: "Reaping the Graves in hand; flashback parse.",
+    seed: 0x596,
+    cards: {
+      "Reaping the Graves": `Name:Reaping the Graves
+ManaCost:1 B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1
+K:Storm
+Oracle:Reaping parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reaping the Graves"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1144. Empty the Warrens — storm tokens.
+  {
+    id: "empty-the-warrens-in-hand-m624",
+    description: "Empty the Warrens in hand; storm goblin tokens parse.",
+    seed: 0x597,
+    cards: {
+      "Empty the Warrens": `Name:Empty the Warrens
+ManaCost:3 R
+Types:Sorcery
+A:SP$ Token | Cost$ 3 R | TokenScript$ r_1_1_goblin | TokenAmount$ 2
+K:Storm
+Oracle:Warrens parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empty the Warrens"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1145. Grapeshot — storm ping.
+  {
+    id: "grapeshot-in-hand",
+    description: "Grapeshot in hand; storm ping parse.",
+    seed: 0x598,
+    cards: {
+      Grapeshot: `Name:Grapeshot
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+K:Storm
+Oracle:Grapeshot parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grapeshot"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1146. Mind's Desire — storm cast random.
+  {
+    id: "minds-desire-in-hand",
+    description: "Mind's Desire in hand; storm cast parse.",
+    seed: 0x599,
+    cards: {
+      "Mind's Desire": `Name:Mind's Desire
+ManaCost:4 U U
+Types:Sorcery
+A:SP$ Dig | Cost$ 4 U U | DigNum$ 1 | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay
+SVar:DBPlay:DB$ Play | Defined$ Remembered | WithoutManaCost$ True
+K:Storm
+Oracle:Desire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mind's Desire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1147. Tendrils of Agony — storm drain.
+  {
+    id: "tendrils-of-agony-in-hand-m624",
+    description: "Tendrils of Agony in hand; storm drain parse.",
+    seed: 0x59a,
+    cards: {
+      "Tendrils of Agony": `Name:Tendrils of Agony
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ LoseLife | Cost$ 2 B B | LifeAmount$ 2 | Defined$ TargetedPlayer | TargetType$ Player | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 2
+K:Storm
+Oracle:Tendrils parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tendrils of Agony"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1148. Past in Flames — flashback all GY.
+  {
+    id: "past-in-flames-in-hand-m624",
+    description: "Past in Flames in hand; flashback grant parse.",
+    seed: 0x59b,
+    cards: {
+      "Past in Flames": `Name:Past in Flames
+ManaCost:3 R
+Types:Sorcery
+A:SP$ Effect | Cost$ 3 R | StaticAbilities$ STFlash
+SVar:STFlash:Mode$ Continuous | Affected$ Card.Instant.YouCtrl,Card.Sorcery.YouCtrl | EffectZone$ Graveyard | AddKeyword$ Flashback
+K:Flashback:4 R
+Oracle:Past parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Past in Flames"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1149. Snapcaster Mage — flashback ETB.
+  {
+    id: "snapcaster-mage-etb-m624",
+    description: "Snapcaster Mage ETB; grant flashback parse.",
+    seed: 0x59c,
+    cards: {
+      "Snapcaster Mage": `Name:Snapcaster Mage
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:2/1
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlash | TriggerDescription$ Snap.
+SVar:TrigFlash:DB$ Effect | Triggers$ TrigGrant | StaticAbilities$ STFlash
+SVar:TrigGrant:Mode$ Always
+SVar:STFlash:Mode$ Continuous | Affected$ Card.Instant.YouCtrl,Card.Sorcery.YouCtrl | EffectZone$ Graveyard | AddKeyword$ Flashback
+Oracle:Snapcaster parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snapcaster Mage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snapcaster Mage", controller: SEAT0 }],
+  },
+
+  // 1150. Lurrus of the Dream-Den — recur 2cmc.
+  {
+    id: "lurrus-of-the-dream-den-etb",
+    description: "Lurrus of the Dream-Den ETB; recur permanent parse.",
+    seed: 0x59d,
+    cards: {
+      "Lurrus of the Dream-Den": `Name:Lurrus of the Dream-Den
+ManaCost:1 W B
+Types:Legendary Creature Cat Nightmare
+PT:3/2
+K:Lifelink
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ All | AddHiddenKeyword$ Companion.
+T:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCast | TriggerDescription$ Lurrus.
+SVar:TrigCast:DB$ Effect | Triggers$ TrigOnce
+SVar:TrigOnce:Mode$ Always
+Oracle:Lurrus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lurrus of the Dream-Den"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lurrus of the Dream-Den", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH F — Companions / commanders / counters ─────
+
+  // 1151. Yorion, Sky Nomad — flicker ETB.
+  {
+    id: "yorion-sky-nomad-etb",
+    description: "Yorion, Sky Nomad ETB; flicker parse.",
+    seed: 0x5a0,
+    cards: {
+      "Yorion, Sky Nomad": `Name:Yorion, Sky Nomad
+ManaCost:4 W U
+Types:Legendary Creature Bird Serpent
+PT:4/5
+K:Flying
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ All | AddHiddenKeyword$ Companion.
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Yorion.
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl+nonLand+Other | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:Yorion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yorion, Sky Nomad"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yorion, Sky Nomad", controller: SEAT0 }],
+  },
+
+  // 1152. Obosh, the Preypiercer — odd damage doubler.
+  {
+    id: "obosh-the-preypiercer-etb",
+    description: "Obosh, the Preypiercer ETB; odd damage double parse.",
+    seed: 0x5a1,
+    cards: {
+      "Obosh, the Preypiercer": `Name:Obosh, the Preypiercer
+ManaCost:3 R R
+Types:Legendary Creature Hellion
+PT:5/5
+Oracle:Obosh parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Obosh, the Preypiercer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Obosh, the Preypiercer", controller: SEAT0 }],
+  },
+
+  // 1153. Keruga, the Macrosage — draw on big ETB.
+  {
+    id: "keruga-the-macrosage-etb",
+    description: "Keruga, the Macrosage ETB; draw on big ETB parse.",
+    seed: 0x5a2,
+    cards: {
+      "Keruga, the Macrosage": `Name:Keruga, the Macrosage
+ManaCost:3 G U
+Types:Legendary Creature Dinosaur Hippo
+PT:5/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.YouCtrl+cmcGE3+Other | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Keruga.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Keruga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Keruga, the Macrosage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Keruga, the Macrosage", controller: SEAT0 }],
+  },
+
+  // 1154. Gyruda, Doom of Depths — mill ETB.
+  {
+    id: "gyruda-doom-of-depths-etb",
+    description: "Gyruda, Doom of Depths ETB; mill 4 reanimate parse.",
+    seed: 0x5a3,
+    cards: {
+      "Gyruda, Doom of Depths": `Name:Gyruda, Doom of Depths
+ManaCost:2 U U B B
+Types:Legendary Creature Kraken
+PT:6/6
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Gyruda.
+SVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ Each | RememberMilled$ True
+Oracle:Gyruda parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gyruda, Doom of Depths"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gyruda, Doom of Depths", controller: SEAT0 }],
+  },
+
+  // 1155. Kaheera, the Orphanguard — anthem cats etc.
+  {
+    id: "kaheera-the-orphanguard-etb",
+    description: "Kaheera, the Orphanguard ETB; anthem typed parse.",
+    seed: 0x5a4,
+    cards: {
+      "Kaheera, the Orphanguard": `Name:Kaheera, the Orphanguard
+ManaCost:1 G W
+Types:Legendary Creature Cat Beast
+PT:3/2
+K:Vigilance
+S:Mode$ Continuous | Affected$ Cat.YouCtrl,Beast.YouCtrl,Elemental.YouCtrl,Nightmare.YouCtrl,Dinosaur.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Kaheera.
+Oracle:Kaheera parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kaheera, the Orphanguard"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kaheera, the Orphanguard", controller: SEAT0 }],
+  },
+
+  // 1156. Zirda, the Dawnwaker — activated ability discount.
+  {
+    id: "zirda-the-dawnwaker-etb",
+    description: "Zirda, the Dawnwaker ETB; activated 2-less parse.",
+    seed: 0x5a5,
+    cards: {
+      "Zirda, the Dawnwaker": `Name:Zirda, the Dawnwaker
+ManaCost:R W
+Types:Legendary Creature Elemental Dog
+PT:3/3
+S:Mode$ ReduceCost | ValidCard$ Permanent.YouCtrl | Type$ Activated | Amount$ 2 | Description$ Zirda.
+Oracle:Zirda parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zirda, the Dawnwaker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zirda, the Dawnwaker", controller: SEAT0 }],
+  },
+
+  // 1157. Lutri, the Spellchaser — copy spell ETB.
+  {
+    id: "lutri-the-spellchaser-etb",
+    description: "Lutri, the Spellchaser ETB; copy spell parse.",
+    seed: 0x5a6,
+    cards: {
+      "Lutri, the Spellchaser": `Name:Lutri, the Spellchaser
+ManaCost:U R
+Types:Legendary Creature Elemental Otter
+PT:3/2
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ Lutri.
+SVar:TrigCopy:DB$ CopySpellAbility | Defined$ Stack | TargetType$ Spell | ValidTgts$ Card.Instant,Card.Sorcery
+Oracle:Lutri parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lutri, the Spellchaser"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lutri, the Spellchaser", controller: SEAT0 }],
+  },
+
+  // 1158. Jegantha, the Wellspring — mana 5 colors.
+  {
+    id: "jegantha-the-wellspring-etb",
+    description: "Jegantha, the Wellspring ETB; mana 5 colors parse.",
+    seed: 0x5a7,
+    cards: {
+      "Jegantha, the Wellspring": `Name:Jegantha, the Wellspring
+ManaCost:2 W U B R G
+Types:Legendary Creature Elemental Elk
+PT:5/5
+A:AB$ Mana | Cost$ T | Produced$ W U B R G | Amount$ 5 | SpellDescription$ Add WUBRG.
+Oracle:Jegantha parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jegantha, the Wellspring"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jegantha, the Wellspring", controller: SEAT0 }],
+  },
+
+  // 1159. Umori, the Collector — companion + cost reduce.
+  {
+    id: "umori-the-collector-etb",
+    description: "Umori, the Collector ETB; cost reduce parse.",
+    seed: 0x5a8,
+    cards: {
+      "Umori, the Collector": `Name:Umori, the Collector
+ManaCost:2 B G
+Types:Legendary Creature Ooze
+PT:4/5
+S:Mode$ ReduceCost | ValidCard$ Card.Creature.YouCtrl | Amount$ 1 | Description$ Umori.
+Oracle:Umori parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Umori, the Collector"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Umori, the Collector", controller: SEAT0 }],
+  },
+
+  // 1160. Atraxa, Praetors' Voice — proliferate trigger.
+  {
+    id: "atraxa-praetors-voice-etb",
+    description: "Atraxa, Praetors' Voice ETB; proliferate parse.",
+    seed: 0x5a9,
+    cards: {
+      "Atraxa, Praetors' Voice": `Name:Atraxa, Praetors' Voice
+ManaCost:G W U B
+Types:Legendary Creature Phyrexian Angel Horror
+PT:4/4
+K:Flying
+K:Vigilance
+K:Deathtouch
+K:Lifelink
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigProlif | TriggerDescription$ Atraxa.
+SVar:TrigProlif:DB$ Proliferate
+Oracle:Atraxa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Atraxa, Praetors' Voice"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Atraxa, Praetors' Voice", controller: SEAT0 }],
+  },
+
+  // 1161. Inexorable Tide — proliferate on cast.
+  {
+    id: "inexorable-tide-etb",
+    description: "Inexorable Tide ETB; proliferate cast parse.",
+    seed: 0x5aa,
+    cards: {
+      "Inexorable Tide": `Name:Inexorable Tide
+ManaCost:3 U U
+Types:Enchantment
+T:Mode$ SpellCast | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigProlif | TriggerDescription$ Tide.
+SVar:TrigProlif:DB$ Proliferate
+Oracle:Tide parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Inexorable Tide"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Inexorable Tide", controller: SEAT0 }],
+  },
+
+  // 1162. Tezzeret's Gambit — proliferate sorcery.
+  {
+    id: "tezzerets-gambit-in-hand",
+    description: "Tezzeret's Gambit in hand; proliferate parse.",
+    seed: 0x5ab,
+    cards: {
+      "Tezzeret's Gambit": `Name:Tezzeret's Gambit
+ManaCost:3 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 3 U | NumCards$ 2 | SubAbility$ DBProlif
+SVar:DBProlif:DB$ Proliferate
+Oracle:Gambit parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tezzeret's Gambit"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1163. Karn's Bastion — proliferate land.
+  {
+    id: "karns-bastion-etb",
+    description: "Karn's Bastion ETB; proliferate land parse.",
+    seed: 0x5ac,
+    cards: {
+      "Karn's Bastion": `Name:Karn's Bastion
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Proliferate | Cost$ 4 T
+Oracle:Bastion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karn's Bastion"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karn's Bastion", controller: SEAT0 }],
+  },
+
+  // 1164. Contagion Engine — proliferate art.
+  {
+    id: "contagion-engine-etb",
+    description: "Contagion Engine ETB; proliferate twice parse.",
+    seed: 0x5ad,
+    cards: {
+      "Contagion Engine": `Name:Contagion Engine
+ManaCost:6
+Types:Artifact
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Engine.
+SVar:TrigCounter:DB$ PutCounterAll | CounterType$ M1M1 | CounterNum$ 1 | ValidCards$ Creature.OppCtrl
+A:AB$ Proliferate | Cost$ 4 T | Amount$ 2
+Oracle:Engine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Contagion Engine"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Contagion Engine", controller: SEAT0 }],
+  },
+
+  // 1165. Throne of Geth — sac for proliferate.
+  {
+    id: "throne-of-geth-etb",
+    description: "Throne of Geth ETB; sac proliferate parse.",
+    seed: 0x5ae,
+    cards: {
+      "Throne of Geth": `Name:Throne of Geth
+ManaCost:1
+Types:Artifact
+A:AB$ Proliferate | Cost$ T Sac<1/Artifact>
+Oracle:Throne parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Throne of Geth"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Throne of Geth", controller: SEAT0 }],
+  },
+
+  // 1166. Steady Progress — proliferate instant.
+  {
+    id: "steady-progress-in-hand",
+    description: "Steady Progress in hand; proliferate parse.",
+    seed: 0x5af,
+    cards: {
+      "Steady Progress": `Name:Steady Progress
+ManaCost:2 U
+Types:Instant
+A:SP$ Draw | Cost$ 2 U | NumCards$ 1 | SubAbility$ DBProlif
+SVar:DBProlif:DB$ Proliferate
+Oracle:Progress parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steady Progress"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1167. Plague Myr — etb proliferate ish.
+  {
+    id: "plague-myr-etb",
+    description: "Plague Myr ETB; mana art parse.",
+    seed: 0x5b0,
+    cards: {
+      "Plague Myr": `Name:Plague Myr
+ManaCost:3
+Types:Artifact Creature Myr
+PT:1/1
+K:Infect
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:Plague parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plague Myr"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plague Myr", controller: SEAT0 }],
+  },
+
+  // 1168. Hangarback Walker — XX counters.
+  {
+    id: "hangarback-walker-etb",
+    description: "Hangarback Walker ETB; XX counters parse.",
+    seed: 0x5b1,
+    cards: {
+      "Hangarback Walker": `Name:Hangarback Walker
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Walker.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X
+SVar:X:Count$xPaid
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens.
+SVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ Y | References$ Y
+SVar:Y:Count$CardCounters.P1P1
+Oracle:Hangarback parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hangarback Walker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hangarback Walker", controller: SEAT0 }],
+  },
+
+  // 1169. Walking Ballista — XX with ping.
+  {
+    id: "walking-ballista-etb-m624",
+    description: "Walking Ballista ETB; XX ping parse.",
+    seed: 0x5b2,
+    cards: {
+      "Walking Ballista": `Name:Walking Ballista
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Ballista.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X
+SVar:X:Count$xPaid
+A:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/CARDNAME> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+A:AB$ PutCounter | Cost$ 4 | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
+Oracle:Ballista parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Walking Ballista"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Walking Ballista", controller: SEAT0 }],
+  },
+
+  // 1170. Endless One — X counters at ETB.
+  {
+    id: "endless-one-etb",
+    description: "Endless One ETB; X p/t parse.",
+    seed: 0x5b3,
+    cards: {
+      "Endless One": `Name:Endless One
+ManaCost:X
+Types:Creature Eldrazi
+PT:0/0
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Endless.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X
+SVar:X:Count$xPaid
+Oracle:Endless parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Endless One"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Endless One", controller: SEAT0 }],
+  },
+
+  // 1171. Heroic Intervention — instant indestructible.
+  {
+    id: "heroic-intervention-in-hand",
+    description: "Heroic Intervention in hand; team indestructible parse.",
+    seed: 0x5b4,
+    cards: {
+      "Heroic Intervention": `Name:Heroic Intervention
+ManaCost:1 G
+Types:Instant
+A:SP$ PumpAll | Cost$ 1 G | ValidCards$ Permanent.YouCtrl | KW$ Hexproof & Indestructible
+Oracle:Intervention parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heroic Intervention"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1172. Teferi's Protection — phase out.
+  {
+    id: "teferis-protection-in-hand",
+    description: "Teferi's Protection in hand; phase out parse.",
+    seed: 0x5b5,
+    cards: {
+      "Teferi's Protection": `Name:Teferi's Protection
+ManaCost:2 W
+Types:Instant
+A:SP$ Phases | Cost$ 2 W | Defined$ You | Optional$ False | SubAbility$ DBPhaseAll
+SVar:DBPhaseAll:DB$ PhasesAll | ValidCards$ Permanent.YouCtrl | PhaseOut$ True
+Oracle:Protection parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Teferi's Protection"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1173. Settle the Wreckage — exile attackers.
+  {
+    id: "settle-the-wreckage-in-hand-v2",
+    description: "Settle the Wreckage in hand v2; exile attackers parse.",
+    seed: 0x5b6,
+    cards: {
+      "Settle the Wreckage v2": `Name:Settle the Wreckage v2
+ManaCost:2 W W
+Types:Instant
+A:SP$ ChangeZoneAll | Cost$ 2 W W | ChangeType$ Creature.attacking | Origin$ Battlefield | Destination$ Library | Shuffle$ True
+Oracle:Settle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Settle the Wreckage v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1174. Path to Exile — exile + basic.
+  {
+    id: "path-to-exile-in-hand-v2",
+    description: "Path to Exile in hand v2; exile basic parse.",
+    seed: 0x5b7,
+    cards: {
+      "Path to Exile v2": `Name:Path to Exile v2
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | DefinedPlayer$ TargetedController | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1 | Tapped$ True
+Oracle:Path parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Path to Exile v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1175. Swords to Plowshares — exile + life.
+  {
+    id: "swords-to-plowshares-in-hand-v2",
+    description: "Swords to Plowshares in hand v2; exile + life parse.",
+    seed: 0x5b8,
+    cards: {
+      "Swords to Plowshares v2": `Name:Swords to Plowshares v2
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ X | Defined$ TargetedController | References$ X
+SVar:X:Targeted$CardPower
+Oracle:Swords parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swords to Plowshares v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1176. Generous Gift — destroy + 3/3.
+  {
+    id: "generous-gift-in-hand-v2",
+    description: "Generous Gift in hand v2; destroy + 3/3 token parse.",
+    seed: 0x5b9,
+    cards: {
+      "Generous Gift v2": `Name:Generous Gift v2
+ManaCost:2 W
+Types:Instant
+A:SP$ Destroy | Cost$ 2 W | TargetType$ Permanent | ValidTgts$ Permanent.nonLand | SubAbility$ DBToken
+SVar:DBToken:DB$ Token | TokenScript$ g_3_3_elephant | TokenAmount$ 1 | TokenOwner$ TargetedController
+Oracle:Gift parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Generous Gift v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1177. Beast Within — destroy + 3/3.
+  {
+    id: "beast-within-in-hand-v2",
+    description: "Beast Within in hand v2; destroy + beast parse.",
+    seed: 0x5ba,
+    cards: {
+      "Beast Within v2": `Name:Beast Within v2
+ManaCost:2 G
+Types:Instant
+A:SP$ Destroy | Cost$ 2 G | TargetType$ Permanent | ValidTgts$ Permanent | SubAbility$ DBToken
+SVar:DBToken:DB$ Token | TokenScript$ g_3_3_beast | TokenAmount$ 1 | TokenOwner$ TargetedController
+Oracle:Beast Within parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beast Within v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1178. Vindicate — destroy any.
+  {
+    id: "vindicate-in-hand-m624",
+    description: "Vindicate in hand; destroy parse.",
+    seed: 0x5bb,
+    cards: {
+      Vindicate: `Name:Vindicate
+ManaCost:1 W B
+Types:Sorcery
+A:SP$ Destroy | Cost$ 1 W B | TargetType$ Permanent | ValidTgts$ Permanent
+Oracle:Vindicate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vindicate"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1179. Anguished Unmaking — exile + life.
+  {
+    id: "anguished-unmaking-in-hand-m624",
+    description: "Anguished Unmaking in hand; exile parse.",
+    seed: 0x5bc,
+    cards: {
+      "Anguished Unmaking": `Name:Anguished Unmaking
+ManaCost:1 W B
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 W B PayLife<3> | TargetType$ Permanent | ValidTgts$ Permanent.nonLand | Origin$ Battlefield | Destination$ Exile
+Oracle:Unmaking parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anguished Unmaking"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1180. Utter End — exile any.
+  {
+    id: "utter-end-in-hand-m624",
+    description: "Utter End in hand; instant exile parse.",
+    seed: 0x5bd,
+    cards: {
+      "Utter End": `Name:Utter End
+ManaCost:2 W B
+Types:Instant
+A:SP$ ChangeZone | Cost$ 2 W B | TargetType$ Permanent | ValidTgts$ Permanent.nonLand | Origin$ Battlefield | Destination$ Exile
+Oracle:Utter End parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Utter End"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ─── M6.24 BATCH G — More tribal lords, classic creatures ─────
+
+  // 1181. Lord of Atlantis — Merfolk lord.
+  {
+    id: "lord-of-atlantis-etb",
+    description: "Lord of Atlantis ETB; merfolk lord parse.",
+    seed: 0x5c0,
+    cards: {
+      "Lord of Atlantis": `Name:Lord of Atlantis
+ManaCost:U U
+Types:Creature Merfolk
+PT:2/2
+S:Mode$ Continuous | Affected$ Merfolk.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Islandwalk | Description$ Lord.
+Oracle:Atlantis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lord of Atlantis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lord of Atlantis", controller: SEAT0 }],
+  },
+
+  // 1182. Goblin King — goblin lord.
+  {
+    id: "goblin-king-etb",
+    description: "Goblin King ETB; goblin lord mountainwalk parse.",
+    seed: 0x5c1,
+    cards: {
+      "Goblin King": `Name:Goblin King
+ManaCost:R R
+Types:Creature Goblin
+PT:2/2
+S:Mode$ Continuous | Affected$ Goblin.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Mountainwalk | Description$ King.
+Oracle:Goblin King parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin King"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin King", controller: SEAT0 }],
+  },
+
+  // 1183. Zombie Master — zombie lord.
+  {
+    id: "zombie-master-etb",
+    description: "Zombie Master ETB; zombie lord swampwalk parse.",
+    seed: 0x5c2,
+    cards: {
+      "Zombie Master": `Name:Zombie Master
+ManaCost:1 B B
+Types:Creature Zombie
+PT:2/3
+S:Mode$ Continuous | Affected$ Zombie.Other+YouCtrl | AddKeyword$ Swampwalk | Description$ Master.
+Oracle:Zombie Master parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zombie Master"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zombie Master", controller: SEAT0 }],
+  },
+
+  // 1184. Elvish Champion — elf lord.
+  {
+    id: "elvish-champion-etb",
+    description: "Elvish Champion ETB; elf lord forestwalk parse.",
+    seed: 0x5c3,
+    cards: {
+      "Elvish Champion": `Name:Elvish Champion
+ManaCost:1 G G
+Types:Creature Elf
+PT:2/2
+S:Mode$ Continuous | Affected$ Elf.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Forestwalk | Description$ Champ.
+Oracle:Champion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Champion"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Champion", controller: SEAT0 }],
+  },
+
+  // 1185. Phyrexian Obliterator — devotion mega 5/5.
+  {
+    id: "phyrexian-obliterator-etb",
+    description: "Phyrexian Obliterator ETB; sac trigger parse.",
+    seed: 0x5c4,
+    cards: {
+      "Phyrexian Obliterator": `Name:Phyrexian Obliterator
+ManaCost:B B B B
+Types:Creature Horror
+PT:5/5
+K:Trample
+T:Mode$ DamageDone | ValidTarget$ Card.Self | ValidSource$ Creature | Execute$ TrigSac | TriggerDescription$ Obl.
+SVar:TrigSac:DB$ Sacrifice | Defined$ TargetedController | SacValid$ Permanent | Amount$ X | References$ X
+SVar:X:TriggerCount$DamageAmount
+Oracle:Obliterator parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phyrexian Obliterator"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Phyrexian Obliterator", controller: SEAT0 }],
+  },
+
+  // 1186. Skithiryx, the Blight Dragon — infect + reg.
+  {
+    id: "skithiryx-the-blight-dragon-etb",
+    description: "Skithiryx, the Blight Dragon ETB; infect dragon parse.",
+    seed: 0x5c5,
+    cards: {
+      "Skithiryx, the Blight Dragon": `Name:Skithiryx, the Blight Dragon
+ManaCost:4 B B
+Types:Legendary Creature Phyrexian Dragon Skeleton
+PT:4/4
+K:Flying
+K:Haste
+K:Infect
+A:AB$ Pump | Cost$ B | KW$ Indestructible | Defined$ Self
+Oracle:Skith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skithiryx, the Blight Dragon"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skithiryx, the Blight Dragon", controller: SEAT0 }],
+  },
+
+  // 1187. Glissa the Traitor — etb + recur on death.
+  {
+    id: "glissa-the-traitor-etb",
+    description: "Glissa the Traitor ETB; recur on creature dies parse.",
+    seed: 0x5c6,
+    cards: {
+      "Glissa the Traitor": `Name:Glissa the Traitor
+ManaCost:B G B
+Types:Legendary Creature Zombie Elf
+PT:3/3
+K:Deathtouch
+K:First Strike
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigRecur | TriggerDescription$ Glissa.
+SVar:TrigRecur:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Artifact
+Oracle:Glissa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glissa the Traitor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glissa the Traitor", controller: SEAT0 }],
+  },
+
+  // 1188. Edric, Spymaster of Trest — draw on damage.
+  {
+    id: "edric-spymaster-of-trest-etb",
+    description: "Edric, Spymaster of Trest ETB; draw on dmg parse.",
+    seed: 0x5c7,
+    cards: {
+      "Edric, Spymaster of Trest": `Name:Edric, Spymaster of Trest
+ManaCost:1 G U
+Types:Legendary Creature Elf Rogue
+PT:2/2
+T:Mode$ DamageDoneOnce | ValidSource$ Creature.attacking | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Edric.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ SourceController
+Oracle:Edric parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Edric, Spymaster of Trest"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Edric, Spymaster of Trest", controller: SEAT0 }],
+  },
+
+  // 1189. Krenko, Mob Boss — goblin doubler.
+  {
+    id: "krenko-mob-boss-etb-m624",
+    description: "Krenko, Mob Boss ETB; tap goblins for tokens parse.",
+    seed: 0x5c8,
+    cards: {
+      "Krenko, Mob Boss": `Name:Krenko, Mob Boss
+ManaCost:2 R R
+Types:Legendary Creature Goblin Warrior
+PT:3/3
+A:AB$ Token | Cost$ T | TokenScript$ r_1_1_goblin | TokenAmount$ X | References$ X
+SVar:X:Count$YourGoblins
+Oracle:Krenko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krenko, Mob Boss"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Krenko, Mob Boss", controller: SEAT0 }],
+  },
+
+  // 1190. Goblin Chieftain — anthem haste.
+  {
+    id: "goblin-chieftain-etb",
+    description: "Goblin Chieftain ETB; anthem + haste parse.",
+    seed: 0x5c9,
+    cards: {
+      "Goblin Chieftain": `Name:Goblin Chieftain
+ManaCost:1 R R
+Types:Creature Goblin Warrior
+PT:2/2
+K:Haste
+S:Mode$ Continuous | Affected$ Goblin.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Haste | Description$ Chieftain.
+Oracle:Chieftain parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Chieftain"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Chieftain", controller: SEAT0 }],
+  },
+
+  // 1191. Goblin Rabblemaster — token + must attack.
+  {
+    id: "goblin-rabblemaster-etb",
+    description: "Goblin Rabblemaster ETB; goblin must attack parse.",
+    seed: 0x5ca,
+    cards: {
+      "Goblin Rabblemaster": `Name:Goblin Rabblemaster
+ManaCost:2 R
+Types:Creature Goblin Warrior
+PT:2/2
+T:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Rabble.
+SVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ 1
+S:Mode$ MustAttack | ValidCreature$ Goblin.YouCtrl
+Oracle:Rabble parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Rabblemaster"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Rabblemaster", controller: SEAT0 }],
+  },
+
+  // 1192. Goblin Piledriver — power scale.
+  {
+    id: "goblin-piledriver-etb",
+    description: "Goblin Piledriver ETB; +2/+0 per goblin parse.",
+    seed: 0x5cb,
+    cards: {
+      "Goblin Piledriver": `Name:Goblin Piledriver
+ManaCost:R R
+Types:Creature Goblin Warrior
+PT:1/2
+K:Protection from blue
+S:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | References$ X | CharacteristicDefining$ True | Description$ Piledriver.
+SVar:X:Count$YourGoblins/Times.2/Minus.2
+Oracle:Piledriver parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Piledriver"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Piledriver", controller: SEAT0 }],
+  },
+
+  // 1193. Skirk Prospector — sac for mana.
+  {
+    id: "skirk-prospector-etb",
+    description: "Skirk Prospector ETB; sac goblin for R parse.",
+    seed: 0x5cc,
+    cards: {
+      "Skirk Prospector": `Name:Skirk Prospector
+ManaCost:R
+Types:Creature Goblin
+PT:1/1
+A:AB$ Mana | Cost$ Sac<1/Goblin> | Produced$ R
+Oracle:Prospector parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skirk Prospector"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skirk Prospector", controller: SEAT0 }],
+  },
+
+  // 1194. Empty the Pits — XX zombies.
+  {
+    id: "empty-the-pits-in-hand",
+    description: "Empty the Pits in hand; XX zombies parse.",
+    seed: 0x5cd,
+    cards: {
+      "Empty the Pits": `Name:Empty the Pits
+ManaCost:X X B B B
+Types:Instant
+A:SP$ Token | Cost$ X X B B B | TokenScript$ b_2_2_zombie | TokenAmount$ X | References$ X
+SVar:X:Count$xPaid
+Oracle:Pits parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empty the Pits"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1195. Army of the Damned — 13 zombies.
+  {
+    id: "army-of-the-damned-in-hand",
+    description: "Army of the Damned in hand; 13 zombies parse.",
+    seed: 0x5ce,
+    cards: {
+      "Army of the Damned": `Name:Army of the Damned
+ManaCost:5 B B B
+Types:Sorcery
+A:SP$ Token | Cost$ 5 B B B | TokenScript$ b_2_2_zombie_tapped | TokenAmount$ 13
+K:Flashback:7 B B B
+Oracle:Army parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Army of the Damned"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1196. Hour of Devastation — sweep + walkers.
+  {
+    id: "hour-of-devastation-in-hand",
+    description: "Hour of Devastation in hand; 5 dmg sweep parse.",
+    seed: 0x5cf,
+    cards: {
+      "Hour of Devastation": `Name:Hour of Devastation
+ManaCost:4 R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ 4 R | NumDmg$ 5 | ValidCards$ Creature,Planeswalker | NoPrevention$ True
+Oracle:Hour parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hour of Devastation"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1197. Languish — -4/-4 sweep.
+  {
+    id: "languish-in-hand",
+    description: "Languish in hand; -4/-4 sweep parse.",
+    seed: 0x5d0,
+    cards: {
+      Languish: `Name:Languish
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ PumpAll | Cost$ 2 B B | ValidCards$ Creature | NumAtt$ -4 | NumDef$ -4
+Oracle:Languish parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Languish"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1198. Damnation — destroy all.
+  {
+    id: "damnation-in-hand-m624",
+    description: "Damnation in hand; sweep no regen parse.",
+    seed: 0x5d1,
+    cards: {
+      Damnation: `Name:Damnation
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 2 B B | ValidCards$ Creature | NoRegen$ True
+Oracle:Damnation parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Damnation"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1199. Anger of the Gods — exile dead.
+  {
+    id: "anger-of-the-gods-in-hand-m624",
+    description: "Anger of the Gods in hand; sweep exile parse.",
+    seed: 0x5d2,
+    cards: {
+      "Anger of the Gods": `Name:Anger of the Gods
+ManaCost:1 R R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ 1 R R | NumDmg$ 3 | ValidCards$ Creature | ExileDeath$ True
+Oracle:Anger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anger of the Gods"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1200. Pyroclasm — 2 dmg sweep.
+  {
+    id: "pyroclasm-in-hand-m624",
+    description: "Pyroclasm in hand; 2 dmg sweep parse.",
+    seed: 0x5d3,
+    cards: {
+      Pyroclasm: `Name:Pyroclasm
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ 1 R | NumDmg$ 2 | ValidCards$ Creature
+Oracle:Pyroclasm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pyroclasm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1201. Earthquake — variable sweep.
+  {
+    id: "earthquake-in-hand-m624",
+    description: "Earthquake in hand; X dmg sweep flying-immune parse.",
+    seed: 0x5d4,
+    cards: {
+      Earthquake: `Name:Earthquake
+ManaCost:X R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ X R | NumDmg$ X | ValidCards$ Creature.nonFlying,Player | References$ X
+SVar:X:Count$xPaid
+Oracle:Quake parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Earthquake"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1202. Fireblast — alt cost mountain.
+  {
+    id: "fireblast-in-hand-m624",
+    description: "Fireblast in hand; alt sac mountain parse.",
+    seed: 0x5d5,
+    cards: {
+      Fireblast: `Name:Fireblast
+ManaCost:4 R R
+Types:Instant
+A:SP$ DealDamage | Cost$ 4 R R | NumDmg$ 4 | TargetType$ Creature,Player
+Oracle:Fireblast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fireblast"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1203. Daze — alt cost return island.
+  {
+    id: "daze-in-hand-m624",
+    description: "Daze in hand; alt return island parse.",
+    seed: 0x5d6,
+    cards: {
+      Daze: `Name:Daze
+ManaCost:1 U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U | TargetType$ Spell | UnlessCost$ 1 | UnlessPayer$ TargetedController
+A:SP$ Counter | Cost$ Return<1/Island> | TargetType$ Spell
+Oracle:Daze parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Daze"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1204. Force of Will — alt pitch.
+  {
+    id: "force-of-will-in-hand-m624",
+    description: "Force of Will in hand; alt pitch parse.",
+    seed: 0x5d7,
+    cards: {
+      "Force of Will": `Name:Force of Will
+ManaCost:3 U U
+Types:Instant
+A:SP$ Counter | Cost$ 3 U U | TargetType$ Spell
+A:SP$ Counter | Cost$ PayLife<1> ExileFromHand<1/Card.Blue> | TargetType$ Spell
+Oracle:FoW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force of Will"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1205. Misdirection — alt pitch.
+  {
+    id: "misdirection-in-hand",
+    description: "Misdirection in hand; alt pitch parse.",
+    seed: 0x5d8,
+    cards: {
+      Misdirection: `Name:Misdirection
+ManaCost:3 U U
+Types:Instant
+A:SP$ ChangeTargets | Cost$ 3 U U | TargetType$ Spell
+A:SP$ ChangeTargets | Cost$ ExileFromHand<1/Card.Blue> | TargetType$ Spell
+Oracle:Misdirect parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Misdirection"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1206. Pact of Negation — counter pact.
+  {
+    id: "pact-of-negation-in-hand-m624",
+    description: "Pact of Negation in hand; pact parse.",
+    seed: 0x5d9,
+    cards: {
+      "Pact of Negation": `Name:Pact of Negation
+ManaCost:0
+Types:Instant
+A:SP$ Counter | Cost$ 0 | TargetType$ Spell
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPact | TriggerDescription$ Pact.
+SVar:TrigPact:DB$ LoseGame | Defined$ You | UnlessCost$ 3 U U
+Oracle:Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pact of Negation"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1207. Slaughter Pact — kill pact.
+  {
+    id: "slaughter-pact-in-hand",
+    description: "Slaughter Pact in hand; pact destroy parse.",
+    seed: 0x5da,
+    cards: {
+      "Slaughter Pact": `Name:Slaughter Pact
+ManaCost:0
+Types:Instant
+A:SP$ Destroy | Cost$ 0 | TargetType$ Creature | ValidTgts$ Creature.nonblack
+Oracle:Slaughter Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Slaughter Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1208. Summoner's Pact — green creature pact.
+  {
+    id: "summoners-pact-in-hand",
+    description: "Summoner's Pact in hand; tutor pact parse.",
+    seed: 0x5db,
+    cards: {
+      "Summoner's Pact": `Name:Summoner's Pact
+ManaCost:0
+Types:Instant
+A:SP$ ChangeZone | Cost$ 0 | Origin$ Library | Destination$ Hand | ChangeType$ Card.Green+Creature | ChangeNum$ 1
+Oracle:Summoner's Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Summoner's Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1209. Hierarch's Pact — black draw pact (analog).
+  {
+    id: "intervention-pact-in-hand",
+    description: "Intervention Pact in hand; prevent dmg parse.",
+    seed: 0x5dc,
+    cards: {
+      "Intervention Pact": `Name:Intervention Pact
+ManaCost:0
+Types:Instant
+A:SP$ EffectPrevent | Cost$ 0 | Amount$ 10 | Defined$ You
+Oracle:Intervention parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Intervention Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1210. Pact of the Titan — pact giant.
+  {
+    id: "pact-of-the-titan-in-hand",
+    description: "Pact of the Titan in hand; giant token parse.",
+    seed: 0x5dd,
+    cards: {
+      "Pact of the Titan": `Name:Pact of the Titan
+ManaCost:0
+Types:Instant
+A:SP$ Token | Cost$ 0 | TokenScript$ r_4_4_giant | TokenAmount$ 1
+Oracle:Titan Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pact of the Titan"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ─── M6.24 BATCH H — Equipment, auras, more printings ─────
+
+  // 1211. Lightning Greaves — equip 0.
+  {
+    id: "lightning-greaves-etb",
+    description: "Lightning Greaves ETB; equip 0 haste shroud parse.",
+    seed: 0x5e0,
+    cards: {
+      "Lightning Greaves": `Name:Lightning Greaves
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:0
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddKeyword$ Haste & Shroud | Description$ Greaves.
+Oracle:Greaves parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Greaves"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lightning Greaves", controller: SEAT0 }],
+  },
+
+  // 1212. Swiftfoot Boots — hexproof haste.
+  {
+    id: "swiftfoot-boots-etb",
+    description: "Swiftfoot Boots ETB; hexproof haste parse.",
+    seed: 0x5e1,
+    cards: {
+      "Swiftfoot Boots": `Name:Swiftfoot Boots
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddKeyword$ Haste & Hexproof | Description$ Boots.
+Oracle:Boots parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swiftfoot Boots"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Swiftfoot Boots", controller: SEAT0 }],
+  },
+
+  // 1213. Skullclamp — equipment +1/-1 + draws.
+  {
+    id: "skullclamp-etb-m624",
+    description: "Skullclamp ETB; +1/-1 draw on death parse.",
+    seed: 0x5e2,
+    cards: {
+      Skullclamp: `Name:Skullclamp
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Clamp.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Clamp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skullclamp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skullclamp", controller: SEAT0 }],
+  },
+
+  // 1214. Sword of Fire and Ice — Pro RU + draw + dmg.
+  {
+    id: "sword-of-fire-and-ice-etb-m624",
+    description: "Sword of Fire and Ice ETB; pro + draw + dmg parse.",
+    seed: 0x5e3,
+    cards: {
+      "Sword of Fire and Ice": `Name:Sword of Fire and Ice
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from red & Protection from blue | Description$ SoFI.
+T:Mode$ DamageDoneOnce | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBDmg
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature,Player
+Oracle:SoFI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword of Fire and Ice"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword of Fire and Ice", controller: SEAT0 }],
+  },
+
+  // 1215. Sword of Light and Shadow — Pro WB + recur + life.
+  {
+    id: "sword-of-light-and-shadow-etb",
+    description: "Sword of Light and Shadow ETB; pro+recur+life parse.",
+    seed: 0x5e4,
+    cards: {
+      "Sword of Light and Shadow": `Name:Sword of Light and Shadow
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black | Description$ SoLS.
+T:Mode$ DamageDoneOnce | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ Life recur.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBRecur
+SVar:DBRecur:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature
+Oracle:SoLS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword of Light and Shadow"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword of Light and Shadow", controller: SEAT0 }],
+  },
+
+  // 1216. Umezawa's Jitte — counters etc.
+  {
+    id: "umezawas-jitte-etb",
+    description: "Umezawa's Jitte ETB; counter equip parse.",
+    seed: 0x5e5,
+    cards: {
+      "Umezawa's Jitte": `Name:Umezawa's Jitte
+ManaCost:2
+Types:Legendary Artifact Equipment
+K:Equip:2
+T:Mode$ DamageDoneOnce | ValidSource$ Creature.AttachedBy | ValidTarget$ Player,Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Jitte.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 2 | Defined$ Self
+A:AB$ PumpAll | Cost$ RemoveCounter<1/CHARGE> | ValidCards$ Creature.AttachedBy | NumAtt$ 2 | NumDef$ 2
+A:AB$ Pump | Cost$ RemoveCounter<1/CHARGE> | TargetType$ Creature | NumAtt$ -1 | NumDef$ -1
+A:AB$ GainLife | Cost$ RemoveCounter<1/CHARGE> | LifeAmount$ 2
+Oracle:Jitte parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Umezawa's Jitte"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Umezawa's Jitte", controller: SEAT0 }],
+  },
+
+  // 1217. Embercleave — flash equip 1 if attacking.
+  {
+    id: "embercleave-etb",
+    description: "Embercleave ETB; flash auto-attach parse.",
+    seed: 0x5e6,
+    cards: {
+      Embercleave: `Name:Embercleave
+ManaCost:4 R R
+Types:Legendary Artifact Equipment
+K:Flash
+K:Equip:3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ Embercleave.
+SVar:TrigAttach:DB$ Attach | TargetType$ Creature | ValidTgts$ Creature.YouCtrl
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddKeyword$ Double Strike & Trample | Description$ Cleave.
+S:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | References$ X
+SVar:X:Count$YourAttackers
+Oracle:Cleave parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Embercleave"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Embercleave", controller: SEAT0 }],
+  },
+
+  // 1218. Shadowspear — pro + tramplelink.
+  {
+    id: "shadowspear-etb",
+    description: "Shadowspear ETB; trample lifelink + ward suppress parse.",
+    seed: 0x5e7,
+    cards: {
+      Shadowspear: `Name:Shadowspear
+ManaCost:1
+Types:Legendary Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddKeyword$ Trample & Lifelink | Description$ Spear.
+A:AB$ Effect | Cost$ 1 T | StaticAbilities$ STSuppress | Description$ Suppress.
+SVar:STSuppress:Mode$ Continuous | Affected$ Permanent.OppCtrl | RemoveKeyword$ Hexproof & Indestructible
+Oracle:Shadowspear parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shadowspear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shadowspear", controller: SEAT0 }],
+  },
+
+  // 1219. Colossus Hammer — +10/+0 equip 8.
+  {
+    id: "colossus-hammer-etb",
+    description: "Colossus Hammer ETB; +10 equip parse.",
+    seed: 0x5e8,
+    cards: {
+      "Colossus Hammer": `Name:Colossus Hammer
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:8
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 10 | RemoveKeyword$ Flying | Description$ Hammer.
+Oracle:Hammer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Colossus Hammer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Colossus Hammer", controller: SEAT0 }],
+  },
+
+  // 1220. Sigarda's Aid — flash equip aura.
+  {
+    id: "sigardas-aid-etb",
+    description: "Sigarda's Aid ETB; flash equip parse.",
+    seed: 0x5e9,
+    cards: {
+      "Sigarda's Aid": `Name:Sigarda's Aid
+ManaCost:W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Card.Equipment+YouCtrl,Card.Aura+YouCtrl | AddKeyword$ Flash | Description$ Sigarda.
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Equipment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | TriggerDescription$ Trigger.
+SVar:TrigAttach:DB$ Attach | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | Defined$ TriggeredCard
+Oracle:Sigarda parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sigarda's Aid"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sigarda's Aid", controller: SEAT0 }],
+  },
+
+  // 1221. Rancor — aura return.
+  {
+    id: "rancor-etb",
+    description: "Rancor ETB; trample + return parse.",
+    seed: 0x5ea,
+    cards: {
+      Rancor: `Name:Rancor
+ManaCost:G
+Types:Enchantment Aura
+K:Enchant:Creature
+A:SP$ Attach | Cost$ G
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddKeyword$ Trample | Description$ Rancor.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Return.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self
+Oracle:Rancor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rancor"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rancor", controller: SEAT0 }],
+  },
+
+  // 1222. Path of Bravery — anthem if life ≥ start.
+  {
+    id: "path-of-bravery-etb",
+    description: "Path of Bravery ETB; conditional anthem parse.",
+    seed: 0x5eb,
+    cards: {
+      "Path of Bravery": `Name:Path of Bravery
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.attacking+YouCtrl | AddPower$ 1 | AddToughness$ 1 | CheckSVar$ X | SVarCompare$ GE20 | References$ X | Description$ Path.
+SVar:X:Count$YourLifeTotal
+Oracle:Path parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Path of Bravery"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Path of Bravery", controller: SEAT0 }],
+  },
+
+  // 1223. Spirit Mantle — pro creatures + unblockable.
+  {
+    id: "spirit-mantle-etb",
+    description: "Spirit Mantle ETB; pro creatures parse.",
+    seed: 0x5ec,
+    cards: {
+      "Spirit Mantle": `Name:Spirit Mantle
+ManaCost:1 W
+Types:Enchantment Aura
+K:Enchant:Creature
+A:SP$ Attach | Cost$ 1 W
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddKeyword$ Protection from creatures | Description$ Mantle.
+Oracle:Mantle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spirit Mantle"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spirit Mantle", controller: SEAT0 }],
+  },
+
+  // 1224. Curiosity — draw on damage.
+  {
+    id: "curiosity-etb",
+    description: "Curiosity ETB; draw on dmg parse.",
+    seed: 0x5ed,
+    cards: {
+      Curiosity: `Name:Curiosity
+ManaCost:U
+Types:Enchantment Aura
+K:Enchant:Creature
+A:SP$ Attach | Cost$ U
+T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Curiosity.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ SourceController
+Oracle:Curiosity parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Curiosity"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Curiosity", controller: SEAT0 }],
+  },
+
+  // 1225. Bonesplitter — cheap +2.
+  {
+    id: "bonesplitter-etb",
+    description: "Bonesplitter ETB; +2 equip 1 parse.",
+    seed: 0x5ee,
+    cards: {
+      Bonesplitter: `Name:Bonesplitter
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | Description$ Bonesplitter.
+Oracle:Bonesplitter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonesplitter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bonesplitter", controller: SEAT0 }],
+  },
+
+  // 1226. Sigil of Distinction — counters equip.
+  {
+    id: "sigil-of-distinction-etb",
+    description: "Sigil of Distinction ETB; X counters equip parse.",
+    seed: 0x5ef,
+    cards: {
+      "Sigil of Distinction": `Name:Sigil of Distinction
+ManaCost:X
+Types:Artifact Equipment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Distinction.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ X | Defined$ Self | References$ X
+SVar:X:Count$xPaid
+A:AB$ Attach | Cost$ RemoveCounter<1/CHARGE> | TargetType$ Creature
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ X | AddToughness$ X | References$ X | Description$ Distinction.
+Oracle:Distinction parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sigil of Distinction"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sigil of Distinction", controller: SEAT0 }],
+  },
+
+  // 1227. Sentinel's Eyes — landfall trigger aura.
+  {
+    id: "sentinels-eyes-etb",
+    description: "Sentinel's Eyes ETB; vigilance lifelink parse.",
+    seed: 0x5f0,
+    cards: {
+      "Sentinel's Eyes": `Name:Sentinel's Eyes
+ManaCost:W
+Types:Enchantment Aura
+K:Enchant:Creature
+A:SP$ Attach | Cost$ W
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance & Lifelink | Description$ Eyes.
+Oracle:Eyes parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sentinel's Eyes"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sentinel's Eyes", controller: SEAT0 }],
+  },
+
+  // 1228. Frenzied Tilling — landfall.
+  {
+    id: "frenzied-tilling-etb",
+    description: "Frenzied Tilling ETB; landfall search parse.",
+    seed: 0x5f1,
+    cards: {
+      "Frenzied Tilling": `Name:Frenzied Tilling
+ManaCost:1 G
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCount | TriggerDescription$ Land.
+SVar:TrigCount:DB$ PutCounterAll | CounterType$ P1P1 | CounterNum$ 1 | ValidCards$ Creature.YouCtrl
+Oracle:Tilling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frenzied Tilling"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frenzied Tilling", controller: SEAT0 }],
+  },
+
+  // 1229. Avenger of Zendikar (m624) — vanilla parse.
+  {
+    id: "avenger-of-zendikar-etb-m624",
+    description: "Avenger of Zendikar (m624) ETB; vanilla parse.",
+    seed: 0x5f2,
+    cards: {
+      "Avenger of Zendikar m624": `Name:Avenger of Zendikar m624
+ManaCost:5 G
+Types:Creature Elemental
+PT:5/5
+Oracle:Avenger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Avenger of Zendikar m624"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Avenger of Zendikar m624", controller: SEAT0 }],
+  },
+
+  // 1230. Lotus Cobra — landfall mana.
+  {
+    id: "lotus-cobra-etb-m624",
+    description: "Lotus Cobra ETB; landfall mana parse.",
+    seed: 0x5f3,
+    cards: {
+      "Lotus Cobra": `Name:Lotus Cobra
+ManaCost:1 G
+Types:Creature Snake
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Cobra.
+SVar:TrigMana:DB$ Mana | Produced$ Any
+Oracle:Cobra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lotus Cobra"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lotus Cobra", controller: SEAT0 }],
+  },
+
+  // 1231. Tireless Tracker — clue on landfall.
+  {
+    id: "tireless-tracker-etb-m624",
+    description: "Tireless Tracker ETB; clue on land parse.",
+    seed: 0x5f4,
+    cards: {
+      "Tireless Tracker": `Name:Tireless Tracker
+ManaCost:2 G
+Types:Creature Human Scout
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Tracker.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_sac | TokenAmount$ 1
+T:Mode$ Sacrificed | ValidCard$ Clue | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Counter.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
+Oracle:Tracker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tireless Tracker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tireless Tracker", controller: SEAT0 }],
+  },
+
+  // 1232. Scute Swarm — copy on landfall.
+  {
+    id: "scute-swarm-etb",
+    description: "Scute Swarm ETB; copy on landfall parse.",
+    seed: 0x5f5,
+    cards: {
+      "Scute Swarm": `Name:Scute Swarm
+ManaCost:1 G
+Types:Creature Insect
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Scute.
+SVar:TrigToken:DB$ Token | TokenScript$ g_1_1_insect | TokenAmount$ 1 | TokenSourceName$ Scute Swarm
+Oracle:Scute parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scute Swarm"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scute Swarm", controller: SEAT0 }],
+  },
+
+  // 1233. Felidar Retreat — landfall counters/cats.
+  {
+    id: "felidar-retreat-etb",
+    description: "Felidar Retreat ETB; landfall token modal parse.",
+    seed: 0x5f6,
+    cards: {
+      "Felidar Retreat": `Name:Felidar Retreat
+ManaCost:3 W
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Retreat.
+SVar:TrigToken:DB$ Token | TokenScript$ w_2_2_cat_beast | TokenAmount$ 1
+Oracle:Retreat parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Felidar Retreat"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Felidar Retreat", controller: SEAT0 }],
+  },
+
+  // 1234. Roil Elemental — steal on landfall.
+  {
+    id: "roil-elemental-etb",
+    description: "Roil Elemental ETB; steal on landfall parse.",
+    seed: 0x5f7,
+    cards: {
+      "Roil Elemental": `Name:Roil Elemental
+ManaCost:3 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSteal | TriggerDescription$ Roil.
+SVar:TrigSteal:DB$ GainControl | TargetType$ Creature | ValidTgts$ Creature
+Oracle:Roil parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Roil Elemental"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Roil Elemental", controller: SEAT0 }],
+  },
+
+  // 1235. Emeria Angel — bird on landfall.
+  {
+    id: "emeria-angel-etb",
+    description: "Emeria Angel ETB; bird token landfall parse.",
+    seed: 0x5f8,
+    cards: {
+      "Emeria Angel": `Name:Emeria Angel
+ManaCost:3 W
+Types:Creature Angel
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Emeria.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_bird_flying | TokenAmount$ 1
+Oracle:Emeria parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Emeria Angel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Emeria Angel", controller: SEAT0 }],
+  },
+
+  // 1236. Ob Nixilis, the Fallen — life loss on landfall.
+  {
+    id: "ob-nixilis-the-fallen-etb",
+    description: "Ob Nixilis, the Fallen ETB; landfall counter loss life parse.",
+    seed: 0x5f9,
+    cards: {
+      "Ob Nixilis, the Fallen": `Name:Ob Nixilis, the Fallen
+ManaCost:3 B B
+Types:Legendary Creature Demon
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Ob.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 4 | Defined$ Self | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 4 | Defined$ Opponent
+Oracle:Ob parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ob Nixilis, the Fallen"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ob Nixilis, the Fallen", controller: SEAT0 }],
+  },
+
+  // 1237. Rampaging Baloths — beast on landfall.
+  {
+    id: "rampaging-baloths-etb",
+    description: "Rampaging Baloths ETB; beast on landfall parse.",
+    seed: 0x5fa,
+    cards: {
+      "Rampaging Baloths": `Name:Rampaging Baloths
+ManaCost:5 G G
+Types:Creature Beast
+PT:6/6
+K:Trample
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Baloths.
+SVar:TrigToken:DB$ Token | TokenScript$ g_4_4_beast | TokenAmount$ 1
+Oracle:Baloths parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rampaging Baloths"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rampaging Baloths", controller: SEAT0 }],
+  },
+
+  // 1238. Steppe Lynx — landfall +0/+4.
+  {
+    id: "steppe-lynx-etb-m624",
+    description: "Steppe Lynx ETB; landfall pump parse.",
+    seed: 0x5fb,
+    cards: {
+      "Steppe Lynx": `Name:Steppe Lynx
+ManaCost:W
+Types:Creature Cat
+PT:0/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Lynx.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2
+Oracle:Lynx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steppe Lynx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Steppe Lynx", controller: SEAT0 }],
+  },
+
+  // 1239. Plated Geopede — landfall pump.
+  {
+    id: "plated-geopede-etb",
+    description: "Plated Geopede ETB; landfall +2/+2 parse.",
+    seed: 0x5fc,
+    cards: {
+      "Plated Geopede": `Name:Plated Geopede
+ManaCost:1 R
+Types:Creature Insect
+PT:1/2
+K:First Strike
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Geopede.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2
+Oracle:Geopede parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plated Geopede"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plated Geopede", controller: SEAT0 }],
+  },
+
+  // 1240. Snapping Gnarlid — landfall +1/+1.
+  {
+    id: "snapping-gnarlid-etb",
+    description: "Snapping Gnarlid ETB; landfall +1/+1 parse.",
+    seed: 0x5fd,
+    cards: {
+      "Snapping Gnarlid": `Name:Snapping Gnarlid
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Gnarlid.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 1 | NumDef$ 1
+Oracle:Gnarlid parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snapping Gnarlid"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snapping Gnarlid", controller: SEAT0 }],
+  },
+
+  // ─── M6.24 BATCH I — Iconic creatures, classic pump, eldrazi ─────
+
+  // 1241. Emrakul, the Aeons Torn — annihilator 6 + extra turn.
+  {
+    id: "emrakul-the-aeons-torn-etb",
+    description: "Emrakul, the Aeons Torn ETB; annihilator 6 cast trigger parse.",
+    seed: 0x600,
+    cards: {
+      "Emrakul, the Aeons Torn": `Name:Emrakul, the Aeons Torn
+ManaCost:15
+Types:Legendary Creature Eldrazi
+PT:15/15
+K:Flying
+K:Protection from colored spells
+K:Annihilator:6
+T:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Self | Execute$ TrigTurn | TriggerDescription$ Extra turn.
+SVar:TrigTurn:DB$ AddTurn | NumTurns$ 1 | Defined$ You
+Oracle:Emrakul parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Emrakul, the Aeons Torn"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Emrakul, the Aeons Torn", controller: SEAT0 }],
+  },
+
+  // 1242. Eldrazi Conscription — aura mega.
+  {
+    id: "eldrazi-conscription-etb",
+    description: "Eldrazi Conscription ETB; aura +10 annihilator parse.",
+    seed: 0x601,
+    cards: {
+      "Eldrazi Conscription": `Name:Eldrazi Conscription
+ManaCost:8
+Types:Tribal Enchantment Aura Eldrazi
+K:Enchant:Creature
+A:SP$ Attach | Cost$ 8
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 10 | AddToughness$ 10 | AddKeyword$ Trample & Annihilator:2 | Description$ Conscription.
+Oracle:Conscription parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Eldrazi Conscription"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Eldrazi Conscription", controller: SEAT0 }],
+  },
+
+  // 1243. All Is Dust — exile colored.
+  {
+    id: "all-is-dust-in-hand",
+    description: "All Is Dust in hand; sweep colored sac parse.",
+    seed: 0x602,
+    cards: {
+      "All Is Dust": `Name:All Is Dust
+ManaCost:7
+Types:Tribal Sorcery Eldrazi
+A:SP$ Sacrifice | Cost$ 7 | SacValid$ Permanent.colored | Defined$ Each
+Oracle:Dust parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["All Is Dust"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1244. Spawnsire of Ulamog — ramp eldrazi.
+  {
+    id: "spawnsire-of-ulamog-etb",
+    description: "Spawnsire of Ulamog ETB; spawn token mana parse.",
+    seed: 0x603,
+    cards: {
+      "Spawnsire of Ulamog": `Name:Spawnsire of Ulamog
+ManaCost:10
+Types:Creature Eldrazi
+PT:7/11
+A:AB$ Token | Cost$ 4 | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenAmount$ 2
+A:AB$ Effect | Cost$ 20 | StaticAbilities$ STCast | Description$ Cast all eldrazi.
+SVar:STCast:Mode$ Continuous | Affected$ Card.Eldrazi.YouOwn | EffectZone$ Outside | MayPlay$ True
+Oracle:Spawnsire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spawnsire of Ulamog"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spawnsire of Ulamog", controller: SEAT0 }],
+  },
+
+  // 1245. Eldrazi Spawn — sac for mana.
+  {
+    id: "eldrazi-spawn-token-etb",
+    description: "Eldrazi Spawn token ETB; sac mana parse.",
+    seed: 0x604,
+    cards: {
+      "Eldrazi Spawn": `Name:Eldrazi Spawn
+Types:Creature Eldrazi Spawn
+PT:0/1
+A:AB$ Mana | Cost$ Sac<1/CARDNAME> | Produced$ C
+Oracle:Spawn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Eldrazi Spawn"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Eldrazi Spawn", controller: SEAT0 }],
+  },
+
+  // 1246. Reality Smasher — discard etb / haste.
+  {
+    id: "reality-smasher-etb",
+    description: "Reality Smasher ETB; haste discard tax parse.",
+    seed: 0x605,
+    cards: {
+      "Reality Smasher": `Name:Reality Smasher
+ManaCost:4
+Types:Creature Eldrazi
+PT:5/5
+K:Haste
+K:Trample
+T:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Card.Spell | Execute$ TrigDisc | TriggerDescription$ Smasher.
+SVar:TrigDisc:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose | Defined$ TargetedController
+Oracle:Smasher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reality Smasher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reality Smasher", controller: SEAT0 }],
+  },
+
+  // 1247. Thought-Knot Seer — etb peek.
+  {
+    id: "thought-knot-seer-etb",
+    description: "Thought-Knot Seer ETB; exile from hand parse.",
+    seed: 0x606,
+    cards: {
+      "Thought-Knot Seer": `Name:Thought-Knot Seer
+ManaCost:3
+Types:Creature Eldrazi
+PT:4/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ TKS.
+SVar:TrigPeek:DB$ Reveal | NumCards$ All | Defined$ TargetedPlayer | RevealValid$ Card.nonLand | TargetType$ Player | SubAbility$ DBExile
+SVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeNum$ 1 | Defined$ Targeted
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Leaves.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ Opponent
+Oracle:TKS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thought-Knot Seer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thought-Knot Seer", controller: SEAT0 }],
+  },
+
+  // 1248. Matter Reshaper — colorless.
+  {
+    id: "matter-reshaper-etb",
+    description: "Matter Reshaper ETB; reveal top parse.",
+    seed: 0x607,
+    cards: {
+      "Matter Reshaper": `Name:Matter Reshaper
+ManaCost:3
+Types:Creature Eldrazi
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Reshaper.
+SVar:TrigReveal:DB$ Dig | DigNum$ 1 | RevealedNum$ 1 | NoChangeNum$ 0 | OptionalDecider$ You | DestinationZone$ Battlefield | ChangeValid$ Card.cmcLE3
+Oracle:Reshaper parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Matter Reshaper"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Matter Reshaper", controller: SEAT0 }],
+  },
+
+  // 1249. Endbringer — utility eldrazi.
+  {
+    id: "endbringer-etb",
+    description: "Endbringer ETB; multimodal parse.",
+    seed: 0x608,
+    cards: {
+      Endbringer: `Name:Endbringer
+ManaCost:5
+Types:Creature Eldrazi
+PT:5/5
+S:Mode$ Continuous | Affected$ Card.Self | AddHiddenKeyword$ CARDNAME doesn't untap during your untap step.
+T:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Untap.
+SVar:TrigUntap:DB$ Untap | Defined$ Self
+A:AB$ DealDamage | Cost$ T | NumDmg$ 1 | TargetType$ Creature,Player
+A:AB$ Tap | Cost$ T | TargetType$ Creature
+A:AB$ Draw | Cost$ T | NumCards$ 1
+Oracle:Endbringer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Endbringer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Endbringer", controller: SEAT0 }],
+  },
+
+  // 1250. Wasteland — destroy nonbasic land.
+  {
+    id: "wasteland-etb-m624",
+    description: "Wasteland ETB; sac to destroy nonbasic parse.",
+    seed: 0x609,
+    cards: {
+      Wasteland: `Name:Wasteland
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land.nonBasic
+Oracle:Wasteland parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wasteland"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wasteland", controller: SEAT0 }],
+  },
+
+  // 1251. Strip Mine — destroy land.
+  {
+    id: "strip-mine-etb-m624",
+    description: "Strip Mine ETB; sac to destroy land parse.",
+    seed: 0x60a,
+    cards: {
+      "Strip Mine": `Name:Strip Mine
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land
+Oracle:Strip Mine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Strip Mine"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Strip Mine", controller: SEAT0 }],
+  },
+
+  // 1252. Ghost Quarter — destroy land + basic.
+  {
+    id: "ghost-quarter-etb-m624",
+    description: "Ghost Quarter ETB; sac destroy land + basic parse.",
+    seed: 0x60b,
+    cards: {
+      "Ghost Quarter": `Name:Ghost Quarter
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | DefinedPlayer$ TargetedController | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1
+Oracle:Ghost Quarter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ghost Quarter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ghost Quarter", controller: SEAT0 }],
+  },
+
+  // 1253. Field of the Dead — zombie tokens.
+  {
+    id: "field-of-the-dead-etb-m624",
+    description: "Field of the Dead ETB; landfall zombie parse.",
+    seed: 0x60c,
+    cards: {
+      "Field of the Dead": `Name:Field of the Dead
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | CheckSVar$ X | SVarCompare$ GE7 | References$ X | TriggerDescription$ Field.
+SVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1
+SVar:X:Count$DifferentCardName_Land.YouCtrl
+Oracle:Field parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Field of the Dead"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Field of the Dead", controller: SEAT0 }],
+  },
+
+  // 1254. Cabal Coffers — swamp scaling mana.
+  {
+    id: "cabal-coffers-etb-m624",
+    description: "Cabal Coffers ETB; B per swamp parse.",
+    seed: 0x60d,
+    cards: {
+      "Cabal Coffers": `Name:Cabal Coffers
+Types:Land
+A:AB$ Mana | Cost$ 2 T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$YourSwamps
+Oracle:Coffers parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cabal Coffers"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cabal Coffers", controller: SEAT0 }],
+  },
+
+  // 1255. Nykthos, Shrine to Nyx — devotion mana.
+  {
+    id: "nykthos-shrine-to-nyx-etb",
+    description: "Nykthos, Shrine to Nyx ETB; devotion mana parse.",
+    seed: 0x60e,
+    cards: {
+      "Nykthos, Shrine to Nyx": `Name:Nykthos, Shrine to Nyx
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Chosen | Amount$ X | References$ X | ChooseFromColors$ True
+SVar:X:Count$Devotion
+Oracle:Nykthos parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nykthos, Shrine to Nyx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nykthos, Shrine to Nyx", controller: SEAT0 }],
+  },
+
+  // 1256. Tolarian Academy — artifact-scaling.
+  {
+    id: "tolarian-academy-etb",
+    description: "Tolarian Academy ETB; artifact-scale U parse.",
+    seed: 0x60f,
+    cards: {
+      "Tolarian Academy": `Name:Tolarian Academy
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ U | Amount$ X | References$ X
+SVar:X:Count$YourArtifacts
+Oracle:Academy parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tolarian Academy"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tolarian Academy", controller: SEAT0 }],
+  },
+
+  // 1257. Gaea's Cradle — creature scaling.
+  {
+    id: "gaeas-cradle-etb",
+    description: "Gaea's Cradle ETB; creature-scaling G parse.",
+    seed: 0x610,
+    cards: {
+      "Gaea's Cradle": `Name:Gaea's Cradle
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$YourCreatures
+Oracle:Cradle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gaea's Cradle"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gaea's Cradle", controller: SEAT0 }],
+  },
+
+  // 1258. Serra's Sanctum — enchantment-scaling.
+  {
+    id: "serras-sanctum-etb",
+    description: "Serra's Sanctum ETB; enchantment-scaling W parse.",
+    seed: 0x611,
+    cards: {
+      "Serra's Sanctum": `Name:Serra's Sanctum
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ W | Amount$ X | References$ X
+SVar:X:Count$YourEnchantments
+Oracle:Sanctum parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Serra's Sanctum"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Serra's Sanctum", controller: SEAT0 }],
+  },
+
+  // 1259. Bazaar of Baghdad — draw 2 / discard 3.
+  {
+    id: "bazaar-of-baghdad-etb",
+    description: "Bazaar of Baghdad ETB; loot 2/3 parse.",
+    seed: 0x612,
+    cards: {
+      "Bazaar of Baghdad": `Name:Bazaar of Baghdad
+Types:Land
+A:AB$ Draw | Cost$ T | NumCards$ 2 | SubAbility$ DBDisc
+SVar:DBDisc:DB$ Discard | NumCards$ 3 | Mode$ TgtChoose
+Oracle:Bazaar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bazaar of Baghdad"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bazaar of Baghdad", controller: SEAT0 }],
+  },
+
+  // 1260. Library of Alexandria — draw if 7.
+  {
+    id: "library-of-alexandria-etb",
+    description: "Library of Alexandria ETB; conditional draw parse.",
+    seed: 0x613,
+    cards: {
+      "Library of Alexandria": `Name:Library of Alexandria
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Draw | Cost$ T | NumCards$ 1 | CheckSVar$ X | SVarCompare$ EQ7 | References$ X
+SVar:X:Count$InYourHand
+Oracle:Library parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Library of Alexandria"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Library of Alexandria", controller: SEAT0 }],
+  },
+
+  // 1261. Maze of Ith — untap blocked attacker.
+  {
+    id: "maze-of-ith-etb-m624",
+    description: "Maze of Ith ETB; untap creature parse.",
+    seed: 0x614,
+    cards: {
+      "Maze of Ith": `Name:Maze of Ith
+Types:Land
+A:AB$ Untap | Cost$ T | TargetType$ Creature | ValidTgts$ Creature.attacking | SubAbility$ DBPrev
+SVar:DBPrev:DB$ EffectPrevent | Amount$ All | Defined$ Targeted
+Oracle:Maze parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maze of Ith"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maze of Ith", controller: SEAT0 }],
+  },
+
+  // 1262. Mishra's Factory — animate.
+  {
+    id: "mishras-factory-etb",
+    description: "Mishra's Factory ETB; animate 2/2 parse.",
+    seed: 0x615,
+    cards: {
+      "Mishra's Factory": `Name:Mishra's Factory
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Animate | Cost$ 1 | Defined$ Self | Power$ 2 | Toughness$ 2 | Types$ Creature,Artifact,Assembly-Worker
+A:AB$ Pump | Cost$ T | TargetType$ Creature | ValidTgts$ Assembly-Worker | NumAtt$ 1 | NumDef$ 1
+Oracle:Factory parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishra's Factory"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishra's Factory", controller: SEAT0 }],
+  },
+
+  // 1263. Mutavault — anim 2/2.
+  {
+    id: "mutavault-etb-m624",
+    description: "Mutavault ETB; animate parse.",
+    seed: 0x616,
+    cards: {
+      Mutavault: `Name:Mutavault
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Animate | Cost$ 1 T | Defined$ Self | Power$ 2 | Toughness$ 2 | Types$ Creature,Changeling
+Oracle:Mutavault parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mutavault"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mutavault", controller: SEAT0 }],
+  },
+
+  // 1264. Treetop Village — anim 3/3 trample.
+  {
+    id: "treetop-village-etb-m624",
+    description: "Treetop Village ETB; animate parse.",
+    seed: 0x617,
+    cards: {
+      "Treetop Village": `Name:Treetop Village
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G
+A:AB$ Animate | Cost$ 1 G | Defined$ Self | Power$ 3 | Toughness$ 3 | Types$ Creature,Ape | Keywords$ Trample
+Oracle:Treetop parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Treetop Village"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Treetop Village", controller: SEAT0 }],
+  },
+
+  // 1265. Faerie Conclave — flying.
+  {
+    id: "faerie-conclave-etb-m624",
+    description: "Faerie Conclave ETB; flying anim parse.",
+    seed: 0x618,
+    cards: {
+      "Faerie Conclave": `Name:Faerie Conclave
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U
+A:AB$ Animate | Cost$ 1 U | Defined$ Self | Power$ 2 | Toughness$ 1 | Types$ Creature,Faerie | Keywords$ Flying
+Oracle:Faerie Conclave parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Faerie Conclave"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Faerie Conclave", controller: SEAT0 }],
+  },
+
+  // 1266. Forbidden Orchard — gift token.
+  {
+    id: "forbidden-orchard-etb",
+    description: "Forbidden Orchard ETB; gift opponent token parse.",
+    seed: 0x619,
+    cards: {
+      "Forbidden Orchard": `Name:Forbidden Orchard
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Card.YouCtrl
+T:Mode$ TapsForMana | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Orchard.
+SVar:TrigToken:DB$ Token | TokenScript$ c_1_1_spirit | TokenAmount$ 1 | TokenOwner$ Opponent
+Oracle:Orchard parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forbidden Orchard"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forbidden Orchard", controller: SEAT0 }],
+  },
+
+  // 1267. Krark-Clan Ironworks — sac art for mana.
+  {
+    id: "krark-clan-ironworks-etb-m624",
+    description: "Krark-Clan Ironworks ETB; sac for mana parse.",
+    seed: 0x61a,
+    cards: {
+      "Krark-Clan Ironworks": `Name:Krark-Clan Ironworks
+ManaCost:4
+Types:Artifact
+A:AB$ Mana | Cost$ Sac<1/Artifact> | Produced$ C | Amount$ 2
+Oracle:Ironworks parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krark-Clan Ironworks"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Krark-Clan Ironworks", controller: SEAT0 }],
+  },
+
+  // 1268. Grindstone — mill 2.
+  {
+    id: "grindstone-etb",
+    description: "Grindstone ETB; mill on shared color parse.",
+    seed: 0x61b,
+    cards: {
+      Grindstone: `Name:Grindstone
+ManaCost:1
+Types:Artifact
+A:AB$ Mill | Cost$ 3 T | NumCards$ 2 | DefinedPlayer$ Targeted | TargetType$ Player
+Oracle:Grindstone parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grindstone"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grindstone", controller: SEAT0 }],
+  },
+
+  // 1269. Painter's Servant — color all parse.
+  {
+    id: "painters-servant-etb-m624",
+    description: "Painter's Servant ETB; chosen color all cards parse.",
+    seed: 0x61c,
+    cards: {
+      "Painter's Servant": `Name:Painter's Servant
+ManaCost:2
+Types:Artifact Creature Scarecrow
+PT:1/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ Painter.
+SVar:TrigChoose:DB$ ChooseColor | Defined$ You
+S:Mode$ Continuous | Affected$ Card | AddColor$ ChosenColor | Description$ Servant.
+Oracle:Painter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Painter's Servant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Painter's Servant", controller: SEAT0 }],
+  },
+
+  // 1270. Helm of Obedience — mill / steal.
+  {
+    id: "helm-of-obedience-etb",
+    description: "Helm of Obedience ETB; mill until creature parse.",
+    seed: 0x61d,
+    cards: {
+      "Helm of Obedience": `Name:Helm of Obedience
+ManaCost:4
+Types:Artifact
+A:AB$ Dig | Cost$ X T | DigUntil$ Creature | DigUntilAmount$ 1 | DigUntilFromGY$ True | Defined$ Targeted | TargetType$ Player
+Oracle:Helm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Helm of Obedience"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Helm of Obedience", controller: SEAT0 }],
+  },
+
+  // 1271. Sword of the Meek — equip/return on token.
+  {
+    id: "sword-of-the-meek-etb",
+    description: "Sword of the Meek ETB; equip return parse.",
+    seed: 0x61e,
+    cards: {
+      "Sword of the Meek": `Name:Sword of the Meek
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.AttachedBy+powerLE1 | AddPower$ 1 | AddToughness$ 2 | Description$ Meek.
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+powerEQ1 | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Meek.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self
+Oracle:Meek parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword of the Meek"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword of the Meek", controller: SEAT0 }],
+  },
+
+  // 1272. Thopter Foundry — token + life.
+  {
+    id: "thopter-foundry-etb",
+    description: "Thopter Foundry ETB; sac art -> thopter parse.",
+    seed: 0x61f,
+    cards: {
+      "Thopter Foundry": `Name:Thopter Foundry
+ManaCost:W U B
+Types:Artifact
+A:AB$ Token | Cost$ 1 Sac<1/Artifact> | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
+Oracle:Foundry parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thopter Foundry"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thopter Foundry", controller: SEAT0 }],
+  },
+
+  // 1273. Time Vault — extra turn.
+  {
+    id: "time-vault-etb",
+    description: "Time Vault ETB; extra turn parse.",
+    seed: 0x620,
+    cards: {
+      "Time Vault": `Name:Time Vault
+ManaCost:2
+Types:Artifact
+A:AB$ AddTurn | Cost$ T | NumTurns$ 1 | Defined$ You
+Oracle:Vault parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Time Vault"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Time Vault", controller: SEAT0 }],
+  },
+
+  // 1274. Voltaic Key — untap art.
+  {
+    id: "voltaic-key-etb",
+    description: "Voltaic Key ETB; untap art parse.",
+    seed: 0x621,
+    cards: {
+      "Voltaic Key": `Name:Voltaic Key
+ManaCost:1
+Types:Artifact
+A:AB$ Untap | Cost$ 1 T | TargetType$ Permanent | ValidTgts$ Artifact
+Oracle:Key parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Voltaic Key"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Voltaic Key", controller: SEAT0 }],
+  },
+
+  // 1275. Manifold Key — untap art + unblockable.
+  {
+    id: "manifold-key-etb",
+    description: "Manifold Key ETB; untap parse.",
+    seed: 0x622,
+    cards: {
+      "Manifold Key": `Name:Manifold Key
+ManaCost:1
+Types:Artifact
+A:AB$ Pump | Cost$ 1 T | TargetType$ Creature | KW$ Unblockable
+A:AB$ Untap | Cost$ 1 T | TargetType$ Permanent | ValidTgts$ Artifact
+Oracle:Manifold parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Manifold Key"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Manifold Key", controller: SEAT0 }],
+  },
+
+  // 1276. Aetherflux Reservoir — gain + 50 life kill.
+  {
+    id: "aetherflux-reservoir-etb-v2",
+    description: "Aetherflux Reservoir ETB v2; storm life parse.",
+    seed: 0x623,
+    cards: {
+      "Aetherflux Reservoir v2": `Name:Aetherflux Reservoir v2
+ManaCost:4
+Types:Artifact
+T:Mode$ SpellCast | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ Storm.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ X | References$ X
+SVar:X:Count$ThisTurnCast_Card.YouOwn
+A:AB$ DealDamage | Cost$ PayLife<50> | NumDmg$ 50 | TargetType$ Creature,Player
+Oracle:Reservoir parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aetherflux Reservoir v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aetherflux Reservoir v2", controller: SEAT0 }],
+  },
+
+  // 1277. Bolas's Citadel — top of library.
+  {
+    id: "bolass-citadel-etb",
+    description: "Bolas's Citadel ETB; cast off top parse.",
+    seed: 0x624,
+    cards: {
+      "Bolas's Citadel": `Name:Bolas's Citadel
+ManaCost:3 B B B
+Types:Legendary Artifact
+S:Mode$ Continuous | Affected$ Card.YouOwn | EffectZone$ Library | MayPlay$ True | MayPlayLimit$ 1 | Description$ Citadel.
+A:AB$ DealDamage | Cost$ T Sac<10/Permanent.nonLand+YouCtrl> | NumDmg$ 10 | TargetType$ Player
+Oracle:Citadel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bolas's Citadel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bolas's Citadel", controller: SEAT0 }],
+  },
+
+  // 1278. Sensei's Divining Top — top manipulator.
+  {
+    id: "senseis-divining-top-etb",
+    description: "Sensei's Divining Top ETB; scry / draw parse.",
+    seed: 0x625,
+    cards: {
+      "Sensei's Divining Top": `Name:Sensei's Divining Top
+ManaCost:1
+Types:Artifact
+A:AB$ Scry | Cost$ T | ScryNum$ 3 | NoMove$ True
+A:AB$ Draw | Cost$ 1 | NumCards$ 1 | SubAbility$ DBLib
+SVar:DBLib:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | Defined$ Self | LibraryPosition$ 0
+Oracle:Top parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sensei's Divining Top"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sensei's Divining Top", controller: SEAT0 }],
+  },
+
+  // 1279. Aether Vial — put creature.
+  {
+    id: "aether-vial-etb-v3",
+    description: "Aether Vial ETB v3; counter activate parse.",
+    seed: 0x626,
+    cards: {
+      "Aether Vial v3": `Name:Aether Vial v3
+ManaCost:1
+Types:Artifact
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | OptionalDecider$ You | TriggerDescription$ Vial.
+SVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | Defined$ Self
+A:AB$ ChangeZone | Cost$ T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | ChangeNum$ 1 | References$ X
+SVar:X:Count$CardCounters.CHARGE
+Oracle:Vial parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aether Vial v3"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aether Vial v3", controller: SEAT0 }],
+  },
+
+  // 1280. Mishra, Tamer of Mak Fawa — etb token.
+  {
+    id: "mishra-tamer-of-mak-fawa-etb",
+    description: "Mishra, Tamer ETB; token parse.",
+    seed: 0x627,
+    cards: {
+      "Mishra, Tamer of Mak Fawa": `Name:Mishra, Tamer of Mak Fawa
+ManaCost:2 B R
+Types:Legendary Creature Human Artificer
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Mishra.
+SVar:TrigToken:DB$ Token | TokenScript$ r_4_4_dragon_flying | TokenAmount$ 1
+Oracle:Mishra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishra, Tamer of Mak Fawa"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishra, Tamer of Mak Fawa", controller: SEAT0 }],
+  },
+
+  // 1281. Urza, Powerstone Prodigy — instant artifact mana.
+  {
+    id: "urza-powerstone-prodigy-etb",
+    description: "Urza, Powerstone Prodigy ETB; loot mana parse.",
+    seed: 0x628,
+    cards: {
+      "Urza, Powerstone Prodigy": `Name:Urza, Powerstone Prodigy
+ManaCost:1 U
+Types:Legendary Creature Human Artificer
+PT:1/3
+A:AB$ Mana | Cost$ T | Produced$ C | RestrictValid$ Card.Instant,Card.Sorcery
+Oracle:Urza parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urza, Powerstone Prodigy"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urza, Powerstone Prodigy", controller: SEAT0 }],
+  },
+
+  // 1282. Urza, Lord High Artificer — token + activated.
+  {
+    id: "urza-lord-high-artificer-etb",
+    description: "Urza, Lord High Artificer ETB; thopter mana parse.",
+    seed: 0x629,
+    cards: {
+      "Urza, Lord High Artificer": `Name:Urza, Lord High Artificer
+ManaCost:2 U U
+Types:Legendary Creature Human Artificer
+PT:1/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Urza.
+SVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1
+A:AB$ Mana | Cost$ T | Produced$ U | Amount$ X | References$ X
+SVar:X:Count$YourArtifacts
+Oracle:Urza Lord parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urza, Lord High Artificer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urza, Lord High Artificer", controller: SEAT0 }],
+  },
+
+  // 1283. Karn, Scion of Urza — construct generator.
+  {
+    id: "karn-scion-of-urza-etb",
+    description: "Karn, Scion of Urza ETB; reveal exile parse.",
+    seed: 0x62a,
+    cards: {
+      "Karn, Scion of Urza": `Name:Karn, Scion of Urza
+ManaCost:4
+Types:Legendary Planeswalker Karn
+Loyalty:5
+A:AB$ Reveal | Cost$ AddCounter<1/LOYALTY> | NumCards$ 2 | RevealValid$ Card | Planeswalker$ True
+A:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Origin$ Exile | Destination$ Hand | Defined$ Targeted | TargetType$ Card | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ c_a_construct_x | TokenAmount$ 1 | Planeswalker$ True
+Oracle:Karn Scion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karn, Scion of Urza"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karn, Scion of Urza", controller: SEAT0 }],
+  },
+
+  // 1284. Karn, the Great Creator — wishboard.
+  {
+    id: "karn-the-great-creator-etb",
+    description: "Karn, the Great Creator ETB; wishboard parse.",
+    seed: 0x62b,
+    cards: {
+      "Karn, the Great Creator": `Name:Karn, the Great Creator
+ManaCost:4
+Types:Legendary Planeswalker Karn
+Loyalty:5
+A:AB$ Animate | Cost$ AddCounter<1/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact.nonCreature | Power$ X | Toughness$ X | References$ X | Planeswalker$ True
+SVar:X:Targeted$CardManaCost
+A:AB$ ChangeZone | Cost$ SubCounter<2/LOYALTY> | Origin$ Sideboard | Destination$ Hand | ChangeType$ Card.Artifact | ChangeNum$ 1 | Planeswalker$ True
+Oracle:Karn Creator parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karn, the Great Creator"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karn, the Great Creator", controller: SEAT0 }],
+  },
+
+  // 1285. Tezzeret, Artifice Master — thopter / draw / emblem.
+  {
+    id: "tezzeret-artifice-master-etb",
+    description: "Tezzeret, Artifice Master ETB; thopter draw emblem parse.",
+    seed: 0x62c,
+    cards: {
+      "Tezzeret, Artifice Master": `Name:Tezzeret, Artifice Master
+ManaCost:4 U
+Types:Legendary Planeswalker Tezzeret
+Loyalty:5
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ Draw | Cost$ SubCounter<3/LOYALTY> | NumCards$ 1 | UnlessCost$ 0 | Planeswalker$ True
+A:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Tezz Emblem | Triggers$ TrigEm | Planeswalker$ True | Ultimate$ True
+SVar:TrigEm:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ DBToken
+SVar:DBToken:DB$ Token | TokenScript$ c_a_5_5_thopter_flying | TokenAmount$ 1
+Oracle:Tezz Artifice parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tezzeret, Artifice Master"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tezzeret, Artifice Master", controller: SEAT0 }],
+  },
+
+  // 1286. Hangarback as token doubler combo (Anointed v3 dummy).
+  {
+    id: "anointed-procession-etb-v3",
+    description: "Anointed Procession v3 ETB; double tokens parse.",
+    seed: 0x62d,
+    cards: {
+      "Anointed Procession v3": `Name:Anointed Procession v3
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleTokens | Description$ Procession v3.
+SVar:DoubleTokens:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:Procession v3 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anointed Procession v3"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anointed Procession v3", controller: SEAT0 }],
+  },
+
+  // 1287. Doubling Cube — double mana pool.
+  {
+    id: "doubling-cube-etb",
+    description: "Doubling Cube ETB; double mana parse.",
+    seed: 0x62e,
+    cards: {
+      "Doubling Cube": `Name:Doubling Cube
+ManaCost:3
+Types:Artifact
+A:AB$ DoubleManaPool | Cost$ 3 T | Defined$ You
+Oracle:Cube parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doubling Cube"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Doubling Cube", controller: SEAT0 }],
+  },
+
+  // 1288. Mana Reflection — double permanent.
+  {
+    id: "mana-reflection-etb",
+    description: "Mana Reflection ETB; double mana from permanents parse.",
+    seed: 0x62f,
+    cards: {
+      "Mana Reflection": `Name:Mana Reflection
+ManaCost:4 G G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Permanent.YouCtrl | EffectZone$ Battlefield | DoubleMana$ True | Description$ Reflection.
+Oracle:Reflection parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mana Reflection"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mana Reflection", controller: SEAT0 }],
+  },
+
+  // 1289. Vorinclex, Voice of Hunger — double + opp half.
+  {
+    id: "vorinclex-voice-of-hunger-etb",
+    description: "Vorinclex, Voice of Hunger ETB; mana doubler half parse.",
+    seed: 0x630,
+    cards: {
+      "Vorinclex, Voice of Hunger": `Name:Vorinclex, Voice of Hunger
+ManaCost:6 G G
+Types:Legendary Creature Phyrexian Praetor
+PT:7/6
+K:Trample
+S:Mode$ Continuous | Affected$ Land.YouCtrl | DoubleMana$ True | Description$ Vorinclex.
+Oracle:Vorinclex parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vorinclex, Voice of Hunger"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vorinclex, Voice of Hunger", controller: SEAT0 }],
+  },
+
+  // 1290. Sheoldred, Whispering One — return / sac.
+  {
+    id: "sheoldred-whispering-one-etb",
+    description: "Sheoldred, Whispering One ETB; return / sac parse.",
+    seed: 0x631,
+    cards: {
+      "Sheoldred, Whispering One": `Name:Sheoldred, Whispering One
+ManaCost:5 B B
+Types:Legendary Creature Phyrexian Praetor
+PT:6/6
+K:Swampwalk
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Sheoldred.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouCtrl
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Opp sac.
+SVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | SacValid$ Creature
+Oracle:Sheoldred parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sheoldred, Whispering One"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sheoldred, Whispering One", controller: SEAT0 }],
+  },
+
+  // 1291. Elesh Norn, Grand Cenobite — anthem and -2/-2.
+  {
+    id: "elesh-norn-grand-cenobite-etb",
+    description: "Elesh Norn, Grand Cenobite ETB; anthem opp shrink parse.",
+    seed: 0x632,
+    cards: {
+      "Elesh Norn, Grand Cenobite": `Name:Elesh Norn, Grand Cenobite
+ManaCost:5 W W
+Types:Legendary Creature Phyrexian Praetor
+PT:4/7
+K:Vigilance
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Anthem.
+S:Mode$ Continuous | Affected$ Creature.OppCtrl | AddPower$ -2 | AddToughness$ -2 | Description$ Shrink.
+Oracle:Elesh parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elesh Norn, Grand Cenobite"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elesh Norn, Grand Cenobite", controller: SEAT0 }],
+  },
+
+  // 1292. Jin-Gitaxias, Core Augur — mill 7 / draw 7.
+  {
+    id: "jin-gitaxias-core-augur-etb",
+    description: "Jin-Gitaxias, Core Augur ETB; flash discard 7 parse.",
+    seed: 0x633,
+    cards: {
+      "Jin-Gitaxias, Core Augur": `Name:Jin-Gitaxias, Core Augur
+ManaCost:8 U U U
+Types:Legendary Creature Phyrexian Wizard
+PT:5/4
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw 7.
+SVar:TrigDraw:DB$ Draw | NumCards$ 7
+Oracle:Jin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jin-Gitaxias, Core Augur"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jin-Gitaxias, Core Augur", controller: SEAT0 }],
+  },
+
+  // 1293. Urabrask the Hidden — haste self / opp ETB tapped.
+  {
+    id: "urabrask-the-hidden-etb",
+    description: "Urabrask the Hidden ETB; haste / opp ETB tap parse.",
+    seed: 0x634,
+    cards: {
+      "Urabrask the Hidden": `Name:Urabrask the Hidden
+ManaCost:3 R R
+Types:Legendary Creature Phyrexian Praetor
+PT:4/4
+K:Haste
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Haste.
+R:Event$ Moved | ValidCard$ Creature.OppCtrl | Destination$ Battlefield | ReplaceWith$ ETBTap | Description$ Tap.
+SVar:ETBTap:DB$ Tap | Defined$ ReplacedCard
+Oracle:Urabrask parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urabrask the Hidden"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urabrask the Hidden", controller: SEAT0 }],
+  },
+
+  // 1294. Vorinclex, Monstrous Raider — proliferate self double.
+  {
+    id: "vorinclex-monstrous-raider-etb",
+    description: "Vorinclex, Monstrous Raider ETB; counter doubler parse.",
+    seed: 0x635,
+    cards: {
+      "Vorinclex, Monstrous Raider": `Name:Vorinclex, Monstrous Raider
+ManaCost:5 G G
+Types:Legendary Creature Phyrexian Praetor
+PT:6/6
+K:Trample
+K:Haste
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleAdd | Description$ Vor self.
+SVar:DoubleAdd:DB$ ReplaceCounter | Multiplier$ 2
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ReplaceWith$ HalveAdd | Description$ Vor opp.
+SVar:HalveAdd:DB$ ReplaceCounter | Multiplier$ 0.5 | RoundDown$ True
+Oracle:Vorinclex Raider parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vorinclex, Monstrous Raider"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vorinclex, Monstrous Raider", controller: SEAT0 }],
+  },
+
+  // 1295. Jin-Gitaxias, Progress Tyrant — sweep -1/-1.
+  {
+    id: "jin-gitaxias-progress-tyrant-etb",
+    description: "Jin-Gitaxias, Progress Tyrant ETB; sweep parse.",
+    seed: 0x636,
+    cards: {
+      "Jin-Gitaxias, Progress Tyrant": `Name:Jin-Gitaxias, Progress Tyrant
+ManaCost:5 U U
+Types:Legendary Creature Phyrexian Praetor
+PT:5/5
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tyrant.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -3 | NumDef$ -3
+Oracle:Jin Tyrant parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jin-Gitaxias, Progress Tyrant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jin-Gitaxias, Progress Tyrant", controller: SEAT0 }],
+  },
+
+  // 1296. Sheoldred, the Apocalypse — life trigger.
+  {
+    id: "sheoldred-the-apocalypse-etb",
+    description: "Sheoldred, the Apocalypse ETB; draw life trigger parse.",
+    seed: 0x637,
+    cards: {
+      "Sheoldred, the Apocalypse": `Name:Sheoldred, the Apocalypse
+ManaCost:2 B B
+Types:Legendary Creature Phyrexian Praetor
+PT:4/5
+K:Deathtouch
+T:Mode$ DrawnCard | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ You draw.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 2
+T:Mode$ DrawnCard | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigLose | TriggerDescription$ Opp draw.
+SVar:TrigLose:DB$ LoseLife | LifeAmount$ 2 | Defined$ TriggeredPlayer
+Oracle:Sheoldred parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sheoldred, the Apocalypse"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sheoldred, the Apocalypse", controller: SEAT0 }],
+  },
+
+  // 1297. Atraxa, Grand Unifier — exile/draw 10.
+  {
+    id: "atraxa-grand-unifier-etb",
+    description: "Atraxa, Grand Unifier ETB; reveal 10 / draw parse.",
+    seed: 0x638,
+    cards: {
+      "Atraxa, Grand Unifier": `Name:Atraxa, Grand Unifier
+ManaCost:G W U B
+Types:Legendary Creature Phyrexian Angel
+PT:7/7
+K:Flying
+K:Vigilance
+K:Deathtouch
+K:Lifelink
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Atraxa.
+SVar:TrigDig:DB$ Dig | DigNum$ 10 | RevealedNum$ 10 | ChangeNum$ 8 | DestinationZone$ Hand | ChangeValid$ Card.Artifact,Card.Creature,Card.Enchantment,Card.Land,Card.Planeswalker,Card.Sorcery,Card.Instant
+Oracle:Atraxa Unifier parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Atraxa, Grand Unifier"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Atraxa, Grand Unifier", controller: SEAT0 }],
+  },
+
+  // 1298. Glissa Sunslayer — fight / counter on hit.
+  {
+    id: "glissa-sunslayer-etb-m624",
+    description: "Glissa Sunslayer ETB; double strike deathtouch parse.",
+    seed: 0x639,
+    cards: {
+      "Glissa Sunslayer": `Name:Glissa Sunslayer
+ManaCost:B G
+Types:Legendary Creature Phyrexian Elf Warrior
+PT:3/3
+K:Double Strike
+K:Deathtouch
+T:Mode$ DamageDoneOnce | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigChoice | TriggerDescription$ Glissa.
+SVar:TrigChoice:DB$ Charm | Choices$ DBDraw,DBCounter,DBCounterRem
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+SVar:DBCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetType$ Creature
+SVar:DBCounterRem:DB$ RemoveCounter | TargetType$ Permanent | CounterType$ Any | CounterNum$ 1
+Oracle:Glissa Sunslayer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glissa Sunslayer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glissa Sunslayer", controller: SEAT0 }],
+  },
+
+  // 1299. The Wandering Rescuer (FF UB style).
+  {
+    id: "the-wandering-rescuer-etb",
+    description: "The Wandering Rescuer ETB; flash protect parse.",
+    seed: 0x63a,
+    cards: {
+      "The Wandering Rescuer": `Name:The Wandering Rescuer
+ManaCost:1 W W
+Types:Legendary Creature Human Samurai
+PT:4/4
+K:Flash
+K:Vigilance
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Rescuer.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible
+Oracle:Rescuer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["The Wandering Rescuer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "The Wandering Rescuer", controller: SEAT0 }],
+  },
+
+  // 1300. Ulalek, Fused Atrocity (MH3 final).
+  {
+    id: "ulalek-fused-atrocity-etb",
+    description: "Ulalek, Fused Atrocity ETB; copy eldrazi parse.",
+    seed: 0x63b,
+    cards: {
+      "Ulalek, Fused Atrocity": `Name:Ulalek, Fused Atrocity
+ManaCost:5
+Types:Legendary Creature Eldrazi
+PT:4/4
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ Ulalek.
+SVar:TrigCopy:DB$ CopySpellAbility | Defined$ Stack
+Oracle:Ulalek parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ulalek, Fused Atrocity"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ulalek, Fused Atrocity", controller: SEAT0 }],
+  },
+
+  // 1301. Disruptor Flute (MH3) — name lock.
+  {
+    id: "disruptor-flute-etb",
+    description: "Disruptor Flute ETB; name lock parse.",
+    seed: 0x63c,
+    cards: {
+      "Disruptor Flute": `Name:Disruptor Flute
+ManaCost:1
+Types:Artifact
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ Flute.
+SVar:TrigChoose:DB$ ChooseCard | Defined$ You | Choices$ Card.nonLand
+S:Mode$ CantBeCast | ValidCard$ Card.namedChosen | Description$ Flute lock.
+Oracle:Flute parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Disruptor Flute"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Disruptor Flute", controller: SEAT0 }],
+  },
+
+  // 1302. Shifting Woodland (MH3) — choose card.
+  {
+    id: "shifting-woodland-etb",
+    description: "Shifting Woodland ETB; copy permanent parse.",
+    seed: 0x63d,
+    cards: {
+      "Shifting Woodland": `Name:Shifting Woodland
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G
+A:AB$ Clone | Cost$ 4 G T | Defined$ Self | TargetType$ Card | ValidTgts$ Permanent.YouCtrl | Origin$ Graveyard
+Oracle:Woodland parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shifting Woodland"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shifting Woodland", controller: SEAT0 }],
+  },
+
+  // 1303. Flare of Cultivation (MH3) — sac creature.
+  {
+    id: "flare-of-cultivation-in-hand",
+    description: "Flare of Cultivation in hand; flare sac parse.",
+    seed: 0x63e,
+    cards: {
+      "Flare of Cultivation": `Name:Flare of Cultivation
+ManaCost:1 G
+Types:Instant
+A:SP$ ChangeZone | Cost$ 1 G Sac<1/Creature.nonToken> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 2
+Oracle:Flare parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flare of Cultivation"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1304. Springheart Nantuko (BLB) — bestow land copy.
+  {
+    id: "springheart-nantuko-etb",
+    description: "Springheart Nantuko ETB; landfall copy parse.",
+    seed: 0x63f,
+    cards: {
+      "Springheart Nantuko": `Name:Springheart Nantuko
+ManaCost:1 G
+Types:Creature Insect Druid
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Nantuko.
+SVar:TrigCopy:DB$ CopyPermanent | Defined$ Self | NumCopies$ 1 | UnlessCost$ 2 | UnlessPayer$ TriggeredPlayer
+Oracle:Nantuko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Springheart Nantuko"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Springheart Nantuko", controller: SEAT0 }],
+  },
+
+  // 1305. Beza, the Bounding Spring (BLB).
+  {
+    id: "beza-the-bounding-spring-etb",
+    description: "Beza, the Bounding Spring ETB; modal parse.",
+    seed: 0x640,
+    cards: {
+      "Beza, the Bounding Spring": `Name:Beza, the Bounding Spring
+ManaCost:2 W U
+Types:Legendary Creature Otter Cleric
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Beza.
+SVar:TrigCharm:DB$ Charm | Choices$ DBLife,DBToken,DBDraw
+SVar:DBLife:DB$ GainLife | LifeAmount$ 4
+SVar:DBToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 2
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Beza parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beza, the Bounding Spring"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beza, the Bounding Spring", controller: SEAT0 }],
+  },
+
+  // 1306. Birds of Paradise — back to basics.
+  {
+    id: "birds-of-paradise-etb-v2",
+    description: "Birds of Paradise v2 ETB; mana flying parse.",
+    seed: 0x641,
+    cards: {
+      "Birds of Paradise v2": `Name:Birds of Paradise v2
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any
+Oracle:BoP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Birds of Paradise v2"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Birds of Paradise v2", controller: SEAT0 }],
+  },
+
+  // 1307. Noble Hierarch — exalted.
+  {
+    id: "noble-hierarch-etb",
+    description: "Noble Hierarch ETB; exalted parse.",
+    seed: 0x642,
+    cards: {
+      "Noble Hierarch": `Name:Noble Hierarch
+ManaCost:G
+Types:Creature Human Druid
+PT:0/1
+K:Exalted
+A:AB$ Mana | Cost$ T | Produced$ G U W
+Oracle:Hierarch parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Noble Hierarch"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Noble Hierarch", controller: SEAT0 }],
+  },
+
+  // 1308. Ignoble Hierarch — exalted ramp 3 colors.
+  {
+    id: "ignoble-hierarch-etb",
+    description: "Ignoble Hierarch ETB; exalted parse.",
+    seed: 0x643,
+    cards: {
+      "Ignoble Hierarch": `Name:Ignoble Hierarch
+ManaCost:G
+Types:Creature Human Druid
+PT:0/1
+K:Exalted
+A:AB$ Mana | Cost$ T | Produced$ B G R
+Oracle:Ignoble parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ignoble Hierarch"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ignoble Hierarch", controller: SEAT0 }],
+  },
+
+  // 1309. Esper Sentinel — final dup-check.
+  {
+    id: "esper-sentinel-etb-v3",
+    description: "Esper Sentinel v3 ETB; opp draw tax parse.",
+    seed: 0x644,
+    cards: {
+      "Esper Sentinel v3": `Name:Esper Sentinel v3
+ManaCost:W
+Types:Artifact Creature Human Advisor
+PT:1/1
+T:Mode$ SpellCast | ValidPlayer$ Opponent | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Sentinel v3.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ X | UnlessPayer$ TriggeredPlayer | References$ X
+SVar:X:Count$CardPower
+Oracle:Sentinel v3 parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esper Sentinel v3"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esper Sentinel v3", controller: SEAT0 }],
+  },
+
+  // 1310. Tokenize multi-color trigger card final.
+  {
+    id: "saheeli-the-gifted-etb",
+    description: "Saheeli, the Gifted ETB; copy parse.",
+    seed: 0x645,
+    cards: {
+      "Saheeli, the Gifted": `Name:Saheeli, the Gifted
+ManaCost:1 U R
+Types:Legendary Planeswalker Saheeli
+Loyalty:3
+A:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Produced$ C | Amount$ 1 | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ c_a_servo | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ CopyPermanent | Cost$ SubCounter<7/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Creature | NumCopies$ 1 | Planeswalker$ True | Ultimate$ True
+Oracle:Saheeli Gifted parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Saheeli, the Gifted"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Saheeli, the Gifted", controller: SEAT0 }],
   },
 ];

@@ -1,0 +1,23 @@
+{
+  "id": "selesnya-charm-in-hand",
+  "description": "Selesnya Charm in hand; modal parse.",
+  "seed": 1353,
+  "cards": {
+    "Selesnya Charm": "Name:Selesnya Charm\nManaCost:G W\nTypes:Instant\nA:SP$ Charm | Cost$ G W | Choices$ DBPump,DBExile,DBToken\nSVar:DBPump:DB$ Pump | TargetType$ Creature | NumAtt$ 2 | NumDef$ 2 | KW$ Trample\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | TargetType$ Creature | ValidTgts$ Creature.powerGE5\nSVar:DBToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenAmount$ 1\nOracle:Selesnya Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selesnya Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "mayhem-devil-etb",
+  "description": "Mayhem Devil ETB; sac ping parse.",
+  "seed": 1412,
+  "cards": {
+    "Mayhem Devil": "Name:Mayhem Devil\nManaCost:1 B R\nTypes:Creature Devil\nPT:3/3\nT:Mode$ Sacrificed | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Mayhem.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player\nOracle:Mayhem parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mayhem Devil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mayhem Devil",
+      "controller": 0
+    }
+  ]
+}

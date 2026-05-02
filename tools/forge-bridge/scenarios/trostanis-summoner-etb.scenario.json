@@ -1,0 +1,29 @@
+{
+  "id": "trostanis-summoner-etb",
+  "description": "Trostani's Summoner ETB; tokens parse.",
+  "seed": 1321,
+  "cards": {
+    "Trostani's Summoner": "Name:Trostani's Summoner\nManaCost:4 G W\nTypes:Creature Elf Druid\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 1\nOracle:Summoner parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trostani's Summoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Trostani's Summoner",
+      "controller": 0
+    }
+  ]
+}

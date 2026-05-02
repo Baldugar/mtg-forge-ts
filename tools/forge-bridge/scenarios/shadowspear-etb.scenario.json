@@ -1,0 +1,29 @@
+{
+  "id": "shadowspear-etb",
+  "description": "Shadowspear ETB; trample lifelink + ward suppress parse.",
+  "seed": 1511,
+  "cards": {
+    "Shadowspear": "Name:Shadowspear\nManaCost:1\nTypes:Legendary Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddKeyword$ Trample & Lifelink | Description$ Spear.\nA:AB$ Effect | Cost$ 1 T | StaticAbilities$ STSuppress | Description$ Suppress.\nSVar:STSuppress:Mode$ Continuous | Affected$ Permanent.OppCtrl | RemoveKeyword$ Hexproof & Indestructible\nOracle:Shadowspear parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadowspear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Shadowspear",
+      "controller": 0
+    }
+  ]
+}

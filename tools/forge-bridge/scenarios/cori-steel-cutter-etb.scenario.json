@@ -1,0 +1,29 @@
+{
+  "id": "cori-steel-cutter-etb",
+  "description": "Cori-Steel Cutter ETB; equipment trigger parse.",
+  "seed": 1306,
+  "cards": {
+    "Cori-Steel Cutter": "Name:Cori-Steel Cutter\nManaCost:R W\nTypes:Artifact Equipment\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Cutter.\nSVar:TrigToken:DB$ Token | TokenScript$ rw_1_1_warrior | TokenAmount$ 1\nOracle:Cutter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cori-Steel Cutter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cori-Steel Cutter",
+      "controller": 0
+    }
+  ]
+}

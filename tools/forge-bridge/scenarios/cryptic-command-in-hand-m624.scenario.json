@@ -1,0 +1,23 @@
+{
+  "id": "cryptic-command-in-hand-m624",
+  "description": "Cryptic Command in hand; modal 4-mode parse.",
+  "seed": 1344,
+  "cards": {
+    "Cryptic Command": "Name:Cryptic Command\nManaCost:1 U U U\nTypes:Instant\nA:SP$ Charm | Cost$ 1 U U U | Choices$ DBCounter,DBBounce,DBTapAll,DBDraw | CharmNum$ 2 | MinCharmNum$ 2\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card\nSVar:DBBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Permanent\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.OppCtrl\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:Cryptic parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptic Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "rampaging-baloths-etb",
+  "description": "Rampaging Baloths ETB; beast on landfall parse.",
+  "seed": 1530,
+  "cards": {
+    "Rampaging Baloths": "Name:Rampaging Baloths\nManaCost:5 G G\nTypes:Creature Beast\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Baloths.\nSVar:TrigToken:DB$ Token | TokenScript$ g_4_4_beast | TokenAmount$ 1\nOracle:Baloths parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampaging Baloths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rampaging Baloths",
+      "controller": 0
+    }
+  ]
+}

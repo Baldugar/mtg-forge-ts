@@ -1,0 +1,29 @@
+{
+  "id": "edric-spymaster-of-trest-etb",
+  "description": "Edric, Spymaster of Trest ETB; draw on dmg parse.",
+  "seed": 1479,
+  "cards": {
+    "Edric, Spymaster of Trest": "Name:Edric, Spymaster of Trest\nManaCost:1 G U\nTypes:Legendary Creature Elf Rogue\nPT:2/2\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.attacking | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Edric.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ SourceController\nOracle:Edric parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edric, Spymaster of Trest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Edric, Spymaster of Trest",
+      "controller": 0
+    }
+  ]
+}

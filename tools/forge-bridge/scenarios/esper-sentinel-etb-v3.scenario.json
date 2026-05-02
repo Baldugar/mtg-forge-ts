@@ -1,0 +1,29 @@
+{
+  "id": "esper-sentinel-etb-v3",
+  "description": "Esper Sentinel v3 ETB; opp draw tax parse.",
+  "seed": 1604,
+  "cards": {
+    "Esper Sentinel v3": "Name:Esper Sentinel v3\nManaCost:W\nTypes:Artifact Creature Human Advisor\nPT:1/1\nT:Mode$ SpellCast | ValidPlayer$ Opponent | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Sentinel v3.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ X | UnlessPayer$ TriggeredPlayer | References$ X\nSVar:X:Count$CardPower\nOracle:Sentinel v3 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esper Sentinel v3"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esper Sentinel v3",
+      "controller": 0
+    }
+  ]
+}

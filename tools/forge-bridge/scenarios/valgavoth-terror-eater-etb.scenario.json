@@ -1,0 +1,29 @@
+{
+  "id": "valgavoth-terror-eater-etb",
+  "description": "Valgavoth, Terror Eater ETB; lifelink ward parse.",
+  "seed": 1299,
+  "cards": {
+    "Valgavoth, Terror Eater": "Name:Valgavoth, Terror Eater\nManaCost:5 B B\nTypes:Legendary Creature Demon\nPT:9/9\nK:Flying\nK:Lifelink\nK:Ward:4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Valg.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredCard | GainControl$ True\nOracle:Valgavoth parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valgavoth, Terror Eater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Valgavoth, Terror Eater",
+      "controller": 0
+    }
+  ]
+}

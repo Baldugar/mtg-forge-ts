@@ -1,0 +1,29 @@
+{
+  "id": "rancor-etb",
+  "description": "Rancor ETB; trample + return parse.",
+  "seed": 1514,
+  "cards": {
+    "Rancor": "Name:Rancor\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Creature\nA:SP$ Attach | Cost$ G\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddKeyword$ Trample | Description$ Rancor.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Return.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nOracle:Rancor parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rancor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rancor",
+      "controller": 0
+    }
+  ]
+}

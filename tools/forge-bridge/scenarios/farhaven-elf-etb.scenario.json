@@ -1,0 +1,29 @@
+{
+  "id": "farhaven-elf-etb",
+  "description": "Farhaven Elf ETB; basic search parse.",
+  "seed": 1330,
+  "cards": {
+    "Farhaven Elf": "Name:Farhaven Elf\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Farhaven.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Basic.Land | ChangeNum$ 1 | Tapped$ True\nOracle:Farhaven parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farhaven Elf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Farhaven Elf",
+      "controller": 0
+    }
+  ]
+}

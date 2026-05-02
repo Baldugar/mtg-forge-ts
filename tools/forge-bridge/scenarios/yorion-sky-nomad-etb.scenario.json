@@ -1,0 +1,29 @@
+{
+  "id": "yorion-sky-nomad-etb",
+  "description": "Yorion, Sky Nomad ETB; flicker parse.",
+  "seed": 1440,
+  "cards": {
+    "Yorion, Sky Nomad": "Name:Yorion, Sky Nomad\nManaCost:4 W U\nTypes:Legendary Creature Bird Serpent\nPT:4/5\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ All | AddHiddenKeyword$ Companion.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Yorion.\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl+nonLand+Other | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield\nOracle:Yorion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yorion, Sky Nomad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Yorion, Sky Nomad",
+      "controller": 0
+    }
+  ]
+}

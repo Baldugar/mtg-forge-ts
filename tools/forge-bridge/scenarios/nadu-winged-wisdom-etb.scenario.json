@@ -1,0 +1,29 @@
+{
+  "id": "nadu-winged-wisdom-etb",
+  "description": "Nadu, Winged Wisdom ETB; target trigger parse.",
+  "seed": 1282,
+  "cards": {
+    "Nadu, Winged Wisdom": "Name:Nadu, Winged Wisdom\nManaCost:1 G U\nTypes:Legendary Creature Bird\nPT:3/4\nK:Flying\nT:Mode$ BecomesTarget | ValidTarget$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Nadu.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Land\nOracle:Nadu parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nadu, Winged Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Nadu, Winged Wisdom",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "contagion-engine-etb",
+  "description": "Contagion Engine ETB; proliferate twice parse.",
+  "seed": 1453,
+  "cards": {
+    "Contagion Engine": "Name:Contagion Engine\nManaCost:6\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Engine.\nSVar:TrigCounter:DB$ PutCounterAll | CounterType$ M1M1 | CounterNum$ 1 | ValidCards$ Creature.OppCtrl\nA:AB$ Proliferate | Cost$ 4 T | Amount$ 2\nOracle:Engine parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contagion Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Contagion Engine",
+      "controller": 0
+    }
+  ]
+}

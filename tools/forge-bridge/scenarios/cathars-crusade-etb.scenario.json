@@ -1,0 +1,29 @@
+{
+  "id": "cathars-crusade-etb",
+  "description": "Cathars' Crusade ETB; counter on ETB chain parse.",
+  "seed": 1369,
+  "cards": {
+    "Cathars' Crusade": "Name:Cathars' Crusade\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Crusade.\nSVar:TrigCounter:DB$ PutCounterAll | CounterType$ P1P1 | CounterNum$ 1 | ValidCards$ Creature.YouCtrl\nOracle:Crusade parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cathars' Crusade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Cathars' Crusade",
+      "controller": 0
+    }
+  ]
+}

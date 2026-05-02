@@ -1,0 +1,29 @@
+{
+  "id": "blood-artist-etb-m624",
+  "description": "Blood Artist ETB; drain parse.",
+  "seed": 1408,
+  "cards": {
+    "Blood Artist": "Name:Blood Artist\nManaCost:1 B\nTypes:Creature Vampire\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Artist.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ TargetedPlayer | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nOracle:Artist parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Blood Artist",
+      "controller": 0
+    }
+  ]
+}

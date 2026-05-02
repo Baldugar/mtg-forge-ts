@@ -1,0 +1,29 @@
+{
+  "id": "dovin-grand-arbiter-etb",
+  "description": "Dovin, Grand Arbiter ETB; thopter token parse.",
+  "seed": 1390,
+  "cards": {
+    "Dovin, Grand Arbiter": "Name:Dovin, Grand Arbiter\nManaCost:1 W U\nTypes:Legendary Planeswalker Dovin\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ 1 | SubAbility$ DBLife | Planeswalker$ True\nSVar:DBLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Draw | Cost$ SubCounter<1/LOYALTY> | NumCards$ 1 | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Dovin Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Dovin parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dovin, Grand Arbiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Dovin, Grand Arbiter",
+      "controller": 0
+    }
+  ]
+}

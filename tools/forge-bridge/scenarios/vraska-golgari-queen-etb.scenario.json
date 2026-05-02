@@ -1,0 +1,29 @@
+{
+  "id": "vraska-golgari-queen-etb",
+  "description": "Vraska, Golgari Queen ETB; destroy/draw parse.",
+  "seed": 1391,
+  "cards": {
+    "Vraska, Golgari Queen": "Name:Vraska, Golgari Queen\nManaCost:2 B G\nTypes:Legendary Planeswalker Vraska\nLoyalty:5\nA:AB$ Destroy | Cost$ AddCounter<2/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Enchantment | Planeswalker$ True\nA:AB$ Sacrifice | Cost$ SubCounter<2/LOYALTY> | SacValid$ Permanent.YouCtrl | SubAbility$ DBDraw | Planeswalker$ True\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nA:AB$ Effect | Cost$ SubCounter<9/LOYALTY> | Name$ Vraska Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Vraska parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska, Golgari Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vraska, Golgari Queen",
+      "controller": 0
+    }
+  ]
+}

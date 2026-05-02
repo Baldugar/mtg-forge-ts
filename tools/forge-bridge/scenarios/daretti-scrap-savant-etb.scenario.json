@@ -1,0 +1,29 @@
+{
+  "id": "daretti-scrap-savant-etb",
+  "description": "Daretti, Scrap Savant ETB; rummage reanimate parse.",
+  "seed": 1388,
+  "cards": {
+    "Daretti, Scrap Savant": "Name:Daretti, Scrap Savant\nManaCost:3 R\nTypes:Legendary Planeswalker Daretti\nLoyalty:3\nA:AB$ Draw | Cost$ AddCounter<2/LOYALTY> | NumCards$ 1 | SubAbility$ DBDisc | Planeswalker$ True\nSVar:DBDisc:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> Sac<1/Artifact> | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Artifact | Planeswalker$ True\nA:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Name$ Daretti Emblem | Planeswalker$ True | Ultimate$ True\nOracle:Daretti parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daretti, Scrap Savant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Daretti, Scrap Savant",
+      "controller": 0
+    }
+  ]
+}

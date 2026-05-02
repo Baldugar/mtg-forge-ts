@@ -1,0 +1,29 @@
+{
+  "id": "karn-liberated-etb-m624",
+  "description": "Karn Liberated ETB; exile or restart parse.",
+  "seed": 1381,
+  "cards": {
+    "Karn Liberated": "Name:Karn Liberated\nManaCost:7\nTypes:Legendary Planeswalker Karn\nLoyalty:6\nA:AB$ ChangeZone | Cost$ AddCounter<4/LOYALTY> | TargetType$ Card | Origin$ Battlefield,Hand | Destination$ Exile | ValidTgts$ Card.OppOwn | Planeswalker$ True\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Origin$ Battlefield,Graveyard | Destination$ Exile | Defined$ TargetedPlayer | Planeswalker$ True\nA:AB$ RestartGame | Cost$ SubCounter<14/LOYALTY> | Planeswalker$ True | Ultimate$ True\nOracle:Karn parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karn Liberated"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Karn Liberated",
+      "controller": 0
+    }
+  ]
+}

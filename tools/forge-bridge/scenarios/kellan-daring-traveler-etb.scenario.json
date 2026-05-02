@@ -1,0 +1,29 @@
+{
+  "id": "kellan-daring-traveler-etb",
+  "description": "Kellan, Daring Traveler ETB; rummage parse.",
+  "seed": 1285,
+  "cards": {
+    "Kellan, Daring Traveler": "Name:Kellan, Daring Traveler\nManaCost:G W\nTypes:Legendary Creature Human Scout\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Kellan.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Creature\nOracle:Kellan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kellan, Daring Traveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Kellan, Daring Traveler",
+      "controller": 0
+    }
+  ]
+}

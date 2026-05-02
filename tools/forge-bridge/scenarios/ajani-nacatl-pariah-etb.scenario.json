@@ -1,0 +1,29 @@
+{
+  "id": "ajani-nacatl-pariah-etb",
+  "description": "Ajani, Nacatl Pariah ETB; flip walker parse.",
+  "seed": 1283,
+  "cards": {
+    "Ajani, Nacatl Pariah": "Name:Ajani, Nacatl Pariah\nManaCost:1 W\nTypes:Legendary Creature Cat Warrior\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigCounter | TriggerDescription$ Ajani.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ FERAL | CounterNum$ 1 | Defined$ Self\nOracle:Ajani parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ajani, Nacatl Pariah"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ajani, Nacatl Pariah",
+      "controller": 0
+    }
+  ]
+}

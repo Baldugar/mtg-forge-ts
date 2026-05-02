@@ -1,0 +1,29 @@
+{
+  "id": "flickerwisp-flicker",
+  "description": "Flickerwisp ETB; flicker until end parse.",
+  "seed": 1373,
+  "cards": {
+    "Flickerwisp": "Name:Flickerwisp\nManaCost:1 W W\nTypes:Creature Elemental\nPT:3/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ Wisp.\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.Other\nOracle:Wisp parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flickerwisp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Flickerwisp",
+      "controller": 0
+    }
+  ]
+}

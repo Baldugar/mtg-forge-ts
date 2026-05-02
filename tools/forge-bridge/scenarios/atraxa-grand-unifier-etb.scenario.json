@@ -1,0 +1,29 @@
+{
+  "id": "atraxa-grand-unifier-etb",
+  "description": "Atraxa, Grand Unifier ETB; reveal 10 / draw parse.",
+  "seed": 1592,
+  "cards": {
+    "Atraxa, Grand Unifier": "Name:Atraxa, Grand Unifier\nManaCost:G W U B\nTypes:Legendary Creature Phyrexian Angel\nPT:7/7\nK:Flying\nK:Vigilance\nK:Deathtouch\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Atraxa.\nSVar:TrigDig:DB$ Dig | DigNum$ 10 | RevealedNum$ 10 | ChangeNum$ 8 | DestinationZone$ Hand | ChangeValid$ Card.Artifact,Card.Creature,Card.Enchantment,Card.Land,Card.Planeswalker,Card.Sorcery,Card.Instant\nOracle:Atraxa Unifier parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atraxa, Grand Unifier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Atraxa, Grand Unifier",
+      "controller": 0
+    }
+  ]
+}

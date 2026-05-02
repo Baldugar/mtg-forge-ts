@@ -1,0 +1,23 @@
+{
+  "id": "naya-charm-in-hand",
+  "description": "Naya Charm in hand; modal parse.",
+  "seed": 1346,
+  "cards": {
+    "Naya Charm": "Name:Naya Charm\nManaCost:R G W\nTypes:Instant\nA:SP$ Charm | Cost$ R G W | Choices$ DBDmg,DBReturn,DBTap\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature | ValidTgts$ Creature\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeNum$ 1\nSVar:DBTap:DB$ TapAll | ValidCards$ Creature.OppCtrl\nOracle:Naya Charm parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naya Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

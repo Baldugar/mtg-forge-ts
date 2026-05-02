@@ -1,0 +1,29 @@
+{
+  "id": "felidar-retreat-etb",
+  "description": "Felidar Retreat ETB; landfall token modal parse.",
+  "seed": 1526,
+  "cards": {
+    "Felidar Retreat": "Name:Felidar Retreat\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Retreat.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_cat_beast | TokenAmount$ 1\nOracle:Retreat parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Felidar Retreat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Felidar Retreat",
+      "controller": 0
+    }
+  ]
+}

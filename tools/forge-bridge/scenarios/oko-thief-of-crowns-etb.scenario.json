@@ -1,0 +1,29 @@
+{
+  "id": "oko-thief-of-crowns-etb",
+  "description": "Oko, Thief of Crowns ETB; food/elk/swap parse.",
+  "seed": 1385,
+  "cards": {
+    "Oko, Thief of Crowns": "Name:Oko, Thief of Crowns\nManaCost:1 G U\nTypes:Legendary Planeswalker Oko\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<2/LOYALTY> | TokenScript$ c_a_food_sac | TokenAmount$ 1 | Planeswalker$ True\nA:AB$ Animate | Cost$ SubCounter<1/LOYALTY> | TargetType$ Permanent | ValidTgts$ Artifact,Creature | Power$ 3 | Toughness$ 3 | Types$ Creature,Elk | Planeswalker$ True\nA:AB$ ExchangeControl | Cost$ SubCounter<5/LOYALTY> | TargetType$ Creature,Permanent | Planeswalker$ True\nOracle:Oko parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oko, Thief of Crowns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Oko, Thief of Crowns",
+      "controller": 0
+    }
+  ]
+}

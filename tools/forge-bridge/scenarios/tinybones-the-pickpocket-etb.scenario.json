@@ -1,0 +1,29 @@
+{
+  "id": "tinybones-the-pickpocket-etb",
+  "description": "Tinybones, the Pickpocket ETB; plot/exile trigger parse.",
+  "seed": 1287,
+  "cards": {
+    "Tinybones, the Pickpocket": "Name:Tinybones, the Pickpocket\nManaCost:1 B\nTypes:Legendary Creature Skeleton Rogue\nPT:1/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerDescription$ Tinybones.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | DefinedPlayer$ TriggeredTarget | DestinationZone$ Exile\nOracle:Tinybones parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tinybones, the Pickpocket"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tinybones, the Pickpocket",
+      "controller": 0
+    }
+  ]
+}

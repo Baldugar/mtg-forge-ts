@@ -1,0 +1,29 @@
+{
+  "id": "spawnsire-of-ulamog-etb",
+  "description": "Spawnsire of Ulamog ETB; spawn token mana parse.",
+  "seed": 1539,
+  "cards": {
+    "Spawnsire of Ulamog": "Name:Spawnsire of Ulamog\nManaCost:10\nTypes:Creature Eldrazi\nPT:7/11\nA:AB$ Token | Cost$ 4 | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenAmount$ 2\nA:AB$ Effect | Cost$ 20 | StaticAbilities$ STCast | Description$ Cast all eldrazi.\nSVar:STCast:Mode$ Continuous | Affected$ Card.Eldrazi.YouOwn | EffectZone$ Outside | MayPlay$ True\nOracle:Spawnsire parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawnsire of Ulamog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Spawnsire of Ulamog",
+      "controller": 0
+    }
+  ]
+}

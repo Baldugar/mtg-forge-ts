@@ -1,0 +1,29 @@
+{
+  "id": "emrakul-the-aeons-torn-etb",
+  "description": "Emrakul, the Aeons Torn ETB; annihilator 6 cast trigger parse.",
+  "seed": 1536,
+  "cards": {
+    "Emrakul, the Aeons Torn": "Name:Emrakul, the Aeons Torn\nManaCost:15\nTypes:Legendary Creature Eldrazi\nPT:15/15\nK:Flying\nK:Protection from colored spells\nK:Annihilator:6\nT:Mode$ SpellCast | ValidPlayer$ You | ValidCard$ Card.Self | Execute$ TrigTurn | TriggerDescription$ Extra turn.\nSVar:TrigTurn:DB$ AddTurn | NumTurns$ 1 | Defined$ You\nOracle:Emrakul parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emrakul, the Aeons Torn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Emrakul, the Aeons Torn",
+      "controller": 0
+    }
+  ]
+}

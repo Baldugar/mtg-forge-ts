@@ -1,0 +1,29 @@
+{
+  "id": "skullclamp-etb-m624",
+  "description": "Skullclamp ETB; +1/-1 draw on death parse.",
+  "seed": 1506,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Clamp.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Clamp parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullclamp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "sarkhan-the-mad-etb",
+  "description": "Sarkhan the Mad ETB; dragon sac parse.",
+  "seed": 1400,
+  "cards": {
+    "Sarkhan the Mad": "Name:Sarkhan the Mad\nManaCost:3 B R\nTypes:Legendary Planeswalker Sarkhan\nLoyalty:1\nA:AB$ Reveal | Cost$ AddCounter<0/LOYALTY> | NumCards$ 1 | SubAbility$ DBPump | Planeswalker$ True\nSVar:DBPump:DB$ Mill | NumCards$ 1\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> Sac<1/Dragon> | NumDmg$ X | DefinedDmg$ TargetedPlayer | TargetType$ Player | References$ X | Planeswalker$ True\nSVar:X:Count$YourDragons\nA:AB$ ChangeZoneAll | Cost$ SubCounter<4/LOYALTY> | ChangeType$ Creature | Origin$ Battlefield | Destination$ Graveyard | Planeswalker$ True | Ultimate$ True\nOracle:Sarkhan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan the Mad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sarkhan the Mad",
+      "controller": 0
+    }
+  ]
+}

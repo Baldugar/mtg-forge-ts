@@ -1,0 +1,29 @@
+{
+  "id": "endless-one-etb",
+  "description": "Endless One ETB; X p/t parse.",
+  "seed": 1459,
+  "cards": {
+    "Endless One": "Name:Endless One\nManaCost:X\nTypes:Creature Eldrazi\nPT:0/0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Endless.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X\nSVar:X:Count$xPaid\nOracle:Endless parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Endless One",
+      "controller": 0
+    }
+  ]
+}
