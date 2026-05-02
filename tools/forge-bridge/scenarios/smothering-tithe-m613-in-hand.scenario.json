@@ -1,0 +1,22 @@
+{
+  "id": "smothering-tithe-m613-in-hand",
+  "description": "Smothering Tithe in hand; treasure on draw parse.",
+  "seed": 767,
+  "cards": {
+    "Smothering Tithe": "Name:Smothering Tithe\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ Opponent | Execute$ TrigToken | UnlessCost$ 2 | UnlessSwitched$ True | OptionalDecider$ TriggeredPlayer\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1\nOracle:Smothering Tithe parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Smothering Tithe"],
+      "battlefield": [],
+      "manaPool": ["W", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

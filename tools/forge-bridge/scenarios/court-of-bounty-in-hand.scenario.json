@@ -1,0 +1,22 @@
+{
+  "id": "court-of-bounty-in-hand",
+  "description": "Court of Bounty in hand; monarch upkeep ramp parse.",
+  "seed": 741,
+  "cards": {
+    "Court of Bounty": "Name:Court of Bounty\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ Monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPut\nSVar:TrigPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land.YouOwn | ChangeNum$ 1 | Hidden$ True\nOracle:Court of Bounty parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Court of Bounty"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

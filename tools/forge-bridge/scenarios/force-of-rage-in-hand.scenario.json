@@ -1,0 +1,22 @@
+{
+  "id": "force-of-rage-in-hand",
+  "description": "Force of Rage in hand; pitch-red token parse.",
+  "seed": 753,
+  "cards": {
+    "Force of Rage": "Name:Force of Rage\nManaCost:3 R R\nTypes:Instant\nA:SP$ Token | Cost$ 3 R R | TokenScript$ r_3_1_elemental | TokenAmount$ 2 | SubAbility$ DBSac | SpellDescription$ Tokens.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Creature.IsRemembered | TriggerPhases$ EndOfTurn\nA:SP$ Token | Cost$ Exile<1/Card.Red+YouOwn+inZoneHand+Other> | TokenScript$ r_3_1_elemental | TokenAmount$ 2 | SpellDescription$ Pitch.\nOracle:Force of Rage parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Force of Rage"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

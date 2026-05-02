@@ -1,0 +1,22 @@
+{
+  "id": "wheel-of-fortune-m613-in-hand",
+  "description": "Wheel of Fortune in hand; reset hand parse.",
+  "seed": 771,
+  "cards": {
+    "Wheel of Fortune": "Name:Wheel of Fortune\nManaCost:2 R\nTypes:Sorcery\nA:SP$ RepeatEach | Cost$ 2 R | RepeatPlayers$ Player | RepeatSubAbility$ DBDiscardAll | SpellDescription$ Wheel.\nSVar:DBDiscardAll:DB$ Discard | Defined$ Player.IsRemembered | Mode$ Hand | SubAbility$ DBDraw7\nSVar:DBDraw7:DB$ Draw | Defined$ Player.IsRemembered | NumCards$ 7\nOracle:Wheel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Wheel of Fortune"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

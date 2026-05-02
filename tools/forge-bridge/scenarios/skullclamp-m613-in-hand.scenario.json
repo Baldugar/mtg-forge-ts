@@ -1,0 +1,22 @@
+{
+  "id": "skullclamp-m613-in-hand",
+  "description": "Skullclamp in hand; equipment death-draw parse.",
+  "seed": 807,
+  "cards": {
+    "Skullclamp": "Name:Skullclamp\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Boost.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.AttachedBy | Execute$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Skullclamp parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Skullclamp"],
+      "battlefield": [],
+      "manaPool": ["C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

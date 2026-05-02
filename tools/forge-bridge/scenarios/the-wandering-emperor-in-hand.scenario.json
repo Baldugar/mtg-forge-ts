@@ -1,0 +1,22 @@
+{
+  "id": "the-wandering-emperor-in-hand",
+  "description": "The Wandering Emperor in hand; flash PW parse.",
+  "seed": 687,
+  "cards": {
+    "The Wandering Emperor": "Name:The Wandering Emperor\nManaCost:2 W W\nTypes:Legendary Planeswalker Wanderer\nLoyalty:3\nK:Flash\nA:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | CounterType$ LOYALTY | CounterNum$ 1 | SubAbility$ DBToken | Defined$ Self | SpellDescription$ +1.\nSVar:DBToken:DB$ Token | TokenScript$ w_2_2_samurai_doublestrike | TokenAmount$ 1\nA:AB$ Pump | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ Lifelink | SpellDescription$ -1.\nA:AB$ DestroyAll | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidCards$ Creature.tapped+OppCtrl | SpellDescription$ -2.\nOracle:Emperor parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["The Wandering Emperor"],
+      "battlefield": [],
+      "manaPool": ["W", "W", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

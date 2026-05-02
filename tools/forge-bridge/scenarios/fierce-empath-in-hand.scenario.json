@@ -1,0 +1,22 @@
+{
+  "id": "fierce-empath-in-hand",
+  "description": "Fierce Empath in hand; cmc6+ creature tutor parse.",
+  "seed": 836,
+  "cards": {
+    "Fierce Empath": "Name:Fierce Empath\nManaCost:3 G\nTypes:Creature Elf Druid\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Tutor.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.cmcGE6 | ChangeNum$ 1\nOracle:Fierce Empath parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Fierce Empath"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

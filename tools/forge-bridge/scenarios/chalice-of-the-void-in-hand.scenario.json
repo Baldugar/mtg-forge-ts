@@ -1,0 +1,22 @@
+{
+  "id": "chalice-of-the-void-in-hand",
+  "description": "Chalice of the Void in hand; X-counter cmc replace parse.",
+  "seed": 858,
+  "cards": {
+    "Chalice of the Void": "Name:Chalice of the Void\nManaCost:X X\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ X charge.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ X\nSVar:X:Count$xPaid\nT:Mode$ SpellCast | ValidPlayer$ Any | Execute$ TrigCounterSp | CheckSecondaryPresent$ Card.Self+counters_GE1_CHARGE+matchingCmc | TriggerDescription$ Counter.\nSVar:TrigCounterSp:DB$ Counter | TargetType$ Spell | Defined$ TriggeredCard\nOracle:Chalice parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Chalice of the Void"],
+      "battlefield": [],
+      "manaPool": ["C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

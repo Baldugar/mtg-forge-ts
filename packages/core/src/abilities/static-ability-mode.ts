@@ -174,6 +174,14 @@ export const STATIC_ABILITY_MODES = [
   // ruleChanging alongside the other turn-structure / setup statics
   // (LimitOnHandSize / AdditionalCombatPhase / SkipUntap).
   "StartingHandSizeMod",
+  // Wave 61 — CantTakeExtraTurns (CR 500.7 turn-structure override).
+  // Stranglehold / Tigerfish-style "Players can't take extra turns" —
+  // matched-player Player.cantTakeExtraTurns flag consulted by the
+  // AddTurn effect handler before queueing the extra turn. Routed via
+  // ruleChanging alongside other turn-structure statics (TurnReversed /
+  // PhaseReversed / SkipUntap). Forge declares this in its
+  // StaticAbilityMode enum at the same routing.
+  "CantTakeExtraTurns",
 ] as const;
 
 export type StaticAbilityMode = (typeof STATIC_ABILITY_MODES)[number];
@@ -334,6 +342,10 @@ const MODE_TO_CATEGORY: Record<StaticAbilityMode, StaticAbilityCategory> = {
   // ruleChanging alongside the other turn-structure / setup overrides
   // (LimitOnHandSize, AdditionalCombatPhase, SkipUntap, SkipDraw).
   StartingHandSizeMod: "ruleChanging",
+  // Wave 61 — CantTakeExtraTurns (CR 500.7). Turn-structure override
+  // consulted by the AddTurn effect handler. Routed alongside other
+  // turn-structure overrides (TurnReversed, PhaseReversed, SkipUntap).
+  CantTakeExtraTurns: "ruleChanging",
 };
 
 export const staticAbilityModeCategory = (mode: StaticAbilityMode): StaticAbilityCategory =>

@@ -1,0 +1,22 @@
+{
+  "id": "lutri-the-spellchaser-in-hand",
+  "description": "Lutri the Spellchaser in hand; companion copy parse.",
+  "seed": 800,
+  "cards": {
+    "Lutri, the Spellchaser": "Name:Lutri, the Spellchaser\nManaCost:1 U R\nTypes:Legendary Creature Otter Elemental\nPT:3/2\nK:Flash\nK:Companion:CompanionLutri\nSVar:CompanionLutri:Mode$ AllNonLand+SingletonDeck\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ Copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredCard | Spell$ Instant,Sorcery\nOracle:Lutri parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Lutri, the Spellchaser"],
+      "battlefield": [],
+      "manaPool": ["U", "R", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

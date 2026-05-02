@@ -1,0 +1,22 @@
+{
+  "id": "sheoldred-the-apocalypse-m613-in-hand",
+  "description": "Sheoldred M613 in hand; symmetric draw drain parse.",
+  "seed": 683,
+  "cards": {
+    "Sheoldred, the Apocalypse M613": "Name:Sheoldred, the Apocalypse M613\nManaCost:2 B B\nTypes:Legendary Creature Phyrexian Praetor\nPT:4/5\nK:Deathtouch\nT:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ You | Execute$ TrigGain | TriggerDescription$ Gain 2 you draw.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ 2\nT:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ Opponent | Execute$ TrigLose | TriggerDescription$ Opp loses 2 they draw.\nSVar:TrigLose:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2\nOracle:Sheoldred M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sheoldred, the Apocalypse M613"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

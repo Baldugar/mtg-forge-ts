@@ -1,0 +1,22 @@
+{
+  "id": "mystic-remora-in-hand",
+  "description": "Mystic Remora in hand; cumulative-upkeep draw parse.",
+  "seed": 768,
+  "cards": {
+    "Mystic Remora": "Name:Mystic Remora\nManaCost:U\nTypes:Enchantment\nK:Cumulative upkeep:1\nT:Mode$ SpellCast | ValidPlayer$ Opponent | ValidCard$ Card.nonCreature | Execute$ TrigDraw | UnlessCost$ 4 | UnlessSwitched$ True | OptionalDecider$ Opponent\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Remora parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Mystic Remora"],
+      "battlefield": [],
+      "manaPool": ["U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

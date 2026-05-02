@@ -1,0 +1,22 @@
+{
+  "id": "glasspool-mimic-in-hand",
+  "description": "Glasspool Mimic in hand; MDFC clone parse.",
+  "seed": 729,
+  "cards": {
+    "Glasspool Mimic": "Name:Glasspool Mimic\nManaCost:1 U U\nTypes:Creature Shapeshifter Rogue\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigClone | OptionalDecider$ You | TriggerDescription$ Clone.\nSVar:TrigClone:DB$ Clone | TargetType$ Card | ValidTgts$ Creature.YouCtrl+Other\nALTERNATE\nName:Glasspool Shore\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add U.\nOracle:Glasspool Mimic parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Glasspool Mimic"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

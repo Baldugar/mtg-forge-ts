@@ -1,0 +1,22 @@
+{
+  "id": "maddening-hex-in-hand",
+  "description": "Maddening Hex in hand; recurring damage trigger parse.",
+  "seed": 730,
+  "cards": {
+    "Maddening Hex": "Name:Maddening Hex\nManaCost:2 R\nTypes:Enchantment Curse Aura\nK:Enchant Player\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDmg | TriggerDescription$ Ping.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | Defined$ Enchanted\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigMove\nSVar:TrigMove:DB$ Attach | Defined$ Self | Object$ Player.Opponent | RandomizeTarget$ True\nOracle:Maddening Hex parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Maddening Hex"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

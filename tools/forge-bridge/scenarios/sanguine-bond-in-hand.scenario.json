@@ -1,0 +1,22 @@
+{
+  "id": "sanguine-bond-in-hand",
+  "description": "Sanguine Bond in hand; mirror lifedrain trigger parse.",
+  "seed": 692,
+  "cards": {
+    "Sanguine Bond": "Name:Sanguine Bond\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ LifeGained | ValidPlayer$ You | Execute$ TrigDrain | TriggerDescription$ Drain.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | References$ X\nSVar:X:TriggerCount$LifeAmount\nOracle:Sanguine Bond parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sanguine Bond"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

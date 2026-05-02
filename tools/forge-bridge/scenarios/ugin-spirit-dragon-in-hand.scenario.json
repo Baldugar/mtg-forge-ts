@@ -1,0 +1,22 @@
+{
+  "id": "ugin-spirit-dragon-in-hand",
+  "description": "Ugin Spirit Dragon in hand; PW colorless wipe parse.",
+  "seed": 716,
+  "cards": {
+    "Ugin, the Spirit Dragon": "Name:Ugin, the Spirit Dragon\nManaCost:8\nTypes:Legendary Planeswalker Ugin\nLoyalty:7\nA:AB$ DealDamage | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | NumDmg$ 3 | ValidTgts$ Creature,Player | TgtPrompt$ +2 | SpellDescription$ +2.\nA:AB$ ChangeZoneAll | Cost$ SubCounter<X/LOYALTY> | Planeswalker$ True | ChangeType$ Permanent.cmcLEX+nonColorless | Origin$ Battlefield | Destination$ Exile | References$ X | SpellDescription$ -X.\nSVar:X:Count$xPaid\nA:AB$ GainLife | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | LifeAmount$ 7 | SubAbility$ DBDraw | Defined$ You | SpellDescription$ -10.\nSVar:DBDraw:DB$ Draw | NumCards$ 7\nOracle:Ugin parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Ugin, the Spirit Dragon"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

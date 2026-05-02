@@ -1,0 +1,22 @@
+{
+  "id": "fury-in-hand",
+  "description": "Fury in hand; evoke pitch red parse.",
+  "seed": 681,
+  "cards": {
+    "Fury": "Name:Fury\nManaCost:3 R R\nTypes:Creature Elemental Incarnation\nPT:3/3\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 4 | ValidTgts$ Creature.OppCtrl,Player.Opponent | DivideOnResolution$ True | TargetMin$ 1 | TargetMax$ 4\nK:Evoke:Exile<1/Card.Red+nonLegendary+YouOwn+inZoneHand+Other>\nOracle:Fury parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Fury"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

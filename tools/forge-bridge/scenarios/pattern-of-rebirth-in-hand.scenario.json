@@ -1,0 +1,22 @@
+{
+  "id": "pattern-of-rebirth-in-hand",
+  "description": "Pattern of Rebirth in hand; aura death tutor parse.",
+  "seed": 814,
+  "cards": {
+    "Pattern of Rebirth": "Name:Pattern of Rebirth\nManaCost:2 G G\nTypes:Enchantment Aura\nK:Enchant Creature\nA:SP$ Attach | Cost$ 2 G G | TargetType$ Card | ValidTgts$ Creature\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.AttachedBy | Execute$ TrigSearch | TriggerDescription$ Tutor on death.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1\nOracle:Pattern parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Pattern of Rebirth"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

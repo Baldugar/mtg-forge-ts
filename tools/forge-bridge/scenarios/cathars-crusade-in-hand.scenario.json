@@ -1,0 +1,22 @@
+{
+  "id": "cathars-crusade-in-hand",
+  "description": "Cathars' Crusade in hand; +1 ETB everyone parse.",
+  "seed": 825,
+  "cards": {
+    "Cathars' Crusade": "Name:Cathars' Crusade\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigCounter | TriggerDescription$ Crusade.\nSVar:TrigCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:Crusade parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Cathars' Crusade"],
+      "battlefield": [],
+      "manaPool": ["W", "W", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

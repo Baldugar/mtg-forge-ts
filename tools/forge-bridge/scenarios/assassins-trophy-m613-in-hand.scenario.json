@@ -1,0 +1,22 @@
+{
+  "id": "assassins-trophy-m613-in-hand",
+  "description": "Assassin's Trophy in hand; destroy any opp ramp parse.",
+  "seed": 849,
+  "cards": {
+    "Assassin's Trophy": "Name:Assassin's Trophy\nManaCost:B G\nTypes:Instant\nA:SP$ Destroy | Cost$ B G | TargetType$ Card | ValidTgts$ Permanent.OppCtrl | SubAbility$ DBSearch | SpellDescription$ Trophy.\nSVar:DBSearch:DB$ ChangeZone | Defined$ Targeted | DefinedPlayer$ Targeted | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True\nOracle:Assassin's Trophy parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Assassin's Trophy"],
+      "battlefield": [],
+      "manaPool": ["B", "G"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "timetwister-in-hand",
+  "description": "Timetwister in hand; reshuffle hand parse.",
+  "seed": 772,
+  "cards": {
+    "Timetwister": "Name:Timetwister\nManaCost:2 U\nTypes:Sorcery\nA:SP$ RepeatEach | Cost$ 2 U | RepeatPlayers$ Player | RepeatSubAbility$ DBShuffle | SpellDescription$ Twister.\nSVar:DBShuffle:DB$ ChangeZoneAll | Defined$ Player.IsRemembered | ChangeType$ Card.IsRemembered | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw7\nSVar:DBDraw7:DB$ Draw | Defined$ Player.IsRemembered | NumCards$ 7\nOracle:Twister parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Timetwister"],
+      "battlefield": [],
+      "manaPool": ["U", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

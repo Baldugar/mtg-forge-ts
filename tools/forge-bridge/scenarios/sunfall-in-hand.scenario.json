@@ -1,0 +1,22 @@
+{
+  "id": "sunfall-in-hand",
+  "description": "Sunfall in hand; mass-exile + incubator parse.",
+  "seed": 686,
+  "cards": {
+    "Sunfall": "Name:Sunfall\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Cost$ 4 W W | ChangeType$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBToken | SpellDescription$ Sunfall.\nSVar:DBToken:DB$ Token | TokenScript$ c_x_incubator | TokenAmount$ 1 | References$ X\nSVar:X:Count$ExiledThisTurn\nOracle:Sunfall parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sunfall"],
+      "battlefield": [],
+      "manaPool": ["W", "W", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

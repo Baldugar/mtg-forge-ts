@@ -1,0 +1,22 @@
+{
+  "id": "primal-vigor-in-hand",
+  "description": "Primal Vigor in hand; symmetric token+counter doubler parse.",
+  "seed": 828,
+  "cards": {
+    "Primal Vigor": "Name:Primal Vigor\nManaCost:4 G\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ReplaceWith$ DBDouble | Description$ Double tokens.\nSVar:DBDouble:DB$ ReplaceTokenAmount | Multiplier$ 2\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature | CounterType$ P1P1 | ReplaceWith$ DBDoubleC | Description$ Double counters.\nSVar:DBDoubleC:DB$ ReplaceCounter | Multiplier$ 2\nOracle:Primal Vigor parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Primal Vigor"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

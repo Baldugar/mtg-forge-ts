@@ -1,0 +1,22 @@
+{
+  "id": "vigilante-justice-in-hand",
+  "description": "Vigilante Justice in hand; ETB-ping enchantment parse.",
+  "seed": 694,
+  "cards": {
+    "Vigilante Justice": "Name:Vigilante Justice\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigDmg | TriggerDescription$ Ping 1.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | ValidTgts$ Any\nOracle:Vigilante Justice parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Vigilante Justice"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

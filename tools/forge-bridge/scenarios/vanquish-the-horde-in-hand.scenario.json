@@ -1,0 +1,22 @@
+{
+  "id": "vanquish-the-horde-in-hand",
+  "description": "Vanquish the Horde in hand; cost-reduces by creature count parse.",
+  "seed": 727,
+  "cards": {
+    "Vanquish the Horde": "Name:Vanquish the Horde\nManaCost:5 W W\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | References$ X | Description$ Cheaper.\nA:SP$ DestroyAll | Cost$ 5 W W | ValidCards$ Creature | SpellDescription$ Vanquish.\nSVar:X:Count$ValidPermanents Creature\nOracle:Vanquish parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Vanquish the Horde"],
+      "battlefield": [],
+      "manaPool": ["W", "W", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "sword-of-light-and-shadow-in-hand",
+  "description": "Sword of Light and Shadow in hand; gain-life return parse.",
+  "seed": 806,
+  "cards": {
+    "Sword of Light and Shadow": "Name:Sword of Light and Shadow\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black | Description$ Boost.\nT:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | TargetType$ Card | ValidTgts$ Creature.YouCtrl+inZoneGraveyard | Origin$ Graveyard | Destination$ Hand\nOracle:SoLS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sword of Light and Shadow"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

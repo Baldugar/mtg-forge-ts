@@ -1,0 +1,22 @@
+{
+  "id": "ad-nauseam-m613-in-hand",
+  "description": "Ad Nauseam M613 in hand; pay-life dig parse.",
+  "seed": 720,
+  "cards": {
+    "Ad Nauseam M613": "Name:Ad Nauseam M613\nManaCost:3 B B\nTypes:Instant\nA:SP$ RepeatEach | Cost$ 3 B B | RepeatSubAbility$ DBReveal | RepeatPresent$ Any | RepeatOptional$ True | SpellDescription$ Ad Nauseam.\nSVar:DBReveal:DB$ Reveal | Defined$ TopOfLibrary | SubAbility$ DBLose\nSVar:DBLose:DB$ LoseLife | Defined$ You | LifeAmount$ X | References$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nSVar:X:Count$ManaCost\nOracle:Ad Nauseam M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Ad Nauseam M613"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "phyrexian-revoker-in-hand",
+  "description": "Phyrexian Revoker in hand; etb name shutoff parse.",
+  "seed": 856,
+  "cards": {
+    "Phyrexian Revoker": "Name:Phyrexian Revoker\nManaCost:2\nTypes:Artifact Creature Phyrexian\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigName\nSVar:TrigName:DB$ NameCard\nS:Mode$ CantBeActivated | EffectZone$ Battlefield | ValidCard$ Card.NamedCard | NonManaActivatedAbility$ True | Description$ Shut off.\nOracle:Revoker parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phyrexian Revoker"],
+      "battlefield": [],
+      "manaPool": ["C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

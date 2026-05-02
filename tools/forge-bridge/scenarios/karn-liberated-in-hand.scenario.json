@@ -1,0 +1,22 @@
+{
+  "id": "karn-liberated-in-hand",
+  "description": "Karn Liberated in hand; PW exile abilities parse.",
+  "seed": 715,
+  "cards": {
+    "Karn Liberated": "Name:Karn Liberated\nManaCost:7\nTypes:Legendary Planeswalker Karn\nLoyalty:6\nA:AB$ ChangeZone | Cost$ AddCounter<4/LOYALTY> | Planeswalker$ True | Origin$ Hand,Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Card.OppCtrl | SpellDescription$ +4.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Permanent | SpellDescription$ -3.\nA:AB$ RestartGame | Cost$ SubCounter<14/LOYALTY> | Planeswalker$ True | SpellDescription$ -14.\nOracle:Karn Liberated parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Karn Liberated"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

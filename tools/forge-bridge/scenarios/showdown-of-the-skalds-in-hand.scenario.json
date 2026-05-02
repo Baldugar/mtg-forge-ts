@@ -1,0 +1,22 @@
+{
+  "id": "showdown-of-the-skalds-in-hand",
+  "description": "Showdown of the Skalds in hand; saga 3-chapter exile parse.",
+  "seed": 842,
+  "cards": {
+    "Showdown of the Skalds": "Name:Showdown of the Skalds\nManaCost:2 R W\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBPump,DBPump\nSVar:DBExile:DB$ Dig | DigNum$ 4 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | ChangeValid$ Card | DigUntil$ True\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | UntilEOT$ True\nOracle:Showdown parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Showdown of the Skalds"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "oko-thief-of-crowns-in-hand",
+  "description": "Oko Thief of Crowns in hand; PW elk parse.",
+  "seed": 788,
+  "cards": {
+    "Oko, Thief of Crowns": "Name:Oko, Thief of Crowns\nManaCost:1 G U\nTypes:Legendary Planeswalker Oko\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ g_3_3_elk_food | TokenAmount$ 1 | SpellDescription$ +2.\nA:AB$ Animate | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TargetType$ Card | ValidTgts$ Creature,Artifact | Power$ 3 | Toughness$ 3 | Types$ Creature,Elk | RemoveTypes$ Artifact | SpellDescription$ -2.\nA:AB$ ChangeZone | Cost$ SubCounter<5/LOYALTY> | Planeswalker$ True | TargetType$ Card,Card | ValidTgts$ Creature.YouCtrl,Creature.OppCtrl | Origin$ Battlefield,Battlefield | Destination$ Battlefield,Battlefield | SwapTargetControl$ True | SpellDescription$ -5.\nOracle:Oko parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Oko, Thief of Crowns"],
+      "battlefield": [],
+      "manaPool": ["G", "U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

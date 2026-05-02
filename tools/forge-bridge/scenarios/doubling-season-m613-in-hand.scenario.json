@@ -1,0 +1,22 @@
+{
+  "id": "doubling-season-m613-in-hand",
+  "description": "Doubling Season M613 in hand; symmetric doubler parse.",
+  "seed": 829,
+  "cards": {
+    "Doubling Season M613": "Name:Doubling Season M613\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DoubleAmount | Description$ Double counters.\nSVar:DoubleAmount:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DoubleTokens | Description$ Double tokens.\nSVar:DoubleTokens:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:DS M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Doubling Season M613"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

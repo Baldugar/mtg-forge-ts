@@ -1,0 +1,22 @@
+{
+  "id": "stoneforge-mystic-m613-in-hand",
+  "description": "Stoneforge Mystic M613 in hand; tutor cheat parse.",
+  "seed": 809,
+  "cards": {
+    "Stoneforge Mystic M613": "Name:Stoneforge Mystic M613\nManaCost:1 W\nTypes:Creature Kor Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ Tutor.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1\nA:AB$ ChangeZone | Cost$ 1 W Discard<1/Card.Equipment> | TargetType$ Card | ValidTgts$ Equipment.YouCtrl+inZoneHand | Origin$ Hand | Destination$ Battlefield | SpellDescription$ Cheat.\nOracle:Stoneforge M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Stoneforge Mystic M613"],
+      "battlefield": [],
+      "manaPool": ["W", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

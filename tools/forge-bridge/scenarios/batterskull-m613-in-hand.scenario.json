@@ -1,0 +1,22 @@
+{
+  "id": "batterskull-m613-in-hand",
+  "description": "Batterskull in hand; germ-token equipment parse.",
+  "seed": 810,
+  "cards": {
+    "Batterskull": "Name:Batterskull\nManaCost:5\nTypes:Artifact Equipment\nK:Equip:5\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+EquippedBy | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Vigilance & Lifelink | Description$ Boost.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_0_germ | TokenAmount$ 1 | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Self | Object$ Remembered\nA:AB$ ChangeZone | Cost$ 3 | Origin$ Battlefield | Destination$ Hand | Defined$ Self | SpellDescription$ Live.\nOracle:Batterskull parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Batterskull"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

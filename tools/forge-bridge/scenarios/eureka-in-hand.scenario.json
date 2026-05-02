@@ -1,0 +1,22 @@
+{
+  "id": "eureka-in-hand",
+  "description": "Eureka in hand; mass cheat parse.",
+  "seed": 816,
+  "cards": {
+    "Eureka": "Name:Eureka\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ RepeatEach | Cost$ 2 G G | RepeatPlayers$ Player | RepeatSubAbility$ DBPut | SpellDescription$ Eureka.\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent.YouOwn | ChangeNum$ 1 | Hidden$ True | Defined$ Player.IsRemembered\nOracle:Eureka parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Eureka"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

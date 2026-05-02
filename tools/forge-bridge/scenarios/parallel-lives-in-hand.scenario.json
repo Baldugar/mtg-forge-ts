@@ -1,0 +1,22 @@
+{
+  "id": "parallel-lives-in-hand",
+  "description": "Parallel Lives in hand; double tokens green parse.",
+  "seed": 827,
+  "cards": {
+    "Parallel Lives": "Name:Parallel Lives\nManaCost:3 G\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DBDouble | Description$ Double.\nSVar:DBDouble:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:Parallel Lives parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Parallel Lives"],
+      "battlefield": [],
+      "manaPool": ["G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

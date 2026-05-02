@@ -1,0 +1,22 @@
+{
+  "id": "zirda-the-dawnwaker-in-hand",
+  "description": "Zirda the Dawnwaker in hand; companion cost-reducer parse.",
+  "seed": 794,
+  "cards": {
+    "Zirda, the Dawnwaker": "Name:Zirda, the Dawnwaker\nManaCost:R W\nTypes:Legendary Creature Elemental Hound\nPT:3/3\nK:Vigilance\nK:Companion:CompanionZirda\nSVar:CompanionZirda:Mode$ AllNonLand+activatedAbility\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Permanent.YouCtrl | Type$ Activated | Activator$ You | Amount$ 2 | Description$ -2 cost.\nA:AB$ Untap | Cost$ 1 R W | TargetType$ Card | ValidTgts$ Permanent.YouCtrl | SpellDescription$ Untap.\nOracle:Zirda parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Zirda, the Dawnwaker"],
+      "battlefield": [],
+      "manaPool": ["R", "W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

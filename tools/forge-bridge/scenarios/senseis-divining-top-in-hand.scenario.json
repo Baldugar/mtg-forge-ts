@@ -1,0 +1,22 @@
+{
+  "id": "senseis-divining-top-in-hand",
+  "description": "Sensei's Divining Top in hand; tap rearrange parse.",
+  "seed": 781,
+  "cards": {
+    "Sensei's Divining Top": "Name:Sensei's Divining Top\nManaCost:1\nTypes:Artifact\nA:AB$ ChooseCard | Cost$ T | Defined$ You | Choices$ Card.YouOwn+inZoneLibrary+topLib | NumCards$ 3 | SubAbility$ DBPut | SpellDescription$ Top.\nSVar:DBPut:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | Hidden$ True | ChangeNum$ 3\nA:AB$ Draw | Cost$ 1 T Sac<1/CARDNAME> | NumCards$ 1 | SubAbility$ DBSearch | SpellDescription$ 1, T, sac.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedCARDNAME | ChangeNum$ 1\nOracle:Top parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sensei's Divining Top"],
+      "battlefield": [],
+      "manaPool": ["C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "maelstrom-pulse-in-hand",
+  "description": "Maelstrom Pulse in hand; destroy all named parse.",
+  "seed": 848,
+  "cards": {
+    "Maelstrom Pulse": "Name:Maelstrom Pulse\nManaCost:1 B G\nTypes:Sorcery\nA:SP$ Destroy | Cost$ 1 B G | TargetType$ Card | ValidTgts$ Permanent.nonLand | RememberDestroyed$ True | SubAbility$ DBDestroyAll | SpellDescription$ Pulse.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Permanent.sharedNameWithRemembered+Other\nOracle:Maelstrom Pulse parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Maelstrom Pulse"],
+      "battlefield": [],
+      "manaPool": ["B", "G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

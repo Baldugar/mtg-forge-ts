@@ -1,0 +1,22 @@
+{
+  "id": "notion-thief-in-hand",
+  "description": "Notion Thief in hand; replace draw parse.",
+  "seed": 776,
+  "cards": {
+    "Notion Thief": "Name:Notion Thief\nManaCost:2 U B\nTypes:Creature Human Rogue\nPT:3/1\nK:Flash\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ReplaceWith$ DBYouDraw | Description$ Steal draw.\nSVar:DBYouDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Notion Thief parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Notion Thief"],
+      "battlefield": [],
+      "manaPool": ["U", "B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

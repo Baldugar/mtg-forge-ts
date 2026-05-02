@@ -1,0 +1,22 @@
+{
+  "id": "yorion-sky-nomad-m613-in-hand",
+  "description": "Yorion Sky Nomad in hand; companion flicker parse.",
+  "seed": 793,
+  "cards": {
+    "Yorion, Sky Nomad": "Name:Yorion, Sky Nomad\nManaCost:3 W U\nTypes:Legendary Creature Bird Serpent\nPT:4/5\nK:Flying\nK:Companion:CompanionYorion\nSVar:CompanionYorion:Mode$ DeckSizeAtLeast 80\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBlink | TriggerDescription$ Blink.\nSVar:TrigBlink:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Permanent.YouCtrl+nonLand | TargetMin$ 0 | TargetMax$ 99 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRemembered\nOracle:Yorion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Yorion, Sky Nomad"],
+      "battlefield": [],
+      "manaPool": ["W", "U", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

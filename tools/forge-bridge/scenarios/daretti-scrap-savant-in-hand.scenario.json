@@ -1,0 +1,22 @@
+{
+  "id": "daretti-scrap-savant-in-hand",
+  "description": "Daretti Scrap Savant in hand; PW reanimate parse.",
+  "seed": 764,
+  "cards": {
+    "Daretti, Scrap Savant": "Name:Daretti, Scrap Savant\nManaCost:3 R\nTypes:Legendary Planeswalker Daretti\nLoyalty:3\nA:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBDraw | SpellDescription$ +1.\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | TargetType$ Card | ValidTgts$ Artifact.YouCtrl+inZoneGraveyard | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ -1.\nA:AB$ ChangeZoneAll | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | ChangeType$ Artifact.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ -6.\nOracle:Daretti parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Daretti, Scrap Savant"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

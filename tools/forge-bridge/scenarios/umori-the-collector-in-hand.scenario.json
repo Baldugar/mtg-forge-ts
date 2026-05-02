@@ -1,0 +1,22 @@
+{
+  "id": "umori-the-collector-in-hand",
+  "description": "Umori the Collector in hand; companion type-reducer parse.",
+  "seed": 801,
+  "cards": {
+    "Umori, the Collector": "Name:Umori, the Collector\nManaCost:1 B G\nTypes:Legendary Creature Ooze\nPT:4/4\nK:Companion:CompanionUmori\nSVar:CompanionUmori:Mode$ AllNonLand+sharedType\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseType | TriggerDescription$ Choose.\nSVar:TrigChooseType:DB$ ChooseType | Type$ Creature\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Card.ChosenType | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Reduce.\nOracle:Umori parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Umori, the Collector"],
+      "battlefield": [],
+      "manaPool": ["B", "G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

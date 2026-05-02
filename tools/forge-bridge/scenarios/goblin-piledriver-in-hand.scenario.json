@@ -1,0 +1,22 @@
+{
+  "id": "goblin-piledriver-in-hand",
+  "description": "Goblin Piledriver in hand; tribal +X attack parse.",
+  "seed": 762,
+  "cards": {
+    "Goblin Piledriver": "Name:Goblin Piledriver\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/2\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | ValidBlocker$ Creature.Blue | Description$ Pro blue blockers.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Pump.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ X | References$ X\nSVar:X:Count$ValidPermanents Goblin.YouCtrl+Other/Times.2\nOracle:Piledriver parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Goblin Piledriver"],
+      "battlefield": [],
+      "manaPool": ["R", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

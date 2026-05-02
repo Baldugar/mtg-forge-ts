@@ -1,0 +1,22 @@
+{
+  "id": "tergrid-god-of-fright-in-hand",
+  "description": "Tergrid God of Fright in hand; reanimate sac trigger parse.",
+  "seed": 785,
+  "cards": {
+    "Tergrid, God of Fright": "Name:Tergrid, God of Fright\nManaCost:3 B B\nTypes:Legendary Creature God\nPT:4/5\nK:Indestructible\nT:Mode$ Discarded | ValidPlayer$ Opponent | NotByYou$ True | Execute$ TrigPut | TriggerDescription$ Steal.\nSVar:TrigPut:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredCard | GainControl$ True\nT:Mode$ Sacrificed | ValidPlayer$ Opponent | NotByYou$ True | Execute$ TrigPut2\nSVar:TrigPut2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredCard | GainControl$ True\nOracle:Tergrid parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tergrid, God of Fright"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

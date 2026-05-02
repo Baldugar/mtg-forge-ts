@@ -1,0 +1,22 @@
+{
+  "id": "tibalts-trickery-m613-in-hand",
+  "description": "Tibalt's Trickery in hand; counter cascade parse.",
+  "seed": 789,
+  "cards": {
+    "Tibalt's Trickery": "Name:Tibalt's Trickery\nManaCost:R\nTypes:Instant\nA:SP$ Counter | Cost$ R | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Counter | SubAbility$ DBMill | SpellDescription$ Trickery.\nSVar:DBMill:DB$ Mill | NumCards$ 3 | Defined$ Player.IsTargeted | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.nonLand+nonCARDNAME | ChangeNum$ 1 | Defined$ Targeted\nOracle:Trickery parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Tibalt's Trickery"],
+      "battlefield": [],
+      "manaPool": ["R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

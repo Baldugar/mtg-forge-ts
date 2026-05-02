@@ -1,0 +1,22 @@
+{
+  "id": "damping-sphere-in-hand",
+  "description": "Damping Sphere in hand; tax parse.",
+  "seed": 857,
+  "cards": {
+    "Damping Sphere": "Name:Damping Sphere\nManaCost:2\nTypes:Artifact\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Land.Self | AddProperty$ Land.OnlyOneMana | Description$ Sphere.\nS:Mode$ RaiseCost | EffectZone$ Battlefield | ValidCard$ Card | Type$ Spell | StormCount$ EQX | References$ X | Amount$ 1 | Description$ Storm tax.\nSVar:X:Count$StormThisTurn\nOracle:Sphere parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Damping Sphere"],
+      "battlefield": [],
+      "manaPool": ["C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

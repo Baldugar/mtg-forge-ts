@@ -1,0 +1,22 @@
+{
+  "id": "endurance-in-hand",
+  "description": "Endurance in hand; evoke pitch green parse.",
+  "seed": 679,
+  "cards": {
+    "Endurance": "Name:Endurance\nManaCost:1 G G G\nTypes:Creature Elemental Incarnation\nPT:3/4\nK:Flash\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigShuffle\nSVar:TrigShuffle:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nK:Evoke:Exile<1/Card.Green+nonLegendary+YouOwn+inZoneHand+Other>\nOracle:Endurance parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Endurance"],
+      "battlefield": [],
+      "manaPool": ["G", "G", "G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

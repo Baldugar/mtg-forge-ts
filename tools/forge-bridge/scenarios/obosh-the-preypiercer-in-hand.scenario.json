@@ -1,0 +1,22 @@
+{
+  "id": "obosh-the-preypiercer-in-hand",
+  "description": "Obosh the Preypiercer in hand; companion odd doublestrike parse.",
+  "seed": 796,
+  "cards": {
+    "Obosh, the Preypiercer": "Name:Obosh, the Preypiercer\nManaCost:3 R R\nTypes:Legendary Creature Hellion\nPT:3/5\nK:Companion:CompanionObosh\nSVar:CompanionObosh:Mode$ AllNonLand+OddManaCost\nT:Mode$ DamageDone | ValidSource$ Card.YouCtrl+cmcOdd | Execute$ TrigDouble | TriggerDescription$ Double.\nSVar:TrigDouble:DB$ DealDamage | NumDmg$ X | References$ X | Defined$ TriggeredTarget\nSVar:X:TriggerCount$DamageAmount\nOracle:Obosh parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Obosh, the Preypiercer"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

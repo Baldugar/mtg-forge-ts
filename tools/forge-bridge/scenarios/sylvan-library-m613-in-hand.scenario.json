@@ -1,0 +1,22 @@
+{
+  "id": "sylvan-library-m613-in-hand",
+  "description": "Sylvan Library in hand; pay-life keep extra draw parse.",
+  "seed": 769,
+  "cards": {
+    "Sylvan Library": "Name:Sylvan Library\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Sylvan.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBPutBack\nSVar:DBPutBack:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | ChangeNum$ 2 | UnlessCost$ PayLife<4> | UnlessSwitched$ True | UnlessAI$ Always\nOracle:Sylvan Library parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Sylvan Library"],
+      "battlefield": [],
+      "manaPool": ["G", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

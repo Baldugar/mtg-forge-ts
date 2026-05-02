@@ -1,0 +1,22 @@
+{
+  "id": "gisela-blade-of-goldnight-in-hand",
+  "description": "Gisela Blade of Goldnight in hand; double-damage halve replace parse.",
+  "seed": 719,
+  "cards": {
+    "Gisela, Blade of Goldnight": "Name:Gisela, Blade of Goldnight\nManaCost:4 R W W\nTypes:Legendary Creature Angel\nPT:5/5\nK:Flying\nK:First Strike\nR:Event$ DamageDone | ValidSource$ Card | ValidTarget$ Player.You,Card.YouCtrl | ReplaceWith$ DBHalve | Description$ Halve.\nSVar:DBHalve:DB$ ReplaceDamage | Multiplier$ 0.5\nR:Event$ DamageDone | ValidSource$ Card.YouCtrl | ValidTarget$ Card,Player | ReplaceWith$ DBDouble | Description$ Double.\nSVar:DBDouble:DB$ ReplaceDamage | Multiplier$ 2\nOracle:Gisela parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Gisela, Blade of Goldnight"],
+      "battlefield": [],
+      "manaPool": ["R", "W", "W", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "grief-in-hand",
+  "description": "Grief in hand; evoke pitch black parse.",
+  "seed": 680,
+  "cards": {
+    "Grief": "Name:Grief\nManaCost:2 B B\nTypes:Creature Elemental Incarnation\nPT:3/2\nK:Flash\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 1 | RevealNumber$ All | RevealValid$ Card.nonLand | Defined$ Player.Opponent\nK:Evoke:Exile<1/Card.Black+nonLegendary+YouOwn+inZoneHand+Other>\nOracle:Grief parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Grief"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

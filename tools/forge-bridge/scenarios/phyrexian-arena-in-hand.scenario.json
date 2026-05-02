@@ -1,0 +1,22 @@
+{
+  "id": "phyrexian-arena-in-hand",
+  "description": "Phyrexian Arena in hand; pay-life draw parse.",
+  "seed": 778,
+  "cards": {
+    "Phyrexian Arena": "Name:Phyrexian Arena\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Arena.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBLose\nSVar:DBLose:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:Arena parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Phyrexian Arena"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "mana-drain-m613-in-hand",
+  "description": "Mana Drain in hand; counter+mana parse.",
+  "seed": 782,
+  "cards": {
+    "Mana Drain": "Name:Mana Drain\nManaCost:U U\nTypes:Instant\nA:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Counter | RememberCanceled$ True | SubAbility$ DBMana | SpellDescription$ Drain.\nSVar:DBMana:DB$ Effect | Triggers$ ManaTrig | RememberObjects$ Self\nSVar:ManaTrig:Mode$ Phase | Phase$ MainStart | ValidPlayer$ You | Execute$ DBAddMana\nSVar:DBAddMana:DB$ Mana | Produced$ C | Amount$ X | References$ X\nSVar:X:Count$RememberedSize\nOracle:Drain parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Mana Drain"],
+      "battlefield": [],
+      "manaPool": ["U", "U"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

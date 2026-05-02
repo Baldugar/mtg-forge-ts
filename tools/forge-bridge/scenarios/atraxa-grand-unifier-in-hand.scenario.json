@@ -1,0 +1,22 @@
+{
+  "id": "atraxa-grand-unifier-in-hand",
+  "description": "Atraxa Grand Unifier in hand; reveal-7 etb parse.",
+  "seed": 684,
+  "cards": {
+    "Atraxa, Grand Unifier": "Name:Atraxa, Grand Unifier\nManaCost:3 W U B G\nTypes:Legendary Creature Phyrexian Angel\nPT:7/7\nK:Flying\nK:Vigilance\nK:Deathtouch\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal\nSVar:TrigReveal:DB$ Dig | DigNum$ 7 | ChangeNum$ All | DestinationZone$ Hand | ChangeValid$ Artifact,Creature,Enchantment,Land,Planeswalker,Instant,Sorcery,Battle | RestRandomOrder$ True\nOracle:Atraxa parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Atraxa, Grand Unifier"],
+      "battlefield": [],
+      "manaPool": ["W", "U", "B", "G", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

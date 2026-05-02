@@ -1,0 +1,22 @@
+{
+  "id": "goblin-ringleader-in-hand",
+  "description": "Goblin Ringleader in hand; reveal-4 parse.",
+  "seed": 757,
+  "cards": {
+    "Goblin Ringleader": "Name:Goblin Ringleader\nManaCost:3 R\nTypes:Creature Goblin\nPT:2/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Dig.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ All | ChangeValid$ Goblin | DestinationZone$ Hand\nOracle:Ringleader parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Goblin Ringleader"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

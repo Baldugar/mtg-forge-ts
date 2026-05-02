@@ -1,0 +1,22 @@
+{
+  "id": "furnace-of-rath-in-hand",
+  "description": "Furnace of Rath in hand; double damage replace parse.",
+  "seed": 718,
+  "cards": {
+    "Furnace of Rath": "Name:Furnace of Rath\nManaCost:3 R R\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card | ValidTarget$ Any | ReplaceWith$ DBDouble | Description$ Double.\nSVar:DBDouble:DB$ ReplaceDamage | Multiplier$ 2\nOracle:Furnace of Rath parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Furnace of Rath"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

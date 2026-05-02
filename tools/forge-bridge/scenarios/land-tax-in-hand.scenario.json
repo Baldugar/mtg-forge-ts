@@ -1,0 +1,22 @@
+{
+  "id": "land-tax-in-hand",
+  "description": "Land Tax in hand; basic-tutor upkeep parse.",
+  "seed": 770,
+  "cards": {
+    "Land Tax": "Name:Land Tax\nManaCost:W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | CheckSecondaryPresent$ Player.Opponent+lessLandsCtrl | Execute$ TrigSearch | TriggerDescription$ Tax.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Plains | ChangeNum$ 3 | AnyNumber$ True\nOracle:Land Tax parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Land Tax"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

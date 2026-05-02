@@ -1,0 +1,22 @@
+{
+  "id": "keruga-the-macrosage-in-hand",
+  "description": "Keruga the Macrosage in hand; companion 3+ parse.",
+  "seed": 797,
+  "cards": {
+    "Keruga, the Macrosage": "Name:Keruga, the Macrosage\nManaCost:3 G U\nTypes:Legendary Creature Dinosaur Hippo\nPT:5/4\nK:Companion:CompanionKeruga\nSVar:CompanionKeruga:Mode$ AllNonLand+cmcGE3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Draw cmc.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | References$ X\nSVar:X:Count$ValidPermanents Card.YouCtrl\nOracle:Keruga parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Keruga, the Macrosage"],
+      "battlefield": [],
+      "manaPool": ["G", "U", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

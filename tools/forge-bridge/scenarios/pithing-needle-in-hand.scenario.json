@@ -1,0 +1,22 @@
+{
+  "id": "pithing-needle-in-hand",
+  "description": "Pithing Needle in hand; name shutoff parse.",
+  "seed": 855,
+  "cards": {
+    "Pithing Needle": "Name:Pithing Needle\nManaCost:1\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigName | TriggerDescription$ Name.\nSVar:TrigName:DB$ NameCard\nS:Mode$ CantBeActivated | EffectZone$ Battlefield | ValidCard$ Card.NamedCard | NonManaActivatedAbility$ True | Description$ Shut off.\nOracle:Needle parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Pithing Needle"],
+      "battlefield": [],
+      "manaPool": ["C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

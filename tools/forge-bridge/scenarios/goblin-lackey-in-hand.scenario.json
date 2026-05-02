@@ -1,0 +1,22 @@
+{
+  "id": "goblin-lackey-in-hand",
+  "description": "Goblin Lackey in hand; combat cheat trigger parse.",
+  "seed": 754,
+  "cards": {
+    "Goblin Lackey": "Name:Goblin Lackey\nManaCost:R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPut | TriggerDescription$ Cheat.\nSVar:TrigPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Goblin.YouOwn | ChangeNum$ 1 | Hidden$ True\nOracle:Goblin Lackey parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Goblin Lackey"],
+      "battlefield": [],
+      "manaPool": ["R"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

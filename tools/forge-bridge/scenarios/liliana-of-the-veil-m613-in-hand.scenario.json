@@ -1,0 +1,22 @@
+{
+  "id": "liliana-of-the-veil-m613-in-hand",
+  "description": "Liliana of the Veil M613 in hand; PW edict parse.",
+  "seed": 786,
+  "cards": {
+    "Liliana of the Veil M613": "Name:Liliana of the Veil M613\nManaCost:1 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:3\nA:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | RepeatEach$ True | RepeatPlayers$ Player | Mode$ TgtChoose | NumCards$ 1 | SpellDescription$ +1.\nA:AB$ Sacrifice | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | Defined$ Player.Opponent | Amount$ 1 | SacValid$ Creature | SpellDescription$ -2.\nA:AB$ ChangeZoneAll | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | ChangeType$ Permanent.OppCtrl | Origin$ Battlefield | Destination$ Library | SpellDescription$ -6.\nOracle:Liliana M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Liliana of the Veil M613"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

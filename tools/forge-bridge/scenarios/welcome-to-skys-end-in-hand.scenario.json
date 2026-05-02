@@ -1,0 +1,22 @@
+{
+  "id": "welcome-to-skys-end-in-hand",
+  "description": "Welcome to Sky's End in hand; saga ramp parse.",
+  "seed": 843,
+  "cards": {
+    "Welcome to Sky's End": "Name:Welcome to Sky's End\nManaCost:2 R\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBLoot,DBSearch\nSVar:DBToken:DB$ Token | TokenScript$ r_2_2_dwarf_warrior | TokenAmount$ 1\nSVar:DBLoot:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Mountain | ChangeNum$ 1\nOracle:Welcome to Sky's End parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Welcome to Sky's End"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

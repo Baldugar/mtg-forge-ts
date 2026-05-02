@@ -1,0 +1,22 @@
+{
+  "id": "gyruda-doom-of-depths-in-hand",
+  "description": "Gyruda Doom of Depths in hand; companion mill-4 parse.",
+  "seed": 798,
+  "cards": {
+    "Gyruda, Doom of Depths": "Name:Gyruda, Doom of Depths\nManaCost:2 U U B B\nTypes:Legendary Creature Kraken\nPT:6/6\nK:Companion:CompanionGyruda\nSVar:CompanionGyruda:Mode$ AllNonLand+EvenManaCost\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Mill.\nSVar:TrigMill:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBMillEach\nSVar:DBMillEach:DB$ Mill | NumCards$ 4 | Defined$ Player.IsRemembered | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.cmcEven | ChangeNum$ 1 | Hidden$ True\nOracle:Gyruda parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Gyruda, Doom of Depths"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "B", "B", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "esper-sentinel-m613-in-hand",
+  "description": "Esper Sentinel M613 in hand; rhystic study creature parse.",
+  "seed": 765,
+  "cards": {
+    "Esper Sentinel M613": "Name:Esper Sentinel M613\nManaCost:W\nTypes:Artifact Creature Human\nPT:1/1\nT:Mode$ SpellCast | ValidPlayer$ Opponent | ValidCard$ Card.nonCreature | Execute$ TrigDraw | OptionalDecider$ Opponent | UnlessCost$ X | UnlessSwitched$ True | References$ X\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nSVar:X:Count$ValidPermanents Card.YouCtrl\nOracle:Esper Sentinel M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Esper Sentinel M613"],
+      "battlefield": [],
+      "manaPool": ["W"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

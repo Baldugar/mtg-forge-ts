@@ -1,0 +1,22 @@
+{
+  "id": "goblin-recruiter-in-hand",
+  "description": "Goblin Recruiter in hand; tutor stack parse.",
+  "seed": 755,
+  "cards": {
+    "Goblin Recruiter": "Name:Goblin Recruiter\nManaCost:1 R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Search.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Goblin.YouOwn | ChangeNum$ 99 | AnyNumber$ True\nOracle:Goblin Recruiter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Goblin Recruiter"],
+      "battlefield": [],
+      "manaPool": ["R", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "aetherflux-reservoir-m613-in-hand",
+  "description": "Aetherflux Reservoir M613 in hand; storm life parse.",
+  "seed": 780,
+  "cards": {
+    "Aetherflux Reservoir M613": "Name:Aetherflux Reservoir M613\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidPlayer$ You | Execute$ TrigGain | TriggerDescription$ +1.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X | References$ X\nSVar:X:Count$StormCount/Plus.1\nA:AB$ DealDamage | Cost$ PayLife<50> | NumDmg$ 50 | ValidTgts$ Player | SpellDescription$ Yeet 50.\nOracle:Reservoir M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Aetherflux Reservoir M613"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

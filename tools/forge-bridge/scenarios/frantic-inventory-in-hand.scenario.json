@@ -1,0 +1,22 @@
+{
+  "id": "frantic-inventory-in-hand",
+  "description": "Frantic Inventory in hand; X-graveyard draw parse.",
+  "seed": 722,
+  "cards": {
+    "Frantic Inventory": "Name:Frantic Inventory\nManaCost:1 U\nTypes:Instant\nA:SP$ Draw | Cost$ 1 U | Defined$ You | NumCards$ X | References$ X | SpellDescription$ Inventory.\nSVar:X:Count$Valid Card.YouCtrl+inZoneGraveyard+namedCARDNAME/Plus.1\nOracle:Frantic Inventory parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Frantic Inventory"],
+      "battlefield": [],
+      "manaPool": ["U", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "deflecting-swat-in-hand",
+  "description": "Deflecting Swat in hand; redirect alt-cost parse.",
+  "seed": 690,
+  "cards": {
+    "Deflecting Swat": "Name:Deflecting Swat\nManaCost:3 R\nTypes:Instant\nA:SP$ ChangeTargets | Cost$ 3 R | TargetType$ Spell,Ability | ValidTgts$ Card | TgtPrompt$ Redirect | SpellDescription$ Redirect.\nA:SP$ ChangeTargets | Cost$ 0 | PresentDefined$ Commander.YouCtrl | IsPresent$ Permanent | TargetType$ Spell,Ability | ValidTgts$ Card | SpellDescription$ Free.\nOracle:Deflecting Swat parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Deflecting Swat"],
+      "battlefield": [],
+      "manaPool": ["R", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "bolass-citadel-in-hand",
+  "description": "Bolas's Citadel in hand; cast-from-top parse.",
+  "seed": 779,
+  "cards": {
+    "Bolas's Citadel": "Name:Bolas's Citadel\nManaCost:3 B B B\nTypes:Legendary Artifact\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.YouCtrl+inZoneLibrary+topLib | MayLookAt$ True | MayPlay$ True | MayPlayLifeMod$ True | Description$ Top library.\nA:AB$ LoseLife | Cost$ 3 T Sac<10/Permanent> | Defined$ Player.Opponent | LifeAmount$ 10 | SubAbility$ DBGain | SpellDescription$ -10/+10.\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 10\nOracle:Citadel parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Bolas's Citadel"],
+      "battlefield": [],
+      "manaPool": ["B", "B", "B", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

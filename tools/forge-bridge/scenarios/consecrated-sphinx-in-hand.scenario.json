@@ -1,0 +1,22 @@
+{
+  "id": "consecrated-sphinx-in-hand",
+  "description": "Consecrated Sphinx in hand; opp-draw mirror parse.",
+  "seed": 777,
+  "cards": {
+    "Consecrated Sphinx": "Name:Consecrated Sphinx\nManaCost:4 U U\nTypes:Creature Sphinx\nPT:4/6\nK:Flying\nT:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ Opponent | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Sphinx.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | Defined$ You\nOracle:Sphinx parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Consecrated Sphinx"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

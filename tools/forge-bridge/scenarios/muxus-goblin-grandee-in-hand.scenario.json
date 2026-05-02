@@ -1,0 +1,22 @@
+{
+  "id": "muxus-goblin-grandee-in-hand",
+  "description": "Muxus Goblin Grandee in hand; cheat-six parse.",
+  "seed": 758,
+  "cards": {
+    "Muxus, Goblin Grandee": "Name:Muxus, Goblin Grandee\nManaCost:4 R R\nTypes:Legendary Creature Goblin Noble\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.Goblin+YouCtrl+Other | AddPower$ 1 | AddToughness$ 1 | Description$ Anthem.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ All | ChangeValid$ Goblin.cmcLE4 | DestinationZone$ Battlefield\nOracle:Muxus parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Muxus, Goblin Grandee"],
+      "battlefield": [],
+      "manaPool": ["R", "R", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

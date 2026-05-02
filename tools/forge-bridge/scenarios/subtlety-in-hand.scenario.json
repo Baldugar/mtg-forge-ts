@@ -1,0 +1,22 @@
+{
+  "id": "subtlety-in-hand",
+  "description": "Subtlety in hand; evoke pitch blue parse.",
+  "seed": 678,
+  "cards": {
+    "Subtlety": "Name:Subtlety\nManaCost:3 U U\nTypes:Creature Elemental Incarnation\nPT:3/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield,Stack | Destination$ Library | LibraryPosition$ -1 | TargetType$ Card | ValidTgts$ Permanent.OppCtrl,Spell.OppCtrl\nK:Evoke:Exile<1/Card.Blue+nonLegendary+YouOwn+inZoneHand+Other>\nOracle:Subtlety parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Subtlety"],
+      "battlefield": [],
+      "manaPool": ["U", "U", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,21 @@
+{
+  "id": "field-of-the-dead-m613-in-hand",
+  "description": "Field of the Dead M613 in hand; zombie on land etb parse.",
+  "seed": 712,
+  "cards": {
+    "Field of the Dead M613": "Name:Field of the Dead M613\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | CheckSecondaryPresent$ Lands.YouCtrl+differentnames | References$ X | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nSVar:X:Count$ValidPermanents Land.YouCtrl\nOracle:Field of the Dead M613 parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Field of the Dead M613"],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

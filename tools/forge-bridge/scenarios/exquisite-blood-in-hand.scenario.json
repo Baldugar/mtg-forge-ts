@@ -1,0 +1,22 @@
+{
+  "id": "exquisite-blood-in-hand",
+  "description": "Exquisite Blood in hand; mirror lifegain trigger parse.",
+  "seed": 691,
+  "cards": {
+    "Exquisite Blood": "Name:Exquisite Blood\nManaCost:4 B\nTypes:Enchantment\nT:Mode$ LifeLost | ValidPlayer$ Opponent | Execute$ TrigGain | TriggerDescription$ Gain that much.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X | References$ X\nSVar:X:TriggerCount$LifeAmount\nOracle:Exquisite Blood parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Exquisite Blood"],
+      "battlefield": [],
+      "manaPool": ["B", "C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

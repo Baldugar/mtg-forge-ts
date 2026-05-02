@@ -1,0 +1,22 @@
+{
+  "id": "umezawas-jitte-m613-in-hand",
+  "description": "Umezawa's Jitte in hand; charge counter equipment parse.",
+  "seed": 808,
+  "cards": {
+    "Umezawa's Jitte": "Name:Umezawa's Jitte\nManaCost:2\nTypes:Legendary Artifact Equipment\nK:Equip:2\nT:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | CombatDamage$ True | Execute$ TrigCounter | TriggerDescription$ +2.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2\nA:AB$ DealDamage | Cost$ SubCounter<1/CHARGE> | NumDmg$ 1 | ValidTgts$ Creature | SpellDescription$ Pop.\nA:AB$ Pump | Cost$ SubCounter<1/CHARGE> | TargetType$ Card | ValidTgts$ Creature.AttachedBy | NumAtt$ +2 | NumDef$ +2 | UntilEOT$ True | SpellDescription$ Pump.\nA:AB$ GainLife | Cost$ SubCounter<1/CHARGE> | LifeAmount$ 2 | SpellDescription$ Gain.\nOracle:Jitte parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Umezawa's Jitte"],
+      "battlefield": [],
+      "manaPool": ["C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

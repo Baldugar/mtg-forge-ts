@@ -1,0 +1,22 @@
+{
+  "id": "teferi-hero-of-dominaria-in-hand",
+  "description": "Teferi Hero of Dominaria in hand; PW untap+exile parse.",
+  "seed": 717,
+  "cards": {
+    "Teferi, Hero of Dominaria": "Name:Teferi, Hero of Dominaria\nManaCost:3 W U\nTypes:Legendary Planeswalker Teferi\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumCards$ 1 | SubAbility$ DBUntap | SpellDescription$ +1.\nSVar:DBUntap:DB$ Untap | TargetMin$ 1 | TargetMax$ 2 | TargetType$ Card | ValidTgts$ Land.YouCtrl\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | TargetType$ Card | ValidTgts$ Permanent.OppCtrl+nonLand | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ -3.\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | RememberObjects$ You | StaticAbilities$ TeferiEmblem | SpellDescription$ -8.\nOracle:Teferi parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Teferi, Hero of Dominaria"],
+      "battlefield": [],
+      "manaPool": ["W", "U", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

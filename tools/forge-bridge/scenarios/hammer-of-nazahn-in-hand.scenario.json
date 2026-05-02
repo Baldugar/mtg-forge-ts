@@ -1,0 +1,22 @@
+{
+  "id": "hammer-of-nazahn-in-hand",
+  "description": "Hammer of Nazahn in hand; equipment auto-attach parse.",
+  "seed": 804,
+  "cards": {
+    "Hammer of Nazahn": "Name:Hammer of Nazahn\nManaCost:4\nTypes:Legendary Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+EquippedBy | AddPower$ 2 | AddKeyword$ Indestructible | Description$ Boost.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigAttach | TriggerDescription$ Auto-attach.\nSVar:TrigAttach:DB$ Attach | Defined$ Self | Object$ TriggeredCard\nOracle:Hammer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Hammer of Nazahn"],
+      "battlefield": [],
+      "manaPool": ["C", "C", "C", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

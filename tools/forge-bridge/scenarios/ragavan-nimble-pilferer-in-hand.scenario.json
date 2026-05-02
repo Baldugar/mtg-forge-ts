@@ -1,0 +1,22 @@
+{
+  "id": "ragavan-nimble-pilferer-in-hand",
+  "description": "Ragavan in hand; dash + treasure on damage parse.",
+  "seed": 675,
+  "cards": {
+    "Ragavan, Nimble Pilferer": "Name:Ragavan, Nimble Pilferer\nManaCost:R\nTypes:Legendary Creature Monkey Pirate\nPT:2/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTreasure\nSVar:TrigTreasure:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1\nK:Dash:1 R\nOracle:Ragavan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": ["Ragavan, Nimble Pilferer"],
+      "battlefield": [],
+      "manaPool": ["R", "C"]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
