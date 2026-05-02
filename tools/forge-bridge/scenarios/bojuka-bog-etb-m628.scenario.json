@@ -1,0 +1,29 @@
+{
+  "id": "bojuka-bog-etb-m628",
+  "description": "Bojuka Bog ETB; exile graveyard parse.",
+  "seed": 2181,
+  "cards": {
+    "Bojuka Bog M628": "Name:Bojuka Bog M628\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ Opponent\nA:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1\nOracle:BB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bojuka Bog M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bojuka Bog M628",
+      "controller": 0
+    }
+  ]
+}

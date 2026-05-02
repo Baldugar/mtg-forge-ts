@@ -1,0 +1,29 @@
+{
+  "id": "arahbo-roar-etb-m628",
+  "description": "Arahbo, Roar of the World ETB; cat partner parse.",
+  "seed": 2143,
+  "cards": {
+    "Arahbo M628": "Name:Arahbo M628\nManaCost:3 G W\nTypes:Legendary Creature Cat Avatar\nPT:5/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump\nSVar:TrigPump:DB$ Pump | TargetType$ Creature | ValidTgts$ Cat.YouCtrl | NumAtt$ +3 | NumDef$ +3 | KW$ Trample\nOracle:Arahbo parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arahbo M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Arahbo M628",
+      "controller": 0
+    }
+  ]
+}

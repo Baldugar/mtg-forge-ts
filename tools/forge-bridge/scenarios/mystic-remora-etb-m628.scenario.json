@@ -1,0 +1,29 @@
+{
+  "id": "mystic-remora-etb-m628",
+  "description": "Mystic Remora ETB; cumulative upkeep parse.",
+  "seed": 36938,
+  "cards": {
+    "Mystic Remora M628": "Name:Mystic Remora M628\nManaCost:U\nTypes:Enchantment\nK:CumulativeUpkeep:1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:MR parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Remora M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mystic Remora M628",
+      "controller": 0
+    }
+  ]
+}

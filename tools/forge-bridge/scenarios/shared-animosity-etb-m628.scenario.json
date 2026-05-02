@@ -1,0 +1,29 @@
+{
+  "id": "shared-animosity-etb-m628",
+  "description": "Shared Animosity ETB.",
+  "seed": 40982,
+  "cards": {
+    "Shared Animosity M628": "Name:Shared Animosity M628\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttacker | NumAtt$ X | References$ X\nSVar:X:TriggeredAttacker$Valid Creature.SharesCreatureType+attacking\nOracle:SA parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shared Animosity M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Shared Animosity M628",
+      "controller": 0
+    }
+  ]
+}

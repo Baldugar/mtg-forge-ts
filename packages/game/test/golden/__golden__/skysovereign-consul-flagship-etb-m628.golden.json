@@ -1,0 +1,94 @@
+{
+  "scenarioId": "skysovereign-consul-flagship-etb-m628",
+  "seed": 2209,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 0,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 0,
+        "targetKind": "player",
+        "targetId": 0,
+        "amount": 3,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 17,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "amount": 3
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "fizzled": false
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      17,
+      20
+    ],
+    "handSizes": [
+      0,
+      0
+    ],
+    "battlefield": [
+      {
+        "name": "Skysovereign M628",
+        "controller": 0,
+        "tapped": false
+      }
+    ],
+    "graveyards": [
+      [],
+      []
+    ],
+    "stackSize": 0
+  }
+}

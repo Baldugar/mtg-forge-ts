@@ -1,0 +1,29 @@
+{
+  "id": "niv-mizzet-parun-etb-m628",
+  "description": "Niv-Mizzet, Parun ETB.",
+  "seed": 36868,
+  "cards": {
+    "Niv Mizzet P M628": "Name:Niv Mizzet P M628\nManaCost:U U U R R R\nTypes:Legendary Creature Dragon Wizard\nPT:5/5\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:NMP parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niv Mizzet P M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Niv Mizzet P M628",
+      "controller": 0
+    }
+  ]
+}

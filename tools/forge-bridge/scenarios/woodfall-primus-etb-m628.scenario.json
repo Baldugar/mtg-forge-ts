@@ -1,0 +1,29 @@
+{
+  "id": "woodfall-primus-etb-m628",
+  "description": "Woodfall Primus ETB; persist+destroy parse.",
+  "seed": 2165,
+  "cards": {
+    "Woodfall Primus M628": "Name:Woodfall Primus M628\nManaCost:5 G G G\nTypes:Creature Treefolk Shaman\nPT:6/6\nK:Trample\nK:Persist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Permanent.nonCreature\nOracle:WP parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodfall Primus M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Woodfall Primus M628",
+      "controller": 0
+    }
+  ]
+}

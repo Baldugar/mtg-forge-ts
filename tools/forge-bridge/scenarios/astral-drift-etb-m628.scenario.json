@@ -1,0 +1,29 @@
+{
+  "id": "astral-drift-etb-m628",
+  "description": "Astral Drift ETB; cycling-flicker parse.",
+  "seed": 2188,
+  "cards": {
+    "Astral Drift M628": "Name:Astral Drift M628\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Cycled | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlicker | TriggerDescription$ AD.\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature\nOracle:AD parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Astral Drift M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Astral Drift M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "elspeth-conquers-death-etb-m628",
+  "description": "Elspeth Conquers Death saga ETB.",
+  "seed": 36880,
+  "cards": {
+    "Elspeth Conq M628": "Name:Elspeth Conq M628\nManaCost:3 W W\nTypes:Enchantment Saga\nK:Chapter:3:DBExile,DBSet,DBReturn\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl+cmcGE5,Planeswalker.OppCtrl+cmcGE5\nSVar:DBSet:DB$ Animate | Defined$ Creature.OppCtrl | AddPower$ -2 | AddToughness$ -2\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature,Planeswalker | DefinedPlayer$ You\nOracle:ECD parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elspeth Conq M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Elspeth Conq M628",
+      "controller": 0
+    }
+  ]
+}

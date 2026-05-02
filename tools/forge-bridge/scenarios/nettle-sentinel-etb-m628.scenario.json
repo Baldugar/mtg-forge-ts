@@ -1,0 +1,29 @@
+{
+  "id": "nettle-sentinel-etb-m628",
+  "description": "Nettle Sentinel ETB.",
+  "seed": 40969,
+  "cards": {
+    "Nettle Sentinel M628": "Name:Nettle Sentinel M628\nManaCost:G\nTypes:Creature Elf Warrior\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | CantUntapPhase$ Untap | Description$ no untap.\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:NS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nettle Sentinel M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Nettle Sentinel M628",
+      "controller": 0
+    }
+  ]
+}

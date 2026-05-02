@@ -1,0 +1,29 @@
+{
+  "id": "champion-parish-etb-m628",
+  "description": "Champion of the Parish ETB; human counter parse.",
+  "seed": 2250,
+  "cards": {
+    "Champion Parish M628": "Name:Champion Parish M628\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Human.YouCtrl+Other | Execute$ TrigCounter\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self\nOracle:CP parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champion Parish M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Champion Parish M628",
+      "controller": 0
+    }
+  ]
+}

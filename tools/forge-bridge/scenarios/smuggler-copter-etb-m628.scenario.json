@@ -1,0 +1,29 @@
+{
+  "id": "smuggler-copter-etb-m628",
+  "description": "Smuggler's Copter ETB; vehicle parse.",
+  "seed": 2207,
+  "cards": {
+    "Smugglers Copter M628": "Name:Smugglers Copter M628\nManaCost:2\nTypes:Artifact Vehicle\nPT:3/3\nK:Flying\nK:Crew:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ SC.\nSVar:TrigLoot:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose\nOracle:SC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smugglers Copter M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Smugglers Copter M628",
+      "controller": 0
+    }
+  ]
+}

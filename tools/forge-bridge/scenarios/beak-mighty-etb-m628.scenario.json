@@ -1,0 +1,29 @@
+{
+  "id": "beak-mighty-etb-m628",
+  "description": "Beak the Mighty ETB; bird tribal parse.",
+  "seed": 2100,
+  "cards": {
+    "Beak Mighty M628": "Name:Beak Mighty M628\nManaCost:2 W\nTypes:Legendary Creature Bird Warrior\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ BM.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_bird_flying | TokenAmount$ 2\nOracle:BM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beak Mighty M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Beak Mighty M628",
+      "controller": 0
+    }
+  ]
+}

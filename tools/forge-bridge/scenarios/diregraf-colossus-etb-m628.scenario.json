@@ -1,0 +1,29 @@
+{
+  "id": "diregraf-colossus-etb-m628",
+  "description": "Diregraf Colossus ETB; zombie counter parse.",
+  "seed": 2137,
+  "cards": {
+    "Diregraf Colossus M628": "Name:Diregraf Colossus M628\nManaCost:2 B\nTypes:Creature Zombie\nPT:2/2\nK:etbCounter:P1P1:X\nSVar:X:Count$Valid Zombie.YouCtrl+inZoneGraveyard\nT:Mode$ SpellCast | ValidCard$ Zombie | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nOracle:DC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diregraf Colossus M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Diregraf Colossus M628",
+      "controller": 0
+    }
+  ]
+}

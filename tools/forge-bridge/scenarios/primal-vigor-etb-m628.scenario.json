@@ -1,0 +1,29 @@
+{
+  "id": "primal-vigor-etb-m628",
+  "description": "Primal Vigor ETB.",
+  "seed": 36964,
+  "cards": {
+    "Primal Vigor M628": "Name:Primal Vigor M628\nManaCost:4 G\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ Each | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nOracle:PV parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Vigor M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Primal Vigor M628",
+      "controller": 0
+    }
+  ]
+}

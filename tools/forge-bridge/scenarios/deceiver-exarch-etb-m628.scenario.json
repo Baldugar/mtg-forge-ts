@@ -1,0 +1,29 @@
+{
+  "id": "deceiver-exarch-etb-m628",
+  "description": "Deceiver Exarch ETB; untap parse.",
+  "seed": 2122,
+  "cards": {
+    "Deceiver Exarch M628": "Name:Deceiver Exarch M628\nManaCost:2 U\nTypes:Creature Cleric\nPT:1/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ DE.\nSVar:TrigUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Permanent\nOracle:DE parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deceiver Exarch M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Deceiver Exarch M628",
+      "controller": 0
+    }
+  ]
+}

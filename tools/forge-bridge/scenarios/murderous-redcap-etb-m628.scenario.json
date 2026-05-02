@@ -1,0 +1,29 @@
+{
+  "id": "murderous-redcap-etb-m628",
+  "description": "Murderous Redcap ETB; persist + ETB drain parse.",
+  "seed": 2163,
+  "cards": {
+    "Murderous Redcap M628": "Name:Murderous Redcap M628\nManaCost:3 B R\nTypes:Creature Goblin Assassin\nPT:2/2\nK:Persist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature,Player | ValidTgts$ Any\nOracle:MR parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murderous Redcap M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Murderous Redcap M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "heliod-sun-crowned-etb-m628",
+  "description": "Heliod, Sun-Crowned ETB; lifegain trigger parse.",
+  "seed": 2118,
+  "cards": {
+    "Heliod SC M628": "Name:Heliod SC M628\nManaCost:1 W W\nTypes:Legendary Enchantment Creature God\nPT:5/5\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ HSC.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetType$ Creature | ValidTgts$ Creature.YouCtrl\nOracle:HSC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heliod SC M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Heliod SC M628",
+      "controller": 0
+    }
+  ]
+}

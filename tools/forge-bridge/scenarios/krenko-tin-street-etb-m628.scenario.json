@@ -1,0 +1,29 @@
+{
+  "id": "krenko-tin-street-etb-m628",
+  "description": "Krenko, Tin Street Kingpin ETB; goblin parse.",
+  "seed": 2133,
+  "cards": {
+    "Krenko TS M628": "Name:Krenko TS M628\nManaCost:1 R\nTypes:Legendary Creature Goblin Warrior\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ KTS.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ X | References$ X\nSVar:X:Count$CardCounters.P1P1\nOracle:KTS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krenko TS M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Krenko TS M628",
+      "controller": 0
+    }
+  ]
+}

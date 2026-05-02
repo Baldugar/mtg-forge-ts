@@ -1,0 +1,29 @@
+{
+  "id": "steam-vents-etb-m628",
+  "description": "Steam Vents ETB; shock parse.",
+  "seed": 36908,
+  "cards": {
+    "Steam Vents M628": "Name:Steam Vents M628\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock\nSVar:TrigShock:DB$ LoseLife | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | Amount$ 1\nOracle:SV parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steam Vents M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Steam Vents M628",
+      "controller": 0
+    }
+  ]
+}

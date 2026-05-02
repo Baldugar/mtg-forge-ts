@@ -1,0 +1,29 @@
+{
+  "id": "godless-shrine-etb-m628",
+  "description": "Godless Shrine ETB; shock parse.",
+  "seed": 36911,
+  "cards": {
+    "Godless Shrine M628": "Name:Godless Shrine M628\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock\nSVar:TrigShock:DB$ LoseLife | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | Amount$ 1\nOracle:GS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Godless Shrine M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Godless Shrine M628",
+      "controller": 0
+    }
+  ]
+}

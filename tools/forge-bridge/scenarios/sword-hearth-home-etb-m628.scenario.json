@@ -1,0 +1,29 @@
+{
+  "id": "sword-hearth-home-etb-m628",
+  "description": "Sword of Hearth and Home ETB.",
+  "seed": 36948,
+  "cards": {
+    "Sword HH M628": "Name:Sword HH M628\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from green\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigFlicker\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield\nK:Equip:2\nOracle:SHH parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword HH M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword HH M628",
+      "controller": 0
+    }
+  ]
+}

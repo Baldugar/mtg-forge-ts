@@ -1,0 +1,29 @@
+{
+  "id": "aetherflux-reservoir-etb-m628",
+  "description": "Aetherflux Reservoir ETB; storm-life parse.",
+  "seed": 2210,
+  "cards": {
+    "Aetherflux Reservoir M628B": "Name:Aetherflux Reservoir M628B\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nA:AB$ DealDamage | Cost$ PayLife<50> | NumDmg$ 50 | TargetType$ Player | ValidTgts$ Player\nOracle:AR parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aetherflux Reservoir M628B"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Aetherflux Reservoir M628B",
+      "controller": 0
+    }
+  ]
+}

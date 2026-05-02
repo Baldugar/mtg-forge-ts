@@ -1,0 +1,29 @@
+{
+  "id": "bloodlord-of-vaasgoth-etb-m628",
+  "description": "Bloodlord of Vaasgoth ETB; vampire kicker parse.",
+  "seed": 2140,
+  "cards": {
+    "Bloodlord M628": "Name:Bloodlord M628\nManaCost:4 B\nTypes:Creature Vampire\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Vampire | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | Defined$ TriggeredCard\nOracle:BL parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodlord M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bloodlord M628",
+      "controller": 0
+    }
+  ]
+}

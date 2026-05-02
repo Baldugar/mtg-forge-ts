@@ -1,0 +1,29 @@
+{
+  "id": "meren-of-clan-etb-m628",
+  "description": "Meren of Clan Nel Toth ETB; recur parse.",
+  "seed": 2223,
+  "cards": {
+    "Meren M628": "Name:Meren M628\nManaCost:2 B G\nTypes:Legendary Creature Human Shaman\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | Execute$ TrigCounter\nSVar:TrigCounter:DB$ PutCounter | CounterType$ EXPERIENCE | CounterNum$ 1 | Defined$ TriggeredCardController\nT:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | References$ X\nSVar:X:Count$Experience\nOracle:Meren parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meren M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Meren M628",
+      "controller": 0
+    }
+  ]
+}

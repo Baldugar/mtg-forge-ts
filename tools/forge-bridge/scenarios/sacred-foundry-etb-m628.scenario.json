@@ -1,0 +1,29 @@
+{
+  "id": "sacred-foundry-etb-m628",
+  "description": "Sacred Foundry ETB; shock parse.",
+  "seed": 36907,
+  "cards": {
+    "Sacred Foundry M628": "Name:Sacred Foundry M628\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock\nSVar:TrigShock:DB$ LoseLife | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | Amount$ 1\nOracle:SF parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sacred Foundry M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sacred Foundry M628",
+      "controller": 0
+    }
+  ]
+}

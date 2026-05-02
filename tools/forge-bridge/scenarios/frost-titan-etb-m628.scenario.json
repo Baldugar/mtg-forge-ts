@@ -1,0 +1,29 @@
+{
+  "id": "frost-titan-etb-m628",
+  "description": "Frost Titan ETB.",
+  "seed": 36958,
+  "cards": {
+    "Frost Titan M628": "Name:Frost Titan M628\nManaCost:4 U U\nTypes:Creature Giant\nPT:6/6\nT:Mode$ BecomesTarget | ValidSource$ Spell,Ability | ValidTarget$ Card.Self | Execute$ TrigCounter | UnlessCost$ 2\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell,Ability | ValidTgts$ Card\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap\nSVar:TrigTap:DB$ Tap | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl\nOracle:FT parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frost Titan M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Frost Titan M628",
+      "controller": 0
+    }
+  ]
+}

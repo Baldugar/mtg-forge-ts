@@ -1,0 +1,29 @@
+{
+  "id": "thunderbreak-regent-etb-m628b",
+  "description": "Thunderbreak Regent ETB; dragon flying parse.",
+  "seed": 36864,
+  "cards": {
+    "Thunderbreak Regent M628": "Name:Thunderbreak Regent M628\nManaCost:2 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ BecomesTarget | ValidSource$ Spell,Ability | ValidTarget$ Dragon.YouCtrl | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | Defined$ Player.OpponentOf\nOracle:TR parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderbreak Regent M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Thunderbreak Regent M628",
+      "controller": 0
+    }
+  ]
+}

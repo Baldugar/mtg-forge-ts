@@ -1,0 +1,29 @@
+{
+  "id": "splinter-twin-etb-m628",
+  "description": "Splinter Twin aura parse.",
+  "seed": 2121,
+  "cards": {
+    "Splinter Twin M628": "Name:Splinter Twin M628\nManaCost:2 R R\nTypes:Enchantment Aura\nK:Enchant creature\nA:SP$ Attach | Cost$ 2 R R | ValidTgts$ Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ TokenAB\nSVar:TokenAB:AB$ Token | Cost$ T | TokenScript$ CARDNAME_HASTE\nOracle:ST parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splinter Twin M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Splinter Twin M628",
+      "controller": 0
+    }
+  ]
+}

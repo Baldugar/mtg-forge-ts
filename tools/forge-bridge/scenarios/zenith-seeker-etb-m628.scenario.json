@@ -1,0 +1,29 @@
+{
+  "id": "zenith-seeker-etb-m628",
+  "description": "Zenith Seeker ETB; cycle trigger parse.",
+  "seed": 2196,
+  "cards": {
+    "Zenith Seeker M628": "Name:Zenith Seeker M628\nManaCost:3 W U\nTypes:Creature Bird\nPT:3/3\nK:Flying\nK:Cycling:2\nT:Mode$ Cycled | ValidCard$ Card.Self | TriggerZones$ Hand | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.Bird | ChangeNum$ 1\nOracle:ZS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zenith Seeker M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Zenith Seeker M628",
+      "controller": 0
+    }
+  ]
+}

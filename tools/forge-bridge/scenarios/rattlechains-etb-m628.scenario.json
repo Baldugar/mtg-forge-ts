@@ -1,0 +1,29 @@
+{
+  "id": "rattlechains-etb-m628",
+  "description": "Rattlechains ETB.",
+  "seed": 40976,
+  "cards": {
+    "Rattlechains M628": "Name:Rattlechains M628\nManaCost:1 W\nTypes:Creature Spirit\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump\nSVar:TrigPump:DB$ Pump | TargetType$ Creature | ValidTgts$ Spirit.YouCtrl | KW$ Hexproof\nOracle:RC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rattlechains M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rattlechains M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "binding-titans-etb-m628",
+  "description": "Binding the Old Gods saga ETB.",
+  "seed": 36881,
+  "cards": {
+    "Binding Old M628": "Name:Binding Old M628\nManaCost:1 B G W\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroy,DBSearch,DBPump\nSVar:DBDestroy:DB$ Destroy | TargetType$ Creature | ValidTgts$ Creature.OppCtrl\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | Tapped$ True\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Deathtouch\nOracle:BoG parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Binding Old M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Binding Old M628",
+      "controller": 0
+    }
+  ]
+}

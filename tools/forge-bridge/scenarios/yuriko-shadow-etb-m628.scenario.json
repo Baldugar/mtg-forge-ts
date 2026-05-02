@@ -1,0 +1,29 @@
+{
+  "id": "yuriko-shadow-etb-m628",
+  "description": "Yuriko, the Tiger's Shadow ETB; ninjutsu parse.",
+  "seed": 2218,
+  "cards": {
+    "Yuriko M628": "Name:Yuriko M628\nManaCost:1 U B\nTypes:Legendary Creature Human Ninja\nPT:1/3\nK:Commander Ninjutsu:1 U B\nT:Mode$ DamageDoneOne | ValidSource$ Ninja.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal\nSVar:TrigReveal:DB$ Reveal | Defined$ TopOfLibrary | SubAbility$ DBLifeLoss\nSVar:DBLifeLoss:DB$ LoseLife | LifeAmount$ X | References$ X | Defined$ Player.Opponent\nSVar:X:Remembered$CardManaCost\nOracle:Yuriko parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuriko M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Yuriko M628",
+      "controller": 0
+    }
+  ]
+}

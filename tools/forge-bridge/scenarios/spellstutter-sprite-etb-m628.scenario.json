@@ -1,0 +1,29 @@
+{
+  "id": "spellstutter-sprite-etb-m628",
+  "description": "Spellstutter Sprite ETB; faerie counter parse.",
+  "seed": 2131,
+  "cards": {
+    "Spellstutter Sprite M628": "Name:Spellstutter Sprite M628\nManaCost:1 U\nTypes:Creature Faerie Wizard\nPT:1/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Spellstutter.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.cmcLEX | References$ X\nSVar:X:Count$Valid Faerie.YouCtrl\nOracle:SS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellstutter Sprite M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Spellstutter Sprite M628",
+      "controller": 0
+    }
+  ]
+}

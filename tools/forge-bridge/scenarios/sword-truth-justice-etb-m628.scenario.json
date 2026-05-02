@@ -1,0 +1,29 @@
+{
+  "id": "sword-truth-justice-etb-m628",
+  "description": "Sword of Truth and Justice ETB.",
+  "seed": 36949,
+  "cards": {
+    "Sword TJ M628": "Name:Sword TJ M628\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from blue\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCounter\nSVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBProliferate\nSVar:DBProliferate:DB$ Proliferate\nK:Equip:2\nOracle:STJ parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword TJ M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword TJ M628",
+      "controller": 0
+    }
+  ]
+}

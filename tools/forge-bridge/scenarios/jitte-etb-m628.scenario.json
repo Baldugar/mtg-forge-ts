@@ -1,0 +1,29 @@
+{
+  "id": "jitte-etb-m628",
+  "description": "Umezawa's Jitte ETB; charge counter parse.",
+  "seed": 2211,
+  "cards": {
+    "Umezawas Jitte M628": "Name:Umezawas Jitte M628\nManaCost:2\nTypes:Legendary Artifact Equipment\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | CombatDamage$ True | Execute$ TrigCounter\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 2 | Defined$ Self\nA:AB$ RemoveCounter | Cost$ RemoveCounter<1/CHARGE> | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | TargetType$ Creature | ValidTgts$ Creature.EquippedBy | NumAtt$ +2 | NumDef$ +2\nK:Equip:2\nOracle:UJ parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umezawas Jitte M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Umezawas Jitte M628",
+      "controller": 0
+    }
+  ]
+}

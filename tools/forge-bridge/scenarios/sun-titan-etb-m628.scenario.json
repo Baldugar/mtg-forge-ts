@@ -1,0 +1,29 @@
+{
+  "id": "sun-titan-etb-m628",
+  "description": "Sun Titan ETB.",
+  "seed": 36957,
+  "cards": {
+    "Sun Titan M628": "Name:Sun Titan M628\nManaCost:4 W W\nTypes:Creature Giant\nPT:6/6\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Permanent.cmcLE3+YouCtrl\nOracle:ST parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sun Titan M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sun Titan M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "spell-queller-etb-m628",
+  "description": "Spell Queller ETB.",
+  "seed": 40975,
+  "cards": {
+    "Spell Queller M628": "Name:Spell Queller M628\nManaCost:1 W U\nTypes:Creature Spirit\nPT:2/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.cmcLE4 | RememberCounteredCMC$ True\nOracle:SQ parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spell Queller M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Spell Queller M628",
+      "controller": 0
+    }
+  ]
+}

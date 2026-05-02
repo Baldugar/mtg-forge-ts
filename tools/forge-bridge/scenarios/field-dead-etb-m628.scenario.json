@@ -1,0 +1,29 @@
+{
+  "id": "field-dead-etb-m628",
+  "description": "Field of the Dead ETB; basic-type counter parse.",
+  "seed": 2172,
+  "cards": {
+    "Field Dead M628": "Name:Field Dead M628\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE7\nSVar:X:Count$Valid Land.YouCtrl+different\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1\nOracle:FotD parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Field Dead M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Field Dead M628",
+      "controller": 0
+    }
+  ]
+}

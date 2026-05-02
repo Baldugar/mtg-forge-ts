@@ -1,0 +1,29 @@
+{
+  "id": "lurrus-companion-etb-m628",
+  "description": "Lurrus Companion ETB; recur low-cmc parse.",
+  "seed": 2157,
+  "cards": {
+    "Lurrus M628": "Name:Lurrus M628\nManaCost:1 W B\nTypes:Legendary Creature Cat Nightmare\nPT:3/2\nK:Lifelink\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCast\nSVar:TrigCast:DB$ Play | Origin$ Graveyard | ValidSA$ Card.cmcLE2+nonLand+permanent\nOracle:Lurrus parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurrus M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lurrus M628",
+      "controller": 0
+    }
+  ]
+}

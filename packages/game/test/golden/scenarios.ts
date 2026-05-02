@@ -36665,7 +36665,7 @@ ManaCost:1 G
 Types:Creature Human Scout
 PT:3/2
 T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Tracker clue.
-SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenAmount$ 1
 Oracle:Tracker parse.
 `,
     },
@@ -36687,7 +36687,7 @@ ManaCost:G U
 Types:Legendary Creature Simic Citizen
 PT:1/1
 T:Mode$ SpellCast | ValidCard$ Card | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Lonis clue.
-SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenAmount$ 1
 Oracle:Lonis parse.
 `,
     },
@@ -36709,7 +36709,7 @@ ManaCost:2 W
 Types:Artifact Creature Construct
 PT:1/2
 R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure | ReplaceWith$ AddOthers
-SVar:AddOthers:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+SVar:AddOthers:DB$ Token | TokenScript$ c_a_clue_draw | TokenAmount$ 1
 Oracle:Manufactor parse.
 `,
     },
@@ -39818,7 +39818,7 @@ ManaCost:2 W
 Types:Artifact Creature Construct
 PT:1/2
 R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure | ReplaceWith$ AddOthers
-SVar:AddOthers:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+SVar:AddOthers:DB$ Token | TokenScript$ c_a_clue_draw | TokenAmount$ 1
 Oracle:ManufactorB parse.
 `,
       "Treasure Maker M627C": `Name:Treasure Maker M627C
@@ -40265,5 +40265,6668 @@ Oracle:Recruiter parse.
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "etb", cardName: "Goblin Recruiter M627", controller: SEAT0 }],
+  },
+
+  // 1801. Heartfire Hero ETB; valiant trigger parse.
+  {
+    id: "heartfire-hero-etb-m628",
+    description: "Heartfire Hero ETB; valiant trigger parse.",
+    seed: 0x830,
+    cards: {
+      "Heartfire Hero M628": `Name:Heartfire Hero M628
+ManaCost:R
+Types:Creature Mouse Warrior
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Hand | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ HH.
+SVar:TrigPump:DB$ PumpAll | NumAtt$ +1 | NumDef$ +1 | ValidCards$ Creature.YouCtrl | IsCurse$ False
+Oracle:HH parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heartfire Hero M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heartfire Hero M628", controller: SEAT0 }],
+  },
+
+  // 1802. Scrappy Bruiser ETB; offspring parse.
+  {
+    id: "scrappy-bruiser-etb-m628",
+    description: "Scrappy Bruiser ETB; offspring parse.",
+    seed: 0x831,
+    cards: {
+      "Scrappy Bruiser M628": `Name:Scrappy Bruiser M628
+ManaCost:1 R
+Types:Creature Mouse Warrior
+PT:2/2
+K:Offspring:1
+Oracle:SB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scrappy Bruiser M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scrappy Bruiser M628", controller: SEAT0 }],
+  },
+
+  // 1803. Forage scry-token instant in hand.
+  {
+    id: "forage-effect-in-hand-m628",
+    description: "Forage scry-token instant in hand.",
+    seed: 0x832,
+    cards: {
+      "Forage Spell M628": `Name:Forage Spell M628
+ManaCost:1 G
+Types:Instant
+A:SP$ Token | Cost$ 1 G | TokenScript$ g_2_2_squirrel | TokenAmount$ 1
+Oracle:Forage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forage Spell M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forage Spell M628", controller: SEAT0 }],
+  },
+
+  // 1804. Expend N spell in hand.
+  {
+    id: "expend-spell-in-hand-m628",
+    description: "Expend N spell in hand.",
+    seed: 0x833,
+    cards: {
+      "Expend Spell M628": `Name:Expend Spell M628
+ManaCost:X R
+Types:Instant
+A:SP$ DealDamage | Cost$ X R | NumDmg$ X | References$ X | ValidTgts$ Any
+SVar:X:Count$xPaid
+Oracle:Expend parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Expend Spell M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Expend Spell M628", controller: SEAT0 }],
+  },
+
+  // 1805. Beak the Mighty ETB; bird tribal parse.
+  {
+    id: "beak-mighty-etb-m628",
+    description: "Beak the Mighty ETB; bird tribal parse.",
+    seed: 0x834,
+    cards: {
+      "Beak Mighty M628": `Name:Beak Mighty M628
+ManaCost:2 W
+Types:Legendary Creature Bird Warrior
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ BM.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_bird_flying | TokenAmount$ 2
+Oracle:BM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Beak Mighty M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Beak Mighty M628", controller: SEAT0 }],
+  },
+
+  // 1806. Manifest Dread effect; mill+manifest parse.
+  {
+    id: "manifest-dread-etb-m628",
+    description: "Manifest Dread effect; mill+manifest parse.",
+    seed: 0x835,
+    cards: {
+      "Manifest Dread M628": `Name:Manifest Dread M628
+ManaCost:1 B
+Types:Sorcery
+A:SP$ Mill | Cost$ 1 B | NumCards$ 2 | Defined$ You | SubAbility$ DBManifest
+SVar:DBManifest:DB$ ManifestDread
+Oracle:MD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Manifest Dread M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Manifest Dread M628", controller: SEAT0 }],
+  },
+
+  // 1807. Rooms split unlock chain parse.
+  {
+    id: "rooms-unlock-etb-m628",
+    description: "Rooms split unlock chain parse.",
+    seed: 0x836,
+    cards: {
+      "Rooms M628": `Name:Rooms M628
+ManaCost:2 W
+Types:Enchantment Room
+A:AB$ Token | Cost$ 2 W | TokenScript$ w_1_1_human | TokenAmount$ 1 | SpellDescription$ Rooms parse.
+Oracle:Rooms parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rooms M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rooms M628", controller: SEAT0 }],
+  },
+
+  // 1808. FF UB Summon ETB; legendary parse.
+  {
+    id: "ff-ub-summon-etb-m628",
+    description: "FF UB Summon ETB; legendary parse.",
+    seed: 0x837,
+    cards: {
+      "FF Summon M628": `Name:FF Summon M628
+ManaCost:3 G
+Types:Legendary Creature Spirit
+PT:4/4
+K:Trample
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_1_1_elf_warrior | TokenAmount$ 3
+Oracle:FF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FF Summon M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "FF Summon M628", controller: SEAT0 }],
+  },
+
+  // 1809. FF UB Job Class ETB; level chain parse.
+  {
+    id: "ff-ub-job-class-etb-m628",
+    description: "FF UB Job Class ETB; level chain parse.",
+    seed: 0x838,
+    cards: {
+      "Job Class M628": `Name:Job Class M628
+ManaCost:1 R
+Types:Enchantment Class
+K:Class:0:0:1 R:R:1
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | ClassLevel$ 1 | AddType$ Aura
+Oracle:Job parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Job Class M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Job Class M628", controller: SEAT0 }],
+  },
+
+  // 1810. Bloomburrow Rabbit creature ETB.
+  {
+    id: "bloomburrow-rabbit-etb-m628",
+    description: "Bloomburrow Rabbit creature ETB.",
+    seed: 0x839,
+    cards: {
+      "Bloom Rabbit M628": `Name:Bloom Rabbit M628
+ManaCost:G
+Types:Creature Rabbit
+PT:1/2
+Oracle:Rabbit parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloom Rabbit M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloom Rabbit M628", controller: SEAT0 }],
+  },
+
+  // 1811. Bloomburrow Otter ETB; prowess parse.
+  {
+    id: "bloomburrow-otter-etb-m628",
+    description: "Bloomburrow Otter ETB; prowess parse.",
+    seed: 0x83a,
+    cards: {
+      "Bloom Otter M628": `Name:Bloom Otter M628
+ManaCost:1 U
+Types:Creature Otter Wizard
+PT:2/2
+K:Prowess
+Oracle:Otter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloom Otter M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloom Otter M628", controller: SEAT0 }],
+  },
+
+  // 1812. Bloomburrow Bat ETB; flying parse.
+  {
+    id: "bloomburrow-bat-etb-m628",
+    description: "Bloomburrow Bat ETB; flying parse.",
+    seed: 0x83b,
+    cards: {
+      "Bloom Bat M628": `Name:Bloom Bat M628
+ManaCost:1 B
+Types:Creature Bat
+PT:1/1
+K:Flying
+Oracle:Bat parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloom Bat M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloom Bat M628", controller: SEAT0 }],
+  },
+
+  // 1813. Esika's Chariot ETB; cat token parse.
+  {
+    id: "esikas-chariot-etb-m628",
+    description: "Esika's Chariot ETB; cat token parse.",
+    seed: 0x83c,
+    cards: {
+      "Esikas Chariot M628": `Name:Esikas Chariot M628
+ManaCost:3 G
+Types:Artifact Vehicle
+PT:4/4
+K:Crew:4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ EC.
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_cat | TokenAmount$ 2
+Oracle:EC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esikas Chariot M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esikas Chariot M628", controller: SEAT0 }],
+  },
+
+  // 1814. Wedding Announcement ETB; saga-like parse.
+  {
+    id: "wedding-announcement-etb-m628",
+    description: "Wedding Announcement ETB; saga-like parse.",
+    seed: 0x83d,
+    cards: {
+      "Wedding Announce M628": `Name:Wedding Announce M628
+ManaCost:2 W
+Types:Enchantment
+T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human | TokenAmount$ 1
+Oracle:WA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wedding Announce M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wedding Announce M628", controller: SEAT0 }],
+  },
+
+  // 1815. Fable of the Mirror-Breaker ETB; saga chapter parse.
+  {
+    id: "fable-mirror-breaker-etb-m628",
+    description: "Fable of the Mirror-Breaker ETB; saga chapter parse.",
+    seed: 0x83e,
+    cards: {
+      "Fable MB M628": `Name:Fable MB M628
+ManaCost:2 R
+Types:Enchantment Saga
+K:Chapter:3:DBToken,DBLoot,DBTransform
+SVar:DBToken:DB$ Token | TokenScript$ r_2_2_goblin_shaman_treasure
+SVar:DBLoot:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose
+SVar:DBTransform:DB$ SetState | Mode$ Transform
+Oracle:Fable parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fable MB M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fable MB M628", controller: SEAT0 }],
+  },
+
+  // 1816. Narset of the Ancient Way ETB; PW parse.
+  {
+    id: "narset-of-jewel-etb-m628",
+    description: "Narset of the Ancient Way ETB; PW parse.",
+    seed: 0x83f,
+    cards: {
+      "Narset Ancient M628": `Name:Narset Ancient M628
+ManaCost:2 U R
+Types:Legendary Planeswalker Narset
+Loyalty:4
+A:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | LifeAmount$ 2 | Planeswalker$ True
+Oracle:NA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Narset Ancient M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Narset Ancient M628", controller: SEAT0 }],
+  },
+
+  // 1817. Adanto Vanguard ETB; pay 4 life parse.
+  {
+    id: "adanto-vanguard-etb-m628",
+    description: "Adanto Vanguard ETB; pay 4 life parse.",
+    seed: 0x840,
+    cards: {
+      "Adanto Vanguard M628": `Name:Adanto Vanguard M628
+ManaCost:1 W
+Types:Creature Vampire Soldier
+PT:1/1
+A:AB$ PutCounter | Cost$ PayLife<4> | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
+Oracle:AV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Adanto Vanguard M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Adanto Vanguard M628", controller: SEAT0 }],
+  },
+
+  // 1818. Bonecrusher Giant fresh adventure ETB.
+  {
+    id: "bonecrusher-stomp-etb-m628",
+    description: "Bonecrusher Giant fresh adventure ETB.",
+    seed: 0x841,
+    cards: {
+      "BG Adv M628": `Name:BG Adv M628
+ManaCost:1 R
+Types:Creature Giant
+PT:4/3
+AlternateMode:Adventure
+Oracle:BGA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["BG Adv M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "BG Adv M628", controller: SEAT0 }],
+  },
+
+  // 1819. Thoughtseize sorcery in hand.
+  {
+    id: "thoughtseize-cast-m628",
+    description: "Thoughtseize sorcery in hand.",
+    seed: 0x842,
+    cards: {
+      "Thoughtseize M628": `Name:Thoughtseize M628
+ManaCost:B
+Types:Sorcery
+A:SP$ Discard | Cost$ B PayLife<2> | NumCards$ 1 | Mode$ TgtChoose | ValidTgts$ Opponent
+Oracle:TS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thoughtseize M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thoughtseize M628", controller: SEAT0 }],
+  },
+
+  // 1820. Fatal Push instant in hand.
+  {
+    id: "fatal-push-cast-m628",
+    description: "Fatal Push instant in hand.",
+    seed: 0x843,
+    cards: {
+      "Fatal Push M628": `Name:Fatal Push M628
+ManaCost:B
+Types:Instant
+A:SP$ Destroy | Cost$ B | TargetType$ Creature | ValidTgts$ Creature.cmcLE2
+Oracle:FP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fatal Push M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fatal Push M628", controller: SEAT0 }],
+  },
+
+  // 1821. Collected Company instant in hand.
+  {
+    id: "collected-company-cast-m628",
+    description: "Collected Company instant in hand.",
+    seed: 0x844,
+    cards: {
+      "Collected Company M628": `Name:Collected Company M628
+ManaCost:3 G
+Types:Instant
+A:SP$ ChangeZone | Cost$ 3 G | Origin$ Library | Destination$ Battlefield | ChangeNum$ 2 | ChangeType$ Creature.cmcLE3
+Oracle:CC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Collected Company M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Collected Company M628", controller: SEAT0 }],
+  },
+
+  // 1822. Chained to the Rocks aura on creature etb parse.
+  {
+    id: "chained-veteran-etb-m628",
+    description: "Chained to the Rocks aura on creature etb parse.",
+    seed: 0x845,
+    cards: {
+      "Chained Rocks M628": `Name:Chained Rocks M628
+ManaCost:W
+Types:Enchantment Aura
+K:Enchant creature
+A:SP$ Attach | Cost$ W | ValidTgts$ Creature.OppCtrl
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | RemoveAllAbilities$ True
+Oracle:CR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chained Rocks M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chained Rocks M628", controller: SEAT0 }],
+  },
+
+  // 1823. Heliod, Sun-Crowned ETB; lifegain trigger parse.
+  {
+    id: "heliod-sun-crowned-etb-m628",
+    description: "Heliod, Sun-Crowned ETB; lifegain trigger parse.",
+    seed: 0x846,
+    cards: {
+      "Heliod SC M628": `Name:Heliod SC M628
+ManaCost:1 W W
+Types:Legendary Enchantment Creature God
+PT:5/5
+T:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ HSC.
+SVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetType$ Creature | ValidTgts$ Creature.YouCtrl
+Oracle:HSC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heliod SC M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heliod SC M628", controller: SEAT0 }],
+  },
+
+  // 1824. Walking Ballista ETB; counter shooter parse.
+  {
+    id: "walking-ballista-etb-m628",
+    description: "Walking Ballista ETB; counter shooter parse.",
+    seed: 0x847,
+    cards: {
+      "Walking Ballista M628": `Name:Walking Ballista M628
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+K:etbCounter:P1P1:X
+A:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/Self> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:WB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Walking Ballista M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Walking Ballista M628", controller: SEAT0 }],
+  },
+
+  // 1825. Heliod + Walking Ballista co-residence; combo parse.
+  {
+    id: "heliod-ballista-coresidence-m628",
+    description: "Heliod + Walking Ballista co-residence; combo parse.",
+    seed: 0x848,
+    cards: {
+      "Walking Ballista B M628": `Name:Walking Ballista B M628
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+K:etbCounter:P1P1:X
+A:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/Self> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:WBB parse.
+`,
+      "Heliod SC B M628": `Name:Heliod SC B M628
+ManaCost:1 W W
+Types:Legendary Enchantment Creature God
+PT:5/5
+T:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter
+SVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | TargetType$ Creature | ValidTgts$ Creature.YouCtrl
+Oracle:HSCB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Walking Ballista B M628"],
+        battlefield: [{ card: "Heliod SC B M628" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Walking Ballista B M628", controller: SEAT0 }],
+  },
+
+  // 1826. Splinter Twin aura parse.
+  {
+    id: "splinter-twin-etb-m628",
+    description: "Splinter Twin aura parse.",
+    seed: 0x849,
+    cards: {
+      "Splinter Twin M628": `Name:Splinter Twin M628
+ManaCost:2 R R
+Types:Enchantment Aura
+K:Enchant creature
+A:SP$ Attach | Cost$ 2 R R | ValidTgts$ Creature.YouCtrl
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ TokenAB
+SVar:TokenAB:AB$ Token | Cost$ T | TokenScript$ CARDNAME_HASTE
+Oracle:ST parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Splinter Twin M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Splinter Twin M628", controller: SEAT0 }],
+  },
+
+  // 1827. Deceiver Exarch ETB; untap parse.
+  {
+    id: "deceiver-exarch-etb-m628",
+    description: "Deceiver Exarch ETB; untap parse.",
+    seed: 0x84a,
+    cards: {
+      "Deceiver Exarch M628": `Name:Deceiver Exarch M628
+ManaCost:2 U
+Types:Creature Cleric
+PT:1/4
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ DE.
+SVar:TrigUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Permanent
+Oracle:DE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Deceiver Exarch M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Deceiver Exarch M628", controller: SEAT0 }],
+  },
+
+  // 1828. Splinter Twin + Deceiver Exarch co-residence parse.
+  {
+    id: "splinter-deceiver-coresidence-m628",
+    description: "Splinter Twin + Deceiver Exarch co-residence parse.",
+    seed: 0x84b,
+    cards: {
+      "Deceiver Exarch B M628": `Name:Deceiver Exarch B M628
+ManaCost:2 U
+Types:Creature Cleric
+PT:1/4
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap
+SVar:TrigUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Permanent
+Oracle:DEB parse.
+`,
+      "Splinter Twin B M628": `Name:Splinter Twin B M628
+ManaCost:2 R R
+Types:Enchantment Aura
+K:Enchant creature
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ TokenAB
+SVar:TokenAB:AB$ Token | Cost$ T | TokenScript$ CARDNAME_HASTE
+Oracle:STB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Deceiver Exarch B M628"],
+        battlefield: [{ card: "Splinter Twin B M628" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Deceiver Exarch B M628", controller: SEAT0 }],
+  },
+
+  // 1829. Felidar Guardian ETB; flicker parse.
+  {
+    id: "felidar-guardian-etb-m628",
+    description: "Felidar Guardian ETB; flicker parse.",
+    seed: 0x84c,
+    cards: {
+      "Felidar Guardian M628": `Name:Felidar Guardian M628
+ManaCost:2 W
+Types:Creature Beast
+PT:1/4
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker | TriggerDescription$ FG.
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl+Other | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:FG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Felidar Guardian M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Felidar Guardian M628", controller: SEAT0 }],
+  },
+
+  // 1830. Saheeli Rai ETB; PW parse.
+  {
+    id: "saheeli-rai-etb-m628",
+    description: "Saheeli Rai ETB; PW parse.",
+    seed: 0x84d,
+    cards: {
+      "Saheeli Rai M628": `Name:Saheeli Rai M628
+ManaCost:1 U R
+Types:Legendary Planeswalker Saheeli
+Loyalty:3
+A:AB$ Scry | Cost$ AddCounter<1/LOYALTY> | ScryNum$ 1 | Planeswalker$ True
+Oracle:SR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Saheeli Rai M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Saheeli Rai M628", controller: SEAT0 }],
+  },
+
+  // 1831. Felidar Guardian + Saheeli Rai co-residence parse.
+  {
+    id: "felidar-saheeli-coresidence-m628",
+    description: "Felidar Guardian + Saheeli Rai co-residence parse.",
+    seed: 0x84e,
+    cards: {
+      "Felidar Guardian B M628": `Name:Felidar Guardian B M628
+ManaCost:2 W
+Types:Creature Beast
+PT:1/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:FGB parse.
+`,
+      "Saheeli Rai B M628": `Name:Saheeli Rai B M628
+ManaCost:1 U R
+Types:Legendary Planeswalker Saheeli
+Loyalty:3
+A:AB$ Scry | Cost$ AddCounter<1/LOYALTY> | ScryNum$ 1 | Planeswalker$ True
+Oracle:SRB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Felidar Guardian B M628"],
+        battlefield: [{ card: "Saheeli Rai B M628" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Felidar Guardian B M628", controller: SEAT0 }],
+  },
+
+  // 1832. Sosuke, Summoner of Snakes ETB; snake tribal parse.
+  {
+    id: "sosuke-summoner-etb-m628",
+    description: "Sosuke, Summoner of Snakes ETB; snake tribal parse.",
+    seed: 0x84f,
+    cards: {
+      "Sosuke Summoner M628": `Name:Sosuke Summoner M628
+ManaCost:2 G G
+Types:Legendary Creature Snake Shaman
+PT:3/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_1_1_snake_deathtouch | TokenAmount$ 2
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sosuke Summoner M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sosuke Summoner M628", controller: SEAT0 }],
+  },
+
+  // 1833. Snake Token Maker ETB.
+  {
+    id: "snake-token-etb-m628",
+    description: "Snake Token Maker ETB.",
+    seed: 0x850,
+    cards: {
+      "Snake Maker M628": `Name:Snake Maker M628
+ManaCost:2 G
+Types:Creature Human Druid
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_1_1_snake_deathtouch | TokenAmount$ 1
+Oracle:SM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snake Maker M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snake Maker M628", controller: SEAT0 }],
+  },
+
+  // 1834. Sosuke's Summons ETB; recur parse.
+  {
+    id: "sosuke-son-etb-m628",
+    description: "Sosuke's Summons ETB; recur parse.",
+    seed: 0x851,
+    cards: {
+      "Sosuke Summons M628": `Name:Sosuke Summons M628
+ManaCost:1 G
+Types:Sorcery
+A:SP$ Token | Cost$ 1 G | TokenScript$ g_1_1_snake_deathtouch | TokenAmount$ 1
+Oracle:SoS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sosuke Summons M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sosuke Summons M628", controller: SEAT0 }],
+  },
+
+  // 1835. Bitterblossom ETB; faerie token + life loss parse.
+  {
+    id: "bitterblossom-etb-m628",
+    description: "Bitterblossom ETB; faerie token + life loss parse.",
+    seed: 0x852,
+    cards: {
+      "Bitterblossom M628": `Name:Bitterblossom M628
+ManaCost:1 B
+Types:Tribal Enchantment Faerie
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLifeLoss | TriggerDescription$ BB.
+SVar:TrigLifeLoss:DB$ LoseLife | LifeAmount$ 1 | Defined$ You | SubAbility$ DBToken
+SVar:DBToken:DB$ Token | TokenScript$ b_1_1_faerie_rogue_flying | TokenAmount$ 1
+Oracle:BB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bitterblossom M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bitterblossom M628", controller: SEAT0 }],
+  },
+
+  // 1836. Spellstutter Sprite ETB; faerie counter parse.
+  {
+    id: "spellstutter-sprite-etb-m628",
+    description: "Spellstutter Sprite ETB; faerie counter parse.",
+    seed: 0x853,
+    cards: {
+      "Spellstutter Sprite M628": `Name:Spellstutter Sprite M628
+ManaCost:1 U
+Types:Creature Faerie Wizard
+PT:1/1
+K:Flash
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Spellstutter.
+SVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.cmcLEX | References$ X
+SVar:X:Count$Valid Faerie.YouCtrl
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spellstutter Sprite M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spellstutter Sprite M628", controller: SEAT0 }],
+  },
+
+  // 1837. Mistbind Clique ETB; champion parse.
+  {
+    id: "mistbind-clique-etb-m628",
+    description: "Mistbind Clique ETB; champion parse.",
+    seed: 0x854,
+    cards: {
+      "Mistbind Clique M628": `Name:Mistbind Clique M628
+ManaCost:2 U U
+Types:Creature Faerie Wizard
+PT:4/4
+K:Flying
+K:Flash
+K:Champion:Faerie
+Oracle:MC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mistbind Clique M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mistbind Clique M628", controller: SEAT0 }],
+  },
+
+  // 1838. Krenko, Tin Street Kingpin ETB; goblin parse.
+  {
+    id: "krenko-tin-street-etb-m628",
+    description: "Krenko, Tin Street Kingpin ETB; goblin parse.",
+    seed: 0x855,
+    cards: {
+      "Krenko TS M628": `Name:Krenko TS M628
+ManaCost:1 R
+Types:Legendary Creature Goblin Warrior
+PT:1/1
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ KTS.
+SVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self | SubAbility$ DBToken
+SVar:DBToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ X | References$ X
+SVar:X:Count$CardCounters.P1P1
+Oracle:KTS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krenko TS M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Krenko TS M628", controller: SEAT0 }],
+  },
+
+  // 1839. Lightning Crafter ETB; goblin Shaman parse.
+  {
+    id: "lightning-crafter-etb-m628",
+    description: "Lightning Crafter ETB; goblin Shaman parse.",
+    seed: 0x856,
+    cards: {
+      "Lightning Crafter M628": `Name:Lightning Crafter M628
+ManaCost:1 R R
+Types:Creature Goblin Shaman
+PT:3/3
+A:AB$ DealDamage | Cost$ T | NumDmg$ 3 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:LC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Crafter M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lightning Crafter M628", controller: SEAT0 }],
+  },
+
+  // 1840. Goblin Piledriver ETB; goblin lord parse.
+  {
+    id: "goblin-piledriver-etb-m628",
+    description: "Goblin Piledriver ETB; goblin lord parse.",
+    seed: 0x857,
+    cards: {
+      "Goblin Piledriver M628": `Name:Goblin Piledriver M628
+ManaCost:1 R
+Types:Creature Goblin Warrior
+PT:1/2
+K:Protection from blue
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ X | References$ X
+SVar:X:Count$Valid Goblin.YouCtrl/Times.2/Minus.2
+Oracle:GP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Piledriver M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Piledriver M628", controller: SEAT0 }],
+  },
+
+  // 1841. Gravecrawler ETB; recurring zombie parse.
+  {
+    id: "gravecrawler-etb-m628",
+    description: "Gravecrawler ETB; recurring zombie parse.",
+    seed: 0x858,
+    cards: {
+      "Gravecrawler M628": `Name:Gravecrawler M628
+ManaCost:B
+Types:Creature Zombie
+PT:2/1
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Graveyard | MayPlay$ True | MayPlayCondition$ HasZombie
+SVar:HasZombie:Count$Valid Zombie.YouCtrl/GE1
+Oracle:GC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gravecrawler M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gravecrawler M628", controller: SEAT0 }],
+  },
+
+  // 1842. Diregraf Colossus ETB; zombie counter parse.
+  {
+    id: "diregraf-colossus-etb-m628",
+    description: "Diregraf Colossus ETB; zombie counter parse.",
+    seed: 0x859,
+    cards: {
+      "Diregraf Colossus M628": `Name:Diregraf Colossus M628
+ManaCost:2 B
+Types:Creature Zombie
+PT:2/2
+K:etbCounter:P1P1:X
+SVar:X:Count$Valid Zombie.YouCtrl+inZoneGraveyard
+T:Mode$ SpellCast | ValidCard$ Zombie | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1
+Oracle:DC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Diregraf Colossus M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Diregraf Colossus M628", controller: SEAT0 }],
+  },
+
+  // 1843. Geralf's Messenger ETB; ETB drain parse.
+  {
+    id: "geralfs-messenger-etb-m628",
+    description: "Geralf's Messenger ETB; ETB drain parse.",
+    seed: 0x85a,
+    cards: {
+      "Geralfs Messenger M628": `Name:Geralfs Messenger M628
+ManaCost:B B B
+Types:Creature Zombie
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife
+SVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Opponent
+Oracle:GM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Geralfs Messenger M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Geralfs Messenger M628", controller: SEAT0 }],
+  },
+
+  // 1844. Captivating Vampire ETB; vampire lord parse.
+  {
+    id: "captivating-vampire-etb-m628",
+    description: "Captivating Vampire ETB; vampire lord parse.",
+    seed: 0x85b,
+    cards: {
+      "Captivating Vampire M628": `Name:Captivating Vampire M628
+ManaCost:1 B B
+Types:Creature Vampire
+PT:2/2
+S:Mode$ Continuous | Affected$ Vampire.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1
+A:AB$ GainControl | Cost$ T TapXType<5/Vampire.Untapped+Other+YouCtrl> | TargetType$ Creature | ValidTgts$ Creature
+Oracle:CV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Captivating Vampire M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Captivating Vampire M628", controller: SEAT0 }],
+  },
+
+  // 1845. Bloodlord of Vaasgoth ETB; vampire kicker parse.
+  {
+    id: "bloodlord-of-vaasgoth-etb-m628",
+    description: "Bloodlord of Vaasgoth ETB; vampire kicker parse.",
+    seed: 0x85c,
+    cards: {
+      "Bloodlord M628": `Name:Bloodlord M628
+ManaCost:4 B
+Types:Creature Vampire
+PT:3/3
+K:Flying
+T:Mode$ SpellCast | ValidCard$ Vampire | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter
+SVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 2 | Defined$ TriggeredCard
+Oracle:BL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodlord M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodlord M628", controller: SEAT0 }],
+  },
+
+  // 1846. Brimaz, King of Oreskos ETB; cat parse.
+  {
+    id: "brimaz-king-etb-m628",
+    description: "Brimaz, King of Oreskos ETB; cat parse.",
+    seed: 0x85d,
+    cards: {
+      "Brimaz M628": `Name:Brimaz M628
+ManaCost:1 W W
+Types:Legendary Creature Cat Soldier
+PT:3/4
+K:Vigilance
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat_soldier_attacking | TokenAmount$ 1
+Oracle:Brimaz parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brimaz M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brimaz M628", controller: SEAT0 }],
+  },
+
+  // 1847. Regal Caracal ETB; cat anthem parse.
+  {
+    id: "regal-caracal-etb-m628",
+    description: "Regal Caracal ETB; cat anthem parse.",
+    seed: 0x85e,
+    cards: {
+      "Regal Caracal M628": `Name:Regal Caracal M628
+ManaCost:3 W W
+Types:Creature Cat
+PT:3/3
+K:Lifelink
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat | TokenAmount$ 2
+S:Mode$ Continuous | Affected$ Cat.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1
+Oracle:RC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Regal Caracal M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Regal Caracal M628", controller: SEAT0 }],
+  },
+
+  // 1848. Arahbo, Roar of the World ETB; cat partner parse.
+  {
+    id: "arahbo-roar-etb-m628",
+    description: "Arahbo, Roar of the World ETB; cat partner parse.",
+    seed: 0x85f,
+    cards: {
+      "Arahbo M628": `Name:Arahbo M628
+ManaCost:3 G W
+Types:Legendary Creature Cat Avatar
+PT:5/5
+T:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | TargetType$ Creature | ValidTgts$ Cat.YouCtrl | NumAtt$ +3 | NumDef$ +3 | KW$ Trample
+Oracle:Arahbo parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arahbo M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arahbo M628", controller: SEAT0 }],
+  },
+
+  // 1849. Pacifism aura in hand.
+  {
+    id: "pacifism-aura-in-hand-m628",
+    description: "Pacifism aura in hand.",
+    seed: 0x860,
+    cards: {
+      "Pacifism M628": `Name:Pacifism M628
+ManaCost:1 W
+Types:Enchantment Aura
+K:Enchant creature
+A:SP$ Attach | Cost$ 1 W | ValidTgts$ Creature
+S:Mode$ CantAttack | Affected$ Creature.EnchantedBy
+S:Mode$ CantBlock | Affected$ Creature.EnchantedBy
+Oracle:Pacifism parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pacifism M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1850. Path to Exile instant in hand.
+  {
+    id: "path-to-exile-in-hand-m628",
+    description: "Path to Exile instant in hand.",
+    seed: 0x861,
+    cards: {
+      "Path Exile M628": `Name:Path Exile M628
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Creature | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | DefinedPlayer$ TargetedController | ChangeType$ Land.Basic | Tapped$ True
+Oracle:PtE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Path Exile M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1851. Swords to Plowshares instant in hand.
+  {
+    id: "swords-to-plowshares-in-hand-m628",
+    description: "Swords to Plowshares instant in hand.",
+    seed: 0x862,
+    cards: {
+      "Swords Plow M628": `Name:Swords Plow M628
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Creature | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ X | References$ X | Defined$ TargetedController
+SVar:X:Targeted$CardPower
+Oracle:StP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swords Plow M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1852. Oblivion Ring ETB; exile permanent parse.
+  {
+    id: "oblivion-ring-aura-etb-m628",
+    description: "Oblivion Ring ETB; exile permanent parse.",
+    seed: 0x863,
+    cards: {
+      "Oblivion Ring M628": `Name:Oblivion Ring M628
+ManaCost:2 W
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ OR.
+SVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl+nonLand | RememberChanged$ True
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ Remembered
+Oracle:OR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Oblivion Ring M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Oblivion Ring M628", controller: SEAT0 }],
+  },
+
+  // 1853. Detention Sphere ETB; exile group parse.
+  {
+    id: "detention-sphere-etb-m628",
+    description: "Detention Sphere ETB; exile group parse.",
+    seed: 0x864,
+    cards: {
+      "Detention Sphere M628": `Name:Detention Sphere M628
+ManaCost:1 W U
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileAll
+SVar:TrigExileAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Permanent.SharesNameWithRemembered+OppCtrl
+Oracle:DS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Detention Sphere M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Detention Sphere M628", controller: SEAT0 }],
+  },
+
+  // 1854. Lignify aura in hand.
+  {
+    id: "lignify-aura-in-hand-m628",
+    description: "Lignify aura in hand.",
+    seed: 0x865,
+    cards: {
+      "Lignify M628": `Name:Lignify M628
+ManaCost:1 G
+Types:Tribal Enchantment Aura Treefolk
+K:Enchant creature
+A:SP$ Attach | Cost$ 1 G | ValidTgts$ Creature
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetPower$ 0 | SetToughness$ 4 | RemoveAllAbilities$ True
+Oracle:Lignify parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lignify M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1855. Song of the Dryads aura in hand.
+  {
+    id: "song-dryads-aura-in-hand-m628",
+    description: "Song of the Dryads aura in hand.",
+    seed: 0x866,
+    cards: {
+      "Song Dryads M628": `Name:Song Dryads M628
+ManaCost:2 G
+Types:Enchantment Aura
+K:Enchant permanent
+A:SP$ Attach | Cost$ 2 G | ValidTgts$ Permanent
+S:Mode$ Continuous | Affected$ Permanent.EnchantedBy | SetType$ Forest
+Oracle:SoD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Song Dryads M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1856. Rancor aura in hand.
+  {
+    id: "rancor-aura-in-hand-m628",
+    description: "Rancor aura in hand.",
+    seed: 0x867,
+    cards: {
+      "Rancor M628": `Name:Rancor M628
+ManaCost:G
+Types:Enchantment Aura
+K:Enchant creature
+A:SP$ Attach | Cost$ G | ValidTgts$ Creature
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddKeyword$ Trample
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self
+Oracle:Rancor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rancor M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1857. Spectral Flight aura in hand.
+  {
+    id: "spectral-flight-aura-in-hand-m628",
+    description: "Spectral Flight aura in hand.",
+    seed: 0x868,
+    cards: {
+      "Spectral Flight M628": `Name:Spectral Flight M628
+ManaCost:1 U
+Types:Enchantment Aura
+K:Enchant creature
+A:SP$ Attach | Cost$ 1 U | ValidTgts$ Creature
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Flying
+Oracle:SF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spectral Flight M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1858. Unflinching Courage aura in hand.
+  {
+    id: "unflinching-courage-aura-in-hand-m628",
+    description: "Unflinching Courage aura in hand.",
+    seed: 0x869,
+    cards: {
+      "Unflinching Courage M628": `Name:Unflinching Courage M628
+ManaCost:1 G W
+Types:Enchantment Aura
+K:Enchant creature
+A:SP$ Attach | Cost$ 1 G W | ValidTgts$ Creature
+S:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Trample & Lifelink
+Oracle:UC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Unflinching Courage M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1859. Wargate X-search instant parse.
+  {
+    id: "wargate-x-search-etb-m628",
+    description: "Wargate X-search instant parse.",
+    seed: 0x86a,
+    cards: {
+      "Wargate M628": `Name:Wargate M628
+ManaCost:X G W U
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ X G W U | Origin$ Library | Destination$ Battlefield | ChangeType$ Permanent.cmcLEX | References$ X
+SVar:X:Count$xPaid
+Oracle:Wargate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wargate M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wargate M628", controller: SEAT0 }],
+  },
+
+  // 1860. Birthing Pod ETB; sac+search parse.
+  {
+    id: "birthing-pod-etb-m628",
+    description: "Birthing Pod ETB; sac+search parse.",
+    seed: 0x86b,
+    cards: {
+      "Birthing Pod M628": `Name:Birthing Pod M628
+ManaCost:3 GP
+Types:Artifact
+A:AB$ ChangeZone | Cost$ 1 GP T Sac<1/Creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcEQXPlus1 | References$ X
+SVar:X:Sacrificed$CardManaCost
+Oracle:BP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Birthing Pod M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Birthing Pod M628", controller: SEAT0 }],
+  },
+
+  // 1861. Yawgmoth, Thran Physician ETB; menace parse.
+  {
+    id: "yawgmoth-thran-etb-m628",
+    description: "Yawgmoth, Thran Physician ETB; menace parse.",
+    seed: 0x86c,
+    cards: {
+      "Yawgmoth Thran M628": `Name:Yawgmoth Thran M628
+ManaCost:1 B B
+Types:Legendary Creature Human
+PT:2/4
+K:Menace
+A:AB$ PutCounter | Cost$ Sac<1/Creature> PayLife<1> | CounterType$ M1M1 | CounterNum$ 1 | TargetType$ Creature | ValidTgts$ Creature
+A:AB$ Draw | Cost$ Sac<1/Creature> PayLife<1> | NumCards$ 1
+Oracle:YT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yawgmoth Thran M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yawgmoth Thran M628", controller: SEAT0 }],
+  },
+
+  // 1862. Lurrus Companion ETB; recur low-cmc parse.
+  {
+    id: "lurrus-companion-etb-m628",
+    description: "Lurrus Companion ETB; recur low-cmc parse.",
+    seed: 0x86d,
+    cards: {
+      "Lurrus M628": `Name:Lurrus M628
+ManaCost:1 W B
+Types:Legendary Creature Cat Nightmare
+PT:3/2
+K:Lifelink
+T:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCast
+SVar:TrigCast:DB$ Play | Origin$ Graveyard | ValidSA$ Card.cmcLE2+nonLand+permanent
+Oracle:Lurrus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lurrus M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lurrus M628", controller: SEAT0 }],
+  },
+
+  // 1863. Lurrus + Bloodsoaked Champion co-residence.
+  {
+    id: "lurrus-sacrifice-coresidence-m628",
+    description: "Lurrus + Bloodsoaked Champion co-residence.",
+    seed: 0x86e,
+    cards: {
+      "Bloodsoaked Champ M628": `Name:Bloodsoaked Champ M628
+ManaCost:B
+Types:Creature Human Warrior
+PT:2/1
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Graveyard | MayPlay$ True
+Oracle:BC parse.
+`,
+      "Lurrus B M628": `Name:Lurrus B M628
+ManaCost:1 W B
+Types:Legendary Creature Cat Nightmare
+PT:3/2
+K:Lifelink
+Oracle:LurrusB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bloodsoaked Champ M628"],
+        battlefield: [{ card: "Lurrus B M628" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodsoaked Champ M628", controller: SEAT0 }],
+  },
+
+  // 1864. Chandra + Pyromancer's Goggles co-residence parse.
+  {
+    id: "chandra-pyromancer-coresidence-m628",
+    description: "Chandra + Pyromancer's Goggles co-residence parse.",
+    seed: 0x86f,
+    cards: {
+      "Chandra B M628": `Name:Chandra B M628
+ManaCost:2 R R
+Types:Legendary Planeswalker Chandra
+Loyalty:4
+A:AB$ DealDamage | Cost$ AddCounter<1/LOYALTY> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any | Planeswalker$ True
+Oracle:CB parse.
+`,
+      "Pyromancers Goggles M628": `Name:Pyromancers Goggles M628
+ManaCost:5
+Types:Legendary Artifact
+A:AB$ Mana | Cost$ T | Produced$ R | Amount$ 1
+T:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy
+SVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility
+Oracle:PG parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Chandra B M628"],
+        battlefield: [{ card: "Pyromancers Goggles M628" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chandra B M628", controller: SEAT0 }],
+  },
+
+  // 1865. Ugin -7 board wipe parse.
+  {
+    id: "ugin-board-wipe-etb-m628",
+    description: "Ugin -7 board wipe parse.",
+    seed: 0x870,
+    cards: {
+      "Ugin Spirit M628": `Name:Ugin Spirit M628
+ManaCost:8
+Types:Legendary Planeswalker Ugin
+Loyalty:7
+A:AB$ ChangeZoneAll | Cost$ SubCounter<7/LOYALTY> | Origin$ Battlefield | Destination$ Exile | ChangeType$ Permanent.NonColorless | Planeswalker$ True
+Oracle:Ugin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ugin Spirit M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ugin Spirit M628", controller: SEAT0 }],
+  },
+
+  // 1866. Nicol Bolas, Dragon-God ETB.
+  {
+    id: "nicol-bolas-control-etb-m628",
+    description: "Nicol Bolas, Dragon-God ETB.",
+    seed: 0x871,
+    cards: {
+      "Nicol Bolas M628": `Name:Nicol Bolas M628
+ManaCost:U B B B R
+Types:Legendary Planeswalker Bolas
+Loyalty:4
+A:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | Defined$ Player.Opponent | Planeswalker$ True
+Oracle:NB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nicol Bolas M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nicol Bolas M628", controller: SEAT0 }],
+  },
+
+  // 1867. Liliana of the Veil ETB; PW parse.
+  {
+    id: "liliana-veil-etb-m628",
+    description: "Liliana of the Veil ETB; PW parse.",
+    seed: 0x872,
+    cards: {
+      "Liliana Veil M628": `Name:Liliana Veil M628
+ManaCost:1 B B
+Types:Legendary Planeswalker Liliana
+Loyalty:3
+A:AB$ Discard | Cost$ SubCounter<1/LOYALTY> | NumCards$ 1 | Defined$ Each | Planeswalker$ True
+Oracle:LV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Liliana Veil M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Liliana Veil M628", controller: SEAT0 }],
+  },
+
+  // 1868. Murderous Redcap ETB; persist + ETB drain parse.
+  {
+    id: "murderous-redcap-etb-m628",
+    description: "Murderous Redcap ETB; persist + ETB drain parse.",
+    seed: 0x873,
+    cards: {
+      "Murderous Redcap M628": `Name:Murderous Redcap M628
+ManaCost:3 B R
+Types:Creature Goblin Assassin
+PT:2/2
+K:Persist
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:MR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murderous Redcap M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Murderous Redcap M628", controller: SEAT0 }],
+  },
+
+  // 1869. Puppeteer Clique ETB; persist+steal parse.
+  {
+    id: "puppeteer-clique-etb-m628",
+    description: "Puppeteer Clique ETB; persist+steal parse.",
+    seed: 0x874,
+    cards: {
+      "Puppeteer Clique M628": `Name:Puppeteer Clique M628
+ManaCost:3 B B
+Types:Creature Faerie Wizard
+PT:2/2
+K:Flash
+K:Flying
+K:Persist
+Oracle:PC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Puppeteer Clique M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Puppeteer Clique M628", controller: SEAT0 }],
+  },
+
+  // 1870. Woodfall Primus ETB; persist+destroy parse.
+  {
+    id: "woodfall-primus-etb-m628",
+    description: "Woodfall Primus ETB; persist+destroy parse.",
+    seed: 0x875,
+    cards: {
+      "Woodfall Primus M628": `Name:Woodfall Primus M628
+ManaCost:5 G G G
+Types:Creature Treefolk Shaman
+PT:6/6
+K:Trample
+K:Persist
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy
+SVar:TrigDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Permanent.nonCreature
+Oracle:WP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Woodfall Primus M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Woodfall Primus M628", controller: SEAT0 }],
+  },
+
+  // 1871. Golgari Grave-Troll ETB; dredge full parse.
+  {
+    id: "golgari-grave-troll-etb-m628",
+    description: "Golgari Grave-Troll ETB; dredge full parse.",
+    seed: 0x876,
+    cards: {
+      "Golgari Grave-Troll M628": `Name:Golgari Grave-Troll M628
+ManaCost:4 G G
+Types:Creature Zombie Troll
+PT:0/0
+K:etbCounter:P1P1:X
+SVar:X:Count$Valid Creature.YouCtrl+inZoneGraveyard
+K:Dredge:6
+Oracle:GGT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Golgari Grave-Troll M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Golgari Grave-Troll M628", controller: SEAT0 }],
+  },
+
+  // 1872. Stinkweed Imp ETB; dredge 5 parse.
+  {
+    id: "stinkweed-imp-etb-m628",
+    description: "Stinkweed Imp ETB; dredge 5 parse.",
+    seed: 0x877,
+    cards: {
+      "Stinkweed Imp M628": `Name:Stinkweed Imp M628
+ManaCost:1 B
+Types:Creature Imp
+PT:1/2
+K:Flying
+K:Dredge:5
+Oracle:SI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stinkweed Imp M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stinkweed Imp M628", controller: SEAT0 }],
+  },
+
+  // 1873. Life from the Loam dredge sorcery parse.
+  {
+    id: "life-from-loam-cast-m628",
+    description: "Life from the Loam dredge sorcery parse.",
+    seed: 0x878,
+    cards: {
+      "Life Loam M628": `Name:Life Loam M628
+ManaCost:1 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 G | Origin$ Graveyard | Destination$ Hand | ChangeType$ Land | ChangeNum$ 3
+K:Dredge:3
+Oracle:LfL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Life Loam M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1874. Grapeshot storm cast parse.
+  {
+    id: "grapeshot-storm-cast-m628",
+    description: "Grapeshot storm cast parse.",
+    seed: 0x879,
+    cards: {
+      "Grapeshot M628": `Name:Grapeshot M628
+ManaCost:1 R
+Types:Sorcery
+K:Storm
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:GS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grapeshot M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1875. Tendrils of Agony storm cast parse.
+  {
+    id: "tendrils-agony-cast-m628",
+    description: "Tendrils of Agony storm cast parse.",
+    seed: 0x87a,
+    cards: {
+      "Tendrils Agony M628": `Name:Tendrils Agony M628
+ManaCost:2 B B
+Types:Sorcery
+K:Storm
+A:SP$ LoseLife | Cost$ 2 B B | LifeAmount$ 2 | Defined$ Opponent | SubAbility$ DBGain
+SVar:DBGain:DB$ GainLife | LifeAmount$ 2 | Defined$ You
+Oracle:TA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tendrils Agony M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1876. Empty the Warrens storm cast parse.
+  {
+    id: "empty-warrens-storm-m628",
+    description: "Empty the Warrens storm cast parse.",
+    seed: 0x87b,
+    cards: {
+      "Empty Warrens M628": `Name:Empty Warrens M628
+ManaCost:3 R
+Types:Sorcery
+K:Storm
+A:SP$ Token | Cost$ 3 R | TokenScript$ r_1_1_goblin | TokenAmount$ 2
+Oracle:EW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empty Warrens M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1877. Field of the Dead ETB; basic-type counter parse.
+  {
+    id: "field-dead-etb-m628",
+    description: "Field of the Dead ETB; basic-type counter parse.",
+    seed: 0x87c,
+    cards: {
+      "Field Dead M628": `Name:Field Dead M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE7
+SVar:X:Count$Valid Land.YouCtrl+different
+SVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 1
+Oracle:FotD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Field Dead M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Field Dead M628", controller: SEAT0 }],
+  },
+
+  // 1878. Fabled Passage ETB; sac+search parse.
+  {
+    id: "fabled-passage-etb-m628",
+    description: "Fabled Passage ETB; sac+search parse.",
+    seed: 0x87d,
+    cards: {
+      "Fabled Passage M628": `Name:Fabled Passage M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | Tapped$ True
+Oracle:FP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fabled Passage M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fabled Passage M628", controller: SEAT0 }],
+  },
+
+  // 1879. Prismatic Vista ETB; sac+search basic parse.
+  {
+    id: "prismatic-vista-etb-m628",
+    description: "Prismatic Vista ETB; sac+search basic parse.",
+    seed: 0x87e,
+    cards: {
+      "Prismatic Vista M628": `Name:Prismatic Vista M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic
+Oracle:PV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Prismatic Vista M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Prismatic Vista M628", controller: SEAT0 }],
+  },
+
+  // 1880. Wasteland ETB; land destroy parse.
+  {
+    id: "wasteland-etb-m628",
+    description: "Wasteland ETB; land destroy parse.",
+    seed: 0x87f,
+    cards: {
+      "Wasteland M628": `Name:Wasteland M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land.nonBasic
+Oracle:Waste parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wasteland M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wasteland M628", controller: SEAT0 }],
+  },
+
+  // 1881. Strip Mine ETB; land destroy parse.
+  {
+    id: "strip-mine-etb-m628",
+    description: "Strip Mine ETB; land destroy parse.",
+    seed: 0x880,
+    cards: {
+      "Strip Mine M628": `Name:Strip Mine M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land
+Oracle:SM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Strip Mine M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Strip Mine M628", controller: SEAT0 }],
+  },
+
+  // 1882. Ancient Tomb ETB; 2 mana 2 dmg parse.
+  {
+    id: "ancient-tomb-etb-m628",
+    description: "Ancient Tomb ETB; 2 mana 2 dmg parse.",
+    seed: 0x881,
+    cards: {
+      "Ancient Tomb M628": `Name:Ancient Tomb M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SubAbility$ DBDmg
+SVar:DBDmg:DB$ DealDamage | Defined$ You | NumDmg$ 2
+Oracle:AT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ancient Tomb M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ancient Tomb M628", controller: SEAT0 }],
+  },
+
+  // 1883. Urza's Tower ETB; tron parse.
+  {
+    id: "urzas-tower-etb-m628",
+    description: "Urza's Tower ETB; tron parse.",
+    seed: 0x882,
+    cards: {
+      "Urzas Tower M628": `Name:Urzas Tower M628
+ManaCost:no cost
+Types:Land Urzas Tower
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | References$ X
+SVar:X:Count$Tron.With.UrzasTower/Times.3
+Oracle:UT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urzas Tower M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urzas Tower M628", controller: SEAT0 }],
+  },
+
+  // 1884. Urza's Mine ETB; tron parse.
+  {
+    id: "urzas-mine-etb-m628",
+    description: "Urza's Mine ETB; tron parse.",
+    seed: 0x883,
+    cards: {
+      "Urzas Mine M628": `Name:Urzas Mine M628
+ManaCost:no cost
+Types:Land Urzas Mine
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+Oracle:UM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urzas Mine M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urzas Mine M628", controller: SEAT0 }],
+  },
+
+  // 1885. Urza's Power Plant ETB; tron parse.
+  {
+    id: "urzas-power-plant-etb-m628",
+    description: "Urza's Power Plant ETB; tron parse.",
+    seed: 0x884,
+    cards: {
+      "Urzas Power Plant M628": `Name:Urzas Power Plant M628
+ManaCost:no cost
+Types:Land Urzas Power-Plant
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+Oracle:UPP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urzas Power Plant M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urzas Power Plant M628", controller: SEAT0 }],
+  },
+
+  // 1886. Bojuka Bog ETB; exile graveyard parse.
+  {
+    id: "bojuka-bog-etb-m628",
+    description: "Bojuka Bog ETB; exile graveyard parse.",
+    seed: 0x885,
+    cards: {
+      "Bojuka Bog M628": `Name:Bojuka Bog M628
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile
+SVar:TrigExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ Opponent
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1
+Oracle:BB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bojuka Bog M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bojuka Bog M628", controller: SEAT0 }],
+  },
+
+  // 1887. Mutagenic Growth instant parse.
+  {
+    id: "mutagenic-growth-cast-m628",
+    description: "Mutagenic Growth instant parse.",
+    seed: 0x886,
+    cards: {
+      "Mutagenic Growth M628": `Name:Mutagenic Growth M628
+ManaCost:GP
+Types:Instant
+A:SP$ Pump | Cost$ GP | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2
+Oracle:MG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mutagenic Growth M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1888. Surgical Extraction instant parse.
+  {
+    id: "surgical-extraction-cast-m628",
+    description: "Surgical Extraction instant parse.",
+    seed: 0x887,
+    cards: {
+      "Surgical Extraction M628": `Name:Surgical Extraction M628
+ManaCost:BP
+Types:Instant
+A:SP$ ChangeZoneAll | Cost$ BP | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.SharesNameWithRemembered
+Oracle:SE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surgical Extraction M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1889. Gut Shot instant parse.
+  {
+    id: "gut-shot-cast-m628",
+    description: "Gut Shot instant parse.",
+    seed: 0x888,
+    cards: {
+      "Gut Shot M628": `Name:Gut Shot M628
+ManaCost:RP
+Types:Instant
+A:SP$ DealDamage | Cost$ RP | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:GS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gut Shot M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1890. Dismember instant parse.
+  {
+    id: "dismember-cast-m628",
+    description: "Dismember instant parse.",
+    seed: 0x889,
+    cards: {
+      "Dismember M628": `Name:Dismember M628
+ManaCost:1 BP BP
+Types:Instant
+A:SP$ Pump | Cost$ 1 BP BP | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ -5 | NumDef$ -5
+Oracle:Dis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dismember M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1891. Mental Misstep instant parse.
+  {
+    id: "mental-misstep-cast-m628",
+    description: "Mental Misstep instant parse.",
+    seed: 0x88a,
+    cards: {
+      "Mental Misstep M628": `Name:Mental Misstep M628
+ManaCost:UP
+Types:Instant
+A:SP$ Counter | Cost$ UP | TargetType$ Spell | ValidTgts$ Card.cmc1
+Oracle:MM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mental Misstep M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1892. Postmortem Lunge instant parse.
+  {
+    id: "postmortem-lunge-cast-m628",
+    description: "Postmortem Lunge instant parse.",
+    seed: 0x88b,
+    cards: {
+      "Postmortem Lunge M628": `Name:Postmortem Lunge M628
+ManaCost:X BP
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ X BP | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | References$ X
+SVar:X:Count$xPaid
+Oracle:PL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Postmortem Lunge M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1893. Astral Drift ETB; cycling-flicker parse.
+  {
+    id: "astral-drift-etb-m628",
+    description: "Astral Drift ETB; cycling-flicker parse.",
+    seed: 0x88c,
+    cards: {
+      "Astral Drift M628": `Name:Astral Drift M628
+ManaCost:2 W
+Types:Enchantment
+T:Mode$ Cycled | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlicker | TriggerDescription$ AD.
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature
+Oracle:AD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Astral Drift M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Astral Drift M628", controller: SEAT0 }],
+  },
+
+  // 1894. Astral Slide ETB; cycling-flicker parse.
+  {
+    id: "astral-slide-etb-m628",
+    description: "Astral Slide ETB; cycling-flicker parse.",
+    seed: 0x88d,
+    cards: {
+      "Astral Slide M628": `Name:Astral Slide M628
+ManaCost:2 W
+Types:Enchantment
+T:Mode$ Cycled | ValidPlayer$ Each | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigFlicker
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature
+Oracle:AS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Astral Slide M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Astral Slide M628", controller: SEAT0 }],
+  },
+
+  // 1895. Lonely Sandbar ETB; cycling land parse.
+  {
+    id: "lonely-sandbar-etb-m628",
+    description: "Lonely Sandbar ETB; cycling land parse.",
+    seed: 0x88e,
+    cards: {
+      "Lonely Sandbar M628": `Name:Lonely Sandbar M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U | Amount$ 1
+K:CARDNAME enters tapped.
+K:Cycling:1 U
+Oracle:LS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lonely Sandbar M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lonely Sandbar M628", controller: SEAT0 }],
+  },
+
+  // 1896. Secluded Steppe ETB; cycling land parse.
+  {
+    id: "secluded-steppe-etb-m628",
+    description: "Secluded Steppe ETB; cycling land parse.",
+    seed: 0x88f,
+    cards: {
+      "Secluded Steppe M628": `Name:Secluded Steppe M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ W | Amount$ 1
+K:CARDNAME enters tapped.
+K:Cycling:1 W
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Secluded Steppe M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Secluded Steppe M628", controller: SEAT0 }],
+  },
+
+  // 1897. Forgotten Cave ETB; cycling land parse.
+  {
+    id: "forgotten-cave-etb-m628",
+    description: "Forgotten Cave ETB; cycling land parse.",
+    seed: 0x890,
+    cards: {
+      "Forgotten Cave M628": `Name:Forgotten Cave M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R | Amount$ 1
+K:CARDNAME enters tapped.
+K:Cycling:1 R
+Oracle:FC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forgotten Cave M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forgotten Cave M628", controller: SEAT0 }],
+  },
+
+  // 1898. Tranquil Thicket ETB; cycling land parse.
+  {
+    id: "tranquil-thicket-etb-m628",
+    description: "Tranquil Thicket ETB; cycling land parse.",
+    seed: 0x891,
+    cards: {
+      "Tranquil Thicket M628": `Name:Tranquil Thicket M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1
+K:CARDNAME enters tapped.
+K:Cycling:1 G
+Oracle:TT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tranquil Thicket M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tranquil Thicket M628", controller: SEAT0 }],
+  },
+
+  // 1899. Barren Moor ETB; cycling land parse.
+  {
+    id: "barren-moor-etb-m628",
+    description: "Barren Moor ETB; cycling land parse.",
+    seed: 0x892,
+    cards: {
+      "Barren Moor M628": `Name:Barren Moor M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1
+K:CARDNAME enters tapped.
+K:Cycling:1 B
+Oracle:BM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Barren Moor M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Barren Moor M628", controller: SEAT0 }],
+  },
+
+  // 1900. Decree of Justice cycling sorcery.
+  {
+    id: "decree-justice-cast-m628",
+    description: "Decree of Justice cycling sorcery.",
+    seed: 0x893,
+    cards: {
+      "Decree Justice M628": `Name:Decree Justice M628
+ManaCost:X 2 W W
+Types:Sorcery
+A:SP$ Token | Cost$ X 2 W W | TokenScript$ w_4_4_angel_flying | TokenAmount$ X | References$ X
+SVar:X:Count$xPaid
+K:Cycling:2 W
+Oracle:DoJ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Decree Justice M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1901. Zenith Seeker ETB; cycle trigger parse.
+  {
+    id: "zenith-seeker-etb-m628",
+    description: "Zenith Seeker ETB; cycle trigger parse.",
+    seed: 0x894,
+    cards: {
+      "Zenith Seeker M628": `Name:Zenith Seeker M628
+ManaCost:3 W U
+Types:Creature Bird
+PT:3/3
+K:Flying
+K:Cycling:2
+T:Mode$ Cycled | ValidCard$ Card.Self | TriggerZones$ Hand | Execute$ TrigSearch
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.Bird | ChangeNum$ 1
+Oracle:ZS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zenith Seeker M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zenith Seeker M628", controller: SEAT0 }],
+  },
+
+  // 1902. Valiant Rescuer ETB; cycle parse.
+  {
+    id: "valiant-rescuer-etb-m628",
+    description: "Valiant Rescuer ETB; cycle parse.",
+    seed: 0x895,
+    cards: {
+      "Valiant Rescuer M628": `Name:Valiant Rescuer M628
+ManaCost:2 W
+Types:Creature Human Soldier
+PT:2/2
+T:Mode$ Cycled | ValidCard$ Card | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human | TokenAmount$ 1
+Oracle:VR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Valiant Rescuer M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Valiant Rescuer M628", controller: SEAT0 }],
+  },
+
+  // 1903. Lotus Bloom suspend in hand parse.
+  {
+    id: "lotus-bloom-suspend-in-hand-m628",
+    description: "Lotus Bloom suspend in hand parse.",
+    seed: 0x896,
+    cards: {
+      "Lotus Bloom M628": `Name:Lotus Bloom M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Combo W U B R G | Amount$ 3
+K:Suspend:3:3
+Oracle:LB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lotus Bloom M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1904. Augury Raven foretell in hand parse.
+  {
+    id: "augury-raven-foretell-in-hand-m628",
+    description: "Augury Raven foretell in hand parse.",
+    seed: 0x897,
+    cards: {
+      "Augury Raven F M628": `Name:Augury Raven F M628
+ManaCost:3 U
+Types:Creature Bird Wizard
+PT:2/2
+K:Flying
+K:Foretell:2 U
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:AR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Augury Raven F M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1905. Ancestral Vision suspend in hand parse.
+  {
+    id: "ancestral-vision-suspend-cast-m628",
+    description: "Ancestral Vision suspend in hand parse.",
+    seed: 0x898,
+    cards: {
+      "Ancestral Vision M628B": `Name:Ancestral Vision M628B
+ManaCost:no cost
+Types:Sorcery
+A:SP$ Draw | NumCards$ 4 | ValidTgts$ Player | TargetType$ Player
+K:Suspend:4:U
+Oracle:AV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ancestral Vision M628B"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1906. Restore Balance suspend cast parse.
+  {
+    id: "restore-balance-suspend-in-hand-m628",
+    description: "Restore Balance suspend cast parse.",
+    seed: 0x899,
+    cards: {
+      "Restore Balance M628": `Name:Restore Balance M628
+ManaCost:no cost
+Types:Sorcery
+K:Suspend:6:1 W W
+Oracle:RB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Restore Balance M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1907. Foretold cheap cast parse.
+  {
+    id: "foretell-spell-in-hand-m628",
+    description: "Foretold cheap cast parse.",
+    seed: 0x89a,
+    cards: {
+      "Foretold Spell M628": `Name:Foretold Spell M628
+ManaCost:1 R R
+Types:Sorcery
+K:Foretell:1 R
+A:SP$ DealDamage | Cost$ 1 R R | NumDmg$ 5 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:FS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Foretold Spell M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1908. Greater Gargadon suspend parse.
+  {
+    id: "greater-gargadon-suspend-in-hand-m628",
+    description: "Greater Gargadon suspend parse.",
+    seed: 0x89b,
+    cards: {
+      "Greater Gargadon M628": `Name:Greater Gargadon M628
+ManaCost:9 R
+Types:Creature Beast
+PT:9/7
+K:Suspend:10:R
+A:AB$ Pump | Cost$ Sac<1/Permanent> | Defined$ Self | NumAtt$ 0
+Oracle:GG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Greater Gargadon M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1909. Baithook Angler ETB; disturb parse.
+  {
+    id: "baithook-angler-disturb-etb-m628",
+    description: "Baithook Angler ETB; disturb parse.",
+    seed: 0x89c,
+    cards: {
+      "Baithook Angler M628": `Name:Baithook Angler M628
+ManaCost:1 U
+Types:Creature Human Peasant
+PT:2/1
+AlternateMode:DoubleFaced
+K:Disturb:2 U
+Oracle:BA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Baithook Angler M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Baithook Angler M628", controller: SEAT0 }],
+  },
+
+  // 1910. Lunarch Veteran ETB; disturb parse.
+  {
+    id: "lunarch-veteran-disturb-etb-m628",
+    description: "Lunarch Veteran ETB; disturb parse.",
+    seed: 0x89d,
+    cards: {
+      "Lunarch Veteran M628": `Name:Lunarch Veteran M628
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+AlternateMode:DoubleFaced
+K:Disturb:2 W
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:LV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lunarch Veteran M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lunarch Veteran M628", controller: SEAT0 }],
+  },
+
+  // 1911. Spectral Arcanist ETB; disturb parse.
+  {
+    id: "spectral-arcanist-disturb-etb-m628",
+    description: "Spectral Arcanist ETB; disturb parse.",
+    seed: 0x89e,
+    cards: {
+      "Spectral Arcanist M628": `Name:Spectral Arcanist M628
+ManaCost:2 U
+Types:Spirit Wizard
+PT:2/2
+AlternateMode:DoubleFaced
+K:Disturb:3 U
+Oracle:SA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spectral Arcanist M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spectral Arcanist M628", controller: SEAT0 }],
+  },
+
+  // 1912. Smuggler's Copter ETB; vehicle parse.
+  {
+    id: "smuggler-copter-etb-m628",
+    description: "Smuggler's Copter ETB; vehicle parse.",
+    seed: 0x89f,
+    cards: {
+      "Smugglers Copter M628": `Name:Smugglers Copter M628
+ManaCost:2
+Types:Artifact Vehicle
+PT:3/3
+K:Flying
+K:Crew:1
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ SC.
+SVar:TrigLoot:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 1 | Mode$ TgtChoose
+Oracle:SC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smugglers Copter M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smugglers Copter M628", controller: SEAT0 }],
+  },
+
+  // 1913. Heart of Kiran ETB; vehicle parse.
+  {
+    id: "heart-kiran-etb-m628",
+    description: "Heart of Kiran ETB; vehicle parse.",
+    seed: 0x8a0,
+    cards: {
+      "Heart Kiran M628": `Name:Heart Kiran M628
+ManaCost:2
+Types:Legendary Artifact Vehicle
+PT:4/4
+K:Flying
+K:Crew:3
+A:AB$ Animate | Cost$ AddCounter<1/LOYALTY/Planeswalker.YouCtrl> | Defined$ Self
+Oracle:HK parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heart Kiran M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heart Kiran M628", controller: SEAT0 }],
+  },
+
+  // 1914. Skysovereign, Consul Flagship ETB; vehicle parse.
+  {
+    id: "skysovereign-consul-flagship-etb-m628",
+    description: "Skysovereign, Consul Flagship ETB; vehicle parse.",
+    seed: 0x8a1,
+    cards: {
+      "Skysovereign M628": `Name:Skysovereign M628
+ManaCost:6
+Types:Legendary Artifact Vehicle
+PT:6/5
+K:Flying
+K:Crew:3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Planeswalker,Player | ValidTgts$ Any
+Oracle:Skysov parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skysovereign M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skysovereign M628", controller: SEAT0 }],
+  },
+
+  // 1915. Aetherflux Reservoir ETB; storm-life parse.
+  {
+    id: "aetherflux-reservoir-etb-m628",
+    description: "Aetherflux Reservoir ETB; storm-life parse.",
+    seed: 0x8a2,
+    cards: {
+      "Aetherflux Reservoir M628B": `Name:Aetherflux Reservoir M628B
+ManaCost:4
+Types:Artifact
+T:Mode$ SpellCast | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+A:AB$ DealDamage | Cost$ PayLife<50> | NumDmg$ 50 | TargetType$ Player | ValidTgts$ Player
+Oracle:AR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Aetherflux Reservoir M628B"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Aetherflux Reservoir M628B", controller: SEAT0 }],
+  },
+
+  // 1916. Umezawa's Jitte ETB; charge counter parse.
+  {
+    id: "jitte-etb-m628",
+    description: "Umezawa's Jitte ETB; charge counter parse.",
+    seed: 0x8a3,
+    cards: {
+      "Umezawas Jitte M628": `Name:Umezawas Jitte M628
+ManaCost:2
+Types:Legendary Artifact Equipment
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | CombatDamage$ True | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 2 | Defined$ Self
+A:AB$ RemoveCounter | Cost$ RemoveCounter<1/CHARGE> | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1 | SubAbility$ DBPump
+SVar:DBPump:DB$ Pump | TargetType$ Creature | ValidTgts$ Creature.EquippedBy | NumAtt$ +2 | NumDef$ +2
+K:Equip:2
+Oracle:UJ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Umezawas Jitte M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Umezawas Jitte M628", controller: SEAT0 }],
+  },
+
+  // 1917. Bonesplitter ETB; equipment parse.
+  {
+    id: "bonesplitter-etb-m628",
+    description: "Bonesplitter ETB; equipment parse.",
+    seed: 0x8a4,
+    cards: {
+      "Bonesplitter M628": `Name:Bonesplitter M628
+ManaCost:1
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2
+K:Equip:1
+Oracle:BS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonesplitter M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bonesplitter M628", controller: SEAT0 }],
+  },
+
+  // 1918. Sword of Fire and Ice ETB; protection+trigger parse.
+  {
+    id: "sword-fire-ice-etb-m628",
+    description: "Sword of Fire and Ice ETB; protection+trigger parse.",
+    seed: 0x8a5,
+    cards: {
+      "Sword FI M628": `Name:Sword FI M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from red & Protection from blue
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature,Player | ValidTgts$ Any | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+K:Equip:2
+Oracle:SFI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword FI M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword FI M628", controller: SEAT0 }],
+  },
+
+  // 1919. Sword of Feast and Famine ETB; equipment parse.
+  {
+    id: "sword-feast-famine-etb-m628",
+    description: "Sword of Feast and Famine ETB; equipment parse.",
+    seed: 0x8a6,
+    cards: {
+      "Sword FF M628": `Name:Sword FF M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from black & Protection from green
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard
+SVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBUntap
+SVar:DBUntap:DB$ UntapAll | ValidCards$ Land.YouCtrl
+K:Equip:2
+Oracle:SFF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword FF M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword FF M628", controller: SEAT0 }],
+  },
+
+  // 1920. Embercleave ETB; equip 3 parse.
+  {
+    id: "embercleave-etb-m628",
+    description: "Embercleave ETB; equip 3 parse.",
+    seed: 0x8a7,
+    cards: {
+      "Embercleave M628": `Name:Embercleave M628
+ManaCost:4 R R
+Types:Legendary Artifact Equipment
+K:Flash
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddKeyword$ Double Strike & Trample
+K:Equip:3
+Oracle:EC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Embercleave M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Embercleave M628", controller: SEAT0 }],
+  },
+
+  // 1921. Atraxa, Praetors' Voice ETB; proliferate parse.
+  {
+    id: "atraxa-praetors-voice-etb-m628",
+    description: "Atraxa, Praetors' Voice ETB; proliferate parse.",
+    seed: 0x8a8,
+    cards: {
+      "Atraxa B M628": `Name:Atraxa B M628
+ManaCost:G W U B
+Types:Legendary Creature Angel Horror
+PT:4/4
+K:Flying
+K:Vigilance
+K:Deathtouch
+K:Lifelink
+T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigProliferate
+SVar:TrigProliferate:DB$ Proliferate
+Oracle:Atraxa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Atraxa B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Atraxa B M628", controller: SEAT0 }],
+  },
+
+  // 1922. Edgar Markov ETB; vampire token parse.
+  {
+    id: "edgar-markov-etb-m628",
+    description: "Edgar Markov ETB; vampire token parse.",
+    seed: 0x8a9,
+    cards: {
+      "Edgar Markov M628": `Name:Edgar Markov M628
+ManaCost:3 R W B
+Types:Legendary Creature Vampire Knight
+PT:4/4
+K:Eminence
+K:Haste
+K:First Strike
+T:Mode$ SpellCast | ValidCard$ Vampire | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ b_1_1_vampire | TokenAmount$ 1
+Oracle:EM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Edgar Markov M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Edgar Markov M628", controller: SEAT0 }],
+  },
+
+  // 1923. Yuriko, the Tiger's Shadow ETB; ninjutsu parse.
+  {
+    id: "yuriko-shadow-etb-m628",
+    description: "Yuriko, the Tiger's Shadow ETB; ninjutsu parse.",
+    seed: 0x8aa,
+    cards: {
+      "Yuriko M628": `Name:Yuriko M628
+ManaCost:1 U B
+Types:Legendary Creature Human Ninja
+PT:1/3
+K:Commander Ninjutsu:1 U B
+T:Mode$ DamageDoneOne | ValidSource$ Ninja.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal
+SVar:TrigReveal:DB$ Reveal | Defined$ TopOfLibrary | SubAbility$ DBLifeLoss
+SVar:DBLifeLoss:DB$ LoseLife | LifeAmount$ X | References$ X | Defined$ Player.Opponent
+SVar:X:Remembered$CardManaCost
+Oracle:Yuriko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yuriko M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yuriko M628", controller: SEAT0 }],
+  },
+
+  // 1924. Urza, Lord Protector ETB; meld parse.
+  {
+    id: "urza-lord-protector-etb-m628",
+    description: "Urza, Lord Protector ETB; meld parse.",
+    seed: 0x8ab,
+    cards: {
+      "Urza Lord M628": `Name:Urza Lord M628
+ManaCost:1 W U
+Types:Legendary Creature Human Artificer
+PT:2/4
+S:Mode$ ReduceCost | ValidCard$ Card.Artifact+YouCtrl | ValidSpell$ Card.YouCtrl | Type$ Spell | Amount$ 1
+A:AB$ Meld | Cost$ 1 W U T | Primary$ CARDNAME | Secondary$ Mightstone Lodestone
+Oracle:UL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urza Lord M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urza Lord M628", controller: SEAT0 }],
+  },
+
+  // 1925. Jodah, Archmage Eternal ETB; cost reducer parse.
+  {
+    id: "jodah-archmage-eternal-etb-m628",
+    description: "Jodah, Archmage Eternal ETB; cost reducer parse.",
+    seed: 0x8ac,
+    cards: {
+      "Jodah AE M628": `Name:Jodah AE M628
+ManaCost:1 U R W
+Types:Legendary Creature Human Wizard
+PT:4/3
+K:Flying
+S:Mode$ ReduceCost | ValidCard$ Card.cmcGE5+YouCtrl | Type$ Spell | Amount$ AltCost
+SVar:AltCost:Default$5
+Oracle:JAE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jodah AE M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jodah AE M628", controller: SEAT0 }],
+  },
+
+  // 1926. Roon of the Hidden Realm ETB; flicker parse.
+  {
+    id: "roon-hidden-realm-etb-m628",
+    description: "Roon of the Hidden Realm ETB; flicker parse.",
+    seed: 0x8ad,
+    cards: {
+      "Roon HR M628": `Name:Roon HR M628
+ManaCost:2 G W U
+Types:Legendary Creature Cat Beast
+PT:3/3
+K:Vigilance
+A:AB$ ChangeZone | Cost$ 2 | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+Oracle:RHR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Roon HR M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Roon HR M628", controller: SEAT0 }],
+  },
+
+  // 1927. Selvala, Heart of the Wilds ETB; mana parse.
+  {
+    id: "selvala-heart-of-wilds-etb-m628",
+    description: "Selvala, Heart of the Wilds ETB; mana parse.",
+    seed: 0x8ae,
+    cards: {
+      "Selvala HW M628": `Name:Selvala HW M628
+ManaCost:1 G G
+Types:Legendary Creature Elf Scout
+PT:2/3
+T:Mode$ ChangesZone | Origin$ Library | Destination$ Battlefield | ValidCard$ Creature | ValidPlayer$ Each | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$Greatest.Power
+Oracle:SHW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Selvala HW M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Selvala HW M628", controller: SEAT0 }],
+  },
+
+  // 1928. Meren of Clan Nel Toth ETB; recur parse.
+  {
+    id: "meren-of-clan-etb-m628",
+    description: "Meren of Clan Nel Toth ETB; recur parse.",
+    seed: 0x8af,
+    cards: {
+      "Meren M628": `Name:Meren M628
+ManaCost:2 B G
+Types:Legendary Creature Human Shaman
+PT:3/4
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | CounterType$ EXPERIENCE | CounterNum$ 1 | Defined$ TriggeredCardController
+T:Mode$ Phase | Phase$ EndOfTurn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | References$ X
+SVar:X:Count$Experience
+Oracle:Meren parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Meren M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Meren M628", controller: SEAT0 }],
+  },
+
+  // 1929. Queen Marchesa ETB; assassin token parse.
+  {
+    id: "queen-marchesa-etb-m628",
+    description: "Queen Marchesa ETB; assassin token parse.",
+    seed: 0x8b0,
+    cards: {
+      "Queen Marchesa M628": `Name:Queen Marchesa M628
+ManaCost:1 R W B
+Types:Legendary Creature Human Noble Assassin
+PT:3/3
+K:Deathtouch
+K:Haste
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ QM.
+SVar:TrigToken:DB$ Token | TokenScript$ b_1_1_assassin_dt | TokenAmount$ 1
+Oracle:QM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Queen Marchesa M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Queen Marchesa M628", controller: SEAT0 }],
+  },
+
+  // 1930. Lord Windgrace ETB; PW parse.
+  {
+    id: "lord-windgrace-etb-m628",
+    description: "Lord Windgrace ETB; PW parse.",
+    seed: 0x8b1,
+    cards: {
+      "Lord Windgrace M628": `Name:Lord Windgrace M628
+ManaCost:1 B R G
+Types:Legendary Planeswalker Windgrace
+Loyalty:5
+A:AB$ Discard | Cost$ AddCounter<2/LOYALTY> | NumCards$ 2 | Mode$ TgtChoose | Defined$ You | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land | ChangeNum$ 1
+Oracle:LW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lord Windgrace M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lord Windgrace M628", controller: SEAT0 }],
+  },
+
+  // 1931. Tidings sorcery in hand.
+  {
+    id: "tidings-cast-m628",
+    description: "Tidings sorcery in hand.",
+    seed: 0x8b2,
+    cards: {
+      "Tidings M628": `Name:Tidings M628
+ManaCost:3 U U
+Types:Sorcery
+A:SP$ Draw | Cost$ 3 U U | NumCards$ 4
+Oracle:Tidings parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tidings M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1932. Concentrate sorcery in hand.
+  {
+    id: "concentrate-cast-m628",
+    description: "Concentrate sorcery in hand.",
+    seed: 0x8b3,
+    cards: {
+      "Concentrate M628": `Name:Concentrate M628
+ManaCost:2 U U
+Types:Sorcery
+A:SP$ Draw | Cost$ 2 U U | NumCards$ 3
+Oracle:Conc parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Concentrate M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1933. Divination sorcery in hand.
+  {
+    id: "divination-cast-m628",
+    description: "Divination sorcery in hand.",
+    seed: 0x8b4,
+    cards: {
+      "Divination M628": `Name:Divination M628
+ManaCost:2 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 2 U | NumCards$ 2
+Oracle:Div parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Divination M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1934. Sign in Blood sorcery in hand.
+  {
+    id: "sign-life-cast-m628",
+    description: "Sign in Blood sorcery in hand.",
+    seed: 0x8b5,
+    cards: {
+      "Sign Blood M628": `Name:Sign Blood M628
+ManaCost:B B
+Types:Sorcery
+A:SP$ Draw | Cost$ B B | NumCards$ 2 | TargetType$ Player | ValidTgts$ Player | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 2
+Oracle:SiB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sign Blood M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1935. Read the Bones sorcery in hand.
+  {
+    id: "read-bones-cast-m628",
+    description: "Read the Bones sorcery in hand.",
+    seed: 0x8b6,
+    cards: {
+      "Read Bones M628": `Name:Read Bones M628
+ManaCost:2 B
+Types:Sorcery
+A:SP$ Scry | Cost$ 2 B | ScryNum$ 2 | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 2
+Oracle:RB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Read Bones M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1936. Night/Day instant in hand.
+  {
+    id: "night-day-cast-m628",
+    description: "Night/Day instant in hand.",
+    seed: 0x8b7,
+    cards: {
+      "Night Day M628": `Name:Night Day M628
+ManaCost:2 U
+Types:Instant
+A:SP$ DayNight | Cost$ 2 U
+Oracle:ND parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Night Day M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1937. Faithless Looting sorcery in hand.
+  {
+    id: "faithless-looting-cast-m628",
+    description: "Faithless Looting sorcery in hand.",
+    seed: 0x8b8,
+    cards: {
+      "Faithless Looting M628": `Name:Faithless Looting M628
+ManaCost:R
+Types:Sorcery
+K:Flashback:2 R
+A:SP$ Draw | Cost$ R | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose
+Oracle:FL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Faithless Looting M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1938. Careful Study sorcery in hand.
+  {
+    id: "careful-study-cast-m628",
+    description: "Careful Study sorcery in hand.",
+    seed: 0x8b9,
+    cards: {
+      "Careful Study M628": `Name:Careful Study M628
+ManaCost:U
+Types:Sorcery
+A:SP$ Draw | Cost$ U | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose
+Oracle:CS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Careful Study M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1939. Frantic Search instant in hand.
+  {
+    id: "frantic-search-cast-m628",
+    description: "Frantic Search instant in hand.",
+    seed: 0x8ba,
+    cards: {
+      "Frantic Search M628": `Name:Frantic Search M628
+ManaCost:2 U
+Types:Instant
+A:SP$ Draw | Cost$ 2 U | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBUntap
+SVar:DBUntap:DB$ UntapAll | ValidCards$ Land.YouCtrl | NumLand$ 3
+Oracle:FS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frantic Search M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1940. Impulse instant in hand.
+  {
+    id: "impulse-cast-m628",
+    description: "Impulse instant in hand.",
+    seed: 0x8bb,
+    cards: {
+      "Impulse M628": `Name:Impulse M628
+ManaCost:1 U
+Types:Instant
+A:SP$ Dig | Cost$ 1 U | DigNum$ 4 | ChangeNum$ 1 | DestinationZone$ Hand | RestRandomOrder$ True
+Oracle:Imp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Impulse M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1941. Preordain sorcery in hand.
+  {
+    id: "preordain-cast-m628",
+    description: "Preordain sorcery in hand.",
+    seed: 0x8bc,
+    cards: {
+      "Preordain M628": `Name:Preordain M628
+ManaCost:U
+Types:Sorcery
+A:SP$ Scry | Cost$ U | ScryNum$ 2 | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Preo parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Preordain M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1942. Ponder sorcery in hand.
+  {
+    id: "ponder-cast-m628",
+    description: "Ponder sorcery in hand.",
+    seed: 0x8bd,
+    cards: {
+      "Ponder M628": `Name:Ponder M628
+ManaCost:U
+Types:Sorcery
+A:SP$ Dig | Cost$ U | DigNum$ 3 | ChangeNum$ 0 | RestPutOnTopInRandomOrder$ True | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Pon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ponder M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1943. Dig Through Time delve instant.
+  {
+    id: "dig-time-cast-m628",
+    description: "Dig Through Time delve instant.",
+    seed: 0x8be,
+    cards: {
+      "Dig Time M628": `Name:Dig Time M628
+ManaCost:6 U U
+Types:Instant
+K:Delve
+A:SP$ Dig | Cost$ 6 U U | DigNum$ 7 | ChangeNum$ 2 | DestinationZone$ Hand
+Oracle:DTT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dig Time M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1944. Treasure Cruise delve sorcery.
+  {
+    id: "treasure-cruise-cast-m628",
+    description: "Treasure Cruise delve sorcery.",
+    seed: 0x8bf,
+    cards: {
+      "Treasure Cruise M628": `Name:Treasure Cruise M628
+ManaCost:7 U
+Types:Sorcery
+K:Delve
+A:SP$ Draw | Cost$ 7 U | NumCards$ 3
+Oracle:TC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Treasure Cruise M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1945. Temporal Mastery miracle sorcery.
+  {
+    id: "temporal-mastery-cast-m628",
+    description: "Temporal Mastery miracle sorcery.",
+    seed: 0x8c0,
+    cards: {
+      "Temporal Mastery M628": `Name:Temporal Mastery M628
+ManaCost:1 U U U U
+Types:Sorcery
+K:Miracle:1 U
+A:SP$ AddTurn | Cost$ 1 U U U U | NumTurns$ 1
+Oracle:TM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Temporal Mastery M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1946. Entreat the Angels miracle sorcery.
+  {
+    id: "entreat-angels-cast-m628",
+    description: "Entreat the Angels miracle sorcery.",
+    seed: 0x8c1,
+    cards: {
+      "Entreat Angels M628": `Name:Entreat Angels M628
+ManaCost:X W W W
+Types:Sorcery
+K:Miracle:X W
+A:SP$ Token | Cost$ X W W W | TokenScript$ w_4_4_angel_flying | TokenAmount$ X | References$ X
+SVar:X:Count$xPaid
+Oracle:EA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Entreat Angels M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1947. Bonfire of the Damned miracle sorcery.
+  {
+    id: "bonfire-damned-cast-m628",
+    description: "Bonfire of the Damned miracle sorcery.",
+    seed: 0x8c2,
+    cards: {
+      "Bonfire Damned M628": `Name:Bonfire Damned M628
+ManaCost:X X R
+Types:Sorcery
+K:Miracle:X R
+A:SP$ DamageAll | Cost$ X X R | NumDmg$ X | ValidCards$ Creature | References$ X
+SVar:X:Count$xPaid
+Oracle:BotD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bonfire Damned M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1948. Thunderous Wrath miracle instant.
+  {
+    id: "thunderous-wrath-cast-m628",
+    description: "Thunderous Wrath miracle instant.",
+    seed: 0x8c3,
+    cards: {
+      "Thunderous Wrath M628": `Name:Thunderous Wrath M628
+ManaCost:4 R R
+Types:Instant
+K:Miracle:R
+A:SP$ DealDamage | Cost$ 4 R R | NumDmg$ 5 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:TW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thunderous Wrath M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1949. Devil's Play X-spell flashback.
+  {
+    id: "devils-play-cast-m628",
+    description: "Devil's Play X-spell flashback.",
+    seed: 0x8c4,
+    cards: {
+      "Devils Play M628": `Name:Devils Play M628
+ManaCost:X R
+Types:Sorcery
+K:Flashback:X R R R
+A:SP$ DealDamage | Cost$ X R | NumDmg$ X | References$ X | TargetType$ Creature,Player | ValidTgts$ Any
+SVar:X:Count$xPaid
+Oracle:DP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Devils Play M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1950. Unburial Rites flashback sorcery.
+  {
+    id: "unburial-rites-cast-m628",
+    description: "Unburial Rites flashback sorcery.",
+    seed: 0x8c5,
+    cards: {
+      "Unburial Rites M628": `Name:Unburial Rites M628
+ManaCost:3 B
+Types:Sorcery
+K:Flashback:W B
+A:SP$ ChangeZone | Cost$ 3 B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature | ValidTgts$ Creature.YouCtrl
+Oracle:UR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Unburial Rites M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1951. Thalia, Guardian of Thraben ETB.
+  {
+    id: "thalia-guardian-etb-m628",
+    description: "Thalia, Guardian of Thraben ETB.",
+    seed: 0x8c6,
+    cards: {
+      "Thalia Guardian M628": `Name:Thalia Guardian M628
+ManaCost:1 W
+Types:Legendary Creature Human Soldier
+PT:2/1
+K:First Strike
+S:Mode$ RaiseCost | Type$ Spell | ValidCard$ Card.nonCreature | ValidPlayer$ Each | Amount$ 1
+Oracle:TG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thalia Guardian M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thalia Guardian M628", controller: SEAT0 }],
+  },
+
+  // 1952. Dauntless Bodyguard ETB.
+  {
+    id: "dauntless-bodyguard-etb-m628",
+    description: "Dauntless Bodyguard ETB.",
+    seed: 0x8c7,
+    cards: {
+      "Dauntless Bodyguard M628": `Name:Dauntless Bodyguard M628
+ManaCost:W
+Types:Creature Human Knight
+PT:2/1
+A:AB$ Pump | Cost$ Sac<1/CARDNAME> | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | KW$ Indestructible
+Oracle:DB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dauntless Bodyguard M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dauntless Bodyguard M628", controller: SEAT0 }],
+  },
+
+  // 1953. History of Benalia saga ETB.
+  {
+    id: "history-benalia-etb-m628",
+    description: "History of Benalia saga ETB.",
+    seed: 0x8c8,
+    cards: {
+      "History Benalia M628": `Name:History Benalia M628
+ManaCost:1 W W
+Types:Enchantment Saga
+K:Chapter:3:DBToken,DBToken,DBPump
+SVar:DBToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance
+SVar:DBPump:DB$ PumpAll | ValidCards$ Knight.YouCtrl | NumAtt$ +2 | NumDef$ +1
+Oracle:HB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["History Benalia M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "History Benalia M628", controller: SEAT0 }],
+  },
+
+  // 1954. Benalish Marshal ETB; soldier anthem parse.
+  {
+    id: "benalish-marshal-etb-m628",
+    description: "Benalish Marshal ETB; soldier anthem parse.",
+    seed: 0x8c9,
+    cards: {
+      "Benalish Marshal M628": `Name:Benalish Marshal M628
+ManaCost:W W W
+Types:Creature Human Knight
+PT:3/3
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1
+Oracle:BM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Benalish Marshal M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Benalish Marshal M628", controller: SEAT0 }],
+  },
+
+  // 1955. Champion of the Parish ETB; human counter parse.
+  {
+    id: "champion-parish-etb-m628",
+    description: "Champion of the Parish ETB; human counter parse.",
+    seed: 0x8ca,
+    cards: {
+      "Champion Parish M628": `Name:Champion Parish M628
+ManaCost:W
+Types:Creature Human Soldier
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Human.YouCtrl+Other | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
+Oracle:CP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Champion Parish M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Champion Parish M628", controller: SEAT0 }],
+  },
+
+  // 1956. Thraben Inspector ETB; clue parse.
+  {
+    id: "thraben-inspector-etb-m628",
+    description: "Thraben Inspector ETB; clue parse.",
+    seed: 0x8cb,
+    cards: {
+      "Thraben Inspector M628": `Name:Thraben Inspector M628
+ManaCost:W
+Types:Creature Human Soldier
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenAmount$ 1
+Oracle:TI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thraben Inspector M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thraben Inspector M628", controller: SEAT0 }],
+  },
+
+  // 1957. Smitten Swordmaster ETB; adventure parse.
+  {
+    id: "smitten-swordmaster-etb-m628",
+    description: "Smitten Swordmaster ETB; adventure parse.",
+    seed: 0x8cc,
+    cards: {
+      "Smitten Swordmaster M628": `Name:Smitten Swordmaster M628
+ManaCost:1 B
+Types:Creature Human Knight
+PT:2/2
+K:Lifelink
+AlternateMode:Adventure
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smitten Swordmaster M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smitten Swordmaster M628", controller: SEAT0 }],
+  },
+
+  // 1958. Lovestruck Beast ETB; adventure parse.
+  {
+    id: "lovestruck-beast-etb-m628",
+    description: "Lovestruck Beast ETB; adventure parse.",
+    seed: 0x8cd,
+    cards: {
+      "Lovestruck Beast M628": `Name:Lovestruck Beast M628
+ManaCost:1 G G
+Types:Creature Beast Noble
+PT:5/5
+S:Mode$ CantAttack | Affected$ Card.Self | Description$ unless 1/1
+AlternateMode:Adventure
+Oracle:LB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lovestruck Beast M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lovestruck Beast M628", controller: SEAT0 }],
+  },
+
+  // 1959. Rookie Mistake elf scout ETB.
+  {
+    id: "rookie-mistake-etb-m628",
+    description: "Rookie Mistake elf scout ETB.",
+    seed: 0x8ce,
+    cards: {
+      "Rookie Mistake M628": `Name:Rookie Mistake M628
+ManaCost:G
+Types:Creature Elf Scout
+PT:1/1
+K:Flash
+Oracle:RM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rookie Mistake M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rookie Mistake M628", controller: SEAT0 }],
+  },
+
+  // 1960. Llanowar Mentor ETB; elf token parse.
+  {
+    id: "llanowar-mentor-etb-m628",
+    description: "Llanowar Mentor ETB; elf token parse.",
+    seed: 0x8cf,
+    cards: {
+      "Llanowar Mentor M628": `Name:Llanowar Mentor M628
+ManaCost:1 G
+Types:Creature Elf Druid
+PT:2/2
+A:AB$ Token | Cost$ 1 G T | TokenScript$ g_1_1_elf
+Oracle:LM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Llanowar Mentor M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Llanowar Mentor M628", controller: SEAT0 }],
+  },
+
+  // 1961. Elvish Mystic ETB; mana parse.
+  {
+    id: "elvish-mystic-etb-m628",
+    description: "Elvish Mystic ETB; mana parse.",
+    seed: 0x8d0,
+    cards: {
+      "Elvish Mystic M628": `Name:Elvish Mystic M628
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1
+Oracle:EM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Mystic M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Mystic M628", controller: SEAT0 }],
+  },
+
+  // 1962. Elvish Archdruid ETB; elf lord parse.
+  {
+    id: "elvish-archdruid-etb-m628",
+    description: "Elvish Archdruid ETB; elf lord parse.",
+    seed: 0x8d1,
+    cards: {
+      "Elvish Archdruid M628": `Name:Elvish Archdruid M628
+ManaCost:1 G G
+Types:Creature Elf Druid
+PT:2/2
+S:Mode$ Continuous | Affected$ Elf.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$Valid Elf.YouCtrl
+Oracle:EA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Archdruid M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Archdruid M628", controller: SEAT0 }],
+  },
+
+  // 1963. Coat of Arms ETB; tribal anthem parse.
+  {
+    id: "coat-of-arms-etb-m628",
+    description: "Coat of Arms ETB; tribal anthem parse.",
+    seed: 0x8d2,
+    cards: {
+      "Coat Arms M628": `Name:Coat Arms M628
+ManaCost:5
+Types:Artifact
+S:Mode$ Continuous | Affected$ Creature | AddPower$ X | AddToughness$ X | References$ X
+SVar:X:Count$SharesType
+Oracle:CoA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coat Arms M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coat Arms M628", controller: SEAT0 }],
+  },
+
+  // 1964. Door of Destinies ETB; tribal counter parse.
+  {
+    id: "door-destinies-etb-m628",
+    description: "Door of Destinies ETB; tribal counter parse.",
+    seed: 0x8d3,
+    cards: {
+      "Door Destinies M628": `Name:Door Destinies M628
+ManaCost:4
+Types:Artifact
+T:Mode$ SpellCast | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | Defined$ Self
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ X | AddToughness$ X | References$ X
+SVar:X:Count$CardCounters.CHARGE
+Oracle:DoD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Door Destinies M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Door Destinies M628", controller: SEAT0 }],
+  },
+
+  // 1965. Urza's Incubator ETB; cost reducer parse.
+  {
+    id: "urzas-incubator-etb-m628",
+    description: "Urza's Incubator ETB; cost reducer parse.",
+    seed: 0x8d4,
+    cards: {
+      "Urzas Incubator M628": `Name:Urzas Incubator M628
+ManaCost:3
+Types:Artifact
+S:Mode$ ReduceCost | ValidCard$ Card.Creature | Type$ Spell | Amount$ 2
+Oracle:UI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urzas Incubator M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urzas Incubator M628", controller: SEAT0 }],
+  },
+
+  // 1966. Doom Blade-style instant.
+  {
+    id: "shadow-doom-etb-m628",
+    description: "Doom Blade-style instant.",
+    seed: 0x8d5,
+    cards: {
+      "Doom Blade M628": `Name:Doom Blade M628
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Creature | ValidTgts$ Creature.nonBlack
+Oracle:DB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doom Blade M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Doom Blade M628", controller: SEAT0 }],
+  },
+
+  // 1967. Go for the Throat instant in hand.
+  {
+    id: "go-throat-cast-m628",
+    description: "Go for the Throat instant in hand.",
+    seed: 0x8d6,
+    cards: {
+      "Go Throat M628": `Name:Go Throat M628
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Creature | ValidTgts$ Creature.nonArtifact
+Oracle:GT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Go Throat M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1968. Hero's Downfall instant in hand.
+  {
+    id: "hero-downfall-cast-m628",
+    description: "Hero's Downfall instant in hand.",
+    seed: 0x8d7,
+    cards: {
+      "Hero Downfall M628": `Name:Hero Downfall M628
+ManaCost:1 B B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B B | TargetType$ Creature,Planeswalker | ValidTgts$ Creature,Planeswalker
+Oracle:HD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hero Downfall M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1969. Dreadbore sorcery in hand.
+  {
+    id: "dreadbore-cast-m628",
+    description: "Dreadbore sorcery in hand.",
+    seed: 0x8d8,
+    cards: {
+      "Dreadbore M628": `Name:Dreadbore M628
+ManaCost:B R
+Types:Sorcery
+A:SP$ Destroy | Cost$ B R | TargetType$ Creature,Planeswalker | ValidTgts$ Creature,Planeswalker
+Oracle:Dread parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dreadbore M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1970. Doom Blade instant in hand.
+  {
+    id: "doom-blade-cast-m628",
+    description: "Doom Blade instant in hand.",
+    seed: 0x8d9,
+    cards: {
+      "Doom Blade B M628": `Name:Doom Blade B M628
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Creature | ValidTgts$ Creature.nonBlack
+Oracle:DBB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doom Blade B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1971. Mana Leak instant in hand.
+  {
+    id: "mana-leak-cast-m628",
+    description: "Mana Leak instant in hand.",
+    seed: 0x8da,
+    cards: {
+      "Mana Leak M628": `Name:Mana Leak M628
+ManaCost:1 U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U | TargetType$ Spell | ValidTgts$ Card | UnlessCost$ 3
+Oracle:ML parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mana Leak M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1972. Force of Will instant in hand.
+  {
+    id: "force-will-cast-m628",
+    description: "Force of Will instant in hand.",
+    seed: 0x8db,
+    cards: {
+      "Force Will M628": `Name:Force Will M628
+ManaCost:3 U U
+Types:Instant
+A:SP$ Counter | Cost$ 3 U U | TargetType$ Spell | ValidTgts$ Card | AltCost$ ExileBlue
+SVar:ExileBlue:DB$ Exile | Defined$ Hand.Blue | NumCards$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 1
+Oracle:FoW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force Will M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1973. Force of Negation instant in hand.
+  {
+    id: "force-negation-cast-m628",
+    description: "Force of Negation instant in hand.",
+    seed: 0x8dc,
+    cards: {
+      "Force Negation M628": `Name:Force Negation M628
+ManaCost:1 U U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U U | TargetType$ Spell | ValidTgts$ Card.nonCreature
+Oracle:FoN parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force Negation M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1974. Spell Pierce instant in hand.
+  {
+    id: "spell-pierce-cast-m628",
+    description: "Spell Pierce instant in hand.",
+    seed: 0x8dd,
+    cards: {
+      "Spell Pierce M628": `Name:Spell Pierce M628
+ManaCost:U
+Types:Instant
+A:SP$ Counter | Cost$ U | TargetType$ Spell | ValidTgts$ Card.nonCreature | UnlessCost$ 2
+Oracle:SP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spell Pierce M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1975. Spell Snare instant in hand.
+  {
+    id: "spell-snare-cast-m628",
+    description: "Spell Snare instant in hand.",
+    seed: 0x8de,
+    cards: {
+      "Spell Snare M628": `Name:Spell Snare M628
+ManaCost:U
+Types:Instant
+A:SP$ Counter | Cost$ U | TargetType$ Spell | ValidTgts$ Card.cmc2
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spell Snare M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1976. Dispel instant in hand.
+  {
+    id: "dispel-cast-m628",
+    description: "Dispel instant in hand.",
+    seed: 0x8df,
+    cards: {
+      "Dispel M628": `Name:Dispel M628
+ManaCost:U
+Types:Instant
+A:SP$ Counter | Cost$ U | TargetType$ Spell | ValidTgts$ Card.Instant
+Oracle:Dispel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dispel M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1977. Dovin's Veto instant in hand.
+  {
+    id: "dovins-veto-cast-m628",
+    description: "Dovin's Veto instant in hand.",
+    seed: 0x8e0,
+    cards: {
+      "Dovins Veto M628": `Name:Dovins Veto M628
+ManaCost:W U
+Types:Instant
+A:SP$ Counter | Cost$ W U | TargetType$ Spell | ValidTgts$ Card.nonCreature | CantBeCountered$ True
+Oracle:DV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dovins Veto M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1978. Render Silent instant in hand.
+  {
+    id: "render-silent-cast-m628",
+    description: "Render Silent instant in hand.",
+    seed: 0x8e1,
+    cards: {
+      "Render Silent M628": `Name:Render Silent M628
+ManaCost:W U U
+Types:Instant
+A:SP$ Counter | Cost$ W U U | TargetType$ Spell | ValidTgts$ Card | SubAbility$ DBSkip
+SVar:DBSkip:DB$ Effect | RememberObjects$ TargetedController | StaticAbilities$ DBStatic
+SVar:DBStatic:Mode$ Continuous | Affected$ Player.IsRemembered | CantCastSpells$ True | EffectZone$ Command
+Oracle:RS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Render Silent M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1979. Thunderbreak Regent ETB; dragon flying parse.
+  {
+    id: "thunderbreak-regent-etb-m628b",
+    description: "Thunderbreak Regent ETB; dragon flying parse.",
+    seed: 0x9000,
+    cards: {
+      "Thunderbreak Regent M628": `Name:Thunderbreak Regent M628
+ManaCost:2 R R
+Types:Creature Dragon
+PT:4/4
+K:Flying
+T:Mode$ BecomesTarget | ValidSource$ Spell,Ability | ValidTarget$ Dragon.YouCtrl | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | Defined$ Player.OpponentOf
+Oracle:TR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thunderbreak Regent M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thunderbreak Regent M628", controller: SEAT0 }],
+  },
+
+  // 1980. Stormbreath Dragon ETB.
+  {
+    id: "stormbreath-dragon-etb-m628",
+    description: "Stormbreath Dragon ETB.",
+    seed: 0x9001,
+    cards: {
+      "Stormbreath M628": `Name:Stormbreath M628
+ManaCost:2 R R
+Types:Creature Dragon
+PT:4/4
+K:Flying
+K:Haste
+K:Protection from white
+A:AB$ PutCounter | Cost$ R R R R | CounterType$ MONSTROSITY | CounterNum$ 3 | Defined$ Self
+Oracle:Storm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stormbreath M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stormbreath M628", controller: SEAT0 }],
+  },
+
+  // 1981. Balefire Dragon ETB.
+  {
+    id: "balefire-dragon-etb-m628",
+    description: "Balefire Dragon ETB.",
+    seed: 0x9002,
+    cards: {
+      "Balefire Dragon M628": `Name:Balefire Dragon M628
+ManaCost:5 R R
+Types:Creature Dragon
+PT:6/6
+K:Flying
+T:Mode$ DamageDoneOne | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmgAll
+SVar:TrigDmgAll:DB$ DamageAll | NumDmg$ 6 | ValidCards$ Creature.OppCtrl | ValidPlayers$ Opponent
+Oracle:BFD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Balefire Dragon M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Balefire Dragon M628", controller: SEAT0 }],
+  },
+
+  // 1982. Niv-Mizzet, the Firemind ETB.
+  {
+    id: "niv-mizzet-firemind-etb-m628",
+    description: "Niv-Mizzet, the Firemind ETB.",
+    seed: 0x9003,
+    cards: {
+      "Niv Mizzet FM M628": `Name:Niv Mizzet FM M628
+ManaCost:2 U U R R
+Types:Legendary Creature Dragon Wizard
+PT:4/4
+K:Flying
+T:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any
+A:AB$ Draw | Cost$ U R T | NumCards$ 1
+Oracle:NMF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Niv Mizzet FM M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Niv Mizzet FM M628", controller: SEAT0 }],
+  },
+
+  // 1983. Niv-Mizzet, Parun ETB.
+  {
+    id: "niv-mizzet-parun-etb-m628",
+    description: "Niv-Mizzet, Parun ETB.",
+    seed: 0x9004,
+    cards: {
+      "Niv Mizzet P M628": `Name:Niv Mizzet P M628
+ManaCost:U U U R R R
+Types:Legendary Creature Dragon Wizard
+PT:5/5
+K:Flying
+T:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:NMP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Niv Mizzet P M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Niv Mizzet P M628", controller: SEAT0 }],
+  },
+
+  // 1984. Dragonlord Ojutai ETB.
+  {
+    id: "dragonlord-ojutai-etb-m628",
+    description: "Dragonlord Ojutai ETB.",
+    seed: 0x9005,
+    cards: {
+      "Dragonlord Ojutai M628": `Name:Dragonlord Ojutai M628
+ManaCost:3 W U
+Types:Legendary Creature Elder Dragon
+PT:5/4
+K:Flying
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | AddKeyword$ Hexproof | Condition$ Untapped
+Oracle:DLO parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dragonlord Ojutai M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dragonlord Ojutai M628", controller: SEAT0 }],
+  },
+
+  // 1985. Dragonlord Silumgar ETB.
+  {
+    id: "dragonlord-silumgar-etb-m628",
+    description: "Dragonlord Silumgar ETB.",
+    seed: 0x9006,
+    cards: {
+      "Dragonlord Silumgar M628": `Name:Dragonlord Silumgar M628
+ManaCost:3 U B
+Types:Legendary Creature Elder Dragon
+PT:3/5
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl
+SVar:TrigGainControl:DB$ GainControl | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl
+Oracle:DLS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dragonlord Silumgar M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dragonlord Silumgar M628", controller: SEAT0 }],
+  },
+
+  // 1986. Scion of the Ur-Dragon ETB.
+  {
+    id: "scion-ur-dragon-etb-m628",
+    description: "Scion of the Ur-Dragon ETB.",
+    seed: 0x9007,
+    cards: {
+      "Scion Ur Dragon M628": `Name:Scion Ur Dragon M628
+ManaCost:4 W U B R G
+Types:Legendary Creature Dragon Avatar
+PT:4/4
+K:Flying
+A:AB$ ChangeZone | Cost$ 2 Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Dragon
+Oracle:SUD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scion Ur Dragon M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scion Ur Dragon M628", controller: SEAT0 }],
+  },
+
+  // 1987. Sensei's Divining Top ETB.
+  {
+    id: "sensei-divining-top-etb-m628",
+    description: "Sensei's Divining Top ETB.",
+    seed: 0x9008,
+    cards: {
+      "Sensei Top M628": `Name:Sensei Top M628
+ManaCost:1
+Types:Artifact
+A:AB$ Scry | Cost$ 1 T | ScryNum$ 0 | LookAt$ 3 | LookAtZone$ Library
+A:AB$ Draw | Cost$ T | NumCards$ 1 | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1
+Oracle:SDT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sensei Top M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sensei Top M628", controller: SEAT0 }],
+  },
+
+  // 1988. Winter Orb ETB; lock parse.
+  {
+    id: "winter-orb-etb-m628",
+    description: "Winter Orb ETB; lock parse.",
+    seed: 0x9009,
+    cards: {
+      "Winter Orb M628": `Name:Winter Orb M628
+ManaCost:2
+Types:Artifact
+S:Mode$ Continuous | Affected$ Land | EffectZone$ Battlefield | CantUntapPhase$ Untap | Description$ WinterOrb.
+Oracle:WO parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Winter Orb M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Winter Orb M628", controller: SEAT0 }],
+  },
+
+  // 1989. Smokestack ETB.
+  {
+    id: "smokestack-etb-m628",
+    description: "Smokestack ETB.",
+    seed: 0x900a,
+    cards: {
+      "Smokestack M628": `Name:Smokestack M628
+ManaCost:4
+Types:Artifact
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigSac
+SVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | Amount$ X | References$ X
+SVar:X:Count$CardCounters.SOOT
+A:AB$ PutCounter | Cost$ T | CounterType$ SOOT | CounterNum$ 1 | Defined$ Self
+Oracle:Smokestack parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smokestack M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smokestack M628", controller: SEAT0 }],
+  },
+
+  // 1990. Mishra's Workshop ETB.
+  {
+    id: "mishras-workshop-etb-m628",
+    description: "Mishra's Workshop ETB.",
+    seed: 0x900b,
+    cards: {
+      "Mishras Workshop M628": `Name:Mishras Workshop M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Card.Artifact
+Oracle:MW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishras Workshop M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishras Workshop M628", controller: SEAT0 }],
+  },
+
+  // 1991. Myojin of Life's Web ETB.
+  {
+    id: "myojin-life-water-etb-m628",
+    description: "Myojin of Life's Web ETB.",
+    seed: 0x900c,
+    cards: {
+      "Myojin Life M628": `Name:Myojin Life M628
+ManaCost:5 G G G
+Types:Legendary Creature Spirit
+PT:8/8
+K:etbCounter:DIVINITY:1
+A:AB$ ChangeZoneAll | Cost$ RemoveCounter<1/DIVINITY/Self> | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouCtrl
+Oracle:MLW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Myojin Life M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Myojin Life M628", controller: SEAT0 }],
+  },
+
+  // 1992. Bitterblossom-style ETB recurring token parse.
+  {
+    id: "bitter-blossom-etb-m628",
+    description: "Bitterblossom-style ETB recurring token parse.",
+    seed: 0x900d,
+    cards: {
+      "Bitter Maker M628": `Name:Bitter Maker M628
+ManaCost:2 B
+Types:Enchantment
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ b_1_1_zombie | TokenAmount$ 1
+Oracle:BMaker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bitter Maker M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bitter Maker M628", controller: SEAT0 }],
+  },
+
+  // 1993. Mardu Ascendancy ETB; attack-token parse.
+  {
+    id: "mardu-ascendancy-etb-m628",
+    description: "Mardu Ascendancy ETB; attack-token parse.",
+    seed: 0x900e,
+    cards: {
+      "Mardu Ascendancy M628": `Name:Mardu Ascendancy M628
+ManaCost:R W B
+Types:Enchantment
+T:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield
+SVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin
+Oracle:MA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mardu Ascendancy M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mardu Ascendancy M628", controller: SEAT0 }],
+  },
+
+  // 1994. Bestiary Tribute ETB; tribute beast parse.
+  {
+    id: "bestiary-tribute-etb-m628",
+    description: "Bestiary Tribute ETB; tribute beast parse.",
+    seed: 0x900f,
+    cards: {
+      "Bestiary Tribute M628": `Name:Bestiary Tribute M628
+ManaCost:2 G G
+Types:Creature Beast
+PT:0/0
+K:Tribute:5
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TributeAccepted$ False | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_3_3_beast | TokenAmount$ 1
+Oracle:BT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bestiary Tribute M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bestiary Tribute M628", controller: SEAT0 }],
+  },
+
+  // 1995. Elspeth Conquers Death saga ETB.
+  {
+    id: "elspeth-conquers-death-etb-m628",
+    description: "Elspeth Conquers Death saga ETB.",
+    seed: 0x9010,
+    cards: {
+      "Elspeth Conq M628": `Name:Elspeth Conq M628
+ManaCost:3 W W
+Types:Enchantment Saga
+K:Chapter:3:DBExile,DBSet,DBReturn
+SVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl+cmcGE5,Planeswalker.OppCtrl+cmcGE5
+SVar:DBSet:DB$ Animate | Defined$ Creature.OppCtrl | AddPower$ -2 | AddToughness$ -2
+SVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature,Planeswalker | DefinedPlayer$ You
+Oracle:ECD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elspeth Conq M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elspeth Conq M628", controller: SEAT0 }],
+  },
+
+  // 1996. Binding the Old Gods saga ETB.
+  {
+    id: "binding-titans-etb-m628",
+    description: "Binding the Old Gods saga ETB.",
+    seed: 0x9011,
+    cards: {
+      "Binding Old M628": `Name:Binding Old M628
+ManaCost:1 B G W
+Types:Enchantment Saga
+K:Chapter:3:DBDestroy,DBSearch,DBPump
+SVar:DBDestroy:DB$ Destroy | TargetType$ Creature | ValidTgts$ Creature.OppCtrl
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | Tapped$ True
+SVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Deathtouch
+Oracle:BoG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Binding Old M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Binding Old M628", controller: SEAT0 }],
+  },
+
+  // 1997. Urza's Ruinous Blast sorcery in hand.
+  {
+    id: "urzas-ruinous-blast-etb-m628",
+    description: "Urza's Ruinous Blast sorcery in hand.",
+    seed: 0x9012,
+    cards: {
+      "Urzas Ruinous M628": `Name:Urzas Ruinous M628
+ManaCost:5 W
+Types:Sorcery
+K:LegendarySorcery
+A:SP$ ChangeZoneAll | Cost$ 5 W | Origin$ Battlefield | Destination$ Exile | ChangeType$ Permanent.nonLegendary+nonLand
+Oracle:URB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Urzas Ruinous M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Urzas Ruinous M628", controller: SEAT0 }],
+  },
+
+  // 1998. Lightning Helix instant in hand.
+  {
+    id: "lightning-helix-cast-m628",
+    description: "Lightning Helix instant in hand.",
+    seed: 0x9013,
+    cards: {
+      "Lightning Helix M628": `Name:Lightning Helix M628
+ManaCost:R W
+Types:Instant
+A:SP$ DealDamage | Cost$ R W | NumDmg$ 3 | TargetType$ Creature,Player | ValidTgts$ Any | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 3
+Oracle:LH parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Helix M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1999. Boros Charm instant in hand.
+  {
+    id: "boros-charm-cast-m628",
+    description: "Boros Charm instant in hand.",
+    seed: 0x9014,
+    cards: {
+      "Boros Charm M628": `Name:Boros Charm M628
+ManaCost:R W
+Types:Instant
+A:SP$ Charm | Cost$ R W | Choices$ DBDmg,DBPump,DBPump2
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 4 | TargetType$ Player | ValidTgts$ Player
+SVar:DBPump:DB$ PumpAll | ValidCards$ Permanent.YouCtrl | KW$ Indestructible
+SVar:DBPump2:DB$ Pump | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | KW$ Double Strike
+Oracle:BC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boros Charm M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2000. Izzet Charm instant in hand.
+  {
+    id: "izzet-charm-cast-m628",
+    description: "Izzet Charm instant in hand.",
+    seed: 0x9015,
+    cards: {
+      "Izzet Charm M628": `Name:Izzet Charm M628
+ManaCost:U R
+Types:Instant
+A:SP$ Charm | Cost$ U R | Choices$ DBCounter,DBDmg,DBDraw
+SVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.nonCreature | UnlessCost$ 2
+SVar:DBDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature | ValidTgts$ Creature
+SVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose
+Oracle:IC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Izzet Charm M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2001. Abrupt Decay instant in hand.
+  {
+    id: "abrupt-decay-b-cast-m628",
+    description: "Abrupt Decay instant in hand.",
+    seed: 0x9016,
+    cards: {
+      "Abrupt Decay B M628": `Name:Abrupt Decay B M628
+ManaCost:B G
+Types:Instant
+A:SP$ Destroy | Cost$ B G | TargetType$ Permanent | ValidTgts$ Permanent.cmcLE3+nonLand | CantBeCountered$ True
+Oracle:AD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Abrupt Decay B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2002. Maelstrom Pulse sorcery in hand.
+  {
+    id: "maelstrom-pulse-cast-m628",
+    description: "Maelstrom Pulse sorcery in hand.",
+    seed: 0x9017,
+    cards: {
+      "Maelstrom Pulse M628": `Name:Maelstrom Pulse M628
+ManaCost:1 B G
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 1 B G | ValidCards$ Permanent.SharesNameWithRemembered+nonLand
+Oracle:MP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maelstrom Pulse M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2003. Assassin's Trophy sorcery in hand.
+  {
+    id: "assassins-trophy-b-cast-m628",
+    description: "Assassin's Trophy sorcery in hand.",
+    seed: 0x9018,
+    cards: {
+      "Assassins Trophy B M628": `Name:Assassins Trophy B M628
+ManaCost:B G
+Types:Instant
+A:SP$ Destroy | Cost$ B G | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | Tapped$ True | DefinedPlayer$ TargetedController
+Oracle:AT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Assassins Trophy B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2004. Bushy-Haired Rabbit ETB; offspring parse.
+  {
+    id: "bushy-haired-rabbit-etb-m628",
+    description: "Bushy-Haired Rabbit ETB; offspring parse.",
+    seed: 0x9019,
+    cards: {
+      "Bushy Rabbit M628": `Name:Bushy Rabbit M628
+ManaCost:1 G
+Types:Creature Rabbit Warrior
+PT:2/2
+K:Offspring:1 G
+Oracle:BR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bushy Rabbit M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bushy Rabbit M628", controller: SEAT0 }],
+  },
+
+  // 2005. Fledgling Foragers ETB; gift parse.
+  {
+    id: "fledgling-foragers-etb-m628",
+    description: "Fledgling Foragers ETB; gift parse.",
+    seed: 0x901a,
+    cards: {
+      "Fledgling Foragers M628": `Name:Fledgling Foragers M628
+ManaCost:1 G
+Types:Creature Squirrel Scout
+PT:2/2
+K:Gift:Treasure
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenAmount$ 1
+Oracle:FF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fledgling Foragers M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fledgling Foragers M628", controller: SEAT0 }],
+  },
+
+  // 2006. Brazen Collector ETB; expend reset parse.
+  {
+    id: "brazen-collector-etb-m628",
+    description: "Brazen Collector ETB; expend reset parse.",
+    seed: 0x901b,
+    cards: {
+      "Brazen Collector M628": `Name:Brazen Collector M628
+ManaCost:2 R
+Types:Creature Squirrel Pirate
+PT:2/3
+K:etbCounter:CHARGE:0
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | Defined$ Self
+Oracle:BC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brazen Collector M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brazen Collector M628", controller: SEAT0 }],
+  },
+
+  // 2007. Field of Ruin ETB; non-basic destroy parse.
+  {
+    id: "field-ruin-etb-m628",
+    description: "Field of Ruin ETB; non-basic destroy parse.",
+    seed: 0x901c,
+    cards: {
+      "Field Ruin M628": `Name:Field Ruin M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Destroy | Cost$ 2 T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land.nonBasic+OppCtrl | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | Tapped$ True | DefinedPlayer$ Each
+Oracle:FoR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Field Ruin M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Field Ruin M628", controller: SEAT0 }],
+  },
+
+  // 2008. Ghost Quarter ETB; non-basic destroy parse.
+  {
+    id: "ghost-quarter-etb-m628",
+    description: "Ghost Quarter ETB; non-basic destroy parse.",
+    seed: 0x901d,
+    cards: {
+      "Ghost Quarter M628": `Name:Ghost Quarter M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land
+Oracle:GQ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ghost Quarter M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ghost Quarter M628", controller: SEAT0 }],
+  },
+
+  // 2009. Caves of Koilos ETB.
+  {
+    id: "caves-of-koilos-etb-m628",
+    description: "Caves of Koilos ETB.",
+    seed: 0x901e,
+    cards: {
+      "Caves Koilos M628": `Name:Caves Koilos M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Mana | Cost$ T | Produced$ Combo W B | Amount$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 1
+Oracle:CoK parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Caves Koilos M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Caves Koilos M628", controller: SEAT0 }],
+  },
+
+  // 2010. Llanowar Wastes ETB.
+  {
+    id: "llanowar-wastes-etb-m628",
+    description: "Llanowar Wastes ETB.",
+    seed: 0x901f,
+    cards: {
+      "Llanowar Wastes M628": `Name:Llanowar Wastes M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Mana | Cost$ T | Produced$ Combo B G | Amount$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 1
+Oracle:LW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Llanowar Wastes M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Llanowar Wastes M628", controller: SEAT0 }],
+  },
+
+  // 2011. Yavimaya Coast ETB.
+  {
+    id: "yavimaya-coast-etb-m628",
+    description: "Yavimaya Coast ETB.",
+    seed: 0x9020,
+    cards: {
+      "Yavimaya Coast M628": `Name:Yavimaya Coast M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1
+A:AB$ Mana | Cost$ T | Produced$ Combo G U | Amount$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 1
+Oracle:YC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yavimaya Coast M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yavimaya Coast M628", controller: SEAT0 }],
+  },
+
+  // 2012. Scrubland ETB; dual parse.
+  {
+    id: "scrubland-etb-m628",
+    description: "Scrubland ETB; dual parse.",
+    seed: 0x9021,
+    cards: {
+      "Scrubland M628": `Name:Scrubland M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo W B | Amount$ 1
+Oracle:Scrub parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scrubland M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scrubland M628", controller: SEAT0 }],
+  },
+
+  // 2013. Underground Sea ETB; dual parse.
+  {
+    id: "underground-sea-etb-m628",
+    description: "Underground Sea ETB; dual parse.",
+    seed: 0x9022,
+    cards: {
+      "Underground Sea M628": `Name:Underground Sea M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo U B | Amount$ 1
+Oracle:US parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Underground Sea M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Underground Sea M628", controller: SEAT0 }],
+  },
+
+  // 2014. Volcanic Island ETB; dual parse.
+  {
+    id: "volcanic-island-etb-m628",
+    description: "Volcanic Island ETB; dual parse.",
+    seed: 0x9023,
+    cards: {
+      "Volcanic Island M628": `Name:Volcanic Island M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo U R | Amount$ 1
+Oracle:VI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Volcanic Island M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Volcanic Island M628", controller: SEAT0 }],
+  },
+
+  // 2015. Bayou ETB; dual parse.
+  {
+    id: "bayou-etb-m628",
+    description: "Bayou ETB; dual parse.",
+    seed: 0x9024,
+    cards: {
+      "Bayou M628": `Name:Bayou M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo B G | Amount$ 1
+Oracle:Bayou parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bayou M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bayou M628", controller: SEAT0 }],
+  },
+
+  // 2016. Plateau ETB; dual parse.
+  {
+    id: "plateau-etb-m628",
+    description: "Plateau ETB; dual parse.",
+    seed: 0x9025,
+    cards: {
+      "Plateau M628": `Name:Plateau M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo R W | Amount$ 1
+Oracle:Plat parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plateau M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plateau M628", controller: SEAT0 }],
+  },
+
+  // 2017. Taiga ETB; dual parse.
+  {
+    id: "taiga-etb-m628",
+    description: "Taiga ETB; dual parse.",
+    seed: 0x9026,
+    cards: {
+      "Taiga M628": `Name:Taiga M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo R G | Amount$ 1
+Oracle:Taiga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Taiga M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Taiga M628", controller: SEAT0 }],
+  },
+
+  // 2018. Tundra ETB; dual parse.
+  {
+    id: "tundra-etb-m628",
+    description: "Tundra ETB; dual parse.",
+    seed: 0x9027,
+    cards: {
+      "Tundra M628": `Name:Tundra M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo W U | Amount$ 1
+Oracle:Tundra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tundra M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tundra M628", controller: SEAT0 }],
+  },
+
+  // 2019. Savannah ETB; dual parse.
+  {
+    id: "savannah-etb-m628",
+    description: "Savannah ETB; dual parse.",
+    seed: 0x9028,
+    cards: {
+      "Savannah M628": `Name:Savannah M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo G W | Amount$ 1
+Oracle:Savan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Savannah M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Savannah M628", controller: SEAT0 }],
+  },
+
+  // 2020. Badlands ETB; dual parse.
+  {
+    id: "badlands-etb-m628",
+    description: "Badlands ETB; dual parse.",
+    seed: 0x9029,
+    cards: {
+      "Badlands M628": `Name:Badlands M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo B R | Amount$ 1
+Oracle:Bad parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Badlands M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Badlands M628", controller: SEAT0 }],
+  },
+
+  // 2021. Tropical Island ETB; dual parse.
+  {
+    id: "tropical-island-etb-m628",
+    description: "Tropical Island ETB; dual parse.",
+    seed: 0x902a,
+    cards: {
+      "Tropical Island M628": `Name:Tropical Island M628
+ManaCost:no cost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ Combo G U | Amount$ 1
+Oracle:TI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tropical Island M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tropical Island M628", controller: SEAT0 }],
+  },
+
+  // 2022. Sacred Foundry ETB; shock parse.
+  {
+    id: "sacred-foundry-etb-m628",
+    description: "Sacred Foundry ETB; shock parse.",
+    seed: 0x902b,
+    cards: {
+      "Sacred Foundry M628": `Name:Sacred Foundry M628
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock
+SVar:TrigShock:DB$ LoseLife | LifeAmount$ 2
+A:AB$ Mana | Cost$ T | Produced$ Combo R W | Amount$ 1
+Oracle:SF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sacred Foundry M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sacred Foundry M628", controller: SEAT0 }],
+  },
+
+  // 2023. Steam Vents ETB; shock parse.
+  {
+    id: "steam-vents-etb-m628",
+    description: "Steam Vents ETB; shock parse.",
+    seed: 0x902c,
+    cards: {
+      "Steam Vents M628": `Name:Steam Vents M628
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock
+SVar:TrigShock:DB$ LoseLife | LifeAmount$ 2
+A:AB$ Mana | Cost$ T | Produced$ Combo U R | Amount$ 1
+Oracle:SV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steam Vents M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Steam Vents M628", controller: SEAT0 }],
+  },
+
+  // 2024. Overgrown Tomb ETB; shock parse.
+  {
+    id: "overgrown-tomb-etb-m628",
+    description: "Overgrown Tomb ETB; shock parse.",
+    seed: 0x902d,
+    cards: {
+      "Overgrown Tomb M628": `Name:Overgrown Tomb M628
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock
+SVar:TrigShock:DB$ LoseLife | LifeAmount$ 2
+A:AB$ Mana | Cost$ T | Produced$ Combo B G | Amount$ 1
+Oracle:OT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Overgrown Tomb M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Overgrown Tomb M628", controller: SEAT0 }],
+  },
+
+  // 2025. Temple Garden ETB; shock parse.
+  {
+    id: "temple-garden-etb-m628",
+    description: "Temple Garden ETB; shock parse.",
+    seed: 0x902e,
+    cards: {
+      "Temple Garden M628": `Name:Temple Garden M628
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock
+SVar:TrigShock:DB$ LoseLife | LifeAmount$ 2
+A:AB$ Mana | Cost$ T | Produced$ Combo G W | Amount$ 1
+Oracle:TG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Temple Garden M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Temple Garden M628", controller: SEAT0 }],
+  },
+
+  // 2026. Godless Shrine ETB; shock parse.
+  {
+    id: "godless-shrine-etb-m628",
+    description: "Godless Shrine ETB; shock parse.",
+    seed: 0x902f,
+    cards: {
+      "Godless Shrine M628": `Name:Godless Shrine M628
+ManaCost:no cost
+Types:Land
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigShock
+SVar:TrigShock:DB$ LoseLife | LifeAmount$ 2
+A:AB$ Mana | Cost$ T | Produced$ Combo W B | Amount$ 1
+Oracle:GS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Godless Shrine M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Godless Shrine M628", controller: SEAT0 }],
+  },
+
+  // 2027. Windswept Heath ETB; fetch parse.
+  {
+    id: "windswept-heath-etb-m628",
+    description: "Windswept Heath ETB; fetch parse.",
+    seed: 0x9030,
+    cards: {
+      "Windswept Heath M628": `Name:Windswept Heath M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains,Forest
+Oracle:WH parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Windswept Heath M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Windswept Heath M628", controller: SEAT0 }],
+  },
+
+  // 2028. Polluted Delta ETB; fetch parse.
+  {
+    id: "polluted-delta-etb-m628",
+    description: "Polluted Delta ETB; fetch parse.",
+    seed: 0x9031,
+    cards: {
+      "Polluted Delta M628": `Name:Polluted Delta M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Island,Swamp
+Oracle:PD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Polluted Delta M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Polluted Delta M628", controller: SEAT0 }],
+  },
+
+  // 2029. Bloodstained Mire ETB; fetch parse.
+  {
+    id: "bloodstained-mire-etb-m628",
+    description: "Bloodstained Mire ETB; fetch parse.",
+    seed: 0x9032,
+    cards: {
+      "Bloodstained Mire M628": `Name:Bloodstained Mire M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Mountain,Swamp
+Oracle:BM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bloodstained Mire M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bloodstained Mire M628", controller: SEAT0 }],
+  },
+
+  // 2030. Wooded Foothills ETB; fetch parse.
+  {
+    id: "wooded-foothills-etb-m628",
+    description: "Wooded Foothills ETB; fetch parse.",
+    seed: 0x9033,
+    cards: {
+      "Wooded Foothills M628": `Name:Wooded Foothills M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Mountain,Forest
+Oracle:WF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wooded Foothills M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wooded Foothills M628", controller: SEAT0 }],
+  },
+
+  // 2031. Flooded Strand ETB; fetch parse.
+  {
+    id: "flooded-strand-etb-m628",
+    description: "Flooded Strand ETB; fetch parse.",
+    seed: 0x9034,
+    cards: {
+      "Flooded Strand M628": `Name:Flooded Strand M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains,Island
+Oracle:FS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flooded Strand M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Flooded Strand M628", controller: SEAT0 }],
+  },
+
+  // 2032. Marsh Flats ETB; fetch parse.
+  {
+    id: "marsh-flats-etb-m628",
+    description: "Marsh Flats ETB; fetch parse.",
+    seed: 0x9035,
+    cards: {
+      "Marsh Flats M628": `Name:Marsh Flats M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains,Swamp
+Oracle:MF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Marsh Flats M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Marsh Flats M628", controller: SEAT0 }],
+  },
+
+  // 2033. Scalding Tarn ETB; fetch parse.
+  {
+    id: "scalding-tarn-etb-m628",
+    description: "Scalding Tarn ETB; fetch parse.",
+    seed: 0x9036,
+    cards: {
+      "Scalding Tarn M628": `Name:Scalding Tarn M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Mountain,Island
+Oracle:ST parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Scalding Tarn M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Scalding Tarn M628", controller: SEAT0 }],
+  },
+
+  // 2034. Misty Rainforest ETB; fetch parse.
+  {
+    id: "misty-rainforest-etb-m628",
+    description: "Misty Rainforest ETB; fetch parse.",
+    seed: 0x9037,
+    cards: {
+      "Misty Rainforest M628": `Name:Misty Rainforest M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest,Island
+Oracle:MR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Misty Rainforest M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Misty Rainforest M628", controller: SEAT0 }],
+  },
+
+  // 2035. Verdant Catacombs ETB; fetch parse.
+  {
+    id: "verdant-catacombs-etb-m628",
+    description: "Verdant Catacombs ETB; fetch parse.",
+    seed: 0x9038,
+    cards: {
+      "Verdant Catacombs M628": `Name:Verdant Catacombs M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest,Swamp
+Oracle:VC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Verdant Catacombs M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Verdant Catacombs M628", controller: SEAT0 }],
+  },
+
+  // 2036. Arid Mesa ETB; fetch parse.
+  {
+    id: "arid-mesa-etb-m628",
+    description: "Arid Mesa ETB; fetch parse.",
+    seed: 0x9039,
+    cards: {
+      "Arid Mesa M628": `Name:Arid Mesa M628
+ManaCost:no cost
+Types:Land
+A:AB$ ChangeZone | Cost$ T PayLife<1> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains,Mountain
+Oracle:AM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arid Mesa M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arid Mesa M628", controller: SEAT0 }],
+  },
+
+  // 2037. Mox Pearl ETB; mox W parse.
+  {
+    id: "mox-pearl-etb-m628",
+    description: "Mox Pearl ETB; mox W parse.",
+    seed: 0x903a,
+    cards: {
+      "Mox Pearl M628": `Name:Mox Pearl M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ W | Amount$ 1
+Oracle:MP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Pearl M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Pearl M628", controller: SEAT0 }],
+  },
+
+  // 2038. Mox Sapphire ETB; mox U parse.
+  {
+    id: "mox-sapphire-etb-m628",
+    description: "Mox Sapphire ETB; mox U parse.",
+    seed: 0x903b,
+    cards: {
+      "Mox Sapphire M628": `Name:Mox Sapphire M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ U | Amount$ 1
+Oracle:MS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Sapphire M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Sapphire M628", controller: SEAT0 }],
+  },
+
+  // 2039. Mox Jet ETB; mox B parse.
+  {
+    id: "mox-jet-etb-m628",
+    description: "Mox Jet ETB; mox B parse.",
+    seed: 0x903c,
+    cards: {
+      "Mox Jet M628": `Name:Mox Jet M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1
+Oracle:MJ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Jet M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Jet M628", controller: SEAT0 }],
+  },
+
+  // 2040. Mox Ruby ETB; mox R parse.
+  {
+    id: "mox-ruby-etb-m628",
+    description: "Mox Ruby ETB; mox R parse.",
+    seed: 0x903d,
+    cards: {
+      "Mox Ruby M628": `Name:Mox Ruby M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ R | Amount$ 1
+Oracle:MR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Ruby M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Ruby M628", controller: SEAT0 }],
+  },
+
+  // 2041. Mox Emerald ETB; mox G parse.
+  {
+    id: "mox-emerald-etb-m628",
+    description: "Mox Emerald ETB; mox G parse.",
+    seed: 0x903e,
+    cards: {
+      "Mox Emerald M628": `Name:Mox Emerald M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1
+Oracle:ME parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Emerald M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Emerald M628", controller: SEAT0 }],
+  },
+
+  // 2042. Chrome Mox ETB; mox imprint parse.
+  {
+    id: "chrome-mox-etb-m628",
+    description: "Chrome Mox ETB; mox imprint parse.",
+    seed: 0x903f,
+    cards: {
+      "Chrome Mox M628": `Name:Chrome Mox M628
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1
+Oracle:CM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chrome Mox M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chrome Mox M628", controller: SEAT0 }],
+  },
+
+  // 2043. Mox Opal ETB; metalcraft mox parse.
+  {
+    id: "mox-opal-etb-m628",
+    description: "Mox Opal ETB; metalcraft mox parse.",
+    seed: 0x9040,
+    cards: {
+      "Mox Opal M628": `Name:Mox Opal M628
+ManaCost:0
+Types:Legendary Artifact
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1 | ConditionMetalcraft$ True
+Oracle:MO parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Opal M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Opal M628", controller: SEAT0 }],
+  },
+
+  // 2044. Birds of Paradise ETB; flying mana.
+  {
+    id: "birds-paradise-etb-m628",
+    description: "Birds of Paradise ETB; flying mana.",
+    seed: 0x9041,
+    cards: {
+      "Birds Paradise M628": `Name:Birds Paradise M628
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1
+Oracle:BoP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Birds Paradise M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Birds Paradise M628", controller: SEAT0 }],
+  },
+
+  // 2045. Noble Hierarch ETB; exalted parse.
+  {
+    id: "noble-hierarch-etb-m628",
+    description: "Noble Hierarch ETB; exalted parse.",
+    seed: 0x9042,
+    cards: {
+      "Noble Hierarch M628": `Name:Noble Hierarch M628
+ManaCost:G
+Types:Creature Human Druid
+PT:0/1
+K:Exalted
+A:AB$ Mana | Cost$ T | Produced$ Combo G W U | Amount$ 1
+Oracle:NH parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Noble Hierarch M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Noble Hierarch M628", controller: SEAT0 }],
+  },
+
+  // 2046. Deathrite Shaman ETB; mana parse.
+  {
+    id: "deathrite-shaman-etb-m628",
+    description: "Deathrite Shaman ETB; mana parse.",
+    seed: 0x9043,
+    cards: {
+      "Deathrite Shaman M628": `Name:Deathrite Shaman M628
+ManaCost:B/G
+Types:Creature Elf Shaman
+PT:1/2
+A:AB$ Mana | Cost$ T Exile<1/Land/Graveyard> | Produced$ Combo B G | Amount$ 1
+A:AB$ DealDamage | Cost$ T Exile<1/Card.Instant,Card.Sorcery/Graveyard> | NumDmg$ 2 | TargetType$ Player | ValidTgts$ Player
+A:AB$ GainLife | Cost$ T Exile<1/Creature/Graveyard> | LifeAmount$ 2
+Oracle:DRS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Deathrite Shaman M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Deathrite Shaman M628", controller: SEAT0 }],
+  },
+
+  // 2047. Snapcaster Mage ETB; flashback grant parse.
+  {
+    id: "snapcaster-mage-etb-m628",
+    description: "Snapcaster Mage ETB; flashback grant parse.",
+    seed: 0x9044,
+    cards: {
+      "Snapcaster Mage M628": `Name:Snapcaster Mage M628
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:2/1
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGrant
+SVar:TrigGrant:DB$ Animate | TargetType$ Card | ValidTgts$ Card.Instant,Card.Sorcery+inZoneGraveyard | KW$ Flashback
+Oracle:SM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snapcaster Mage M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snapcaster Mage M628", controller: SEAT0 }],
+  },
+
+  // 2048. Dark Confidant ETB.
+  {
+    id: "dark-confidant-etb-m628",
+    description: "Dark Confidant ETB.",
+    seed: 0x9045,
+    cards: {
+      "Dark Confidant M628": `Name:Dark Confidant M628
+ManaCost:1 B
+Types:Creature Human Wizard
+PT:2/1
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReveal
+SVar:TrigReveal:DB$ Reveal | Defined$ TopOfLibrary | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ X | References$ X
+SVar:X:Remembered$CardManaCost
+Oracle:DC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dark Confidant M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dark Confidant M628", controller: SEAT0 }],
+  },
+
+  // 2049. Liliana of the Veil ETB.
+  {
+    id: "liliana-veil-b-etb-m628",
+    description: "Liliana of the Veil ETB.",
+    seed: 0x9046,
+    cards: {
+      "Liliana V B M628": `Name:Liliana V B M628
+ManaCost:1 B B
+Types:Legendary Planeswalker Liliana
+Loyalty:3
+A:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | Defined$ Each | Planeswalker$ True
+A:AB$ Sacrifice | Cost$ SubCounter<2/LOYALTY> | Defined$ Each | Amount$ 1 | Planeswalker$ True | SubAbility$ DBSac
+SVar:DBSac:DB$ Sacrifice | SacValid$ Creature
+Oracle:LVB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Liliana V B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Liliana V B M628", controller: SEAT0 }],
+  },
+
+  // 2050. Jace, the Mind Sculptor ETB.
+  {
+    id: "jace-mind-sculptor-etb-m628",
+    description: "Jace, the Mind Sculptor ETB.",
+    seed: 0x9047,
+    cards: {
+      "Jace Mind M628": `Name:Jace Mind M628
+ManaCost:2 U U
+Types:Legendary Planeswalker Jace
+Loyalty:3
+A:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | DigNum$ 1 | Defined$ Player | TargetType$ Player | Planeswalker$ True
+A:AB$ Draw | Cost$ AddCounter<0/LOYALTY> | NumCards$ 3 | Planeswalker$ True
+A:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | Planeswalker$ True
+Oracle:JMS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jace Mind M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jace Mind M628", controller: SEAT0 }],
+  },
+
+  // 2051. Liliana, the Last Hope ETB.
+  {
+    id: "liliana-untouched-etb-m628",
+    description: "Liliana, the Last Hope ETB.",
+    seed: 0x9048,
+    cards: {
+      "Liliana LH M628": `Name:Liliana LH M628
+ManaCost:1 B B
+Types:Legendary Planeswalker Liliana
+Loyalty:3
+A:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | TargetType$ Creature | ValidTgts$ Creature.OppCtrl | NumAtt$ -2 | NumDef$ -1 | Planeswalker$ True
+Oracle:LLH parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Liliana LH M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Liliana LH M628", controller: SEAT0 }],
+  },
+
+  // 2052. Sylvan Library ETB; draw parse.
+  {
+    id: "sylvan-library-etb-m628",
+    description: "Sylvan Library ETB; draw parse.",
+    seed: 0x9049,
+    cards: {
+      "Sylvan Library M628": `Name:Sylvan Library M628
+ManaCost:1 G
+Types:Enchantment
+T:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:SL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sylvan Library M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sylvan Library M628", controller: SEAT0 }],
+  },
+
+  // 2053. Mystic Remora ETB; cumulative upkeep parse.
+  {
+    id: "mystic-remora-etb-m628",
+    description: "Mystic Remora ETB; cumulative upkeep parse.",
+    seed: 0x904a,
+    cards: {
+      "Mystic Remora M628": `Name:Mystic Remora M628
+ManaCost:U
+Types:Enchantment
+K:CumulativeUpkeep:1
+T:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:MR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mystic Remora M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mystic Remora M628", controller: SEAT0 }],
+  },
+
+  // 2054. Rhystic Study ETB.
+  {
+    id: "rhystic-study-etb-m628",
+    description: "Rhystic Study ETB.",
+    seed: 0x904b,
+    cards: {
+      "Rhystic Study M628": `Name:Rhystic Study M628
+ManaCost:2 U
+Types:Enchantment
+T:Mode$ SpellCast | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | UnlessCost$ 1
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:RS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rhystic Study M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rhystic Study M628", controller: SEAT0 }],
+  },
+
+  // 2055. Smothering Tithe ETB.
+  {
+    id: "smothering-tithe-etb-m628",
+    description: "Smothering Tithe ETB.",
+    seed: 0x904c,
+    cards: {
+      "Smothering Tithe M628": `Name:Smothering Tithe M628
+ManaCost:3 W
+Types:Enchantment
+T:Mode$ Drawn | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigToken | UnlessCost$ 2
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1
+Oracle:ST parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smothering Tithe M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Smothering Tithe M628", controller: SEAT0 }],
+  },
+
+  // 2056. Esper Sentinel ETB.
+  {
+    id: "esper-sentinel-etb-m628",
+    description: "Esper Sentinel ETB.",
+    seed: 0x904d,
+    cards: {
+      "Esper Sentinel M628": `Name:Esper Sentinel M628
+ManaCost:W
+Types:Artifact Creature Human Advisor
+PT:1/1
+T:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | UnlessCost$ X
+SVar:X:Count$Valid Card.IsRemembered/CardPower
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:ES parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esper Sentinel M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esper Sentinel M628", controller: SEAT0 }],
+  },
+
+  // 2057. Restore Balance instant in hand.
+  {
+    id: "bring-balance-cast-m628",
+    description: "Restore Balance instant in hand.",
+    seed: 0x904e,
+    cards: {
+      "Restore Bal C M628": `Name:Restore Bal C M628
+ManaCost:no cost
+Types:Sorcery
+K:Suspend:6:1 W W
+A:SP$ Sacrifice | Cost$ no cost | Mode$ DiscardChoose
+Oracle:RB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Restore Bal C M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2058. Doubling Cube ETB.
+  {
+    id: "doubling-cube-etb-m628",
+    description: "Doubling Cube ETB.",
+    seed: 0x904f,
+    cards: {
+      "Doubling Cube M628": `Name:Doubling Cube M628
+ManaCost:3
+Types:Artifact
+A:AB$ Mana | Cost$ 3 T | Produced$ Combo W U B R G | Amount$ X | References$ X | Restriction$ DoubleManaPool
+SVar:X:Count$Mana
+Oracle:DCu parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doubling Cube M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Doubling Cube M628", controller: SEAT0 }],
+  },
+
+  // 2059. Caged Sun ETB.
+  {
+    id: "caged-sun-etb-m628",
+    description: "Caged Sun ETB.",
+    seed: 0x9050,
+    cards: {
+      "Caged Sun M628": `Name:Caged Sun M628
+ManaCost:6
+Types:Artifact
+T:Mode$ Tapped | ValidCard$ Land.Basic+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana
+SVar:TrigMana:DB$ Mana | Produced$ Combo W U B R G | Amount$ 1
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+SharesColor | EffectZone$ Battlefield | AddPower$ 1 | AddToughness$ 1
+Oracle:CSun parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Caged Sun M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Caged Sun M628", controller: SEAT0 }],
+  },
+
+  // 2060. Gauntlet of Power ETB.
+  {
+    id: "gauntlet-power-etb-m628",
+    description: "Gauntlet of Power ETB.",
+    seed: 0x9051,
+    cards: {
+      "Gauntlet Power M628": `Name:Gauntlet Power M628
+ManaCost:5
+Types:Artifact
+T:Mode$ Tapped | ValidCard$ Land.Basic | TriggerZones$ Battlefield | Execute$ TrigMana
+SVar:TrigMana:DB$ Mana | Produced$ Combo W U B R G | Amount$ 1
+S:Mode$ Continuous | Affected$ Creature.SharesColor | EffectZone$ Battlefield | AddPower$ 1 | AddToughness$ 1
+Oracle:GP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gauntlet Power M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gauntlet Power M628", controller: SEAT0 }],
+  },
+
+  // 2061. Mana Vault ETB.
+  {
+    id: "mana-vault-etb-m628",
+    description: "Mana Vault ETB.",
+    seed: 0x9052,
+    cards: {
+      "Mana Vault M628": `Name:Mana Vault M628
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3
+T:Mode$ Phase | Phase$ Untap | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | OptionalDecider$ You
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ You
+Oracle:MV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mana Vault M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mana Vault M628", controller: SEAT0 }],
+  },
+
+  // 2062. Grim Monolith ETB.
+  {
+    id: "grim-monolith-etb-m628",
+    description: "Grim Monolith ETB.",
+    seed: 0x9053,
+    cards: {
+      "Grim Monolith M628": `Name:Grim Monolith M628
+ManaCost:2
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3
+A:AB$ Untap | Cost$ 4 | Defined$ Self
+Oracle:GM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grim Monolith M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grim Monolith M628", controller: SEAT0 }],
+  },
+
+  // 2063. Sword of Hearth and Home ETB.
+  {
+    id: "sword-hearth-home-etb-m628",
+    description: "Sword of Hearth and Home ETB.",
+    seed: 0x9054,
+    cards: {
+      "Sword HH M628": `Name:Sword HH M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from green
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigFlicker
+SVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | ValidTgts$ Permanent.YouCtrl | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield
+K:Equip:2
+Oracle:SHH parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword HH M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword HH M628", controller: SEAT0 }],
+  },
+
+  // 2064. Sword of Truth and Justice ETB.
+  {
+    id: "sword-truth-justice-etb-m628",
+    description: "Sword of Truth and Justice ETB.",
+    seed: 0x9055,
+    cards: {
+      "Sword TJ M628": `Name:Sword TJ M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from blue
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCounter
+SVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBProliferate
+SVar:DBProliferate:DB$ Proliferate
+K:Equip:2
+Oracle:STJ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword TJ M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword TJ M628", controller: SEAT0 }],
+  },
+
+  // 2065. Sword of Light and Shadow ETB.
+  {
+    id: "sword-light-shadow-etb-m628",
+    description: "Sword of Light and Shadow ETB.",
+    seed: 0x9056,
+    cards: {
+      "Sword LS M628": `Name:Sword LS M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGain
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1
+K:Equip:2
+Oracle:SLS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword LS M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword LS M628", controller: SEAT0 }],
+  },
+
+  // 2066. Sword of Body and Mind ETB.
+  {
+    id: "sword-body-mind-etb-m628",
+    description: "Sword of Body and Mind ETB.",
+    seed: 0x9057,
+    cards: {
+      "Sword BM M628": `Name:Sword BM M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from green & Protection from blue
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenAmount$ 1 | SubAbility$ DBMill
+SVar:DBMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ 10
+K:Equip:2
+Oracle:SBM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword BM M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword BM M628", controller: SEAT0 }],
+  },
+
+  // 2067. Sword of War and Peace ETB.
+  {
+    id: "sword-war-peace-etb-m628",
+    description: "Sword of War and Peace ETB.",
+    seed: 0x9058,
+    cards: {
+      "Sword WP M628": `Name:Sword WP M628
+ManaCost:3
+Types:Artifact Equipment
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from red & Protection from white
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ X | Defined$ TriggeredTarget | References$ X | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ X | References$ X
+SVar:X:TriggeredTarget$CardsInHand
+K:Equip:2
+Oracle:SWP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword WP M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword WP M628", controller: SEAT0 }],
+  },
+
+  // 2068. Chord of Calling instant in hand.
+  {
+    id: "chord-calling-cast-m628",
+    description: "Chord of Calling instant in hand.",
+    seed: 0x9059,
+    cards: {
+      "Chord Calling M628": `Name:Chord Calling M628
+ManaCost:X G G G
+Types:Instant
+K:Convoke
+A:SP$ ChangeZone | Cost$ X G G G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | References$ X
+SVar:X:Count$xPaid
+Oracle:CC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chord Calling M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2069. Green Sun's Zenith instant in hand.
+  {
+    id: "green-suns-zenith-cast-m628",
+    description: "Green Sun's Zenith instant in hand.",
+    seed: 0x905a,
+    cards: {
+      "Green Suns Zenith M628": `Name:Green Suns Zenith M628
+ManaCost:X G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ X G | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLEX+Green | References$ X | SubAbility$ DBShuffle
+SVar:DBShuffle:DB$ Shuffle | Defined$ Self | Destination$ Library
+SVar:X:Count$xPaid
+Oracle:GSZ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Green Suns Zenith M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2070. Natural Order sorcery in hand.
+  {
+    id: "natural-order-cast-m628",
+    description: "Natural Order sorcery in hand.",
+    seed: 0x905b,
+    cards: {
+      "Natural Order M628": `Name:Natural Order M628
+ManaCost:2 G G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 2 G G Sac<1/Creature.Green> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.Green
+Oracle:NO parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Natural Order M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2071. Primeval Titan ETB.
+  {
+    id: "primeval-titan-etb-m628",
+    description: "Primeval Titan ETB.",
+    seed: 0x905c,
+    cards: {
+      "Primeval Titan M628": `Name:Primeval Titan M628
+ManaCost:4 G G
+Types:Creature Giant
+PT:6/6
+K:Trample
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSearch
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 2 | Tapped$ True
+Oracle:PT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Primeval Titan M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Primeval Titan M628", controller: SEAT0 }],
+  },
+
+  // 2072. Sun Titan ETB.
+  {
+    id: "sun-titan-etb-m628",
+    description: "Sun Titan ETB.",
+    seed: 0x905d,
+    cards: {
+      "Sun Titan M628": `Name:Sun Titan M628
+ManaCost:4 W W
+Types:Creature Giant
+PT:6/6
+K:Vigilance
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReturn
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Permanent.cmcLE3+YouCtrl
+Oracle:ST parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sun Titan M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sun Titan M628", controller: SEAT0 }],
+  },
+
+  // 2073. Frost Titan ETB.
+  {
+    id: "frost-titan-etb-m628",
+    description: "Frost Titan ETB.",
+    seed: 0x905e,
+    cards: {
+      "Frost Titan M628": `Name:Frost Titan M628
+ManaCost:4 U U
+Types:Creature Giant
+PT:6/6
+T:Mode$ BecomesTarget | ValidSource$ Spell,Ability | ValidTarget$ Card.Self | Execute$ TrigCounter | UnlessCost$ 2
+SVar:TrigCounter:DB$ Counter | TargetType$ Spell,Ability | ValidTgts$ Card
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap
+SVar:TrigTap:DB$ Tap | TargetType$ Permanent | ValidTgts$ Permanent.OppCtrl
+Oracle:FT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frost Titan M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frost Titan M628", controller: SEAT0 }],
+  },
+
+  // 2074. Inferno Titan ETB.
+  {
+    id: "inferno-titan-etb-m628",
+    description: "Inferno Titan ETB.",
+    seed: 0x905f,
+    cards: {
+      "Inferno Titan M628": `Name:Inferno Titan M628
+ManaCost:4 R R
+Types:Creature Giant
+PT:6/6
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:IT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Inferno Titan M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Inferno Titan M628", controller: SEAT0 }],
+  },
+
+  // 2075. Grave Titan ETB.
+  {
+    id: "grave-titan-etb-m628",
+    description: "Grave Titan ETB.",
+    seed: 0x9060,
+    cards: {
+      "Grave Titan M628": `Name:Grave Titan M628
+ManaCost:4 B B
+Types:Creature Giant
+PT:6/6
+K:Deathtouch
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenAmount$ 2
+Oracle:GT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grave Titan M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grave Titan M628", controller: SEAT0 }],
+  },
+
+  // 2076. Doubling Season ETB.
+  {
+    id: "doubling-season-b-etb-m628",
+    description: "Doubling Season ETB.",
+    seed: 0x9061,
+    cards: {
+      "Doubling Season B M628": `Name:Doubling Season B M628
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:DS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doubling Season B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Doubling Season B M628", controller: SEAT0 }],
+  },
+
+  // 2077. Parallel Lives ETB.
+  {
+    id: "parallel-lives-etb-m628",
+    description: "Parallel Lives ETB.",
+    seed: 0x9062,
+    cards: {
+      "Parallel Lives M628": `Name:Parallel Lives M628
+ManaCost:3 G
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:PL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Parallel Lives M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Parallel Lives M628", controller: SEAT0 }],
+  },
+
+  // 2078. Anointed Procession ETB.
+  {
+    id: "anointed-procession-etb-m628",
+    description: "Anointed Procession ETB.",
+    seed: 0x9063,
+    cards: {
+      "Anointed Proc M628": `Name:Anointed Proc M628
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:AP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anointed Proc M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anointed Proc M628", controller: SEAT0 }],
+  },
+
+  // 2079. Primal Vigor ETB.
+  {
+    id: "primal-vigor-etb-m628",
+    description: "Primal Vigor ETB.",
+    seed: 0x9064,
+    cards: {
+      "Primal Vigor M628": `Name:Primal Vigor M628
+ManaCost:4 G
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ Each | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:PV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Primal Vigor M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Primal Vigor M628", controller: SEAT0 }],
+  },
+
+  // 2080. Thrun, the Last Troll ETB.
+  {
+    id: "thrun-the-last-troll-etb-m628",
+    description: "Thrun, the Last Troll ETB.",
+    seed: 0xa000,
+    cards: {
+      "Thrun M628": `Name:Thrun M628
+ManaCost:1 G G G
+Types:Legendary Creature Troll Shaman
+PT:4/4
+K:Hexproof
+A:AB$ Regenerate | Cost$ G | Defined$ Self
+Oracle:Thrun parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thrun M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thrun M628", controller: SEAT0 }],
+  },
+
+  // 2081. Heartfire instant in hand.
+  {
+    id: "heart-fire-etb-m628",
+    description: "Heartfire instant in hand.",
+    seed: 0xa001,
+    cards: {
+      "Heartfire M628": `Name:Heartfire M628
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R Sac<1/Creature> | NumDmg$ 4 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:HF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heartfire M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heartfire M628", controller: SEAT0 }],
+  },
+
+  // 2082. Temur Battle Rage instant in hand.
+  {
+    id: "temur-battle-rage-cast-m628",
+    description: "Temur Battle Rage instant in hand.",
+    seed: 0xa002,
+    cards: {
+      "Temur BR M628": `Name:Temur BR M628
+ManaCost:R
+Types:Instant
+A:SP$ Pump | Cost$ R | TargetType$ Creature | ValidTgts$ Creature | KW$ Trample & Double Strike
+Oracle:TBR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Temur BR M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2083. Become Immense instant in hand.
+  {
+    id: "become-immense-cast-m628",
+    description: "Become Immense instant in hand.",
+    seed: 0xa003,
+    cards: {
+      "Become Immense M628": `Name:Become Immense M628
+ManaCost:4 G
+Types:Instant
+K:Delve
+A:SP$ Pump | Cost$ 4 G | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | NumAtt$ +6 | NumDef$ +6
+Oracle:BI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Become Immense M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2084. Gut Shot Phyrexian instant.
+  {
+    id: "gut-shot-b-cast-m628",
+    description: "Gut Shot Phyrexian instant.",
+    seed: 0xa004,
+    cards: {
+      "Gut Shot B M628": `Name:Gut Shot B M628
+ManaCost:RP
+Types:Instant
+A:SP$ DealDamage | Cost$ RP | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any
+Oracle:GSB parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gut Shot B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2085. Llanowar Elves ETB.
+  {
+    id: "llanowar-elves-b-etb-m628",
+    description: "Llanowar Elves ETB.",
+    seed: 0xa005,
+    cards: {
+      "Llanowar Elves B M628": `Name:Llanowar Elves B M628
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1
+Oracle:LE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Llanowar Elves B M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Llanowar Elves B M628", controller: SEAT0 }],
+  },
+
+  // 2086. Fyndhorn Elves ETB.
+  {
+    id: "fyndhorn-elves-etb-m628",
+    description: "Fyndhorn Elves ETB.",
+    seed: 0xa006,
+    cards: {
+      "Fyndhorn Elves M628": `Name:Fyndhorn Elves M628
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1
+Oracle:FE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fyndhorn Elves M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fyndhorn Elves M628", controller: SEAT0 }],
+  },
+
+  // 2087. Arbor Elf ETB.
+  {
+    id: "arbor-elf-etb-m628",
+    description: "Arbor Elf ETB.",
+    seed: 0xa007,
+    cards: {
+      "Arbor Elf M628": `Name:Arbor Elf M628
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Untap | Cost$ T | TargetType$ Land | ValidTgts$ Forest
+Oracle:AE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arbor Elf M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arbor Elf M628", controller: SEAT0 }],
+  },
+
+  // 2088. Heritage Druid ETB.
+  {
+    id: "heritage-druid-etb-m628",
+    description: "Heritage Druid ETB.",
+    seed: 0xa008,
+    cards: {
+      "Heritage Druid M628": `Name:Heritage Druid M628
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ TapXType<3/Elf.Untapped+YouCtrl> | Produced$ G | Amount$ 3
+Oracle:HD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heritage Druid M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heritage Druid M628", controller: SEAT0 }],
+  },
+
+  // 2089. Nettle Sentinel ETB.
+  {
+    id: "nettle-sentinel-etb-m628",
+    description: "Nettle Sentinel ETB.",
+    seed: 0xa009,
+    cards: {
+      "Nettle Sentinel M628": `Name:Nettle Sentinel M628
+ManaCost:G
+Types:Creature Elf Warrior
+PT:2/2
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | CantUntapPhase$ Untap | Description$ no untap.
+T:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap
+SVar:TrigUntap:DB$ Untap | Defined$ Self
+Oracle:NS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nettle Sentinel M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nettle Sentinel M628", controller: SEAT0 }],
+  },
+
+  // 2090. Wirewood Symbiote ETB.
+  {
+    id: "wirewood-symbiote-etb-m628",
+    description: "Wirewood Symbiote ETB.",
+    seed: 0xa00a,
+    cards: {
+      "Wirewood Symbiote M628": `Name:Wirewood Symbiote M628
+ManaCost:G
+Types:Creature Insect
+PT:1/1
+A:AB$ Untap | Cost$ ReturnElf | Defined$ Creature
+Oracle:WS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wirewood Symbiote M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wirewood Symbiote M628", controller: SEAT0 }],
+  },
+
+  // 2091. Priest of Titania ETB.
+  {
+    id: "priest-of-titania-etb-m628",
+    description: "Priest of Titania ETB.",
+    seed: 0xa00b,
+    cards: {
+      "Priest Titania M628": `Name:Priest Titania M628
+ManaCost:1 G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$Valid Elf
+Oracle:PT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Priest Titania M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Priest Titania M628", controller: SEAT0 }],
+  },
+
+  // 2092. Elvish Archers ETB.
+  {
+    id: "elvish-archers-etb-m628",
+    description: "Elvish Archers ETB.",
+    seed: 0xa00c,
+    cards: {
+      "Elvish Archers M628": `Name:Elvish Archers M628
+ManaCost:G
+Types:Creature Elf Archer
+PT:2/1
+K:First Strike
+Oracle:EA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Archers M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Archers M628", controller: SEAT0 }],
+  },
+
+  // 2093. Selfless Spirit ETB; sac protect parse.
+  {
+    id: "selfless-spirit-etb-m628",
+    description: "Selfless Spirit ETB; sac protect parse.",
+    seed: 0xa00d,
+    cards: {
+      "Selfless Spirit M628": `Name:Selfless Spirit M628
+ManaCost:1 W
+Types:Creature Spirit
+PT:2/1
+K:Flying
+A:AB$ PumpAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.YouCtrl | KW$ Indestructible
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Selfless Spirit M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Selfless Spirit M628", controller: SEAT0 }],
+  },
+
+  // 2094. Mausoleum Wanderer ETB.
+  {
+    id: "mausoleum-wanderer-etb-m628",
+    description: "Mausoleum Wanderer ETB.",
+    seed: 0xa00e,
+    cards: {
+      "Mausoleum Wanderer M628": `Name:Mausoleum Wanderer M628
+ManaCost:U
+Types:Creature Spirit
+PT:1/1
+K:Flying
+A:AB$ Counter | Cost$ Sac<1/CARDNAME> | TargetType$ Spell | ValidTgts$ Card.nonCreature | UnlessCost$ X
+SVar:X:Count$Valid Spirit.YouCtrl
+Oracle:MW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mausoleum Wanderer M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mausoleum Wanderer M628", controller: SEAT0 }],
+  },
+
+  // 2095. Spell Queller ETB.
+  {
+    id: "spell-queller-etb-m628",
+    description: "Spell Queller ETB.",
+    seed: 0xa00f,
+    cards: {
+      "Spell Queller M628": `Name:Spell Queller M628
+ManaCost:1 W U
+Types:Creature Spirit
+PT:2/3
+K:Flash
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter
+SVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.cmcLE4 | RememberCounteredCMC$ True
+Oracle:SQ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spell Queller M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spell Queller M628", controller: SEAT0 }],
+  },
+
+  // 2096. Rattlechains ETB.
+  {
+    id: "rattlechains-etb-m628",
+    description: "Rattlechains ETB.",
+    seed: 0xa010,
+    cards: {
+      "Rattlechains M628": `Name:Rattlechains M628
+ManaCost:1 W
+Types:Creature Spirit
+PT:2/1
+K:Flash
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | TargetType$ Creature | ValidTgts$ Spirit.YouCtrl | KW$ Hexproof
+Oracle:RC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rattlechains M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rattlechains M628", controller: SEAT0 }],
+  },
+
+  // 2097. Geist of Saint Traft ETB.
+  {
+    id: "geist-saint-traft-etb-m628",
+    description: "Geist of Saint Traft ETB.",
+    seed: 0xa011,
+    cards: {
+      "Geist Traft M628": `Name:Geist Traft M628
+ManaCost:1 W U
+Types:Legendary Creature Spirit Cleric
+PT:2/2
+K:Hexproof
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken
+SVar:TrigToken:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenAmount$ 1 | TokenStaying$ EndOfCombat
+Oracle:GST parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Geist Traft M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Geist Traft M628", controller: SEAT0 }],
+  },
+
+  // 2098. Drogskol Captain ETB.
+  {
+    id: "drogskol-captain-etb-m628",
+    description: "Drogskol Captain ETB.",
+    seed: 0xa012,
+    cards: {
+      "Drogskol Captain M628": `Name:Drogskol Captain M628
+ManaCost:1 W U
+Types:Creature Spirit Soldier
+PT:2/2
+K:Flying
+S:Mode$ Continuous | Affected$ Spirit.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Hexproof
+Oracle:DC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Drogskol Captain M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Drogskol Captain M628", controller: SEAT0 }],
+  },
+
+  // 2099. Supreme Phantom ETB.
+  {
+    id: "supreme-phantom-etb-m628",
+    description: "Supreme Phantom ETB.",
+    seed: 0xa013,
+    cards: {
+      "Supreme Phantom M628": `Name:Supreme Phantom M628
+ManaCost:1 U
+Types:Creature Spirit
+PT:1/3
+K:Flying
+S:Mode$ Continuous | Affected$ Spirit.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1
+Oracle:SP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Supreme Phantom M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Supreme Phantom M628", controller: SEAT0 }],
+  },
+
+  // 2100. Empyrean Eagle ETB.
+  {
+    id: "empyrean-eagle-etb-m628",
+    description: "Empyrean Eagle ETB.",
+    seed: 0xa014,
+    cards: {
+      "Empyrean Eagle M628": `Name:Empyrean Eagle M628
+ManaCost:1 W U
+Types:Creature Bird Spirit
+PT:2/3
+K:Flying
+S:Mode$ Continuous | Affected$ Creature.Flying+YouCtrl+Other | AddPower$ 1 | AddToughness$ 1
+Oracle:EE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Empyrean Eagle M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Empyrean Eagle M628", controller: SEAT0 }],
+  },
+
+  // 2101. Favorable Winds ETB.
+  {
+    id: "favorable-winds-etb-m628",
+    description: "Favorable Winds ETB.",
+    seed: 0xa015,
+    cards: {
+      "Favorable Winds M628": `Name:Favorable Winds M628
+ManaCost:1 U
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.Flying+YouCtrl | AddPower$ 1 | AddToughness$ 1
+Oracle:FW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Favorable Winds M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Favorable Winds M628", controller: SEAT0 }],
+  },
+
+  // 2102. Shared Animosity ETB.
+  {
+    id: "shared-animosity-etb-m628",
+    description: "Shared Animosity ETB.",
+    seed: 0xa016,
+    cards: {
+      "Shared Animosity M628": `Name:Shared Animosity M628
+ManaCost:2 R
+Types:Enchantment
+T:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump
+SVar:TrigPump:DB$ Pump | Defined$ TriggeredAttacker | NumAtt$ X | References$ X
+SVar:X:TriggeredAttacker$Valid Creature.SharesCreatureType+attacking
+Oracle:SA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shared Animosity M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shared Animosity M628", controller: SEAT0 }],
+  },
+
+  // 2103. Coordinated Charge instant in hand.
+  {
+    id: "coordinated-charge-cast-m628",
+    description: "Coordinated Charge instant in hand.",
+    seed: 0xa017,
+    cards: {
+      "Coordinated Charge M628": `Name:Coordinated Charge M628
+ManaCost:R W
+Types:Instant
+A:SP$ PumpAll | Cost$ R W | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1
+Oracle:CC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coordinated Charge M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 2104. Unleash Fury instant in hand.
+  {
+    id: "unleash-fury-cast-m628",
+    description: "Unleash Fury instant in hand.",
+    seed: 0xa018,
+    cards: {
+      "Unleash Fury M628": `Name:Unleash Fury M628
+ManaCost:R
+Types:Instant
+A:SP$ Pump | Cost$ R | TargetType$ Creature | ValidTgts$ Creature | NumAtt$ X | NumDef$ X | References$ X
+SVar:X:TargetedPower
+Oracle:UF parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Unleash Fury M628"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
   },
 ];

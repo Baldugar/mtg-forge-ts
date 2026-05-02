@@ -1,0 +1,29 @@
+{
+  "id": "primeval-titan-etb-m628",
+  "description": "Primeval Titan ETB.",
+  "seed": 36956,
+  "cards": {
+    "Primeval Titan M628": "Name:Primeval Titan M628\nManaCost:4 G G\nTypes:Creature Giant\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSearch\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 2 | Tapped$ True\nOracle:PT parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primeval Titan M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Primeval Titan M628",
+      "controller": 0
+    }
+  ]
+}

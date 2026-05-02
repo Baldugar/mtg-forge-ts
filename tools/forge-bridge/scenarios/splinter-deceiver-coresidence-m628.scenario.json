@@ -1,0 +1,34 @@
+{
+  "id": "splinter-deceiver-coresidence-m628",
+  "description": "Splinter Twin + Deceiver Exarch co-residence parse.",
+  "seed": 2123,
+  "cards": {
+    "Deceiver Exarch B M628": "Name:Deceiver Exarch B M628\nManaCost:2 U\nTypes:Creature Cleric\nPT:1/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap\nSVar:TrigUntap:DB$ Untap | TargetType$ Permanent | ValidTgts$ Permanent\nOracle:DEB parse.\n",
+    "Splinter Twin B M628": "Name:Splinter Twin B M628\nManaCost:2 R R\nTypes:Enchantment Aura\nK:Enchant creature\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ TokenAB\nSVar:TokenAB:AB$ Token | Cost$ T | TokenScript$ CARDNAME_HASTE\nOracle:STB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deceiver Exarch B M628"
+      ],
+      "battlefield": [
+        {
+          "card": "Splinter Twin B M628"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Deceiver Exarch B M628",
+      "controller": 0
+    }
+  ]
+}

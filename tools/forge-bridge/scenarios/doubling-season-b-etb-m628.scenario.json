@@ -1,0 +1,29 @@
+{
+  "id": "doubling-season-b-etb-m628",
+  "description": "Doubling Season ETB.",
+  "seed": 36961,
+  "cards": {
+    "Doubling Season B M628": "Name:Doubling Season B M628\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:DS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doubling Season B M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Doubling Season B M628",
+      "controller": 0
+    }
+  ]
+}

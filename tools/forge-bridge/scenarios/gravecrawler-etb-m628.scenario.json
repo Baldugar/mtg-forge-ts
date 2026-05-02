@@ -1,0 +1,29 @@
+{
+  "id": "gravecrawler-etb-m628",
+  "description": "Gravecrawler ETB; recurring zombie parse.",
+  "seed": 2136,
+  "cards": {
+    "Gravecrawler M628": "Name:Gravecrawler M628\nManaCost:B\nTypes:Creature Zombie\nPT:2/1\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Graveyard | MayPlay$ True | MayPlayCondition$ HasZombie\nSVar:HasZombie:Count$Valid Zombie.YouCtrl/GE1\nOracle:GC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravecrawler M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gravecrawler M628",
+      "controller": 0
+    }
+  ]
+}

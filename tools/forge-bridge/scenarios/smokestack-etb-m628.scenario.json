@@ -1,0 +1,29 @@
+{
+  "id": "smokestack-etb-m628",
+  "description": "Smokestack ETB.",
+  "seed": 36874,
+  "cards": {
+    "Smokestack M628": "Name:Smokestack M628\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigSac\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | Amount$ X | References$ X\nSVar:X:Count$CardCounters.SOOT\nA:AB$ PutCounter | Cost$ T | CounterType$ SOOT | CounterNum$ 1 | Defined$ Self\nOracle:Smokestack parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smokestack M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Smokestack M628",
+      "controller": 0
+    }
+  ]
+}

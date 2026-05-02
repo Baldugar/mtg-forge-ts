@@ -1,0 +1,29 @@
+{
+  "id": "heartfire-hero-etb-m628",
+  "description": "Heartfire Hero ETB; valiant trigger parse.",
+  "seed": 2096,
+  "cards": {
+    "Heartfire Hero M628": "Name:Heartfire Hero M628\nManaCost:R\nTypes:Creature Mouse Warrior\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Hand | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ HH.\nSVar:TrigPump:DB$ PumpAll | NumAtt$ +1 | NumDef$ +1 | ValidCards$ Creature.YouCtrl | IsCurse$ False\nOracle:HH parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartfire Hero M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Heartfire Hero M628",
+      "controller": 0
+    }
+  ]
+}

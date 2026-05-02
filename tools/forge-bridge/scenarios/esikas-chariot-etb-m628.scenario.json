@@ -1,0 +1,29 @@
+{
+  "id": "esikas-chariot-etb-m628",
+  "description": "Esika's Chariot ETB; cat token parse.",
+  "seed": 2108,
+  "cards": {
+    "Esikas Chariot M628": "Name:Esikas Chariot M628\nManaCost:3 G\nTypes:Artifact Vehicle\nPT:4/4\nK:Crew:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ EC.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_cat | TokenAmount$ 2\nOracle:EC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esikas Chariot M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esikas Chariot M628",
+      "controller": 0
+    }
+  ]
+}

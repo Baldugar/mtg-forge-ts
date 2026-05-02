@@ -1,0 +1,29 @@
+{
+  "id": "geralfs-messenger-etb-m628",
+  "description": "Geralf's Messenger ETB; ETB drain parse.",
+  "seed": 2138,
+  "cards": {
+    "Geralfs Messenger M628": "Name:Geralfs Messenger M628\nManaCost:B B B\nTypes:Creature Zombie\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Opponent\nOracle:GM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geralfs Messenger M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Geralfs Messenger M628",
+      "controller": 0
+    }
+  ]
+}

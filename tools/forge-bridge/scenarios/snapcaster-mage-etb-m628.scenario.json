@@ -1,0 +1,29 @@
+{
+  "id": "snapcaster-mage-etb-m628",
+  "description": "Snapcaster Mage ETB; flashback grant parse.",
+  "seed": 36932,
+  "cards": {
+    "Snapcaster Mage M628": "Name:Snapcaster Mage M628\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGrant\nSVar:TrigGrant:DB$ Animate | TargetType$ Card | ValidTgts$ Card.Instant,Card.Sorcery+inZoneGraveyard | KW$ Flashback\nOracle:SM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snapcaster Mage M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Snapcaster Mage M628",
+      "controller": 0
+    }
+  ]
+}

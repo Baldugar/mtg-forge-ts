@@ -1,0 +1,29 @@
+{
+  "id": "selvala-heart-of-wilds-etb-m628",
+  "description": "Selvala, Heart of the Wilds ETB; mana parse.",
+  "seed": 2222,
+  "cards": {
+    "Selvala HW M628": "Name:Selvala HW M628\nManaCost:1 G G\nTypes:Legendary Creature Elf Scout\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Library | Destination$ Battlefield | ValidCard$ Creature | ValidPlayer$ Each | Execute$ TrigDraw\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X\nSVar:X:Count$Greatest.Power\nOracle:SHW parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selvala HW M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Selvala HW M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "brimaz-king-etb-m628",
+  "description": "Brimaz, King of Oreskos ETB; cat parse.",
+  "seed": 2141,
+  "cards": {
+    "Brimaz M628": "Name:Brimaz M628\nManaCost:1 W W\nTypes:Legendary Creature Cat Soldier\nPT:3/4\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat_soldier_attacking | TokenAmount$ 1\nOracle:Brimaz parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brimaz M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Brimaz M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "queen-marchesa-etb-m628",
+  "description": "Queen Marchesa ETB; assassin token parse.",
+  "seed": 2224,
+  "cards": {
+    "Queen Marchesa M628": "Name:Queen Marchesa M628\nManaCost:1 R W B\nTypes:Legendary Creature Human Noble Assassin\nPT:3/3\nK:Deathtouch\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ QM.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_assassin_dt | TokenAmount$ 1\nOracle:QM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Queen Marchesa M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Queen Marchesa M628",
+      "controller": 0
+    }
+  ]
+}

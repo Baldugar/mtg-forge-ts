@@ -1,0 +1,29 @@
+{
+  "id": "thraben-inspector-etb-m628",
+  "description": "Thraben Inspector ETB; clue parse.",
+  "seed": 2251,
+  "cards": {
+    "Thraben Inspector M628": "Name:Thraben Inspector M628\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenAmount$ 1\nOracle:TI parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thraben Inspector M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Thraben Inspector M628",
+      "controller": 0
+    }
+  ]
+}

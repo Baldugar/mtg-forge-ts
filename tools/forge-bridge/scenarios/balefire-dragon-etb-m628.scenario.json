@@ -1,0 +1,29 @@
+{
+  "id": "balefire-dragon-etb-m628",
+  "description": "Balefire Dragon ETB.",
+  "seed": 36866,
+  "cards": {
+    "Balefire Dragon M628": "Name:Balefire Dragon M628\nManaCost:5 R R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ DamageDoneOne | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmgAll\nSVar:TrigDmgAll:DB$ DamageAll | NumDmg$ 6 | ValidCards$ Creature.OppCtrl | ValidPlayers$ Opponent\nOracle:BFD parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Balefire Dragon M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Balefire Dragon M628",
+      "controller": 0
+    }
+  ]
+}

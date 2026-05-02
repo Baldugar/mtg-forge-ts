@@ -1,0 +1,29 @@
+{
+  "id": "bestiary-tribute-etb-m628",
+  "description": "Bestiary Tribute ETB; tribute beast parse.",
+  "seed": 36879,
+  "cards": {
+    "Bestiary Tribute M628": "Name:Bestiary Tribute M628\nManaCost:2 G G\nTypes:Creature Beast\nPT:0/0\nK:Tribute:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TributeAccepted$ False | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_beast | TokenAmount$ 1\nOracle:BT parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bestiary Tribute M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bestiary Tribute M628",
+      "controller": 0
+    }
+  ]
+}

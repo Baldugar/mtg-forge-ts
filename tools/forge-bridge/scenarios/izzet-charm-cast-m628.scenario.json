@@ -1,0 +1,23 @@
+{
+  "id": "izzet-charm-cast-m628",
+  "description": "Izzet Charm instant in hand.",
+  "seed": 36885,
+  "cards": {
+    "Izzet Charm M628": "Name:Izzet Charm M628\nManaCost:U R\nTypes:Instant\nA:SP$ Charm | Cost$ U R | Choices$ DBCounter,DBDmg,DBDraw\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.nonCreature | UnlessCost$ 2\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature | ValidTgts$ Creature\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose\nOracle:IC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Izzet Charm M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

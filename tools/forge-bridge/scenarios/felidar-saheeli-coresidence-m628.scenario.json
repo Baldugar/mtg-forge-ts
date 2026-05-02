@@ -1,0 +1,34 @@
+{
+  "id": "felidar-saheeli-coresidence-m628",
+  "description": "Felidar Guardian + Saheeli Rai co-residence parse.",
+  "seed": 2126,
+  "cards": {
+    "Felidar Guardian B M628": "Name:Felidar Guardian B M628\nManaCost:2 W\nTypes:Creature Beast\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlicker\nSVar:TrigFlicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TargetType$ Permanent | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield\nOracle:FGB parse.\n",
+    "Saheeli Rai B M628": "Name:Saheeli Rai B M628\nManaCost:1 U R\nTypes:Legendary Planeswalker Saheeli\nLoyalty:3\nA:AB$ Scry | Cost$ AddCounter<1/LOYALTY> | ScryNum$ 1 | Planeswalker$ True\nOracle:SRB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Felidar Guardian B M628"
+      ],
+      "battlefield": [
+        {
+          "card": "Saheeli Rai B M628"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Felidar Guardian B M628",
+      "controller": 0
+    }
+  ]
+}

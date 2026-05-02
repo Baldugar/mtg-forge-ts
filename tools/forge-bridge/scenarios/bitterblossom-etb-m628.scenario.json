@@ -1,0 +1,29 @@
+{
+  "id": "bitterblossom-etb-m628",
+  "description": "Bitterblossom ETB; faerie token + life loss parse.",
+  "seed": 2130,
+  "cards": {
+    "Bitterblossom M628": "Name:Bitterblossom M628\nManaCost:1 B\nTypes:Tribal Enchantment Faerie\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLifeLoss | TriggerDescription$ BB.\nSVar:TrigLifeLoss:DB$ LoseLife | LifeAmount$ 1 | Defined$ You | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_1_1_faerie_rogue_flying | TokenAmount$ 1\nOracle:BB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bitterblossom M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bitterblossom M628",
+      "controller": 0
+    }
+  ]
+}

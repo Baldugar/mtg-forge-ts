@@ -1,0 +1,23 @@
+{
+  "id": "rancor-aura-in-hand-m628",
+  "description": "Rancor aura in hand.",
+  "seed": 2151,
+  "cards": {
+    "Rancor M628": "Name:Rancor M628\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant creature\nA:SP$ Attach | Cost$ G | ValidTgts$ Creature\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddKeyword$ Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nOracle:Rancor parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rancor M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

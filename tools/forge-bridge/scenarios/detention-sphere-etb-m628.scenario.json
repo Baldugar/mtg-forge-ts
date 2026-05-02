@@ -1,0 +1,29 @@
+{
+  "id": "detention-sphere-etb-m628",
+  "description": "Detention Sphere ETB; exile group parse.",
+  "seed": 2148,
+  "cards": {
+    "Detention Sphere M628": "Name:Detention Sphere M628\nManaCost:1 W U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileAll\nSVar:TrigExileAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Permanent.SharesNameWithRemembered+OppCtrl\nOracle:DS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Detention Sphere M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Detention Sphere M628",
+      "controller": 0
+    }
+  ]
+}

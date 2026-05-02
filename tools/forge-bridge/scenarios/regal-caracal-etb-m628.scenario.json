@@ -1,0 +1,29 @@
+{
+  "id": "regal-caracal-etb-m628",
+  "description": "Regal Caracal ETB; cat anthem parse.",
+  "seed": 2142,
+  "cards": {
+    "Regal Caracal M628": "Name:Regal Caracal M628\nManaCost:3 W W\nTypes:Creature Cat\nPT:3/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat | TokenAmount$ 2\nS:Mode$ Continuous | Affected$ Cat.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1\nOracle:RC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Regal Caracal M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Regal Caracal M628",
+      "controller": 0
+    }
+  ]
+}

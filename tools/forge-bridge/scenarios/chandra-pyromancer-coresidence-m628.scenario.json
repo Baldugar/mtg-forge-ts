@@ -1,0 +1,34 @@
+{
+  "id": "chandra-pyromancer-coresidence-m628",
+  "description": "Chandra + Pyromancer's Goggles co-residence parse.",
+  "seed": 2159,
+  "cards": {
+    "Chandra B M628": "Name:Chandra B M628\nManaCost:2 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:4\nA:AB$ DealDamage | Cost$ AddCounter<1/LOYALTY> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Any | Planeswalker$ True\nOracle:CB parse.\n",
+    "Pyromancers Goggles M628": "Name:Pyromancers Goggles M628\nManaCost:5\nTypes:Legendary Artifact\nA:AB$ Mana | Cost$ T | Produced$ R | Amount$ 1\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility\nOracle:PG parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra B M628"
+      ],
+      "battlefield": [
+        {
+          "card": "Pyromancers Goggles M628"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Chandra B M628",
+      "controller": 0
+    }
+  ]
+}

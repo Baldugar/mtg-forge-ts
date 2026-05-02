@@ -1,0 +1,29 @@
+{
+  "id": "mana-vault-etb-m628",
+  "description": "Mana Vault ETB.",
+  "seed": 36946,
+  "cards": {
+    "Mana Vault M628": "Name:Mana Vault M628\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3\nT:Mode$ Phase | Phase$ Untap | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | OptionalDecider$ You\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nOracle:MV parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Vault M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mana Vault M628",
+      "controller": 0
+    }
+  ]
+}

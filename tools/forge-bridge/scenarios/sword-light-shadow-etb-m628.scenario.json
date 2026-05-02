@@ -1,0 +1,29 @@
+{
+  "id": "sword-light-shadow-etb-m628",
+  "description": "Sword of Light and Shadow ETB.",
+  "seed": 36950,
+  "cards": {
+    "Sword LS M628": "Name:Sword LS M628\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection from white & Protection from black\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1\nK:Equip:2\nOracle:SLS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword LS M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword LS M628",
+      "controller": 0
+    }
+  ]
+}

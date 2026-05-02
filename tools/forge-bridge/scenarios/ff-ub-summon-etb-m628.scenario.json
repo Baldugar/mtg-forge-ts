@@ -1,0 +1,29 @@
+{
+  "id": "ff-ub-summon-etb-m628",
+  "description": "FF UB Summon ETB; legendary parse.",
+  "seed": 2103,
+  "cards": {
+    "FF Summon M628": "Name:FF Summon M628\nManaCost:3 G\nTypes:Legendary Creature Spirit\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_elf_warrior | TokenAmount$ 3\nOracle:FF parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "FF Summon M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "FF Summon M628",
+      "controller": 0
+    }
+  ]
+}

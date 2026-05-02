@@ -1,0 +1,29 @@
+{
+  "id": "esper-sentinel-etb-m628",
+  "description": "Esper Sentinel ETB.",
+  "seed": 36941,
+  "cards": {
+    "Esper Sentinel M628": "Name:Esper Sentinel M628\nManaCost:W\nTypes:Artifact Creature Human Advisor\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | UnlessCost$ X\nSVar:X:Count$Valid Card.IsRemembered/CardPower\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:ES parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esper Sentinel M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esper Sentinel M628",
+      "controller": 0
+    }
+  ]
+}

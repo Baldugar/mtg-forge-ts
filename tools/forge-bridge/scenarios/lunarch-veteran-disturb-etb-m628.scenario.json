@@ -1,0 +1,29 @@
+{
+  "id": "lunarch-veteran-disturb-etb-m628",
+  "description": "Lunarch Veteran ETB; disturb parse.",
+  "seed": 2205,
+  "cards": {
+    "Lunarch Veteran M628": "Name:Lunarch Veteran M628\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nAlternateMode:DoubleFaced\nK:Disturb:2 W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:LV parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lunarch Veteran M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Lunarch Veteran M628",
+      "controller": 0
+    }
+  ]
+}

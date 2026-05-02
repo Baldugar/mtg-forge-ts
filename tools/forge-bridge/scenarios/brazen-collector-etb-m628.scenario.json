@@ -1,0 +1,29 @@
+{
+  "id": "brazen-collector-etb-m628",
+  "description": "Brazen Collector ETB; expend reset parse.",
+  "seed": 36891,
+  "cards": {
+    "Brazen Collector M628": "Name:Brazen Collector M628\nManaCost:2 R\nTypes:Creature Squirrel Pirate\nPT:2/3\nK:etbCounter:CHARGE:0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1 | Defined$ Self\nOracle:BC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brazen Collector M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Brazen Collector M628",
+      "controller": 0
+    }
+  ]
+}

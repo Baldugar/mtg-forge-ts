@@ -1,0 +1,29 @@
+{
+  "id": "goblin-piledriver-etb-m628",
+  "description": "Goblin Piledriver ETB; goblin lord parse.",
+  "seed": 2135,
+  "cards": {
+    "Goblin Piledriver M628": "Name:Goblin Piledriver M628\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/2\nK:Protection from blue\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ X | References$ X\nSVar:X:Count$Valid Goblin.YouCtrl/Times.2/Minus.2\nOracle:GP parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Piledriver M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Piledriver M628",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "inferno-titan-etb-m628",
+  "description": "Inferno Titan ETB.",
+  "seed": 36959,
+  "cards": {
+    "Inferno Titan M628": "Name:Inferno Titan M628\nManaCost:4 R R\nTypes:Creature Giant\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Player | ValidTgts$ Any\nOracle:IT parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inferno Titan M628"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Inferno Titan M628",
+      "controller": 0
+    }
+  ]
+}
