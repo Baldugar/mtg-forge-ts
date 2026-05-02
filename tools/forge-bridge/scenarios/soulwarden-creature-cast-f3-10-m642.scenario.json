@@ -1,0 +1,41 @@
+{
+  "id": "soulwarden-creature-cast-f3-10-m642",
+  "description": "Soul Warden F3 10 — cast a vanilla bear with warden out, life→21.",
+  "seed": 50930,
+  "cards": {
+    "WardenF3-10 M642": "Name:WardenF3-10 M642\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:WardenF3-10 M642 test.\n",
+    "BearF3-10 M642": "Name:BearF3-10 M642\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:BearF3-10 M642 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "BearF3-10 M642"
+      ],
+      "battlefield": [
+        {
+          "card": "WardenF3-10 M642"
+        }
+      ],
+      "manaPool": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "BearF3-10 M642",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
