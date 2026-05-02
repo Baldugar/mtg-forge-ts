@@ -98383,4 +98383,2885 @@ Oracle:MfF-19 M644 test.
     ],
     actions: [{ kind: "cast", cardName: "MfF-19 M644", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
   },
+  // generated 130 scenarios; next i=4246, next seed=0xc88c
+
+  // 4116. Vigilance ETB 0 — vigilance spirit cast.
+  {
+    id: "vigilance-etb-0-m645",
+    description: "Vigilance ETB 0 — vigilance spirit cast.",
+    seed: 0xc80a,
+    cards: {
+      "VglA-0 M645": `Name:VglA-0 M645
+ManaCost:1 W
+Types:Creature Spirit
+PT:2/2
+K:Vigilance
+Oracle:VglA-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-0 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4117. Vigilance ETB 1 — vigilance wizard cast.
+  {
+    id: "vigilance-etb-1-m645",
+    description: "Vigilance ETB 1 — vigilance wizard cast.",
+    seed: 0xc80b,
+    cards: {
+      "VglA-1 M645": `Name:VglA-1 M645
+ManaCost:1 W
+Types:Creature Wizard
+PT:2/2
+K:Vigilance
+Oracle:VglA-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-1 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4118. Vigilance ETB 2 — vigilance warrior cast.
+  {
+    id: "vigilance-etb-2-m645",
+    description: "Vigilance ETB 2 — vigilance warrior cast.",
+    seed: 0xc80c,
+    cards: {
+      "VglA-2 M645": `Name:VglA-2 M645
+ManaCost:1 W
+Types:Creature Warrior
+PT:2/2
+K:Vigilance
+Oracle:VglA-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-2 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4119. Vigilance ETB 3 — vigilance soldier cast.
+  {
+    id: "vigilance-etb-3-m645",
+    description: "Vigilance ETB 3 — vigilance soldier cast.",
+    seed: 0xc80d,
+    cards: {
+      "VglA-3 M645": `Name:VglA-3 M645
+ManaCost:1 W
+Types:Creature Soldier
+PT:2/2
+K:Vigilance
+Oracle:VglA-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-3 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4120. Vigilance ETB 4 — vigilance knight cast.
+  {
+    id: "vigilance-etb-4-m645",
+    description: "Vigilance ETB 4 — vigilance knight cast.",
+    seed: 0xc80e,
+    cards: {
+      "VglA-4 M645": `Name:VglA-4 M645
+ManaCost:1 W
+Types:Creature Knight
+PT:2/2
+K:Vigilance
+Oracle:VglA-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-4 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4121. Vigilance ETB 5 — vigilance cleric cast.
+  {
+    id: "vigilance-etb-5-m645",
+    description: "Vigilance ETB 5 — vigilance cleric cast.",
+    seed: 0xc80f,
+    cards: {
+      "VglA-5 M645": `Name:VglA-5 M645
+ManaCost:1 W
+Types:Creature Cleric
+PT:2/2
+K:Vigilance
+Oracle:VglA-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-5 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4122. Vigilance ETB 6 — vigilance druid cast.
+  {
+    id: "vigilance-etb-6-m645",
+    description: "Vigilance ETB 6 — vigilance druid cast.",
+    seed: 0xc810,
+    cards: {
+      "VglA-6 M645": `Name:VglA-6 M645
+ManaCost:1 W
+Types:Creature Druid
+PT:2/2
+K:Vigilance
+Oracle:VglA-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-6 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4123. Vigilance ETB 7 — vigilance beast cast.
+  {
+    id: "vigilance-etb-7-m645",
+    description: "Vigilance ETB 7 — vigilance beast cast.",
+    seed: 0xc811,
+    cards: {
+      "VglA-7 M645": `Name:VglA-7 M645
+ManaCost:1 W
+Types:Creature Beast
+PT:2/2
+K:Vigilance
+Oracle:VglA-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-7 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4124. Vigilance ETB 8 — vigilance bear cast.
+  {
+    id: "vigilance-etb-8-m645",
+    description: "Vigilance ETB 8 — vigilance bear cast.",
+    seed: 0xc812,
+    cards: {
+      "VglA-8 M645": `Name:VglA-8 M645
+ManaCost:1 W
+Types:Creature Bear
+PT:2/2
+K:Vigilance
+Oracle:VglA-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-8 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4125. Vigilance ETB 9 — vigilance cat cast.
+  {
+    id: "vigilance-etb-9-m645",
+    description: "Vigilance ETB 9 — vigilance cat cast.",
+    seed: 0xc813,
+    cards: {
+      "VglA-9 M645": `Name:VglA-9 M645
+ManaCost:1 W
+Types:Creature Cat
+PT:2/2
+K:Vigilance
+Oracle:VglA-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-9 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "VglA-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4126. Vigilance ETB 10 — vigilance dragon cast.
+  {
+    id: "vigilance-etb-10-m645",
+    description: "Vigilance ETB 10 — vigilance dragon cast.",
+    seed: 0xc814,
+    cards: {
+      "VglA-10 M645": `Name:VglA-10 M645
+ManaCost:1 W
+Types:Creature Dragon
+PT:2/2
+K:Vigilance
+Oracle:VglA-10 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-10 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-10 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4127. Vigilance ETB 11 — vigilance demon cast.
+  {
+    id: "vigilance-etb-11-m645",
+    description: "Vigilance ETB 11 — vigilance demon cast.",
+    seed: 0xc815,
+    cards: {
+      "VglA-11 M645": `Name:VglA-11 M645
+ManaCost:1 W
+Types:Creature Demon
+PT:2/2
+K:Vigilance
+Oracle:VglA-11 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-11 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-11 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4128. Vigilance ETB 12 — vigilance vampire cast.
+  {
+    id: "vigilance-etb-12-m645",
+    description: "Vigilance ETB 12 — vigilance vampire cast.",
+    seed: 0xc816,
+    cards: {
+      "VglA-12 M645": `Name:VglA-12 M645
+ManaCost:1 W
+Types:Creature Vampire
+PT:2/2
+K:Vigilance
+Oracle:VglA-12 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-12 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-12 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4129. Vigilance ETB 13 — vigilance specter cast.
+  {
+    id: "vigilance-etb-13-m645",
+    description: "Vigilance ETB 13 — vigilance specter cast.",
+    seed: 0xc817,
+    cards: {
+      "VglA-13 M645": `Name:VglA-13 M645
+ManaCost:1 W
+Types:Creature Specter
+PT:2/2
+K:Vigilance
+Oracle:VglA-13 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-13 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-13 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4130. Vigilance ETB 14 — vigilance spider cast.
+  {
+    id: "vigilance-etb-14-m645",
+    description: "Vigilance ETB 14 — vigilance spider cast.",
+    seed: 0xc818,
+    cards: {
+      "VglA-14 M645": `Name:VglA-14 M645
+ManaCost:1 W
+Types:Creature Spider
+PT:2/2
+K:Vigilance
+Oracle:VglA-14 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-14 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-14 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4131. Vigilance ETB 15 — vigilance snake cast.
+  {
+    id: "vigilance-etb-15-m645",
+    description: "Vigilance ETB 15 — vigilance snake cast.",
+    seed: 0xc819,
+    cards: {
+      "VglA-15 M645": `Name:VglA-15 M645
+ManaCost:1 W
+Types:Creature Snake
+PT:2/2
+K:Vigilance
+Oracle:VglA-15 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-15 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-15 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4132. Vigilance ETB 16 — vigilance goblin cast.
+  {
+    id: "vigilance-etb-16-m645",
+    description: "Vigilance ETB 16 — vigilance goblin cast.",
+    seed: 0xc81a,
+    cards: {
+      "VglA-16 M645": `Name:VglA-16 M645
+ManaCost:1 W
+Types:Creature Goblin
+PT:2/2
+K:Vigilance
+Oracle:VglA-16 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-16 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-16 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4133. Vigilance ETB 17 — vigilance elf cast.
+  {
+    id: "vigilance-etb-17-m645",
+    description: "Vigilance ETB 17 — vigilance elf cast.",
+    seed: 0xc81b,
+    cards: {
+      "VglA-17 M645": `Name:VglA-17 M645
+ManaCost:1 W
+Types:Creature Elf
+PT:2/2
+K:Vigilance
+Oracle:VglA-17 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-17 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-17 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4134. Vigilance ETB 18 — vigilance phoenix cast.
+  {
+    id: "vigilance-etb-18-m645",
+    description: "Vigilance ETB 18 — vigilance phoenix cast.",
+    seed: 0xc81c,
+    cards: {
+      "VglA-18 M645": `Name:VglA-18 M645
+ManaCost:1 W
+Types:Creature Phoenix
+PT:2/2
+K:Vigilance
+Oracle:VglA-18 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-18 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-18 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4135. Vigilance ETB 19 — vigilance sphinx cast.
+  {
+    id: "vigilance-etb-19-m645",
+    description: "Vigilance ETB 19 — vigilance sphinx cast.",
+    seed: 0xc81d,
+    cards: {
+      "VglA-19 M645": `Name:VglA-19 M645
+ManaCost:1 W
+Types:Creature Sphinx
+PT:2/2
+K:Vigilance
+Oracle:VglA-19 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["VglA-19 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "VglA-19 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4136. Lifelink ETB 0 — lifelink goblin cast.
+  {
+    id: "lifelink-etb-0-m645",
+    description: "Lifelink ETB 0 — lifelink goblin cast.",
+    seed: 0xc81e,
+    cards: {
+      "LflB-0 M645": `Name:LflB-0 M645
+ManaCost:1 W
+Types:Creature Goblin
+PT:1/2
+K:Lifelink
+Oracle:LflB-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-0 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4137. Lifelink ETB 1 — lifelink berserker cast.
+  {
+    id: "lifelink-etb-1-m645",
+    description: "Lifelink ETB 1 — lifelink berserker cast.",
+    seed: 0xc81f,
+    cards: {
+      "LflB-1 M645": `Name:LflB-1 M645
+ManaCost:1 W
+Types:Creature Berserker
+PT:1/2
+K:Lifelink
+Oracle:LflB-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-1 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4138. Lifelink ETB 2 — lifelink warrior cast.
+  {
+    id: "lifelink-etb-2-m645",
+    description: "Lifelink ETB 2 — lifelink warrior cast.",
+    seed: 0xc820,
+    cards: {
+      "LflB-2 M645": `Name:LflB-2 M645
+ManaCost:1 W
+Types:Creature Warrior
+PT:1/2
+K:Lifelink
+Oracle:LflB-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-2 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4139. Lifelink ETB 3 — lifelink knight cast.
+  {
+    id: "lifelink-etb-3-m645",
+    description: "Lifelink ETB 3 — lifelink knight cast.",
+    seed: 0xc821,
+    cards: {
+      "LflB-3 M645": `Name:LflB-3 M645
+ManaCost:1 W
+Types:Creature Knight
+PT:1/2
+K:Lifelink
+Oracle:LflB-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-3 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4140. Lifelink ETB 4 — lifelink soldier cast.
+  {
+    id: "lifelink-etb-4-m645",
+    description: "Lifelink ETB 4 — lifelink soldier cast.",
+    seed: 0xc822,
+    cards: {
+      "LflB-4 M645": `Name:LflB-4 M645
+ManaCost:1 W
+Types:Creature Soldier
+PT:1/2
+K:Lifelink
+Oracle:LflB-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-4 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4141. Lifelink ETB 5 — lifelink vampire cast.
+  {
+    id: "lifelink-etb-5-m645",
+    description: "Lifelink ETB 5 — lifelink vampire cast.",
+    seed: 0xc823,
+    cards: {
+      "LflB-5 M645": `Name:LflB-5 M645
+ManaCost:1 W
+Types:Creature Vampire
+PT:1/2
+K:Lifelink
+Oracle:LflB-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-5 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4142. Lifelink ETB 6 — lifelink demon cast.
+  {
+    id: "lifelink-etb-6-m645",
+    description: "Lifelink ETB 6 — lifelink demon cast.",
+    seed: 0xc824,
+    cards: {
+      "LflB-6 M645": `Name:LflB-6 M645
+ManaCost:1 W
+Types:Creature Demon
+PT:1/2
+K:Lifelink
+Oracle:LflB-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-6 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4143. Lifelink ETB 7 — lifelink phoenix cast.
+  {
+    id: "lifelink-etb-7-m645",
+    description: "Lifelink ETB 7 — lifelink phoenix cast.",
+    seed: 0xc825,
+    cards: {
+      "LflB-7 M645": `Name:LflB-7 M645
+ManaCost:1 W
+Types:Creature Phoenix
+PT:1/2
+K:Lifelink
+Oracle:LflB-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-7 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4144. Lifelink ETB 8 — lifelink wraith cast.
+  {
+    id: "lifelink-etb-8-m645",
+    description: "Lifelink ETB 8 — lifelink wraith cast.",
+    seed: 0xc826,
+    cards: {
+      "LflB-8 M645": `Name:LflB-8 M645
+ManaCost:1 W
+Types:Creature Wraith
+PT:1/2
+K:Lifelink
+Oracle:LflB-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-8 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4145. Lifelink ETB 9 — lifelink spirit cast.
+  {
+    id: "lifelink-etb-9-m645",
+    description: "Lifelink ETB 9 — lifelink spirit cast.",
+    seed: 0xc827,
+    cards: {
+      "LflB-9 M645": `Name:LflB-9 M645
+ManaCost:1 W
+Types:Creature Spirit
+PT:1/2
+K:Lifelink
+Oracle:LflB-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-9 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "LflB-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4146. Lifelink ETB 10 — lifelink cat cast.
+  {
+    id: "lifelink-etb-10-m645",
+    description: "Lifelink ETB 10 — lifelink cat cast.",
+    seed: 0xc828,
+    cards: {
+      "LflB-10 M645": `Name:LflB-10 M645
+ManaCost:1 W
+Types:Creature Cat
+PT:1/2
+K:Lifelink
+Oracle:LflB-10 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-10 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-10 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4147. Lifelink ETB 11 — lifelink bear cast.
+  {
+    id: "lifelink-etb-11-m645",
+    description: "Lifelink ETB 11 — lifelink bear cast.",
+    seed: 0xc829,
+    cards: {
+      "LflB-11 M645": `Name:LflB-11 M645
+ManaCost:1 W
+Types:Creature Bear
+PT:1/2
+K:Lifelink
+Oracle:LflB-11 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-11 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-11 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4148. Lifelink ETB 12 — lifelink beast cast.
+  {
+    id: "lifelink-etb-12-m645",
+    description: "Lifelink ETB 12 — lifelink beast cast.",
+    seed: 0xc82a,
+    cards: {
+      "LflB-12 M645": `Name:LflB-12 M645
+ManaCost:1 W
+Types:Creature Beast
+PT:1/2
+K:Lifelink
+Oracle:LflB-12 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-12 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-12 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4149. Lifelink ETB 13 — lifelink hydra cast.
+  {
+    id: "lifelink-etb-13-m645",
+    description: "Lifelink ETB 13 — lifelink hydra cast.",
+    seed: 0xc82b,
+    cards: {
+      "LflB-13 M645": `Name:LflB-13 M645
+ManaCost:1 W
+Types:Creature Hydra
+PT:1/2
+K:Lifelink
+Oracle:LflB-13 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-13 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-13 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4150. Lifelink ETB 14 — lifelink dragon cast.
+  {
+    id: "lifelink-etb-14-m645",
+    description: "Lifelink ETB 14 — lifelink dragon cast.",
+    seed: 0xc82c,
+    cards: {
+      "LflB-14 M645": `Name:LflB-14 M645
+ManaCost:1 W
+Types:Creature Dragon
+PT:1/2
+K:Lifelink
+Oracle:LflB-14 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-14 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-14 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4151. Lifelink ETB 15 — lifelink wizard cast.
+  {
+    id: "lifelink-etb-15-m645",
+    description: "Lifelink ETB 15 — lifelink wizard cast.",
+    seed: 0xc82d,
+    cards: {
+      "LflB-15 M645": `Name:LflB-15 M645
+ManaCost:1 W
+Types:Creature Wizard
+PT:1/2
+K:Lifelink
+Oracle:LflB-15 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-15 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-15 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4152. Lifelink ETB 16 — lifelink druid cast.
+  {
+    id: "lifelink-etb-16-m645",
+    description: "Lifelink ETB 16 — lifelink druid cast.",
+    seed: 0xc82e,
+    cards: {
+      "LflB-16 M645": `Name:LflB-16 M645
+ManaCost:1 W
+Types:Creature Druid
+PT:1/2
+K:Lifelink
+Oracle:LflB-16 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-16 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-16 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4153. Lifelink ETB 17 — lifelink cleric cast.
+  {
+    id: "lifelink-etb-17-m645",
+    description: "Lifelink ETB 17 — lifelink cleric cast.",
+    seed: 0xc82f,
+    cards: {
+      "LflB-17 M645": `Name:LflB-17 M645
+ManaCost:1 W
+Types:Creature Cleric
+PT:1/2
+K:Lifelink
+Oracle:LflB-17 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-17 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-17 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4154. Lifelink ETB 18 — lifelink snake cast.
+  {
+    id: "lifelink-etb-18-m645",
+    description: "Lifelink ETB 18 — lifelink snake cast.",
+    seed: 0xc830,
+    cards: {
+      "LflB-18 M645": `Name:LflB-18 M645
+ManaCost:1 W
+Types:Creature Snake
+PT:1/2
+K:Lifelink
+Oracle:LflB-18 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-18 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-18 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4155. Lifelink ETB 19 — lifelink bird cast.
+  {
+    id: "lifelink-etb-19-m645",
+    description: "Lifelink ETB 19 — lifelink bird cast.",
+    seed: 0xc831,
+    cards: {
+      "LflB-19 M645": `Name:LflB-19 M645
+ManaCost:1 W
+Types:Creature Bird
+PT:1/2
+K:Lifelink
+Oracle:LflB-19 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["LflB-19 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "LflB-19 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4156. Deathtouch ETB 0 — deathtouch knight cast.
+  {
+    id: "deathtouch-etb-0-m645",
+    description: "Deathtouch ETB 0 — deathtouch knight cast.",
+    seed: 0xc832,
+    cards: {
+      "DthC-0 M645": `Name:DthC-0 M645
+ManaCost:1 B
+Types:Creature Knight
+PT:1/1
+K:Deathtouch
+Oracle:DthC-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-0 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4157. Deathtouch ETB 1 — deathtouch soldier cast.
+  {
+    id: "deathtouch-etb-1-m645",
+    description: "Deathtouch ETB 1 — deathtouch soldier cast.",
+    seed: 0xc833,
+    cards: {
+      "DthC-1 M645": `Name:DthC-1 M645
+ManaCost:1 B
+Types:Creature Soldier
+PT:1/1
+K:Deathtouch
+Oracle:DthC-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-1 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4158. Deathtouch ETB 2 — deathtouch angel cast.
+  {
+    id: "deathtouch-etb-2-m645",
+    description: "Deathtouch ETB 2 — deathtouch angel cast.",
+    seed: 0xc834,
+    cards: {
+      "DthC-2 M645": `Name:DthC-2 M645
+ManaCost:1 B
+Types:Creature Angel
+PT:1/1
+K:Deathtouch
+Oracle:DthC-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-2 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4159. Deathtouch ETB 3 — deathtouch spirit cast.
+  {
+    id: "deathtouch-etb-3-m645",
+    description: "Deathtouch ETB 3 — deathtouch spirit cast.",
+    seed: 0xc835,
+    cards: {
+      "DthC-3 M645": `Name:DthC-3 M645
+ManaCost:1 B
+Types:Creature Spirit
+PT:1/1
+K:Deathtouch
+Oracle:DthC-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-3 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4160. Deathtouch ETB 4 — deathtouch cleric cast.
+  {
+    id: "deathtouch-etb-4-m645",
+    description: "Deathtouch ETB 4 — deathtouch cleric cast.",
+    seed: 0xc836,
+    cards: {
+      "DthC-4 M645": `Name:DthC-4 M645
+ManaCost:1 B
+Types:Creature Cleric
+PT:1/1
+K:Deathtouch
+Oracle:DthC-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-4 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4161. Deathtouch ETB 5 — deathtouch wizard cast.
+  {
+    id: "deathtouch-etb-5-m645",
+    description: "Deathtouch ETB 5 — deathtouch wizard cast.",
+    seed: 0xc837,
+    cards: {
+      "DthC-5 M645": `Name:DthC-5 M645
+ManaCost:1 B
+Types:Creature Wizard
+PT:1/1
+K:Deathtouch
+Oracle:DthC-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-5 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4162. Deathtouch ETB 6 — deathtouch druid cast.
+  {
+    id: "deathtouch-etb-6-m645",
+    description: "Deathtouch ETB 6 — deathtouch druid cast.",
+    seed: 0xc838,
+    cards: {
+      "DthC-6 M645": `Name:DthC-6 M645
+ManaCost:1 B
+Types:Creature Druid
+PT:1/1
+K:Deathtouch
+Oracle:DthC-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-6 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4163. Deathtouch ETB 7 — deathtouch warrior cast.
+  {
+    id: "deathtouch-etb-7-m645",
+    description: "Deathtouch ETB 7 — deathtouch warrior cast.",
+    seed: 0xc839,
+    cards: {
+      "DthC-7 M645": `Name:DthC-7 M645
+ManaCost:1 B
+Types:Creature Warrior
+PT:1/1
+K:Deathtouch
+Oracle:DthC-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-7 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4164. Deathtouch ETB 8 — deathtouch berserker cast.
+  {
+    id: "deathtouch-etb-8-m645",
+    description: "Deathtouch ETB 8 — deathtouch berserker cast.",
+    seed: 0xc83a,
+    cards: {
+      "DthC-8 M645": `Name:DthC-8 M645
+ManaCost:1 B
+Types:Creature Berserker
+PT:1/1
+K:Deathtouch
+Oracle:DthC-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-8 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4165. Deathtouch ETB 9 — deathtouch goblin cast.
+  {
+    id: "deathtouch-etb-9-m645",
+    description: "Deathtouch ETB 9 — deathtouch goblin cast.",
+    seed: 0xc83b,
+    cards: {
+      "DthC-9 M645": `Name:DthC-9 M645
+ManaCost:1 B
+Types:Creature Goblin
+PT:1/1
+K:Deathtouch
+Oracle:DthC-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-9 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DthC-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4166. Deathtouch ETB 10 — deathtouch vampire cast.
+  {
+    id: "deathtouch-etb-10-m645",
+    description: "Deathtouch ETB 10 — deathtouch vampire cast.",
+    seed: 0xc83c,
+    cards: {
+      "DthC-10 M645": `Name:DthC-10 M645
+ManaCost:1 B
+Types:Creature Vampire
+PT:1/1
+K:Deathtouch
+Oracle:DthC-10 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-10 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-10 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4167. Deathtouch ETB 11 — deathtouch demon cast.
+  {
+    id: "deathtouch-etb-11-m645",
+    description: "Deathtouch ETB 11 — deathtouch demon cast.",
+    seed: 0xc83d,
+    cards: {
+      "DthC-11 M645": `Name:DthC-11 M645
+ManaCost:1 B
+Types:Creature Demon
+PT:1/1
+K:Deathtouch
+Oracle:DthC-11 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-11 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-11 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4168. Deathtouch ETB 12 — deathtouch beast cast.
+  {
+    id: "deathtouch-etb-12-m645",
+    description: "Deathtouch ETB 12 — deathtouch beast cast.",
+    seed: 0xc83e,
+    cards: {
+      "DthC-12 M645": `Name:DthC-12 M645
+ManaCost:1 B
+Types:Creature Beast
+PT:1/1
+K:Deathtouch
+Oracle:DthC-12 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-12 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-12 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4169. Deathtouch ETB 13 — deathtouch bear cast.
+  {
+    id: "deathtouch-etb-13-m645",
+    description: "Deathtouch ETB 13 — deathtouch bear cast.",
+    seed: 0xc83f,
+    cards: {
+      "DthC-13 M645": `Name:DthC-13 M645
+ManaCost:1 B
+Types:Creature Bear
+PT:1/1
+K:Deathtouch
+Oracle:DthC-13 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-13 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-13 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4170. Deathtouch ETB 14 — deathtouch cat cast.
+  {
+    id: "deathtouch-etb-14-m645",
+    description: "Deathtouch ETB 14 — deathtouch cat cast.",
+    seed: 0xc840,
+    cards: {
+      "DthC-14 M645": `Name:DthC-14 M645
+ManaCost:1 B
+Types:Creature Cat
+PT:1/1
+K:Deathtouch
+Oracle:DthC-14 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-14 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-14 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4171. Deathtouch ETB 15 — deathtouch sphinx cast.
+  {
+    id: "deathtouch-etb-15-m645",
+    description: "Deathtouch ETB 15 — deathtouch sphinx cast.",
+    seed: 0xc841,
+    cards: {
+      "DthC-15 M645": `Name:DthC-15 M645
+ManaCost:1 B
+Types:Creature Sphinx
+PT:1/1
+K:Deathtouch
+Oracle:DthC-15 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-15 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-15 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4172. Deathtouch ETB 16 — deathtouch phoenix cast.
+  {
+    id: "deathtouch-etb-16-m645",
+    description: "Deathtouch ETB 16 — deathtouch phoenix cast.",
+    seed: 0xc842,
+    cards: {
+      "DthC-16 M645": `Name:DthC-16 M645
+ManaCost:1 B
+Types:Creature Phoenix
+PT:1/1
+K:Deathtouch
+Oracle:DthC-16 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-16 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-16 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4173. Deathtouch ETB 17 — deathtouch hydra cast.
+  {
+    id: "deathtouch-etb-17-m645",
+    description: "Deathtouch ETB 17 — deathtouch hydra cast.",
+    seed: 0xc843,
+    cards: {
+      "DthC-17 M645": `Name:DthC-17 M645
+ManaCost:1 B
+Types:Creature Hydra
+PT:1/1
+K:Deathtouch
+Oracle:DthC-17 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-17 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-17 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4174. Deathtouch ETB 18 — deathtouch dragon cast.
+  {
+    id: "deathtouch-etb-18-m645",
+    description: "Deathtouch ETB 18 — deathtouch dragon cast.",
+    seed: 0xc844,
+    cards: {
+      "DthC-18 M645": `Name:DthC-18 M645
+ManaCost:1 B
+Types:Creature Dragon
+PT:1/1
+K:Deathtouch
+Oracle:DthC-18 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-18 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-18 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4175. Deathtouch ETB 19 — deathtouch snake cast.
+  {
+    id: "deathtouch-etb-19-m645",
+    description: "Deathtouch ETB 19 — deathtouch snake cast.",
+    seed: 0xc845,
+    cards: {
+      "DthC-19 M645": `Name:DthC-19 M645
+ManaCost:1 B
+Types:Creature Snake
+PT:1/1
+K:Deathtouch
+Oracle:DthC-19 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DthC-19 M645"], battlefield: [], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DthC-19 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4176. Reach ETB 0 — reach wall cast.
+  {
+    id: "reach-etb-0-m645",
+    description: "Reach ETB 0 — reach wall cast.",
+    seed: 0xc846,
+    cards: {
+      "RchD-0 M645": `Name:RchD-0 M645
+ManaCost:1 G
+Types:Creature Wall
+PT:1/3
+K:Reach
+Oracle:RchD-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-0 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4177. Reach ETB 1 — reach golem cast.
+  {
+    id: "reach-etb-1-m645",
+    description: "Reach ETB 1 — reach golem cast.",
+    seed: 0xc847,
+    cards: {
+      "RchD-1 M645": `Name:RchD-1 M645
+ManaCost:1 G
+Types:Creature Golem
+PT:1/3
+K:Reach
+Oracle:RchD-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-1 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4178. Reach ETB 2 — reach construct cast.
+  {
+    id: "reach-etb-2-m645",
+    description: "Reach ETB 2 — reach construct cast.",
+    seed: 0xc848,
+    cards: {
+      "RchD-2 M645": `Name:RchD-2 M645
+ManaCost:1 G
+Types:Creature Construct
+PT:1/3
+K:Reach
+Oracle:RchD-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-2 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4179. Reach ETB 3 — reach beast cast.
+  {
+    id: "reach-etb-3-m645",
+    description: "Reach ETB 3 — reach beast cast.",
+    seed: 0xc849,
+    cards: {
+      "RchD-3 M645": `Name:RchD-3 M645
+ManaCost:1 G
+Types:Creature Beast
+PT:1/3
+K:Reach
+Oracle:RchD-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-3 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4180. Reach ETB 4 — reach spider cast.
+  {
+    id: "reach-etb-4-m645",
+    description: "Reach ETB 4 — reach spider cast.",
+    seed: 0xc84a,
+    cards: {
+      "RchD-4 M645": `Name:RchD-4 M645
+ManaCost:1 G
+Types:Creature Spider
+PT:1/3
+K:Reach
+Oracle:RchD-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-4 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4181. Reach ETB 5 — reach treefolk cast.
+  {
+    id: "reach-etb-5-m645",
+    description: "Reach ETB 5 — reach treefolk cast.",
+    seed: 0xc84b,
+    cards: {
+      "RchD-5 M645": `Name:RchD-5 M645
+ManaCost:1 G
+Types:Creature Treefolk
+PT:1/3
+K:Reach
+Oracle:RchD-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-5 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4182. Reach ETB 6 — reach plant cast.
+  {
+    id: "reach-etb-6-m645",
+    description: "Reach ETB 6 — reach plant cast.",
+    seed: 0xc84c,
+    cards: {
+      "RchD-6 M645": `Name:RchD-6 M645
+ManaCost:1 G
+Types:Creature Plant
+PT:1/3
+K:Reach
+Oracle:RchD-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-6 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4183. Reach ETB 7 — reach elemental cast.
+  {
+    id: "reach-etb-7-m645",
+    description: "Reach ETB 7 — reach elemental cast.",
+    seed: 0xc84d,
+    cards: {
+      "RchD-7 M645": `Name:RchD-7 M645
+ManaCost:1 G
+Types:Creature Elemental
+PT:1/3
+K:Reach
+Oracle:RchD-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-7 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4184. Reach ETB 8 — reach sliver cast.
+  {
+    id: "reach-etb-8-m645",
+    description: "Reach ETB 8 — reach sliver cast.",
+    seed: 0xc84e,
+    cards: {
+      "RchD-8 M645": `Name:RchD-8 M645
+ManaCost:1 G
+Types:Creature Sliver
+PT:1/3
+K:Reach
+Oracle:RchD-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-8 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4185. Reach ETB 9 — reach insect cast.
+  {
+    id: "reach-etb-9-m645",
+    description: "Reach ETB 9 — reach insect cast.",
+    seed: 0xc84f,
+    cards: {
+      "RchD-9 M645": `Name:RchD-9 M645
+ManaCost:1 G
+Types:Creature Insect
+PT:1/3
+K:Reach
+Oracle:RchD-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-9 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "RchD-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4186. Reach ETB 10 — reach hippo cast.
+  {
+    id: "reach-etb-10-m645",
+    description: "Reach ETB 10 — reach hippo cast.",
+    seed: 0xc850,
+    cards: {
+      "RchD-10 M645": `Name:RchD-10 M645
+ManaCost:1 G
+Types:Creature Hippo
+PT:1/3
+K:Reach
+Oracle:RchD-10 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-10 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-10 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4187. Reach ETB 11 — reach ox cast.
+  {
+    id: "reach-etb-11-m645",
+    description: "Reach ETB 11 — reach ox cast.",
+    seed: 0xc851,
+    cards: {
+      "RchD-11 M645": `Name:RchD-11 M645
+ManaCost:1 G
+Types:Creature Ox
+PT:1/3
+K:Reach
+Oracle:RchD-11 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-11 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-11 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4188. Reach ETB 12 — reach hound cast.
+  {
+    id: "reach-etb-12-m645",
+    description: "Reach ETB 12 — reach hound cast.",
+    seed: 0xc852,
+    cards: {
+      "RchD-12 M645": `Name:RchD-12 M645
+ManaCost:1 G
+Types:Creature Hound
+PT:1/3
+K:Reach
+Oracle:RchD-12 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-12 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-12 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4189. Reach ETB 13 — reach frog cast.
+  {
+    id: "reach-etb-13-m645",
+    description: "Reach ETB 13 — reach frog cast.",
+    seed: 0xc853,
+    cards: {
+      "RchD-13 M645": `Name:RchD-13 M645
+ManaCost:1 G
+Types:Creature Frog
+PT:1/3
+K:Reach
+Oracle:RchD-13 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-13 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-13 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4190. Reach ETB 14 — reach toad cast.
+  {
+    id: "reach-etb-14-m645",
+    description: "Reach ETB 14 — reach toad cast.",
+    seed: 0xc854,
+    cards: {
+      "RchD-14 M645": `Name:RchD-14 M645
+ManaCost:1 G
+Types:Creature Toad
+PT:1/3
+K:Reach
+Oracle:RchD-14 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-14 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-14 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4191. Reach ETB 15 — reach wolf cast.
+  {
+    id: "reach-etb-15-m645",
+    description: "Reach ETB 15 — reach wolf cast.",
+    seed: 0xc855,
+    cards: {
+      "RchD-15 M645": `Name:RchD-15 M645
+ManaCost:1 G
+Types:Creature Wolf
+PT:1/3
+K:Reach
+Oracle:RchD-15 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-15 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-15 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4192. Reach ETB 16 — reach wurm cast.
+  {
+    id: "reach-etb-16-m645",
+    description: "Reach ETB 16 — reach wurm cast.",
+    seed: 0xc856,
+    cards: {
+      "RchD-16 M645": `Name:RchD-16 M645
+ManaCost:1 G
+Types:Creature Wurm
+PT:1/3
+K:Reach
+Oracle:RchD-16 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-16 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-16 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4193. Reach ETB 17 — reach shapeshifter cast.
+  {
+    id: "reach-etb-17-m645",
+    description: "Reach ETB 17 — reach shapeshifter cast.",
+    seed: 0xc857,
+    cards: {
+      "RchD-17 M645": `Name:RchD-17 M645
+ManaCost:1 G
+Types:Creature Shapeshifter
+PT:1/3
+K:Reach
+Oracle:RchD-17 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-17 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-17 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4194. Reach ETB 18 — reach horror cast.
+  {
+    id: "reach-etb-18-m645",
+    description: "Reach ETB 18 — reach horror cast.",
+    seed: 0xc858,
+    cards: {
+      "RchD-18 M645": `Name:RchD-18 M645
+ManaCost:1 G
+Types:Creature Horror
+PT:1/3
+K:Reach
+Oracle:RchD-18 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-18 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-18 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4195. Reach ETB 19 — reach zombie cast.
+  {
+    id: "reach-etb-19-m645",
+    description: "Reach ETB 19 — reach zombie cast.",
+    seed: 0xc859,
+    cards: {
+      "RchD-19 M645": `Name:RchD-19 M645
+ManaCost:1 G
+Types:Creature Zombie
+PT:1/3
+K:Reach
+Oracle:RchD-19 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["RchD-19 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "RchD-19 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4196. Defender ETB 0 — defender wall cast.
+  {
+    id: "defender-etb-0-m645",
+    description: "Defender ETB 0 — defender wall cast.",
+    seed: 0xc85a,
+    cards: {
+      "DfnE-0 M645": `Name:DfnE-0 M645
+ManaCost:1 G
+Types:Creature Wall
+PT:0/4
+K:Defender
+Oracle:DfnE-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-0 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4197. Defender ETB 1 — defender golem cast.
+  {
+    id: "defender-etb-1-m645",
+    description: "Defender ETB 1 — defender golem cast.",
+    seed: 0xc85b,
+    cards: {
+      "DfnE-1 M645": `Name:DfnE-1 M645
+ManaCost:1 G
+Types:Creature Golem
+PT:0/4
+K:Defender
+Oracle:DfnE-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-1 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4198. Defender ETB 2 — defender construct cast.
+  {
+    id: "defender-etb-2-m645",
+    description: "Defender ETB 2 — defender construct cast.",
+    seed: 0xc85c,
+    cards: {
+      "DfnE-2 M645": `Name:DfnE-2 M645
+ManaCost:1 G
+Types:Creature Construct
+PT:0/4
+K:Defender
+Oracle:DfnE-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-2 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4199. Defender ETB 3 — defender beast cast.
+  {
+    id: "defender-etb-3-m645",
+    description: "Defender ETB 3 — defender beast cast.",
+    seed: 0xc85d,
+    cards: {
+      "DfnE-3 M645": `Name:DfnE-3 M645
+ManaCost:1 G
+Types:Creature Beast
+PT:0/4
+K:Defender
+Oracle:DfnE-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-3 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4200. Defender ETB 4 — defender spider cast.
+  {
+    id: "defender-etb-4-m645",
+    description: "Defender ETB 4 — defender spider cast.",
+    seed: 0xc85e,
+    cards: {
+      "DfnE-4 M645": `Name:DfnE-4 M645
+ManaCost:1 G
+Types:Creature Spider
+PT:0/4
+K:Defender
+Oracle:DfnE-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-4 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4201. Defender ETB 5 — defender treefolk cast.
+  {
+    id: "defender-etb-5-m645",
+    description: "Defender ETB 5 — defender treefolk cast.",
+    seed: 0xc85f,
+    cards: {
+      "DfnE-5 M645": `Name:DfnE-5 M645
+ManaCost:1 G
+Types:Creature Treefolk
+PT:0/4
+K:Defender
+Oracle:DfnE-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-5 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4202. Defender ETB 6 — defender plant cast.
+  {
+    id: "defender-etb-6-m645",
+    description: "Defender ETB 6 — defender plant cast.",
+    seed: 0xc860,
+    cards: {
+      "DfnE-6 M645": `Name:DfnE-6 M645
+ManaCost:1 G
+Types:Creature Plant
+PT:0/4
+K:Defender
+Oracle:DfnE-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-6 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4203. Defender ETB 7 — defender elemental cast.
+  {
+    id: "defender-etb-7-m645",
+    description: "Defender ETB 7 — defender elemental cast.",
+    seed: 0xc861,
+    cards: {
+      "DfnE-7 M645": `Name:DfnE-7 M645
+ManaCost:1 G
+Types:Creature Elemental
+PT:0/4
+K:Defender
+Oracle:DfnE-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-7 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4204. Defender ETB 8 — defender sliver cast.
+  {
+    id: "defender-etb-8-m645",
+    description: "Defender ETB 8 — defender sliver cast.",
+    seed: 0xc862,
+    cards: {
+      "DfnE-8 M645": `Name:DfnE-8 M645
+ManaCost:1 G
+Types:Creature Sliver
+PT:0/4
+K:Defender
+Oracle:DfnE-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-8 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4205. Defender ETB 9 — defender insect cast.
+  {
+    id: "defender-etb-9-m645",
+    description: "Defender ETB 9 — defender insect cast.",
+    seed: 0xc863,
+    cards: {
+      "DfnE-9 M645": `Name:DfnE-9 M645
+ManaCost:1 G
+Types:Creature Insect
+PT:0/4
+K:Defender
+Oracle:DfnE-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-9 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DfnE-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4206. Defender ETB 10 — defender hippo cast.
+  {
+    id: "defender-etb-10-m645",
+    description: "Defender ETB 10 — defender hippo cast.",
+    seed: 0xc864,
+    cards: {
+      "DfnE-10 M645": `Name:DfnE-10 M645
+ManaCost:1 G
+Types:Creature Hippo
+PT:0/4
+K:Defender
+Oracle:DfnE-10 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-10 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DfnE-10 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4207. Defender ETB 11 — defender ox cast.
+  {
+    id: "defender-etb-11-m645",
+    description: "Defender ETB 11 — defender ox cast.",
+    seed: 0xc865,
+    cards: {
+      "DfnE-11 M645": `Name:DfnE-11 M645
+ManaCost:1 G
+Types:Creature Ox
+PT:0/4
+K:Defender
+Oracle:DfnE-11 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-11 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DfnE-11 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4208. Defender ETB 12 — defender hound cast.
+  {
+    id: "defender-etb-12-m645",
+    description: "Defender ETB 12 — defender hound cast.",
+    seed: 0xc866,
+    cards: {
+      "DfnE-12 M645": `Name:DfnE-12 M645
+ManaCost:1 G
+Types:Creature Hound
+PT:0/4
+K:Defender
+Oracle:DfnE-12 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-12 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DfnE-12 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4209. Defender ETB 13 — defender frog cast.
+  {
+    id: "defender-etb-13-m645",
+    description: "Defender ETB 13 — defender frog cast.",
+    seed: 0xc867,
+    cards: {
+      "DfnE-13 M645": `Name:DfnE-13 M645
+ManaCost:1 G
+Types:Creature Frog
+PT:0/4
+K:Defender
+Oracle:DfnE-13 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-13 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DfnE-13 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4210. Defender ETB 14 — defender toad cast.
+  {
+    id: "defender-etb-14-m645",
+    description: "Defender ETB 14 — defender toad cast.",
+    seed: 0xc868,
+    cards: {
+      "DfnE-14 M645": `Name:DfnE-14 M645
+ManaCost:1 G
+Types:Creature Toad
+PT:0/4
+K:Defender
+Oracle:DfnE-14 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DfnE-14 M645"], battlefield: [], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "DfnE-14 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4211. Haste ETB 0 — haste goblin cast.
+  {
+    id: "haste-etb-0-m645",
+    description: "Haste ETB 0 — haste goblin cast.",
+    seed: 0xc869,
+    cards: {
+      "HstF-0 M645": `Name:HstF-0 M645
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/1
+K:Haste
+Oracle:HstF-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-0 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4212. Haste ETB 1 — haste berserker cast.
+  {
+    id: "haste-etb-1-m645",
+    description: "Haste ETB 1 — haste berserker cast.",
+    seed: 0xc86a,
+    cards: {
+      "HstF-1 M645": `Name:HstF-1 M645
+ManaCost:1 R
+Types:Creature Berserker
+PT:2/1
+K:Haste
+Oracle:HstF-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-1 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4213. Haste ETB 2 — haste warrior cast.
+  {
+    id: "haste-etb-2-m645",
+    description: "Haste ETB 2 — haste warrior cast.",
+    seed: 0xc86b,
+    cards: {
+      "HstF-2 M645": `Name:HstF-2 M645
+ManaCost:1 R
+Types:Creature Warrior
+PT:2/1
+K:Haste
+Oracle:HstF-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-2 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4214. Haste ETB 3 — haste knight cast.
+  {
+    id: "haste-etb-3-m645",
+    description: "Haste ETB 3 — haste knight cast.",
+    seed: 0xc86c,
+    cards: {
+      "HstF-3 M645": `Name:HstF-3 M645
+ManaCost:1 R
+Types:Creature Knight
+PT:2/1
+K:Haste
+Oracle:HstF-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-3 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4215. Haste ETB 4 — haste soldier cast.
+  {
+    id: "haste-etb-4-m645",
+    description: "Haste ETB 4 — haste soldier cast.",
+    seed: 0xc86d,
+    cards: {
+      "HstF-4 M645": `Name:HstF-4 M645
+ManaCost:1 R
+Types:Creature Soldier
+PT:2/1
+K:Haste
+Oracle:HstF-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-4 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4216. Haste ETB 5 — haste vampire cast.
+  {
+    id: "haste-etb-5-m645",
+    description: "Haste ETB 5 — haste vampire cast.",
+    seed: 0xc86e,
+    cards: {
+      "HstF-5 M645": `Name:HstF-5 M645
+ManaCost:1 R
+Types:Creature Vampire
+PT:2/1
+K:Haste
+Oracle:HstF-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-5 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4217. Haste ETB 6 — haste demon cast.
+  {
+    id: "haste-etb-6-m645",
+    description: "Haste ETB 6 — haste demon cast.",
+    seed: 0xc86f,
+    cards: {
+      "HstF-6 M645": `Name:HstF-6 M645
+ManaCost:1 R
+Types:Creature Demon
+PT:2/1
+K:Haste
+Oracle:HstF-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-6 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4218. Haste ETB 7 — haste phoenix cast.
+  {
+    id: "haste-etb-7-m645",
+    description: "Haste ETB 7 — haste phoenix cast.",
+    seed: 0xc870,
+    cards: {
+      "HstF-7 M645": `Name:HstF-7 M645
+ManaCost:1 R
+Types:Creature Phoenix
+PT:2/1
+K:Haste
+Oracle:HstF-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-7 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4219. Haste ETB 8 — haste wraith cast.
+  {
+    id: "haste-etb-8-m645",
+    description: "Haste ETB 8 — haste wraith cast.",
+    seed: 0xc871,
+    cards: {
+      "HstF-8 M645": `Name:HstF-8 M645
+ManaCost:1 R
+Types:Creature Wraith
+PT:2/1
+K:Haste
+Oracle:HstF-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-8 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4220. Haste ETB 9 — haste spirit cast.
+  {
+    id: "haste-etb-9-m645",
+    description: "Haste ETB 9 — haste spirit cast.",
+    seed: 0xc872,
+    cards: {
+      "HstF-9 M645": `Name:HstF-9 M645
+ManaCost:1 R
+Types:Creature Spirit
+PT:2/1
+K:Haste
+Oracle:HstF-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-9 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "HstF-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4221. Haste ETB 10 — haste cat cast.
+  {
+    id: "haste-etb-10-m645",
+    description: "Haste ETB 10 — haste cat cast.",
+    seed: 0xc873,
+    cards: {
+      "HstF-10 M645": `Name:HstF-10 M645
+ManaCost:1 R
+Types:Creature Cat
+PT:2/1
+K:Haste
+Oracle:HstF-10 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-10 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HstF-10 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4222. Haste ETB 11 — haste bear cast.
+  {
+    id: "haste-etb-11-m645",
+    description: "Haste ETB 11 — haste bear cast.",
+    seed: 0xc874,
+    cards: {
+      "HstF-11 M645": `Name:HstF-11 M645
+ManaCost:1 R
+Types:Creature Bear
+PT:2/1
+K:Haste
+Oracle:HstF-11 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-11 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HstF-11 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4223. Haste ETB 12 — haste beast cast.
+  {
+    id: "haste-etb-12-m645",
+    description: "Haste ETB 12 — haste beast cast.",
+    seed: 0xc875,
+    cards: {
+      "HstF-12 M645": `Name:HstF-12 M645
+ManaCost:1 R
+Types:Creature Beast
+PT:2/1
+K:Haste
+Oracle:HstF-12 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-12 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HstF-12 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4224. Haste ETB 13 — haste hydra cast.
+  {
+    id: "haste-etb-13-m645",
+    description: "Haste ETB 13 — haste hydra cast.",
+    seed: 0xc876,
+    cards: {
+      "HstF-13 M645": `Name:HstF-13 M645
+ManaCost:1 R
+Types:Creature Hydra
+PT:2/1
+K:Haste
+Oracle:HstF-13 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-13 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HstF-13 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4225. Haste ETB 14 — haste dragon cast.
+  {
+    id: "haste-etb-14-m645",
+    description: "Haste ETB 14 — haste dragon cast.",
+    seed: 0xc877,
+    cards: {
+      "HstF-14 M645": `Name:HstF-14 M645
+ManaCost:1 R
+Types:Creature Dragon
+PT:2/1
+K:Haste
+Oracle:HstF-14 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["HstF-14 M645"], battlefield: [], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "HstF-14 M645", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4226. First strike ETB 0 — first strike knight cast.
+  {
+    id: "first-strike-etb-0-m645",
+    description: "First strike ETB 0 — first strike knight cast.",
+    seed: 0xc878,
+    cards: {
+      "FstG-0 M645": `Name:FstG-0 M645
+ManaCost:1 W
+Types:Creature Knight
+PT:2/1
+K:First Strike
+Oracle:FstG-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-0 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4227. First strike ETB 1 — first strike soldier cast.
+  {
+    id: "first-strike-etb-1-m645",
+    description: "First strike ETB 1 — first strike soldier cast.",
+    seed: 0xc879,
+    cards: {
+      "FstG-1 M645": `Name:FstG-1 M645
+ManaCost:1 W
+Types:Creature Soldier
+PT:2/1
+K:First Strike
+Oracle:FstG-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-1 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4228. First strike ETB 2 — first strike angel cast.
+  {
+    id: "first-strike-etb-2-m645",
+    description: "First strike ETB 2 — first strike angel cast.",
+    seed: 0xc87a,
+    cards: {
+      "FstG-2 M645": `Name:FstG-2 M645
+ManaCost:1 W
+Types:Creature Angel
+PT:2/1
+K:First Strike
+Oracle:FstG-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-2 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4229. First strike ETB 3 — first strike spirit cast.
+  {
+    id: "first-strike-etb-3-m645",
+    description: "First strike ETB 3 — first strike spirit cast.",
+    seed: 0xc87b,
+    cards: {
+      "FstG-3 M645": `Name:FstG-3 M645
+ManaCost:1 W
+Types:Creature Spirit
+PT:2/1
+K:First Strike
+Oracle:FstG-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-3 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4230. First strike ETB 4 — first strike cleric cast.
+  {
+    id: "first-strike-etb-4-m645",
+    description: "First strike ETB 4 — first strike cleric cast.",
+    seed: 0xc87c,
+    cards: {
+      "FstG-4 M645": `Name:FstG-4 M645
+ManaCost:1 W
+Types:Creature Cleric
+PT:2/1
+K:First Strike
+Oracle:FstG-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-4 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4231. First strike ETB 5 — first strike wizard cast.
+  {
+    id: "first-strike-etb-5-m645",
+    description: "First strike ETB 5 — first strike wizard cast.",
+    seed: 0xc87d,
+    cards: {
+      "FstG-5 M645": `Name:FstG-5 M645
+ManaCost:1 W
+Types:Creature Wizard
+PT:2/1
+K:First Strike
+Oracle:FstG-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-5 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4232. First strike ETB 6 — first strike druid cast.
+  {
+    id: "first-strike-etb-6-m645",
+    description: "First strike ETB 6 — first strike druid cast.",
+    seed: 0xc87e,
+    cards: {
+      "FstG-6 M645": `Name:FstG-6 M645
+ManaCost:1 W
+Types:Creature Druid
+PT:2/1
+K:First Strike
+Oracle:FstG-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-6 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4233. First strike ETB 7 — first strike warrior cast.
+  {
+    id: "first-strike-etb-7-m645",
+    description: "First strike ETB 7 — first strike warrior cast.",
+    seed: 0xc87f,
+    cards: {
+      "FstG-7 M645": `Name:FstG-7 M645
+ManaCost:1 W
+Types:Creature Warrior
+PT:2/1
+K:First Strike
+Oracle:FstG-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-7 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4234. First strike ETB 8 — first strike berserker cast.
+  {
+    id: "first-strike-etb-8-m645",
+    description: "First strike ETB 8 — first strike berserker cast.",
+    seed: 0xc880,
+    cards: {
+      "FstG-8 M645": `Name:FstG-8 M645
+ManaCost:1 W
+Types:Creature Berserker
+PT:2/1
+K:First Strike
+Oracle:FstG-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-8 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4235. First strike ETB 9 — first strike goblin cast.
+  {
+    id: "first-strike-etb-9-m645",
+    description: "First strike ETB 9 — first strike goblin cast.",
+    seed: 0xc881,
+    cards: {
+      "FstG-9 M645": `Name:FstG-9 M645
+ManaCost:1 W
+Types:Creature Goblin
+PT:2/1
+K:First Strike
+Oracle:FstG-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FstG-9 M645"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FstG-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4236. Double strike ETB 0 — double strike spirit cast.
+  {
+    id: "double-strike-etb-0-m645",
+    description: "Double strike ETB 0 — double strike spirit cast.",
+    seed: 0xc882,
+    cards: {
+      "DblH-0 M645": `Name:DblH-0 M645
+ManaCost:2 W
+Types:Creature Spirit
+PT:2/2
+K:Double Strike
+Oracle:DblH-0 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-0 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-0 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4237. Double strike ETB 1 — double strike cleric cast.
+  {
+    id: "double-strike-etb-1-m645",
+    description: "Double strike ETB 1 — double strike cleric cast.",
+    seed: 0xc883,
+    cards: {
+      "DblH-1 M645": `Name:DblH-1 M645
+ManaCost:2 W
+Types:Creature Cleric
+PT:2/2
+K:Double Strike
+Oracle:DblH-1 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-1 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-1 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4238. Double strike ETB 2 — double strike wizard cast.
+  {
+    id: "double-strike-etb-2-m645",
+    description: "Double strike ETB 2 — double strike wizard cast.",
+    seed: 0xc884,
+    cards: {
+      "DblH-2 M645": `Name:DblH-2 M645
+ManaCost:2 W
+Types:Creature Wizard
+PT:2/2
+K:Double Strike
+Oracle:DblH-2 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-2 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-2 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4239. Double strike ETB 3 — double strike druid cast.
+  {
+    id: "double-strike-etb-3-m645",
+    description: "Double strike ETB 3 — double strike druid cast.",
+    seed: 0xc885,
+    cards: {
+      "DblH-3 M645": `Name:DblH-3 M645
+ManaCost:2 W
+Types:Creature Druid
+PT:2/2
+K:Double Strike
+Oracle:DblH-3 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-3 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-3 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4240. Double strike ETB 4 — double strike warrior cast.
+  {
+    id: "double-strike-etb-4-m645",
+    description: "Double strike ETB 4 — double strike warrior cast.",
+    seed: 0xc886,
+    cards: {
+      "DblH-4 M645": `Name:DblH-4 M645
+ManaCost:2 W
+Types:Creature Warrior
+PT:2/2
+K:Double Strike
+Oracle:DblH-4 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-4 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-4 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4241. Double strike ETB 5 — double strike berserker cast.
+  {
+    id: "double-strike-etb-5-m645",
+    description: "Double strike ETB 5 — double strike berserker cast.",
+    seed: 0xc887,
+    cards: {
+      "DblH-5 M645": `Name:DblH-5 M645
+ManaCost:2 W
+Types:Creature Berserker
+PT:2/2
+K:Double Strike
+Oracle:DblH-5 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-5 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-5 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4242. Double strike ETB 6 — double strike goblin cast.
+  {
+    id: "double-strike-etb-6-m645",
+    description: "Double strike ETB 6 — double strike goblin cast.",
+    seed: 0xc888,
+    cards: {
+      "DblH-6 M645": `Name:DblH-6 M645
+ManaCost:2 W
+Types:Creature Goblin
+PT:2/2
+K:Double Strike
+Oracle:DblH-6 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-6 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-6 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4243. Double strike ETB 7 — double strike vampire cast.
+  {
+    id: "double-strike-etb-7-m645",
+    description: "Double strike ETB 7 — double strike vampire cast.",
+    seed: 0xc889,
+    cards: {
+      "DblH-7 M645": `Name:DblH-7 M645
+ManaCost:2 W
+Types:Creature Vampire
+PT:2/2
+K:Double Strike
+Oracle:DblH-7 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-7 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-7 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4244. Double strike ETB 8 — double strike demon cast.
+  {
+    id: "double-strike-etb-8-m645",
+    description: "Double strike ETB 8 — double strike demon cast.",
+    seed: 0xc88a,
+    cards: {
+      "DblH-8 M645": `Name:DblH-8 M645
+ManaCost:2 W
+Types:Creature Demon
+PT:2/2
+K:Double Strike
+Oracle:DblH-8 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-8 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-8 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4245. Double strike ETB 9 — double strike beast cast.
+  {
+    id: "double-strike-etb-9-m645",
+    description: "Double strike ETB 9 — double strike beast cast.",
+    seed: 0xc88b,
+    cards: {
+      "DblH-9 M645": `Name:DblH-9 M645
+ManaCost:2 W
+Types:Creature Beast
+PT:2/2
+K:Double Strike
+Oracle:DblH-9 M645 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["DblH-9 M645"], battlefield: [], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "DblH-9 M645", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
 ];
