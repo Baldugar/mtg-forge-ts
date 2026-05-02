@@ -1,0 +1,38 @@
+{
+  "id": "biomancer-scales-coresidence-m627",
+  "description": "Master Biomancer + Hardened Scales co-resident; ETB-counter chain.",
+  "seed": 2053,
+  "cards": {
+    "Master Biomancer M627B": "Name:Master Biomancer M627B\nManaCost:2 G U\nTypes:Creature Elf Wizard Mutant\nPT:2/4\nR:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Destination$ Battlefield | ReplaceWith$ ETBC\nSVar:ETBC:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 2\nOracle:BiomancerB parse.\n",
+    "Hardened Scales M627F": "Name:Hardened Scales M627F\nManaCost:G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus\nSVar:Plus:DB$ ReplaceCounter | Additive$ 1\nOracle:HSF parse.\n",
+    "ETB Bear M627": "Name:ETB Bear M627\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:EtbBear parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "ETB Bear M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Master Biomancer M627B"
+        },
+        {
+          "card": "Hardened Scales M627F"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "ETB Bear M627",
+      "controller": 0
+    }
+  ]
+}

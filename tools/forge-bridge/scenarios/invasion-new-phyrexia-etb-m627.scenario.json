@@ -1,0 +1,29 @@
+{
+  "id": "invasion-new-phyrexia-etb-m627",
+  "description": "Invasion of New Phyrexia Battle ETB; tutor + counter parse.",
+  "seed": 1868,
+  "cards": {
+    "Invasion New Phyrexia M627": "Name:Invasion New Phyrexia M627\nManaCost:5 W U\nTypes:Battle Siege\nDefense:6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Battle ETB token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_0_germ | TokenAmount$ 2\nOracle:New Phyrexia parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion New Phyrexia M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion New Phyrexia M627",
+      "controller": 0
+    }
+  ]
+}

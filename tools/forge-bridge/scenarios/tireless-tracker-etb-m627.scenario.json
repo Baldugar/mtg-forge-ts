@@ -1,0 +1,29 @@
+{
+  "id": "tireless-tracker-etb-m627",
+  "description": "Tireless Tracker ETB; clue token parse.",
+  "seed": 1937,
+  "cards": {
+    "Tireless Tracker M627": "Name:Tireless Tracker M627\nManaCost:1 G\nTypes:Creature Human Scout\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Tracker clue.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1\nOracle:Tracker parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tireless Tracker M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tireless Tracker M627",
+      "controller": 0
+    }
+  ]
+}

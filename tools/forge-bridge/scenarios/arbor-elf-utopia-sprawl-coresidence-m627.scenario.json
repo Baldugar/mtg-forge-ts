@@ -1,0 +1,31 @@
+{
+  "id": "arbor-elf-utopia-sprawl-coresidence-m627",
+  "description": "Arbor Elf ETB with Utopia Sprawl on a forest; combo ramp parse.",
+  "seed": 2046,
+  "cards": {
+    "Arbor Elf M627B": "Name:Arbor Elf M627B\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Untap | Cost$ T | TargetType$ Land | ValidTgts$ Forest\nOracle:AEB parse.\n",
+    "Utopia Sprawl M627": "Name:Utopia Sprawl M627\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant Forest\nA:SP$ Attach | Cost$ G | ValidTgts$ Forest\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Sprawl mana.\nSVar:TrigMana:DB$ Mana | Produced$ Combo W U B R | Amount$ 1\nOracle:Sprawl parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arbor Elf M627B",
+        "Utopia Sprawl M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Arbor Elf M627B",
+      "controller": 0
+    }
+  ]
+}

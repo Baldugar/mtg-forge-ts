@@ -1,0 +1,29 @@
+{
+  "id": "roxanne-starfall-savant-etb",
+  "description": "Roxanne, Starfall Savant ETB; saddle + meteorite token parse.",
+  "seed": 1845,
+  "cards": {
+    "Roxanne Starfall M627": "Name:Roxanne Starfall M627\nManaCost:2 R G\nTypes:Legendary Creature Cat Druid\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigToken | TriggerDescription$ Roxanne meteor.\nSVar:TrigToken:DB$ Token | TokenScript$ rg_meteorite | TokenAmount$ 1\nOracle:Roxanne parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roxanne Starfall M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Roxanne Starfall M627",
+      "controller": 0
+    }
+  ]
+}

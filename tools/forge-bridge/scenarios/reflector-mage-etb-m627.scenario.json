@@ -1,0 +1,29 @@
+{
+  "id": "reflector-mage-etb-m627",
+  "description": "Reflector Mage ETB; bounce + delay parse.",
+  "seed": 1997,
+  "cards": {
+    "Reflector Mage M627": "Name:Reflector Mage M627\nManaCost:1 W U\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Reflect bounce.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.OppCtrl\nOracle:Reflect parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reflector Mage M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reflector Mage M627",
+      "controller": 0
+    }
+  ]
+}

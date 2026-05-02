@@ -1,0 +1,29 @@
+{
+  "id": "solemn-simulacrum-etb-m627",
+  "description": "Solemn Simulacrum ETB; ramp parse.",
+  "seed": 2002,
+  "cards": {
+    "Solemn Simulacrum M627": "Name:Solemn Simulacrum M627\nManaCost:4\nTypes:Artifact Creature Golem\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Solemn ETB.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Solemn dies.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Solemn parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solemn Simulacrum M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Solemn Simulacrum M627",
+      "controller": 0
+    }
+  ]
+}

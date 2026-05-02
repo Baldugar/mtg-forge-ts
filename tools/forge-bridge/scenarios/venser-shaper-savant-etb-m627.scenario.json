@@ -1,0 +1,29 @@
+{
+  "id": "venser-shaper-savant-etb-m627",
+  "description": "Venser, Shaper Savant ETB; bounce target parse.",
+  "seed": 1999,
+  "cards": {
+    "Venser Savant M627": "Name:Venser Savant M627\nManaCost:2 U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Venser.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent\nOracle:Venser parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Venser Savant M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Venser Savant M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "invasion-zendikar-etb-m627",
+  "description": "Invasion of Zendikar Battle ETB; defense counter parse.",
+  "seed": 1864,
+  "cards": {
+    "Invasion Zendikar M627": "Name:Invasion Zendikar M627\nManaCost:3 G\nTypes:Battle Siege\nDefense:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Battle ETB ramp.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 2 | Tapped$ True\nOracle:Invasion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Zendikar M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion Zendikar M627",
+      "controller": 0
+    }
+  ]
+}

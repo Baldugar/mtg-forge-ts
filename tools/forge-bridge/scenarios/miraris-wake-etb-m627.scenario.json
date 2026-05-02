@@ -1,0 +1,29 @@
+{
+  "id": "miraris-wake-etb-m627",
+  "description": "Mirari's Wake ETB; anthem + mana doubler parse.",
+  "seed": 1880,
+  "cards": {
+    "Miraris Wake M627": "Name:Miraris Wake M627\nManaCost:3 G W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Wake anthem.\nT:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana\nSVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1\nOracle:Wake parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miraris Wake M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Miraris Wake M627",
+      "controller": 0
+    }
+  ]
+}

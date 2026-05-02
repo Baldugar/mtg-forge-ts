@@ -1,0 +1,29 @@
+{
+  "id": "zendikar-resurgent-etb-m627",
+  "description": "Zendikar Resurgent ETB; mana doubler + draw parse.",
+  "seed": 1881,
+  "cards": {
+    "Zendikar Resurgent M627": "Name:Zendikar Resurgent M627\nManaCost:5 G G\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana\nSVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1\nT:Mode$ SpellCast | ValidCard$ Creature | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Resurgent draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Resurgent parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zendikar Resurgent M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Zendikar Resurgent M627",
+      "controller": 0
+    }
+  ]
+}

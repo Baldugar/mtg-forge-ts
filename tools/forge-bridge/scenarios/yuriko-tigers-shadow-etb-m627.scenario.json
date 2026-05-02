@@ -1,0 +1,29 @@
+{
+  "id": "yuriko-tigers-shadow-etb-m627",
+  "description": "Yuriko ETB; ninja damage trigger parse.",
+  "seed": 1900,
+  "cards": {
+    "Yuriko Shadow M627": "Name:Yuriko Shadow M627\nManaCost:1 U B\nTypes:Legendary Creature Human Ninja\nPT:1/3\nK:Ninjutsu:1 U B\nT:Mode$ DamageDoneOne | ValidSource$ Ninja.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal | TriggerDescription$ Yuriko damage.\nSVar:TrigReveal:DB$ Dig | DigNum$ 1 | RevealOnly$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nOracle:Yuriko parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuriko Shadow M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Yuriko Shadow M627",
+      "controller": 0
+    }
+  ]
+}

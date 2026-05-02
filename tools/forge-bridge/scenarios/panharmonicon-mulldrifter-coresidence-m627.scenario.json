@@ -1,0 +1,34 @@
+{
+  "id": "panharmonicon-mulldrifter-coresidence-m627",
+  "description": "Panharmonicon + Mulldrifter co-resident; double draw parse.",
+  "seed": 2092,
+  "cards": {
+    "Panharmonicon M627B": "Name:Panharmonicon M627B\nManaCost:4\nTypes:Artifact\nOracle:PanB parse.\n",
+    "Mulldrifter M627": "Name:Mulldrifter M627\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Mull.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Mull parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Panharmonicon M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mulldrifter M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "bottled-cloister-etb-m627",
+  "description": "Bottled Cloister ETB; exile-hand replacement parse.",
+  "seed": 1871,
+  "cards": {
+    "Bottled Cloister M627": "Name:Bottled Cloister M627\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Cloister hand exile.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+inZoneHand | Origin$ Hand | Destination$ Exile\nOracle:Cloister parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bottled Cloister M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bottled Cloister M627",
+      "controller": 0
+    }
+  ]
+}

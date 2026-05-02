@@ -1,0 +1,34 @@
+{
+  "id": "persist-hardened-scales-coresidence-m627",
+  "description": "Persist creature ETB with Hardened Scales on battlefield; counter chain.",
+  "seed": 1913,
+  "cards": {
+    "Persist Loop M627": "Name:Persist Loop M627\nManaCost:1 B\nTypes:Creature Spirit\nPT:1/1\nK:Persist\nOracle:Loop parse.\n",
+    "Hardened Scales M627D": "Name:Hardened Scales M627D\nManaCost:G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus\nSVar:Plus:DB$ ReplaceCounter | Additive$ 1\nOracle:HSD parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Persist Loop M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Hardened Scales M627D"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Persist Loop M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "mana-reflection-caged-sun-coresidence",
+  "description": "Mana Reflection ETB with Caged Sun on battlefield; mana doubler chain.",
+  "seed": 1875,
+  "cards": {
+    "Mana Reflection M627": "Name:Mana Reflection M627\nManaCost:4 G G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Permanent.YouCtrl | EffectZone$ Battlefield | DoubleMana$ True | Description$ Reflect.\nOracle:MR parse.\n",
+    "Caged Sun M627": "Name:Caged Sun M627\nManaCost:6\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Cage anthem.\nT:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ CS mana.\nSVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1\nOracle:Cage parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Reflection M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Caged Sun M627"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mana Reflection M627",
+      "controller": 0
+    }
+  ]
+}

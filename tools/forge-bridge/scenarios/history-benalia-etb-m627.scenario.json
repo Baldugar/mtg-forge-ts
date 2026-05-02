@@ -1,0 +1,29 @@
+{
+  "id": "history-benalia-etb-m627",
+  "description": "History of Benalia ETB; saga 3-chapter knight token-pump.",
+  "seed": 1854,
+  "cards": {
+    "History Benalia M627": "Name:History Benalia M627\nManaCost:1 W W\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigToken | TriggerDescription$ I.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenAmount$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigToken2 | TriggerDescription$ II.\nSVar:TrigToken2:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenAmount$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigPump | TriggerDescription$ III.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Knight.YouCtrl | NumAtt$ 2 | NumDef$ 1\nOracle:History parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "History Benalia M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "History Benalia M627",
+      "controller": 0
+    }
+  ]
+}

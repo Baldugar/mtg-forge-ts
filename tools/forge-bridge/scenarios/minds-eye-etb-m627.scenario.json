@@ -1,0 +1,29 @@
+{
+  "id": "minds-eye-etb-m627",
+  "description": "Mind's Eye ETB; opp-draw trigger parse.",
+  "seed": 1872,
+  "cards": {
+    "Minds Eye M627": "Name:Minds Eye M627\nManaCost:5\nTypes:Artifact\nT:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Mind's Eye.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ 1 | UnlessPayer$ You\nOracle:Mind's Eye parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minds Eye M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Minds Eye M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "esikas-chariot-doubling-season-coresidence",
+  "description": "Esika's Chariot ETB with Doubling Season on battlefield; token doubler chain.",
+  "seed": 1843,
+  "cards": {
+    "Esika's Chariot M627B": "Name:Esika's Chariot M627B\nManaCost:3 G\nTypes:Legendary Artifact Vehicle\nPT:4/4\nK:Crew:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Esika ETB.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_cat | TokenAmount$ 2\nOracle:Esika parse.\n",
+    "Doubling Season M627": "Name:Doubling Season M627\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:DS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esika's Chariot M627B"
+      ],
+      "battlefield": [
+        {
+          "card": "Doubling Season M627"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esika's Chariot M627B",
+      "controller": 0
+    }
+  ]
+}

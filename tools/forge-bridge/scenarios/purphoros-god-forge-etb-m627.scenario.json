@@ -1,0 +1,29 @@
+{
+  "id": "purphoros-god-forge-etb-m627",
+  "description": "Purphoros ETB; damage on creature ETB parse.",
+  "seed": 2020,
+  "cards": {
+    "Purphoros M627": "Name:Purphoros M627\nManaCost:3 R\nTypes:Legendary Enchantment Creature God\nPT:4/4\nK:Indestructible\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Purph.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nOracle:Purph parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purphoros M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Purphoros M627",
+      "controller": 0
+    }
+  ]
+}

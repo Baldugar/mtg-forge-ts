@@ -1,0 +1,29 @@
+{
+  "id": "ravos-soultender-etb-m627",
+  "description": "Ravos ETB; reanimator commander parse.",
+  "seed": 2015,
+  "cards": {
+    "Ravos M627": "Name:Ravos M627\nManaCost:3 W B\nTypes:Legendary Creature Human Cleric\nPT:2/2\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | Description$ Ravos anthem.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Ravos return.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouCtrl\nOracle:Ravos parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravos M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Ravos M627",
+      "controller": 0
+    }
+  ]
+}

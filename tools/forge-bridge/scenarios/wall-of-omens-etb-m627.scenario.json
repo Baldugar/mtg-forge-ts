@@ -1,0 +1,29 @@
+{
+  "id": "wall-of-omens-etb-m627",
+  "description": "Wall of Omens ETB; cantrip wall parse.",
+  "seed": 2006,
+  "cards": {
+    "Wall Omens M627": "Name:Wall Omens M627\nManaCost:1 W\nTypes:Creature Wall\nPT:0/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Omens.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Omens parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall Omens M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wall Omens M627",
+      "controller": 0
+    }
+  ]
+}

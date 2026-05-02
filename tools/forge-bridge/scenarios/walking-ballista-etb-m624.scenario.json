@@ -1,9 +1,9 @@
 {
   "id": "walking-ballista-etb-m624",
-  "description": "Walking Ballista ETB; XX ping parse.",
+  "description": "Walking Ballista ETB; X +1/+1 counters + ping + pump parse.",
   "seed": 1458,
   "cards": {
-    "Walking Ballista": "Name:Walking Ballista\nManaCost:X X\nTypes:Artifact Creature Construct\nPT:0/0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Ballista.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X\nSVar:X:Count$xPaid\nA:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/CARDNAME> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player\nA:AB$ PutCounter | Cost$ 4 | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self\nOracle:Ballista parse.\n"
+    "Walking Ballista": "Name:Walking Ballista\nManaCost:X X\nTypes:Artifact Creature Construct\nPT:0/0\nK:etbCounter:P1P1:X\nA:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/CARDNAME> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player\nA:AB$ PutCounter | Cost$ 4 | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self\nOracle:Ballista parse.\n"
   },
   "players": [
     {

@@ -1,0 +1,29 @@
+{
+  "id": "pitiless-plunderer-etb-m627",
+  "description": "Pitiless Plunderer ETB; treasure on creature die parse.",
+  "seed": 1940,
+  "cards": {
+    "Pitiless Plunderer M627": "Name:Pitiless Plunderer M627\nManaCost:3 B\nTypes:Creature Human Pirate\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Plunderer treasure.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure | TokenAmount$ 1\nOracle:Plunderer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pitiless Plunderer M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Pitiless Plunderer M627",
+      "controller": 0
+    }
+  ]
+}

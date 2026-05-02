@@ -1,0 +1,29 @@
+{
+  "id": "annie-joins-up-etb-m627",
+  "description": "Annie Joins Up ETB; token doubler parse.",
+  "seed": 1886,
+  "cards": {
+    "Annie Joins Up M627": "Name:Annie Joins Up M627\nManaCost:1 R\nTypes:Legendary Creature Human Outlaw\nPT:2/2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure,Token.Outlaw | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:Annie parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Annie Joins Up M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Annie Joins Up M627",
+      "controller": 0
+    }
+  ]
+}

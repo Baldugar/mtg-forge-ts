@@ -1,0 +1,29 @@
+{
+  "id": "tovolar-dire-overlord-etb-m627",
+  "description": "Tovolar, Dire Overlord ETB; werewolf commander parse.",
+  "seed": 1863,
+  "cards": {
+    "Tovolar Dire M627": "Name:Tovolar Dire M627\nManaCost:1 R G\nTypes:Legendary Creature Human Werewolf\nPT:3/3\nK:DayBound\nT:Mode$ DamageDone | ValidSource$ Wolf,Werewolf+YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Draw on wolf damage.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nA:AB$ ChangeZone | Cost$ 3 R G | Origin$ Library | Destination$ Hand | ChangeType$ Werewolf\nOracle:Tovolar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tovolar Dire M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tovolar Dire M627",
+      "controller": 0
+    }
+  ]
+}

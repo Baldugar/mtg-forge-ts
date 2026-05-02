@@ -1,0 +1,29 @@
+{
+  "id": "smugglers-copter-coresidence-attacker",
+  "description": "Smuggler's Copter on battlefield with Goblin Guide attacker; vehicle + attack trigger interaction.",
+  "seed": 1839,
+  "cards": {
+    "Smuggler's Copter M627": "Name:Smuggler's Copter M627\nManaCost:2\nTypes:Artifact Vehicle\nPT:3/3\nK:Flying\nK:Crew:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ Loot.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ Loot.\nSVar:TrigLoot:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 1\nOracle:Copter parse.\n",
+    "Goblin Guide M627": "Name:Goblin Guide M627\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Reveal.\nSVar:TrigReveal:DB$ Reveal | Defined$ TargetedPlayer | RevealNumber$ 1\nOracle:Goblin Guide parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Smuggler's Copter M627"
+        },
+        {
+          "card": "Goblin Guide M627"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

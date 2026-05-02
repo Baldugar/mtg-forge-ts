@@ -1,0 +1,29 @@
+{
+  "id": "phyrexian-scriptures-etb-m627",
+  "description": "Phyrexian Scriptures ETB; saga 3-chapter parse.",
+  "seed": 1850,
+  "cards": {
+    "Phyrexian Scriptures M627": "Name:Phyrexian Scriptures M627\nManaCost:2 B\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigCounter | TriggerDescription$ I.\nSVar:TrigCounter:DB$ PutCounterAll | ValidCards$ Creature | CounterType$ M1M1 | CounterNum$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDestroy | TriggerDescription$ II.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:Scriptures parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Scriptures M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Phyrexian Scriptures M627",
+      "controller": 0
+    }
+  ]
+}

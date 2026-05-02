@@ -1,0 +1,29 @@
+{
+  "id": "conspicuous-snoop-etb-m627",
+  "description": "Conspicuous Snoop ETB; reveal-top goblin parse.",
+  "seed": 2093,
+  "cards": {
+    "Snoop M627": "Name:Snoop M627\nManaCost:1 R\nTypes:Creature Goblin Rogue\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | AddAbility$ TopActivated | Description$ Snoop.\nSVar:TopActivated:AB$ Reveal | Cost$ 0 | Defined$ TopOfLibrary\nOracle:Snoop parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snoop M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Snoop M627",
+      "controller": 0
+    }
+  ]
+}

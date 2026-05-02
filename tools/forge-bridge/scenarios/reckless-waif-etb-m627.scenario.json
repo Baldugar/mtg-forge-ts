@@ -1,0 +1,29 @@
+{
+  "id": "reckless-waif-etb-m627",
+  "description": "Reckless Waif ETB; werewolf day-night parse.",
+  "seed": 1859,
+  "cards": {
+    "Reckless Waif M627": "Name:Reckless Waif M627\nManaCost:R\nTypes:Creature Human Rogue Werewolf\nPT:1/1\nK:DayBound\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | IsPresent$ Card.Self+isDay | TriggerDescription$ Night transform.\nSVar:TrigTransform:DB$ SetState | Mode$ Transform\nOracle:Reckless parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckless Waif M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reckless Waif M627",
+      "controller": 0
+    }
+  ]
+}

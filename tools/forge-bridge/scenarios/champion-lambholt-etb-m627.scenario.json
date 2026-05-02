@@ -1,0 +1,29 @@
+{
+  "id": "champion-lambholt-etb-m627",
+  "description": "Champion of Lambholt ETB; counter on creature ETB parse.",
+  "seed": 2060,
+  "cards": {
+    "Champion Lambholt M627": "Name:Champion Lambholt M627\nManaCost:1 G G\nTypes:Creature Human Warrior\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Champion.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Champion parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champion Lambholt M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Champion Lambholt M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "sheoldred-whispering-one-coresidence-m627",
+  "description": "Sheoldred, Whispering One ETB with creature in graveyard; reanimator commander.",
+  "seed": 1918,
+  "cards": {
+    "Sheoldred Whisper M627": "Name:Sheoldred Whisper M627\nManaCost:5 B B\nTypes:Legendary Creature Phyrexian Praetor\nPT:6/6\nK:Swampwalk\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Sheoldred.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouCtrl\nOracle:Sheoldred parse.\n",
+    "Bear Filler M627": "Name:Bear Filler M627\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:Bear filler parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheoldred Whisper M627"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Bear Filler M627"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sheoldred Whisper M627",
+      "controller": 0
+    }
+  ]
+}

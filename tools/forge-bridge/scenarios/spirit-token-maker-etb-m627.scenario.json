@@ -1,0 +1,29 @@
+{
+  "id": "spirit-token-maker-etb-m627",
+  "description": "Spirit Token Maker ETB; spirit token parse.",
+  "seed": 2071,
+  "cards": {
+    "Spirit Maker M627": "Name:Spirit Maker M627\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Spirit Maker.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenAmount$ 1\nOracle:SM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Maker M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Spirit Maker M627",
+      "controller": 0
+    }
+  ]
+}

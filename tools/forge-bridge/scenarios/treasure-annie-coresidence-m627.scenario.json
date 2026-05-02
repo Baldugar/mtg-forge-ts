@@ -1,0 +1,34 @@
+{
+  "id": "treasure-annie-coresidence-m627",
+  "description": "Treasure Maker + Annie Joins Up co-resident; treasure double parse.",
+  "seed": 2074,
+  "cards": {
+    "Annie Joins Up M627B": "Name:Annie Joins Up M627B\nManaCost:1 R\nTypes:Legendary Creature Human Outlaw\nPT:2/2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure,Token.Outlaw | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:AnnieB parse.\n",
+    "Treasure Maker M627B": "Name:Treasure Maker M627B\nManaCost:2 R\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ TMB.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 2\nOracle:TMB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treasure Maker M627B"
+      ],
+      "battlefield": [
+        {
+          "card": "Annie Joins Up M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Treasure Maker M627B",
+      "controller": 0
+    }
+  ]
+}

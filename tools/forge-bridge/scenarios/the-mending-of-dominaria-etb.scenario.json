@@ -1,0 +1,29 @@
+{
+  "id": "the-mending-of-dominaria-etb",
+  "description": "The Mending of Dominaria ETB; saga 4-chapter parse.",
+  "seed": 1849,
+  "cards": {
+    "Mending of Dominaria M627": "Name:Mending of Dominaria M627\nManaCost:3 G\nTypes:Enchantment Saga\nK:Chapter:4\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigMill | TriggerDescription$ I — Mill.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigPump | TriggerDescription$ II — Pump.\nSVar:TrigPump:DB$ Pump | Defined$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigReturn | TriggerDescription$ III — Return.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 4 | Execute$ TrigSac | TriggerDescription$ IV — Sac.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:Mending parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mending of Dominaria M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mending of Dominaria M627",
+      "controller": 0
+    }
+  ]
+}

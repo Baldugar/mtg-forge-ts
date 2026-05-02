@@ -1,0 +1,29 @@
+{
+  "id": "gauntlet-of-power-etb-m627",
+  "description": "Gauntlet of Power ETB; mana doubler parse.",
+  "seed": 1878,
+  "cards": {
+    "Gauntlet Power M627": "Name:Gauntlet Power M627\nManaCost:5\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Creature.ChosenColor | AddPower$ 1 | AddToughness$ 1 | Description$ Gauntlet.\nT:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana\nSVar:TrigMana:DB$ Mana | Produced$ Combo W | Amount$ 1\nOracle:Gauntlet parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gauntlet Power M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Gauntlet Power M627",
+      "controller": 0
+    }
+  ]
+}

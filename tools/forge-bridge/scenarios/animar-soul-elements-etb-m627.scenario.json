@@ -1,0 +1,29 @@
+{
+  "id": "animar-soul-elements-etb-m627",
+  "description": "Animar ETB; +1/+1 counter on creature cast parse.",
+  "seed": 1907,
+  "cards": {
+    "Animar Soul M627": "Name:Animar Soul M627\nManaCost:U R G\nTypes:Legendary Creature Elemental\nPT:1/1\nK:Protection from white\nK:Protection from black\nT:Mode$ SpellCast | ValidCard$ Creature | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Animar.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Animar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Animar Soul M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Animar Soul M627",
+      "controller": 0
+    }
+  ]
+}

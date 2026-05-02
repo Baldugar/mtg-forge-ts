@@ -1,0 +1,29 @@
+{
+  "id": "rings-brighthearth-etb-m627",
+  "description": "Rings of Brighthearth ETB; copy ability parse.",
+  "seed": 2089,
+  "cards": {
+    "Rings Brighthearth M627": "Name:Rings Brighthearth M627\nManaCost:3\nTypes:Artifact\nT:Mode$ AbilityActivated | ValidCard$ Permanent.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | OptionalDecider$ You | TriggerDescription$ Rings copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | UnlessCost$ 2 | UnlessPayer$ You\nOracle:Rings parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rings Brighthearth M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rings Brighthearth M627",
+      "controller": 0
+    }
+  ]
+}

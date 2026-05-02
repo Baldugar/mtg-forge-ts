@@ -1,0 +1,29 @@
+{
+  "id": "extraplanar-lens-etb-m627",
+  "description": "Extraplanar Lens ETB; exile land + double mana parse.",
+  "seed": 1879,
+  "cards": {
+    "Extraplanar Lens M627": "Name:Extraplanar Lens M627\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Lens ETB.\nSVar:TrigExile:DB$ ChangeZone | TargetType$ Land.YouCtrl | Origin$ Battlefield | Destination$ Exile\nOracle:Lens parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extraplanar Lens M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Extraplanar Lens M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "maze-of-ith-etb-m627",
+  "description": "Maze of Ith ETB; untap-attack restriction parse.",
+  "seed": 1919,
+  "cards": {
+    "Maze Ith M627": "Name:Maze Ith M627\nTypes:Land\nA:AB$ UntapAll | Cost$ T | ValidCards$ Creature.attacking | TargetType$ Creature | ValidTgts$ Creature.attacking | SubAbility$ DBPrev\nSVar:DBPrev:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ STDmg\nSVar:STDmg:Mode$ Continuous | Affected$ Card.IsRemembered | EffectZone$ Command | RemoveCombatDamage$ True | Description$ No combat damage.\nOracle:Maze parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maze Ith M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Maze Ith M627",
+      "controller": 0
+    }
+  ]
+}

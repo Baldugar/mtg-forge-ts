@@ -1,0 +1,29 @@
+{
+  "id": "wall-of-blossoms-etb-m627",
+  "description": "Wall of Blossoms ETB; cantrip wall parse.",
+  "seed": 2007,
+  "cards": {
+    "Wall Blossoms M627": "Name:Wall Blossoms M627\nManaCost:1 G\nTypes:Creature Plant Wall\nPT:0/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Blossoms.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Blossoms parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wall Blossoms M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wall Blossoms M627",
+      "controller": 0
+    }
+  ]
+}

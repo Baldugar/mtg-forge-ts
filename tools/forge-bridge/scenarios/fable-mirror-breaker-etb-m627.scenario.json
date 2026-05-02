@@ -1,0 +1,29 @@
+{
+  "id": "fable-mirror-breaker-etb-m627",
+  "description": "Fable of the Mirror-Breaker ETB; saga 3-chapter token-loot-transform parse.",
+  "seed": 1852,
+  "cards": {
+    "Fable Mirror M627": "Name:Fable Mirror M627\nManaCost:2 R\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigToken | TriggerDescription$ I.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_goblin_shaman_treasure | TokenAmount$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigLoot | TriggerDescription$ II.\nSVar:TrigLoot:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 2\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:Fable parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fable Mirror M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Fable Mirror M627",
+      "controller": 0
+    }
+  ]
+}

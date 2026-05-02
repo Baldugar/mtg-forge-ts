@@ -1,0 +1,29 @@
+{
+  "id": "vial-smasher-etb-m627",
+  "description": "Vial Smasher ETB; first-spell-each-turn damage parse.",
+  "seed": 2014,
+  "cards": {
+    "Vial Smasher M627": "Name:Vial Smasher M627\nManaCost:1 B R\nTypes:Legendary Creature Goblin Berserker\nPT:3/2\nT:Mode$ SpellCast | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Smasher.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ X\nSVar:X:TriggeredCard$CardManaCost\nOracle:Smasher parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vial Smasher M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vial Smasher M627",
+      "controller": 0
+    }
+  ]
+}

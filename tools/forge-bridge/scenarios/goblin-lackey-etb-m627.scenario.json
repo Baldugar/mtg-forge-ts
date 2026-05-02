@@ -1,0 +1,29 @@
+{
+  "id": "goblin-lackey-etb-m627",
+  "description": "Goblin Lackey ETB; cheat goblin into play parse.",
+  "seed": 2094,
+  "cards": {
+    "Goblin Lackey M627": "Name:Goblin Lackey M627\nManaCost:R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ DamageDoneOne | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCheat | TriggerDescription$ Lackey.\nSVar:TrigCheat:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Goblin\nOracle:Lackey parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Lackey M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Lackey M627",
+      "controller": 0
+    }
+  ]
+}

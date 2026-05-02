@@ -1,0 +1,23 @@
+{
+  "id": "living-death-etb-m627",
+  "description": "Living Death in hand; mass reanimator parse.",
+  "seed": 1914,
+  "cards": {
+    "Living Death M627": "Name:Living Death M627\nManaCost:3 B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Cost$ 3 B | ChangeType$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZoneAll | ChangeType$ Creature.inZoneGraveyard | Origin$ Graveyard | Destination$ Battlefield\nOracle:Living Death parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Living Death M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

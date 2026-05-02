@@ -1,0 +1,29 @@
+{
+  "id": "door-destinies-etb-m627",
+  "description": "Door of Destinies ETB; tribal counter parse.",
+  "seed": 1985,
+  "cards": {
+    "Door Destinies M627": "Name:Door Destinies M627\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.ChosenType | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ DoD.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nOracle:Door parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Door Destinies M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Door Destinies M627",
+      "controller": 0
+    }
+  ]
+}

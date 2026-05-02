@@ -1,0 +1,38 @@
+{
+  "id": "hs-ds-vorinclex-coresidence-m627",
+  "description": "HS + DS + Vorinclex Raider co-resident; counter chain.",
+  "seed": 1890,
+  "cards": {
+    "Vorinclex Raider M627": "Name:Vorinclex Raider M627\nManaCost:5 G G\nTypes:Legendary Creature Phyrexian Praetor\nPT:6/6\nK:Trample\nK:Haste\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nOracle:Raider parse.\n",
+    "Hardened Scales M627C": "Name:Hardened Scales M627C\nManaCost:G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus\nSVar:Plus:DB$ ReplaceCounter | Additive$ 1\nOracle:HSC parse.\n",
+    "Doubling Season M627F": "Name:Doubling Season M627F\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nOracle:DSF parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vorinclex Raider M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Hardened Scales M627C"
+        },
+        {
+          "card": "Doubling Season M627F"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vorinclex Raider M627",
+      "controller": 0
+    }
+  ]
+}

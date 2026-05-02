@@ -1,0 +1,29 @@
+{
+  "id": "suture-priest-etb-m627",
+  "description": "Suture Priest ETB; symmetric life parse.",
+  "seed": 2018,
+  "cards": {
+    "Suture Priest M627": "Name:Suture Priest M627\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SP life.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ SP dmg.\nSVar:TrigDmg:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Suture parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suture Priest M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Suture Priest M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "impact-tremors-etb-m627",
+  "description": "Impact Tremors ETB; damage on creature ETB parse.",
+  "seed": 2019,
+  "cards": {
+    "Impact Tremors M627": "Name:Impact Tremors M627\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Tremors.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:Tremors parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impact Tremors M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Impact Tremors M627",
+      "controller": 0
+    }
+  ]
+}

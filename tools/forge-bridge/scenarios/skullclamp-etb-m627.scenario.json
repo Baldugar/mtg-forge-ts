@@ -1,0 +1,29 @@
+{
+  "id": "skullclamp-etb-m627",
+  "description": "Skullclamp ETB; equipment loot-on-die parse.",
+  "seed": 2026,
+  "cards": {
+    "Skullclamp M627": "Name:Skullclamp M627\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Clamp.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedByCardSelf | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Clamp draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Clamp parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullclamp M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skullclamp M627",
+      "controller": 0
+    }
+  ]
+}

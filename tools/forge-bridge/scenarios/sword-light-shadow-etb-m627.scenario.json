@@ -1,0 +1,29 @@
+{
+  "id": "sword-light-shadow-etb-m627",
+  "description": "Sword of Light and Shadow ETB; equipment life+return parse.",
+  "seed": 2028,
+  "cards": {
+    "Sword Light Shadow M627": "Name:Sword Light Shadow M627\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Sword anthem.\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedByCardSelf | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLife | TriggerDescription$ SoLS.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature\nOracle:SoLS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword Light Shadow M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword Light Shadow M627",
+      "controller": 0
+    }
+  ]
+}

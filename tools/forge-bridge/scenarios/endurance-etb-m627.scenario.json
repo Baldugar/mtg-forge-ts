@@ -1,0 +1,29 @@
+{
+  "id": "endurance-etb-m627",
+  "description": "Endurance ETB; reanimator hate parse.",
+  "seed": 2062,
+  "cards": {
+    "Endurance M627": "Name:Endurance M627\nManaCost:1 G G\nTypes:Creature Elemental Incarnation\nPT:3/4\nK:Reach\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ Endurance.\nSVar:TrigShuffle:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+inZoneGraveyard | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nOracle:Endurance parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endurance M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Endurance M627",
+      "controller": 0
+    }
+  ]
+}

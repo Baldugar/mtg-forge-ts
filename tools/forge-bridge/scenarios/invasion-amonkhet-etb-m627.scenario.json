@@ -1,0 +1,29 @@
+{
+  "id": "invasion-amonkhet-etb-m627",
+  "description": "Invasion of Amonkhet Battle ETB; mill parse.",
+  "seed": 1867,
+  "cards": {
+    "Invasion Amonkhet M627": "Name:Invasion Amonkhet M627\nManaCost:3 B\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Battle ETB mill.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ Player.Opponent\nOracle:Amonkhet parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Amonkhet M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion Amonkhet M627",
+      "controller": 0
+    }
+  ]
+}

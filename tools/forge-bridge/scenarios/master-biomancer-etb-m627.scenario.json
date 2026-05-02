@@ -1,0 +1,29 @@
+{
+  "id": "master-biomancer-etb-m627",
+  "description": "Master Biomancer ETB; replacement-counter on ETBs parse.",
+  "seed": 1896,
+  "cards": {
+    "Master Biomancer M627": "Name:Master Biomancer M627\nManaCost:2 G U\nTypes:Creature Elf Wizard Mutant\nPT:2/4\nR:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Destination$ Battlefield | ReplaceWith$ ETBC\nSVar:ETBC:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 2\nOracle:Biomancer parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master Biomancer M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Master Biomancer M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "saga-2-chapter-etb-m627",
+  "description": "Generic 2-chapter Saga ETB; etbCounterSpec lore=1 parse.",
+  "seed": 1934,
+  "cards": {
+    "Two-Chapter Saga M627": "Name:Two-Chapter Saga M627\nManaCost:1\nTypes:Enchantment Saga\nK:Chapter:2\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDraw | TriggerDescription$ I.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigSac | TriggerDescription$ II.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:2 chapter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Two-Chapter Saga M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Two-Chapter Saga M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "stoneforge-mystic-etb-m627",
+  "description": "Stoneforge Mystic ETB; equipment tutor parse.",
+  "seed": 2030,
+  "cards": {
+    "Stoneforge Mystic M627": "Name:Stoneforge Mystic M627\nManaCost:1 W\nTypes:Creature Kor Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ SFM.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1\nOracle:SFM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stoneforge Mystic M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Stoneforge Mystic M627",
+      "controller": 0
+    }
+  ]
+}

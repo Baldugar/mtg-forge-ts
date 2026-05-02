@@ -1,0 +1,29 @@
+{
+  "id": "marchesa-black-rose-etb-m627",
+  "description": "Marchesa ETB; dethrone parse.",
+  "seed": 1910,
+  "cards": {
+    "Marchesa Black M627": "Name:Marchesa Black M627\nManaCost:1 U B R\nTypes:Legendary Creature Human Wizard\nPT:3/3\nK:Dethrone\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Marchesa.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Creature.YouCtrl+counters_GE1_P1P1+inZoneGraveyard | Origin$ Graveyard | Destination$ Battlefield\nOracle:Marchesa parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marchesa Black M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Marchesa Black M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "argentum-armor-etb-m627",
+  "description": "Argentum Armor ETB; equipment huge parse.",
+  "seed": 2032,
+  "cards": {
+    "Argentum Armor M627": "Name:Argentum Armor M627\nManaCost:6\nTypes:Artifact Equipment\nK:Equip:6\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 6 | AddToughness$ 6 | Description$ Argentum.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedByCardSelf | Execute$ TrigDestroy | TriggerDescription$ Arg.\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Permanent\nOracle:Argentum parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argentum Armor M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Argentum Armor M627",
+      "controller": 0
+    }
+  ]
+}

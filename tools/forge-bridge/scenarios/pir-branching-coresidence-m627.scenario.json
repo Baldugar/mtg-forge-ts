@@ -1,0 +1,38 @@
+{
+  "id": "pir-branching-coresidence-m627",
+  "description": "Pir + Branching Evolution co-resident; counter combo (additive + multiplier).",
+  "seed": 2052,
+  "cards": {
+    "Pir Rascal M627C": "Name:Pir Rascal M627C\nManaCost:1 G\nTypes:Legendary Creature Human Wizard\nPT:2/2\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Plus\nSVar:Plus:DB$ ReplaceCounter | Additive$ 1\nOracle:PirC parse.\n",
+    "Branching Evolution M627B": "Name:Branching Evolution M627B\nManaCost:2 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nOracle:BEB parse.\n",
+    "Counter Source M627": "Name:Counter Source M627\nManaCost:1 G\nTypes:Creature Beast\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Counter source.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:CS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Counter Source M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Pir Rascal M627C"
+        },
+        {
+          "card": "Branching Evolution M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Counter Source M627",
+      "controller": 0
+    }
+  ]
+}

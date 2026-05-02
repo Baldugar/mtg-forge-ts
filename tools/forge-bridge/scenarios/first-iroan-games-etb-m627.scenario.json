@@ -1,0 +1,29 @@
+{
+  "id": "first-iroan-games-etb-m627",
+  "description": "The First Iroan Games ETB; saga 3-chapter token-pump-card parse.",
+  "seed": 1856,
+  "cards": {
+    "First Iroan Games M627": "Name:First Iroan Games M627\nManaCost:2 G\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigToken | TriggerDescription$ I.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenAmount$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigCounter | TriggerDescription$ II.\nSVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 2\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigDraw | TriggerDescription$ III.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBLife\nSVar:DBLife:DB$ GainLife | LifeAmount$ 3\nOracle:Iroan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "First Iroan Games M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "First Iroan Games M627",
+      "controller": 0
+    }
+  ]
+}

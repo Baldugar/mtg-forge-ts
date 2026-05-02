@@ -1,0 +1,29 @@
+{
+  "id": "tymna-weaver-etb-m627",
+  "description": "Tymna the Weaver ETB; combat-damage draw parse.",
+  "seed": 2011,
+  "cards": {
+    "Tymna Weaver M627": "Name:Tymna Weaver M627\nManaCost:1 W B\nTypes:Legendary Creature Human Cleric\nPT:2/2\nT:Mode$ Phase | Phase$ Postcombat Main | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Tymna draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | UnlessCost$ X Life | UnlessPayer$ You | References$ X\nSVar:X:Count$Valid Player.Opponent+wasDealtCombatDamageThisTurn\nOracle:Tymna parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tymna Weaver M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tymna Weaver M627",
+      "controller": 0
+    }
+  ]
+}

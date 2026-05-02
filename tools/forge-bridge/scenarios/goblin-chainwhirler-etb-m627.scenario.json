@@ -1,0 +1,29 @@
+{
+  "id": "goblin-chainwhirler-etb-m627",
+  "description": "Goblin Chainwhirler ETB; sweeping damage parse.",
+  "seed": 2078,
+  "cards": {
+    "Chainwhirler M627": "Name:Chainwhirler M627\nManaCost:R R R\nTypes:Creature Goblin Warrior\nPT:3/3\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Whirler.\nSVar:TrigDmg:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.OppCtrl | ValidPlayers$ Opponent\nOracle:Whirler parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chainwhirler M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Chainwhirler M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "saga-5-chapter-etb-m627",
+  "description": "Five-chapter Saga ETB; etbCounter parse.",
+  "seed": 1935,
+  "cards": {
+    "Five-Chapter Saga M627": "Name:Five-Chapter Saga M627\nManaCost:3\nTypes:Enchantment Saga\nK:Chapter:5\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDraw | TriggerDescription$ I.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 5 | Execute$ TrigSac | TriggerDescription$ V.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:5 chapter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Five-Chapter Saga M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Five-Chapter Saga M627",
+      "controller": 0
+    }
+  ]
+}

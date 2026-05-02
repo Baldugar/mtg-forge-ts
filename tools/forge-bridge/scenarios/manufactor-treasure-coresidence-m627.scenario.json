@@ -1,0 +1,34 @@
+{
+  "id": "manufactor-treasure-coresidence-m627",
+  "description": "Academy Manufactor + Treasure Maker co-resident; tri-token parse.",
+  "seed": 2075,
+  "cards": {
+    "Academy Manufactor M627B": "Name:Academy Manufactor M627B\nManaCost:2 W\nTypes:Artifact Creature Construct\nPT:1/2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure | ReplaceWith$ AddOthers\nSVar:AddOthers:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1\nOracle:ManufactorB parse.\n",
+    "Treasure Maker M627C": "Name:Treasure Maker M627C\nManaCost:2 R\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ TMC.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1\nOracle:TMC parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treasure Maker M627C"
+      ],
+      "battlefield": [
+        {
+          "card": "Academy Manufactor M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Treasure Maker M627C",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "soul-warden-etb-m627",
+  "description": "Soul Warden ETB; life-on-creature-ETB parse.",
+  "seed": 2016,
+  "cards": {
+    "Soul Warden M627": "Name:Soul Warden M627\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SW life.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1\nOracle:SW parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Warden M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Soul Warden M627",
+      "controller": 0
+    }
+  ]
+}

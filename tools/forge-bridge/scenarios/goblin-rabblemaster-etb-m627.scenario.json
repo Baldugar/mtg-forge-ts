@@ -1,0 +1,29 @@
+{
+  "id": "goblin-rabblemaster-etb-m627",
+  "description": "Goblin Rabblemaster ETB; attack-token parse.",
+  "seed": 2077,
+  "cards": {
+    "Rabblemaster M627": "Name:Rabblemaster M627\nManaCost:2 R\nTypes:Creature Goblin Warrior\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Rabble.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ 1\nOracle:Rabble parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rabblemaster M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Rabblemaster M627",
+      "controller": 0
+    }
+  ]
+}

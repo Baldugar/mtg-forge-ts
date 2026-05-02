@@ -1,0 +1,29 @@
+{
+  "id": "skysovereign-consul-flagship-etb",
+  "description": "Skysovereign Consul Flagship ETB; vehicle ETB-deal-3 trigger parse.",
+  "seed": 1841,
+  "cards": {
+    "Skysovereign Consul Flagship M627": "Name:Skysovereign Consul Flagship M627\nManaCost:6\nTypes:Legendary Artifact Vehicle\nPT:6/5\nK:Flying\nK:Crew:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Sky ETB.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg2 | TriggerDescription$ Sky attacks.\nSVar:TrigDmg2:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl\nOracle:Sky parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skysovereign Consul Flagship M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Skysovereign Consul Flagship M627",
+      "controller": 0
+    }
+  ]
+}

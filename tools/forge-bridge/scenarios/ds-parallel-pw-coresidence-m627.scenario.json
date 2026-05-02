@@ -1,0 +1,38 @@
+{
+  "id": "ds-parallel-pw-coresidence-m627",
+  "description": "Doubling Season + Parallel Lives co-resident; PW with token ult ETB.",
+  "seed": 1885,
+  "cards": {
+    "Doubling Season M627D": "Name:Doubling Season M627D\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:DSD parse.\n",
+    "Parallel Lives M627B": "Name:Parallel Lives M627B\nManaCost:3 G\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:PLB parse.\n",
+    "Token PW M627": "Name:Token PW M627\nManaCost:3 W W\nTypes:Legendary Planeswalker Elspeth\nLoyalty:4\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ w_1_1_soldier | TokenAmount$ 1 | Planeswalker$ True\nOracle:Token PW parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Token PW M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Doubling Season M627D"
+        },
+        {
+          "card": "Parallel Lives M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Token PW M627",
+      "controller": 0
+    }
+  ]
+}

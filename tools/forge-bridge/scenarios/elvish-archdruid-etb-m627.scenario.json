@@ -1,0 +1,29 @@
+{
+  "id": "elvish-archdruid-etb-m627",
+  "description": "Elvish Archdruid ETB; X mana per elf + anthem parse.",
+  "seed": 2043,
+  "cards": {
+    "Elvish Archdruid M627": "Name:Elvish Archdruid M627\nManaCost:1 G G\nTypes:Creature Elf Druid\nPT:2/2\nS:Mode$ Continuous | Affected$ Elf.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Anthem.\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X\nSVar:X:Count$Valid Elf.YouCtrl\nOracle:Archdruid parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Archdruid M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Elvish Archdruid M627",
+      "controller": 0
+    }
+  ]
+}

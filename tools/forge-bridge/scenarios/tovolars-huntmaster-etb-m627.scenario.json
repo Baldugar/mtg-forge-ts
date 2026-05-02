@@ -1,0 +1,29 @@
+{
+  "id": "tovolars-huntmaster-etb-m627",
+  "description": "Tovolar's Huntmaster ETB; DayBound werewolf parse.",
+  "seed": 1860,
+  "cards": {
+    "Tovolar Huntmaster M627": "Name:Tovolar Huntmaster M627\nManaCost:5 G\nTypes:Creature Werewolf\nPT:6/6\nK:DayBound\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ ETB tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenAmount$ 2\nOracle:Tovolar parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tovolar Huntmaster M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Tovolar Huntmaster M627",
+      "controller": 0
+    }
+  ]
+}

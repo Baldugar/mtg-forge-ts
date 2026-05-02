@@ -1,0 +1,29 @@
+{
+  "id": "krark-the-thumbless-etb-m627",
+  "description": "Krark ETB; coin flip recur parse.",
+  "seed": 1902,
+  "cards": {
+    "Krark Thumbless M627": "Name:Krark Thumbless M627\nManaCost:1 R\nTypes:Legendary Creature Goblin Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Instant,Card.Sorcery | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ Krark flip.\nSVar:TrigFlip:DB$ FlipACoin | Defined$ You | LoseSubAbility$ DBLose | WinSubAbility$ DBWin\nSVar:DBLose:DB$ ChangeZone | TargetType$ Card.Self | Origin$ Battlefield | Destination$ Hand\nSVar:DBWin:DB$ CopySpell\nOracle:Krark parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krark Thumbless M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Krark Thumbless M627",
+      "controller": 0
+    }
+  ]
+}

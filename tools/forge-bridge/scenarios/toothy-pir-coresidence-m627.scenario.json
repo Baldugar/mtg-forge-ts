@@ -1,0 +1,34 @@
+{
+  "id": "toothy-pir-coresidence-m627",
+  "description": "Toothy with Pir on battlefield; counter chain parse.",
+  "seed": 1895,
+  "cards": {
+    "Pir Rascal M627B": "Name:Pir Rascal M627B\nManaCost:1 G\nTypes:Legendary Creature Human Wizard\nPT:2/2\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Plus\nSVar:Plus:DB$ ReplaceCounter | Additive$ 1\nOracle:PirB parse.\n",
+    "Toothy M627": "Name:Toothy M627\nManaCost:3 U\nTypes:Legendary Creature Hydra Beast\nPT:1/1\nT:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Toothy.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Toothy parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toothy M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Pir Rascal M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Toothy M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "verdurous-gearhulk-etb-m627",
+  "description": "Verdurous Gearhulk ETB; counter ETB parse.",
+  "seed": 2059,
+  "cards": {
+    "Verdurous Gearhulk M627": "Name:Verdurous Gearhulk M627\nManaCost:3 G G\nTypes:Artifact Creature Construct\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Verdurous.\nSVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 4\nOracle:Verdurous parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verdurous Gearhulk M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Verdurous Gearhulk M627",
+      "controller": 0
+    }
+  ]
+}

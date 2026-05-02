@@ -1,0 +1,38 @@
+{
+  "id": "impact-tremors-purphoros-coresidence-m627",
+  "description": "Impact Tremors + Purphoros co-resident; double damage on creature ETB.",
+  "seed": 2050,
+  "cards": {
+    "Impact Tremors M627B": "Name:Impact Tremors M627B\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ ITB.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:ITB parse.\n",
+    "Purphoros M627B": "Name:Purphoros M627B\nManaCost:3 R\nTypes:Legendary Enchantment Creature God\nPT:4/4\nK:Indestructible\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ PurphB.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nOracle:PurphB parse.\n",
+    "Bear Token M627B": "Name:Bear Token M627B\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:BearB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bear Token M627B"
+      ],
+      "battlefield": [
+        {
+          "card": "Impact Tremors M627B"
+        },
+        {
+          "card": "Purphoros M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bear Token M627B",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "soul-warden-suture-priest-coresidence-m627",
+  "description": "Soul Warden + Suture Priest co-resident; ETB life-trigger stack.",
+  "seed": 2049,
+  "cards": {
+    "Soul Warden M627B": "Name:Soul Warden M627B\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SWB.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1\nOracle:SWB parse.\n",
+    "Suture Priest M627B": "Name:Suture Priest M627B\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SPB.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1\nOracle:SPB parse.\n",
+    "Bear Token M627": "Name:Bear Token M627\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:Bear parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bear Token M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden M627B"
+        },
+        {
+          "card": "Suture Priest M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Bear Token M627",
+      "controller": 0
+    }
+  ]
+}

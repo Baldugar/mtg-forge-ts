@@ -1,0 +1,29 @@
+{
+  "id": "wrenn-six-etb-m627",
+  "description": "Wrenn and Six ETB; PW parse.",
+  "seed": 2064,
+  "cards": {
+    "Wrenn Six M627": "Name:Wrenn Six M627\nManaCost:R G\nTypes:Legendary Planeswalker Wrenn\nLoyalty:3\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Land.YouCtrl+inZoneGraveyard | Planeswalker$ True\nA:AB$ DealDamage | Cost$ SubCounter<1/LOYALTY> | NumDmg$ 1 | TargetType$ Any | ValidTgts$ Any | Planeswalker$ True\nOracle:WnS parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrenn Six M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Wrenn Six M627",
+      "controller": 0
+    }
+  ]
+}

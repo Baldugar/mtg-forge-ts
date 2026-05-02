@@ -1,0 +1,29 @@
+{
+  "id": "man-o-war-etb-m627",
+  "description": "Man-o'-War ETB; bounce parse.",
+  "seed": 1998,
+  "cards": {
+    "Man o War M627": "Name:Man o War M627\nManaCost:2 U\nTypes:Creature Jellyfish\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Bounce.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature\nOracle:MoW parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Man o War M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Man o War M627",
+      "controller": 0
+    }
+  ]
+}

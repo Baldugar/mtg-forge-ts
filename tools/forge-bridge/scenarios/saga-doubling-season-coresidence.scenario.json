@@ -1,0 +1,34 @@
+{
+  "id": "saga-doubling-season-coresidence",
+  "description": "Saga ETB with Doubling Season on battlefield; lore counter doubler.",
+  "seed": 1857,
+  "cards": {
+    "Mini Saga M627": "Name:Mini Saga M627\nManaCost:1 W\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDraw | TriggerDescription$ I.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigLife | TriggerDescription$ II.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 2\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:Mini parse.\n",
+    "Doubling Season M627B": "Name:Doubling Season M627B\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nOracle:DSB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mini Saga M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Doubling Season M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Mini Saga M627",
+      "controller": 0
+    }
+  ]
+}

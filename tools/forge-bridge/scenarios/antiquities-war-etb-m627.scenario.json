@@ -1,0 +1,29 @@
+{
+  "id": "antiquities-war-etb-m627",
+  "description": "The Antiquities War ETB; saga 3-chapter artifact tutor parse.",
+  "seed": 1855,
+  "cards": {
+    "Antiquities War M627": "Name:Antiquities War M627\nManaCost:3 U\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDig | TriggerDescription$ I.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Artifact\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDig2 | TriggerDescription$ II.\nSVar:TrigDig2:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Artifact\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigAnimate | TriggerDescription$ III.\nSVar:TrigAnimate:DB$ AnimateAll | ValidCards$ Artifact.YouCtrl | Power$ 5 | Toughness$ 5 | Types$ Creature,Artifact\nOracle:Antiquities parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Antiquities War M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Antiquities War M627",
+      "controller": 0
+    }
+  ]
+}

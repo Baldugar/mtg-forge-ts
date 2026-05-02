@@ -1,0 +1,29 @@
+{
+  "id": "slick-sequence-mount-etb",
+  "description": "Slick Sequence Mount ETB; attack-saddled trigger parse.",
+  "seed": 1847,
+  "cards": {
+    "Slick Sequence Mount M627": "Name:Slick Sequence Mount M627\nManaCost:2 U R\nTypes:Creature Mount\nPT:3/3\nK:Saddle:2\nT:Mode$ Attacks | ValidCard$ Card.Self+saddled | Execute$ TrigDraw | TriggerDescription$ Slick attacks saddled.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1\nOracle:Slick parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slick Sequence Mount M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Slick Sequence Mount M627",
+      "controller": 0
+    }
+  ]
+}

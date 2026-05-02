@@ -1,0 +1,29 @@
+{
+  "id": "acidic-slime-etb-m627",
+  "description": "Acidic Slime ETB; destroy artifact/enchantment/land parse.",
+  "seed": 2000,
+  "cards": {
+    "Acidic Slime M627": "Name:Acidic Slime M627\nManaCost:3 G G\nTypes:Creature Ooze\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Acidic.\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Artifact,Enchantment,Land\nOracle:Acid parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acidic Slime M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Acidic Slime M627",
+      "controller": 0
+    }
+  ]
+}

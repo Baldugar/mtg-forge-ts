@@ -1,0 +1,29 @@
+{
+  "id": "setessan-champion-etb-m627",
+  "description": "Setessan Champion ETB; constellation draw + counter parse.",
+  "seed": 2058,
+  "cards": {
+    "Setessan Champion M627": "Name:Setessan Champion M627\nManaCost:1 G G\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Setessan.\nSVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Setessan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Setessan Champion M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Setessan Champion M627",
+      "controller": 0
+    }
+  ]
+}

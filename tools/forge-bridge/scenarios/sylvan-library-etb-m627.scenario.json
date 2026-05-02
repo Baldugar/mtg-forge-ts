@@ -1,0 +1,29 @@
+{
+  "id": "sylvan-library-etb-m627",
+  "description": "Sylvan Library ETB; draw 2 + return-or-life parse.",
+  "seed": 1870,
+  "cards": {
+    "Sylvan Library M627": "Name:Sylvan Library M627\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Sylvan draw.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Sylvan parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sylvan Library M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sylvan Library M627",
+      "controller": 0
+    }
+  ]
+}

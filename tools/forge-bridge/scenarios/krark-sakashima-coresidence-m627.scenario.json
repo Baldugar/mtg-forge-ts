@@ -1,0 +1,34 @@
+{
+  "id": "krark-sakashima-coresidence-m627",
+  "description": "Krark with Sakashima on battlefield; partner-flip chain.",
+  "seed": 1904,
+  "cards": {
+    "Krark Thumbless M627B": "Name:Krark Thumbless M627B\nManaCost:1 R\nTypes:Legendary Creature Goblin Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Instant,Card.Sorcery | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ Krark flip.\nSVar:TrigFlip:DB$ FlipACoin | Defined$ You\nOracle:KrarkB parse.\n",
+    "Sakashima Faces M627B": "Name:Sakashima Faces M627B\nManaCost:2 U U\nTypes:Legendary Creature Human Rogue\nPT:3/1\nS:Mode$ Continuous | Affected$ Card.Self | RemoveCardTypes$ Legendary | Description$ Strip legendary.\nOracle:SakashimaB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krark Thumbless M627B"
+      ],
+      "battlefield": [
+        {
+          "card": "Sakashima Faces M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Krark Thumbless M627B",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "umezawas-jitte-etb-m627",
+  "description": "Umezawa's Jitte ETB; equipment counter-charge modal parse.",
+  "seed": 2029,
+  "cards": {
+    "Umezawas Jitte M627": "Name:Umezawas Jitte M627\nManaCost:2\nTypes:Legendary Artifact Equipment\nK:Equip:2\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedByCardSelf | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCounter | TriggerDescription$ Jitte.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2\nOracle:Jitte parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umezawas Jitte M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Umezawas Jitte M627",
+      "controller": 0
+    }
+  ]
+}

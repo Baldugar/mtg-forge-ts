@@ -1,0 +1,29 @@
+{
+  "id": "coiling-oracle-etb-m627",
+  "description": "Coiling Oracle ETB; reveal-top parse.",
+  "seed": 2008,
+  "cards": {
+    "Coiling Oracle M627": "Name:Coiling Oracle M627\nManaCost:G U\nTypes:Creature Snake Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Coiling.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Land | DestinationZone$ Battlefield | DestinationZone2$ Hand\nOracle:Coiling parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coiling Oracle M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Coiling Oracle M627",
+      "controller": 0
+    }
+  ]
+}

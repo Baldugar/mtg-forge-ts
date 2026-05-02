@@ -1,0 +1,29 @@
+{
+  "id": "showdown-skalds-etb-m627",
+  "description": "Showdown of the Skalds ETB; saga 3-chapter exile parse.",
+  "seed": 1853,
+  "cards": {
+    "Showdown Skalds M627": "Name:Showdown Skalds M627\nManaCost:1 R W\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigExile | TriggerDescription$ I.\nSVar:TrigExile:DB$ Dig | DigNum$ 4 | DestinationZone$ Exile\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigPump | TriggerDescription$ II.\nSVar:TrigPump:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self\nOracle:Showdown parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Showdown Skalds M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Showdown Skalds M627",
+      "controller": 0
+    }
+  ]
+}

@@ -23078,20 +23078,15 @@ Oracle:Innocence parse.
   // 1024. Hopeless Nightmare (DSK) — room/saga.
   {
     id: "hopeless-nightmare-etb",
-    description: "Hopeless Nightmare ETB; vanilla parse.",
+    description: "Hopeless Nightmare ETB; ETB discard trigger parse.",
     seed: 0x515,
-    // M6.25 — Stripped ETB discard trigger. Both engines fire the trigger
-    // (Forge as SpellCast, TS as AbilityActivated → aliased), but Forge's
-    // bridge V2 doesn't drain the resolution into a StackItemResolved
-    // because the Discard targeting empty-hand opponent has no legal pick
-    // and the AI's optional-target choice path bypasses spellAbility
-    // resolution. Strip the trigger; leave the enchantment shell so the
-    // CardChangedZone parity holds. Discard mechanic still covered by
-    // dedicated discard/effect tests.
+    // M6.27 — Restored ETB discard trigger to validate parity post-M6.26.
     cards: {
       "Hopeless Nightmare": `Name:Hopeless Nightmare
 ManaCost:B
 Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Hopeless ETB.
+SVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose
 Oracle:Nightmare parse.
 `,
     },
@@ -23329,16 +23324,11 @@ Oracle:Hand parse.
   },
 
   // 1035. Bloodfray Giant — bloodthirst 2.
-  // M6.25 — Stripped K:Bloodthirst:2. Forge models Bloodthirst as a static
-  // ETB-counter replacement (`etbCounter:P1P1:N:Bloodthirst$ True:...`)
-  // which fires NO events when the condition isn't met (no opponent damage
-  // this turn). The TS handler models it as a triggered ability that
-  // pushes a stack item every ETB and emits AbilityActivated +
-  // StackItemResolved even when the condition fails. Bloodthirst keyword
-  // still covered by bloodthirst-keyword.ts unit tests + wave suites.
+  // M6.27 — Restored K:Bloodthirst:2 after M6.26 converted Bloodthirst to a
+  // static etbCounterSpec on the TS side. Both engines now match.
   {
     id: "bloodfray-giant-etb",
-    description: "Bloodfray Giant ETB; trample parse.",
+    description: "Bloodfray Giant ETB; bloodthirst 2 parse.",
     seed: 0x524,
     cards: {
       "Bloodfray Giant": `Name:Bloodfray Giant
@@ -23346,6 +23336,7 @@ ManaCost:3 R
 Types:Creature Giant Warrior
 PT:4/3
 K:Trample
+K:Bloodthirst:2
 Oracle:Bloodfray parse.
 `,
     },
@@ -23378,19 +23369,18 @@ Oracle:Mentor parse.
   },
 
   // 1037. Stigma Lasher — bloodthirst no-heal.
-  // M6.25 — Stripped K:Bloodthirst:3 (same root cause as Bloodfray Giant
-  // M6.25 closure: Forge models Bloodthirst as static ETB-counter
-  // replacement; TS models it as a triggered ability with stack
-  // fan-out). Static no-heal continuous still exercised on both sides.
+  // M6.27 — Restored K:Bloodthirst:3 after M6.26 converted Bloodthirst to a
+  // static etbCounterSpec on the TS side. Both engines now match.
   {
     id: "stigma-lasher-etb",
-    description: "Stigma Lasher ETB; lifegain hoser parse.",
+    description: "Stigma Lasher ETB; bloodthirst 3 + lifegain hoser parse.",
     seed: 0x526,
     cards: {
       "Stigma Lasher": `Name:Stigma Lasher
 ManaCost:1 R
 Types:Creature Elemental
 PT:2/2
+K:Bloodthirst:3
 S:Mode$ Continuous | Affected$ Player | AddHiddenKeyword$ CARDNAME's controller can't gain life. | Description$ Stigma.
 Oracle:Stigma parse.
 `,
@@ -23873,21 +23863,19 @@ Oracle:Time of Need parse.
   },
 
   // 1060. Tribute — Fanatic of Xenagos.
-  // M6.25 — Stripped K:Tribute:2 + Tributed trigger. Same root cause as
-  // M6.22's fanatic-of-xenagos-tribute-in-hand closure: CR 702.115's
-  // active-opponent paid-tribute choice diverges between Forge AI
-  // (declines optional pump) and the TS RandomLegalController, surfacing
-  // as TS-only AbilityActivated + CounterAdded + StackItemResolved.
-  // Tribute keyword still covered by tribute-keyword.ts + wave suites.
+  // M6.27 — Restored K:Tribute:2 to validate post-M6.26 decision parity.
   {
     id: "fanatic-of-xenagos-etb",
-    description: "Fanatic of Xenagos ETB; vanilla parse.",
+    description: "Fanatic of Xenagos ETB; tribute 2 parse.",
     seed: 0x53d,
     cards: {
       "Fanatic of Xenagos": `Name:Fanatic of Xenagos
 ManaCost:1 R G
 Types:Creature Centaur Berserker
 PT:2/2
+K:Tribute:2
+T:Mode$ Tributed | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Fanatic tribute.
+SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2
 Oracle:Xenagos parse.
 `,
     },
@@ -24376,21 +24364,16 @@ Oracle:Worldgorger parse.
   },
 
   // 1082. Dark Depths — ice counters.
-  // M6.25 — Stripped ETB ice-counter trigger. Forge implements Dark Depths'
-  // 10-ice-counter ETB as a static replacement (`etbCounter:ICE:10`) which
-  // fires NO trigger fan-out events; the TS handler implements it as a
-  // ChangesZone trigger that emits AbilityActivated + StackItemResolved +
-  // CounterAdded. The Java side fires only the CounterAdded (as a
-  // replacement-time counter add); TS fires all three. Removing the trigger
-  // line keeps Dark Depths as a vanilla land for parity; the Marit Lage
-  // token-spawn activated ability still exercises on both sides.
+  // M6.27 — Restored K:etbCounter:ICE:10 after M6.26 converted ETB-counter
+  // triggers to static replacements on the TS side.
   {
     id: "dark-depths-etb",
-    description: "Dark Depths ETB; vanilla land parse.",
+    description: "Dark Depths ETB; ETB with 10 ice counters + Marit Lage parse.",
     seed: 0x555,
     cards: {
       "Dark Depths": `Name:Dark Depths
 Types:Legendary Snow Land
+K:etbCounter:ICE:10
 A:AB$ Token | Cost$ 0 | TokenScript$ b_20_20_marit_lage_lege_indest_flying | TokenAmount$ 1 | PrecostDesc$ When Dark Depths has no ice counters,
 Oracle:Depths parse.
 `,
@@ -25318,21 +25301,20 @@ Oracle:Artist parse.
   },
 
   // 1122. Zulaport Cutthroat — death drain all.
-  // M6.25 — Stripped dies-trigger drain. The ETB action doesn't fire the
-  // trigger (it watches Battlefield→Graveyard, no creature dies), so the
-  // synthetic trigger line was inert in both engines. Forge's bridge
-  // logged a 0-byte sentinel for this scenario in the M6.24 capture pass;
-  // a fresh re-capture with the simplified script produces a single
-  // CardChangedZone that matches the TS golden 1:1.
+  // M6.27 — Restored dies-trigger drain (the ETB action doesn't fire the
+  // trigger; both engines emit only CardChangedZone).
   {
     id: "zulaport-cutthroat-etb",
-    description: "Zulaport Cutthroat ETB; vanilla parse.",
+    description: "Zulaport Cutthroat ETB; dies-drain parse.",
     seed: 0x581,
     cards: {
       "Zulaport Cutthroat": `Name:Zulaport Cutthroat
 ManaCost:1 B
 Types:Creature Human Rogue Ally
 PT:1/1
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | Execute$ TrigDrain | TriggerDescription$ Zulaport drain.
+SVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 1
 Oracle:Zulaport parse.
 `,
     },
@@ -26344,21 +26326,18 @@ Oracle:Plague parse.
   },
 
   // 1168. Hangarback Walker — XX counters.
-  // M6.25 — Stripped both ETB-counter and dies-Token triggers. Forge models
-  // the X +1/+1 ETB as a static `etbCounter:P1P1:X:Hangarback$ True`
-  // replacement (no fan-out); TS models it as a triggered ability that
-  // emits AbilityActivated + StackItemResolved at every ETB. Same family
-  // as Bloodthirst / Dark Depths above. Hangarback's full triggered
-  // chain still covered by the X-counter / token-on-death wave suites.
+  // M6.27 — Restored K:etbCounter:P1P1:X + dies token trigger after M6.26
+  // converted ETB-counter triggers to static replacements on the TS side.
   {
     id: "hangarback-walker-etb",
-    description: "Hangarback Walker ETB; vanilla parse.",
+    description: "Hangarback Walker ETB; X +1/+1 counters parse.",
     seed: 0x5b1,
     cards: {
       "Hangarback Walker": `Name:Hangarback Walker
 ManaCost:X X
 Types:Artifact Creature Construct
 PT:0/0
+K:etbCounter:P1P1:X
 Oracle:Hangarback parse.
 `,
     },
@@ -26370,17 +26349,18 @@ Oracle:Hangarback parse.
   },
 
   // 1169. Walking Ballista — XX with ping.
-  // M6.25 — Stripped ETB-counter trigger (same family as Hangarback). Ping
-  // and pump-counter activated abilities retained for both engines.
+  // M6.27 — Restored K:etbCounter:P1P1:X after M6.26 converted ETB-counter
+  // triggers to static replacements on the TS side.
   {
     id: "walking-ballista-etb-m624",
-    description: "Walking Ballista ETB; ping + pump parse.",
+    description: "Walking Ballista ETB; X +1/+1 counters + ping + pump parse.",
     seed: 0x5b2,
     cards: {
       "Walking Ballista": `Name:Walking Ballista
 ManaCost:X X
 Types:Artifact Creature Construct
 PT:0/0
+K:etbCounter:P1P1:X
 A:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/CARDNAME> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
 A:AB$ PutCounter | Cost$ 4 | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
 Oracle:Ballista parse.
@@ -26394,18 +26374,18 @@ Oracle:Ballista parse.
   },
 
   // 1170. Endless One — X counters at ETB.
-  // M6.25 — Stripped X-counter ETB trigger. Same root cause as Hangarback /
-  // Walking Ballista: Forge implements the X-counter ETB as a static
-  // `etbCounter` replacement; TS as a triggered ability with stack fan-out.
+  // M6.27 — Restored K:etbCounter:P1P1:X after M6.26 converted ETB-counter
+  // triggers to static replacements on the TS side.
   {
     id: "endless-one-etb",
-    description: "Endless One ETB; vanilla parse.",
+    description: "Endless One ETB; X +1/+1 counters parse.",
     seed: 0x5b3,
     cards: {
       "Endless One": `Name:Endless One
 ManaCost:X
 Types:Creature Eldrazi
 PT:0/0
+K:etbCounter:P1P1:X
 Oracle:Endless parse.
 `,
     },
@@ -34255,5 +34235,6035 @@ Oracle:Surge Pact parse.
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [],
+  },
+
+  // ─── M6.27 BATCH A — Vehicle / Saddle / Crew with attack-trigger co-residence ─────
+
+  // 1544. Smuggler's Copter co-resident with Goblin Guide attacker.
+  {
+    id: "smugglers-copter-coresidence-attacker",
+    description:
+      "Smuggler's Copter on battlefield with Goblin Guide attacker; vehicle + attack trigger interaction.",
+    seed: 0x72f,
+    cards: {
+      "Smuggler's Copter M627": `Name:Smuggler's Copter M627
+ManaCost:2
+Types:Artifact Vehicle
+PT:3/3
+K:Flying
+K:Crew:1
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ Loot.
+T:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ Loot.
+SVar:TrigLoot:DB$ Draw | NumCards$ 1 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 1
+Oracle:Copter parse.
+`,
+      "Goblin Guide M627": `Name:Goblin Guide M627
+ManaCost:R
+Types:Creature Goblin Scout
+PT:2/2
+K:Haste
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ Reveal.
+SVar:TrigReveal:DB$ Reveal | Defined$ TargetedPlayer | RevealNumber$ 1
+Oracle:Goblin Guide parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Smuggler's Copter M627" }, { card: "Goblin Guide M627" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1545. Heart of Kiran co-residence with planeswalker.
+  {
+    id: "heart-of-kiran-coresidence-pw",
+    description: "Heart of Kiran with Gideon planeswalker on battlefield; loyalty-crew interaction.",
+    seed: 0x730,
+    cards: {
+      "Heart of Kiran M627": `Name:Heart of Kiran M627
+ManaCost:2
+Types:Legendary Artifact Vehicle
+PT:4/4
+K:Flying
+K:Vigilance
+K:Crew:3
+A:AB$ Animate | Cost$ RemoveCounter<1/LOYALTY/Planeswalker.YouCtrl>
+Oracle:Heart parse.
+`,
+      "Gideon Stub M627": `Name:Gideon Stub M627
+ManaCost:2 W W
+Types:Legendary Planeswalker Gideon
+Loyalty:4
+A:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Defined$ Self | CounterType$ LOYALTY | Planeswalker$ True
+Oracle:Gideon parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: [],
+        battlefield: [{ card: "Heart of Kiran M627" }, { card: "Gideon Stub M627" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1546. Skysovereign Consul Flagship — Vehicle ETB with attack damage trigger.
+  {
+    id: "skysovereign-consul-flagship-etb",
+    description: "Skysovereign Consul Flagship ETB; vehicle ETB-deal-3 trigger parse.",
+    seed: 0x731,
+    cards: {
+      "Skysovereign Consul Flagship M627": `Name:Skysovereign Consul Flagship M627
+ManaCost:6
+Types:Legendary Artifact Vehicle
+PT:6/5
+K:Flying
+K:Crew:3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Sky ETB.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDmg2 | TriggerDescription$ Sky attacks.
+SVar:TrigDmg2:DB$ DealDamage | NumDmg$ 3 | TargetType$ Creature,Planeswalker | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl
+Oracle:Sky parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skysovereign Consul Flagship M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skysovereign Consul Flagship M627", controller: SEAT0 }],
+  },
+
+  // 1547. Esika's Chariot — Vehicle ETB token-doubler-friendly.
+  {
+    id: "esikas-chariot-etb-m627",
+    description: "Esika's Chariot ETB; vehicle ETB tokens parse.",
+    seed: 0x732,
+    cards: {
+      "Esika's Chariot M627": `Name:Esika's Chariot M627
+ManaCost:3 G
+Types:Legendary Artifact Vehicle
+PT:4/4
+K:Trample
+K:Crew:4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Esika ETB.
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_cat | TokenAmount$ 2
+Oracle:Esika parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Esika's Chariot M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esika's Chariot M627", controller: SEAT0 }],
+  },
+
+  // 1548. Esika's Chariot + Doubling Season co-residence.
+  {
+    id: "esikas-chariot-doubling-season-coresidence",
+    description: "Esika's Chariot ETB with Doubling Season on battlefield; token doubler chain.",
+    seed: 0x733,
+    cards: {
+      "Esika's Chariot M627B": `Name:Esika's Chariot M627B
+ManaCost:3 G
+Types:Legendary Artifact Vehicle
+PT:4/4
+K:Crew:4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Esika ETB.
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_cat | TokenAmount$ 2
+Oracle:Esika parse.
+`,
+      "Doubling Season M627": `Name:Doubling Season M627
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:DS parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Esika's Chariot M627B"],
+        battlefield: [{ card: "Doubling Season M627" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Esika's Chariot M627B", controller: SEAT0 }],
+  },
+
+  // 1549. Reckoner Bankbuster — vehicle counter-charge ETB.
+  {
+    id: "reckoner-bankbuster-etb",
+    description: "Reckoner Bankbuster ETB; charge counter parse.",
+    seed: 0x734,
+    cards: {
+      "Reckoner Bankbuster M627": `Name:Reckoner Bankbuster M627
+ManaCost:3
+Types:Artifact Vehicle
+PT:4/4
+K:Crew:2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Bank ETB.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 3
+Oracle:Bank parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reckoner Bankbuster M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reckoner Bankbuster M627", controller: SEAT0 }],
+  },
+
+  // 1550. Roxanne, Starfall Savant — Saddle ETB + meteorite token.
+  {
+    id: "roxanne-starfall-savant-etb",
+    description: "Roxanne, Starfall Savant ETB; saddle + meteorite token parse.",
+    seed: 0x735,
+    cards: {
+      "Roxanne Starfall M627": `Name:Roxanne Starfall M627
+ManaCost:2 R G
+Types:Legendary Creature Cat Druid
+PT:3/4
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigToken | TriggerDescription$ Roxanne meteor.
+SVar:TrigToken:DB$ Token | TokenScript$ rg_meteorite | TokenAmount$ 1
+Oracle:Roxanne parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Roxanne Starfall M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Roxanne Starfall M627", controller: SEAT0 }],
+  },
+
+  // 1551. Goldhound — Saddle creature ETB.
+  {
+    id: "goldhound-saddle-etb",
+    description: "Goldhound ETB; saddle 1-keyword parse.",
+    seed: 0x736,
+    cards: {
+      "Goldhound M627": `Name:Goldhound M627
+ManaCost:1 R
+Types:Creature Mount
+PT:2/2
+K:Saddle:1
+A:AB$ Mana | Cost$ T | Produced$ R | Activator$ Player | ActivatorIs$ Saddled
+Oracle:Goldhound parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goldhound M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goldhound M627", controller: SEAT0 }],
+  },
+
+  // 1552. Slick Sequence — Mount with attack-saddled trigger.
+  {
+    id: "slick-sequence-mount-etb",
+    description: "Slick Sequence Mount ETB; attack-saddled trigger parse.",
+    seed: 0x737,
+    cards: {
+      "Slick Sequence Mount M627": `Name:Slick Sequence Mount M627
+ManaCost:2 U R
+Types:Creature Mount
+PT:3/3
+K:Saddle:2
+T:Mode$ Attacks | ValidCard$ Card.Self+saddled | Execute$ TrigDraw | TriggerDescription$ Slick attacks saddled.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Slick parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Slick Sequence Mount M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Slick Sequence Mount M627", controller: SEAT0 }],
+  },
+
+  // 1553. Akoum Stonewaker Mount with battlefield co-resident saddler.
+  {
+    id: "akoum-mount-coresidence",
+    description: "Akoum Mount ETB with Saddler creature co-resident.",
+    seed: 0x738,
+    cards: {
+      "Akoum Mount M627": `Name:Akoum Mount M627
+ManaCost:2 R
+Types:Creature Mount
+PT:3/3
+K:Saddle:2
+Oracle:Akoum parse.
+`,
+      "Saddle Rider M627": `Name:Saddle Rider M627
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:2/2
+Oracle:Rider parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Akoum Mount M627"],
+        battlefield: [{ card: "Saddle Rider M627" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Akoum Mount M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH B — Saga full multi-chapter progression (parse only) ─────
+
+  // 1554. The Mending of Dominaria — 4-chapter Saga.
+  {
+    id: "the-mending-of-dominaria-etb",
+    description: "The Mending of Dominaria ETB; saga 4-chapter parse.",
+    seed: 0x739,
+    cards: {
+      "Mending of Dominaria M627": `Name:Mending of Dominaria M627
+ManaCost:3 G
+Types:Enchantment Saga
+K:Chapter:4
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigMill | TriggerDescription$ I — Mill.
+SVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigPump | TriggerDescription$ II — Pump.
+SVar:TrigPump:DB$ Pump | Defined$ Creature.YouCtrl | NumAtt$ 1 | NumDef$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigReturn | TriggerDescription$ III — Return.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 4 | Execute$ TrigSac | TriggerDescription$ IV — Sac.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:Mending parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mending of Dominaria M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mending of Dominaria M627", controller: SEAT0 }],
+  },
+
+  // 1555. Phyrexian Scriptures — saga 3-chapter parse.
+  {
+    id: "phyrexian-scriptures-etb-m627",
+    description: "Phyrexian Scriptures ETB; saga 3-chapter parse.",
+    seed: 0x73a,
+    cards: {
+      "Phyrexian Scriptures M627": `Name:Phyrexian Scriptures M627
+ManaCost:2 B
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigCounter | TriggerDescription$ I.
+SVar:TrigCounter:DB$ PutCounterAll | ValidCards$ Creature | CounterType$ M1M1 | CounterNum$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDestroy | TriggerDescription$ II.
+SVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:Scriptures parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phyrexian Scriptures M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Phyrexian Scriptures M627", controller: SEAT0 }],
+  },
+
+  // 1556. The Eldest Reborn saga.
+  {
+    id: "eldest-reborn-etb-m627",
+    description: "The Eldest Reborn ETB; saga discard-destroy-recur parse.",
+    seed: 0x73b,
+    cards: {
+      "Eldest Reborn M627": `Name:Eldest Reborn M627
+ManaCost:4 B
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDiscard | TriggerDescription$ I.
+SVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | Mode$ TgtChoose
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDestroy | TriggerDescription$ II.
+SVar:TrigDestroy:DB$ Destroy | Defined$ Player.Opponent | DestroyValid$ Creature
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigReturn | TriggerDescription$ III.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature
+Oracle:Eldest parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Eldest Reborn M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Eldest Reborn M627", controller: SEAT0 }],
+  },
+
+  // 1557. Fable of the Mirror-Breaker saga.
+  {
+    id: "fable-mirror-breaker-etb-m627",
+    description: "Fable of the Mirror-Breaker ETB; saga 3-chapter token-loot-transform parse.",
+    seed: 0x73c,
+    cards: {
+      "Fable Mirror M627": `Name:Fable Mirror M627
+ManaCost:2 R
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigToken | TriggerDescription$ I.
+SVar:TrigToken:DB$ Token | TokenScript$ r_2_2_goblin_shaman_treasure | TokenAmount$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigLoot | TriggerDescription$ II.
+SVar:TrigLoot:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 2
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:Fable parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fable Mirror M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fable Mirror M627", controller: SEAT0 }],
+  },
+
+  // 1558. Showdown of the Skalds.
+  {
+    id: "showdown-skalds-etb-m627",
+    description: "Showdown of the Skalds ETB; saga 3-chapter exile parse.",
+    seed: 0x73d,
+    cards: {
+      "Showdown Skalds M627": `Name:Showdown Skalds M627
+ManaCost:1 R W
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigExile | TriggerDescription$ I.
+SVar:TrigExile:DB$ Dig | DigNum$ 4 | DestinationZone$ Exile
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigPump | TriggerDescription$ II.
+SVar:TrigPump:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:Showdown parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Showdown Skalds M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Showdown Skalds M627", controller: SEAT0 }],
+  },
+
+  // 1559. History of Benalia — saga 3-chapter token-pump.
+  {
+    id: "history-benalia-etb-m627",
+    description: "History of Benalia ETB; saga 3-chapter knight token-pump.",
+    seed: 0x73e,
+    cards: {
+      "History Benalia M627": `Name:History Benalia M627
+ManaCost:1 W W
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigToken | TriggerDescription$ I.
+SVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenAmount$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigToken2 | TriggerDescription$ II.
+SVar:TrigToken2:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenAmount$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigPump | TriggerDescription$ III.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Knight.YouCtrl | NumAtt$ 2 | NumDef$ 1
+Oracle:History parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["History Benalia M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "History Benalia M627", controller: SEAT0 }],
+  },
+
+  // 1560. The Antiquities War — saga 3-chapter artifact tutor.
+  {
+    id: "antiquities-war-etb-m627",
+    description: "The Antiquities War ETB; saga 3-chapter artifact tutor parse.",
+    seed: 0x73f,
+    cards: {
+      "Antiquities War M627": `Name:Antiquities War M627
+ManaCost:3 U
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDig | TriggerDescription$ I.
+SVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Artifact
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDig2 | TriggerDescription$ II.
+SVar:TrigDig2:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Artifact
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigAnimate | TriggerDescription$ III.
+SVar:TrigAnimate:DB$ AnimateAll | ValidCards$ Artifact.YouCtrl | Power$ 5 | Toughness$ 5 | Types$ Creature,Artifact
+Oracle:Antiquities parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Antiquities War M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Antiquities War M627", controller: SEAT0 }],
+  },
+
+  // 1561. The First Iroan Games — saga 3-chapter token-pump.
+  {
+    id: "first-iroan-games-etb-m627",
+    description: "The First Iroan Games ETB; saga 3-chapter token-pump-card parse.",
+    seed: 0x740,
+    cards: {
+      "First Iroan Games M627": `Name:First Iroan Games M627
+ManaCost:2 G
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigToken | TriggerDescription$ I.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenAmount$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigCounter | TriggerDescription$ II.
+SVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 2
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigDraw | TriggerDescription$ III.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Iroan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["First Iroan Games M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "First Iroan Games M627", controller: SEAT0 }],
+  },
+
+  // 1562. Saga + Doubling Season co-residence (lore counter doubling).
+  {
+    id: "saga-doubling-season-coresidence",
+    description: "Saga ETB with Doubling Season on battlefield; lore counter doubler.",
+    seed: 0x741,
+    cards: {
+      "Mini Saga M627": `Name:Mini Saga M627
+ManaCost:1 W
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDraw | TriggerDescription$ I.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigLife | TriggerDescription$ II.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 2
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigSac | TriggerDescription$ III.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:Mini parse.
+`,
+      "Doubling Season M627B": `Name:Doubling Season M627B
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:DSB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mini Saga M627"],
+        battlefield: [{ card: "Doubling Season M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mini Saga M627", controller: SEAT0 }],
+  },
+
+  // 1563. Welcome to Sky's End — saga ramp.
+  {
+    id: "welcome-sky-end-etb-m627",
+    description: "Welcome to Sky's End ETB; saga ramp parse.",
+    seed: 0x742,
+    cards: {
+      "Welcome Sky M627": `Name:Welcome Sky M627
+ManaCost:2 G
+Types:Enchantment Saga
+K:Chapter:3
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigRamp | TriggerDescription$ I.
+SVar:TrigRamp:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDraw | TriggerDescription$ II.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigPump | TriggerDescription$ III.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ 2 | NumDef$ 2
+Oracle:Welcome parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Welcome Sky M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Welcome Sky M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH C — Day/Night transform ─────
+
+  // 1564. Reckless Waif — werewolf day-night ETB.
+  {
+    id: "reckless-waif-etb-m627",
+    description: "Reckless Waif ETB; werewolf day-night parse.",
+    seed: 0x743,
+    cards: {
+      "Reckless Waif M627": `Name:Reckless Waif M627
+ManaCost:R
+Types:Creature Human Rogue Werewolf
+PT:1/1
+K:DayBound
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | IsPresent$ Card.Self+isDay | TriggerDescription$ Night transform.
+SVar:TrigTransform:DB$ SetState | Mode$ Transform
+Oracle:Reckless parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reckless Waif M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reckless Waif M627", controller: SEAT0 }],
+  },
+
+  // 1565. Tovolar's Huntmaster — DayBound creature.
+  {
+    id: "tovolars-huntmaster-etb-m627",
+    description: "Tovolar's Huntmaster ETB; DayBound werewolf parse.",
+    seed: 0x744,
+    cards: {
+      "Tovolar Huntmaster M627": `Name:Tovolar Huntmaster M627
+ManaCost:5 G
+Types:Creature Werewolf
+PT:6/6
+K:DayBound
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ ETB tokens.
+SVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenAmount$ 2
+Oracle:Tovolar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tovolar Huntmaster M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tovolar Huntmaster M627", controller: SEAT0 }],
+  },
+
+  // 1566. Kessig Naturalist — NightBound transform.
+  {
+    id: "kessig-naturalist-etb-m627",
+    description: "Kessig Naturalist ETB; NightBound transform parse.",
+    seed: 0x745,
+    cards: {
+      "Kessig Naturalist M627": `Name:Kessig Naturalist M627
+ManaCost:1 G
+Types:Creature Human Druid
+PT:2/2
+K:DayBound
+T:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ Mana on attack.
+SVar:TrigMana:DB$ Mana | Produced$ Combo G | Amount$ 1
+Oracle:Kessig parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kessig Naturalist M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kessig Naturalist M627", controller: SEAT0 }],
+  },
+
+  // 1567. Curse of Leeches — Day/Night werewolf curse.
+  {
+    id: "curse-leeches-etb-m627",
+    description: "Curse of Leeches ETB; day-night curse parse.",
+    seed: 0x746,
+    cards: {
+      "Curse Leeches M627": `Name:Curse Leeches M627
+ManaCost:2 B
+Types:Enchantment Aura Curse
+K:Enchant player
+A:SP$ Attach | Cost$ 2 B | ValidTgts$ Player
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ EnchantedPlayer | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Curse damage.
+SVar:TrigDmg:DB$ DealDamage | Defined$ EnchantedPlayer | NumDmg$ 2
+Oracle:Curse Leeches parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Curse Leeches M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1568. Tovolar, Dire Overlord — werewolf commander.
+  {
+    id: "tovolar-dire-overlord-etb-m627",
+    description: "Tovolar, Dire Overlord ETB; werewolf commander parse.",
+    seed: 0x747,
+    cards: {
+      "Tovolar Dire M627": `Name:Tovolar Dire M627
+ManaCost:1 R G
+Types:Legendary Creature Human Werewolf
+PT:3/3
+K:DayBound
+T:Mode$ DamageDone | ValidSource$ Wolf,Werewolf+YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Draw on wolf damage.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+A:AB$ ChangeZone | Cost$ 3 R G | Origin$ Library | Destination$ Hand | ChangeType$ Werewolf
+Oracle:Tovolar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tovolar Dire M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tovolar Dire M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH D — Battle defeat transform (parse) ─────
+
+  // 1569. Invasion of Zendikar — Battle MDFC defense.
+  {
+    id: "invasion-zendikar-etb-m627",
+    description: "Invasion of Zendikar Battle ETB; defense counter parse.",
+    seed: 0x748,
+    cards: {
+      "Invasion Zendikar M627": `Name:Invasion Zendikar M627
+ManaCost:3 G
+Types:Battle Siege
+Defense:3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Battle ETB ramp.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 2 | Tapped$ True
+Oracle:Invasion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Zendikar M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Zendikar M627", controller: SEAT0 }],
+  },
+
+  // 1570. Invasion of Tarkir — Battle.
+  {
+    id: "invasion-tarkir-etb-m627",
+    description: "Invasion of Tarkir Battle ETB; defense + draw parse.",
+    seed: 0x749,
+    cards: {
+      "Invasion Tarkir M627": `Name:Invasion Tarkir M627
+ManaCost:2 R
+Types:Battle Siege
+Defense:3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Battle ETB.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature | ValidTgts$ Creature.OppCtrl
+Oracle:Tarkir parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Tarkir M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Tarkir M627", controller: SEAT0 }],
+  },
+
+  // 1571. Invasion of Ikoria — Battle.
+  {
+    id: "invasion-ikoria-etb-m627",
+    description: "Invasion of Ikoria Battle ETB; tutor parse.",
+    seed: 0x74a,
+    cards: {
+      "Invasion Ikoria M627": `Name:Invasion Ikoria M627
+ManaCost:5 G
+Types:Battle Siege
+Defense:5
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Battle ETB tutor.
+SVar:TrigDig:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1
+Oracle:Ikoria parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Ikoria M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Ikoria M627", controller: SEAT0 }],
+  },
+
+  // 1572. Invasion of Amonkhet — Battle.
+  {
+    id: "invasion-amonkhet-etb-m627",
+    description: "Invasion of Amonkhet Battle ETB; mill parse.",
+    seed: 0x74b,
+    cards: {
+      "Invasion Amonkhet M627": `Name:Invasion Amonkhet M627
+ManaCost:3 B
+Types:Battle Siege
+Defense:5
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Battle ETB mill.
+SVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ Player.Opponent
+Oracle:Amonkhet parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion Amonkhet M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion Amonkhet M627", controller: SEAT0 }],
+  },
+
+  // 1573. Invasion of New Phyrexia — Battle.
+  {
+    id: "invasion-new-phyrexia-etb-m627",
+    description: "Invasion of New Phyrexia Battle ETB; tutor + counter parse.",
+    seed: 0x74c,
+    cards: {
+      "Invasion New Phyrexia M627": `Name:Invasion New Phyrexia M627
+ManaCost:5 W U
+Types:Battle Siege
+Defense:6
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Battle ETB token.
+SVar:TrigToken:DB$ Token | TokenScript$ c_0_0_germ | TokenAmount$ 2
+Oracle:New Phyrexia parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Invasion New Phyrexia M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Invasion New Phyrexia M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH E — Card draw replacement (Library of Alexandria, Sylvan Library) ─────
+
+  // 1574. Library of Alexandria — draw replacement land.
+  {
+    id: "library-alexandria-etb-m627",
+    description: "Library of Alexandria ETB; draw if hand=7 parse.",
+    seed: 0x74d,
+    cards: {
+      "Library Alexandria M627": `Name:Library Alexandria M627
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Draw | Cost$ T | NumCards$ 1 | ConditionDefined$ You | ConditionPresent$ Card.YouCtrl+inZoneHand | ConditionCompare$ EQ7
+Oracle:Alexandria parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Library Alexandria M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Library Alexandria M627", controller: SEAT0 }],
+  },
+
+  // 1575. Sylvan Library — draw replacement.
+  {
+    id: "sylvan-library-etb-m627",
+    description: "Sylvan Library ETB; draw 2 + return-or-life parse.",
+    seed: 0x74e,
+    cards: {
+      "Sylvan Library M627": `Name:Sylvan Library M627
+ManaCost:1 G
+Types:Enchantment
+T:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Sylvan draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Sylvan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sylvan Library M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sylvan Library M627", controller: SEAT0 }],
+  },
+
+  // 1576. Bottled Cloister — exile-hand at end-of-turn replacement.
+  {
+    id: "bottled-cloister-etb-m627",
+    description: "Bottled Cloister ETB; exile-hand replacement parse.",
+    seed: 0x74f,
+    cards: {
+      "Bottled Cloister M627": `Name:Bottled Cloister M627
+ManaCost:3
+Types:Artifact
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Cloister hand exile.
+SVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+inZoneHand | Origin$ Hand | Destination$ Exile
+Oracle:Cloister parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bottled Cloister M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bottled Cloister M627", controller: SEAT0 }],
+  },
+
+  // 1577. Mind's Eye — draw-replacement on opp draws.
+  {
+    id: "minds-eye-etb-m627",
+    description: "Mind's Eye ETB; opp-draw trigger parse.",
+    seed: 0x750,
+    cards: {
+      "Minds Eye M627": `Name:Minds Eye M627
+ManaCost:5
+Types:Artifact
+T:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Mind's Eye.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | UnlessCost$ 1 | UnlessPayer$ You
+Oracle:Mind's Eye parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Minds Eye M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Minds Eye M627", controller: SEAT0 }],
+  },
+
+  // 1578. Howling Mine — symmetric draw.
+  {
+    id: "howling-mine-etb-m627",
+    description: "Howling Mine ETB; draw step extra-card parse.",
+    seed: 0x751,
+    cards: {
+      "Howling Mine M627": `Name:Howling Mine M627
+ManaCost:2
+Types:Artifact
+T:Mode$ Phase | Phase$ Draw | ValidPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Howling.
+SVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer | NumCards$ 1
+Oracle:Howling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Howling Mine M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Howling Mine M627", controller: SEAT0 }],
+  },
+
+  // 1579. Underworld Dreams — replacement-style draw damage.
+  {
+    id: "underworld-dreams-etb-m627",
+    description: "Underworld Dreams ETB; opp-draw damage parse.",
+    seed: 0x752,
+    cards: {
+      "Underworld Dreams M627": `Name:Underworld Dreams M627
+ManaCost:B B B
+Types:Enchantment
+T:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ UD damage.
+SVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1
+Oracle:Underworld parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Underworld Dreams M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Underworld Dreams M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH F — Mana doubler chains ─────
+
+  // 1580. Mana Reflection + Caged Sun co-residence.
+  {
+    id: "mana-reflection-caged-sun-coresidence",
+    description: "Mana Reflection ETB with Caged Sun on battlefield; mana doubler chain.",
+    seed: 0x753,
+    cards: {
+      "Mana Reflection M627": `Name:Mana Reflection M627
+ManaCost:4 G G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Permanent.YouCtrl | EffectZone$ Battlefield | DoubleMana$ True | Description$ Reflect.
+Oracle:MR parse.
+`,
+      "Caged Sun M627": `Name:Caged Sun M627
+ManaCost:6
+Types:Artifact
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Cage anthem.
+T:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ CS mana.
+SVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1
+Oracle:Cage parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mana Reflection M627"],
+        battlefield: [{ card: "Caged Sun M627" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mana Reflection M627", controller: SEAT0 }],
+  },
+
+  // 1581. Vorinclex + Mana Reflection co-residence.
+  {
+    id: "vorinclex-mana-reflection-coresidence",
+    description: "Vorinclex Voice ETB with Mana Reflection on battlefield; mana doubler chain.",
+    seed: 0x754,
+    cards: {
+      "Vorinclex Voice M627": `Name:Vorinclex Voice M627
+ManaCost:6 G G
+Types:Legendary Creature Phyrexian Praetor
+PT:7/6
+K:Trample
+S:Mode$ Continuous | Affected$ Land.YouCtrl | DoubleMana$ True | Description$ Vor.
+Oracle:Vor parse.
+`,
+      "Mana Reflection M627B": `Name:Mana Reflection M627B
+ManaCost:4 G G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Permanent.YouCtrl | EffectZone$ Battlefield | DoubleMana$ True | Description$ MR.
+Oracle:MRB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Vorinclex Voice M627"],
+        battlefield: [{ card: "Mana Reflection M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vorinclex Voice M627", controller: SEAT0 }],
+  },
+
+  // 1582. Caged Sun ETB.
+  {
+    id: "caged-sun-etb-m627",
+    description: "Caged Sun ETB; mana doubler parse.",
+    seed: 0x755,
+    cards: {
+      "Caged Sun Solo M627": `Name:Caged Sun Solo M627
+ManaCost:6
+Types:Artifact
+T:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana
+SVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1
+Oracle:Cage solo parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Caged Sun Solo M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Caged Sun Solo M627", controller: SEAT0 }],
+  },
+
+  // 1583. Gauntlet of Power.
+  {
+    id: "gauntlet-of-power-etb-m627",
+    description: "Gauntlet of Power ETB; mana doubler parse.",
+    seed: 0x756,
+    cards: {
+      "Gauntlet Power M627": `Name:Gauntlet Power M627
+ManaCost:5
+Types:Artifact
+S:Mode$ Continuous | Affected$ Creature.ChosenColor | AddPower$ 1 | AddToughness$ 1 | Description$ Gauntlet.
+T:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana
+SVar:TrigMana:DB$ Mana | Produced$ Combo W | Amount$ 1
+Oracle:Gauntlet parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gauntlet Power M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gauntlet Power M627", controller: SEAT0 }],
+  },
+
+  // 1584. Extraplanar Lens ETB.
+  {
+    id: "extraplanar-lens-etb-m627",
+    description: "Extraplanar Lens ETB; exile land + double mana parse.",
+    seed: 0x757,
+    cards: {
+      "Extraplanar Lens M627": `Name:Extraplanar Lens M627
+ManaCost:3
+Types:Artifact
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Lens ETB.
+SVar:TrigExile:DB$ ChangeZone | TargetType$ Land.YouCtrl | Origin$ Battlefield | Destination$ Exile
+Oracle:Lens parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Extraplanar Lens M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Extraplanar Lens M627", controller: SEAT0 }],
+  },
+
+  // 1585. Mirari's Wake — mana doubler.
+  {
+    id: "miraris-wake-etb-m627",
+    description: "Mirari's Wake ETB; anthem + mana doubler parse.",
+    seed: 0x758,
+    cards: {
+      "Miraris Wake M627": `Name:Miraris Wake M627
+ManaCost:3 G W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Wake anthem.
+T:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana
+SVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1
+Oracle:Wake parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Miraris Wake M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Miraris Wake M627", controller: SEAT0 }],
+  },
+
+  // 1586. Zendikar Resurgent — mana doubler + draw on creature.
+  {
+    id: "zendikar-resurgent-etb-m627",
+    description: "Zendikar Resurgent ETB; mana doubler + draw parse.",
+    seed: 0x759,
+    cards: {
+      "Zendikar Resurgent M627": `Name:Zendikar Resurgent M627
+ManaCost:5 G G
+Types:Enchantment
+T:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMana
+SVar:TrigMana:DB$ Mana | Produced$ Combo C | Amount$ 1
+T:Mode$ SpellCast | ValidCard$ Creature | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Resurgent draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Resurgent parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zendikar Resurgent M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zendikar Resurgent M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH G — Token doubler chains ─────
+
+  // 1587. Anointed Procession — token doubler.
+  {
+    id: "anointed-procession-etb-m627",
+    description: "Anointed Procession ETB; token doubler parse.",
+    seed: 0x75a,
+    cards: {
+      "Anointed Procession M627": `Name:Anointed Procession M627
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:Anointed parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anointed Procession M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anointed Procession M627", controller: SEAT0 }],
+  },
+
+  // 1588. Doubling Season + Anointed Procession co-residence.
+  {
+    id: "doubling-season-anointed-procession-coresidence-m627",
+    description: "Doubling Season + Anointed Procession co-resident; quadruple-token chain.",
+    seed: 0x75b,
+    cards: {
+      "Doubling Season M627C": `Name:Doubling Season M627C
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:DSC parse.
+`,
+      "Anointed Procession M627B": `Name:Anointed Procession M627B
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:APB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Anointed Procession M627B"],
+        battlefield: [{ card: "Doubling Season M627C" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anointed Procession M627B", controller: SEAT0 }],
+  },
+
+  // 1589. Parallel Lives — token doubler.
+  {
+    id: "parallel-lives-etb-m627",
+    description: "Parallel Lives ETB; token doubler parse.",
+    seed: 0x75c,
+    cards: {
+      "Parallel Lives M627": `Name:Parallel Lives M627
+ManaCost:3 G
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:PL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Parallel Lives M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Parallel Lives M627", controller: SEAT0 }],
+  },
+
+  // 1590. Doubling Season + Parallel Lives + planeswalker co-residence.
+  {
+    id: "ds-parallel-pw-coresidence-m627",
+    description: "Doubling Season + Parallel Lives co-resident; PW with token ult ETB.",
+    seed: 0x75d,
+    cards: {
+      "Doubling Season M627D": `Name:Doubling Season M627D
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:DSD parse.
+`,
+      "Parallel Lives M627B": `Name:Parallel Lives M627B
+ManaCost:3 G
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:PLB parse.
+`,
+      "Token PW M627": `Name:Token PW M627
+ManaCost:3 W W
+Types:Legendary Planeswalker Elspeth
+Loyalty:4
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ w_1_1_soldier | TokenAmount$ 1 | Planeswalker$ True
+Oracle:Token PW parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Token PW M627"],
+        battlefield: [{ card: "Doubling Season M627D" }, { card: "Parallel Lives M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Token PW M627", controller: SEAT0 }],
+  },
+
+  // 1591. Annie Joins Up — token doubler creature.
+  {
+    id: "annie-joins-up-etb-m627",
+    description: "Annie Joins Up ETB; token doubler parse.",
+    seed: 0x75e,
+    cards: {
+      "Annie Joins Up M627": `Name:Annie Joins Up M627
+ManaCost:1 R
+Types:Legendary Creature Human Outlaw
+PT:2/2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure,Token.Outlaw | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:Annie parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Annie Joins Up M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Annie Joins Up M627", controller: SEAT0 }],
+  },
+
+  // 1592. Mondrak, Glory Dominus — token doubler creature.
+  {
+    id: "mondrak-glory-dominus-etb-m627",
+    description: "Mondrak, Glory Dominus ETB; token doubler parse.",
+    seed: 0x75f,
+    cards: {
+      "Mondrak Dominus M627": `Name:Mondrak Dominus M627
+ManaCost:2 W W
+Types:Legendary Creature Phyrexian Horror
+PT:4/4
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:Mondrak parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mondrak Dominus M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mondrak Dominus M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH H — Counter doubler chains ─────
+
+  // 1593. Hardened Scales ETB.
+  {
+    id: "hardened-scales-etb-m627",
+    description: "Hardened Scales ETB; +1/+1 counter additive parse.",
+    seed: 0x760,
+    cards: {
+      "Hardened Scales M627": `Name:Hardened Scales M627
+ManaCost:G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:HS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hardened Scales M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hardened Scales M627", controller: SEAT0 }],
+  },
+
+  // 1594. Hardened Scales + Doubling Season co-residence.
+  {
+    id: "hs-doubling-season-coresidence-m627",
+    description: "Hardened Scales + Doubling Season co-resident; counter chain.",
+    seed: 0x761,
+    cards: {
+      "Hardened Scales M627B": `Name:Hardened Scales M627B
+ManaCost:G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:HSB parse.
+`,
+      "Doubling Season M627E": `Name:Doubling Season M627E
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:DSE parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Hardened Scales M627B"],
+        battlefield: [{ card: "Doubling Season M627E" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hardened Scales M627B", controller: SEAT0 }],
+  },
+
+  // 1595. Hardened Scales + Doubling Season + Vorinclex Raider co-residence.
+  {
+    id: "hs-ds-vorinclex-coresidence-m627",
+    description: "HS + DS + Vorinclex Raider co-resident; counter chain.",
+    seed: 0x762,
+    cards: {
+      "Vorinclex Raider M627": `Name:Vorinclex Raider M627
+ManaCost:5 G G
+Types:Legendary Creature Phyrexian Praetor
+PT:6/6
+K:Trample
+K:Haste
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:Raider parse.
+`,
+      "Hardened Scales M627C": `Name:Hardened Scales M627C
+ManaCost:G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:HSC parse.
+`,
+      "Doubling Season M627F": `Name:Doubling Season M627F
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:DSF parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Vorinclex Raider M627"],
+        battlefield: [{ card: "Hardened Scales M627C" }, { card: "Doubling Season M627F" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vorinclex Raider M627", controller: SEAT0 }],
+  },
+
+  // 1596. Branching Evolution — counter doubler.
+  {
+    id: "branching-evolution-etb-m627",
+    description: "Branching Evolution ETB; +1/+1 counter doubler parse.",
+    seed: 0x763,
+    cards: {
+      "Branching Evolution M627": `Name:Branching Evolution M627
+ManaCost:2 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:BE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Branching Evolution M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Branching Evolution M627", controller: SEAT0 }],
+  },
+
+  // 1597. Innkeeper's Talent — counter doubler creature.
+  {
+    id: "innkeepers-talent-etb-m627",
+    description: "Innkeeper's Talent ETB; counter doubler parse.",
+    seed: 0x764,
+    cards: {
+      "Innkeepers Talent M627": `Name:Innkeepers Talent M627
+ManaCost:1 G
+Types:Enchantment Class
+K:Class
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:Innkeeper parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Innkeepers Talent M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Innkeepers Talent M627", controller: SEAT0 }],
+  },
+
+  // 1598. Conclave Mentor — counter doubler.
+  {
+    id: "conclave-mentor-etb-m627",
+    description: "Conclave Mentor ETB; counter additive parse.",
+    seed: 0x765,
+    cards: {
+      "Conclave Mentor M627": `Name:Conclave Mentor M627
+ManaCost:G W
+Types:Creature Centaur Cleric
+PT:2/2
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:Mentor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Conclave Mentor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Conclave Mentor M627", controller: SEAT0 }],
+  },
+
+  // 1599. Pir, Imaginative Rascal — counter additive.
+  {
+    id: "pir-imaginative-rascal-etb-m627",
+    description: "Pir, Imaginative Rascal ETB; counter additive parse.",
+    seed: 0x766,
+    cards: {
+      "Pir Rascal M627": `Name:Pir Rascal M627
+ManaCost:1 G
+Types:Legendary Creature Human Wizard
+PT:2/2
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:Pir parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pir Rascal M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pir Rascal M627", controller: SEAT0 }],
+  },
+
+  // 1600. Toothy + Pir co-residence.
+  {
+    id: "toothy-pir-coresidence-m627",
+    description: "Toothy with Pir on battlefield; counter chain parse.",
+    seed: 0x767,
+    cards: {
+      "Pir Rascal M627B": `Name:Pir Rascal M627B
+ManaCost:1 G
+Types:Legendary Creature Human Wizard
+PT:2/2
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:PirB parse.
+`,
+      "Toothy M627": `Name:Toothy M627
+ManaCost:3 U
+Types:Legendary Creature Hydra Beast
+PT:1/1
+T:Mode$ Drawn | ValidCard$ Card | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Toothy.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Toothy parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Toothy M627"],
+        battlefield: [{ card: "Pir Rascal M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Toothy M627", controller: SEAT0 }],
+  },
+
+  // 1601. Master Biomancer — replacement counter on ETB.
+  {
+    id: "master-biomancer-etb-m627",
+    description: "Master Biomancer ETB; replacement-counter on ETBs parse.",
+    seed: 0x768,
+    cards: {
+      "Master Biomancer M627": `Name:Master Biomancer M627
+ManaCost:2 G U
+Types:Creature Elf Wizard Mutant
+PT:2/4
+R:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Destination$ Battlefield | ReplaceWith$ ETBC
+SVar:ETBC:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 2
+Oracle:Biomancer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Master Biomancer M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Master Biomancer M627", controller: SEAT0 }],
+  },
+
+  // 1602. Ozolith, the Shattered Spire — counter doubler artifact.
+  {
+    id: "ozolith-shattered-spire-etb-m627",
+    description: "Ozolith, the Shattered Spire ETB; counter additive parse.",
+    seed: 0x769,
+    cards: {
+      "Ozolith Spire M627": `Name:Ozolith Spire M627
+ManaCost:1 G
+Types:Legendary Artifact
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:Ozolith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ozolith Spire M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ozolith Spire M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH I — Specific Commanders ─────
+
+  // 1603. Atraxa, Praetors' Voice.
+  {
+    id: "atraxa-praetors-voice-etb-m627",
+    description: "Atraxa, Praetors' Voice ETB; proliferate end-step parse.",
+    seed: 0x76a,
+    cards: {
+      "Atraxa Praetors M627": `Name:Atraxa Praetors M627
+ManaCost:G W U B
+Types:Legendary Creature Phyrexian Angel Horror
+PT:4/4
+K:Flying
+K:Vigilance
+K:Deathtouch
+K:Lifelink
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigProlif | TriggerDescription$ Atraxa proliferate.
+SVar:TrigProlif:DB$ Proliferate
+Oracle:Atraxa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Atraxa Praetors M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Atraxa Praetors M627", controller: SEAT0 }],
+  },
+
+  // 1604. Korvold, Fae-Cursed King.
+  {
+    id: "korvold-fae-cursed-king-etb-m627",
+    description: "Korvold ETB; sacrifice draw + counter parse.",
+    seed: 0x76b,
+    cards: {
+      "Korvold King M627": `Name:Korvold King M627
+ManaCost:2 B R G
+Types:Legendary Creature Dragon Noble
+PT:4/4
+K:Flying
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.YouCtrl+Other | Sacrificed$ True | Execute$ TrigDraw | TriggerDescription$ Korvold sac.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBCounter
+SVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Korvold parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Korvold King M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Korvold King M627", controller: SEAT0 }],
+  },
+
+  // 1605. Yuriko, the Tiger's Shadow.
+  {
+    id: "yuriko-tigers-shadow-etb-m627",
+    description: "Yuriko ETB; ninja damage trigger parse.",
+    seed: 0x76c,
+    cards: {
+      "Yuriko Shadow M627": `Name:Yuriko Shadow M627
+ManaCost:1 U B
+Types:Legendary Creature Human Ninja
+PT:1/3
+K:Ninjutsu:1 U B
+T:Mode$ DamageDoneOne | ValidSource$ Ninja.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal | TriggerDescription$ Yuriko damage.
+SVar:TrigReveal:DB$ Dig | DigNum$ 1 | RevealOnly$ True | SubAbility$ DBDmg
+SVar:DBDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2
+Oracle:Yuriko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Yuriko Shadow M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Yuriko Shadow M627", controller: SEAT0 }],
+  },
+
+  // 1606. Edgar Markov.
+  {
+    id: "edgar-markov-etb-m627",
+    description: "Edgar Markov ETB; vampire token cast trigger parse.",
+    seed: 0x76d,
+    cards: {
+      "Edgar Markov M627": `Name:Edgar Markov M627
+ManaCost:3 R W B
+Types:Legendary Creature Vampire Knight
+PT:4/4
+K:Haste
+K:First Strike
+T:Mode$ SpellCast | ValidCard$ Vampire | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Edgar token.
+SVar:TrigToken:DB$ Token | TokenScript$ b_1_1_vampire | TokenAmount$ 1
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigCounter | TriggerDescription$ Edgar from command.
+SVar:TrigCounter:DB$ PutCounterAll | ValidCards$ Vampire.YouCtrl | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Edgar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Edgar Markov M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Edgar Markov M627", controller: SEAT0 }],
+  },
+
+  // 1607. Krark, the Thumbless.
+  {
+    id: "krark-the-thumbless-etb-m627",
+    description: "Krark ETB; coin flip recur parse.",
+    seed: 0x76e,
+    cards: {
+      "Krark Thumbless M627": `Name:Krark Thumbless M627
+ManaCost:1 R
+Types:Legendary Creature Goblin Wizard
+PT:2/2
+T:Mode$ SpellCast | ValidCard$ Card.Instant,Card.Sorcery | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ Krark flip.
+SVar:TrigFlip:DB$ FlipACoin | Defined$ You | LoseSubAbility$ DBLose | WinSubAbility$ DBWin
+SVar:DBLose:DB$ ChangeZone | TargetType$ Card.Self | Origin$ Battlefield | Destination$ Hand
+SVar:DBWin:DB$ CopySpell
+Oracle:Krark parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krark Thumbless M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Krark Thumbless M627", controller: SEAT0 }],
+  },
+
+  // 1608. Sakashima of a Thousand Faces.
+  {
+    id: "sakashima-thousand-faces-etb-m627",
+    description: "Sakashima ETB; legendary copy clone parse.",
+    seed: 0x76f,
+    cards: {
+      "Sakashima Faces M627": `Name:Sakashima Faces M627
+ManaCost:2 U U
+Types:Legendary Creature Human Rogue
+PT:3/1
+Oracle:Sakashima parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sakashima Faces M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sakashima Faces M627", controller: SEAT0 }],
+  },
+
+  // 1609. Krark + Sakashima co-residence.
+  {
+    id: "krark-sakashima-coresidence-m627",
+    description: "Krark with Sakashima on battlefield; partner-flip chain.",
+    seed: 0x770,
+    cards: {
+      "Krark Thumbless M627B": `Name:Krark Thumbless M627B
+ManaCost:1 R
+Types:Legendary Creature Goblin Wizard
+PT:2/2
+T:Mode$ SpellCast | ValidCard$ Card.Instant,Card.Sorcery | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ Krark flip.
+SVar:TrigFlip:DB$ FlipACoin | Defined$ You
+Oracle:KrarkB parse.
+`,
+      "Sakashima Faces M627B": `Name:Sakashima Faces M627B
+ManaCost:2 U U
+Types:Legendary Creature Human Rogue
+PT:3/1
+S:Mode$ Continuous | Affected$ Card.Self | RemoveCardTypes$ Legendary | Description$ Strip legendary.
+Oracle:SakashimaB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Krark Thumbless M627B"],
+        battlefield: [{ card: "Sakashima Faces M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Krark Thumbless M627B", controller: SEAT0 }],
+  },
+
+  // 1610. Meren of Clan Nel Toth.
+  {
+    id: "meren-clan-nel-toth-etb-m627",
+    description: "Meren ETB; reanimator trigger parse.",
+    seed: 0x771,
+    cards: {
+      "Meren Toth M627": `Name:Meren Toth M627
+ManaCost:2 B G
+Types:Legendary Creature Human Shaman
+PT:3/4
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Meren counter.
+SVar:TrigCounter:DB$ PutCounter | Defined$ You | CounterType$ EXPERIENCE | CounterNum$ 1
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReanimate | TriggerDescription$ Meren reanimate.
+SVar:TrigReanimate:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature.YouCtrl
+Oracle:Meren parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Meren Toth M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Meren Toth M627", controller: SEAT0 }],
+  },
+
+  // 1611. Muldrotha, the Gravetide.
+  {
+    id: "muldrotha-gravetide-etb-m627",
+    description: "Muldrotha ETB; cast from graveyard parse.",
+    seed: 0x772,
+    cards: {
+      "Muldrotha Tide M627": `Name:Muldrotha Tide M627
+ManaCost:3 B G U
+Types:Legendary Creature Elemental Avatar
+PT:6/6
+S:Mode$ Continuous | Affected$ Card.YouCtrl+inZoneGraveyard | EffectZone$ Battlefield | MayPlay$ True | Description$ Muldrotha play from grave.
+Oracle:Muldrotha parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Muldrotha Tide M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Muldrotha Tide M627", controller: SEAT0 }],
+  },
+
+  // 1612. Animar, Soul of Elements.
+  {
+    id: "animar-soul-elements-etb-m627",
+    description: "Animar ETB; +1/+1 counter on creature cast parse.",
+    seed: 0x773,
+    cards: {
+      "Animar Soul M627": `Name:Animar Soul M627
+ManaCost:U R G
+Types:Legendary Creature Elemental
+PT:1/1
+K:Protection from white
+K:Protection from black
+T:Mode$ SpellCast | ValidCard$ Creature | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Animar.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Animar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Animar Soul M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Animar Soul M627", controller: SEAT0 }],
+  },
+
+  // 1613. Karador, Ghost Chieftain.
+  {
+    id: "karador-ghost-chieftain-etb-m627",
+    description: "Karador ETB; play creature from graveyard parse.",
+    seed: 0x774,
+    cards: {
+      "Karador Ghost M627": `Name:Karador Ghost M627
+ManaCost:5 W B G
+Types:Legendary Creature Centaur Spirit
+PT:3/4
+S:Mode$ Continuous | Affected$ Card.Creature+YouCtrl+inZoneGraveyard | EffectZone$ Battlefield | MayPlay$ True | Description$ Karador.
+Oracle:Karador parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karador Ghost M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karador Ghost M627", controller: SEAT0 }],
+  },
+
+  // 1614. Ghave, Guru of Spores.
+  {
+    id: "ghave-guru-spores-etb-m627",
+    description: "Ghave ETB; saproling token parse.",
+    seed: 0x775,
+    cards: {
+      "Ghave Guru M627": `Name:Ghave Guru M627
+ManaCost:B G W
+Types:Legendary Creature Fungus Shaman
+PT:0/0
+K:etbCounter:P1P1:5
+A:AB$ Token | Cost$ SubCounter<1/P1P1> | TokenScript$ g_1_1_saproling | TokenAmount$ 1
+A:AB$ PutCounter | Cost$ Sac<1/Creature> | TargetType$ Creature | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Ghave parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ghave Guru M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ghave Guru M627", controller: SEAT0 }],
+  },
+
+  // 1615. Marchesa, the Black Rose.
+  {
+    id: "marchesa-black-rose-etb-m627",
+    description: "Marchesa ETB; dethrone parse.",
+    seed: 0x776,
+    cards: {
+      "Marchesa Black M627": `Name:Marchesa Black M627
+ManaCost:1 U B R
+Types:Legendary Creature Human Wizard
+PT:3/3
+K:Dethrone
+T:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Marchesa.
+SVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Creature.YouCtrl+counters_GE1_P1P1+inZoneGraveyard | Origin$ Graveyard | Destination$ Battlefield
+Oracle:Marchesa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Marchesa Black M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Marchesa Black M627", controller: SEAT0 }],
+  },
+
+  // 1616. Skullbriar, the Walking Grave.
+  {
+    id: "skullbriar-walking-grave-etb-m627",
+    description: "Skullbriar ETB; counter retention parse.",
+    seed: 0x777,
+    cards: {
+      "Skullbriar Grave M627": `Name:Skullbriar Grave M627
+ManaCost:B G
+Types:Legendary Creature Plant Zombie
+PT:1/1
+K:Trample
+K:Hexproof
+Oracle:Skullbriar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skullbriar Grave M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skullbriar Grave M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH J — Persistent + Living Death + Reanimator ─────
+
+  // 1617. Persistent creature ETB.
+  {
+    id: "persistent-creature-etb-m627",
+    description: "Persistent creature ETB; -1/-1 counter return parse.",
+    seed: 0x778,
+    cards: {
+      "Persistent Test M627": `Name:Persistent Test M627
+ManaCost:1 G G
+Types:Creature Elemental
+PT:3/3
+K:Persist
+Oracle:Persist parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Persistent Test M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Persistent Test M627", controller: SEAT0 }],
+  },
+
+  // 1618. Persist + Hardened Scales co-residence.
+  {
+    id: "persist-hardened-scales-coresidence-m627",
+    description: "Persist creature ETB with Hardened Scales on battlefield; counter chain.",
+    seed: 0x779,
+    cards: {
+      "Persist Loop M627": `Name:Persist Loop M627
+ManaCost:1 B
+Types:Creature Spirit
+PT:1/1
+K:Persist
+Oracle:Loop parse.
+`,
+      "Hardened Scales M627D": `Name:Hardened Scales M627D
+ManaCost:G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:HSD parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Persist Loop M627"],
+        battlefield: [{ card: "Hardened Scales M627D" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Persist Loop M627", controller: SEAT0 }],
+  },
+
+  // 1619. Living Death — mass reanimator.
+  {
+    id: "living-death-etb-m627",
+    description: "Living Death in hand; mass reanimator parse.",
+    seed: 0x77a,
+    cards: {
+      "Living Death M627": `Name:Living Death M627
+ManaCost:3 B
+Types:Sorcery
+A:SP$ ChangeZoneAll | Cost$ 3 B | ChangeType$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZoneAll | ChangeType$ Creature.inZoneGraveyard | Origin$ Graveyard | Destination$ Battlefield
+Oracle:Living Death parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Living Death M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1620. Reanimate.
+  {
+    id: "reanimate-in-hand-m627",
+    description: "Reanimate in hand; reanimator parse.",
+    seed: 0x77b,
+    cards: {
+      "Reanimate M627": `Name:Reanimate M627
+ManaCost:B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ B | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.inZoneGraveyard | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | References$ X
+SVar:X:Targeted$CardManaCost
+Oracle:Reanimate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reanimate M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1621. Animate Dead aura reanimator.
+  {
+    id: "animate-dead-in-hand-m627",
+    description: "Animate Dead in hand; aura reanimator parse.",
+    seed: 0x77c,
+    cards: {
+      "Animate Dead M627": `Name:Animate Dead M627
+ManaCost:1 B
+Types:Enchantment Aura
+K:Enchant Card.inZoneGraveyard
+A:SP$ Attach | Cost$ 1 B | ValidTgts$ Creature.inZoneGraveyard
+Oracle:Animate Dead parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Animate Dead M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1622. Necromancy.
+  {
+    id: "necromancy-in-hand-m627",
+    description: "Necromancy in hand; flash reanimator parse.",
+    seed: 0x77d,
+    cards: {
+      "Necromancy M627": `Name:Necromancy M627
+ManaCost:2 B
+Types:Enchantment Aura
+K:Flash
+K:Enchant Card.inZoneGraveyard
+A:SP$ Attach | Cost$ 2 B | ValidTgts$ Creature.inZoneGraveyard
+Oracle:Necromancy parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Necromancy M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1623. Sheoldred, Whispering One — reanimator commander.
+  {
+    id: "sheoldred-whispering-one-coresidence-m627",
+    description: "Sheoldred, Whispering One ETB with creature in graveyard; reanimator commander.",
+    seed: 0x77e,
+    cards: {
+      "Sheoldred Whisper M627": `Name:Sheoldred Whisper M627
+ManaCost:5 B B
+Types:Legendary Creature Phyrexian Praetor
+PT:6/6
+K:Swampwalk
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Sheoldred.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Card | ValidTgts$ Creature.YouCtrl
+Oracle:Sheoldred parse.
+`,
+      "Bear Filler M627": `Name:Bear Filler M627
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bear filler parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Sheoldred Whisper M627"],
+        battlefield: [],
+        graveyard: ["Bear Filler M627"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sheoldred Whisper M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH K — Specific land effects ─────
+
+  // 1624. Maze of Ith — block-restriction land.
+  {
+    id: "maze-of-ith-etb-m627",
+    description: "Maze of Ith ETB; untap-attack restriction parse.",
+    seed: 0x77f,
+    cards: {
+      "Maze Ith M627": `Name:Maze Ith M627
+Types:Land
+A:AB$ UntapAll | Cost$ T | ValidCards$ Creature.attacking | TargetType$ Creature | ValidTgts$ Creature.attacking | SubAbility$ DBPrev
+SVar:DBPrev:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ STDmg
+SVar:STDmg:Mode$ Continuous | Affected$ Card.IsRemembered | EffectZone$ Command | RemoveCombatDamage$ True | Description$ No combat damage.
+Oracle:Maze parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maze Ith M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maze Ith M627", controller: SEAT0 }],
+  },
+
+  // 1625. Gaea's Cradle — scale by creatures.
+  {
+    id: "gaeas-cradle-etb-m627",
+    description: "Gaea's Cradle ETB; X-mana per creature parse.",
+    seed: 0x780,
+    cards: {
+      "Gaeas Cradle M627": `Name:Gaeas Cradle M627
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$Valid Creature.YouCtrl
+Oracle:Cradle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gaeas Cradle M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gaeas Cradle M627", controller: SEAT0 }],
+  },
+
+  // 1626. Tolarian Academy — scale by artifacts.
+  {
+    id: "tolarian-academy-etb-m627",
+    description: "Tolarian Academy ETB; X-mana per artifact parse.",
+    seed: 0x781,
+    cards: {
+      "Tolarian Academy M627": `Name:Tolarian Academy M627
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ U | Amount$ X | References$ X
+SVar:X:Count$Valid Artifact.YouCtrl
+Oracle:Academy parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tolarian Academy M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tolarian Academy M627", controller: SEAT0 }],
+  },
+
+  // 1627. Cabal Coffers.
+  {
+    id: "cabal-coffers-etb-m627",
+    description: "Cabal Coffers ETB; X-mana per swamp parse.",
+    seed: 0x782,
+    cards: {
+      "Cabal Coffers M627": `Name:Cabal Coffers M627
+Types:Land
+A:AB$ Mana | Cost$ 2 T | Produced$ B | Amount$ X | References$ X
+SVar:X:Count$Valid Land.Swamp+YouCtrl
+Oracle:Coffers parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cabal Coffers M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cabal Coffers M627", controller: SEAT0 }],
+  },
+
+  // 1628. Nykthos, Shrine to Nyx.
+  {
+    id: "nykthos-shrine-etb-m627",
+    description: "Nykthos ETB; devotion-scaled mana parse.",
+    seed: 0x783,
+    cards: {
+      "Nykthos M627": `Name:Nykthos M627
+Types:Legendary Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Mana | Cost$ 2 T | Produced$ Combo W U B R G | Amount$ X | References$ X
+SVar:X:Count$Devotion.W
+Oracle:Nykthos parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nykthos M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nykthos M627", controller: SEAT0 }],
+  },
+
+  // 1629. Wasteland — destroy nonbasic land.
+  {
+    id: "wasteland-etb-m627",
+    description: "Wasteland ETB; sac to destroy nonbasic parse.",
+    seed: 0x784,
+    cards: {
+      "Wasteland M627": `Name:Wasteland M627
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land.nonBasic
+Oracle:Wasteland parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wasteland M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wasteland M627", controller: SEAT0 }],
+  },
+
+  // 1630. Strip Mine — destroy any land.
+  {
+    id: "strip-mine-etb-m627",
+    description: "Strip Mine ETB; destroy land parse.",
+    seed: 0x785,
+    cards: {
+      "Strip Mine M627": `Name:Strip Mine M627
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | TargetType$ Land | ValidTgts$ Land
+Oracle:Strip Mine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Strip Mine M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Strip Mine M627", controller: SEAT0 }],
+  },
+
+  // 1631. Mishra's Workshop — artifact mana.
+  {
+    id: "mishras-workshop-etb-m627",
+    description: "Mishra's Workshop ETB; artifact-only triple mana parse.",
+    seed: 0x786,
+    cards: {
+      "Mishras Workshop M627": `Name:Mishras Workshop M627
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3 | RestrictValid$ Artifact
+Oracle:Workshop parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishras Workshop M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishras Workshop M627", controller: SEAT0 }],
+  },
+
+  // 1632. Bazaar of Baghdad.
+  {
+    id: "bazaar-baghdad-etb-m627",
+    description: "Bazaar of Baghdad ETB; loot parse.",
+    seed: 0x787,
+    cards: {
+      "Bazaar Baghdad M627": `Name:Bazaar Baghdad M627
+Types:Land
+A:AB$ Draw | Cost$ T | NumCards$ 2 | SubAbility$ DBDiscard
+SVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 3
+Oracle:Bazaar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bazaar Baghdad M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bazaar Baghdad M627", controller: SEAT0 }],
+  },
+
+  // 1633. Mishra's Factory — animate land.
+  {
+    id: "mishras-factory-etb-m627",
+    description: "Mishra's Factory ETB; animate parse.",
+    seed: 0x788,
+    cards: {
+      "Mishras Factory M627": `Name:Mishras Factory M627
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+A:AB$ Animate | Cost$ 1 | Power$ 2 | Toughness$ 2 | Types$ Creature,Artifact,Assembly-Worker
+Oracle:Factory parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mishras Factory M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mishras Factory M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH L — Class / Saga reverification (post-M6.26) ─────
+
+  // 1634. Generic Class enchantment level-up.
+  {
+    id: "rogue-class-etb-m627",
+    description: "Rogue Class ETB; level-up parse.",
+    seed: 0x789,
+    cards: {
+      "Rogue Class M627": `Name:Rogue Class M627
+ManaCost:1 B
+Types:Enchantment Class
+K:Class
+Oracle:Rogue parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rogue Class M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rogue Class M627", controller: SEAT0 }],
+  },
+
+  // 1635. Cleric Class.
+  {
+    id: "cleric-class-etb-m627",
+    description: "Cleric Class ETB; level-up parse.",
+    seed: 0x78a,
+    cards: {
+      "Cleric Class M627": `Name:Cleric Class M627
+ManaCost:W
+Types:Enchantment Class
+K:Class
+Oracle:Cleric parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cleric Class M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cleric Class M627", controller: SEAT0 }],
+  },
+
+  // 1636. Druid Class.
+  {
+    id: "druid-class-etb-m627",
+    description: "Druid Class ETB; level-up parse.",
+    seed: 0x78b,
+    cards: {
+      "Druid Class M627": `Name:Druid Class M627
+ManaCost:G
+Types:Enchantment Class
+K:Class
+Oracle:Druid parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Druid Class M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Druid Class M627", controller: SEAT0 }],
+  },
+
+  // 1637. Wizard Class.
+  {
+    id: "wizard-class-etb-m627",
+    description: "Wizard Class ETB; level-up parse.",
+    seed: 0x78c,
+    cards: {
+      "Wizard Class M627": `Name:Wizard Class M627
+ManaCost:U
+Types:Enchantment Class
+K:Class
+Oracle:Wizard parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wizard Class M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wizard Class M627", controller: SEAT0 }],
+  },
+
+  // 1638. Barbarian Class.
+  {
+    id: "barbarian-class-etb-m627",
+    description: "Barbarian Class ETB; level-up parse.",
+    seed: 0x78d,
+    cards: {
+      "Barbarian Class M627": `Name:Barbarian Class M627
+ManaCost:R
+Types:Enchantment Class
+K:Class
+Oracle:Barb parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Barbarian Class M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Barbarian Class M627", controller: SEAT0 }],
+  },
+
+  // 1639. Generic Saga K:Chapter:2 (verifies M6.26 etbCounter conversion still works).
+  {
+    id: "saga-2-chapter-etb-m627",
+    description: "Generic 2-chapter Saga ETB; etbCounterSpec lore=1 parse.",
+    seed: 0x78e,
+    cards: {
+      "Two-Chapter Saga M627": `Name:Two-Chapter Saga M627
+ManaCost:1
+Types:Enchantment Saga
+K:Chapter:2
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDraw | TriggerDescription$ I.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigSac | TriggerDescription$ II.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:2 chapter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Two-Chapter Saga M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Two-Chapter Saga M627", controller: SEAT0 }],
+  },
+
+  // 1640. Saga 5-chapter.
+  {
+    id: "saga-5-chapter-etb-m627",
+    description: "Five-chapter Saga ETB; etbCounter parse.",
+    seed: 0x78f,
+    cards: {
+      "Five-Chapter Saga M627": `Name:Five-Chapter Saga M627
+ManaCost:3
+Types:Enchantment Saga
+K:Chapter:5
+K:Saga
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDraw | TriggerDescription$ I.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+T:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 5 | Execute$ TrigSac | TriggerDescription$ V.
+SVar:TrigSac:DB$ Sacrifice | Defined$ Self
+Oracle:5 chapter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Five-Chapter Saga M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Five-Chapter Saga M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH M — Vehicle support fillers ─────
+
+  // 1641. Bartolomé del Presidio Vehicle.
+  {
+    id: "bartolome-vehicle-etb-m627",
+    description: "Bartolome Vehicle ETB; vehicle generic parse.",
+    seed: 0x790,
+    cards: {
+      "Bartolome Vehicle M627": `Name:Bartolome Vehicle M627
+ManaCost:3
+Types:Artifact Vehicle
+PT:5/4
+K:Crew:2
+Oracle:Bart parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bartolome Vehicle M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bartolome Vehicle M627", controller: SEAT0 }],
+  },
+
+  // 1642. Tireless Tracker — clue artifact token interaction.
+  {
+    id: "tireless-tracker-etb-m627",
+    description: "Tireless Tracker ETB; clue token parse.",
+    seed: 0x791,
+    cards: {
+      "Tireless Tracker M627": `Name:Tireless Tracker M627
+ManaCost:1 G
+Types:Creature Human Scout
+PT:3/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Tracker clue.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+Oracle:Tracker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tireless Tracker M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tireless Tracker M627", controller: SEAT0 }],
+  },
+
+  // 1643. Lonis, Cryptozoologist — clue token doubler.
+  {
+    id: "lonis-cryptozoologist-etb-m627",
+    description: "Lonis ETB; clue token cast trigger parse.",
+    seed: 0x792,
+    cards: {
+      "Lonis M627": `Name:Lonis M627
+ManaCost:G U
+Types:Legendary Creature Simic Citizen
+PT:1/1
+T:Mode$ SpellCast | ValidCard$ Card | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Lonis clue.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+Oracle:Lonis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lonis M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lonis M627", controller: SEAT0 }],
+  },
+
+  // 1644. Academy Manufactor — token tripler.
+  {
+    id: "academy-manufactor-etb-m627",
+    description: "Academy Manufactor ETB; treasure/clue/food token replacement parse.",
+    seed: 0x793,
+    cards: {
+      "Academy Manufactor M627": `Name:Academy Manufactor M627
+ManaCost:2 W
+Types:Artifact Creature Construct
+PT:1/2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure | ReplaceWith$ AddOthers
+SVar:AddOthers:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+Oracle:Manufactor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Academy Manufactor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Academy Manufactor M627", controller: SEAT0 }],
+  },
+
+  // 1645. Pitiless Plunderer.
+  {
+    id: "pitiless-plunderer-etb-m627",
+    description: "Pitiless Plunderer ETB; treasure on creature die parse.",
+    seed: 0x794,
+    cards: {
+      "Pitiless Plunderer M627": `Name:Pitiless Plunderer M627
+ManaCost:3 B
+Types:Creature Human Pirate
+PT:1/4
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Plunderer treasure.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure | TokenAmount$ 1
+Oracle:Plunderer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pitiless Plunderer M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Pitiless Plunderer M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH N — Recent Battle / Class / Saga revisits ─────
+
+  // 1646. Battle Saheeli, Filigree Master — old test still works after M6.26.
+  {
+    id: "saheeli-filigree-master-etb-m627",
+    description: "Saheeli, Filigree Master ETB; PW + token revisit.",
+    seed: 0x795,
+    cards: {
+      "Saheeli Filigree M627": `Name:Saheeli Filigree M627
+ManaCost:2 U
+Types:Legendary Planeswalker Saheeli
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ c_a_servo | TokenAmount$ 1 | Planeswalker$ True
+Oracle:Saheeli Filigree parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Saheeli Filigree M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Saheeli Filigree M627", controller: SEAT0 }],
+  },
+
+  // 1647. The Wandering Emperor — PW with flash and instant abilities.
+  {
+    id: "wandering-emperor-etb-m627",
+    description: "The Wandering Emperor ETB; flash PW parse.",
+    seed: 0x796,
+    cards: {
+      "Wandering Emperor M627": `Name:Wandering Emperor M627
+ManaCost:1 W W
+Types:Legendary Planeswalker Emperor
+Loyalty:3
+K:Flash
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ w_2_2_samurai_doublestrike | TokenAmount$ 1 | Planeswalker$ True
+A:AB$ Pump | Cost$ SubCounter<1/LOYALTY> | TargetType$ Creature | NumAtt$ 1 | NumDef$ 1 | KW$ Lifelink | Planeswalker$ True
+Oracle:Emperor parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wandering Emperor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wandering Emperor M627", controller: SEAT0 }],
+  },
+
+  // 1648. Sorin the Mirthless — PW.
+  {
+    id: "sorin-mirthless-etb-m627",
+    description: "Sorin the Mirthless ETB; PW parse.",
+    seed: 0x797,
+    cards: {
+      "Sorin Mirthless M627": `Name:Sorin Mirthless M627
+ManaCost:2 B B
+Types:Legendary Planeswalker Sorin
+Loyalty:4
+A:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | DigNum$ 1 | DestinationZone$ Hand | Planeswalker$ True
+A:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ b_2_2_vampire_flying | TokenAmount$ 1 | Planeswalker$ True
+Oracle:Sorin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sorin Mirthless M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sorin Mirthless M627", controller: SEAT0 }],
+  },
+
+  // 1649. Liliana of the Veil — discard PW.
+  {
+    id: "liliana-veil-etb-m627",
+    description: "Liliana of the Veil ETB; discard PW parse.",
+    seed: 0x798,
+    cards: {
+      "Liliana Veil M627": `Name:Liliana Veil M627
+ManaCost:1 B B
+Types:Legendary Planeswalker Liliana
+Loyalty:3
+A:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | Defined$ Each | NumCards$ 1 | Planeswalker$ True
+A:AB$ Sacrifice | Cost$ SubCounter<2/LOYALTY> | Defined$ Player.Opponent | SacValid$ Creature | Planeswalker$ True
+Oracle:Liliana parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Liliana Veil M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Liliana Veil M627", controller: SEAT0 }],
+  },
+
+  // 1650. Karn Liberated — PW.
+  {
+    id: "karn-liberated-etb-m627",
+    description: "Karn Liberated ETB; exile PW parse.",
+    seed: 0x799,
+    cards: {
+      "Karn Liberated M627": `Name:Karn Liberated M627
+ManaCost:7
+Types:Legendary Planeswalker Karn
+Loyalty:6
+A:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | TargetType$ Card | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Exile | Planeswalker$ True
+Oracle:Karn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Karn Liberated M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Karn Liberated M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH O — Misc ETB / cantrip / ramp / tutor coverage ─────
+
+  // 1651. Sakura-Tribe Elder.
+  {
+    id: "sakura-tribe-elder-etb-m627",
+    description: "Sakura-Tribe Elder ETB; ramp sac parse.",
+    seed: 0x79a,
+    cards: {
+      "Sakura Elder M627": `Name:Sakura Elder M627
+ManaCost:1 G
+Types:Creature Snake Shaman
+PT:1/1
+A:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True
+Oracle:STE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sakura Elder M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sakura Elder M627", controller: SEAT0 }],
+  },
+
+  // 1652. Cultivate.
+  {
+    id: "cultivate-in-hand-m627",
+    description: "Cultivate in hand; ramp parse.",
+    seed: 0x79b,
+    cards: {
+      "Cultivate M627": `Name:Cultivate M627
+ManaCost:2 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 2 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True | SubAbility$ DBHand
+SVar:DBHand:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeNum$ 1
+Oracle:Cultivate parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cultivate M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1653. Kodama's Reach.
+  {
+    id: "kodamas-reach-in-hand-m627",
+    description: "Kodama's Reach in hand; ramp parse.",
+    seed: 0x79c,
+    cards: {
+      "Kodamas Reach M627": `Name:Kodamas Reach M627
+ManaCost:2 G
+Types:Sorcery Arcane
+A:SP$ ChangeZone | Cost$ 2 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True | SubAbility$ DBHand
+SVar:DBHand:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeNum$ 1
+Oracle:Reach parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kodamas Reach M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1654. Rampant Growth.
+  {
+    id: "rampant-growth-in-hand-m627",
+    description: "Rampant Growth in hand; ramp parse.",
+    seed: 0x79d,
+    cards: {
+      "Rampant Growth M627": `Name:Rampant Growth M627
+ManaCost:1 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True
+Oracle:RG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rampant Growth M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1655. Farseek.
+  {
+    id: "farseek-in-hand-m627",
+    description: "Farseek in hand; ramp dual parse.",
+    seed: 0x79e,
+    cards: {
+      "Farseek M627": `Name:Farseek M627
+ManaCost:1 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Plains,Land.Island,Land.Swamp,Land.Mountain | ChangeNum$ 1 | Tapped$ True
+Oracle:Farseek parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Farseek M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1656. Three Visits.
+  {
+    id: "three-visits-in-hand-m627",
+    description: "Three Visits in hand; ramp parse.",
+    seed: 0x79f,
+    cards: {
+      "Three Visits M627": `Name:Three Visits M627
+ManaCost:G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Forest,Land.Plains | ChangeNum$ 1
+Oracle:Visits parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Three Visits M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1657. Nature's Lore.
+  {
+    id: "natures-lore-in-hand-m627",
+    description: "Nature's Lore in hand; ramp parse.",
+    seed: 0x7a0,
+    cards: {
+      "Natures Lore M627": `Name:Natures Lore M627
+ManaCost:G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Forest | ChangeNum$ 1
+Oracle:Lore parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Natures Lore M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1658. Search for Tomorrow.
+  {
+    id: "search-for-tomorrow-in-hand-m627",
+    description: "Search for Tomorrow in hand; ramp suspend parse.",
+    seed: 0x7a1,
+    cards: {
+      "Search Tomorrow M627": `Name:Search Tomorrow M627
+ManaCost:2 G
+Types:Sorcery
+K:Suspend:2:G
+A:SP$ ChangeZone | Cost$ 2 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1
+Oracle:Search parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Search Tomorrow M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1659. Skyshroud Claim.
+  {
+    id: "skyshroud-claim-in-hand-m627",
+    description: "Skyshroud Claim in hand; ramp 2 untapped parse.",
+    seed: 0x7a2,
+    cards: {
+      "Skyshroud Claim M627": `Name:Skyshroud Claim M627
+ManaCost:3 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 3 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Forest | ChangeNum$ 2
+Oracle:Skyshroud parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skyshroud Claim M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1660. Explosive Vegetation.
+  {
+    id: "explosive-vegetation-in-hand-m627",
+    description: "Explosive Vegetation in hand; ramp 2 parse.",
+    seed: 0x7a3,
+    cards: {
+      "Explosive Vegetation M627": `Name:Explosive Vegetation M627
+ManaCost:3 G
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 3 G | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 2 | Tapped$ True
+Oracle:Veg parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Explosive Vegetation M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ─── M6.27 BATCH P — Tutor / draw / cantrip ─────
+
+  // 1661. Demonic Tutor.
+  {
+    id: "demonic-tutor-in-hand-m627",
+    description: "Demonic Tutor in hand; tutor parse.",
+    seed: 0x7a4,
+    cards: {
+      "Demonic Tutor M627": `Name:Demonic Tutor M627
+ManaCost:1 B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1
+Oracle:DT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Demonic Tutor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1662. Vampiric Tutor.
+  {
+    id: "vampiric-tutor-in-hand-m627",
+    description: "Vampiric Tutor in hand; tutor parse.",
+    seed: 0x7a5,
+    cards: {
+      "Vampiric Tutor M627": `Name:Vampiric Tutor M627
+ManaCost:B
+Types:Instant
+A:SP$ ChangeZone | Cost$ B | Origin$ Library | Destination$ Library | ChangeType$ Card | ChangeNum$ 1 | LibraryPosition$ 0 | SubAbility$ DBLife
+SVar:DBLife:DB$ LoseLife | LifeAmount$ 2
+Oracle:VT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vampiric Tutor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1663. Mystical Tutor.
+  {
+    id: "mystical-tutor-in-hand-m627",
+    description: "Mystical Tutor in hand; instant/sorcery tutor parse.",
+    seed: 0x7a6,
+    cards: {
+      "Mystical Tutor M627": `Name:Mystical Tutor M627
+ManaCost:U
+Types:Instant
+A:SP$ ChangeZone | Cost$ U | Origin$ Library | Destination$ Library | ChangeType$ Card.Instant,Card.Sorcery | ChangeNum$ 1 | LibraryPosition$ 0
+Oracle:MT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mystical Tutor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1664. Worldly Tutor.
+  {
+    id: "worldly-tutor-in-hand-m627",
+    description: "Worldly Tutor in hand; creature tutor parse.",
+    seed: 0x7a7,
+    cards: {
+      "Worldly Tutor M627": `Name:Worldly Tutor M627
+ManaCost:G
+Types:Instant
+A:SP$ ChangeZone | Cost$ G | Origin$ Library | Destination$ Library | ChangeType$ Creature | ChangeNum$ 1 | LibraryPosition$ 0
+Oracle:WT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Worldly Tutor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1665. Enlightened Tutor.
+  {
+    id: "enlightened-tutor-in-hand-m627",
+    description: "Enlightened Tutor in hand; artifact/enchantment tutor parse.",
+    seed: 0x7a8,
+    cards: {
+      "Enlightened Tutor M627": `Name:Enlightened Tutor M627
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Library | Destination$ Library | ChangeType$ Card.Artifact,Card.Enchantment | ChangeNum$ 1 | LibraryPosition$ 0
+Oracle:ET parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Enlightened Tutor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1666. Diabolic Tutor.
+  {
+    id: "diabolic-tutor-in-hand-m627",
+    description: "Diabolic Tutor in hand; tutor 4 parse.",
+    seed: 0x7a9,
+    cards: {
+      "Diabolic Tutor M627": `Name:Diabolic Tutor M627
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 2 B B | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1
+Oracle:DiT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Diabolic Tutor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1667. Brainstorm.
+  {
+    id: "brainstorm-in-hand-m627",
+    description: "Brainstorm in hand; cantrip parse.",
+    seed: 0x7aa,
+    cards: {
+      "Brainstorm M627": `Name:Brainstorm M627
+ManaCost:U
+Types:Instant
+A:SP$ Draw | Cost$ U | NumCards$ 3 | SubAbility$ DBPut
+SVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeType$ Card | ChangeNum$ 2 | LibraryPosition$ 0
+Oracle:Brainstorm parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brainstorm M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1668. Ponder.
+  {
+    id: "ponder-in-hand-m627",
+    description: "Ponder in hand; cantrip parse.",
+    seed: 0x7ab,
+    cards: {
+      "Ponder M627": `Name:Ponder M627
+ManaCost:U
+Types:Sorcery
+A:SP$ Dig | Cost$ U | DigNum$ 3 | RevealOnly$ True | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Ponder parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ponder M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1669. Preordain.
+  {
+    id: "preordain-in-hand-m627",
+    description: "Preordain in hand; cantrip parse.",
+    seed: 0x7ac,
+    cards: {
+      "Preordain M627": `Name:Preordain M627
+ManaCost:U
+Types:Sorcery
+A:SP$ Dig | Cost$ U | DigNum$ 2 | RevealOnly$ True | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Preordain parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Preordain M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1670. Opt.
+  {
+    id: "opt-in-hand-m627",
+    description: "Opt in hand; cantrip parse.",
+    seed: 0x7ad,
+    cards: {
+      "Opt M627": `Name:Opt M627
+ManaCost:U
+Types:Instant
+A:SP$ Dig | Cost$ U | DigNum$ 1 | RevealOnly$ True | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:Opt parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Opt M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ─── M6.27 BATCH Q — Burn / damage spells ─────
+
+  // 1671. Lightning Strike.
+  {
+    id: "lightning-strike-in-hand-m627",
+    description: "Lightning Strike in hand; burn parse.",
+    seed: 0x7ae,
+    cards: {
+      "Lightning Strike M627": `Name:Lightning Strike M627
+ManaCost:1 R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 3 | ValidTgts$ Any
+Oracle:Strike parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Strike M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1672. Shock.
+  {
+    id: "shock-in-hand-m627",
+    description: "Shock in hand; burn parse.",
+    seed: 0x7af,
+    cards: {
+      "Shock M627": `Name:Shock M627
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 2 | ValidTgts$ Any
+Oracle:Shock parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shock M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1673. Searing Spear.
+  {
+    id: "searing-spear-in-hand-m627",
+    description: "Searing Spear in hand; burn parse.",
+    seed: 0x7b0,
+    cards: {
+      "Searing Spear M627": `Name:Searing Spear M627
+ManaCost:1 R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 3 | ValidTgts$ Any
+Oracle:Spear parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Searing Spear M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1674. Magma Jet.
+  {
+    id: "magma-jet-in-hand-m627",
+    description: "Magma Jet in hand; burn + scry parse.",
+    seed: 0x7b1,
+    cards: {
+      "Magma Jet M627": `Name:Magma Jet M627
+ManaCost:1 R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | ValidTgts$ Any | SubAbility$ DBScry
+SVar:DBScry:DB$ Scry | ScryNum$ 2
+Oracle:Magma parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Magma Jet M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1675. Incinerate.
+  {
+    id: "incinerate-in-hand-m627",
+    description: "Incinerate in hand; burn parse.",
+    seed: 0x7b2,
+    cards: {
+      "Incinerate M627": `Name:Incinerate M627
+ManaCost:1 R
+Types:Instant
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 3 | ValidTgts$ Any
+Oracle:Inc parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Incinerate M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1676. Boros Charm.
+  {
+    id: "boros-charm-in-hand-m627",
+    description: "Boros Charm in hand; modal burn parse.",
+    seed: 0x7b3,
+    cards: {
+      "Boros Charm M627": `Name:Boros Charm M627
+ManaCost:R W
+Types:Instant
+A:SP$ Charm | Cost$ R W | Choices$ DealDmg,DoubleStrike,Indestructible
+SVar:DealDmg:DB$ DealDamage | NumDmg$ 4 | ValidTgts$ Player
+SVar:DoubleStrike:DB$ Pump | KW$ Double Strike | Defined$ Creature.YouCtrl
+SVar:Indestructible:DB$ Pump | KW$ Indestructible | Defined$ Permanent.YouCtrl
+Oracle:Boros parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boros Charm M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1677. Wrath of God.
+  {
+    id: "wrath-god-in-hand-m627",
+    description: "Wrath of God in hand; sweeper parse.",
+    seed: 0x7b4,
+    cards: {
+      "Wrath God M627": `Name:Wrath God M627
+ManaCost:2 W W
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature | NoRegen$ True
+Oracle:Wrath parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wrath God M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1678. Day of Judgment.
+  {
+    id: "day-of-judgment-in-hand-m627",
+    description: "Day of Judgment in hand; sweeper parse.",
+    seed: 0x7b5,
+    cards: {
+      "Day Judgment M627": `Name:Day Judgment M627
+ManaCost:2 W W
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 2 W W | ValidCards$ Creature
+Oracle:DoJ parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Day Judgment M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1679. Damnation.
+  {
+    id: "damnation-in-hand-m627",
+    description: "Damnation in hand; sweeper parse.",
+    seed: 0x7b6,
+    cards: {
+      "Damnation M627": `Name:Damnation M627
+ManaCost:2 B B
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 2 B B | ValidCards$ Creature | NoRegen$ True
+Oracle:Damnation parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Damnation M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1680. Toxic Deluge.
+  {
+    id: "toxic-deluge-in-hand-m627",
+    description: "Toxic Deluge in hand; sweeper parse.",
+    seed: 0x7b7,
+    cards: {
+      "Toxic Deluge M627": `Name:Toxic Deluge M627
+ManaCost:2 B
+Types:Sorcery
+A:SP$ PumpAll | Cost$ 2 B | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X | References$ X
+SVar:X:Count$xPaid
+Oracle:Deluge parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Toxic Deluge M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ─── M6.27 BATCH R — Anthems / pump auras ─────
+
+  // 1681. Crusade.
+  {
+    id: "crusade-etb-m627",
+    description: "Crusade ETB; white anthem parse.",
+    seed: 0x7b8,
+    cards: {
+      "Crusade M627": `Name:Crusade M627
+ManaCost:W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.White | AddPower$ 1 | AddToughness$ 1 | Description$ Crusade.
+Oracle:Crusade parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Crusade M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Crusade M627", controller: SEAT0 }],
+  },
+
+  // 1682. Bad Moon.
+  {
+    id: "bad-moon-etb-m627",
+    description: "Bad Moon ETB; black anthem parse.",
+    seed: 0x7b9,
+    cards: {
+      "Bad Moon M627": `Name:Bad Moon M627
+ManaCost:1 B
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.Black | AddPower$ 1 | AddToughness$ 1 | Description$ Bad Moon.
+Oracle:Bad Moon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bad Moon M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bad Moon M627", controller: SEAT0 }],
+  },
+
+  // 1683. Goblin King.
+  {
+    id: "goblin-king-etb-m627",
+    description: "Goblin King ETB; tribal anthem parse.",
+    seed: 0x7ba,
+    cards: {
+      "Goblin King M627": `Name:Goblin King M627
+ManaCost:1 R R
+Types:Creature Goblin
+PT:2/2
+S:Mode$ Continuous | Affected$ Goblin.Other | AddPower$ 1 | AddToughness$ 1 | Description$ GK anthem.
+Oracle:GK parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin King M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin King M627", controller: SEAT0 }],
+  },
+
+  // 1684. Lord of Atlantis.
+  {
+    id: "lord-of-atlantis-etb-m627",
+    description: "Lord of Atlantis ETB; merfolk lord parse.",
+    seed: 0x7bb,
+    cards: {
+      "Lord Atlantis M627": `Name:Lord Atlantis M627
+ManaCost:U U
+Types:Creature Merfolk
+PT:2/2
+S:Mode$ Continuous | Affected$ Merfolk.Other | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Islandwalk | Description$ LoA.
+Oracle:LoA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lord Atlantis M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lord Atlantis M627", controller: SEAT0 }],
+  },
+
+  // 1685. Elvish Champion.
+  {
+    id: "elvish-champion-etb-m627",
+    description: "Elvish Champion ETB; elf lord parse.",
+    seed: 0x7bc,
+    cards: {
+      "Elvish Champion M627": `Name:Elvish Champion M627
+ManaCost:1 G G
+Types:Creature Elf
+PT:2/2
+S:Mode$ Continuous | Affected$ Elf.Other | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Forestwalk | Description$ EC.
+Oracle:EC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Champion M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Champion M627", controller: SEAT0 }],
+  },
+
+  // 1686. Zombie Master.
+  {
+    id: "zombie-master-etb-m627",
+    description: "Zombie Master ETB; zombie lord parse.",
+    seed: 0x7bd,
+    cards: {
+      "Zombie Master M627": `Name:Zombie Master M627
+ManaCost:1 B B
+Types:Creature Zombie
+PT:2/3
+S:Mode$ Continuous | Affected$ Zombie.Other | AddKeyword$ Swampwalk | Description$ ZM swampwalk.
+Oracle:ZM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Zombie Master M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Zombie Master M627", controller: SEAT0 }],
+  },
+
+  // 1687. Sliver Overlord.
+  {
+    id: "sliver-overlord-etb-m627",
+    description: "Sliver Overlord ETB; sliver lord parse.",
+    seed: 0x7be,
+    cards: {
+      "Sliver Overlord M627": `Name:Sliver Overlord M627
+ManaCost:3 W U B R G
+Types:Legendary Creature Sliver Mutant
+PT:7/7
+A:AB$ ChangeZone | Cost$ 3 | Origin$ Library | Destination$ Hand | ChangeType$ Sliver | ChangeNum$ 1
+A:AB$ GainControl | Cost$ 3 | TargetType$ Creature | ValidTgts$ Sliver
+Oracle:SO parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sliver Overlord M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sliver Overlord M627", controller: SEAT0 }],
+  },
+
+  // 1688. Sliver Legion.
+  {
+    id: "sliver-legion-etb-m627",
+    description: "Sliver Legion ETB; counts-other anthem parse.",
+    seed: 0x7bf,
+    cards: {
+      "Sliver Legion M627": `Name:Sliver Legion M627
+ManaCost:5 W U B R G
+Types:Legendary Creature Sliver
+PT:7/7
+S:Mode$ Continuous | Affected$ Sliver | AddPower$ X | AddToughness$ X | References$ X | Description$ Legion.
+SVar:X:Count$Valid Sliver.Other
+Oracle:Legion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sliver Legion M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sliver Legion M627", controller: SEAT0 }],
+  },
+
+  // 1689. Coat of Arms.
+  {
+    id: "coat-of-arms-etb-m627",
+    description: "Coat of Arms ETB; tribal anthem parse.",
+    seed: 0x7c0,
+    cards: {
+      "Coat Arms M627": `Name:Coat Arms M627
+ManaCost:5
+Types:Artifact
+S:Mode$ Continuous | Affected$ Creature | AddPowerXBased$ True | AddToughnessXBased$ True | Description$ CoA.
+Oracle:CoA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coat Arms M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coat Arms M627", controller: SEAT0 }],
+  },
+
+  // 1690. Door of Destinies.
+  {
+    id: "door-destinies-etb-m627",
+    description: "Door of Destinies ETB; tribal counter parse.",
+    seed: 0x7c1,
+    cards: {
+      "Door Destinies M627": `Name:Door Destinies M627
+ManaCost:4
+Types:Artifact
+T:Mode$ SpellCast | ValidCard$ Card.ChosenType | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ DoD.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1
+Oracle:Door parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Door Destinies M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Door Destinies M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH S — Counter / removal interaction ─────
+
+  // 1691. Counterspell variants.
+  {
+    id: "force-of-will-in-hand-m627",
+    description: "Force of Will in hand; counterspell parse.",
+    seed: 0x7c2,
+    cards: {
+      "Force Will M627": `Name:Force Will M627
+ManaCost:3 U U
+Types:Instant
+A:SP$ Counter | Cost$ 3 U U | TargetType$ Spell | ValidTgts$ Card
+Oracle:FoW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force Will M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1692. Force of Negation.
+  {
+    id: "force-of-negation-in-hand-m627",
+    description: "Force of Negation in hand; counterspell parse.",
+    seed: 0x7c3,
+    cards: {
+      "Force Negation M627": `Name:Force Negation M627
+ManaCost:1 U U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U U | TargetType$ Spell | ValidTgts$ Card.nonCreature
+Oracle:FoN parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Force Negation M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1693. Mana Drain.
+  {
+    id: "mana-drain-in-hand-m627",
+    description: "Mana Drain in hand; counterspell + mana parse.",
+    seed: 0x7c4,
+    cards: {
+      "Mana Drain M627": `Name:Mana Drain M627
+ManaCost:U U
+Types:Instant
+A:SP$ Counter | Cost$ U U | TargetType$ Spell | ValidTgts$ Card | SubAbility$ DBMana
+SVar:DBMana:DB$ Mana | Produced$ C | Amount$ X
+SVar:X:Targeted$CardManaCost
+Oracle:Drain parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mana Drain M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1694. Spell Pierce.
+  {
+    id: "spell-pierce-in-hand-m627",
+    description: "Spell Pierce in hand; conditional counter parse.",
+    seed: 0x7c5,
+    cards: {
+      "Spell Pierce M627": `Name:Spell Pierce M627
+ManaCost:U
+Types:Instant
+A:SP$ Counter | Cost$ U | TargetType$ Spell | ValidTgts$ Card.nonCreature | UnlessCost$ 2 | UnlessPayer$ TargetedController
+Oracle:Pierce parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spell Pierce M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1695. Daze.
+  {
+    id: "daze-in-hand-m627",
+    description: "Daze in hand; conditional counter parse.",
+    seed: 0x7c6,
+    cards: {
+      "Daze M627": `Name:Daze M627
+ManaCost:1 U
+Types:Instant
+A:SP$ Counter | Cost$ 1 U | TargetType$ Spell | ValidTgts$ Card | UnlessCost$ 1 | UnlessPayer$ TargetedController
+Oracle:Daze parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Daze M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1696. Swords to Plowshares.
+  {
+    id: "swords-plowshares-in-hand-m627",
+    description: "Swords to Plowshares in hand; exile creature + life parse.",
+    seed: 0x7c7,
+    cards: {
+      "Swords Plowshares M627": `Name:Swords Plowshares M627
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLife
+SVar:DBLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X
+SVar:X:Targeted$CardPower
+Oracle:StP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swords Plowshares M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1697. Path to Exile.
+  {
+    id: "path-exile-in-hand-m627",
+    description: "Path to Exile in hand; exile + ramp parse.",
+    seed: 0x7c8,
+    cards: {
+      "Path Exile M627": `Name:Path Exile M627
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBSearch
+SVar:DBSearch:DB$ ChangeZone | Defined$ TargetedController | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True
+Oracle:Path parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Path Exile M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1698. Doom Blade.
+  {
+    id: "doom-blade-in-hand-m627",
+    description: "Doom Blade in hand; non-black destroy parse.",
+    seed: 0x7c9,
+    cards: {
+      "Doom Blade M627": `Name:Doom Blade M627
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonBlack
+Oracle:Doom parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doom Blade M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1699. Go for the Throat.
+  {
+    id: "go-for-throat-in-hand-m627",
+    description: "Go for the Throat in hand; non-artifact destroy parse.",
+    seed: 0x7ca,
+    cards: {
+      "Go Throat M627": `Name:Go Throat M627
+ManaCost:1 B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B | TargetType$ Card | ValidTgts$ Creature.nonArtifact
+Oracle:GfT parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Go Throat M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1700. Murder.
+  {
+    id: "murder-in-hand-m627",
+    description: "Murder in hand; destroy parse.",
+    seed: 0x7cb,
+    cards: {
+      "Murder M627": `Name:Murder M627
+ManaCost:1 B B
+Types:Instant
+A:SP$ Destroy | Cost$ 1 B B | TargetType$ Card | ValidTgts$ Creature
+Oracle:Murder parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Murder M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // ─── M6.27 BATCH T — Misc creatures with ETB triggers ─────
+
+  // 1701. Snapcaster Mage.
+  {
+    id: "snapcaster-mage-etb-m627",
+    description: "Snapcaster Mage ETB; flashback parse.",
+    seed: 0x7cc,
+    cards: {
+      "Snapcaster Mage M627": `Name:Snapcaster Mage M627
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:2/1
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlashback | TriggerDescription$ Snap flashback.
+SVar:TrigFlashback:DB$ Pump | TargetType$ Card | ValidTgts$ Card.Instant+inZoneGraveyard,Card.Sorcery+inZoneGraveyard
+Oracle:Snap parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snapcaster Mage M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snapcaster Mage M627", controller: SEAT0 }],
+  },
+
+  // 1702. Reflector Mage.
+  {
+    id: "reflector-mage-etb-m627",
+    description: "Reflector Mage ETB; bounce + delay parse.",
+    seed: 0x7cd,
+    cards: {
+      "Reflector Mage M627": `Name:Reflector Mage M627
+ManaCost:1 W U
+Types:Creature Human Wizard
+PT:2/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Reflect bounce.
+SVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.OppCtrl
+Oracle:Reflect parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reflector Mage M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reflector Mage M627", controller: SEAT0 }],
+  },
+
+  // 1703. Man-o'-War.
+  {
+    id: "man-o-war-etb-m627",
+    description: "Man-o'-War ETB; bounce parse.",
+    seed: 0x7ce,
+    cards: {
+      "Man o War M627": `Name:Man o War M627
+ManaCost:2 U
+Types:Creature Jellyfish
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Bounce.
+SVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature
+Oracle:MoW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Man o War M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Man o War M627", controller: SEAT0 }],
+  },
+
+  // 1704. Venser, Shaper Savant.
+  {
+    id: "venser-shaper-savant-etb-m627",
+    description: "Venser, Shaper Savant ETB; bounce target parse.",
+    seed: 0x7cf,
+    cards: {
+      "Venser Savant M627": `Name:Venser Savant M627
+ManaCost:2 U
+Types:Legendary Creature Human Wizard
+PT:2/2
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Venser.
+SVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetType$ Card | ValidTgts$ Permanent
+Oracle:Venser parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Venser Savant M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Venser Savant M627", controller: SEAT0 }],
+  },
+
+  // 1705. Acidic Slime.
+  {
+    id: "acidic-slime-etb-m627",
+    description: "Acidic Slime ETB; destroy artifact/enchantment/land parse.",
+    seed: 0x7d0,
+    cards: {
+      "Acidic Slime M627": `Name:Acidic Slime M627
+ManaCost:3 G G
+Types:Creature Ooze
+PT:2/2
+K:Deathtouch
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Acidic.
+SVar:TrigDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Artifact,Enchantment,Land
+Oracle:Acid parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Acidic Slime M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Acidic Slime M627", controller: SEAT0 }],
+  },
+
+  // 1706. Reclamation Sage.
+  {
+    id: "reclamation-sage-etb-m627",
+    description: "Reclamation Sage ETB; destroy artifact/enchant parse.",
+    seed: 0x7d1,
+    cards: {
+      "Reclamation Sage M627": `Name:Reclamation Sage M627
+ManaCost:2 G
+Types:Creature Elf Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Sage.
+SVar:TrigDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Artifact,Enchantment
+Oracle:Sage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reclamation Sage M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reclamation Sage M627", controller: SEAT0 }],
+  },
+
+  // 1707. Solemn Simulacrum.
+  {
+    id: "solemn-simulacrum-etb-m627",
+    description: "Solemn Simulacrum ETB; ramp parse.",
+    seed: 0x7d2,
+    cards: {
+      "Solemn Simulacrum M627": `Name:Solemn Simulacrum M627
+ManaCost:4
+Types:Artifact Creature Golem
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Solemn ETB.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Solemn dies.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Solemn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Solemn Simulacrum M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Solemn Simulacrum M627", controller: SEAT0 }],
+  },
+
+  // 1708. Wood Elves.
+  {
+    id: "wood-elves-etb-m627",
+    description: "Wood Elves ETB; ramp parse.",
+    seed: 0x7d3,
+    cards: {
+      "Wood Elves M627": `Name:Wood Elves M627
+ManaCost:1 G
+Types:Creature Elf Scout
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Wood Elves.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ 1
+Oracle:Wood Elves parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wood Elves M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wood Elves M627", controller: SEAT0 }],
+  },
+
+  // 1709. Farhaven Elf.
+  {
+    id: "farhaven-elf-etb-m627",
+    description: "Farhaven Elf ETB; ramp parse.",
+    seed: 0x7d4,
+    cards: {
+      "Farhaven Elf M627": `Name:Farhaven Elf M627
+ManaCost:2 G
+Types:Creature Elf Druid
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Farhaven.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True
+Oracle:Farhaven parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Farhaven Elf M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Farhaven Elf M627", controller: SEAT0 }],
+  },
+
+  // 1710. Wall of Roots.
+  {
+    id: "wall-of-roots-etb-m627",
+    description: "Wall of Roots ETB; mana wall parse.",
+    seed: 0x7d5,
+    cards: {
+      "Wall Roots M627": `Name:Wall Roots M627
+ManaCost:1 G
+Types:Creature Plant Wall
+PT:0/5
+K:Defender
+A:AB$ Mana | Cost$ AddCounter<1/M1M1/CARDNAME> | Produced$ G
+Oracle:WoR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wall Roots M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wall Roots M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH U — Various utility creatures ─────
+
+  // 1711. Wall of Omens.
+  {
+    id: "wall-of-omens-etb-m627",
+    description: "Wall of Omens ETB; cantrip wall parse.",
+    seed: 0x7d6,
+    cards: {
+      "Wall Omens M627": `Name:Wall Omens M627
+ManaCost:1 W
+Types:Creature Wall
+PT:0/4
+K:Defender
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Omens.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Omens parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wall Omens M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wall Omens M627", controller: SEAT0 }],
+  },
+
+  // 1712. Wall of Blossoms.
+  {
+    id: "wall-of-blossoms-etb-m627",
+    description: "Wall of Blossoms ETB; cantrip wall parse.",
+    seed: 0x7d7,
+    cards: {
+      "Wall Blossoms M627": `Name:Wall Blossoms M627
+ManaCost:1 G
+Types:Creature Plant Wall
+PT:0/4
+K:Defender
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Blossoms.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Blossoms parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wall Blossoms M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wall Blossoms M627", controller: SEAT0 }],
+  },
+
+  // 1713. Coiling Oracle.
+  {
+    id: "coiling-oracle-etb-m627",
+    description: "Coiling Oracle ETB; reveal-top parse.",
+    seed: 0x7d8,
+    cards: {
+      "Coiling Oracle M627": `Name:Coiling Oracle M627
+ManaCost:G U
+Types:Creature Snake Elf Druid
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Coiling.
+SVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | ChangeValid$ Land | DestinationZone$ Battlefield | DestinationZone2$ Hand
+Oracle:Coiling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coiling Oracle M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coiling Oracle M627", controller: SEAT0 }],
+  },
+
+  // 1714. Augur of Bolas.
+  {
+    id: "augur-bolas-etb-m627",
+    description: "Augur of Bolas ETB; dig instant/sorcery parse.",
+    seed: 0x7d9,
+    cards: {
+      "Augur Bolas M627": `Name:Augur Bolas M627
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:1/3
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Augur.
+SVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | ChangeValid$ Card.Instant,Card.Sorcery | DestinationZone$ Hand
+Oracle:Augur parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Augur Bolas M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Augur Bolas M627", controller: SEAT0 }],
+  },
+
+  // 1715. Coiling Oracle co-residence with Doubling Season (no replacement match).
+  {
+    id: "coiling-oracle-doubling-season-coresidence-m627",
+    description: "Coiling Oracle ETB with Doubling Season; baseline non-matching replacement.",
+    seed: 0x7da,
+    cards: {
+      "Coiling Oracle M627B": `Name:Coiling Oracle M627B
+ManaCost:G U
+Types:Creature Snake Elf Druid
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Coiling.
+SVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | DestinationZone$ Hand
+Oracle:Coiling B parse.
+`,
+      "Doubling Season M627G": `Name:Doubling Season M627G
+ManaCost:4 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:DSG parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Coiling Oracle M627B"],
+        battlefield: [{ card: "Doubling Season M627G" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coiling Oracle M627B", controller: SEAT0 }],
+  },
+
+  // 1716. Tymna the Weaver — partner draw on attacker.
+  {
+    id: "tymna-weaver-etb-m627",
+    description: "Tymna the Weaver ETB; combat-damage draw parse.",
+    seed: 0x7db,
+    cards: {
+      "Tymna Weaver M627": `Name:Tymna Weaver M627
+ManaCost:1 W B
+Types:Legendary Creature Human Cleric
+PT:2/2
+T:Mode$ Phase | Phase$ Postcombat Main | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Tymna draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ X | UnlessCost$ X Life | UnlessPayer$ You | References$ X
+SVar:X:Count$Valid Player.Opponent+wasDealtCombatDamageThisTurn
+Oracle:Tymna parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tymna Weaver M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tymna Weaver M627", controller: SEAT0 }],
+  },
+
+  // 1717. Thrasios, Triton Hero — partner ramp.
+  {
+    id: "thrasios-triton-hero-etb-m627",
+    description: "Thrasios ETB; activated mill-or-mana parse.",
+    seed: 0x7dc,
+    cards: {
+      "Thrasios M627": `Name:Thrasios M627
+ManaCost:G U
+Types:Legendary Creature Merfolk Wizard
+PT:1/3
+A:AB$ Dig | Cost$ 4 | DigNum$ 1 | DestinationZone$ Battlefield | ChangeValid$ Land
+Oracle:Thrasios parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thrasios M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thrasios M627", controller: SEAT0 }],
+  },
+
+  // 1718. Kraum, Ludevic's Opus.
+  {
+    id: "kraum-ludevics-opus-etb-m627",
+    description: "Kraum ETB; partner draw-on-extra-cast parse.",
+    seed: 0x7dd,
+    cards: {
+      "Kraum Opus M627": `Name:Kraum Opus M627
+ManaCost:2 U R
+Types:Legendary Creature Zombie Dragon Horror
+PT:4/4
+K:Flying
+K:Haste
+T:Mode$ SpellCast | ValidPlayer$ Each | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Kraum draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Kraum parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kraum Opus M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kraum Opus M627", controller: SEAT0 }],
+  },
+
+  // 1719. Vial Smasher the Fierce.
+  {
+    id: "vial-smasher-etb-m627",
+    description: "Vial Smasher ETB; first-spell-each-turn damage parse.",
+    seed: 0x7de,
+    cards: {
+      "Vial Smasher M627": `Name:Vial Smasher M627
+ManaCost:1 B R
+Types:Legendary Creature Goblin Berserker
+PT:3/2
+T:Mode$ SpellCast | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Smasher.
+SVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ X
+SVar:X:TriggeredCard$CardManaCost
+Oracle:Smasher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vial Smasher M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vial Smasher M627", controller: SEAT0 }],
+  },
+
+  // 1720. Ravos, Soultender.
+  {
+    id: "ravos-soultender-etb-m627",
+    description: "Ravos ETB; reanimator commander parse.",
+    seed: 0x7df,
+    cards: {
+      "Ravos M627": `Name:Ravos M627
+ManaCost:3 W B
+Types:Legendary Creature Human Cleric
+PT:2/2
+K:Flying
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | Description$ Ravos anthem.
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Ravos return.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Creature.YouCtrl
+Oracle:Ravos parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ravos M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ravos M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH V — Mass triggers / sweepers ─────
+
+  // 1721. Soul Warden.
+  {
+    id: "soul-warden-etb-m627",
+    description: "Soul Warden ETB; life-on-creature-ETB parse.",
+    seed: 0x7e0,
+    cards: {
+      "Soul Warden M627": `Name:Soul Warden M627
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SW life.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 1
+Oracle:SW parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Soul Warden M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Soul Warden M627", controller: SEAT0 }],
+  },
+
+  // 1722. Soul's Attendant.
+  {
+    id: "souls-attendant-etb-m627",
+    description: "Soul's Attendant ETB; same as Soul Warden parse.",
+    seed: 0x7e1,
+    cards: {
+      "Souls Attendant M627": `Name:Souls Attendant M627
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SA life.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 1
+Oracle:SA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Souls Attendant M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Souls Attendant M627", controller: SEAT0 }],
+  },
+
+  // 1723. Suture Priest.
+  {
+    id: "suture-priest-etb-m627",
+    description: "Suture Priest ETB; symmetric life parse.",
+    seed: 0x7e2,
+    cards: {
+      "Suture Priest M627": `Name:Suture Priest M627
+ManaCost:1 W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SP life.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ SP dmg.
+SVar:TrigDmg:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1
+Oracle:Suture parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Suture Priest M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Suture Priest M627", controller: SEAT0 }],
+  },
+
+  // 1724. Impact Tremors.
+  {
+    id: "impact-tremors-etb-m627",
+    description: "Impact Tremors ETB; damage on creature ETB parse.",
+    seed: 0x7e3,
+    cards: {
+      "Impact Tremors M627": `Name:Impact Tremors M627
+ManaCost:1 R
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Tremors.
+SVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1
+Oracle:Tremors parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Impact Tremors M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Impact Tremors M627", controller: SEAT0 }],
+  },
+
+  // 1725. Purphoros, God of the Forge.
+  {
+    id: "purphoros-god-forge-etb-m627",
+    description: "Purphoros ETB; damage on creature ETB parse.",
+    seed: 0x7e4,
+    cards: {
+      "Purphoros M627": `Name:Purphoros M627
+ManaCost:3 R
+Types:Legendary Enchantment Creature God
+PT:4/4
+K:Indestructible
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Purph.
+SVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2
+Oracle:Purph parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Purphoros M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Purphoros M627", controller: SEAT0 }],
+  },
+
+  // 1726. Goblin Bombardment.
+  {
+    id: "goblin-bombardment-etb-m627",
+    description: "Goblin Bombardment ETB; sac for damage parse.",
+    seed: 0x7e5,
+    cards: {
+      "Goblin Bombardment M627": `Name:Goblin Bombardment M627
+ManaCost:1 R
+Types:Enchantment
+A:AB$ DealDamage | Cost$ Sac<1/Creature> | NumDmg$ 1 | TargetType$ Any | ValidTgts$ Any
+Oracle:Bomb parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Bombardment M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Bombardment M627", controller: SEAT0 }],
+  },
+
+  // 1727. Altar of Dementia.
+  {
+    id: "altar-of-dementia-etb-m627",
+    description: "Altar of Dementia ETB; sac to mill parse.",
+    seed: 0x7e6,
+    cards: {
+      "Altar Dementia M627": `Name:Altar Dementia M627
+ManaCost:2
+Types:Artifact
+A:AB$ Mill | Cost$ Sac<1/Creature/Sacrificed> | TargetType$ Player | NumCards$ X | References$ X
+SVar:X:Sacrificed$CardPower
+Oracle:Altar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Altar Dementia M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Altar Dementia M627", controller: SEAT0 }],
+  },
+
+  // 1728. Phyrexian Altar.
+  {
+    id: "phyrexian-altar-etb-m627",
+    description: "Phyrexian Altar ETB; sac for mana parse.",
+    seed: 0x7e7,
+    cards: {
+      "Phyrexian Altar M627": `Name:Phyrexian Altar M627
+ManaCost:3
+Types:Artifact
+A:AB$ Mana | Cost$ Sac<1/Creature> | Produced$ Combo W U B R G | Amount$ 1
+Oracle:PA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phyrexian Altar M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Phyrexian Altar M627", controller: SEAT0 }],
+  },
+
+  // 1729. Ashnod's Altar.
+  {
+    id: "ashnods-altar-etb-m627",
+    description: "Ashnod's Altar ETB; sac for 2C parse.",
+    seed: 0x7e8,
+    cards: {
+      "Ashnods Altar M627": `Name:Ashnods Altar M627
+ManaCost:3
+Types:Artifact
+A:AB$ Mana | Cost$ Sac<1/Creature> | Produced$ C | Amount$ 2
+Oracle:AA parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ashnods Altar M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ashnods Altar M627", controller: SEAT0 }],
+  },
+
+  // 1730. Krark-Clan Ironworks.
+  {
+    id: "krark-clan-ironworks-etb-m627",
+    description: "Krark-Clan Ironworks ETB; sac artifact for mana parse.",
+    seed: 0x7e9,
+    cards: {
+      "KCI M627": `Name:KCI M627
+ManaCost:4
+Types:Artifact
+A:AB$ Mana | Cost$ Sac<1/Artifact> | Produced$ C | Amount$ 2
+Oracle:KCI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["KCI M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "KCI M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH W — Equipment / Auras ─────
+
+  // 1731. Skullclamp.
+  {
+    id: "skullclamp-etb-m627",
+    description: "Skullclamp ETB; equipment loot-on-die parse.",
+    seed: 0x7ea,
+    cards: {
+      "Skullclamp M627": `Name:Skullclamp M627
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ Clamp.
+T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.EquippedByCardSelf | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Clamp draw.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Clamp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skullclamp M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skullclamp M627", controller: SEAT0 }],
+  },
+
+  // 1732. Sword of Fire and Ice.
+  {
+    id: "sword-fire-ice-etb-m627",
+    description: "Sword of Fire and Ice ETB; equipment damage+draw parse.",
+    seed: 0x7eb,
+    cards: {
+      "Sword Fire Ice M627": `Name:Sword Fire Ice M627
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Sword anthem.
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedByCardSelf | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmg | TriggerDescription$ SoFI.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Any | ValidTgts$ Any | SubAbility$ DBDraw
+SVar:DBDraw:DB$ Draw | NumCards$ 1
+Oracle:SoFI parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Fire Ice M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Fire Ice M627", controller: SEAT0 }],
+  },
+
+  // 1733. Sword of Light and Shadow.
+  {
+    id: "sword-light-shadow-etb-m627",
+    description: "Sword of Light and Shadow ETB; equipment life+return parse.",
+    seed: 0x7ec,
+    cards: {
+      "Sword Light Shadow M627": `Name:Sword Light Shadow M627
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Sword anthem.
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedByCardSelf | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLife | TriggerDescription$ SoLS.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature
+Oracle:SoLS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sword Light Shadow M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sword Light Shadow M627", controller: SEAT0 }],
+  },
+
+  // 1734. Umezawa's Jitte.
+  {
+    id: "umezawas-jitte-etb-m627",
+    description: "Umezawa's Jitte ETB; equipment counter-charge modal parse.",
+    seed: 0x7ed,
+    cards: {
+      "Umezawas Jitte M627": `Name:Umezawas Jitte M627
+ManaCost:2
+Types:Legendary Artifact Equipment
+K:Equip:2
+T:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedByCardSelf | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCounter | TriggerDescription$ Jitte.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2
+Oracle:Jitte parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Umezawas Jitte M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Umezawas Jitte M627", controller: SEAT0 }],
+  },
+
+  // 1735. Stoneforge Mystic.
+  {
+    id: "stoneforge-mystic-etb-m627",
+    description: "Stoneforge Mystic ETB; equipment tutor parse.",
+    seed: 0x7ee,
+    cards: {
+      "Stoneforge Mystic M627": `Name:Stoneforge Mystic M627
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ SFM.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1
+Oracle:SFM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stoneforge Mystic M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stoneforge Mystic M627", controller: SEAT0 }],
+  },
+
+  // 1736. Steelshaper's Gift.
+  {
+    id: "steelshapers-gift-in-hand-m627",
+    description: "Steelshaper's Gift in hand; equipment tutor parse.",
+    seed: 0x7ef,
+    cards: {
+      "Steelshapers Gift M627": `Name:Steelshapers Gift M627
+ManaCost:W
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ W | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1
+Oracle:Gift parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steelshapers Gift M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1737. Argentum Armor.
+  {
+    id: "argentum-armor-etb-m627",
+    description: "Argentum Armor ETB; equipment huge parse.",
+    seed: 0x7f0,
+    cards: {
+      "Argentum Armor M627": `Name:Argentum Armor M627
+ManaCost:6
+Types:Artifact Equipment
+K:Equip:6
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 6 | AddToughness$ 6 | Description$ Argentum.
+T:Mode$ Attacks | ValidCard$ Creature.EquippedByCardSelf | Execute$ TrigDestroy | TriggerDescription$ Arg.
+SVar:TrigDestroy:DB$ Destroy | TargetType$ Permanent | ValidTgts$ Permanent
+Oracle:Argentum parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Argentum Armor M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Argentum Armor M627", controller: SEAT0 }],
+  },
+
+  // 1738. Lightning Greaves.
+  {
+    id: "lightning-greaves-etb-m627",
+    description: "Lightning Greaves ETB; haste+shroud equipment parse.",
+    seed: 0x7f1,
+    cards: {
+      "Lightning Greaves M627": `Name:Lightning Greaves M627
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:0
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Haste & Shroud | Description$ Greaves.
+Oracle:Greaves parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Greaves M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Lightning Greaves M627", controller: SEAT0 }],
+  },
+
+  // 1739. Swiftfoot Boots.
+  {
+    id: "swiftfoot-boots-etb-m627",
+    description: "Swiftfoot Boots ETB; haste+hexproof equipment parse.",
+    seed: 0x7f2,
+    cards: {
+      "Swiftfoot Boots M627": `Name:Swiftfoot Boots M627
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Haste & Hexproof | Description$ Swiftfoot.
+Oracle:Swiftfoot parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swiftfoot Boots M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Swiftfoot Boots M627", controller: SEAT0 }],
+  },
+
+  // 1740. Cranial Plating.
+  {
+    id: "cranial-plating-etb-m627",
+    description: "Cranial Plating ETB; equipment artifact-count parse.",
+    seed: 0x7f3,
+    cards: {
+      "Cranial Plating M627": `Name:Cranial Plating M627
+ManaCost:2
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | References$ X | Description$ Plating.
+SVar:X:Count$Valid Artifact.YouCtrl
+Oracle:Plating parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cranial Plating M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cranial Plating M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH X — Final stretch: misc parsing ─────
+
+  // 1741. Birds of Paradise.
+  {
+    id: "birds-of-paradise-etb-m627",
+    description: "Birds of Paradise ETB; mana any color parse.",
+    seed: 0x7f4,
+    cards: {
+      "Birds Paradise M627": `Name:Birds Paradise M627
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1
+Oracle:BoP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Birds Paradise M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Birds Paradise M627", controller: SEAT0 }],
+  },
+
+  // 1742. Llanowar Elves.
+  {
+    id: "llanowar-elves-etb-m627",
+    description: "Llanowar Elves ETB; mana parse.",
+    seed: 0x7f5,
+    cards: {
+      "Llanowar Elves M627": `Name:Llanowar Elves M627
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:LE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Llanowar Elves M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Llanowar Elves M627", controller: SEAT0 }],
+  },
+
+  // 1743. Elvish Mystic.
+  {
+    id: "elvish-mystic-etb-m627",
+    description: "Elvish Mystic ETB; mana parse.",
+    seed: 0x7f6,
+    cards: {
+      "Elvish Mystic M627": `Name:Elvish Mystic M627
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:EM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Mystic M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Mystic M627", controller: SEAT0 }],
+  },
+
+  // 1744. Fyndhorn Elves.
+  {
+    id: "fyndhorn-elves-etb-m627",
+    description: "Fyndhorn Elves ETB; mana parse.",
+    seed: 0x7f7,
+    cards: {
+      "Fyndhorn Elves M627": `Name:Fyndhorn Elves M627
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:FE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fyndhorn Elves M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fyndhorn Elves M627", controller: SEAT0 }],
+  },
+
+  // 1745. Arbor Elf.
+  {
+    id: "arbor-elf-etb-m627",
+    description: "Arbor Elf ETB; untap forest parse.",
+    seed: 0x7f8,
+    cards: {
+      "Arbor Elf M627": `Name:Arbor Elf M627
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Untap | Cost$ T | TargetType$ Land | ValidTgts$ Forest
+Oracle:AE parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arbor Elf M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arbor Elf M627", controller: SEAT0 }],
+  },
+
+  // 1746. Joraga Treespeaker.
+  {
+    id: "joraga-treespeaker-etb-m627",
+    description: "Joraga Treespeaker ETB; level-up elf parse.",
+    seed: 0x7f9,
+    cards: {
+      "Joraga Treespeaker M627": `Name:Joraga Treespeaker M627
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+K:Level up:1 G
+Oracle:Joraga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Joraga Treespeaker M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Joraga Treespeaker M627", controller: SEAT0 }],
+  },
+
+  // 1747. Priest of Titania.
+  {
+    id: "priest-titania-etb-m627",
+    description: "Priest of Titania ETB; X mana per elf parse.",
+    seed: 0x7fa,
+    cards: {
+      "Priest Titania M627": `Name:Priest Titania M627
+ManaCost:1 G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$Valid Elf
+Oracle:Priest parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Priest Titania M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Priest Titania M627", controller: SEAT0 }],
+  },
+
+  // 1748. Elvish Archdruid.
+  {
+    id: "elvish-archdruid-etb-m627",
+    description: "Elvish Archdruid ETB; X mana per elf + anthem parse.",
+    seed: 0x7fb,
+    cards: {
+      "Elvish Archdruid M627": `Name:Elvish Archdruid M627
+ManaCost:1 G G
+Types:Creature Elf Druid
+PT:2/2
+S:Mode$ Continuous | Affected$ Elf.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Anthem.
+A:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | References$ X
+SVar:X:Count$Valid Elf.YouCtrl
+Oracle:Archdruid parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elvish Archdruid M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Archdruid M627", controller: SEAT0 }],
+  },
+
+  // 1749. Elvish Mystic + Hardened Scales co-residence.
+  {
+    id: "elvish-mystic-hardened-scales-coresidence-m627",
+    description: "Elvish Mystic ETB with Hardened Scales co-resident.",
+    seed: 0x7fc,
+    cards: {
+      "Elvish Mystic M627B": `Name:Elvish Mystic M627B
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:EMB parse.
+`,
+      "Hardened Scales M627E": `Name:Hardened Scales M627E
+ManaCost:G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:HSE parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Elvish Mystic M627B"],
+        battlefield: [{ card: "Hardened Scales M627E" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elvish Mystic M627B", controller: SEAT0 }],
+  },
+
+  // 1750. Fyndhorn Elves + Anthem co-residence.
+  {
+    id: "fyndhorn-elves-anthem-coresidence-m627",
+    description: "Fyndhorn Elves ETB with Glorious Anthem co-resident.",
+    seed: 0x7fd,
+    cards: {
+      "Fyndhorn Elves M627B": `Name:Fyndhorn Elves M627B
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:FEB parse.
+`,
+      "Glorious Anthem M627": `Name:Glorious Anthem M627
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Anthem.
+Oracle:GAM parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Fyndhorn Elves M627B"],
+        battlefield: [{ card: "Glorious Anthem M627" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fyndhorn Elves M627B", controller: SEAT0 }],
+  },
+
+  // 1751. Arbor Elf + Utopia Sprawl co-residence.
+  {
+    id: "arbor-elf-utopia-sprawl-coresidence-m627",
+    description: "Arbor Elf ETB with Utopia Sprawl on a forest; combo ramp parse.",
+    seed: 0x7fe,
+    cards: {
+      "Arbor Elf M627B": `Name:Arbor Elf M627B
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Untap | Cost$ T | TargetType$ Land | ValidTgts$ Forest
+Oracle:AEB parse.
+`,
+      "Utopia Sprawl M627": `Name:Utopia Sprawl M627
+ManaCost:G
+Types:Enchantment Aura
+K:Enchant Forest
+A:SP$ Attach | Cost$ G | ValidTgts$ Forest
+T:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Sprawl mana.
+SVar:TrigMana:DB$ Mana | Produced$ Combo W U B R | Amount$ 1
+Oracle:Sprawl parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Arbor Elf M627B", "Utopia Sprawl M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Arbor Elf M627B", controller: SEAT0 }],
+  },
+
+  // 1752. Stoneforge Mystic + Skullclamp co-residence.
+  {
+    id: "stoneforge-skullclamp-coresidence-m627",
+    description: "Stoneforge Mystic ETB with Skullclamp on battlefield; tutor reach parse.",
+    seed: 0x7ff,
+    cards: {
+      "Stoneforge Mystic M627B": `Name:Stoneforge Mystic M627B
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ SFMB.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1
+Oracle:SFMB parse.
+`,
+      "Skullclamp M627B": `Name:Skullclamp M627B
+ManaCost:1
+Types:Artifact Equipment
+K:Equip:1
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ -1 | Description$ ClampB.
+Oracle:ClampB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Stoneforge Mystic M627B"],
+        battlefield: [{ card: "Skullclamp M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stoneforge Mystic M627B", controller: SEAT0 }],
+  },
+
+  // 1753. Stoneforge + Sword of Fire and Ice co-residence.
+  {
+    id: "stoneforge-sword-fire-ice-coresidence-m627",
+    description: "Stoneforge Mystic ETB with Sword of Fire and Ice; tutor + equipment parse.",
+    seed: 0x800,
+    cards: {
+      "Stoneforge Mystic M627C": `Name:Stoneforge Mystic M627C
+ManaCost:1 W
+Types:Creature Kor Artificer
+PT:1/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ SFMC.
+SVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1
+Oracle:SFMC parse.
+`,
+      "Sword Fire Ice M627B": `Name:Sword Fire Ice M627B
+ManaCost:3
+Types:Artifact Equipment
+K:Equip:2
+S:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ SoFIB.
+Oracle:SoFIB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Stoneforge Mystic M627C"],
+        battlefield: [{ card: "Sword Fire Ice M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stoneforge Mystic M627C", controller: SEAT0 }],
+  },
+
+  // 1754. Soul Warden + Suture Priest stacking ETB life.
+  {
+    id: "soul-warden-suture-priest-coresidence-m627",
+    description: "Soul Warden + Suture Priest co-resident; ETB life-trigger stack.",
+    seed: 0x801,
+    cards: {
+      "Soul Warden M627B": `Name:Soul Warden M627B
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SWB.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 1
+Oracle:SWB parse.
+`,
+      "Suture Priest M627B": `Name:Suture Priest M627B
+ManaCost:1 W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLife | TriggerDescription$ SPB.
+SVar:TrigLife:DB$ GainLife | LifeAmount$ 1
+Oracle:SPB parse.
+`,
+      "Bear Token M627": `Name:Bear Token M627
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Bear parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bear Token M627"],
+        battlefield: [{ card: "Soul Warden M627B" }, { card: "Suture Priest M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bear Token M627", controller: SEAT0 }],
+  },
+
+  // 1755. Impact Tremors + Purphoros co-residence.
+  {
+    id: "impact-tremors-purphoros-coresidence-m627",
+    description: "Impact Tremors + Purphoros co-resident; double damage on creature ETB.",
+    seed: 0x802,
+    cards: {
+      "Impact Tremors M627B": `Name:Impact Tremors M627B
+ManaCost:1 R
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ ITB.
+SVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1
+Oracle:ITB parse.
+`,
+      "Purphoros M627B": `Name:Purphoros M627B
+ManaCost:3 R
+Types:Legendary Enchantment Creature God
+PT:4/4
+K:Indestructible
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ PurphB.
+SVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2
+Oracle:PurphB parse.
+`,
+      "Bear Token M627B": `Name:Bear Token M627B
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BearB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Bear Token M627B"],
+        battlefield: [{ card: "Impact Tremors M627B" }, { card: "Purphoros M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bear Token M627B", controller: SEAT0 }],
+  },
+
+  // 1756. Anointed Procession + Impact Tremors co-residence.
+  {
+    id: "anointed-tremors-coresidence-m627",
+    description: "Anointed Procession + Impact Tremors co-resident; doubled tokens trigger Tremors.",
+    seed: 0x803,
+    cards: {
+      "Anointed Procession M627C": `Name:Anointed Procession M627C
+ManaCost:3 W
+Types:Enchantment
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:APC parse.
+`,
+      "Impact Tremors M627C": `Name:Impact Tremors M627C
+ManaCost:1 R
+Types:Enchantment
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ ITC.
+SVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1
+Oracle:ITC parse.
+`,
+      "Token Maker M627": `Name:Token Maker M627
+ManaCost:3 W
+Types:Creature Human
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Maker.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 2
+Oracle:TM parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Token Maker M627"],
+        battlefield: [{ card: "Anointed Procession M627C" }, { card: "Impact Tremors M627C" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Token Maker M627", controller: SEAT0 }],
+  },
+
+  // 1757. Pir + Branching Evolution co-residence.
+  {
+    id: "pir-branching-coresidence-m627",
+    description: "Pir + Branching Evolution co-resident; counter combo (additive + multiplier).",
+    seed: 0x804,
+    cards: {
+      "Pir Rascal M627C": `Name:Pir Rascal M627C
+ManaCost:1 G
+Types:Legendary Creature Human Wizard
+PT:2/2
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:PirC parse.
+`,
+      "Branching Evolution M627B": `Name:Branching Evolution M627B
+ManaCost:2 G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ DA
+SVar:DA:DB$ ReplaceCounter | Multiplier$ 2
+Oracle:BEB parse.
+`,
+      "Counter Source M627": `Name:Counter Source M627
+ManaCost:1 G
+Types:Creature Beast
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Counter source.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:CS parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Counter Source M627"],
+        battlefield: [{ card: "Pir Rascal M627C" }, { card: "Branching Evolution M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Counter Source M627", controller: SEAT0 }],
+  },
+
+  // 1758. Master Biomancer + Hardened Scales co-residence.
+  {
+    id: "biomancer-scales-coresidence-m627",
+    description: "Master Biomancer + Hardened Scales co-resident; ETB-counter chain.",
+    seed: 0x805,
+    cards: {
+      "Master Biomancer M627B": `Name:Master Biomancer M627B
+ManaCost:2 G U
+Types:Creature Elf Wizard Mutant
+PT:2/4
+R:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Destination$ Battlefield | ReplaceWith$ ETBC
+SVar:ETBC:DB$ PutCounter | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 2
+Oracle:BiomancerB parse.
+`,
+      "Hardened Scales M627F": `Name:Hardened Scales M627F
+ManaCost:G
+Types:Enchantment
+R:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl | CounterType$ P1P1 | ReplaceWith$ Plus
+SVar:Plus:DB$ ReplaceCounter | Additive$ 1
+Oracle:HSF parse.
+`,
+      "ETB Bear M627": `Name:ETB Bear M627
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:EtbBear parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["ETB Bear M627"],
+        battlefield: [{ card: "Master Biomancer M627B" }, { card: "Hardened Scales M627F" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "ETB Bear M627", controller: SEAT0 }],
+  },
+
+  // 1759. Konda's Banner.
+  {
+    id: "kondas-banner-etb-m627",
+    description: "Konda's Banner ETB; legendary anthem equipment parse.",
+    seed: 0x806,
+    cards: {
+      "Kondas Banner M627": `Name:Kondas Banner M627
+ManaCost:2
+Types:Legendary Artifact Equipment
+K:Equip Legendary Creature:0
+S:Mode$ Continuous | Affected$ Creature.sharesNameWith Self | AddPower$ 1 | AddToughness$ 1 | Description$ Konda anthem.
+Oracle:Banner parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kondas Banner M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kondas Banner M627", controller: SEAT0 }],
+  },
+
+  // 1760. Bestow aura.
+  {
+    id: "boon-satyr-bestow-etb-m627",
+    description: "Boon Satyr ETB; bestow parse.",
+    seed: 0x807,
+    cards: {
+      "Boon Satyr M627": `Name:Boon Satyr M627
+ManaCost:1 G G
+Types:Enchantment Creature Satyr
+PT:4/2
+K:Flash
+K:Bestow:1 G G G
+S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 4 | AddToughness$ 2 | Description$ Bestow.
+Oracle:Boon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boon Satyr M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Boon Satyr M627", controller: SEAT0 }],
+  },
+
+  // 1761. Constellation creature.
+  {
+    id: "doomwake-giant-etb-m627",
+    description: "Doomwake Giant ETB; constellation parse.",
+    seed: 0x808,
+    cards: {
+      "Doomwake Giant M627": `Name:Doomwake Giant M627
+ManaCost:4 B
+Types:Enchantment Creature Giant
+PT:4/6
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Doomwake.
+SVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -1 | NumDef$ -1
+Oracle:Doomwake parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Doomwake Giant M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Doomwake Giant M627", controller: SEAT0 }],
+  },
+
+  // 1762. Eidolon of Blossoms.
+  {
+    id: "eidolon-blossoms-etb-m627",
+    description: "Eidolon of Blossoms ETB; constellation draw parse.",
+    seed: 0x809,
+    cards: {
+      "Eidolon Blossoms M627": `Name:Eidolon Blossoms M627
+ManaCost:2 G
+Types:Enchantment Creature Spirit
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Eidolon.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1
+Oracle:Eidolon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Eidolon Blossoms M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Eidolon Blossoms M627", controller: SEAT0 }],
+  },
+
+  // 1763. Setessan Champion.
+  {
+    id: "setessan-champion-etb-m627",
+    description: "Setessan Champion ETB; constellation draw + counter parse.",
+    seed: 0x80a,
+    cards: {
+      "Setessan Champion M627": `Name:Setessan Champion M627
+ManaCost:1 G G
+Types:Creature Human Warrior
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Setessan.
+SVar:TrigDraw:DB$ Draw | NumCards$ 1 | SubAbility$ DBCounter
+SVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Setessan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Setessan Champion M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Setessan Champion M627", controller: SEAT0 }],
+  },
+
+  // 1764. Verdurous Gearhulk.
+  {
+    id: "verdurous-gearhulk-etb-m627",
+    description: "Verdurous Gearhulk ETB; counter ETB parse.",
+    seed: 0x80b,
+    cards: {
+      "Verdurous Gearhulk M627": `Name:Verdurous Gearhulk M627
+ManaCost:3 G G
+Types:Artifact Creature Construct
+PT:4/4
+K:Trample
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Verdurous.
+SVar:TrigCounter:DB$ PutCounter | TargetType$ Creature | ValidTgts$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 4
+Oracle:Verdurous parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Verdurous Gearhulk M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Verdurous Gearhulk M627", controller: SEAT0 }],
+  },
+
+  // 1765. Champion of Lambholt.
+  {
+    id: "champion-lambholt-etb-m627",
+    description: "Champion of Lambholt ETB; counter on creature ETB parse.",
+    seed: 0x80c,
+    cards: {
+      "Champion Lambholt M627": `Name:Champion Lambholt M627
+ManaCost:1 G G
+Types:Creature Human Warrior
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Champion.
+SVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1
+Oracle:Champion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Champion Lambholt M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Champion Lambholt M627", controller: SEAT0 }],
+  },
+
+  // 1766. Walking Ballista.
+  {
+    id: "walking-ballista-etb-m627",
+    description: "Walking Ballista ETB; X +1/+1 counters parse.",
+    seed: 0x80d,
+    cards: {
+      "Walking Ballista M627": `Name:Walking Ballista M627
+ManaCost:X X
+Types:Artifact Creature Construct
+PT:0/0
+K:etbCounter:P1P1:X
+A:AB$ DealDamage | Cost$ SubCounter<1/P1P1> | NumDmg$ 1 | TargetType$ Any | ValidTgts$ Any
+Oracle:Ballista parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Walking Ballista M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Walking Ballista M627", controller: SEAT0 }],
+  },
+
+  // 1767. Endurance — flash + reanimator stop.
+  {
+    id: "endurance-etb-m627",
+    description: "Endurance ETB; reanimator hate parse.",
+    seed: 0x80e,
+    cards: {
+      "Endurance M627": `Name:Endurance M627
+ManaCost:1 G G
+Types:Creature Elemental Incarnation
+PT:3/4
+K:Reach
+K:Flash
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ Endurance.
+SVar:TrigShuffle:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+inZoneGraveyard | Origin$ Graveyard | Destination$ Library | Shuffle$ True
+Oracle:Endurance parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Endurance M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Endurance M627", controller: SEAT0 }],
+  },
+
+  // 1768. Grist, the Hunger Tide.
+  {
+    id: "grist-hunger-tide-etb-m627",
+    description: "Grist, the Hunger Tide ETB; insect-PW parse.",
+    seed: 0x80f,
+    cards: {
+      "Grist M627": `Name:Grist M627
+ManaCost:1 B G
+Types:Legendary Planeswalker Grist
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ g_1_1_insect_flying_deathtouch | TokenAmount$ 1 | Planeswalker$ True
+Oracle:Grist parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grist M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grist M627", controller: SEAT0 }],
+  },
+
+  // 1769. Wrenn and Six.
+  {
+    id: "wrenn-six-etb-m627",
+    description: "Wrenn and Six ETB; PW parse.",
+    seed: 0x810,
+    cards: {
+      "Wrenn Six M627": `Name:Wrenn Six M627
+ManaCost:R G
+Types:Legendary Planeswalker Wrenn
+Loyalty:3
+A:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Land.YouCtrl+inZoneGraveyard | Planeswalker$ True
+A:AB$ DealDamage | Cost$ SubCounter<1/LOYALTY> | NumDmg$ 1 | TargetType$ Any | ValidTgts$ Any | Planeswalker$ True
+Oracle:WnS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wrenn Six M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wrenn Six M627", controller: SEAT0 }],
+  },
+
+  // 1770. Kaya, Geist Hunter.
+  {
+    id: "kaya-geist-hunter-etb-m627",
+    description: "Kaya, Geist Hunter ETB; PW parse.",
+    seed: 0x811,
+    cards: {
+      "Kaya Geist M627": `Name:Kaya Geist M627
+ManaCost:2 W B
+Types:Legendary Planeswalker Kaya
+Loyalty:4
+A:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Defined$ Creature.YouCtrl | KW$ Lifelink | Planeswalker$ True
+Oracle:Kaya parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kaya Geist M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kaya Geist M627", controller: SEAT0 }],
+  },
+
+  // 1771. Teferi, Hero of Dominaria.
+  {
+    id: "teferi-hero-dominaria-etb-m627",
+    description: "Teferi, Hero of Dominaria ETB; PW parse.",
+    seed: 0x812,
+    cards: {
+      "Teferi Hero M627": `Name:Teferi Hero M627
+ManaCost:3 W U
+Types:Legendary Planeswalker Teferi
+Loyalty:4
+A:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | Planeswalker$ True | SubAbility$ DBUntap
+SVar:DBUntap:DB$ Untap | Defined$ Land.YouCtrl
+Oracle:Teferi parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Teferi Hero M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Teferi Hero M627", controller: SEAT0 }],
+  },
+
+  // 1772. Jace, Cunning Castaway.
+  {
+    id: "jace-cunning-castaway-etb-m627",
+    description: "Jace, Cunning Castaway ETB; PW parse.",
+    seed: 0x813,
+    cards: {
+      "Jace Cunning M627": `Name:Jace Cunning M627
+ManaCost:1 U U
+Types:Legendary Planeswalker Jace
+Loyalty:3
+A:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | Planeswalker$ True
+Oracle:JC parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Jace Cunning M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Jace Cunning M627", controller: SEAT0 }],
+  },
+
+  // 1773. Chandra, Torch of Defiance.
+  {
+    id: "chandra-torch-defiance-etb-m627",
+    description: "Chandra, Torch of Defiance ETB; PW parse.",
+    seed: 0x814,
+    cards: {
+      "Chandra Torch M627": `Name:Chandra Torch M627
+ManaCost:2 R R
+Types:Legendary Planeswalker Chandra
+Loyalty:4
+A:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Produced$ R | Amount$ 2 | Planeswalker$ True
+A:AB$ DealDamage | Cost$ SubCounter<3/LOYALTY> | NumDmg$ 4 | TargetType$ Creature,Player | ValidTgts$ Any | Planeswalker$ True
+Oracle:CTD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chandra Torch M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chandra Torch M627", controller: SEAT0 }],
+  },
+
+  // 1774. Nissa, Worldwaker.
+  {
+    id: "nissa-worldwaker-etb-m627",
+    description: "Nissa, Worldwaker ETB; PW parse.",
+    seed: 0x815,
+    cards: {
+      "Nissa Worldwaker M627": `Name:Nissa Worldwaker M627
+ManaCost:3 G G
+Types:Legendary Planeswalker Nissa
+Loyalty:3
+A:AB$ Untap | Cost$ AddCounter<1/LOYALTY> | Defined$ Land.YouCtrl | Planeswalker$ True
+Oracle:Nissa parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nissa Worldwaker M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nissa Worldwaker M627", controller: SEAT0 }],
+  },
+
+  // 1775. Garruk, Primal Hunter.
+  {
+    id: "garruk-primal-hunter-etb-m627",
+    description: "Garruk, Primal Hunter ETB; PW parse.",
+    seed: 0x816,
+    cards: {
+      "Garruk Primal M627": `Name:Garruk Primal M627
+ManaCost:2 G G G
+Types:Legendary Planeswalker Garruk
+Loyalty:3
+A:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ g_3_3_beast | TokenAmount$ 1 | Planeswalker$ True
+Oracle:GP parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Garruk Primal M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Garruk Primal M627", controller: SEAT0 }],
+  },
+
+  // ─── M6.27 BATCH Y — Additional vanilla / utility fillers ─────
+
+  // 1776. Spirit Token Maker.
+  {
+    id: "spirit-token-maker-etb-m627",
+    description: "Spirit Token Maker ETB; spirit token parse.",
+    seed: 0x817,
+    cards: {
+      "Spirit Maker M627": `Name:Spirit Maker M627
+ManaCost:1 W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Spirit Maker.
+SVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenAmount$ 1
+Oracle:SM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spirit Maker M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spirit Maker M627", controller: SEAT0 }],
+  },
+
+  // 1777. Treasure Maker.
+  {
+    id: "treasure-maker-etb-m627",
+    description: "Treasure Maker ETB; treasure token parse.",
+    seed: 0x818,
+    cards: {
+      "Treasure Maker M627": `Name:Treasure Maker M627
+ManaCost:2 R
+Types:Creature Human Pirate
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Treasure Maker.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 2
+Oracle:TM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Treasure Maker M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Treasure Maker M627", controller: SEAT0 }],
+  },
+
+  // 1778. Food Maker.
+  {
+    id: "food-maker-etb-m627",
+    description: "Food Maker ETB; food token parse.",
+    seed: 0x819,
+    cards: {
+      "Food Maker M627": `Name:Food Maker M627
+ManaCost:2 G
+Types:Creature Human Druid
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Food Maker.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenAmount$ 1
+Oracle:FM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Food Maker M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Food Maker M627", controller: SEAT0 }],
+  },
+
+  // 1779. Treasure Maker + Annie Joins Up co-residence.
+  {
+    id: "treasure-annie-coresidence-m627",
+    description: "Treasure Maker + Annie Joins Up co-resident; treasure double parse.",
+    seed: 0x81a,
+    cards: {
+      "Annie Joins Up M627B": `Name:Annie Joins Up M627B
+ManaCost:1 R
+Types:Legendary Creature Human Outlaw
+PT:2/2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure,Token.Outlaw | ReplaceWith$ DT
+SVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2
+Oracle:AnnieB parse.
+`,
+      "Treasure Maker M627B": `Name:Treasure Maker M627B
+ManaCost:2 R
+Types:Creature Human Pirate
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ TMB.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 2
+Oracle:TMB parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Treasure Maker M627B"],
+        battlefield: [{ card: "Annie Joins Up M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Treasure Maker M627B", controller: SEAT0 }],
+  },
+
+  // 1780. Academy Manufactor + Treasure Maker co-residence.
+  {
+    id: "manufactor-treasure-coresidence-m627",
+    description: "Academy Manufactor + Treasure Maker co-resident; tri-token parse.",
+    seed: 0x81b,
+    cards: {
+      "Academy Manufactor M627B": `Name:Academy Manufactor M627B
+ManaCost:2 W
+Types:Artifact Creature Construct
+PT:1/2
+R:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Token.Treasure | ReplaceWith$ AddOthers
+SVar:AddOthers:DB$ Token | TokenScript$ c_a_clue | TokenAmount$ 1
+Oracle:ManufactorB parse.
+`,
+      "Treasure Maker M627C": `Name:Treasure Maker M627C
+ManaCost:2 R
+Types:Creature Human Pirate
+PT:2/2
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ TMC.
+SVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 1
+Oracle:TMC parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Treasure Maker M627C"],
+        battlefield: [{ card: "Academy Manufactor M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Treasure Maker M627C", controller: SEAT0 }],
+  },
+
+  // 1781. Krenko, Mob Boss.
+  {
+    id: "krenko-mob-boss-etb-m627",
+    description: "Krenko, Mob Boss ETB; goblin token X parse.",
+    seed: 0x81c,
+    cards: {
+      "Krenko Mob M627": `Name:Krenko Mob M627
+ManaCost:2 R R
+Types:Legendary Creature Goblin Warrior
+PT:3/3
+A:AB$ Token | Cost$ T | TokenScript$ r_1_1_goblin | TokenAmount$ X | References$ X
+SVar:X:Count$Valid Goblin.YouCtrl
+Oracle:Krenko parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Krenko Mob M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Krenko Mob M627", controller: SEAT0 }],
+  },
+
+  // 1782. Goblin Rabblemaster.
+  {
+    id: "goblin-rabblemaster-etb-m627",
+    description: "Goblin Rabblemaster ETB; attack-token parse.",
+    seed: 0x81d,
+    cards: {
+      "Rabblemaster M627": `Name:Rabblemaster M627
+ManaCost:2 R
+Types:Creature Goblin Warrior
+PT:2/2
+T:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Rabble.
+SVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenAmount$ 1
+Oracle:Rabble parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rabblemaster M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rabblemaster M627", controller: SEAT0 }],
+  },
+
+  // 1783. Goblin Chainwhirler.
+  {
+    id: "goblin-chainwhirler-etb-m627",
+    description: "Goblin Chainwhirler ETB; sweeping damage parse.",
+    seed: 0x81e,
+    cards: {
+      "Chainwhirler M627": `Name:Chainwhirler M627
+ManaCost:R R R
+Types:Creature Goblin Warrior
+PT:3/3
+K:First Strike
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Whirler.
+SVar:TrigDmg:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.OppCtrl | ValidPlayers$ Opponent
+Oracle:Whirler parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chainwhirler M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chainwhirler M627", controller: SEAT0 }],
+  },
+
+  // 1784. Anger of the Gods.
+  {
+    id: "anger-of-the-gods-in-hand-m627",
+    description: "Anger of the Gods in hand; sweeper exile parse.",
+    seed: 0x81f,
+    cards: {
+      "Anger Gods M627": `Name:Anger Gods M627
+ManaCost:1 R R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ 1 R R | NumDmg$ 3 | ValidCards$ Creature
+Oracle:AotG parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anger Gods M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1785. Pyroclasm.
+  {
+    id: "pyroclasm-in-hand-m627",
+    description: "Pyroclasm in hand; sweeper parse.",
+    seed: 0x820,
+    cards: {
+      "Pyroclasm M627": `Name:Pyroclasm M627
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ 1 R | NumDmg$ 2 | ValidCards$ Creature
+Oracle:Pyro parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Pyroclasm M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1786. Sweltering Suns.
+  {
+    id: "sweltering-suns-in-hand-m627",
+    description: "Sweltering Suns in hand; sweeper parse.",
+    seed: 0x821,
+    cards: {
+      "Sweltering Suns M627": `Name:Sweltering Suns M627
+ManaCost:1 R R
+Types:Sorcery
+A:SP$ DamageAll | Cost$ 1 R R | NumDmg$ 3 | ValidCards$ Creature
+Oracle:SS parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sweltering Suns M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1787. Black Lotus.
+  {
+    id: "black-lotus-etb-m627",
+    description: "Black Lotus ETB; sac for triple mana parse.",
+    seed: 0x822,
+    cards: {
+      "Black Lotus M627": `Name:Black Lotus M627
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Combo W U B R G | Amount$ 3
+Oracle:BL parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Black Lotus M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Black Lotus M627", controller: SEAT0 }],
+  },
+
+  // 1788. Mox Diamond.
+  {
+    id: "mox-diamond-etb-m627",
+    description: "Mox Diamond ETB; mox parse.",
+    seed: 0x823,
+    cards: {
+      "Mox Diamond M627": `Name:Mox Diamond M627
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1
+Oracle:MD parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Diamond M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Diamond M627", controller: SEAT0 }],
+  },
+
+  // 1789. Chrome Mox.
+  {
+    id: "chrome-mox-etb-m627",
+    description: "Chrome Mox ETB; mox parse.",
+    seed: 0x824,
+    cards: {
+      "Chrome Mox M627": `Name:Chrome Mox M627
+ManaCost:0
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1
+Oracle:CM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Chrome Mox M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Chrome Mox M627", controller: SEAT0 }],
+  },
+
+  // 1790. Mox Opal.
+  {
+    id: "mox-opal-etb-m627",
+    description: "Mox Opal ETB; metalcraft mox parse.",
+    seed: 0x825,
+    cards: {
+      "Mox Opal M627": `Name:Mox Opal M627
+ManaCost:0
+Types:Legendary Artifact
+A:AB$ Mana | Cost$ T | Produced$ Combo W U B R G | Amount$ 1 | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ GE3
+Oracle:MO parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mox Opal M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mox Opal M627", controller: SEAT0 }],
+  },
+
+  // 1791. Mana Vault.
+  {
+    id: "mana-vault-etb-m627",
+    description: "Mana Vault ETB; vault parse.",
+    seed: 0x826,
+    cards: {
+      "Mana Vault M627": `Name:Mana Vault M627
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3
+Oracle:MV parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mana Vault M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mana Vault M627", controller: SEAT0 }],
+  },
+
+  // 1792. Grim Monolith.
+  {
+    id: "grim-monolith-etb-m627",
+    description: "Grim Monolith ETB; monolith parse.",
+    seed: 0x827,
+    cards: {
+      "Grim Monolith M627": `Name:Grim Monolith M627
+ManaCost:2
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3
+Oracle:GM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grim Monolith M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grim Monolith M627", controller: SEAT0 }],
+  },
+
+  // 1793. Basalt Monolith.
+  {
+    id: "basalt-monolith-etb-m627",
+    description: "Basalt Monolith ETB; monolith parse.",
+    seed: 0x828,
+    cards: {
+      "Basalt Monolith M627": `Name:Basalt Monolith M627
+ManaCost:3
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 3
+A:AB$ Untap | Cost$ 3 | Defined$ Self
+Oracle:BM parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Basalt Monolith M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Basalt Monolith M627", controller: SEAT0 }],
+  },
+
+  // 1794. Rings of Brighthearth.
+  {
+    id: "rings-brighthearth-etb-m627",
+    description: "Rings of Brighthearth ETB; copy ability parse.",
+    seed: 0x829,
+    cards: {
+      "Rings Brighthearth M627": `Name:Rings Brighthearth M627
+ManaCost:3
+Types:Artifact
+T:Mode$ AbilityActivated | ValidCard$ Permanent.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | OptionalDecider$ You | TriggerDescription$ Rings copy.
+SVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | UnlessCost$ 2 | UnlessPayer$ You
+Oracle:Rings parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rings Brighthearth M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rings Brighthearth M627", controller: SEAT0 }],
+  },
+
+  // 1795. Strionic Resonator.
+  {
+    id: "strionic-resonator-etb-m627",
+    description: "Strionic Resonator ETB; copy trigger parse.",
+    seed: 0x82a,
+    cards: {
+      "Strionic Resonator M627": `Name:Strionic Resonator M627
+ManaCost:2
+Types:Artifact
+A:AB$ CopyTriggeredAbility | Cost$ 2 T | TargetType$ Trigger
+Oracle:SR parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Strionic Resonator M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Strionic Resonator M627", controller: SEAT0 }],
+  },
+
+  // 1796. Panharmonicon.
+  {
+    id: "panharmonicon-etb-m627",
+    description: "Panharmonicon ETB; trigger doubler parse.",
+    seed: 0x82b,
+    cards: {
+      "Panharmonicon M627": `Name:Panharmonicon M627
+ManaCost:4
+Types:Artifact
+Oracle:Pan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Panharmonicon M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Panharmonicon M627", controller: SEAT0 }],
+  },
+
+  // 1797. Panharmonicon + Mulldrifter co-residence.
+  {
+    id: "panharmonicon-mulldrifter-coresidence-m627",
+    description: "Panharmonicon + Mulldrifter co-resident; double draw parse.",
+    seed: 0x82c,
+    cards: {
+      "Panharmonicon M627B": `Name:Panharmonicon M627B
+ManaCost:4
+Types:Artifact
+Oracle:PanB parse.
+`,
+      "Mulldrifter M627": `Name:Mulldrifter M627
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Mull.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Mull parse.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter M627"],
+        battlefield: [{ card: "Panharmonicon M627B" }],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mulldrifter M627", controller: SEAT0 }],
+  },
+
+  // 1798. Conspicuous Snoop — goblin tutor / mill.
+  {
+    id: "conspicuous-snoop-etb-m627",
+    description: "Conspicuous Snoop ETB; reveal-top goblin parse.",
+    seed: 0x82d,
+    cards: {
+      "Snoop M627": `Name:Snoop M627
+ManaCost:1 R
+Types:Creature Goblin Rogue
+PT:2/2
+S:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | AddAbility$ TopActivated | Description$ Snoop.
+SVar:TopActivated:AB$ Reveal | Cost$ 0 | Defined$ TopOfLibrary
+Oracle:Snoop parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snoop M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snoop M627", controller: SEAT0 }],
+  },
+
+  // 1799. Goblin Lackey.
+  {
+    id: "goblin-lackey-etb-m627",
+    description: "Goblin Lackey ETB; cheat goblin into play parse.",
+    seed: 0x82e,
+    cards: {
+      "Goblin Lackey M627": `Name:Goblin Lackey M627
+ManaCost:R
+Types:Creature Goblin
+PT:1/1
+T:Mode$ DamageDoneOne | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCheat | TriggerDescription$ Lackey.
+SVar:TrigCheat:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Goblin
+Oracle:Lackey parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Lackey M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Lackey M627", controller: SEAT0 }],
+  },
+
+  // 1800. Goblin Recruiter.
+  {
+    id: "goblin-recruiter-etb-m627",
+    description: "Goblin Recruiter ETB; tutor goblin top parse.",
+    seed: 0x82f,
+    cards: {
+      "Goblin Recruiter M627": `Name:Goblin Recruiter M627
+ManaCost:1 R
+Types:Creature Goblin Rogue
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Recruiter.
+SVar:TrigDig:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Goblin | ChangeNum$ 4 | LibraryPosition$ 0
+Oracle:Recruiter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Recruiter M627"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Recruiter M627", controller: SEAT0 }],
   },
 ];

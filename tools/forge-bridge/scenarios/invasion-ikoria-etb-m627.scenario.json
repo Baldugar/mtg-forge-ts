@@ -1,0 +1,29 @@
+{
+  "id": "invasion-ikoria-etb-m627",
+  "description": "Invasion of Ikoria Battle ETB; tutor parse.",
+  "seed": 1866,
+  "cards": {
+    "Invasion Ikoria M627": "Name:Invasion Ikoria M627\nManaCost:5 G\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Battle ETB tutor.\nSVar:TrigDig:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1\nOracle:Ikoria parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Ikoria M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion Ikoria M627",
+      "controller": 0
+    }
+  ]
+}

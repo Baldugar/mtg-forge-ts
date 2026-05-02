@@ -1,0 +1,34 @@
+{
+  "id": "stoneforge-sword-fire-ice-coresidence-m627",
+  "description": "Stoneforge Mystic ETB with Sword of Fire and Ice; tutor + equipment parse.",
+  "seed": 2048,
+  "cards": {
+    "Stoneforge Mystic M627C": "Name:Stoneforge Mystic M627C\nManaCost:1 W\nTypes:Creature Kor Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ SFMC.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1\nOracle:SFMC parse.\n",
+    "Sword Fire Ice M627B": "Name:Sword Fire Ice M627B\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ SoFIB.\nOracle:SoFIB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stoneforge Mystic M627C"
+      ],
+      "battlefield": [
+        {
+          "card": "Sword Fire Ice M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Stoneforge Mystic M627C",
+      "controller": 0
+    }
+  ]
+}

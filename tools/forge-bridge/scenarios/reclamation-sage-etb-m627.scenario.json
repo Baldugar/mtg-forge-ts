@@ -1,0 +1,29 @@
+{
+  "id": "reclamation-sage-etb-m627",
+  "description": "Reclamation Sage ETB; destroy artifact/enchant parse.",
+  "seed": 2001,
+  "cards": {
+    "Reclamation Sage M627": "Name:Reclamation Sage M627\nManaCost:2 G\nTypes:Creature Elf Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Sage.\nSVar:TrigDestroy:DB$ Destroy | TargetType$ Card | ValidTgts$ Artifact,Enchantment\nOracle:Sage parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reclamation Sage M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reclamation Sage M627",
+      "controller": 0
+    }
+  ]
+}

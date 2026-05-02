@@ -1,0 +1,29 @@
+{
+  "id": "esikas-chariot-etb-m627",
+  "description": "Esika's Chariot ETB; vehicle ETB tokens parse.",
+  "seed": 1842,
+  "cards": {
+    "Esika's Chariot M627": "Name:Esika's Chariot M627\nManaCost:3 G\nTypes:Legendary Artifact Vehicle\nPT:4/4\nK:Trample\nK:Crew:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Esika ETB.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_cat | TokenAmount$ 2\nOracle:Esika parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esika's Chariot M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Esika's Chariot M627",
+      "controller": 0
+    }
+  ]
+}

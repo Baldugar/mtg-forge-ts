@@ -1,0 +1,29 @@
+{
+  "id": "invasion-tarkir-etb-m627",
+  "description": "Invasion of Tarkir Battle ETB; defense + draw parse.",
+  "seed": 1865,
+  "cards": {
+    "Invasion Tarkir M627": "Name:Invasion Tarkir M627\nManaCost:2 R\nTypes:Battle Siege\nDefense:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ Battle ETB.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Creature | ValidTgts$ Creature.OppCtrl\nOracle:Tarkir parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Tarkir M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Invasion Tarkir M627",
+      "controller": 0
+    }
+  ]
+}

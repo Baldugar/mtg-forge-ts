@@ -1,0 +1,29 @@
+{
+  "id": "sword-fire-ice-etb-m627",
+  "description": "Sword of Fire and Ice ETB; equipment damage+draw parse.",
+  "seed": 2027,
+  "cards": {
+    "Sword Fire Ice M627": "Name:Sword Fire Ice M627\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Sword anthem.\nT:Mode$ DamageDoneOne | ValidSource$ Creature.EquippedByCardSelf | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDmg | TriggerDescription$ SoFI.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | TargetType$ Any | ValidTgts$ Any | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 1\nOracle:SoFI parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword Fire Ice M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Sword Fire Ice M627",
+      "controller": 0
+    }
+  ]
+}

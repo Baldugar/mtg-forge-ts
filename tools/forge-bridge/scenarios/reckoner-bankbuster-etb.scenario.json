@@ -1,0 +1,29 @@
+{
+  "id": "reckoner-bankbuster-etb",
+  "description": "Reckoner Bankbuster ETB; charge counter parse.",
+  "seed": 1844,
+  "cards": {
+    "Reckoner Bankbuster M627": "Name:Reckoner Bankbuster M627\nManaCost:3\nTypes:Artifact Vehicle\nPT:4/4\nK:Crew:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Bank ETB.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 3\nOracle:Bank parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckoner Bankbuster M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Reckoner Bankbuster M627",
+      "controller": 0
+    }
+  ]
+}

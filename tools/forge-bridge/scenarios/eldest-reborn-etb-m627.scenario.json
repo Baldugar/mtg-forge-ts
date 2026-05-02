@@ -1,0 +1,29 @@
+{
+  "id": "eldest-reborn-etb-m627",
+  "description": "The Eldest Reborn ETB; saga discard-destroy-recur parse.",
+  "seed": 1851,
+  "cards": {
+    "Eldest Reborn M627": "Name:Eldest Reborn M627\nManaCost:4 B\nTypes:Enchantment Saga\nK:Chapter:3\nK:Saga\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 1 | Execute$ TrigDiscard | TriggerDescription$ I.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | Mode$ TgtChoose\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 2 | Execute$ TrigDestroy | TriggerDescription$ II.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Player.Opponent | DestroyValid$ Creature\nT:Mode$ CounterAdded | ValidCard$ Card.Self | CounterType$ LORE | NewCounterAmount$ 3 | Execute$ TrigReturn | TriggerDescription$ III.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetType$ Creature\nOracle:Eldest parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eldest Reborn M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Eldest Reborn M627",
+      "controller": 0
+    }
+  ]
+}

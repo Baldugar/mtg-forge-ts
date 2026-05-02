@@ -1,0 +1,29 @@
+{
+  "id": "goblin-recruiter-etb-m627",
+  "description": "Goblin Recruiter ETB; tutor goblin top parse.",
+  "seed": 2095,
+  "cards": {
+    "Goblin Recruiter M627": "Name:Goblin Recruiter M627\nManaCost:1 R\nTypes:Creature Goblin Rogue\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Recruiter.\nSVar:TrigDig:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Goblin | ChangeNum$ 4 | LibraryPosition$ 0\nOracle:Recruiter parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Recruiter M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Recruiter M627",
+      "controller": 0
+    }
+  ]
+}

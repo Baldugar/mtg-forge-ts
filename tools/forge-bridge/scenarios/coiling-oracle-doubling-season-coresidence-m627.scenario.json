@@ -1,0 +1,34 @@
+{
+  "id": "coiling-oracle-doubling-season-coresidence-m627",
+  "description": "Coiling Oracle ETB with Doubling Season; baseline non-matching replacement.",
+  "seed": 2010,
+  "cards": {
+    "Coiling Oracle M627B": "Name:Coiling Oracle M627B\nManaCost:G U\nTypes:Creature Snake Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Coiling.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ 1 | DestinationZone$ Hand\nOracle:Coiling B parse.\n",
+    "Doubling Season M627G": "Name:Doubling Season M627G\nManaCost:4 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl | ReplaceWith$ DA\nSVar:DA:DB$ ReplaceCounter | Multiplier$ 2\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:DSG parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coiling Oracle M627B"
+      ],
+      "battlefield": [
+        {
+          "card": "Doubling Season M627G"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Coiling Oracle M627B",
+      "controller": 0
+    }
+  ]
+}

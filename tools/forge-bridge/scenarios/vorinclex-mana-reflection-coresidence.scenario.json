@@ -1,0 +1,34 @@
+{
+  "id": "vorinclex-mana-reflection-coresidence",
+  "description": "Vorinclex Voice ETB with Mana Reflection on battlefield; mana doubler chain.",
+  "seed": 1876,
+  "cards": {
+    "Vorinclex Voice M627": "Name:Vorinclex Voice M627\nManaCost:6 G G\nTypes:Legendary Creature Phyrexian Praetor\nPT:7/6\nK:Trample\nS:Mode$ Continuous | Affected$ Land.YouCtrl | DoubleMana$ True | Description$ Vor.\nOracle:Vor parse.\n",
+    "Mana Reflection M627B": "Name:Mana Reflection M627B\nManaCost:4 G G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Permanent.YouCtrl | EffectZone$ Battlefield | DoubleMana$ True | Description$ MR.\nOracle:MRB parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vorinclex Voice M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Mana Reflection M627B"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Vorinclex Voice M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "anointed-tremors-coresidence-m627",
+  "description": "Anointed Procession + Impact Tremors co-resident; doubled tokens trigger Tremors.",
+  "seed": 2051,
+  "cards": {
+    "Anointed Procession M627C": "Name:Anointed Procession M627C\nManaCost:3 W\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ DT\nSVar:DT:DB$ ReplaceTokenAmount | Multiplier$ 2\nOracle:APC parse.\n",
+    "Impact Tremors M627C": "Name:Impact Tremors M627C\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ ITC.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:ITC parse.\n",
+    "Token Maker M627": "Name:Token Maker M627\nManaCost:3 W\nTypes:Creature Human\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Maker.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenAmount$ 2\nOracle:TM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Token Maker M627"
+      ],
+      "battlefield": [
+        {
+          "card": "Anointed Procession M627C"
+        },
+        {
+          "card": "Impact Tremors M627C"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Token Maker M627",
+      "controller": 0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "food-maker-etb-m627",
+  "description": "Food Maker ETB; food token parse.",
+  "seed": 2073,
+  "cards": {
+    "Food Maker M627": "Name:Food Maker M627\nManaCost:2 G\nTypes:Creature Human Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Food Maker.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_food_sac | TokenAmount$ 1\nOracle:FM parse.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Food Maker M627"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Food Maker M627",
+      "controller": 0
+    }
+  ]
+}
