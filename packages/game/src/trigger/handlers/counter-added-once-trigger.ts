@@ -50,12 +50,14 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
   override build(ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
     const validCard = getParamRaw(ast, "ValidCard") ?? "Card.Self";
     const counterType = getParamRaw(ast, "CounterType"); // optional filter
-    // M6.34 — NewCounterAmount filter (Forge `NewCounterAmount$ N`): fires only
-    // when the post-add total of the named counter equals N. Mirrors the
-    // CounterAddedTrigger filter for the same param name.
-    const newCounterAmountRaw = getParamRaw(ast, "NewCounterAmount");
-    const newCounterAmount =
-      newCounterAmountRaw !== undefined ? Number.parseInt(newCounterAmountRaw, 10) : undefined;
+    // M6.40 — Forge fidelity: per `TriggerCounterAddedOnce.performTest` (Forge
+    // source), CounterAddedOnce does NOT honor `NewCounterAmount` — that param
+    // is reserved for `TriggerCounterRemoved[Once]` only (per Forge docs:
+    // "NewCounterAmount NOTE: only available to CounterRemoved at the moment").
+    // The M6.34 filter was an over-zealous addition that diverged from Forge.
+    // Removed so synthetic test scripts using `NewCounterAmount$ N` on
+    // CounterAddedOnce match Forge's actual fire-on-any-add behavior
+    // (closes urzas-saga-m630 + urzas-saga-land-m629 mvp-known divergences).
     const { game: ctxGame, sourceCardId, controllerSeat, triggerId } = ctx;
     const executeKey = ast.effect.handlerKey;
 
@@ -103,15 +105,11 @@ export class CounterAddedOnceTrigger extends TriggerHandler {
         }
         if (!predicateOk) return false;
 
-        // M6.34 — NewCounterAmount filter. Fires only when post-add total
-        // of the matching counter equals N. Mirrors Forge's
-        // TriggerCounterAddedOnce#"newCounterAmount" param.
-        const cardsMap = (ctxGame as unknown as { cards?: Map<EntityId, unknown> }).cards;
-        if (newCounterAmount !== undefined) {
-          const c = cardsMap?.get(sourceCardId) as { counters?: ReadonlyMap<string, number> } | undefined;
-          const total = c?.counters?.get(evCounterType) ?? 0;
-          if (total !== newCounterAmount) return false;
-        }
+        // M6.40 — NewCounterAmount filter removed. Forge's
+        // TriggerCounterAddedOnce.performTest does not honor this param
+        // (per Forge docs, NewCounterAmount is CounterRemoved-only). TS now
+        // mirrors Forge: fires on any matching counter-add, regardless of
+        // the `NewCounterAmount$ N` script-level annotation.
 
         // Once-per-turn gate.
         const turn = currentTurn();

@@ -84337,4 +84337,760 @@ Oracle:Offspring14 M637 test.
       { kind: "resolveTopOfStack" },
     ],
   },
+  // 3510. Vigilance ETB 0 — vigilance knight entered.
+  // 3535. First Strike ETB 0 — first-strike knight entered.
+  {
+    id: "first-strike-etb-0-m640",
+    description: "First Strike ETB 0 — first-strike knight entered.",
+    seed: 0xc519,
+    cards: {
+      "FStr0 M640": `Name:FStr0 M640
+ManaCost:1 W
+Types:Creature Knight
+PT:2/2
+K:First Strike
+Oracle:FStr0 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr0 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr0 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3536. First Strike ETB 1 — first-strike soldier entered.
+  {
+    id: "first-strike-etb-1-m640",
+    description: "First Strike ETB 1 — first-strike soldier entered.",
+    seed: 0xc51a,
+    cards: {
+      "FStr1 M640": `Name:FStr1 M640
+ManaCost:1 W
+Types:Creature Soldier
+PT:2/2
+K:First Strike
+Oracle:FStr1 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr1 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr1 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3537. First Strike ETB 2 — first-strike samurai entered.
+  {
+    id: "first-strike-etb-2-m640",
+    description: "First Strike ETB 2 — first-strike samurai entered.",
+    seed: 0xc51b,
+    cards: {
+      "FStr2 M640": `Name:FStr2 M640
+ManaCost:1 W
+Types:Creature Samurai
+PT:2/2
+K:First Strike
+Oracle:FStr2 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr2 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr2 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3538. First Strike ETB 3 — first-strike angel entered.
+  {
+    id: "first-strike-etb-3-m640",
+    description: "First Strike ETB 3 — first-strike angel entered.",
+    seed: 0xc51c,
+    cards: {
+      "FStr3 M640": `Name:FStr3 M640
+ManaCost:1 W
+Types:Creature Angel
+PT:2/2
+K:First Strike
+Oracle:FStr3 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr3 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr3 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3539. First Strike ETB 4 — first-strike spirit entered.
+  {
+    id: "first-strike-etb-4-m640",
+    description: "First Strike ETB 4 — first-strike spirit entered.",
+    seed: 0xc51d,
+    cards: {
+      "FStr4 M640": `Name:FStr4 M640
+ManaCost:1 W
+Types:Creature Spirit
+PT:2/2
+K:First Strike
+Oracle:FStr4 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr4 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr4 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3540. First Strike ETB 5 — first-strike wizard entered.
+  {
+    id: "first-strike-etb-5-m640",
+    description: "First Strike ETB 5 — first-strike wizard entered.",
+    seed: 0xc51e,
+    cards: {
+      "FStr5 M640": `Name:FStr5 M640
+ManaCost:1 W
+Types:Creature Wizard
+PT:2/2
+K:First Strike
+Oracle:FStr5 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr5 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr5 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3541. First Strike ETB 6 — first-strike cleric entered.
+  {
+    id: "first-strike-etb-6-m640",
+    description: "First Strike ETB 6 — first-strike cleric entered.",
+    seed: 0xc51f,
+    cards: {
+      "FStr6 M640": `Name:FStr6 M640
+ManaCost:1 W
+Types:Creature Cleric
+PT:2/2
+K:First Strike
+Oracle:FStr6 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr6 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr6 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3542. First Strike ETB 7 — first-strike druid entered.
+  {
+    id: "first-strike-etb-7-m640",
+    description: "First Strike ETB 7 — first-strike druid entered.",
+    seed: 0xc520,
+    cards: {
+      "FStr7 M640": `Name:FStr7 M640
+ManaCost:1 W
+Types:Creature Druid
+PT:2/2
+K:First Strike
+Oracle:FStr7 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr7 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr7 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3543. First Strike ETB 8 — first-strike berserker entered.
+  {
+    id: "first-strike-etb-8-m640",
+    description: "First Strike ETB 8 — first-strike berserker entered.",
+    seed: 0xc521,
+    cards: {
+      "FStr8 M640": `Name:FStr8 M640
+ManaCost:1 W
+Types:Creature Berserker
+PT:2/2
+K:First Strike
+Oracle:FStr8 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr8 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr8 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3544. First Strike ETB 9 — first-strike warrior entered.
+  {
+    id: "first-strike-etb-9-m640",
+    description: "First Strike ETB 9 — first-strike warrior entered.",
+    seed: 0xc522,
+    cards: {
+      "FStr9 M640": `Name:FStr9 M640
+ManaCost:1 W
+Types:Creature Warrior
+PT:2/2
+K:First Strike
+Oracle:FStr9 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr9 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr9 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3545. First Strike ETB 10 — first-strike rogue entered.
+  {
+    id: "first-strike-etb-10-m640",
+    description: "First Strike ETB 10 — first-strike rogue entered.",
+    seed: 0xc523,
+    cards: {
+      "FStr10 M640": `Name:FStr10 M640
+ManaCost:1 W
+Types:Creature Rogue
+PT:2/2
+K:First Strike
+Oracle:FStr10 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr10 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr10 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3546. First Strike ETB 11 — first-strike goblin entered.
+  {
+    id: "first-strike-etb-11-m640",
+    description: "First Strike ETB 11 — first-strike goblin entered.",
+    seed: 0xc524,
+    cards: {
+      "FStr11 M640": `Name:FStr11 M640
+ManaCost:1 W
+Types:Creature Goblin
+PT:2/2
+K:First Strike
+Oracle:FStr11 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr11 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr11 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3547. First Strike ETB 12 — first-strike elf entered.
+  {
+    id: "first-strike-etb-12-m640",
+    description: "First Strike ETB 12 — first-strike elf entered.",
+    seed: 0xc525,
+    cards: {
+      "FStr12 M640": `Name:FStr12 M640
+ManaCost:1 W
+Types:Creature Elf
+PT:2/2
+K:First Strike
+Oracle:FStr12 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr12 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr12 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3548. First Strike ETB 13 — first-strike vampire entered.
+  {
+    id: "first-strike-etb-13-m640",
+    description: "First Strike ETB 13 — first-strike vampire entered.",
+    seed: 0xc526,
+    cards: {
+      "FStr13 M640": `Name:FStr13 M640
+ManaCost:1 W
+Types:Creature Vampire
+PT:2/2
+K:First Strike
+Oracle:FStr13 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr13 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr13 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3549. First Strike ETB 14 — first-strike demon entered.
+  {
+    id: "first-strike-etb-14-m640",
+    description: "First Strike ETB 14 — first-strike demon entered.",
+    seed: 0xc527,
+    cards: {
+      "FStr14 M640": `Name:FStr14 M640
+ManaCost:1 W
+Types:Creature Demon
+PT:2/2
+K:First Strike
+Oracle:FStr14 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr14 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr14 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3550. First Strike ETB 15 — first-strike beast entered.
+  {
+    id: "first-strike-etb-15-m640",
+    description: "First Strike ETB 15 — first-strike beast entered.",
+    seed: 0xc528,
+    cards: {
+      "FStr15 M640": `Name:FStr15 M640
+ManaCost:1 W
+Types:Creature Beast
+PT:2/2
+K:First Strike
+Oracle:FStr15 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr15 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr15 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3551. First Strike ETB 16 — first-strike bear entered.
+  {
+    id: "first-strike-etb-16-m640",
+    description: "First Strike ETB 16 — first-strike bear entered.",
+    seed: 0xc529,
+    cards: {
+      "FStr16 M640": `Name:FStr16 M640
+ManaCost:1 W
+Types:Creature Bear
+PT:2/2
+K:First Strike
+Oracle:FStr16 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr16 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr16 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3552. First Strike ETB 17 — first-strike cat entered.
+  {
+    id: "first-strike-etb-17-m640",
+    description: "First Strike ETB 17 — first-strike cat entered.",
+    seed: 0xc52a,
+    cards: {
+      "FStr17 M640": `Name:FStr17 M640
+ManaCost:1 W
+Types:Creature Cat
+PT:2/2
+K:First Strike
+Oracle:FStr17 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr17 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr17 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3553. First Strike ETB 18 — first-strike phoenix entered.
+  {
+    id: "first-strike-etb-18-m640",
+    description: "First Strike ETB 18 — first-strike phoenix entered.",
+    seed: 0xc52b,
+    cards: {
+      "FStr18 M640": `Name:FStr18 M640
+ManaCost:1 W
+Types:Creature Phoenix
+PT:2/2
+K:First Strike
+Oracle:FStr18 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr18 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr18 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3554. First Strike ETB 19 — first-strike specter entered.
+  {
+    id: "first-strike-etb-19-m640",
+    description: "First Strike ETB 19 — first-strike specter entered.",
+    seed: 0xc52c,
+    cards: {
+      "FStr19 M640": `Name:FStr19 M640
+ManaCost:1 W
+Types:Creature Specter
+PT:2/2
+K:First Strike
+Oracle:FStr19 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr19 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr19 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3555. First Strike ETB 20 — first-strike hydra entered.
+  {
+    id: "first-strike-etb-20-m640",
+    description: "First Strike ETB 20 — first-strike hydra entered.",
+    seed: 0xc52d,
+    cards: {
+      "FStr20 M640": `Name:FStr20 M640
+ManaCost:1 W
+Types:Creature Hydra
+PT:2/2
+K:First Strike
+Oracle:FStr20 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr20 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr20 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3556. First Strike ETB 21 — first-strike sphinx entered.
+  {
+    id: "first-strike-etb-21-m640",
+    description: "First Strike ETB 21 — first-strike sphinx entered.",
+    seed: 0xc52e,
+    cards: {
+      "FStr21 M640": `Name:FStr21 M640
+ManaCost:1 W
+Types:Creature Sphinx
+PT:2/2
+K:First Strike
+Oracle:FStr21 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr21 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr21 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3557. First Strike ETB 22 — first-strike snake entered.
+  {
+    id: "first-strike-etb-22-m640",
+    description: "First Strike ETB 22 — first-strike snake entered.",
+    seed: 0xc52f,
+    cards: {
+      "FStr22 M640": `Name:FStr22 M640
+ManaCost:1 W
+Types:Creature Snake
+PT:2/2
+K:First Strike
+Oracle:FStr22 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr22 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr22 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3558. First Strike ETB 23 — first-strike bird entered.
+  {
+    id: "first-strike-etb-23-m640",
+    description: "First Strike ETB 23 — first-strike bird entered.",
+    seed: 0xc530,
+    cards: {
+      "FStr23 M640": `Name:FStr23 M640
+ManaCost:1 W
+Types:Creature Bird
+PT:2/2
+K:First Strike
+Oracle:FStr23 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr23 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr23 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3559. First Strike ETB 24 — first-strike dragon entered.
+  {
+    id: "first-strike-etb-24-m640",
+    description: "First Strike ETB 24 — first-strike dragon entered.",
+    seed: 0xc531,
+    cards: {
+      "FStr24 M640": `Name:FStr24 M640
+ManaCost:1 W
+Types:Creature Dragon
+PT:2/2
+K:First Strike
+Oracle:FStr24 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["FStr24 M640"], battlefield: [], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "FStr24 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3610. Hexproof ETB 0 — hexproof spirit entered.
+  {
+    id: "hexproof-etb-0-m640",
+    description: "Hexproof ETB 0 — hexproof spirit entered.",
+    seed: 0xc564,
+    cards: {
+      "Hex0 M640": `Name:Hex0 M640
+ManaCost:2 G
+Types:Creature Spirit
+PT:2/2
+K:Hexproof
+Oracle:Hex0 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex0 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex0 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3611. Hexproof ETB 1 — hexproof wizard entered.
+  {
+    id: "hexproof-etb-1-m640",
+    description: "Hexproof ETB 1 — hexproof wizard entered.",
+    seed: 0xc565,
+    cards: {
+      "Hex1 M640": `Name:Hex1 M640
+ManaCost:2 G
+Types:Creature Wizard
+PT:2/2
+K:Hexproof
+Oracle:Hex1 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex1 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex1 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3620. Hexproof ETB 10 — hexproof knight entered.
+  {
+    id: "hexproof-etb-10-m640",
+    description: "Hexproof ETB 10 — hexproof knight entered.",
+    seed: 0xc56e,
+    cards: {
+      "Hex10 M640": `Name:Hex10 M640
+ManaCost:2 G
+Types:Creature Knight
+PT:2/2
+K:Hexproof
+Oracle:Hex10 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex10 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex10 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3621. Hexproof ETB 11 — hexproof soldier entered.
+  {
+    id: "hexproof-etb-11-m640",
+    description: "Hexproof ETB 11 — hexproof soldier entered.",
+    seed: 0xc56f,
+    cards: {
+      "Hex11 M640": `Name:Hex11 M640
+ManaCost:2 G
+Types:Creature Soldier
+PT:2/2
+K:Hexproof
+Oracle:Hex11 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex11 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex11 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3622. Hexproof ETB 12 — hexproof vampire entered.
+  {
+    id: "hexproof-etb-12-m640",
+    description: "Hexproof ETB 12 — hexproof vampire entered.",
+    seed: 0xc570,
+    cards: {
+      "Hex12 M640": `Name:Hex12 M640
+ManaCost:2 G
+Types:Creature Vampire
+PT:2/2
+K:Hexproof
+Oracle:Hex12 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex12 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex12 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3623. Hexproof ETB 13 — hexproof phoenix entered.
+  {
+    id: "hexproof-etb-13-m640",
+    description: "Hexproof ETB 13 — hexproof phoenix entered.",
+    seed: 0xc571,
+    cards: {
+      "Hex13 M640": `Name:Hex13 M640
+ManaCost:2 G
+Types:Creature Phoenix
+PT:2/2
+K:Hexproof
+Oracle:Hex13 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex13 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex13 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3624. Hexproof ETB 14 — hexproof specter entered.
+  {
+    id: "hexproof-etb-14-m640",
+    description: "Hexproof ETB 14 — hexproof specter entered.",
+    seed: 0xc572,
+    cards: {
+      "Hex14 M640": `Name:Hex14 M640
+ManaCost:2 G
+Types:Creature Specter
+PT:2/2
+K:Hexproof
+Oracle:Hex14 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex14 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex14 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3625. Hexproof ETB 15 — hexproof snake entered.
+  {
+    id: "hexproof-etb-15-m640",
+    description: "Hexproof ETB 15 — hexproof snake entered.",
+    seed: 0xc573,
+    cards: {
+      "Hex15 M640": `Name:Hex15 M640
+ManaCost:2 G
+Types:Creature Snake
+PT:2/2
+K:Hexproof
+Oracle:Hex15 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex15 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex15 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3626. Hexproof ETB 16 — hexproof beast entered.
+  {
+    id: "hexproof-etb-16-m640",
+    description: "Hexproof ETB 16 — hexproof beast entered.",
+    seed: 0xc574,
+    cards: {
+      "Hex16 M640": `Name:Hex16 M640
+ManaCost:2 G
+Types:Creature Beast
+PT:2/2
+K:Hexproof
+Oracle:Hex16 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex16 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex16 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3627. Hexproof ETB 17 — hexproof bear entered.
+  {
+    id: "hexproof-etb-17-m640",
+    description: "Hexproof ETB 17 — hexproof bear entered.",
+    seed: 0xc575,
+    cards: {
+      "Hex17 M640": `Name:Hex17 M640
+ManaCost:2 G
+Types:Creature Bear
+PT:2/2
+K:Hexproof
+Oracle:Hex17 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex17 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex17 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 3628. Hexproof ETB 18 — hexproof hydra entered.
+  {
+    id: "hexproof-etb-18-m640",
+    description: "Hexproof ETB 18 — hexproof hydra entered.",
+    seed: 0xc576,
+    cards: {
+      "Hex18 M640": `Name:Hex18 M640
+ManaCost:2 G
+Types:Creature Hydra
+PT:2/2
+K:Hexproof
+Oracle:Hex18 M640 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex18 M640"], battlefield: [], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Hex18 M640", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
 ];
