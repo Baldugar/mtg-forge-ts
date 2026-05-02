@@ -50,31 +50,27 @@ export class FadingKeywordHandler extends KeywordHandler {
     const sourceCardId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
 
-    // ETB trigger — addCounter Fade N on self.
-    const etbId = game.newEntityId();
-    const etb: TriggeredAbilityWithResolver = {
-      id: etbId,
-      kind: "triggered",
-      sourceCardId,
-      activeInZones: new Set([ZoneType.Battlefield]),
-      timestamp: 0,
-      controllerSeatAtReg: controllerSeat,
-      isDelayed: false,
-      matches(event: GameEvent): boolean {
-        if (event.kind !== "CardChangedZone") return false;
-        const p = event.payload as { cardId: import("@mtg-forge-ts/core").EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
-      },
-      resolver: {
-        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
-          const g = gameUnknown as Game;
-          yield* g.action.addCounter(sourceCardId, CounterType.Fade, N, sourceCardId);
-        },
-      },
+    // M6.33 — CR 614 replacement-effect parity. Forge's `K:Fading:N` adds the
+    // Fade counters via a CardFactoryUtil-inserted "etbCounter:FADE:N"
+    // replacement applied during the ETB move. The TS engine previously
+    // queued a stack-going ETB trigger that silently called addCounter,
+    // producing a spurious AbilityActivated/StackItemResolved pair the Java
+    // side never emits. Convert to `etbCounterSpecs` so applyEtbStamping
+    // places the counters silently (CounterAdded fires; no stack item).
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+      }>;
     };
+    if (!slot.etbCounterSpecs) slot.etbCounterSpecs = [];
+    slot.etbCounterSpecs.push({
+      counterType: CounterType.Fade,
+      amount: N,
+      variable: false,
+    });
     if (!card.triggeredAbilities) card.triggeredAbilities = [];
-    card.triggeredAbilities.push(etb as unknown as TriggeredAbility);
-    game.triggerRegistry.register(etb as unknown as TriggeredAbility);
 
     // Upkeep trigger — remove a Fade counter; sacrifice if you can't.
     const upkeepId = game.newEntityId();

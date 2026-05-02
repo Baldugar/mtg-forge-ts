@@ -129,9 +129,22 @@ const dispatch = (line: LexedLine, st: AssemblerState): void => {
     case "S":
       st.statics.push(...parseStaticLine(line));
       break;
-    case "K":
-      st.keywords.push(parseKeywordLine(line));
+    case "K": {
+      // M6.33 — Synthetic scenarios use `K:Defense:N` for Battle defense
+      // counters (CR 310). Forge's CardFactory accepts this form because the
+      // bridge's `paperCardFromBundle` always appends `Defense:N` from face
+      // data; standalone Forge cardsfolder uses `Defense:N` (no `K:`). Mirror
+      // bridge behavior: when the keyword is `Defense:N`, also stamp the
+      // top-level `defense` field so Battle ETB-counter logic sees it.
+      const kwLine = parseKeywordLine(line);
+      st.keywords.push(kwLine);
+      const rawContent = line.content;
+      const defenseMatch = /^Defense:(\d+)$/.exec(rawContent.trim());
+      if (defenseMatch && defenseMatch[1] !== undefined && st.defense === null) {
+        st.defense = { starting: defenseMatch[1] };
+      }
       break;
+    }
     case "SVar": {
       const { name, ast } = parseSVarLine(line);
       st.svars.set(name, ast);

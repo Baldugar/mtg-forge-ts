@@ -67,8 +67,8 @@ describe("Wave 35 keyword handlers — registration", () => {
   });
 });
 
-describe("Wave 35 — Vanishing activate stamps keyword + ETB + Upkeep triggers", () => {
-  it("stamps `vanishing` keyword and registers ETB + upkeep triggers", () => {
+describe("Wave 35 — Vanishing activate stamps keyword + etbCounterSpec + Upkeep trigger", () => {
+  it("stamps `vanishing` keyword, pushes etbCounterSpec for time counters, registers upkeep trigger only", () => {
     const game = mkGame();
     const id = mkEntityId(351);
     const card = new Card(id, paper, ALICE, ALICE, ZoneType.Battlefield);
@@ -78,12 +78,19 @@ describe("Wave 35 — Vanishing activate stamps keyword + ETB + Upkeep triggers"
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
     expect(card.keywords?.has("vanishing")).toBe(true);
-    expect(card.triggeredAbilities?.length).toBe(2);
+    // M6.33 — ETB counter add converted to etbCounterSpec (CR 614 replacement
+    // effect parity with Forge). Only the upkeep trigger remains stack-going.
+    const slot = card as unknown as {
+      etbCounterSpecs?: ReadonlyArray<{ counterType: string; amount: number }>;
+    };
+    expect(slot.etbCounterSpecs?.length).toBe(1);
+    expect(slot.etbCounterSpecs?.[0]?.amount).toBe(3);
+    expect(card.triggeredAbilities?.length).toBe(1);
   });
 });
 
-describe("Wave 35 — Fading activate stamps keyword + ETB + Upkeep triggers", () => {
-  it("stamps `fading` keyword and registers ETB + upkeep triggers", () => {
+describe("Wave 35 — Fading activate stamps keyword + etbCounterSpec + Upkeep trigger", () => {
+  it("stamps `fading` keyword, pushes etbCounterSpec for fade counters, registers upkeep trigger only", () => {
     const game = mkGame();
     const id = mkEntityId(352);
     const card = new Card(id, paper, ALICE, ALICE, ZoneType.Battlefield);
@@ -93,6 +100,13 @@ describe("Wave 35 — Fading activate stamps keyword + ETB + Upkeep triggers", (
       { game, sourceCardId: id, controllerSeat: ALICE },
     );
     expect(card.keywords?.has("fading")).toBe(true);
-    expect(card.triggeredAbilities?.length).toBe(2);
+    // M6.33 — ETB counter add converted to etbCounterSpec (CR 614 replacement
+    // effect parity with Forge). Only the upkeep trigger remains stack-going.
+    const slot = card as unknown as {
+      etbCounterSpecs?: ReadonlyArray<{ counterType: string; amount: number }>;
+    };
+    expect(slot.etbCounterSpecs?.length).toBe(1);
+    expect(slot.etbCounterSpecs?.[0]?.amount).toBe(5);
+    expect(card.triggeredAbilities?.length).toBe(1);
   });
 });

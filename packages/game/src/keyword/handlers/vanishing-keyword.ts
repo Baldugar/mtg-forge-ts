@@ -51,31 +51,27 @@ export class VanishingKeywordHandler extends KeywordHandler {
     const sourceCardId = ctx.sourceCardId;
     const controllerSeat = ctx.controllerSeat;
 
-    // ETB trigger — addCounter Time N on self.
-    const etbId = game.newEntityId();
-    const etb: TriggeredAbilityWithResolver = {
-      id: etbId,
-      kind: "triggered",
-      sourceCardId,
-      activeInZones: new Set([ZoneType.Battlefield]),
-      timestamp: 0,
-      controllerSeatAtReg: controllerSeat,
-      isDelayed: false,
-      matches(event: GameEvent): boolean {
-        if (event.kind !== "CardChangedZone") return false;
-        const p = event.payload as { cardId: import("@mtg-forge-ts/core").EntityId; toZone: ZoneType };
-        return p.cardId === sourceCardId && p.toZone === ZoneType.Battlefield;
-      },
-      resolver: {
-        *resolve(gameUnknown: unknown): Generator<unknown, void, unknown> {
-          const g = gameUnknown as Game;
-          yield* g.action.addCounter(sourceCardId, CounterType.Time, N, sourceCardId);
-        },
-      },
+    // M6.33 — CR 614 replacement-effect parity. Forge's `K:Vanishing:N` adds
+    // the Time counters via a CardFactoryUtil-inserted "etbCounter:TIME:N"
+    // replacement applied during the ETB move. The TS engine previously
+    // queued a stack-going ETB trigger that silently called addCounter,
+    // producing a spurious AbilityActivated/StackItemResolved pair the Java
+    // side never emits. Convert to `etbCounterSpecs` so applyEtbStamping
+    // places the counters silently (CounterAdded fires; no stack item).
+    const slot = card as unknown as {
+      etbCounterSpecs?: Array<{
+        readonly counterType: CounterType;
+        readonly amount: number;
+        readonly variable: boolean;
+      }>;
     };
+    if (!slot.etbCounterSpecs) slot.etbCounterSpecs = [];
+    slot.etbCounterSpecs.push({
+      counterType: CounterType.Time,
+      amount: N,
+      variable: false,
+    });
     if (!card.triggeredAbilities) card.triggeredAbilities = [];
-    card.triggeredAbilities.push(etb as unknown as TriggeredAbility);
-    game.triggerRegistry.register(etb as unknown as TriggeredAbility);
 
     // Upkeep trigger — remove a Time counter; sacrifice on last.
     const upkeepId = game.newEntityId();

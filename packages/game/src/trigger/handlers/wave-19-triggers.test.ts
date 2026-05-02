@@ -169,14 +169,27 @@ describe("ExcessDamageTrigger", () => {
 });
 
 describe("CounterAddedTrigger", () => {
-  it("matches CounterAdded", () => {
+  it("matches CounterAdded on Self by default (Forge default ValidCard$ Card.Self)", () => {
+    const ta = buildTrigger("CounterAdded");
+    // M6.33 — CounterAddedTrigger now honours ValidCard$ filter; default
+    // is Card.Self so the cardId payload must equal sourceCardId for the
+    // trigger to fire (CR 603 + Forge TriggerCounterAdded). The unit
+    // test build context has no `cards` map, so the zone gate is a no-op.
+    const ev = mkEvent("CounterAdded", 1, PhaseStep.Main1, {
+      cardId: SOURCE_ID,
+      counterType: "+1/+1",
+      amount: 1,
+    });
+    expect(ta.matches(ev)).toBe(true);
+  });
+  it("does not match CounterAdded on OTHER cardId by default", () => {
     const ta = buildTrigger("CounterAdded");
     const ev = mkEvent("CounterAdded", 1, PhaseStep.Main1, {
       cardId: OTHER_ID,
       counterType: "+1/+1",
       amount: 1,
     });
-    expect(ta.matches(ev)).toBe(true);
+    expect(ta.matches(ev)).toBe(false);
   });
 });
 

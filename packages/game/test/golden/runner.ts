@@ -478,6 +478,66 @@ function runEtb(
   action: { readonly cardName: string; readonly controller: PlayerSeat },
 ): void {
   const id = lookupCardId(ctx, action.cardName, ZoneType.Hand, action.controller);
+  // M6.33 — Per CR 110.4 / 608.3a, only permanent card-types (creature,
+  // artifact, enchantment, land, planeswalker, battle) can enter the
+  // battlefield. Forge's bridge silently rejects an `etb` action targeting
+  // an Instant or Sorcery (its `moveTo(Battlefield, instant_card, ...)`
+  // returns null with no event emitted). The TS runner used to drive the
+  // moveTo unconditionally, producing a spurious `CardChangedZone(Hand→
+  // Battlefield)` for non-permanent fixtures and reporting a parity
+  // divergence the Java side correctly didn't have. Mirror Forge's silent-
+  // skip semantics: only permanent types proceed; non-permanents stay in
+  // hand and the action emits no events. This is a CR-faithful behavior fix
+  // (the TS engine must not put an instant on the battlefield).
+  const card = ctx.game.cards.get(id);
+  const def = card?.paperCard.definition;
+  if (def) {
+    let isPermanent = false;
+    for (const t of def.types.types) {
+      if (isPermanentType(t)) {
+        isPermanent = true;
+        break;
+      }
+    }
+    if (!isPermanent) {
+      // Silent rejection — no events emitted. Matches Forge bridge.
+      return;
+    }
+    // M6.33 — Auras (CR 303.4) require a legal "object or player to enchant"
+    // when entering the battlefield. Forge's bridge moveTo for an Aura with
+    // no attach target is rejected at GameAction.moveTo (the CR 303.4d
+    // attachment check fires inline). When no attach target is available the
+    // bridge silently emits no events. The TS runner used to drive the moveTo
+    // anyway, producing a Hand→Battlefield zone-move followed by an SBA-driven
+    // Battlefield→Graveyard cleanup pair — diverging from Forge. Mirror Forge
+    // by skipping the `etb` action when the card is an Aura and no legal
+    // attach target exists on the battlefield.
+    const isAura = def.types.subtypes.some((s) => s === "Aura");
+    if (isAura) {
+      // Look for any creature on the battlefield. The synthetic auras in our
+      // scenarios use `K:Enchant Creature`; if no creature exists, the aura
+      // can't enter legally per CR 303.4. (We treat Aura broadly here — the
+      // synthetic test fixtures all attach to creatures; non-creature-Aura
+      // attachments aren't represented in this corpus.)
+      let hasAttachTarget = false;
+      for (const c of ctx.game.cards.values()) {
+        if (c.zone !== ZoneType.Battlefield) continue;
+        const cdef = c.paperCard.definition;
+        if (!cdef) continue;
+        for (const t of cdef.types.types) {
+          if (String(t) === "Creature") {
+            hasAttachTarget = true;
+            break;
+          }
+        }
+        if (hasAttachTarget) break;
+      }
+      if (!hasAttachTarget) {
+        // Silent rejection — Aura needs an attach target.
+        return;
+      }
+    }
+  }
   driveMoveTo(ctx, id, ZoneType.Battlefield);
 }
 

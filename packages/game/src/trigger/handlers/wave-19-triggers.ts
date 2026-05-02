@@ -283,13 +283,35 @@ triggerHandlerRegistry.register(ExcessDamageTrigger);
 
 // 9. CounterAdded -------------------------------------------------------------
 // Per-counter-add variant. Distinct from CounterAddedAll only in semantics
-// at engine emit time; runtime match is the same.
+// at engine emit time; runtime match honours `ValidCard$`, `CounterType$`,
+// and `NewCounterAmount$` filters per Forge's `TriggerCounterAdded` source.
+//
+// M6.33 — Pre-fix the matches() function returned `true` for any
+// CounterAdded event regardless of trigger params, so a Saga with 4
+// chapter triggers (each `NewCounterAmount$ 1..4`) fanned out all 4
+// triggers on every lore-counter add instead of the one matching that
+// chapter's count. Mirrors Forge's behaviour:
+//   • ValidCard$ Card.Self  → match only when payload.cardId == source
+//   • CounterType$ LORE     → match only matching counterType
+//   • NewCounterAmount$ N   → match only when post-add count == N
+const getCounterAddedParam = (ast: TriggerAst, key: string): string | undefined => {
+  const pv = ast.params[key];
+  if (!pv) return undefined;
+  if (pv.kind === "literal") return pv.raw;
+  return undefined;
+};
+
 export class CounterAddedTrigger extends TriggerHandler {
   static override readonly mode = "CounterAdded";
 
   override build(_ast: TriggerAst, ctx: TriggerBuildContext): TriggeredAbility {
-    const { sourceCardId, controllerSeat, triggerId } = ctx;
+    const { sourceCardId, controllerSeat, triggerId, game } = ctx;
     const executeKey = _ast.effect.handlerKey;
+    const validCard = getCounterAddedParam(_ast, "ValidCard") ?? "Card.Self";
+    const counterType = getCounterAddedParam(_ast, "CounterType");
+    const newCounterAmountRaw = getCounterAddedParam(_ast, "NewCounterAmount");
+    const newCounterAmount =
+      newCounterAmountRaw !== undefined ? Number.parseInt(newCounterAmountRaw, 10) : undefined;
     const ta: TriggeredAbilityWithResolver = {
       id: triggerId,
       kind: "triggered",
@@ -299,7 +321,61 @@ export class CounterAddedTrigger extends TriggerHandler {
       controllerSeatAtReg: controllerSeat,
       isDelayed: false,
       matches(event: GameEvent): boolean {
-        return event.kind === "CounterAdded";
+        if (event.kind !== "CounterAdded") return false;
+        const payload = event.payload as {
+          cardId?: EntityId;
+          counterType?: string;
+          amount?: number;
+        };
+        // M6.33 — Zone gate. Trigger is only active when source is on
+        // battlefield (CR 603.6a — abilities of permanents only function
+        // while on the battlefield). Defensive against test fixtures that
+        // construct a TriggeredAbility with a stub `game` (some unit tests
+        // synthesize the build context without a populated card map).
+        const cardsMap = (game as unknown as { cards?: Map<EntityId, unknown> }).cards;
+        if (cardsMap) {
+          const srcCard = cardsMap.get(sourceCardId) as { zone?: ZoneType } | undefined;
+          if (srcCard && srcCard.zone !== ZoneType.Battlefield) return false;
+        }
+        // ValidCard gate.
+        let predicateOk = false;
+        const lower = validCard.toLowerCase();
+        if (lower === "card.self" || lower === "permanent.self") {
+          predicateOk = payload.cardId === sourceCardId;
+        } else if (lower === "card" || lower === "permanent") {
+          predicateOk = true;
+        } else if (lower.startsWith("card.self") || lower.startsWith("permanent.self")) {
+          predicateOk = payload.cardId === sourceCardId;
+        } else {
+          // Fall back to permissive — Forge's full predicate parser is
+          // wide; we approximate "any card" for unrecognized qualifiers.
+          predicateOk = true;
+        }
+        if (!predicateOk) return false;
+
+        // CounterType gate (case-insensitive — Forge writes LORE/P1P1/etc.,
+        // events use the lowercase canonical name like "lore"/"p1p1").
+        if (counterType !== undefined) {
+          const evType = (payload.counterType ?? "").toLowerCase();
+          const expected = counterType.toLowerCase();
+          if (evType !== expected) return false;
+        }
+
+        // NewCounterAmount gate — fires only when post-add total equals N.
+        // Mirrors Forge's `TriggerCounterAdded` "newCounterAmount" param: it
+        // compares the *resulting* total counter count against N.
+        if (newCounterAmount !== undefined && payload.cardId !== undefined) {
+          const card = game.cards.get(payload.cardId);
+          if (!card) return false;
+          const counterMap = (
+            card as unknown as {
+              readonly counters?: ReadonlyMap<string, number>;
+            }
+          ).counters;
+          const total = counterMap?.get(payload.counterType ?? "") ?? 0;
+          if (total !== newCounterAmount) return false;
+        }
+        return true;
       },
       resolver: makeSvarResolver(sourceCardId, controllerSeat, executeKey, "CounterAddedTrigger"),
     };
