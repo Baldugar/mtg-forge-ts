@@ -1,0 +1,46 @@
+{
+  "id": "mulldrifter-cast-lib-2-m648",
+  "description": "Mulldrifter cast — library [Grizzly Bears,Grizzly Bears,Lightning Bolt] — ETB-draw-2 chain.",
+  "seed": 53546,
+  "cards": {
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter"
+      ],
+      "battlefield": [],
+      "library": [
+        "Grizzly Bears",
+        "Grizzly Bears",
+        "Lightning Bolt"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Mulldrifter",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

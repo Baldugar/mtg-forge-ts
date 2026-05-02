@@ -1,0 +1,35 @@
+{
+  "id": "sol-ring-tap-with-soul-warden-2-m648",
+  "description": "Sol Ring activate with Soul Warden buddy — mana ability.",
+  "seed": 53516,
+  "cards": {
+    "Sol Ring": "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sol Ring"
+        },
+        {
+          "card": "Soul Warden"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Sol Ring",
+      "activatingPlayer": 0
+    }
+  ]
+}

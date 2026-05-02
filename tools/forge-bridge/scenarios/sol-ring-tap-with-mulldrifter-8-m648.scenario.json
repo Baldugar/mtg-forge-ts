@@ -1,0 +1,35 @@
+{
+  "id": "sol-ring-tap-with-mulldrifter-8-m648",
+  "description": "Sol Ring activate with Mulldrifter buddy — mana ability.",
+  "seed": 53522,
+  "cards": {
+    "Sol Ring": "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n",
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sol Ring"
+        },
+        {
+          "card": "Mulldrifter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Sol Ring",
+      "activatingPlayer": 0
+    }
+  ]
+}

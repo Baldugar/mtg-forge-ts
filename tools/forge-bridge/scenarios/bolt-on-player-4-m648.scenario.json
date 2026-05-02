@@ -1,0 +1,44 @@
+{
+  "id": "bolt-on-player-4-m648",
+  "description": "Lightning Bolt → opponent — burn-to-face with Birds of Paradise buddy on bf.",
+  "seed": 53508,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "Birds of Paradise": "Name:Birds of Paradise\nManaCost:G\nTypes:Creature Bird\nPT:0/1\nK:Flying\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Flying. {T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Birds of Paradise"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "player",
+        "seat": 1
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

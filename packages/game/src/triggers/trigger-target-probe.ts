@@ -246,7 +246,31 @@ export function triggerHasNoLegalTarget(game: Game, trigger: TriggeredAbility): 
       const tm = Number(targetMinRaw);
       if (Number.isFinite(tm) && tm <= 0) continue;
     }
-    const tgtZone = getLiteralParam(step.params, "TgtZone");
+    // M6.48 — `TgtZone$` is the canonical Forge param for "where to look
+    // for legal targets", but `ChangeZone` effects (DB$ ChangeZone) use
+    // `Origin$` instead (e.g. Eternal Witness's TrigReturn: `DB$
+    // ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$
+    // Card | ValidTgts$ Card.YouCtrl`). When `TgtZone$` is absent and the
+    // step's handlerKey is `ChangeZone`, fall back to `Origin$` so the
+    // probe scans the right zone. Without this fallback the probe scans
+    // Battlefield by default, finds Eternal Witness itself or other
+    // controlled permanents matching `Card.YouCtrl`, and misclassifies
+    // the trigger as "has legal targets" — pushing a no-op stack item
+    // that emits a spurious `StackItemResolved` event.
+    let tgtZone = getLiteralParam(step.params, "TgtZone");
+    if (tgtZone === undefined && step.handlerKey === "ChangeZone") {
+      const originRaw = getLiteralParam(step.params, "Origin");
+      if (originRaw !== undefined) {
+        // Forge's `Origin$` accepts comma-separated lists; the probe only
+        // checks the first listed zone (the predominant case is a single
+        // origin). A multi-origin trigger that has zero targets in EITHER
+        // zone is the conservative skip; here we only skip when the FIRST
+        // origin has zero targets, which preserves CR 603.10c's "at
+        // least one possible target" semantics for the common case.
+        const firstOrigin = originRaw.split(",")[0]?.trim();
+        if (firstOrigin !== undefined && firstOrigin !== "") tgtZone = firstOrigin;
+      }
+    }
     const count = countLegalTargets(
       game,
       validTgts,

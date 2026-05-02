@@ -1,0 +1,35 @@
+{
+  "id": "llanowar-elves-tap-with-angel-of-mercy-3-m648",
+  "description": "Llanowar Elves activate with Angel of Mercy buddy — mana ability.",
+  "seed": 53527,
+  "cards": {
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Angel of Mercy": "Name:Angel of Mercy\nManaCost:4 W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nOracle:Flying. When Angel of Mercy enters, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        },
+        {
+          "card": "Angel of Mercy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Llanowar Elves",
+      "activatingPlayer": 0
+    }
+  ]
+}

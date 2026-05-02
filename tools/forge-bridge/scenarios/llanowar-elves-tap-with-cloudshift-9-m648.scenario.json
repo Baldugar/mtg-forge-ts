@@ -1,0 +1,34 @@
+{
+  "id": "llanowar-elves-tap-with-cloudshift-9-m648",
+  "description": "Llanowar Elves activate with Cloudshift in hand — mana ability.",
+  "seed": 53533,
+  "cards": {
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudshift"
+      ],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Llanowar Elves",
+      "activatingPlayer": 0
+    }
+  ]
+}

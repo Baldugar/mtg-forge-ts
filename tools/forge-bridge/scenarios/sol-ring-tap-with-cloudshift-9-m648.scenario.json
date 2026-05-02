@@ -1,0 +1,34 @@
+{
+  "id": "sol-ring-tap-with-cloudshift-9-m648",
+  "description": "Sol Ring activate with Cloudshift in hand — mana ability.",
+  "seed": 53523,
+  "cards": {
+    "Sol Ring": "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n",
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudshift"
+      ],
+      "battlefield": [
+        {
+          "card": "Sol Ring"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "activate",
+      "sourceCardName": "Sol Ring",
+      "activatingPlayer": 0
+    }
+  ]
+}

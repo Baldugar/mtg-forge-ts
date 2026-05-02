@@ -1,0 +1,48 @@
+{
+  "id": "cloudshift-with-sol-ring-on-llanowar-elves-1-m648",
+  "description": "Cloudshift flicker on Llanowar Elves with Sol Ring static buddy — ETB re-fires.",
+  "seed": 53535,
+  "cards": {
+    "Cloudshift": "Name:Cloudshift\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Sol Ring": "Name:Sol Ring\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:{T}: Add {C}{C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudshift"
+      ],
+      "battlefield": [
+        {
+          "card": "Llanowar Elves"
+        },
+        {
+          "card": "Sol Ring"
+        }
+      ],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Cloudshift",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Llanowar Elves"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
