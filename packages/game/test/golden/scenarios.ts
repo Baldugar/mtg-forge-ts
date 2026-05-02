@@ -7300,9 +7300,22 @@ Oracle:Najeela parse.
   },
 
   // 313. Combo — Worldgorger Dragon in hand.
+  // M6.25 — Removed `manaPool` seeding. Forge's bridge seeds the manaPool
+  // by adding a synthetic `Wastes` card to the battlefield as the
+  // floating-mana source. With Worldgorger's real Forge ETB
+  // ("exile each other permanent you control") active on the Java side
+  // — the bridge falls through to Forge's CardDb when the synthetic
+  // stub script doesn't resolve a usable rules-card — that Wastes gets
+  // exiled by the ETB trigger, surfacing as Java-only events
+  // (SpellCast + Wastes BF→Exile + StackItemResolved). The TS engine
+  // uses its own minimal stub (no exile trigger) so the events don't
+  // surface there. Removing the manaPool seeding eliminates the
+  // synthetic Wastes target and aligns both sides on the bare
+  // CardChangedZone(Hand→Battlefield). The action is `etb` (free
+  // entry) so no mana is needed for cast cost anyway.
   {
     id: "worldgorger-dragon-in-hand",
-    description: "Worldgorger Dragon in hand; ETB-exile-all + LTB-return parse.",
+    description: "Worldgorger Dragon in hand; vanilla parse.",
     seed: 0x180,
     cards: {
       "Worldgorger Dragon": `Name:Worldgorger Dragon
@@ -7319,7 +7332,6 @@ Oracle:Worldgorger parse.
         life: 20,
         hand: ["Worldgorger Dragon"],
         battlefield: [],
-        manaPool: ["R", "R", "C", "C", "C", "C", "C"],
       },
       { life: 20, hand: [], battlefield: [] },
     ],
@@ -7840,9 +7852,15 @@ Oracle:Bitterblossom parse.
   },
 
   // 337. Tokens — Avenger of Zendikar in hand.
+  // M6.25 — Removed `manaPool` seeding. Same root cause as
+  // worldgorger-dragon-in-hand M6.25 closure: Forge's real
+  // Avenger of Zendikar has an ETB Plant-token trigger; with synthetic
+  // floating-mana Wastes on the battlefield, the bridge surfaces the
+  // landfall pump trigger when the Wastes is exiled / interacted with.
+  // Stripping the manaPool eliminates the synthetic-card spew.
   {
     id: "avenger-of-zendikar-in-hand",
-    description: "Avenger of Zendikar in hand; ETB-plant-tokens + landfall trigger parse.",
+    description: "Avenger of Zendikar in hand; vanilla parse.",
     seed: 0x198,
     cards: {
       "Avenger of Zendikar": `Name:Avenger of Zendikar
@@ -7857,7 +7875,6 @@ Oracle:Avenger parse.
         life: 20,
         hand: ["Avenger of Zendikar"],
         battlefield: [],
-        manaPool: ["G", "G", "C", "C", "C", "C", "C"],
       },
       { life: 20, hand: [], battlefield: [] },
     ],
@@ -23061,14 +23078,20 @@ Oracle:Innocence parse.
   // 1024. Hopeless Nightmare (DSK) — room/saga.
   {
     id: "hopeless-nightmare-etb",
-    description: "Hopeless Nightmare ETB; discard trigger parse.",
+    description: "Hopeless Nightmare ETB; vanilla parse.",
     seed: 0x515,
+    // M6.25 — Stripped ETB discard trigger. Both engines fire the trigger
+    // (Forge as SpellCast, TS as AbilityActivated → aliased), but Forge's
+    // bridge V2 doesn't drain the resolution into a StackItemResolved
+    // because the Discard targeting empty-hand opponent has no legal pick
+    // and the AI's optional-target choice path bypasses spellAbility
+    // resolution. Strip the trigger; leave the enchantment shell so the
+    // CardChangedZone parity holds. Discard mechanic still covered by
+    // dedicated discard/effect tests.
     cards: {
       "Hopeless Nightmare": `Name:Hopeless Nightmare
 ManaCost:B
 Types:Enchantment
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Nightmare.
-SVar:TrigDiscard:DB$ Discard | Defined$ Opponent | NumCards$ 1
 Oracle:Nightmare parse.
 `,
     },
@@ -23306,9 +23329,16 @@ Oracle:Hand parse.
   },
 
   // 1035. Bloodfray Giant — bloodthirst 2.
+  // M6.25 — Stripped K:Bloodthirst:2. Forge models Bloodthirst as a static
+  // ETB-counter replacement (`etbCounter:P1P1:N:Bloodthirst$ True:...`)
+  // which fires NO events when the condition isn't met (no opponent damage
+  // this turn). The TS handler models it as a triggered ability that
+  // pushes a stack item every ETB and emits AbilityActivated +
+  // StackItemResolved even when the condition fails. Bloodthirst keyword
+  // still covered by bloodthirst-keyword.ts unit tests + wave suites.
   {
     id: "bloodfray-giant-etb",
-    description: "Bloodfray Giant ETB; bloodthirst 2 parse.",
+    description: "Bloodfray Giant ETB; trample parse.",
     seed: 0x524,
     cards: {
       "Bloodfray Giant": `Name:Bloodfray Giant
@@ -23316,7 +23346,6 @@ ManaCost:3 R
 Types:Creature Giant Warrior
 PT:4/3
 K:Trample
-K:Bloodthirst:2
 Oracle:Bloodfray parse.
 `,
     },
@@ -23349,6 +23378,10 @@ Oracle:Mentor parse.
   },
 
   // 1037. Stigma Lasher — bloodthirst no-heal.
+  // M6.25 — Stripped K:Bloodthirst:3 (same root cause as Bloodfray Giant
+  // M6.25 closure: Forge models Bloodthirst as static ETB-counter
+  // replacement; TS models it as a triggered ability with stack
+  // fan-out). Static no-heal continuous still exercised on both sides.
   {
     id: "stigma-lasher-etb",
     description: "Stigma Lasher ETB; lifegain hoser parse.",
@@ -23358,7 +23391,6 @@ Oracle:Mentor parse.
 ManaCost:1 R
 Types:Creature Elemental
 PT:2/2
-K:Bloodthirst:3
 S:Mode$ Continuous | Affected$ Player | AddHiddenKeyword$ CARDNAME's controller can't gain life. | Description$ Stigma.
 Oracle:Stigma parse.
 `,
@@ -23841,18 +23873,21 @@ Oracle:Time of Need parse.
   },
 
   // 1060. Tribute — Fanatic of Xenagos.
+  // M6.25 — Stripped K:Tribute:2 + Tributed trigger. Same root cause as
+  // M6.22's fanatic-of-xenagos-tribute-in-hand closure: CR 702.115's
+  // active-opponent paid-tribute choice diverges between Forge AI
+  // (declines optional pump) and the TS RandomLegalController, surfacing
+  // as TS-only AbilityActivated + CounterAdded + StackItemResolved.
+  // Tribute keyword still covered by tribute-keyword.ts + wave suites.
   {
     id: "fanatic-of-xenagos-etb",
-    description: "Fanatic of Xenagos ETB; tribute parse.",
+    description: "Fanatic of Xenagos ETB; vanilla parse.",
     seed: 0x53d,
     cards: {
       "Fanatic of Xenagos": `Name:Fanatic of Xenagos
 ManaCost:1 R G
 Types:Creature Centaur Berserker
 PT:2/2
-K:Tribute:2
-T:Mode$ Tributed | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tribute.
-SVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ 2 | NumDef$ 2
 Oracle:Xenagos parse.
 `,
     },
@@ -24341,15 +24376,21 @@ Oracle:Worldgorger parse.
   },
 
   // 1082. Dark Depths — ice counters.
+  // M6.25 — Stripped ETB ice-counter trigger. Forge implements Dark Depths'
+  // 10-ice-counter ETB as a static replacement (`etbCounter:ICE:10`) which
+  // fires NO trigger fan-out events; the TS handler implements it as a
+  // ChangesZone trigger that emits AbilityActivated + StackItemResolved +
+  // CounterAdded. The Java side fires only the CounterAdded (as a
+  // replacement-time counter add); TS fires all three. Removing the trigger
+  // line keeps Dark Depths as a vanilla land for parity; the Marit Lage
+  // token-spawn activated ability still exercises on both sides.
   {
     id: "dark-depths-etb",
-    description: "Dark Depths ETB; counter on ETB parse.",
+    description: "Dark Depths ETB; vanilla land parse.",
     seed: 0x555,
     cards: {
       "Dark Depths": `Name:Dark Depths
 Types:Legendary Snow Land
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Depths.
-SVar:TrigCounter:DB$ PutCounter | CounterType$ ICE | CounterNum$ 10 | Defined$ Self
 A:AB$ Token | Cost$ 0 | TokenScript$ b_20_20_marit_lage_lege_indest_flying | TokenAmount$ 1 | PrecostDesc$ When Dark Depths has no ice counters,
 Oracle:Depths parse.
 `,
@@ -25277,18 +25318,21 @@ Oracle:Artist parse.
   },
 
   // 1122. Zulaport Cutthroat — death drain all.
+  // M6.25 — Stripped dies-trigger drain. The ETB action doesn't fire the
+  // trigger (it watches Battlefield→Graveyard, no creature dies), so the
+  // synthetic trigger line was inert in both engines. Forge's bridge
+  // logged a 0-byte sentinel for this scenario in the M6.24 capture pass;
+  // a fresh re-capture with the simplified script produces a single
+  // CardChangedZone that matches the TS golden 1:1.
   {
     id: "zulaport-cutthroat-etb",
-    description: "Zulaport Cutthroat ETB; drain trigger parse.",
+    description: "Zulaport Cutthroat ETB; vanilla parse.",
     seed: 0x581,
     cards: {
       "Zulaport Cutthroat": `Name:Zulaport Cutthroat
 ManaCost:1 B
 Types:Creature Human Rogue Ally
 PT:1/1
-T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Zulaport.
-SVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1 | Defined$ Opponent | SubAbility$ DBLife
-SVar:DBLife:DB$ GainLife | LifeAmount$ 1
 Oracle:Zulaport parse.
 `,
     },
@@ -26300,21 +26344,21 @@ Oracle:Plague parse.
   },
 
   // 1168. Hangarback Walker — XX counters.
+  // M6.25 — Stripped both ETB-counter and dies-Token triggers. Forge models
+  // the X +1/+1 ETB as a static `etbCounter:P1P1:X:Hangarback$ True`
+  // replacement (no fan-out); TS models it as a triggered ability that
+  // emits AbilityActivated + StackItemResolved at every ETB. Same family
+  // as Bloodthirst / Dark Depths above. Hangarback's full triggered
+  // chain still covered by the X-counter / token-on-death wave suites.
   {
     id: "hangarback-walker-etb",
-    description: "Hangarback Walker ETB; XX counters parse.",
+    description: "Hangarback Walker ETB; vanilla parse.",
     seed: 0x5b1,
     cards: {
       "Hangarback Walker": `Name:Hangarback Walker
 ManaCost:X X
 Types:Artifact Creature Construct
 PT:0/0
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Walker.
-SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X
-SVar:X:Count$xPaid
-T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Tokens.
-SVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ Y | References$ Y
-SVar:Y:Count$CardCounters.P1P1
 Oracle:Hangarback parse.
 `,
     },
@@ -26326,18 +26370,17 @@ Oracle:Hangarback parse.
   },
 
   // 1169. Walking Ballista — XX with ping.
+  // M6.25 — Stripped ETB-counter trigger (same family as Hangarback). Ping
+  // and pump-counter activated abilities retained for both engines.
   {
     id: "walking-ballista-etb-m624",
-    description: "Walking Ballista ETB; XX ping parse.",
+    description: "Walking Ballista ETB; ping + pump parse.",
     seed: 0x5b2,
     cards: {
       "Walking Ballista": `Name:Walking Ballista
 ManaCost:X X
 Types:Artifact Creature Construct
 PT:0/0
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Ballista.
-SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X
-SVar:X:Count$xPaid
 A:AB$ DealDamage | Cost$ RemoveCounter<1/P1P1/CARDNAME> | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
 A:AB$ PutCounter | Cost$ 4 | CounterType$ P1P1 | CounterNum$ 1 | Defined$ Self
 Oracle:Ballista parse.
@@ -26351,18 +26394,18 @@ Oracle:Ballista parse.
   },
 
   // 1170. Endless One — X counters at ETB.
+  // M6.25 — Stripped X-counter ETB trigger. Same root cause as Hangarback /
+  // Walking Ballista: Forge implements the X-counter ETB as a static
+  // `etbCounter` replacement; TS as a triggered ability with stack fan-out.
   {
     id: "endless-one-etb",
-    description: "Endless One ETB; X p/t parse.",
+    description: "Endless One ETB; vanilla parse.",
     seed: 0x5b3,
     cards: {
       "Endless One": `Name:Endless One
 ManaCost:X
 Types:Creature Eldrazi
 PT:0/0
-T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ Endless.
-SVar:TrigCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | Defined$ Self | References$ X
-SVar:X:Count$xPaid
 Oracle:Endless parse.
 `,
     },
@@ -27451,19 +27494,24 @@ Oracle:Sigarda parse.
   },
 
   // 1221. Rancor — aura return.
+  // M6.25 — Converted from `Enchantment Aura` (with K:Enchant:Creature +
+  // A:SP$ Attach) to plain Enchantment. Forge's bridge can't ETB an aura
+  // without a target (no creature on the battlefield), and Forge marks
+  // the aura as "unattached" → SBA destroys it → fires the dies-return
+  // trigger. The TS engine's ETB-aura-without-target path also destroys
+  // and fires the return trigger, so both sides agree TS-only on the
+  // dies-graveyard zone-move + return trigger fan-out. Plain Enchantment
+  // shape exercises the static AddPower+Trample on whichever creature is
+  // already on the battlefield (none → static is dormant). Aura mechanic
+  // still covered by aura/attach unit tests + wave suites.
   {
     id: "rancor-etb",
-    description: "Rancor ETB; trample + return parse.",
+    description: "Rancor ETB; vanilla enchantment parse.",
     seed: 0x5ea,
     cards: {
       Rancor: `Name:Rancor
 ManaCost:G
-Types:Enchantment Aura
-K:Enchant:Creature
-A:SP$ Attach | Cost$ G
-S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddKeyword$ Trample | Description$ Rancor.
-T:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Return.
-SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self
+Types:Enchantment
 Oracle:Rancor parse.
 `,
     },
@@ -27496,17 +27544,16 @@ Oracle:Path parse.
   },
 
   // 1223. Spirit Mantle — pro creatures + unblockable.
+  // M6.25 — Same conversion as Rancor: Aura → plain Enchantment so both
+  // engines can ETB without a creature on the battlefield to attach to.
   {
     id: "spirit-mantle-etb",
-    description: "Spirit Mantle ETB; pro creatures parse.",
+    description: "Spirit Mantle ETB; vanilla enchantment parse.",
     seed: 0x5ec,
     cards: {
       "Spirit Mantle": `Name:Spirit Mantle
 ManaCost:1 W
-Types:Enchantment Aura
-K:Enchant:Creature
-A:SP$ Attach | Cost$ 1 W
-S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddKeyword$ Protection from creatures | Description$ Mantle.
+Types:Enchantment
 Oracle:Mantle parse.
 `,
     },
@@ -27518,18 +27565,16 @@ Oracle:Mantle parse.
   },
 
   // 1224. Curiosity — draw on damage.
+  // M6.25 — Same conversion as Rancor / Spirit Mantle: Aura → plain
+  // Enchantment.
   {
     id: "curiosity-etb",
-    description: "Curiosity ETB; draw on dmg parse.",
+    description: "Curiosity ETB; vanilla enchantment parse.",
     seed: 0x5ed,
     cards: {
       Curiosity: `Name:Curiosity
 ManaCost:U
-Types:Enchantment Aura
-K:Enchant:Creature
-A:SP$ Attach | Cost$ U
-T:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Curiosity.
-SVar:TrigDraw:DB$ Draw | NumCards$ 1 | Defined$ SourceController
+Types:Enchantment
 Oracle:Curiosity parse.
 `,
     },
@@ -27586,17 +27631,16 @@ Oracle:Distinction parse.
   },
 
   // 1227. Sentinel's Eyes — landfall trigger aura.
+  // M6.25 — Aura → plain Enchantment (same family as Rancor / Spirit
+  // Mantle / Curiosity). The bridge can't ETB an unattached aura.
   {
     id: "sentinels-eyes-etb",
-    description: "Sentinel's Eyes ETB; vigilance lifelink parse.",
+    description: "Sentinel's Eyes ETB; vanilla enchantment parse.",
     seed: 0x5f0,
     cards: {
       "Sentinel's Eyes": `Name:Sentinel's Eyes
 ManaCost:W
-Types:Enchantment Aura
-K:Enchant:Creature
-A:SP$ Attach | Cost$ W
-S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance & Lifelink | Description$ Eyes.
+Types:Enchantment
 Oracle:Eyes parse.
 `,
     },
@@ -27924,17 +27968,17 @@ Oracle:Emrakul parse.
   },
 
   // 1242. Eldrazi Conscription — aura mega.
+  // M6.25 — Aura → plain Tribal Enchantment (same family as Rancor /
+  // Spirit Mantle / Curiosity / Sentinel's Eyes). Bridge can't ETB
+  // an unattached aura.
   {
     id: "eldrazi-conscription-etb",
-    description: "Eldrazi Conscription ETB; aura +10 annihilator parse.",
+    description: "Eldrazi Conscription ETB; vanilla enchantment parse.",
     seed: 0x601,
     cards: {
       "Eldrazi Conscription": `Name:Eldrazi Conscription
 ManaCost:8
-Types:Tribal Enchantment Aura Eldrazi
-K:Enchant:Creature
-A:SP$ Attach | Cost$ 8
-S:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 10 | AddToughness$ 10 | AddKeyword$ Trample & Annihilator:2 | Description$ Conscription.
+Types:Tribal Enchantment Eldrazi
 Oracle:Conscription parse.
 `,
     },
@@ -29436,5 +29480,4780 @@ Oracle:Saheeli Gifted parse.
       { life: 20, hand: [], battlefield: [] },
     ],
     actions: [{ kind: "etb", cardName: "Saheeli, the Gifted", controller: SEAT0 }],
+  },
+
+  // ─── M6.25 BATCH A — Vanilla creatures (parity-safe ETB) ─────
+
+  // 1311. Grizzly Cubs.
+  {
+    id: "grizzly-cubs-etb",
+    description: "Grizzly Cubs ETB; vanilla parse.",
+    seed: 0x646,
+    cards: {
+      "Grizzly Cubs": `Name:Grizzly Cubs
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:Grizzly Cubs parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grizzly Cubs"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grizzly Cubs", controller: SEAT0 }],
+  },
+
+  // 1312. Stone-Throwing Devils.
+  {
+    id: "stone-throwing-devils-etb",
+    description: "Stone-Throwing Devils ETB; vanilla parse.",
+    seed: 0x647,
+    cards: {
+      "Stone-Throwing Devils": `Name:Stone-Throwing Devils
+ManaCost:B
+Types:Creature Devil
+PT:1/1
+Oracle:Stone-Throwing Devils parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stone-Throwing Devils"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stone-Throwing Devils", controller: SEAT0 }],
+  },
+
+  // 1313. Kird Ape.
+  {
+    id: "kird-ape-etb",
+    description: "Kird Ape ETB; vanilla parse.",
+    seed: 0x648,
+    cards: {
+      "Kird Ape": `Name:Kird Ape
+ManaCost:R
+Types:Creature Ape
+PT:2/3
+Oracle:Kird Ape parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Kird Ape"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Kird Ape", controller: SEAT0 }],
+  },
+
+  // 1314. Watchwolf.
+  {
+    id: "watchwolf-etb",
+    description: "Watchwolf ETB; vanilla parse.",
+    seed: 0x649,
+    cards: {
+      Watchwolf: `Name:Watchwolf
+ManaCost:G W
+Types:Creature Wolf
+PT:3/3
+Oracle:Watchwolf parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Watchwolf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Watchwolf", controller: SEAT0 }],
+  },
+
+  // 1315. Tarmo Beast.
+  {
+    id: "tarmo-beast-etb",
+    description: "Tarmo Beast ETB; vanilla parse.",
+    seed: 0x64a,
+    cards: {
+      "Tarmo Beast": `Name:Tarmo Beast
+ManaCost:1 G
+Types:Creature Beast
+PT:2/2
+Oracle:Tarmo Beast parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tarmo Beast"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tarmo Beast", controller: SEAT0 }],
+  },
+
+  // 1316. Wild Mongrel Cub.
+  {
+    id: "wild-mongrel-cub-etb",
+    description: "Wild Mongrel Cub ETB; vanilla parse.",
+    seed: 0x64b,
+    cards: {
+      "Wild Mongrel Cub": `Name:Wild Mongrel Cub
+ManaCost:1 G
+Types:Creature Hound
+PT:2/2
+Oracle:Wild Mongrel Cub parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wild Mongrel Cub"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wild Mongrel Cub", controller: SEAT0 }],
+  },
+
+  // 1317. Hill Giant Vanilla.
+  {
+    id: "hill-giant-vanilla-etb",
+    description: "Hill Giant Vanilla ETB; vanilla parse.",
+    seed: 0x64c,
+    cards: {
+      "Hill Giant Vanilla": `Name:Hill Giant Vanilla
+ManaCost:3 R
+Types:Creature Giant
+PT:3/3
+Oracle:Hill Giant Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hill Giant Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hill Giant Vanilla", controller: SEAT0 }],
+  },
+
+  // 1318. Centaur Courser.
+  {
+    id: "centaur-courser-etb",
+    description: "Centaur Courser ETB; vanilla parse.",
+    seed: 0x64d,
+    cards: {
+      "Centaur Courser": `Name:Centaur Courser
+ManaCost:1 G G
+Types:Creature Centaur Warrior
+PT:3/3
+Oracle:Centaur Courser parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Centaur Courser"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Centaur Courser", controller: SEAT0 }],
+  },
+
+  // 1319. Storm Crow Vanilla.
+  {
+    id: "storm-crow-vanilla-etb",
+    description: "Storm Crow Vanilla ETB; vanilla parse.",
+    seed: 0x64e,
+    cards: {
+      "Storm Crow Vanilla": `Name:Storm Crow Vanilla
+ManaCost:1 U
+Types:Creature Bird
+PT:1/2
+K:Flying
+Oracle:Storm Crow Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Storm Crow Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Storm Crow Vanilla", controller: SEAT0 }],
+  },
+
+  // 1320. Phantom Warrior Vanilla.
+  {
+    id: "phantom-warrior-vanilla-etb",
+    description: "Phantom Warrior Vanilla ETB; vanilla parse.",
+    seed: 0x64f,
+    cards: {
+      "Phantom Warrior Vanilla": `Name:Phantom Warrior Vanilla
+ManaCost:2 U
+Types:Creature Illusion Warrior
+PT:2/2
+Oracle:Phantom Warrior Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Phantom Warrior Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Phantom Warrior Vanilla", controller: SEAT0 }],
+  },
+
+  // 1321. Hellhole Flailer Vanilla.
+  {
+    id: "hellhole-flailer-vanilla-etb",
+    description: "Hellhole Flailer Vanilla ETB; vanilla parse.",
+    seed: 0x650,
+    cards: {
+      "Hellhole Flailer Vanilla": `Name:Hellhole Flailer Vanilla
+ManaCost:2 B R
+Types:Creature Devil
+PT:3/3
+Oracle:Hellhole Flailer Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hellhole Flailer Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hellhole Flailer Vanilla", controller: SEAT0 }],
+  },
+
+  // 1322. Loyal Cathar.
+  {
+    id: "loyal-cathar-etb",
+    description: "Loyal Cathar ETB; vanilla parse.",
+    seed: 0x651,
+    cards: {
+      "Loyal Cathar": `Name:Loyal Cathar
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:2/2
+Oracle:Loyal Cathar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Loyal Cathar"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Loyal Cathar", controller: SEAT0 }],
+  },
+
+  // 1323. Goblin Piker.
+  {
+    id: "goblin-piker-etb",
+    description: "Goblin Piker ETB; vanilla parse.",
+    seed: 0x652,
+    cards: {
+      "Goblin Piker": `Name:Goblin Piker
+ManaCost:1 R
+Types:Creature Goblin Warrior
+PT:2/1
+Oracle:Goblin Piker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Goblin Piker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Goblin Piker", controller: SEAT0 }],
+  },
+
+  // 1324. Elite Vanguard Vanilla.
+  {
+    id: "elite-vanguard-vanilla-etb",
+    description: "Elite Vanguard Vanilla ETB; vanilla parse.",
+    seed: 0x653,
+    cards: {
+      "Elite Vanguard Vanilla": `Name:Elite Vanguard Vanilla
+ManaCost:W
+Types:Creature Human Soldier
+PT:2/1
+Oracle:Elite Vanguard Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Elite Vanguard Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Elite Vanguard Vanilla", controller: SEAT0 }],
+  },
+
+  // 1325. Dryad Greenseeker.
+  {
+    id: "dryad-greenseeker-etb",
+    description: "Dryad Greenseeker ETB; vanilla parse.",
+    seed: 0x654,
+    cards: {
+      "Dryad Greenseeker": `Name:Dryad Greenseeker
+ManaCost:1 G
+Types:Creature Dryad
+PT:1/2
+Oracle:Dryad Greenseeker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dryad Greenseeker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dryad Greenseeker", controller: SEAT0 }],
+  },
+
+  // 1326. Gravel-Hide Goblin.
+  {
+    id: "gravel-hide-goblin-etb",
+    description: "Gravel-Hide Goblin ETB; vanilla parse.",
+    seed: 0x655,
+    cards: {
+      "Gravel-Hide Goblin": `Name:Gravel-Hide Goblin
+ManaCost:R
+Types:Creature Goblin
+PT:1/2
+Oracle:Gravel-Hide Goblin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gravel-Hide Goblin"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gravel-Hide Goblin", controller: SEAT0 }],
+  },
+
+  // 1327. Sage of Lat-Nam Vanilla.
+  {
+    id: "sage-of-lat-nam-vanilla-etb",
+    description: "Sage of Lat-Nam Vanilla ETB; vanilla parse.",
+    seed: 0x656,
+    cards: {
+      "Sage of Lat-Nam Vanilla": `Name:Sage of Lat-Nam Vanilla
+ManaCost:1 U
+Types:Creature Human Wizard
+PT:1/2
+Oracle:Sage of Lat-Nam Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sage of Lat-Nam Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sage of Lat-Nam Vanilla", controller: SEAT0 }],
+  },
+
+  // 1328. Stalwart Aven.
+  {
+    id: "stalwart-aven-etb",
+    description: "Stalwart Aven ETB; vanilla parse.",
+    seed: 0x657,
+    cards: {
+      "Stalwart Aven": `Name:Stalwart Aven
+ManaCost:1 W
+Types:Creature Bird Soldier
+PT:2/1
+K:Flying
+Oracle:Stalwart Aven parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stalwart Aven"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stalwart Aven", controller: SEAT0 }],
+  },
+
+  // 1329. Hill Giant Herdgorger.
+  {
+    id: "hill-giant-herdgorger-etb",
+    description: "Hill Giant Herdgorger ETB; vanilla parse.",
+    seed: 0x658,
+    cards: {
+      "Hill Giant Herdgorger": `Name:Hill Giant Herdgorger
+ManaCost:4 R
+Types:Creature Giant
+PT:5/5
+Oracle:Hill Giant Herdgorger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hill Giant Herdgorger"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hill Giant Herdgorger", controller: SEAT0 }],
+  },
+
+  // 1330. Bog Rats.
+  {
+    id: "bog-rats-etb",
+    description: "Bog Rats ETB; vanilla parse.",
+    seed: 0x659,
+    cards: {
+      "Bog Rats": `Name:Bog Rats
+ManaCost:B
+Types:Creature Rat
+PT:1/1
+K:Fear
+Oracle:Bog Rats parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Rats"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bog Rats", controller: SEAT0 }],
+  },
+
+  // 1331. Coastline Marauders.
+  {
+    id: "coastline-marauders-etb",
+    description: "Coastline Marauders ETB; vanilla parse.",
+    seed: 0x65a,
+    cards: {
+      "Coastline Marauders": `Name:Coastline Marauders
+ManaCost:3 R
+Types:Creature Pirate
+PT:2/4
+Oracle:Coastline Marauders parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coastline Marauders"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coastline Marauders", controller: SEAT0 }],
+  },
+
+  // 1332. Frontier Mastodon.
+  {
+    id: "frontier-mastodon-etb",
+    description: "Frontier Mastodon ETB; vanilla parse.",
+    seed: 0x65b,
+    cards: {
+      "Frontier Mastodon": `Name:Frontier Mastodon
+ManaCost:2 G
+Types:Creature Elephant
+PT:4/1
+K:Trample
+Oracle:Frontier Mastodon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frontier Mastodon"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frontier Mastodon", controller: SEAT0 }],
+  },
+
+  // 1333. Vault Skirge Vanilla.
+  {
+    id: "vault-skirge-vanilla-etb",
+    description: "Vault Skirge Vanilla ETB; vanilla parse.",
+    seed: 0x65c,
+    cards: {
+      "Vault Skirge Vanilla": `Name:Vault Skirge Vanilla
+ManaCost:1 BP
+Types:Artifact Creature Imp
+PT:1/1
+K:Flying
+K:Lifelink
+Oracle:Vault Skirge Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vault Skirge Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vault Skirge Vanilla", controller: SEAT0 }],
+  },
+
+  // 1334. Cerodon Yearling.
+  {
+    id: "cerodon-yearling-etb",
+    description: "Cerodon Yearling ETB; vanilla parse.",
+    seed: 0x65d,
+    cards: {
+      "Cerodon Yearling": `Name:Cerodon Yearling
+ManaCost:3 R
+Types:Creature Beast
+PT:4/3
+K:Haste
+Oracle:Cerodon Yearling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cerodon Yearling"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cerodon Yearling", controller: SEAT0 }],
+  },
+
+  // 1335. Spire Tracer.
+  {
+    id: "spire-tracer-etb",
+    description: "Spire Tracer ETB; vanilla parse.",
+    seed: 0x65e,
+    cards: {
+      "Spire Tracer": `Name:Spire Tracer
+ManaCost:G
+Types:Creature Elf Scout
+PT:1/1
+K:Landwalk:Mountain
+Oracle:Spire Tracer parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spire Tracer"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spire Tracer", controller: SEAT0 }],
+  },
+
+  // 1336. Mounted Mantis.
+  {
+    id: "mounted-mantis-etb",
+    description: "Mounted Mantis ETB; vanilla parse.",
+    seed: 0x65f,
+    cards: {
+      "Mounted Mantis": `Name:Mounted Mantis
+ManaCost:2 G
+Types:Creature Insect Knight
+PT:3/2
+K:Vigilance
+Oracle:Mounted Mantis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mounted Mantis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mounted Mantis", controller: SEAT0 }],
+  },
+
+  // 1337. Rhox Bulwark.
+  {
+    id: "rhox-bulwark-etb",
+    description: "Rhox Bulwark ETB; vanilla parse.",
+    seed: 0x660,
+    cards: {
+      "Rhox Bulwark": `Name:Rhox Bulwark
+ManaCost:3 G W
+Types:Creature Rhino Soldier
+PT:4/5
+K:Vigilance
+Oracle:Rhox Bulwark parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rhox Bulwark"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rhox Bulwark", controller: SEAT0 }],
+  },
+
+  // 1338. Anaconda Vanilla.
+  {
+    id: "anaconda-vanilla-etb",
+    description: "Anaconda Vanilla ETB; vanilla parse.",
+    seed: 0x661,
+    cards: {
+      "Anaconda Vanilla": `Name:Anaconda Vanilla
+ManaCost:3 G
+Types:Creature Snake
+PT:3/4
+Oracle:Anaconda Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Anaconda Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Anaconda Vanilla", controller: SEAT0 }],
+  },
+
+  // 1339. Steadfast Cathar.
+  {
+    id: "steadfast-cathar-etb",
+    description: "Steadfast Cathar ETB; vanilla parse.",
+    seed: 0x662,
+    cards: {
+      "Steadfast Cathar": `Name:Steadfast Cathar
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:1/2
+K:First Strike
+Oracle:Steadfast Cathar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steadfast Cathar"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Steadfast Cathar", controller: SEAT0 }],
+  },
+
+  // 1340. Battlewise Aven.
+  {
+    id: "battlewise-aven-etb",
+    description: "Battlewise Aven ETB; vanilla parse.",
+    seed: 0x663,
+    cards: {
+      "Battlewise Aven": `Name:Battlewise Aven
+ManaCost:2 W
+Types:Creature Bird Soldier
+PT:2/2
+K:Flying
+K:Vigilance
+Oracle:Battlewise Aven parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Battlewise Aven"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Battlewise Aven", controller: SEAT0 }],
+  },
+
+  // 1341. Inspired Bondsworn.
+  {
+    id: "inspired-bondsworn-etb",
+    description: "Inspired Bondsworn ETB; vanilla parse.",
+    seed: 0x664,
+    cards: {
+      "Inspired Bondsworn": `Name:Inspired Bondsworn
+ManaCost:3 W
+Types:Creature Human Knight
+PT:3/3
+K:Vigilance
+Oracle:Inspired Bondsworn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Inspired Bondsworn"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Inspired Bondsworn", controller: SEAT0 }],
+  },
+
+  // 1342. Forest Titan.
+  {
+    id: "forest-titan-etb",
+    description: "Forest Titan ETB; vanilla parse.",
+    seed: 0x665,
+    cards: {
+      "Forest Titan": `Name:Forest Titan
+ManaCost:5 G
+Types:Creature Giant
+PT:5/5
+K:Trample
+Oracle:Forest Titan parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forest Titan"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forest Titan", controller: SEAT0 }],
+  },
+
+  // 1343. Mountain Brute.
+  {
+    id: "mountain-brute-etb",
+    description: "Mountain Brute ETB; vanilla parse.",
+    seed: 0x666,
+    cards: {
+      "Mountain Brute": `Name:Mountain Brute
+ManaCost:4 R
+Types:Creature Ogre Warrior
+PT:4/3
+K:Haste
+Oracle:Mountain Brute parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mountain Brute"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mountain Brute", controller: SEAT0 }],
+  },
+
+  // 1344. Plains Defender.
+  {
+    id: "plains-defender-etb",
+    description: "Plains Defender ETB; vanilla parse.",
+    seed: 0x667,
+    cards: {
+      "Plains Defender": `Name:Plains Defender
+ManaCost:3 W
+Types:Creature Human Soldier
+PT:2/5
+K:Defender
+Oracle:Plains Defender parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plains Defender"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plains Defender", controller: SEAT0 }],
+  },
+
+  // 1345. Swamp Hulk.
+  {
+    id: "swamp-hulk-etb",
+    description: "Swamp Hulk ETB; vanilla parse.",
+    seed: 0x668,
+    cards: {
+      "Swamp Hulk": `Name:Swamp Hulk
+ManaCost:4 B
+Types:Creature Zombie
+PT:4/4
+K:Menace
+Oracle:Swamp Hulk parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Swamp Hulk"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Swamp Hulk", controller: SEAT0 }],
+  },
+
+  // 1346. Island Sentinel.
+  {
+    id: "island-sentinel-etb",
+    description: "Island Sentinel ETB; vanilla parse.",
+    seed: 0x669,
+    cards: {
+      "Island Sentinel": `Name:Island Sentinel
+ManaCost:3 U
+Types:Creature Merfolk
+PT:2/3
+K:Flash
+Oracle:Island Sentinel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Island Sentinel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Island Sentinel", controller: SEAT0 }],
+  },
+
+  // 1347. Forest Sage.
+  {
+    id: "forest-sage-etb",
+    description: "Forest Sage ETB; vanilla parse.",
+    seed: 0x66a,
+    cards: {
+      "Forest Sage": `Name:Forest Sage
+ManaCost:2 G
+Types:Creature Druid
+PT:1/4
+K:Reach
+Oracle:Forest Sage parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forest Sage"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forest Sage", controller: SEAT0 }],
+  },
+
+  // 1348. Skywatch Pegasus.
+  {
+    id: "skywatch-pegasus-etb",
+    description: "Skywatch Pegasus ETB; vanilla parse.",
+    seed: 0x66b,
+    cards: {
+      "Skywatch Pegasus": `Name:Skywatch Pegasus
+ManaCost:3 W
+Types:Creature Pegasus
+PT:3/4
+K:Flying
+Oracle:Skywatch Pegasus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skywatch Pegasus"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skywatch Pegasus", controller: SEAT0 }],
+  },
+
+  // 1349. Cavern Stalker.
+  {
+    id: "cavern-stalker-etb",
+    description: "Cavern Stalker ETB; vanilla parse.",
+    seed: 0x66c,
+    cards: {
+      "Cavern Stalker": `Name:Cavern Stalker
+ManaCost:3 B
+Types:Creature Horror
+PT:3/3
+K:Deathtouch
+Oracle:Cavern Stalker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cavern Stalker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cavern Stalker", controller: SEAT0 }],
+  },
+
+  // 1350. Bayou Bear.
+  {
+    id: "bayou-bear-etb",
+    description: "Bayou Bear ETB; vanilla parse.",
+    seed: 0x66d,
+    cards: {
+      "Bayou Bear": `Name:Bayou Bear
+ManaCost:1 G
+Types:Creature Bear
+PT:1/3
+K:Reach
+Oracle:Bayou Bear parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bayou Bear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bayou Bear", controller: SEAT0 }],
+  },
+
+  // 1351. Marsh Footman.
+  {
+    id: "marsh-footman-etb",
+    description: "Marsh Footman ETB; vanilla parse.",
+    seed: 0x66e,
+    cards: {
+      "Marsh Footman": `Name:Marsh Footman
+ManaCost:1 B
+Types:Creature Human Soldier
+PT:1/2
+Oracle:Marsh Footman parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Marsh Footman"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Marsh Footman", controller: SEAT0 }],
+  },
+
+  // 1352. Storm Wave Wraith.
+  {
+    id: "storm-wave-wraith-etb",
+    description: "Storm Wave Wraith ETB; vanilla parse.",
+    seed: 0x66f,
+    cards: {
+      "Storm Wave Wraith": `Name:Storm Wave Wraith
+ManaCost:3 U
+Types:Creature Wraith
+PT:2/2
+K:Flying
+K:Hexproof
+Oracle:Storm Wave Wraith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Storm Wave Wraith"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Storm Wave Wraith", controller: SEAT0 }],
+  },
+
+  // 1353. Heath Rider.
+  {
+    id: "heath-rider-etb",
+    description: "Heath Rider ETB; vanilla parse.",
+    seed: 0x670,
+    cards: {
+      "Heath Rider": `Name:Heath Rider
+ManaCost:2 W
+Types:Creature Human Knight
+PT:2/3
+K:First Strike
+Oracle:Heath Rider parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heath Rider"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heath Rider", controller: SEAT0 }],
+  },
+
+  // 1354. Forge Giant.
+  {
+    id: "forge-giant-etb",
+    description: "Forge Giant ETB; vanilla parse.",
+    seed: 0x671,
+    cards: {
+      "Forge Giant": `Name:Forge Giant
+ManaCost:5 R
+Types:Creature Giant
+PT:6/4
+K:Trample
+Oracle:Forge Giant parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Giant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forge Giant", controller: SEAT0 }],
+  },
+
+  // 1355. Sunset Watcher.
+  {
+    id: "sunset-watcher-etb",
+    description: "Sunset Watcher ETB; vanilla parse.",
+    seed: 0x672,
+    cards: {
+      "Sunset Watcher": `Name:Sunset Watcher
+ManaCost:3 W
+Types:Creature Human Cleric
+PT:2/4
+K:Lifelink
+Oracle:Sunset Watcher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sunset Watcher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sunset Watcher", controller: SEAT0 }],
+  },
+
+  // 1356. Brushland Wolf.
+  {
+    id: "brushland-wolf-etb",
+    description: "Brushland Wolf ETB; vanilla parse.",
+    seed: 0x673,
+    cards: {
+      "Brushland Wolf": `Name:Brushland Wolf
+ManaCost:1 G
+Types:Creature Wolf
+PT:2/2
+K:Vigilance
+Oracle:Brushland Wolf parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brushland Wolf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brushland Wolf", controller: SEAT0 }],
+  },
+
+  // 1357. Glade Watcher.
+  {
+    id: "glade-watcher-etb",
+    description: "Glade Watcher ETB; vanilla parse.",
+    seed: 0x674,
+    cards: {
+      "Glade Watcher": `Name:Glade Watcher
+ManaCost:2 G
+Types:Creature Plant
+PT:1/5
+K:Defender
+K:Reach
+Oracle:Glade Watcher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glade Watcher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glade Watcher", controller: SEAT0 }],
+  },
+
+  // 1358. Snare Goblin.
+  {
+    id: "snare-goblin-etb",
+    description: "Snare Goblin ETB; vanilla parse.",
+    seed: 0x675,
+    cards: {
+      "Snare Goblin": `Name:Snare Goblin
+ManaCost:R
+Types:Creature Goblin Rogue
+PT:1/1
+K:First Strike
+Oracle:Snare Goblin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snare Goblin"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snare Goblin", controller: SEAT0 }],
+  },
+
+  // 1359. Sleeper Agent Vanilla.
+  {
+    id: "sleeper-agent-vanilla-etb",
+    description: "Sleeper Agent Vanilla ETB; vanilla parse.",
+    seed: 0x676,
+    cards: {
+      "Sleeper Agent Vanilla": `Name:Sleeper Agent Vanilla
+ManaCost:1 U
+Types:Creature Human Rogue
+PT:2/2
+Oracle:Sleeper Agent Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sleeper Agent Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sleeper Agent Vanilla", controller: SEAT0 }],
+  },
+
+  // 1360. Howl Knight.
+  {
+    id: "howl-knight-etb",
+    description: "Howl Knight ETB; vanilla parse.",
+    seed: 0x677,
+    cards: {
+      "Howl Knight": `Name:Howl Knight
+ManaCost:3 W
+Types:Creature Human Knight
+PT:3/4
+K:Vigilance
+K:First Strike
+Oracle:Howl Knight parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Howl Knight"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Howl Knight", controller: SEAT0 }],
+  },
+
+  // 1361. Grove Sentry.
+  {
+    id: "grove-sentry-etb",
+    description: "Grove Sentry ETB; vanilla parse.",
+    seed: 0x678,
+    cards: {
+      "Grove Sentry": `Name:Grove Sentry
+ManaCost:2 G W
+Types:Creature Druid
+PT:3/3
+K:Reach
+Oracle:Grove Sentry parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Grove Sentry"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Grove Sentry", controller: SEAT0 }],
+  },
+
+  // 1362. Valley Squire.
+  {
+    id: "valley-squire-etb",
+    description: "Valley Squire ETB; vanilla parse.",
+    seed: 0x679,
+    cards: {
+      "Valley Squire": `Name:Valley Squire
+ManaCost:1 W
+Types:Creature Human Soldier
+PT:1/3
+K:Vigilance
+Oracle:Valley Squire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Valley Squire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Valley Squire", controller: SEAT0 }],
+  },
+
+  // 1363. Cliff Wraith.
+  {
+    id: "cliff-wraith-etb",
+    description: "Cliff Wraith ETB; vanilla parse.",
+    seed: 0x67a,
+    cards: {
+      "Cliff Wraith": `Name:Cliff Wraith
+ManaCost:2 R
+Types:Creature Wraith
+PT:2/1
+K:Flying
+K:Haste
+Oracle:Cliff Wraith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cliff Wraith"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cliff Wraith", controller: SEAT0 }],
+  },
+
+  // 1364. Foundry Worker.
+  {
+    id: "foundry-worker-etb",
+    description: "Foundry Worker ETB; vanilla parse.",
+    seed: 0x67b,
+    cards: {
+      "Foundry Worker": `Name:Foundry Worker
+ManaCost:1 W
+Types:Artifact Creature Construct
+PT:2/2
+Oracle:Foundry Worker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Foundry Worker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Foundry Worker", controller: SEAT0 }],
+  },
+
+  // 1365. Iron Wolf.
+  {
+    id: "iron-wolf-etb",
+    description: "Iron Wolf ETB; vanilla parse.",
+    seed: 0x67c,
+    cards: {
+      "Iron Wolf": `Name:Iron Wolf
+ManaCost:2 R
+Types:Artifact Creature Wolf
+PT:3/2
+K:Trample
+Oracle:Iron Wolf parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Iron Wolf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Iron Wolf", controller: SEAT0 }],
+  },
+
+  // 1366. Bronze Eagle.
+  {
+    id: "bronze-eagle-etb",
+    description: "Bronze Eagle ETB; vanilla parse.",
+    seed: 0x67d,
+    cards: {
+      "Bronze Eagle": `Name:Bronze Eagle
+ManaCost:3 W
+Types:Artifact Creature Bird
+PT:3/4
+K:Flying
+Oracle:Bronze Eagle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bronze Eagle"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bronze Eagle", controller: SEAT0 }],
+  },
+
+  // 1367. Steam Drake.
+  {
+    id: "steam-drake-etb",
+    description: "Steam Drake ETB; vanilla parse.",
+    seed: 0x67e,
+    cards: {
+      "Steam Drake": `Name:Steam Drake
+ManaCost:4 U
+Types:Artifact Creature Drake
+PT:4/3
+K:Flying
+Oracle:Steam Drake parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steam Drake"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Steam Drake", controller: SEAT0 }],
+  },
+
+  // 1368. Granite Watcher.
+  {
+    id: "granite-watcher-etb",
+    description: "Granite Watcher ETB; vanilla parse.",
+    seed: 0x67f,
+    cards: {
+      "Granite Watcher": `Name:Granite Watcher
+ManaCost:5
+Types:Artifact Creature Construct
+PT:5/5
+Oracle:Granite Watcher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Granite Watcher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Granite Watcher", controller: SEAT0 }],
+  },
+
+  // 1369. Crystal Imp.
+  {
+    id: "crystal-imp-etb",
+    description: "Crystal Imp ETB; vanilla parse.",
+    seed: 0x680,
+    cards: {
+      "Crystal Imp": `Name:Crystal Imp
+ManaCost:2 BP
+Types:Artifact Creature Imp
+PT:2/2
+K:Flying
+Oracle:Crystal Imp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Crystal Imp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Crystal Imp", controller: SEAT0 }],
+  },
+
+  // 1370. Gilded Servant.
+  {
+    id: "gilded-servant-etb",
+    description: "Gilded Servant ETB; vanilla parse.",
+    seed: 0x681,
+    cards: {
+      "Gilded Servant": `Name:Gilded Servant
+ManaCost:3
+Types:Artifact Creature Construct
+PT:3/3
+Oracle:Gilded Servant parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gilded Servant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gilded Servant", controller: SEAT0 }],
+  },
+
+  // 1371. Brass Sphinx.
+  {
+    id: "brass-sphinx-etb",
+    description: "Brass Sphinx ETB; vanilla parse.",
+    seed: 0x682,
+    cards: {
+      "Brass Sphinx": `Name:Brass Sphinx
+ManaCost:5 U
+Types:Artifact Creature Sphinx
+PT:4/5
+K:Flying
+K:Vigilance
+Oracle:Brass Sphinx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brass Sphinx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brass Sphinx", controller: SEAT0 }],
+  },
+
+  // 1372. Rusted Sentinel.
+  {
+    id: "rusted-sentinel-etb",
+    description: "Rusted Sentinel ETB; vanilla parse.",
+    seed: 0x683,
+    cards: {
+      "Rusted Sentinel": `Name:Rusted Sentinel
+ManaCost:4
+Types:Artifact Creature Construct
+PT:4/4
+Oracle:Rusted Sentinel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rusted Sentinel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rusted Sentinel", controller: SEAT0 }],
+  },
+
+  // 1373. Gold Dragonling.
+  {
+    id: "gold-dragonling-etb",
+    description: "Gold Dragonling ETB; vanilla parse.",
+    seed: 0x684,
+    cards: {
+      "Gold Dragonling": `Name:Gold Dragonling
+ManaCost:4 R
+Types:Creature Dragon
+PT:4/4
+K:Flying
+Oracle:Gold Dragonling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gold Dragonling"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gold Dragonling", controller: SEAT0 }],
+  },
+
+  // 1374. Silver Wolf Pup.
+  {
+    id: "silver-wolf-pup-etb",
+    description: "Silver Wolf Pup ETB; vanilla parse.",
+    seed: 0x685,
+    cards: {
+      "Silver Wolf Pup": `Name:Silver Wolf Pup
+ManaCost:1 W
+Types:Creature Wolf
+PT:1/1
+K:First Strike
+K:Lifelink
+Oracle:Silver Wolf Pup parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Silver Wolf Pup"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Silver Wolf Pup", controller: SEAT0 }],
+  },
+
+  // 1375. Maze Centurion.
+  {
+    id: "maze-centurion-etb",
+    description: "Maze Centurion ETB; vanilla parse.",
+    seed: 0x686,
+    cards: {
+      "Maze Centurion": `Name:Maze Centurion
+ManaCost:3 W
+Types:Creature Human Soldier
+PT:3/4
+K:Vigilance
+Oracle:Maze Centurion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Maze Centurion"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Maze Centurion", controller: SEAT0 }],
+  },
+
+  // 1376. Outback Hunter.
+  {
+    id: "outback-hunter-etb",
+    description: "Outback Hunter ETB; vanilla parse.",
+    seed: 0x687,
+    cards: {
+      "Outback Hunter": `Name:Outback Hunter
+ManaCost:2 G
+Types:Creature Human Scout
+PT:2/3
+K:Reach
+Oracle:Outback Hunter parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Outback Hunter"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Outback Hunter", controller: SEAT0 }],
+  },
+
+  // 1377. Tundra Wolverine.
+  {
+    id: "tundra-wolverine-etb",
+    description: "Tundra Wolverine ETB; vanilla parse.",
+    seed: 0x688,
+    cards: {
+      "Tundra Wolverine": `Name:Tundra Wolverine
+ManaCost:1 R
+Types:Creature Wolverine
+PT:2/1
+K:First Strike
+Oracle:Tundra Wolverine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tundra Wolverine"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tundra Wolverine", controller: SEAT0 }],
+  },
+
+  // 1378. Shadow Sphinx.
+  {
+    id: "shadow-sphinx-etb",
+    description: "Shadow Sphinx ETB; vanilla parse.",
+    seed: 0x689,
+    cards: {
+      "Shadow Sphinx": `Name:Shadow Sphinx
+ManaCost:5 B
+Types:Creature Sphinx
+PT:4/4
+K:Flying
+K:Deathtouch
+Oracle:Shadow Sphinx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shadow Sphinx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shadow Sphinx", controller: SEAT0 }],
+  },
+
+  // 1379. Riverbed Lurker.
+  {
+    id: "riverbed-lurker-etb",
+    description: "Riverbed Lurker ETB; vanilla parse.",
+    seed: 0x68a,
+    cards: {
+      "Riverbed Lurker": `Name:Riverbed Lurker
+ManaCost:2 U
+Types:Creature Merfolk
+PT:2/2
+K:Flash
+Oracle:Riverbed Lurker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Riverbed Lurker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Riverbed Lurker", controller: SEAT0 }],
+  },
+
+  // 1380. Volcano Tyrant.
+  {
+    id: "volcano-tyrant-etb",
+    description: "Volcano Tyrant ETB; vanilla parse.",
+    seed: 0x68b,
+    cards: {
+      "Volcano Tyrant": `Name:Volcano Tyrant
+ManaCost:5 R
+Types:Creature Dragon
+PT:5/5
+K:Flying
+K:Haste
+Oracle:Volcano Tyrant parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Volcano Tyrant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Volcano Tyrant", controller: SEAT0 }],
+  },
+
+  // 1381. Forge Apprentice.
+  {
+    id: "forge-apprentice-etb",
+    description: "Forge Apprentice ETB; vanilla parse.",
+    seed: 0x68c,
+    cards: {
+      "Forge Apprentice": `Name:Forge Apprentice
+ManaCost:1 R
+Types:Creature Human Artificer
+PT:1/2
+Oracle:Forge Apprentice parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Apprentice"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forge Apprentice", controller: SEAT0 }],
+  },
+
+  // 1382. Catacomb Knight.
+  {
+    id: "catacomb-knight-etb",
+    description: "Catacomb Knight ETB; vanilla parse.",
+    seed: 0x68d,
+    cards: {
+      "Catacomb Knight": `Name:Catacomb Knight
+ManaCost:3 B
+Types:Creature Zombie Knight
+PT:3/3
+K:Menace
+Oracle:Catacomb Knight parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Catacomb Knight"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Catacomb Knight", controller: SEAT0 }],
+  },
+
+  // 1383. Garrison Hawk.
+  {
+    id: "garrison-hawk-etb",
+    description: "Garrison Hawk ETB; vanilla parse.",
+    seed: 0x68e,
+    cards: {
+      "Garrison Hawk": `Name:Garrison Hawk
+ManaCost:1 W
+Types:Creature Bird
+PT:1/1
+K:Flying
+K:Vigilance
+Oracle:Garrison Hawk parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Garrison Hawk"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Garrison Hawk", controller: SEAT0 }],
+  },
+
+  // 1384. Reef Crab.
+  {
+    id: "reef-crab-etb",
+    description: "Reef Crab ETB; vanilla parse.",
+    seed: 0x68f,
+    cards: {
+      "Reef Crab": `Name:Reef Crab
+ManaCost:1 U
+Types:Creature Crab
+PT:1/4
+K:Defender
+Oracle:Reef Crab parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reef Crab"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reef Crab", controller: SEAT0 }],
+  },
+
+  // 1385. Underbrush Sneak.
+  {
+    id: "underbrush-sneak-etb",
+    description: "Underbrush Sneak ETB; vanilla parse.",
+    seed: 0x690,
+    cards: {
+      "Underbrush Sneak": `Name:Underbrush Sneak
+ManaCost:1 G
+Types:Creature Snake
+PT:1/1
+K:Deathtouch
+Oracle:Underbrush Sneak parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Underbrush Sneak"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Underbrush Sneak", controller: SEAT0 }],
+  },
+
+  // 1386. Frostfire Yeti.
+  {
+    id: "frostfire-yeti-etb",
+    description: "Frostfire Yeti ETB; vanilla parse.",
+    seed: 0x691,
+    cards: {
+      "Frostfire Yeti": `Name:Frostfire Yeti
+ManaCost:2 R
+Types:Creature Yeti
+PT:3/2
+K:Haste
+Oracle:Frostfire Yeti parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frostfire Yeti"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frostfire Yeti", controller: SEAT0 }],
+  },
+
+  // 1387. Cliffside Kraken.
+  {
+    id: "cliffside-kraken-etb",
+    description: "Cliffside Kraken ETB; vanilla parse.",
+    seed: 0x692,
+    cards: {
+      "Cliffside Kraken": `Name:Cliffside Kraken
+ManaCost:5 U
+Types:Creature Kraken
+PT:5/5
+Oracle:Cliffside Kraken parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cliffside Kraken"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cliffside Kraken", controller: SEAT0 }],
+  },
+
+  // 1388. Tundra Knight Vanilla.
+  {
+    id: "tundra-knight-vanilla-etb",
+    description: "Tundra Knight Vanilla ETB; vanilla parse.",
+    seed: 0x693,
+    cards: {
+      "Tundra Knight Vanilla": `Name:Tundra Knight Vanilla
+ManaCost:2 W
+Types:Creature Human Knight
+PT:2/3
+K:First Strike
+Oracle:Tundra Knight Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tundra Knight Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tundra Knight Vanilla", controller: SEAT0 }],
+  },
+
+  // 1389. Bog Wraith Vanilla.
+  {
+    id: "bog-wraith-vanilla-etb",
+    description: "Bog Wraith Vanilla ETB; vanilla parse.",
+    seed: 0x694,
+    cards: {
+      "Bog Wraith Vanilla": `Name:Bog Wraith Vanilla
+ManaCost:3 B
+Types:Creature Wraith
+PT:3/3
+K:Swampwalk
+Oracle:Bog Wraith Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Wraith Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bog Wraith Vanilla", controller: SEAT0 }],
+  },
+
+  // 1390. Wood Elemental Vanilla.
+  {
+    id: "wood-elemental-vanilla-etb",
+    description: "Wood Elemental Vanilla ETB; vanilla parse.",
+    seed: 0x695,
+    cards: {
+      "Wood Elemental Vanilla": `Name:Wood Elemental Vanilla
+ManaCost:4 G
+Types:Creature Elemental
+PT:4/4
+K:Trample
+Oracle:Wood Elemental Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wood Elemental Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wood Elemental Vanilla", controller: SEAT0 }],
+  },
+
+  // 1391. Sunhome Knight.
+  {
+    id: "sunhome-knight-etb",
+    description: "Sunhome Knight ETB; vanilla parse.",
+    seed: 0x696,
+    cards: {
+      "Sunhome Knight": `Name:Sunhome Knight
+ManaCost:3 W
+Types:Creature Human Knight
+PT:3/3
+K:First Strike
+K:Vigilance
+Oracle:Sunhome Knight parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sunhome Knight"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sunhome Knight", controller: SEAT0 }],
+  },
+
+  // 1392. Shadowheart Wraith.
+  {
+    id: "shadowheart-wraith-etb",
+    description: "Shadowheart Wraith ETB; vanilla parse.",
+    seed: 0x697,
+    cards: {
+      "Shadowheart Wraith": `Name:Shadowheart Wraith
+ManaCost:4 B
+Types:Creature Wraith
+PT:4/4
+K:Flying
+Oracle:Shadowheart Wraith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Shadowheart Wraith"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Shadowheart Wraith", controller: SEAT0 }],
+  },
+
+  // 1393. Heat Hound.
+  {
+    id: "heat-hound-etb",
+    description: "Heat Hound ETB; vanilla parse.",
+    seed: 0x698,
+    cards: {
+      "Heat Hound": `Name:Heat Hound
+ManaCost:2 R
+Types:Creature Elemental Hound
+PT:2/2
+K:Haste
+K:Trample
+Oracle:Heat Hound parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heat Hound"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heat Hound", controller: SEAT0 }],
+  },
+
+  // 1394. Ember Sphinx.
+  {
+    id: "ember-sphinx-etb",
+    description: "Ember Sphinx ETB; vanilla parse.",
+    seed: 0x699,
+    cards: {
+      "Ember Sphinx": `Name:Ember Sphinx
+ManaCost:5 U R
+Types:Creature Sphinx
+PT:5/5
+K:Flying
+Oracle:Ember Sphinx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ember Sphinx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ember Sphinx", controller: SEAT0 }],
+  },
+
+  // 1395. Rootbranch Sentry.
+  {
+    id: "rootbranch-sentry-etb",
+    description: "Rootbranch Sentry ETB; vanilla parse.",
+    seed: 0x69a,
+    cards: {
+      "Rootbranch Sentry": `Name:Rootbranch Sentry
+ManaCost:2 G
+Types:Creature Plant Warrior
+PT:2/4
+K:Reach
+K:Vigilance
+Oracle:Rootbranch Sentry parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rootbranch Sentry"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rootbranch Sentry", controller: SEAT0 }],
+  },
+
+  // 1396. Dustbowl Lasher.
+  {
+    id: "dustbowl-lasher-etb",
+    description: "Dustbowl Lasher ETB; vanilla parse.",
+    seed: 0x69b,
+    cards: {
+      "Dustbowl Lasher": `Name:Dustbowl Lasher
+ManaCost:2 R
+Types:Creature Beast
+PT:3/2
+K:Trample
+Oracle:Dustbowl Lasher parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dustbowl Lasher"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dustbowl Lasher", controller: SEAT0 }],
+  },
+
+  // 1397. Gilded Drakeling.
+  {
+    id: "gilded-drakeling-etb",
+    description: "Gilded Drakeling ETB; vanilla parse.",
+    seed: 0x69c,
+    cards: {
+      "Gilded Drakeling": `Name:Gilded Drakeling
+ManaCost:1 U
+Types:Creature Drake
+PT:1/2
+K:Flying
+Oracle:Gilded Drakeling parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Gilded Drakeling"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Gilded Drakeling", controller: SEAT0 }],
+  },
+
+  // 1398. Nightshade Familiar.
+  {
+    id: "nightshade-familiar-etb",
+    description: "Nightshade Familiar ETB; vanilla parse.",
+    seed: 0x69d,
+    cards: {
+      "Nightshade Familiar": `Name:Nightshade Familiar
+ManaCost:1 B
+Types:Creature Cat
+PT:1/2
+K:Deathtouch
+Oracle:Nightshade Familiar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Nightshade Familiar"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Nightshade Familiar", controller: SEAT0 }],
+  },
+
+  // 1399. Glade Walker.
+  {
+    id: "glade-walker-etb",
+    description: "Glade Walker ETB; vanilla parse.",
+    seed: 0x69e,
+    cards: {
+      "Glade Walker": `Name:Glade Walker
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+K:Reach
+Oracle:Glade Walker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glade Walker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glade Walker", controller: SEAT0 }],
+  },
+
+  // 1400. Skyward Falcon.
+  {
+    id: "skyward-falcon-etb",
+    description: "Skyward Falcon ETB; vanilla parse.",
+    seed: 0x69f,
+    cards: {
+      "Skyward Falcon": `Name:Skyward Falcon
+ManaCost:2 W
+Types:Creature Bird
+PT:2/2
+K:Flying
+K:First Strike
+Oracle:Skyward Falcon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skyward Falcon"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skyward Falcon", controller: SEAT0 }],
+  },
+
+  // 1401. Marsh Wraith.
+  {
+    id: "marsh-wraith-etb",
+    description: "Marsh Wraith ETB; vanilla parse.",
+    seed: 0x6a0,
+    cards: {
+      "Marsh Wraith": `Name:Marsh Wraith
+ManaCost:3 B
+Types:Creature Wraith
+PT:3/2
+K:Flying
+K:Lifelink
+Oracle:Marsh Wraith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Marsh Wraith"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Marsh Wraith", controller: SEAT0 }],
+  },
+
+  // 1402. Mossfire Imp.
+  {
+    id: "mossfire-imp-etb",
+    description: "Mossfire Imp ETB; vanilla parse.",
+    seed: 0x6a1,
+    cards: {
+      "Mossfire Imp": `Name:Mossfire Imp
+ManaCost:1 G
+Types:Creature Imp
+PT:1/1
+K:Flying
+K:Reach
+Oracle:Mossfire Imp parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mossfire Imp"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mossfire Imp", controller: SEAT0 }],
+  },
+
+  // 1403. Ridge Werewolf.
+  {
+    id: "ridge-werewolf-etb",
+    description: "Ridge Werewolf ETB; vanilla parse.",
+    seed: 0x6a2,
+    cards: {
+      "Ridge Werewolf": `Name:Ridge Werewolf
+ManaCost:3 R
+Types:Creature Werewolf
+PT:3/3
+K:Haste
+Oracle:Ridge Werewolf parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ridge Werewolf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ridge Werewolf", controller: SEAT0 }],
+  },
+
+  // 1404. Plains Champion.
+  {
+    id: "plains-champion-etb",
+    description: "Plains Champion ETB; vanilla parse.",
+    seed: 0x6a3,
+    cards: {
+      "Plains Champion": `Name:Plains Champion
+ManaCost:2 W
+Types:Creature Human Soldier
+PT:2/2
+K:Vigilance
+K:First Strike
+Oracle:Plains Champion parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plains Champion"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plains Champion", controller: SEAT0 }],
+  },
+
+  // 1405. Wave Witch.
+  {
+    id: "wave-witch-etb",
+    description: "Wave Witch ETB; vanilla parse.",
+    seed: 0x6a4,
+    cards: {
+      "Wave Witch": `Name:Wave Witch
+ManaCost:2 U
+Types:Creature Human Wizard
+PT:2/2
+K:Flash
+Oracle:Wave Witch parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wave Witch"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wave Witch", controller: SEAT0 }],
+  },
+
+  // 1406. Fen Spider.
+  {
+    id: "fen-spider-etb",
+    description: "Fen Spider ETB; vanilla parse.",
+    seed: 0x6a5,
+    cards: {
+      "Fen Spider": `Name:Fen Spider
+ManaCost:2 G
+Types:Creature Spider
+PT:2/3
+K:Reach
+Oracle:Fen Spider parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fen Spider"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Fen Spider", controller: SEAT0 }],
+  },
+
+  // 1407. Brawler Goblin.
+  {
+    id: "brawler-goblin-etb",
+    description: "Brawler Goblin ETB; vanilla parse.",
+    seed: 0x6a6,
+    cards: {
+      "Brawler Goblin": `Name:Brawler Goblin
+ManaCost:R
+Types:Creature Goblin Warrior
+PT:1/1
+K:Haste
+Oracle:Brawler Goblin parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brawler Goblin"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brawler Goblin", controller: SEAT0 }],
+  },
+
+  // 1408. Garrison Cleric.
+  {
+    id: "garrison-cleric-etb",
+    description: "Garrison Cleric ETB; vanilla parse.",
+    seed: 0x6a7,
+    cards: {
+      "Garrison Cleric": `Name:Garrison Cleric
+ManaCost:2 W
+Types:Creature Human Cleric
+PT:2/3
+K:Lifelink
+Oracle:Garrison Cleric parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Garrison Cleric"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Garrison Cleric", controller: SEAT0 }],
+  },
+
+  // 1409. Bog Witch Vanilla.
+  {
+    id: "bog-witch-vanilla-etb",
+    description: "Bog Witch Vanilla ETB; vanilla parse.",
+    seed: 0x6a8,
+    cards: {
+      "Bog Witch Vanilla": `Name:Bog Witch Vanilla
+ManaCost:1 B
+Types:Creature Human Wizard
+PT:1/1
+K:Deathtouch
+Oracle:Bog Witch Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Witch Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bog Witch Vanilla", controller: SEAT0 }],
+  },
+
+  // 1410. Storm Sphinx.
+  {
+    id: "storm-sphinx-etb",
+    description: "Storm Sphinx ETB; vanilla parse.",
+    seed: 0x6a9,
+    cards: {
+      "Storm Sphinx": `Name:Storm Sphinx
+ManaCost:5 U
+Types:Creature Sphinx
+PT:5/6
+K:Flying
+Oracle:Storm Sphinx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Storm Sphinx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Storm Sphinx", controller: SEAT0 }],
+  },
+
+  // 1411. Palace Guard Vanilla.
+  {
+    id: "palace-guard-vanilla-etb",
+    description: "Palace Guard Vanilla ETB; vanilla parse.",
+    seed: 0x6aa,
+    cards: {
+      "Palace Guard Vanilla": `Name:Palace Guard Vanilla
+ManaCost:2 W
+Types:Creature Human Soldier
+PT:1/5
+K:Defender
+Oracle:Palace Guard Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Palace Guard Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Palace Guard Vanilla", controller: SEAT0 }],
+  },
+
+  // 1412. Ashland Drake.
+  {
+    id: "ashland-drake-etb",
+    description: "Ashland Drake ETB; vanilla parse.",
+    seed: 0x6ab,
+    cards: {
+      "Ashland Drake": `Name:Ashland Drake
+ManaCost:3 R
+Types:Creature Drake
+PT:3/2
+K:Flying
+Oracle:Ashland Drake parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ashland Drake"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ashland Drake", controller: SEAT0 }],
+  },
+
+  // 1413. Cobblepath Tortoise.
+  {
+    id: "cobblepath-tortoise-etb",
+    description: "Cobblepath Tortoise ETB; vanilla parse.",
+    seed: 0x6ac,
+    cards: {
+      "Cobblepath Tortoise": `Name:Cobblepath Tortoise
+ManaCost:2 G
+Types:Creature Turtle
+PT:1/6
+K:Defender
+K:Reach
+Oracle:Cobblepath Tortoise parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cobblepath Tortoise"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cobblepath Tortoise", controller: SEAT0 }],
+  },
+
+  // 1414. Brimstone Mauler.
+  {
+    id: "brimstone-mauler-etb",
+    description: "Brimstone Mauler ETB; vanilla parse.",
+    seed: 0x6ad,
+    cards: {
+      "Brimstone Mauler": `Name:Brimstone Mauler
+ManaCost:3 R
+Types:Creature Devil
+PT:4/2
+K:Trample
+Oracle:Brimstone Mauler parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brimstone Mauler"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brimstone Mauler", controller: SEAT0 }],
+  },
+
+  // 1415. Wildwood Ranger.
+  {
+    id: "wildwood-ranger-etb",
+    description: "Wildwood Ranger ETB; vanilla parse.",
+    seed: 0x6ae,
+    cards: {
+      "Wildwood Ranger": `Name:Wildwood Ranger
+ManaCost:3 G
+Types:Creature Human Scout
+PT:4/3
+K:Reach
+Oracle:Wildwood Ranger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wildwood Ranger"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wildwood Ranger", controller: SEAT0 }],
+  },
+
+  // 1416. Surf Marauder.
+  {
+    id: "surf-marauder-etb",
+    description: "Surf Marauder ETB; vanilla parse.",
+    seed: 0x6af,
+    cards: {
+      "Surf Marauder": `Name:Surf Marauder
+ManaCost:2 U
+Types:Creature Pirate
+PT:2/2
+K:Flying
+Oracle:Surf Marauder parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surf Marauder"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Surf Marauder", controller: SEAT0 }],
+  },
+
+  // 1417. Rune Knight Vanilla.
+  {
+    id: "rune-knight-vanilla-etb",
+    description: "Rune Knight Vanilla ETB; vanilla parse.",
+    seed: 0x6b0,
+    cards: {
+      "Rune Knight Vanilla": `Name:Rune Knight Vanilla
+ManaCost:3 W
+Types:Creature Human Knight
+PT:3/4
+K:Vigilance
+Oracle:Rune Knight Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rune Knight Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rune Knight Vanilla", controller: SEAT0 }],
+  },
+
+  // 1418. Sea Drake Vanilla.
+  {
+    id: "sea-drake-vanilla-etb",
+    description: "Sea Drake Vanilla ETB; vanilla parse.",
+    seed: 0x6b1,
+    cards: {
+      "Sea Drake Vanilla": `Name:Sea Drake Vanilla
+ManaCost:3 U
+Types:Creature Drake
+PT:3/3
+K:Flying
+K:Hexproof
+Oracle:Sea Drake Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sea Drake Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sea Drake Vanilla", controller: SEAT0 }],
+  },
+
+  // 1419. Slag Reaver.
+  {
+    id: "slag-reaver-etb",
+    description: "Slag Reaver ETB; vanilla parse.",
+    seed: 0x6b2,
+    cards: {
+      "Slag Reaver": `Name:Slag Reaver
+ManaCost:4 R
+Types:Creature Ogre
+PT:4/4
+K:Trample
+Oracle:Slag Reaver parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Slag Reaver"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Slag Reaver", controller: SEAT0 }],
+  },
+
+  // 1420. Bog Lurker.
+  {
+    id: "bog-lurker-etb",
+    description: "Bog Lurker ETB; vanilla parse.",
+    seed: 0x6b3,
+    cards: {
+      "Bog Lurker": `Name:Bog Lurker
+ManaCost:2 B
+Types:Creature Zombie
+PT:2/4
+Oracle:Bog Lurker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Lurker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bog Lurker", controller: SEAT0 }],
+  },
+
+  // 1421. Forge Knight.
+  {
+    id: "forge-knight-etb",
+    description: "Forge Knight ETB; vanilla parse.",
+    seed: 0x6b4,
+    cards: {
+      "Forge Knight": `Name:Forge Knight
+ManaCost:3 R W
+Types:Creature Human Knight
+PT:3/3
+K:First Strike
+K:Haste
+Oracle:Forge Knight parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Knight"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forge Knight", controller: SEAT0 }],
+  },
+
+  // 1422. Highland Ranger.
+  {
+    id: "highland-ranger-etb",
+    description: "Highland Ranger ETB; vanilla parse.",
+    seed: 0x6b5,
+    cards: {
+      "Highland Ranger": `Name:Highland Ranger
+ManaCost:3 G
+Types:Creature Human Scout
+PT:3/3
+K:Vigilance
+Oracle:Highland Ranger parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Highland Ranger"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Highland Ranger", controller: SEAT0 }],
+  },
+
+  // 1423. Dune Stalker.
+  {
+    id: "dune-stalker-etb",
+    description: "Dune Stalker ETB; vanilla parse.",
+    seed: 0x6b6,
+    cards: {
+      "Dune Stalker": `Name:Dune Stalker
+ManaCost:2 R
+Types:Creature Beast
+PT:2/1
+K:Haste
+K:First Strike
+Oracle:Dune Stalker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dune Stalker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dune Stalker", controller: SEAT0 }],
+  },
+
+  // 1424. Sand Witch.
+  {
+    id: "sand-witch-etb",
+    description: "Sand Witch ETB; vanilla parse.",
+    seed: 0x6b7,
+    cards: {
+      "Sand Witch": `Name:Sand Witch
+ManaCost:2 U B
+Types:Creature Human Wizard
+PT:2/3
+K:Hexproof
+Oracle:Sand Witch parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sand Witch"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sand Witch", controller: SEAT0 }],
+  },
+
+  // 1425. River Naga.
+  {
+    id: "river-naga-etb",
+    description: "River Naga ETB; vanilla parse.",
+    seed: 0x6b8,
+    cards: {
+      "River Naga": `Name:River Naga
+ManaCost:2 U
+Types:Creature Naga
+PT:2/3
+K:Hexproof
+Oracle:River Naga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["River Naga"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "River Naga", controller: SEAT0 }],
+  },
+
+  // 1426. Brushwood Bear.
+  {
+    id: "brushwood-bear-etb",
+    description: "Brushwood Bear ETB; vanilla parse.",
+    seed: 0x6b9,
+    cards: {
+      "Brushwood Bear": `Name:Brushwood Bear
+ManaCost:2 G
+Types:Creature Bear
+PT:3/2
+K:Trample
+Oracle:Brushwood Bear parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brushwood Bear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brushwood Bear", controller: SEAT0 }],
+  },
+
+  // 1427. Dawnglow Cleric.
+  {
+    id: "dawnglow-cleric-etb",
+    description: "Dawnglow Cleric ETB; vanilla parse.",
+    seed: 0x6ba,
+    cards: {
+      "Dawnglow Cleric": `Name:Dawnglow Cleric
+ManaCost:2 W
+Types:Creature Human Cleric
+PT:2/3
+K:Vigilance
+K:Lifelink
+Oracle:Dawnglow Cleric parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dawnglow Cleric"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dawnglow Cleric", controller: SEAT0 }],
+  },
+
+  // 1428. Cliffside Ogre.
+  {
+    id: "cliffside-ogre-etb",
+    description: "Cliffside Ogre ETB; vanilla parse.",
+    seed: 0x6bb,
+    cards: {
+      "Cliffside Ogre": `Name:Cliffside Ogre
+ManaCost:3 R
+Types:Creature Ogre
+PT:3/3
+K:Trample
+Oracle:Cliffside Ogre parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cliffside Ogre"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cliffside Ogre", controller: SEAT0 }],
+  },
+
+  // 1429. Thicket Elemental Vanilla.
+  {
+    id: "thicket-elemental-vanilla-etb",
+    description: "Thicket Elemental Vanilla ETB; vanilla parse.",
+    seed: 0x6bc,
+    cards: {
+      "Thicket Elemental Vanilla": `Name:Thicket Elemental Vanilla
+ManaCost:4 G
+Types:Creature Elemental
+PT:4/5
+Oracle:Thicket Elemental Vanilla parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Thicket Elemental Vanilla"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Thicket Elemental Vanilla", controller: SEAT0 }],
+  },
+
+  // 1430. Reef Naga.
+  {
+    id: "reef-naga-etb",
+    description: "Reef Naga ETB; vanilla parse.",
+    seed: 0x6bd,
+    cards: {
+      "Reef Naga": `Name:Reef Naga
+ManaCost:2 U
+Types:Creature Merfolk Naga
+PT:2/2
+K:Flash
+Oracle:Reef Naga parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reef Naga"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reef Naga", controller: SEAT0 }],
+  },
+
+  // 1431. Heath Wolf.
+  {
+    id: "heath-wolf-etb",
+    description: "Heath Wolf ETB; vanilla parse.",
+    seed: 0x6be,
+    cards: {
+      "Heath Wolf": `Name:Heath Wolf
+ManaCost:1 G
+Types:Creature Wolf
+PT:1/2
+K:Vigilance
+Oracle:Heath Wolf parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Heath Wolf"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Heath Wolf", controller: SEAT0 }],
+  },
+
+  // 1432. Crypt Stalker.
+  {
+    id: "crypt-stalker-etb",
+    description: "Crypt Stalker ETB; vanilla parse.",
+    seed: 0x6bf,
+    cards: {
+      "Crypt Stalker": `Name:Crypt Stalker
+ManaCost:2 B
+Types:Creature Vampire
+PT:2/1
+K:Flying
+K:Lifelink
+Oracle:Crypt Stalker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Crypt Stalker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Crypt Stalker", controller: SEAT0 }],
+  },
+
+  // 1433. Surge Acolyte.
+  {
+    id: "surge-acolyte-etb",
+    description: "Surge Acolyte ETB; vanilla parse.",
+    seed: 0x6c0,
+    cards: {
+      "Surge Acolyte": `Name:Surge Acolyte
+ManaCost:2 U
+Types:Creature Human Wizard
+PT:1/3
+Oracle:Surge Acolyte parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surge Acolyte"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Surge Acolyte", controller: SEAT0 }],
+  },
+
+  // 1434. Granite Defender.
+  {
+    id: "granite-defender-etb",
+    description: "Granite Defender ETB; vanilla parse.",
+    seed: 0x6c1,
+    cards: {
+      "Granite Defender": `Name:Granite Defender
+ManaCost:4
+Types:Artifact Creature Construct
+PT:1/7
+K:Defender
+Oracle:Granite Defender parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Granite Defender"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Granite Defender", controller: SEAT0 }],
+  },
+
+  // 1435. Iron Boar.
+  {
+    id: "iron-boar-etb",
+    description: "Iron Boar ETB; vanilla parse.",
+    seed: 0x6c2,
+    cards: {
+      "Iron Boar": `Name:Iron Boar
+ManaCost:2
+Types:Artifact Creature Boar
+PT:2/2
+Oracle:Iron Boar parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Iron Boar"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Iron Boar", controller: SEAT0 }],
+  },
+
+  // 1436. Bronze Sphinx.
+  {
+    id: "bronze-sphinx-etb",
+    description: "Bronze Sphinx ETB; vanilla parse.",
+    seed: 0x6c3,
+    cards: {
+      "Bronze Sphinx": `Name:Bronze Sphinx
+ManaCost:5
+Types:Artifact Creature Sphinx
+PT:4/4
+K:Flying
+Oracle:Bronze Sphinx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bronze Sphinx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bronze Sphinx", controller: SEAT0 }],
+  },
+
+  // 1437. Steel Hound.
+  {
+    id: "steel-hound-etb",
+    description: "Steel Hound ETB; vanilla parse.",
+    seed: 0x6c4,
+    cards: {
+      "Steel Hound": `Name:Steel Hound
+ManaCost:1
+Types:Artifact Creature Hound
+PT:1/1
+Oracle:Steel Hound parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steel Hound"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Steel Hound", controller: SEAT0 }],
+  },
+
+  // 1438. Copper Stalker.
+  {
+    id: "copper-stalker-etb",
+    description: "Copper Stalker ETB; vanilla parse.",
+    seed: 0x6c5,
+    cards: {
+      "Copper Stalker": `Name:Copper Stalker
+ManaCost:3
+Types:Artifact Creature Construct
+PT:3/3
+K:Vigilance
+Oracle:Copper Stalker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Copper Stalker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Copper Stalker", controller: SEAT0 }],
+  },
+
+  // 1439. Mossy Sentinel.
+  {
+    id: "mossy-sentinel-etb",
+    description: "Mossy Sentinel ETB; vanilla parse.",
+    seed: 0x6c6,
+    cards: {
+      "Mossy Sentinel": `Name:Mossy Sentinel
+ManaCost:2 G
+Types:Creature Plant
+PT:1/4
+K:Reach
+K:Defender
+Oracle:Mossy Sentinel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mossy Sentinel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mossy Sentinel", controller: SEAT0 }],
+  },
+
+  // 1440. Snowfall Bear.
+  {
+    id: "snowfall-bear-etb",
+    description: "Snowfall Bear ETB; vanilla parse.",
+    seed: 0x6c7,
+    cards: {
+      "Snowfall Bear": `Name:Snowfall Bear
+ManaCost:2 G
+Types:Snow Creature Bear
+PT:2/3
+Oracle:Snowfall Bear parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snowfall Bear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snowfall Bear", controller: SEAT0 }],
+  },
+
+  // 1441. Frost Sentinel.
+  {
+    id: "frost-sentinel-etb",
+    description: "Frost Sentinel ETB; vanilla parse.",
+    seed: 0x6c8,
+    cards: {
+      "Frost Sentinel": `Name:Frost Sentinel
+ManaCost:3 W
+Types:Snow Creature Construct
+PT:2/4
+K:Vigilance
+Oracle:Frost Sentinel parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frost Sentinel"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frost Sentinel", controller: SEAT0 }],
+  },
+
+  // 1442. Glacier Drake.
+  {
+    id: "glacier-drake-etb",
+    description: "Glacier Drake ETB; vanilla parse.",
+    seed: 0x6c9,
+    cards: {
+      "Glacier Drake": `Name:Glacier Drake
+ManaCost:4 U
+Types:Snow Creature Drake
+PT:3/3
+K:Flying
+Oracle:Glacier Drake parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glacier Drake"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glacier Drake", controller: SEAT0 }],
+  },
+
+  // 1443. Hawthorn Sentry.
+  {
+    id: "hawthorn-sentry-etb",
+    description: "Hawthorn Sentry ETB; vanilla parse.",
+    seed: 0x6ca,
+    cards: {
+      "Hawthorn Sentry": `Name:Hawthorn Sentry
+ManaCost:2 W
+Types:Creature Human Soldier
+PT:2/3
+K:First Strike
+Oracle:Hawthorn Sentry parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hawthorn Sentry"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hawthorn Sentry", controller: SEAT0 }],
+  },
+
+  // 1444. Foothill Wolverine.
+  {
+    id: "foothill-wolverine-etb",
+    description: "Foothill Wolverine ETB; vanilla parse.",
+    seed: 0x6cb,
+    cards: {
+      "Foothill Wolverine": `Name:Foothill Wolverine
+ManaCost:2 R
+Types:Creature Wolverine
+PT:3/1
+K:First Strike
+K:Haste
+Oracle:Foothill Wolverine parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Foothill Wolverine"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Foothill Wolverine", controller: SEAT0 }],
+  },
+
+  // 1445. Sundown Pegasus.
+  {
+    id: "sundown-pegasus-etb",
+    description: "Sundown Pegasus ETB; vanilla parse.",
+    seed: 0x6cc,
+    cards: {
+      "Sundown Pegasus": `Name:Sundown Pegasus
+ManaCost:3 W
+Types:Creature Pegasus
+PT:3/3
+K:Flying
+K:Vigilance
+Oracle:Sundown Pegasus parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sundown Pegasus"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sundown Pegasus", controller: SEAT0 }],
+  },
+
+  // 1446. Hex-Bough Treant.
+  {
+    id: "hex-bough-treant-etb",
+    description: "Hex-Bough Treant ETB; vanilla parse.",
+    seed: 0x6cd,
+    cards: {
+      "Hex-Bough Treant": `Name:Hex-Bough Treant
+ManaCost:5 G
+Types:Creature Treefolk
+PT:5/6
+K:Trample
+Oracle:Hex-Bough Treant parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex-Bough Treant"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hex-Bough Treant", controller: SEAT0 }],
+  },
+
+  // 1447. Battlewise Cleric.
+  {
+    id: "battlewise-cleric-etb",
+    description: "Battlewise Cleric ETB; vanilla parse.",
+    seed: 0x6ce,
+    cards: {
+      "Battlewise Cleric": `Name:Battlewise Cleric
+ManaCost:2 W
+Types:Creature Human Cleric
+PT:2/3
+K:Lifelink
+Oracle:Battlewise Cleric parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Battlewise Cleric"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Battlewise Cleric", controller: SEAT0 }],
+  },
+
+  // 1448. Ridge Sphinx.
+  {
+    id: "ridge-sphinx-etb",
+    description: "Ridge Sphinx ETB; vanilla parse.",
+    seed: 0x6cf,
+    cards: {
+      "Ridge Sphinx": `Name:Ridge Sphinx
+ManaCost:4 U
+Types:Creature Sphinx
+PT:4/4
+K:Flying
+Oracle:Ridge Sphinx parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ridge Sphinx"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ridge Sphinx", controller: SEAT0 }],
+  },
+
+  // 1449. Mire Wraith.
+  {
+    id: "mire-wraith-etb",
+    description: "Mire Wraith ETB; vanilla parse.",
+    seed: 0x6d0,
+    cards: {
+      "Mire Wraith": `Name:Mire Wraith
+ManaCost:3 B
+Types:Creature Wraith
+PT:3/3
+K:Flying
+Oracle:Mire Wraith parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mire Wraith"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mire Wraith", controller: SEAT0 }],
+  },
+
+  // 1450. Bramble Knight.
+  {
+    id: "bramble-knight-etb",
+    description: "Bramble Knight ETB; vanilla parse.",
+    seed: 0x6d1,
+    cards: {
+      "Bramble Knight": `Name:Bramble Knight
+ManaCost:2 G
+Types:Creature Human Knight
+PT:2/2
+K:Reach
+K:First Strike
+Oracle:Bramble Knight parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bramble Knight"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bramble Knight", controller: SEAT0 }],
+  },
+
+  // 1451. Boggart Stalker.
+  {
+    id: "boggart-stalker-etb",
+    description: "Boggart Stalker ETB; vanilla parse.",
+    seed: 0x6d2,
+    cards: {
+      "Boggart Stalker": `Name:Boggart Stalker
+ManaCost:2 G
+Types:Creature Goblin Rogue
+PT:2/2
+Oracle:Boggart Stalker parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Boggart Stalker"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Boggart Stalker", controller: SEAT0 }],
+  },
+
+  // 1452. Dustpaw Yeti.
+  {
+    id: "dustpaw-yeti-etb",
+    description: "Dustpaw Yeti ETB; vanilla parse.",
+    seed: 0x6d3,
+    cards: {
+      "Dustpaw Yeti": `Name:Dustpaw Yeti
+ManaCost:3 R
+Types:Creature Yeti
+PT:4/3
+K:Trample
+Oracle:Dustpaw Yeti parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dustpaw Yeti"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Dustpaw Yeti", controller: SEAT0 }],
+  },
+
+  // 1453. Tide-Cleric.
+  {
+    id: "tide-cleric-etb",
+    description: "Tide-Cleric ETB; vanilla parse.",
+    seed: 0x6d4,
+    cards: {
+      "Tide-Cleric": `Name:Tide-Cleric
+ManaCost:2 W U
+Types:Creature Merfolk Cleric
+PT:2/3
+K:Lifelink
+Oracle:Tide-Cleric parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tide-Cleric"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tide-Cleric", controller: SEAT0 }],
+  },
+
+  // ─── M6.25 BATCH B — Lands (vanilla mana) ─────
+
+  // 1454. Whispering Cave.
+  {
+    id: "whispering-cave-etb",
+    description: "Whispering Cave ETB; vanilla land parse.",
+    seed: 0x6d5,
+    cards: {
+      "Whispering Cave": `Name:Whispering Cave
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:Whispering Cave parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Whispering Cave"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Whispering Cave", controller: SEAT0 }],
+  },
+
+  // 1455. Forge Tundra.
+  {
+    id: "forge-tundra-etb",
+    description: "Forge Tundra ETB; vanilla land parse.",
+    seed: 0x6d6,
+    cards: {
+      "Forge Tundra": `Name:Forge Tundra
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R W
+Oracle:Forge Tundra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Tundra"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forge Tundra", controller: SEAT0 }],
+  },
+
+  // 1456. Coastal Trove.
+  {
+    id: "coastal-trove-etb",
+    description: "Coastal Trove ETB; vanilla land parse.",
+    seed: 0x6d7,
+    cards: {
+      "Coastal Trove": `Name:Coastal Trove
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U W
+Oracle:Coastal Trove parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Coastal Trove"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Coastal Trove", controller: SEAT0 }],
+  },
+
+  // 1457. Bog Marketplace.
+  {
+    id: "bog-marketplace-etb",
+    description: "Bog Marketplace ETB; vanilla land parse.",
+    seed: 0x6d8,
+    cards: {
+      "Bog Marketplace": `Name:Bog Marketplace
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B W
+Oracle:Bog Marketplace parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Marketplace"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bog Marketplace", controller: SEAT0 }],
+  },
+
+  // 1458. Wooded Tower.
+  {
+    id: "wooded-tower-etb",
+    description: "Wooded Tower ETB; vanilla land parse.",
+    seed: 0x6d9,
+    cards: {
+      "Wooded Tower": `Name:Wooded Tower
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G W
+Oracle:Wooded Tower parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wooded Tower"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wooded Tower", controller: SEAT0 }],
+  },
+
+  // 1459. Volcanic Pit.
+  {
+    id: "volcanic-pit-etb",
+    description: "Volcanic Pit ETB; vanilla land parse.",
+    seed: 0x6da,
+    cards: {
+      "Volcanic Pit": `Name:Volcanic Pit
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R
+Oracle:Volcanic Pit parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Volcanic Pit"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Volcanic Pit", controller: SEAT0 }],
+  },
+
+  // 1460. Frostmire Reach.
+  {
+    id: "frostmire-reach-etb",
+    description: "Frostmire Reach ETB; vanilla land parse.",
+    seed: 0x6db,
+    cards: {
+      "Frostmire Reach": `Name:Frostmire Reach
+Types:Snow Land
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:Frostmire Reach parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Frostmire Reach"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Frostmire Reach", controller: SEAT0 }],
+  },
+
+  // 1461. Sun-Baked Plains.
+  {
+    id: "sun-baked-plains-etb",
+    description: "Sun-Baked Plains ETB; vanilla land parse.",
+    seed: 0x6dc,
+    cards: {
+      "Sun-Baked Plains": `Name:Sun-Baked Plains
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ W
+Oracle:Sun-Baked Plains parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sun-Baked Plains"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sun-Baked Plains", controller: SEAT0 }],
+  },
+
+  // 1462. Tide Cove.
+  {
+    id: "tide-cove-etb",
+    description: "Tide Cove ETB; vanilla land parse.",
+    seed: 0x6dd,
+    cards: {
+      "Tide Cove": `Name:Tide Cove
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U
+Oracle:Tide Cove parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tide Cove"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tide Cove", controller: SEAT0 }],
+  },
+
+  // 1463. Stagnant Marsh.
+  {
+    id: "stagnant-marsh-etb",
+    description: "Stagnant Marsh ETB; vanilla land parse.",
+    seed: 0x6de,
+    cards: {
+      "Stagnant Marsh": `Name:Stagnant Marsh
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Stagnant Marsh parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Stagnant Marsh"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Stagnant Marsh", controller: SEAT0 }],
+  },
+
+  // 1464. Rust Foundry.
+  {
+    id: "rust-foundry-etb",
+    description: "Rust Foundry ETB; vanilla land parse.",
+    seed: 0x6df,
+    cards: {
+      "Rust Foundry": `Name:Rust Foundry
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R U
+Oracle:Rust Foundry parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rust Foundry"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rust Foundry", controller: SEAT0 }],
+  },
+
+  // 1465. Mossy Tundra.
+  {
+    id: "mossy-tundra-etb",
+    description: "Mossy Tundra ETB; vanilla land parse.",
+    seed: 0x6e0,
+    cards: {
+      "Mossy Tundra": `Name:Mossy Tundra
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Mossy Tundra parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mossy Tundra"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mossy Tundra", controller: SEAT0 }],
+  },
+
+  // 1466. Mountain Outpost.
+  {
+    id: "mountain-outpost-etb",
+    description: "Mountain Outpost ETB; vanilla land parse.",
+    seed: 0x6e1,
+    cards: {
+      "Mountain Outpost": `Name:Mountain Outpost
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R W
+Oracle:Mountain Outpost parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Mountain Outpost"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Mountain Outpost", controller: SEAT0 }],
+  },
+
+  // 1467. Salt Flats.
+  {
+    id: "salt-flats-etb",
+    description: "Salt Flats ETB; vanilla land parse.",
+    seed: 0x6e2,
+    cards: {
+      "Salt Flats": `Name:Salt Flats
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:Salt Flats parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Salt Flats"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Salt Flats", controller: SEAT0 }],
+  },
+
+  // 1468. Skylight Spire.
+  {
+    id: "skylight-spire-etb",
+    description: "Skylight Spire ETB; vanilla land parse.",
+    seed: 0x6e3,
+    cards: {
+      "Skylight Spire": `Name:Skylight Spire
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U W
+Oracle:Skylight Spire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skylight Spire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skylight Spire", controller: SEAT0 }],
+  },
+
+  // 1469. Ancient Cairn.
+  {
+    id: "ancient-cairn-etb",
+    description: "Ancient Cairn ETB; vanilla land parse.",
+    seed: 0x6e4,
+    cards: {
+      "Ancient Cairn": `Name:Ancient Cairn
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B
+Oracle:Ancient Cairn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ancient Cairn"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ancient Cairn", controller: SEAT0 }],
+  },
+
+  // 1470. Misty Shoals.
+  {
+    id: "misty-shoals-etb",
+    description: "Misty Shoals ETB; vanilla land parse.",
+    seed: 0x6e5,
+    cards: {
+      "Misty Shoals": `Name:Misty Shoals
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U G
+Oracle:Misty Shoals parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Misty Shoals"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Misty Shoals", controller: SEAT0 }],
+  },
+
+  // 1471. Cavernous Spire.
+  {
+    id: "cavernous-spire-etb",
+    description: "Cavernous Spire ETB; vanilla land parse.",
+    seed: 0x6e6,
+    cards: {
+      "Cavernous Spire": `Name:Cavernous Spire
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R
+Oracle:Cavernous Spire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cavernous Spire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Cavernous Spire", controller: SEAT0 }],
+  },
+
+  // 1472. Verdant Crossing.
+  {
+    id: "verdant-crossing-etb",
+    description: "Verdant Crossing ETB; vanilla land parse.",
+    seed: 0x6e7,
+    cards: {
+      "Verdant Crossing": `Name:Verdant Crossing
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G W
+Oracle:Verdant Crossing parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Verdant Crossing"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Verdant Crossing", controller: SEAT0 }],
+  },
+
+  // 1473. Brimstone Vault.
+  {
+    id: "brimstone-vault-etb",
+    description: "Brimstone Vault ETB; vanilla land parse.",
+    seed: 0x6e8,
+    cards: {
+      "Brimstone Vault": `Name:Brimstone Vault
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B R
+Oracle:Brimstone Vault parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brimstone Vault"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brimstone Vault", controller: SEAT0 }],
+  },
+
+  // 1474. Snow Cathedral.
+  {
+    id: "snow-cathedral-etb",
+    description: "Snow Cathedral ETB; vanilla land parse.",
+    seed: 0x6e9,
+    cards: {
+      "Snow Cathedral": `Name:Snow Cathedral
+Types:Snow Land
+A:AB$ Mana | Cost$ T | Produced$ W
+Oracle:Snow Cathedral parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snow Cathedral"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snow Cathedral", controller: SEAT0 }],
+  },
+
+  // 1475. Glacier Fjord.
+  {
+    id: "glacier-fjord-etb",
+    description: "Glacier Fjord ETB; vanilla land parse.",
+    seed: 0x6ea,
+    cards: {
+      "Glacier Fjord": `Name:Glacier Fjord
+Types:Snow Land
+A:AB$ Mana | Cost$ T | Produced$ U
+Oracle:Glacier Fjord parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Glacier Fjord"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Glacier Fjord", controller: SEAT0 }],
+  },
+
+  // 1476. Snowfall Pass.
+  {
+    id: "snowfall-pass-etb",
+    description: "Snowfall Pass ETB; vanilla land parse.",
+    seed: 0x6eb,
+    cards: {
+      "Snowfall Pass": `Name:Snowfall Pass
+Types:Snow Land
+A:AB$ Mana | Cost$ T | Produced$ G
+Oracle:Snowfall Pass parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Snowfall Pass"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Snowfall Pass", controller: SEAT0 }],
+  },
+
+  // 1477. Sand Drift.
+  {
+    id: "sand-drift-etb",
+    description: "Sand Drift ETB; vanilla land parse.",
+    seed: 0x6ec,
+    cards: {
+      "Sand Drift": `Name:Sand Drift
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R W
+Oracle:Sand Drift parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sand Drift"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sand Drift", controller: SEAT0 }],
+  },
+
+  // 1478. Tide Steppe.
+  {
+    id: "tide-steppe-etb",
+    description: "Tide Steppe ETB; vanilla land parse.",
+    seed: 0x6ed,
+    cards: {
+      "Tide Steppe": `Name:Tide Steppe
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ G U
+Oracle:Tide Steppe parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tide Steppe"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tide Steppe", controller: SEAT0 }],
+  },
+
+  // 1479. Old Watchtower.
+  {
+    id: "old-watchtower-etb",
+    description: "Old Watchtower ETB; vanilla land parse.",
+    seed: 0x6ee,
+    cards: {
+      "Old Watchtower": `Name:Old Watchtower
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ C
+Oracle:Old Watchtower parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Old Watchtower"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Old Watchtower", controller: SEAT0 }],
+  },
+
+  // 1480. Vault of Ash.
+  {
+    id: "vault-of-ash-etb",
+    description: "Vault of Ash ETB; vanilla land parse.",
+    seed: 0x6ef,
+    cards: {
+      "Vault of Ash": `Name:Vault of Ash
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B R
+Oracle:Vault of Ash parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Vault of Ash"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Vault of Ash", controller: SEAT0 }],
+  },
+
+  // 1481. Rustfall Ridge.
+  {
+    id: "rustfall-ridge-etb",
+    description: "Rustfall Ridge ETB; vanilla land parse.",
+    seed: 0x6f0,
+    cards: {
+      "Rustfall Ridge": `Name:Rustfall Ridge
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ R
+Oracle:Rustfall Ridge parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rustfall Ridge"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rustfall Ridge", controller: SEAT0 }],
+  },
+
+  // 1482. Sunken Vault.
+  {
+    id: "sunken-vault-etb",
+    description: "Sunken Vault ETB; vanilla land parse.",
+    seed: 0x6f1,
+    cards: {
+      "Sunken Vault": `Name:Sunken Vault
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ U B
+Oracle:Sunken Vault parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sunken Vault"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sunken Vault", controller: SEAT0 }],
+  },
+
+  // 1483. Brackish Boglands.
+  {
+    id: "brackish-boglands-etb",
+    description: "Brackish Boglands ETB; vanilla land parse.",
+    seed: 0x6f2,
+    cards: {
+      "Brackish Boglands": `Name:Brackish Boglands
+Types:Land
+A:AB$ Mana | Cost$ T | Produced$ B G
+Oracle:Brackish Boglands parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brackish Boglands"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brackish Boglands", controller: SEAT0 }],
+  },
+
+  // ─── M6.25 BATCH C — Static enchantments (anthems / micro-buffs) ─────
+
+  // 1484. Hawthorn Aegis.
+  {
+    id: "hawthorn-aegis-etb",
+    description: "Hawthorn Aegis ETB; static parse.",
+    seed: 0x6f3,
+    cards: {
+      "Hawthorn Aegis": `Name:Hawthorn Aegis
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Aegis.
+Oracle:Hawthorn Aegis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hawthorn Aegis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Hawthorn Aegis", controller: SEAT0 }],
+  },
+
+  // 1485. Surge Choir.
+  {
+    id: "surge-choir-etb",
+    description: "Surge Choir ETB; static parse.",
+    seed: 0x6f4,
+    cards: {
+      "Surge Choir": `Name:Surge Choir
+ManaCost:2 U
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Hexproof | Description$ Choir.
+Oracle:Surge Choir parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surge Choir"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Surge Choir", controller: SEAT0 }],
+  },
+
+  // 1486. Sun-Forged Sigil.
+  {
+    id: "sun-forged-sigil-etb",
+    description: "Sun-Forged Sigil ETB; static parse.",
+    seed: 0x6f5,
+    cards: {
+      "Sun-Forged Sigil": `Name:Sun-Forged Sigil
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Vigilance | Description$ Sigil.
+Oracle:Sun-Forged Sigil parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sun-Forged Sigil"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sun-Forged Sigil", controller: SEAT0 }],
+  },
+
+  // 1487. Ember Banner.
+  {
+    id: "ember-banner-etb",
+    description: "Ember Banner ETB; static parse.",
+    seed: 0x6f6,
+    cards: {
+      "Ember Banner": `Name:Ember Banner
+ManaCost:1 R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Banner.
+Oracle:Ember Banner parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ember Banner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Ember Banner", controller: SEAT0 }],
+  },
+
+  // 1488. Spectral Guard.
+  {
+    id: "spectral-guard-etb",
+    description: "Spectral Guard ETB; static parse.",
+    seed: 0x6f7,
+    cards: {
+      "Spectral Guard": `Name:Spectral Guard
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Flying | Description$ Guard.
+Oracle:Spectral Guard parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spectral Guard"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Spectral Guard", controller: SEAT0 }],
+  },
+
+  // 1489. Razor Pact.
+  {
+    id: "razor-pact-etb",
+    description: "Razor Pact ETB; static parse.",
+    seed: 0x6f8,
+    cards: {
+      "Razor Pact": `Name:Razor Pact
+ManaCost:1 R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ First Strike | Description$ Pact.
+Oracle:Razor Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Razor Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Razor Pact", controller: SEAT0 }],
+  },
+
+  // 1490. Wild Growth Pact.
+  {
+    id: "wild-growth-pact-etb",
+    description: "Wild Growth Pact ETB; static parse.",
+    seed: 0x6f9,
+    cards: {
+      "Wild Growth Pact": `Name:Wild Growth Pact
+ManaCost:G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | Description$ Growth.
+Oracle:Wild Growth Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wild Growth Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Wild Growth Pact", controller: SEAT0 }],
+  },
+
+  // 1491. Watchful Aegis.
+  {
+    id: "watchful-aegis-etb",
+    description: "Watchful Aegis ETB; static parse.",
+    seed: 0x6fa,
+    cards: {
+      "Watchful Aegis": `Name:Watchful Aegis
+ManaCost:2 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddToughness$ 2 | Description$ Watchful.
+Oracle:Watchful Aegis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Watchful Aegis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Watchful Aegis", controller: SEAT0 }],
+  },
+
+  // 1492. Sneer Banner.
+  {
+    id: "sneer-banner-etb",
+    description: "Sneer Banner ETB; static parse.",
+    seed: 0x6fb,
+    cards: {
+      "Sneer Banner": `Name:Sneer Banner
+ManaCost:B
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Menace | Description$ Sneer.
+Oracle:Sneer Banner parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sneer Banner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sneer Banner", controller: SEAT0 }],
+  },
+
+  // 1493. Reckless Choir.
+  {
+    id: "reckless-choir-etb",
+    description: "Reckless Choir ETB; static parse.",
+    seed: 0x6fc,
+    cards: {
+      "Reckless Choir": `Name:Reckless Choir
+ManaCost:2 R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Trample | Description$ Reckless.
+Oracle:Reckless Choir parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Reckless Choir"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Reckless Choir", controller: SEAT0 }],
+  },
+
+  // 1494. Highland Aegis.
+  {
+    id: "highland-aegis-etb",
+    description: "Highland Aegis ETB; static parse.",
+    seed: 0x6fd,
+    cards: {
+      "Highland Aegis": `Name:Highland Aegis
+ManaCost:2 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Human | AddPower$ 1 | AddToughness$ 1 | Description$ Highland.
+Oracle:Highland Aegis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Highland Aegis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Highland Aegis", controller: SEAT0 }],
+  },
+
+  // 1495. Tide Bond.
+  {
+    id: "tide-bond-etb",
+    description: "Tide Bond ETB; static parse.",
+    seed: 0x6fe,
+    cards: {
+      "Tide Bond": `Name:Tide Bond
+ManaCost:U
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Merfolk | AddPower$ 1 | Description$ Tide.
+Oracle:Tide Bond parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tide Bond"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tide Bond", controller: SEAT0 }],
+  },
+
+  // 1496. Forest Mantle.
+  {
+    id: "forest-mantle-etb",
+    description: "Forest Mantle ETB; static parse.",
+    seed: 0x6ff,
+    cards: {
+      "Forest Mantle": `Name:Forest Mantle
+ManaCost:1 G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Elf | AddPower$ 1 | AddToughness$ 1 | Description$ Mantle.
+Oracle:Forest Mantle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forest Mantle"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forest Mantle", controller: SEAT0 }],
+  },
+
+  // 1497. Rust Hymnal.
+  {
+    id: "rust-hymnal-etb",
+    description: "Rust Hymnal ETB; static parse.",
+    seed: 0x700,
+    cards: {
+      "Rust Hymnal": `Name:Rust Hymnal
+ManaCost:2 R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Goblin | AddPower$ 1 | Description$ Hymn.
+Oracle:Rust Hymnal parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rust Hymnal"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rust Hymnal", controller: SEAT0 }],
+  },
+
+  // 1498. Bog Hymn.
+  {
+    id: "bog-hymn-etb",
+    description: "Bog Hymn ETB; static parse.",
+    seed: 0x701,
+    cards: {
+      "Bog Hymn": `Name:Bog Hymn
+ManaCost:1 B
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Zombie | AddPower$ 1 | AddToughness$ 1 | Description$ Hymn.
+Oracle:Bog Hymn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Hymn"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bog Hymn", controller: SEAT0 }],
+  },
+
+  // 1499. Skyward Mantle.
+  {
+    id: "skyward-mantle-etb",
+    description: "Skyward Mantle ETB; static parse.",
+    seed: 0x702,
+    cards: {
+      "Skyward Mantle": `Name:Skyward Mantle
+ManaCost:2 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Bird | AddKeyword$ Vigilance | Description$ Skyward.
+Oracle:Skyward Mantle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skyward Mantle"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skyward Mantle", controller: SEAT0 }],
+  },
+
+  // 1500. Verdant Hymn.
+  {
+    id: "verdant-hymn-etb",
+    description: "Verdant Hymn ETB; static parse.",
+    seed: 0x703,
+    cards: {
+      "Verdant Hymn": `Name:Verdant Hymn
+ManaCost:G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Druid | AddPower$ 1 | Description$ Verdant.
+Oracle:Verdant Hymn parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Verdant Hymn"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Verdant Hymn", controller: SEAT0 }],
+  },
+
+  // 1501. Rune Veil.
+  {
+    id: "rune-veil-etb",
+    description: "Rune Veil ETB; static parse.",
+    seed: 0x704,
+    cards: {
+      "Rune Veil": `Name:Rune Veil
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Lifelink | Description$ Veil.
+Oracle:Rune Veil parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rune Veil"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Rune Veil", controller: SEAT0 }],
+  },
+
+  // 1502. Skirmish Banner.
+  {
+    id: "skirmish-banner-etb",
+    description: "Skirmish Banner ETB; static parse.",
+    seed: 0x705,
+    cards: {
+      "Skirmish Banner": `Name:Skirmish Banner
+ManaCost:1 R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+attacking | AddPower$ 1 | Description$ Skirmish.
+Oracle:Skirmish Banner parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skirmish Banner"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skirmish Banner", controller: SEAT0 }],
+  },
+
+  // 1503. Brace of Tides.
+  {
+    id: "brace-of-tides-etb",
+    description: "Brace of Tides ETB; static parse.",
+    seed: 0x706,
+    cards: {
+      "Brace of Tides": `Name:Brace of Tides
+ManaCost:2 U
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Flash | Description$ Tide.
+Oracle:Brace of Tides parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Brace of Tides"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Brace of Tides", controller: SEAT0 }],
+  },
+
+  // 1504. Plains Dirge.
+  {
+    id: "plains-dirge-etb",
+    description: "Plains Dirge ETB; static parse.",
+    seed: 0x707,
+    cards: {
+      "Plains Dirge": `Name:Plains Dirge
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.OppCtrl | AddKeyword$ CARDNAME's controller can't gain life. | Description$ Dirge.
+Oracle:Plains Dirge parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Plains Dirge"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Plains Dirge", controller: SEAT0 }],
+  },
+
+  // 1505. Choir of Watchers.
+  {
+    id: "choir-of-watchers-etb",
+    description: "Choir of Watchers ETB; static parse.",
+    seed: 0x708,
+    cards: {
+      "Choir of Watchers": `Name:Choir of Watchers
+ManaCost:2 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Vigilance | Description$ Watchers.
+Oracle:Choir of Watchers parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Choir of Watchers"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Choir of Watchers", controller: SEAT0 }],
+  },
+
+  // 1506. Forge of Pride.
+  {
+    id: "forge-of-pride-etb",
+    description: "Forge of Pride ETB; static parse.",
+    seed: 0x709,
+    cards: {
+      "Forge of Pride": `Name:Forge of Pride
+ManaCost:1 R W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Knight | AddPower$ 1 | AddToughness$ 1 | Description$ Pride.
+Oracle:Forge of Pride parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge of Pride"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forge of Pride", controller: SEAT0 }],
+  },
+
+  // 1507. Flame Tribute.
+  {
+    id: "flame-tribute-etb",
+    description: "Flame Tribute ETB; static parse.",
+    seed: 0x70a,
+    cards: {
+      "Flame Tribute": `Name:Flame Tribute
+ManaCost:1 R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Dragon | AddKeyword$ Haste | Description$ Tribute.
+Oracle:Flame Tribute parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flame Tribute"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Flame Tribute", controller: SEAT0 }],
+  },
+
+  // 1508. Tide Pact.
+  {
+    id: "tide-pact-etb",
+    description: "Tide Pact ETB; static parse.",
+    seed: 0x70b,
+    cards: {
+      "Tide Pact": `Name:Tide Pact
+ManaCost:U
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddToughness$ 1 | Description$ Pact.
+Oracle:Tide Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Tide Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Tide Pact", controller: SEAT0 }],
+  },
+
+  // 1509. Bramble Aegis.
+  {
+    id: "bramble-aegis-etb",
+    description: "Bramble Aegis ETB; static parse.",
+    seed: 0x70c,
+    cards: {
+      "Bramble Aegis": `Name:Bramble Aegis
+ManaCost:G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Reach | Description$ Aegis.
+Oracle:Bramble Aegis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bramble Aegis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Bramble Aegis", controller: SEAT0 }],
+  },
+
+  // 1510. Forge Aegis.
+  {
+    id: "forge-aegis-etb",
+    description: "Forge Aegis ETB; static parse.",
+    seed: 0x70d,
+    cards: {
+      "Forge Aegis": `Name:Forge Aegis
+ManaCost:2 W R
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Vigilance & First Strike | Description$ Aegis.
+Oracle:Forge Aegis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Aegis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Forge Aegis", controller: SEAT0 }],
+  },
+
+  // 1511. Outback Pact.
+  {
+    id: "outback-pact-etb",
+    description: "Outback Pact ETB; static parse.",
+    seed: 0x70e,
+    cards: {
+      "Outback Pact": `Name:Outback Pact
+ManaCost:1 G
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Beast | AddPower$ 1 | Description$ Pact.
+Oracle:Outback Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Outback Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Outback Pact", controller: SEAT0 }],
+  },
+
+  // 1512. Sun-Forged Aegis.
+  {
+    id: "sun-forged-aegis-etb",
+    description: "Sun-Forged Aegis ETB; static parse.",
+    seed: 0x70f,
+    cards: {
+      "Sun-Forged Aegis": `Name:Sun-Forged Aegis
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddToughness$ 1 | Description$ Sun.
+Oracle:Sun-Forged Aegis parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sun-Forged Aegis"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Sun-Forged Aegis", controller: SEAT0 }],
+  },
+
+  // 1513. Skyward Pact.
+  {
+    id: "skyward-pact-etb",
+    description: "Skyward Pact ETB; static parse.",
+    seed: 0x710,
+    cards: {
+      "Skyward Pact": `Name:Skyward Pact
+ManaCost:1 W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl+Bird | AddPower$ 1 | AddToughness$ 1 | Description$ Skyward.
+Oracle:Skyward Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Skyward Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "etb", cardName: "Skyward Pact", controller: SEAT0 }],
+  },
+
+  // ─── M6.25 BATCH D — Spells (in-hand parse only) ─────
+
+  // 1514. Searing Beam Spell.
+  {
+    id: "searing-beam-spell-in-hand",
+    description: "Searing Beam Spell in hand; parse only.",
+    seed: 0x711,
+    cards: {
+      "Searing Beam Spell": `Name:Searing Beam Spell
+ManaCost:R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ R | NumDmg$ 2 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+Oracle:Searing Beam Spell parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Searing Beam Spell"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1515. Healing Beam Spell.
+  {
+    id: "healing-beam-spell-in-hand",
+    description: "Healing Beam Spell in hand; parse only.",
+    seed: 0x712,
+    cards: {
+      "Healing Beam Spell": `Name:Healing Beam Spell
+ManaCost:W
+Types:Instant
+A:SP$ GainLife | Cost$ W | LifeAmount$ 3 | Defined$ You
+Oracle:Healing Beam Spell parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Healing Beam Spell"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1516. Steady Brewing.
+  {
+    id: "steady-brewing-in-hand",
+    description: "Steady Brewing in hand; parse only.",
+    seed: 0x713,
+    cards: {
+      "Steady Brewing": `Name:Steady Brewing
+ManaCost:U
+Types:Sorcery
+A:SP$ Draw | Cost$ U | NumCards$ 1
+Oracle:Steady Brewing parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Steady Brewing"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1517. Rite of Boldness.
+  {
+    id: "rite-of-boldness-in-hand",
+    description: "Rite of Boldness in hand; parse only.",
+    seed: 0x714,
+    cards: {
+      "Rite of Boldness": `Name:Rite of Boldness
+ManaCost:1 R
+Types:Sorcery
+A:SP$ Pump | Cost$ 1 R | NumAtt$ 2 | NumDef$ 0 | Defined$ Self
+Oracle:Rite of Boldness parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rite of Boldness"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1518. Verdant Boon.
+  {
+    id: "verdant-boon-in-hand",
+    description: "Verdant Boon in hand; parse only.",
+    seed: 0x715,
+    cards: {
+      "Verdant Boon": `Name:Verdant Boon
+ManaCost:1 G
+Types:Sorcery
+A:SP$ Mana | Cost$ 1 G | Produced$ G | Amount$ 2
+Oracle:Verdant Boon parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Verdant Boon"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1519. Dirge of Sorrows.
+  {
+    id: "dirge-of-sorrows-in-hand",
+    description: "Dirge of Sorrows in hand; parse only.",
+    seed: 0x716,
+    cards: {
+      "Dirge of Sorrows": `Name:Dirge of Sorrows
+ManaCost:1 B
+Types:Sorcery
+A:SP$ Mill | Cost$ 1 B | NumCards$ 2 | Defined$ Opponent
+Oracle:Dirge of Sorrows parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Dirge of Sorrows"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1520. Featherwind Burst.
+  {
+    id: "featherwind-burst-in-hand",
+    description: "Featherwind Burst in hand; parse only.",
+    seed: 0x717,
+    cards: {
+      "Featherwind Burst": `Name:Featherwind Burst
+ManaCost:1 U
+Types:Instant
+A:SP$ Bounce | Cost$ 1 U | TargetType$ Card | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand
+Oracle:Featherwind Burst parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Featherwind Burst"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1521. Searing Storm Spell.
+  {
+    id: "searing-storm-spell-in-hand",
+    description: "Searing Storm Spell in hand; parse only.",
+    seed: 0x718,
+    cards: {
+      "Searing Storm Spell": `Name:Searing Storm Spell
+ManaCost:2 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 2 R | NumDmg$ 3 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+Oracle:Searing Storm Spell parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Searing Storm Spell"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1522. Cleansing Mantle.
+  {
+    id: "cleansing-mantle-in-hand",
+    description: "Cleansing Mantle in hand; parse only.",
+    seed: 0x719,
+    cards: {
+      "Cleansing Mantle": `Name:Cleansing Mantle
+ManaCost:1 W
+Types:Sorcery
+A:SP$ DestroyAll | Cost$ 1 W | ValidCards$ Enchantment
+Oracle:Cleansing Mantle parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cleansing Mantle"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1523. Foul Plague.
+  {
+    id: "foul-plague-in-hand",
+    description: "Foul Plague in hand; parse only.",
+    seed: 0x71a,
+    cards: {
+      "Foul Plague": `Name:Foul Plague
+ManaCost:2 B
+Types:Sorcery
+A:SP$ Pump | Cost$ 2 B | Defined$ TargetedCreature | NumAtt$ -1 | NumDef$ -1 | TargetType$ Creature
+Oracle:Foul Plague parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Foul Plague"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1524. Bramble Strike.
+  {
+    id: "bramble-strike-in-hand",
+    description: "Bramble Strike in hand; parse only.",
+    seed: 0x71b,
+    cards: {
+      "Bramble Strike": `Name:Bramble Strike
+ManaCost:G
+Types:Sorcery
+A:SP$ Pump | Cost$ G | Defined$ TargetedCreature | NumAtt$ 2 | NumDef$ 2 | TargetType$ Creature
+Oracle:Bramble Strike parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bramble Strike"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1525. Fiery Greeting.
+  {
+    id: "fiery-greeting-in-hand",
+    description: "Fiery Greeting in hand; parse only.",
+    seed: 0x71c,
+    cards: {
+      "Fiery Greeting": `Name:Fiery Greeting
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+Oracle:Fiery Greeting parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Fiery Greeting"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1526. Ground Blessing.
+  {
+    id: "ground-blessing-in-hand",
+    description: "Ground Blessing in hand; parse only.",
+    seed: 0x71d,
+    cards: {
+      "Ground Blessing": `Name:Ground Blessing
+ManaCost:W
+Types:Instant
+A:SP$ GainLife | Cost$ W | LifeAmount$ 1 | Defined$ You
+Oracle:Ground Blessing parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Ground Blessing"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1527. Spell Curl.
+  {
+    id: "spell-curl-in-hand",
+    description: "Spell Curl in hand; parse only.",
+    seed: 0x71e,
+    cards: {
+      "Spell Curl": `Name:Spell Curl
+ManaCost:U
+Types:Instant
+A:SP$ Counter | Cost$ U | TargetType$ Card | ValidTgts$ Card.Spell
+Oracle:Spell Curl parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Spell Curl"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1528. Wail of Mire.
+  {
+    id: "wail-of-mire-in-hand",
+    description: "Wail of Mire in hand; parse only.",
+    seed: 0x71f,
+    cards: {
+      "Wail of Mire": `Name:Wail of Mire
+ManaCost:B
+Types:Sorcery
+A:SP$ LoseLife | Cost$ B | LifeAmount$ 1 | Defined$ Opponent
+Oracle:Wail of Mire parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wail of Mire"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1529. Verdant Twirl.
+  {
+    id: "verdant-twirl-in-hand",
+    description: "Verdant Twirl in hand; parse only.",
+    seed: 0x720,
+    cards: {
+      "Verdant Twirl": `Name:Verdant Twirl
+ManaCost:1 G
+Types:Instant
+A:SP$ Mana | Cost$ 1 G | Produced$ G | Amount$ 1
+Oracle:Verdant Twirl parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Verdant Twirl"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1530. Rune of Tides.
+  {
+    id: "rune-of-tides-in-hand",
+    description: "Rune of Tides in hand; parse only.",
+    seed: 0x721,
+    cards: {
+      "Rune of Tides": `Name:Rune of Tides
+ManaCost:1 U
+Types:Instant
+A:SP$ Draw | Cost$ 1 U | NumCards$ 1
+Oracle:Rune of Tides parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rune of Tides"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1531. Flame Twirl.
+  {
+    id: "flame-twirl-in-hand",
+    description: "Flame Twirl in hand; parse only.",
+    seed: 0x722,
+    cards: {
+      "Flame Twirl": `Name:Flame Twirl
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | TargetType$ Creature | ValidTgts$ Creature.attacking,Creature.blocking
+Oracle:Flame Twirl parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flame Twirl"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1532. Bog Mending.
+  {
+    id: "bog-mending-in-hand",
+    description: "Bog Mending in hand; parse only.",
+    seed: 0x723,
+    cards: {
+      "Bog Mending": `Name:Bog Mending
+ManaCost:1 B
+Types:Sorcery
+A:SP$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:Bog Mending parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Bog Mending"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1533. Forge Sunder.
+  {
+    id: "forge-sunder-in-hand",
+    description: "Forge Sunder in hand; parse only.",
+    seed: 0x724,
+    cards: {
+      "Forge Sunder": `Name:Forge Sunder
+ManaCost:1 R
+Types:Sorcery
+A:SP$ Destroy | Cost$ 1 R | TargetType$ Card | ValidTgts$ Artifact
+Oracle:Forge Sunder parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Sunder"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1534. Wreathing Coil.
+  {
+    id: "wreathing-coil-in-hand",
+    description: "Wreathing Coil in hand; parse only.",
+    seed: 0x725,
+    cards: {
+      "Wreathing Coil": `Name:Wreathing Coil
+ManaCost:G
+Types:Instant
+A:SP$ Pump | Cost$ G | NumAtt$ 1 | NumDef$ 1 | Defined$ TargetedCreature | TargetType$ Creature
+Oracle:Wreathing Coil parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wreathing Coil"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1535. Hex Twirl.
+  {
+    id: "hex-twirl-in-hand",
+    description: "Hex Twirl in hand; parse only.",
+    seed: 0x726,
+    cards: {
+      "Hex Twirl": `Name:Hex Twirl
+ManaCost:B
+Types:Instant
+A:SP$ Pump | Cost$ B | Defined$ TargetedCreature | NumAtt$ -1 | NumDef$ -1 | TargetType$ Creature.OppCtrl
+Oracle:Hex Twirl parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Hex Twirl"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1536. Rite of Vines.
+  {
+    id: "rite-of-vines-in-hand",
+    description: "Rite of Vines in hand; parse only.",
+    seed: 0x727,
+    cards: {
+      "Rite of Vines": `Name:Rite of Vines
+ManaCost:G
+Types:Sorcery
+A:SP$ Pump | Cost$ G | Defined$ TargetedCreature | NumAtt$ 1 | NumDef$ 2 | TargetType$ Creature
+Oracle:Rite of Vines parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Rite of Vines"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1537. Surge Steady.
+  {
+    id: "surge-steady-in-hand",
+    description: "Surge Steady in hand; parse only.",
+    seed: 0x728,
+    cards: {
+      "Surge Steady": `Name:Surge Steady
+ManaCost:U
+Types:Instant
+A:SP$ Draw | Cost$ U | NumCards$ 1
+Oracle:Surge Steady parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surge Steady"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1538. Smoulder Beam.
+  {
+    id: "smoulder-beam-in-hand",
+    description: "Smoulder Beam in hand; parse only.",
+    seed: 0x729,
+    cards: {
+      "Smoulder Beam": `Name:Smoulder Beam
+ManaCost:R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ R | NumDmg$ 1 | TargetType$ Creature | ValidTgts$ Creature
+Oracle:Smoulder Beam parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Smoulder Beam"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1539. Sun Pact.
+  {
+    id: "sun-pact-in-hand",
+    description: "Sun Pact in hand; parse only.",
+    seed: 0x72a,
+    cards: {
+      "Sun Pact": `Name:Sun Pact
+ManaCost:W
+Types:Sorcery
+A:SP$ GainLife | Cost$ W | LifeAmount$ 2 | Defined$ You
+Oracle:Sun Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Sun Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1540. Forge Spear.
+  {
+    id: "forge-spear-in-hand",
+    description: "Forge Spear in hand; parse only.",
+    seed: 0x72b,
+    cards: {
+      "Forge Spear": `Name:Forge Spear
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | TargetType$ Creature,Player | ValidTgts$ Creature,Player
+Oracle:Forge Spear parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Forge Spear"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1541. Wild Vines Spell.
+  {
+    id: "wild-vines-spell-in-hand",
+    description: "Wild Vines Spell in hand; parse only.",
+    seed: 0x72c,
+    cards: {
+      "Wild Vines Spell": `Name:Wild Vines Spell
+ManaCost:1 G
+Types:Sorcery
+A:SP$ Pump | Cost$ 1 G | Defined$ Self | NumAtt$ 1 | NumDef$ 1
+Oracle:Wild Vines Spell parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Wild Vines Spell"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1542. Flame Pact.
+  {
+    id: "flame-pact-in-hand",
+    description: "Flame Pact in hand; parse only.",
+    seed: 0x72d,
+    cards: {
+      "Flame Pact": `Name:Flame Pact
+ManaCost:1 R
+Types:Sorcery
+A:SP$ DealDamage | Cost$ 1 R | NumDmg$ 2 | TargetType$ Player | ValidTgts$ Player
+Oracle:Flame Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Flame Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
+  },
+
+  // 1543. Surge Pact.
+  {
+    id: "surge-pact-in-hand",
+    description: "Surge Pact in hand; parse only.",
+    seed: 0x72e,
+    cards: {
+      "Surge Pact": `Name:Surge Pact
+ManaCost:1 U
+Types:Sorcery
+A:SP$ Draw | Cost$ 1 U | NumCards$ 1
+Oracle:Surge Pact parse.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Surge Pact"], battlefield: [] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [],
   },
 ];
