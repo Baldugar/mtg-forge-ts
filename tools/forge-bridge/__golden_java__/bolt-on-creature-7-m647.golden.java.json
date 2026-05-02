@@ -1,0 +1,91 @@
+{
+  "scenarioId": "bolt-on-creature-7-m647",
+  "seed": 53255,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Stack"
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "color": 8
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": "[BltK-7 M647 (3)]",
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "BltK-7 M647",
+        "sourceName": "Lightning Bolt",
+        "amount": 3,
+        "type": "Normal"
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false,
+        "isTrigger": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Lightning Bolt",
+        "cardId": 1,
+        "fromZone": "Stack",
+        "toZone": "Graveyard"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "BltK-7 M647",
+        "cardId": 3,
+        "fromZone": "Battlefield",
+        "toZone": "Graveyard"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "BltK-7 M647",
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    }
+  ]
+}

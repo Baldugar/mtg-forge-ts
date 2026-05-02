@@ -105056,4 +105056,2575 @@ Oracle:Lightning Bolt deals 3 damage to any target.
       { kind: "resolveTopOfStack" },
     ],
   },
+  // 4351. Lightning Bolt → BltK-0 M647 (2/2) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-0-m647",
+    description: "Lightning Bolt → BltK-0 M647 (2/2) — burn-then-SBA chain.",
+    seed: 0xd000,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-0 M647": `Name:BltK-0 M647
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:BltK-0 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-0 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-0 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4352. Lightning Bolt → BltK-1 M647 (1/1) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-1-m647",
+    description: "Lightning Bolt → BltK-1 M647 (1/1) — burn-then-SBA chain.",
+    seed: 0xd001,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-1 M647": `Name:BltK-1 M647
+ManaCost:1 G
+Types:Creature Wolf
+PT:1/1
+Oracle:BltK-1 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-1 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-1 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4353. Lightning Bolt → BltK-2 M647 (1/1) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-2-m647",
+    description: "Lightning Bolt → BltK-2 M647 (1/1) — burn-then-SBA chain.",
+    seed: 0xd002,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-2 M647": `Name:BltK-2 M647
+ManaCost:1 G
+Types:Creature Cat
+PT:1/1
+Oracle:BltK-2 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-2 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-2 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4354. Lightning Bolt → BltK-3 M647 (1/1) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-3-m647",
+    description: "Lightning Bolt → BltK-3 M647 (1/1) — burn-then-SBA chain.",
+    seed: 0xd003,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-3 M647": `Name:BltK-3 M647
+ManaCost:1 G
+Types:Creature Goblin
+PT:1/1
+Oracle:BltK-3 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-3 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-3 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4355. Lightning Bolt → BltK-4 M647 (2/3) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-4-m647",
+    description: "Lightning Bolt → BltK-4 M647 (2/3) — burn-then-SBA chain.",
+    seed: 0xd004,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-4 M647": `Name:BltK-4 M647
+ManaCost:1 G
+Types:Creature Knight
+PT:2/3
+Oracle:BltK-4 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-4 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-4 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4356. Lightning Bolt → BltK-5 M647 (2/2) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-5-m647",
+    description: "Lightning Bolt → BltK-5 M647 (2/2) — burn-then-SBA chain.",
+    seed: 0xd005,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-5 M647": `Name:BltK-5 M647
+ManaCost:1 G
+Types:Creature Soldier
+PT:2/2
+Oracle:BltK-5 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-5 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-5 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4357. Lightning Bolt → BltK-6 M647 (1/2) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-6-m647",
+    description: "Lightning Bolt → BltK-6 M647 (1/2) — burn-then-SBA chain.",
+    seed: 0xd006,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-6 M647": `Name:BltK-6 M647
+ManaCost:1 G
+Types:Creature Spirit
+PT:1/2
+Oracle:BltK-6 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-6 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-6 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4358. Lightning Bolt → BltK-7 M647 (1/3) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-7-m647",
+    description: "Lightning Bolt → BltK-7 M647 (1/3) — burn-then-SBA chain.",
+    seed: 0xd007,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-7 M647": `Name:BltK-7 M647
+ManaCost:1 G
+Types:Creature Wizard
+PT:1/3
+Oracle:BltK-7 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-7 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-7 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4359. Lightning Bolt → BltK-8 M647 (2/2) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-8-m647",
+    description: "Lightning Bolt → BltK-8 M647 (2/2) — burn-then-SBA chain.",
+    seed: 0xd008,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-8 M647": `Name:BltK-8 M647
+ManaCost:1 G
+Types:Creature Zombie
+PT:2/2
+Oracle:BltK-8 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-8 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-8 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4360. Lightning Bolt → BltK-9 M647 (1/2) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-9-m647",
+    description: "Lightning Bolt → BltK-9 M647 (1/2) — burn-then-SBA chain.",
+    seed: 0xd009,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-9 M647": `Name:BltK-9 M647
+ManaCost:1 G
+Types:Creature Cleric
+PT:1/2
+Oracle:BltK-9 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-9 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-9 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4361. Lightning Bolt → BltK-10 M647 (1/2) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-10-m647",
+    description: "Lightning Bolt → BltK-10 M647 (1/2) — burn-then-SBA chain.",
+    seed: 0xd00a,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-10 M647": `Name:BltK-10 M647
+ManaCost:1 G
+Types:Creature Vampire
+PT:1/2
+Oracle:BltK-10 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-10 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-10 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4362. Lightning Bolt → BltK-11 M647 (3/3) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-11-m647",
+    description: "Lightning Bolt → BltK-11 M647 (3/3) — burn-then-SBA chain.",
+    seed: 0xd00b,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-11 M647": `Name:BltK-11 M647
+ManaCost:1 G
+Types:Creature Ogre
+PT:3/3
+Oracle:BltK-11 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-11 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-11 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4363. Lightning Bolt → BltK-12 M647 (3/3) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-12-m647",
+    description: "Lightning Bolt → BltK-12 M647 (3/3) — burn-then-SBA chain.",
+    seed: 0xd00c,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-12 M647": `Name:BltK-12 M647
+ManaCost:1 G
+Types:Creature Orc
+PT:3/3
+Oracle:BltK-12 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-12 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-12 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4364. Lightning Bolt → BltK-13 M647 (2/3) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-13-m647",
+    description: "Lightning Bolt → BltK-13 M647 (2/3) — burn-then-SBA chain.",
+    seed: 0xd00d,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-13 M647": `Name:BltK-13 M647
+ManaCost:1 G
+Types:Creature Dwarf
+PT:2/3
+Oracle:BltK-13 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-13 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-13 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4365. Lightning Bolt → BltK-14 M647 (1/1) — burn-then-SBA chain.
+  {
+    id: "bolt-on-creature-14-m647",
+    description: "Lightning Bolt → BltK-14 M647 (1/1) — burn-then-SBA chain.",
+    seed: 0xd00e,
+    cards: {
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "BltK-14 M647": `Name:BltK-14 M647
+ManaCost:1 G
+Types:Creature Druid
+PT:1/1
+Oracle:BltK-14 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Lightning Bolt"], battlefield: [], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [{ card: "BltK-14 M647" }] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Lightning Bolt",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "BltK-14 M647" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4366. Mulldrifter cast with Grizzly Bears buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-0-m647",
+    description: "Mulldrifter cast with Grizzly Bears buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd00f,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Grizzly Bears" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4367. Mulldrifter cast with Llanowar Elves buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-1-m647",
+    description: "Mulldrifter cast with Llanowar Elves buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd010,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Llanowar Elves": `Name:Llanowar Elves
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+Oracle:{T}: Add {G}.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Llanowar Elves" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4368. Mulldrifter cast with Soul Warden buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-2-m647",
+    description: "Mulldrifter cast with Soul Warden buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd011,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Soul Warden" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4369. Mulldrifter cast with Birds of Paradise buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-3-m647",
+    description: "Mulldrifter cast with Birds of Paradise buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd012,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Birds of Paradise": `Name:Birds of Paradise
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.
+Oracle:Flying. {T}: Add one mana of any color.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Birds of Paradise" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4370. Mulldrifter cast with Angel of Mercy buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-4-m647",
+    description: "Mulldrifter cast with Angel of Mercy buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd013,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Angel of Mercy": `Name:Angel of Mercy
+ManaCost:4 W
+Types:Creature Angel
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this enters, you gain 3 life.
+SVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Flying. When Angel of Mercy enters, you gain 3 life.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Angel of Mercy" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4371. Mulldrifter cast with Serra Angel buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-5-m647",
+    description: "Mulldrifter cast with Serra Angel buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd014,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Serra Angel": `Name:Serra Angel
+ManaCost:3 W W
+Types:Creature Angel
+PT:4/4
+K:Flying
+K:Vigilance
+Oracle:Flying, vigilance.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Serra Angel" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4372. Mulldrifter cast with Sol Ring buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-6-m647",
+    description: "Mulldrifter cast with Sol Ring buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd015,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Sol Ring": `Name:Sol Ring
+ManaCost:1
+Types:Artifact
+A:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.
+Oracle:{T}: Add {C}{C}.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Sol Ring" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4373. Mulldrifter cast with Glorious Anthem buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-7-m647",
+    description: "Mulldrifter cast with Glorious Anthem buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd016,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Glorious Anthem": `Name:Glorious Anthem
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.
+Oracle:Creatures you control get +1/+1.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Glorious Anthem" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4374. Mulldrifter cast with Honor of the Pure buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-8-m647",
+    description: "Mulldrifter cast with Honor of the Pure buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd017,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Honor of the Pure": `Name:Honor of the Pure
+ManaCost:1 W W
+Types:Enchantment
+S:Mode$ Continuous | Affected$ Creature.White+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ White creatures you control get +1/+1.
+Oracle:White creatures you control get +1/+1.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Honor of the Pure" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4375. Mulldrifter cast with Sulfuric Vortex buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-9-m647",
+    description: "Mulldrifter cast with Sulfuric Vortex buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd018,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Sulfuric Vortex": `Name:Sulfuric Vortex
+ManaCost:1 R R
+Types:Enchantment
+T:Mode$ Phase | Phase$ BeginningOfUpkeep | ValidPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ At the beginning of each player's upkeep, this deals 2 damage to that player.
+SVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer
+Oracle:At the beginning of each player's upkeep, Sulfuric Vortex deals 2 damage to that player.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Sulfuric Vortex" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4376. Mulldrifter cast with Eternal Witness buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-10-m647",
+    description: "Mulldrifter cast with Eternal Witness buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd019,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Eternal Witness" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        graveyard: ["Lightning Bolt"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4377. Mulldrifter cast with Grizzly Bears buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-11-m647",
+    description: "Mulldrifter cast with Grizzly Bears buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd01a,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Grizzly Bears" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4378. Mulldrifter cast with Soul Warden buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-12-m647",
+    description: "Mulldrifter cast with Soul Warden buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd01b,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Soul Warden" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4379. Mulldrifter cast with Llanowar Elves buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-13-m647",
+    description: "Mulldrifter cast with Llanowar Elves buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd01c,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Llanowar Elves": `Name:Llanowar Elves
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+Oracle:{T}: Add {G}.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Llanowar Elves" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4380. Mulldrifter cast with Birds of Paradise buddy — cast→ETB-draw-2 chain.
+  {
+    id: "mulldrifter-cast-buddy-14-m647",
+    description: "Mulldrifter cast with Birds of Paradise buddy — cast→ETB-draw-2 chain.",
+    seed: 0xd01d,
+    cards: {
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Birds of Paradise": `Name:Birds of Paradise
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.
+Oracle:Flying. {T}: Add one mana of any color.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Mulldrifter"],
+        battlefield: [{ card: "Birds of Paradise" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["U", "C", "C", "C", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "Mulldrifter", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4381. Soul Warden + WdnM-0 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-0-m647",
+    description: "Soul Warden + WdnM-0 M647 cast — ETB triggers life gain.",
+    seed: 0xd01e,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-0 M647": `Name:WdnM-0 M647
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:WdnM-0 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-0 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["G", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-0 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4382. Soul Warden + WdnM-1 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-1-m647",
+    description: "Soul Warden + WdnM-1 M647 cast — ETB triggers life gain.",
+    seed: 0xd01f,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-1 M647": `Name:WdnM-1 M647
+ManaCost:1 R
+Types:Creature Goblin
+PT:2/1
+Oracle:WdnM-1 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-1 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["R", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-1 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4383. Soul Warden + WdnM-2 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-2-m647",
+    description: "Soul Warden + WdnM-2 M647 cast — ETB triggers life gain.",
+    seed: 0xd020,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-2 M647": `Name:WdnM-2 M647
+ManaCost:1 W
+Types:Creature Soldier
+PT:2/2
+Oracle:WdnM-2 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-2 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["W", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-2 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4384. Soul Warden + WdnM-3 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-3-m647",
+    description: "Soul Warden + WdnM-3 M647 cast — ETB triggers life gain.",
+    seed: 0xd021,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-3 M647": `Name:WdnM-3 M647
+ManaCost:1 U
+Types:Creature Wizard
+PT:1/3
+Oracle:WdnM-3 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-3 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["U", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-3 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4385. Soul Warden + WdnM-4 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-4-m647",
+    description: "Soul Warden + WdnM-4 M647 cast — ETB triggers life gain.",
+    seed: 0xd022,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-4 M647": `Name:WdnM-4 M647
+ManaCost:1 B
+Types:Creature Zombie
+PT:2/2
+Oracle:WdnM-4 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-4 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["B", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-4 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4386. Soul Warden + WdnM-5 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-5-m647",
+    description: "Soul Warden + WdnM-5 M647 cast — ETB triggers life gain.",
+    seed: 0xd023,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-5 M647": `Name:WdnM-5 M647
+ManaCost:G
+Types:Creature Elf
+PT:1/1
+Oracle:WdnM-5 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-5 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["G"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-5 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4387. Soul Warden + WdnM-6 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-6-m647",
+    description: "Soul Warden + WdnM-6 M647 cast — ETB triggers life gain.",
+    seed: 0xd024,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-6 M647": `Name:WdnM-6 M647
+ManaCost:R
+Types:Creature Goblin
+PT:1/1
+Oracle:WdnM-6 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-6 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["R"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-6 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4388. Soul Warden + WdnM-7 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-7-m647",
+    description: "Soul Warden + WdnM-7 M647 cast — ETB triggers life gain.",
+    seed: 0xd025,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-7 M647": `Name:WdnM-7 M647
+ManaCost:W
+Types:Creature Cleric
+PT:1/2
+Oracle:WdnM-7 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-7 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-7 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4389. Soul Warden + WdnM-8 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-8-m647",
+    description: "Soul Warden + WdnM-8 M647 cast — ETB triggers life gain.",
+    seed: 0xd026,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-8 M647": `Name:WdnM-8 M647
+ManaCost:U
+Types:Creature Spirit
+PT:1/1
+Oracle:WdnM-8 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-8 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["U"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-8 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4390. Soul Warden + WdnM-9 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-9-m647",
+    description: "Soul Warden + WdnM-9 M647 cast — ETB triggers life gain.",
+    seed: 0xd027,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-9 M647": `Name:WdnM-9 M647
+ManaCost:B
+Types:Creature Vampire
+PT:1/1
+Oracle:WdnM-9 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-9 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["B"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [{ kind: "cast", cardName: "WdnM-9 M647", castingPlayer: SEAT0 }, { kind: "resolveTopOfStack" }],
+  },
+
+  // 4391. Soul Warden + WdnM-10 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-10-m647",
+    description: "Soul Warden + WdnM-10 M647 cast — ETB triggers life gain.",
+    seed: 0xd028,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-10 M647": `Name:WdnM-10 M647
+ManaCost:2 G
+Types:Creature Beast
+PT:3/3
+Oracle:WdnM-10 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-10 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["G", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WdnM-10 M647", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4392. Soul Warden + WdnM-11 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-11-m647",
+    description: "Soul Warden + WdnM-11 M647 cast — ETB triggers life gain.",
+    seed: 0xd029,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-11 M647": `Name:WdnM-11 M647
+ManaCost:2 W
+Types:Creature Knight
+PT:3/3
+Oracle:WdnM-11 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-11 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["W", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WdnM-11 M647", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4393. Soul Warden + WdnM-12 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-12-m647",
+    description: "Soul Warden + WdnM-12 M647 cast — ETB triggers life gain.",
+    seed: 0xd02a,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-12 M647": `Name:WdnM-12 M647
+ManaCost:2 R
+Types:Creature Dragon
+PT:2/3
+Oracle:WdnM-12 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-12 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["R", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WdnM-12 M647", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4394. Soul Warden + WdnM-13 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-13-m647",
+    description: "Soul Warden + WdnM-13 M647 cast — ETB triggers life gain.",
+    seed: 0xd02b,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-13 M647": `Name:WdnM-13 M647
+ManaCost:2 U
+Types:Creature Merfolk
+PT:2/2
+Oracle:WdnM-13 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-13 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["U", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WdnM-13 M647", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4395. Soul Warden + WdnM-14 M647 cast — ETB triggers life gain.
+  {
+    id: "soul-warden-cast-creature-14-m647",
+    description: "Soul Warden + WdnM-14 M647 cast — ETB triggers life gain.",
+    seed: 0xd02c,
+    cards: {
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "WdnM-14 M647": `Name:WdnM-14 M647
+ManaCost:2 B
+Types:Creature Demon
+PT:3/2
+Oracle:WdnM-14 M647 test.
+`,
+    },
+    players: [
+      { life: 20, hand: ["WdnM-14 M647"], battlefield: [{ card: "Soul Warden" }], manaPool: ["B", "C", "C"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "WdnM-14 M647", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4396. Eternal Witness cast — graveyard Lightning Bolt, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-0-m647",
+    description: "Eternal Witness cast — graveyard Lightning Bolt, ETB returns one to hand.",
+    seed: 0xd02d,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Lightning Bolt"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4397. Eternal Witness cast — graveyard Lightning Bolt+Grizzly Bears, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-1-m647",
+    description: "Eternal Witness cast — graveyard Lightning Bolt+Grizzly Bears, ETB returns one to hand.",
+    seed: 0xd02e,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Lightning Bolt", "Grizzly Bears"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4398. Eternal Witness cast — graveyard Grizzly Bears, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-2-m647",
+    description: "Eternal Witness cast — graveyard Grizzly Bears, ETB returns one to hand.",
+    seed: 0xd02f,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Grizzly Bears"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4399. Eternal Witness cast — graveyard Grizzly Bears+Lightning Bolt, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-3-m647",
+    description: "Eternal Witness cast — graveyard Grizzly Bears+Lightning Bolt, ETB returns one to hand.",
+    seed: 0xd030,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Grizzly Bears", "Lightning Bolt"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4400. Eternal Witness cast — graveyard Lightning Bolt+Lightning Bolt, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-4-m647",
+    description: "Eternal Witness cast — graveyard Lightning Bolt+Lightning Bolt, ETB returns one to hand.",
+    seed: 0xd031,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Lightning Bolt", "Lightning Bolt"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4401. Eternal Witness cast — graveyard Soul Warden, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-5-m647",
+    description: "Eternal Witness cast — graveyard Soul Warden, ETB returns one to hand.",
+    seed: 0xd032,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Soul Warden"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4402. Eternal Witness cast — graveyard Soul Warden+Lightning Bolt, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-6-m647",
+    description: "Eternal Witness cast — graveyard Soul Warden+Lightning Bolt, ETB returns one to hand.",
+    seed: 0xd033,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Soul Warden", "Lightning Bolt"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4403. Eternal Witness cast — graveyard Llanowar Elves, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-7-m647",
+    description: "Eternal Witness cast — graveyard Llanowar Elves, ETB returns one to hand.",
+    seed: 0xd034,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Llanowar Elves": `Name:Llanowar Elves
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+Oracle:{T}: Add {G}.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Llanowar Elves"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4404. Eternal Witness cast — graveyard Llanowar Elves+Grizzly Bears, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-8-m647",
+    description: "Eternal Witness cast — graveyard Llanowar Elves+Grizzly Bears, ETB returns one to hand.",
+    seed: 0xd035,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Llanowar Elves": `Name:Llanowar Elves
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+Oracle:{T}: Add {G}.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Llanowar Elves", "Grizzly Bears"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4405. Eternal Witness cast — graveyard Birds of Paradise, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-9-m647",
+    description: "Eternal Witness cast — graveyard Birds of Paradise, ETB returns one to hand.",
+    seed: 0xd036,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Birds of Paradise": `Name:Birds of Paradise
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.
+Oracle:Flying. {T}: Add one mana of any color.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Birds of Paradise"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4406. Eternal Witness cast — graveyard Birds of Paradise+Lightning Bolt, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-10-m647",
+    description:
+      "Eternal Witness cast — graveyard Birds of Paradise+Lightning Bolt, ETB returns one to hand.",
+    seed: 0xd037,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Birds of Paradise": `Name:Birds of Paradise
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.
+Oracle:Flying. {T}: Add one mana of any color.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Birds of Paradise", "Lightning Bolt"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4407. Eternal Witness cast — graveyard Mulldrifter, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-11-m647",
+    description: "Eternal Witness cast — graveyard Mulldrifter, ETB returns one to hand.",
+    seed: 0xd038,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Mulldrifter"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4408. Eternal Witness cast — graveyard Mulldrifter+Grizzly Bears, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-12-m647",
+    description: "Eternal Witness cast — graveyard Mulldrifter+Grizzly Bears, ETB returns one to hand.",
+    seed: 0xd039,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Mulldrifter", "Grizzly Bears"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4409. Eternal Witness cast — graveyard Angel of Mercy, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-13-m647",
+    description: "Eternal Witness cast — graveyard Angel of Mercy, ETB returns one to hand.",
+    seed: 0xd03a,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Angel of Mercy": `Name:Angel of Mercy
+ManaCost:4 W
+Types:Creature Angel
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this enters, you gain 3 life.
+SVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Flying. When Angel of Mercy enters, you gain 3 life.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Angel of Mercy"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4410. Eternal Witness cast — graveyard Angel of Mercy+Lightning Bolt, ETB returns one to hand.
+  {
+    id: "witness-cast-grave-14-m647",
+    description: "Eternal Witness cast — graveyard Angel of Mercy+Lightning Bolt, ETB returns one to hand.",
+    seed: 0xd03b,
+    cards: {
+      "Eternal Witness": `Name:Eternal Witness
+ManaCost:1 G G
+Types:Creature Human Shaman
+PT:2/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.
+SVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl
+Oracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.
+`,
+      "Angel of Mercy": `Name:Angel of Mercy
+ManaCost:4 W
+Types:Creature Angel
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this enters, you gain 3 life.
+SVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Flying. When Angel of Mercy enters, you gain 3 life.
+`,
+      "Lightning Bolt": `Name:Lightning Bolt
+ManaCost:R
+Types:Instant
+A:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.
+Oracle:Lightning Bolt deals 3 damage to any target.
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Eternal Witness"],
+        battlefield: [],
+        graveyard: ["Angel of Mercy", "Lightning Bolt"],
+        manaPool: ["G", "G", "C"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      { kind: "cast", cardName: "Eternal Witness", castingPlayer: SEAT0 },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4411. Cloudshift flicker on Grizzly Bears — ETB re-fires after return.
+  {
+    id: "cloudshift-on-grizzly-bears-0-m647",
+    description: "Cloudshift flicker on Grizzly Bears — ETB re-fires after return.",
+    seed: 0xd03c,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Grizzly Bears" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Grizzly Bears" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4412. Cloudshift flicker on Llanowar Elves — ETB re-fires after return.
+  {
+    id: "cloudshift-on-llanowar-elves-1-m647",
+    description: "Cloudshift flicker on Llanowar Elves — ETB re-fires after return.",
+    seed: 0xd03d,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Llanowar Elves": `Name:Llanowar Elves
+ManaCost:G
+Types:Creature Elf Druid
+PT:1/1
+A:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.
+Oracle:{T}: Add {G}.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Llanowar Elves" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Llanowar Elves" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4413. Cloudshift flicker on Birds of Paradise — ETB re-fires after return.
+  {
+    id: "cloudshift-on-birds-of-paradise-2-m647",
+    description: "Cloudshift flicker on Birds of Paradise — ETB re-fires after return.",
+    seed: 0xd03e,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Birds of Paradise": `Name:Birds of Paradise
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.
+Oracle:Flying. {T}: Add one mana of any color.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Birds of Paradise" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Birds of Paradise" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4414. Cloudshift flicker on Soul Warden — ETB re-fires after return.
+  {
+    id: "cloudshift-on-soul-warden-3-m647",
+    description: "Cloudshift flicker on Soul Warden — ETB re-fires after return.",
+    seed: 0xd03f,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Soul Warden" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Soul Warden" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4415. Cloudshift flicker on Angel of Mercy — ETB re-fires after return.
+  {
+    id: "cloudshift-on-angel-of-mercy-4-m647",
+    description: "Cloudshift flicker on Angel of Mercy — ETB re-fires after return.",
+    seed: 0xd040,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Angel of Mercy": `Name:Angel of Mercy
+ManaCost:4 W
+Types:Creature Angel
+PT:3/3
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this enters, you gain 3 life.
+SVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3
+Oracle:Flying. When Angel of Mercy enters, you gain 3 life.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Angel of Mercy" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Angel of Mercy" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4416. Cloudshift flicker on Serra Angel — ETB re-fires after return.
+  {
+    id: "cloudshift-on-serra-angel-5-m647",
+    description: "Cloudshift flicker on Serra Angel — ETB re-fires after return.",
+    seed: 0xd041,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Serra Angel": `Name:Serra Angel
+ManaCost:3 W W
+Types:Creature Angel
+PT:4/4
+K:Flying
+K:Vigilance
+Oracle:Flying, vigilance.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Serra Angel" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Serra Angel" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4417. Cloudshift flicker on Mulldrifter — ETB re-fires after return.
+  {
+    id: "cloudshift-on-mulldrifter-6-m647",
+    description: "Cloudshift flicker on Mulldrifter — ETB re-fires after return.",
+    seed: 0xd042,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      Mulldrifter: `Name:Mulldrifter
+ManaCost:4 U
+Types:Creature Elemental
+PT:2/2
+K:Flying
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.
+SVar:TrigDraw:DB$ Draw | NumCards$ 2
+Oracle:Flying. When Mulldrifter enters, its controller draws two cards.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      {
+        life: 20,
+        hand: ["Cloudshift"],
+        battlefield: [{ card: "Mulldrifter" }],
+        library: ["Grizzly Bears", "Grizzly Bears", "Grizzly Bears"],
+        manaPool: ["W"],
+      },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Mulldrifter" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4418. Cloudshift flicker on Soul Warden — ETB re-fires after return.
+  {
+    id: "cloudshift-on-soul-warden-7-m647",
+    description: "Cloudshift flicker on Soul Warden — ETB re-fires after return.",
+    seed: 0xd043,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Soul Warden": `Name:Soul Warden
+ManaCost:W
+Types:Creature Human Cleric
+PT:1/1
+T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.
+SVar:TrigGain:DB$ GainLife | LifeAmount$ 1
+Oracle:Whenever another creature enters, you gain 1 life.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Soul Warden" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Soul Warden" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4419. Cloudshift flicker on Grizzly Bears — ETB re-fires after return.
+  {
+    id: "cloudshift-on-grizzly-bears-8-m647",
+    description: "Cloudshift flicker on Grizzly Bears — ETB re-fires after return.",
+    seed: 0xd044,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Grizzly Bears": `Name:Grizzly Bears
+ManaCost:1 G
+Types:Creature Bear
+PT:2/2
+Oracle:2/2
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Grizzly Bears" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Grizzly Bears" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
+
+  // 4420. Cloudshift flicker on Birds of Paradise — ETB re-fires after return.
+  {
+    id: "cloudshift-on-birds-of-paradise-9-m647",
+    description: "Cloudshift flicker on Birds of Paradise — ETB re-fires after return.",
+    seed: 0xd045,
+    cards: {
+      Cloudshift: `Name:Cloudshift
+ManaCost:W
+Types:Instant
+A:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn
+SVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield
+Oracle:Exile target creature you control, then return that card to the battlefield under its owner's control.
+`,
+      "Birds of Paradise": `Name:Birds of Paradise
+ManaCost:G
+Types:Creature Bird
+PT:0/1
+K:Flying
+A:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.
+Oracle:Flying. {T}: Add one mana of any color.
+`,
+    },
+    players: [
+      { life: 20, hand: ["Cloudshift"], battlefield: [{ card: "Birds of Paradise" }], manaPool: ["W"] },
+      { life: 20, hand: [], battlefield: [] },
+    ],
+    actions: [
+      {
+        kind: "cast",
+        cardName: "Cloudshift",
+        castingPlayer: SEAT0,
+        target: { kind: "card", name: "Birds of Paradise" },
+      },
+      { kind: "resolveTopOfStack" },
+    ],
+  },
 ];

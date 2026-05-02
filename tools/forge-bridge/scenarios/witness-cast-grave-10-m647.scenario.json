@@ -1,0 +1,43 @@
+{
+  "id": "witness-cast-grave-10-m647",
+  "description": "Eternal Witness cast — graveyard Birds of Paradise+Lightning Bolt, ETB returns one to hand.",
+  "seed": 53303,
+  "cards": {
+    "Eternal Witness": "Name:Eternal Witness\nManaCost:1 G G\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this enters, you may return target card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetType$ Card | ValidTgts$ Card.YouCtrl\nOracle:When Eternal Witness enters, you may return target card from your graveyard to your hand.\n",
+    "Birds of Paradise": "Name:Birds of Paradise\nManaCost:G\nTypes:Creature Bird\nPT:0/1\nK:Flying\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Flying. {T}: Add one mana of any color.\n",
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Witness"
+      ],
+      "battlefield": [],
+      "graveyard": [
+        "Birds of Paradise",
+        "Lightning Bolt"
+      ],
+      "manaPool": [
+        "G",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Eternal Witness",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

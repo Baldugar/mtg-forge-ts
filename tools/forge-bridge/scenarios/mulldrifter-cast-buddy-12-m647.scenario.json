@@ -1,0 +1,50 @@
+{
+  "id": "mulldrifter-cast-buddy-12-m647",
+  "description": "Mulldrifter cast with Soul Warden buddy — cast→ETB-draw-2 chain.",
+  "seed": 53275,
+  "cards": {
+    "Mulldrifter": "Name:Mulldrifter\nManaCost:4 U\nTypes:Creature Elemental\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nOracle:Flying. When Mulldrifter enters, its controller draws two cards.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mulldrifter"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ],
+      "library": [
+        "Grizzly Bears",
+        "Grizzly Bears",
+        "Grizzly Bears"
+      ],
+      "manaPool": [
+        "U",
+        "C",
+        "C",
+        "C",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Mulldrifter",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

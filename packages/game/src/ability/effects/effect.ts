@@ -252,12 +252,24 @@ export class EffectEffect extends SpellAbilityEffect {
       if (!Cls) continue;
       const handler = new Cls();
       const triggerId = game.newEntityId();
-      const ta = handler.build(ast, {
+      const taRaw = handler.build(ast, {
         game,
         sourceCardId: hostId,
         controllerSeat: ownerSeat,
         triggerId,
       });
+      // M6.47 — Effect-host triggers live on the synthetic Command-zone
+      // host. The default trigger handlers (Phase, ChangesZone, etc.)
+      // assume Battlefield is the active zone. Re-stamp with Command so
+      // CR 603.6d / Forge's `Trigger.zonesCheck()` gate in
+      // TriggerRegistry.onEvent accepts the fire while the host is still
+      // in Command. Mirrors Forge's Effect host: the Effect EmblemCard's
+      // triggers carry `activeZones = [Command]` so phase-end triggers
+      // observed while the host is in Command actually run.
+      const ta = {
+        ...taRaw,
+        activeInZones: new Set<ZoneType>([ZoneType.Command]),
+      } as TriggeredAbility;
       builtTriggers.push(ta);
       game.triggerRegistry.register(ta);
       triggerIds.push(triggerId);

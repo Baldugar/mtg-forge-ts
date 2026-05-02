@@ -1,0 +1,41 @@
+{
+  "id": "soul-warden-cast-creature-3-m647",
+  "description": "Soul Warden + WdnM-3 M647 cast — ETB triggers life gain.",
+  "seed": 53281,
+  "cards": {
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "WdnM-3 M647": "Name:WdnM-3 M647\nManaCost:1 U\nTypes:Creature Wizard\nPT:1/3\nOracle:WdnM-3 M647 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "WdnM-3 M647"
+      ],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ],
+      "manaPool": [
+        "U",
+        "C"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "WdnM-3 M647",
+      "castingPlayer": 0
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

@@ -98,6 +98,7 @@ export class TriggerRegistry {
       const isLeavingBattlefield =
         event.kind === "CardChangedZone" && event.payload.fromZone === ZoneType.Battlefield;
       if (sourceCard?.phased === true && !isLeavingBattlefield) continue;
+
       if (this.isSuppressed(t, event)) continue;
       // Wave 70.J — DisableTriggers static (Hushwing Gryff / Tocatli
       // Honor Guard / Torpor Orb). Silently drops trigger fires whose
@@ -188,13 +189,55 @@ export class TriggerRegistry {
   }
 
   drain(): readonly PendingTrigger[] {
-    const out = [...this.pending];
+    const filtered = this.pending.filter((p) => this.isPendingZoneActive(p));
     this.pending.length = 0;
-    return out;
+    return filtered;
   }
 
   peekPending(): readonly PendingTrigger[] {
-    return [...this.pending];
+    return this.pending.filter((p) => this.isPendingZoneActive(p));
+  }
+
+  /**
+   * M6.47 — CR 603.6d / Forge `Trigger.zonesCheck()` evaluated at trigger-fire
+   * time (not at queue-enqueue time). Pending triggers are filtered when the
+   * orchestrator drains them, so triggers queued while the source card was
+   * still off-battlefield (e.g. Suture Priest queued during Soul Warden's
+   * setup-time ETB) get a second chance once both cards have landed in
+   * battlefield by the time setup's drainStack runs. Mirrors Forge's
+   * deferred-`runWaitingTriggers` semantics: `Trigger.run()` consults
+   * `getActiveZone()` against the host's CURRENT zone immediately before
+   * enqueueing the trigger to the stack.
+   *
+   * Bypass exceptions match the prior `onEvent`-time gate:
+   *   - leaves-the-battlefield events: source already moved away, the
+   *     trigger's LKI carries the relevant snapshot.
+   *   - SpellCast self-events: cast pipeline emits SpellCast without
+   *     moving the source to Stack zone (the StackItem carries provenance);
+   *     accept when the source is the cast subject and the trigger's
+   *     active zones include Stack.
+   *   - CardChangedZone self-events into one of the trigger's active
+   *     zones — same rationale (the source IS the card moving in).
+   */
+  private isPendingZoneActive(p: PendingTrigger): boolean {
+    const t = this.byId.get(p.triggerId);
+    if (!t) return true; // unknown trigger — let it through; downstream resolves no-op
+    const sourceCard = this.game.cards.get(t.sourceCardId);
+    if (!sourceCard) return true;
+    const event = p.event;
+    const isLeavingBattlefield =
+      event.kind === "CardChangedZone" && event.payload.fromZone === ZoneType.Battlefield;
+    if (isLeavingBattlefield) return true;
+    const cardZone = sourceCard.zone as ZoneType;
+    if (t.activeInZones.has(cardZone)) return true;
+    if (event.kind === "SpellCast") {
+      const ep = event.payload as { cardId?: EntityId };
+      if (ep.cardId === t.sourceCardId && t.activeInZones.has(ZoneType.Stack)) return true;
+    } else if (event.kind === "CardChangedZone") {
+      const ep = event.payload as { cardId?: EntityId; toZone?: ZoneType };
+      if (ep.cardId === t.sourceCardId && ep.toZone && t.activeInZones.has(ep.toZone)) return true;
+    }
+    return false;
   }
 
   /**

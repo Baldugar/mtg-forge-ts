@@ -1,0 +1,44 @@
+{
+  "id": "bolt-on-creature-12-m647",
+  "description": "Lightning Bolt → BltK-12 M647 (3/3) — burn-then-SBA chain.",
+  "seed": 53260,
+  "cards": {
+    "Lightning Bolt": "Name:Lightning Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R | NumDmg$ 3 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Lightning Bolt deals 3 damage to any target.\n",
+    "BltK-12 M647": "Name:BltK-12 M647\nManaCost:1 G\nTypes:Creature Orc\nPT:3/3\nOracle:BltK-12 M647 test.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Bolt"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "R"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "BltK-12 M647"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Lightning Bolt",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "BltK-12 M647"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}

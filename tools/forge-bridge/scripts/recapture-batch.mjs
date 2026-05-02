@@ -53,7 +53,7 @@ for (let i = 0; i < ids.length; i++) {
   try {
     execFileSync("bash", [path.join(root, "scripts", "run.sh"), scenarioFile, outFile], {
       stdio: ["ignore", "ignore", "ignore"],
-      timeout: 60000,
+      timeout: 180000,
       env: {
         ...process.env,
         // Lower JVM heap + lower priority hint
