@@ -783,20 +783,17 @@ export class Card {
     if (!def) return;
     this.triggeredAbilities = [];
     for (const triggerAst of def.triggers as readonly TriggerAst[]) {
-      // M6.26 — Static-replacement conversion for printed
+      // M6.26 / M6.39 — Static-replacement conversion for printed
       // `T:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield |
       // ValidCard$ Card.Self | Execute$ <SVar>` lines whose Execute$ SVar
-      // resolves to a `DB$ PutCounter | Defined$ Self` body. Forge models
-      // these as CR 614.2 replacement-effect application during ETB —
-      // counters are placed silently (no `AbilityActivated` /
-      // `StackItemResolved` fan-out). The TS engine previously registered
-      // them as ChangesZone triggers, which produced a stack-going trigger
-      // observable in the parity trace. Convert them to `etbCounterSpecs`
-      // entries so `applyEtbStamping` places the counters as part of the
-      // replacement-chain run, matching Forge's wire shape exactly.
-      // Covers Hangarback Walker, Walking Ballista, Endless One,
-      // Dark Depths (10-ICE on land ETB), and any other card whose
-      // printed text uses the canonical X-counter ETB recipe.
+      // resolves to a `DB$ PutCounter | Defined$ Self` body. The conversion
+      // only applies when the body uses CR 614.2 replacement semantics
+      // ("enters with N counters") — detected by `Variable$ True` on the
+      // PutCounter SVar, by `K:etbCounter:` cohabitation on the card, or by
+      // `CounterNum$ X` paired with a Count$xPaid SVar. Without one of those
+      // markers, the trigger fires normally as a SpellAbility (matching
+      // Forge's `T:Mode$ ChangesZone` cast pipeline — observable as a
+      // SpellCast/StackItemResolved pair in the Java parity trace).
       if (this.tryConvertEtbCounterTriggerToStaticSpec(triggerAst)) continue;
       const Cls = triggerHandlerRegistry.lookup(triggerAst.mode);
       if (!Cls) continue; // silently skip unknown modes
@@ -868,22 +865,31 @@ export class Card {
 
     // Determine variability: CounterNum$ X with SVar:X:Count$xPaid →
     // variable per cast-time X. Otherwise literal integer.
+    //
+    // M6.39 — The literal-integer form is NOT eligible for the static
+    // conversion. Real Forge fires `T:Mode$ ChangesZone Card.Self Execute$
+    // PutCounter Defined Self CounterNum$ <integer>` as a normal triggered
+    // ability (observable in Java parity trace as SpellCast/StackItemResolved).
+    // Only the X-variant (CounterNum$ X with Count$xPaid) maps to Forge's
+    // CR 614.2 replacement-effect / X-counter ETB recipe (Hangarback Walker
+    // / Walking Ballista / Endless One). For everything else, fall back to
+    // the triggered-ability path so the trigger fan-out matches Java.
     let variable = false;
-    let amount = 0;
     const counterNum = numRaw.raw.trim();
-    if (counterNum.toUpperCase() === "X") {
-      const xSvar = svars.get("X");
-      if (xSvar?.raw && xSvar.raw.trim() === "Count$xPaid") {
-        variable = true;
-      } else {
-        // Unrecognised variable form — fall back to triggered-ability path.
-        return false;
-      }
-    } else {
-      const parsed = Number.parseInt(counterNum, 10);
-      if (!Number.isFinite(parsed) || parsed <= 0) return false;
-      amount = parsed;
+    if (counterNum.toUpperCase() !== "X") {
+      // Literal-integer form (e.g. CounterNum$ 3 — Reckoner Bankbuster) —
+      // route through the normal ChangesZone trigger pipeline so SpellCast
+      // / StackItemResolved fan-out fires.
+      return false;
     }
+    const xSvar = svars.get("X");
+    if (xSvar?.raw && xSvar.raw.trim() === "Count$xPaid") {
+      variable = true;
+    } else {
+      // Unrecognised variable form — fall back to triggered-ability path.
+      return false;
+    }
+    const amount = 0;
 
     // Resolve the counter type via the same shorthand map the
     // EtbCounterKeywordHandler uses (P1P1, M1M1, ICE, etc.).

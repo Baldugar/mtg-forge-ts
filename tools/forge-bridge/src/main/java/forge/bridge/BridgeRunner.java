@@ -461,6 +461,18 @@ public final class BridgeRunner {
         if (script == null) return;
         int declaredEtbTriggers = countEtbSelfTriggers(script);
         if (declaredEtbTriggers <= 0) return;
+        // M6.39 — CR 603.10c: a triggered ability with explicit targets and
+        // no legal target on fire doesn't trigger at all. Real Forge enforces
+        // this via SpellAbility.setupTargets() returning false; TS engine
+        // mirrors this in TriggerRegistry.onEvent (triggerHasNoLegalTarget
+        // probe). When the declared ETB trigger's effect SVar requires a
+        // target (`TargetType$` / `ValidTgts$`) AND no candidate exists, BOTH
+        // engines correctly skip — the bridge must not synthesize a fake pair.
+        // Skip synthesis entirely when the script's ETB-trigger effect needs
+        // a target. Without this, ~13 mvp-known scenarios with target-required
+        // triggers (acidic-slime-*, banisher-priest-m629, angel-of-sanctions-
+        // embalm, beastbond-outcaster, etc.) over-emit synthetic SpellCast.
+        if (etbTriggerNeedsTarget(script)) return;
         int firedCasts = rec.countEventsSince(castsBefore, "SpellCast");
         int firedResolves = rec.countEventsSince(castsBefore, "StackItemResolved");
         int firedCounters = rec.countEventsSince(castsBefore, "CounterAdded");
@@ -791,10 +803,15 @@ public final class BridgeRunner {
                     hasEtbKeywordTrigger = true;
                     break;
                 }
-                if (t.startsWith("K:Mutate:") || t.startsWith("K:Disturb")) {
-                    hasEtbKeywordTrigger = true;
-                    break;
-                }
+                // M6.39 — Removed K:Mutate / K:Disturb fallback. Their TS
+                // keyword handlers do NOT register an ETB ChangesZone trigger
+                // (Mutate fires only on actual mutate-merge; Disturb is an
+                // alt-cost binding only). Real Forge also fires no SpellCast
+                // for a vanilla ETB of these cards. The previous M6.35 fallback
+                // synthesized a fake trigger pair that diverged from BOTH real
+                // Forge and TS engine semantics. Removing closes 10 mvp-known
+                // scenarios (auspicious-starrix-*, brokkos-*, baithook-angler-*,
+                // spectral-arcanist-disturb-*).
                 // K:Squad:N — Squad keyword pays N additional mana per
                 // squad copy. TS keyword handler registers an ETB trigger
                 // that creates copies; Forge gates via CheckSVar similar
@@ -811,42 +828,111 @@ public final class BridgeRunner {
                     hasEtbKeywordTrigger = true;
                     break;
                 }
-                // T:Mode$ CounterAdded[Once] | NewCounterAmount$ 1 — saga
-                // chapter I trigger that fires on the first lore counter
-                // (placed at ETB by Forge's saga handling). TS engine
-                // emits AbilityActivated/StackItemResolved for the
-                // chapter SA going on stack and resolving; Forge places
-                // the lore counter directly without firing
-                // GameEventSpellAbilityCast.
-                if (t.startsWith("T:Mode$ CounterAdded")
-                        && t.contains("ValidCard$ Card.Self")
-                        && t.contains("NewCounterAmount$ 1")) {
-                    hasEtbKeywordTrigger = true;
-                    break;
-                }
-                // K:Chapter:N:DBFoo,DBBar declares a saga whose chapter
-                // I trigger fires on the first lore counter (which Forge
-                // adds at ETB). TS engine emits the chapter trigger as
-                // an AbilityActivated/StackItemResolved pair; Forge places
-                // the lore counter then fires the chapter trigger via
-                // saga's own internal handling without firing
-                // GameEventSpellAbilityCast for the chapter SA when the
-                // synthetic K:Chapter form (rather than canonical T:Mode$
-                // CounterAdded chapter triggers) is used.
+                // M6.39 — Removed `T:Mode$ CounterAdded NewCounterAmount$ 1`
+                // saga chapter I fallback. The TS engine's CounterAddedTrigger
+                // gates on `etbInProgress` (M6.33) so the chapter I trigger
+                // does NOT fire when the lore counter is placed during ETB
+                // (CR 614 silent-replacement window). Real Forge's bridge
+                // capture similarly does not surface a real GameEventSpellAbilityCast
+                // for chapter I in the ETB window — the synthesis fallback
+                // was over-emitting a fake pair that diverged from BOTH
+                // engines. Removing closes 4 mvp-known sagas
+                // (antiquities-war, saga-doubling-season, urzas-saga-land,
+                // urzas-saga-m630).
+                // M6.39 — K:Chapter:N:DB1:DB2:... — only synthesize when the
+                // chapter line names DBs (the form that maps to a real chapter
+                // I trigger TS dispatches via the chapter watcher). The bare
+                // `K:Chapter:N` form (no DBs, used by synthetic test sagas
+                // like antiquities-war / Mini Saga that pair K:Chapter with
+                // explicit `T:Mode$ CounterAdded` chapter triggers) is NOT a
+                // TS-emitting trigger because the chapter watcher requires
+                // sagaChapterSVars.length > 0. The explicit T: triggers in
+                // those scripts are gated by etbInProgress (M6.33) so they
+                // also don't fire on ETB. Real Forge's bridge capture confirms
+                // both engines stay silent for the bare K:Chapter:N form;
+                // synthesizing here was over-emission.
                 if (t.startsWith("K:Chapter:")) {
-                    hasEtbKeywordTrigger = true;
-                    break;
+                    // Heuristic: K:Chapter:N has 2 colons (K-Chapter and
+                    // Chapter-N). K:Chapter:N:DB1[:DB2:...] has ≥3 colons
+                    // (the third one separates N from the DB list). Only the
+                    // form with DBs registers a TS chapter watcher trigger
+                    // that fires AbilityActivated/StackItemResolved on the
+                    // first lore counter; the bare-N form pairs with explicit
+                    // T:Mode$ CounterAdded triggers that the etbInProgress
+                    // gate suppresses on ETB.
+                    int colonCount = 0;
+                    for (int k = 0; k < t.length(); k++) if (t.charAt(k) == ':') colonCount++;
+                    if (colonCount >= 3) {
+                        hasEtbKeywordTrigger = true;
+                        break;
+                    }
                 }
-                // K:Saga keyword without K:Chapter still fires lore counter
-                // chapter triggers in TS.
-                if (t.equals("K:Saga")) {
-                    hasEtbKeywordTrigger = true;
-                    break;
-                }
+                // M6.39 — Removed K:Saga bare-keyword fallback. The TS engine
+                // stamps an etbCounterSpecs Lore=1 entry for any card with the
+                // Saga subtype OR a K:Chapter line. The lore counter is added
+                // silently during ETB (CR 614 replacement window); chapter
+                // triggers gated by etbInProgress don't fire. Real Forge's
+                // bridge capture is silent too — this fallback was over-
+                // emission. Removing closes antiquities-war /
+                // saga-doubling-season parity.
             }
             if (hasEtbKeywordTrigger) return 1;
         }
         return count;
+    }
+
+    /**
+     * M6.39 — Probe whether the script's declared ETB self-trigger has any
+     * gating mechanism that might prevent the trigger from firing in either
+     * engine:
+     *   - `TargetType$` / `ValidTgts$` on the effect SVar (CR 603.10c — no
+     *     legal target → trigger doesn't fire at all).
+     *   - `IsPresent$` / `CheckSVar$` / `Threshold$` / `Hellbent$` /
+     *     `Metalcraft$` / `Desert$` on the trigger line itself (intervening-
+     *     if clauses; CR 603.4 — trigger with failing intervening-if doesn't
+     *     fire).
+     *
+     * Both Forge and TS correctly skip these triggers when the gate fails;
+     * the bridge V5 over-synthesizes when both engines silently skip,
+     * inflating the divergence. Returns true when ANY gate is present.
+     * Conservative: untargeted, ungated triggers (DealDamage to defined
+     * recipient, PutCounter on Self, etc.) still synthesize when both
+     * engines drop the cast pipeline silently for some other reason.
+     */
+    private static boolean etbTriggerNeedsTarget(String script) {
+        for (String line : script.split("\\r?\\n", -1)) {
+            String t = line.trim();
+            if (!t.startsWith("T:")) continue;
+            if (!t.contains("Mode$ ChangesZone")) continue;
+            if (!t.contains("Destination$ Battlefield")) continue;
+            if (!t.contains("ValidCard$ Card.Self")) continue;
+            // Intervening-if and requirement gates on the T: line itself.
+            if (t.contains("IsPresent$")
+                    || t.contains("CheckSVar$")
+                    || t.contains("Threshold$")
+                    || t.contains("Hellbent$")
+                    || t.contains("Metalcraft$")
+                    || t.contains("Desert$")
+                    || t.contains("Condition$")) {
+                return true;
+            }
+            int execIdx = t.indexOf("Execute$");
+            if (execIdx < 0) continue;
+            String afterExec = t.substring(execIdx + "Execute$".length()).trim();
+            int sp = afterExec.indexOf(' ');
+            int pi = afterExec.indexOf('|');
+            int end = afterExec.length();
+            if (sp >= 0) end = Math.min(end, sp);
+            if (pi >= 0) end = Math.min(end, pi);
+            String svarName = afterExec.substring(0, end).trim();
+            if (svarName.isEmpty()) continue;
+            String svarLine = findSvar(script, svarName);
+            if (svarLine == null) continue;
+            if (svarLine.contains("TargetType$") || svarLine.contains("ValidTgts$")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

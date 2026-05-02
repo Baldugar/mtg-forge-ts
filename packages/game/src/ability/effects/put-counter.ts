@@ -145,18 +145,37 @@ export class PutCounterEffect extends SpellAbilityEffect {
       }
     }
 
-    if (divided && sa.targets.length > 0) {
+    // M6.39 — Defined$ recipient path. When PutCounter has no targeted
+    // recipient (sa.targets is empty) and a `Defined$` selector is present,
+    // resolve the selector. Mirrors DealDamage / Tap effect Defined$ support.
+    // Required for triggered abilities like Reckoner Bankbuster's
+    // `T:Mode$ ChangesZone Card.Self Execute$ TrigCounter` →
+    // `DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 3`,
+    // where the trigger fires but no targeting decision binds sa.targets.
+    let recipients: readonly EntityId[] = sa.targets;
+    if (sa.targets.length === 0 && hasParam(sa, "Defined")) {
+      const definedRaw = evaluateParamRaw(sa, "Defined").trim();
+      if (definedRaw === "Self") recipients = [sa.sourceCardId];
+      else if (definedRaw === "Targeted" || definedRaw === "TargetedCard") recipients = sa.targets;
+      else if (definedRaw === "RememberedCard") {
+        const src = game.cards.get(sa.sourceCardId);
+        const remembered = (src as { remembered?: readonly EntityId[] } | undefined)?.remembered ?? [];
+        recipients = remembered;
+      }
+    }
+
+    if (divided && recipients.length > 0) {
       // Even split across targets (decision subsystem will customize).
-      const perTarget = Math.floor(n / sa.targets.length);
+      const perTarget = Math.floor(n / recipients.length);
       if (perTarget <= 0) return;
-      for (const targetId of sa.targets) {
+      for (const targetId of recipients) {
         yield* game.action.addCounter(targetId, counterType, perTarget, sa.sourceCardId);
       }
       return;
     }
 
     if (n <= 0) return;
-    for (const targetId of sa.targets) {
+    for (const targetId of recipients) {
       yield* game.action.addCounter(targetId, counterType, n, sa.sourceCardId);
     }
   }

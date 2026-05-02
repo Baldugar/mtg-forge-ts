@@ -64,9 +64,20 @@ type TriggeredAbilityWithResolver = TriggeredAbility & {
 };
 
 /**
- * Parse the Chapter detail string. Form: "N:DB1,DB2,...,DBN" or
- * "N" (no SVar names). Returns chapterCount + svar names. Defensive
- * against malformed inputs (returns count=0 + empty list).
+ * Parse the Chapter detail string. Forge accepts two SVar separator forms:
+ *   - "N:DB1,DB2,...,DBN" — comma-delimited (parser uses split(","))
+ *   - "N:DB1:DB2:...:DBN" — colon-delimited (the keyword line itself uses
+ *     colons as token separators; History of Benalia ships as
+ *     `K:Chapter:3:DBKnight:DBKnight:DBPump`)
+ *   - "N" — no SVar names (count only).
+ * Returns chapterCount + svar names. Defensive against malformed inputs
+ * (returns count=0 + empty list).
+ *
+ * M6.39 — Closes the parser bug where colon-delimited DBs collapsed into
+ * a single svar entry containing all colon-joined names. History of Benalia
+ * (and similarly-formatted real Forge sagas) silently failed to dispatch
+ * any chapter SVar because `sagaChapterSVars[0]` was the literal string
+ * `"DBKnight:DBKnight:DBPump"` rather than `"DBKnight"`.
  */
 const parseChapterDetail = (raw: string): { count: number; svars: readonly string[] } => {
   if (raw === "") return { count: 0, svars: [] };
@@ -79,11 +90,16 @@ const parseChapterDetail = (raw: string): { count: number; svars: readonly strin
   const tail = raw.slice(colonIdx + 1);
   const n = Number.parseInt(head, 10);
   const count = Number.isFinite(n) ? n : 0;
+  // Try comma-delimited first; if no commas, fall back to colon-delimited.
+  // Both separators are accepted because the keyword line uses colons
+  // as its primary token separator (K:Chapter:N:DB1:...) while some
+  // synthetic test cards use commas (K:Chapter:N:DB1,DB2,...).
+  const splitOn = tail.includes(",") ? "," : ":";
   const svars =
     tail === ""
       ? []
       : tail
-          .split(",")
+          .split(splitOn)
           .map((s) => s.trim())
           .filter((s) => s.length > 0);
   return { count, svars };

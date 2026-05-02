@@ -8,7 +8,7 @@
       "turn": 1,
       "phase": "Untap",
       "payload": {
-        "cardId": 1,
+        "cardId": 2,
         "fromZone": "Hand",
         "toZone": "Battlefield",
         "fromSeat": 0,
@@ -20,7 +20,7 @@
       "turn": 1,
       "phase": "Untap",
       "payload": {
-        "cardId": 3,
+        "cardId": 4,
         "fromZone": "Hand",
         "toZone": "Battlefield",
         "fromSeat": 0,
@@ -37,6 +37,39 @@
         "toZone": "Battlefield",
         "fromSeat": 0,
         "toSeat": 0
+      }
+    },
+    {
+      "kind": "AbilityActivated",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 7,
+        "sourceCardId": 0,
+        "controllerSeat": 0,
+        "abilityKind": "activated"
+      }
+    },
+    {
+      "kind": "ReplacementApplied",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "replacementId": 5,
+        "original": {
+          "kind": "addCounter",
+          "cardId": 0,
+          "counterType": "P1P1",
+          "amount": 1,
+          "sourceId": 0
+        },
+        "replaced": {
+          "kind": "addCounter",
+          "cardId": 0,
+          "counterType": "P1P1",
+          "amount": 2,
+          "sourceId": 0
+        }
       }
     },
     {
@@ -45,8 +78,18 @@
       "phase": "Untap",
       "payload": {
         "cardId": 0,
-        "counterType": "+1/+1",
-        "amount": 1
+        "counterType": "P1P1",
+        "amount": 2,
+        "sourceId": 0
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 7,
+        "fizzled": false
       }
     }
   ],

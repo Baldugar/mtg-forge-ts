@@ -499,6 +499,19 @@ function runEtb(
         break;
       }
     }
+    // M6.39 — Synthetic test cards that omit the explicit `Creature` type
+    // line but declare creature subtypes + P/T (e.g.
+    // `Types: Spirit Wizard\nPT:2/2`) are treated as creatures by Forge's
+    // CardFactory (it derives the type from the subtype-and-PT pattern).
+    // Without this fallback, the TS runner silently rejected such cards
+    // (spectral-arcanist-disturb-etb-m628) while the Java bridge moved them
+    // to the battlefield, producing a one-event divergence.
+    if (!isPermanent) {
+      const pt = (def as { pt?: { power?: unknown; toughness?: unknown } }).pt;
+      if (pt && (pt.power !== undefined || pt.toughness !== undefined)) {
+        isPermanent = true;
+      }
+    }
     if (!isPermanent) {
       // Silent rejection — no events emitted. Matches Forge bridge.
       return;

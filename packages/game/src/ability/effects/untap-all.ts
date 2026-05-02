@@ -62,15 +62,32 @@ export class UntapAllEffect extends SpellAbilityEffect {
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
     // Collect first (simultaneous semantics).
     const targets = collectMatching(sa, game);
+    // M6.39 — Only the cards that were actually tapped (and therefore had
+    // their state change to untapped) are reported in the CardsUntappedAll
+    // batch event. Forge fires per-card CardTappedChanged events only for
+    // cards that actually changed state; emitting the umbrella for
+    // already-untapped cards (e.g. Village Bell Ringer's own ETB UntapAll
+    // when the only matching creature is the ringer itself, freshly entered
+    // and untapped) creates a divergence with no Java analog. Filter to
+    // actually-tapped cards before the per-card untap fires (since
+    // game.action.untap mutates the state we're inspecting).
+    const wasTapped: EntityId[] = [];
+    for (const cardId of targets) {
+      const card = game.cards.get(cardId);
+      if (card?.tapped === true) wasTapped.push(cardId);
+    }
     for (const cardId of targets) {
       yield* game.action.untap(cardId);
     }
     // Wave 16b — CardsUntappedAll batch event (Forge T:Mode$ UntapAll).
-    // Skip empty resolutions to avoid vacuous trigger fires.
-    if (targets.length > 0) {
+    // Skip empty resolutions and resolutions where nothing actually
+    // untapped — Forge has no GameEventCardsUntappedAll the bridge can
+    // capture, and CardTappedChanged per-card events only fire when state
+    // changes; vacuous all-already-untapped emissions diverge from Java.
+    if (wasTapped.length > 0) {
       yield game.emitEvent(
         mkEvent("CardsUntappedAll", game.turn, game.phase, {
-          cardIds: [...targets],
+          cardIds: wasTapped,
         }),
       );
     }

@@ -106,6 +106,27 @@ export class DealDamageEffect extends SpellAbilityEffect {
 
     // ---- Recipients --------------------------------------------------
     let targets: readonly EntityId[] = sa.targets;
+    // M6.39 — `DefinedTarget$ Any` (synthetic-script bridge form). Forge's
+    // bridge captures show that real Forge interprets a bare `DefinedTarget$
+    // Any` on `DB$ DealDamage` as Self (the source takes its own damage —
+    // observable for heartfire-immolator-plot-m629 where the 2-damage hits
+    // Heartfire itself, dropping it to the graveyard via SBA). Other
+    // DefinedTarget$ tokens (Player.Opponent / Creature.OppCtrl / etc.)
+    // don't get parsed by real Forge as a recipient — those scripts produce
+    // a no-op damage step (no DamageDealt event in the Java trace). Mirror
+    // that here so the TS golden matches Forge's actual wire shape.
+    const definedTargetParam = hasParam(sa, "DefinedTarget")
+      ? evaluateParamRaw(sa, "DefinedTarget").trim()
+      : undefined;
+    if (sa.targets.length === 0 && definedTargetParam !== undefined) {
+      if (definedTargetParam === "Any") {
+        yield* game.action.damage(sa.sourceCardId, "creature", sa.sourceCardId, totalAmount, false);
+        this.maybeStampRemembered(sa, game, [sa.sourceCardId]);
+      }
+      // All other DefinedTarget$ tokens are silently dropped — no DamageDealt
+      // event fires (matches Forge's silent skip for unrecognised forms).
+      return;
+    }
     if (sa.targets.length === 0 && hasParam(sa, "Defined")) {
       const defined = resolveDefined(evaluateParamRaw(sa, "Defined"), sa);
       targets = defined.filter((r) => r.kind === "card").map((r) => r.id);
