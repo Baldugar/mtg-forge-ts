@@ -1584,11 +1584,17 @@ public final class BridgeRunner {
      */
     private static void withFirstTurnDrawSkipBypassed(
             Game game, PhaseType target, Runnable advance) {
-        boolean willCrossDraw = phaseRangeIncludesDraw(
-            game.getPhaseHandler().getPhase(), target);
+        // Only bypass when devAdvanceToPhase will land directly on DRAW —
+        // i.e. the caller asked to step INTO DRAW. Walks where DRAW is just
+        // an intermediate phase (e.g. advanceToStep:Cleanup from UNTAP) must
+        // NOT trigger the bypass: enabling the natural draw mid-walk would
+        // make scenarios with empty libraries lose the game on draw, ending
+        // the phase walk early. The 5 m700 v3 scenarios this fix targets all
+        // call advancePhase with current=UPKEEP and target=DRAW.
+        boolean targetIsDraw = target == PhaseType.DRAW;
         boolean firstTurnTwoPlayers = game.getPhaseHandler().getTurn() <= 1
             && game.getPlayers().size() == 2;
-        if (!willCrossDraw || !firstTurnTwoPlayers) {
+        if (!targetIsDraw || !firstTurnTwoPlayers) {
             advance.run();
             return;
         }
@@ -1599,9 +1605,6 @@ public final class BridgeRunner {
             turnField.setAccessible(true);
             original = (Integer) turnField.get(game.getPhaseHandler());
             turnField.setInt(game.getPhaseHandler(), 2);
-            if (System.getenv("BRIDGE_DEBUG") != null) {
-                System.err.println("[M7.12] bypassed first-turn-draw-skip from " + game.getPhaseHandler().getPhase() + " -> " + target);
-            }
         } catch (Throwable t) {
             // Reflection blocked — fall back to plain advance (parity miss
             // recorded as before). Don't throw — keep bridge running.
@@ -1622,29 +1625,6 @@ public final class BridgeRunner {
         }
     }
 
-    /**
-     * True when devAdvanceToPhase, walking from `from` to `to` in the
-     * canonical (non-topsy) order, will execute onPhaseBegin(DRAW). Topsy
-     * (phases-reversed) is rare and not handled here — first-turn-draw-skip
-     * isn't a parity concern for those scenarios.
-     */
-    private static boolean phaseRangeIncludesDraw(PhaseType from, PhaseType to) {
-        if (from == null || to == null) return false;
-        PhaseType cursor = from;
-        // Walk forward; stop at `to` (inclusive) or wraparound after CLEANUP.
-        for (int safety = 0; safety < 32; safety++) {
-            PhaseType nxt = nextPhase(cursor);
-            if (nxt == null) return false;
-            if (nxt == PhaseType.DRAW) return true;
-            if (nxt == to) return false;
-            cursor = nxt;
-            // Wrapping past CLEANUP into a new turn means turn counter
-            // already incremented naturally — first-turn skip no longer
-            // applies. Stop walking.
-            if (cursor == PhaseType.UNTAP && from != PhaseType.UNTAP) return false;
-        }
-        return false;
-    }
 
     /**
      * M7.0 — pass turn to the next active player. Mirrors the TS-runner's
