@@ -648,6 +648,17 @@ function drivePhaseStep(ctx: RunnerContext, step: PhaseStep): void {
       // Priority windows always pass — multi-turn scenarios test
       // engine-driven phase transitions, not in-step casting.
       if (req.kind === "priority") {
+        // M7.0 — fan out any phase triggers queued by StepStarted /
+        // performTurnBasedActions before passing priority. The trigger
+        // registry has been populated by `game.emitEvent(StepStarted)`
+        // (PhaseTrigger.matches → pending queue); runStackUntilEmpty
+        // drains the queue, pushes triggered abilities onto the stack
+        // (emitting AbilityActivated for each), then resolves them
+        // (emitting their effects' events — LifeChanged, etc.). This
+        // mirrors what runPriorityWindow does in the SP3 driver. Done
+        // before answering pass so the events land between StepStarted
+        // and StepEnded in the trace.
+        runStackUntilEmpty(ctx, { resolveFloor: true });
         next = gen.next({ kind: "priority", action: { kind: "pass" } } as DecisionResponse);
         continue;
       }

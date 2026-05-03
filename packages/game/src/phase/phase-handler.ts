@@ -206,13 +206,19 @@ export class PhaseHandler {
 
   *runStep(step: PhaseStep): Generator<EngineYield, void, DecisionResponse> {
     const game = this.game;
-    yield {
-      kind: "event",
-      event: mkEvent("StepStarted", game.turn, game.phase, {
+    // M7.0 — route through game.emitEvent so the trigger registry sees
+    // StepStarted (PhaseTrigger / chapter / cumulative-upkeep / echo /
+    // fading / mobilize / rebound / unearth / vanishing trigger handlers
+    // all key off this event). Bypassing emitEvent — as the older code
+    // did — left "T:Mode$ Phase | Phase$ Upkeep" triggers permanently
+    // dormant, which surfaced in m700 multi-turn parity goldens as
+    // missing upkeep fires (Solemn Librarian's gain-1 etc.).
+    yield game.emitEvent(
+      mkEvent("StepStarted", game.turn, game.phase, {
         activeSeat: game.activePlayer,
         step,
       }),
-    };
+    );
 
     yield* this.performTurnBasedActions(step, game.activePlayer);
     if (game.isTerminal()) return;
@@ -267,13 +273,17 @@ export class PhaseHandler {
     // PhaseHandler.java: clearPool(true) → loseLife(burn).
     yield* this.emptyManaPools();
 
-    yield {
-      kind: "event",
-      event: mkEvent("StepEnded", game.turn, game.phase, {
+    // M7.0 — route through emitEvent for symmetry with StepStarted. End-
+    // step triggers (warp exile, end-of-turn lose-the-game, etc.) read
+    // PhaseStepEnded for duration evaluation; StepEnded itself is keyed
+    // by a smaller cohort but the trigger-registry pass is fast enough
+    // to make the routing the right default.
+    yield game.emitEvent(
+      mkEvent("StepEnded", game.turn, game.phase, {
         activeSeat: game.activePlayer,
         step,
       }),
-    };
+    );
   }
 
   /**
