@@ -12,6 +12,19 @@
 // that the engine can host real gameplay rather than just being a pile of
 // data structures.
 //
+// Variant gameplay (Wave 60+):
+//   The harness now accepts CLI flags that wire optional variant payloads
+//   into setupGame's SetupOptions:
+//     --vanguard=<seat>:<cardName>         (repeatable, CR 902)
+//     --conspiracy=<seat>:<cardName>       (repeatable, CR 901)
+//     --planechase=<seat>:<activePlane>    (single, CR 901 — planar deck)
+//     --archenemy=<seat>:<startingLife>    (single, CR 904 — scheme deck)
+//     --mode=2hg                            (CR 810 — 4 seats / 2 teams)
+//   Cards referenced by name are minted as stub PaperCards (no script body
+//   resolved) — setup-validation only checks names, so the engine accepts
+//   the placement even though no triggers/statics activate. When a future
+//   revision wires CardDb, the same flags can flow real CardDefinitions in.
+//
 // Limitations (documented as TODOs below):
 //   - Decks are 60 stub PaperCards keyed by name only — no .txt loading.
 //     SP4's CardDb integration replaces this with real card definitions.
@@ -39,11 +52,44 @@ import type {
 } from "@mtg-forge-ts/core";
 import { DEFAULT_PAPER_CARD_FLAGS, SeededRng, ZoneType, mkPlayerSeat } from "@mtg-forge-ts/core";
 import { Card, GAME_VERSION, Game, PhaseHandler, RandomLegalController, setupGame } from "@mtg-forge-ts/game";
-import type { GameMeta, GameRules, SetupDecks } from "@mtg-forge-ts/game";
+import type {
+  ArchenemyAssignment,
+  ConspiracyAssignment,
+  GameMeta,
+  GameRules,
+  PlanechaseAssignment,
+  SetupDecks,
+  TeamAssignment,
+  VanguardAssignment,
+} from "@mtg-forge-ts/game";
 
 // ---------------------------------------------------------------------------
 // configuration
 // ---------------------------------------------------------------------------
+
+/** Per-seat Vanguard avatar, keyed by card name (resolved at mint time). */
+interface VanguardSpec {
+  readonly seat: number;
+  readonly cardName: string;
+}
+
+/** Per-seat Conspiracy card, keyed by card name. */
+interface ConspiracySpec {
+  readonly seat: number;
+  readonly cardName: string;
+}
+
+/** Per-seat Planechase active plane (single entry — see CR 901.6). */
+interface PlanechaseSpec {
+  readonly seat: number;
+  readonly activePlane: string;
+}
+
+/** Per-seat Archenemy designation with explicit starting-life override. */
+interface ArchenemySpec {
+  readonly seat: number;
+  readonly startingLife: number;
+}
 
 interface HarnessConfig {
   readonly seed: bigint;
@@ -53,6 +99,12 @@ interface HarnessConfig {
   readonly deckCardName: string;
   /** Hard cap on generator steps to guarantee termination of the harness. */
   readonly stepCap: number;
+  /** "2hg" widens the lobby to 4 seats / 2 teams; null = vanilla 2-seat. */
+  readonly mode: "vanilla" | "2hg";
+  readonly vanguard: readonly VanguardSpec[];
+  readonly conspiracy: readonly ConspiracySpec[];
+  readonly planechase: PlanechaseSpec | null;
+  readonly archenemy: ArchenemySpec | null;
 }
 
 const DEFAULT_CONFIG: HarnessConfig = {
@@ -63,6 +115,11 @@ const DEFAULT_CONFIG: HarnessConfig = {
   deckSize: 60,
   deckCardName: "Grizzly Bears",
   stepCap: 50_000,
+  mode: "vanilla",
+  vanguard: [],
+  conspiracy: [],
+  planechase: null,
+  archenemy: null,
 };
 
 // ---------------------------------------------------------------------------
@@ -76,9 +133,9 @@ const DEFAULT_CONFIG: HarnessConfig = {
  * machine. Each entry gets a unique collector number so two stubs with
  * the same name don't collide on PaperCard equality.
  */
-const stubPaperCard = (name: string, idx: number): PaperCard => ({
+const stubPaperCard = (name: string, idx: number, edition = "BOT"): PaperCard => ({
   name,
-  edition: "BOT",
+  edition,
   collectorNumber: String(idx + 1).padStart(3, "0"),
   language: "en",
   foil: false,
@@ -86,16 +143,37 @@ const stubPaperCard = (name: string, idx: number): PaperCard => ({
 });
 
 /**
- * Seed a fresh game with two libraries of `cfg.deckSize` stub cards each.
- * Returns the SetupDecks payload setupGame consumes. Wave-31+ shape:
- * SetupDecks is a `{ [seat: number]: readonly EntityId[] }`.
+ * Mint a single card outside the library (for variant zones — Vanguard
+ * avatars, Conspiracies, planes, schemes — which never live in a player's
+ * 60-card library). The placeholder zone is rewritten by setupGame.
  */
-function seedDecks(game: Game, cfg: HarnessConfig): SetupDecks {
-  const decks: Record<number, EntityId[]> = { 0: [], 1: [] };
-  for (let seat = 0; seat < 2; seat++) {
+function mintVariantCard(
+  game: Game,
+  cardName: string,
+  seat: PlayerSeat,
+  zone: ZoneType,
+  edition: string,
+): EntityId {
+  const id = game.newEntityId();
+  const paper = stubPaperCard(cardName, id as unknown as number, edition);
+  game.cards.set(id, new Card(id, paper, seat, seat, zone));
+  return id;
+}
+
+/**
+ * Seed a fresh game with `seatCount` libraries of `cfg.deckSize` stub cards
+ * each. Returns the SetupDecks payload setupGame consumes. Wave-31+ shape:
+ * SetupDecks is a `{ [seat: number]: readonly EntityId[] }`.
+ *
+ * `seatRng` lets each seat's library be shuffled with an independent RNG
+ * branch — the 2HG mode XORs `cfg.seed` per seat so all four players get
+ * deterministic-but-distinct starting decks under the same root seed.
+ */
+function seedDecks(game: Game, cfg: HarnessConfig, seatCount: number): SetupDecks {
+  const decks: Record<number, EntityId[]> = {};
+  for (let seat = 0; seat < seatCount; seat++) {
     const playerSeat = mkPlayerSeat(seat);
-    const bucket = decks[seat];
-    if (!bucket) throw new Error("seedDecks: unreachable — bucket missing");
+    const bucket: EntityId[] = [];
     for (let i = 0; i < cfg.deckSize; i++) {
       const id = game.newEntityId();
       const paper = stubPaperCard(cfg.deckCardName, i);
@@ -103,6 +181,7 @@ function seedDecks(game: Game, cfg: HarnessConfig): SetupDecks {
       game.cards.set(id, card);
       bucket.push(id);
     }
+    decks[seat] = bucket;
   }
   return decks as unknown as SetupDecks;
 }
@@ -110,20 +189,6 @@ function seedDecks(game: Game, cfg: HarnessConfig): SetupDecks {
 // ---------------------------------------------------------------------------
 // game construction
 // ---------------------------------------------------------------------------
-
-const RULES: GameRules = {
-  formatId: "casual",
-  startingLife: 20,
-  startingHandSize: 7,
-  mulliganRule: "london",
-  firstPlayerSkipsDraw: true,
-  ruleOverrides: [],
-  playerCount: { min: 2, max: 2 },
-  poisonCountersToLose: 10,
-  playForAnte: false,
-  manaBurn: false,
-  appliedVariants: [],
-};
 
 const META: GameMeta = {
   engineVersion: GAME_VERSION,
@@ -133,13 +198,68 @@ const META: GameMeta = {
   seed: "0xb071234",
 };
 
-function buildGame(cfg: HarnessConfig): Game {
-  return new Game({
-    lobbyPlayers: [
+/**
+ * Pick the GameRules + lobby shape based on `cfg.mode`. Vanilla is the
+ * historical 2-seat AI vs AI; 2hg widens to 4 seats with the
+ * `TwoHeadedGiant` variant flag and a teamAssignments array (seats 0+1 →
+ * team 0, seats 2+3 → team 1) so Game's ctor seeds the team-life pool.
+ */
+function ruleSetFor(cfg: HarnessConfig): {
+  readonly rules: GameRules;
+  readonly lobby: ReadonlyArray<{ id: string; name: string; controllerKind: "ai" }>;
+  readonly seatCount: number;
+} {
+  if (cfg.mode === "2hg") {
+    return {
+      rules: {
+        formatId: "two-headed-giant",
+        startingLife: 30,
+        startingHandSize: 7,
+        mulliganRule: "london",
+        firstPlayerSkipsDraw: true,
+        ruleOverrides: [],
+        playerCount: { min: 4, max: 4 },
+        teamAssignments: [0, 0, 1, 1],
+        poisonCountersToLose: 15,
+        playForAnte: false,
+        manaBurn: false,
+        appliedVariants: ["TwoHeadedGiant"],
+      },
+      lobby: [
+        { id: "alice", name: "Alice", controllerKind: "ai" },
+        { id: "bob", name: "Bob", controllerKind: "ai" },
+        { id: "carol", name: "Carol", controllerKind: "ai" },
+        { id: "dave", name: "Dave", controllerKind: "ai" },
+      ],
+      seatCount: 4,
+    };
+  }
+  return {
+    rules: {
+      formatId: "casual",
+      startingLife: 20,
+      startingHandSize: 7,
+      mulliganRule: "london",
+      firstPlayerSkipsDraw: true,
+      ruleOverrides: [],
+      playerCount: { min: 2, max: 2 },
+      poisonCountersToLose: 10,
+      playForAnte: false,
+      manaBurn: false,
+      appliedVariants: [],
+    },
+    lobby: [
       { id: "alice", name: "Alice", controllerKind: "ai" },
       { id: "bob", name: "Bob", controllerKind: "ai" },
     ],
-    rules: RULES,
+    seatCount: 2,
+  };
+}
+
+function buildGame(cfg: HarnessConfig, ruleSet: ReturnType<typeof ruleSetFor>): Game {
+  return new Game({
+    lobbyPlayers: ruleSet.lobby.map((p) => ({ ...p })),
+    rules: ruleSet.rules,
     meta: META,
     rng: new SeededRng(cfg.seed),
   });
@@ -159,26 +279,104 @@ interface RunResult {
   readonly capped: boolean;
 }
 
+/**
+ * Materialize the parsed CLI flags into the SetupOptions payload. Returns
+ * the constructed assignment arrays alongside the variant card EntityIds
+ * so we can keep them visible in the report.
+ */
+function buildVariantAssignments(
+  game: Game,
+  cfg: HarnessConfig,
+  seatCount: number,
+): {
+  readonly vanguard: readonly VanguardAssignment[];
+  readonly conspiracies: readonly ConspiracyAssignment[];
+  readonly planechase: readonly PlanechaseAssignment[];
+  readonly archenemy: readonly ArchenemyAssignment[];
+  readonly teams: readonly TeamAssignment[];
+} {
+  const validateSeat = (seat: number, label: string): void => {
+    if (!Number.isInteger(seat) || seat < 0 || seat >= seatCount) {
+      throw new Error(`${label}: seat ${seat} out of range [0, ${seatCount})`);
+    }
+  };
+
+  const vanguard: VanguardAssignment[] = cfg.vanguard.map((spec) => {
+    validateSeat(spec.seat, "--vanguard");
+    const seat = mkPlayerSeat(spec.seat);
+    const cardId = mintVariantCard(game, spec.cardName, seat, ZoneType.Command, "VAN");
+    return { seat, cardId };
+  });
+
+  const conspiracies: ConspiracyAssignment[] = cfg.conspiracy.map((spec) => {
+    validateSeat(spec.seat, "--conspiracy");
+    const seat = mkPlayerSeat(spec.seat);
+    const cardId = mintVariantCard(game, spec.cardName, seat, ZoneType.Command, "CN2");
+    return { seat, cardId };
+  });
+
+  const planechase: PlanechaseAssignment[] = [];
+  if (cfg.planechase) {
+    validateSeat(cfg.planechase.seat, "--planechase");
+    const seat = mkPlayerSeat(cfg.planechase.seat);
+    const activePlane = mintVariantCard(game, cfg.planechase.activePlane, seat, ZoneType.Command, "PCH");
+    planechase.push({ seat, planarDeck: [], activePlane });
+  }
+
+  const archenemy: ArchenemyAssignment[] = [];
+  if (cfg.archenemy) {
+    validateSeat(cfg.archenemy.seat, "--archenemy");
+    const seat = mkPlayerSeat(cfg.archenemy.seat);
+    archenemy.push({ seat, schemeDeck: [], startingLife: cfg.archenemy.startingLife });
+  }
+
+  const teams: TeamAssignment[] =
+    cfg.mode === "2hg"
+      ? [
+          { teamId: 0, seats: [mkPlayerSeat(0), mkPlayerSeat(1)] },
+          { teamId: 1, seats: [mkPlayerSeat(2), mkPlayerSeat(3)] },
+        ]
+      : [];
+
+  return { vanguard, conspiracies, planechase, archenemy, teams };
+}
+
 function runHarness(cfg: HarnessConfig): { readonly game: Game; readonly result: RunResult } {
-  const game = buildGame(cfg);
-  const decks = seedDecks(game, cfg);
+  const ruleSet = ruleSetFor(cfg);
+  const game = buildGame(cfg, ruleSet);
+  const decks = seedDecks(game, cfg, ruleSet.seatCount);
+  const variants = buildVariantAssignments(game, cfg, ruleSet.seatCount);
 
   // Each controller has its own RNG branch so the per-seat decision streams
-  // are independent (re-seeding the same SeededRng instance for both seats
-  // would mean both players make the same random pick at every fork). The
-  // root config seed mixes via XOR into per-seat seeds.
-  const rngSeat0 = new SeededRng(cfg.seed ^ 0xa11ce_5eedn);
-  const rngSeat1 = new SeededRng(cfg.seed ^ 0xb0b_5eed_2n);
+  // are independent (re-seeding the same SeededRng instance for every seat
+  // would mean all players make the same random pick at every fork). The
+  // root config seed mixes via XOR into per-seat seeds — for 2HG we need
+  // four distinct branches (one per seat), so the magic constants below
+  // are arbitrary distinct 64-bit XOR offsets.
+  const SEAT_RNG_SALTS: readonly bigint[] = [0xa11ce_5eedn, 0xb0b_5eed_2n, 0xca401_5eed_3n, 0xda3e_5eed_4n];
 
-  const controllers = new Map<PlayerSeat, RandomLegalController>([
-    [mkPlayerSeat(0), new RandomLegalController(rngSeat0)],
-    [mkPlayerSeat(1), new RandomLegalController(rngSeat1)],
-  ]);
+  const controllers = new Map<PlayerSeat, RandomLegalController>();
+  for (let seat = 0; seat < ruleSet.seatCount; seat++) {
+    const salt = SEAT_RNG_SALTS[seat] ?? BigInt(seat + 1) * 0x9e37_79b9_7f4a_7c15n;
+    const rng = new SeededRng(cfg.seed ^ salt);
+    controllers.set(mkPlayerSeat(seat), new RandomLegalController(rng));
+  }
 
   // Drive setup first so we can inspect / shape the turn queue afterwards.
   // (runGame would auto-seed one turn per seat — but we want N turns.)
   const events: GameEvent[] = [];
-  const setupGen = setupGame(game, { decks });
+  // Only forward each variant payload when it has entries — setupGame
+  // treats `teams: []` (and similar) as "validate every seat is covered"
+  // which would mis-fire for the non-2HG paths where we pass an empty
+  // assignment array unconditionally.
+  const setupGen = setupGame(game, {
+    decks,
+    ...(variants.vanguard.length > 0 ? { vanguard: variants.vanguard } : {}),
+    ...(variants.conspiracies.length > 0 ? { conspiracies: variants.conspiracies } : {}),
+    ...(variants.planechase.length > 0 ? { planechase: variants.planechase } : {}),
+    ...(variants.archenemy.length > 0 ? { archenemy: variants.archenemy } : {}),
+    ...(variants.teams.length > 0 ? { teams: variants.teams } : {}),
+  });
   let setupStep = setupGen.next();
   let stepCount = 0;
   while (!setupStep.done) {
@@ -214,7 +412,7 @@ function runHarness(cfg: HarnessConfig): { readonly game: Game; readonly result:
   // walks the queue; if it empties, the loop exits naturally.
   const phaseHandler = new PhaseHandler(game);
   for (let t = 0; t < cfg.turnCap; t++) {
-    const seat = mkPlayerSeat(t % 2);
+    const seat = mkPlayerSeat(t % ruleSet.seatCount);
     phaseHandler.turnQueue.push({ activePlayer: seat, isExtra: false });
   }
 
@@ -317,8 +515,23 @@ function formatEvent(event: GameEvent, names: Map<EntityId, string>): string {
 function printReport(result: RunResult, game: Game, cfg: HarnessConfig): void {
   const out = process.stdout;
   out.write(`mtg-forge-ts-bot-harness — engine ${GAME_VERSION}\n`);
-  out.write(`seed=${cfg.seed.toString(16)} turnCap=${cfg.turnCap} deckSize=${cfg.deckSize}\n`);
-  out.write("Players: Alice (seat 0, ai) vs Bob (seat 1, ai) — RandomLegalController\n\n");
+  out.write(
+    `seed=${cfg.seed.toString(16)} turnCap=${cfg.turnCap} deckSize=${cfg.deckSize} mode=${cfg.mode}\n`,
+  );
+  if (cfg.vanguard.length > 0) {
+    out.write(`Vanguard: ${cfg.vanguard.map((v) => `seat${v.seat}=${v.cardName}`).join(", ")}\n`);
+  }
+  if (cfg.conspiracy.length > 0) {
+    out.write(`Conspiracy: ${cfg.conspiracy.map((c) => `seat${c.seat}=${c.cardName}`).join(", ")}\n`);
+  }
+  if (cfg.planechase) {
+    out.write(`Planechase: seat${cfg.planechase.seat} activePlane=${cfg.planechase.activePlane}\n`);
+  }
+  if (cfg.archenemy) {
+    out.write(`Archenemy: seat${cfg.archenemy.seat} startingLife=${cfg.archenemy.startingLife}\n`);
+  }
+  const lobbyNames = game.players.map((p, i) => `${p.lobbyPlayer.name} (seat ${i})`).join(", ");
+  out.write(`Players: ${lobbyNames} — RandomLegalController\n\n`);
 
   const names = buildCardNames(game);
 
@@ -364,18 +577,67 @@ const USAGE = `mtg-forge-ts-bot-harness — runs an AI vs AI scripted game
 
 Usage:
   mtg-forge-ts-bot-harness [--seed=<hex>] [--turns=<N>] [--deck-size=<N>]
+                           [--mode=2hg]
+                           [--vanguard=<seat>:<cardName>]...
+                           [--conspiracy=<seat>:<cardName>]...
+                           [--planechase=<seat>:<activePlane>]
+                           [--archenemy=<seat>:<startingLife>]
 
 Options:
-  --seed=<hex>       Hex (e.g. 0xb071234) used as SeededRng root seed.
-                     Defaults to 0xb071234.
-  --turns=<N>        Cap on turns added to the turn queue (default 5).
-  --deck-size=<N>    Stub-card library size per seat (default 60).
-  -h, --help         Show this help.
+  --seed=<hex>                       Hex (e.g. 0xb071234) used as SeededRng
+                                     root seed. Defaults to 0xb071234.
+  --turns=<N>                        Cap on turns added to the turn queue
+                                     (default 5).
+  --deck-size=<N>                    Stub-card library size per seat
+                                     (default 60, must be >= 7).
+  --mode=2hg                         Two-Headed Giant: 4 seats / 2 teams
+                                     sharing 30 life apiece. Default is
+                                     vanilla 2-seat AI vs AI.
+  --vanguard=<seat>:<cardName>       Seat <seat> plays as Vanguard avatar
+                                     <cardName>. Repeatable (one per seat).
+  --conspiracy=<seat>:<cardName>     Seed Conspiracy <cardName> into seat
+                                     <seat>'s command zone. Repeatable.
+  --planechase=<seat>:<activePlane>  Seat <seat> is the active plane's host;
+                                     <activePlane> goes face-up in the
+                                     command zone. Single-shot.
+  --archenemy=<seat>:<startingLife>  Seat <seat> is the archenemy with the
+                                     given starting life total (CR 904.5
+                                     defaults to 40). Single-shot.
+  -h, --help                         Show this help.
+
+Examples:
+  bot-harness --turns=10 --vanguard=0:'Akroma, Angel of Wrath Avatar'
+  bot-harness --conspiracy=0:'Power Play' --conspiracy=1:'Backup Plan'
+  bot-harness --planechase=0:'Academy at Tolaria West'
+  bot-harness --archenemy=0:40
+  bot-harness --mode=2hg --turns=3
 `;
+
+/**
+ * Split a "<seat>:<value>" arg into its parts. Returns null if the format
+ * is malformed (caller surfaces a friendly error message including the
+ * offending flag name).
+ */
+function splitSeatValue(raw: string): { seat: number; value: string } | null {
+  const colon = raw.indexOf(":");
+  if (colon <= 0 || colon >= raw.length - 1) return null;
+  const seat = Number(raw.slice(0, colon));
+  if (!Number.isInteger(seat) || seat < 0) return null;
+  return { seat, value: raw.slice(colon + 1) };
+}
 
 function parseArgs(argv: readonly string[]): HarnessConfig | { readonly help: true } {
   let cfg: HarnessConfig = DEFAULT_CONFIG;
+  const vanguard: VanguardSpec[] = [];
+  const conspiracy: ConspiracySpec[] = [];
   for (const arg of argv) {
+    // Some shells / pnpm forwarding tokenize a literal "--" separator into
+    // argv. Treat it as a no-op so callers can write either
+    //   `pnpm --filter <pkg> dev --mode=2hg`
+    // or
+    //   `pnpm --filter <pkg> dev -- --mode=2hg`
+    // and get the same result.
+    if (arg === "--") continue;
     if (arg === "-h" || arg === "--help") return { help: true };
     if (arg.startsWith("--seed=")) {
       const v = arg.slice("--seed=".length);
@@ -389,11 +651,36 @@ function parseArgs(argv: readonly string[]): HarnessConfig | { readonly help: tr
       if (!Number.isFinite(v) || v < 7)
         throw new Error(`--deck-size must be >= 7 (starting hand), got ${arg}`);
       cfg = { ...cfg, deckSize: Math.floor(v) };
+    } else if (arg.startsWith("--mode=")) {
+      const v = arg.slice("--mode=".length);
+      if (v !== "2hg") throw new Error(`--mode supports '2hg' only, got ${arg}`);
+      cfg = { ...cfg, mode: "2hg" };
+    } else if (arg.startsWith("--vanguard=")) {
+      const split = splitSeatValue(arg.slice("--vanguard=".length));
+      if (!split) throw new Error(`--vanguard must be <seat>:<cardName>, got ${arg}`);
+      vanguard.push({ seat: split.seat, cardName: split.value });
+    } else if (arg.startsWith("--conspiracy=")) {
+      const split = splitSeatValue(arg.slice("--conspiracy=".length));
+      if (!split) throw new Error(`--conspiracy must be <seat>:<cardName>, got ${arg}`);
+      conspiracy.push({ seat: split.seat, cardName: split.value });
+    } else if (arg.startsWith("--planechase=")) {
+      const split = splitSeatValue(arg.slice("--planechase=".length));
+      if (!split) throw new Error(`--planechase must be <seat>:<activePlane>, got ${arg}`);
+      if (cfg.planechase) throw new Error("--planechase may only be specified once");
+      cfg = { ...cfg, planechase: { seat: split.seat, activePlane: split.value } };
+    } else if (arg.startsWith("--archenemy=")) {
+      const split = splitSeatValue(arg.slice("--archenemy=".length));
+      if (!split) throw new Error(`--archenemy must be <seat>:<startingLife>, got ${arg}`);
+      if (cfg.archenemy) throw new Error("--archenemy may only be specified once");
+      const life = Number(split.value);
+      if (!Number.isFinite(life) || life <= 0)
+        throw new Error(`--archenemy startingLife must be a positive integer, got ${arg}`);
+      cfg = { ...cfg, archenemy: { seat: split.seat, startingLife: Math.floor(life) } };
     } else {
       throw new Error(`Unknown argument: ${arg}\n${USAGE}`);
     }
   }
-  return cfg;
+  return { ...cfg, vanguard, conspiracy };
 }
 
 function main(argv: readonly string[]): number {

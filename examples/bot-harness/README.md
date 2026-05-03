@@ -48,12 +48,49 @@ node examples/bot-harness/dist/index.js --turns=10
 
 ## CLI options
 
-| Flag                | Meaning                                                | Default      |
-| ------------------- | ------------------------------------------------------ | ------------ |
-| `--seed=<hex>`      | `SeededRng` root seed (BigInt-parseable hex)           | `0xb071234`  |
-| `--turns=<N>`       | Turns enqueued onto the phase-handler queue            | `5`          |
-| `--deck-size=<N>`   | Stub-card library size per seat (must be ≥ 7)          | `60`         |
-| `-h`, `--help`      | Print usage                                            | —            |
+| Flag                                  | Meaning                                                            | Default      |
+| ------------------------------------- | ------------------------------------------------------------------ | ------------ |
+| `--seed=<hex>`                        | `SeededRng` root seed (BigInt-parseable hex)                       | `0xb071234`  |
+| `--turns=<N>`                         | Turns enqueued onto the phase-handler queue                        | `5`          |
+| `--deck-size=<N>`                     | Stub-card library size per seat (must be ≥ 7)                      | `60`         |
+| `--mode=2hg`                          | Two-Headed Giant: 4 seats, 2 teams, shared 30-life pool (CR 810)   | vanilla 2-seat |
+| `--vanguard=<seat>:<cardName>`        | Seat plays Vanguard avatar `<cardName>` (CR 902). Repeatable.      | —            |
+| `--conspiracy=<seat>:<cardName>`      | Seed Conspiracy `<cardName>` into seat's command zone (CR 901).    | —            |
+| `--planechase=<seat>:<activePlane>`   | Seat hosts the active plane `<activePlane>` (CR 901). Single-shot. | —            |
+| `--archenemy=<seat>:<startingLife>`   | Seat is the archenemy with that starting life (CR 904).            | —            |
+| `-h`, `--help`                        | Print usage                                                        | —            |
+
+### Variant gameplay examples
+
+```bash
+# Vanguard: seat 0 plays Akroma, seat 1 plays Maro Avatar.
+pnpm --filter mtg-forge-ts-bot-harness dev -- \
+  --vanguard=0:'Akroma, Angel of Wrath Avatar' \
+  --vanguard=1:'Maro Avatar'
+
+# Conspiracy: seat both seats with Conspiracy cards in the command zone.
+pnpm --filter mtg-forge-ts-bot-harness dev -- \
+  --conspiracy=0:'Power Play' \
+  --conspiracy=1:'Backup Plan'
+
+# Planechase: seat 0 brings the active plane.
+pnpm --filter mtg-forge-ts-bot-harness dev -- \
+  --planechase=0:'Academy at Tolaria West'
+
+# Archenemy: seat 0 is the archenemy at 40 life.
+pnpm --filter mtg-forge-ts-bot-harness dev -- \
+  --archenemy=0:40
+
+# Two-Headed Giant: 4 seats / 2 teams.
+pnpm --filter mtg-forge-ts-bot-harness dev -- --mode=2hg --turns=3
+```
+
+Cards referenced by the variant flags above are minted as **stub PaperCards**
+keyed by name only — setup-validation accepts the placement but the engine
+won't activate any printed triggers/statics until SP4's `CardDb` is wired in.
+The flags exercise the `setupGame` plumbing (zone placement, team-life
+mirroring, scheme/planar deck seeding) so downstream consumers can verify
+their wiring without a populated card catalogue.
 
 ## Sample output (truncated)
 
